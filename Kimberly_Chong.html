@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width,initial-scale=1">
+    <title>Kimberly Chong </title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Game', '2022 Part 1','2022 Part 2'],
+          ['1',  1764,null],
+          ['2',  1752,null],
+          ['3',  1755,null],
+          ['4',  1757,null],
+          ['5',  1753,null],
+          ['6',  1760,null],
+          ['7',  1745,null],
+          ['8',  1746,null],
+          ['9',  1743,null],
+          ['10',  1726,null],
+          ['11',  1710,null],
+          ['12',  1708,null],
+          ['13',  1702,null],
+          ['14',  1715,null],
+          ['15',  1720,null],
+          ['16',  1726,null],
+          ['17',  1732,null],
+          ['18',  1730,1730],
+          ['19',  null,1710],
+          ['20',  null,1708],
+          ['21',  null,1698],
+          ['22',  null,1717],
+          ['23',  null,1700],
+          ['24',  null,1702],
+          ['25',  null,1706],
+          ['26',  null,1702],
+          ['27',  null,1706],
+          ['28',  null,1713],
+          ['29',  null,1723],
+          ['30',  null,1719],
+          ['31',  null,1707],      
+          ['32',  null,1710]
+        ]);
+
+        var options = {
+          title: 'Kimberly Chong',
+          titleTextStyle: {
+            fontSize: 30
+          },
+          vAxis: {
+          format: '####.##'
+          },
+          curveType: 'function',
+          fontSize: 15,
+          lineWidth: 4,
+          pointSize: 8,
+          legend: { position: 'bottom'},
+          series: {
+            0: { color: '#35a7f2' },
+          },
+          backgroundColor: "#ebebeb"
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    </head>
+    <body style="font-family: sans-serif; background-color:#ebebeb">
+      <h3><a href="https://www.w3schools.com/html/html_links.asp"> Home </a> </h3>
+        <div id="curve_chart" class="chart" style="position: relative; height:70vh; width:100vw">
+      </div>
+      <br>
+      <h3>2022 Part 1</h3>
+      <table border="1" style="position: relative; height:10vh; width:95vw">
+        <tr>
+        <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+        </tr>
+        <tr><td>26/03/2022</td><td>4NCL Rd-5</td><td>John Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>27/03/2022</td><td>4NCL Rd-6</td><td>Alexander Hertog	</td><td>0</td><td>1780</td><td>1752</td></tr>
+        <tr><td>30/03/2022</td><td>League Pentyrch Amateurs 0-4 Cardiff B</td><td>Steffan Mon</td><td>1</td><td>1200</td><td>1755</td></tr>
+        <tr><td>15/04/2022</td><td>Welsh Open Rd-1</td><td>	Tansy Fowler</td><td>1</td><td>1264</td><td>1757</td></tr>
+        <tr><td>15/04/2022</td><td>Welsh Open Rd-2</td><td>	Thomas van Veelen</td><td>0</td><td>2069</td><td>1753</td></tr>
+        <tr><td>16/04/2022</td><td>Welsh Open Rd-3</td><td>Malcolm Probert</td><td>1</td><td>1592</td><td>1760</td></tr>
+        <tr><td>16/04/2022</td><td>Welsh Open Rd-4</td><td>Steve Williams</td><td>0</td><td>1681</td><td>1745</td></tr>
+        <tr><td>17/04/2022</td><td>Welsh Open Rd-5</td><td>	Paul Bridges</td><td>0.5</td><td>1810</td><td>1746</td></tr>
+        <tr><td>18/04/2022</td><td>Welsh Open Rd-6</td><td>Justin Morgans</td><td>0.5</td><td>1674</td><td>1743</td></tr>
+        <tr><td>18/04/2022</td><td>Welsh Open Rd-7</td><td>	Caspian Fowler</td><td>0</td><td>1633</td><td>1726</td></tr>
+        <tr><td>20/04/2022</td><td>League Cardiff B 2.5-1.5 Cardiff A</td><td>Bill Harle</td><td>0</td><td>1654</td><td>1710</td></tr>
+        <tr><td>13/05/2022</td><td>Frome 2022 Open Rd 1</td><td>Michael Ashworth</td><td>0</td><td>2217</td><td>1708</td></tr>
+        <tr><td>14/05/2022</td><td>Frome 2022 Open Rd 2</td><td>Andy Hill </td><td>0</td><td>1975</td><td>1702</td></tr>
+        <tr><td>14/05/2022</td><td>Frome 2022 Open Rd 3</td><td>Chris Strong</td><td>1</td><td>1788</td><td>1715</td></tr>
+        <tr><td>15/05/2022</td><td>Frome 2022 Open Rd 4</td><td>Matthew Dishman</td><td>0.5</td><td>1937</td><td>1720</td></tr>
+        <tr><td>15/05/2022</td><td>Frome 2022 Open Rd 5</td><td>Frank J Pittman</td><td>0.5</td><td>1950	</td><td>1726</td></tr>
+        <tr><td>01/06/2022</td><td>League Cardiff B 4 - 0 Caerphilly Lions</td><td>Leon Jansen van Rensburg</td><td>1</td><td>1592</td><td>1732</td></tr>
+      </table>
+      <br>
+      <h3>2022 Part 2</h3>
+      <table border="1" style="position: relative; height:10vh; width:90vw">
+        <tr>
+        <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+        </tr>
+        <tr><td>26/03/2022</td><td>4NCL Rd-5</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>27/03/2022</td><td>4NCL Rd-6</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>30/03/2022</td><td>League Pentyrch Amateurs 0-4 Cardiff B</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>15/04/2022</td><td>Welsh Open Rd-1</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>15/04/2022</td><td>Welsh Open Rd-2</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>16/04/2022</td><td>Welsh Open Rd-3</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>16/04/2022</td><td>Welsh Open Rd-4</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>17/04/2022</td><td>Welsh Open Rd-5</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>18/04/2022</td><td>Welsh Open Rd-6</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>18/04/2022</td><td>Welsh Open Rd-7</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>20/04/2022</td><td>League Cardiff B 2.5-1.5 Cardiff A</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>13/05/2022</td><td>Frome 2022 Open Rd 1</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>14/05/2022</td><td>Frome 2022 Open Rd 2</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>14/05/2022</td><td>Frome 2022 Open Rd 3</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>15/05/2022</td><td>Frome 2022 Open Rd 4</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>15/05/2022</td><td>Frome 2022 Open Rd 5</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+        <tr><td>01/06/2022</td><td>League Cardiff B 4 - 0 Caerphilly Lions</td><td>John S Garnett</td><td>0</td><td>1925</td><td>1764</td></tr>
+      </table>        
+    </body>
+
+</html>
