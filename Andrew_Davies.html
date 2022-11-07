@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width,initial-scale=1">
+    <title>Andrew Davies </title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Game', '2022 - Part 1','2022 - Part 2'],
+          ['1', 1100,null],
+          ['2', 1095,null],
+          ['3', 1090,null],
+          ['4', 1086,null],
+          ['5', 1081,null],
+          ['6', 1124,null],
+          ['7', 1159,1159],
+          ['8', null,1186],
+          ['9', null,1181],
+          ['10', null,1183],
+          ['11', null,1226],
+          ['12', null,1246],
+          ['13', null,1265],
+          ['14', null,1284],
+          ['15', null,1346],
+          ['16', null,1386],          
+          ['17', null,1405],
+          ['18', null,1400],
+
+        ]);
+
+        var options = {
+          title: 'Andrew Davies',
+          titleTextStyle: {
+            fontSize: 30
+          },
+          vAxis: {
+          format: '####.##'
+          },
+          curveType: 'none',
+          fontSize: 15,
+          lineWidth: 4,
+          pointSize: 8,
+          legend: { position: 'bottom'},
+          series: {
+            0: { color: '#35a7f2' },
+          },
+          backgroundColor: "#ebebeb"
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    </head>
+    <body style="font-family: sans-serif; background-color:#ebebeb">
+      <h3><a href="https://j-ratings.github.io/J-Ratings/"> Home </a> </h3>
+      <div id="curve_chart" class="chart" style="position: relative; height:600px; width:1100px">
+      </div>
+      <br>
+      <h3>2022 - Part 1 /// E1 = 1100 /// k = 48)</h3>
+      <table border="1" style="position: relative; height:10vh; width:95vw">
+        <tr>
+        <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+        </tr>
+        <tr><td>04/02/2022</td><td>League</td><td>Sam Pritchard</td><td>0</td><td>1617</td><td>1095</td></tr>
+        <tr><td>22/02/2022</td><td>League</td><td>Caleb Thorrington</td><td>0</td><td>1710</td><td>1090</td></tr>
+        <tr><td>01/03/2022</td><td>League</td><td>Mark Thomas</td><td>0</td><td>1853</td><td>1086</td></tr>
+        <tr><td>05/04/2022</td><td>League</td><td>Jason Garcia</td><td>0</td><td>2070</td><td>1081</td></tr>
+        <tr><td>14/04/2022</td><td>League</td><td>Guto Neave</td><td>1</td><td>1659</td><td>1124</td></tr>
+                     </table>
+      <br>
+      <h3>2022 - Part 2 /// E1 = 1124 /// k = 48</h3>
+      <table border="1" style="position: relative; height:10vh; width:90vw">
+        <tr>
+        <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+        <tr><td>12/09/2022</td><td>League</td><td>Paul Bevan</td><td>1</td><td>1264</td><td>1159</td></tr>
+        <tr><td>20/09/2022</td><td>League</td><td>Kyle Horton</td><td>1</td><td>1150</td><td>1186</td></tr>
+        <tr><td>04/10/2022</td><td>League</td><td>Les Philpin</td><td>0</td><td>1658</td><td>1181</td></tr>
+        <tr><td>10/10/2022</td><td>League</td><td>Leighton Anthony</td><td>0.5</td><td>1130</td><td>1183</td></tr>
+        <tr><td>11/09/2022</td><td>League</td><td>Matthew Billington</td><td>1</td><td>1500</td><td>1226</td></tr>
+        <tr><td>15/09/2022</td><td>Autumn Congress - Rd 1</td><td>Deio Parri</td><td>0.5</td><td>1595</td><td>1246</td></tr>
+        <tr><td>15/09/2022</td><td>Autumn Congress - Rd 2</td><td>Callum Davies</td><td>0.5</td><td>1850</td><td>1265</td></tr>
+        <tr><td>15/09/2022</td><td>Autumn Congress - Rd 3</td><td>Bob Hurn</td><td>0.5</td><td>1610</td><td>1284</td></tr>
+        <tr><td>16/09/2022</td><td>Autumn Congress - Rd 4</td><td>Alun Smith</td><td>1</td><td>1650</td><td>1327</td></tr>
+        <tr><td>16/09/2022</td><td>Autumn Congress - Rd 5</td><td>David Buttell</td><td>0.5</td><td>1807</td><td>1346</td></tr>
+        <tr><td>31/10/2022</td><td>League</td><td>Louis Ba Thein</td><td>1</td><td>1366</td><td>1386</td></tr>
+        <tr><td>01/11/2022</td><td>League</td><td>David Buttell</td><td>0.5</td><td>1807</td><td>1405</td></tr>
+        <tr><td>07/11/2022</td><td>League</td><td>Peter Bevan</td><td>0</td><td>1861</td><td>1400</td></tr>
+
+        </tr>
+                      </table>        
+    </body>
+
+</html>
