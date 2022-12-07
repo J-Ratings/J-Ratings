@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width,initial-scale=1">
+    <title>Steve Smith </title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Game', '2022 - Part 1','2022 - Part 2'],
+          ['1', 1854,null],
+          ['2', 1863,null],
+          ['3', 1857,null],
+          ['4', 1848,null],
+          ['5', 1853,null],
+          ['6', 1848,null],
+          ['7', 1833,null],
+          ['8', 1824,null],
+          ['9', 1811,1811],
+          ['10', null,1816],
+          ['11', null,1825],
+          ['12', null,1807],
+          ['13', null,1814],
+          ['14', null,1795],
+          ['15', null,1787],          
+          ['16', null,1806],
+          ['17', null,1800],
+          ['18', null,1794],          
+          ['19', null,1802],
+          ['20', null,1792],
+          ['21', null,1806],
+          ['22', null,1815]
+
+        ]);
+
+        var options = {
+          title: 'Steve Smith',
+          titleTextStyle: {
+            fontSize: 30
+          },
+          vAxis: {
+          format: '####.##'
+          },
+          curveType: 'none',
+          fontSize: 15,
+          lineWidth: 4,
+          pointSize: 8,
+          legend: { position: 'bottom'},
+          series: {
+            0: { color: '#35a7f2' },
+          },
+          backgroundColor: "#ebebeb"
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    </head>
+    <body style="font-family: sans-serif; background-color:#ebebeb">
+      <h3><a href="https://j-ratings.github.io/J-Ratings/"> Home </a> </h3>
+      <div id="curve_chart" class="chart" style="position: relative; height:600px; width:1100px">
+      </div>
+      <h3>2022 - Part 1 /// E1 = 1854 /// k = 24</h3>
+      <table border="1" style="position: relative; height:10vh; width:95vw">
+        <tr>
+        <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+        </tr>
+        <tr><td>09/02/2022</td><td>League</td><td>Chris Fox</td><td>1</td><td>1763</td><td>1863</td></tr>
+        <tr><td>23/02/2022</td><td>Club Championship</td><td>Nigel Ralphs</td><td>0</td><td>2039</td><td>1857</td></tr>
+        <tr><td>23/02/2022</td><td>League</td><td>Matthew Davies</td><td>0</td><td>1956</td><td>1848</td></tr>
+        <tr><td>09/03/2022</td><td>Club Championship</td><td>Joe Fathallah</td><td>0.5</td><td>1999</td><td>1853</td></tr>
+        <tr><td>30/03/2022</td><td>Club Championship</td><td>Alex Bullen</td><td>0</td><td>2098</td><td>1848</td></tr>
+        <tr><td>04/05/2022</td><td>League</td><td>Liam Penny</td><td>0</td><td>1774</td><td>1833</td></tr>
+        <tr><td>11/05/2022</td><td>League</td><td>Gwyn Harvard</td><td>0</td><td>1916</td><td>1824</td></tr>
+
+                     </table>
+      <br>
+      <h3>2022 - Part 2 /// E1 = 1824 /// k = 24</h3>
+      <table border="1" style="position: relative; height:10vh; width:90vw">
+        <tr>
+        <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+        <tr><td>26/07/2022</td><td>Cup Match</td><td>Liam Penny</td><td>0</td><td>1813</td><td>1812</td></tr>
+        <tr><td>14/09/2022</td><td>League</td><td>Anezka Vlkova</td><td>0.5</td><td>1962</td><td>1816</td></tr>
+        <tr><td>21/09/2022</td><td>League</td><td>Kimberly Chong</td><td>1</td><td>1732</td><td>1825</td></tr>
+        <tr><td>26/09/2022</td><td>League</td><td>Gavin Jones</td><td>0</td><td>1626</td><td>1807</td></tr>
+        <tr><td>28/09/2022</td><td>Club Championship</td><td>Joe Fathallah</td><td>0.5</td><td>2075</td><td>1814</td></tr>
+        <tr><td>05/10/2022</td><td>Club Championship</td><td>Leon Zedlmayer</td><td>0</td><td>1580</td><td>1795</td></tr>
+        <tr><td>12/10/2022</td><td>League</td><td>Anezka Vlkova</td><td>0</td><td>1962</td><td>1788</td></tr>
+        <tr><td>19/10/2022</td><td>League</td><td>Sam Jukes</td><td>1</td><td>2028</td><td>1806</td></tr>
+        <tr><td>26/10/2022</td><td>Club Championship</td><td>Nigel Ralphs</td><td>0</td><td>2037</td><td>1800</td></tr>
+        <tr><td>02/11/2022</td><td>Club Championship</td><td>Sam Jukes</td><td>0</td><td>2028</td><td>1795</td></tr>
+        <tr><td>09/11/2022</td><td>Club Championship</td><td>Dave McGhee</td><td>1</td><td>1680</td><td>1802</td></tr>
+        <tr><td>16/11/2022</td><td>League</td><td>Duncan MacDonald</td><td>0</td><td>1882</td><td>1792</td></tr>
+        <tr><td>30/11/2022</td><td>League</td><td>David Llewellyn</td><td>1</td><td>1899</td><td>1807</td></tr>
+        <tr><td>06/12/2022</td><td>League</td><td>Simon Blackmore</td><td>1</td><td>1725</td><td>1816</td></tr>
+
+        </tr>
+                      </table>        
+    </body>
+
+</html>
