@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width,initial-scale=1">
+    <title>Matthew Davies </title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Game', '2022 - Part 1','2022 - Part 2'],
+          ['1', 1956,null],
+          ['2', 1955,null],
+          ['3', 1958,null],
+          ['4', 1956,null],
+          ['5', 1951,null],
+          ['6', 1960,null],
+          ['7', 1979,null],
+          ['8', 1984,null],
+          ['9', 1987,null],
+          ['10', 1994,null],
+          ['11', 1983,null],
+          ['12', 1981,null],
+          ['13', 1986,null],
+          ['14', 1970,null],
+          ['15', 1969,1969],
+          ['16', null,1968],
+          ['17', null,1966],
+          ['18', null,1974],
+          ['19', null,1965],
+          ['20', null,1963],
+          ['21', null,1960],
+          ['22', null,1949]
+
+        ]);
+
+        var options = {
+          title: 'Matthew Davies',
+          titleTextStyle: {
+            fontSize: 30
+          },
+          vAxis: {
+          format: '####.##'
+          },
+          curveType: 'none',
+          fontSize: 15,
+          lineWidth: 4,
+          pointSize: 8,
+          legend: { position: 'bottom'},
+          series: {
+            0: { color: '#35a7f2' },
+          },
+          backgroundColor: "#ebebeb"
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    </head>
+    <body style="font-family: sans-serif; background-color:#ebebeb">
+      <h3><a href="https://j-ratings.github.io/J-Ratings/"> Home </a> </h3>
+      <div id="curve_chart" class="chart" style="position: relative; height:600px; width:1100px">
+      </div>
+      <h3>2022 - Part 1 /// E1 = 1956 /// k = 24</h3>
+      <table border="1" style="position: relative; height:10vh; width:95vw">
+        <tr>
+        <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+        </tr>
+        <tr><td>24/01/2022</td><td>Club Championship</td><td>Steve Cunliffe</td><td>0.5</td><td>1939</td><td>1955</td></tr>
+        <tr><td>31/01/2022</td><td>League</td><td>Bob Hurn</td><td>1</td><td>1621</td><td>1958</td></tr>
+        <tr><td>13/02/2022</td><td>4NCL</td><td>Tomasz Sygnowski</td><td>0</td><td>2298</td><td>1956</td></tr>
+        <tr><td>13/02/2022</td><td>4NCL</td><td>Alan M Byron</td><td>0</td><td>2213</td><td>1951</td></tr>
+        <tr><td>23/02/2022</td><td>League</td><td>Georgi Korovski</td><td>1</td><td>1854</td><td>1960</td></tr>
+        <tr><td>02/03/2022</td><td>League</td><td>Tom Brown</td><td>1</td><td>2203</td><td>1979</td></tr>
+        <tr><td>16/03/2022</td><td>League</td><td>Alex Bullen</td><td>0.5</td><td>2098</td><td>1984</td></tr>
+        <tr><td>26/03/2022</td><td>4NCL</td><td>Stefanus KF Phan</td><td>0.5</td><td>2046</td><td>1987</td></tr>
+        <tr><td>27/03/2022</td><td>4NCL</td><td>Arthur Hibbitt</td><td>1</td><td>1801</td><td>1994</td></tr>
+        <tr><td>30/04/2022</td><td>4NCL</td><td>Peter J Mercs</td><td>0</td><td>1993</td><td>1983</td></tr>
+        <tr><td>01/05/2022</td><td>4NCL</td><td>Richard B E Bryant</td><td>0.5</td><td>1913</td><td>1981</td></tr>
+        <tr><td>02/05/2022</td><td>4NCL</td><td>John Trevelyan</td><td>0.5</td><td>2086</td><td>1986</td></tr>
+        <tr><td>04/05/2022</td><td>League</td><td>Duncan Macdonald</td><td>0</td><td>1836</td><td>1970</td></tr>
+        <tr><td>01/06/2022</td><td>League</td><td>David Llewellyn</td><td>0.5</td><td>1924</td><td>1969</td></tr>
+
+                      </table>
+      <br>
+      <h3>2022 - Part 2 /// E1 = 1969 /// k = 24</h3>
+      <table border="1" style="position: relative; height:10vh; width:90vw">
+        <tr>
+        <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+        <tr><td>07/09/2022</td><td>League</td><td>Mark Adams</td><td>0.5</td><td>1927</td><td>1968</td></tr>
+        <tr><td>21/09/2022</td><td>League</td><td>Celso Bettencourt Pinto</td><td>0.5</td><td>1911</td><td>1966</td></tr>
+        <tr><td>12/10/2022</td><td>League</td><td>Alex Bullen</td><td>0.5</td><td>2235</td><td>1974</td></tr>
+        <tr><td>19/10/2022</td><td>League</td><td>Joe Fathallah</td><td>0</td><td>2075</td><td>1965</td></tr>
+        <tr><td>16/11/2022</td><td>League</td><td>David Llewellyn</td><td>0.5</td><td>1899</td><td>1963</td></tr>
+        <tr><td>30/11/2022</td><td>League</td><td>Duncan MacDonald</td><td>0.5</td><td>1882</td><td>1960</td></tr>
+        <tr><td>07/12/2022</td><td>League</td><td>James Tapp</td><td>0</td><td>2000</td><td>1949</td></tr>
+        
+        </tr>
+                      </table>        
+    </body>
+
+</html>
