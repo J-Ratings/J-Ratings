@@ -11,82 +11,85 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Game', '2022 - Part 1','2022 - Part 2'],
-          ['1', 1258,null],
-          ['2', 1286,null],
-          ['3', 1283,null],
-          ['4', 1296,null],
-          ['5', 1293,null],
-          ['6', 1290,null],
-          ['7', 1318,null],
-          ['8', 1315,null],
-          ['9', 1328,null],
-          ['10', 1341,null],
-          ['11', 1334,null],
-          ['12', 1331,null],
-          ['13', 1327,null],
-          ['14', 1327,null],
-          ['15', 1320,null],
-          ['16', 1333,1333],
-          ['17', null,1330],
-          ['18', null,1342],
-          ['19', null,1355],
-          ['20', null,1352],
-          ['21', null,1349],
-          ['22', null,1338],
-          ['23', null,1341],
-          ['24', null,1337],
-          ['25', null,1348],
-          ['26', null,1344],
-          ['27', null,1368],
-          ['28', null,1344],
-          ['29', null,1365],
-          ['30', null,1370],
-          ['31', null,1383],
-          ['32', null,1379],
-          ['33', null,1388],
-          ['34', null,1408],
-          ['35', null,1402],
-          ['36', null,1424],
-          ['37', null,1436],
-          ['38', null,1447],
-          ['39', null,1444],
-          ['40', null,1440],
-          ['41', null,1469],
-          ['42', null,1482],
-          ['43', null,1511],
-          ['44', null,1524],
-          ['45', null,1552],
-          ['46', null,1565],
-          ['47', null,1575],
-          ['48', null,1588],
-          ['49', null,1585],         
-          ['50', null,1598],
-          ['51', null,1595],
-          ['52', null,1591],
-          ['53', null,1588],
-          ['54', null,1584],
-          ['55', null,1581],
-          ['56', null,1578],
-          ['57', null,1575],
-          ['58', null,1578],
-          ['59', null,1575],
-          ['60', null,1584],
-          ['61', null,1581],
-          ['62', null,1607],
-          ['63', null,1604],
-          ['64', null,1613],
-          ['65', null,1610],
-          ['66', null,1622],         
-          ['67', null,1634],
-          ['68', null,1647],
-          ['69', null,1673],
-          ['70', null,1701],
-          ['71', null,1698],
-          ['72', null,1710],
-          ['73', null,1734],
-          ['74', null,1731],
-          ['75', null,1742]
+          ['Game', '2022 - Part 1','2022 - Part 2','2023 - Part 1'],
+          [, 1258,null,null],
+          [, 1286,null,null],
+          [, 1283,null,null],
+          [, 1296,null,null],
+          [, 1293,null,null],
+          [, 1290,null,null],
+          [, 1318,null,null],
+          [, 1315,null,null],
+          [, 1328,null,null],
+          [, 1341,null,null],
+          [, 1334,null,null],
+          [, 1331,null,null],
+          [, 1327,null,null],
+          [, 1327,null,null],
+          [, 1320,null,null],
+          [, 1333,1333,null],
+          [, null,1330,null],
+          [, null,1342,null],
+          [, null,1355,null],
+          [, null,1352,null],
+          [, null,1349,null],
+          [, null,1338,null],
+          [, null,1341,null],
+          [, null,1337,null],
+          [, null,1348,null],
+          [, null,1344,null],
+          [, null,1368,null],
+          [, null,1344,null],
+          [, null,1365,null],
+          [, null,1370,null],
+          [, null,1383,null],
+          [, null,1379,null],
+          [, null,1388,null],
+          [, null,1408,null],
+          [, null,1402,null],
+          [, null,1424,null],
+          [, null,1436,null],
+          [, null,1447,null],
+          [, null,1444,null],
+          [, null,1440,null],
+          [, null,1469,null],
+          [, null,1482,null],
+          [, null,1511,null],
+          [, null,1524,null],
+          [, null,1552,null],
+          [, null,1565,null],
+          [, null,1575,null],
+          [, null,1588,null],
+          [, null,1585,null],
+          [, null,1598,null],
+          [, null,1595,null],
+          [, null,1591,null],
+          [, null,1588,null],
+          [, null,1584,null],
+          [, null,1581,null],
+          [, null,1578,null],
+          [, null,1575,null],
+          [, null,1578,null],
+          [, null,1575,null],
+          [, null,1584,null],
+          [, null,1581,null],
+          [, null,1607,null],
+          [, null,1604,null],
+          [, null,1613,null],
+          [, null,1610,null],
+          [, null,1622,null],
+          [, null,1634,null],
+          [, null,1647,null],
+          [, null,1676,null],
+          [, null,1673,null],
+          [, null,1670,null],
+          [, null,1667,null],
+          [, null,1684,1684],
+          [, null,null,1684],
+          [, null,null,1685],
+          [, null,null,1694],
+          [, null,null,1691],
+
 
 
         ]);
@@ -106,7 +109,8 @@
           legend: { position: 'bottom'},
           series: {
             0: { color: '#35a7f2' },
-          },
+            1: { color: '#f20a0a' },
+            2: { color: '#24d442' },          },
           backgroundColor: "#ebebeb"
         };
 
@@ -202,16 +206,23 @@
         <tr><td>01/01/2023</td><td>XMAS U1700 - Rd 5</td><td>Mason Woodhams</td><td>0.5</td><td>1693</td><td>1647</td></tr>
         <tr><td>02/01/2023</td><td>Hastings Masters - Rd 5</td><td>Alaa Gamal</td><td>1</td><td>1910</td><td>1676</td></tr>
         <tr><td>02/01/2023</td><td>Hastings Masters - Rd 6</td><td>Sam Jukes</td><td>0</td><td>2028</td><td>1673</td></tr>
-        <tr><td>03/01/2023</td><td>NY U1700 - Rd 2</td><td>Mason Woodhams</td><td>1</td><td>1693</td><td>1701</td></tr>
-        <tr><td>03/01/2023</td><td>Hastings Masters - Rd 7</td><td>Kushal Jakhria</td><td>0</td><td>2056</td><td>1698</td></tr>
-        <tr><td>04/01/2023</td><td>NY U1700 - Rd 3</td><td>Cecil Sloan</td><td>0.5</td><td>1674</td><td>1710</td></tr>
-        <tr><td>05/01/2023</td><td>NY U1700 - Rd 4</td><td>Patrick Sartain</td><td>1</td><td>1505</td><td>1734</td></tr>
-        <tr><td>05/01/2023</td><td>Hastings Masters - Rd 9</td><td>Stellio Jerome</td><td>0</td><td>1677</td><td>1731</td></tr>
-        <tr><td>06/01/2023</td><td>NY U1700 - Rd 5</td><td>Paul Mottram</td><td>0.5</td><td>1608</td><td>1742</td></tr>
+        <tr><td>03/01/2023</td><td>Hastings Masters - Rd 7</td><td>Kushal Jakhria</td><td>0</td><td>2056</td><td>1670</td></tr>
+        <tr><td>03/01/2023</td><td>Hastings Masters - Rd 9</td><td>Stellio Jerome</td><td>0</td><td>1677</td><td>1667</td></tr>
+        
+        </table>        
 
-
-
-                              </table>        
+        <h3>2023 - Part 1 /// W1 = 1667 /// k = 24</h3>
+        <table border="1" style="position: relative; height:10vh; width:90vw">
+          <tr>
+          <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+          </tr>
+    
+          <tr><td>03/01/2022</td><td>NY U1700 - Rd 2</td><td>Mason Woodhams</td><td>1</td><td>1693</td><td>1684</td></tr>
+          <tr><td>04/01/2022</td><td>NY U1700 - Rd 3</td><td>Cecil Sloan</td><td>0.5</td><td>1674</td><td>1685</td></tr>
+          <tr><td>05/01/2022</td><td>NY U1700 - Rd 4</td><td>Patrick Sartain</td><td>1</td><td>1505</td><td>1694</td></tr>
+          <tr><td>06/01/2022</td><td>NY U1700 - Rd 5</td><td>Paul Mottram</td><td>0.5</td><td>1608</td><td>1691</td></tr>
+              
+          </table>    
     </body>
 
 </html>
