@@ -11,31 +11,34 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-        ['Game', '2022 - Part 1','2022 - Part 2'],
-          ['1', 1100,null],
-          ['2', 1095,null],
-          ['3', 1090,null],
-          ['4', 1086,null],
-          ['5', 1081,null],
-          ['6', 1124,null],
-          ['7', 1157,1157],
-          ['8', null,1183],
-          ['9', null,1178],
-          ['10', null,1179],
-          ['11', null,1222],
-          ['12', null,1241],
-          ['13', null,1260],
-          ['14', null,1279],
-          ['15', null,1322],
-          ['16', null,1342],          
-          ['17', null,1399],
-          ['18', null,1394],
-          ['19', null,1417],
-          ['20', null,1434],
-          ['21', null,1427],
-          ['22', null,1412],          
-          ['23', null,1389],          
-          ['24', null,1385]
+          ['Game', '2022 - Part 1','2022 - Part 2','2023 - Part 1'],
+          ['', 1100,null,null],
+          ['', 1095,null,null],
+          ['', 1090,null,null],
+          ['', 1086,null,null],
+          ['', 1081,null,null],
+          ['', 1124,null,null],
+          ['', 1157,1157,null],
+          ['', null,1183,null],
+          ['', null,1178,null],
+          ['', null,1179,null],
+          ['', null,1222,null],
+          ['', null,1241,null],
+          ['', null,1260,null],
+          ['', null,1279,null],
+          ['', null,1322,null],
+          ['', null,1342,null],
+          ['', null,1399,null],
+          ['', null,1394,null],
+          ['', null,1417,null],
+          ['', null,1434,null],
+          ['', null,1427,null],
+          ['', null,1412,null],
+          ['', null,1389,null],
+          ['', null,1385,null],
+          ['', null,1397,1397]
+
+
 
         ]);
 
@@ -54,7 +57,8 @@
           legend: { position: 'bottom'},
           series: {
             0: { color: '#35a7f2' },
-          },
+            1: { color: '#f20a0a' },
+            2: { color: '#24d442' },          },
           backgroundColor: "#ebebeb"
         };
 
@@ -106,7 +110,17 @@
         <tr><td>13/12/2022</td><td>League</td><td>Chris Daniel</td><td>0</td><td>1653</td><td>1385</td></tr>
 
         </tr>
-                      </table>        
+        </table>
+        
+        <h3>2023 - Part 1 /// W1 = 1385 /// k = 32</h3>
+        <table border="1" style="position: relative; height:10vh; width:90vw">
+          <tr>
+          <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+          </tr>
+    
+          <tr><td>17/01/2023</td><td>League</td><td>Paul Headon</td><td>0.5</td><td>1734</td><td>1397</td></tr>
+ 
+          </table> 
     </body>
 
 </html>
