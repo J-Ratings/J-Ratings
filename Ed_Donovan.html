@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width,initial-scale=1">
+    <title>Georgi Korovski </title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Game', '2022 - Part 1','2022 - Part 2','2023 - Part 1'],
+          [, 1877,null,null],          
+          [, 1885,null,null],          
+          [, 1887,null,null],
+          [, 1873,null,null],
+          [, 1879,null,null],
+          [, 1882,null,null],
+          [, 1888,null,null],
+          [, 1897,null,null],
+          [, 1877,null,null],
+          [, 1880,1880,null],
+          [, null,1860,null],
+          [, null,1868,null],
+          [, null,1870,null],
+          [, null,1873,null],
+          [, null,1872,null],
+          [, null,1876,null],
+          [, null,1884,1884],
+          [, null,null,1864],
+          [, null,null,1873],
+
+
+        ]);
+
+        var options = {
+          title: 'Ed Donovan',
+          titleTextStyle: {
+            fontSize: 30
+          },
+          vAxis: {
+          format: '####.##'
+          },
+          curveType: 'none',
+          fontSize: 15,
+          lineWidth: 4,
+          pointSize: 8,
+          legend: { position: 'bottom'},
+          series: {
+            0: { color: '#35a7f2' },
+            1: { color: '#f20a0a' },
+            2: { color: '#24d442' },          },
+          backgroundColor: "#ebebeb"
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    </head>
+    <body style="font-family: sans-serif; background-color:#ebebeb">
+      <h3><a href="https://j-ratings.github.io/J-Ratings/"> Home </a> </h3>
+      <div id="curve_chart" class="chart" style="position: relative; height:600px; width:1100px">
+      </div>
+      <h3>2022 - Part 1 /// E1 = 1877 /// k = 24</h3>
+      <table border="1" style="position: relative; height:10vh; width:95vw">
+        <tr>
+        <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+        </tr>
+        <tr><td>15/02/2022</td><td>League</td><td>Lef Zografos</td><td>1</td><td>1693</td><td>1885</td></tr>
+        <tr><td>21/02/2022</td><td>League</td><td>Duncan Elliott</td><td>1</td><td>1674</td><td>1887</td></tr>
+        <tr><td>02/03/2022</td><td>League</td><td>Andrew Di-Vetta</td><td>0</td><td>1505</td><td>1873</td></tr>
+        <tr><td>16/03/2022</td><td>League</td><td>Dave Parsons</td><td>1</td><td>1608</td><td>1879</td></tr>
+        <tr><td>30/03/2022</td><td>League</td><td>Duncan Elliott</td><td>1</td><td>1395</td><td>1882</td></tr>
+        <tr><td>13/04/2022</td><td>League</td><td>Ellison Smith</td><td>1</td><td>1711</td><td>1888</td></tr>
+        <tr><td>20/04/2022</td><td>League</td><td>Guy Wagner</td><td>1</td><td>1523</td><td>1897</td></tr>
+        <tr><td>17/05/2022</td><td>League</td><td>Simon Blackmore</td><td>0</td><td>1707</td><td>1877</td></tr>
+        <tr><td>23/05/2022</td><td>League</td><td>Martin K Jones</td><td>1</td><td>1605</td><td>1880</td></tr>
+        
+                     </table>
+      <br>
+      <h3>2022 - Part 2 /// E1 = 1880 /// k = 24</h3>
+      <table border="1" style="position: relative; height:10vh; width:90vw">
+        <tr>
+        <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+        <tr><td>07/09/2022</td><td>League</td><td>Leon van Rensburg</td><td>0</td><td>1605</td><td>1860</td></tr>
+        <tr><td>26/09/2022</td><td>League</td><td>Roy Thomas</td><td>1</td><td>1751</td><td>1868</td></tr>
+        <tr><td>19/10/2022</td><td>League</td><td>Jeff Rowland</td><td>1</td><td>1510</td><td>1870</td></tr>
+        <tr><td>09/11/2022</td><td>League</td><td>Anezka Vlkova</td><td>0.5</td><td>1962</td><td>1873</td></tr>
+        <tr><td>06/12/2022</td><td>League</td><td>John McGregor</td><td>0.5</td><td>1848</td><td>1872</td></tr>
+        <tr><td>11/12/2022</td><td>League</td><td>Easton Chan</td><td>1</td><td>1600</td><td>1876</td></tr>
+        <tr><td>14/12/2022</td><td>League</td><td>Lef Zografos</td><td>1</td><td>1746</td><td>1884</td></tr>
+                
+        </tr>
+        </table>   
+          
+        </table>  
+
+        <h3>2023 - Part 1 /// E1 = 1884 /// k = 24</h3>
+        <table border="1" style="position: relative; height:10vh; width:90vw">
+          <tr>
+          <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+          <tr><td>16/01/2023</td><td>League</td><td>Leon van Rensburg</td><td>0</td><td>1693</td><td>1866</td></tr>
+          <tr><td>01/02/2023</td><td>League</td><td>Roy Thomas</td><td>1</td><td>1674</td><td>1872</td></tr>
+                    
+  
+          </tr>
+         </table>     
+      
+    </body>
+
+</html>
