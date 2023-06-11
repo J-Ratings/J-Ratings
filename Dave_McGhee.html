@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width,initial-scale=1">
+    <title>Dave McGhee </title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Game', '2022 - Part 1','2022 - Part 2','2023 - Part 1'],
+          ['', 1532,null,null],
+          ['', 1539,null,null],
+          ['', 1554,null,null],
+          ['', 1568,null,null],
+          ['', 1565,null,null],
+          ['', 1569,null,null],
+          ['', 1594,null,null],
+          ['', 1590,null,null],
+          ['', 1613,null,null],
+          ['', 1608,null,null],
+          ['', 1630,null,null],
+          ['', 1634,null,null],
+          ['', 1644,null,null],
+          ['', 1645,null,null],
+          ['', 1648,null,null],
+          ['', 1651,null,null],
+          ['', 1670,null,null],
+          ['', 1680,null,null],
+          ['', 1677,1677,null],
+          ['', null,1674,null],
+          ['', null,1664,null],
+          ['', null,1661,null],
+          ['', null,1657,null],
+          ['', null,1652,null],
+          ['', null,1664,null],
+          ['', null,1659,null],
+          ['', null,1638,null],
+          ['', null,1623,null],
+          ['', null,1615,null],
+          ['', null,1605,null],
+          ['', null,1615,null],
+          ['', null,1618,null],
+          ['', null,1629,1629],
+          ['', null,null,1615],
+          ['', null,null,1606],
+          ['', null,null,1601],
+          ['', null,null,1617],
+          ['', null,null,1620],
+          ['', null,null,1636],
+          ['', null,null,1643],
+          ['', null,null,1648]
+
+        ]);
+
+        var options = {
+          title: 'Dave McGhee',
+          titleTextStyle: {
+            fontSize: 30
+          },
+          vAxis: {
+          format: '####.##'
+          },
+          curveType: 'none',
+          fontSize: 15,
+          lineWidth: 4,
+          pointSize: 8,
+          legend: { position: 'bottom'},
+          series: {
+            0: { color: '#35a7f2' },
+            1: { color: '#f20a0a' },
+            2: { color: '#24d442' },          },
+          backgroundColor: "#ebebeb"
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    </head>
+    <body style="font-family: sans-serif; background-color:#ebebeb">
+      <h3><a href="https://j-ratings.github.io/J-Ratings/"> Home </a> </h3>
+      <div id="curve_chart" class="chart" style="position: relative; height:600px; width:1100px">
+      </div>
+      <h3>2022 - Part 1 /// E1 = 1500 /// k = 32</h3>
+      <table border="1" style="position: relative; height:10vh; width:95vw">
+        <tr>
+        <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+        </tr>
+        <tr><td>25/01/2022</td><td>League</td><td>Owain Groves</td><td>1</td><td>1118</td><td>1532</td></tr>
+        <tr><td>08/02/2022</td><td>League</td><td>Rhys Davies</td><td>1</td><td>1306</td><td>1539</td></tr>
+        <tr><td>23/03/2022</td><td>Club Championship</td><td>Stuart Enoch</td><td>1</td><td>1500</td><td>1554</td></tr>
+        <tr><td>30/03/2022</td><td>Club Championship</td><td>Leon Zedlmayer</td><td>1</td><td>1500</td><td>1568</td></tr>
+        <tr><td>15/04/2022</td><td>2022 Welsh Open - Rd 1</td><td>Chris P Timmins</td><td>0</td><td>2028</td><td>1565</td></tr>
+        <tr><td>15/04/2022</td><td>2022 Welsh Open - Rd 2</td><td>Darson Beeston</td><td>1</td><td>1200</td><td>1569</td></tr>
+        <tr><td>16/04/2022</td><td>2022 Welsh Open - Rd 3</td><td>Duncan Williams</td><td>1</td><td>1725</td><td>1594</td></tr>
+        <tr><td>16/04/2022</td><td>2022 Welsh Open - Rd 4</td><td>David Guy</td><td>0</td><td>1924</td><td>1590</td></tr>
+        <tr><td>17/04/2022</td><td>2022 Welsh Open - Rd 5</td><td>Donovan Sipho</td><td>1</td><td>1691</td><td>1613</td></tr>
+        <tr><td>18/04/2022</td><td>2022 Welsh Open - Rd 6</td><td>Paul Bridges</td><td>0</td><td>1810</td><td>1608</td></tr>
+        <tr><td>18/04/2022</td><td>2022 Welsh Open - Rd 7</td><td>Chris Peters</td><td>1</td><td>1662</td><td>1630</td></tr>
+        <tr><td>20/04/2022</td><td>League</td><td>James Williams</td><td>1</td><td>1169</td><td>1634</td></tr>
+        <tr><td>04/05/2022</td><td>Club Championship</td><td>Lloyd Hayward</td><td>1</td><td>1400</td><td>1644</td></tr>
+        <tr><td>11/05/2022</td><td>League</td><td>Ian Abraham</td><td>0.5</td><td>1548</td><td>1645</td></tr>
+        <tr><td>20/05/2022</td><td>Club Championship</td><td>Kristan Enoch</td><td>1</td><td>850</td><td>1648</td></tr>
+        <tr><td>25/05/2022</td><td>Club Championship</td><td>Bertie Carvey</td><td>1</td><td>850</td><td>1651</td></tr>
+        <tr><td>30/05/2022</td><td>League</td><td>Milo Davies</td><td>1</td><td>1591</td><td>1670</td></tr>
+        <tr><td>08/06/2022</td><td>League</td><td>Sam White</td><td>1</td><td>1412</td><td>1680</td></tr>
+                
+                   
+                     </table>
+      <br>
+      <h3>2022 - Part 2 /// E1 = 1680 /// k = 24</h3>
+      <table border="1" style="position: relative; height:10vh; width:90vw">
+        <tr>
+        <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+        <tr><td>31/08/2022</td><td>Club Championship</td><td>Sam Jukes</td><td>0</td><td>2028</td><td>1677</td></tr>
+        <tr><td>02/09/2022</td><td>Summer Congress - Rd 1</td><td>Hugo Fowler</td><td>0</td><td>2012</td><td>1674</td></tr>
+        <tr><td>03/09/2022</td><td>Summer Congress - Rd 2</td><td>Kimberly Chong</td><td>0</td><td>1732</td><td>1664</td></tr>
+        <tr><td>04/09/2022</td><td>Summer Congress - Rd 4</td><td>Mark A Jones</td><td>0</td><td>2105</td><td>1661</td></tr>
+        <tr><td>04/09/2022</td><td>Summer Congress - Rd 4</td><td>Mark Thomas</td><td>0</td><td>1916</td><td>1657</td></tr>
+        <tr><td>07/09/2022</td><td>League</td><td>Daniel Wilmot</td><td>0</td><td>1928</td><td>1652</td></tr>
+        <tr><td>14/09/2022</td><td>League</td><td>Chris Fox</td><td>1</td><td>1684</td><td>1664</td></tr>
+        <tr><td>21/09/2022</td><td>League</td><td>Jeff Rowland</td><td>0.5</td><td>1510</td><td>1659</td></tr>
+        <tr><td>26/09/2022</td><td>League</td><td>Dwain Jones</td><td>0</td><td>1377</td><td>1638</td></tr>
+        <tr><td>28/09/2022</td><td>Club Championship</td><td>Leon Zedlmayer</td><td>0</td><td>1580</td><td>1623</td></tr>
+        <tr><td>09/11/2022</td><td>Club Championship</td><td>Georgi Korovski</td><td>0</td><td>1824</td><td>1615</td></tr>
+        <tr><td>16/11/2022</td><td>League</td><td>Simon Blackmore</td><td>0</td><td>1725</td><td>1605</td></tr>
+        <tr><td>23/11/2022</td><td>Club Championship</td><td>Joe Fathallah</td><td>0.5</td><td>2075</td><td>1615</td></tr>
+        <tr><td>19/12/2022</td><td>League</td><td>Dwain Jones</td><td>1</td><td>1377</td><td>1618</td></tr>
+                                                
+        </tr>
+        </table>   
+      
+        </table>  
+
+        <h3>2023 - Part 1 /// E1 = 1618 /// k = 24</h3>
+        <table border="1" style="position: relative; height:10vh; width:90vw">
+          <tr>
+          <th>Date</th><th>Event</th><th>Name</th><th>Result</th><th>Opponent Rating</th><th>New Rating</th>
+          <tr><td>16/01/2023</td><td>EGCL Div 1 Pontypridd Barbarians 2 - 2 Cardiff Pawns</td><td>Andrew Jeanes</td><td>1</td><td>1583</td><td>1629</td></tr>
+          <tr><td>22/02/2023</td><td>EGCL Div 1 Cardiff Bishops 3 - 1 Cardiff Pawns</td><td>Samuele Scarpignato</td><td>0</td><td>1577</td><td>1615</td></tr>
+          <tr><td>01/03/2023</td><td>EGCL Div 1 Cardiff Crows 2.5 - 1.5 Cardiff Pawns</td><td>Kimberly Chong</td><td>0</td><td>1709</td><td>1606</td></tr>
+          <tr><td>23/04/2023</td><td>EGCL Div 1 Cardiff University 3 - 1 Cardiff Pawns</td><td>Callum Davies</td><td>0</td><td>1838</td><td>1601</td></tr>
+          <tr><td>28/03/2023</td><td>EGCL Div 1 Cardiff University 3 - 1 Cardiff Pawns</td><td>Simon Blackmore</td><td>1</td><td>1722</td><td>1617</td></tr>
+          <tr><td>11/04/2023</td><td>EGCL Div 3 N Cardiff Ravens 1 - 3 Cardiff Eagles</td><td>Owain Groves</td><td>1</td><td>1272</td><td>1620</td></tr>
+          <tr><td>18/04/2023</td><td>EGCL Div 1 N Cardiff Cheetahs 1 - 3 Cardiff Pawns</td><td>Lef Zografos</td><td>1</td><td>1750</td><td>1636</td></tr>
+          <tr><td>26/04/2023</td><td>EGCL Div 3 Cardiff Eagles 2 - 2 Caerphilly Rooks</td><td>Jack Hannigan</td><td>1</td><td>1450</td><td>1643</td></tr>
+          <tr><td>10/05/2023</td><td>EGCL Div 1 Cardiff Pawns 3.5 - 0.5 Caerphilly Kings</td><td>Matthew Burge</td><td>1</td><td>1417</td><td>1648</td></tr>
+          
+                    
+  
+          </tr>
+         </table>     
+      
+    </body>
+
+</html>
