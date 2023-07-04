@@ -11,23 +11,24 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Game', '2022 - Part 1','2022 - Part 2','2023 - Part 1'],
-          ['', 1823,null,null],
-          ['', 1832,null,null],
-          ['', 1835,null,null],
-          ['', 1838,1838,null],
-          ['', null,1848,null],
-          ['', null,1832,null],
-          ['', null,1842,null],
-          ['', null,1852,null],
-          ['', null,1841,1841],
-          ['', null,null,1845],
-          ['', null,null,1839],
-          ['', null,null,1822],
-          ['', null,null,1817],
-          ['', null,null,1810],
-          ['', null,null,1794],
-          ['', null,null,1800]
+          ['Game', '2022 Part 1','2022 Part 2','2023 Part 1','2023 Part 2'],
+          ['', 1823,null,null,null],
+          ['', 1832,null,null,null],
+          ['', 1835,null,null,null],
+          ['', 1838,1838,null,null],
+          ['', null,1848,null,null],
+          ['', null,1832,null,null],
+          ['', null,1842,null,null],
+          ['', null,1852,null,null],
+          ['', null,1841,1841,null],
+          ['', null,null,1845,null],
+          ['', null,null,1839,null],
+          ['', null,null,1822,null],
+          ['', null,null,1817,null],
+          ['', null,null,1810,null],
+          ['', null,null,1794,null],
+          ['', null,null,1800,1800]
+
 
 
         ]);
@@ -48,7 +49,8 @@
           series: {
             0: { color: '#35bcf2' },
             1: { color: '#3551f2' },
-            2: { color: '#f20a0a' },          },
+            2: { color: '#ff0000' },
+            3: { color: '#a60707' },          },
           backgroundColor: "#ebebeb"
         };
 
