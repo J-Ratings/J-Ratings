@@ -5,12 +5,12 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
     return;
   }
 
-  // Get unique player names sorted alphabetically
+  // 1. Get unique player names sorted alphabetically
   const players = [...new Set(rows.map(r => r.Name))].sort((a, b) =>
     a.toLowerCase().localeCompare(b.toLowerCase())
   );
 
-  // Group players by their first rating
+  // 2. Group players by their *latest* rating
   const playerBands = {
     "<1600": [],
     "1600-1800": [],
@@ -23,20 +23,20 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
     const playerData = rows.filter(r => r.Name === name);
     const lastELO = +playerData[playerData.length - 1].ELO_smooth;
 
-    if (firstELO > 2200) {
+    if (lastELO > 2200) {
       playerBands[">2200"].push(name);
-    } else if (firstELO >= 2000) {
+    } else if (lastELO >= 2000) {
       playerBands["2000-2200"].push(name);
-    } else if (firstELO >= 1800) {
+    } else if (lastELO >= 1800) {
       playerBands["1800-2000"].push(name);
-    } else if (firstELO >= 1600) {
+    } else if (lastELO >= 1600) {
       playerBands["1600-1800"].push(name);
     } else {
       playerBands["<1600"].push(name);
     }
   });
 
-  // Extended colour palette (not too light)
+  // 3. Define an extended colour palette
   const customColors = [
     "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
     "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf",
@@ -49,7 +49,7 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
     "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94"
   ];
 
-  // Create one trace per player
+  // 4. Build Plotly traces
   const traces = players.map((name, index) => {
     const playerData = rows.filter(r => r.Name === name);
     return {
@@ -62,61 +62,41 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
     };
   });
 
-  // Layout
+  // 5. Layout with autorange on Y
   const layout = {
-    xaxis: {
-      title: 'Date',
-      type: 'date'
-    },
-    yaxis: {
-      title: 'ELO',
-      autorange: true
-    },
-    legend: {
-      orientation: "v",
-      x: 1,
-      xanchor: "left"
-    },
+    xaxis: { title: 'Date', type: 'date' },
+    yaxis: { title: 'ELO', autorange: true },
+    legend: { orientation: "v", x: 1, xanchor: "left" },
     margin: { t: 50 }
   };
 
-  // Plot and initially hide all traces
-  Plotly.newPlot('plot', traces, layout, { responsive: true }).then(function() {
-    const traceIndices = traces.map((_, i) => i);
-    Plotly.restyle('plot', { visible: 'legendonly' }, traceIndices);
+  // 6. Plot & hide all traces initially
+  Plotly.newPlot('plot', traces, layout, { responsive: true }).then(() => {
+    const idx = traces.map((_, i) => i);
+    Plotly.restyle('plot', { visible: 'legendonly' }, idx);
   });
 
-  // Make bands accessible globally
+  // 7. Expose bands globally
   window.playerBands = playerBands;
 });
 
 // Show all traces
 function showAllPlayers() {
-  const traceCount = document.getElementById('plot').data.length;
-  const update = { visible: true };
-  const traceIndices = Array.from({ length: traceCount }, (_, i) => i);
-  Plotly.restyle('plot', update, traceIndices);
+  const count = plot.data.length;
+  Plotly.restyle('plot', { visible: true }, [...Array(count).keys()]);
 }
 
 // Hide all traces
 function hideAllPlayers() {
-  const traceCount = document.getElementById('plot').data.length;
-  const update = { visible: 'legendonly' };
-  const traceIndices = Array.from({ length: traceCount }, (_, i) => i);
-  Plotly.restyle('plot', update, traceIndices);
+  const count = plot.data.length;
+  Plotly.restyle('plot', { visible: 'legendonly' }, [...Array(count).keys()]);
 }
 
-// Show only players in a specific rating band
+// Show only one rating band
 function showBand(band) {
-  const plot = document.getElementById('plot');
-  const allNames = plot.data.map(trace => trace.name);
-  const visibleIndices = allNames.map((name, i) =>
-    playerBands[band].includes(name) ? i : null
-  ).filter(i => i !== null);
-
-  const traceCount = plot.data.length;
-  const visibility = Array(traceCount).fill("legendonly");
-  visibleIndices.forEach(i => visibility[i] = true);
-
-  Plotly.restyle('plot', { visible: visibility });
+  const all = plot.data.map(t => t.name);
+  const visible = all.map((name, i) =>
+    window.playerBands[band].includes(name) ? true : 'legendonly'
+  );
+  Plotly.restyle('plot', { visible }, [...Array(all.length).keys()]);
 }
