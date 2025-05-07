@@ -21,7 +21,7 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
 
   players.forEach(name => {
     const playerData = rows.filter(r => r.Name === name);
-    const firstELO = +playerData[0].ELO_smooth;
+    const lastELO = +playerData[playerData.length - 1].ELO_smooth;
 
     if (firstELO > 2200) {
       playerBands[">2200"].push(name);
