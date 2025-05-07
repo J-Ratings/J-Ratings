@@ -1,4 +1,3 @@
-// Load CSV and plot
 Plotly.d3.csv("plot_data.csv", function(err, rows) {
   if (err) {
     console.error("Failed to load CSV:", err);
@@ -15,20 +14,23 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
       x: playerData.map(r => r.Date),
       y: playerData.map(r => +r.ELO_smooth),
       mode: 'lines',
-      name: name,
-      visible: 'legendonly'
+      name: name
+      // Don't set visible here!
     };
   });
 
-  
-    const layout = {
-      title: 'Interactive Rating Graph',
-      xaxis: { title: 'Date' },
-      yaxis: { title: 'ELO', range: [1250, 2350] },
-      legend: { orientation: "v", x: 1, xanchor: "left" },
-      margin: { t: 50 }
-    };
-  
-    Plotly.newPlot('plot', traces, layout, {responsive: true});
+  const layout = {
+    title: 'Interactive Rating Graph',
+    xaxis: { title: 'Date' },
+    yaxis: { title: 'ELO', range: [1250, 2350] },
+    legend: { orientation: "v", x: 1, xanchor: "left" },
+    margin: { t: 50 }
+  };
+
+  Plotly.newPlot('plot', traces, layout, { responsive: true }).then(function() {
+    // Immediately hide all traces
+    const update = { visible: 'legendonly' };
+    const traceIndices = traces.map((_, i) => i);
+    Plotly.restyle('plot', update, traceIndices);
   });
-  
+});
