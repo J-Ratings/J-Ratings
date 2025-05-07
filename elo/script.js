@@ -5,7 +5,7 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
       return;
     }
   
-    const players = [...new Set(rows.map(r => r.Name))];
+    const players = [...new Set(rows.map(r => r.Name))].sort();
     const traces = players.map(name => {
       const playerData = rows.filter(r => r.Name === name);
       return {
