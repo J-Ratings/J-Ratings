@@ -17,13 +17,13 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
       x: playerData.map(r => r.Date),
       y: playerData.map(r => +r.ELO_smooth),
       mode: 'lines',
-      name: name
+      name: name,
+      hovertemplate: '%{y:.0f}<extra>%{fullData.name}</extra>'
     };
   });
 
   // Define layout with Y-axis autoranging
   const layout = {
-    title: 'Interactive Rating Graph',
     xaxis: {
       title: 'Date',
       type: 'date'
@@ -40,7 +40,7 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
     margin: { t: 50 }
   };
 
-  // Create the plot, then hide all traces to preserve legend order
+  // Create the plot, then hide all traces initially
   Plotly.newPlot('plot', traces, layout, { responsive: true }).then(function() {
     const traceIndices = traces.map((_, i) => i);
     Plotly.restyle('plot', { visible: 'legendonly' }, traceIndices);
