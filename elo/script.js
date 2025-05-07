@@ -21,7 +21,7 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
     };
   });
 
-  // Define layout with autorange on Y-axis
+  // Define layout with Y-axis autoranging
   const layout = {
     title: 'Interactive Rating Graph',
     xaxis: {
@@ -40,17 +40,25 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
     margin: { t: 50 }
   };
 
-  // Create the plot, then hide all traces
+  // Create the plot, then hide all traces to preserve legend order
   Plotly.newPlot('plot', traces, layout, { responsive: true }).then(function() {
     const traceIndices = traces.map((_, i) => i);
     Plotly.restyle('plot', { visible: 'legendonly' }, traceIndices);
   });
 });
 
-// Show all players when button is clicked
+// Show all players
 function showAllPlayers() {
   const traceCount = document.getElementById('plot').data.length;
   const update = { visible: true };
+  const traceIndices = Array.from({ length: traceCount }, (_, i) => i);
+  Plotly.restyle('plot', update, traceIndices);
+}
+
+// Hide all players
+function hideAllPlayers() {
+  const traceCount = document.getElementById('plot').data.length;
+  const update = { visible: 'legendonly' };
   const traceIndices = Array.from({ length: traceCount }, (_, i) => i);
   Plotly.restyle('plot', update, traceIndices);
 }
