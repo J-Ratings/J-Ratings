@@ -1,10 +1,11 @@
+// Load CSV and plot
 Plotly.d3.csv("plot_data.csv", function(err, rows) {
   if (err) {
     console.error("Failed to load CSV:", err);
     return;
   }
 
-  // Get unique player names, sorted alphabetically (case-insensitive)
+  // Get unique player names in alphabetical order (case-insensitive)
   const players = [...new Set(rows.map(r => r.Name))].sort((a, b) =>
     a.toLowerCase().localeCompare(b.toLowerCase())
   );
@@ -17,11 +18,10 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
       y: playerData.map(r => +r.ELO_smooth),
       mode: 'lines',
       name: name
-      // 'visible' left unset to allow us to override it cleanly
     };
   });
 
-  // Define the layout
+  // Define layout with autorange on Y-axis
   const layout = {
     title: 'Interactive Rating Graph',
     xaxis: {
@@ -30,7 +30,7 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
     },
     yaxis: {
       title: 'ELO',
-      autorange: true  // Auto-adjust based on selected players
+      autorange: true
     },
     legend: {
       orientation: "v",
@@ -40,9 +40,17 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
     margin: { t: 50 }
   };
 
-  // Create plot, then hide all traces to preserve legend order
+  // Create the plot, then hide all traces
   Plotly.newPlot('plot', traces, layout, { responsive: true }).then(function() {
     const traceIndices = traces.map((_, i) => i);
     Plotly.restyle('plot', { visible: 'legendonly' }, traceIndices);
   });
 });
+
+// Show all players when button is clicked
+function showAllPlayers() {
+  const traceCount = document.getElementById('plot').data.length;
+  const update = { visible: true };
+  const traceIndices = Array.from({ length: traceCount }, (_, i) => i);
+  Plotly.restyle('plot', update, traceIndices);
+}
