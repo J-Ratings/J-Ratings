@@ -38,11 +38,11 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
 
   // Custom colour palette
   const customColors = [
-    "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
+    "#1f77b4", "#ff7f0e", "#2ca02c", "#e7ba52", "#e7969c", 
+    "#d6616b", "#ad494a", "#a55194", "#d62728", "#9467bd",
     "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf",
     "#393b79", "#637939", "#8c6d31", "#843c39", "#7b4173",
     "#5254a3", "#6b6ecf", "#9c9ede", "#8ca252", "#bd9e39",
-    "#e7ba52", "#e7969c", "#d6616b", "#ad494a", "#a55194",
     "#ce6dbd", "#de9ed6", "#6b6ecf", "#9c9ede", "#ff9896",
     "#c49c94", "#f7b6d2", "#c7c7c7", "#dbdb8d", "#9edae5",
     "#17becf", "#aec7e8", "#ffbb78", "#98df8a", "#ff7f0e",
