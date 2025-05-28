@@ -1,5 +1,3 @@
-// script.js
-
 // Load CSV and plot
 Plotly.d3.csv("plot_data.csv", function(err, rows) {
   if (err) {
@@ -22,8 +20,9 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
   };
 
   players.forEach(name => {
-    const data = rows.filter(r => r.Name === name);
-    const lastELO = +data[data.length - 1].ELO_smooth;
+    const playerData = rows.filter(r => r.Name === name);
+    const lastELO = +playerData[playerData.length - 1].ELO_smooth;
+
     if (lastELO > 2200) {
       playerBands[">2200"].push(name);
     } else if (lastELO >= 2000) {
@@ -39,7 +38,7 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
 
   // Custom colour palette
   const customColors = [
-    "#1f77b4", "#ff7f0e", "#2ca02c", "#e7ba52", "#e7969c",
+    "#1f77b4", "#ff7f0e", "#2ca02c", "#e7ba52", "#e7969c", 
     "#d6616b", "#ad494a", "#a55194", "#d62728", "#9467bd",
     "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf",
     "#393b79", "#637939", "#8c6d31", "#843c39", "#7b4173",
@@ -51,73 +50,165 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
   ];
 
   // Create one trace per player
-  const traces = players.map((name, i) => {
-    const data = rows.filter(r => r.Name === name);
+  const traces = players.map((name, index) => {
+    const playerData = rows.filter(r => r.Name === name);
     return {
-      x: data.map(r => r.Date),
-      y: data.map(r => +r.ELO_smooth),
+      x: playerData.map(r => r.Date),
+      y: playerData.map(r => +r.ELO_smooth),
       mode: 'lines',
       name: name,
-      line: { color: customColors[i % customColors.length] },
+      line: { color: customColors[index % customColors.length] },
       hovertemplate: '%{y:.0f}<extra>%{fullData.name}</extra>'
     };
   });
 
-  // Generate vertical dashed lines every 6 months from 2020-01-01
-  const dateExtent = d3.extent(rows.map(r => new Date(r.Date)));
-  const shapes = [];
-  let current = new Date("2020-01-01");
-  while (current <= new Date(dateExtent[1].getTime() + 1000 * 3600 * 24 * 50)) {
-    const iso = current.toISOString().split('T')[0];
-    shapes.push({
-      type: 'line',
-      x0: iso,
-      x1: iso,
-      y0: 0,
-      y1: 1,
-      yref: 'paper',
-      line: { color: 'grey', width: 1.5, dash: 'dash' }
-    });
-    current.setMonth(current.getMonth() + 6);
-  }
-
-  // Layout
+  // Layout with vertical lines
   const layout = {
-    xaxis: { title: 'Date', type: 'date' },
-    yaxis: { title: 'ELO', autorange: true },
-    legend: { orientation: 'v', x: 1, xanchor: 'left' },
-    margin: { t: 50, r: 150 },
-    shapes: shapes
+    xaxis: {
+      title: 'Date',
+      type: 'date'
+    },
+    yaxis: {
+      title: 'ELO',
+      autorange: true
+    },
+    legend: {
+      orientation: "v",
+      x: 1,
+      xanchor: "left"
+    },
+    margin: { t: 50 },
+    shapes: [
+      {
+        type: 'line',
+        x0: '2020-01-01',
+        x1: '2020-01-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      },
+      {
+        type: 'line',
+        x0: '2020-07-01',
+        x1: '2020-07-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      },      
+      {
+        type: 'line',
+        x0: '2021-01-01',
+        x1: '2021-01-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      },
+      {
+        type: 'line',
+        x0: '2021-07-01',
+        x1: '2021-07-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      },
+      {
+        type: 'line',
+        x0: '2022-01-01',
+        x1: '2022-01-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      },
+      {
+        type: 'line',
+        x0: '2023-07-01',
+        x1: '2023-07-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      },
+      {
+        type: 'line',
+        x0: '2024-01-01',
+        x1: '2024-01-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      },
+      {
+        type: 'line',
+        x0: '2024-07-01',
+        x1: '2024-07-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      },
+      {
+        type: 'line',
+        x0: '2025-01-01',
+        x1: '2025-01-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      },
+      {
+        type: 'line',
+        x0: '2025-07-01',
+        x1: '2025-07-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      },
+      {
+        type: 'line',
+        x0: '2026-01-01',
+        x1: '2026-01-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      }
+    ]
   };
 
-  // Plot and initially hide all traces
+  // Create the plot, then hide all traces initially
   Plotly.newPlot('plot', traces, layout, { responsive: true }).then(() => {
-    const idx = traces.map((_, i) => i);
-    Plotly.restyle('plot', { visible: 'legendonly' }, idx);
+    const traceIndices = traces.map((_, i) => i);
+    Plotly.restyle('plot', { visible: 'legendonly' }, traceIndices);
   });
 
-  // Expose band data for button handlers
+  // Store bands for access by buttons
   window.playerBands = playerBands;
 });
 
 // Show all traces
 function showAllPlayers() {
-  const count = document.getElementById('plot').data.length;
-  Plotly.restyle('plot', { visible: true }, [...Array(count).keys()]);
+  const traceCount = document.getElementById('plot').data.length;
+  Plotly.restyle('plot', { visible: true }, [...Array(traceCount).keys()]);
 }
 
 // Hide all traces
 function hideAllPlayers() {
-  const count = document.getElementById('plot').data.length;
-  Plotly.restyle('plot', { visible: 'legendonly' }, [...Array(count).keys()]);
+  const traceCount = document.getElementById('plot').data.length;
+  Plotly.restyle('plot', { visible: 'legendonly' }, [...Array(traceCount).keys()]);
 }
 
 // Show only players in a specific rating band
 function showBand(band) {
   const plot = document.getElementById('plot');
-  const names = plot.data.map(trace => trace.name);
-  const visibility = names.map(n =>
-    window.playerBands[band].includes(n) ? true : 'legendonly'
+  const allNames = plot.data.map(trace => trace.name);
+  const visibility = allNames.map(name =>
+    playerBands[band].includes(name) ? true : 'legendonly'
   );
-  Plotly.restyle('plot', { visible: visibility }, [...Array(names.length).keys()]);
+  Plotly.restyle('plot', { visible: visibility }, [...Array(allNames.length).keys()]);
 }
