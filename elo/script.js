@@ -126,6 +126,24 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
       },
       {
         type: 'line',
+        x0: '2022-07-01',
+        x1: '2022-07-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      },
+      {
+        type: 'line',
+        x0: '2023-01-01',
+        x1: '2023-01-01',
+        y0: 0,
+        y1: 1,
+        yref: 'paper',
+        line: { color: 'grey', width: 1.5, dash: 'dash' }
+      },
+      {
+        type: 'line',
         x0: '2023-07-01',
         x1: '2023-07-01',
         y0: 0,
