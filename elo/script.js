@@ -78,125 +78,21 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
       xanchor: "left"
     },
     margin: { t: 50 },
-    shapes: [
-      {
-        type: 'line',
-        x0: '2020-01-01',
-        x1: '2020-01-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      },
-      {
-        type: 'line',
-        x0: '2020-07-01',
-        x1: '2020-07-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      },      
-      {
-        type: 'line',
-        x0: '2021-01-01',
-        x1: '2021-01-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      },
-      {
-        type: 'line',
-        x0: '2021-07-01',
-        x1: '2021-07-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      },
-      {
-        type: 'line',
-        x0: '2022-01-01',
-        x1: '2022-01-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      },
-      {
-        type: 'line',
-        x0: '2022-07-01',
-        x1: '2022-07-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      },
-      {
-        type: 'line',
-        x0: '2023-01-01',
-        x1: '2023-01-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      },
-      {
-        type: 'line',
-        x0: '2023-07-01',
-        x1: '2023-07-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      },
-      {
-        type: 'line',
-        x0: '2024-01-01',
-        x1: '2024-01-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      },
-      {
-        type: 'line',
-        x0: '2024-07-01',
-        x1: '2024-07-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      },
-      {
-        type: 'line',
-        x0: '2025-01-01',
-        x1: '2025-01-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      },
-      {
-        type: 'line',
-        x0: '2025-07-01',
-        x1: '2025-07-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      },
-      {
-        type: 'line',
-        x0: '2026-01-01',
-        x1: '2026-01-01',
-        y0: 0,
-        y1: 1,
-        yref: 'paper',
-        line: { color: 'grey', width: 1.5, dash: 'dash' }
-      }
-    ]
+shapes: [
+  { type:'line', x0:'2020-01-01', x1:'2020-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+  { type:'line', x0:'2020-07-01', x1:'2020-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+  { type:'line', x0:'2021-01-01', x1:'2021-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+  { type:'line', x0:'2021-07-01', x1:'2021-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+  { type:'line', x0:'2022-01-01', x1:'2022-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+  { type:'line', x0:'2022-07-01', x1:'2022-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+  { type:'line', x0:'2023-01-01', x1:'2023-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+  { type:'line', x0:'2023-07-01', x1:'2023-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+  { type:'line', x0:'2024-01-01', x1:'2024-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+  { type:'line', x0:'2024-07-01', x1:'2024-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+  { type:'line', x0:'2025-01-01', x1:'2025-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+  { type:'line', x0:'2025-07-01', x1:'2025-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+  { type:'line', x0:'2026-01-01', x1:'2026-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} }
+]
   };
 
   // Create the plot, then hide all traces initially
