@@ -66,7 +66,13 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
   const layout = {
     xaxis: {
       title: 'Date',
-      type: 'date'
+      type: 'date',
+      tickformat: "%Y",
+      tickvals: [
+        '2015-01-01', '2016-01-01', '2017-01-01', '2018-01-01', '2019-01-01',
+        '2020-01-01', '2021-01-01', '2022-01-01', '2023-01-01', '2024-01-01',
+        '2025-01-01', '2026-01-01'
+      ]
     },
     yaxis: {
       title: 'ELO',
