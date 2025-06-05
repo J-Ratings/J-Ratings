@@ -58,8 +58,7 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
       mode: 'lines',
       name: name,
       line: { color: customColors[index % customColors.length] },
-      hovertemplate:
-        'Date: ELO: %{y:.0f}<extra>%{fullData.name}</extra>'
+      hovertemplate: '%{y:.0f}<extra></extra>'
     };
   });
 
