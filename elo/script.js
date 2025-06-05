@@ -58,11 +58,12 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
       mode: 'lines',
       name: name,
       line: { color: customColors[index % customColors.length] },
-      hovertemplate: 'ELO: %{y:.0f}<br>%{fullData.name}<br>Date: %{x|%Y-%m-%d}<extra></extra>'
+      hovertemplate:
+        'Date: ELO: %{y:.0f}<extra>%{fullData.name}</extra>'
     };
   });
 
-  // Layout with vertical lines
+  // Layout with vertical lines and hoverformat on x-axis
   const layout = {
     xaxis: {
       title: 'Date',
@@ -72,7 +73,8 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
         '2015-01-01', '2016-01-01', '2017-01-01', '2018-01-01', '2019-01-01',
         '2020-01-01', '2021-01-01', '2022-01-01', '2023-01-01', '2024-01-01',
         '2025-01-01', '2026-01-01'
-      ]
+      ],
+      hoverformat: '%Y-%m-%d'
     },
     yaxis: {
       title: 'ELO',
@@ -84,32 +86,31 @@ Plotly.d3.csv("plot_data.csv", function(err, rows) {
       xanchor: "left"
     },
     margin: { t: 50 },
-shapes: [
-  { type:'line', x0:'2015-01-01', x1:'2015-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2015-07-01', x1:'2015-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2016-01-01', x1:'2016-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2016-07-01', x1:'2016-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2017-01-01', x1:'2017-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2017-07-01', x1:'2017-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2018-01-01', x1:'2018-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2018-07-01', x1:'2018-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2019-01-01', x1:'2019-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2019-07-01', x1:'2019-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2020-01-01', x1:'2020-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2020-07-01', x1:'2020-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2021-01-01', x1:'2021-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2021-07-01', x1:'2021-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2022-01-01', x1:'2022-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2022-07-01', x1:'2022-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2023-01-01', x1:'2023-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2023-07-01', x1:'2023-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2024-01-01', x1:'2024-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2024-07-01', x1:'2024-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2025-01-01', x1:'2025-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2025-07-01', x1:'2025-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
-  { type:'line', x0:'2026-01-01', x1:'2026-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} }
-]
-
+    shapes: [
+      { type:'line', x0:'2015-01-01', x1:'2015-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2015-07-01', x1:'2015-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2016-01-01', x1:'2016-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2016-07-01', x1:'2016-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2017-01-01', x1:'2017-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2017-07-01', x1:'2017-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2018-01-01', x1:'2018-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2018-07-01', x1:'2018-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2019-01-01', x1:'2019-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2019-07-01', x1:'2019-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2020-01-01', x1:'2020-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2020-07-01', x1:'2020-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2021-01-01', x1:'2021-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2021-07-01', x1:'2021-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2022-01-01', x1:'2022-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2022-07-01', x1:'2022-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2023-01-01', x1:'2023-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2023-07-01', x1:'2023-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2024-01-01', x1:'2024-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2024-07-01', x1:'2024-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2025-01-01', x1:'2025-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2025-07-01', x1:'2025-07-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} },
+      { type:'line', x0:'2026-01-01', x1:'2026-01-01', y0:0, y1:1, yref:'paper', line:{color:'grey',width:1,dash:'dash'} }
+    ]
   };
 
   // Create the plot, then hide all traces initially
