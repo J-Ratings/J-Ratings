@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>GoGo Ratings</title>
+  <title>J-Ratings: Go (Player)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
@@ -54,12 +54,12 @@
 <body>
 <header>
   <div class="wrap">
-    <h1 class="site-title"><a href="index.html">GoGo Ratings</a></h1>
-    <nav class="topnav" aria-label="Main">
-      <a href="index.html">Home</a>
-      <a href="compare.html">Compare</a>
-      <a href="peak.html">Peak</a>
-    </nav>
+    <h1 class="site-title"><a href="index.html">J-Ratings: Go</a></h1>
+<nav class="topnav" aria-label="Main">
+  <a href="index.html">Home</a>
+  <a href="compare.html">Compare</a>
+  <a href="peak.html">Peak</a>
+</nav>
   </div>
 </header>
 
@@ -91,9 +91,9 @@
     throw new Error('no id');
   }
 
-const PLAYERS_URL = 'sports/go/data/players.json';
-const HIST_URL    = id => `sports/go/data/history/${encodeURIComponent(id)}.json`;
-const GAMES_URL   = id => `sports/go/data/games/${encodeURIComponent(id)}.json`;
+const PLAYERS_URL = 'data/players.json';
+const HIST_URL    = id => `data/history/${encodeURIComponent(id)}.json`;
+const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
   const IS_TOUCH    = window.matchMedia('(pointer: coarse)').matches;
 
   let RAW = []; // daily series

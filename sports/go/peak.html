@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Peak Ratings — GoGo Ratings</title>
+  <title>J-Ratings: Go (Peak)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
@@ -26,12 +26,13 @@
 <body>
 <header>
   <div class="wrap">
-    <h1 class="site-title"><a href="index.html">GoGo Ratings</a></h1>
-    <nav class="topnav" aria-label="Main">
-      <a href="index.html">Home</a>
-      <a href="compare.html">Compare</a>
-      <a href="peak.html" class="active-tab">Peak</a>
-    </nav>
+    <h1 class="site-title"><a href="index.html">J-Ratings: Go</a></h1>
+<nav class="topnav" aria-label="Main">
+  <a href="../../index.html">Sports</a>
+  <a href="index.html">Home</a>
+  <a href="compare.html">Compare</a>
+  <a href="peak.html" class="active-tab">Peak</a>
+</nav>
   </div>
 </header>
 
@@ -91,7 +92,7 @@
 </div>
 
 <script>
-  const DATA_URL = 'sports/go/data/players.json';
+  const DATA_URL = 'data/players.json';
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
   const state = { rows: [], filtered: [] };
@@ -144,7 +145,7 @@
   async function fetchHistoryFor(id) {
     if (histCache.has(id)) return histCache.get(id);
     try {
-      const res = await fetch(`sports/go/data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+      const res = await fetch(`data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
       if (!res.ok) return null;
       const rows = await res.json();
       histCache.set(id, rows);
