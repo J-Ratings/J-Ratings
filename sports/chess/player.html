@@ -4,26 +4,38 @@
   <meta charset="utf-8">
   <title>J-Ratings: Chess (Player)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
   <style>
     #chart { height: 420px; }
-    .toolbar { margin-bottom: 10px; text-align: center; display:flex; gap:10px; align-items:center; justify-content:center; flex-wrap:wrap; }
+
+    .toolbar {
+      margin-bottom: 10px;
+      text-align: centre;
+      display: flex;
+      gap: 10px;
+      align-items: centre;
+      justify-content: centre;
+      flex-wrap: wrap;
+    }
     .toolbar label { margin-right: 6px; }
-    h2#pname, h3.section-title { text-align: center; }
+
+    h2#pname, h3.section-title { text-align: centre; }
 
     /* Games table */
     #gamesWrap { max-height: 520px; overflow: auto; margin-top: 12px; }
     table.games {
-      width:100%;
+      width: 100%;
       border-collapse: separate;   /* needed for double borders */
       border-spacing: 0;
-      font-size:14px;
+      font-size: 14px;
     }
     table.games th, table.games td {
-      padding:6px 8px;
-      border-bottom:1px solid #2b2f36;
-      text-align:center;
+      padding: 6px 8px;
+      border-bottom: 1px solid #2b2f36;
+      text-align: centre;
       vertical-align: middle;
       white-space: nowrap;
     }
@@ -34,7 +46,8 @@
       z-index: 2;
       background-color: var(--panel-bg, #1a1a1a);
     }
-    /* Double separators: Date|Black, Elo|White, Elo|Result|Δ  */
+
+    /* Double separators for Chess layout: Date|White, Elo|Black, Elo|Result|Δ */
     table.games th:nth-child(1), table.games td:nth-child(1),
     table.games th:nth-child(3), table.games td:nth-child(3),
     table.games th:nth-child(5), table.games td:nth-child(5),
@@ -42,23 +55,24 @@
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
-.result { font-weight:700; }
-.result.win  { color:#e03232; }  /* The names are backwards I think because Go had black on left. */
-.result.draw { color:#e8a81f; }  
-.result.loss { color:#2acd4e; } 
+    .result { font-weight: 700; }
+    .result.win  { color: #2acd4e; }
+    .result.draw { color: #e8a81f; }
+    .result.loss { color: #e03232; }
 
-.delta { font-weight:700; }
-.delta.pos { color:#2acd4e; }
-.delta.neg { color:#e03232; }
-
+    .delta { font-weight: 700; }
+    .delta.pos { color: #2acd4e; }
+    .delta.neg { color: #e03232; }
   </style>
 </head>
+
 <body>
 <header>
   <div class="wrap">
-<h1 class="site-title">
-  <a id="home-link" href="index.html">J-Ratings <span class="title-chess">Chess</span></a>
-</h1>
+    <h1 class="site-title">
+      <a id="home-link" href="index.html">J-Ratings: <span class="title-chess">Chess</span></a>
+    </h1>
+
     <nav class="topnav" aria-label="Main">
       <a id="nav-home" href="index.html">Home</a>
       <a id="nav-compare" href="compare.html">Compare</a>
@@ -126,9 +140,7 @@
 
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
-  const state = {
-    section: 'classical'
-  };
+  const state = { section: 'classical' };
 
   function dataBase() { return SECTIONS[state.section].base; }
   function playersUrl() { return `${dataBase()}/players.json`; }
@@ -243,7 +255,9 @@
 
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
-    for (const h of ['Date','Black','Elo','White','Elo','Result','Δ']) {
+
+    // Chess: White on the left
+    for (const h of ['Date','White','Elo','Black','Elo','Result','Δ']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -263,18 +277,7 @@
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date;
 
-      const tdB = document.createElement('td');
-      if (g.black === myName) {
-        const s = document.createElement('strong');
-        s.textContent = g.black;
-        tdB.appendChild(s);
-      } else {
-        tdB.textContent = g.black;
-      }
-
-      const tdBE = document.createElement('td');
-      tdBE.textContent = Number(g.blackElo).toString();
-
+      // White first
       const tdW = document.createElement('td');
       if (g.white === myName) {
         const s = document.createElement('strong');
@@ -287,48 +290,61 @@
       const tdWE = document.createElement('td');
       tdWE.textContent = Number(g.whiteElo).toString();
 
+      // Black second
+      const tdB = document.createElement('td');
+      if (g.black === myName) {
+        const s = document.createElement('strong');
+        s.textContent = g.black;
+        tdB.appendChild(s);
+      } else {
+        tdB.textContent = g.black;
+      }
+
+      const tdBE = document.createElement('td');
+      tdBE.textContent = Number(g.blackElo).toString();
+
+      // Result (Chess notation: "1-0" = White wins, "0-1" = Black wins)
       const tdR = document.createElement('td');
-tdR.textContent = g.result;
+      tdR.textContent = g.result;
 
-const res = String(g.result || '').trim();
+      const res = String(g.result || '').trim();
 
-// normalise common draw formats (covers your "1/2-1/2" case)
-const isDraw =
-  res === '1/2-1/2' || res === '½-½' || res === '0.5-0.5' ||
-  res === '1/2–1/2' || res === '1/2—1/2';
+      const isDraw =
+        res === '1/2-1/2' || res === '½-½' || res === '0.5-0.5' ||
+        res === '1/2–1/2' || res === '1/2—1/2';
 
-const isWhite = (g.white === myName);
-const isBlack = (g.black === myName);
+      const isWhite = (g.white === myName);
+      const isBlack = (g.black === myName);
 
-let outcome = 'loss';
+      let outcome = '';
 
-if (isDraw) {
-  outcome = 'draw';
-} else if ((res === '1-0' && isWhite) || (res === '0-1' && isBlack)) {
-  outcome = 'win';
-} else if ((res === '0-1' && isWhite) || (res === '1-0' && isBlack)) {
-  outcome = 'loss';
-} else {
-  outcome = '';
-}
+      if (isDraw) {
+        outcome = 'draw';
+      } else if ((res === '1-0' && isWhite) || (res === '0-1' && isBlack)) {
+        outcome = 'win';
+      } else if ((res === '0-1' && isWhite) || (res === '1-0' && isBlack)) {
+        outcome = 'loss';
+      } else {
+        outcome = '';
+      }
 
+      tdR.className = 'result' + (outcome ? ' ' + outcome : '');
 
-tdR.className = 'result' + (outcome ? ' ' + outcome : '');
-
+      // Δ
       const tdDelta = document.createElement('td');
       const numDelta = Number(g.delta);
       if (!Number.isNaN(numDelta)) {
-        tdDelta.textContent = g.delta;
+        tdDelta.textContent = g.delta; // already formatted with +/- in your data
         tdDelta.className = 'delta ' + (numDelta > 0 ? 'pos' : (numDelta < 0 ? 'neg' : ''));
       } else {
         tdDelta.textContent = '';
       }
 
       tr.appendChild(tdDate);
-      tr.appendChild(tdB);
-      tr.appendChild(tdBE);
       tr.appendChild(tdW);
       tr.appendChild(tdWE);
+      tr.appendChild(tdB);
+      tr.appendChild(tdBE);
       tr.appendChild(tdR);
       tr.appendChild(tdDelta);
       tbody.appendChild(tr);
@@ -353,6 +369,7 @@ tdR.className = 'result' + (outcome ? ' ' + outcome : '');
       const players = await playersRes.json();
       const me = players.find(p => p.id === idRaw);
       if (!me) throw new Error('player id not in players.json');
+
       document.getElementById('pname').textContent = me.name;
 
       RAW = normalise(
@@ -392,11 +409,9 @@ tdR.className = 'result' + (outcome ? ' ' + outcome : '');
     setParam('sec', state.section);
     wireNavLinks();
 
-    // reload data for this format (same player id)
     load();
   }
 
-  // boot
   window.addEventListener('DOMContentLoaded', () => {
     setSection(getParam('sec') || 'classical');
     document.getElementById('sec').addEventListener('change', e => setSection(e.target.value));
