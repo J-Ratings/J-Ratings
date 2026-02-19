@@ -7,6 +7,8 @@
   --text: #c9d1d9;
   --muted: #8b949e;
   --border: #30363d;
+
+  --wood: #8b5a2b; /* wooden brown */
 }
 
 html, body {
@@ -25,6 +27,10 @@ a:hover { text-decoration: underline; }
 }
 .site-title a:visited {
   color: var(--text);
+}
+
+.site-title .title-chess {
+  color: var(--wood);
 }
 
 header {
