@@ -51,12 +51,16 @@
       <input id="q" type="search" placeholder="Filter by name…">
       <span id="count" class="muted"></span>
 
-      <!-- View selector like player.html -->
       <label for="agg" style="margin-left:auto">View:</label>
       <select id="agg">
         <option value="daily">Daily</option>
         <option value="monthly" selected>Monthly</option>
         <option value="yearly">Yearly</option>
+      </select>
+
+      <label for="year" style="margin-left:10px">Year:</label>
+      <select id="year">
+        <option value="" selected>Live</option>
       </select>
 
       <button id="compare-btn" class="club-btn" type="button">Compare</button>
@@ -131,6 +135,8 @@
   function dataBase() { return SECTIONS[state.section].base; }
   function playersUrl() { return `${dataBase()}/players.json`; }
   function historyUrl(id) { return `${dataBase()}/history/${encodeURIComponent(id)}.json`; }
+  function snapshotsYearsUrl() { return `${dataBase()}/snapshots/years.json`; }
+  function snapshotUrl(year) { return `${dataBase()}/snapshots/${encodeURIComponent(year)}.json`; }
 
   function wireNavLinks() {
     const sec = encodeURIComponent(state.section);
@@ -244,7 +250,7 @@
   }
 
   async function buildComparison(players) {
-    lastCompared = players.slice(); // remember selection
+    lastCompared = players.slice();
     const wrap = document.getElementById('compare-wrap');
     const chart = document.getElementById('compare-chart');
     wrap.style.display = 'block';
@@ -349,32 +355,70 @@
     }
 
     document.getElementById('compare-btn').addEventListener('click', openModal);
-
     document.getElementById('compare-show-top').addEventListener('click', showSelected);
     document.getElementById('compare-show-bottom').addEventListener('click', showSelected);
     document.getElementById('compare-cancel-top').addEventListener('click', closeModal);
     document.getElementById('compare-cancel-bottom').addEventListener('click', closeModal);
   }
 
-  /* ---------- LOAD & WIRE-UP ---------- */
+  /* ---------- SNAPSHOT DROPDOWN + DATA LOAD ---------- */
+  async function loadYearsDropdown() {
+    const sel = document.getElementById('year');
+    if (!sel) return;
+
+    const current = sel.value;
+    sel.innerHTML = `<option value="" selected>Live</option>`;
+
+    try {
+      const res = await fetch(snapshotsYearsUrl(), { cache: 'no-cache' });
+      if (!res.ok) throw new Error('years.json not found');
+      const years = await res.json();
+
+      years.forEach(y => {
+        const opt = document.createElement('option');
+        opt.value = String(y);
+        opt.textContent = String(y);
+        sel.appendChild(opt);
+      });
+
+      sel.value = [...sel.options].some(o => o.value === current) ? current : '';
+    } catch {
+      sel.value = '';
+    }
+  }
+
   async function load() {
     try {
-      const res = await fetch(playersUrl(), { cache: 'no-cache' });
-      if (!res.ok) throw new Error('Failed to load players.json');
+      const year = document.getElementById('year')?.value || '';
+      const url = year ? snapshotUrl(year) : playersUrl();
+
+      const res = await fetch(url, { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`Failed to load ${url}`);
       const data = await res.json();
-      state.rows = data
-        .filter(d => d && d.id && d.name && Number.isFinite(+d.rating))
-        .map(d => ({ id: d.id, name: d.name, rating: +d.rating }))
+
+      const rows = year
+        ? data
+        : data.filter(d => d && d.active === true); // only apply active filter for Live
+
+      state.rows = rows
+        .filter(d => d && d.id && (d.display_name || d.name) && Number.isFinite(+d.rating))
+        .map(d => ({
+          id: d.id,
+          name: d.display_name || d.name,
+          rating: +d.rating
+        }))
         .sort((a, b) => b.rating - a.rating);
+
       state.filtered = state.rows.slice();
       render();
+      hideCompare();
     } catch (err) {
       document.querySelector('#players tbody').innerHTML =
         `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
     }
   }
 
-  function setSection(sec) {
+  async function setSection(sec) {
     const s = (sec || '').toLowerCase();
     state.section = SECTIONS[s] ? s : 'classical';
 
@@ -385,10 +429,12 @@
     histCache.clear();
     hideCompare();
     document.getElementById('q').value = '';
+
+    await loadYearsDropdown();
     load();
   }
 
-  // Re-plot with the same selection when the view changes
+  /* ---------- WIRE-UP ---------- */
   document.getElementById('agg').addEventListener('change', () => {
     if (lastCompared.length) buildComparison(lastCompared);
   });
@@ -397,6 +443,10 @@
 
   document.getElementById('sec').addEventListener('change', (e) => {
     setSection(e.target.value);
+  });
+
+  document.getElementById('year').addEventListener('change', () => {
+    load();
   });
 
   setupCompareButton();
