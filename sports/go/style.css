@@ -7,6 +7,8 @@
   --text: #c9d1d9;
   --muted: #8b949e;
   --border: #30363d;
+
+  --wood: #fffffff7; /* wooden brown */
 }
 
 html, body {
