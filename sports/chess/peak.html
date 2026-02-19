@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>J-Ratings: Go (Peak)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <style>
+    #compare-chart { height: 500px; }
+    .toolbar { margin-bottom: 10px; }
+
+    /* Modal */
+    #compare-modal {
+      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:9999;
+    }
+    #compare-modal > div {
+      background:#1a1a1a; padding:20px; border-radius:8px;
+      max-width:500px; width:90%; max-height:80%; overflow:auto; color:#fff;
+    }
+    .compare-controls { margin: 10px 0; }
+    .compare-controls button { margin-right:10px; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title"><a href="index.html">J-Ratings: Go</a></h1>
+<nav class="topnav" aria-label="Main">
+  <a href="../../index.html">Sports</a>
+  <a href="index.html">Home</a>
+  <a href="compare.html">Compare</a>
+  <a href="peak.html" class="active-tab">Peak</a>
+</nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel" id="players-panel">
+    <h2>Peak ratings</h2>
+
+    <div class="toolbar">
+      <input id="q" type="search" placeholder="Filter by name…">
+      <span id="count" class="muted"></span>
+
+      <!-- View selector like player.html -->
+      <label for="agg" style="margin-left:auto">View:</label>
+      <select id="agg">
+        <option value="daily">Daily</option>
+        <option value="monthly" selected>Monthly</option>
+        <option value="yearly">Yearly</option>
+      </select>
+
+      <button id="compare-btn" class="club-btn" type="button">Compare</button>
+    </div>
+
+    <div id="compare-wrap" style="display:none; padding:16px">
+      <div id="compare-chart">Loading…</div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="players">
+        <thead>
+          <tr>
+            <th style="min-width:60px">Rank</th>
+            <th style="min-width:240px">Player</th>
+            <th class="right" style="min-width:120px">Peak</th>
+            <th style="min-width:140px">Peak Date</th>
+          </tr>
+        </thead>
+        <tbody><!-- filled by JS --></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<!-- Compare Selection Modal -->
+<div id="compare-modal">
+  <div>
+    <h3>Select players to view:</h3>
+    <div class="compare-controls">
+      <button id="compare-show-top">Show Selected</button>
+      <button id="compare-cancel-top">Cancel</button>
+    </div>
+    <div id="compare-list" style="margin:10px 0 20px 0;"></div>
+    <div class="compare-controls">
+      <button id="compare-show-bottom">Show Selected</button>
+      <button id="compare-cancel-bottom">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const DATA_URL = 'data/players.json';
+  const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
+
+  const state = { rows: [], filtered: [] };
+  const histCache = new Map();
+  let lastCompared = [];
+
+  /* ---------- table render ---------- */
+  function render() {
+    const tbody = document.querySelector('#players tbody');
+    tbody.innerHTML = '';
+    state.filtered.forEach((r, i) => {
+      const tr = document.createElement('tr');
+
+      const tdRank = document.createElement('td');
+      tdRank.textContent = i + 1;
+      tr.appendChild(tdRank);
+
+      const tdName = document.createElement('td');
+      const a = document.createElement('a');
+      a.href = `player.html?id=${encodeURIComponent(r.id)}`;
+      a.textContent = r.name;
+      tdName.appendChild(a);
+      tr.appendChild(tdName);
+
+      const tdPeak = document.createElement('td');
+      tdPeak.className = 'right';
+      tdPeak.textContent = r.peak;
+      tr.appendChild(tdPeak);
+
+      const tdDate = document.createElement('td');
+      tdDate.textContent = r.peak_date || '';
+      tr.appendChild(tdDate);
+
+      tbody.appendChild(tr);
+    });
+    document.getElementById('count').textContent =
+      `${state.filtered.length.toLocaleString()} players`;
+  }
+
+  function applyFilter() {
+    const q = document.getElementById('q').value.trim().toLowerCase();
+    state.filtered = q
+      ? state.rows.filter(r => r.name.toLowerCase().includes(q))
+      : state.rows.slice();
+    render();
+    hideCompare();
+  }
+
+  /* ---------- history fetching ---------- */
+  async function fetchHistoryFor(id) {
+    if (histCache.has(id)) return histCache.get(id);
+    try {
+      const res = await fetch(`data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+      if (!res.ok) return null;
+      const rows = await res.json();
+      histCache.set(id, rows);
+      return rows;
+    } catch { return null; }
+  }
+
+  /* ---------- aggregation (same as player.html) ---------- */
+  function normalise(series, dedupeByDay = false){
+    const s = series
+      .filter(p => p && p.x && Number.isFinite(p.y))
+      .map(p => ({ x: p.x, y: +p.y }))
+      .sort((a,b) => new Date(a.x) - new Date(b.x));
+
+    if (!dedupeByDay) return s;
+
+    const out = [];
+    let lastKey = null;
+    for (const p of s) {
+      const d = new Date(p.x);
+      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      if (key !== lastKey) out.push(p);
+      else out[out.length-1] = p;
+      lastKey = key;
+    }
+    return out;
+  }
+
+  function aggregate(series, mode){
+    if (mode === 'daily') return normalise(series, true);
+
+    const buckets = Object.create(null);
+    for (const p of series) {
+      const d = new Date(p.x);
+      const key = (mode === 'monthly')
+        ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`
+        : `${d.getFullYear()}`;
+      (buckets[key] ||= []).push(p.y);
+    }
+
+    const out = Object.keys(buckets).sort().map(k => {
+      const ys = buckets[k].filter(Number.isFinite);
+      const avg = ys.reduce((a,b)=>a+b,0) / ys.length;
+      const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
+      return { x, y: avg };
+    });
+    return normalise(out, false);
+  }
+
+  /* ---------- compare chart ---------- */
+  function hideCompare() {
+    document.getElementById('compare-wrap').style.display = 'none';
+    document.getElementById('compare-chart').innerHTML = '';
+    lastCompared = [];
+  }
+
+  async function buildComparison(players) {
+    lastCompared = players.slice();
+
+    const wrap = document.getElementById('compare-wrap');
+    const chart = document.getElementById('compare-chart');
+    wrap.style.display = 'block';
+    chart.innerHTML = 'Loading…';
+
+    const mode = document.getElementById('agg').value;
+
+    const traces = [];
+    let ymin = Infinity, ymax = -Infinity;
+
+    for (const p of players) {
+      const hist = await fetchHistoryFor(p.id);
+      if (!hist || !hist.length) continue;
+
+      const raw = hist.map(d => ({ x: d.date, y: Number(d.rating) }));
+      const data = aggregate(raw, mode);
+
+      const xs = data.map(pt => pt.x);
+      const ys = data.map(pt => pt.y);
+      if (!xs.length || !ys.length) continue;
+
+      ymin = Math.min(ymin, ...ys);
+      ymax = Math.max(ymax, ...ys);
+
+      traces.push({
+        type: 'scatter',
+        name: p.name,
+        x: xs, y: ys,
+        mode: (mode === 'daily') ? 'lines' : 'lines+markers',
+        line: { width: 2, shape: 'linear' },
+        marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
+        hovertemplate: '%{x}<br>%{y:.0f}<extra>' + p.name + '</extra>',
+        connectgaps: true
+      });
+    }
+
+    if (!traces.length) {
+      chart.innerHTML = 'No history found.';
+      return;
+    }
+
+    ymin = Math.floor(ymin / 100) * 100;
+    ymax = Math.ceil(ymax / 100) * 100;
+    const shapes = [];
+    for (let v = ymin; v <= ymax; v += 100) {
+      shapes.push({
+        type: 'line', xref: 'paper', x0: 0, x1: 1,
+        y0: v, y1: v,
+        line: { width: 1, color: 'rgba(128,128,128,0.35)' },
+        layer: 'below'
+      });
+    }
+
+    const cs = getComputedStyle(document.body);
+    const layout = {
+      margin: { l: 50, r: 20, t: 10, b: 40 },
+      xaxis: { type: 'date' },
+      yaxis: { title: 'Rating' },
+      legend: { orientation: 'h' },
+      paper_bgcolor: cs.backgroundColor,
+      plot_bgcolor: cs.backgroundColor,
+      font: { color: cs.color },
+      shapes
+    };
+
+    Plotly.newPlot(chart, traces, layout, {
+      staticPlot: IS_TOUCH,
+      displayModeBar: false,
+      responsive: true
+    });
+  }
+
+  function setupCompareButton() {
+    const modal = document.getElementById('compare-modal');
+    const listDiv = document.getElementById('compare-list');
+
+    function openModal() {
+      listDiv.innerHTML = '';
+      state.filtered.forEach(p => {
+        const id = `chk-${p.id}`;
+        const row = document.createElement('div');
+        row.innerHTML = `
+          <label>
+            <input type="checkbox" id="${id}" value="${p.id}" style="margin-right:6px">
+            ${p.name} (${p.peak})
+          </label>
+        `;
+        listDiv.appendChild(row);
+      });
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() { modal.style.display = 'none'; }
+
+    function showSelected() {
+      const ids = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
+      if (!ids.length) { alert('Please select at least one player.'); return; }
+      closeModal();
+      const chosen = state.filtered.filter(p => ids.includes(p.id));
+      buildComparison(chosen);
+    }
+
+    document.getElementById('compare-btn').addEventListener('click', openModal);
+    document.getElementById('compare-show-top').addEventListener('click', showSelected);
+    document.getElementById('compare-show-bottom').addEventListener('click', showSelected);
+    document.getElementById('compare-cancel-top').addEventListener('click', closeModal);
+    document.getElementById('compare-cancel-bottom').addEventListener('click', closeModal);
+  }
+
+  /* ---------- load ---------- */
+  async function load() {
+    try {
+      const res = await fetch(DATA_URL, { cache: 'no-cache' });
+      if (!res.ok) throw new Error('Failed to load players.json');
+      const data = await res.json();
+
+      state.rows = data
+        .filter(d => d && d.name && Number.isFinite(+d.peak))
+        .map(d => ({
+          id: d.id,
+          name: d.name,
+          peak: +d.peak,
+          peak_date: d.peak_date
+        }))
+        .sort((a,b) => b.peak - a.peak);
+
+      state.filtered = state.rows.slice();
+      render();
+    } catch (err) {
+      document.querySelector('#players tbody').innerHTML =
+        `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
+    }
+  }
+
+  // Re-plot the same selection if the view changes
+  document.getElementById('agg').addEventListener('change', () => {
+    if (lastCompared.length) buildComparison(lastCompared);
+  });
+
+  document.getElementById('q').addEventListener('input', applyFilter);
+  setupCompareButton();
+  load();
+</script>
+</body>
+</html>
