@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>J-Ratings:Go (Compare)</title>
+  <title>J-Ratings: Chess (Compare)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
@@ -31,16 +31,15 @@
 <body>
 <header>
   <div class="wrap">
-    <h1 class="site-title"><a href="index.html">J-Ratings: Go</a></h1>
-<nav class="topnav" aria-label="Main">
-  <a href="../../index.html">Sports</a>
-  <a href="index.html">Home</a>
-  <a href="compare.html" class="active-tab">Compare</a>
-  <a href="peak.html">Peak</a>
-</nav>
+    <h1 class="site-title"><a id="home-link" href="index.html">J-Ratings: Chess</a></h1>
+    <nav class="topnav" aria-label="Main">
+      <a href="../../index.html">Sports</a>
+      <a id="nav-home" href="index.html">Home</a>
+      <a id="nav-compare" href="compare.html" class="active-tab">Compare</a>
+      <a id="nav-peak" href="peak.html">Peak</a>
+    </nav>
   </div>
 </header>
-
 
 <main class="wrap">
   <section class="panel">
@@ -48,7 +47,18 @@
 
     <div class="controls">
       <div class="toolbar">
+        <div style="display:flex;gap:8px;align-items:center">
+          <label for="sec">Format:</label>
+          <select id="sec">
+            <option value="classical" selected>Classical</option>
+            <option value="rapid">Rapid</option>
+            <option value="blitz">Blitz</option>
+            <option value="freestyle">Freestyle</option>
+          </select>
+        </div>
+
         <div id="rows" style="flex:1"></div>
+
         <div style="display:flex;gap:8px;align-items:center">
           <label for="agg">View:</label>
           <select id="agg">
@@ -74,14 +84,43 @@
 </main>
 
 <script>
+  // --- sections -------------------------------------------------------------
+  const SECTIONS = {
+    classical: { label: 'Classical', base: 'data/classical' },
+    rapid:     { label: 'Rapid',     base: 'data/rapid' },
+    blitz:     { label: 'Blitz',     base: 'data/blitz' },
+    freestyle: { label: 'Freestyle', base: 'data/freestyle' }
+  };
+
+  function getParam(name) {
+    const u = new URL(window.location.href);
+    return u.searchParams.get(name);
+  }
+  function setParam(name, value) {
+    const u = new URL(window.location.href);
+    u.searchParams.set(name, value);
+    window.history.replaceState({}, '', u.toString());
+  }
+
+  function wireNavLinks() {
+    const sec = encodeURIComponent(state.section);
+    document.getElementById('home-link').href   = `index.html?sec=${sec}`;
+    document.getElementById('nav-home').href    = `index.html?sec=${sec}`;
+    document.getElementById('nav-compare').href = `compare.html?sec=${sec}`;
+    document.getElementById('nav-peak').href    = `peak.html?sec=${sec}`;
+  }
+
+  function dataBase() { return SECTIONS[state.section].base; }
+  function playersUrl() { return `${dataBase()}/players.json`; }
+  function historyUrl(id) { return `${dataBase()}/history/${encodeURIComponent(id)}.json`; }
+
   // --- config ---------------------------------------------------------------
-  const PLAYERS_URL = 'data/players.json';
-  const HIST_URL    = id => `data/history/${encodeURIComponent(id)}.json`;
   const MAX_PLAYERS = 15;
   const IS_TOUCH    = window.matchMedia('(pointer: coarse)').matches;
 
   // --- state ----------------------------------------------------------------
   const state = {
+    section: 'classical',
     players: [],     // [{id, name, ...}] from players.json
     inputs: [],      // [{ el, input }]
     loaded: []       // [{ name, daily: [{x,y}] }]
@@ -213,7 +252,7 @@
 
   // --- data load ------------------------------------------------------------
   async function loadPlayers(){
-    const res = await fetch(PLAYERS_URL, { cache: 'no-cache' });
+    const res = await fetch(playersUrl(), { cache: 'no-cache' });
     if (!res.ok) throw new Error('players.json not found');
     state.players = await res.json();
   }
@@ -245,7 +284,6 @@
 
     const mode = document.getElementById('agg').value;
 
-    // Aggregate each series per current mode
     const traces = state.loaded.map(s => {
       const data = aggregate(s.daily, mode);
       const xs = data.map(p => p.x);
@@ -293,7 +331,6 @@
       .map(r => r.input.value.trim())
       .filter(Boolean);
 
-    // de-dupe by exact name
     const uniq = [...new Set(names)];
     if (!uniq.length) { alert('Please add at least one player'); return; }
 
@@ -308,9 +345,8 @@
       return;
     }
 
-    // fetch all histories
     const results = await Promise.all(lookups.map(async ({name, id}) => {
-      const res = await fetch(HIST_URL(id), { cache: 'no-cache' });
+      const res = await fetch(historyUrl(id), { cache: 'no-cache' });
       if (!res.ok) return null;
       const hist = await res.json();
       const daily = normalise(hist.map(d => ({ x: d.date, y: Number(d.rating) })), true);
@@ -322,21 +358,39 @@
     drawChart();
   }
 
+  function setSection(sec){
+    const s = (sec || '').toLowerCase();
+    state.section = SECTIONS[s] ? s : 'classical';
+
+    document.getElementById('sec').value = state.section;
+    setParam('sec', state.section);
+    wireNavLinks();
+
+    state.players = [];
+    state.loaded = [];
+    document.getElementById('chart').textContent = 'Loading…';
+
+    loadPlayers()
+      .then(() => {
+        document.getElementById('chart').textContent = 'Ready.';
+      })
+      .catch(e => {
+        console.error(e);
+        document.getElementById('chart').textContent = 'Could not load player list for this format.';
+      });
+  }
+
   // --- boot -----------------------------------------------------------------
   window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('add').addEventListener('click', makeRow);
     document.getElementById('clear').addEventListener('click', clearAll);
     document.getElementById('create').addEventListener('click', createChart);
     document.getElementById('agg').addEventListener('change', drawChart);
+    document.getElementById('sec').addEventListener('change', e => setSection(e.target.value));
 
-    loadPlayers()
-      .then(() => { makeRow(); })
-      .catch(e => {
-        console.error(e);
-        document.querySelector('.muted-note').textContent =
-          'Could not load player list. Check data path or run via a local server.';
-        makeRow();
-      });
+    makeRow(); // always show one input
+
+    setSection(getParam('sec') || 'classical');
   });
 </script>
 </body>
