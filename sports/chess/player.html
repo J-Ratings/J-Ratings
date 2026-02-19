@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>J-Ratings: Go (Player)</title>
+  <title>J-Ratings: Chess (Player)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
   <style>
     #chart { height: 420px; }
-    .toolbar { margin-bottom: 10px; text-align: center; }
+    .toolbar { margin-bottom: 10px; text-align: center; display:flex; gap:10px; align-items:center; justify-content:center; flex-wrap:wrap; }
     .toolbar label { margin-right: 6px; }
     h2#pname, h3.section-title { text-align: center; }
 
@@ -54,19 +54,28 @@
 <body>
 <header>
   <div class="wrap">
-    <h1 class="site-title"><a href="index.html">J-Ratings: Go</a></h1>
-<nav class="topnav" aria-label="Main">
-  <a href="index.html">Home</a>
-  <a href="compare.html">Compare</a>
-  <a href="peak.html">Peak</a>
-</nav>
+    <h1 class="site-title"><a id="home-link" href="index.html">J-Ratings: Chess</a></h1>
+    <nav class="topnav" aria-label="Main">
+      <a id="nav-home" href="index.html">Home</a>
+      <a id="nav-compare" href="compare.html">Compare</a>
+      <a id="nav-peak" href="peak.html">Peak</a>
+    </nav>
   </div>
 </header>
 
 <main class="wrap">
   <section class="panel">
     <h2 id="pname">Player</h2>
+
     <div class="toolbar">
+      <label for="sec">Format:</label>
+      <select id="sec">
+        <option value="classical" selected>Classical</option>
+        <option value="rapid">Rapid</option>
+        <option value="blitz">Blitz</option>
+        <option value="freestyle">Freestyle</option>
+      </select>
+
       <label for="agg">View:</label>
       <select id="agg">
         <option value="daily">Daily</option>
@@ -74,6 +83,7 @@
         <option value="yearly">Yearly</option>
       </select>
     </div>
+
     <div id="chart">Loading…</div>
 
     <h3 class="section-title" style="margin-top:18px;">Games</h3>
@@ -84,6 +94,25 @@
 </main>
 
 <script>
+  /* ---------- SECTION CONFIG ---------- */
+  const SECTIONS = {
+    classical: { label: 'Classical', base: 'data/classical' },
+    rapid:     { label: 'Rapid',     base: 'data/rapid' },
+    blitz:     { label: 'Blitz',     base: 'data/blitz' },
+    freestyle: { label: 'Freestyle', base: 'data/freestyle' }
+  };
+
+  function getParam(name) {
+    const u = new URL(window.location.href);
+    return u.searchParams.get(name);
+  }
+  function setParam(name, value) {
+    const u = new URL(window.location.href);
+    u.searchParams.set(name, value);
+    window.history.replaceState({}, '', u.toString());
+  }
+
+  /* ---------- PARAMS ---------- */
   const params = new URLSearchParams(location.search);
   const idRaw = params.get('id');
   if (!idRaw) {
@@ -91,10 +120,24 @@
     throw new Error('no id');
   }
 
-const PLAYERS_URL = 'data/players.json';
-const HIST_URL    = id => `data/history/${encodeURIComponent(id)}.json`;
-const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
-  const IS_TOUCH    = window.matchMedia('(pointer: coarse)').matches;
+  const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
+
+  const state = {
+    section: 'classical'
+  };
+
+  function dataBase() { return SECTIONS[state.section].base; }
+  function playersUrl() { return `${dataBase()}/players.json`; }
+  function historyUrl(id) { return `${dataBase()}/history/${encodeURIComponent(id)}.json`; }
+  function gamesUrl(id) { return `${dataBase()}/games/${encodeURIComponent(id)}.json`; }
+
+  function wireNavLinks() {
+    const sec = encodeURIComponent(state.section);
+    document.getElementById('home-link').href   = `index.html?sec=${sec}`;
+    document.getElementById('nav-home').href    = `index.html?sec=${sec}`;
+    document.getElementById('nav-compare').href = `compare.html?sec=${sec}`;
+    document.getElementById('nav-peak').href    = `peak.html?sec=${sec}`;
+  }
 
   let RAW = []; // daily series
 
@@ -168,11 +211,7 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
       x: xs,
       y: ys,
       mode: (mode === 'daily') ? 'lines' : 'lines+markers',
-      line: {
-        width: 2,
-        shape: 'linear',
-        color: '#1f77b4'
-      },
+      line: { width: 2, shape: 'linear' },
       marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
       hovertemplate: '%{x}<br>%{y:.0f}<extra></extra>',
       connectgaps: true
@@ -198,7 +237,6 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
 
-    // Header
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
     for (const h of ['Date','Black','Elo','White','Elo','Result','Δ']) {
@@ -209,11 +247,9 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
     thead.appendChild(hr);
     tbl.appendChild(thead);
 
-    // Opaque header (in case theme var isn't defined)
     const panelBg = getComputedStyle(document.querySelector('.panel')).backgroundColor;
     thead.style.backgroundColor = panelBg;
 
-    // Body (latest first)
     const tbody = document.createElement('tbody');
     games.sort((a,b) => new Date(b.date) - new Date(a.date));
 
@@ -253,11 +289,10 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
                    (g.result === '0-1' && g.white === myName);
       tdR.className = 'result ' + (iWon ? 'win' : 'loss');
 
-      // Δ (rating change for this profile)
       const tdDelta = document.createElement('td');
       const numDelta = Number(g.delta);
       if (!Number.isNaN(numDelta)) {
-        tdDelta.textContent = g.delta; // already formatted with +/-
+        tdDelta.textContent = g.delta;
         tdDelta.className = 'delta ' + (numDelta > 0 ? 'pos' : (numDelta < 0 ? 'neg' : ''));
       } else {
         tdDelta.textContent = '';
@@ -278,11 +313,14 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
 
   async function load(){
     try {
+      document.getElementById('chart').textContent = 'Loading…';
+
       const [playersRes, histRes, gamesRes] = await Promise.all([
-        fetch(PLAYERS_URL, { cache: 'no-cache' }),
-        fetch(HIST_URL(idRaw), { cache: 'no-cache' }),
-        fetch(GAMES_URL(idRaw), { cache: 'no-cache' })
+        fetch(playersUrl(), { cache: 'no-cache' }),
+        fetch(historyUrl(idRaw), { cache: 'no-cache' }),
+        fetch(gamesUrl(idRaw), { cache: 'no-cache' })
       ]);
+
       if (!playersRes.ok) throw new Error('players.json not found');
       if (!histRes.ok) throw new Error('history not found');
 
@@ -298,11 +336,11 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
       if (!RAW.length) {
         document.getElementById('chart').textContent = 'No games';
       } else {
-        const initialMode = 'monthly';
-        document.getElementById('agg').value = initialMode;
+        const initialMode = document.getElementById('agg').value || 'monthly';
         draw(initialMode);
-        document.getElementById('agg').addEventListener('change', e => draw(e.target.value));
       }
+
+      document.getElementById('agg').addEventListener('change', e => draw(e.target.value), { once:false });
 
       if (gamesRes.ok) {
         const games = await gamesRes.json();
@@ -320,7 +358,25 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
     }
   }
 
-  load();
+  function setSection(sec){
+    const s = (sec || '').toLowerCase();
+    state.section = SECTIONS[s] ? s : 'classical';
+
+    document.getElementById('sec').value = state.section;
+    setParam('sec', state.section);
+    wireNavLinks();
+
+    // reload data for this format (same player id)
+    load();
+  }
+
+  // boot
+  window.addEventListener('DOMContentLoaded', () => {
+    setSection(getParam('sec') || 'classical');
+    document.getElementById('sec').addEventListener('change', e => setSection(e.target.value));
+    wireNavLinks();
+    load();
+  });
 </script>
 </body>
 </html>
