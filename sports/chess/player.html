@@ -42,13 +42,15 @@
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
-    .result { font-weight:700; }
-    .result.win  { color:#2e7d32; }
-    .result.loss { color:#c62828; }
+.result { font-weight:700; }
+.result.win  { color:#3fbf5a; }  
+.result.draw { color:#e0a82e; }  
+.result.loss { color:#e25555; } 
 
-    .delta { font-weight:700; }
-    .delta.pos { color:#2e7d32; }
-    .delta.neg { color:#c62828; }
+.delta { font-weight:700; }
+.delta.pos { color:#3fbf5a; }
+.delta.neg { color:#e25555; }
+
   </style>
 </head>
 <body>
@@ -284,10 +286,32 @@
       tdWE.textContent = Number(g.whiteElo).toString();
 
       const tdR = document.createElement('td');
-      tdR.textContent = g.result;
-      const iWon = (g.result === '1-0' && g.black === myName) ||
-                   (g.result === '0-1' && g.white === myName);
-      tdR.className = 'result ' + (iWon ? 'win' : 'loss');
+tdR.textContent = g.result;
+
+const res = String(g.result || '').trim();
+
+// normalise common draw formats (covers your "1/2-1/2" case)
+const isDraw =
+  res === '1/2-1/2' || res === '½-½' || res === '0.5-0.5' ||
+  res === '1/2–1/2' || res === '1/2—1/2';
+
+const isWhite = (g.white === myName);
+const isBlack = (g.black === myName);
+
+let outcome = 'loss';
+
+if (isDraw) {
+  outcome = 'draw';
+} else if ((res === '1-0' && isBlack) || (res === '0-1' && isWhite)) {
+  outcome = 'win';
+} else if ((res === '0-1' && isBlack) || (res === '1-0' && isWhite)) {
+  outcome = 'loss';
+} else {
+  // unknown/odd result string: don't force win/loss colour
+  outcome = '';
+}
+
+tdR.className = 'result' + (outcome ? ' ' + outcome : '');
 
       const tdDelta = document.createElement('td');
       const numDelta = Number(g.delta);
