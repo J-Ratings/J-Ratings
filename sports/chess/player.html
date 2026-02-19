@@ -304,14 +304,14 @@ let outcome = 'loss';
 
 if (isDraw) {
   outcome = 'draw';
-} else if ((res === '1-0' && isBlack) || (res === '0-1' && isWhite)) {
+} else if ((res === '1-0' && isWhite) || (res === '0-1' && isBlack)) {
   outcome = 'win';
-} else if ((res === '0-1' && isBlack) || (res === '1-0' && isWhite)) {
+} else if ((res === '0-1' && isWhite) || (res === '1-0' && isBlack)) {
   outcome = 'loss';
 } else {
-  // unknown/odd result string: don't force win/loss colour
   outcome = '';
 }
+
 
 tdR.className = 'result' + (outcome ? ' ' + outcome : '');
 
