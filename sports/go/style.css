@@ -29,6 +29,11 @@ a:hover { text-decoration: underline; }
   color: var(--text);
 }
 
+.site-title .title-game {
+  color: var(--wood);
+}
+
+
 header {
   border-bottom: 1px solid var(--border);
   background: var(--card);
