@@ -13,16 +13,16 @@
 
     .toolbar {
       margin-bottom: 10px;
-      text-align: centre;
+      text-align: center;
       display: flex;
       gap: 10px;
-      align-items: centre;
-      justify-content: centre;
+      align-items: center;
+      justify-content: center;
       flex-wrap: wrap;
     }
     .toolbar label { margin-right: 6px; }
 
-    h2#pname, h3.section-title { text-align: centre; }
+    h2#pname, h3.section-title { text-align: center; }
 
     /* Games table */
     #gamesWrap { max-height: 520px; overflow: auto; margin-top: 12px; }
@@ -35,10 +35,14 @@
     table.games th, table.games td {
       padding: 6px 8px;
       border-bottom: 1px solid #2b2f36;
-      text-align: centre;
+      text-align: center;          /* centre everything */
       vertical-align: middle;
       white-space: nowrap;
     }
+
+    /* ensure any links/strong inside cells don't pull alignment */
+    table.games td a, table.games td strong { display: inline-block; }
+
     /* Sticky header */
     table.games th {
       position: sticky;
@@ -139,7 +143,6 @@
   }
 
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
-
   const state = { section: 'classical' };
 
   function dataBase() { return SECTIONS[state.section].base; }
@@ -249,6 +252,14 @@
     });
   }
 
+  function prettifyResult(resRaw) {
+    const res = String(resRaw || '').trim();
+    const isDraw =
+      res === '1/2-1/2' || res === '½-½' || res === '0.5-0.5' ||
+      res === '1/2–1/2' || res === '1/2—1/2';
+    return isDraw ? '1/2' : res;
+  }
+
   function renderGamesTable(myName, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
@@ -305,13 +316,11 @@
 
       // Result (Chess notation: "1-0" = White wins, "0-1" = Black wins)
       const tdR = document.createElement('td');
-      tdR.textContent = g.result;
 
       const res = String(g.result || '').trim();
+      tdR.textContent = prettifyResult(res);
 
-      const isDraw =
-        res === '1/2-1/2' || res === '½-½' || res === '0.5-0.5' ||
-        res === '1/2–1/2' || res === '1/2—1/2';
+      const isDraw = (tdR.textContent === '1/2');
 
       const isWhite = (g.white === myName);
       const isBlack = (g.black === myName);
@@ -334,7 +343,7 @@
       const tdDelta = document.createElement('td');
       const numDelta = Number(g.delta);
       if (!Number.isNaN(numDelta)) {
-        tdDelta.textContent = g.delta; // already formatted with +/- in your data
+        tdDelta.textContent = g.delta;
         tdDelta.className = 'delta ' + (numDelta > 0 ? 'pos' : (numDelta < 0 ? 'neg' : ''));
       } else {
         tdDelta.textContent = '';
@@ -347,6 +356,7 @@
       tr.appendChild(tdBE);
       tr.appendChild(tdR);
       tr.appendChild(tdDelta);
+
       tbody.appendChild(tr);
     }
 
