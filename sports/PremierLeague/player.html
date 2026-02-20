@@ -32,11 +32,12 @@
       z-index: 2;
       background-color: var(--panel-bg, #1a1a1a);
     }
+    /* Double separators: Date | Opponent | Elo | Result | Δ */
     table.games th:nth-child(1), table.games td:nth-child(1),
+    table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(3), table.games td:nth-child(3),
-    table.games th:nth-child(5), table.games td:nth-child(5),
-    table.games th:nth-child(6), table.games td:nth-child(6),
-    table.games th:nth-child(7), table.games td:nth-child(7) {
+    table.games th:nth-child(4), table.games td:nth-child(4),
+    table.games th:nth-child(5), table.games td:nth-child(5) {
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
@@ -48,6 +49,9 @@
     .delta { font-weight:700; }
     .delta.pos { color:#2e7d32; }
     .delta.neg { color:#c62828; }
+
+    .opp { text-align:left; }
+    .muted-small { opacity:.85; font-size:.9em; }
   </style>
 </head>
 <body>
@@ -177,10 +181,7 @@
       y: ys,
       customdata: tiers,
       mode: (mode === 'daily') ? 'lines' : 'lines+markers',
-      line: {
-        width: 2,
-        shape: 'linear'
-      },
+      line: { width: 2, shape: 'linear' },
       marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
       hovertemplate: '%{x}<br>%{y:.0f} Elo<br>Tier %{customdata}<extra></extra>',
       connectgaps: true
@@ -208,7 +209,7 @@
 
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
-    for (const h of ['Date','Tier','Away','Elo','Home','Elo','Result','Δ']) {
+    for (const h of ['Date','Opponent','Elo','Result','Δ','New']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -225,46 +226,46 @@
     for (const g of games) {
       const tr = document.createElement('tr');
 
+      const isHome = g.home === myName;
+      const isAway = g.away === myName;
+      if (!isHome && !isAway) continue;
+
+      const opponent = isHome ? g.away : g.home;
+      const opponentElo = isHome ? Number(g.awayElo) : Number(g.homeElo);
+      const myEloBefore = isHome ? Number(g.homeElo) : Number(g.awayElo);
+      const numDelta = Number(g.delta);
+      const myEloAfter = Number.isFinite(myEloBefore) && Number.isFinite(numDelta)
+        ? Math.round(myEloBefore + numDelta)
+        : NaN;
+
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date;
 
-      const tdTier = document.createElement('td');
-      tdTier.textContent = (g.tier ?? '');
+      const tdOpp = document.createElement('td');
+      tdOpp.className = 'opp';
+      tdOpp.textContent = opponent;
 
-      const tdAway = document.createElement('td');
-      if (g.away === myName) {
-        const s = document.createElement('strong');
-        s.textContent = g.away;
-        tdAway.appendChild(s);
-      } else {
-        tdAway.textContent = g.away;
-      }
+      const tdOppElo = document.createElement('td');
+      tdOppElo.textContent = Number.isFinite(opponentElo) ? String(Math.round(opponentElo)) : '';
 
-      const tdAwayE = document.createElement('td');
-      tdAwayE.textContent = Number(g.awayElo).toString();
-
-      const tdHome = document.createElement('td');
-      if (g.home === myName) {
-        const s = document.createElement('strong');
-        s.textContent = g.home;
-        tdHome.appendChild(s);
-      } else {
-        tdHome.textContent = g.home;
-      }
-
-      const tdHomeE = document.createElement('td');
-      tdHomeE.textContent = Number(g.homeElo).toString();
-
-      const tdR = document.createElement('td');
-      tdR.textContent = g.result;
-
+      const tdResult = document.createElement('td');
       let cls = 'draw';
-      if (g.result === '1-0') cls = (g.home === myName) ? 'win' : 'loss';
-      else if (g.result === '0-1') cls = (g.away === myName) ? 'win' : 'loss';
-      tdR.className = 'result ' + cls;
+      let resText = 'Draw';
+
+      if (g.result === '1-0') {
+        if (isHome) { cls = 'win'; resText = 'Win'; }
+        else { cls = 'loss'; resText = 'Loss'; }
+      } else if (g.result === '0-1') {
+        if (isAway) { cls = 'win'; resText = 'Win'; }
+        else { cls = 'loss'; resText = 'Loss'; }
+      } else {
+        cls = 'draw'; resText = 'Draw';
+      }
+
+      tdResult.textContent = resText;
+      tdResult.className = 'result ' + cls;
 
       const tdDelta = document.createElement('td');
-      const numDelta = Number(g.delta);
       if (!Number.isNaN(numDelta)) {
         tdDelta.textContent = g.delta;
         tdDelta.className = 'delta ' + (numDelta > 0 ? 'pos' : (numDelta < 0 ? 'neg' : ''));
@@ -272,14 +273,15 @@
         tdDelta.textContent = '';
       }
 
+      const tdNew = document.createElement('td');
+      tdNew.textContent = Number.isFinite(myEloAfter) ? String(myEloAfter) : '';
+
       tr.appendChild(tdDate);
-      tr.appendChild(tdTier);
-      tr.appendChild(tdAway);
-      tr.appendChild(tdAwayE);
-      tr.appendChild(tdHome);
-      tr.appendChild(tdHomeE);
-      tr.appendChild(tdR);
+      tr.appendChild(tdOpp);
+      tr.appendChild(tdOppElo);
+      tr.appendChild(tdResult);
       tr.appendChild(tdDelta);
+      tr.appendChild(tdNew);
       tbody.appendChild(tr);
     }
 
