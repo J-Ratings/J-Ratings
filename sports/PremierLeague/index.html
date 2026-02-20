@@ -19,6 +19,10 @@
     }
     .compare-controls { margin: 10px 0; }
     .compare-controls button { margin-right:10px; }
+
+    /* Fix alignment for this page */
+    #teams th, #teams td { text-align: left; }
+    #teams th.right, #teams td.right { text-align: right; }
   </style>
 </head>
 <body>
@@ -66,7 +70,7 @@
             <th style="min-width:240px">Team</th>
             <th class="right" style="min-width:120px">Rating</th>
             <th class="right" style="min-width:90px">Games</th>
-            <th class="right" style="min-width:80px">Tier</th>
+            <th style="min-width:160px">Current Tier</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -98,6 +102,16 @@
   const histCache = new Map();
   let lastCompared = [];
 
+  function tierLabel(row) {
+    if (row.division && String(row.division).trim()) return row.division;
+    const t = Number(row.tier);
+    if (t === 1) return 'Premier League';
+    if (t === 2) return 'Championship';
+    if (t === 3) return 'League 1';
+    if (t === 4) return 'League 2';
+    return '';
+  }
+
   function render() {
     const tbody = document.querySelector('#teams tbody');
     tbody.innerHTML = '';
@@ -127,8 +141,7 @@
       tr.appendChild(tdGames);
 
       const tdTier = document.createElement('td');
-      tdTier.className = 'right';
-      tdTier.textContent = r.tier ?? '';
+      tdTier.textContent = tierLabel(r);
       tr.appendChild(tdTier);
 
       tbody.appendChild(tr);
@@ -339,7 +352,8 @@
           name: d.name,
           rating: +d.rating,
           games: Number.isFinite(+d.games) ? +d.games : null,
-          tier: Number.isFinite(+d.tier) ? +d.tier : null
+          tier: Number.isFinite(+d.tier) ? +d.tier : null,
+          division: d.division || ''
         }))
         .sort((a, b) => b.rating - a.rating);
 
