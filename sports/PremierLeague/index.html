@@ -40,20 +40,31 @@
     .compare-controls { margin: 10px 0; }
     .compare-controls button { margin-right:10px; }
 
-    /* Centre align this page table */
+    /* Centre align text in this page table */
     #teams th, #teams td {
       text-align: center;
       vertical-align: middle;
     }
 
-    /* Keep number columns centred too */
     #teams th.right, #teams td.right {
       text-align: center;
     }
 
-    /* Prevent header labels wrapping badly */
     #teams th {
       white-space: nowrap;
+    }
+
+    /* Centre the actual table block (not just text) */
+    .table-wrap {
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+    }
+
+    #teams {
+      margin: 0 auto;
+      width: auto !important; /* override any global table width:100% */
+      min-width: 900px;
     }
   </style>
 </head>
@@ -85,17 +96,18 @@
         <option value="live" selected>(Live)</option>
       </select>
 
-      <label for="agg">View:</label>
-      <select id="agg">
-        <option value="daily">Daily</option>
-        <option value="monthly" selected>Monthly</option>
-        <option value="yearly">Yearly</option>
-      </select>
-
       <button id="compare-btn" class="club-btn" type="button">Compare</button>
     </div>
 
     <div id="compare-wrap" style="display:none; padding:16px">
+      <div style="display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;">
+        <label for="compare-agg">View:</label>
+        <select id="compare-agg">
+          <option value="daily">Daily</option>
+          <option value="monthly" selected>Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
       <div id="compare-chart">Loading…</div>
     </div>
 
@@ -105,9 +117,8 @@
           <tr>
             <th style="min-width:60px">Rank</th>
             <th style="min-width:240px">Team</th>
-            <th class="right" style="min-width:120px">Rating</th>
-            <th class="right" style="min-width:90px">Games</th>
-            <th style="min-width:160px">Tier</th>
+            <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
+            <th style="min-width:180px">Tier</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -157,6 +168,11 @@
     return '';
   }
 
+  function updateRatingHeader() {
+    const h = document.getElementById('rating-col-head');
+    h.textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
+  }
+
   function render() {
     const tbody = document.querySelector('#teams tbody');
     tbody.innerHTML = '';
@@ -180,11 +196,6 @@
       tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
       tr.appendChild(tdRt);
 
-      const tdGames = document.createElement('td');
-      tdGames.className = 'right';
-      tdGames.textContent = (state.mode === 'live') ? (r.games ?? '') : '';
-      tr.appendChild(tdGames);
-
       const tdTier = document.createElement('td');
       tdTier.textContent = tierLabel(r);
       tr.appendChild(tdTier);
@@ -202,6 +213,7 @@
     state.filtered = !q
       ? state.rows.slice()
       : state.rows.filter(r => r.name.toLowerCase().includes(q));
+    updateRatingHeader();
     render();
     hideCompare();
   }
@@ -219,7 +231,6 @@
           id: d.id,
           name: d.name,
           rating: +d.elo,
-          games: null,
           tier: Number.isFinite(+d.tier) ? +d.tier : null,
           division: d.division || ''
         }))
@@ -237,7 +248,6 @@
         .map(d => d.season)
         .filter(Boolean)
     )).sort((a, b) => {
-      // descending by start year
       const ay = parseInt(String(a).slice(0, 4), 10);
       const by = parseInt(String(b).slice(0, 4), 10);
       return by - ay;
@@ -323,7 +333,7 @@
     wrap.style.display = 'block';
     chart.innerHTML = 'Loading…';
 
-    const mode = document.getElementById('agg').value;
+    const mode = document.getElementById('compare-agg').value || 'monthly';
 
     const traces = [];
     let ymin = Infinity, ymax = -Infinity;
@@ -420,6 +430,10 @@
       if (!selectedIds.length) { alert('Please select at least one team.'); return; }
       closeModal();
       const chosen = state.filtered.filter(t => selectedIds.includes(t.id));
+
+      // Force default compare view to monthly every time they open compare
+      document.getElementById('compare-agg').value = 'monthly';
+
       buildComparison(chosen);
     }
 
@@ -449,7 +463,6 @@
           id: d.id,
           name: d.name,
           rating: +d.rating,
-          games: Number.isFinite(+d.games) ? +d.games : null,
           tier: Number.isFinite(+d.tier) ? +d.tier : null,
           division: d.division || ''
         }))
@@ -463,11 +476,11 @@
       rebuildRowsFromMode();
     } catch (err) {
       document.querySelector('#teams tbody').innerHTML =
-        `<tr><td colspan="5">Error loading data: ${err.message}</td></tr>`;
+        `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
     }
   }
 
-  document.getElementById('agg').addEventListener('change', () => {
+  document.getElementById('compare-agg').addEventListener('change', () => {
     if (lastCompared.length) buildComparison(lastCompared);
   });
 
