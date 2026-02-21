@@ -26,26 +26,42 @@
 
     /* Games table */
     #gamesWrap { max-height: 520px; overflow: auto; margin-top: 12px; }
+
     table.games {
       width: 100%;
       border-collapse: separate;   /* needed for double borders */
       border-spacing: 0;
       font-size: 14px;
+      table-layout: fixed;         /* needed for ellipsis */
     }
+
     table.games th, table.games td {
       padding: 6px 8px;
       border-bottom: 1px solid #2b2f36;
-      text-align: center;          /* centre everything */
+      text-align: center;
       vertical-align: middle;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    /* Let Event wrap a bit so long names don't wreck the table */
+    /* Column widths */
+    table.games th:nth-child(1), table.games td:nth-child(1) { width: 115px; } /* Date */
+    table.games th:nth-child(2), table.games td:nth-child(2) { width: 460px; } /* Event */
+    table.games th:nth-child(3), table.games td:nth-child(3) { width: 230px; } /* White */
+    table.games th:nth-child(4), table.games td:nth-child(4) { width: 70px; }  /* Elo */
+    table.games th:nth-child(5), table.games td:nth-child(5) { width: 230px; } /* Black */
+    table.games th:nth-child(6), table.games td:nth-child(6) { width: 70px; }  /* Elo */
+    table.games th:nth-child(7), table.games td:nth-child(7) { width: 70px; }  /* Result */
+    table.games th:nth-child(8), table.games td:nth-child(8) { width: 70px; }  /* Delta */
+
+    /* Event column: centred, one line, ellipsis */
     table.games th:nth-child(2),
     table.games td:nth-child(2) {
-      white-space: normal;
-      min-width: 220px;
-      text-align: left;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* ensure any links/strong inside cells don't pull alignment */
@@ -59,10 +75,11 @@
       background-color: var(--panel-bg, #1a1a1a);
     }
 
-    /* Double separators for Chess layout with Event column:
-       Date | Event | White | Elo || Black | Elo || Result || Δ
-       Borders after: Event(2), Elo(4), Elo(6), Result(7)
+    /* Double separators with Event column:
+       Date || Event || White | Elo || Black | Elo || Result || Δ
+       Borders after: Date(1), Event(2), Elo(4), Elo(6), Result(7)
     */
+    table.games th:nth-child(1), table.games td:nth-child(1),
     table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(4), table.games td:nth-child(4),
     table.games th:nth-child(6), table.games td:nth-child(6),
@@ -127,7 +144,6 @@
 </main>
 
 <script>
-  /* ---------- SECTION CONFIG ---------- */
   const SECTIONS = {
     classical: { label: 'Classical', base: 'data/classical' },
     rapid:     { label: 'Rapid',     base: 'data/rapid' },
@@ -139,13 +155,13 @@
     const u = new URL(window.location.href);
     return u.searchParams.get(name);
   }
+
   function setParam(name, value) {
     const u = new URL(window.location.href);
     u.searchParams.set(name, value);
     window.history.replaceState({}, '', u.toString());
   }
 
-  /* ---------- PARAMS ---------- */
   const params = new URLSearchParams(location.search);
   const idRaw = params.get('id');
   if (!idRaw) {
@@ -169,13 +185,13 @@
     document.getElementById('nav-peak').href    = `peak.html?sec=${sec}`;
   }
 
-  let RAW = []; // daily series
+  let RAW = [];
 
-  function normalise(series, dedupeByDay = false){
+  function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
       .map(p => ({ x: p.x, y: +p.y }))
-      .sort((a,b) => new Date(a.x) - new Date(b.x));
+      .sort((a, b) => new Date(a.x) - new Date(b.x));
 
     if (!dedupeByDay) return s;
 
@@ -183,42 +199,44 @@
     let lastKey = null;
     for (const p of s) {
       const d = new Date(p.x);
-      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
       if (key !== lastKey) out.push(p);
-      else out[out.length-1] = p; // keep last point that day
+      else out[out.length - 1] = p;
       lastKey = key;
     }
     return out;
   }
 
-  function aggregate(series, mode){
+  function aggregate(series, mode) {
     if (mode === 'daily') return normalise(series, true);
 
     const buckets = Object.create(null);
     for (const p of series) {
       const d = new Date(p.x);
       const key = (mode === 'monthly')
-        ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`
+        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
         : `${d.getFullYear()}`;
       (buckets[key] ||= []).push(p.y);
     }
 
     const out = Object.keys(buckets).sort().map(k => {
       const ys = buckets[k].filter(Number.isFinite);
-      const avg = ys.reduce((a,b)=>a+b,0) / ys.length;
+      const avg = ys.reduce((a, b) => a + b, 0) / ys.length;
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
       return { x, y: avg };
     });
+
     return normalise(out, false);
   }
 
-  function draw(mode){
+  function draw(mode) {
     const el = document.getElementById('chart');
     if (el.textContent && el.textContent.includes('Loading')) el.textContent = '';
 
     const data = aggregate(RAW, mode);
     const xs = data.map(p => p.x);
     const ys = data.map(p => p.y).filter(Number.isFinite);
+
     if (!xs.length || !ys.length) {
       el.textContent = 'No games';
       return;
@@ -226,11 +244,16 @@
 
     const ymin = Math.floor(Math.min(...ys) / 100) * 100;
     const ymax = Math.ceil(Math.max(...ys) / 100) * 100;
+
     const shapes = [];
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
-        type: 'line', xref: 'paper', x0: 0, x1: 1,
-        y0: v, y1: v,
+        type: 'line',
+        xref: 'paper',
+        x0: 0,
+        x1: 1,
+        y0: v,
+        y1: v,
         line: { width: 1, color: 'rgba(128,128,128,0.35)' },
         layer: 'below'
       });
@@ -248,18 +271,19 @@
     };
 
     const bg = getComputedStyle(document.body).backgroundColor;
+
     Plotly.newPlot('chart', [trace], {
-      margin:{ l:50, r:20, t:10, b:40 },
-      xaxis:{ type:'date' },
-      yaxis:{ title:'Rating' },
-      paper_bgcolor:bg,
-      plot_bgcolor:bg,
-      font:{ color:getComputedStyle(document.body).color },
+      margin: { l: 50, r: 20, t: 10, b: 40 },
+      xaxis: { type: 'date' },
+      yaxis: { title: 'Rating' },
+      paper_bgcolor: bg,
+      plot_bgcolor: bg,
+      font: { color: getComputedStyle(document.body).color },
       shapes
     }, {
       staticPlot: IS_TOUCH,
-      displayModeBar:false,
-      responsive:true
+      displayModeBar: false,
+      responsive: true
     });
   }
 
@@ -278,8 +302,7 @@
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
 
-    // Chess: add Event as second column
-    for (const h of ['Date','Event','White','Elo','Black','Elo','Result','Δ']) {
+    for (const h of ['Date', 'Event', 'White', 'Elo', 'Black', 'Elo', 'Result', 'Δ']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -291,69 +314,61 @@
     thead.style.backgroundColor = panelBg;
 
     const tbody = document.createElement('tbody');
-    games.sort((a,b) => new Date(b.date) - new Date(a.date));
+    games.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     for (const g of games) {
       const tr = document.createElement('tr');
 
       const tdDate = document.createElement('td');
-      tdDate.textContent = g.date;
+      tdDate.textContent = g.date || '';
 
       const tdEvent = document.createElement('td');
       tdEvent.textContent = (g.event || '').trim();
+      tdEvent.title = tdEvent.textContent;
 
-      // White first
       const tdW = document.createElement('td');
       if (g.white === myName) {
         const s = document.createElement('strong');
-        s.textContent = g.white_display || g.white;
+        s.textContent = g.white_display || g.white || '';
         tdW.appendChild(s);
       } else {
-        tdW.textContent = g.white_display || g.white;
+        tdW.textContent = g.white_display || g.white || '';
       }
 
       const tdWE = document.createElement('td');
-      tdWE.textContent = Number(g.whiteElo).toString();
+      tdWE.textContent = Number.isFinite(Number(g.whiteElo)) ? String(Number(g.whiteElo)) : '';
 
-      // Black second
       const tdB = document.createElement('td');
       if (g.black === myName) {
         const s = document.createElement('strong');
-        s.textContent = g.black_display || g.black;
+        s.textContent = g.black_display || g.black || '';
         tdB.appendChild(s);
       } else {
-        tdB.textContent = g.black_display || g.black;
+        tdB.textContent = g.black_display || g.black || '';
       }
 
       const tdBE = document.createElement('td');
-      tdBE.textContent = Number(g.blackElo).toString();
+      tdBE.textContent = Number.isFinite(Number(g.blackElo)) ? String(Number(g.blackElo)) : '';
 
-      // Result (Chess notation: "1-0" = White wins, "0-1" = Black wins)
       const tdR = document.createElement('td');
-
       const res = String(g.result || '').trim();
       tdR.textContent = prettifyResult(res);
 
       const isDraw = (tdR.textContent === '1/2');
-
       const isWhite = (g.white === myName);
       const isBlack = (g.black === myName);
 
       let outcome = '';
-
       if (isDraw) {
         outcome = 'draw';
       } else if ((res === '1-0' && isWhite) || (res === '0-1' && isBlack)) {
         outcome = 'win';
       } else if ((res === '0-1' && isWhite) || (res === '1-0' && isBlack)) {
         outcome = 'loss';
-      } else {
-        outcome = '';
       }
 
       tdR.className = 'result' + (outcome ? ' ' + outcome : '');
 
-      // Δ
       const tdDelta = document.createElement('td');
       const numDelta = Number(g.delta);
       if (!Number.isNaN(numDelta)) {
@@ -378,7 +393,7 @@
     tbl.appendChild(tbody);
   }
 
-  async function load(){
+  async function load() {
     try {
       document.getElementById('chart').textContent = 'Loading…';
 
@@ -398,7 +413,8 @@
       document.getElementById('pname').textContent = me.display_name || me.name;
 
       RAW = normalise(
-        (await histRes.json()).map(d => ({ x: d.date, y: Number(d.rating) })), true
+        (await histRes.json()).map(d => ({ x: d.date, y: Number(d.rating) })),
+        true
       );
 
       if (!RAW.length) {
@@ -408,7 +424,7 @@
         draw(initialMode);
       }
 
-      document.getElementById('agg').addEventListener('change', e => draw(e.target.value), { once:false });
+      document.getElementById('agg').addEventListener('change', e => draw(e.target.value), { once: false });
 
       if (gamesRes.ok) {
         const games = await gamesRes.json();
@@ -426,7 +442,7 @@
     }
   }
 
-  function setSection(sec){
+  function setSection(sec) {
     const s = (sec || '').toLowerCase();
     state.section = SECTIONS[s] ? s : 'classical';
 
