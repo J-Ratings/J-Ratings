@@ -11,7 +11,7 @@
   <style>
     #chart { height: 420px; }
 
-    .toolbar {
+    .toolbar{
       margin-bottom: 10px;
       text-align: center;
       display: flex;
@@ -27,26 +27,25 @@
     /* Games table */
     #gamesWrap { max-height: 520px; overflow: auto; margin-top: 12px; }
 
-    table.games {
+    table.games{
       width: 100%;
       border-collapse: separate;
       border-spacing: 0;
       font-size: 14px;
-      table-layout: fixed;
+      table-layout: fixed; /* keeps columns within the container */
     }
 
-    table.games th, table.games td {
+    table.games th, table.games td{
       padding: 6px 8px;
       border-bottom: 1px solid #2b2f36;
       text-align: center;
       vertical-align: middle;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis;
+      text-overflow: ellipsis; /* single-line … */
     }
 
-    /* Sticky header */
-    table.games th {
+    table.games th{
       position: sticky;
       top: 0;
       z-index: 2;
@@ -55,41 +54,32 @@
 
     /* Column widths (8 columns total) */
     table.games th:nth-child(1), table.games td:nth-child(1) { width: 110px; } /* Date */
-    table.games th:nth-child(2), table.games td:nth-child(2) { width: 330px; } /* Event */
-    table.games th:nth-child(3), table.games td:nth-child(3) { width: 180px; } /* White */
+    table.games th:nth-child(2), table.games td:nth-child(2) { width: 220px; } /* Event (smaller) */
+    table.games th:nth-child(3), table.games td:nth-child(3) { width: 200px; } /* White */
     table.games th:nth-child(4), table.games td:nth-child(4) { width: 60px; }  /* Elo */
-    table.games th:nth-child(5), table.games td:nth-child(5) { width: 180px; } /* Black */
+    table.games th:nth-child(5), table.games td:nth-child(5) { width: 200px; } /* Black */
     table.games th:nth-child(6), table.games td:nth-child(6) { width: 60px; }  /* Elo */
     table.games th:nth-child(7), table.games td:nth-child(7) { width: 60px; }  /* Result */
     table.games th:nth-child(8), table.games td:nth-child(8) { width: 60px; }  /* Δ */
 
-    /* Centre + clip text-heavy columns */
+    /* Event: centred + clipped */
     table.games th:nth-child(2),
-    table.games td:nth-child(2),
-    table.games th:nth-child(3),
-    table.games td:nth-child(3),
-    table.games th:nth-child(5),
-    table.games td:nth-child(5) {
+    table.games td:nth-child(2){
       text-align: center;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    /* Ensure inner strong text also truncates */
-    table.games td strong {
-      display: block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+    /* allow names to show fully (as much as column permits) */
+    table.games td strong{ display: inline; }
 
-    /* Double separators: Date|Event|White|Elo|Black|Elo|Result|Δ */
+    /* Strong vertical separators: Date|Event|White|Elo|Black|Elo|Result|Δ */
     table.games th:nth-child(1), table.games td:nth-child(1),
     table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(4), table.games td:nth-child(4),
     table.games th:nth-child(6), table.games td:nth-child(6),
-    table.games th:nth-child(7), table.games td:nth-child(7) {
+    table.games th:nth-child(7), table.games td:nth-child(7){
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
@@ -150,7 +140,6 @@
 </main>
 
 <script>
-  /* ---------- SECTION CONFIG ---------- */
   const SECTIONS = {
     classical: { label: 'Classical', base: 'data/classical' },
     rapid:     { label: 'Rapid',     base: 'data/rapid' },
@@ -168,7 +157,6 @@
     window.history.replaceState({}, '', u.toString());
   }
 
-  /* ---------- PARAMS ---------- */
   const params = new URLSearchParams(location.search);
   const idRaw = params.get('id');
   if (!idRaw) {
@@ -192,7 +180,7 @@
     document.getElementById('nav-peak').href    = `peak.html?sec=${sec}`;
   }
 
-  let RAW = []; // daily series
+  let RAW = [];
 
   function normalise(series, dedupeByDay = false){
     const s = series
@@ -208,7 +196,7 @@
       const d = new Date(p.x);
       const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
       if (key !== lastKey) out.push(p);
-      else out[out.length-1] = p; // keep last point that day
+      else out[out.length-1] = p;
       lastKey = key;
     }
     return out;
@@ -294,7 +282,7 @@
     return isDraw ? '1/2' : res;
   }
 
-  function truncateText(s, maxChars) {
+  function truncateEvent(s, maxChars) {
     const txt = String(s || '').trim();
     if (txt.length <= maxChars) return txt;
     return txt.slice(0, maxChars) + ' . . .';
@@ -324,53 +312,40 @@
     for (const g of games) {
       const tr = document.createElement('tr');
 
-      // Date
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date || '';
 
-      // Event (truncate to 35 chars)
       const tdEvent = document.createElement('td');
       const fullEvent = String(g.event || '');
-      tdEvent.textContent = truncateText(fullEvent, 35);
+      tdEvent.textContent = truncateEvent(fullEvent, 35);
       tdEvent.title = fullEvent;
 
-      // White
       const tdW = document.createElement('td');
-      const whiteFull = g.white_display || g.white || '';
-      const whiteShort = truncateText(whiteFull, 20);
-      tdW.title = whiteFull;
-
+      const whiteTxt = g.white_display || g.white || '';
       if (g.white === myName) {
         const s = document.createElement('strong');
-        s.textContent = whiteShort;
-        s.title = whiteFull;
+        s.textContent = whiteTxt;
         tdW.appendChild(s);
       } else {
-        tdW.textContent = whiteShort;
+        tdW.textContent = whiteTxt;
       }
 
       const tdWE = document.createElement('td');
       tdWE.textContent = Number(g.whiteElo).toString();
 
-      // Black
       const tdB = document.createElement('td');
-      const blackFull = g.black_display || g.black || '';
-      const blackShort = truncateText(blackFull, 20);
-      tdB.title = blackFull;
-
+      const blackTxt = g.black_display || g.black || '';
       if (g.black === myName) {
         const s = document.createElement('strong');
-        s.textContent = blackShort;
-        s.title = blackFull;
+        s.textContent = blackTxt;
         tdB.appendChild(s);
       } else {
-        tdB.textContent = blackShort;
+        tdB.textContent = blackTxt;
       }
 
       const tdBE = document.createElement('td');
       tdBE.textContent = Number(g.blackElo).toString();
 
-      // Result
       const tdR = document.createElement('td');
       const res = String(g.result || '').trim();
       tdR.textContent = prettifyResult(res);
@@ -380,17 +355,12 @@
       const isBlack = (g.black === myName);
 
       let outcome = '';
-      if (isDraw) {
-        outcome = 'draw';
-      } else if ((res === '1-0' && isWhite) || (res === '0-1' && isBlack)) {
-        outcome = 'win';
-      } else if ((res === '0-1' && isWhite) || (res === '1-0' && isBlack)) {
-        outcome = 'loss';
-      }
+      if (isDraw) outcome = 'draw';
+      else if ((res === '1-0' && isWhite) || (res === '0-1' && isBlack)) outcome = 'win';
+      else if ((res === '0-1' && isWhite) || (res === '1-0' && isBlack)) outcome = 'loss';
 
       tdR.className = 'result' + (outcome ? ' ' + outcome : '');
 
-      // Δ
       const tdDelta = document.createElement('td');
       const numDelta = Number(g.delta);
       if (!Number.isNaN(numDelta)) {
@@ -434,15 +404,12 @@
 
       document.getElementById('pname').textContent = me.display_name || me.name;
 
-      RAW = normalise(
-        (await histRes.json()).map(d => ({ x: d.date, y: Number(d.rating) })), true
-      );
+      RAW = normalise((await histRes.json()).map(d => ({ x: d.date, y: Number(d.rating) })), true);
 
       if (!RAW.length) {
         document.getElementById('chart').textContent = 'No games';
       } else {
-        const initialMode = document.getElementById('agg').value || 'monthly';
-        draw(initialMode);
+        draw(document.getElementById('agg').value || 'monthly');
       }
 
       document.getElementById('agg').addEventListener('change', e => draw(e.target.value), { once:false });
@@ -451,15 +418,14 @@
         const games = await gamesRes.json();
         renderGamesTable(me.name, games);
       } else {
-        const tbl = document.getElementById('games');
-        tbl.innerHTML = '<tbody><tr><td colspan="8">No games</td></tr></tbody>';
+        document.getElementById('games').innerHTML =
+          '<tbody><tr><td colspan="8">No games</td></tr></tbody>';
       }
-
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
-      const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="8">Error loading games</td></tr></tbody>';
+      document.getElementById('games').innerHTML =
+        '<tbody><tr><td colspan="8">Error loading games</td></tr></tbody>';
     }
   }
 
@@ -470,7 +436,6 @@
     document.getElementById('sec').value = state.section;
     setParam('sec', state.section);
     wireNavLinks();
-
     load();
   }
 
