@@ -8,9 +8,37 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
+
+  
   <style>
     #chart { height: 420px; }
+.player-head{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
 
+.player-head #pname{
+  margin: 0;
+  text-align: center;
+}
+
+.player-head-spacer{
+  justify-self: start;
+}
+
+.peak-badge{
+  justify-self: end;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 4px 8px;
+  border: 1px solid rgba(128,128,128,0.35);
+  border-radius: 6px;
+  background: rgba(128,128,128,0.08);
+  white-space: nowrap;
+}
     .toolbar{
       margin-bottom: 10px;
       text-align: center;
@@ -111,7 +139,11 @@
 
 <main class="wrap">
   <section class="panel">
-    <h2 id="pname">Player</h2>
+<div class="player-head">
+  <div class="player-head-spacer" aria-hidden="true"></div>
+  <h2 id="pname">Player</h2>
+  <div id="peakBadge" class="peak-badge">Peak: —</div>
+</div>
 
     <div class="toolbar">
       <label for="sec">Format:</label>
@@ -385,6 +417,20 @@
     tbl.appendChild(tbody);
   }
 
+function updatePeakBadge() {
+  const el = document.getElementById('peakBadge');
+  if (!el) return;
+
+  const vals = RAW.map(p => Number(p.y)).filter(Number.isFinite);
+  if (!vals.length) {
+    el.textContent = 'Peak: —';
+    return;
+  }
+
+  const peak = Math.max(...vals);
+  el.textContent = `Peak: ${Math.round(peak)}`;
+}
+
   async function load(){
     try {
       document.getElementById('chart').textContent = 'Loading…';
@@ -405,6 +451,7 @@
       document.getElementById('pname').textContent = me.display_name || me.name;
 
       RAW = normalise((await histRes.json()).map(d => ({ x: d.date, y: Number(d.rating) })), true);
+updatePeakBadge();
 
       if (!RAW.length) {
         document.getElementById('chart').textContent = 'No games';
