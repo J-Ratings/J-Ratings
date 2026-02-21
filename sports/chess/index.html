@@ -402,9 +402,7 @@ years
       if (!res.ok) throw new Error(`Failed to load ${url}`);
       const data = await res.json();
 
-      const rows = year
-        ? data
-        : data.filter(d => d && d.active === true); // only apply active filter for Live
+const rows = data.filter(d => d && d.active === true);
 
       state.rows = rows
         .filter(d => d && d.id && (d.display_name || d.name) && Number.isFinite(+d.rating))
