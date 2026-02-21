@@ -32,7 +32,7 @@
       border-collapse: separate;
       border-spacing: 0;
       font-size: 14px;
-      table-layout: fixed; /* important: stop one column forcing table wider */
+      table-layout: fixed;
     }
 
     table.games th, table.games td {
@@ -45,9 +45,6 @@
       text-overflow: ellipsis;
     }
 
-    /* ensure any links/strong inside cells don't pull alignment */
-    table.games td a, table.games td strong { display: inline-block; }
-
     /* Sticky header */
     table.games th {
       position: sticky;
@@ -56,29 +53,38 @@
       background-color: var(--panel-bg, #1a1a1a);
     }
 
-    /* Column widths (fit all columns on screen) */
-    table.games th:nth-child(1), table.games td:nth-child(1) { width: 120px; } /* Date */
-    table.games th:nth-child(2), table.games td:nth-child(2) { width: 520px; } /* Event */
-    table.games th:nth-child(3), table.games td:nth-child(3) { width: 220px; } /* White */
-    table.games th:nth-child(4), table.games td:nth-child(4) { width: 70px; }  /* Elo */
-    table.games th:nth-child(5), table.games td:nth-child(5) { width: 220px; } /* Black */
-    table.games th:nth-child(6), table.games td:nth-child(6) { width: 70px; }  /* Elo */
-    table.games th:nth-child(7), table.games td:nth-child(7) { width: 70px; }  /* Result */
-    table.games th:nth-child(8), table.games td:nth-child(8) { width: 70px; }  /* Delta */
+    /* Column widths (8 columns total) */
+    table.games th:nth-child(1), table.games td:nth-child(1) { width: 110px; } /* Date */
+    table.games th:nth-child(2), table.games td:nth-child(2) { width: 330px; } /* Event */
+    table.games th:nth-child(3), table.games td:nth-child(3) { width: 180px; } /* White */
+    table.games th:nth-child(4), table.games td:nth-child(4) { width: 60px; }  /* Elo */
+    table.games th:nth-child(5), table.games td:nth-child(5) { width: 180px; } /* Black */
+    table.games th:nth-child(6), table.games td:nth-child(6) { width: 60px; }  /* Elo */
+    table.games th:nth-child(7), table.games td:nth-child(7) { width: 60px; }  /* Result */
+    table.games th:nth-child(8), table.games td:nth-child(8) { width: 60px; }  /* Δ */
 
-    /* Event column: centred and no wrapping */
+    /* Centre + clip text-heavy columns */
     table.games th:nth-child(2),
-    table.games td:nth-child(2) {
+    table.games td:nth-child(2),
+    table.games th:nth-child(3),
+    table.games td:nth-child(3),
+    table.games th:nth-child(5),
+    table.games td:nth-child(5) {
       text-align: center;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    /* Strong double separators:
-       Date | Event | White | Elo | Black | Elo | Result | Δ
-       Put divider after Date, Event, Elo(white), Elo(black), Result
-    */
+    /* Ensure inner strong text also truncates */
+    table.games td strong {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* Double separators: Date|Event|White|Elo|Black|Elo|Result|Δ */
     table.games th:nth-child(1), table.games td:nth-child(1),
     table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(4), table.games td:nth-child(4),
@@ -144,6 +150,7 @@
 </main>
 
 <script>
+  /* ---------- SECTION CONFIG ---------- */
   const SECTIONS = {
     classical: { label: 'Classical', base: 'data/classical' },
     rapid:     { label: 'Rapid',     base: 'data/rapid' },
@@ -161,6 +168,7 @@
     window.history.replaceState({}, '', u.toString());
   }
 
+  /* ---------- PARAMS ---------- */
   const params = new URLSearchParams(location.search);
   const idRaw = params.get('id');
   if (!idRaw) {
@@ -184,7 +192,7 @@
     document.getElementById('nav-peak').href    = `peak.html?sec=${sec}`;
   }
 
-  let RAW = [];
+  let RAW = []; // daily series
 
   function normalise(series, dedupeByDay = false){
     const s = series
@@ -200,7 +208,7 @@
       const d = new Date(p.x);
       const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
       if (key !== lastKey) out.push(p);
-      else out[out.length-1] = p;
+      else out[out.length-1] = p; // keep last point that day
       lastKey = key;
     }
     return out;
@@ -286,7 +294,7 @@
     return isDraw ? '1/2' : res;
   }
 
-  function truncateEventText(s, maxChars = 35) {
+  function truncateText(s, maxChars) {
     const txt = String(s || '').trim();
     if (txt.length <= maxChars) return txt;
     return txt.slice(0, maxChars) + ' . . .';
@@ -316,40 +324,53 @@
     for (const g of games) {
       const tr = document.createElement('tr');
 
+      // Date
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date || '';
 
+      // Event (truncate to 35 chars)
       const tdEvent = document.createElement('td');
       const fullEvent = String(g.event || '');
-      tdEvent.textContent = truncateEventText(fullEvent, 35);
-      tdEvent.title = fullEvent; // full event on hover
+      tdEvent.textContent = truncateText(fullEvent, 35);
+      tdEvent.title = fullEvent;
 
+      // White
       const tdW = document.createElement('td');
-      const whiteLabel = g.white_display || g.white || '';
+      const whiteFull = g.white_display || g.white || '';
+      const whiteShort = truncateText(whiteFull, 20);
+      tdW.title = whiteFull;
+
       if (g.white === myName) {
         const s = document.createElement('strong');
-        s.textContent = whiteLabel;
+        s.textContent = whiteShort;
+        s.title = whiteFull;
         tdW.appendChild(s);
       } else {
-        tdW.textContent = whiteLabel;
+        tdW.textContent = whiteShort;
       }
 
       const tdWE = document.createElement('td');
       tdWE.textContent = Number(g.whiteElo).toString();
 
+      // Black
       const tdB = document.createElement('td');
-      const blackLabel = g.black_display || g.black || '';
+      const blackFull = g.black_display || g.black || '';
+      const blackShort = truncateText(blackFull, 20);
+      tdB.title = blackFull;
+
       if (g.black === myName) {
         const s = document.createElement('strong');
-        s.textContent = blackLabel;
+        s.textContent = blackShort;
+        s.title = blackFull;
         tdB.appendChild(s);
       } else {
-        tdB.textContent = blackLabel;
+        tdB.textContent = blackShort;
       }
 
       const tdBE = document.createElement('td');
       tdBE.textContent = Number(g.blackElo).toString();
 
+      // Result
       const tdR = document.createElement('td');
       const res = String(g.result || '').trim();
       tdR.textContent = prettifyResult(res);
@@ -369,6 +390,7 @@
 
       tdR.className = 'result' + (outcome ? ' ' + outcome : '');
 
+      // Δ
       const tdDelta = document.createElement('td');
       const numDelta = Number(g.delta);
       if (!Number.isNaN(numDelta)) {
@@ -430,14 +452,14 @@
         renderGamesTable(me.name, games);
       } else {
         const tbl = document.getElementById('games');
-        tbl.innerHTML = '<tbody><tr><td>No games</td></tr></tbody>';
+        tbl.innerHTML = '<tbody><tr><td colspan="8">No games</td></tr></tbody>';
       }
 
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td>Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="8">Error loading games</td></tr></tbody>';
     }
   }
 
@@ -456,7 +478,6 @@
     setSection(getParam('sec') || 'classical');
     document.getElementById('sec').addEventListener('change', e => setSection(e.target.value));
     wireNavLinks();
-    load();
   });
 </script>
 </body>
