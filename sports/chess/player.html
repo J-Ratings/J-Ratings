@@ -40,6 +40,14 @@
       white-space: nowrap;
     }
 
+    /* Let Event wrap a bit so long names don't wreck the table */
+    table.games th:nth-child(2),
+    table.games td:nth-child(2) {
+      white-space: normal;
+      min-width: 220px;
+      text-align: left;
+    }
+
     /* ensure any links/strong inside cells don't pull alignment */
     table.games td a, table.games td strong { display: inline-block; }
 
@@ -51,11 +59,14 @@
       background-color: var(--panel-bg, #1a1a1a);
     }
 
-    /* Double separators for Chess layout: Date|White, Elo|Black, Elo|Result|Δ */
-    table.games th:nth-child(1), table.games td:nth-child(1),
-    table.games th:nth-child(3), table.games td:nth-child(3),
-    table.games th:nth-child(5), table.games td:nth-child(5),
-    table.games th:nth-child(6), table.games td:nth-child(6) {
+    /* Double separators for Chess layout with Event column:
+       Date | Event | White | Elo || Black | Elo || Result || Δ
+       Borders after: Event(2), Elo(4), Elo(6), Result(7)
+    */
+    table.games th:nth-child(2), table.games td:nth-child(2),
+    table.games th:nth-child(4), table.games td:nth-child(4),
+    table.games th:nth-child(6), table.games td:nth-child(6),
+    table.games th:nth-child(7), table.games td:nth-child(7) {
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
@@ -267,8 +278,8 @@
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
 
-    // Chess: White on the left
-    for (const h of ['Date','White','Elo','Black','Elo','Result','Δ']) {
+    // Chess: add Event as second column
+    for (const h of ['Date','Event','White','Elo','Black','Elo','Result','Δ']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -288,14 +299,17 @@
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date;
 
+      const tdEvent = document.createElement('td');
+      tdEvent.textContent = (g.event || '').trim();
+
       // White first
       const tdW = document.createElement('td');
       if (g.white === myName) {
         const s = document.createElement('strong');
-        s.textContent = g.white;
+        s.textContent = g.white_display || g.white;
         tdW.appendChild(s);
       } else {
-        tdW.textContent = g.white;
+        tdW.textContent = g.white_display || g.white;
       }
 
       const tdWE = document.createElement('td');
@@ -305,10 +319,10 @@
       const tdB = document.createElement('td');
       if (g.black === myName) {
         const s = document.createElement('strong');
-        s.textContent = g.black;
+        s.textContent = g.black_display || g.black;
         tdB.appendChild(s);
       } else {
-        tdB.textContent = g.black;
+        tdB.textContent = g.black_display || g.black;
       }
 
       const tdBE = document.createElement('td');
@@ -350,6 +364,7 @@
       }
 
       tr.appendChild(tdDate);
+      tr.appendChild(tdEvent);
       tr.appendChild(tdW);
       tr.appendChild(tdWE);
       tr.appendChild(tdB);
@@ -380,7 +395,7 @@
       const me = players.find(p => p.id === idRaw);
       if (!me) throw new Error('player id not in players.json');
 
-      document.getElementById('pname').textContent = me.name;
+      document.getElementById('pname').textContent = me.display_name || me.name;
 
       RAW = normalise(
         (await histRes.json()).map(d => ({ x: d.date, y: Number(d.rating) })), true
