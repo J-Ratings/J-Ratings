@@ -172,7 +172,7 @@ input[type="search"] {
   .title h1 {
     font-size: 1.8rem;
   }
-
+}
 .brand-with-logo {
   display: inline-flex;
   align-items: center;
@@ -187,7 +187,7 @@ input[type="search"] {
   transform: translateY(1px);
 }
 
-}
+
 .title-go {
   color: var(--wood);
 }
