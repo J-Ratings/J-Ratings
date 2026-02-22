@@ -6,38 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <style>
-    .sports-grid{
-      display:grid;
+    .sports-grid {
+      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap:16px;
-      margin-top:18px;
+      gap: 16px;
+      margin-top: 18px;
     }
-    .sport-card{
-      display:block;
-      padding:18px;
-      border:1px solid var(--border);
-      border-radius:10px;
+    .sport-card {
+      display: block;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
       background: #0f1623;
       color: var(--text);
-      text-decoration:none;
+      text-decoration: none;
     }
-    .sport-card:hover{ border-color: var(--accent); }
-    .sport-title{ font-size:1.3rem; font-weight:700; margin:0 0 6px 0; }
-    .sport-sub{ margin:0; color: var(--muted); }
-    .disabled{
-      opacity:.55;
-      cursor:not-allowed;
-      pointer-events:none;
+    .sport-card:hover { border-color: var(--accent); }
+    .sport-title { font-size: 1.3rem; font-weight: 700; margin: 0 0 6px 0; }
+    .sport-sub { margin: 0; color: var(--muted); }
+    .disabled {
+      opacity: .55;
+      cursor: not-allowed;
+      pointer-events: none;
     }
-    .pill{
-      display:inline-block;
-      font-size:.85rem;
-      padding:4px 8px;
-      border:1px solid var(--border);
-      border-radius:999px;
+    .pill {
+      display: inline-block;
+      font-size: .85rem;
+      padding: 4px 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
       color: var(--muted);
-      margin-left:8px;
-      vertical-align:middle;
+      margin-left: 8px;
+      vertical-align: middle;
     }
   </style>
 </head>
@@ -64,6 +64,11 @@
         <a class="sport-card" href="sports/PremierLeague/index.html">
           <p class="sport-title">English Football</p>
           <p class="sport-sub">Top 4 divisions</p>
+        </a>
+
+        <a class="sport-card" href="sports/WordFootball/index.html">
+          <p class="sport-title">World Football</p>
+          <p class="sport-sub">International teams and historical sides</p>
         </a>
       </div>
     </div>
