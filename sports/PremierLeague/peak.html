@@ -208,7 +208,7 @@
     wrap.style.display = 'block';
     chart.innerHTML = 'Loading…';
 
-    const mode = document.getElementById('agg').value;
+const mode = 'monthly';
 
     const traces = [];
     let ymin = Infinity, ymax = -Infinity;
@@ -359,10 +359,6 @@
         `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
     }
   }
-
-  document.getElementById('agg').addEventListener('change', () => {
-    if (lastCompared.length) buildComparison(lastCompared);
-  });
 
   document.getElementById('q').addEventListener('input', applyFilter);
   setupCompareButton();
