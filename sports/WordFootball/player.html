@@ -7,31 +7,67 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
   <style>
-    #chart { height: 420px; }
-    .toolbar { margin-bottom: 10px; text-align: center; }
-    .toolbar label { margin-right: 6px; }
-    h2#pname, h3.section-title { text-align: center; }
+    /* Profile page sizing tweaks */
+    #chart {
+      height: 520px;
+    }
 
-    #gamesWrap { max-height: 520px; overflow: auto; margin-top: 12px; }
+    .toolbar {
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+    }
+
+    .toolbar label {
+      margin-right: 6px;
+      font-size: 1.05rem;
+    }
+
+    h2#pname,
+    h3.section-title {
+      text-align: center;
+    }
+
+    h2#pname {
+      font-size: 2rem;
+      padding: 20px;
+    }
+
+    h3.section-title {
+      font-size: 1.6rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    #gamesWrap {
+      max-height: 520px;
+      overflow: auto;
+      margin-top: 12px;
+    }
+
     table.games {
       width: 100%;
       border-collapse: separate;
       border-spacing: 0;
-      font-size: 14px;
+      font-size: 1rem;
     }
-    table.games th, table.games td {
-      padding: 6px 8px;
+
+    table.games th,
+    table.games td {
+      padding: 10px 12px;
       border-bottom: 1px solid #2b2f36;
       text-align: center;
       vertical-align: middle;
       white-space: nowrap;
     }
+
     table.games th {
       position: sticky;
       top: 0;
       z-index: 2;
       background-color: var(--panel-bg, #1a1a1a);
     }
+
     /* Double separators: Date | Tournament | Opponent | Elo | Result | Δ */
     table.games th:nth-child(1), table.games td:nth-child(1),
     table.games th:nth-child(2), table.games td:nth-child(2),
@@ -52,8 +88,42 @@
     .delta.neg { color: #dc2222; }
 
     .opp { text-align: left; }
-    .tourn { text-align: left; max-width: 260px; overflow: hidden; text-overflow: ellipsis; }
+    .tourn {
+      text-align: left;
+      max-width: 260px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .muted-small { opacity: .85; font-size: .9em; }
+
+    @media (max-width: 600px) {
+      #chart {
+        height: 420px;
+      }
+
+      h2#pname {
+        font-size: 1.6rem;
+        padding: 16px;
+      }
+
+      h3.section-title {
+        font-size: 1.25rem;
+      }
+
+      table.games {
+        font-size: 0.92rem;
+      }
+
+      table.games th,
+      table.games td {
+        padding: 8px 10px;
+      }
+
+      .tourn {
+        max-width: 180px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -61,11 +131,12 @@
   <div class="wrap">
     <h1 class="site-title">
       <a id="home-link" href="index.html" class="brand-with-logo">
-    <span>J-Ratings <span class="title-football">International Football</span></span>
-    <img src="../../Football Banner Logo.png" alt="Football logo" class="sport-logo">
-  </a>
+        <span>J-Ratings <span class="title-football">International Football</span></span>
+        <img src="../../Football Banner Logo.png" alt="Football logo" class="sport-logo">
+      </a>
     </h1>
     <nav class="topnav" aria-label="Main">
+      <a href="../../index.html">Sports</a>
       <a href="index.html">Home</a>
       <a href="compare.html">Compare</a>
       <a href="peak.html">Peak</a>
@@ -76,6 +147,7 @@
 <main class="wrap">
   <section class="panel">
     <h2 id="pname">Team</h2>
+
     <div class="toolbar">
       <label for="agg">View:</label>
       <select id="agg">
@@ -84,9 +156,10 @@
         <option value="yearly">Yearly</option>
       </select>
     </div>
+
     <div id="chart">Loading…</div>
 
-    <h3 class="section-title" style="margin-top:18px;">Games</h3>
+    <h3 class="section-title">Games</h3>
     <div id="gamesWrap">
       <table id="games" class="games"></table>
     </div>
@@ -126,7 +199,7 @@
       const d = new Date(p.x);
       const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
       if (key !== lastKey) out.push(p);
-      else out[out.length - 1] = p; // keep last match of the day
+      else out[out.length - 1] = p;
       lastKey = key;
     }
     return out;
@@ -171,19 +244,22 @@
 
     const ymin = Math.floor(Math.min(...ys) / 100) * 100;
     const ymax = Math.ceil(Math.max(...ys) / 100) * 100;
+
     const shapes = [];
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
-        type: 'line', xref: 'paper', x0: 0, x1: 1,
-        y0: v, y1: v,
+        type: 'line',
+        xref: 'paper',
+        x0: 0,
+        x1: 1,
+        y0: v,
+        y1: v,
         line: { width: 1, color: 'rgba(128,128,128,0.35)' },
         layer: 'below'
       });
     }
 
-    const hoverExtra = (mode === 'daily')
-      ? '<br>%{customdata}'
-      : '';
+    const hoverExtra = (mode === 'daily') ? '<br>%{customdata}' : '';
 
     const trace = {
       type: 'scatter',
@@ -199,12 +275,12 @@
 
     const bg = getComputedStyle(document.body).backgroundColor;
     Plotly.newPlot('chart', [trace], {
-      margin: { l: 50, r: 20, t: 10, b: 40 },
+      margin: { l: 60, r: 20, t: 10, b: 45 },
       xaxis: { type: 'date' },
       yaxis: { title: 'Rating' },
       paper_bgcolor: bg,
       plot_bgcolor: bg,
-      font: { color: getComputedStyle(document.body).color },
+      font: { color: getComputedStyle(document.body).color, size: 14 },
       shapes
     }, {
       staticPlot: IS_TOUCH,
@@ -216,12 +292,8 @@
   function getResultClassAndText(g, myName) {
     const isHome = g.home === myName;
     const isAway = g.away === myName;
-
     const raw = (g.result || '').trim();
 
-    // World football JSON uses:
-    // - team name for winner
-    // - "Draw"
     if (/^draw$/i.test(raw)) {
       return { cls: 'draw', text: 'Draw' };
     }
@@ -230,7 +302,6 @@
       return { cls: 'win', text: 'Win' };
     }
 
-    // If result equals opponent/team-name winner and it's not me, it's a loss
     if ((isHome || isAway) && raw !== '' && raw !== myName) {
       return { cls: 'loss', text: 'Loss' };
     }
@@ -269,7 +340,6 @@
       const opponentElo = isHome ? Number(g.awayElo) : Number(g.homeElo);
       const myEloBefore = isHome ? Number(g.homeElo) : Number(g.awayElo);
 
-      // delta is exported as string like "+8.4"
       const numDelta = Number(g.delta);
       const myEloAfter = Number.isFinite(myEloBefore) && Number.isFinite(numDelta)
         ? Math.round(myEloBefore + numDelta)
