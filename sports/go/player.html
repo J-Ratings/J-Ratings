@@ -245,11 +245,11 @@
       y: ys,
       mode: (mode === 'daily') ? 'lines' : 'lines+markers',
       line: {
-        width: 2,
+        width: 3,
         shape: 'linear',
         color: '#1f77b4'
       },
-      marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
+      marker: (mode === 'daily') ? { size: 0 } : { size: 6 },
       hovertemplate: '%{x}<br>%{y:.0f}<extra></extra>',
       connectgaps: true
     };
