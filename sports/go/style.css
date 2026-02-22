@@ -8,7 +8,7 @@
   --muted: #8b949e;
   --border: #30363d;
 
-  --wood: #acaaaaba; /* wooden brown */
+  --wood: #E6EBE1; /* Go */
 }
 
 html, body {
@@ -172,4 +172,7 @@ input[type="search"] {
   .title h1 {
     font-size: 1.8rem;
   }
+}
+.title-go {
+  color: var(--pearl);
 }

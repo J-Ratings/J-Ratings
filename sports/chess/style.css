@@ -8,8 +8,7 @@
   --muted: #8b949e;
   --border: #30363d;
   
-  --pearl: #f4f1e8; /* go */
-  --wood: #DE5B00; /* chess */
+  --wood: #d65b1e; /* chess */
 }
 
 html, body {
@@ -190,7 +189,4 @@ input[type="search"] {
 
 .title-chess {
   color: var(--wood);
-}
-.title-go {
-  color: var(--pearl);
 }
