@@ -176,18 +176,17 @@ input[type="search"] {
 .brand-with-logo {
   display: inline-flex;
   align-items: center;
-  gap: 4px; /* was 10px */
+  gap: 4px; /* tighter spacing */
   text-decoration: none;
 }
 
 .sport-logo {
-  height: 1.1em;
+  height: 1.35em; /* slightly bigger */
   width: auto;
   display: block;
   transform: translateY(1px);
 }
 
-/* Make sure this selector matches your actual markup */
 .title-chess {
   color: var(--wood);
 }
