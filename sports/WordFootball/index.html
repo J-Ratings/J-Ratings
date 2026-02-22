@@ -26,6 +26,15 @@
 
     #q { width: min(520px, 100%); }
 
+    .compare-chart-toolbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
     #compare-modal {
       display:none; position:fixed; top:0; left:0; width:100%; height:100%;
       background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:9999;
@@ -63,9 +72,9 @@
   <div class="wrap">
     <h1 class="site-title">
       <a id="home-link" href="index.html" class="brand-with-logo">
-    <span>J-Ratings <span class="title-go">World Football</span></span>
-    <img src="../../Football Banner Logo.png" alt="Football logo" class="sport-logo">
-  </a>
+        <span>J-Ratings <span class="title-football">World Football</span></span>
+        <img src="../../Football Banner Logo.png" alt="Football logo" class="sport-logo">
+      </a>
     </h1>
     <nav class="topnav" aria-label="Main">
       <a href="../../index.html">Sports</a>
@@ -93,7 +102,7 @@
     </div>
 
     <div id="compare-wrap" style="display:none; padding:16px">
-      <div style="display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;">
+      <div class="compare-chart-toolbar">
         <label for="compare-agg">View:</label>
         <select id="compare-agg">
           <option value="daily">Daily</option>
@@ -317,10 +326,12 @@
 
     const wrap = document.getElementById('compare-wrap');
     const chart = document.getElementById('compare-chart');
+    const modeSel = document.getElementById('compare-agg');
+
     wrap.style.display = 'block';
     chart.innerHTML = 'Loading…';
 
-    const mode = document.getElementById('compare-agg').value || 'monthly';
+    const mode = modeSel ? modeSel.value : 'monthly';
 
     const traces = [];
     let ymin = Infinity, ymax = -Infinity;
@@ -417,12 +428,19 @@
 
     function showSelected() {
       const selectedIds = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
-      if (!selectedIds.length) { alert('Please select at least one team.'); return; }
+      if (!selectedIds.length) {
+        alert('Please select at least one team.');
+        return;
+      }
+
       closeModal();
 
       const chosen = state.filtered.filter(t => selectedIds.includes(t.id));
 
-      document.getElementById('compare-agg').value = 'monthly';
+      // Force default compare view to monthly each time
+      const compareAgg = document.getElementById('compare-agg');
+      if (compareAgg) compareAgg.value = 'monthly';
+
       buildComparison(chosen);
     }
 
@@ -446,8 +464,7 @@
       const teamsData = await teamsRes.json();
       const eraData = await eraRes.json();
 
-      // Build a latest-tournament lookup from history files (best effort).
-      // Falls back to blank if history is missing.
+      // Build a latest-tournament lookup from history files (best effort)
       const latestTournamentById = new Map();
 
       state.liveRows = teamsData

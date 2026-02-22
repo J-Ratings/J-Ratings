@@ -10,13 +10,12 @@
     #compare-chart { height: 500px; }
     .toolbar { margin-bottom: 10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
 
-    /* Compare chart toolbar (shown only when chart is visible) */
     .compare-chart-toolbar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:10px;
+      flex-wrap:wrap;
     }
 
     /* Modal */
@@ -44,8 +43,8 @@
     <nav class="topnav" aria-label="Main">
       <a href="../../index.html">Sports</a>
       <a id="nav-home" href="index.html" class="active-tab">Home</a>
-      <a id="nav-compare" href="compare.html">Compare</a>
-      <a id="nav-peak" href="peak.html">Peak</a>
+      <a id="nav-compare" href="compare.html?sec=classical">Compare</a>
+      <a id="nav-peak" href="peak.html?sec=classical">Peak</a>
     </nav>
   </div>
 </header>
@@ -131,9 +130,14 @@
     const u = new URL(window.location.href);
     return u.searchParams.get(name);
   }
+
   function setParam(name, value) {
     const u = new URL(window.location.href);
-    u.searchParams.set(name, value);
+    if (value === null || value === undefined) {
+      u.searchParams.delete(name);
+    } else {
+      u.searchParams.set(name, value);
+    }
     window.history.replaceState({}, '', u.toString());
   }
 
@@ -146,8 +150,8 @@
     filtered: []
   };
 
-  const histCache = new Map(); // key: `${section}|${id}`
-  let lastCompared = [];       // remember the last selection so changing View re-plots
+  const histCache = new Map(); // `${section}|${id}`
+  let lastCompared = [];
 
   function dataBase() { return SECTIONS[state.section].base; }
   function playersUrl() { return `${dataBase()}/players.json`; }
@@ -167,6 +171,7 @@
   function render() {
     const tbody = document.querySelector('#players tbody');
     tbody.innerHTML = '';
+
     state.filtered.forEach((r, i) => {
       const tr = document.createElement('tr');
 
@@ -189,8 +194,7 @@
       tbody.appendChild(tr);
     });
 
-    document.getElementById('count').textContent =
-      `${state.filtered.length.toLocaleString()} players`;
+    document.getElementById('count').textContent = `${state.filtered.length.toLocaleString()} players`;
   }
 
   function applyFilter() {
@@ -206,6 +210,7 @@
   async function fetchHistoryFor(id) {
     const key = `${state.section}|${id}`;
     if (histCache.has(key)) return histCache.get(key);
+
     try {
       const res = await fetch(historyUrl(id), { cache: 'no-cache' });
       if (!res.ok) return null;
@@ -217,12 +222,12 @@
     }
   }
 
-  /* ---------- AGGREGATION (matches player.html) ---------- */
-  function normalise(series, dedupeByDay = false){
+  /* ---------- AGGREGATION ---------- */
+  function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
       .map(p => ({ x: p.x, y: +p.y }))
-      .sort((a,b) => new Date(a.x) - new Date(b.x));
+      .sort((a, b) => new Date(a.x) - new Date(b.x));
 
     if (!dedupeByDay) return s;
 
@@ -232,13 +237,13 @@
       const d = new Date(p.x);
       const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
       if (key !== lastKey) out.push(p);
-      else out[out.length-1] = p; // keep last point that day
+      else out[out.length - 1] = p;
       lastKey = key;
     }
     return out;
   }
 
-  function aggregate(series, mode){
+  function aggregate(series, mode) {
     if (mode === 'daily') return normalise(series, true);
 
     const buckets = Object.create(null);
@@ -252,10 +257,11 @@
 
     const out = Object.keys(buckets).sort().map(k => {
       const ys = buckets[k].filter(Number.isFinite);
-      const avg = ys.reduce((a,b)=>a+b,0) / ys.length;
+      const avg = ys.reduce((a, b) => a + b, 0) / ys.length;
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
       return { x, y: avg };
     });
+
     return normalise(out, false);
   }
 
@@ -276,7 +282,6 @@
     wrap.style.display = 'block';
     chart.innerHTML = 'Loading…';
 
-    // Default to monthly if somehow the select is missing
     const mode = modeSel ? modeSel.value : 'monthly';
 
     const traces = [];
@@ -316,10 +321,12 @@
 
     ymin = Math.floor(ymin / 100) * 100;
     ymax = Math.ceil(ymax / 100) * 100;
+
     const shapes = [];
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
-        type: 'line', xref: 'paper', x0: 0, x1: 1,
+        type: 'line',
+        xref: 'paper', x0: 0, x1: 1,
         y0: v, y1: v,
         line: { width: 1, color: 'rgba(128,128,128,0.35)' },
         layer: 'below'
@@ -365,14 +372,19 @@
       modal.style.display = 'flex';
     }
 
-    function closeModal() { modal.style.display = 'none'; }
+    function closeModal() {
+      modal.style.display = 'none';
+    }
 
     function showSelected() {
       const selectedIds = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
-      if (!selectedIds.length) { alert('Please select at least one player.'); return; }
+      if (!selectedIds.length) {
+        alert('Please select at least one player.');
+        return;
+      }
+
       closeModal();
 
-      // Ensure compare view defaults to monthly each time a fresh compare is made
       const compareAgg = document.getElementById('compare-agg');
       if (compareAgg) compareAgg.value = 'monthly';
 
@@ -398,12 +410,13 @@
     try {
       const res = await fetch(snapshotsYearsUrl(), { cache: 'no-cache' });
       if (!res.ok) throw new Error('years.json not found');
+
       const years = await res.json();
 
       years
         .map(y => Number(y))
         .filter(y => Number.isFinite(y) && y >= 1860)
-        .sort((a, b) => a - b)
+        .sort((a, b) => b - a)   // newest first
         .forEach(y => {
           const opt = document.createElement('option');
           opt.value = String(y);
@@ -426,6 +439,7 @@
       if (!res.ok) throw new Error(`Failed to load ${url}`);
       const data = await res.json();
 
+      // Both live and snapshots include "active"; snapshots now have activity relative to that year
       const rows = data.filter(d => d && d.active === true);
 
       state.rows = rows
@@ -459,7 +473,7 @@
     document.getElementById('q').value = '';
 
     await loadYearsDropdown();
-    load();
+    await load();
   }
 
   /* ---------- WIRE-UP ---------- */
