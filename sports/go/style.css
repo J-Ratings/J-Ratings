@@ -172,6 +172,21 @@ input[type="search"] {
   .title h1 {
     font-size: 1.8rem;
   }
+
+.brand-with-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.sport-logo {
+  height: 1.2em;   /* try 1.1em to 1.3em */
+  width: auto;
+  display: block;
+  transform: translateY(1px);
+}
+
 }
 .title-go {
   color: var(--pearl);
