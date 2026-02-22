@@ -7,8 +7,9 @@
   --text: #c9d1d9;
   --muted: #8b949e;
   --border: #30363d;
-
-  --wood: #DE5B00; /* wooden brown */
+  
+  --pearl: #f4f1e8; /* go */
+  --wood: #DE5B00; /* chess */
 }
 
 html, body {
@@ -189,4 +190,7 @@ input[type="search"] {
 
 .title-chess {
   color: var(--wood);
+}
+.title-go {
+  color: var(--pearl);
 }
