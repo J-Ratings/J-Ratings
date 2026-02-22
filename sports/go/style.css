@@ -176,7 +176,7 @@ input[type="search"] {
 .brand-with-logo {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 0px;
   text-decoration: none;
 }
 
