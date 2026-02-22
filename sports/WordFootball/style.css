@@ -114,9 +114,33 @@ header {
   overflow: auto;
 }
 
-/* Generic table defaults */
-table {
+/* Teams table (match Chess table style) */
+#teams {
+  table-layout: auto;
+  width: auto;
+  margin: 0 auto;
+  font-size: 1.2rem;
   border-collapse: collapse;
+}
+
+#teams th,
+#teams td {
+  text-align: center;
+  padding: 0.65rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+#teams th {
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  background: var(--card);
+  white-space: nowrap;
+}
+
+tr:hover td {
+  background: #0f1520;
 }
 
 /* Toolbar (filter + count) */
@@ -145,12 +169,29 @@ button {
   color: var(--text);
 }
 
-/* Chrome/Edge consistent dropdown styling */
+input[type="search"] {
+  flex: 1;
+  min-width: 260px;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Force consistent dropdown styling across browsers */
 select {
   -webkit-appearance: none;
   appearance: none;
-  padding-right: 34px;
+  background: #0f1623;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 34px 10px 12px;
   line-height: 1.2;
+}
+
+/* Optional custom arrow */
+select {
   background-image:
     linear-gradient(45deg, transparent 50%, var(--text) 50%),
     linear-gradient(135deg, var(--text) 50%, transparent 50%);
@@ -161,44 +202,9 @@ select {
   background-repeat: no-repeat;
 }
 
-input[type="search"] {
-  flex: 1;
-  min-width: 260px;
-}
-
-button {
-  cursor: pointer;
-}
-
 .muted {
   color: var(--muted);
   font-size: 0.98rem;
-}
-
-/* If any page still uses #players tables */
-#players {
-  table-layout: auto;
-  width: auto;
-  margin: 0 auto;
-  font-size: 1.2rem;
-}
-
-#players th,
-#players td {
-  text-align: center;
-  padding: 0.65rem 1.2rem;
-  border-bottom: 1px solid var(--border);
-}
-
-#players th {
-  font-weight: 600;
-  position: sticky;
-  top: 0;
-  background: var(--card);
-}
-
-tr:hover td {
-  background: #0f1520;
 }
 
 /* Larger sizes */
@@ -236,12 +242,12 @@ tr:hover td {
     font-size: 0.98rem;
   }
 
-  #players {
+  #teams {
     font-size: 1rem;
   }
 
-  #players th,
-  #players td {
+  #teams th,
+  #teams td {
     padding: 0.5rem 0.8rem;
   }
 
@@ -258,7 +264,7 @@ tr:hover td {
 }
 
 .sport-logo {
-  height: 1.2em;
+  height: 1.35em;
   width: auto;
   display: block;
   transform: translateY(1px);

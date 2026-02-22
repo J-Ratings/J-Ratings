@@ -9,62 +9,39 @@
   <style>
     #compare-chart { height: 500px; }
 
-    .wrap {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-
-    .toolbar {
-      margin-bottom: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    #q { width: min(520px, 100%); }
-
     .compare-chart-toolbar {
       display: flex;
-      justify-content: center;
       align-items: center;
       gap: 10px;
       margin-bottom: 10px;
       flex-wrap: wrap;
     }
 
+    /* Modal */
     #compare-modal {
-      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-      background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:9999;
-    }
-    #compare-modal > div {
-      background:#1a1a1a; padding:20px; border-radius:8px;
-      max-width:500px; width:90%; max-height:80%; overflow:auto; color:#fff;
-    }
-    .compare-controls { margin: 10px 0; }
-    .compare-controls button { margin-right:10px; }
-
-    #teams th, #teams td {
-      text-align: center;
-      vertical-align: middle;
-    }
-
-    #teams th.right, #teams td.right { text-align: center; }
-    #teams th { white-space: nowrap; }
-
-    .table-wrap {
-      display: flex;
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
       justify-content: center;
-      overflow-x: auto;
+      align-items: center;
+      z-index: 9999;
     }
 
-    #teams {
-      margin: 0 auto;
-      width: auto !important;
-      min-width: 900px;
+    #compare-modal > div {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80%;
+      overflow: auto;
+      color: #fff;
     }
+
+    .compare-controls { margin: 10px 0; }
+    .compare-controls button { margin-right: 10px; }
   </style>
 </head>
 <body>
@@ -76,11 +53,12 @@
         <img src="../../Football Banner Logo.png" alt="Football logo" class="sport-logo">
       </a>
     </h1>
+
     <nav class="topnav" aria-label="Main">
       <a href="../../index.html">Sports</a>
-      <a href="index.html" class="active-tab">Home</a>
-      <a href="compare.html">Compare</a>
-      <a href="peak.html">Peak</a>
+      <a id="nav-home" href="index.html" class="active-tab">Home</a>
+      <a id="nav-compare" href="compare.html">Compare</a>
+      <a id="nav-peak" href="peak.html">Peak</a>
     </nav>
   </div>
 </header>
@@ -93,9 +71,9 @@
       <input id="q" type="search" placeholder="Filter by team…">
       <span id="count" class="muted"></span>
 
-      <label for="era">Era:</label>
+      <label for="era" style="margin-left:auto">Era:</label>
       <select id="era">
-        <option value="live" selected>(Live)</option>
+        <option value="live" selected>Live</option>
       </select>
 
       <button id="compare-btn" class="club-btn" type="button">Compare</button>
@@ -110,6 +88,7 @@
           <option value="yearly">Yearly</option>
         </select>
       </div>
+
       <div id="compare-chart">Loading…</div>
     </div>
 
@@ -123,11 +102,12 @@
             <th style="min-width:260px" id="ctx-col-head">Latest Tournament</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody><!-- filled by JS --></tbody>
       </table>
     </div>
   </section>
 
+  <!-- Compare Selection Modal -->
   <div id="compare-modal">
     <div>
       <h3>Select teams to view:</h3>
@@ -199,9 +179,7 @@
       tbody.appendChild(tr);
     });
 
-    const modeLabel = (state.mode === 'live') ? 'Live' : state.mode;
-    document.getElementById('count').textContent =
-      `${state.filtered.length.toLocaleString()} teams · ${modeLabel}`;
+    document.getElementById('count').textContent = `${state.filtered.length.toLocaleString()} teams`;
   }
 
   function applyFilter() {
@@ -209,6 +187,7 @@
     state.filtered = !q
       ? state.rows.slice()
       : state.rows.filter(r => r.name.toLowerCase().includes(q));
+
     updateHeaders();
     render();
     hideCompare();
@@ -258,6 +237,7 @@
 
   async function fetchHistoryFor(id) {
     if (histCache.has(id)) return histCache.get(id);
+
     try {
       const res = await fetch(`data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
       if (!res.ok) return null;
@@ -287,7 +267,7 @@
       const d = new Date(p.x);
       const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
       if (key !== lastKey) out.push(p);
-      else out[out.length-1] = p;
+      else out[out.length - 1] = p;
       lastKey = key;
     }
     return out;
@@ -307,11 +287,12 @@
 
     const out = Object.keys(buckets).sort().map(k => {
       const pts = buckets[k].filter(p => Number.isFinite(p.y));
-      const avg = pts.reduce((a,b)=>a+b.y,0) / pts.length;
+      const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
       const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
       return { x, y: avg, tournament: lastTournament };
     });
+
     return normalise(out, false);
   }
 
@@ -378,7 +359,8 @@
     const shapes = [];
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
-        type: 'line', xref: 'paper', x0: 0, x1: 1,
+        type: 'line',
+        xref: 'paper', x0: 0, x1: 1,
         y0: v, y1: v,
         line: { width: 1, color: 'rgba(128,128,128,0.35)' },
         layer: 'below'
@@ -410,6 +392,7 @@
 
     function openModal() {
       listDiv.innerHTML = '';
+
       state.filtered.forEach(t => {
         const id = `chk-${t.id}`;
         const wrapper = document.createElement('div');
@@ -421,10 +404,13 @@
         `;
         listDiv.appendChild(wrapper);
       });
+
       modal.style.display = 'flex';
     }
 
-    function closeModal() { modal.style.display = 'none'; }
+    function closeModal() {
+      modal.style.display = 'none';
+    }
 
     function showSelected() {
       const selectedIds = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
@@ -435,12 +421,10 @@
 
       closeModal();
 
-      const chosen = state.filtered.filter(t => selectedIds.includes(t.id));
-
-      // Force default compare view to monthly each time
       const compareAgg = document.getElementById('compare-agg');
       if (compareAgg) compareAgg.value = 'monthly';
 
+      const chosen = state.filtered.filter(t => selectedIds.includes(t.id));
       buildComparison(chosen);
     }
 
@@ -464,7 +448,6 @@
       const teamsData = await teamsRes.json();
       const eraData = await eraRes.json();
 
-      // Build a latest-tournament lookup from history files (best effort)
       const latestTournamentById = new Map();
 
       state.liveRows = teamsData
@@ -484,7 +467,7 @@
       populateEraSelect();
       rebuildRowsFromMode();
 
-      // Fill latest tournament asynchronously after initial render
+      // Fill latest tournament after initial render
       await Promise.all(state.liveRows.map(async row => {
         const hist = await fetchHistoryFor(row.id);
         if (hist && hist.length) {
@@ -499,7 +482,6 @@
       }));
 
       if (state.mode === 'live') applyFilter();
-
     } catch (err) {
       document.querySelector('#teams tbody').innerHTML =
         `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
