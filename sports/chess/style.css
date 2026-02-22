@@ -176,12 +176,12 @@ input[type="search"] {
 .brand-with-logo {
   display: inline-flex;
   align-items: center;
-  gap: 4px; /* tighter spacing */
+  gap: 0px; /* tighter spacing */
   text-decoration: none;
 }
 
 .sport-logo {
-  height: 1.35em; /* slightly bigger */
+  height: 1.35em;
   width: auto;
   display: block;
   transform: translateY(1px);
