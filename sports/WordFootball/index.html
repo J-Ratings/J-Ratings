@@ -98,7 +98,6 @@
             <th style="min-width:60px">Rank</th>
             <th style="min-width:260px">Team</th>
             <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
-            <th style="min-width:260px" id="ctx-col-head">Latest Tournament</th>
           </tr>
         </thead>
         <tbody><!-- filled by JS --></tbody>
@@ -145,7 +144,6 @@
 
   function updateHeaders() {
     document.getElementById('rating-col-head').textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
-    document.getElementById('ctx-col-head').textContent = (state.mode === 'live') ? 'Latest Tournament' : 'First Tournament';
   }
 
   function render() {
@@ -464,14 +462,6 @@
       populateEraSelect();
       rebuildRowsFromMode();
 
-      // Fill latest tournament after initial render
-      await Promise.all(state.liveRows.map(async row => {
-        const hist = await fetchHistoryFor(row.id);
-        if (hist && hist.length) {
-          const last = hist[hist.length - 1];
-          latestTournamentById.set(row.id, (last && last.tournament) ? String(last.tournament) : '');
-        }
-      }));
 
       state.liveRows = state.liveRows.map(r => ({
         ...r,
