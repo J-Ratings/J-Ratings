@@ -182,6 +182,30 @@ button {
   cursor: pointer;
 }
 
+/* Force consistent dropdown styling across browsers */
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #0f1623;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 34px 10px 12px; /* extra right space for arrow */
+  line-height: 1.2;
+}
+
+/* Optional custom arrow */
+select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text) 50%),
+    linear-gradient(135deg, var(--text) 50%, transparent 50%);
+  background-position:
+    calc(100% - 16px) calc(50% - 2px),
+    calc(100% - 11px) calc(50% - 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
 .muted {
   color: var(--muted);
   font-size: 0.98rem;
