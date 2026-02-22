@@ -1,6 +1,6 @@
 /* Global variables & base styles */
 :root {
-  --maxw: 1100px;
+  --maxw: 1380px;
   --accent: #1f6feb;
   --bg: #0d1117;
   --card: #161b22;
@@ -15,24 +15,30 @@ html, body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  font: 19px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
 }
 
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
+.site-title {
+  margin: 0;
+  font-size: 2.15rem;
+  line-height: 1.2;
+}
+
 .site-title a {
   color: var(--text);
   text-decoration: none;
 }
+
 .site-title a:visited {
   color: var(--text);
 }
 
-.site-title .title-game {
+.site-title .title-football {
   color: var(--wood);
 }
-
 
 header {
   border-bottom: 1px solid var(--border);
@@ -42,41 +48,47 @@ header {
 .wrap {
   max-width: var(--maxw);
   margin: auto;
-  padding: 16px;
+  padding: 22px;
 }
 
+/* Kept in case other pages use .title */
 .title {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   align-items: end;
   justify-content: space-between;
 }
+
 .title h1 {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 /* Navigation (Home / Compare / Peak) */
 .topnav {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 12px;
+  margin-top: 14px;
 }
+
 .topnav a {
   display: inline-block;
-  padding: 12px 16px;
+  padding: 14px 18px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   background: #0f1623;
   color: var(--text);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.2;
 }
+
 .topnav a:hover {
   border-color: var(--accent);
 }
+
 .topnav a.active-tab {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: var(--accent);
@@ -86,14 +98,15 @@ header {
 .panel {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  margin-top: 18px;
+  border-radius: 12px;
+  margin-top: 22px;
 }
+
 .panel h2 {
   margin: 0;
-  padding: 16px 18px;
+  padding: 18px 20px;
   border-bottom: 1px solid var(--border);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
@@ -101,94 +114,156 @@ header {
   overflow: auto;
 }
 
-/* Players table */
-#players {
-  table-layout: auto;
-  width: auto;
-  margin: 0 auto;
-  font-size: 1.1rem;
-}
-#players th,
-#players td {
-  text-align: center;
-  padding: 0.5rem 1rem;
-}
-#players th {
-  font-weight: 600;
-}
-#players th,
-#players td {
-  border-bottom: 1px solid var(--border);
-}
-#players th {
-  position: sticky;
-  top: 0;
-  background: var(--card);
-}
-tr:hover td {
-  background: #0f1520;
-}
-
-@media (max-width: 600px) {
-  #players {
-    font-size: 1rem;
-  }
-  #players th:first-child,
-  #players td:first-child {
-    min-width: 140px;
-  }
+/* Generic table defaults */
+table {
+  border-collapse: collapse;
 }
 
 /* Toolbar (filter + count) */
 .toolbar {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
-  padding: 14px 18px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
   border-bottom: 1px solid var(--border);
+  font-size: 1rem;
 }
-input[type="search"] {
-  flex: 1;
-  min-width: 220px;
-  padding: 12px;
+
+.toolbar label {
+  font-size: 0.98rem;
+}
+
+input[type="search"],
+select,
+button {
+  font: inherit;
+  padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid var(--border);
   background: #0f1623;
   color: var(--text);
-  font-size: 1rem;
 }
+
+/* Chrome/Edge consistent dropdown styling */
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 34px;
+  line-height: 1.2;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text) 50%),
+    linear-gradient(135deg, var(--text) 50%, transparent 50%);
+  background-position:
+    calc(100% - 16px) calc(50% - 2px),
+    calc(100% - 11px) calc(50% - 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+input[type="search"] {
+  flex: 1;
+  min-width: 260px;
+}
+
+button {
+  cursor: pointer;
+}
+
 .muted {
   color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* If any page still uses #players tables */
+#players {
+  table-layout: auto;
+  width: auto;
+  margin: 0 auto;
+  font-size: 1.2rem;
+}
+
+#players th,
+#players td {
+  text-align: center;
+  padding: 0.65rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+#players th {
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  background: var(--card);
+}
+
+tr:hover td {
+  background: #0f1520;
 }
 
 /* Larger sizes */
 @media (min-width: 601px) {
   .topnav a {
     font-size: 1.1rem;
-  }
-  .panel h2 {
-    font-size: 1.4rem;
-  }
-  .title h1 {
-    font-size: 1.8rem;
+    padding: 15px 19px;
   }
 
+  .panel h2 {
+    font-size: 1.55rem;
+  }
+
+  .site-title {
+    font-size: 2.25rem;
+  }
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  html, body {
+    font-size: 17px;
+  }
+
+  .wrap {
+    padding: 16px;
+  }
+
+  .site-title {
+    font-size: 1.7rem;
+  }
+
+  .topnav a {
+    padding: 12px 14px;
+    font-size: 0.98rem;
+  }
+
+  #players {
+    font-size: 1rem;
+  }
+
+  #players th,
+  #players td {
+    padding: 0.5rem 0.8rem;
+  }
+
+  input[type="search"] {
+    min-width: 200px;
+  }
+}
 
 .brand-with-logo {
   display: inline-flex;
   align-items: center;
-  gap: 0px;
+  gap: 2px;
   text-decoration: none;
 }
 
 .sport-logo {
-  height: 1.2em;   /* try 1.1em to 1.3em */
+  height: 1.2em;
   width: auto;
   display: block;
   transform: translateY(1px);
 }
 
-}
-.title-go {
+.title-football {
   color: var(--wood);
 }
