@@ -246,7 +246,7 @@
     wrap.style.display = 'block';
     chart.innerHTML = 'Loading…';
 
-    const mode = document.getElementById('agg').value;
+const mode = 'monthly';
 
     const traces = [];
     let ymin = Infinity, ymax = -Infinity;
@@ -389,10 +389,6 @@
     load();
   }
 
-  // Re-plot the same selection if the view changes
-  document.getElementById('agg').addEventListener('change', () => {
-    if (lastCompared.length) buildComparison(lastCompared);
-  });
 
   document.getElementById('q').addEventListener('input', applyFilter);
   document.getElementById('sec').addEventListener('change', e => setSection(e.target.value));
