@@ -7,26 +7,61 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
   <style>
-    #chart { height: 420px; }
-    .toolbar { margin-bottom: 10px; text-align: center; }
-    .toolbar label { margin-right: 6px; }
-    h2#pname, h3.section-title { text-align: center; }
+    /* Profile page sizing tweaks */
+    #chart {
+      height: 520px;
+    }
+
+    .toolbar {
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+    }
+
+    .toolbar label {
+      margin-right: 6px;
+      font-size: 1.05rem;
+    }
+
+    h2#pname,
+    h3.section-title {
+      text-align: center;
+    }
+
+    h2#pname {
+      font-size: 2rem;
+      padding: 20px;
+    }
+
+    h3.section-title {
+      font-size: 1.6rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
 
     /* Games table */
-    #gamesWrap { max-height: 520px; overflow: auto; margin-top: 12px; }
+    #gamesWrap {
+      max-height: 520px;
+      overflow: auto;
+      margin-top: 12px;
+    }
+
     table.games {
-      width:100%;
+      width: 100%;
       border-collapse: separate;   /* needed for double borders */
       border-spacing: 0;
-      font-size:14px;
+      font-size: 1rem;             /* was 14px */
     }
-    table.games th, table.games td {
-      padding:6px 8px;
-      border-bottom:1px solid #2b2f36;
-      text-align:center;
+
+    table.games th,
+    table.games td {
+      padding: 10px 12px;          /* was 6px 8px */
+      border-bottom: 1px solid #2b2f36;
+      text-align: center;
       vertical-align: middle;
       white-space: nowrap;
     }
+
     /* Sticky header */
     table.games th {
       position: sticky;
@@ -34,7 +69,8 @@
       z-index: 2;
       background-color: var(--panel-bg, #1a1a1a);
     }
-    /* Double separators: Date|Black, Elo|White, Elo|Result|Δ  */
+
+    /* Double separators: Date|Black, Elo|White, Elo|Result|Δ */
     table.games th:nth-child(1), table.games td:nth-child(1),
     table.games th:nth-child(3), table.games td:nth-child(3),
     table.games th:nth-child(5), table.games td:nth-child(5),
@@ -42,37 +78,63 @@
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
-    .result { font-weight:700; }
-    .result.win  { color:#2e7d32; }
-    .result.loss { color:#c62828; }
+    .result { font-weight: 700; }
+    .result.win  { color: #2e7d32; }
+    .result.loss { color: #c62828; }
 
-    .delta { font-weight:700; }
-    .delta.pos { color:#2e7d32; }
-    .delta.neg { color:#c62828; }
+    .delta { font-weight: 700; }
+    .delta.pos { color: #2e7d32; }
+    .delta.neg { color: #c62828; }
+
+    /* Mobile tweaks for profile page */
+    @media (max-width: 600px) {
+      #chart {
+        height: 420px;
+      }
+
+      h2#pname {
+        font-size: 1.6rem;
+        padding: 16px;
+      }
+
+      h3.section-title {
+        font-size: 1.25rem;
+      }
+
+      table.games {
+        font-size: 0.92rem;
+      }
+
+      table.games th,
+      table.games td {
+        padding: 8px 10px;
+      }
+    }
   </style>
 </head>
 <body>
 <header>
   <div class="wrap">
- <h1 class="site-title">
-  <a id="home-link" href="index.html" class="brand-with-logo">
-    <span>J-Ratings <span class="title-go">Go</span></span>
-    <img src="../../Go Banner Logo.png" alt="Go logo" class="sport-logo">
-  </a>
-</h1>
+    <h1 class="site-title">
+      <a id="home-link" href="index.html" class="brand-with-logo">
+        <span>J-Ratings <span class="title-go">Go</span></span>
+        <img src="../../Go Banner Logo.png" alt="Go logo" class="sport-logo">
+      </a>
+    </h1>
 
-<nav class="topnav" aria-label="Main">
-  <a href="../../index.html">Sports</a>
-  <a href="index.html">Home</a>
-  <a href="compare.html" class="active-tab">Compare</a>
-  <a href="peak.html">Peak</a>
-</nav>
+    <nav class="topnav" aria-label="Main">
+      <a href="../../index.html">Sports</a>
+      <a href="index.html">Home</a>
+      <a href="compare.html" class="active-tab">Compare</a>
+      <a href="peak.html">Peak</a>
+    </nav>
   </div>
 </header>
 
 <main class="wrap">
   <section class="panel">
     <h2 id="pname">Player</h2>
+
     <div class="toolbar">
       <label for="agg">View:</label>
       <select id="agg">
@@ -81,9 +143,10 @@
         <option value="yearly">Yearly</option>
       </select>
     </div>
+
     <div id="chart">Loading…</div>
 
-    <h3 class="section-title" style="margin-top:18px;">Games</h3>
+    <h3 class="section-title">Games</h3>
     <div id="gamesWrap">
       <table id="games" class="games"></table>
     </div>
@@ -98,18 +161,18 @@
     throw new Error('no id');
   }
 
-const PLAYERS_URL = 'data/players.json';
-const HIST_URL    = id => `data/history/${encodeURIComponent(id)}.json`;
-const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
+  const PLAYERS_URL = 'data/players.json';
+  const HIST_URL    = id => `data/history/${encodeURIComponent(id)}.json`;
+  const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
   const IS_TOUCH    = window.matchMedia('(pointer: coarse)').matches;
 
   let RAW = []; // daily series
 
-  function normalise(series, dedupeByDay = false){
+  function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
       .map(p => ({ x: p.x, y: +p.y }))
-      .sort((a,b) => new Date(a.x) - new Date(b.x));
+      .sort((a, b) => new Date(a.x) - new Date(b.x));
 
     if (!dedupeByDay) return s;
 
@@ -117,36 +180,37 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
     let lastKey = null;
     for (const p of s) {
       const d = new Date(p.x);
-      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
       if (key !== lastKey) out.push(p);
-      else out[out.length-1] = p; // keep last point that day
+      else out[out.length - 1] = p; // keep last point that day
       lastKey = key;
     }
     return out;
   }
 
-  function aggregate(series, mode){
+  function aggregate(series, mode) {
     if (mode === 'daily') return normalise(series, true);
 
     const buckets = Object.create(null);
     for (const p of series) {
       const d = new Date(p.x);
       const key = (mode === 'monthly')
-        ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`
+        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
         : `${d.getFullYear()}`;
       (buckets[key] ||= []).push(p.y);
     }
 
     const out = Object.keys(buckets).sort().map(k => {
       const ys = buckets[k].filter(Number.isFinite);
-      const avg = ys.reduce((a,b)=>a+b,0) / ys.length;
+      const avg = ys.reduce((a, b) => a + b, 0) / ys.length;
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
       return { x, y: avg };
     });
+
     return normalise(out, false);
   }
 
-  function draw(mode){
+  function draw(mode) {
     const el = document.getElementById('chart');
     if (el.textContent && el.textContent.includes('Loading')) el.textContent = '';
 
@@ -160,11 +224,16 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
 
     const ymin = Math.floor(Math.min(...ys) / 100) * 100;
     const ymax = Math.ceil(Math.max(...ys) / 100) * 100;
+
     const shapes = [];
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
-        type: 'line', xref: 'paper', x0: 0, x1: 1,
-        y0: v, y1: v,
+        type: 'line',
+        xref: 'paper',
+        x0: 0,
+        x1: 1,
+        y0: v,
+        y1: v,
         line: { width: 1, color: 'rgba(128,128,128,0.35)' },
         layer: 'below'
       });
@@ -187,17 +256,17 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
 
     const bg = getComputedStyle(document.body).backgroundColor;
     Plotly.newPlot('chart', [trace], {
-      margin:{ l:50, r:20, t:10, b:40 },
-      xaxis:{ type:'date' },
-      yaxis:{ title:'Rating' },
-      paper_bgcolor:bg,
-      plot_bgcolor:bg,
-      font:{ color:getComputedStyle(document.body).color },
+      margin: { l: 60, r: 20, t: 10, b: 45 },
+      xaxis: { type: 'date' },
+      yaxis: { title: 'Rating' },
+      paper_bgcolor: bg,
+      plot_bgcolor: bg,
+      font: { color: getComputedStyle(document.body).color, size: 14 },
       shapes
     }, {
       staticPlot: IS_TOUCH,
-      displayModeBar:false,
-      responsive:true
+      displayModeBar: false,
+      responsive: true
     });
   }
 
@@ -208,7 +277,7 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
     // Header
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
-    for (const h of ['Date','Black','Elo','White','Elo','Result','Δ']) {
+    for (const h of ['Date', 'Black', 'Elo', 'White', 'Elo', 'Result', 'Δ']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -222,7 +291,7 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
 
     // Body (latest first)
     const tbody = document.createElement('tbody');
-    games.sort((a,b) => new Date(b.date) - new Date(a.date));
+    games.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     for (const g of games) {
       const tr = document.createElement('tr');
@@ -283,19 +352,21 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
     tbl.appendChild(tbody);
   }
 
-  async function load(){
+  async function load() {
     try {
       const [playersRes, histRes, gamesRes] = await Promise.all([
         fetch(PLAYERS_URL, { cache: 'no-cache' }),
         fetch(HIST_URL(idRaw), { cache: 'no-cache' }),
         fetch(GAMES_URL(idRaw), { cache: 'no-cache' })
       ]);
+
       if (!playersRes.ok) throw new Error('players.json not found');
       if (!histRes.ok) throw new Error('history not found');
 
       const players = await playersRes.json();
       const me = players.find(p => p.id === idRaw);
       if (!me) throw new Error('player id not in players.json');
+
       document.getElementById('pname').textContent = me.name;
 
       RAW = normalise(
@@ -318,7 +389,6 @@ const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
         const tbl = document.getElementById('games');
         tbl.innerHTML = '<tbody><tr><td>No games</td></tr></tbody>';
       }
-
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
