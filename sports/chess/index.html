@@ -9,6 +9,16 @@
   <style>
     #compare-chart { height: 500px; }
     .toolbar { margin-bottom: 10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+    /* Compare chart toolbar (shown only when chart is visible) */
+    .compare-chart-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
     /* Modal */
     #compare-modal {
       display:none; position:fixed; top:0; left:0; width:100%; height:100%;
@@ -25,13 +35,13 @@
 <body>
 <header>
   <div class="wrap">
-<h1 class="site-title">
-  <a id="home-link" href="index.html" class="brand-with-logo">
-    <span>J-Ratings <span class="title-chess">Chess</span></span>
-    <img src="../../Chess Banner Logo.png" alt="Chess logo" class="sport-logo">
-  </a>
-</h1>
- <nav class="topnav" aria-label="Main">
+    <h1 class="site-title">
+      <a id="home-link" href="index.html" class="brand-with-logo">
+        <span>J-Ratings <span class="title-chess">Chess</span></span>
+        <img src="../../Chess Banner Logo.png" alt="Chess logo" class="sport-logo">
+      </a>
+    </h1>
+    <nav class="topnav" aria-label="Main">
       <a href="../../index.html">Sports</a>
       <a id="nav-home" href="index.html" class="active-tab">Home</a>
       <a id="nav-compare" href="compare.html">Compare</a>
@@ -56,8 +66,7 @@
       <input id="q" type="search" placeholder="Filter by name…">
       <span id="count" class="muted"></span>
 
-
-      <label for="year" style="margin-left:10px">Year:</label>
+      <label for="year" style="margin-left:auto">Year:</label>
       <select id="year">
         <option value="" selected>Live</option>
       </select>
@@ -66,6 +75,15 @@
     </div>
 
     <div id="compare-wrap" style="display:none; padding:16px">
+      <div class="compare-chart-toolbar">
+        <label for="compare-agg">View:</label>
+        <select id="compare-agg">
+          <option value="daily">Daily</option>
+          <option value="monthly" selected>Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
+
       <div id="compare-chart">Loading…</div>
     </div>
 
@@ -250,12 +268,16 @@
 
   async function buildComparison(players) {
     lastCompared = players.slice();
+
     const wrap = document.getElementById('compare-wrap');
     const chart = document.getElementById('compare-chart');
+    const modeSel = document.getElementById('compare-agg');
+
     wrap.style.display = 'block';
     chart.innerHTML = 'Loading…';
 
-    const mode = document.getElementById('agg').value;
+    // Default to monthly if somehow the select is missing
+    const mode = modeSel ? modeSel.value : 'monthly';
 
     const traces = [];
     let ymin = Infinity, ymax = -Infinity;
@@ -349,6 +371,11 @@
       const selectedIds = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
       if (!selectedIds.length) { alert('Please select at least one player.'); return; }
       closeModal();
+
+      // Ensure compare view defaults to monthly each time a fresh compare is made
+      const compareAgg = document.getElementById('compare-agg');
+      if (compareAgg) compareAgg.value = 'monthly';
+
       const chosen = state.filtered.filter(p => selectedIds.includes(p.id));
       buildComparison(chosen);
     }
@@ -373,16 +400,16 @@
       if (!res.ok) throw new Error('years.json not found');
       const years = await res.json();
 
-years
-  .map(y => Number(y))
-  .filter(y => Number.isFinite(y) && y >= 1860)
-  .sort((a, b) => a - b)
-  .forEach(y => {
-    const opt = document.createElement('option');
-    opt.value = String(y);
-    opt.textContent = String(y);
-    sel.appendChild(opt);
-  });
+      years
+        .map(y => Number(y))
+        .filter(y => Number.isFinite(y) && y >= 1860)
+        .sort((a, b) => a - b)
+        .forEach(y => {
+          const opt = document.createElement('option');
+          opt.value = String(y);
+          opt.textContent = String(y);
+          sel.appendChild(opt);
+        });
 
       sel.value = [...sel.options].some(o => o.value === current) ? current : '';
     } catch {
@@ -399,7 +426,7 @@ years
       if (!res.ok) throw new Error(`Failed to load ${url}`);
       const data = await res.json();
 
-const rows = data.filter(d => d && d.active === true);
+      const rows = data.filter(d => d && d.active === true);
 
       state.rows = rows
         .filter(d => d && d.id && (d.display_name || d.name) && Number.isFinite(+d.rating))
@@ -436,7 +463,7 @@ const rows = data.filter(d => d && d.active === true);
   }
 
   /* ---------- WIRE-UP ---------- */
-  document.getElementById('agg').addEventListener('change', () => {
+  document.getElementById('compare-agg').addEventListener('change', () => {
     if (lastCompared.length) buildComparison(lastCompared);
   });
 
