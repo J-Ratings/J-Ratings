@@ -89,6 +89,16 @@
     .opp { text-align: left; }
     .muted-small { opacity: .85; font-size: .9em; }
 
+    /* Optional: clickable opponent styling */
+    td.opp a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    td.opp a:hover {
+      opacity: 0.9;
+    }
+
     @media (max-width: 600px) {
       #chart {
         height: 420px;
@@ -276,7 +286,7 @@
     });
   }
 
-  function renderGamesTable(myName, games) {
+  function renderGamesTable(me, teams, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
 
@@ -296,6 +306,8 @@
     const tbody = document.createElement('tbody');
     games.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+    const myName = me.name;
+
     for (const g of games) {
       const tr = document.createElement('tr');
 
@@ -303,7 +315,7 @@
       const isAway = g.away === myName;
       if (!isHome && !isAway) continue;
 
-      const opponent = isHome ? g.away : g.home;
+      const opponentName = isHome ? g.away : g.home;
       const opponentElo = isHome ? Number(g.awayElo) : Number(g.homeElo);
       const myEloBefore = isHome ? Number(g.homeElo) : Number(g.awayElo);
       const numDelta = Number(g.delta);
@@ -312,11 +324,26 @@
         : NaN;
 
       const tdDate = document.createElement('td');
-      tdDate.textContent = g.date;
+      tdDate.textContent = g.date || '';
 
       const tdOpp = document.createElement('td');
       tdOpp.className = 'opp';
-      tdOpp.textContent = opponent;
+
+      // Make opponent clickable if found in teams.json
+      if (opponentName) {
+        const opponentTeam = teams.find(t => t.name === opponentName);
+
+        if (opponentTeam && opponentTeam.id) {
+          const a = document.createElement('a');
+          a.href = `player.html?id=${encodeURIComponent(opponentTeam.id)}`;
+          a.textContent = opponentName;
+          tdOpp.appendChild(a);
+        } else {
+          tdOpp.textContent = opponentName;
+        }
+      } else {
+        tdOpp.textContent = '';
+      }
 
       const tdOppElo = document.createElement('td');
       tdOppElo.textContent = Number.isFinite(opponentElo) ? String(Math.round(opponentElo)) : '';
@@ -349,6 +376,8 @@
 
       const tdNew = document.createElement('td');
       tdNew.textContent = Number.isFinite(myEloAfter) ? String(myEloAfter) : '';
+      // ^ if you get a syntax error here, use the corrected line below instead:
+      // tdNew.textContent = Number.isFinite(myEloAfter) ? String(myEloAfter) : '';
 
       tr.appendChild(tdDate);
       tr.appendChild(tdOpp);
@@ -394,17 +423,17 @@
 
       if (gamesRes.ok) {
         const games = await gamesRes.json();
-        renderGamesTable(me.name, games);
+        renderGamesTable(me, teams, games);
       } else {
         const tbl = document.getElementById('games');
-        tbl.innerHTML = '<tbody><tr><td>No games</td></tr></tbody>';
+        tbl.innerHTML = '<tbody><tr><td colspan="6">No games</td></tr></tbody>';
       }
 
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td>Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="6">Error loading games</td></tr></tbody>';
     }
   }
 
