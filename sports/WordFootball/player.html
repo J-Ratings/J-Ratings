@@ -97,6 +97,16 @@
 
     .muted-small { opacity: .85; font-size: .9em; }
 
+    /* Optional: make opponent links look like normal text but clickable */
+    td.opp a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    td.opp a:hover {
+      opacity: 0.9;
+    }
+
     @media (max-width: 600px) {
       #chart {
         height: 420px;
@@ -309,7 +319,8 @@
     return { cls: 'draw', text: raw || 'Draw' };
   }
 
-  function renderGamesTable(myName, games) {
+  // UPDATED: now takes the full team object + teams list so we can link opponents by id
+  function renderGamesTable(me, teams, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
 
@@ -329,6 +340,8 @@
     const tbody = document.createElement('tbody');
     games.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+    const myName = me.name;
+
     for (const g of games) {
       const tr = document.createElement('tr');
 
@@ -336,7 +349,7 @@
       const isAway = g.away === myName;
       if (!isHome && !isAway) continue;
 
-      const opponent = isHome ? g.away : g.home;
+      const opponentName = isHome ? g.away : g.home;
       const opponentElo = isHome ? Number(g.awayElo) : Number(g.homeElo);
       const myEloBefore = isHome ? Number(g.homeElo) : Number(g.awayElo);
 
@@ -353,9 +366,24 @@
       tdTournament.title = g.tournament || '';
       tdTournament.textContent = g.tournament || '';
 
+      // UPDATED: clickable opponent if present in teams.json
       const tdOpp = document.createElement('td');
       tdOpp.className = 'opp';
-      tdOpp.textContent = opponent || '';
+
+      if (opponentName) {
+        const opponentTeam = teams.find(t => t.name === opponentName);
+
+        if (opponentTeam && opponentTeam.id) {
+          const a = document.createElement('a');
+          a.href = `profile.html?id=${encodeURIComponent(opponentTeam.id)}`;
+          a.textContent = opponentName;
+          tdOpp.appendChild(a);
+        } else {
+          tdOpp.textContent = opponentName;
+        }
+      } else {
+        tdOpp.textContent = '';
+      }
 
       const tdOppElo = document.createElement('td');
       tdOppElo.textContent = Number.isFinite(opponentElo) ? String(Math.round(opponentElo)) : '';
@@ -427,7 +455,7 @@
 
       if (gamesRes.ok) {
         const games = await gamesRes.json();
-        renderGamesTable(me.name, games);
+        renderGamesTable(me, teams, games); // UPDATED
       } else {
         const tbl = document.getElementById('games');
         tbl.innerHTML = '<tbody><tr><td colspan="7">No games</td></tr></tbody>';
