@@ -375,7 +375,7 @@
 
         if (opponentTeam && opponentTeam.id) {
           const a = document.createElement('a');
-          a.href = `profile.html?id=${encodeURIComponent(opponentTeam.id)}`;
+          a.href = `player.html?id=${encodeURIComponent(opponentTeam.id)}`;
           a.textContent = opponentName;
           tdOpp.appendChild(a);
         } else {
