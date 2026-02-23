@@ -48,14 +48,14 @@
 
     table.games {
       width: 100%;
-      border-collapse: separate;   /* needed for double borders */
+      border-collapse: separate;
       border-spacing: 0;
-      font-size: 1rem;             /* was 14px */
+      font-size: 1rem;
     }
 
     table.games th,
     table.games td {
-      padding: 10px 12px;          /* was 6px 8px */
+      padding: 10px 12px;
       border-bottom: 1px solid #2b2f36;
       text-align: center;
       vertical-align: middle;
@@ -84,7 +84,17 @@
 
     .delta { font-weight: 700; }
     .delta.pos { color: #3ad542; }
-    .delta.neg { color: #dc2222;}
+    .delta.neg { color: #dc2222; }
+
+    /* Clickable player names */
+    table.games td a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    table.games td a:hover {
+      opacity: 0.9;
+    }
 
     /* Mobile tweaks for profile page */
     @media (max-width: 600px) {
@@ -270,7 +280,33 @@
     });
   }
 
-  function renderGamesTable(myName, games) {
+  function makePlayerCell(name, myName, players) {
+    const td = document.createElement('td');
+
+    const player = players.find(p => p.name === name);
+
+    let node;
+    if (player && player.id) {
+      const a = document.createElement('a');
+      a.href = `player.html?id=${encodeURIComponent(player.id)}`;
+      a.textContent = name || '';
+      node = a;
+    } else {
+      node = document.createTextNode(name || '');
+    }
+
+    if (name === myName) {
+      const s = document.createElement('strong');
+      s.appendChild(node);
+      td.appendChild(s);
+    } else {
+      td.appendChild(node);
+    }
+
+    return td;
+  }
+
+  function renderGamesTable(me, players, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
 
@@ -285,7 +321,7 @@
     thead.appendChild(hr);
     tbl.appendChild(thead);
 
-    // Opaque header (in case theme var isn't defined)
+    // Opaque header
     const panelBg = getComputedStyle(document.querySelector('.panel')).backgroundColor;
     thead.style.backgroundColor = panelBg;
 
@@ -293,47 +329,39 @@
     const tbody = document.createElement('tbody');
     games.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+    const myName = me.name;
+
     for (const g of games) {
       const tr = document.createElement('tr');
 
       const tdDate = document.createElement('td');
-      tdDate.textContent = g.date;
+      tdDate.textContent = g.date || '';
 
-      const tdB = document.createElement('td');
-      if (g.black === myName) {
-        const s = document.createElement('strong');
-        s.textContent = g.black;
-        tdB.appendChild(s);
-      } else {
-        tdB.textContent = g.black;
-      }
+      const tdB = makePlayerCell(g.black, myName, players);
 
       const tdBE = document.createElement('td');
-      tdBE.textContent = Number(g.blackElo).toString();
+      const blackElo = Number(g.blackElo);
+      tdBE.textContent = Number.isFinite(blackElo) ? String(Math.round(blackElo)) : '';
 
-      const tdW = document.createElement('td');
-      if (g.white === myName) {
-        const s = document.createElement('strong');
-        s.textContent = g.white;
-        tdW.appendChild(s);
-      } else {
-        tdW.textContent = g.white;
-      }
+      const tdW = makePlayerCell(g.white, myName, players);
 
       const tdWE = document.createElement('td');
-      tdWE.textContent = Number(g.whiteElo).toString();
+      const whiteElo = Number(g.whiteElo);
+      tdWE.textContent = Number.isFinite(whiteElo) ? String(Math.round(whiteElo)) : '';
 
       const tdR = document.createElement('td');
-      tdR.textContent = g.result;
+      tdR.textContent = g.result || '';
+
       const iWon = (g.result === '1-0' && g.black === myName) ||
                    (g.result === '0-1' && g.white === myName);
+
       tdR.className = 'result ' + (iWon ? 'win' : 'loss');
 
       // Δ (rating change for this profile)
       const tdDelta = document.createElement('td');
       const numDelta = Number(g.delta);
       if (!Number.isNaN(numDelta)) {
-        tdDelta.textContent = g.delta; // already formatted with +/-
+        tdDelta.textContent = g.delta;
         tdDelta.className = 'delta ' + (numDelta > 0 ? 'pos' : (numDelta < 0 ? 'neg' : ''));
       } else {
         tdDelta.textContent = '';
@@ -370,7 +398,8 @@
       document.getElementById('pname').textContent = me.name;
 
       RAW = normalise(
-        (await histRes.json()).map(d => ({ x: d.date, y: Number(d.rating) })), true
+        (await histRes.json()).map(d => ({ x: d.date, y: Number(d.rating) })),
+        true
       );
 
       if (!RAW.length) {
@@ -384,16 +413,16 @@
 
       if (gamesRes.ok) {
         const games = await gamesRes.json();
-        renderGamesTable(me.name, games);
+        renderGamesTable(me, players, games);
       } else {
         const tbl = document.getElementById('games');
-        tbl.innerHTML = '<tbody><tr><td>No games</td></tr></tbody>';
+        tbl.innerHTML = '<tbody><tr><td colspan="7">No games</td></tr></tbody>';
       }
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td>Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="7">Error loading games</td></tr></tbody>';
     }
   }
 

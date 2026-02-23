@@ -82,7 +82,7 @@
       border-collapse: separate;
       border-spacing: 0;
       font-size: 1rem;
-      table-layout: fixed; /* keeps columns within the container */
+      table-layout: fixed;
     }
 
     table.games th,
@@ -103,15 +103,25 @@
       background-color: var(--panel-bg, #1a1a1a);
     }
 
+    /* Clickable player names */
+    table.games td a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    table.games td a:hover {
+      opacity: 0.9;
+    }
+
     /* Column widths (8 columns total) */
-    table.games th:nth-child(1), table.games td:nth-child(1) { width: 90px; }   /* Date */
-    table.games th:nth-child(2), table.games td:nth-child(2) { width: 240px; }  /* Event */
-    table.games th:nth-child(3), table.games td:nth-child(3) { width: 220px; }  /* White */
-    table.games th:nth-child(4), table.games td:nth-child(4) { width: 70px; }   /* Elo */
-    table.games th:nth-child(5), table.games td:nth-child(5) { width: 220px; }  /* Black */
-    table.games th:nth-child(6), table.games td:nth-child(6) { width: 70px; }   /* Elo */
-    table.games th:nth-child(7), table.games td:nth-child(7) { width: 70px; }   /* Result */
-    table.games th:nth-child(8), table.games td:nth-child(8) { width: 70px; }   /* Δ */
+    table.games th:nth-child(1), table.games td:nth-child(1) { width: 90px; }
+    table.games th:nth-child(2), table.games td:nth-child(2) { width: 240px; }
+    table.games th:nth-child(3), table.games td:nth-child(3) { width: 220px; }
+    table.games th:nth-child(4), table.games td:nth-child(4) { width: 70px; }
+    table.games th:nth-child(5), table.games td:nth-child(5) { width: 220px; }
+    table.games th:nth-child(6), table.games td:nth-child(6) { width: 70px; }
+    table.games th:nth-child(7), table.games td:nth-child(7) { width: 70px; }
+    table.games th:nth-child(8), table.games td:nth-child(8) { width: 70px; }
 
     /* Event: centred + clipped */
     table.games th:nth-child(2),
@@ -408,7 +418,35 @@
     return txt.slice(0, maxChars) + ' . . .';
   }
 
-  function renderGamesTable(myName, games) {
+  function makePlayerCell(nameKey, displayText, myName, players) {
+    const td = document.createElement('td');
+    const key = String(nameKey || '');
+    const text = String(displayText || key || '');
+
+    const player = players.find(p => p.name === key);
+
+    let node;
+    if (player && player.id) {
+      const a = document.createElement('a');
+      a.href = `player.html?id=${encodeURIComponent(player.id)}&sec=${encodeURIComponent(state.section)}`;
+      a.textContent = text;
+      node = a;
+    } else {
+      node = document.createTextNode(text);
+    }
+
+    if (key === myName) {
+      const s = document.createElement('strong');
+      s.appendChild(node);
+      td.appendChild(s);
+    } else {
+      td.appendChild(node);
+    }
+
+    return td;
+  }
+
+  function renderGamesTable(me, players, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
 
@@ -430,6 +468,8 @@
     const tbody = document.createElement('tbody');
     games.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+    const myName = me.name;
+
     for (const g of games) {
       const tr = document.createElement('tr');
 
@@ -441,31 +481,17 @@
       tdEvent.textContent = truncateEvent(fullEvent, 35);
       tdEvent.title = fullEvent;
 
-      const tdW = document.createElement('td');
-      const whiteTxt = g.white_display || g.white || '';
-      if (g.white === myName) {
-        const s = document.createElement('strong');
-        s.textContent = whiteTxt;
-        tdW.appendChild(s);
-      } else {
-        tdW.textContent = whiteTxt;
-      }
+      const tdW = makePlayerCell(g.white, g.white_display || g.white || '', myName, players);
 
       const tdWE = document.createElement('td');
-      tdWE.textContent = Number(g.whiteElo).toString();
+      const whiteElo = Number(g.whiteElo);
+      tdWE.textContent = Number.isFinite(whiteElo) ? String(Math.round(whiteElo)) : '';
 
-      const tdB = document.createElement('td');
-      const blackTxt = g.black_display || g.black || '';
-      if (g.black === myName) {
-        const s = document.createElement('strong');
-        s.textContent = blackTxt;
-        tdB.appendChild(s);
-      } else {
-        tdB.textContent = blackTxt;
-      }
+      const tdB = makePlayerCell(g.black, g.black_display || g.black || '', myName, players);
 
       const tdBE = document.createElement('td');
-      tdBE.textContent = Number(g.blackElo).toString();
+      const blackElo = Number(g.blackElo);
+      tdBE.textContent = Number.isFinite(blackElo) ? String(Math.round(blackElo)) : '';
 
       const tdR = document.createElement('td');
       const res = String(g.result || '').trim();
@@ -555,7 +581,7 @@
 
       if (gamesRes.ok) {
         const games = await gamesRes.json();
-        renderGamesTable(me.name, games);
+        renderGamesTable(me, players, games);
       } else {
         document.getElementById('games').innerHTML =
           '<tbody><tr><td colspan="8">No games</td></tr></tbody>';
