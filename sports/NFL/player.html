@@ -2,20 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>J-Ratings: International Football</title>
+  <title>J-Ratings: NFL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
   <style>
-    /* Profile page sizing tweaks */
-    #chart {
-      height: 520px;
-    }
+    #chart { height: 520px; }
 
     .toolbar {
       justify-content: center;
       gap: 10px;
       padding: 14px 20px;
+      flex-wrap: wrap;
     }
 
     .toolbar label {
@@ -25,12 +23,21 @@
 
     h2#pname,
     h3.section-title {
-      text-align: center;
+      text-align: centre;
     }
 
     h2#pname {
       font-size: 2rem;
       padding: 20px;
+      margin-bottom: 0;
+    }
+
+    .team-subtitle {
+      text-align: centre;
+      opacity: 0.85;
+      margin-top: -8px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
     }
 
     h3.section-title {
@@ -56,7 +63,7 @@
     table.games td {
       padding: 10px 12px;
       border-bottom: 1px solid #2b2f36;
-      text-align: center;
+      text-align: centre;
       vertical-align: middle;
       white-space: nowrap;
     }
@@ -68,13 +75,14 @@
       background-color: var(--panel-bg, #1a1a1a);
     }
 
-    /* Double separators: Date | Tournament | Opponent | Elo | Result | Δ */
+    /* Column separators */
     table.games th:nth-child(1), table.games td:nth-child(1),
     table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(3), table.games td:nth-child(3),
     table.games th:nth-child(4), table.games td:nth-child(4),
     table.games th:nth-child(5), table.games td:nth-child(5),
-    table.games th:nth-child(6), table.games td:nth-child(6) {
+    table.games th:nth-child(6), table.games td:nth-child(6),
+    table.games th:nth-child(7), table.games td:nth-child(7) {
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
@@ -90,49 +98,47 @@
     .opp { text-align: left; }
     .tourn {
       text-align: left;
-      max-width: 260px;
+      max-width: 240px;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
     .muted-small { opacity: .85; font-size: .9em; }
 
-    /* Optional: make opponent links look like normal text but clickable */
     td.opp a {
       color: inherit;
       text-decoration: underline;
       text-underline-offset: 2px;
     }
-    td.opp a:hover {
-      opacity: 0.9;
+    td.opp a:hover { opacity: 0.9; }
+
+    .code-pill {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 2px 7px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      opacity: 0.85;
+      vertical-align: middle;
     }
 
-    @media (max-width: 600px) {
-      #chart {
-        height: 420px;
-      }
+    @media (max-width: 700px) {
+      #chart { height: 420px; }
 
       h2#pname {
         font-size: 1.6rem;
         padding: 16px;
       }
 
-      h3.section-title {
-        font-size: 1.25rem;
-      }
+      h3.section-title { font-size: 1.25rem; }
 
-      table.games {
-        font-size: 0.92rem;
-      }
+      table.games { font-size: 0.92rem; }
 
       table.games th,
-      table.games td {
-        padding: 8px 10px;
-      }
+      table.games td { padding: 8px 10px; }
 
-      .tourn {
-        max-width: 180px;
-      }
+      .tourn { max-width: 160px; }
     }
   </style>
 </head>
@@ -141,8 +147,8 @@
   <div class="wrap">
     <h1 class="site-title">
       <a id="home-link" href="index.html" class="brand-with-logo">
-        <span>J-Ratings <span class="title-football">International Football</span></span>
-        <img src="../../Football Banner Logo.png" alt="Football logo" class="sport-logo">
+        <span>J-Ratings <span class="title-football">NFL</span></span>
+        <img src="../../Football Banner Logo.png" alt="NFL logo" class="sport-logo">
       </a>
     </h1>
     <nav class="topnav" aria-label="Main">
@@ -157,6 +163,7 @@
 <main class="wrap">
   <section class="panel">
     <h2 id="pname">Team</h2>
+    <div id="psub" class="team-subtitle"></div>
 
     <div class="toolbar">
       <label for="agg">View:</label>
@@ -287,7 +294,7 @@
     Plotly.newPlot('chart', [trace], {
       margin: { l: 60, r: 20, t: 10, b: 45 },
       xaxis: { type: 'date' },
-      yaxis: { title: 'Rating' },
+      yaxis: { title: 'Elo' },
       paper_bgcolor: bg,
       plot_bgcolor: bg,
       font: { color: getComputedStyle(document.body).color, size: 14 },
@@ -299,34 +306,30 @@
     });
   }
 
-  function getResultClassAndText(g, myName) {
-    const isHome = g.home === myName;
-    const isAway = g.away === myName;
+  function getResultClassAndText(g, myCode) {
     const raw = (g.result || '').trim();
 
-    if (/^draw$/i.test(raw)) {
-      return { cls: 'draw', text: 'Draw' };
-    }
+    if (/^draw$/i.test(raw)) return { cls: 'draw', text: 'Draw' };
 
-    if (raw === myName) {
-      return { cls: 'win', text: 'Win' };
-    }
+    // In your NFL exporter, result is the winner code (or "Draw")
+    if (raw === myCode) return { cls: 'win', text: 'Win' };
+    if (raw && raw !== myCode) return { cls: 'loss', text: 'Loss' };
 
-    if ((isHome || isAway) && raw !== '' && raw !== myName) {
-      return { cls: 'loss', text: 'Loss' };
-    }
-
-    return { cls: 'draw', text: raw || 'Draw' };
+    return { cls: 'draw', text: 'Draw' };
   }
 
-  // UPDATED: now takes the full team object + teams list so we can link opponents by id
   function renderGamesTable(me, teams, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
 
+    const teamsByCode = new Map();
+    for (const t of teams) {
+      if (t && t.code) teamsByCode.set(t.code, t);
+    }
+
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
-    for (const h of ['Date', 'Tournament', 'Opponent', 'Elo', 'Result', 'Δ', 'New']) {
+    for (const h of ['Date', 'Comp', 'Opponent', 'Opp Elo', 'Result', 'Δ', 'New']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -340,15 +343,14 @@
     const tbody = document.createElement('tbody');
     games.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    const myName = me.name;
+    const myCode = me.code || '';
 
     for (const g of games) {
-      const tr = document.createElement('tr');
-
-      const isHome = g.home === myName;
-      const isAway = g.away === myName;
+      const isHome = g.homeCode === myCode;
+      const isAway = g.awayCode === myCode;
       if (!isHome && !isAway) continue;
 
+      const opponentCode = isHome ? g.awayCode : g.homeCode;
       const opponentName = isHome ? g.away : g.home;
       const opponentElo = isHome ? Number(g.awayElo) : Number(g.homeElo);
       const myEloBefore = isHome ? Number(g.homeElo) : Number(g.awayElo);
@@ -358,6 +360,8 @@
         ? Math.round(myEloBefore + numDelta)
         : NaN;
 
+      const tr = document.createElement('tr');
+
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date || '';
 
@@ -366,30 +370,31 @@
       tdTournament.title = g.tournament || '';
       tdTournament.textContent = g.tournament || '';
 
-      // UPDATED: clickable opponent if present in teams.json
       const tdOpp = document.createElement('td');
       tdOpp.className = 'opp';
 
-      if (opponentName) {
-        const opponentTeam = teams.find(t => t.name === opponentName);
+      const oppTeam = opponentCode ? teamsByCode.get(opponentCode) : null;
+      if (oppTeam && oppTeam.id) {
+        const a = document.createElement('a');
+        a.href = `player.html?id=${encodeURIComponent(oppTeam.id)}`;
+        a.textContent = oppTeam.name || opponentName || opponentCode;
+        tdOpp.appendChild(a);
 
-        if (opponentTeam && opponentTeam.id) {
-          const a = document.createElement('a');
-          a.href = `player.html?id=${encodeURIComponent(opponentTeam.id)}`;
-          a.textContent = opponentName;
-          tdOpp.appendChild(a);
-        } else {
-          tdOpp.textContent = opponentName;
+        if (oppTeam.code) {
+          const span = document.createElement('span');
+          span.className = 'muted-small';
+          span.textContent = ` (${oppTeam.code})`;
+          tdOpp.appendChild(span);
         }
       } else {
-        tdOpp.textContent = '';
+        tdOpp.textContent = opponentName || opponentCode || '';
       }
 
       const tdOppElo = document.createElement('td');
       tdOppElo.textContent = Number.isFinite(opponentElo) ? String(Math.round(opponentElo)) : '';
 
       const tdResult = document.createElement('td');
-      const r = getResultClassAndText(g, myName);
+      const r = getResultClassAndText(g, myCode);
       tdResult.textContent = r.text;
       tdResult.className = 'result ' + r.cls;
 
@@ -411,6 +416,7 @@
       tr.appendChild(tdResult);
       tr.appendChild(tdDelta);
       tr.appendChild(tdNew);
+
       tbody.appendChild(tr);
     }
 
@@ -432,11 +438,15 @@
       const me = teams.find(t => t.id === idRaw);
       if (!me) throw new Error('team id not in teams.json');
 
-      document.getElementById('pname').textContent = me.name;
+      document.getElementById('pname').innerHTML =
+        `${me.name || me.id}${me.code ? ` <span class="code-pill">${me.code}</span>` : ''}`;
+
+      document.getElementById('psub').textContent =
+        Number.isFinite(+me.rating) ? `Current Elo: ${Math.round(+me.rating)}` : '';
 
       const histJson = await histRes.json();
       RAW = normalise(
-        histJson.map(d => ({
+        (Array.isArray(histJson) ? histJson : []).map(d => ({
           x: d.date,
           y: Number(d.rating),
           tournament: d.tournament || ''
@@ -455,7 +465,7 @@
 
       if (gamesRes.ok) {
         const games = await gamesRes.json();
-        renderGamesTable(me, teams, games); // UPDATED
+        renderGamesTable(me, teams, Array.isArray(games) ? games : []);
       } else {
         const tbl = document.getElementById('games');
         tbl.innerHTML = '<tbody><tr><td colspan="7">No games</td></tr></tbody>';
