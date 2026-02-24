@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>J-Ratings: International Football</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <style>
+    #compare-chart { height: 500px; }
+
+    .compare-chart-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Modal */
+    #compare-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #compare-modal > div {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80%;
+      overflow: auto;
+      color: #fff;
+    }
+
+    .compare-controls { margin: 10px 0; }
+    .compare-controls button { margin-right: 10px; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a id="home-link" href="index.html" class="brand-with-logo">
+        <span>J-Ratings <span class="title-football">International Football</span></span>
+        <img src="../../Football Banner Logo.png" alt="Football logo" class="sport-logo">
+      </a>
+    </h1>
+
+    <nav class="topnav" aria-label="Main">
+      <a href="../../index.html">Sports</a>
+      <a id="nav-home" href="index.html" class="active-tab">Home</a>
+      <a id="nav-compare" href="compare.html">Compare</a>
+      <a id="nav-peak" href="peak.html">Peak</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel" id="teams-panel">
+    <h2>All teams</h2>
+
+    <div class="toolbar">
+      <input id="q" type="search" placeholder="Filter by team…">
+
+      <label for="era" style="margin-left:auto">Era:</label>
+      <select id="era">
+        <option value="live" selected>Live</option>
+      </select>
+
+      <button id="compare-btn" class="club-btn" type="button">Compare</button>
+    </div>
+
+    <div id="compare-wrap" style="display:none; padding:16px">
+      <div class="compare-chart-toolbar">
+        <label for="compare-agg">View:</label>
+        <select id="compare-agg">
+          <option value="daily">Daily</option>
+          <option value="monthly" selected>Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
+
+      <div id="compare-chart">Loading…</div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="teams">
+        <thead>
+          <tr>
+            <th style="min-width:60px">Rank</th>
+            <th style="min-width:260px">Team</th>
+            <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
+          </tr>
+        </thead>
+        <tbody><!-- filled by JS --></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Compare Selection Modal -->
+  <div id="compare-modal">
+    <div>
+      <h3>Select teams to view:</h3>
+      <div class="compare-controls">
+        <button id="compare-show-top">Show Selected</button>
+        <button id="compare-cancel-top">Cancel</button>
+      </div>
+      <div id="compare-list" style="margin:10px 0 20px 0;"></div>
+      <div class="compare-controls">
+        <button id="compare-show-bottom">Show Selected</button>
+        <button id="compare-cancel-bottom">Cancel</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const DATA_URL = 'data/teams.json';
+  const ERA_STARTS_URL = 'data/era_starts.json';
+  const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
+
+  const state = {
+    mode: 'live',       // 'live' or era label e.g. '2024'
+    liveRows: [],       // from teams.json
+    eraStarts: [],      // from era_starts.json
+    rows: [],
+    filtered: []
+  };
+
+  const histCache = new Map();
+  let lastCompared = [];
+
+  function contextLabel(row) {
+    return (row.tournament || '').trim();
+  }
+
+  function updateHeaders() {
+    document.getElementById('rating-col-head').textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
+  }
+
+  function render() {
+    const tbody = document.querySelector('#teams tbody');
+    tbody.innerHTML = '';
+
+    state.filtered.forEach((r, i) => {
+      const tr = document.createElement('tr');
+
+      const tdRank = document.createElement('td');
+      tdRank.textContent = i + 1;
+      tr.appendChild(tdRank);
+
+      const tdName = document.createElement('td');
+      const a = document.createElement('a');
+      a.href = `player.html?id=${encodeURIComponent(r.id)}`;
+      a.textContent = r.name;
+      tdName.appendChild(a);
+      tr.appendChild(tdName);
+
+      const tdRt = document.createElement('td');
+      tdRt.className = 'right';
+      tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
+      tr.appendChild(tdRt);
+
+      const tdCtx = document.createElement('td');
+      tdCtx.textContent = contextLabel(r);
+      tr.appendChild(tdCtx);
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  function applyFilter() {
+    const q = document.getElementById('q').value.trim().toLowerCase();
+    state.filtered = !q
+      ? state.rows.slice()
+      : state.rows.filter(r => r.name.toLowerCase().includes(q));
+
+    updateHeaders();
+    render();
+    hideCompare();
+  }
+
+  function rebuildRowsFromMode() {
+    const mode = document.getElementById('era').value;
+    state.mode = mode;
+
+    if (mode === 'live') {
+      state.rows = state.liveRows
+        .slice()
+        .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
+    } else {
+      state.rows = state.eraStarts
+        .filter(d => d.era === mode)
+        .map(d => ({
+          id: d.id,
+          name: d.name,
+          rating: +d.elo,
+          tournament: d.tournament || ''
+        }))
+        .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
+    }
+
+    applyFilter();
+  }
+
+  function populateEraSelect() {
+    const sel = document.getElementById('era');
+
+    const eras = Array.from(new Set(
+      state.eraStarts.map(d => d.era).filter(Boolean)
+    )).sort((a, b) => {
+      const an = Number(a), bn = Number(b);
+      if (Number.isFinite(an) && Number.isFinite(bn)) return bn - an;
+      return String(b).localeCompare(String(a));
+    });
+
+    for (const e of eras) {
+      const opt = document.createElement('option');
+      opt.value = e;
+      opt.textContent = e;
+      sel.appendChild(opt);
+    }
+  }
+
+  async function fetchHistoryFor(id) {
+    if (histCache.has(id)) return histCache.get(id);
+
+    try {
+      const res = await fetch(`data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+      if (!res.ok) return null;
+      const rows = await res.json();
+      histCache.set(id, rows);
+      return rows;
+    } catch {
+      return null;
+    }
+  }
+
+  function normalise(series, dedupeByDay = false) {
+    const s = series
+      .filter(p => p && p.x && Number.isFinite(p.y))
+      .map(p => ({
+        x: p.x,
+        y: +p.y,
+        tournament: p.tournament || ''
+      }))
+      .sort((a, b) => new Date(a.x) - new Date(b.x));
+
+    if (!dedupeByDay) return s;
+
+    const out = [];
+    let lastKey = null;
+    for (const p of s) {
+      const d = new Date(p.x);
+      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      if (key !== lastKey) out.push(p);
+      else out[out.length - 1] = p;
+      lastKey = key;
+    }
+    return out;
+  }
+
+  function aggregate(series, mode) {
+    if (mode === 'daily') return normalise(series, true);
+
+    const buckets = Object.create(null);
+    for (const p of series) {
+      const d = new Date(p.x);
+      const key = (mode === 'monthly')
+        ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`
+        : `${d.getFullYear()}`;
+      (buckets[key] ||= []).push(p);
+    }
+
+    const out = Object.keys(buckets).sort().map(k => {
+      const pts = buckets[k].filter(p => Number.isFinite(p.y));
+      const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
+      const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
+      const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
+      return { x, y: avg, tournament: lastTournament };
+    });
+
+    return normalise(out, false);
+  }
+
+  function hideCompare() {
+    document.getElementById('compare-wrap').style.display = 'none';
+    document.getElementById('compare-chart').innerHTML = '';
+    lastCompared = [];
+  }
+
+  async function buildComparison(teams) {
+    lastCompared = teams.slice();
+
+    const wrap = document.getElementById('compare-wrap');
+    const chart = document.getElementById('compare-chart');
+    const modeSel = document.getElementById('compare-agg');
+
+    wrap.style.display = 'block';
+    chart.innerHTML = 'Loading…';
+
+    const mode = modeSel ? modeSel.value : 'monthly';
+
+    const traces = [];
+    let ymin = Infinity, ymax = -Infinity;
+
+    for (const t of teams) {
+      const hist = await fetchHistoryFor(t.id);
+      if (!hist || !hist.length) continue;
+
+      const raw = hist.map(d => ({ x: d.date, y: Number(d.rating), tournament: d.tournament || '' }));
+      const data = aggregate(raw, mode);
+
+      const xs = data.map(pt => pt.x);
+      const ys = data.map(pt => pt.y);
+      const tournaments = data.map(pt => pt.tournament || '');
+      if (!xs.length || !ys.length) continue;
+
+      ymin = Math.min(ymin, ...ys);
+      ymax = Math.max(ymax, ...ys);
+
+      traces.push({
+        type: 'scatter',
+        name: t.name,
+        x: xs,
+        y: ys,
+        customdata: tournaments,
+        mode: (mode === 'daily') ? 'lines' : 'lines+markers',
+        line: { width: 2, shape: 'linear' },
+        marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
+        hovertemplate: (mode === 'daily')
+          ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra>' + t.name + '</extra>'
+          : '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
+        connectgaps: true
+      });
+    }
+
+    if (!traces.length) {
+      chart.innerHTML = 'No history found.';
+      return;
+    }
+
+    ymin = Math.floor(ymin / 100) * 100;
+    ymax = Math.ceil(ymax / 100) * 100;
+
+    const shapes = [];
+    for (let v = ymin; v <= ymax; v += 100) {
+      shapes.push({
+        type: 'line',
+        xref: 'paper', x0: 0, x1: 1,
+        y0: v, y1: v,
+        line: { width: 1, color: 'rgba(128,128,128,0.35)' },
+        layer: 'below'
+      });
+    }
+
+    const cs = getComputedStyle(document.body);
+    const layout = {
+      margin: { l: 50, r: 20, t: 10, b: 40 },
+      xaxis: { type: 'date' },
+      yaxis: { title: 'Rating' },
+      legend: { orientation: 'h' },
+      paper_bgcolor: cs.backgroundColor,
+      plot_bgcolor: cs.backgroundColor,
+      font: { color: cs.color },
+      shapes
+    };
+
+    Plotly.newPlot(chart, traces, layout, {
+      staticPlot: IS_TOUCH,
+      displayModeBar: false,
+      responsive: true
+    });
+  }
+
+  function setupCompareButton() {
+    const modal = document.getElementById('compare-modal');
+    const listDiv = document.getElementById('compare-list');
+
+    function openModal() {
+      listDiv.innerHTML = '';
+
+      state.filtered.forEach(t => {
+        const id = `chk-${t.id}`;
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = `
+          <label>
+            <input type="checkbox" id="${id}" value="${t.id}" style="margin-right:6px">
+            ${t.name} (${Math.round(t.rating)})
+          </label>
+        `;
+        listDiv.appendChild(wrapper);
+      });
+
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    function showSelected() {
+      const selectedIds = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
+      if (!selectedIds.length) {
+        alert('Please select at least one team.');
+        return;
+      }
+
+      closeModal();
+
+      const compareAgg = document.getElementById('compare-agg');
+      if (compareAgg) compareAgg.value = 'monthly';
+
+      const chosen = state.filtered.filter(t => selectedIds.includes(t.id));
+      buildComparison(chosen);
+    }
+
+    document.getElementById('compare-btn').addEventListener('click', openModal);
+    document.getElementById('compare-show-top').addEventListener('click', showSelected);
+    document.getElementById('compare-show-bottom').addEventListener('click', showSelected);
+    document.getElementById('compare-cancel-top').addEventListener('click', closeModal);
+    document.getElementById('compare-cancel-bottom').addEventListener('click', closeModal);
+  }
+
+  async function load() {
+    try {
+      const [teamsRes, eraRes] = await Promise.all([
+        fetch(DATA_URL, { cache: 'no-cache' }),
+        fetch(ERA_STARTS_URL, { cache: 'no-cache' })
+      ]);
+
+      if (!teamsRes.ok) throw new Error('Failed to load teams.json');
+      if (!eraRes.ok) throw new Error('Failed to load era_starts.json');
+
+      const teamsData = await teamsRes.json();
+      const eraData = await eraRes.json();
+
+      const latestTournamentById = new Map();
+
+      state.liveRows = teamsData
+        .filter(d => d && d.id && d.name && Number.isFinite(+d.rating))
+        .map(d => ({
+          id: d.id,
+          name: d.name,
+          rating: +d.rating,
+          tournament: ''
+        }))
+        .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
+
+      state.eraStarts = Array.isArray(eraData)
+        ? eraData.filter(d => d && d.id && d.name && d.era && Number.isFinite(+d.elo))
+        : [];
+
+      populateEraSelect();
+      rebuildRowsFromMode();
+
+
+      state.liveRows = state.liveRows.map(r => ({
+        ...r,
+        tournament: latestTournamentById.get(r.id) || ''
+      }));
+
+      if (state.mode === 'live') applyFilter();
+    } catch (err) {
+      document.querySelector('#teams tbody').innerHTML =
+        `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
+    }
+  }
+
+  document.getElementById('compare-agg').addEventListener('change', () => {
+    if (lastCompared.length) buildComparison(lastCompared);
+  });
+
+  document.getElementById('era').addEventListener('change', rebuildRowsFromMode);
+  document.getElementById('q').addEventListener('input', applyFilter);
+
+  setupCompareButton();
+  load();
+</script>
+</body>
+</html>
