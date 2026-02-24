@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>J-Ratings: International Football</title>
+  <title>J-Ratings: NFL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
@@ -17,7 +17,6 @@
       flex-wrap: wrap;
     }
 
-    /* Modal */
     #compare-modal {
       display: none;
       position: fixed;
@@ -33,7 +32,7 @@
       background: #1a1a1a;
       padding: 20px;
       border-radius: 8px;
-      max-width: 500px;
+      max-width: 560px;
       width: 90%;
       max-height: 80%;
       overflow: auto;
@@ -42,6 +41,12 @@
 
     .compare-controls { margin: 10px 0; }
     .compare-controls button { margin-right: 10px; }
+
+    .team-code {
+      opacity: 0.75;
+      margin-left: 6px;
+      font-size: 0.9em;
+    }
   </style>
 </head>
 <body>
@@ -49,8 +54,9 @@
   <div class="wrap">
     <h1 class="site-title">
       <a id="home-link" href="index.html" class="brand-with-logo">
-        <span>J-Ratings <span class="title-football">International Football</span></span>
-        <img src="../../Football Banner Logo.png" alt="Football logo" class="sport-logo">
+        <span>J-Ratings <span class="title-football">NFL</span></span>
+        <!-- swap image path if you have an NFL-specific logo -->
+        <img src="../../Football Banner Logo.png" alt="NFL logo" class="sport-logo">
       </a>
     </h1>
 
@@ -70,7 +76,7 @@
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by team…">
 
-      <label for="era" style="margin-left:auto">Era:</label>
+      <label for="era" style="margin-left:auto">Season:</label>
       <select id="era">
         <option value="live" selected>Live</option>
       </select>
@@ -96,8 +102,9 @@
         <thead>
           <tr>
             <th style="min-width:60px">Rank</th>
-            <th style="min-width:260px">Team</th>
+            <th style="min-width:320px">Team</th>
             <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
+            <th style="min-width:180px">Context</th>
           </tr>
         </thead>
         <tbody><!-- filled by JS --></tbody>
@@ -128,7 +135,7 @@
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
   const state = {
-    mode: 'live',       // 'live' or era label e.g. '2024'
+    mode: 'live',       // 'live' or season label e.g. '2024'
     liveRows: [],       // from teams.json
     eraStarts: [],      // from era_starts.json
     rows: [],
@@ -159,9 +166,18 @@
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
-      a.href = `player.html?id=${encodeURIComponent(r.id)}`;
-      a.textContent = r.name;
+      // Change team.html if your detail page uses a different filename
+      a.href = `team.html?id=${encodeURIComponent(r.id)}`;
+      a.textContent = r.name || r.code || r.id;
       tdName.appendChild(a);
+
+      if (r.code) {
+        const codeSpan = document.createElement('span');
+        codeSpan.className = 'team-code';
+        codeSpan.textContent = `(${r.code})`;
+        tdName.appendChild(codeSpan);
+      }
+
       tr.appendChild(tdName);
 
       const tdRt = document.createElement('td');
@@ -179,9 +195,14 @@
 
   function applyFilter() {
     const q = document.getElementById('q').value.trim().toLowerCase();
+
     state.filtered = !q
       ? state.rows.slice()
-      : state.rows.filter(r => r.name.toLowerCase().includes(q));
+      : state.rows.filter(r => {
+          const nm = (r.name || '').toLowerCase();
+          const cd = (r.code || '').toLowerCase();
+          return nm.includes(q) || cd.includes(q);
+        });
 
     updateHeaders();
     render();
@@ -195,17 +216,18 @@
     if (mode === 'live') {
       state.rows = state.liveRows
         .slice()
-        .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
+        .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
     } else {
       state.rows = state.eraStarts
-        .filter(d => d.era === mode)
+        .filter(d => String(d.era) === String(mode))
         .map(d => ({
           id: d.id,
-          name: d.name,
+          code: d.code || '',
+          name: d.name || d.code || d.id,
           rating: +d.elo,
           tournament: d.tournament || ''
         }))
-        .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
+        .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
     }
 
     applyFilter();
@@ -260,7 +282,7 @@
     let lastKey = null;
     for (const p of s) {
       const d = new Date(p.x);
-      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
       if (key !== lastKey) out.push(p);
       else out[out.length - 1] = p;
       lastKey = key;
@@ -275,7 +297,7 @@
     for (const p of series) {
       const d = new Date(p.x);
       const key = (mode === 'monthly')
-        ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`
+        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
         : `${d.getFullYear()}`;
       (buckets[key] ||= []).push(p);
     }
@@ -316,7 +338,12 @@
       const hist = await fetchHistoryFor(t.id);
       if (!hist || !hist.length) continue;
 
-      const raw = hist.map(d => ({ x: d.date, y: Number(d.rating), tournament: d.tournament || '' }));
+      const raw = hist.map(d => ({
+        x: d.date,
+        y: Number(d.rating),
+        tournament: d.tournament || ''
+      }));
+
       const data = aggregate(raw, mode);
 
       const xs = data.map(pt => pt.x);
@@ -329,7 +356,7 @@
 
       traces.push({
         type: 'scatter',
-        name: t.name,
+        name: t.name || t.code || t.id,
         x: xs,
         y: ys,
         customdata: tournaments,
@@ -337,8 +364,8 @@
         line: { width: 2, shape: 'linear' },
         marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
         hovertemplate: (mode === 'daily')
-          ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra>' + t.name + '</extra>'
-          : '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
+          ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra>' + (t.name || t.code || t.id) + '</extra>'
+          : '%{x}<br>%{y:.0f} Elo<extra>' + (t.name || t.code || t.id) + '</extra>',
         connectgaps: true
       });
     }
@@ -366,7 +393,7 @@
     const layout = {
       margin: { l: 50, r: 20, t: 10, b: 40 },
       xaxis: { type: 'date' },
-      yaxis: { title: 'Rating' },
+      yaxis: { title: 'Elo' },
       legend: { orientation: 'h' },
       paper_bgcolor: cs.backgroundColor,
       plot_bgcolor: cs.backgroundColor,
@@ -390,11 +417,13 @@
 
       state.filtered.forEach(t => {
         const id = `chk-${t.id}`;
+        const label = `${t.name || t.code || t.id}${t.code ? ` (${t.code})` : ''} (${Math.round(t.rating)})`;
+
         const wrapper = document.createElement('div');
         wrapper.innerHTML = `
           <label>
             <input type="checkbox" id="${id}" value="${t.id}" style="margin-right:6px">
-            ${t.name} (${Math.round(t.rating)})
+            ${label}
           </label>
         `;
         listDiv.appendChild(wrapper);
@@ -443,32 +472,24 @@
       const teamsData = await teamsRes.json();
       const eraData = await eraRes.json();
 
-      const latestTournamentById = new Map();
-
-      state.liveRows = teamsData
-        .filter(d => d && d.id && d.name && Number.isFinite(+d.rating))
+      state.liveRows = (Array.isArray(teamsData) ? teamsData : [])
+        .filter(d => d && d.id && Number.isFinite(+d.rating))
         .map(d => ({
           id: d.id,
-          name: d.name,
+          code: d.code || '',
+          name: d.name || d.code || d.id,
           rating: +d.rating,
+          games: Number.isFinite(+d.games) ? +d.games : null,
           tournament: ''
         }))
-        .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
+        .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
 
       state.eraStarts = Array.isArray(eraData)
-        ? eraData.filter(d => d && d.id && d.name && d.era && Number.isFinite(+d.elo))
+        ? eraData.filter(d => d && d.id && d.era && Number.isFinite(+d.elo))
         : [];
 
       populateEraSelect();
       rebuildRowsFromMode();
-
-
-      state.liveRows = state.liveRows.map(r => ({
-        ...r,
-        tournament: latestTournamentById.get(r.id) || ''
-      }));
-
-      if (state.mode === 'live') applyFilter();
     } catch (err) {
       document.querySelector('#teams tbody').innerHTML =
         `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
