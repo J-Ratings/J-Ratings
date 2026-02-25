@@ -104,7 +104,6 @@
             <th style="min-width:60px">Rank</th>
             <th style="min-width:320px">Team</th>
             <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
-            <th style="min-width:180px">Context</th>
           </tr>
         </thead>
         <tbody><!-- filled by JS --></tbody>
@@ -145,10 +144,6 @@
   const histCache = new Map();
   let lastCompared = [];
 
-  function contextLabel(row) {
-    return (row.tournament || '').trim();
-  }
-
   function updateHeaders() {
     document.getElementById('rating-col-head').textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
   }
@@ -186,7 +181,6 @@
       tr.appendChild(tdRt);
 
       const tdCtx = document.createElement('td');
-      tdCtx.textContent = contextLabel(r);
       tr.appendChild(tdCtx);
 
       tbody.appendChild(tr);
