@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>J-Ratings: Go (Index)</title>
+  <title>J-Ratings: Go</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
@@ -27,15 +27,29 @@
 
     /* Modal */
     #compare-modal {
-      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-      background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:9999;
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
     }
+
     #compare-modal > div {
-      background:#1a1a1a; padding:20px; border-radius:8px;
-      max-width:500px; width:90%; max-height:80%; overflow:auto; color:#fff;
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 560px;
+      width: 90%;
+      max-height: 80%;
+      overflow: auto;
+      color: #fff;
     }
+
     .compare-controls { margin: 10px 0; }
-    .compare-controls button { margin-right:10px; }
+    .compare-controls button { margin-right: 10px; }
   </style>
 </head>
 <body>
@@ -64,7 +78,12 @@
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by name…">
 
-      <button id="compare-btn" class="club-btn" type="button" style="margin-left:auto">Compare</button>
+      <label for="era" style="margin-left:auto">Year:</label>
+      <select id="era">
+        <option value="live" selected>Live</option>
+      </select>
+
+      <button id="compare-btn" class="club-btn" type="button">Compare</button>
     </div>
 
     <div id="compare-wrap" style="display:none; padding:16px">
@@ -85,8 +104,8 @@
         <thead>
           <tr>
             <th style="min-width:60px">Rank</th>
-            <th style="min-width:240px">Player</th>
-            <th class="right" style="min-width:120px">Rating</th>
+            <th style="min-width:260px">Player</th>
+            <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
           </tr>
         </thead>
         <tbody><!-- filled by JS --></tbody>
@@ -112,15 +131,27 @@
 </main>
 
 <script>
-  /* ---------- DATA & STATE ---------- */
   const DATA_URL = 'data/players.json';
+  const ERA_STARTS_URL = 'data/era_starts.json';
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
-  const state = { rows: [], filtered: [] };
+  const state = {
+    mode: 'live',     // 'live' or era label like '2024'
+    liveRows: [],     // from players.json
+    eraStarts: [],    // from era_starts.json
+    rows: [],
+    filtered: []
+  };
+
   const histCache = new Map();
-  let lastCompared = []; // remember last selection so chart View can re-plot
+  let lastCompared = [];
 
   /* ---------- TABLE ---------- */
+  function updateHeaders() {
+    document.getElementById('rating-col-head').textContent =
+      (state.mode === 'live') ? 'Rating' : 'Start Elo';
+  }
+
   function render() {
     const tbody = document.querySelector('#players tbody');
     tbody.innerHTML = '';
@@ -135,32 +166,77 @@
       const tdName = document.createElement('td');
       const a = document.createElement('a');
       a.href = `player.html?id=${encodeURIComponent(r.id)}`;
-      a.textContent = r.name;
+      a.textContent = r.name || r.id;
       tdName.appendChild(a);
       tr.appendChild(tdName);
 
       const tdRt = document.createElement('td');
       tdRt.className = 'right';
-      tdRt.textContent = r.rating;
+      tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
       tr.appendChild(tdRt);
 
       tbody.appendChild(tr);
     });
-
   }
 
   function applyFilter() {
     const q = document.getElementById('q').value.trim().toLowerCase();
+
     state.filtered = !q
       ? state.rows.slice()
-      : state.rows.filter(r => r.name.toLowerCase().includes(q));
+      : state.rows.filter(r => (r.name || '').toLowerCase().includes(q));
+
+    updateHeaders();
     render();
     hideCompare();
+  }
+
+  function rebuildRowsFromMode() {
+    const mode = document.getElementById('era').value;
+    state.mode = mode;
+
+    if (mode === 'live') {
+      state.rows = state.liveRows
+        .slice()
+        .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
+    } else {
+      state.rows = state.eraStarts
+        .filter(d => String(d.era) === String(mode))
+        .map(d => ({
+          id: d.id,
+          name: d.name || d.id,
+          rating: +d.elo,
+          tournament: d.tournament || ''
+        }))
+        .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
+    }
+
+    applyFilter();
+  }
+
+  function populateEraSelect() {
+    const sel = document.getElementById('era');
+
+    const eras = Array.from(new Set(
+      state.eraStarts.map(d => d.era).filter(Boolean)
+    )).sort((a, b) => {
+      const an = Number(a), bn = Number(b);
+      if (Number.isFinite(an) && Number.isFinite(bn)) return bn - an;
+      return String(b).localeCompare(String(a));
+    });
+
+    for (const e of eras) {
+      const opt = document.createElement('option');
+      opt.value = e;
+      opt.textContent = e;
+      sel.appendChild(opt);
+    }
   }
 
   /* ---------- HISTORY FETCH ---------- */
   async function fetchHistoryFor(id) {
     if (histCache.has(id)) return histCache.get(id);
+
     try {
       const res = await fetch(`data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
       if (!res.ok) return null;
@@ -176,20 +252,28 @@
   function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
-      .map(p => ({ x: p.x, y: +p.y }))
+      .map(p => ({
+        x: p.x,
+        y: +p.y,
+        tournament: p.tournament || ''
+      }))
       .sort((a, b) => new Date(a.x) - new Date(b.x));
 
     if (!dedupeByDay) return s;
 
     const out = [];
     let lastKey = null;
+
     for (const p of s) {
       const d = new Date(p.x);
-      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
       if (key !== lastKey) out.push(p);
       else out[out.length - 1] = p; // keep last point that day
+
       lastKey = key;
     }
+
     return out;
   }
 
@@ -197,19 +281,21 @@
     if (mode === 'daily') return normalise(series, true);
 
     const buckets = Object.create(null);
+
     for (const p of series) {
       const d = new Date(p.x);
       const key = (mode === 'monthly')
-        ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`
+        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
         : `${d.getFullYear()}`;
-      (buckets[key] ||= []).push(p.y);
+      (buckets[key] ||= []).push(p);
     }
 
     const out = Object.keys(buckets).sort().map(k => {
-      const ys = buckets[k].filter(Number.isFinite);
-      const avg = ys.reduce((a, b) => a + b, 0) / ys.length;
+      const pts = buckets[k].filter(p => Number.isFinite(p.y));
+      const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
+      const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
-      return { x, y: avg };
+      return { x, y: avg, tournament: lastTournament };
     });
 
     return normalise(out, false);
@@ -241,11 +327,17 @@
       const hist = await fetchHistoryFor(p.id);
       if (!hist || !hist.length) continue;
 
-      const raw = hist.map(d => ({ x: d.date, y: Number(d.rating) }));
+      const raw = hist.map(d => ({
+        x: d.date,
+        y: Number(d.rating),
+        tournament: d.tournament || ''
+      }));
+
       const data = aggregate(raw, mode);
 
       const xs = data.map(pt => pt.x);
       const ys = data.map(pt => pt.y);
+      const tournaments = data.map(pt => pt.tournament || '');
       if (!xs.length || !ys.length) continue;
 
       ymin = Math.min(ymin, ...ys);
@@ -253,13 +345,16 @@
 
       traces.push({
         type: 'scatter',
-        name: p.name,
+        name: p.name || p.id,
         x: xs,
         y: ys,
+        customdata: tournaments,
         mode: (mode === 'daily') ? 'lines' : 'lines+markers',
         line: { width: 2, shape: 'linear' },
         marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
-        hovertemplate: '%{x}<br>%{y:.0f}<extra>' + p.name + '</extra>',
+        hovertemplate: (mode === 'daily')
+          ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra>' + (p.name || p.id) + '</extra>'
+          : '%{x}<br>%{y:.0f} Elo<extra>' + (p.name || p.id) + '</extra>',
         connectgaps: true
       });
     }
@@ -275,7 +370,9 @@
     const shapes = [];
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
-        type: 'line', xref: 'paper', x0: 0, x1: 1,
+        type: 'line',
+        xref: 'paper',
+        x0: 0, x1: 1,
         y0: v, y1: v,
         line: { width: 1, color: 'rgba(128,128,128,0.35)' },
         layer: 'below'
@@ -286,7 +383,7 @@
     const layout = {
       margin: { l: 50, r: 20, t: 10, b: 40 },
       xaxis: { type: 'date' },
-      yaxis: { title: 'Rating' },
+      yaxis: { title: 'Elo' },
       legend: { orientation: 'h' },
       paper_bgcolor: cs.backgroundColor,
       plot_bgcolor: cs.backgroundColor,
@@ -301,23 +398,28 @@
     });
   }
 
+  /* ---------- COMPARE MODAL ---------- */
   function setupCompareButton() {
     const modal = document.getElementById('compare-modal');
     const listDiv = document.getElementById('compare-list');
 
     function openModal() {
       listDiv.innerHTML = '';
+
       state.filtered.forEach(p => {
         const id = `chk-${p.id}`;
+        const label = `${p.name || p.id} (${Math.round(p.rating)})`;
+
         const wrapper = document.createElement('div');
         wrapper.innerHTML = `
           <label>
             <input type="checkbox" id="${id}" value="${p.id}" style="margin-right:6px">
-            ${p.name} (${p.rating})
+            ${label}
           </label>
         `;
         listDiv.appendChild(wrapper);
       });
+
       modal.style.display = 'flex';
     }
 
@@ -327,6 +429,7 @@
 
     function showSelected() {
       const selectedIds = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
+
       if (!selectedIds.length) {
         alert('Please select at least one player.');
         return;
@@ -334,7 +437,6 @@
 
       closeModal();
 
-      // Default chart view to monthly for each new compare action
       const compareAgg = document.getElementById('compare-agg');
       if (compareAgg) compareAgg.value = 'monthly';
 
@@ -349,25 +451,37 @@
     document.getElementById('compare-cancel-bottom').addEventListener('click', closeModal);
   }
 
-  /* ---------- LOAD & WIRE-UP ---------- */
+  /* ---------- LOAD ---------- */
   async function load() {
     try {
-      const res = await fetch(DATA_URL, { cache: 'no-cache' });
-      if (!res.ok) throw new Error('Failed to load players.json');
-      const data = await res.json();
+      const [playersRes, eraRes] = await Promise.all([
+        fetch(DATA_URL, { cache: 'no-cache' }),
+        fetch(ERA_STARTS_URL, { cache: 'no-cache' })
+      ]);
 
-      state.rows = data
-        .filter(d => d && d.id && (d.display_name || d.name) && Number.isFinite(+d.rating))
+      if (!playersRes.ok) throw new Error('Failed to load players.json');
+      if (!eraRes.ok) throw new Error('Failed to load era_starts.json');
+
+      const playersData = await playersRes.json();
+      const eraData = await eraRes.json();
+
+      state.liveRows = (Array.isArray(playersData) ? playersData : [])
+        .filter(d => d && d.id && (d.name || d.display_name) && Number.isFinite(+d.rating))
         .map(d => ({
           id: d.id,
-          name: d.display_name || d.name,
-          rating: +d.rating
+          name: d.display_name || d.name || d.id,
+          rating: +d.rating,
+          peak: Number.isFinite(+d.peak) ? +d.peak : null,
+          peak_date: d.peak_date || null
         }))
-        .sort((a, b) => b.rating - a.rating);
+        .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
 
-      state.filtered = state.rows.slice();
-      render();
-      hideCompare();
+      state.eraStarts = Array.isArray(eraData)
+        ? eraData.filter(d => d && d.id && d.era && Number.isFinite(+d.elo))
+        : [];
+
+      populateEraSelect();
+      rebuildRowsFromMode();
     } catch (err) {
       document.querySelector('#players tbody').innerHTML =
         `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
@@ -378,6 +492,7 @@
     if (lastCompared.length) buildComparison(lastCompared);
   });
 
+  document.getElementById('era').addEventListener('change', rebuildRowsFromMode);
   document.getElementById('q').addEventListener('input', applyFilter);
 
   setupCompareButton();
