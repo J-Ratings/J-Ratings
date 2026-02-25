@@ -8,14 +8,13 @@
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
   <style>
     /* Profile page sizing tweaks */
-    #chart {
-      height: 520px;
-    }
+    #chart { height: 520px; }
 
     .toolbar {
       justify-content: center;
       gap: 10px;
       padding: 14px 20px;
+      flex-wrap: wrap;
     }
 
     .toolbar label {
@@ -31,6 +30,15 @@
     h2#pname {
       font-size: 2rem;
       padding: 20px;
+      margin-bottom: 0;
+    }
+
+    .player-subtitle {
+      text-align: center;
+      opacity: 0.85;
+      margin-top: -8px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
     }
 
     h3.section-title {
@@ -70,9 +78,11 @@
       background-color: var(--panel-bg, #1a1a1a);
     }
 
-    /* Double separators: Date|Black, Elo|White, Elo|Result|Δ */
+    /* Column separators */
     table.games th:nth-child(1), table.games td:nth-child(1),
+    table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(3), table.games td:nth-child(3),
+    table.games th:nth-child(4), table.games td:nth-child(4),
     table.games th:nth-child(5), table.games td:nth-child(5),
     table.games th:nth-child(6), table.games td:nth-child(6) {
       border-right: 3px double rgba(128,128,128,0.6);
@@ -81,44 +91,43 @@
     .result { font-weight: 700; }
     .result.win  { color: #3ad542; }
     .result.loss { color: #dc2222; }
+    .result.draw { color: #e5b523; }
 
     .delta { font-weight: 700; }
     .delta.pos { color: #3ad542; }
     .delta.neg { color: #dc2222; }
 
-    /* Clickable player names */
-    table.games td a {
+    .opp { text-align: left; }
+    .event {
+      text-align: left;
+      max-width: 260px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    td.opp a {
       color: inherit;
       text-decoration: underline;
       text-underline-offset: 2px;
     }
-    table.games td a:hover {
-      opacity: 0.9;
-    }
+    td.opp a:hover { opacity: 0.9; }
 
-    /* Mobile tweaks for profile page */
-    @media (max-width: 600px) {
-      #chart {
-        height: 420px;
-      }
+    @media (max-width: 700px) {
+      #chart { height: 420px; }
 
       h2#pname {
         font-size: 1.6rem;
         padding: 16px;
       }
 
-      h3.section-title {
-        font-size: 1.25rem;
-      }
+      h3.section-title { font-size: 1.25rem; }
 
-      table.games {
-        font-size: 0.92rem;
-      }
+      table.games { font-size: 0.92rem; }
 
       table.games th,
-      table.games td {
-        padding: 8px 10px;
-      }
+      table.games td { padding: 8px 10px; }
+
+      .event { max-width: 160px; }
     }
   </style>
 </head>
@@ -135,7 +144,7 @@
     <nav class="topnav" aria-label="Main">
       <a href="../../index.html">Sports</a>
       <a href="index.html">Home</a>
-      <a href="compare.html" class="active-tab">Compare</a>
+      <a href="compare.html">Compare</a>
       <a href="peak.html">Peak</a>
     </nav>
   </div>
@@ -144,6 +153,7 @@
 <main class="wrap">
   <section class="panel">
     <h2 id="pname">Player</h2>
+    <div id="psub" class="player-subtitle"></div>
 
     <div class="toolbar">
       <label for="agg">View:</label>
@@ -179,9 +189,13 @@
   let RAW = []; // daily series
 
   function normalise(series, dedupeByDay = false) {
-    const s = series
+    const s = (Array.isArray(series) ? series : [])
       .filter(p => p && p.x && Number.isFinite(p.y))
-      .map(p => ({ x: p.x, y: +p.y }))
+      .map(p => ({
+        x: p.x,
+        y: +p.y,
+        event: p.event || p.tournament || ''
+      }))
       .sort((a, b) => new Date(a.x) - new Date(b.x));
 
     if (!dedupeByDay) return s;
@@ -207,14 +221,15 @@
       const key = (mode === 'monthly')
         ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
         : `${d.getFullYear()}`;
-      (buckets[key] ||= []).push(p.y);
+      (buckets[key] ||= []).push(p);
     }
 
     const out = Object.keys(buckets).sort().map(k => {
-      const ys = buckets[k].filter(Number.isFinite);
-      const avg = ys.reduce((a, b) => a + b, 0) / ys.length;
+      const pts = buckets[k].filter(p => Number.isFinite(p.y));
+      const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
+      const lastEvent = pts.length ? (pts[pts.length - 1].event || '') : '';
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
-      return { x, y: avg };
+      return { x, y: avg, event: lastEvent };
     });
 
     return normalise(out, false);
@@ -227,6 +242,8 @@
     const data = aggregate(RAW, mode);
     const xs = data.map(p => p.x);
     const ys = data.map(p => p.y).filter(Number.isFinite);
+    const events = data.map(p => p.event || '');
+
     if (!xs.length || !ys.length) {
       el.textContent = 'No games';
       return;
@@ -249,10 +266,13 @@
       });
     }
 
+    const hoverExtra = (mode === 'daily') ? '<br>%{customdata}' : '';
+
     const trace = {
       type: 'scatter',
       x: xs,
       y: ys,
+      customdata: events,
       mode: (mode === 'daily') ? 'lines' : 'lines+markers',
       line: {
         width: 3,
@@ -260,7 +280,7 @@
         color: '#1f77b4'
       },
       marker: (mode === 'daily') ? { size: 0 } : { size: 6 },
-      hovertemplate: '%{x}<br>%{y:.0f}<extra></extra>',
+      hovertemplate: `%{x}<br>%{y:.0f} Rating${hoverExtra}<extra></extra>`,
       connectgaps: true
     };
 
@@ -280,40 +300,57 @@
     });
   }
 
-  function makePlayerCell(name, myName, players) {
+  function makeOpponentCell(opponentName, players) {
     const td = document.createElement('td');
+    td.className = 'opp';
 
-    const player = players.find(p => p.name === name);
+    const player = players.find(p => p.name === opponentName);
 
-    let node;
     if (player && player.id) {
       const a = document.createElement('a');
       a.href = `player.html?id=${encodeURIComponent(player.id)}`;
-      a.textContent = name || '';
-      node = a;
+      a.textContent = opponentName || '';
+      td.appendChild(a);
     } else {
-      node = document.createTextNode(name || '');
-    }
-
-    if (name === myName) {
-      const s = document.createElement('strong');
-      s.appendChild(node);
-      td.appendChild(s);
-    } else {
-      td.appendChild(node);
+      td.textContent = opponentName || '';
     }
 
     return td;
+  }
+
+  function getResultForPlayer(g, myName) {
+    const raw = (g.result || '').trim();
+
+    // Allow a few draw formats just in case
+    if (raw === '1/2' || raw === '½-½' || /^draw$/i.test(raw)) {
+      return { cls: 'draw', text: 'Draw' };
+    }
+
+    // Standard chess-style strings used by your exporter:
+    // 1-0 = Black wins, 0-1 = White wins
+    if (raw === '1-0') {
+      return (g.black === myName)
+        ? { cls: 'win', text: 'Win' }
+        : { cls: 'loss', text: 'Loss' };
+    }
+
+    if (raw === '0-1') {
+      return (g.white === myName)
+        ? { cls: 'win', text: 'Win' }
+        : { cls: 'loss', text: 'Loss' };
+    }
+
+    // Fallback
+    return { cls: 'draw', text: raw || '' };
   }
 
   function renderGamesTable(me, players, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
 
-    // Header
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
-    for (const h of ['Date', 'Black', 'Elo', 'White', 'Elo', 'Result', 'Δ']) {
+    for (const h of ['Date', 'Event', 'Opponent', 'Elo', 'Result', 'Δ', 'New']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -321,45 +358,50 @@
     thead.appendChild(hr);
     tbl.appendChild(thead);
 
-    // Opaque header
     const panelBg = getComputedStyle(document.querySelector('.panel')).backgroundColor;
     thead.style.backgroundColor = panelBg;
 
-    // Body (latest first)
     const tbody = document.createElement('tbody');
-    games.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const rows = Array.isArray(games) ? [...games] : [];
+    rows.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     const myName = me.name;
 
-    for (const g of games) {
+    for (const g of rows) {
+      const isBlack = g.black === myName;
+      const isWhite = g.white === myName;
+      if (!isBlack && !isWhite) continue;
+
+      const opponentName = isBlack ? g.white : g.black;
+      const opponentElo  = isBlack ? Number(g.whiteElo) : Number(g.blackElo);
+      const myEloBefore  = isBlack ? Number(g.blackElo) : Number(g.whiteElo);
+
+      const numDelta = Number(g.delta);
+      const myEloAfter = Number.isFinite(myEloBefore) && Number.isFinite(numDelta)
+        ? Math.round(myEloBefore + numDelta)
+        : NaN;
+
       const tr = document.createElement('tr');
 
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date || '';
 
-      const tdB = makePlayerCell(g.black, myName, players);
+      const tdEvent = document.createElement('td');
+      tdEvent.className = 'event';
+      tdEvent.title = g.event || '';
+      tdEvent.textContent = g.event || '';
 
-      const tdBE = document.createElement('td');
-      const blackElo = Number(g.blackElo);
-      tdBE.textContent = Number.isFinite(blackElo) ? String(Math.round(blackElo)) : '';
+      const tdOpp = makeOpponentCell(opponentName, players);
 
-      const tdW = makePlayerCell(g.white, myName, players);
+      const tdOppElo = document.createElement('td');
+      tdOppElo.textContent = Number.isFinite(opponentElo) ? String(Math.round(opponentElo)) : '';
 
-      const tdWE = document.createElement('td');
-      const whiteElo = Number(g.whiteElo);
-      tdWE.textContent = Number.isFinite(whiteElo) ? String(Math.round(whiteElo)) : '';
+      const tdResult = document.createElement('td');
+      const r = getResultForPlayer(g, myName);
+      tdResult.textContent = r.text;
+      tdResult.className = 'result ' + r.cls;
 
-      const tdR = document.createElement('td');
-      tdR.textContent = g.result || '';
-
-      const iWon = (g.result === '1-0' && g.black === myName) ||
-                   (g.result === '0-1' && g.white === myName);
-
-      tdR.className = 'result ' + (iWon ? 'win' : 'loss');
-
-      // Δ (rating change for this profile)
       const tdDelta = document.createElement('td');
-      const numDelta = Number(g.delta);
       if (!Number.isNaN(numDelta)) {
         tdDelta.textContent = g.delta;
         tdDelta.className = 'delta ' + (numDelta > 0 ? 'pos' : (numDelta < 0 ? 'neg' : ''));
@@ -367,13 +409,17 @@
         tdDelta.textContent = '';
       }
 
+      const tdNew = document.createElement('td');
+      tdNew.textContent = Number.isFinite(myEloAfter) ? String(myEloAfter) : '';
+
       tr.appendChild(tdDate);
-      tr.appendChild(tdB);
-      tr.appendChild(tdBE);
-      tr.appendChild(tdW);
-      tr.appendChild(tdWE);
-      tr.appendChild(tdR);
+      tr.appendChild(tdEvent);
+      tr.appendChild(tdOpp);
+      tr.appendChild(tdOppElo);
+      tr.appendChild(tdResult);
       tr.appendChild(tdDelta);
+      tr.appendChild(tdNew);
+
       tbody.appendChild(tr);
     }
 
@@ -395,10 +441,17 @@
       const me = players.find(p => p.id === idRaw);
       if (!me) throw new Error('player id not in players.json');
 
-      document.getElementById('pname').textContent = me.name;
+      document.getElementById('pname').textContent = me.name || me.id;
+      document.getElementById('psub').textContent =
+        Number.isFinite(+me.rating) ? `Current rating: ${Math.round(+me.rating)}` : '';
 
+      const histJson = await histRes.json();
       RAW = normalise(
-        (await histRes.json()).map(d => ({ x: d.date, y: Number(d.rating) })),
+        (Array.isArray(histJson) ? histJson : []).map(d => ({
+          x: d.date,
+          y: Number(d.rating),
+          event: d.event || d.tournament || ''
+        })),
         true
       );
 
@@ -413,11 +466,12 @@
 
       if (gamesRes.ok) {
         const games = await gamesRes.json();
-        renderGamesTable(me, players, games);
+        renderGamesTable(me, players, Array.isArray(games) ? games : []);
       } else {
         const tbl = document.getElementById('games');
         tbl.innerHTML = '<tbody><tr><td colspan="7">No games</td></tr></tbody>';
       }
+
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
