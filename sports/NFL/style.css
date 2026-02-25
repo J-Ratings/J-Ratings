@@ -8,7 +8,7 @@
   --muted: #8b949e;
   --border: #30363d;
 
-  --wood: #5eff23ba; /* football */
+  --wood: #581401; /* NFL */
 }
 
 html, body {
@@ -270,6 +270,6 @@ select {
   transform: translateY(1px);
 }
 
-.title-football {
+.title-nfl {
   color: var(--wood);
 }
