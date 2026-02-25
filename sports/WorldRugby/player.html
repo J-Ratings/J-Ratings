@@ -363,8 +363,8 @@ return { x, y: avg, competition: lastCompetition };
 
       const tdTournament = document.createElement('td');
       tdTournament.className = 'tourn';
-      tdTournament.title = g.tournament || '';
-      tdTournament.textContent = g.tournament || '';
+tdTournament.title = g.competition || '';
+tdTournament.textContent = g.competition || '';
 
       // UPDATED: clickable opponent if present in teams.json
       const tdOpp = document.createElement('td');
@@ -435,14 +435,14 @@ return { x, y: avg, competition: lastCompetition };
       document.getElementById('pname').textContent = me.name;
 
       const histJson = await histRes.json();
-      RAW = normalise(
-        histJson.map(d => ({
-          x: d.date,
-          y: Number(d.rating),
-          tournament: d.tournament || ''
-        })),
-        true
-      );
+RAW = normalise(
+  histJson.map(d => ({
+    x: d.date,
+    y: Number(d.rating),
+    competition: d.competition || ''
+  })),
+  true
+);
 
       if (!RAW.length) {
         document.getElementById('chart').textContent = 'No games';
