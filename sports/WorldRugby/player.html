@@ -194,11 +194,11 @@
   function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
-      .map(p => ({
-        x: p.x,
-        y: +p.y,
-        tournament: p.tournament || ''
-      }))
+.map(p => ({
+  x: p.x,
+  y: +p.y,
+  competition: p.competition || ''
+}))
       .sort((a, b) => new Date(a.x) - new Date(b.x));
 
     if (!dedupeByDay) return s;
@@ -230,9 +230,9 @@
     const out = Object.keys(buckets).sort().map(k => {
       const pts = buckets[k].filter(p => Number.isFinite(p.y));
       const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
-      const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
+const lastCompetition = pts.length ? (pts[pts.length - 1].competition || '') : '';
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
-      return { x, y: avg, tournament: lastTournament };
+return { x, y: avg, competition: lastCompetition };
     });
 
     return normalise(out, false);
@@ -245,7 +245,7 @@
     const data = aggregate(RAW, mode);
     const xs = data.map(p => p.x);
     const ys = data.map(p => p.y).filter(Number.isFinite);
-    const tournaments = data.map(p => p.tournament || '');
+    const competitions = data.map(p => p.competition || '');
 
     if (!xs.length || !ys.length) {
       el.textContent = 'No games';
@@ -275,7 +275,7 @@
       type: 'scatter',
       x: xs,
       y: ys,
-      customdata: tournaments,
+      customdata: competitions,
       mode: (mode === 'daily') ? 'lines' : 'lines+markers',
       line: { width: 3, shape: 'linear' },
       marker: (mode === 'daily') ? { size: 0 } : { size: 6 },
