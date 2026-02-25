@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
   <style>
-    /* Profile page sizing tweaks */
     #chart { height: 520px; }
 
     .toolbar {
@@ -47,7 +46,6 @@
       margin-bottom: 10px;
     }
 
-    /* Games table */
     #gamesWrap {
       max-height: 520px;
       overflow: auto;
@@ -70,7 +68,6 @@
       white-space: nowrap;
     }
 
-    /* Sticky header */
     table.games th {
       position: sticky;
       top: 0;
@@ -83,8 +80,7 @@
     table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(3), table.games td:nth-child(3),
     table.games th:nth-child(4), table.games td:nth-child(4),
-    table.games th:nth-child(5), table.games td:nth-child(5),
-    table.games th:nth-child(6), table.games td:nth-child(6) {
+    table.games th:nth-child(5), table.games td:nth-child(5) {
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
@@ -98,12 +94,6 @@
     .delta.neg { color: #dc2222; }
 
     .opp { text-align: left; }
-    .event {
-      text-align: left;
-      max-width: 260px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
 
     td.opp a {
       color: inherit;
@@ -126,8 +116,6 @@
 
       table.games th,
       table.games td { padding: 8px 10px; }
-
-      .event { max-width: 160px; }
     }
   </style>
 </head>
@@ -186,7 +174,7 @@
   const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
   const IS_TOUCH    = window.matchMedia('(pointer: coarse)').matches;
 
-  let RAW = []; // daily series
+  let RAW = [];
 
   function normalise(series, dedupeByDay = false) {
     const s = (Array.isArray(series) ? series : [])
@@ -206,7 +194,7 @@
       const d = new Date(p.x);
       const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
       if (key !== lastKey) out.push(p);
-      else out[out.length - 1] = p; // keep last point that day
+      else out[out.length - 1] = p;
       lastKey = key;
     }
     return out;
@@ -321,13 +309,15 @@
   function getResultForPlayer(g, myName) {
     const raw = (g.result || '').trim();
 
-    // Allow a few draw formats just in case
-    if (raw === '1/2' || raw === '½-½' || /^draw$/i.test(raw)) {
+    if (
+      raw === '1/2' ||
+      raw === '1/2-1/2' ||
+      raw === '½-½' ||
+      /^draw$/i.test(raw)
+    ) {
       return { cls: 'draw', text: 'Draw' };
     }
 
-    // Standard chess-style strings used by your exporter:
-    // 1-0 = Black wins, 0-1 = White wins
     if (raw === '1-0') {
       return (g.black === myName)
         ? { cls: 'win', text: 'Win' }
@@ -340,8 +330,7 @@
         : { cls: 'loss', text: 'Loss' };
     }
 
-    // Fallback
-    return { cls: 'draw', text: raw || '' };
+    return { cls: '', text: raw || '' };
   }
 
   function renderGamesTable(me, players, games) {
@@ -350,7 +339,7 @@
 
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
-    for (const h of ['Date', 'Event', 'Opponent', 'Elo', 'Result', 'Δ', 'New']) {
+    for (const h of ['Date', 'Opponent', 'Elo', 'Result', 'Δ', 'New']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -386,11 +375,6 @@
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date || '';
 
-      const tdEvent = document.createElement('td');
-      tdEvent.className = 'event';
-      tdEvent.title = g.event || '';
-      tdEvent.textContent = g.event || '';
-
       const tdOpp = makeOpponentCell(opponentName, players);
 
       const tdOppElo = document.createElement('td');
@@ -399,7 +383,7 @@
       const tdResult = document.createElement('td');
       const r = getResultForPlayer(g, myName);
       tdResult.textContent = r.text;
-      tdResult.className = 'result ' + r.cls;
+      tdResult.className = 'result' + (r.cls ? ' ' + r.cls : '');
 
       const tdDelta = document.createElement('td');
       if (!Number.isNaN(numDelta)) {
@@ -413,7 +397,6 @@
       tdNew.textContent = Number.isFinite(myEloAfter) ? String(myEloAfter) : '';
 
       tr.appendChild(tdDate);
-      tr.appendChild(tdEvent);
       tr.appendChild(tdOpp);
       tr.appendChild(tdOppElo);
       tr.appendChild(tdResult);
@@ -469,14 +452,14 @@
         renderGamesTable(me, players, Array.isArray(games) ? games : []);
       } else {
         const tbl = document.getElementById('games');
-        tbl.innerHTML = '<tbody><tr><td colspan="7">No games</td></tr></tbody>';
+        tbl.innerHTML = '<tbody><tr><td colspan="6">No games</td></tr></tbody>';
       }
 
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="7">Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="6">Error loading games</td></tr></tbody>';
     }
   }
 
