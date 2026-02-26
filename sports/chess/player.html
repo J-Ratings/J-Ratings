@@ -9,72 +9,120 @@
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
+    /* Profile page sizing tweaks */
     #chart { height: 520px; }
 
-    .player-head {
+    /* Header row: controls (left) | player (centre) | stats (right) */
+    .header-row{
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-      padding: 12px 20px 0;
+      gap: 16px;
+      padding: 20px;
     }
 
-    .player-head #pname {
+    h2#pname{
+      justify-self: center;
       margin: 0;
+      padding: 0;
       text-align: center;
+      font-size: 3rem;
     }
 
-    .player-head-spacer {
+    .toolbar{
       justify-self: start;
-    }
-
-    .peak-badge {
-      justify-self: end;
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 6px 10px;
-      border: 1px solid rgba(128,128,128,0.35);
-      border-radius: 6px;
-      background: rgba(128,128,128,0.08);
-      white-space: nowrap;
-    }
-
-    .toolbar {
-      justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
       gap: 10px;
-      padding: 14px 20px;
+      padding: 0;
       flex-wrap: wrap;
     }
 
-    .toolbar label {
+    .toolbar label{
       margin-right: 6px;
       font-size: 1.05rem;
     }
 
-    h2#pname,
-    h3.section-title {
+    /* Stack: selectors row + since buttons underneath */
+    .toolbar-stack{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toolbar-top{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .range-buttons{
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .range-btn{
+      padding: 8px 10px;
+      border: 1px solid #2b2f36;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      color: inherit;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .range-btn:hover{ opacity: 0.92; }
+
+    .range-btn.is-active{
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(200,200,200,0.55);
+      font-weight: 700;
+    }
+
+    .player-stats{
+      justify-self: end;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      text-align: centre;
+    }
+
+    .player-stats .stat{
+      padding: 10px 12px;
+      border: 1px solid #2b2f36;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      min-width: 90px;
+    }
+
+    .player-stats .stat-label{
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .player-stats .stat-value{
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    h3.section-title{
       text-align: center;
-    }
-
-    h2#pname {
-      font-size: 2rem;
-      padding: 8px 0 12px;
-    }
-
-    h3.section-title {
       font-size: 1.6rem;
       margin-top: 20px;
       margin-bottom: 10px;
     }
 
-    #gamesWrap {
+    #gamesWrap{
       max-height: 520px;
       overflow: auto;
       margin-top: 12px;
     }
 
-    table.games {
+    table.games{
       width: 100%;
       border-collapse: separate;
       border-spacing: 0;
@@ -82,7 +130,7 @@
     }
 
     table.games th,
-    table.games td {
+    table.games td{
       padding: 10px 12px;
       border-bottom: 1px solid #2b2f36;
       text-align: center;
@@ -90,14 +138,14 @@
       white-space: nowrap;
     }
 
-    table.games th {
+    table.games th{
       position: sticky;
       top: 0;
       z-index: 2;
       background-color: var(--panel-bg, #1a1a1a);
     }
 
-    /* Column separators */
+    /* Double separators: Date | Event | Opponent | Elo | Result | Δ */
     table.games th:nth-child(1), table.games td:nth-child(1),
     table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(3), table.games td:nth-child(3),
@@ -107,65 +155,70 @@
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
-    .result { font-weight: 700; }
-    .result.win  { color: #2acd4e; }
-    .result.draw { color: #e8a81f; }
-    .result.loss { color: #e03232; }
+    .result{ font-weight: 700; }
+    .result.win{  color: #2acd4e; }
+    .result.loss{ color: #e03232; }
+    .result.draw{ color: #e8a81f; }
 
-    .delta { font-weight: 700; }
-    .delta.pos { color: #2acd4e; }
-    .delta.neg { color: #e03232; }
+    .delta{ font-weight: 700; }
+    .delta.pos{ color: #2acd4e; }
+    .delta.neg{ color: #e03232; }
 
-    .opp { text-align: left; }
-    .event {
+    .opp{ text-align: left; }
+    .event{
       text-align: left;
       max-width: 260px;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    td.opp a {
+    td.opp a{
       color: inherit;
       text-decoration: underline;
       text-underline-offset: 2px;
     }
+    td.opp a:hover{ opacity: 0.9; }
 
-    td.opp a:hover {
-      opacity: 0.9;
+    @media (max-width: 600px){
+      #chart{ height: 420px; }
+      h2#pname{ font-size: 1.6rem; }
+      h3.section-title{ font-size: 1.25rem; }
+      table.games{ font-size: 0.92rem; }
+      table.games th, table.games td{ padding: 8px 10px; }
+      .event{ max-width: 180px; }
     }
 
-    @media (max-width: 900px) {
-      .player-head {
+    @media (max-width: 700px){
+      .header-row{
         grid-template-columns: 1fr;
-        gap: 6px;
-        padding: 10px 16px 0;
+        justify-items: centre;
+        text-align: centre;
       }
-
-      .player-head-spacer {
-        display: none;
-      }
-
-      .peak-badge {
-        justify-self: center;
-      }
+      .toolbar{ justify-self: centre; }
+      .player-stats{ justify-self: centre; }
     }
 
-    @media (max-width: 700px) {
-      #chart { height: 420px; }
+    /* Kill any underline rules coming from style.css (often via ::after) */
+    .header-row,
+    .header-row *{
+      border-bottom: none !important;
+      box-shadow: none !important;
+      background-image: none !important;
+      text-decoration: none !important;
+    }
 
-      h2#pname {
-        font-size: 1.6rem;
-        padding: 6px 0 8px;
-      }
-
-      h3.section-title { font-size: 1.25rem; }
-
-      table.games { font-size: 0.92rem; }
-
-      table.games th,
-      table.games td { padding: 8px 10px; }
-
-      .event { max-width: 160px; }
+    .header-row::before,
+    .header-row::after,
+    #pname::before,
+    #pname::after,
+    .header-row .toolbar::before,
+    .header-row .toolbar::after,
+    .header-row .toolbar label::before,
+    .header-row .toolbar label::after,
+    .header-row .toolbar select::before,
+    .header-row .toolbar select::after{
+      content: none !important;
+      display: none !important;
     }
   </style>
 </head>
@@ -190,27 +243,47 @@
 
 <main class="wrap">
   <section class="panel">
-    <div class="player-head">
-      <div class="player-head-spacer" aria-hidden="true"></div>
+
+    <div class="header-row">
+      <div class="toolbar">
+        <div class="toolbar-stack">
+          <div class="toolbar-top">
+            <label for="sec">Format:</label>
+            <select id="sec">
+              <option value="classical" selected>Classical</option>
+              <option value="rapid">Rapid</option>
+              <option value="blitz">Blitz</option>
+              <option value="freestyle">Freestyle</option>
+            </select>
+
+            <label for="agg">View:</label>
+            <select id="agg">
+              <option value="daily">Daily</option>
+              <option value="monthly" selected>Monthly</option>
+              <option value="yearly">Yearly</option>
+            </select>
+          </div>
+
+          <div class="range-buttons" role="group" aria-label="Time range">
+            <button type="button" class="range-btn" data-since="">All</button>
+            <button type="button" class="range-btn" data-since="2000">Since 2000</button>
+            <button type="button" class="range-btn is-active" data-since="2020">Since 2020</button>
+          </div>
+        </div>
+      </div>
+
       <h2 id="pname">Player</h2>
-      <div id="peakBadge" class="peak-badge">Peak: —</div>
-    </div>
 
-    <div class="toolbar">
-      <label for="sec">Format:</label>
-      <select id="sec">
-        <option value="classical" selected>Classical</option>
-        <option value="rapid">Rapid</option>
-        <option value="blitz">Blitz</option>
-        <option value="freestyle">Freestyle</option>
-      </select>
-
-      <label for="agg">View:</label>
-      <select id="agg">
-        <option value="daily">Daily</option>
-        <option value="monthly" selected>Monthly</option>
-        <option value="yearly">Yearly</option>
-      </select>
+      <div id="playerStats" class="player-stats" aria-label="Player rating stats">
+        <div class="stat">
+          <div class="stat-label">Live</div>
+          <div class="stat-value" id="liveVal">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Peak</div>
+          <div class="stat-value" id="peakVal">—</div>
+        </div>
+      </div>
     </div>
 
     <div id="chart">Loading…</div>
@@ -219,6 +292,7 @@
     <div id="gamesWrap">
       <table id="games" class="games"></table>
     </div>
+
   </section>
 </main>
 
@@ -237,7 +311,8 @@
 
   function setParam(name, value) {
     const u = new URL(window.location.href);
-    u.searchParams.set(name, value);
+    if (value === null || value === undefined || value === '') u.searchParams.delete(name);
+    else u.searchParams.set(name, value);
     window.history.replaceState({}, '', u.toString());
   }
 
@@ -249,7 +324,11 @@
   }
 
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
+
   const state = { section: 'classical' };
+  let RAW = [];
+  let SINCE_YEAR = 2020;     // default Since 2020
+  let AGG_MODE = 'monthly';
 
   function dataBase() { return SECTIONS[state.section].base; }
   function playersUrl() { return `${dataBase()}/players.json`; }
@@ -263,8 +342,6 @@
     document.getElementById('nav-compare').href = `compare.html?sec=${sec}`;
     document.getElementById('nav-peak').href    = `peak.html?sec=${sec}`;
   }
-
-  let RAW = [];
 
   function normalise(series, dedupeByDay = false) {
     const s = (Array.isArray(series) ? series : [])
@@ -313,13 +390,40 @@
     return normalise(out, false);
   }
 
+  function applySinceFilter(series, sinceYear) {
+    if (!sinceYear) return series;
+    const start = new Date(`${sinceYear}-01-01T00:00:00Z`).getTime();
+    return series.filter(p => new Date(p.x).getTime() >= start);
+  }
+
+  function niceYBounds(ys) {
+    const min = Math.min(...ys);
+    const max = Math.max(...ys);
+
+    if (!Number.isFinite(min) || !Number.isFinite(max)) return null;
+
+    if (min === max) {
+      const pad = 50;
+      return { lo: min - pad, hi: max + pad };
+    }
+
+    const span = max - min;
+    const pad = Math.max(25, span * 0.06);
+    return { lo: min - pad, hi: max + pad };
+  }
+
   function draw(mode) {
+    AGG_MODE = mode;
+
     const el = document.getElementById('chart');
     if (el.textContent && el.textContent.includes('Loading')) el.textContent = '';
 
-    const data = aggregate(RAW, mode);
+    const filtered = applySinceFilter(RAW, SINCE_YEAR);
+    const data = aggregate(filtered, mode);
+
     const xs = data.map(p => p.x);
-    const ys = data.map(p => p.y).filter(Number.isFinite);
+    const ysAll = data.map(p => p.y);
+    const ys = ysAll.filter(Number.isFinite);
     const events = data.map(p => p.event || '');
 
     if (!xs.length || !ys.length) {
@@ -327,8 +431,14 @@
       return;
     }
 
-    const ymin = Math.floor(Math.min(...ys) / 100) * 100;
-    const ymax = Math.ceil(Math.max(...ys) / 100) * 100;
+    const bounds = niceYBounds(ys);
+    if (!bounds) {
+      el.textContent = 'No games';
+      return;
+    }
+
+    const ymin = Math.floor(bounds.lo / 100) * 100;
+    const ymax = Math.ceil(bounds.hi / 100) * 100;
 
     const shapes = [];
     for (let v = ymin; v <= ymax; v += 100) {
@@ -349,7 +459,7 @@
     const trace = {
       type: 'scatter',
       x: xs,
-      y: ys,
+      y: ysAll,
       customdata: events,
       mode: (mode === 'daily') ? 'lines' : 'lines+markers',
       line: { width: 3, shape: 'linear' },
@@ -362,7 +472,7 @@
     Plotly.newPlot('chart', [trace], {
       margin: { l: 60, r: 20, t: 10, b: 45 },
       xaxis: { type: 'date' },
-      yaxis: { title: 'Rating' },
+      yaxis: { title: 'Rating', range: [bounds.lo, bounds.hi] },
       paper_bgcolor: bg,
       plot_bgcolor: bg,
       font: { color: getComputedStyle(document.body).color, size: 14 },
@@ -506,18 +616,30 @@
     tbl.appendChild(tbody);
   }
 
-  function updatePeakBadge() {
-    const el = document.getElementById('peakBadge');
-    if (!el) return;
+  function renderPlayerStats(series) {
+    const liveEl = document.getElementById('liveVal');
+    const peakEl = document.getElementById('peakVal');
+    if (!liveEl || !peakEl) return;
 
-    const vals = RAW.map(p => Number(p.y)).filter(Number.isFinite);
-    if (!vals.length) {
-      el.textContent = 'Peak: —';
+    if (!series || !series.length) {
+      liveEl.textContent = '—';
+      peakEl.textContent = '—';
       return;
     }
 
-    const peak = Math.max(...vals);
-    el.textContent = `Peak: ${Math.round(peak)}`;
+    const live = series[series.length - 1];
+    liveEl.textContent = Number.isFinite(live.y) ? String(Math.round(live.y)) : '—';
+
+    let peak = series[0];
+    for (const p of series) {
+      if (Number.isFinite(p.y) && (!Number.isFinite(peak.y) || p.y > peak.y)) peak = p;
+    }
+    peakEl.textContent = Number.isFinite(peak.y) ? String(Math.round(peak.y)) : '—';
+  }
+
+  function refreshView() {
+    renderPlayerStats(applySinceFilter(RAW, SINCE_YEAR));
+    draw(AGG_MODE);
   }
 
   async function load() {
@@ -549,16 +671,16 @@
         true
       );
 
-      updatePeakBadge();
-
+      // Draw once with defaults
       if (!RAW.length) {
         document.getElementById('chart').textContent = 'No games';
+        renderPlayerStats([]);
       } else {
-        draw(document.getElementById('agg').value || 'monthly');
+        AGG_MODE = document.getElementById('agg').value || 'monthly';
+        refreshView();
       }
 
-      document.getElementById('agg').addEventListener('change', e => draw(e.target.value), { once: false });
-
+      // Games table
       if (gamesRes.ok) {
         const games = await gamesRes.json();
         renderGamesTable(me, players, Array.isArray(games) ? games : []);
@@ -566,11 +688,13 @@
         document.getElementById('games').innerHTML =
           '<tbody><tr><td colspan="7">No games</td></tr></tbody>';
       }
+
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       document.getElementById('games').innerHTML =
         '<tbody><tr><td colspan="7">Error loading games</td></tr></tbody>';
+      renderPlayerStats([]);
     }
   }
 
@@ -581,12 +705,38 @@
     document.getElementById('sec').value = state.section;
     setParam('sec', state.section);
     wireNavLinks();
+
+    // Reload section data (player lists + history + games all change by section)
     load();
   }
 
   window.addEventListener('DOMContentLoaded', () => {
+    // Section from URL (default classical)
     setSection(getParam('sec') || 'classical');
-    document.getElementById('sec').addEventListener('change', e => setSection(e.target.value));
+
+    // Aggregation selector
+    document.getElementById('agg').addEventListener('change', e => {
+      draw(e.target.value);
+    });
+
+    // Format selector
+    document.getElementById('sec').addEventListener('change', e => {
+      setSection(e.target.value);
+    });
+
+    // Since buttons
+    document.querySelectorAll('.range-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        const v = btn.getAttribute('data-since');
+        SINCE_YEAR = v ? Number(v) : null;
+
+        refreshView();
+      });
+    });
+
     wireNavLinks();
   });
 </script>
