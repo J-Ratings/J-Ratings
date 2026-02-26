@@ -10,8 +10,9 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 16px;
-      margin-top: 18px;
+      margin-top: 12px;
     }
+
     .sport-card {
       display: block;
       padding: 18px;
@@ -20,15 +21,25 @@
       background: #0f1623;
       color: var(--text);
       text-decoration: none;
+      min-height: 92px;
     }
+
     .sport-card:hover { border-color: var(--accent); }
-    .sport-title { font-size: 1.3rem; font-weight: 700; margin: 0 0 6px 0; }
+
+    .sport-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 0 6px 0;
+    }
+
     .sport-sub { margin: 0; color: var(--muted); }
+
     .disabled {
       opacity: .55;
       cursor: not-allowed;
       pointer-events: none;
     }
+
     .pill {
       display: inline-block;
       font-size: .85rem;
@@ -44,13 +55,22 @@
 <body>
 <header>
   <div class="wrap">
-    <h1 class="site-title"><a href="index.html">J-Ratings</a></h1>
+    <h1 class="site-title">
+      <a href="index.html" class="brand-with-logo">
+        <span>J-Ratings</span>
+      </a>
+    </h1>
+
+    <nav class="topnav" aria-label="Main">
+      <a href="index.html" class="active-tab">Sports</a>
+    </nav>
   </div>
 </header>
 
 <main class="wrap">
   <section class="panel">
     <h2>Sports</h2>
+
     <div style="padding:16px 18px">
       <div class="sports-grid">
         <a class="sport-card" href="sports/go/index.html">
@@ -58,7 +78,7 @@
         </a>
 
         <a class="sport-card" href="sports/chess/index.html">
-          <p class="sport-title">Chess</p>
+          <p class="sport-title">Chess <span class="pill">WIP</span></p>
           <p class="sport-sub">Data needs cleaning</p>
         </a>
 
