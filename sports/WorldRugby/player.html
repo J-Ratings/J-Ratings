@@ -25,7 +25,7 @@
       margin: 0;
       padding: 0;
       text-align: center;
-      font-size: 2rem;
+      font-size: 3rem;
     }
 
     .toolbar{
@@ -163,6 +163,29 @@
       .toolbar{ justify-self: center; }
       .team-stats{ justify-self: center; }
     }
+
+    /* Kill any underline rules coming from style.css (often via ::after) */
+.header-row,
+.header-row *{
+  border-bottom: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  text-decoration: none !important;
+}
+
+.header-row::before,
+.header-row::after,
+#pname::before,
+#pname::after,
+.header-row .toolbar::before,
+.header-row .toolbar::after,
+.header-row .toolbar label::before,
+.header-row .toolbar label::after,
+.header-row .toolbar select::before,
+.header-row .toolbar select::after{
+  content: none !important;
+  display: none !important;
+}
   </style>
 </head>
 
