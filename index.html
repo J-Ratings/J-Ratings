@@ -5,6 +5,7 @@
   <title>J-Ratings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+
   <style>
     .sports-grid {
       display: grid;
@@ -50,19 +51,35 @@
       margin-left: 8px;
       vertical-align: middle;
     }
+
+    /* Stops “page width jump” when some pages scroll and others don’t */
+    html { overflow-y: scroll; }
   </style>
 </head>
+
 <body>
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a href="index.html" class="brand-with-logo">
-        <span>J-Ratings</span>
+      <a id="home-link" href="index.html" class="brand-with-logo">
+        <span>J-Ratings <span class="title-rugby">Sports</span></span>
+
+        <!-- Transparent placeholder keeps the same header/logo height as sub-pages -->
+        <img
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+          alt=""
+          aria-hidden="true"
+          class="sport-logo"
+        >
       </a>
     </h1>
 
+    <!-- Same nav structure as sub-pages to keep identical header dimensions -->
     <nav class="topnav" aria-label="Main">
       <a href="index.html" class="active-tab">Sports</a>
+      <a class="disabled" href="#" aria-disabled="true">Home</a>
+      <a class="disabled" href="#" aria-disabled="true">Compare</a>
+      <a class="disabled" href="#" aria-disabled="true">Peak</a>
     </nav>
   </div>
 </header>
