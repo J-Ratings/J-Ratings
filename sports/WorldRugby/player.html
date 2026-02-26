@@ -55,7 +55,7 @@
       border: 1px solid #2b2f36;
       border-radius: 10px;
       background: rgba(255,255,255,0.03);
-      min-width: 120px;
+      min-width: 90px;
     }
 
     .team-stats .stat-label{
@@ -208,7 +208,6 @@
         <div class="stat">
           <div class="stat-label">Peak</div>
           <div class="stat-value" id="peakVal">—</div>
-          <div class="stat-sub" id="peakDate"></div>
         </div>
       </div>
     </div>
@@ -455,30 +454,26 @@
   }
 
   // Live has no date; Peak has date
-  function renderTeamStats(series) {
-    const liveEl = document.getElementById('liveVal');
-    const peakEl = document.getElementById('peakVal');
-    const peakDateEl = document.getElementById('peakDate');
+function renderTeamStats(series) {
+  const liveEl = document.getElementById('liveVal');
+  const peakEl = document.getElementById('peakVal');
+  if (!liveEl || !peakEl) return;
 
-    if (!liveEl || !peakEl) return;
-
-    if (!series || !series.length) {
-      liveEl.textContent = '—';
-      peakEl.textContent = '—';
-      if (peakDateEl) peakDateEl.textContent = '';
-      return;
-    }
-
-    const live = series[series.length - 1];
-    liveEl.textContent = Number.isFinite(live.y) ? String(Math.round(live.y)) : '—';
-
-    let peak = series[0];
-    for (const p of series) {
-      if (Number.isFinite(p.y) && p.y > peak.y) peak = p;
-    }
-    peakEl.textContent = Number.isFinite(peak.y) ? String(Math.round(peak.y)) : '—';
-    if (peakDateEl) peakDateEl.textContent = peak.x || '';
+  if (!series || !series.length) {
+    liveEl.textContent = '—';
+    peakEl.textContent = '—';
+    return;
   }
+
+  const live = series[series.length - 1];
+  liveEl.textContent = Number.isFinite(live.y) ? String(Math.round(live.y)) : '—';
+
+  let peak = series[0];
+  for (const p of series) {
+    if (Number.isFinite(p.y) && p.y > peak.y) peak = p;
+  }
+  peakEl.textContent = Number.isFinite(peak.y) ? String(Math.round(peak.y)) : '—';
+}
 
   async function load() {
     try {
