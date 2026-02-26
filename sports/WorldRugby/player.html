@@ -6,46 +6,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
   <style>
     /* Profile page sizing tweaks */
-    #chart {
-      height: 520px;
+    #chart { height: 520px; }
+
+    /* Header row: View (left) | Team (centre) | Live/Peak (right) */
+    .header-row{
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
     }
 
-    .toolbar {
-      justify-content: center;
+    h2#pname{
+      justify-self: center;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    .toolbar{
+      justify-self: start;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
       gap: 10px;
-      padding: 14px 20px;
+      padding: 0; /* important: don't push it down */
     }
 
-    .toolbar label {
+    .toolbar label{
       margin-right: 6px;
       font-size: 1.05rem;
     }
 
-    h2#pname,
-    h3.section-title {
+    .team-stats{
+      justify-self: end;
+      display: flex;
+      gap: 14px;
+      align-items: center;
       text-align: center;
     }
 
-    h2#pname {
-      font-size: 2rem;
-      padding: 20px;
+    .team-stats .stat{
+      padding: 10px 12px;
+      border: 1px solid #2b2f36;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      min-width: 120px;
     }
 
-    h3.section-title {
+    .team-stats .stat-label{
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .team-stats .stat-value{
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .team-stats .stat-sub{
+      font-size: 0.85rem;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+
+    h3.section-title{
+      text-align: center;
       font-size: 1.6rem;
       margin-top: 20px;
       margin-bottom: 10px;
     }
 
-    #gamesWrap {
+    #gamesWrap{
       max-height: 520px;
       overflow: auto;
       margin-top: 12px;
     }
 
-    table.games {
+    table.games{
       width: 100%;
       border-collapse: separate;
       border-spacing: 0;
@@ -53,7 +96,7 @@
     }
 
     table.games th,
-    table.games td {
+    table.games td{
       padding: 10px 12px;
       border-bottom: 1px solid #2b2f36;
       text-align: center;
@@ -61,7 +104,7 @@
       white-space: nowrap;
     }
 
-    table.games th {
+    table.games th{
       position: sticky;
       top: 0;
       z-index: 2;
@@ -78,123 +121,51 @@
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
-    .result { font-weight: 700; }
-    .result.win  { color: #3ad542; }
-    .result.loss { color: #dc2222; }
-    .result.draw { color: #e5b523; }
+    .result{ font-weight: 700; }
+    .result.win{  color: #3ad542; }
+    .result.loss{ color: #dc2222; }
+    .result.draw{ color: #e5b523; }
 
-    .delta { font-weight: 700; }
-    .delta.pos { color: #3ad542; }
-    .delta.neg { color: #dc2222; }
+    .delta{ font-weight: 700; }
+    .delta.pos{ color: #3ad542; }
+    .delta.neg{ color: #dc2222; }
 
-    .opp { text-align: left; }
-    .tourn {
+    .opp{ text-align: left; }
+    .tourn{
       text-align: left;
       max-width: 260px;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .muted-small { opacity: .85; font-size: .9em; }
-
-    /* Optional: make opponent links look like normal text but clickable */
-    td.opp a {
+    td.opp a{
       color: inherit;
       text-decoration: underline;
       text-underline-offset: 2px;
     }
-    td.opp a:hover {
-      opacity: 0.9;
+    td.opp a:hover{ opacity: 0.9; }
+
+    @media (max-width: 600px){
+      #chart{ height: 420px; }
+      h2#pname{ font-size: 1.6rem; }
+      h3.section-title{ font-size: 1.25rem; }
+      table.games{ font-size: 0.92rem; }
+      table.games th, table.games td{ padding: 8px 10px; }
+      .tourn{ max-width: 180px; }
     }
 
-    @media (max-width: 600px) {
-      #chart {
-        height: 420px;
+    @media (max-width: 700px){
+      .header-row{
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
       }
-
-      h2#pname {
-        font-size: 1.6rem;
-        padding: 16px;
-      }
-
-      h3.section-title {
-        font-size: 1.25rem;
-      }
-
-      table.games {
-        font-size: 0.92rem;
-      }
-
-      table.games th,
-      table.games td {
-        padding: 8px 10px;
-      }
-
-      .tourn {
-        max-width: 180px;
-      }
+      .toolbar{ justify-self: center; }
+      .team-stats{ justify-self: center; }
     }
-
-    .title-row{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 20px;
-}
-
-h2#pname{
-  padding: 0; /* moved padding to .title-row */
-  margin: 0;
-}
-
-.team-stats{
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  justify-content: flex-end;
-  text-align: center;
-}
-
-.team-stats .stat{
-  padding: 10px 12px;
-  border: 1px solid #2b2f36;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.03);
-  min-width: 120px;
-}
-
-.team-stats .stat-label{
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-.team-stats .stat-value{
-  font-size: 1.4rem;
-  font-weight: 800;
-  line-height: 1.1;
-}
-
-.team-stats .stat-sub{
-  font-size: 0.85rem;
-  opacity: 0.75;
-  margin-top: 2px;
-}
-
-@media (max-width: 700px){
-  .title-row{
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .team-stats{
-    justify-content: center;
-    text-align: center;
-  }
-}
-
   </style>
 </head>
+
 <body>
 <header>
   <div class="wrap">
@@ -215,30 +186,31 @@ h2#pname{
 
 <main class="wrap">
   <section class="panel">
-    <div class="title-row">
-  <h2 id="pname">Team</h2>
 
-  <div id="teamStats" class="team-stats" aria-label="Team rating stats">
-    <div class="stat">
-      <div class="stat-label">Live</div>
-      <div class="stat-value" id="liveVal">—</div>
-    </div>
+    <div class="header-row">
+      <div class="toolbar">
+        <label for="agg">View:</label>
+        <select id="agg">
+          <option value="daily">Daily</option>
+          <option value="monthly" selected>Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
 
-    <div class="stat">
-      <div class="stat-label">Peak</div>
-      <div class="stat-value" id="peakVal">—</div>
-      <div class="stat-sub" id="peakDate"></div>
-    </div>
-  </div>
-</div>
+      <h2 id="pname">Team</h2>
 
-    <div class="toolbar">
-      <label for="agg">View:</label>
-      <select id="agg">
-        <option value="daily">Daily</option>
-        <option value="monthly" selected>Monthly</option>
-        <option value="yearly">Yearly</option>
-      </select>
+      <div id="teamStats" class="team-stats" aria-label="Team rating stats">
+        <div class="stat">
+          <div class="stat-label">Live</div>
+          <div class="stat-value" id="liveVal">—</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Peak</div>
+          <div class="stat-value" id="peakVal">—</div>
+          <div class="stat-sub" id="peakDate"></div>
+        </div>
+      </div>
     </div>
 
     <div id="chart">Loading…</div>
@@ -268,11 +240,11 @@ h2#pname{
   function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
-.map(p => ({
-  x: p.x,
-  y: +p.y,
-  competition: p.competition || ''
-}))
+      .map(p => ({
+        x: p.x,
+        y: +p.y,
+        competition: p.competition || ''
+      }))
       .sort((a, b) => new Date(a.x) - new Date(b.x));
 
     if (!dedupeByDay) return s;
@@ -304,9 +276,9 @@ h2#pname{
     const out = Object.keys(buckets).sort().map(k => {
       const pts = buckets[k].filter(p => Number.isFinite(p.y));
       const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
-const lastCompetition = pts.length ? (pts[pts.length - 1].competition || '') : '';
+      const lastCompetition = pts.length ? (pts[pts.length - 1].competition || '') : '';
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
-return { x, y: avg, competition: lastCompetition };
+      return { x, y: avg, competition: lastCompetition };
     });
 
     return normalise(out, false);
@@ -378,22 +350,15 @@ return { x, y: avg, competition: lastCompetition };
     const isAway = g.away === myName;
     const raw = (g.result || '').trim();
 
-    if (/^draw$/i.test(raw)) {
-      return { cls: 'draw', text: 'Draw' };
-    }
-
-    if (raw === myName) {
-      return { cls: 'win', text: 'Win' };
-    }
+    if (/^draw$/i.test(raw)) return { cls: 'draw', text: 'Draw' };
+    if (raw === myName) return { cls: 'win', text: 'Win' };
 
     if ((isHome || isAway) && raw !== '' && raw !== myName) {
       return { cls: 'loss', text: 'Loss' };
     }
-
     return { cls: 'draw', text: raw || 'Draw' };
   }
 
-  // UPDATED: now takes the full team object + teams list so we can link opponents by id
   function renderGamesTable(me, teams, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
@@ -437,16 +402,14 @@ return { x, y: avg, competition: lastCompetition };
 
       const tdTournament = document.createElement('td');
       tdTournament.className = 'tourn';
-tdTournament.title = g.competition || '';
-tdTournament.textContent = g.competition || '';
+      tdTournament.title = g.competition || '';
+      tdTournament.textContent = g.competition || '';
 
-      // UPDATED: clickable opponent if present in teams.json
       const tdOpp = document.createElement('td');
       tdOpp.className = 'opp';
 
       if (opponentName) {
         const opponentTeam = teams.find(t => t.name === opponentName);
-
         if (opponentTeam && opponentTeam.id) {
           const a = document.createElement('a');
           a.href = `player.html?id=${encodeURIComponent(opponentTeam.id)}`;
@@ -491,34 +454,31 @@ tdTournament.textContent = g.competition || '';
     tbl.appendChild(tbody);
   }
 
-
+  // Live has no date; Peak has date
   function renderTeamStats(series) {
-  const liveEl = document.getElementById('liveVal');
-  const liveDateEl = document.getElementById('liveDate');
-  const peakEl = document.getElementById('peakVal');
-  const peakDateEl = document.getElementById('peakDate');
+    const liveEl = document.getElementById('liveVal');
+    const peakEl = document.getElementById('peakVal');
+    const peakDateEl = document.getElementById('peakDate');
 
-  if (!series || !series.length) {
-    liveEl.textContent = '—';
-    peakEl.textContent = '—';
-    liveDateEl.textContent = '';
-    peakDateEl.textContent = '';
-    return;
+    if (!liveEl || !peakEl) return;
+
+    if (!series || !series.length) {
+      liveEl.textContent = '—';
+      peakEl.textContent = '—';
+      if (peakDateEl) peakDateEl.textContent = '';
+      return;
+    }
+
+    const live = series[series.length - 1];
+    liveEl.textContent = Number.isFinite(live.y) ? String(Math.round(live.y)) : '—';
+
+    let peak = series[0];
+    for (const p of series) {
+      if (Number.isFinite(p.y) && p.y > peak.y) peak = p;
+    }
+    peakEl.textContent = Number.isFinite(peak.y) ? String(Math.round(peak.y)) : '—';
+    if (peakDateEl) peakDateEl.textContent = peak.x || '';
   }
-
-  // Live = last point in RAW (RAW is sorted by date already)
-  const live = series[series.length - 1];
-  liveEl.textContent = Number.isFinite(live.y) ? String(Math.round(live.y)) : '—';
-  liveDateEl.textContent = live.x ? live.x : '';
-
-  // Peak = max rating
-  let peak = series[0];
-  for (const p of series) {
-    if (Number.isFinite(p.y) && p.y > peak.y) peak = p;
-  }
-  peakEl.textContent = Number.isFinite(peak.y) ? String(Math.round(peak.y)) : '—';
-  peakDateEl.textContent = peak.x ? peak.x : '';
-}
 
   async function load() {
     try {
@@ -538,16 +498,16 @@ tdTournament.textContent = g.competition || '';
       document.getElementById('pname').textContent = me.name;
 
       const histJson = await histRes.json();
-RAW = normalise(
-  histJson.map(d => ({
-    x: d.date,
-    y: Number(d.rating),
-    competition: d.competition || ''
-  })),
-  true
-);
+      RAW = normalise(
+        histJson.map(d => ({
+          x: d.date,
+          y: Number(d.rating),
+          competition: d.competition || ''
+        })),
+        true
+      );
 
-renderTeamStats(RAW);
+      renderTeamStats(RAW);
 
       if (!RAW.length) {
         document.getElementById('chart').textContent = 'No games';
@@ -560,7 +520,7 @@ renderTeamStats(RAW);
 
       if (gamesRes.ok) {
         const games = await gamesRes.json();
-        renderGamesTable(me, teams, games); // UPDATED
+        renderGamesTable(me, teams, games);
       } else {
         const tbl = document.getElementById('games');
         tbl.innerHTML = '<tbody><tr><td colspan="7">No games</td></tr></tbody>';
