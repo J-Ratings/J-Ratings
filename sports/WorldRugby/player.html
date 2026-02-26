@@ -134,6 +134,65 @@
         max-width: 180px;
       }
     }
+
+    .title-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+}
+
+h2#pname{
+  padding: 0; /* moved padding to .title-row */
+  margin: 0;
+}
+
+.team-stats{
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.team-stats .stat{
+  padding: 10px 12px;
+  border: 1px solid #2b2f36;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  min-width: 120px;
+}
+
+.team-stats .stat-label{
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.team-stats .stat-value{
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.team-stats .stat-sub{
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+@media (max-width: 700px){
+  .title-row{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .team-stats{
+    justify-content: center;
+    text-align: center;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -156,7 +215,23 @@
 
 <main class="wrap">
   <section class="panel">
-    <h2 id="pname">Team</h2>
+    <div class="title-row">
+  <h2 id="pname">Team</h2>
+
+  <div id="teamStats" class="team-stats" aria-label="Team rating stats">
+    <div class="stat">
+      <div class="stat-label">Live</div>
+      <div class="stat-value" id="liveVal">—</div>
+      <div class="stat-sub" id="liveDate"></div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Peak</div>
+      <div class="stat-value" id="peakVal">—</div>
+      <div class="stat-sub" id="peakDate"></div>
+    </div>
+  </div>
+</div>
 
     <div class="toolbar">
       <label for="agg">View:</label>
@@ -417,6 +492,35 @@ tdTournament.textContent = g.competition || '';
     tbl.appendChild(tbody);
   }
 
+
+  function renderTeamStats(series) {
+  const liveEl = document.getElementById('liveVal');
+  const liveDateEl = document.getElementById('liveDate');
+  const peakEl = document.getElementById('peakVal');
+  const peakDateEl = document.getElementById('peakDate');
+
+  if (!series || !series.length) {
+    liveEl.textContent = '—';
+    peakEl.textContent = '—';
+    liveDateEl.textContent = '';
+    peakDateEl.textContent = '';
+    return;
+  }
+
+  // Live = last point in RAW (RAW is sorted by date already)
+  const live = series[series.length - 1];
+  liveEl.textContent = Number.isFinite(live.y) ? String(Math.round(live.y)) : '—';
+  liveDateEl.textContent = live.x ? live.x : '';
+
+  // Peak = max rating
+  let peak = series[0];
+  for (const p of series) {
+    if (Number.isFinite(p.y) && p.y > peak.y) peak = p;
+  }
+  peakEl.textContent = Number.isFinite(peak.y) ? String(Math.round(peak.y)) : '—';
+  peakDateEl.textContent = peak.x ? peak.x : '';
+}
+
   async function load() {
     try {
       const [teamsRes, histRes, gamesRes] = await Promise.all([
@@ -443,6 +547,8 @@ RAW = normalise(
   })),
   true
 );
+
+renderTeamStats(RAW);
 
       if (!RAW.length) {
         document.getElementById('chart').textContent = 'No games';
