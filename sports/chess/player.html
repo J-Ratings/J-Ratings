@@ -9,10 +9,8 @@
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
-    /* Profile page sizing tweaks */
     #chart { height: 520px; }
 
-    /* Header row: controls (left) | player (centre) | stats (right) */
     .header-row{
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -44,7 +42,6 @@
       font-size: 1.05rem;
     }
 
-    /* Stack: selectors row + since buttons underneath */
     .toolbar-stack{
       display: flex;
       flex-direction: column;
@@ -145,7 +142,6 @@
       background-color: var(--panel-bg, #1a1a1a);
     }
 
-    /* Double separators: Date | Event | Opponent | Elo | Result | Δ */
     table.games th:nth-child(1), table.games td:nth-child(1),
     table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(3), table.games td:nth-child(3),
@@ -198,7 +194,6 @@
       .player-stats{ justify-self: centre; }
     }
 
-    /* Kill any underline rules coming from style.css (often via ::after) */
     .header-row,
     .header-row *{
       border-bottom: none !important;
@@ -327,8 +322,11 @@
 
   const state = { section: 'classical' };
   let RAW = [];
-  let SINCE_YEAR = 2020;     // default Since 2020
+  let SINCE_YEAR = 2020;
   let AGG_MODE = 'monthly';
+
+  // Prevent older async loads overwriting newer ones
+  let LOAD_TOKEN = 0;
 
   function dataBase() { return SECTIONS[state.section].base; }
   function playersUrl() { return `${dataBase()}/players.json`; }
@@ -346,11 +344,7 @@
   function normalise(series, dedupeByDay = false) {
     const s = (Array.isArray(series) ? series : [])
       .filter(p => p && p.x && Number.isFinite(p.y))
-      .map(p => ({
-        x: p.x,
-        y: +p.y,
-        event: p.event || ''
-      }))
+      .map(p => ({ x: p.x, y: +p.y, event: p.event || '' }))
       .sort((a, b) => new Date(a.x) - new Date(b.x));
 
     if (!dedupeByDay) return s;
@@ -399,13 +393,9 @@
   function niceYBounds(ys) {
     const min = Math.min(...ys);
     const max = Math.max(...ys);
-
     if (!Number.isFinite(min) || !Number.isFinite(max)) return null;
 
-    if (min === max) {
-      const pad = 50;
-      return { lo: min - pad, hi: max + pad };
-    }
+    if (min === max) return { lo: min - 50, hi: max + 50 };
 
     const span = max - min;
     const pad = Math.max(25, span * 0.06);
@@ -517,13 +507,8 @@
     const isWhite = (g.white === myName);
     const isBlack = (g.black === myName);
 
-    if ((raw === '1-0' && isWhite) || (raw === '0-1' && isBlack)) {
-      return { cls: 'win', text: 'Win' };
-    }
-
-    if ((raw === '0-1' && isWhite) || (raw === '1-0' && isBlack)) {
-      return { cls: 'loss', text: 'Loss' };
-    }
+    if ((raw === '1-0' && isWhite) || (raw === '0-1' && isBlack)) return { cls: 'win', text: 'Win' };
+    if ((raw === '0-1' && isWhite) || (raw === '1-0' && isBlack)) return { cls: 'loss', text: 'Loss' };
 
     return { cls: '', text: raw || '' };
   }
@@ -534,13 +519,11 @@
 
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
-
     for (const h of ['Date', 'Event', 'Opponent', 'Elo', 'Result', 'Δ', 'New']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
     }
-
     thead.appendChild(hr);
     tbl.appendChild(thead);
 
@@ -552,6 +535,7 @@
     rows.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     const myName = me.name;
+    let added = 0;
 
     for (const g of rows) {
       const isWhite = g.white === myName;
@@ -562,6 +546,7 @@
       const opponentDisplay = isWhite
         ? (g.black_display || g.black || '')
         : (g.white_display || g.white || '');
+
       const opponentElo = isWhite ? Number(g.blackElo) : Number(g.whiteElo);
       const myEloBefore = isWhite ? Number(g.whiteElo) : Number(g.blackElo);
 
@@ -611,6 +596,16 @@
       tr.appendChild(tdNew);
 
       tbody.appendChild(tr);
+      added++;
+    }
+
+    if (!added) {
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+      td.colSpan = 7;
+      td.textContent = 'No games';
+      tr.appendChild(td);
+      tbody.appendChild(tr);
     }
 
     tbl.appendChild(tbody);
@@ -643,14 +638,20 @@
   }
 
   async function load() {
+    const token = ++LOAD_TOKEN;
+
     try {
       document.getElementById('chart').textContent = 'Loading…';
+      document.getElementById('games').innerHTML = '<tbody><tr><td colspan="7">Loading…</td></tr></tbody>';
 
       const [playersRes, histRes, gamesRes] = await Promise.all([
         fetch(playersUrl(), { cache: 'no-cache' }),
         fetch(historyUrl(idRaw), { cache: 'no-cache' }),
         fetch(gamesUrl(idRaw), { cache: 'no-cache' })
       ]);
+
+      // If another load() started after this one, stop.
+      if (token !== LOAD_TOKEN) return;
 
       if (!playersRes.ok) throw new Error('players.json not found');
       if (!histRes.ok) throw new Error('history not found');
@@ -671,7 +672,6 @@
         true
       );
 
-      // Draw once with defaults
       if (!RAW.length) {
         document.getElementById('chart').textContent = 'No games';
         renderPlayerStats([]);
@@ -680,9 +680,9 @@
         refreshView();
       }
 
-      // Games table
       if (gamesRes.ok) {
         const games = await gamesRes.json();
+        if (token !== LOAD_TOKEN) return;
         renderGamesTable(me, players, Array.isArray(games) ? games : []);
       } else {
         document.getElementById('games').innerHTML =
@@ -690,6 +690,7 @@
       }
 
     } catch (e) {
+      if (token !== LOAD_TOKEN) return;
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       document.getElementById('games').innerHTML =
@@ -705,26 +706,22 @@
     document.getElementById('sec').value = state.section;
     setParam('sec', state.section);
     wireNavLinks();
-
-    // Reload section data (player lists + history + games all change by section)
     load();
   }
 
   window.addEventListener('DOMContentLoaded', () => {
-    // Section from URL (default classical)
+    // Set defaults for since buttons UI
+    document.querySelectorAll('.range-btn').forEach(btn => {
+      const v = btn.getAttribute('data-since');
+      if ((v === '2020' && SINCE_YEAR === 2020) || (!v && !SINCE_YEAR)) btn.classList.add('is-active');
+      else btn.classList.remove('is-active');
+    });
+
     setSection(getParam('sec') || 'classical');
 
-    // Aggregation selector
-    document.getElementById('agg').addEventListener('change', e => {
-      draw(e.target.value);
-    });
+    document.getElementById('agg').addEventListener('change', e => draw(e.target.value));
+    document.getElementById('sec').addEventListener('change', e => setSection(e.target.value));
 
-    // Format selector
-    document.getElementById('sec').addEventListener('change', e => {
-      setSection(e.target.value);
-    });
-
-    // Since buttons
     document.querySelectorAll('.range-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
