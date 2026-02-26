@@ -1,268 +1,292 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>J-Ratings: Rugby Union</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
-<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <meta charset="utf-8">
+  <title>J-Ratings: Rugby Union</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
-<style>
-#chart{ height:520px; }
+  <style>
+    #chart { height: 520px; }
 
-/* Header layout */
-.header-row{
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  gap:16px;
-  padding:20px;
-}
+    /* Header row */
+    .header-row{
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+    }
 
-h2#pname{
-  justify-self:center;
-  margin:0;
-  padding:0;
-  text-align:center;
-  font-size:3rem;
-}
+    h2#pname{
+      justify-self: center;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-size: 3rem;
+    }
 
-/* Toolbar */
-.toolbar{
-  justify-self:start;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:6px;
-}
+    .toolbar{
+      justify-self: start;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
 
-.toolbar-top{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
+    .toolbar-top{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-.range-buttons{
-  display:flex;
-  gap:6px;
-}
+    .range-buttons{
+      display: flex;
+      gap: 6px;
+    }
 
-.range-btn{
-  padding:4px 10px;
-  font-size:0.85rem;
-  border-radius:6px;
-  border:1px solid rgba(43,47,54,0.6);
-  background:rgba(255,255,255,0.04);
-  cursor:pointer;
-}
+    .range-btn{
+      padding: 4px 10px;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      border: 1px solid rgba(43,47,54,0.6);
+      background: rgba(255,255,255,0.04);
+      cursor: pointer;
+    }
 
-.range-btn:hover{
-  background:rgba(255,255,255,0.08);
-}
+    .range-btn:hover{
+      background: rgba(255,255,255,0.08);
+    }
 
-.range-btn.active{
-  background:rgba(255,255,255,0.14);
-  border-color:rgba(255,255,255,0.25);
-}
+    .range-btn.active{
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.25);
+    }
 
-/* Live / Peak */
-.team-stats{
-  justify-self:end;
-  display:flex;
-  gap:14px;
-  align-items:center;
-  text-align:center;
-}
+    .team-stats{
+      justify-self: end;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      text-align: center;
+    }
 
-.team-stats .stat{
-  padding:9px 11px;
-  border:1px solid rgba(43,47,54,0.55);
-  border-radius:10px;
-  background:rgba(255,255,255,0.03);
-  min-width:90px;
-}
+    .team-stats .stat{
+      padding: 9px 11px;
+      border: 1px solid rgba(43,47,54,0.55);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      min-width: 90px;
+    }
 
-.team-stats .stat-label{
-  font-size:0.9rem;
-  opacity:0.8;
-}
+    .team-stats .stat-label{
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
 
-.team-stats .stat-value{
-  font-size:1.4rem;
-  font-weight:800;
-  line-height:1.1;
-}
+    .team-stats .stat-value{
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
 
-/* Remove any global underline effects */
-.header-row,
-.header-row *{
-  border-bottom:none !important;
-  box-shadow:none !important;
-  background-image:none !important;
-  text-decoration:none !important;
-}
-
-.header-row::before,
-.header-row::after,
-#pname::before,
-#pname::after{
-  content:none !important;
-  display:none !important;
-}
-
-@media(max-width:700px){
-  .header-row{
-    grid-template-columns:1fr;
-    justify-items:center;
-    text-align:center;
-  }
-  .toolbar{ align-items:center; }
-  .team-stats{ justify-self:center; }
-}
-</style>
+    @media (max-width: 700px){
+      .header-row{
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+      }
+      .toolbar{ align-items: center; }
+      .team-stats{ justify-self: center; }
+    }
+  </style>
 </head>
 
 <body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a id="home-link" href="index.html" class="brand-with-logo">
+        <span>J-Ratings <span class="title-rugby">Rugby Union</span></span>
+        <img src="../../Rugby Banner Logo.png" alt="Rugby logo" class="sport-logo">
+      </a>
+    </h1>
+    <nav class="topnav" aria-label="Main">
+      <a href="../../index.html">Sports</a>
+      <a href="index.html">Home</a>
+      <a href="compare.html">Compare</a>
+      <a href="peak.html">Peak</a>
+    </nav>
+  </div>
+</header>
 
 <main class="wrap">
-<section class="panel">
+  <section class="panel">
 
-<div class="header-row">
+    <div class="header-row">
 
-  <div class="toolbar">
-    <div class="toolbar-top">
-      <label for="agg">View:</label>
-      <select id="agg">
-        <option value="daily">Daily</option>
-        <option value="monthly" selected>Monthly</option>
-        <option value="yearly">Yearly</option>
-      </select>
+      <div class="toolbar">
+        <div class="toolbar-top">
+          <label for="agg">View:</label>
+          <select id="agg">
+            <option value="daily">Daily</option>
+            <option value="monthly" selected>Monthly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+        </div>
+
+        <div class="range-buttons">
+          <button data-range="all" class="range-btn active">All</button>
+          <button data-range="2000" class="range-btn">Since 2000</button>
+          <button data-range="2020" class="range-btn">Since 2020</button>
+        </div>
+      </div>
+
+      <h2 id="pname">Team</h2>
+
+      <div id="teamStats" class="team-stats">
+        <div class="stat">
+          <div class="stat-label">Live</div>
+          <div class="stat-value" id="liveVal">—</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Peak</div>
+          <div class="stat-value" id="peakVal">—</div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="range-buttons">
-      <button data-range="all" class="range-btn active">All</button>
-      <button data-range="2000" class="range-btn">Since 2000</button>
-      <button data-range="2020" class="range-btn">Since 2020</button>
-    </div>
-  </div>
+    <div id="chart">Loading…</div>
 
-  <h2 id="pname">Team</h2>
-
-  <div class="team-stats">
-    <div class="stat">
-      <div class="stat-label">Live</div>
-      <div class="stat-value" id="liveVal">—</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">Peak</div>
-      <div class="stat-value" id="peakVal">—</div>
-    </div>
-  </div>
-
-</div>
-
-<div id="chart">Loading…</div>
-
-</section>
+  </section>
 </main>
 
 <script>
-const params = new URLSearchParams(location.search);
-const idRaw = params.get('id');
-if (!idRaw) throw new Error('no id');
+  const params = new URLSearchParams(location.search);
+  const idRaw = params.get('id');
+  if (!idRaw) throw new Error('no id');
 
-const TEAMS_URL='data/teams.json';
-const HIST_URL=id=>`data/history/${encodeURIComponent(id)}.json`;
-let RAW=[];
-let currentRange='all';
+  const TEAMS_URL = 'data/teams.json';
+  const HIST_URL  = id => `data/history/${encodeURIComponent(id)}.json`;
 
-function normalise(series){
-  return series
-    .filter(p=>p&&p.x&&Number.isFinite(p.y))
-    .map(p=>({x:p.x,y:+p.y}))
-    .sort((a,b)=>new Date(a.x)-new Date(b.x));
-}
+  let RAW = [];
+  let currentRange = 'all';
 
-function draw(mode){
-  const data=RAW;
-  const xs=data.map(p=>p.x);
-  const ys=data.map(p=>p.y);
-
-  Plotly.newPlot('chart',[{
-    type:'scatter',
-    x:xs,
-    y:ys,
-    mode:(mode==='daily')?'lines':'lines+markers',
-    line:{width:3},
-    marker:{size:6}
-  }],{
-    margin:{l:60,r:20,t:10,b:45},
-    xaxis:{type:'date'},
-    yaxis:{title:'Rating'}
-  },{
-    displayModeBar:false,
-    responsive:true
-  });
-
-  applyRange(currentRange);
-}
-
-function applyRange(range){
-  currentRange=range;
-  const chart=document.getElementById('chart');
-
-  if(range==='all'){
-    Plotly.relayout(chart,{'xaxis.autorange':true});
-    return;
+  function normalise(series) {
+    return series
+      .filter(p => p && p.x && Number.isFinite(p.y))
+      .sort((a, b) => new Date(a.x) - new Date(b.x));
   }
 
-  Plotly.relayout(chart,{
-    'xaxis.range':[new Date(`${range}-01-01`),new Date()]
-  });
-}
+  function aggregate(series, mode) {
+    if (mode === 'daily') return normalise(series);
 
-function renderStats(){
-  if(!RAW.length) return;
+    const buckets = {};
+    for (const p of series) {
+      const d = new Date(p.x);
+      const key = (mode === 'monthly')
+        ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`
+        : `${d.getFullYear()}`;
+      (buckets[key] ||= []).push(p);
+    }
 
-  const live=RAW[RAW.length-1].y;
-  document.getElementById('liveVal').textContent=Math.round(live);
-
-  let peak=RAW[0].y;
-  for(const p of RAW) if(p.y>peak) peak=p.y;
-  document.getElementById('peakVal').textContent=Math.round(peak);
-}
-
-async function load(){
-  const [teamsRes,histRes]=await Promise.all([
-    fetch(TEAMS_URL),
-    fetch(HIST_URL(idRaw))
-  ]);
-
-  const teams=await teamsRes.json();
-  const me=teams.find(t=>t.id===idRaw);
-  document.getElementById('pname').textContent=me.name;
-
-  const histJson=await histRes.json();
-  RAW=normalise(histJson.map(d=>({x:d.date,y:Number(d.rating)})));
-
-  renderStats();
-  draw('monthly');
-
-  document.getElementById('agg')
-    .addEventListener('change',e=>draw(e.target.value));
-
-  document.querySelectorAll('.range-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      document.querySelectorAll('.range-btn')
-        .forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      applyRange(btn.dataset.range);
+    return Object.keys(buckets).sort().map(k => {
+      const pts = buckets[k];
+      const avg = pts.reduce((a,b)=>a+b.y,0)/pts.length;
+      const x = k.length===7 ? `${k}-01` : `${k}-01-01`;
+      return { x, y: avg };
     });
-  });
-}
+  }
 
-load();
+  function draw(mode){
+    const data = aggregate(RAW, mode);
+    if(!data.length){
+      document.getElementById('chart').textContent='No games';
+      return;
+    }
+
+    Plotly.newPlot('chart',[{
+      type:'scatter',
+      x:data.map(d=>d.x),
+      y:data.map(d=>d.y),
+      mode:'lines',
+      line:{width:3}
+    }],{
+      margin:{l:60,r:20,t:10,b:45},
+      xaxis:{type:'date'},
+      yaxis:{title:'Rating'},
+      displayModeBar:false,
+      responsive:true
+    });
+
+    applyRange();
+  }
+
+  function applyRange(){
+    const chart = document.getElementById('chart');
+    if(currentRange==='all'){
+      Plotly.relayout(chart,{ 'xaxis.autorange':true });
+    } else {
+      Plotly.relayout(chart,{
+        'xaxis.range':[new Date(`${currentRange}-01-01`), new Date()]
+      });
+    }
+  }
+
+  function renderTeamStats(series){
+    const liveEl=document.getElementById('liveVal');
+    const peakEl=document.getElementById('peakVal');
+
+    if(!series.length){
+      liveEl.textContent='—';
+      peakEl.textContent='—';
+      return;
+    }
+
+    liveEl.textContent=Math.round(series[series.length-1].y);
+
+    let peak=series[0];
+    for(const p of series){
+      if(p.y>peak.y) peak=p;
+    }
+    peakEl.textContent=Math.round(peak.y);
+  }
+
+  async function load(){
+    const [teamsRes, histRes]=await Promise.all([
+      fetch(TEAMS_URL),
+      fetch(HIST_URL(idRaw))
+    ]);
+
+    const teams=await teamsRes.json();
+    const me=teams.find(t=>t.id===idRaw);
+    document.getElementById('pname').textContent=me.name;
+
+    const histJson=await histRes.json();
+    RAW=normalise(histJson.map(d=>({x:d.date,y:Number(d.rating)})));
+
+    renderTeamStats(RAW);
+
+    draw('monthly');
+
+    document.getElementById('agg')
+      .addEventListener('change',e=>draw(e.target.value));
+
+    document.querySelectorAll('.range-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.range-btn')
+          .forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        currentRange=btn.dataset.range;
+        applyRange();
+      });
+    });
+  }
+
+  load();
 </script>
-
 </body>
 </html>
