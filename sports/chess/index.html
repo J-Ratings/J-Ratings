@@ -18,6 +18,14 @@
       flex-wrap:wrap;
     }
 
+    /* "Update to YYYY-MM-DD" line */
+    .asof {
+      opacity: 0.8;
+      font-size: 0.95rem;
+      margin: 6px 0 12px 0;
+      white-space: nowrap;
+    }
+
     /* Modal */
     #compare-modal {
       display:none; position:fixed; top:0; left:0; width:100%; height:100%;
@@ -71,6 +79,9 @@
 
       <button id="compare-btn" class="club-btn" type="button">Compare</button>
     </div>
+
+    <!-- Update message goes here -->
+    <div id="asof" class="asof" aria-live="polite"></div>
 
     <div id="compare-wrap" style="display:none; padding:16px">
       <div class="compare-chart-toolbar">
@@ -166,6 +177,24 @@
     document.getElementById('nav-peak').href = `peak.html?sec=${sec}`;
   }
 
+  /* ---------- "AS OF" MESSAGE ---------- */
+  function setAsOf(dateStr) {
+    const el = document.getElementById('asof');
+    if (!el) return;
+    el.textContent = dateStr ? `Update to ${dateStr}` : '';
+  }
+
+  function normaliseYMD(s) {
+    // Accepts "YYYY-MM-DD" or ISO-ish strings. Returns "YYYY-MM-DD" or "".
+    if (!s) return '';
+    const d = new Date(s);
+    if (Number.isNaN(+d)) return '';
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  }
+
   /* ---------- TABLE ---------- */
   function render() {
     const tbody = document.querySelector('#players tbody');
@@ -192,7 +221,6 @@
 
       tbody.appendChild(tr);
     });
-
   }
 
   function applyFilter() {
@@ -435,7 +463,16 @@
 
       const res = await fetch(url, { cache: 'no-cache' });
       if (!res.ok) throw new Error(`Failed to load ${url}`);
-      const data = await res.json();
+
+      const payload = await res.json();
+
+      // Supports:
+      //  - Legacy: [ { ... }, ... ]
+      //  - New:    { as_of: "YYYY-MM-DD", players: [ { ... }, ... ] }
+      const data = Array.isArray(payload) ? payload : (payload.players || []);
+      const asOf = Array.isArray(payload) ? '' : normaliseYMD(payload.as_of);
+
+      setAsOf(asOf);
 
       // Both live and snapshots include "active"; snapshots now have activity relative to that year
       const rows = data.filter(d => d && d.active === true);
@@ -453,6 +490,7 @@
       render();
       hideCompare();
     } catch (err) {
+      setAsOf('');
       document.querySelector('#players tbody').innerHTML =
         `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
     }
