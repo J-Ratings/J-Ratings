@@ -322,7 +322,7 @@
 
   const state = { section: 'classical' };
   let RAW = [];
-  let SINCE_YEAR = 2020;
+  let SINCE_YEAR = null;
   let AGG_MODE = 'monthly';
 
   // Prevent older async loads overwriting newer ones
@@ -711,11 +711,12 @@
 
   window.addEventListener('DOMContentLoaded', () => {
     // Set defaults for since buttons UI
-    document.querySelectorAll('.range-btn').forEach(btn => {
-      const v = btn.getAttribute('data-since');
-      if ((v === '2020' && SINCE_YEAR === 2020) || (!v && !SINCE_YEAR)) btn.classList.add('is-active');
-      else btn.classList.remove('is-active');
-    });
+document.querySelectorAll('.range-btn').forEach(btn => {
+  const v = btn.getAttribute('data-since');
+  const isAll = !v; // v === '' for the All button
+  const isSelected = (isAll && !SINCE_YEAR) || (v && Number(v) === SINCE_YEAR);
+  btn.classList.toggle('is-active', isSelected);
+});
 
     setSection(getParam('sec') || 'classical');
 
