@@ -18,7 +18,7 @@
       display: flex;
       align-items: center;          /* middle vertically */
       justify-content: center;      /* centre horizontally */
-      height: 165px;
+      height: 165px;                /* ~50% higher */
       padding: 0 18px;
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -51,23 +51,23 @@
       position: relative; /* above overlay */
       z-index: 1;
 
-      /* 25% bigger */
-      font-size: 3.5rem;
+      /* bigger text */
+      font-size: 3.3rem;
 
       font-weight: 800;
       color: #fff;
       text-align: center;
 
-      /* black outline */
+      /* thicker black outline */
       text-shadow:
-        -2px -2px 0 #000,
-         2px -2px 0 #000,
-        -2px  2px 0 #000,
-         2px  2px 0 #000,
-         0px  2px 0 #000,
-         2px  0px 0 #000,
-         0px -2px 0 #000,
-        -2px  0px 0 #000;
+        -3px -3px 0 #000,
+         3px -3px 0 #000,
+        -3px  3px 0 #000,
+         3px  3px 0 #000,
+         0px  3px 0 #000,
+         3px  0px 0 #000,
+         0px -3px 0 #000,
+        -3px  0px 0 #000;
     }
 
     /* Background images (files live in root) */
@@ -88,11 +88,8 @@
     <h1 class="site-title">
       <a id="home-link" href="index.html" class="brand-with-logo">
         <span>J-Ratings</span>
-
       </a>
     </h1>
-
-    <!-- nav removed -->
   </div>
 </header>
 
