@@ -9,48 +9,70 @@
   <style>
     .sports-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
+      grid-template-columns: 1fr;   /* stacked */
+      gap: 14px;
       margin-top: 12px;
     }
 
     .sport-card {
-      display: block;
-      padding: 18px;
+      display: flex;
+      align-items: center;          /* middle vertically */
+      justify-content: center;      /* centre horizontally */
+      height: 110px;
+      padding: 0 18px;
       border: 1px solid var(--border);
-      border-radius: 10px;
-      background: #0f1623;
-      color: var(--text);
+      border-radius: 12px;
       text-decoration: none;
-      min-height: 92px;
+      position: relative;
+      overflow: hidden;
+
+      /* background image settings */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      /* fallback colour if image missing */
+      background-color: #0f1623;
+    }
+
+    .sport-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      /* slight dark overlay so white text stays readable */
+      background: rgba(0,0,0,.25);
+      pointer-events: none;
     }
 
     .sport-card:hover { border-color: var(--accent); }
 
     .sport-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin: 0 0 6px 0;
+      margin: 0;
+      position: relative; /* above overlay */
+      z-index: 1;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+
+      /* black outline */
+      text-shadow:
+        -2px -2px 0 #000,
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000,
+         0px  2px 0 #000,
+         2px  0px 0 #000,
+         0px -2px 0 #000,
+        -2px  0px 0 #000;
     }
 
-    .sport-sub { margin: 0; color: var(--muted); }
-
-    .disabled {
-      opacity: .55;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-
-    .pill {
-      display: inline-block;
-      font-size: .85rem;
-      padding: 4px 8px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--muted);
-      margin-left: 8px;
-      vertical-align: middle;
-    }
+    /* Background images (files live in root) */
+    .bg-go       { background-image: url("Go Button.png"); }
+    .bg-chess    { background-image: url("Chess Button.png"); }
+    .bg-football { background-image: url("Football Button.png"); }
+    .bg-rugby    { background-image: url("Rugby Button.png"); }
+    .bg-nfl      { background-image: url("NFL Button.png"); }
 
     /* Stops “page width jump” when some pages scroll and others don’t */
     html { overflow-y: scroll; }
@@ -90,29 +112,27 @@
 
     <div style="padding:16px 18px">
       <div class="sports-grid">
-        <a class="sport-card" href="sports/go/index.html">
+        <a class="sport-card bg-go" href="sports/go/index.html">
           <p class="sport-title">Go</p>
         </a>
 
-        <a class="sport-card" href="sports/chess/index.html">
-          <p class="sport-title">Chess <span class="pill">WIP</span></p>
-          <p class="sport-sub">Data needs cleaning</p>
+        <a class="sport-card bg-chess" href="sports/chess/index.html">
+          <p class="sport-title">Chess</p>
         </a>
 
-        <a class="sport-card" href="sports/PremierLeague/index.html">
+        <a class="sport-card bg-football" href="sports/PremierLeague/index.html">
           <p class="sport-title">English Football</p>
-          <p class="sport-sub">Top 4 divisions</p>
         </a>
 
-        <a class="sport-card" href="sports/WordFootball/index.html">
+        <a class="sport-card bg-football" href="sports/WordFootball/index.html">
           <p class="sport-title">International Football</p>
         </a>
 
-        <a class="sport-card" href="sports/WorldRugby/index.html">
+        <a class="sport-card bg-rugby" href="sports/WorldRugby/index.html">
           <p class="sport-title">Rugby Union</p>
         </a>
 
-        <a class="sport-card" href="sports/NFL/index.html">
+        <a class="sport-card bg-nfl" href="sports/NFL/index.html">
           <p class="sport-title">NFL</p>
         </a>
       </div>
