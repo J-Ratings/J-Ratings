@@ -142,12 +142,12 @@
       background-color: var(--panel-bg, #1a1a1a);
     }
 
+    /* Column separators for the original Go table (6 cols) */
     table.games th:nth-child(1), table.games td:nth-child(1),
     table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(3), table.games td:nth-child(3),
     table.games th:nth-child(4), table.games td:nth-child(4),
-    table.games th:nth-child(5), table.games td:nth-child(5),
-    table.games th:nth-child(6), table.games td:nth-child(6) {
+    table.games th:nth-child(5), table.games td:nth-child(5) {
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
@@ -161,12 +161,6 @@
     .delta.neg{ color: #e03232; }
 
     .opp{ text-align: left; }
-    .event{
-      text-align: left;
-      max-width: 260px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
 
     td.opp a{
       color: inherit;
@@ -181,7 +175,6 @@
       h3.section-title{ font-size: 1.25rem; }
       table.games{ font-size: 0.92rem; }
       table.games th, table.games td{ padding: 8px 10px; }
-      .event{ max-width: 180px; }
     }
 
     @media (max-width: 700px){
@@ -285,18 +278,6 @@
 </main>
 
 <script>
-  function getParam(name) {
-    const u = new URL(window.location.href);
-    return u.searchParams.get(name);
-  }
-
-  function setParam(name, value) {
-    const u = new URL(window.location.href);
-    if (value === null || value === undefined || value === '') u.searchParams.delete(name);
-    else u.searchParams.set(name, value);
-    window.history.replaceState({}, '', u.toString());
-  }
-
   const params = new URLSearchParams(location.search);
   const idRaw = params.get('id');
   if (!idRaw) {
@@ -304,7 +285,10 @@
     throw new Error('no id');
   }
 
-  const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
+  const PLAYERS_URL = 'data/players.json';
+  const HIST_URL    = id => `data/history/${encodeURIComponent(id)}.json`;
+  const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
+  const IS_TOUCH    = window.matchMedia('(pointer: coarse)').matches;
 
   let RAW = [];
   let SINCE_YEAR = null;
@@ -313,13 +297,7 @@
   // Prevent older async loads overwriting newer ones
   let LOAD_TOKEN = 0;
 
-  const PLAYERS_URL = 'data/players.json';
-  function historyUrl(id) { return `data/history/${encodeURIComponent(id)}.json`; }
-  function gamesUrl(id) { return `data/games/${encodeURIComponent(id)}.json`; }
-
   function wireNavLinks() {
-    // Go pages do not have sections today, but keep parity with Chess by preserving query params.
-    // This means you won't drop the player id when moving around.
     document.getElementById('home-link').href   = `index.html`;
     document.getElementById('nav-home').href    = `index.html`;
     document.getElementById('nav-compare').href = `compare.html`;
@@ -329,7 +307,11 @@
   function normalise(series, dedupeByDay = false) {
     const s = (Array.isArray(series) ? series : [])
       .filter(p => p && p.x && Number.isFinite(p.y))
-      .map(p => ({ x: p.x, y: +p.y, event: p.event || p.tournament || '' }))
+      .map(p => ({
+        x: p.x,
+        y: +p.y,
+        event: p.event || p.tournament || ''
+      }))
       .sort((a, b) => new Date(a.x) - new Date(b.x));
 
     if (!dedupeByDay) return s;
@@ -463,47 +445,56 @@
     const td = document.createElement('td');
     td.className = 'opp';
 
-    const key = String(opponentName || '');
-    const player = players.find(p => p.name === key);
+    const player = players.find(p => p.name === opponentName);
 
     if (player && player.id) {
       const a = document.createElement('a');
       a.href = `player.html?id=${encodeURIComponent(player.id)}`;
-      a.textContent = key;
+      a.textContent = opponentName || '';
       td.appendChild(a);
     } else {
-      td.textContent = key;
+      td.textContent = opponentName || '';
     }
 
     return td;
   }
 
+  // IMPORTANT: Keep the original Go logic (do not swap this to Chess rules)
   function getResultForPlayer(g, myName) {
-    const raw = String(g.result || '').trim();
+    const raw = (g.result || '').trim();
 
-    const isDraw =
-      raw === '1/2-1/2' || raw === '½-½' || raw === '0.5-0.5' ||
-      raw === '1/2–1/2' || raw === '1/2—1/2' || raw === '1/2' ||
-      /^draw$/i.test(raw);
+    if (
+      raw === '1/2' ||
+      raw === '1/2-1/2' ||
+      raw === '½-½' ||
+      /^draw$/i.test(raw)
+    ) {
+      return { cls: 'draw', text: 'Draw' };
+    }
 
-    if (isDraw) return { cls: 'draw', text: 'Draw' };
+    if (raw === '1-0') {
+      return (g.black === myName)
+        ? { cls: 'win', text: 'Win' }
+        : { cls: 'loss', text: 'Loss' };
+    }
 
-    const isWhite = (g.white === myName);
-    const isBlack = (g.black === myName);
-
-    if ((raw === '1-0' && isWhite) || (raw === '0-1' && isBlack)) return { cls: 'win', text: 'Win' };
-    if ((raw === '0-1' && isWhite) || (raw === '1-0' && isBlack)) return { cls: 'loss', text: 'Loss' };
+    if (raw === '0-1') {
+      return (g.white === myName)
+        ? { cls: 'win', text: 'Win' }
+        : { cls: 'loss', text: 'Loss' };
+    }
 
     return { cls: '', text: raw || '' };
   }
 
+  // Keep the original Go table (no Event column)
   function renderGamesTable(me, players, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
 
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
-    for (const h of ['Date', 'Event', 'Opponent', 'Elo', 'Result', 'Δ', 'New']) {
+    for (const h of ['Date', 'Opponent', 'Elo', 'Result', 'Δ', 'New']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -540,12 +531,6 @@
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date || '';
 
-      const tdEvent = document.createElement('td');
-      tdEvent.className = 'event';
-      const fullEvent = String(g.event || g.tournament || '');
-      tdEvent.title = fullEvent;
-      tdEvent.textContent = fullEvent;
-
       const tdOpp = makeOpponentCell(opponentName, players);
 
       const tdOppElo = document.createElement('td');
@@ -568,7 +553,6 @@
       tdNew.textContent = Number.isFinite(myEloAfter) ? String(myEloAfter) : '';
 
       tr.appendChild(tdDate);
-      tr.appendChild(tdEvent);
       tr.appendChild(tdOpp);
       tr.appendChild(tdOppElo);
       tr.appendChild(tdResult);
@@ -582,7 +566,7 @@
     if (!added) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      td.colSpan = 7;
+      td.colSpan = 6;
       td.textContent = 'No games';
       tr.appendChild(td);
       tbody.appendChild(tr);
@@ -622,12 +606,12 @@
 
     try {
       document.getElementById('chart').textContent = 'Loading…';
-      document.getElementById('games').innerHTML = '<tbody><tr><td colspan="7">Loading…</td></tr></tbody>';
+      document.getElementById('games').innerHTML = '<tbody><tr><td colspan="6">Loading…</td></tr></tbody>';
 
       const [playersRes, histRes, gamesRes] = await Promise.all([
         fetch(PLAYERS_URL, { cache: 'no-cache' }),
-        fetch(historyUrl(idRaw), { cache: 'no-cache' }),
-        fetch(gamesUrl(idRaw), { cache: 'no-cache' })
+        fetch(HIST_URL(idRaw), { cache: 'no-cache' }),
+        fetch(GAMES_URL(idRaw), { cache: 'no-cache' })
       ]);
 
       if (token !== LOAD_TOKEN) return;
@@ -665,7 +649,7 @@
         renderGamesTable(me, players, Array.isArray(games) ? games : []);
       } else {
         document.getElementById('games').innerHTML =
-          '<tbody><tr><td colspan="7">No games</td></tr></tbody>';
+          '<tbody><tr><td colspan="6">No games</td></tr></tbody>';
       }
 
     } catch (e) {
@@ -673,13 +657,13 @@
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       document.getElementById('games').innerHTML =
-        '<tbody><tr><td colspan="7">Error loading games</td></tr></tbody>';
+        '<tbody><tr><td colspan="6">Error loading games</td></tr></tbody>';
       renderPlayerStats([]);
     }
   }
 
   window.addEventListener('DOMContentLoaded', () => {
-    // Default since buttons UI state
+    // Set defaults for since buttons UI
     document.querySelectorAll('.range-btn').forEach(btn => {
       const v = btn.getAttribute('data-since');
       const isAll = !v;
