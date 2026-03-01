@@ -20,6 +20,35 @@
     }
     .compare-controls { margin: 10px 0; }
     .compare-controls button { margin-right: 10px; }
+
+      @media (max-width: 520px) {
+    #players {
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    #players th,
+    #players td {
+      min-width: 0 !important;
+      padding: 10px 8px;
+    }
+
+    #players th:nth-child(1),
+    #players td:nth-child(1) { width: 52px; }
+
+    #players th:nth-child(3),
+    #players td:nth-child(3) { width: 78px; }
+
+    #players th:nth-child(2),
+    #players td:nth-child(2) { width: auto; }
+
+    #players td:nth-child(2) a {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
   </style>
 </head>
 <body>
