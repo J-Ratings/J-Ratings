@@ -4,8 +4,12 @@
   <meta charset="utf-8">
   <title>J-Ratings: Chess</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- We are in /sports/chess/peak/, shared css is one level up -->
+  <link rel="stylesheet" href="../style.css">
+
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
   <style>
     #compare-chart { height: 500px; }
     .toolbar { margin-bottom: 10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
@@ -23,20 +27,24 @@
     .compare-controls button { margin-right:10px; }
   </style>
 </head>
+
 <body>
 <header>
   <div class="wrap">
-<h1 class="site-title">
-  <a id="home-link" href="index.html" class="brand-with-logo">
-    <span>J-Ratings <span class="title-chess">Chess</span></span>
-    <img src="../../Chess Banner Logo.png" alt="Chess logo" class="sport-logo">
-  </a>
-</h1>
- <nav class="topnav" aria-label="Main">
-      <a href="../../index.html">Sports</a>
-      <a id="nav-home" href="index.html">Home</a>
-      <a id="nav-compare" href="compare.html">Compare</a>
-      <a id="nav-peak" href="peak.html" class="active-tab">Peak</a>
+    <h1 class="site-title">
+      <!-- Back to /sports/chess/ -->
+      <a id="home-link" href="../" class="brand-with-logo">
+        <span>J-Ratings <span class="title-chess">Chess</span></span>
+        <!-- Use absolute so it works from any depth -->
+        <img src="/Chess Banner Logo.png" alt="Chess logo" class="sport-logo">
+      </a>
+    </h1>
+
+    <nav class="topnav" aria-label="Main">
+      <a href="/">Sports</a>
+      <a id="nav-home" href="../">Home</a>
+      <a id="nav-compare" href="../compare/">Compare</a>
+      <a id="nav-peak" href="./" class="active-tab">Peak</a>
     </nav>
   </div>
 </header>
@@ -97,30 +105,34 @@
 </div>
 
 <script>
-  /* ---------- SECTION CONFIG ---------- */
+  /* ---------- SECTION CONFIG ----------
+     We are in /sports/chess/peak/, data lives in /sports/chess/data/
+  */
   const SECTIONS = {
-    classical: { label: 'Classical', base: 'data/classical' },
-    rapid:     { label: 'Rapid',     base: 'data/rapid' },
-    blitz:     { label: 'Blitz',     base: 'data/blitz' },
-    freestyle: { label: 'Freestyle', base: 'data/freestyle' }
+    classical: { label: 'Classical', base: '../data/classical' },
+    rapid:     { label: 'Rapid',     base: '../data/rapid' },
+    blitz:     { label: 'Blitz',     base: '../data/blitz' },
+    freestyle: { label: 'Freestyle', base: '../data/freestyle' }
   };
 
   function getParam(name) {
     const u = new URL(window.location.href);
     return u.searchParams.get(name);
   }
+
   function setParam(name, value) {
     const u = new URL(window.location.href);
-    u.searchParams.set(name, value);
+    if (value === null || value === undefined) u.searchParams.delete(name);
+    else u.searchParams.set(name, value);
     window.history.replaceState({}, '', u.toString());
   }
 
   function wireNavLinks() {
     const sec = encodeURIComponent(state.section);
-    document.getElementById('home-link').href   = `index.html?sec=${sec}`;
-    document.getElementById('nav-home').href    = `index.html?sec=${sec}`;
-    document.getElementById('nav-compare').href = `compare.html?sec=${sec}`;
-    document.getElementById('nav-peak').href    = `peak.html?sec=${sec}`;
+    document.getElementById('home-link').href   = `../?sec=${sec}`;
+    document.getElementById('nav-home').href    = `../?sec=${sec}`;
+    document.getElementById('nav-compare').href = `../compare/?sec=${sec}`;
+    document.getElementById('nav-peak').href    = `./?sec=${sec}`;
   }
 
   function dataBase() { return SECTIONS[state.section].base; }
@@ -137,6 +149,7 @@
   function render() {
     const tbody = document.querySelector('#players tbody');
     tbody.innerHTML = '';
+
     state.filtered.forEach((r, i) => {
       const tr = document.createElement('tr');
 
@@ -146,7 +159,8 @@
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
-      a.href = `player.html?sec=${encodeURIComponent(state.section)}&id=${encodeURIComponent(r.id)}`;
+      // player page is now a folder: /sports/chess/player/
+      a.href = `../player/?sec=${encodeURIComponent(state.section)}&id=${encodeURIComponent(r.id)}`;
       a.textContent = r.name;
       tdName.appendChild(a);
       tr.appendChild(tdName);
@@ -163,6 +177,8 @@
       tbody.appendChild(tr);
     });
 
+    const countEl = document.getElementById('count');
+    if (countEl) countEl.textContent = state.filtered.length ? `(${state.filtered.length})` : '';
   }
 
   function applyFilter() {
@@ -178,16 +194,19 @@
   async function fetchHistoryFor(id) {
     const key = `${state.section}|${id}`;
     if (histCache.has(key)) return histCache.get(key);
+
     try {
       const res = await fetch(historyUrl(id), { cache: 'no-cache' });
       if (!res.ok) return null;
       const rows = await res.json();
       histCache.set(key, rows);
       return rows;
-    } catch { return null; }
+    } catch {
+      return null;
+    }
   }
 
-  /* ---------- aggregation (same as player.html) ---------- */
+  /* ---------- aggregation ---------- */
   function normalise(series, dedupeByDay = false){
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
@@ -244,7 +263,7 @@
     wrap.style.display = 'block';
     chart.innerHTML = 'Loading…';
 
-const mode = 'monthly';
+    const mode = 'monthly';
 
     const traces = [];
     let ymin = Infinity, ymax = -Infinity;
@@ -282,6 +301,7 @@ const mode = 'monthly';
 
     ymin = Math.floor(ymin / 100) * 100;
     ymax = Math.ceil(ymax / 100) * 100;
+
     const shapes = [];
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
@@ -336,6 +356,7 @@ const mode = 'monthly';
     function showSelected() {
       const ids = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
       if (!ids.length) { alert('Please select at least one player.'); return; }
+
       closeModal();
       const chosen = state.filtered.filter(p => ids.includes(p.id));
       buildComparison(chosen);
@@ -353,13 +374,14 @@ const mode = 'monthly';
     try {
       const res = await fetch(playersUrl(), { cache: 'no-cache' });
       if (!res.ok) throw new Error('Failed to load players.json');
+
       const data = await res.json();
 
       state.rows = data
-        .filter(d => d && d.id && d.name && Number.isFinite(+d.peak))
+        .filter(d => d && d.id && (d.display_name || d.name) && Number.isFinite(+d.peak))
         .map(d => ({
           id: d.id,
-          name: d.name,
+          name: d.display_name || d.name,
           peak: +d.peak,
           peak_date: d.peak_date
         }))
@@ -370,6 +392,8 @@ const mode = 'monthly';
     } catch (err) {
       document.querySelector('#players tbody').innerHTML =
         `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
+      const countEl = document.getElementById('count');
+      if (countEl) countEl.textContent = '';
     }
   }
 
@@ -386,7 +410,6 @@ const mode = 'monthly';
     document.getElementById('q').value = '';
     load();
   }
-
 
   document.getElementById('q').addEventListener('input', applyFilter);
   document.getElementById('sec').addEventListener('change', e => setSection(e.target.value));

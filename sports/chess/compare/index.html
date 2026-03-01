@@ -4,8 +4,10 @@
   <meta charset="utf-8">
   <title>J-Ratings: Chess</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
   <style>
     /* Page-specific bits kept minimal to fit your existing CSS */
     .controls{display:flex;flex-direction:column;gap:10px;padding:14px 18px;border-bottom:1px solid var(--border, #444)}
@@ -28,20 +30,22 @@
     #chart{height:520px}
   </style>
 </head>
+
 <body>
 <header>
   <div class="wrap">
-<h1 class="site-title">
-  <a id="home-link" href="index.html" class="brand-with-logo">
-    <span>J-Ratings <span class="title-chess">Chess</span></span>
-    <img src="../../Chess Banner Logo.png" alt="Chess logo" class="sport-logo">
-  </a>
-</h1>
+    <h1 class="site-title">
+      <a id="home-link" href="../" class="brand-with-logo">
+        <span>J-Ratings <span class="title-chess">Chess</span></span>
+        <img src="/Chess Banner Logo.png" alt="Chess logo" class="sport-logo">
+      </a>
+    </h1>
+
     <nav class="topnav" aria-label="Main">
-      <a href="../../index.html">Sports</a>
-      <a id="nav-home" href="index.html">Home</a>
-      <a id="nav-compare" href="compare.html" class="active-tab">Compare</a>
-      <a id="nav-peak" href="peak.html">Peak</a>
+      <a href="/">Sports</a>
+      <a id="nav-home" href="../">Home</a>
+      <a id="nav-compare" href="./" class="active-tab">Compare</a>
+      <a id="nav-peak" href="../peak/">Peak</a>
     </nav>
   </div>
 </header>
@@ -91,28 +95,30 @@
 <script>
   // --- sections -------------------------------------------------------------
   const SECTIONS = {
-    classical: { label: 'Classical', base: 'data/classical' },
-    rapid:     { label: 'Rapid',     base: 'data/rapid' },
-    blitz:     { label: 'Blitz',     base: 'data/blitz' },
-    freestyle: { label: 'Freestyle', base: 'data/freestyle' }
+    classical: { label: 'Classical', base: '../data/classical' },
+    rapid:     { label: 'Rapid',     base: '../data/rapid' },
+    blitz:     { label: 'Blitz',     base: '../data/blitz' },
+    freestyle: { label: 'Freestyle', base: '../data/freestyle' }
   };
 
   function getParam(name) {
     const u = new URL(window.location.href);
     return u.searchParams.get(name);
   }
+
   function setParam(name, value) {
     const u = new URL(window.location.href);
-    u.searchParams.set(name, value);
+    if (value === null || value === undefined) u.searchParams.delete(name);
+    else u.searchParams.set(name, value);
     window.history.replaceState({}, '', u.toString());
   }
 
   function wireNavLinks() {
     const sec = encodeURIComponent(state.section);
-    document.getElementById('home-link').href   = `index.html?sec=${sec}`;
-    document.getElementById('nav-home').href    = `index.html?sec=${sec}`;
-    document.getElementById('nav-compare').href = `compare.html?sec=${sec}`;
-    document.getElementById('nav-peak').href    = `peak.html?sec=${sec}`;
+    document.getElementById('home-link').href   = `../?sec=${sec}`;
+    document.getElementById('nav-home').href    = `../?sec=${sec}`;
+    document.getElementById('nav-compare').href = `./?sec=${sec}`;
+    document.getElementById('nav-peak').href    = `../peak/?sec=${sec}`;
   }
 
   function dataBase() { return SECTIONS[state.section].base; }
@@ -394,7 +400,6 @@
     document.getElementById('sec').addEventListener('change', e => setSection(e.target.value));
 
     makeRow(); // always show one input
-
     setSection(getParam('sec') || 'classical');
   });
 </script>
