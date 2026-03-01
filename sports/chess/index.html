@@ -26,6 +26,24 @@
       white-space: nowrap;
     }
 
+    /* Load more */
+    .load-more-wrap {
+      display: flex;
+      justify-content: centre;
+      padding: 14px 0 0 0;
+    }
+    .load-more-wrap button {
+      padding: 10px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .load-more-wrap .hint {
+      opacity: 0.8;
+      margin-left: 12px;
+      align-self: centre;
+      white-space: nowrap;
+    }
+
     /* Modal */
     #compare-modal {
       display:none; position:fixed; top:0; left:0; width:100%; height:100%;
@@ -37,6 +55,17 @@
     }
     .compare-controls { margin: 10px 0; }
     .compare-controls button { margin-right:10px; }
+
+    /* Footer */
+    footer.site-footer {
+      margin-top: 24px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      opacity: 0.9;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    footer.site-footer a { color: inherit; }
   </style>
 </head>
 <body>
@@ -107,6 +136,12 @@
         </thead>
         <tbody><!-- filled by JS --></tbody>
       </table>
+
+      <!-- Load more controls -->
+      <div class="load-more-wrap">
+        <button id="load-more" type="button" style="display:none;">Load more</button>
+        <div id="load-more-hint" class="hint"></div>
+      </div>
     </div>
   </section>
 
@@ -125,6 +160,13 @@
       </div>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
+    <div>Data Source: Caissabase (licence not specified; used on the assumption it is intended for open use)</div>
+    <div>Data Source: Lichess Broadcasts (lichess.org) — CC BY-SA 4.0</div>
+  </footer>
 </main>
 
 <script>
@@ -157,8 +199,11 @@
   const state = {
     section: 'classical',
     rows: [],
-    filtered: []
+    filtered: [],
+    visibleCount: 100
   };
+
+  const PAGE_SIZE = 100;
 
   const histCache = new Map(); // `${section}|${id}`
   let lastCompared = [];
@@ -195,12 +240,32 @@
     return `${y}-${m}-${day}`;
   }
 
-  /* ---------- TABLE ---------- */
+  /* ---------- TABLE + PAGING ---------- */
+  function updateLoadMoreUI() {
+    const btn = document.getElementById('load-more');
+    const hint = document.getElementById('load-more-hint');
+    if (!btn || !hint) return;
+
+    const total = state.filtered.length;
+    const showing = Math.min(state.visibleCount, total);
+
+    if (total <= PAGE_SIZE) {
+      btn.style.display = 'none';
+      hint.textContent = total ? `Showing ${showing} of ${total}` : '';
+      return;
+    }
+
+    hint.textContent = total ? `Showing ${showing} of ${total}` : '';
+    btn.style.display = (showing < total) ? 'inline-block' : 'none';
+  }
+
   function render() {
     const tbody = document.querySelector('#players tbody');
     tbody.innerHTML = '';
 
-    state.filtered.forEach((r, i) => {
+    const totalToShow = Math.min(state.visibleCount, state.filtered.length);
+    for (let i = 0; i < totalToShow; i++) {
+      const r = state.filtered[i];
       const tr = document.createElement('tr');
 
       const tdRank = document.createElement('td');
@@ -220,7 +285,9 @@
       tr.appendChild(tdRt);
 
       tbody.appendChild(tr);
-    });
+    }
+
+    updateLoadMoreUI();
   }
 
   function applyFilter() {
@@ -228,8 +295,15 @@
     state.filtered = !q
       ? state.rows.slice()
       : state.rows.filter(r => r.name.toLowerCase().includes(q));
+
+    state.visibleCount = PAGE_SIZE; // reset paging on new filter
     render();
     hideCompare();
+  }
+
+  function loadMore() {
+    state.visibleCount += PAGE_SIZE;
+    render();
   }
 
   /* ---------- HISTORY FETCH ---------- */
@@ -384,6 +458,7 @@
 
     function openModal() {
       listDiv.innerHTML = '';
+      // Compare list respects current filter (full filtered list, not just visible page)
       state.filtered.forEach(p => {
         const id = `chk-${p.id}`;
         const wrapper = document.createElement('div');
@@ -487,12 +562,14 @@
         .sort((a, b) => b.rating - a.rating);
 
       state.filtered = state.rows.slice();
+      state.visibleCount = PAGE_SIZE; // reset paging on load
       render();
       hideCompare();
     } catch (err) {
       setAsOf('');
       document.querySelector('#players tbody').innerHTML =
         `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
+      updateLoadMoreUI();
     }
   }
 
@@ -526,6 +603,8 @@
   document.getElementById('year').addEventListener('change', () => {
     load();
   });
+
+  document.getElementById('load-more').addEventListener('click', loadMore);
 
   setupCompareButton();
   setSection(getParam('sec') || 'classical');
