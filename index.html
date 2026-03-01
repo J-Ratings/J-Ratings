@@ -9,16 +9,16 @@
   <style>
     .sports-grid {
       display: grid;
-      grid-template-columns: 1fr;   /* stacked */
+      grid-template-columns: 1fr;
       gap: 14px;
       margin-top: 12px;
     }
 
     .sport-card {
       display: flex;
-      align-items: center;          /* middle vertically */
-      justify-content: center;      /* centre horizontally */
-      height: 165px;                /* ~50% higher */
+      align-items: center;
+      justify-content: center;
+      height: 165px;
       padding: 0 18px;
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -26,12 +26,9 @@
       position: relative;
       overflow: hidden;
 
-      /* background image settings */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-
-      /* fallback colour if image missing */
       background-color: #0f1623;
     }
 
@@ -39,26 +36,25 @@
       content: "";
       position: absolute;
       inset: 0;
-      /* slight dark overlay so white text stays readable */
       background: rgba(0,0,0,.25);
       pointer-events: none;
     }
 
     .sport-card:hover { border-color: var(--accent); }
 
+    .sport-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
     .sport-title {
       margin: 0;
-      position: relative; /* above overlay */
-      z-index: 1;
-
-      /* bigger text */
       font-size: 3.3rem;
-
       font-weight: 800;
       color: #fff;
       text-align: center;
 
-      /* thicker black outline */
       text-shadow:
         -3px -3px 0 #000,
          3px -3px 0 #000,
@@ -70,14 +66,25 @@
         -3px  0px 0 #000;
     }
 
-    /* Background images (files live in root) */
+    .sport-subtext {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      opacity: 0.95;
+      text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+    }
+
     .bg-go       { background-image: url("Go Button.png"); }
     .bg-chess    { background-image: url("Chess Button.png"); }
     .bg-football { background-image: url("Football Button.png"); }
     .bg-rugby    { background-image: url("Rugby Button.png"); }
     .bg-nfl      { background-image: url("NFL Button.png"); }
 
-    /* Stops “page width jump” when some pages scroll and others don’t */
     html { overflow-y: scroll; }
   </style>
 </head>
@@ -99,29 +106,45 @@
 
     <div style="padding:16px 18px">
       <div class="sports-grid">
+
         <a class="sport-card bg-go" href="sports/go/index.html">
-          <p class="sport-title">Go</p>
+          <div class="sport-inner">
+            <p class="sport-title">Go</p>
+            <div class="sport-subtext">Awaiting Data Permission</div>
+          </div>
         </a>
 
         <a class="sport-card bg-chess" href="sports/chess/index.html">
-          <p class="sport-title">Chess</p>
+          <div class="sport-inner">
+            <p class="sport-title">Chess</p>
+          </div>
         </a>
 
         <a class="sport-card bg-football" href="sports/PremierLeague/index.html">
-          <p class="sport-title">English Football</p>
+          <div class="sport-inner">
+            <p class="sport-title">English Football</p>
+          </div>
         </a>
 
         <a class="sport-card bg-football" href="sports/WordFootball/index.html">
-          <p class="sport-title">International Football</p>
+          <div class="sport-inner">
+            <p class="sport-title">International Football</p>
+          </div>
         </a>
 
         <a class="sport-card bg-rugby" href="sports/WorldRugby/index.html">
-          <p class="sport-title">Rugby Union</p>
+          <div class="sport-inner">
+            <p class="sport-title">Rugby Union</p>
+            <div class="sport-subtext">Awaiting Data Permission</div>
+          </div>
         </a>
 
         <a class="sport-card bg-nfl" href="sports/NFL/index.html">
-          <p class="sport-title">NFL</p>
+          <div class="sport-inner">
+            <p class="sport-title">NFL</p>
+          </div>
         </a>
+
       </div>
     </div>
   </section>
