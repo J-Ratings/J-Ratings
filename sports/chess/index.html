@@ -535,47 +535,59 @@ footer.site-footer {
     }
   }
 
-  async function load() {
-    try {
-      const year = document.getElementById('year')?.value || '';
-      const url = year ? snapshotUrl(year) : playersUrl();
+async function load() {
+  try {
+    const year = document.getElementById('year')?.value || '';
+    const url = year ? snapshotUrl(year) : playersUrl();
 
-      const res = await fetch(url, { cache: 'no-cache' });
-      if (!res.ok) throw new Error(`Failed to load ${url}`);
+    const res = await fetch(url, { cache: 'no-cache' });
+    if (!res.ok) throw new Error(`Failed to load ${url}`);
 
-      const payload = await res.json();
+    const payload = await res.json();
 
-      // Supports:
-      //  - Legacy: [ { ... }, ... ]
-      //  - New:    { as_of: "YYYY-MM-DD", players: [ { ... }, ... ] }
-      const data = Array.isArray(payload) ? payload : (payload.players || []);
-      const asOf = Array.isArray(payload) ? '' : normaliseYMD(payload.as_of);
+    // Data extraction (unchanged)
+    const data = Array.isArray(payload) ? payload : (payload.players || []);
 
-      setAsOf(asOf);
-
-      // Both live and snapshots include "active"; snapshots now have activity relative to that year
-      const rows = data.filter(d => d && d.active === true);
-
-      state.rows = rows
-        .filter(d => d && d.id && (d.display_name || d.name) && Number.isFinite(+d.rating))
-        .map(d => ({
-          id: d.id,
-          name: d.display_name || d.name,
-          rating: +d.rating
-        }))
-        .sort((a, b) => b.rating - a.rating);
-
-      state.filtered = state.rows.slice();
-      state.visibleCount = PAGE_SIZE; // reset paging on load
-      render();
-      hideCompare();
-    } catch (err) {
+    // --- NEW: show "Update to ..." ONLY on Live ---
+    if (!year) {
+      try {
+        const mres = await fetch(metaUrl(), { cache: 'no-cache' });
+        if (mres.ok) {
+          const meta = await mres.json();
+          setAsOf(normaliseYMD(meta.updated_to));
+        } else {
+          setAsOf('');
+        }
+      } catch {
+        setAsOf('');
+      }
+    } else {
       setAsOf('');
-      document.querySelector('#players tbody').innerHTML =
-        `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
-      updateLoadMoreUI();
     }
+
+    // Both live and snapshots include "active"
+    const rows = data.filter(d => d && d.active === true);
+
+    state.rows = rows
+      .filter(d => d && d.id && (d.display_name || d.name) && Number.isFinite(+d.rating))
+      .map(d => ({
+        id: d.id,
+        name: d.display_name || d.name,
+        rating: +d.rating
+      }))
+      .sort((a, b) => b.rating - a.rating);
+
+    state.filtered = state.rows.slice();
+    state.visibleCount = PAGE_SIZE;
+    render();
+    hideCompare();
+  } catch (err) {
+    setAsOf('');
+    document.querySelector('#players tbody').innerHTML =
+      `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
+    updateLoadMoreUI();
   }
+}
 
   async function setSection(sec) {
     const s = (sec || '').toLowerCase();
