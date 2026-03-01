@@ -76,16 +76,16 @@ footer.site-footer {
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a id="home-link" href="index.html" class="brand-with-logo">
+      <a id="home-link" href="./" class="brand-with-logo">
         <span>J-Ratings <span class="title-chess">Chess</span></span>
         <img src="../../Chess Banner Logo.png" alt="Chess logo" class="sport-logo">
       </a>
     </h1>
     <nav class="topnav" aria-label="Main">
-      <a href="../../index.html">Sports</a>
-      <a id="nav-home" href="index.html" class="active-tab">Home</a>
-      <a id="nav-compare" href="compare.html?sec=classical">Compare</a>
-      <a id="nav-peak" href="peak.html?sec=classical">Peak</a>
+<a href="/index.html">Sports</a>
+<a id="nav-home" href="./" class="active-tab">Home</a>
+<a id="nav-compare" href="compare/?sec=classical">Compare</a>
+<a id="nav-peak" href="peak/?sec=classical">Peak</a>
     </nav>
   </div>
 </header>
@@ -220,10 +220,10 @@ footer.site-footer {
 
   function wireNavLinks() {
     const sec = encodeURIComponent(state.section);
-    document.getElementById('home-link').href = `index.html?sec=${sec}`;
-    document.getElementById('nav-home').href = `index.html?sec=${sec}`;
-    document.getElementById('nav-compare').href = `compare.html?sec=${sec}`;
-    document.getElementById('nav-peak').href = `peak.html?sec=${sec}`;
+document.getElementById('home-link').href = `./?sec=${sec}`;
+document.getElementById('nav-home').href = `./?sec=${sec}`;
+document.getElementById('nav-compare').href = `compare/?sec=${sec}`;
+document.getElementById('nav-peak').href = `peak/?sec=${sec}`;
   }
 
   /* ---------- "AS OF" MESSAGE ---------- */
@@ -278,7 +278,7 @@ footer.site-footer {
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
-      a.href = `player.html?sec=${encodeURIComponent(state.section)}&id=${encodeURIComponent(r.id)}`;
+      a.href = `player/?sec=${encodeURIComponent(state.section)}&id=${encodeURIComponent(r.id)}`;
       a.textContent = r.name;
       tdName.appendChild(a);
       tr.appendChild(tdName);
