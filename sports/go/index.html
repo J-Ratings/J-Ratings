@@ -110,10 +110,11 @@
 </header>
 
 <main class="wrap">
-  <section class="panel" id="players-panel">
-    <h2>All players</h2>
+<section class="panel" id="players-panel">
+  <h2>All players</h2>
+  <div id="asof" class="asof"></div>
 
-    <div class="toolbar">
+  <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by name…">
 
       <label for="era" style="margin-left:auto">Year:</label>
@@ -169,8 +170,9 @@
 </main>
 
 <script>
-  const DATA_URL = 'data/players.json';
-  const ERA_STARTS_URL = 'data/era_starts.json';
+const DATA_URL = 'data/players.json';
+const ERA_STARTS_URL = 'data/era_starts.json';
+const META_URL = 'data/meta.json';
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
   const state = {
@@ -492,13 +494,14 @@
   /* ---------- LOAD ---------- */
   async function load() {
     try {
-      const [playersRes, eraRes] = await Promise.all([
-        fetch(DATA_URL, { cache: 'no-cache' }),
-        fetch(ERA_STARTS_URL, { cache: 'no-cache' })
-      ]);
+const [playersRes, eraRes, metaRes] = await Promise.all([
+  fetch(DATA_URL, { cache: 'no-cache' }),
+  fetch(ERA_STARTS_URL, { cache: 'no-cache' }),
+  fetch(META_URL, { cache: 'no-cache' })
+]);
 
-      if (!playersRes.ok) throw new Error('Failed to load players.json');
-      if (!eraRes.ok) throw new Error('Failed to load era_starts.json');
+if (!playersRes.ok) throw new Error('Failed to load players.json');
+if (!eraRes.ok) throw new Error('Failed to load era_starts.json');
 
       const playersData = await playersRes.json();
       const eraData = await eraRes.json();
