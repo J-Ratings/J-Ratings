@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
 
-  gtag('config', 'G-1JXCC4EDPY');
-</script>
   <meta charset="utf-8">
   <title>J-Ratings: Chess</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
   <style>
     #compare-chart { height: 500px; }
     .toolbar { margin-bottom: 10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
@@ -27,24 +29,23 @@
       flex-wrap:wrap;
     }
 
-    /* "Update to YYYY-MM-DD" line */
-.asof {
-  opacity: 0.8;
-  font-size: 0.95rem;
-  margin: 6px 0 12px 0;
-  white-space: nowrap;
-
-  padding-left: 12px; /* add this */
-}
+    /* "Updated to: 26 Jan 2026" line */
+    .asof {
+      opacity: 0.8;
+      font-size: 0.95rem;
+      margin: 6px 0 12px 0;
+      white-space: nowrap;
+      padding-left: 12px;
+    }
 
     /* Load more */
-.load-more-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 0 0 0;
-}
+    .load-more-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0 0 0;
+    }
 
     .load-more-wrap button {
       padding: 10px 14px;
@@ -71,49 +72,48 @@
     .compare-controls button { margin-right:10px; }
 
     /* Footer */
-footer.site-footer {
-  margin-top: 24px;
-  padding: 18px 0;
-  border-top: 1px solid rgba(255,255,255,0.12);
-  opacity: 0.9;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  text-align: center;
-}
+    footer.site-footer {
+      margin-top: 24px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      opacity: 0.9;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      text-align: center;
+    }
     footer.site-footer a { color: inherit; }
 
-  @media (max-width: 520px) {
-    #players {
-      width: 100%;
-      table-layout: fixed;
+    @media (max-width: 520px) {
+      #players {
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      #players th,
+      #players td {
+        min-width: 0 !important;
+        padding: 10px 8px;
+      }
+
+      #players th:nth-child(1),
+      #players td:nth-child(1) { width: 52px; }
+
+      #players th:nth-child(3),
+      #players td:nth-child(3) { width: 78px; }
+
+      #players th:nth-child(2),
+      #players td:nth-child(2) { width: auto; }
+
+      #players td:nth-child(2) a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
-
-    #players th,
-    #players td {
-      min-width: 0 !important;
-      padding: 10px 8px;
-    }
-
-    #players th:nth-child(1),
-    #players td:nth-child(1) { width: 52px; }
-
-    #players th:nth-child(3),
-    #players td:nth-child(3) { width: 78px; }
-
-    #players th:nth-child(2),
-    #players td:nth-child(2) { width: auto; }
-
-    #players td:nth-child(2) a {
-      display: block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  }
-
-    
   </style>
 </head>
+
 <body>
 <header>
   <div class="wrap">
@@ -124,10 +124,10 @@ footer.site-footer {
       </a>
     </h1>
     <nav class="topnav" aria-label="Main">
-<a href="/index.html">Sports</a>
-<a id="nav-home" href="./" class="active-tab">Home</a>
-<a id="nav-compare" href="compare/?sec=classical">Compare</a>
-<a id="nav-peak" href="peak/?sec=classical">Peak</a>
+      <a href="/index.html">Sports</a>
+      <a id="nav-home" href="./" class="active-tab">Home</a>
+      <a id="nav-compare" href="compare/?sec=classical">Compare</a>
+      <a id="nav-peak" href="peak/?sec=classical">Peak</a>
     </nav>
   </div>
 </header>
@@ -231,11 +231,8 @@ footer.site-footer {
 
   function setParam(name, value) {
     const u = new URL(window.location.href);
-    if (value === null || value === undefined) {
-      u.searchParams.delete(name);
-    } else {
-      u.searchParams.set(name, value);
-    }
+    if (value === null || value === undefined) u.searchParams.delete(name);
+    else u.searchParams.set(name, value);
     window.history.replaceState({}, '', u.toString());
   }
 
@@ -254,39 +251,53 @@ footer.site-footer {
   const histCache = new Map(); // `${section}|${id}`
   let lastCompared = [];
 
-function dataBase() { return SECTIONS[state.section].base; }
-function playersUrl() { return `${dataBase()}/players.json`; }
-function historyUrl(id) { return `${dataBase()}/history/${encodeURIComponent(id)}.json`; }
-function snapshotsYearsUrl() { return `${dataBase()}/snapshots/years.json`; }
-function snapshotUrl(year) { return `${dataBase()}/snapshots/${encodeURIComponent(year)}.json`; }
-function metaUrl() { return `${dataBase()}/meta.json`; }
-
+  function dataBase() { return SECTIONS[state.section].base; }
+  function playersUrl() { return `${dataBase()}/players.json`; }
+  function historyUrl(id) { return `${dataBase()}/history/${encodeURIComponent(id)}.json`; }
+  function snapshotsYearsUrl() { return `${dataBase()}/snapshots/years.json`; }
+  function snapshotUrl(year) { return `${dataBase()}/snapshots/${encodeURIComponent(year)}.json`; }
+  function metaUrl() { return `${dataBase()}/meta.json`; }
 
   function wireNavLinks() {
     const sec = encodeURIComponent(state.section);
-document.getElementById('home-link').href = `./?sec=${sec}`;
-document.getElementById('nav-home').href = `./?sec=${sec}`;
-document.getElementById('nav-compare').href = `compare/?sec=${sec}`;
-document.getElementById('nav-peak').href = `peak/?sec=${sec}`;
+    document.getElementById('home-link').href = `./?sec=${sec}`;
+    document.getElementById('nav-home').href = `./?sec=${sec}`;
+    document.getElementById('nav-compare').href = `compare/?sec=${sec}`;
+    document.getElementById('nav-peak').href = `peak/?sec=${sec}`;
   }
 
   /* ---------- "AS OF" MESSAGE ---------- */
-  function setAsOf(dateStr) {
-    const el = document.getElementById('asof');
-    if (!el) return;
-    el.textContent = dateStr ? `Update to ${dateStr}` : '';
+  function formatAsOf(isoYMD) {
+    const [y, m, d] = String(isoYMD || '').split('-').map(Number);
+    if (!y || !m || !d) return '';
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${d} ${months[m - 1]} ${y}`;
   }
 
-function normaliseYMD(s) {
-  if (!s) return '';
-  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s; // don't let Date() shift it by timezone
-  const d = new Date(s);
-  if (Number.isNaN(+d)) return '';
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${y}-${m}-${day}`;
-}
+  function setAsOf(isoYMD) {
+    const el = document.getElementById('asof');
+    if (!el) return;
+
+    const pretty = formatAsOf(isoYMD);
+    if (pretty) {
+      el.style.display = 'block';
+      el.textContent = `Updated to: ${pretty}`;
+    } else {
+      el.style.display = 'none';
+      el.textContent = '';
+    }
+  }
+
+  function normaliseYMD(s) {
+    if (!s) return '';
+    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s; // avoid timezone shifts
+    const d = new Date(s);
+    if (Number.isNaN(+d)) return '';
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  }
 
   /* ---------- TABLE + PAGING ---------- */
   function updateLoadMoreUI() {
@@ -579,59 +590,61 @@ function normaliseYMD(s) {
     }
   }
 
-async function load() {
-  try {
-    const year = document.getElementById('year')?.value || '';
-    const url = year ? snapshotUrl(year) : playersUrl();
+  async function load() {
+    try {
+      const year = document.getElementById('year')?.value || '';
+      const url = year ? snapshotUrl(year) : playersUrl();
 
-    const res = await fetch(url, { cache: 'no-cache' });
-    if (!res.ok) throw new Error(`Failed to load ${url}`);
+      const res = await fetch(url, { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`Failed to load ${url}`);
 
-    const payload = await res.json();
+      const payload = await res.json();
 
-    // Data extraction (unchanged)
-    const data = Array.isArray(payload) ? payload : (payload.players || []);
+      // Data extraction (unchanged)
+      const data = Array.isArray(payload) ? payload : (payload.players || []);
 
-    // --- NEW: show "Update to ..." ONLY on Live ---
-    if (!year) {
-      try {
-        const mres = await fetch(metaUrl(), { cache: 'no-cache' });
-        if (mres.ok) {
-          const meta = await mres.json();
-          setAsOf(normaliseYMD(meta.updated_to));
-        } else {
+      // Show "Updated to: ..." ONLY on Live
+      if (!year) {
+        try {
+          const mres = await fetch(metaUrl(), { cache: 'no-cache' });
+          if (mres.ok) {
+            const meta = await mres.json();
+            // Prefer meta.updated_to, fall back to meta.asof if you ever use that key elsewhere
+            const raw = meta.updated_to || meta.asof || '';
+            setAsOf(normaliseYMD(raw));
+          } else {
+            setAsOf('');
+          }
+        } catch {
           setAsOf('');
         }
-      } catch {
+      } else {
         setAsOf('');
       }
-    } else {
+
+      // Both live and snapshots include "active"
+      const rows = data.filter(d => d && d.active === true);
+
+      state.rows = rows
+        .filter(d => d && d.id && (d.display_name || d.name) && Number.isFinite(+d.rating))
+        .map(d => ({
+          id: d.id,
+          name: d.display_name || d.name,
+          rating: +d.rating
+        }))
+        .sort((a, b) => b.rating - a.rating);
+
+      state.filtered = state.rows.slice();
+      state.visibleCount = PAGE_SIZE;
+      render();
+      hideCompare();
+    } catch (err) {
       setAsOf('');
+      document.querySelector('#players tbody').innerHTML =
+        `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
+      updateLoadMoreUI();
     }
-
-    // Both live and snapshots include "active"
-    const rows = data.filter(d => d && d.active === true);
-
-    state.rows = rows
-      .filter(d => d && d.id && (d.display_name || d.name) && Number.isFinite(+d.rating))
-      .map(d => ({
-        id: d.id,
-        name: d.display_name || d.name,
-        rating: +d.rating
-      }))
-      .sort((a, b) => b.rating - a.rating);
-
-    state.filtered = state.rows.slice();
-    state.visibleCount = PAGE_SIZE;
-    render();
-    hideCompare();
-  } catch (err) {
-    setAsOf('');
-    document.querySelector('#players tbody').innerHTML =
-      `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
-    updateLoadMoreUI();
   }
-}
 
   async function setSection(sec) {
     const s = (sec || '').toLowerCase();

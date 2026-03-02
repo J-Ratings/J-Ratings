@@ -193,18 +193,26 @@
   const histCache = new Map();
   let lastCompared = [];
 
-  function setAsOfText() {
-    const asofEl = document.getElementById('asof');
-    if (!asofEl) return;
+function formatAsOf(iso) {
+  // Expecting YYYY-MM-DD
+  const [y, m, d] = String(iso).split('-').map(Number);
+  if (!y || !m || !d) return iso; // fallback if unexpected
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${d} ${months[m - 1]} ${y}`;
+}
 
-    if (state.mode === 'live' && state.meta && state.meta.asof) {
-      asofEl.style.display = 'block';
-      asofEl.textContent = `Last updated: ${state.meta.asof}`;
-    } else {
-      asofEl.style.display = 'none';
-      asofEl.textContent = '';
-    }
+function setAsOfText() {
+  const el = document.getElementById('asof');
+  if (!el) return;
+
+  if (state.mode === 'live' && state.meta && state.meta.asof) {
+    el.style.display = 'block';
+    el.textContent = `Updated to: ${formatAsOf(state.meta.asof)}`;
+  } else {
+    el.style.display = 'none';
+    el.textContent = '';
   }
+}
 
   function tierLabel(row) {
     if (row.division && String(row.division).trim()) return row.division;

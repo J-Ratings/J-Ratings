@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
 
-  gtag('config', 'G-1JXCC4EDPY');
-</script>
   <meta charset="utf-8">
   <title>J-Ratings: Go</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
   <style>
     #compare-chart { height: 500px; }
 
@@ -60,36 +62,37 @@
     .compare-controls { margin: 10px 0; }
     .compare-controls button { margin-right: 10px; }
 
-      @media (max-width: 520px) {
-    #players {
-      width: 100%;
-      table-layout: fixed;
+    @media (max-width: 520px) {
+      #players {
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      #players th,
+      #players td {
+        min-width: 0 !important;
+        padding: 10px 8px;
+      }
+
+      #players th:nth-child(1),
+      #players td:nth-child(1) { width: 52px; }
+
+      #players th:nth-child(3),
+      #players td:nth-child(3) { width: 78px; }
+
+      #players th:nth-child(2),
+      #players td:nth-child(2) { width: auto; }
+
+      #players td:nth-child(2) a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
-
-    #players th,
-    #players td {
-      min-width: 0 !important;
-      padding: 10px 8px;
-    }
-
-    #players th:nth-child(1),
-    #players td:nth-child(1) { width: 52px; }
-
-    #players th:nth-child(3),
-    #players td:nth-child(3) { width: 78px; }
-
-    #players th:nth-child(2),
-    #players td:nth-child(2) { width: auto; }
-
-    #players td:nth-child(2) a {
-      display: block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  }
   </style>
 </head>
+
 <body>
 <header>
   <div class="wrap">
@@ -110,11 +113,11 @@
 </header>
 
 <main class="wrap">
-<section class="panel" id="players-panel">
-  <h2>All players</h2>
-  <div id="asof" class="asof"></div>
+  <section class="panel" id="players-panel">
+    <h2>All players</h2>
+    <div id="asof" class="asof" aria-live="polite"></div>
 
-  <div class="toolbar">
+    <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by name…">
 
       <label for="era" style="margin-left:auto">Year:</label>
@@ -170,13 +173,15 @@
 </main>
 
 <script>
-const DATA_URL = 'data/players.json';
-const ERA_STARTS_URL = 'data/era_starts.json';
-const META_URL = 'data/meta.json';
+  const DATA_URL = 'data/players.json';
+  const ERA_STARTS_URL = 'data/era_starts.json';
+  const META_URL = 'data/meta.json';
+
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
   const state = {
     mode: 'live',     // 'live' or era label like '2024'
+    meta: null,       // { asof: 'YYYY-MM-DD', ... } (optional)
     liveRows: [],     // from players.json
     eraStarts: [],    // from era_starts.json
     rows: [],
@@ -186,10 +191,33 @@ const META_URL = 'data/meta.json';
   const histCache = new Map();
   let lastCompared = [];
 
+  /* ---------- AS OF ---------- */
+  function formatAsOf(iso) {
+    // Expecting YYYY-MM-DD
+    const [y, m, d] = String(iso).split('-').map(Number);
+    if (!y || !m || !d) return iso; // fallback
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${d} ${months[m - 1]} ${y}`;
+  }
+
+  function setAsOfText() {
+    const el = document.getElementById('asof');
+    if (!el) return;
+
+    if (state.mode === 'live' && state.meta && state.meta.asof) {
+      el.style.display = 'block';
+      el.textContent = `Updated to: ${formatAsOf(state.meta.asof)}`;
+    } else {
+      el.style.display = 'none';
+      el.textContent = '';
+    }
+  }
+
   /* ---------- TABLE ---------- */
   function updateHeaders() {
-    document.getElementById('rating-col-head').textContent =
-      (state.mode === 'live') ? 'Rating' : 'Start Elo';
+    const h = document.getElementById('rating-col-head');
+    if (!h) return;
+    h.textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
   }
 
   function render() {
@@ -217,6 +245,12 @@ const META_URL = 'data/meta.json';
 
       tbody.appendChild(tr);
     });
+  }
+
+  function hideCompare() {
+    document.getElementById('compare-wrap').style.display = 'none';
+    document.getElementById('compare-chart').innerHTML = '';
+    lastCompared = [];
   }
 
   function applyFilter() {
@@ -251,6 +285,7 @@ const META_URL = 'data/meta.json';
         .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
     }
 
+    setAsOfText();
     applyFilter();
   }
 
@@ -342,12 +377,6 @@ const META_URL = 'data/meta.json';
   }
 
   /* ---------- COMPARE CHART ---------- */
-  function hideCompare() {
-    document.getElementById('compare-wrap').style.display = 'none';
-    document.getElementById('compare-chart').innerHTML = '';
-    lastCompared = [];
-  }
-
   async function buildComparison(players) {
     lastCompared = players.slice();
 
@@ -494,17 +523,19 @@ const META_URL = 'data/meta.json';
   /* ---------- LOAD ---------- */
   async function load() {
     try {
-const [playersRes, eraRes, metaRes] = await Promise.all([
-  fetch(DATA_URL, { cache: 'no-cache' }),
-  fetch(ERA_STARTS_URL, { cache: 'no-cache' }),
-  fetch(META_URL, { cache: 'no-cache' })
-]);
+      const [playersRes, eraRes, metaRes] = await Promise.all([
+        fetch(DATA_URL, { cache: 'no-cache' }),
+        fetch(ERA_STARTS_URL, { cache: 'no-cache' }),
+        fetch(META_URL, { cache: 'no-cache' })
+      ]);
 
-if (!playersRes.ok) throw new Error('Failed to load players.json');
-if (!eraRes.ok) throw new Error('Failed to load era_starts.json');
+      if (!playersRes.ok) throw new Error('Failed to load players.json');
+      if (!eraRes.ok) throw new Error('Failed to load era_starts.json');
 
       const playersData = await playersRes.json();
       const eraData = await eraRes.json();
+
+      state.meta = metaRes.ok ? await metaRes.json() : null;
 
       state.liveRows = (Array.isArray(playersData) ? playersData : [])
         .filter(d => d && d.id && (d.name || d.display_name) && Number.isFinite(+d.rating))
@@ -522,8 +553,11 @@ if (!eraRes.ok) throw new Error('Failed to load era_starts.json');
         : [];
 
       populateEraSelect();
-      rebuildRowsFromMode();
+      rebuildRowsFromMode(); // also updates "Updated to: ..."
     } catch (err) {
+      const asofEl = document.getElementById('asof');
+      if (asofEl) { asofEl.style.display = 'none'; asofEl.textContent = ''; }
+
       document.querySelector('#players tbody').innerHTML =
         `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
     }
