@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
 
-  gtag('config', 'G-1JXCC4EDPY');
-</script>
   <meta charset="utf-8">
   <title>J-Ratings: English Football</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
   <style>
     #compare-chart { height: 500px; }
 
     .compare-chart-toolbar {
       display: flex;
-      align-items: center;
+      align-items: centre;
       gap: 10px;
       margin-bottom: 10px;
       flex-wrap: wrap;
@@ -33,8 +35,8 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
+      justify-content: centre;
+      align-items: centre;
       z-index: 9999;
     }
 
@@ -46,43 +48,52 @@
       width: 90%;
       max-height: 80%;
       overflow: auto;
-      color: #fff;
+      colour: #fff;
     }
 
     .compare-controls { margin: 10px 0; }
     .compare-controls button { margin-right: 10px; }
 
-      @media (max-width: 520px) {
-    #players {
-      width: 100%;
-      table-layout: fixed;
-    }
-
-    #players th,
-    #players td {
-      min-width: 0 !important;
-      padding: 10px 8px;
-    }
-
-    #players th:nth-child(1),
-    #players td:nth-child(1) { width: 52px; }
-
-    #players th:nth-child(3),
-    #players td:nth-child(3) { width: 78px; }
-
-    #players th:nth-child(2),
-    #players td:nth-child(2) { width: auto; }
-
-    #players td:nth-child(2) a {
-      display: block;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    /* If your global style.css already defines .asof you can remove this */
+    .asof {
+      opacity: 0.8;
+      font-size: 0.95rem;
+      margin: 6px 0 12px 0;
       white-space: nowrap;
+      padding-left: 12px;
     }
-  }
-  
+
+    @media (max-width: 520px) {
+      #teams {
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      #teams th,
+      #teams td {
+        min-width: 0 !important;
+        padding: 10px 8px;
+      }
+
+      #teams th:nth-child(1),
+      #teams td:nth-child(1) { width: 52px; }
+
+      #teams th:nth-child(3),
+      #teams td:nth-child(3) { width: 78px; }
+
+      #teams th:nth-child(2),
+      #teams td:nth-child(2) { width: auto; }
+
+      #teams td:nth-child(2) a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
   </style>
 </head>
+
 <body>
 <header>
   <div class="wrap">
@@ -105,6 +116,7 @@
 <main class="wrap">
   <section class="panel" id="teams-panel">
     <h2>All teams</h2>
+    <div id="asof" class="asof" aria-live="polite"></div>
 
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by team…">
@@ -165,10 +177,13 @@
 <script>
   const DATA_URL = 'data/teams.json';
   const SEASON_STARTS_URL = 'data/season_starts.json';
+  const META_URL = 'data/meta.json';
+
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
   const state = {
     mode: 'live',      // 'live' or season label e.g. '2023-24'
+    meta: null,        // { asof: 'YYYY-MM-DD', games: N } (optional)
     liveRows: [],      // from teams.json
     seasonStarts: [],  // from season_starts.json
     rows: [],          // currently displayed rows
@@ -177,6 +192,19 @@
 
   const histCache = new Map();
   let lastCompared = [];
+
+  function setAsOfText() {
+    const asofEl = document.getElementById('asof');
+    if (!asofEl) return;
+
+    if (state.mode === 'live' && state.meta && state.meta.asof) {
+      asofEl.style.display = 'block';
+      asofEl.textContent = `Last updated: ${state.meta.asof}`;
+    } else {
+      asofEl.style.display = 'none';
+      asofEl.textContent = '';
+    }
+  }
 
   function tierLabel(row) {
     if (row.division && String(row.division).trim()) return row.division;
@@ -190,6 +218,7 @@
 
   function updateRatingHeader() {
     const h = document.getElementById('rating-col-head');
+    if (!h) return;
     h.textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
   }
 
@@ -222,7 +251,12 @@
 
       tbody.appendChild(tr);
     });
+  }
 
+  function hideCompare() {
+    document.getElementById('compare-wrap').style.display = 'none';
+    document.getElementById('compare-chart').innerHTML = '';
+    lastCompared = [];
   }
 
   function applyFilter() {
@@ -257,6 +291,7 @@
         .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
     }
 
+    setAsOfText();
     applyFilter();
   }
 
@@ -345,12 +380,6 @@
     return normalise(out, false);
   }
 
-  function hideCompare() {
-    document.getElementById('compare-wrap').style.display = 'none';
-    document.getElementById('compare-chart').innerHTML = '';
-    lastCompared = [];
-  }
-
   async function buildComparison(teams) {
     lastCompared = teams.slice();
 
@@ -409,7 +438,7 @@
         type: 'line',
         xref: 'paper', x0: 0, x1: 1,
         y0: v, y1: v,
-        line: { width: 1, color: 'rgba(128,128,128,0.35)' },
+        line: { width: 1, colour: 'rgba(128,128,128,0.35)' },
         layer: 'below'
       });
     }
@@ -420,9 +449,9 @@
       xaxis: { type: 'date' },
       yaxis: { title: 'Rating' },
       legend: { orientation: 'h' },
-      paper_bgcolor: cs.backgroundColor,
-      plot_bgcolor: cs.backgroundColor,
-      font: { color: cs.color },
+      paper_bgcolour: cs.backgroundColor,
+      plot_bgcolour: cs.backgroundColor,
+      font: { colour: cs.color },
       shapes
     };
 
@@ -484,9 +513,10 @@
 
   async function load() {
     try {
-      const [teamsRes, seasonRes] = await Promise.all([
+      const [teamsRes, seasonRes, metaRes] = await Promise.all([
         fetch(DATA_URL, { cache: 'no-cache' }),
-        fetch(SEASON_STARTS_URL, { cache: 'no-cache' })
+        fetch(SEASON_STARTS_URL, { cache: 'no-cache' }),
+        fetch(META_URL, { cache: 'no-cache' })
       ]);
 
       if (!teamsRes.ok) throw new Error('Failed to load teams.json');
@@ -494,6 +524,8 @@
 
       const teamsData = await teamsRes.json();
       const seasonData = await seasonRes.json();
+
+      state.meta = metaRes.ok ? await metaRes.json() : null;
 
       state.liveRows = teamsData
         .filter(d => d && d.id && d.name && Number.isFinite(+d.rating))
@@ -511,8 +543,11 @@
         : [];
 
       populateSeasonSelect();
-      rebuildRowsFromMode();
+      rebuildRowsFromMode(); // also calls setAsOfText()
     } catch (err) {
+      const asofEl = document.getElementById('asof');
+      if (asofEl) { asofEl.style.display = 'none'; asofEl.textContent = ''; }
+
       document.querySelector('#teams tbody').innerHTML =
         `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
     }
