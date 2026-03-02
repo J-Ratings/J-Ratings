@@ -252,11 +252,13 @@ footer.site-footer {
   const histCache = new Map(); // `${section}|${id}`
   let lastCompared = [];
 
-  function dataBase() { return SECTIONS[state.section].base; }
-  function playersUrl() { return `${dataBase()}/players.json`; }
-  function historyUrl(id) { return `${dataBase()}/history/${encodeURIComponent(id)}.json`; }
-  function snapshotsYearsUrl() { return `${dataBase()}/snapshots/years.json`; }
-  function snapshotUrl(year) { return `${dataBase()}/snapshots/${encodeURIComponent(year)}.json`; }
+function dataBase() { return SECTIONS[state.section].base; }
+function playersUrl() { return `${dataBase()}/players.json`; }
+function historyUrl(id) { return `${dataBase()}/history/${encodeURIComponent(id)}.json`; }
+function snapshotsYearsUrl() { return `${dataBase()}/snapshots/years.json`; }
+function snapshotUrl(year) { return `${dataBase()}/snapshots/${encodeURIComponent(year)}.json`; }
+function metaUrl() { return `${dataBase()}/meta.json`; }
+
 
   function wireNavLinks() {
     const sec = encodeURIComponent(state.section);
@@ -273,16 +275,16 @@ document.getElementById('nav-peak').href = `peak/?sec=${sec}`;
     el.textContent = dateStr ? `Update to ${dateStr}` : '';
   }
 
-  function normaliseYMD(s) {
-    // Accepts "YYYY-MM-DD" or ISO-ish strings. Returns "YYYY-MM-DD" or "".
-    if (!s) return '';
-    const d = new Date(s);
-    if (Number.isNaN(+d)) return '';
-    const y = d.getFullYear();
-    const m = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    return `${y}-${m}-${day}`;
-  }
+function normaliseYMD(s) {
+  if (!s) return '';
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s; // don't let Date() shift it by timezone
+  const d = new Date(s);
+  if (Number.isNaN(+d)) return '';
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
 
   /* ---------- TABLE + PAGING ---------- */
   function updateLoadMoreUI() {
