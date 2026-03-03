@@ -62,6 +62,30 @@
       padding-left: 12px;
     }
 
+    /* Tier badges */
+    .tier-badge{
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1;
+      color: #000;
+      text-shadow:
+        -1px -1px 0 #fff,
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff,
+         0    0   2px #fff;
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.35);
+      white-space: nowrap;
+    }
+
+    .tier-premier-league { background: #3F1052; }
+    .tier-championship   { background: #00004B; }
+    .tier-league-1       { background: #8D8E8E; }
+    .tier-league-2       { background: #BB1731; }
+
     @media (max-width: 520px) {
       #teams {
         width: 100%;
@@ -89,6 +113,8 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+
+      .tier-badge { padding: 6px 10px; font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -234,6 +260,15 @@
     return '';
   }
 
+  function tierClass(label) {
+    const s = String(label || '').trim().toLowerCase();
+    if (s === 'premier league') return 'tier-premier-league';
+    if (s === 'championship') return 'tier-championship';
+    if (s === 'league 1' || s === 'league one') return 'tier-league-1';
+    if (s === 'league 2' || s === 'league two') return 'tier-league-2';
+    return '';
+  }
+
   function updateRatingHeader() {
     const h = document.getElementById('rating-col-head');
     if (!h) return;
@@ -264,7 +299,17 @@
       tr.appendChild(tdRt);
 
       const tdTier = document.createElement('td');
-      tdTier.textContent = tierLabel(r);
+      const label = tierLabel(r);
+
+      if (label) {
+        const span = document.createElement('span');
+        span.className = `tier-badge ${tierClass(label)}`.trim();
+        span.textContent = label;
+        tdTier.appendChild(span);
+      } else {
+        tdTier.textContent = '';
+      }
+
       tr.appendChild(tdTier);
 
       tbody.appendChild(tr);
