@@ -14,7 +14,7 @@
   <title>J-Ratings: Chess</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
@@ -120,14 +120,14 @@
     <h1 class="site-title">
       <a id="home-link" href="./" class="brand-with-logo">
         <span>J-Ratings <span class="title-chess">Chess</span></span>
-        <img src="../../Chess Banner Logo.png" alt="Chess logo" class="sport-logo">
+        <img src="/Chess Banner Logo.png" alt="Chess logo" class="sport-logo">
       </a>
     </h1>
     <nav class="topnav" aria-label="Main">
       <a href="/index.html">Sports</a>
       <a id="nav-home" href="./" class="active-tab">Home</a>
-      <a id="nav-compare" href="compare/?sec=classical">Compare</a>
-      <a id="nav-peak" href="peak/?sec=classical">Peak</a>
+<a id="nav-compare" href="../compare/?sec=classical">Compare</a>
+<a id="nav-peak" href="../peak/?sec=classical">Peak</a>
     </nav>
   </div>
 </header>
@@ -218,10 +218,10 @@
 <script>
   /* ---------- SECTION CONFIG ---------- */
   const SECTIONS = {
-    classical: { label: 'Classical', base: 'data/classical' },
-    rapid:     { label: 'Rapid',     base: 'data/rapid' },
-    blitz:     { label: 'Blitz',     base: 'data/blitz' },
-    freestyle: { label: 'Freestyle', base: 'data/freestyle' }
+classical: { label: 'Classical', base: '../data/classical' },
+rapid:     { label: 'Rapid',     base: '../data/rapid' },
+blitz:     { label: 'Blitz',     base: '../data/blitz' },
+freestyle: { label: 'Freestyle', base: '../data/freestyle' }
   };
 
   function getParam(name) {
@@ -260,10 +260,10 @@
 
   function wireNavLinks() {
     const sec = encodeURIComponent(state.section);
-    document.getElementById('home-link').href = `./?sec=${sec}`;
-    document.getElementById('nav-home').href = `./?sec=${sec}`;
-    document.getElementById('nav-compare').href = `compare/?sec=${sec}`;
-    document.getElementById('nav-peak').href = `peak/?sec=${sec}`;
+document.getElementById('home-link').href = `./?sec=${sec}`;
+document.getElementById('nav-home').href = `./?sec=${sec}`;
+document.getElementById('nav-compare').href = `../compare/?sec=${sec}`;
+document.getElementById('nav-peak').href = `../peak/?sec=${sec}`;
   }
 
   /* ---------- "AS OF" MESSAGE ---------- */
@@ -333,7 +333,7 @@
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
-      a.href = `player/?sec=${encodeURIComponent(state.section)}&id=${encodeURIComponent(r.id)}`;
+      a.href = `../player/?sec=${encodeURIComponent(state.section)}&id=${encodeURIComponent(r.id)}`;
       a.textContent = r.name;
       tdName.appendChild(a);
       tr.appendChild(tdName);

@@ -44,7 +44,7 @@
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a id="home-link" href="../" class="brand-with-logo">
+      <a id="home-link" href="../home/" class="brand-with-logo">
         <span>J-Ratings <span class="title-chess">Chess</span></span>
         <img src="/Chess Banner Logo.png" alt="Chess logo" class="sport-logo">
       </a>
@@ -52,7 +52,7 @@
 
     <nav class="topnav" aria-label="Main">
       <a href="/">Sports</a>
-      <a id="nav-home" href="../">Home</a>
+      <a id="nav-home" href="../home/">Home</a>
       <a id="nav-compare" href="./" class="active-tab">Compare</a>
       <a id="nav-peak" href="../peak/">Peak</a>
     </nav>
@@ -124,8 +124,8 @@
 
   function wireNavLinks() {
     const sec = encodeURIComponent(state.section);
-    document.getElementById('home-link').href   = `../?sec=${sec}`;
-    document.getElementById('nav-home').href    = `../?sec=${sec}`;
+    document.getElementById('home-link').href   = `../home/?sec=${sec}`;
+document.getElementById('nav-home').href    = `../home/?sec=${sec}`;
     document.getElementById('nav-compare').href = `./?sec=${sec}`;
     document.getElementById('nav-peak').href    = `../peak/?sec=${sec}`;
   }
