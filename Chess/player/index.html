@@ -542,7 +542,12 @@ document.getElementById('nav-peak').href    = `../peak/?sec=${sec}`;
 
     const tbody = document.createElement('tbody');
     const rows = Array.isArray(games) ? [...games] : [];
-    rows.sort((a, b) => new Date(b.date) - new Date(a.date));
+    rows.sort((a, b) => {
+  const ta = Date.parse(a.date || '');
+  const tb = Date.parse(b.date || '');
+  if (tb !== ta) return tb - ta;
+  return (Number(b.seq) || 0) - (Number(a.seq) || 0);
+});
 
     const myName = me.name;
     let added = 0;
@@ -560,10 +565,8 @@ document.getElementById('nav-peak').href    = `../peak/?sec=${sec}`;
       const opponentElo = isWhite ? Number(g.blackElo) : Number(g.whiteElo);
       const myEloBefore = isWhite ? Number(g.whiteElo) : Number(g.blackElo);
 
-      const numDelta = Number(g.delta);
-      const myEloAfter = Number.isFinite(myEloBefore) && Number.isFinite(numDelta)
-        ? Math.round(myEloBefore + numDelta)
-        : NaN;
+const numDelta = Number(g.delta);
+const myEloAfter = Number(g.new);
 
       const tr = document.createElement('tr');
 
