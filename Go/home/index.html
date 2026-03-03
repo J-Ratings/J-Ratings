@@ -14,7 +14,7 @@
   <title>J-Ratings: Go</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
@@ -99,15 +99,15 @@
     <h1 class="site-title">
       <a id="home-link" href="index.html" class="brand-with-logo">
         <span>J-Ratings <span class="title-go">Go</span></span>
-        <img src="../Go Banner Logo.png" alt="Go logo" class="sport-logo">
+        <img src="../../Go Banner Logo.png" alt="Go logo" class="sport-logo">
       </a>
     </h1>
 
     <nav class="topnav" aria-label="Main">
-<a href="../index.html">Sports</a>
-<a href="index.html" class="active-tab">Home</a>
-<a href="compare/">Compare</a>
-<a href="peak/">Peak</a>
+      <a href="../../index.html">Sports</a>
+      <a href="index.html" class="active-tab">Home</a>
+      <a href="../compare/">Compare</a>
+      <a href="../peak/">Peak</a>
     </nav>
   </div>
 </header>
@@ -173,17 +173,17 @@
 </main>
 
 <script>
-  const DATA_URL = 'data/players.json';
-  const ERA_STARTS_URL = 'data/era_starts.json';
-  const META_URL = 'data/meta.json';
+  const DATA_URL = '../data/players.json';
+  const ERA_STARTS_URL = '../data/era_starts.json';
+  const META_URL = '../data/meta.json';
 
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
   const state = {
-    mode: 'live',     // 'live' or era label like '2024'
-    meta: null,       // { asof: 'YYYY-MM-DD', ... } (optional)
-    liveRows: [],     // from players.json
-    eraStarts: [],    // from era_starts.json
+    mode: 'live',
+    meta: null,
+    liveRows: [],
+    eraStarts: [],
     rows: [],
     filtered: []
   };
@@ -191,11 +191,9 @@
   const histCache = new Map();
   let lastCompared = [];
 
-  /* ---------- AS OF ---------- */
   function formatAsOf(iso) {
-    // Expecting YYYY-MM-DD
     const [y, m, d] = String(iso).split('-').map(Number);
-    if (!y || !m || !d) return iso; // fallback
+    if (!y || !m || !d) return iso;
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     return `${d} ${months[m - 1]} ${y}`;
   }
@@ -213,7 +211,6 @@
     }
   }
 
-  /* ---------- TABLE ---------- */
   function updateHeaders() {
     const h = document.getElementById('rating-col-head');
     if (!h) return;
@@ -233,7 +230,7 @@
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
-      a.href = `player/?id=${encodeURIComponent(r.id)}`;
+      a.href = `../player/?id=${encodeURIComponent(r.id)}`;
       a.textContent = r.name || r.id;
       tdName.appendChild(a);
       tr.appendChild(tdName);
@@ -308,12 +305,11 @@
     }
   }
 
-  /* ---------- HISTORY FETCH ---------- */
   async function fetchHistoryFor(id) {
     if (histCache.has(id)) return histCache.get(id);
 
     try {
-      const res = await fetch(`data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+      const res = await fetch(`../data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
       if (!res.ok) return null;
       const rows = await res.json();
       histCache.set(id, rows);
@@ -323,7 +319,6 @@
     }
   }
 
-  /* ---------- AGGREGATION ---------- */
   function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
@@ -344,7 +339,7 @@
       const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
       if (key !== lastKey) out.push(p);
-      else out[out.length - 1] = p; // keep last point that day
+      else out[out.length - 1] = p;
 
       lastKey = key;
     }
@@ -376,7 +371,6 @@
     return normalise(out, false);
   }
 
-  /* ---------- COMPARE CHART ---------- */
   async function buildComparison(players) {
     lastCompared = players.slice();
 
@@ -467,7 +461,6 @@
     });
   }
 
-  /* ---------- COMPARE MODAL ---------- */
   function setupCompareButton() {
     const modal = document.getElementById('compare-modal');
     const listDiv = document.getElementById('compare-list');
@@ -520,7 +513,6 @@
     document.getElementById('compare-cancel-bottom').addEventListener('click', closeModal);
   }
 
-  /* ---------- LOAD ---------- */
   async function load() {
     try {
       const [playersRes, eraRes, metaRes] = await Promise.all([
@@ -553,7 +545,7 @@
         : [];
 
       populateEraSelect();
-      rebuildRowsFromMode(); // also updates "Updated to: ..."
+      rebuildRowsFromMode();
     } catch (err) {
       const asofEl = document.getElementById('asof');
       if (asofEl) { asofEl.style.display = 'none'; asofEl.textContent = ''; }
