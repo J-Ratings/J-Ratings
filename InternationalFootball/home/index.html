@@ -14,7 +14,7 @@
   <title>J-Ratings: International Football</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
@@ -54,7 +54,6 @@
     .compare-controls { margin: 10px 0; }
     .compare-controls button { margin-right: 10px; }
 
-    /* If you already have .asof in style.css, you can remove this */
     .asof {
       opacity: 0.8;
       font-size: 0.95rem;
@@ -98,17 +97,17 @@
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a id="home-link" href="index.html" class="brand-with-logo">
+      <a id="home-link" href="./" class="brand-with-logo">
         <span>J-Ratings <span class="title-football">International Football</span></span>
-        <img src="../../Football Banner Logo.png" alt="Football logo" class="sport-logo">
+        <img src="/Football Banner Logo.png" alt="Football logo" class="sport-logo">
       </a>
     </h1>
 
     <nav class="topnav" aria-label="Main">
-      <a href="../../index.html">Sports</a>
-      <a id="nav-home" href="index.html" class="active-tab">Home</a>
-      <a id="nav-compare" href="compare.html">Compare</a>
-      <a id="nav-peak" href="peak.html">Peak</a>
+      <a href="/index.html">Sports</a>
+      <a id="nav-home" href="./" class="active-tab">Home</a>
+      <a id="nav-compare" href="../compare/">Compare</a>
+      <a id="nav-peak" href="../peak/">Peak</a>
     </nav>
   </div>
 </header>
@@ -174,17 +173,17 @@
 </main>
 
 <script>
-  const DATA_URL = 'data/teams.json';
-  const ERA_STARTS_URL = 'data/era_starts.json';
-  const META_URL = 'data/meta.json';
+  const DATA_URL = '../data/teams.json';
+  const ERA_STARTS_URL = '../data/era_starts.json';
+  const META_URL = '../data/meta.json';
 
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
   const state = {
-    mode: 'live',       // 'live' or era label e.g. '2024'
-    meta: null,         // { asof: 'YYYY-MM-DD', games: N } (optional)
-    liveRows: [],       // from teams.json
-    eraStarts: [],      // from era_starts.json
+    mode: 'live',
+    meta: null,
+    liveRows: [],
+    eraStarts: [],
     rows: [],
     filtered: []
   };
@@ -198,26 +197,25 @@
     h.textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
   }
 
-function formatAsOf(iso) {
-  // Expecting YYYY-MM-DD
-  const [y, m, d] = String(iso).split('-').map(Number);
-  if (!y || !m || !d) return iso; // fallback if unexpected
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return `${d} ${months[m - 1]} ${y}`;
-}
-
-function setAsOfText() {
-  const el = document.getElementById('asof');
-  if (!el) return;
-
-  if (state.mode === 'live' && state.meta && state.meta.asof) {
-    el.style.display = 'block';
-    el.textContent = `Updated to: ${formatAsOf(state.meta.asof)}`;
-  } else {
-    el.style.display = 'none';
-    el.textContent = '';
+  function formatAsOf(iso) {
+    const [y, m, d] = String(iso).split('-').map(Number);
+    if (!y || !m || !d) return iso;
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${d} ${months[m - 1]} ${y}`;
   }
-}
+
+  function setAsOfText() {
+    const el = document.getElementById('asof');
+    if (!el) return;
+
+    if (state.mode === 'live' && state.meta && state.meta.asof) {
+      el.style.display = 'block';
+      el.textContent = `Updated to: ${formatAsOf(state.meta.asof)}`;
+    } else {
+      el.style.display = 'none';
+      el.textContent = '';
+    }
+  }
 
   function render() {
     const tbody = document.querySelector('#teams tbody');
@@ -232,7 +230,7 @@ function setAsOfText() {
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
-      a.href = `player.html?id=${encodeURIComponent(r.id)}`;
+      a.href = `../player/?id=${encodeURIComponent(r.id)}`;
       a.textContent = r.name;
       tdName.appendChild(a);
       tr.appendChild(tdName);
@@ -306,14 +304,13 @@ function setAsOfText() {
   }
 
   async function fetchHistoryFor(id) {
-    const key = id;
-    if (histCache.has(key)) return histCache.get(key);
+    if (histCache.has(id)) return histCache.get(id);
 
     try {
-      const res = await fetch(`data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+      const res = await fetch(`../data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
       if (!res.ok) return null;
       const rows = await res.json();
-      histCache.set(key, rows);
+      histCache.set(id, rows);
       return rows;
     } catch {
       return null;
@@ -330,6 +327,7 @@ function setAsOfText() {
 
     const out = [];
     let lastKey = null;
+
     for (const p of s) {
       const d = new Date(p.x);
       const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
@@ -337,6 +335,7 @@ function setAsOfText() {
       else out[out.length - 1] = p;
       lastKey = key;
     }
+
     return out;
   }
 
@@ -344,6 +343,7 @@ function setAsOfText() {
     if (mode === 'daily') return normalise(series, true);
 
     const buckets = Object.create(null);
+
     for (const p of series) {
       const d = new Date(p.x);
       const key = (mode === 'monthly')
@@ -453,6 +453,7 @@ function setAsOfText() {
 
     function openModal() {
       listDiv.innerHTML = '';
+
       state.filtered.forEach(t => {
         const id = `chk-${t.id}`;
         const wrapper = document.createElement('div');
@@ -464,6 +465,7 @@ function setAsOfText() {
         `;
         listDiv.appendChild(wrapper);
       });
+
       modal.style.display = 'flex';
     }
 
@@ -522,7 +524,7 @@ function setAsOfText() {
         : [];
 
       populateEraSelect();
-      rebuildRowsFromMode(); // also calls setAsOfText()
+      rebuildRowsFromMode();
     } catch (err) {
       const asofEl = document.getElementById('asof');
       if (asofEl) { asofEl.style.display = 'none'; asofEl.textContent = ''; }
