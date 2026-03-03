@@ -578,7 +578,7 @@ document.getElementById('nav-peak').href = `../peak/?sec=${sec}`;
 
       years
         .map(y => Number(y))
-        .filter(y => Number.isFinite(y) && y >= 1860)
+        .filter(y => Number.isFinite(y) && y >= 1840)
         .sort((a, b) => b - a)   // newest first
         .forEach(y => {
           const opt = document.createElement('option');
