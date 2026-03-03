@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
 
-  gtag('config', 'G-1JXCC4EDPY');
-</script>
   <meta charset="utf-8">
-  <title>J-Ratings: Englsih Football</title>
+  <title>J-Ratings: English Football</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
   <style>
     #compare-chart { height: 500px; }
     .toolbar { margin-bottom: 10px; }
@@ -30,51 +32,52 @@
     .compare-controls { margin: 10px 0; }
     .compare-controls button { margin-right:10px; }
 
-      @media (max-width: 520px) {
-    #players {
-      width: 100%;
-      table-layout: fixed;
+    @media (max-width: 520px) {
+      #teams {
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      #teams th,
+      #teams td {
+        min-width: 0 !important;
+        padding: 10px 8px;
+      }
+
+      #teams th:nth-child(1),
+      #teams td:nth-child(1) { width: 52px; }
+
+      #teams th:nth-child(3),
+      #teams td:nth-child(3) { width: 78px; }
+
+      #teams th:nth-child(2),
+      #teams td:nth-child(2) { width: auto; }
+
+      #teams td:nth-child(2) a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
-
-    #players th,
-    #players td {
-      min-width: 0 !important;
-      padding: 10px 8px;
-    }
-
-    #players th:nth-child(1),
-    #players td:nth-child(1) { width: 52px; }
-
-    #players th:nth-child(3),
-    #players td:nth-child(3) { width: 78px; }
-
-    #players th:nth-child(2),
-    #players td:nth-child(2) { width: auto; }
-
-    #players td:nth-child(2) a {
-      display: block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  }
-  
   </style>
 </head>
+
 <body>
 <header>
   <div class="wrap">
     <h1 class="site-title">
-              <a id="home-link" href="index.html" class="brand-with-logo">
-    <span>J-Ratings <span class="title-football">English Football</span></span>
-    <img src="../../Football Banner Logo.png" alt="Football logo" class="sport-logo">
-  </a>
+      <a id="home-link" href="../home/" class="brand-with-logo">
+        <span>J-Ratings <span class="title-football">English Football</span></span>
+        <img src="/Football Banner Logo.png" alt="Football logo" class="sport-logo">
+      </a>
     </h1>
+
     <nav class="topnav" aria-label="Main">
-      <a href="../../index.html">Sports</a>
-      <a href="index.html">Home</a>
-      <a href="compare.html">Compare</a>
-      <a href="peak.html" class="active-tab">Peak</a>
+      <a href="/index.html">Sports</a>
+      <a href="../home/">Home</a>
+      <a href="../compare/">Compare</a>
+      <a href="./" class="active-tab">Peak</a>
     </nav>
   </div>
 </header>
@@ -126,7 +129,7 @@
 </div>
 
 <script>
-  const DATA_URL = 'data/teams.json';
+  const DATA_URL = '../data/teams.json';
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
   const state = { rows: [], filtered: [] };
@@ -136,6 +139,7 @@
   function render() {
     const tbody = document.querySelector('#teams tbody');
     tbody.innerHTML = '';
+
     state.filtered.forEach((r, i) => {
       const tr = document.createElement('tr');
 
@@ -145,7 +149,7 @@
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
-      a.href = `player.html?id=${encodeURIComponent(r.id)}`;
+      a.href = `../player/?id=${encodeURIComponent(r.id)}`;
       a.textContent = r.name;
       tdName.appendChild(a);
       tr.appendChild(tdName);
@@ -162,6 +166,8 @@
       tbody.appendChild(tr);
     });
 
+    const countEl = document.getElementById('count');
+    if (countEl) countEl.textContent = state.filtered.length ? `(${state.filtered.length})` : '';
   }
 
   function applyFilter() {
@@ -175,8 +181,9 @@
 
   async function fetchHistoryFor(id) {
     if (histCache.has(id)) return histCache.get(id);
+
     try {
-      const res = await fetch(`data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+      const res = await fetch(`../data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
       if (!res.ok) return null;
       const rows = await res.json();
       histCache.set(id, rows);
@@ -200,6 +207,7 @@
 
     const out = [];
     let lastKey = null;
+
     for (const p of s) {
       const d = new Date(p.x);
       const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
@@ -207,6 +215,7 @@
       else out[out.length-1] = p;
       lastKey = key;
     }
+
     return out;
   }
 
@@ -214,6 +223,7 @@
     if (mode === 'daily') return normalise(series, true);
 
     const buckets = Object.create(null);
+
     for (const p of series) {
       const d = new Date(p.x);
       const key = (mode === 'monthly')
@@ -229,6 +239,7 @@
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
       return { x, y: avg, tier: lastTier };
     });
+
     return normalise(out, false);
   }
 
@@ -246,7 +257,7 @@
     wrap.style.display = 'block';
     chart.innerHTML = 'Loading…';
 
-const mode = 'monthly';
+    const mode = 'monthly';
 
     const traces = [];
     let ymin = Infinity, ymax = -Infinity;
@@ -271,9 +282,9 @@ const mode = 'monthly';
         name: t.name,
         x: xs, y: ys,
         customdata: tiers,
-        mode: (mode === 'daily') ? 'lines' : 'lines+markers',
+        mode: 'lines+markers',
         line: { width: 2, shape: 'linear' },
-        marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
+        marker: { size: 4 },
         hovertemplate: '%{x}<br>%{y:.0f} Elo<br>Tier %{customdata}<extra>' + t.name + '</extra>',
         connectgaps: true
       });
@@ -286,10 +297,12 @@ const mode = 'monthly';
 
     ymin = Math.floor(ymin / 100) * 100;
     ymax = Math.ceil(ymax / 100) * 100;
+
     const shapes = [];
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
-        type: 'line', xref: 'paper', x0: 0, x1: 1,
+        type: 'line',
+        xref: 'paper', x0: 0, x1: 1,
         y0: v, y1: v,
         line: { width: 1, color: 'rgba(128,128,128,0.35)' },
         layer: 'below'
@@ -321,6 +334,7 @@ const mode = 'monthly';
 
     function openModal() {
       listDiv.innerHTML = '';
+
       state.filtered.forEach(t => {
         const id = `chk-${t.id}`;
         const row = document.createElement('div');
@@ -332,6 +346,7 @@ const mode = 'monthly';
         `;
         listDiv.appendChild(row);
       });
+
       modal.style.display = 'flex';
     }
 
@@ -341,6 +356,7 @@ const mode = 'monthly';
       const ids = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
       if (!ids.length) { alert('Please select at least one team.'); return; }
       closeModal();
+
       const chosen = state.filtered.filter(t => ids.includes(t.id));
       buildComparison(chosen);
     }
@@ -356,6 +372,7 @@ const mode = 'monthly';
     try {
       const res = await fetch(DATA_URL, { cache: 'no-cache' });
       if (!res.ok) throw new Error('Failed to load teams.json');
+
       const teams = await res.json();
 
       const baseRows = teams

@@ -14,7 +14,7 @@
   <title>J-Ratings: English Football</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
@@ -48,13 +48,12 @@
       width: 90%;
       max-height: 80%;
       overflow: auto;
-      colour: #fff;
+      color: #fff;
     }
 
     .compare-controls { margin: 10px 0; }
     .compare-controls button { margin-right: 10px; }
 
-    /* If your global style.css already defines .asof you can remove this */
     .asof {
       opacity: 0.8;
       font-size: 0.95rem;
@@ -98,17 +97,17 @@
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a id="home-link" href="index.html" class="brand-with-logo">
+      <a id="home-link" href="./" class="brand-with-logo">
         <span>J-Ratings <span class="title-football">English Football</span></span>
-        <img src="../../Football Banner Logo.png" alt="Football logo" class="sport-logo">
+        <img src="/Football Banner Logo.png" alt="Football logo" class="sport-logo">
       </a>
     </h1>
 
     <nav class="topnav" aria-label="Main">
-      <a href="../../index.html">Sports</a>
-      <a id="nav-home" href="index.html" class="active-tab">Home</a>
-      <a id="nav-compare" href="compare.html">Compare</a>
-      <a id="nav-peak" href="peak.html">Peak</a>
+      <a href="/index.html">Sports</a>
+      <a id="nav-home" href="./" class="active-tab">Home</a>
+      <a id="nav-compare" href="../compare/">Compare</a>
+      <a id="nav-peak" href="../peak/">Peak</a>
     </nav>
   </div>
 </header>
@@ -175,44 +174,43 @@
 </main>
 
 <script>
-  const DATA_URL = 'data/teams.json';
-  const SEASON_STARTS_URL = 'data/season_starts.json';
-  const META_URL = 'data/meta.json';
+  const DATA_URL = '../data/teams.json';
+  const SEASON_STARTS_URL = '../data/season_starts.json';
+  const META_URL = '../data/meta.json';
 
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
   const state = {
-    mode: 'live',      // 'live' or season label e.g. '2023-24'
-    meta: null,        // { asof: 'YYYY-MM-DD', games: N } (optional)
-    liveRows: [],      // from teams.json
-    seasonStarts: [],  // from season_starts.json
-    rows: [],          // currently displayed rows
+    mode: 'live',
+    meta: null,
+    liveRows: [],
+    seasonStarts: [],
+    rows: [],
     filtered: []
   };
 
   const histCache = new Map();
   let lastCompared = [];
 
-function formatAsOf(iso) {
-  // Expecting YYYY-MM-DD
-  const [y, m, d] = String(iso).split('-').map(Number);
-  if (!y || !m || !d) return iso; // fallback if unexpected
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return `${d} ${months[m - 1]} ${y}`;
-}
-
-function setAsOfText() {
-  const el = document.getElementById('asof');
-  if (!el) return;
-
-  if (state.mode === 'live' && state.meta && state.meta.asof) {
-    el.style.display = 'block';
-    el.textContent = `Updated to: ${formatAsOf(state.meta.asof)}`;
-  } else {
-    el.style.display = 'none';
-    el.textContent = '';
+  function formatAsOf(iso) {
+    const [y, m, d] = String(iso).split('-').map(Number);
+    if (!y || !m || !d) return iso;
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${d} ${months[m - 1]} ${y}`;
   }
-}
+
+  function setAsOfText() {
+    const el = document.getElementById('asof');
+    if (!el) return;
+
+    if (state.mode === 'live' && state.meta && state.meta.asof) {
+      el.style.display = 'block';
+      el.textContent = `Updated to: ${formatAsOf(state.meta.asof)}`;
+    } else {
+      el.style.display = 'none';
+      el.textContent = '';
+    }
+  }
 
   function tierLabel(row) {
     if (row.division && String(row.division).trim()) return row.division;
@@ -243,7 +241,7 @@ function setAsOfText() {
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
-      a.href = `player.html?id=${encodeURIComponent(r.id)}`;
+      a.href = `../player/?id=${encodeURIComponent(r.id)}`;
       a.textContent = r.name;
       tdName.appendChild(a);
       tr.appendChild(tdName);
@@ -326,7 +324,7 @@ function setAsOfText() {
     if (histCache.has(id)) return histCache.get(id);
 
     try {
-      const res = await fetch(`data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+      const res = await fetch(`../data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
       if (!res.ok) return null;
       const rows = await res.json();
       histCache.set(id, rows);
@@ -446,7 +444,7 @@ function setAsOfText() {
         type: 'line',
         xref: 'paper', x0: 0, x1: 1,
         y0: v, y1: v,
-        line: { width: 1, colour: 'rgba(128,128,128,0.35)' },
+        line: { width: 1, color: 'rgba(128,128,128,0.35)' },
         layer: 'below'
       });
     }
@@ -457,9 +455,9 @@ function setAsOfText() {
       xaxis: { type: 'date' },
       yaxis: { title: 'Rating' },
       legend: { orientation: 'h' },
-      paper_bgcolour: cs.backgroundColor,
-      plot_bgcolour: cs.backgroundColor,
-      font: { colour: cs.color },
+      paper_bgcolor: cs.backgroundColor,
+      plot_bgcolor: cs.backgroundColor,
+      font: { color: cs.color },
       shapes
     };
 
@@ -492,9 +490,7 @@ function setAsOfText() {
       modal.style.display = 'flex';
     }
 
-    function closeModal() {
-      modal.style.display = 'none';
-    }
+    function closeModal() { modal.style.display = 'none'; }
 
     function showSelected() {
       const selectedIds = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
@@ -535,7 +531,7 @@ function setAsOfText() {
 
       state.meta = metaRes.ok ? await metaRes.json() : null;
 
-      state.liveRows = teamsData
+      state.liveRows = (Array.isArray(teamsData) ? teamsData : [])
         .filter(d => d && d.id && d.name && Number.isFinite(+d.rating))
         .map(d => ({
           id: d.id,
@@ -551,7 +547,7 @@ function setAsOfText() {
         : [];
 
       populateSeasonSelect();
-      rebuildRowsFromMode(); // also calls setAsOfText()
+      rebuildRowsFromMode();
     } catch (err) {
       const asofEl = document.getElementById('asof');
       if (asofEl) { asofEl.style.display = 'none'; asofEl.textContent = ''; }
