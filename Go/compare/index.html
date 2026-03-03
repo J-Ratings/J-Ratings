@@ -2,60 +2,112 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
 
-  gtag('config', 'G-1JXCC4EDPY');
-</script>
   <meta charset="utf-8">
   <title>J-Ratings: Go</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
   <style>
-    /* Page-specific bits kept minimal to fit your existing CSS */
-    .controls{display:flex;flex-direction:column;gap:10px;padding:14px 18px;border-bottom:1px solid var(--border, #444)}
-    .row{display:flex;gap:8px;align-items:center;width:100%}
-    .row input[type="text"]{flex:1;min-width:220px;padding:10px;border-radius:8px;border:1px solid var(--border, #444);background:transparent;color:inherit}
-    .btn{background:transparent;border:1px solid var(--border, #444);color:inherit;padding:8px 12px;border-radius:6px;cursor:pointer}
-    .btn:hover{background:rgba(255,255,255,0.05)}
-    .muted-note{opacity:.8;font-size:.9rem}
-    .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    /* Autocomplete */
-    .suggest{position:relative;flex:1}
-    .suggest-list{
-      position:absolute;left:0;right:0;top:100%;
-      max-height:220px;overflow:auto;margin-top:4px;
-      border:1px solid var(--border, #444);background:inherit;border-radius:6px;
-      display:none;z-index:20
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border, #444);
     }
-    .suggest-item{padding:8px 10px;cursor:pointer}
-    .suggest-item:hover{background:rgba(255,255,255,.05)}
-    #chart{height:520px}
+
+    .row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .row input[type="text"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border, #444);
+      background: transparent;
+      color: inherit;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid var(--border, #444);
+      color: inherit;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn:hover { background: rgba(255,255,255,0.05); }
+
+    .muted-note {
+      opacity: .8;
+      font-size: .9rem;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Autocomplete */
+    .suggest { position: relative; flex: 1; }
+
+    .suggest-list {
+      position: absolute;
+      left: 0; right: 0;
+      top: 100%;
+      max-height: 220px;
+      overflow: auto;
+      margin-top: 4px;
+      border: 1px solid var(--border, #444);
+      background: inherit;
+      border-radius: 6px;
+      display: none;
+      z-index: 20;
+    }
+
+    .suggest-item { padding: 8px 10px; cursor: pointer; }
+    .suggest-item:hover { background: rgba(255,255,255,.05); }
+
+    #chart { height: 520px; }
   </style>
 </head>
+
 <body>
 <header>
-<div class="wrap">
- <h1 class="site-title">
-  <a id="home-link" href="index.html" class="brand-with-logo">
-    <span>J-Ratings <span class="title-go">Go</span></span>
-    <img src="../../Go Banner Logo.png" alt="Go logo" class="sport-logo">
-  </a>
-</h1>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a id="home-link" href="../index.html" class="brand-with-logo">
+        <span>J-Ratings <span class="title-go">Go</span></span>
+        <img src="../../Go Banner Logo.png" alt="Go logo" class="sport-logo">
+      </a>
+    </h1>
 
-<nav class="topnav" aria-label="Main">
-  <a href="../../index.html">Sports</a>
-  <a href="index.html">Home</a>
-  <a href="compare.html" class="active-tab">Compare</a>
-  <a href="peak.html">Peak</a>
-</nav>
+    <nav class="topnav" aria-label="Main">
+      <a href="../../index.html">Sports</a>
+      <a href="../index.html">Home</a>
+      <a href="index.html" class="active-tab">Compare</a>
+      <a href="../peak/">Peak</a>
+    </nav>
   </div>
 </header>
-
 
 <main class="wrap">
   <section class="panel">
@@ -64,6 +116,7 @@
     <div class="controls">
       <div class="toolbar">
         <div id="rows" style="flex:1"></div>
+
         <div style="display:flex;gap:8px;align-items:center">
           <label for="agg">View:</label>
           <select id="agg">
@@ -79,6 +132,7 @@
         <button id="create" class="btn" type="button">Create</button>
         <button id="clear" class="btn" type="button">Clear</button>
       </div>
+
       <div class="muted-note">Up to 15 players. Start typing a name, pick a suggestion, then Create.</div>
     </div>
 
@@ -90,8 +144,8 @@
 
 <script>
   // --- config ---------------------------------------------------------------
-  const PLAYERS_URL = 'data/players.json';
-  const HIST_URL    = id => `data/history/${encodeURIComponent(id)}.json`;
+  const PLAYERS_URL = '../data/players.json';
+  const HIST_URL    = id => `../data/history/${encodeURIComponent(id)}.json`;
   const MAX_PLAYERS = 15;
   const IS_TOUCH    = window.matchMedia('(pointer: coarse)').matches;
 
@@ -102,49 +156,57 @@
     loaded: []       // [{ name, daily: [{x,y}] }]
   };
 
-  // --- utils: normalise & aggregate (mirrors player page) -------------------
-  function normalise(series, dedupeByDay = false){
+  // --- utils: normalise & aggregate -----------------------------------------
+  function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
       .map(p => ({ x: p.x, y: +p.y }))
-      .sort((a,b) => new Date(a.x) - new Date(b.x));
+      .sort((a, b) => new Date(a.x) - new Date(b.x));
 
     if (!dedupeByDay) return s;
 
     const out = [];
     let lastKey = null;
+
     for (const p of s) {
       const d = new Date(p.x);
-      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+
       if (key !== lastKey) out.push(p);
-      else out[out.length-1] = p; // keep last point that day
+      else out[out.length - 1] = p; // keep last point that day
+
       lastKey = key;
     }
+
     return out;
   }
 
-  function aggregate(series, mode){
+  function aggregate(series, mode) {
     if (mode === 'daily') return normalise(series, true);
 
     const buckets = Object.create(null);
+
     for (const p of series) {
       const d = new Date(p.x);
       const key = (mode === 'monthly')
-        ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`
+        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2,'0')}`
         : `${d.getFullYear()}`;
+
       (buckets[key] ||= []).push(p.y);
     }
+
     const out = Object.keys(buckets).sort().map(k => {
       const ys = buckets[k].filter(Number.isFinite);
-      const avg = ys.reduce((a,b)=>a+b,0) / ys.length;
+      const avg = ys.reduce((a, b) => a + b, 0) / ys.length;
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
       return { x, y: avg };
     });
+
     return normalise(out, false);
   }
 
   // --- autocomplete ---------------------------------------------------------
-  function attachAutocomplete(input){
+  function attachAutocomplete(input) {
     const wrap = document.createElement('div');
     wrap.className = 'suggest';
     input.parentNode.insertBefore(wrap, input);
@@ -154,18 +216,26 @@
     list.className = 'suggest-list';
     wrap.appendChild(list);
 
-    function render(items){
-      if (!items.length){ list.style.display='none'; list.innerHTML=''; return; }
-      list.innerHTML = items.map(n => `<div class="suggest-item" data-name="${n}">${n}</div>`).join('');
+    function render(items) {
+      if (!items.length) {
+        list.style.display = 'none';
+        list.innerHTML = '';
+        return;
+      }
+      list.innerHTML = items
+        .map(n => `<div class="suggest-item" data-name="${String(n).replace(/"/g, '&quot;')}">${n}</div>`)
+        .join('');
       list.style.display = 'block';
     }
 
     input.addEventListener('input', () => {
       const q = input.value.trim().toLowerCase();
-      if (!q){ render([]); return; }
+      if (!q) { render([]); return; }
+
       const names = state.players.map(p => p.name);
       const starts = names.filter(n => n.toLowerCase().startsWith(q));
       const contains = names.filter(n => !n.toLowerCase().startsWith(q) && n.toLowerCase().includes(q));
+
       render(starts.concat(contains).slice(0, 12));
     });
 
@@ -173,23 +243,29 @@
       const item = e.target.closest('.suggest-item');
       if (!item) return;
       input.value = item.dataset.name;
-      list.style.display='none';
+      list.style.display = 'none';
     });
 
     input.addEventListener('keydown', e => {
-      if (e.key === 'Enter'){
+      if (e.key === 'Enter') {
         const first = list.querySelector('.suggest-item');
-        if (first){ input.value = first.dataset.name; list.style.display='none'; }
+        if (first) {
+          input.value = first.dataset.name;
+          list.style.display = 'none';
+        }
       }
-      if (e.key === 'Escape') list.style.display='none';
+      if (e.key === 'Escape') list.style.display = 'none';
     });
 
-    input.addEventListener('blur', () => setTimeout(() => { list.style.display='none'; }, 120));
+    input.addEventListener('blur', () => {
+      setTimeout(() => { list.style.display = 'none'; }, 120);
+    });
   }
 
   // --- rows -----------------------------------------------------------------
-  function makeRow(){
+  function makeRow() {
     if (state.inputs.length >= MAX_PLAYERS) return;
+
     const rows = document.getElementById('rows');
 
     const wrap = document.createElement('div');
@@ -218,7 +294,7 @@
     document.getElementById('add').disabled = state.inputs.length >= MAX_PLAYERS;
   }
 
-  function clearAll(){
+  function clearAll() {
     document.getElementById('rows').innerHTML = '';
     state.inputs = [];
     state.loaded = [];
@@ -227,16 +303,16 @@
   }
 
   // --- data load ------------------------------------------------------------
-  async function loadPlayers(){
+  async function loadPlayers() {
     const res = await fetch(PLAYERS_URL, { cache: 'no-cache' });
     if (!res.ok) throw new Error('players.json not found');
     state.players = await res.json();
   }
 
   // --- grid helpers ---------------------------------------------------------
-  function majorGridShapes(ymin, ymax){
+  function majorGridShapes(ymin, ymax) {
     const shapes = [];
-    for (let v = ymin; v <= ymax; v += 100){
+    for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
         type: 'line',
         xref: 'paper', x0: 0, x1: 1,
@@ -249,22 +325,22 @@
   }
 
   // --- chart ----------------------------------------------------------------
-  function drawChart(){
+  function drawChart() {
     const el = document.getElementById('chart');
     if (el.textContent && el.textContent.includes('Loading')) el.textContent = '';
 
-    if (!state.loaded.length){
+    if (!state.loaded.length) {
       el.textContent = 'No players selected.';
       return;
     }
 
     const mode = document.getElementById('agg').value;
 
-    // Aggregate each series per current mode
     const traces = state.loaded.map(s => {
       const data = aggregate(s.daily, mode);
       const xs = data.map(p => p.x);
       const ys = data.map(p => p.y);
+
       return {
         type: 'scatter',
         name: s.name,
@@ -279,23 +355,25 @@
     });
 
     const allY = traces.flatMap(t => t.y).filter(Number.isFinite);
-    if (!allY.length){
+    if (!allY.length) {
       el.textContent = 'No games';
       return;
     }
+
     const ymin = Math.floor(Math.min(...allY) / 100) * 100;
     const ymax = Math.ceil(Math.max(...allY) / 100) * 100;
 
-    const bg = getComputedStyle(document.body).backgroundColor;
+    const cs = getComputedStyle(document.body);
+
     Plotly.newPlot('chart', traces, {
-      margin: { l:50, r:20, t:10, b:40 },
-      xaxis: { type:'date' },
-      yaxis: { title:'Rating' },
-      paper_bgcolor: bg,
-      plot_bgcolor: bg,
-      font: { color: getComputedStyle(document.body).color },
+      margin: { l: 50, r: 20, t: 10, b: 40 },
+      xaxis: { type: 'date' },
+      yaxis: { title: 'Rating' },
+      paper_bgcolor: cs.backgroundColor,
+      plot_bgcolor: cs.backgroundColor,
+      font: { color: cs.color },
       shapes: majorGridShapes(ymin, ymax),
-      legend: { x:1, y:0, bgcolor:'rgba(0,0,0,0)' }
+      legend: { x: 1, y: 0, bgcolor: 'rgba(0,0,0,0)' }
     }, {
       staticPlot: IS_TOUCH,
       displayModeBar: false,
@@ -303,12 +381,11 @@
     });
   }
 
-  async function createChart(){
+  async function createChart() {
     const names = state.inputs
       .map(r => r.input.value.trim())
       .filter(Boolean);
 
-    // de-dupe by exact name
     const uniq = [...new Set(names)];
     if (!uniq.length) { alert('Please add at least one player'); return; }
 
@@ -318,17 +395,21 @@
       return { name, id: player.id };
     }).filter(Boolean);
 
-    if (!lookups.length){
+    if (!lookups.length) {
       document.getElementById('chart').textContent = 'No valid players.';
       return;
     }
 
-    // fetch all histories
-    const results = await Promise.all(lookups.map(async ({name, id}) => {
+    const results = await Promise.all(lookups.map(async ({ name, id }) => {
       const res = await fetch(HIST_URL(id), { cache: 'no-cache' });
       if (!res.ok) return null;
+
       const hist = await res.json();
-      const daily = normalise(hist.map(d => ({ x: d.date, y: Number(d.rating) })), true);
+      const daily = normalise(
+        hist.map(d => ({ x: d.date, y: Number(d.rating) })),
+        true
+      );
+
       if (!daily.length) return null;
       return { name, daily };
     }));
@@ -348,8 +429,10 @@
       .then(() => { makeRow(); })
       .catch(e => {
         console.error(e);
-        document.querySelector('.muted-note').textContent =
-          'Could not load player list. Check data path or run via a local server.';
+        const note = document.querySelector('.muted-note');
+        if (note) {
+          note.textContent = 'Could not load player list. Check data path or run via a local server.';
+        }
         makeRow();
       });
   });

@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
 
-  gtag('config', 'G-1JXCC4EDPY');
-</script>
   <meta charset="utf-8">
   <title>J-Ratings: Go</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
@@ -151,7 +151,6 @@
       background-color: var(--panel-bg, #1a1a1a);
     }
 
-    /* Column separators for the original Go table (6 cols) */
     table.games th:nth-child(1), table.games td:nth-child(1),
     table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(3), table.games td:nth-child(3),
@@ -224,7 +223,7 @@
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a id="home-link" href="index.html" class="brand-with-logo">
+      <a id="home-link" href="../index.html" class="brand-with-logo">
         <span>J-Ratings <span class="title-go">Go</span></span>
         <img src="../../Go Banner Logo.png" alt="Go logo" class="sport-logo">
       </a>
@@ -232,16 +231,15 @@
 
     <nav class="topnav" aria-label="Main">
       <a href="../../index.html">Sports</a>
-      <a id="nav-home" href="index.html">Home</a>
-      <a id="nav-compare" href="compare.html">Compare</a>
-      <a id="nav-peak" href="peak.html">Peak</a>
+      <a id="nav-home" href="../index.html">Home</a>
+      <a id="nav-compare" href="../compare/">Compare</a>
+      <a id="nav-peak" href="../peak/">Peak</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
   <section class="panel">
-
     <div class="header-row">
       <div class="toolbar">
         <div class="toolbar-stack">
@@ -282,21 +280,21 @@
     <div id="gamesWrap">
       <table id="games" class="games"></table>
     </div>
-
   </section>
 </main>
 
 <script>
   const params = new URLSearchParams(location.search);
   const idRaw = params.get('id');
+
   if (!idRaw) {
     document.getElementById('chart').textContent = 'Missing player id.';
     throw new Error('no id');
   }
 
-  const PLAYERS_URL = 'data/players.json';
-  const HIST_URL    = id => `data/history/${encodeURIComponent(id)}.json`;
-  const GAMES_URL   = id => `data/games/${encodeURIComponent(id)}.json`;
+  const PLAYERS_URL = '../data/players.json';
+  const HIST_URL    = id => `../data/history/${encodeURIComponent(id)}.json`;
+  const GAMES_URL   = id => `../data/games/${encodeURIComponent(id)}.json`;
   const IS_TOUCH    = window.matchMedia('(pointer: coarse)').matches;
 
   let RAW = [];
@@ -305,13 +303,6 @@
 
   // Prevent older async loads overwriting newer ones
   let LOAD_TOKEN = 0;
-
-  function wireNavLinks() {
-    document.getElementById('home-link').href   = `index.html`;
-    document.getElementById('nav-home').href    = `index.html`;
-    document.getElementById('nav-compare').href = `compare.html`;
-    document.getElementById('nav-peak').href    = `peak.html`;
-  }
 
   function normalise(series, dedupeByDay = false) {
     const s = (Array.isArray(series) ? series : [])
@@ -327,13 +318,17 @@
 
     const out = [];
     let lastKey = null;
+
     for (const p of s) {
       const d = new Date(p.x);
       const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
       if (key !== lastKey) out.push(p);
       else out[out.length - 1] = p;
+
       lastKey = key;
     }
+
     return out;
   }
 
@@ -341,6 +336,7 @@
     if (mode === 'daily') return normalise(series, true);
 
     const buckets = Object.create(null);
+
     for (const p of series) {
       const d = new Date(p.x);
       const key = (mode === 'monthly')
@@ -434,14 +430,15 @@
       connectgaps: true
     };
 
-    const bg = getComputedStyle(document.body).backgroundColor;
+    const cs = getComputedStyle(document.body);
+
     Plotly.newPlot('chart', [trace], {
       margin: { l: 60, r: 20, t: 10, b: 45 },
       xaxis: { type: 'date' },
       yaxis: { title: 'Rating', range: [bounds.lo, bounds.hi] },
-      paper_bgcolor: bg,
-      plot_bgcolor: bg,
-      font: { color: getComputedStyle(document.body).color, size: 14 },
+      paper_bgcolor: cs.backgroundColor,
+      plot_bgcolor: cs.backgroundColor,
+      font: { color: cs.color, size: 14 },
       shapes
     }, {
       staticPlot: IS_TOUCH,
@@ -458,7 +455,7 @@
 
     if (player && player.id) {
       const a = document.createElement('a');
-      a.href = `player.html?id=${encodeURIComponent(player.id)}`;
+      a.href = `../player/?id=${encodeURIComponent(player.id)}`;
       a.textContent = opponentName || '';
       td.appendChild(a);
     } else {
@@ -672,7 +669,6 @@
   }
 
   window.addEventListener('DOMContentLoaded', () => {
-    // Set defaults for since buttons UI
     document.querySelectorAll('.range-btn').forEach(btn => {
       const v = btn.getAttribute('data-since');
       const isAll = !v;
@@ -694,7 +690,6 @@
       });
     });
 
-    wireNavLinks();
     load();
   });
 </script>
