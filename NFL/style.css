@@ -8,7 +8,7 @@
   --muted: #8b949e;
   --border: #30363d;
 
-  --wood: #5eff23ba; /* football */
+  --wood: #a53a0f; /* football */
 }
 
 html, body {
@@ -36,9 +36,11 @@ a:hover { text-decoration: underline; }
   color: var(--text);
 }
 
-.site-title .title-football {
+.site-title .title-nfl {
   color: var(--wood);
 }
+
+
 
 header {
   border-bottom: 1px solid var(--border);
