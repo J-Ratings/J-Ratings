@@ -290,25 +290,16 @@
     });
   }
 
-  function getResultClassAndText(g, myName) {
-    const isHome = g.home === myName;
-    const isAway = g.away === myName;
-    const raw = (g.result || '').trim();
+function getResultClassAndText(g, myCode) {
+  const raw = String(g.result || '').trim();
 
-    if (/^draw$/i.test(raw)) {
-      return { cls: 'draw', text: 'Draw' };
-    }
+  if (/^draw$/i.test(raw)) return { cls: 'draw', text: 'Draw' };
 
-    if (raw === myName) {
-      return { cls: 'win', text: 'Win' };
-    }
+  // In your NFL JSON, g.result is the winning TEAM CODE (or "Draw")
+  if (raw && myCode && raw === myCode) return { cls: 'win', text: 'Win' };
 
-    if ((isHome || isAway) && raw !== '' && raw !== myName) {
-      return { cls: 'loss', text: 'Loss' };
-    }
-
-    return { cls: 'draw', text: raw || 'Draw' };
-  }
+  return { cls: 'loss', text: 'Loss' };
+}
 
   function renderGamesTable(me, teams, games) {
     const tbl = document.getElementById('games');
@@ -338,12 +329,13 @@
       return (Number(b.seq) || 0) - (Number(a.seq) || 0);
     });
 
-    const myName = me.name;
+const myName = me.name;
+const myCode = me.code; // from teams.json
 
-    for (const g of rows) {
-      const isHome = g.home === myName;
-      const isAway = g.away === myName;
-      if (!isHome && !isAway) continue;
+for (const g of rows) {
+  const isHome = (g.homeCode === myCode);
+  const isAway = (g.awayCode === myCode);
+  if (!isHome && !isAway) continue;
 
       const opponentName = isHome ? g.away : g.home;
       const opponentElo = isHome ? Number(g.awayElo) : Number(g.homeElo);
@@ -388,7 +380,7 @@
       tdOppElo.textContent = Number.isFinite(opponentElo) ? String(Math.round(opponentElo)) : '';
 
       const tdResult = document.createElement('td');
-      const r = getResultClassAndText(g, myName);
+        const r = getResultClassAndText(g, myCode);
       tdResult.textContent = r.text;
       tdResult.className = 'result ' + r.cls;
 
