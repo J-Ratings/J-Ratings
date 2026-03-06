@@ -175,8 +175,10 @@
   }
 
   const TEAMS_URL = '../data/teams.json';
-  const HIST_URL  = id => `../data/history/${encodeURIComponent(id)}.json`;
-  const GAMES_URL = id => `../data/games/${encodeURIComponent(id)}.json`;
+const HIST_URL = id => `../data/history/${encodeURIComponent(id)}.json`;
+const COLOURS_URL = '../team-colours.json';
+
+let TEAM_COLOURS = {};  const GAMES_URL = id => `../data/games/${encodeURIComponent(id)}.json`;
   const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
 
   let RAW = [];
@@ -231,6 +233,12 @@
     return normalise(out, false);
   }
 
+async function loadColours() {
+  const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
+  if (!res.ok) throw new Error('team-colours.json not found');
+  TEAM_COLOURS = await res.json();
+}
+
   function draw(mode) {
     const el = document.getElementById('chart');
     if (el.textContent && el.textContent.includes('Loading')) el.textContent = '';
@@ -271,8 +279,11 @@
       y: ysAll,
       customdata: tournaments,
       mode: (mode === 'daily') ? 'lines' : 'lines+markers',
-      line: { width: 3, shape: 'linear' },
-      marker: (mode === 'daily') ? { size: 0 } : { size: 6 },
+      line: {
+        width: 3,
+        shape: 'linear',
+        color: TEAM_COLOURS[teamName] || undefined
+      }      marker: (mode === 'daily') ? { size: 0 } : { size: 6 },
       hovertemplate: `%{x}<br>%{y:.0f} Elo${hoverExtra}<extra></extra>`,
       connectgaps: true
     };
@@ -473,7 +484,10 @@
     }
   }
 
-  load();
+  Promise.all([
+  loadColours(),
+  load()
+]);
 </script>
 </body>
 </html>
