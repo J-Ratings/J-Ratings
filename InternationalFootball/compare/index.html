@@ -91,10 +91,14 @@
 </main>
 
 <script>
-  const TEAMS_URL = '../data/teams.json';
-  const HIST_URL  = id => `../data/history/${encodeURIComponent(id)}.json`;
-  const MAX_TEAMS = 15;
-  const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
+const TEAMS_URL = '../data/teams.json';
+const HIST_URL  = id => `../data/history/${encodeURIComponent(id)}.json`;
+const COLOURS_URL = '../data/team-colours.json';
+
+const MAX_TEAMS = 15;
+const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
+
+let TEAM_COLOURS = {};
 
   // Visual tuning
   const LEGEND_FONT_SIZE = 16;     // bigger team names
@@ -239,11 +243,17 @@
     document.getElementById('chart').textContent = 'Cleared.';
   }
 
-  async function loadTeams() {
-    const res = await fetch(TEAMS_URL, { cache: 'no-cache' });
-    if (!res.ok) throw new Error('teams.json not found');
-    state.teams = await res.json();
-  }
+async function loadTeams() {
+  const res = await fetch(TEAMS_URL, { cache: 'no-cache' });
+  if (!res.ok) throw new Error('teams.json not found');
+  state.teams = await res.json();
+}
+
+async function loadColours() {
+  const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
+  if (!res.ok) throw new Error('team-colours.json not found');
+  TEAM_COLOURS = await res.json();
+}
 
   function majorGridShapes(ymin, ymax) {
     const shapes = [];
@@ -389,9 +399,9 @@
     document.getElementById('create').addEventListener('click', createChart);
     document.getElementById('agg').addEventListener('change', drawChart);
 
-    loadTeams()
-      .then(() => { makeRow(); })
-      .catch(e => {
+   Promise.all([loadTeams(), loadColours()])
+  .then(() => { makeRow(); })
+  .catch(e => {
         console.error(e);
         const note = document.querySelector('.muted-note');
         if (note) note.textContent = 'Could not load team list. Check data path or run via a local server.';
