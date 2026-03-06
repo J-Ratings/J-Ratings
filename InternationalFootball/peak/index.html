@@ -144,7 +144,15 @@
 
 <script>
   const DATA_URL = '../data/teams.json';
+  const COLOURS_URL = '../data/team-colours.json';
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
+
+  let TEAM_COLOURS = {};
+
+  const LEGEND_FONT_SIZE = 16;
+  const LEGEND_ITEM_GAP  = 20;
+  const AXIS_TITLE_SIZE  = 18;
+  const AXIS_TICK_SIZE   = 18;
 
   const state = { rows: [], filtered: [] };
   const histCache = new Map();
@@ -257,6 +265,20 @@
     return normalise(out, false);
   }
 
+  function majorGridShapes(ymin, ymax) {
+    const shapes = [];
+    for (let v = ymin; v <= ymax; v += 100) {
+      shapes.push({
+        type: 'line',
+        xref: 'paper', x0: 0, x1: 1,
+        y0: v, y1: v,
+        line: { width: 1, color: 'rgba(128,128,128,0.35)' },
+        layer: 'below'
+      });
+    }
+    return shapes;
+  }
+
   function hideCompare() {
     document.getElementById('compare-wrap').style.display = 'none';
     document.getElementById('compare-chart').innerHTML = '';
@@ -302,12 +324,15 @@
         x: xs,
         y: ys,
         customdata: tournaments,
-        mode: (mode === 'daily') ? 'lines' : 'lines+markers',
-        line: { width: 2, shape: 'linear' },
-        marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
-        hovertemplate: (mode === 'daily')
-          ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra>' + t.name + '</extra>'
-          : '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
+        mode: 'lines',
+        line: {
+          width: 2,
+          shape: 'linear',
+          color: TEAM_COLOURS[t.name] || undefined
+        },
+        marker: { size: 0 },
+        hovertemplate:
+          '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
         connectgaps: true
       });
     }
@@ -320,27 +345,33 @@
     ymin = Math.floor(ymin / 100) * 100;
     ymax = Math.ceil(ymax / 100) * 100;
 
-    const shapes = [];
-    for (let v = ymin; v <= ymax; v += 100) {
-      shapes.push({
-        type: 'line',
-        xref: 'paper', x0: 0, x1: 1,
-        y0: v, y1: v,
-        line: { width: 1, color: 'rgba(128,128,128,0.35)' },
-        layer: 'below'
-      });
-    }
-
     const cs = getComputedStyle(document.body);
     const layout = {
-      margin: { l: 50, r: 20, t: 10, b: 40 },
-      xaxis: { type: 'date' },
-      yaxis: { title: 'Rating' },
-      legend: { orientation: 'h' },
+      margin: { l: 60, r: 200, t: 10, b: 50 },
+      xaxis: {
+        type: 'date',
+        title: { text: '', font: { size: AXIS_TITLE_SIZE } },
+        tickfont: { size: AXIS_TICK_SIZE }
+      },
+      yaxis: {
+        title: { text: '', font: { size: AXIS_TITLE_SIZE } },
+        tickfont: { size: AXIS_TICK_SIZE }
+      },
+      legend: {
+        x: 1.02,
+        xanchor: 'left',
+        y: 1,
+        yanchor: 'top',
+        font: { size: LEGEND_FONT_SIZE },
+        tracegroupgap: LEGEND_ITEM_GAP,
+        itemsizing: 'constant',
+        bgcolor: 'rgba(0,0,0,0)',
+        borderwidth: 0
+      },
       paper_bgcolor: cs.backgroundColor,
       plot_bgcolor: cs.backgroundColor,
       font: { color: cs.color },
-      shapes
+      shapes: majorGridShapes(ymin, ymax)
     };
 
     Plotly.newPlot(chart, traces, layout, {
@@ -392,10 +423,16 @@
 
   async function load() {
     try {
-      const res = await fetch(DATA_URL, { cache: 'no-cache' });
-      if (!res.ok) throw new Error('Failed to load teams.json');
+      const [teamsRes, coloursRes] = await Promise.all([
+        fetch(DATA_URL, { cache: 'no-cache' }),
+        fetch(COLOURS_URL, { cache: 'no-cache' })
+      ]);
 
-      const teams = await res.json();
+      if (!teamsRes.ok) throw new Error('Failed to load teams.json');
+      if (!coloursRes.ok) throw new Error('Failed to load team-colours.json');
+
+      const teams = await teamsRes.json();
+      TEAM_COLOURS = await coloursRes.json();
 
       const baseRows = teams
         .filter(d => d && d.id && d.name)
