@@ -34,6 +34,8 @@
     }
     .suggest-item { padding:8px 10px; cursor:pointer; }
     .suggest-item:hover { background:rgba(255,255,255,.05); }
+
+    /* Leave space for a larger legend on the right */
     #chart { height:520px; }
   </style>
 </head>
@@ -93,6 +95,12 @@
   const HIST_URL  = id => `../data/history/${encodeURIComponent(id)}.json`;
   const MAX_TEAMS = 15;
   const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
+
+  // Visual tuning
+  const LEGEND_FONT_SIZE = 16;     // bigger team names
+  const LEGEND_ITEM_GAP  = 12;     // more breathing room between legend entries
+  const AXIS_TITLE_SIZE  = 18;     // x/y axis title size
+  const AXIS_TICK_SIZE   = 14;     // x/y tick label size
 
   const state = {
     teams: [],
@@ -296,14 +304,40 @@
     const cs = getComputedStyle(document.body);
 
     Plotly.newPlot('chart', traces, {
-      margin: { l: 50, r: 20, t: 10, b: 40 },
-      xaxis: { type: 'date' },
-      yaxis: { title: 'Rating' },
+      // Give the legend proper room on the right so it doesn't get cramped
+      margin: { l: 60, r: 200, t: 10, b: 50 },
+
+      xaxis: {
+        type: 'date',
+        title: { text: 'Date', font: { size: AXIS_TITLE_SIZE } },
+        tickfont: { size: AXIS_TICK_SIZE }
+      },
+      yaxis: {
+        title: { text: 'Rating', font: { size: AXIS_TITLE_SIZE } },
+        tickfont: { size: AXIS_TICK_SIZE }
+      },
+
       paper_bgcolor: cs.backgroundColor,
       plot_bgcolor: cs.backgroundColor,
       font: { color: cs.color },
+
       shapes: majorGridShapes(ymin, ymax),
-      legend: { x: 1, y: 0, bgcolor: 'rgba(0,0,0,0)' }
+
+      legend: {
+        // Put legend outside plot area with more vertical space
+        x: 1.02,
+        xanchor: 'left',
+        y: 1,
+        yanchor: 'top',
+
+        // Bigger names + more spacing between them
+        font: { size: LEGEND_FONT_SIZE },
+        tracegroupgap: LEGEND_ITEM_GAP,
+        itemsizing: 'constant',
+
+        bgcolor: 'rgba(0,0,0,0)',
+        borderwidth: 0
+      }
     }, {
       staticPlot: IS_TOUCH,
       displayModeBar: false,
