@@ -105,6 +105,7 @@
       text-decoration: underline;
       text-underline-offset: 2px;
     }
+
     td.opp a:hover { opacity: 0.9; }
 
     @media (max-width: 600px) {
@@ -169,19 +170,21 @@
 <script>
   const params = new URLSearchParams(location.search);
   const idRaw = params.get('id');
+
   if (!idRaw) {
     document.getElementById('chart').textContent = 'Missing team id.';
     throw new Error('no id');
   }
 
   const TEAMS_URL = '../data/teams.json';
-const HIST_URL = id => `../data/history/${encodeURIComponent(id)}.json`;
-const COLOURS_URL = '../team-colours.json';
+  const HIST_URL = id => `../data/history/${encodeURIComponent(id)}.json`;
+  const GAMES_URL = id => `../data/games/${encodeURIComponent(id)}.json`;
+  const COLOURS_URL = '../team-colours.json';
+  const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
-let TEAM_COLOURS = {};  const GAMES_URL = id => `../data/games/${encodeURIComponent(id)}.json`;
-  const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
-
+  let TEAM_COLOURS = {};
   let RAW = [];
+  let TEAM_NAME = '';
 
   function normalise(series, dedupeByDay = false) {
     const s = series
@@ -216,9 +219,10 @@ let TEAM_COLOURS = {};  const GAMES_URL = id => `../data/games/${encodeURICompon
 
     for (const p of series) {
       const d = new Date(p.x);
-      const key = (mode === 'monthly')
+      const key = mode === 'monthly'
         ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
         : `${d.getFullYear()}`;
+
       (buckets[key] ||= []).push(p);
     }
 
@@ -227,21 +231,25 @@ let TEAM_COLOURS = {};  const GAMES_URL = id => `../data/games/${encodeURICompon
       const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
       const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
+
       return { x, y: avg, tournament: lastTournament };
     });
 
     return normalise(out, false);
   }
 
-async function loadColours() {
-  const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
-  if (!res.ok) throw new Error('team-colours.json not found');
-  TEAM_COLOURS = await res.json();
-}
+  async function loadColours() {
+    const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
+    if (!res.ok) throw new Error('team-colours.json not found');
+    TEAM_COLOURS = await res.json();
+  }
 
   function draw(mode) {
     const el = document.getElementById('chart');
-    if (el.textContent && el.textContent.includes('Loading')) el.textContent = '';
+
+    if (el.textContent && el.textContent.includes('Loading')) {
+      el.textContent = '';
+    }
 
     const data = aggregate(RAW, mode);
     const xs = data.map(p => p.x);
@@ -271,25 +279,25 @@ async function loadColours() {
       });
     }
 
-    const hoverExtra = (mode === 'daily') ? '<br>%{customdata}' : '';
+    const hoverExtra = mode === 'daily' ? '<br>%{customdata}' : '';
 
-const trace = {
-  type: 'scatter',
-  x: xs,
-  y: ysAll,
-  customdata: tournaments,
-  mode: (mode === 'daily') ? 'lines' : 'lines+markers',
-  line: {
-    width: 3,
-    shape: 'linear',
-    color: TEAM_COLOURS[teamName] || undefined
-  },
-  marker: (mode === 'daily') ? { size: 0 } : { size: 6 },
-  hovertemplate: `%{x}<br>%{y:.0f} Elo${hoverExtra}<extra></extra>`,
-  connectgaps: true
-};
+    const trace = {
+      type: 'scatter',
+      x: xs,
+      y: ysAll,
+      customdata: tournaments,
+      mode: mode === 'daily' ? 'lines' : 'lines+markers',
+      line: {
+        width: 3,
+        shape: 'linear',
+        color: TEAM_COLOURS[TEAM_NAME] || undefined
+      },
+      marker: mode === 'daily' ? { size: 0 } : { size: 6 },
+      hovertemplate: `%{x}<br>%{y:.0f} Elo${hoverExtra}<extra></extra>`,
+      connectgaps: true
+    };
 
-const cs = getComputedStyle(document.body);
+    const cs = getComputedStyle(document.body);
 
     Plotly.newPlot('chart', [trace], {
       margin: { l: 60, r: 20, t: 10, b: 45 },
@@ -332,11 +340,13 @@ const cs = getComputedStyle(document.body);
 
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
+
     for (const h of ['Date', 'Event', 'Opponent', 'Elo', 'Result', 'Δ', 'New']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
     }
+
     thead.appendChild(hr);
     tbl.appendChild(thead);
 
@@ -446,8 +456,10 @@ const cs = getComputedStyle(document.body);
 
       const teams = await teamsRes.json();
       const me = teams.find(t => t.id === idRaw);
+
       if (!me) throw new Error('team id not in teams.json');
 
+      TEAM_NAME = me.name;
       document.getElementById('pname').textContent = me.name;
 
       const histJson = await histRes.json();
@@ -476,7 +488,6 @@ const cs = getComputedStyle(document.body);
         const tbl = document.getElementById('games');
         tbl.innerHTML = '<tbody><tr><td colspan="7">No games</td></tr></tbody>';
       }
-
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
@@ -485,10 +496,14 @@ const cs = getComputedStyle(document.body);
     }
   }
 
-  Promise.all([
-  loadColours(),
-  load()
-]);
+  loadColours()
+    .then(load)
+    .catch(e => {
+      console.error(e);
+      document.getElementById('chart').textContent = 'Error: ' + e.message;
+      const tbl = document.getElementById('games');
+      tbl.innerHTML = '<tbody><tr><td colspan="7">Error loading games</td></tr></tbody>';
+    });
 </script>
 </body>
 </html>
