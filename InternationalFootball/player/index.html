@@ -273,22 +273,23 @@ async function loadColours() {
 
     const hoverExtra = (mode === 'daily') ? '<br>%{customdata}' : '';
 
-    const trace = {
-      type: 'scatter',
-      x: xs,
-      y: ysAll,
-      customdata: tournaments,
-      mode: (mode === 'daily') ? 'lines' : 'lines+markers',
-      line: {
-        width: 3,
-        shape: 'linear',
-        color: TEAM_COLOURS[teamName] || undefined
-      }      marker: (mode === 'daily') ? { size: 0 } : { size: 6 },
-      hovertemplate: `%{x}<br>%{y:.0f} Elo${hoverExtra}<extra></extra>`,
-      connectgaps: true
-    };
+const trace = {
+  type: 'scatter',
+  x: xs,
+  y: ysAll,
+  customdata: tournaments,
+  mode: (mode === 'daily') ? 'lines' : 'lines+markers',
+  line: {
+    width: 3,
+    shape: 'linear',
+    color: TEAM_COLOURS[teamName] || undefined
+  },
+  marker: (mode === 'daily') ? { size: 0 } : { size: 6 },
+  hovertemplate: `%{x}<br>%{y:.0f} Elo${hoverExtra}<extra></extra>`,
+  connectgaps: true
+};
 
-    const cs = getComputedStyle(document.body);
+const cs = getComputedStyle(document.body);
 
     Plotly.newPlot('chart', [trace], {
       margin: { l: 60, r: 20, t: 10, b: 45 },
