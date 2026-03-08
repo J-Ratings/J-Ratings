@@ -1,0 +1,13 @@
+{
+  "sport": "World Rugby Union",
+  "snapshot_date": "2026-03-07",
+  "inactive_years": 4,
+  "inactive_cutoff_days": 1461,
+  "total_teams_seen": 57,
+  "active_teams": 44,
+  "inactive_teams": 13,
+  "input_files": {
+    "final_ratings": "world_rugby_union_elo_final_ratings.csv",
+    "game_history": "world_rugby_union_elo_game_history.csv"
+  }
+}
