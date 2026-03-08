@@ -135,7 +135,6 @@
             <th style="min-width:60px">Rank</th>
             <th style="min-width:260px">Team</th>
             <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
-            <th style="min-width:180px">Context</th>
           </tr>
         </thead>
         <tbody><!-- filled by JS --></tbody>
@@ -184,35 +183,31 @@
   }
 
   function render() {
-    const tbody = document.querySelector('#teams tbody');
-    tbody.innerHTML = '';
+  const tbody = document.querySelector('#teams tbody');
+  tbody.innerHTML = '';
 
-    state.filtered.forEach((r, i) => {
-      const tr = document.createElement('tr');
+  state.filtered.forEach((r, i) => {
+    const tr = document.createElement('tr');
 
-      const tdRank = document.createElement('td');
-      tdRank.textContent = i + 1;
-      tr.appendChild(tdRank);
+    const tdRank = document.createElement('td');
+    tdRank.textContent = i + 1;
+    tr.appendChild(tdRank);
 
-      const tdName = document.createElement('td');
-      const a = document.createElement('a');
-      a.href = `../player/?id=${encodeURIComponent(r.id)}`;
-      a.textContent = r.name;
-      tdName.appendChild(a);
-      tr.appendChild(tdName);
+    const tdName = document.createElement('td');
+    const a = document.createElement('a');
+    a.href = `../player/?id=${encodeURIComponent(r.id)}`;
+    a.textContent = r.name;
+    tdName.appendChild(a);
+    tr.appendChild(tdName);
 
-      const tdRt = document.createElement('td');
-      tdRt.className = 'right';
-      tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
-      tr.appendChild(tdRt);
+    const tdRt = document.createElement('td');
+    tdRt.className = 'right';
+    tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
+    tr.appendChild(tdRt);
 
-      const tdCtx = document.createElement('td');
-      tdCtx.textContent = contextLabel(r);
-      tr.appendChild(tdCtx);
-
-      tbody.appendChild(tr);
-    });
-  }
+    tbody.appendChild(tr);
+  });
+}
 
   function applyFilter() {
     const q = document.getElementById('q').value.trim().toLowerCase();
@@ -507,7 +502,7 @@
       if (state.mode === 'live') applyFilter();
     } catch (err) {
       document.querySelector('#teams tbody').innerHTML =
-        `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
+        `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
     }
   }
 
