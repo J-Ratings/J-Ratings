@@ -13,7 +13,7 @@
   <meta charset="utf-8">
   <title>J-Ratings: Rugby Union</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
   <style>
     #compare-chart { height: 500px; }
@@ -26,7 +26,6 @@
       flex-wrap: wrap;
     }
 
-    /* Modal */
     #compare-modal {
       display: none;
       position: fixed;
@@ -86,17 +85,17 @@
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a id="home-link" href="../home/index.html" class="brand-with-logo">
+      <a id="home-link" href="./" class="brand-with-logo">
         <span>J-Ratings <span class="title-rugby">Rugby Union</span></span>
-        <img src="../Rugby Banner Logo.png" alt="Rugby logo" class="sport-logo">
+        <img src="/Rugby Banner Logo.png" alt="Rugby logo" class="sport-logo">
       </a>
     </h1>
 
     <nav class="topnav" aria-label="Main">
-      <a href="../../index.html">Sports</a>
-      <a id="nav-home" href="../home/index.html" class="active-tab">Home</a>
-      <a id="nav-compare" href="../compare/index.html">Compare</a>
-      <a id="nav-peak" href="../peak/index.html">Peak</a>
+      <a href="/index.html">Sports</a>
+      <a id="nav-home" href="./" class="active-tab">Home</a>
+      <a id="nav-compare" href="../compare/">Compare</a>
+      <a id="nav-peak" href="../peak/">Peak</a>
     </nav>
   </div>
 </header>
@@ -136,6 +135,7 @@
             <th style="min-width:60px">Rank</th>
             <th style="min-width:260px">Team</th>
             <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
+            <th style="min-width:180px">Context</th>
           </tr>
         </thead>
         <tbody><!-- filled by JS --></tbody>
@@ -143,7 +143,6 @@
     </div>
   </section>
 
-  <!-- Compare Selection Modal -->
   <div id="compare-modal">
     <div>
       <h3>Select teams to view:</h3>
@@ -166,9 +165,9 @@
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
   const state = {
-    mode: 'live',       // 'live' or era label e.g. '2024'
-    liveRows: [],       // from teams.json
-    eraStarts: [],      // from era_starts.json
+    mode: 'live',
+    liveRows: [],
+    eraStarts: [],
     rows: [],
     filtered: []
   };
@@ -197,7 +196,7 @@
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
-      a.href = `../player/index.html?id=${encodeURIComponent(r.id)}`;
+      a.href = `../player/?id=${encodeURIComponent(r.id)}`;
       a.textContent = r.name;
       tdName.appendChild(a);
       tr.appendChild(tdName);

@@ -13,7 +13,7 @@
   <meta charset="utf-8">
   <title>J-Ratings: Rugby Union</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
   <style>
     #compare-chart { height: 500px; }
@@ -64,16 +64,16 @@
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a id="home-link" href="../home/index.html" class="brand-with-logo">
+      <a id="home-link" href="../home/" class="brand-with-logo">
         <span>J-Ratings <span class="title-rugby">Rugby Union</span></span>
-        <img src="../Rugby Banner Logo.png" alt="Rugby logo" class="sport-logo">
+        <img src="/Rugby Banner Logo.png" alt="Rugby logo" class="sport-logo">
       </a>
     </h1>
     <nav class="topnav" aria-label="Main">
-      <a href="../../index.html">Sports</a>
-      <a href="../home/index.html">Home</a>
-      <a href="../compare/index.html">Compare</a>
-      <a href="../peak/index.html" class="active-tab">Peak</a>
+      <a href="/index.html">Sports</a>
+      <a href="../home/">Home</a>
+      <a href="../compare/">Compare</a>
+      <a href="./" class="active-tab">Peak</a>
     </nav>
   </div>
 </header>
@@ -144,7 +144,7 @@
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
-      a.href = `../player/index.html?id=${encodeURIComponent(r.id)}`;
+      a.href = `../player/?id=${encodeURIComponent(r.id)}`;
       a.textContent = r.name;
       tdName.appendChild(a);
       tr.appendChild(tdName);
@@ -160,6 +160,9 @@
 
       tbody.appendChild(tr);
     });
+
+    const count = document.getElementById('count');
+    if (count) count.textContent = `${state.filtered.length} teams`;
   }
 
   function applyFilter() {
@@ -275,12 +278,10 @@
         x: xs,
         y: ys,
         customdata: tournaments,
-        mode: (mode === 'daily') ? 'lines' : 'lines+markers',
+        mode: 'lines+markers',
         line: { width: 2, shape: 'linear' },
-        marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
-        hovertemplate: (mode === 'daily')
-          ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra>' + t.name + '</extra>'
-          : '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
+        marker: { size: 4 },
+        hovertemplate: '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
         connectgaps: true
       });
     }
@@ -296,7 +297,8 @@
     const shapes = [];
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
-        type: 'line', xref: 'paper', x0: 0, x1: 1,
+        type: 'line',
+        xref: 'paper', x0: 0, x1: 1,
         y0: v, y1: v,
         line: { width: 1, color: 'rgba(128,128,128,0.35)' },
         layer: 'below'
@@ -348,7 +350,10 @@
 
     function showSelected() {
       const ids = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
-      if (!ids.length) { alert('Please select at least one team.'); return; }
+      if (!ids.length) {
+        alert('Please select at least one team.');
+        return;
+      }
       closeModal();
       const chosen = state.filtered.filter(t => ids.includes(t.id));
       buildComparison(chosen);

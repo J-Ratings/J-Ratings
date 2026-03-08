@@ -13,14 +13,12 @@
   <meta charset="utf-8">
   <title>J-Ratings: Rugby Union</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
-    /* Profile page sizing tweaks */
     #chart { height: 520px; }
 
-    /* Header row: View (left) | Team (centre) | Live/Peak (right) */
     .header-row{
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -236,16 +234,16 @@
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a id="home-link" href="../home/index.html" class="brand-with-logo">
+      <a id="home-link" href="../home/" class="brand-with-logo">
         <span>J-Ratings <span class="title-rugby">Rugby Union</span></span>
-        <img src="../Rugby Banner Logo.png" alt="Rugby logo" class="sport-logo">
+        <img src="/Rugby Banner Logo.png" alt="Rugby logo" class="sport-logo">
       </a>
     </h1>
     <nav class="topnav" aria-label="Main">
-      <a href="../../index.html">Sports</a>
-      <a href="../home/index.html">Home</a>
-      <a href="../compare/index.html">Compare</a>
-      <a href="../peak/index.html">Peak</a>
+      <a href="/index.html">Sports</a>
+      <a href="../home/">Home</a>
+      <a href="../compare/">Compare</a>
+      <a href="../peak/">Peak</a>
     </nav>
   </div>
 </header>
@@ -320,7 +318,7 @@
       .map(p => ({
         x: p.x,
         y: +p.y,
-        competition: p.competition || ''
+        competition: p.competition || p.tournament || ''
       }))
       .sort((a, b) => new Date(a.x) - new Date(b.x));
 
@@ -512,8 +510,8 @@
 
       const tdTournament = document.createElement('td');
       tdTournament.className = 'tourn';
-      tdTournament.title = g.competition || '';
-      tdTournament.textContent = g.competition || '';
+      tdTournament.title = g.competition || g.tournament || '';
+      tdTournament.textContent = g.competition || g.tournament || '';
 
       const tdOpp = document.createElement('td');
       tdOpp.className = 'opp';
@@ -522,7 +520,7 @@
         const opponentTeam = teams.find(t => t.name === opponentName);
         if (opponentTeam && opponentTeam.id) {
           const a = document.createElement('a');
-          a.href = `index.html?id=${encodeURIComponent(opponentTeam.id)}`;
+          a.href = `./?id=${encodeURIComponent(opponentTeam.id)}`;
           a.textContent = opponentName;
           tdOpp.appendChild(a);
         } else {
@@ -612,7 +610,7 @@
         histJson.map(d => ({
           x: d.date,
           y: Number(d.rating),
-          competition: d.competition || ''
+          competition: d.competition || d.tournament || ''
         })),
         true
       );
