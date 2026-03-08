@@ -7,14 +7,14 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-1JXCC4EDPY');
   </script>
 
   <meta charset="utf-8">
-  <title>J-Ratings: Rugby Union</title>
+  <title>J-Ratings: International Football</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../styles.css">
+
+  <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
@@ -34,23 +34,27 @@
     }
     .suggest-item { padding:8px 10px; cursor:pointer; }
     .suggest-item:hover { background:rgba(255,255,255,.05); }
+
+    /* Leave space for a larger legend on the right */
     #chart { height:520px; }
   </style>
 </head>
+
 <body>
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a id="home-link" href="../home/index.html" class="brand-with-logo">
-        <span>J-Ratings <span class="title-rugby">Rugby Union</span></span>
-        <img src="../Rugby Banner Logo.png" alt="Rugby logo" class="sport-logo">
+      <a id="home-link" href="../home/" class="brand-with-logo">
+        <span>J-Ratings <span class="title-football">International Football</span></span>
+        <img src="/Football Banner Logo.png" alt="Football logo" class="sport-logo">
       </a>
     </h1>
+
     <nav class="topnav" aria-label="Main">
-      <a href="../../index.html">Sports</a>
-      <a href="../home/index.html">Home</a>
-      <a href="../compare/index.html" class="active-tab">Compare</a>
-      <a href="../peak/index.html">Peak</a>
+      <a href="/index.html">Sports</a>
+      <a href="../home/">Home</a>
+      <a href="./" class="active-tab">Compare</a>
+      <a href="../peak/">Peak</a>
     </nav>
   </div>
 </header>
@@ -77,8 +81,6 @@
         <button id="create" class="btn" type="button">Create</button>
         <button id="clear" class="btn" type="button">Clear</button>
       </div>
-
-      <div class="muted-note">Up to 15 teams. Start typing a name, pick a suggestion, then Create.</div>
     </div>
 
     <div style="padding:16px">
@@ -88,20 +90,27 @@
 </main>
 
 <script>
-  // --- config ---------------------------------------------------------------
-  const TEAMS_URL = '../data/teams.json';
-  const HIST_URL  = id => `../data/history/${encodeURIComponent(id)}.json`;
-  const MAX_TEAMS = 15;
-  const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
+const TEAMS_URL = '../data/teams.json';
+const HIST_URL  = id => `../data/history/${encodeURIComponent(id)}.json`;
+const COLOURS_URL = '../team-colours.json';
 
-  // --- state ----------------------------------------------------------------
+const MAX_TEAMS = 15;
+const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
+
+let TEAM_COLOURS = {};
+
+  // Visual tuning
+  const LEGEND_FONT_SIZE = 16;     // bigger team names
+  const LEGEND_ITEM_GAP  = 20;     // more breathing room between legend entries
+  const AXIS_TITLE_SIZE  = 18;     // x/y axis title size
+  const AXIS_TICK_SIZE   = 18;     // x/y tick label size
+
   const state = {
-    teams: [],   // [{id, name, ...}] from teams.json
-    inputs: [],  // [{ el, input }]
-    loaded: []   // [{ name, daily: [{x,y,tournament}] }]
+    teams: [],
+    inputs: [],
+    loaded: []
   };
 
-  // --- utils: normalise & aggregate -----------------------------------------
   function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
@@ -116,13 +125,15 @@
 
     const out = [];
     let lastKey = null;
+
     for (const p of s) {
       const d = new Date(p.x);
       const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
       if (key !== lastKey) out.push(p);
-      else out[out.length - 1] = p; // keep last point that day
+      else out[out.length - 1] = p;
       lastKey = key;
     }
+
     return out;
   }
 
@@ -130,6 +141,7 @@
     if (mode === 'daily') return normalise(series, true);
 
     const buckets = Object.create(null);
+
     for (const p of series) {
       const d = new Date(p.x);
       const key = (mode === 'monthly')
@@ -149,7 +161,6 @@
     return normalise(out, false);
   }
 
-  // --- autocomplete ---------------------------------------------------------
   function attachAutocomplete(input) {
     const wrap = document.createElement('div');
     wrap.className = 'suggest';
@@ -161,21 +172,14 @@
     wrap.appendChild(list);
 
     function render(items) {
-      if (!items.length) {
-        list.style.display = 'none';
-        list.innerHTML = '';
-        return;
-      }
-      list.innerHTML = items.map(n => `<div class="suggest-item" data-name="${n}">${n}</div>`).join('');
+      if (!items.length) { list.style.display = 'none'; list.innerHTML = ''; return; }
+      list.innerHTML = items.map(n => `<div class="suggest-item" data-name="${String(n).replace(/"/g, '&quot;')}">${n}</div>`).join('');
       list.style.display = 'block';
     }
 
     input.addEventListener('input', () => {
       const q = input.value.trim().toLowerCase();
-      if (!q) {
-        render([]);
-        return;
-      }
+      if (!q) { render([]); return; }
       const names = state.teams.map(t => t.name);
       const starts = names.filter(n => n.toLowerCase().startsWith(q));
       const contains = names.filter(n => !n.toLowerCase().startsWith(q) && n.toLowerCase().includes(q));
@@ -192,20 +196,14 @@
     input.addEventListener('keydown', e => {
       if (e.key === 'Enter') {
         const first = list.querySelector('.suggest-item');
-        if (first) {
-          input.value = first.dataset.name;
-          list.style.display = 'none';
-        }
+        if (first) { input.value = first.dataset.name; list.style.display = 'none'; }
       }
       if (e.key === 'Escape') list.style.display = 'none';
     });
 
-    input.addEventListener('blur', () => {
-      setTimeout(() => { list.style.display = 'none'; }, 120);
-    });
+    input.addEventListener('blur', () => setTimeout(() => { list.style.display = 'none'; }, 120));
   }
 
-  // --- rows -----------------------------------------------------------------
   function makeRow() {
     if (state.inputs.length >= MAX_TEAMS) return;
     const rows = document.getElementById('rows');
@@ -244,14 +242,18 @@
     document.getElementById('chart').textContent = 'Cleared.';
   }
 
-  // --- data load ------------------------------------------------------------
-  async function loadTeams() {
-    const res = await fetch(TEAMS_URL, { cache: 'no-cache' });
-    if (!res.ok) throw new Error('teams.json not found');
-    state.teams = await res.json();
-  }
+async function loadTeams() {
+  const res = await fetch(TEAMS_URL, { cache: 'no-cache' });
+  if (!res.ok) throw new Error('teams.json not found');
+  state.teams = await res.json();
+}
 
-  // --- grid helpers ---------------------------------------------------------
+async function loadColours() {
+  const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
+  if (!res.ok) throw new Error('team-colours.json not found');
+  TEAM_COLOURS = await res.json();
+}
+
   function majorGridShapes(ymin, ymax) {
     const shapes = [];
     for (let v = ymin; v <= ymax; v += 100) {
@@ -266,7 +268,6 @@
     return shapes;
   }
 
-  // --- chart ----------------------------------------------------------------
   function drawChart() {
     const el = document.getElementById('chart');
     if (el.textContent && el.textContent.includes('Loading')) el.textContent = '';
@@ -290,8 +291,12 @@
         x: xs,
         y: ys,
         customdata: tournaments,
-        mode: (mode === 'daily') ? 'lines' : 'lines+markers',
-        line: { width: 2, shape: 'linear' },
+        mode: (mode === 'daily') ? 'lines' : 'lines',
+        line: {
+  width: 2,
+  shape: 'linear',
+  color: TEAM_COLOURS[s.name] || undefined
+},
         marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
         hovertemplate: (mode === 'daily')
           ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra></extra>'
@@ -309,16 +314,43 @@
     const ymin = Math.floor(Math.min(...allY) / 100) * 100;
     const ymax = Math.ceil(Math.max(...allY) / 100) * 100;
 
-    const bg = getComputedStyle(document.body).backgroundColor;
+    const cs = getComputedStyle(document.body);
+
     Plotly.newPlot('chart', traces, {
-      margin: { l: 50, r: 20, t: 10, b: 40 },
-      xaxis: { type: 'date' },
-      yaxis: { title: 'Rating' },
-      paper_bgcolor: bg,
-      plot_bgcolor: bg,
-      font: { color: getComputedStyle(document.body).color },
+      // Give the legend proper room on the right so it doesn't get cramped
+      margin: { l: 60, r: 200, t: 10, b: 50 },
+
+      xaxis: {
+        type: 'date',
+        title: { text: '', font: { size: AXIS_TITLE_SIZE } },
+        tickfont: { size: AXIS_TICK_SIZE }
+      },
+      yaxis: {
+        title: { text: '', font: { size: AXIS_TITLE_SIZE } },
+        tickfont: { size: AXIS_TICK_SIZE }
+      },
+
+      paper_bgcolor: cs.backgroundColor,
+      plot_bgcolor: cs.backgroundColor,
+      font: { color: cs.color },
+
       shapes: majorGridShapes(ymin, ymax),
-      legend: { x: 1, y: 0, bgcolor: 'rgba(0,0,0,0)' }
+
+      legend: {
+        // Put legend outside plot area with more vertical space
+        x: 1.02,
+        xanchor: 'left',
+        y: 1,
+        yanchor: 'top',
+
+        // Bigger names + more spacing between them
+        font: { size: LEGEND_FONT_SIZE },
+        tracegroupgap: LEGEND_ITEM_GAP,
+        itemsizing: 'constant',
+
+        bgcolor: 'rgba(0,0,0,0)',
+        borderwidth: 0
+      }
     }, {
       staticPlot: IS_TOUCH,
       displayModeBar: false,
@@ -332,10 +364,7 @@
       .filter(Boolean);
 
     const uniq = [...new Set(names)];
-    if (!uniq.length) {
-      alert('Please add at least one team');
-      return;
-    }
+    if (!uniq.length) { alert('Please add at least one team'); return; }
 
     const lookups = uniq.map(name => {
       const team = state.teams.find(t => t.name === name);
@@ -367,19 +396,18 @@
     drawChart();
   }
 
-  // --- boot -----------------------------------------------------------------
   window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('add').addEventListener('click', makeRow);
     document.getElementById('clear').addEventListener('click', clearAll);
     document.getElementById('create').addEventListener('click', createChart);
     document.getElementById('agg').addEventListener('change', drawChart);
 
-    loadTeams()
-      .then(() => { makeRow(); })
-      .catch(e => {
+   Promise.all([loadTeams(), loadColours()])
+  .then(() => { makeRow(); })
+  .catch(e => {
         console.error(e);
-        document.querySelector('.muted-note').textContent =
-          'Could not load team list. Check data path or run via a local server.';
+        const note = document.querySelector('.muted-note');
+        if (note) note.textContent = 'Could not load team list. Check data path or run via a local server.';
         makeRow();
       });
   });
