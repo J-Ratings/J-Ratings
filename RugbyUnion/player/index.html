@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-1JXCC4EDPY');
-</script>
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
   <meta charset="utf-8">
   <title>J-Ratings: Rugby Union</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../styles.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
@@ -43,7 +43,7 @@
       align-items: center;
       justify-content: flex-start;
       gap: 10px;
-      padding: 0; /* important: don't push it down */
+      padding: 0;
     }
 
     .toolbar label{
@@ -51,7 +51,6 @@
       font-size: 1.05rem;
     }
 
-    /* Stack: View row + since buttons underneath */
     .toolbar-stack{
       display: flex;
       flex-direction: column;
@@ -157,7 +156,6 @@
       background-color: var(--panel-bg, #1a1a1a);
     }
 
-    /* Double separators: Date | Tournament | Opponent | Elo | Result | Δ */
     table.games th:nth-child(1), table.games td:nth-child(1),
     table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(3), table.games td:nth-child(3),
@@ -210,7 +208,6 @@
       .team-stats{ justify-self: centre; }
     }
 
-    /* Kill any underline rules coming from style.css (often via ::after) */
     .header-row,
     .header-row *{
       border-bottom: none !important;
@@ -239,16 +236,16 @@
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a id="home-link" href="index.html" class="brand-with-logo">
+      <a id="home-link" href="../home/index.html" class="brand-with-logo">
         <span>J-Ratings <span class="title-rugby">Rugby Union</span></span>
-        <img src="../../Rugby Banner Logo.png" alt="Rugby logo" class="sport-logo">
+        <img src="../Rugby Banner Logo.png" alt="Rugby logo" class="sport-logo">
       </a>
     </h1>
     <nav class="topnav" aria-label="Main">
       <a href="../../index.html">Sports</a>
-      <a href="index.html">Home</a>
-      <a href="compare.html">Compare</a>
-      <a href="peak.html">Peak</a>
+      <a href="../home/index.html">Home</a>
+      <a href="../compare/index.html">Compare</a>
+      <a href="../peak/index.html">Peak</a>
     </nav>
   </div>
 </header>
@@ -308,14 +305,14 @@
     throw new Error('no id');
   }
 
-  const TEAMS_URL = 'data/teams.json';
-  const HIST_URL  = id => `data/history/${encodeURIComponent(id)}.json`;
-  const GAMES_URL = id => `data/games/${encodeURIComponent(id)}.json`;
+  const TEAMS_URL = '../data/teams.json';
+  const HIST_URL  = id => `../data/history/${encodeURIComponent(id)}.json`;
+  const GAMES_URL = id => `../data/games/${encodeURIComponent(id)}.json`;
   const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
 
-let RAW = [];
-let SINCE_YEAR = 2020;     // default to Since 2020
-let AGG_MODE = 'monthly';
+  let RAW = [];
+  let SINCE_YEAR = 2020;
+  let AGG_MODE = 'monthly';
 
   function normalise(series, dedupeByDay = false) {
     const s = series
@@ -382,7 +379,7 @@ let AGG_MODE = 'monthly';
     }
 
     const span = max - min;
-    const pad = Math.max(25, span * 0.06); // 6% padding, minimum 25 Elo
+    const pad = Math.max(25, span * 0.06);
     return { lo: min - pad, hi: max + pad };
   }
 
@@ -525,7 +522,7 @@ let AGG_MODE = 'monthly';
         const opponentTeam = teams.find(t => t.name === opponentName);
         if (opponentTeam && opponentTeam.id) {
           const a = document.createElement('a');
-          a.href = `player.html?id=${encodeURIComponent(opponentTeam.id)}`;
+          a.href = `index.html?id=${encodeURIComponent(opponentTeam.id)}`;
           a.textContent = opponentName;
           tdOpp.appendChild(a);
         } else {
@@ -567,7 +564,6 @@ let AGG_MODE = 'monthly';
     tbl.appendChild(tbody);
   }
 
-  // Live has no date; Peak has date (within current filter)
   function renderTeamStats(series) {
     const liveEl = document.getElementById('liveVal');
     const peakEl = document.getElementById('peakVal');
@@ -621,7 +617,6 @@ let AGG_MODE = 'monthly';
         true
       );
 
-      // Chart + selector
       if (!RAW.length) {
         document.getElementById('chart').textContent = 'No games';
       } else {
@@ -629,14 +624,12 @@ let AGG_MODE = 'monthly';
         AGG_MODE = initialMode;
         document.getElementById('agg').value = initialMode;
 
-        // Draw once with defaults (All + Monthly)
         refreshView();
 
         document.getElementById('agg').addEventListener('change', e => {
           draw(e.target.value);
         });
 
-        // Since buttons
         document.querySelectorAll('.range-btn').forEach(btn => {
           btn.addEventListener('click', () => {
             document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
