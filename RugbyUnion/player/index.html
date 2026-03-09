@@ -164,7 +164,7 @@
     }
 
     .result{ font-weight: 700; }
-    .result.win{  color: #3ad542; }
+    .result.win{ color: #3ad542; }
     .result.loss{ color: #dc2222; }
     .result.draw{ color: #e5b523; }
 
@@ -429,15 +429,83 @@
     return { lo: min - pad, hi: max + pad };
   }
 
+  function clamp(n, min, max) {
+    return Math.max(min, Math.min(max, n));
+  }
+
+  function smoothSeriesY(values, windowSize = 5) {
+    if (!Array.isArray(values) || values.length < 3 || windowSize <= 1) {
+      return values.slice();
+    }
+
+    const size = windowSize % 2 === 0 ? windowSize + 1 : windowSize;
+    const half = Math.floor(size / 2);
+    const out = [];
+
+    for (let i = 0; i < values.length; i++) {
+      if (!Number.isFinite(values[i])) {
+        out.push(values[i]);
+        continue;
+      }
+
+      let sum = 0;
+      let count = 0;
+
+      for (let j = i - half; j <= i + half; j++) {
+        const idx = clamp(j, 0, values.length - 1);
+        const v = values[idx];
+        if (Number.isFinite(v)) {
+          sum += v;
+          count++;
+        }
+      }
+
+      out.push(count ? (sum / count) : values[i]);
+    }
+
+    return out;
+  }
+
   function getTeamColour(teamName) {
     return TEAM_COLOURS[teamName] || '#2F80ED';
   }
 
-  function getStrokeColour(teamColour, bgColour) {
-    const c = String(teamColour).toUpperCase();
-    if (c === '#000000' || c === '#111111' || c === '#1A1A1A') return '#8A8F98';
-    if (c === '#FFFFFF' || c === '#F2F2F2') return '#4A4F57';
-    if (c === '#FFCD00' || c === '#FFD700' || c === '#FFD100' || c === '#FCD116' || c === '#FFDF00') return '#4A4F57';
+  function needsOutline(teamColour) {
+    const c = String(teamColour || '').toUpperCase();
+    return [
+      '#000000',
+      '#111111',
+      '#1A1A1A',
+      '#FFFFFF',
+      '#F2F2F2',
+      '#D9D9D9',
+      '#D6DCE5',
+      '#BFC5CC',
+      '#FFCD00',
+      '#FFD700',
+      '#FFD100',
+      '#FCD116',
+      '#FFDF00',
+      '#FCDC04',
+      '#FDB913'
+    ].includes(c);
+  }
+
+  function getOutlineColour(teamColour) {
+    const c = String(teamColour || '').toUpperCase();
+
+    if (['#000000', '#111111', '#1A1A1A'].includes(c)) {
+      return 'rgba(185, 190, 198, 0.75)';
+    }
+
+    if (['#FFFFFF', '#F2F2F2', '#D9D9D9', '#D6DCE5', '#BFC5CC'].includes(c)) {
+      return 'rgba(70, 75, 84, 0.9)';
+    }
+
+    if (['#FFCD00', '#FFD700', '#FFD100', '#FCD116', '#FFDF00', '#FCDC04', '#FDB913'].includes(c)) {
+      return 'rgba(70, 75, 84, 0.9)';
+    }
+
     return 'rgba(210,210,210,0.45)';
   }
 
@@ -452,7 +520,10 @@
 
     const xs = data.map(p => p.x);
     const ysAll = data.map(p => p.y);
-    const ys = ysAll.filter(Number.isFinite);
+    const ysDisplay = (mode === 'daily')
+      ? smoothSeriesY(ysAll, 3)
+      : (mode === 'monthly' ? smoothSeriesY(ysAll, 5) : smoothSeriesY(ysAll, 3));
+    const ys = ysDisplay.filter(Number.isFinite);
     const competitions = data.map(p => p.competition || '');
 
     if (!xs.length || !ys.length) {
@@ -483,44 +554,47 @@
       });
     }
 
-    const hoverExtra = (mode === 'daily') ? '<br>%{customdata}' : '';
     const bg = getComputedStyle(document.body).backgroundColor;
     const teamColour = getTeamColour(CURRENT_TEAM?.name);
-    const strokeColour = getStrokeColour(teamColour, bg);
+    const outlineRequired = needsOutline(teamColour);
+    const outlineColour = getOutlineColour(teamColour);
 
-    const outlineTrace = {
+    const traces = [];
+
+    if (outlineRequired) {
+      traces.push({
+        type: 'scatter',
+        x: xs,
+        y: ysDisplay,
+        mode: 'lines',
+        line: {
+          width: 7,
+          color: outlineColour,
+          shape: 'linear'
+        },
+        hoverinfo: 'skip',
+        showlegend: false,
+        connectgaps: true
+      });
+    }
+
+    traces.push({
       type: 'scatter',
       x: xs,
-      y: ysAll,
-      customdata: competitions,
-      mode: 'lines',
-      line: {
-        width: 7,
-        color: strokeColour,
-        shape: 'linear'
-      },
-      hoverinfo: 'skip',
-      showlegend: false,
-      connectgaps: true
-    };
-
-    const mainTrace = {
-      type: 'scatter',
-      x: xs,
-      y: ysAll,
-      customdata: competitions,
+      y: ysDisplay,
+      customdata: ysAll.map((rating, i) => [competitions[i], rating]),
       mode: 'lines',
       line: {
         width: 3,
         color: teamColour,
         shape: 'linear'
       },
-      hovertemplate: `%{x}<br>%{y:.0f} Elo${hoverExtra}<extra></extra>`,
+      hovertemplate: `%{x}<br>%{customdata[1]:.0f} Elo${mode === 'daily' ? '<br>%{customdata[0]}' : ''}<extra></extra>`,
       showlegend: false,
       connectgaps: true
-    };
+    });
 
-    Plotly.newPlot('chart', [outlineTrace, mainTrace], {
+    Plotly.newPlot('chart', traces, {
       margin: { l: 60, r: 20, t: 10, b: 45 },
       xaxis: { type: 'date' },
       yaxis: { title: 'Rating', range: [bounds.lo, bounds.hi] },
