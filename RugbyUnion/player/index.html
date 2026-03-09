@@ -7,9 +7,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-1JXCC4EDPY');
   </script>
+
   <meta charset="utf-8">
   <title>J-Ratings: Rugby Union</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,7 +90,7 @@
       display: flex;
       gap: 14px;
       align-items: center;
-      text-align: centre;
+      text-align: center;
     }
 
     .team-stats .stat{
@@ -199,11 +199,11 @@
     @media (max-width: 700px){
       .header-row{
         grid-template-columns: 1fr;
-        justify-items: centre;
-        text-align: centre;
+        justify-items: center;
+        text-align: center;
       }
-      .toolbar{ justify-self: centre; }
-      .team-stats{ justify-self: centre; }
+      .toolbar{ justify-self: center; }
+      .team-stats{ justify-self: center; }
     }
 
     .header-row,
@@ -264,9 +264,9 @@
           </div>
 
           <div class="range-buttons" role="group" aria-label="Time range">
-<button type="button" class="range-btn is-active" data-since="">All</button>
-<button type="button" class="range-btn" data-since="2000">Since 2000</button>
-<button type="button" class="range-btn" data-since="2020">Since 2020</button>
+            <button type="button" class="range-btn is-active" data-since="">All</button>
+            <button type="button" class="range-btn" data-since="2000">Since 2000</button>
+            <button type="button" class="range-btn" data-since="2020">Since 2020</button>
           </div>
         </div>
       </div>
@@ -308,9 +308,57 @@
   const GAMES_URL = id => `../data/games/${encodeURIComponent(id)}.json`;
   const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
 
+  const TEAM_COLOURS = {
+    "New Zealand":"#000000",
+    "South Africa":"#006B3C",
+    "Ireland":"#169B62",
+    "Australia":"#FFCD00",
+    "England":"#FFFFFF",
+    "France":"#002395",
+    "Wales":"#D30731",
+    "Scotland":"#1E90FF",
+    "Argentina":"#75AADB",
+    "Fiji":"#000000",
+    "Japan":"#C8102E",
+    "Samoa":"#1E90FF",
+    "Italy":"#0066CC",
+    "Canada":"#D52B1E",
+    "Georgia":"#C8102E",
+    "Germany":"#000000",
+    "Romania":"#FFD700",
+    "Belgium":"#FFD100",
+    "Netherlands":"#FF7F00",
+    "Tonga":"#C8102E",
+    "Uruguay":"#7EC0EE",
+    "United States":"#1F3A93",
+    "Hong Kong":"#C8102E",
+    "Portugal":"#C8102E",
+    "Namibia":"#003DA5",
+    "Paraguay":"#D52B1E",
+    "Zimbabwe":"#FFD700",
+    "Brazil":"#FFDF00",
+    "Sri Lanka":"#8D153A",
+    "Spain":"#C60B1E",
+    "Kazakhstan":"#22D3EE",
+    "Malaysia":"#FFD700",
+    "India":"#FF9933",
+    "South Korea":"#E60026",
+    "Chile":"#D52B1E",
+    "United Arab Emirates":"#C8102E",
+    "Qatar":"#8A1538",
+    "Poland":"#E31E24",
+    "Kenya":"#C8102E",
+    "Algeria":"#00A86B",
+    "Switzerland":"#D52B1E",
+    "Uganda":"#FCDC04",
+    "Burkina Faso":"#EF2B2D",
+    "Colombia":"#FCD116"
+  };
+
   let RAW = [];
   let SINCE_YEAR = null;
   let AGG_MODE = 'monthly';
+  let CURRENT_TEAM = null;
 
   function normalise(series, dedupeByDay = false) {
     const s = series
@@ -381,6 +429,18 @@
     return { lo: min - pad, hi: max + pad };
   }
 
+  function getTeamColour(teamName) {
+    return TEAM_COLOURS[teamName] || '#2F80ED';
+  }
+
+  function getStrokeColour(teamColour, bgColour) {
+    const c = String(teamColour).toUpperCase();
+    if (c === '#000000' || c === '#111111' || c === '#1A1A1A') return '#8A8F98';
+    if (c === '#FFFFFF' || c === '#F2F2F2') return '#4A4F57';
+    if (c === '#FFCD00' || c === '#FFD700' || c === '#FFD100' || c === '#FCD116' || c === '#FFDF00') return '#4A4F57';
+    return 'rgba(210,210,210,0.45)';
+  }
+
   function draw(mode) {
     AGG_MODE = mode;
 
@@ -424,21 +484,43 @@
     }
 
     const hoverExtra = (mode === 'daily') ? '<br>%{customdata}' : '';
+    const bg = getComputedStyle(document.body).backgroundColor;
+    const teamColour = getTeamColour(CURRENT_TEAM?.name);
+    const strokeColour = getStrokeColour(teamColour, bg);
 
-    const trace = {
+    const outlineTrace = {
       type: 'scatter',
       x: xs,
       y: ysAll,
       customdata: competitions,
-      mode: (mode === 'daily') ? 'lines' : 'lines',
-      line: { width: 3, shape: 'linear' },
-      marker: (mode === 'daily') ? { size: 0 } : { size: 6 },
-      hovertemplate: `%{x}<br>%{y:.0f} Elo${hoverExtra}<extra></extra>`,
+      mode: 'lines',
+      line: {
+        width: 7,
+        color: strokeColour,
+        shape: 'linear'
+      },
+      hoverinfo: 'skip',
+      showlegend: false,
       connectgaps: true
     };
 
-    const bg = getComputedStyle(document.body).backgroundColor;
-    Plotly.newPlot('chart', [trace], {
+    const mainTrace = {
+      type: 'scatter',
+      x: xs,
+      y: ysAll,
+      customdata: competitions,
+      mode: 'lines',
+      line: {
+        width: 3,
+        color: teamColour,
+        shape: 'linear'
+      },
+      hovertemplate: `%{x}<br>%{y:.0f} Elo${hoverExtra}<extra></extra>`,
+      showlegend: false,
+      connectgaps: true
+    };
+
+    Plotly.newPlot('chart', [outlineTrace, mainTrace], {
       margin: { l: 60, r: 20, t: 10, b: 45 },
       xaxis: { type: 'date' },
       yaxis: { title: 'Rating', range: [bounds.lo, bounds.hi] },
@@ -603,6 +685,7 @@
       const me = teams.find(t => t.id === idRaw);
       if (!me) throw new Error('team id not in teams.json');
 
+      CURRENT_TEAM = me;
       document.getElementById('pname').textContent = me.name;
 
       const histJson = await histRes.json();
