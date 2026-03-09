@@ -171,10 +171,12 @@
     <a href="https://www.rugbydatabase.co.nz/">RugbyDatabase</a>
   </div>
 
-  <div>
-    Recent match data provided via
-    <a href="https://www.thesportsdb.com/">TheSportsDB API</a>
-  </div>
+<div>
+  Recent match data provided via
+  <a href="https://www.thesportsdb.com/">TheSportsDB API</a>
+</div>
+
+<div id="last-updated"></div>
 </footer>
 
 </main>
@@ -182,6 +184,7 @@
 <script>
 const DATA_URL = '../data/teams.json';
 const ERA_STARTS_URL = '../data/era_starts.json';
+const META_URL = '../data/meta.json';
 const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
 const TEAM_COLOURS = {
@@ -614,16 +617,29 @@ function setupCompareButton() {
 
 async function load() {
   try {
-    const [teamsRes, eraRes] = await Promise.all([
+    const [teamsRes, eraRes, metaRes] = await Promise.all([
       fetch(DATA_URL, { cache: 'no-cache' }),
-      fetch(ERA_STARTS_URL, { cache: 'no-cache' })
+      fetch(ERA_STARTS_URL, { cache: 'no-cache' }),
+      fetch(META_URL, { cache: 'no-cache' })
     ]);
 
     if (!teamsRes.ok) throw new Error('Failed to load teams.json');
     if (!eraRes.ok) throw new Error('Failed to load era_starts.json');
+    if (!metaRes.ok) throw new Error('Failed to load meta.json');
 
     const teamsData = await teamsRes.json();
     const eraData = await eraRes.json();
+    const metaData = await metaRes.json();
+
+    if (metaData.latest_game_date) {
+      const d = new Date(metaData.latest_game_date);
+      document.getElementById('last-updated').textContent =
+        `Last updated: ${d.toLocaleDateString('en-GB', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        })}`;
+    }
 
     const latestTournamentById = new Map();
 
@@ -655,7 +671,6 @@ async function load() {
       `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
   }
 }
-
 document.getElementById('compare-agg').addEventListener('change', () => {
   if (lastCompared.length) buildComparison(lastCompared);
 });
