@@ -355,9 +355,9 @@
     "Colombia":"#FCD116"
   };
 
-  const OUTLINE_COLOUR = '#dbdbdb';
-  const OUTLINE_WIDTH = 8;
-  const MAIN_LINE_WIDTH = 5;
+  const OUTLINE_COLOUR = 'rgba(235,235,235,0.95)';
+  const OUTLINE_WIDTH = 7;
+  const MAIN_LINE_WIDTH = 4.5;
 
   let RAW = [];
   let SINCE_YEAR = null;
@@ -534,7 +534,8 @@
       line: {
         width: OUTLINE_WIDTH,
         color: OUTLINE_COLOUR,
-        shape: 'linear'
+        shape: 'linear',
+        simplify: false
       },
       hoverinfo: 'skip',
       showlegend: false,
@@ -550,7 +551,8 @@
       line: {
         width: MAIN_LINE_WIDTH,
         color: teamColour,
-        shape: 'linear'
+        shape: 'linear',
+        simplify: false
       },
       hovertemplate: `%{x}<br>%{customdata[1]:.0f} Elo${mode === 'daily' ? '<br>%{customdata[0]}' : ''}<extra></extra>`,
       showlegend: false,
