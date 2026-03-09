@@ -319,7 +319,7 @@
     "Scotland":"#1E90FF",
     "Argentina":"#75AADB",
     "Fiji":"#000000",
-    "Japan":"#FFFFFF",
+    "Japan":"#f5c9c4",
     "Samoa":"#1E90FF",
     "Italy":"#0066CC",
     "Canada":"#D52B1E",
@@ -475,8 +475,8 @@
   }
 
   function getSmoothedValues(values, mode) {
-    if (mode === 'daily') return smoothSeriesY(values, 7);
-    if (mode === 'monthly') return smoothSeriesY(values, 9);
+    if (mode === 'daily') return smoothSeriesY(values, 14);
+    if (mode === 'monthly') return smoothSeriesY(values, 18);
     return smoothSeriesY(values, 5);
   }
 
