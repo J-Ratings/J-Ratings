@@ -355,6 +355,10 @@
     "Colombia":"#FCD116"
   };
 
+  const OUTLINE_COLOUR = '#e6e6e6';
+  const OUTLINE_WIDTH = 5;
+  const MAIN_LINE_WIDTH = 2.6;
+
   let RAW = [];
   let SINCE_YEAR = null;
   let AGG_MODE = 'monthly';
@@ -433,7 +437,7 @@
     return Math.max(min, Math.min(max, n));
   }
 
-  function smoothSeriesY(values, windowSize = 5) {
+  function smoothSeriesY(values, windowSize = 7) {
     if (!Array.isArray(values) || values.length < 3 || windowSize <= 1) {
       return values.slice();
     }
@@ -470,43 +474,10 @@
     return TEAM_COLOURS[teamName] || '#2F80ED';
   }
 
-  function needsOutline(teamColour) {
-    const c = String(teamColour || '').toUpperCase();
-    return [
-      '#000000',
-      '#111111',
-      '#1A1A1A',
-      '#FFFFFF',
-      '#F2F2F2',
-      '#D9D9D9',
-      '#D6DCE5',
-      '#BFC5CC',
-      '#FFCD00',
-      '#FFD700',
-      '#FFD100',
-      '#FCD116',
-      '#FFDF00',
-      '#FCDC04',
-      '#FDB913'
-    ].includes(c);
-  }
-
-  function getOutlineColour(teamColour) {
-    const c = String(teamColour || '').toUpperCase();
-
-    if (['#000000', '#111111', '#1A1A1A'].includes(c)) {
-      return 'rgba(185, 190, 198, 0.75)';
-    }
-
-    if (['#FFFFFF', '#F2F2F2', '#D9D9D9', '#D6DCE5', '#BFC5CC'].includes(c)) {
-      return 'rgba(70, 75, 84, 0.9)';
-    }
-
-    if (['#FFCD00', '#FFD700', '#FFD100', '#FCD116', '#FFDF00', '#FCDC04', '#FDB913'].includes(c)) {
-      return 'rgba(70, 75, 84, 0.9)';
-    }
-
-    return 'rgba(210,210,210,0.45)';
+  function getSmoothedValues(values, mode) {
+    if (mode === 'daily') return smoothSeriesY(values, 5);
+    if (mode === 'monthly') return smoothSeriesY(values, 7);
+    return smoothSeriesY(values, 5);
   }
 
   function draw(mode) {
@@ -520,9 +491,7 @@
 
     const xs = data.map(p => p.x);
     const ysAll = data.map(p => p.y);
-    const ysDisplay = (mode === 'daily')
-      ? smoothSeriesY(ysAll, 3)
-      : (mode === 'monthly' ? smoothSeriesY(ysAll, 5) : smoothSeriesY(ysAll, 3));
+    const ysDisplay = getSmoothedValues(ysAll, mode);
     const ys = ysDisplay.filter(Number.isFinite);
     const competitions = data.map(p => p.competition || '');
 
@@ -556,45 +525,39 @@
 
     const bg = getComputedStyle(document.body).backgroundColor;
     const teamColour = getTeamColour(CURRENT_TEAM?.name);
-    const outlineRequired = needsOutline(teamColour);
-    const outlineColour = getOutlineColour(teamColour);
 
-    const traces = [];
+    const outlineTrace = {
+      type: 'scatter',
+      x: xs,
+      y: ysDisplay,
+      mode: 'lines',
+      line: {
+        width: OUTLINE_WIDTH,
+        color: OUTLINE_COLOUR,
+        shape: 'linear'
+      },
+      hoverinfo: 'skip',
+      showlegend: false,
+      connectgaps: true
+    };
 
-    if (outlineRequired) {
-      traces.push({
-        type: 'scatter',
-        x: xs,
-        y: ysDisplay,
-        mode: 'lines',
-        line: {
-          width: 7,
-          color: outlineColour,
-          shape: 'linear'
-        },
-        hoverinfo: 'skip',
-        showlegend: false,
-        connectgaps: true
-      });
-    }
-
-    traces.push({
+    const mainTrace = {
       type: 'scatter',
       x: xs,
       y: ysDisplay,
       customdata: ysAll.map((rating, i) => [competitions[i], rating]),
       mode: 'lines',
       line: {
-        width: 3,
+        width: MAIN_LINE_WIDTH,
         color: teamColour,
         shape: 'linear'
       },
       hovertemplate: `%{x}<br>%{customdata[1]:.0f} Elo${mode === 'daily' ? '<br>%{customdata[0]}' : ''}<extra></extra>`,
       showlegend: false,
       connectgaps: true
-    });
+    };
 
-    Plotly.newPlot('chart', traces, {
+    Plotly.newPlot('chart', [outlineTrace, mainTrace], {
       margin: { l: 60, r: 20, t: 10, b: 45 },
       xaxis: { type: 'date' },
       yaxis: { title: 'Rating', range: [bounds.lo, bounds.hi] },
