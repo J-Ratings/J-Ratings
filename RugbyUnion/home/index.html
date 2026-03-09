@@ -631,17 +631,30 @@ async function load() {
     const eraData = await eraRes.json();
     const metaData = await metaRes.json();
 
-    if (metaData.latest_game_date) {
-      const d = new Date(metaData.latest_game_date);
-      document.getElementById('last-updated').textContent =
-        `Last updated: ${d.toLocaleDateString('en-GB', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric'
-        })}`;
-    }
+const lastUpdatedEl = document.getElementById('last-updated');
 
-    const latestTournamentById = new Map();
+if (lastUpdatedEl) {
+  if (metaData.latest_game_date) {
+    const parts = String(metaData.latest_game_date).split('-');
+    const d = new Date(
+      Number(parts[0]),
+      Number(parts[1]) - 1,
+      Number(parts[2])
+    );
+
+    lastUpdatedEl.textContent =
+      `Last updated: ${d.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      })}`;
+  } else {
+    lastUpdatedEl.textContent = 'Last updated: unavailable';
+  }
+}
+
+
+const latestTournamentById = new Map();
 
     state.liveRows = teamsData
       .filter(d => d && d.id && d.name && Number.isFinite(+d.rating))
@@ -667,9 +680,14 @@ async function load() {
 
     if (state.mode === 'live') applyFilter();
   } catch (err) {
-    document.querySelector('#teams tbody').innerHTML =
-      `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
+  const lastUpdatedEl = document.getElementById('last-updated');
+  if (lastUpdatedEl) {
+    lastUpdatedEl.textContent = `Last updated: error (${err.message})`;
   }
+
+  document.querySelector('#teams tbody').innerHTML =
+    `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
+}
 }
 document.getElementById('compare-agg').addEventListener('change', () => {
   if (lastCompared.length) buildComparison(lastCompared);
