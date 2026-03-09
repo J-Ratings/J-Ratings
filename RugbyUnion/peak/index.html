@@ -174,9 +174,9 @@ const TEAM_COLOURS = {
   "Colombia":"#FCD116"
 };
 
-const OUTLINE_COLOUR = '#dbdbdb';
-const OUTLINE_WIDTH = 8;
-const MAIN_LINE_WIDTH = 5;
+const OUTLINE_COLOUR = 'rgba(235,235,235,0.95)';
+const OUTLINE_WIDTH = 7;
+const MAIN_LINE_WIDTH = 4.5;
 
 const state = { rows: [], filtered: [] };
 const histCache = new Map();
@@ -373,33 +373,40 @@ async function buildComparison(teams) {
     ymin = Math.min(ymin, ...finiteY);
     ymax = Math.max(ymax, ...finiteY);
 
-    traces.push({
-      type: 'scatter',
-      x: xs,
-      y: ysDisplay,
-      mode: 'lines',
-      line: { width: OUTLINE_WIDTH, color: OUTLINE_COLOUR, shape: 'linear' },
-      hoverinfo: 'skip',
-      showlegend: false,
-      connectgaps: true
-    });
+traces.push({
+  type: 'scatter',
+  x: xs,
+  y: ysDisplay,
+  mode: 'lines',
+  line: {
+    width: OUTLINE_WIDTH,
+    color: OUTLINE_COLOUR,
+    shape: 'linear',
+    simplify: false
+  },
+  hoverinfo: 'skip',
+  showlegend: false,
+  connectgaps: true
+});
 
-    traces.push({
-      type: 'scatter',
-      name: t.name,
-      x: xs,
-      y: ysDisplay,
-      customdata: ysAll.map((rating, i) => [tournaments[i], rating]),
-      mode: 'lines',
-      line: {
-        width: MAIN_LINE_WIDTH,
-        shape: 'linear',
-        color: getTeamColour(t.name)
-      },
-      hovertemplate: '%{x}<br>%{customdata[1]:.0f} Elo<extra>' + t.name + '</extra>',
-      showlegend: true,
-      connectgaps: true
-    });
+
+traces.push({
+  type: 'scatter',
+  name: t.name,
+  x: xs,
+  y: ysDisplay,
+  customdata: ysAll.map((rating, i) => [tournaments[i], rating]),
+  mode: 'lines',
+  line: {
+    width: MAIN_LINE_WIDTH,
+    shape: 'linear',
+    color: getTeamColour(t.name),
+    simplify: false
+  },
+  hovertemplate: '%{x}<br>%{customdata[1]:.0f} Elo<extra>' + t.name + '</extra>',
+  showlegend: true,
+  connectgaps: true
+});
   }
 
   if (!traces.length) {

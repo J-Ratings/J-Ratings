@@ -142,9 +142,9 @@ const TEAM_COLOURS = {
   "Colombia":"#FCD116"
 };
 
-const OUTLINE_COLOUR = '#dbdbdb';
-const OUTLINE_WIDTH = 8;
-const MAIN_LINE_WIDTH = 5;
+const OUTLINE_COLOUR = 'rgba(235,235,235,0.95)';
+const OUTLINE_WIDTH = 7;
+const MAIN_LINE_WIDTH = 4.5;
 
 const LEGEND_FONT_SIZE = 16;
 const LEGEND_ITEM_GAP  = 20;
@@ -382,39 +382,42 @@ function drawChart() {
     const tournaments = data.map(p => p.tournament || '');
     const teamColour = getTeamColour(s.name);
 
-    traces.push({
-      type: 'scatter',
-      x: xs,
-      y: ysDisplay,
-      mode: 'lines',
-      line: {
-        width: OUTLINE_WIDTH,
-        color: OUTLINE_COLOUR,
-        shape: 'linear'
-      },
-      hoverinfo: 'skip',
-      showlegend: false,
-      connectgaps: true
-    });
+traces.push({
+  type: 'scatter',
+  x: xs,
+  y: ysDisplay,
+  mode: 'lines',
+  line: {
+    width: OUTLINE_WIDTH,
+    color: OUTLINE_COLOUR,
+    shape: 'linear',
+    simplify: false
+  },
+  hoverinfo: 'skip',
+  showlegend: false,
+  connectgaps: true
+});
 
-    traces.push({
-      type: 'scatter',
-      name: s.name,
-      x: xs,
-      y: ysDisplay,
-      customdata: ysAll.map((rating, i) => [tournaments[i], rating]),
-      mode: 'lines',
-      line: {
-        width: MAIN_LINE_WIDTH,
-        color: teamColour,
-        shape: 'linear'
-      },
-      hovertemplate: (mode === 'daily')
-        ? '%{x}<br>%{customdata[1]:.0f} Elo<br>%{customdata[0]}<extra></extra>'
-        : '%{x}<br>%{customdata[1]:.0f} Elo<extra></extra>',
-      showlegend: true,
-      connectgaps: true
-    });
+traces.push({
+  type: 'scatter',
+  name: s.name,
+  x: xs,
+  y: ysDisplay,
+  customdata: ysAll.map((rating, i) => [tournaments[i], rating]),
+  mode: 'lines',
+  line: {
+    width: MAIN_LINE_WIDTH,
+    color: teamColour,
+    shape: 'linear',
+    simplify: false
+  },
+  hovertemplate: (mode === 'daily')
+    ? '%{x}<br>%{customdata[1]:.0f} Elo<br>%{customdata[0]}<extra></extra>'
+    : '%{x}<br>%{customdata[1]:.0f} Elo<extra></extra>',
+  showlegend: true,
+  connectgaps: true
+});
+
   }
 
   const allY = traces.flatMap(t => t.y || []).filter(Number.isFinite);
