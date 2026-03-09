@@ -355,9 +355,9 @@
     "Colombia":"#FCD116"
   };
 
-  const OUTLINE_COLOUR = '#e6e6e6';
+  const OUTLINE_COLOUR = '#FFFFFF';
   const OUTLINE_WIDTH = 5;
-  const MAIN_LINE_WIDTH = 2.6;
+  const MAIN_LINE_WIDTH = 5;
 
   let RAW = [];
   let SINCE_YEAR = null;
@@ -475,8 +475,8 @@
   }
 
   function getSmoothedValues(values, mode) {
-    if (mode === 'daily') return smoothSeriesY(values, 5);
-    if (mode === 'monthly') return smoothSeriesY(values, 7);
+    if (mode === 'daily') return smoothSeriesY(values, 7);
+    if (mode === 'monthly') return smoothSeriesY(values, 9);
     return smoothSeriesY(values, 5);
   }
 
