@@ -7,7 +7,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-1JXCC4EDPY');
   </script>
   <meta charset="utf-8">
@@ -125,296 +124,413 @@
 </div>
 
 <script>
-  const DATA_URL = '../data/teams.json';
-  const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
+const DATA_URL = '../data/teams.json';
+const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
-  const state = { rows: [], filtered: [] };
-  const histCache = new Map();
-  let lastCompared = [];
+const TEAM_COLOURS = {
+  "New Zealand":"#000000",
+  "South Africa":"#006B3C",
+  "Ireland":"#169B62",
+  "Australia":"#FFCD00",
+  "England":"#FFFFFF",
+  "France":"#002395",
+  "Wales":"#D30731",
+  "Scotland":"#1E90FF",
+  "Argentina":"#75AADB",
+  "Fiji":"#000000",
+  "Japan":"#f5c9c4",
+  "Samoa":"#1E90FF",
+  "Italy":"#0066CC",
+  "Canada":"#D52B1E",
+  "Georgia":"#C8102E",
+  "Germany":"#000000",
+  "Romania":"#FFD700",
+  "Belgium":"#FFD100",
+  "Netherlands":"#FF7F00",
+  "Tonga":"#C8102E",
+  "Uruguay":"#7EC0EE",
+  "United States":"#1F3A93",
+  "Hong Kong":"#C8102E",
+  "Portugal":"#C8102E",
+  "Namibia":"#003DA5",
+  "Paraguay":"#D52B1E",
+  "Zimbabwe":"#FFD700",
+  "Brazil":"#FFDF00",
+  "Sri Lanka":"#8D153A",
+  "Spain":"#C60B1E",
+  "Kazakhstan":"#22D3EE",
+  "Malaysia":"#FFD700",
+  "India":"#FF9933",
+  "South Korea":"#E60026",
+  "Chile":"#D52B1E",
+  "United Arab Emirates":"#C8102E",
+  "Qatar":"#8A1538",
+  "Poland":"#E31E24",
+  "Kenya":"#C8102E",
+  "Algeria":"#00A86B",
+  "Switzerland":"#D52B1E",
+  "Uganda":"#FCDC04",
+  "Burkina Faso":"#EF2B2D",
+  "Colombia":"#FCD116"
+};
 
-  function render() {
-    const tbody = document.querySelector('#teams tbody');
-    tbody.innerHTML = '';
-    state.filtered.forEach((r, i) => {
-      const tr = document.createElement('tr');
+const OUTLINE_COLOUR = '#dbdbdb';
+const OUTLINE_WIDTH = 10;
+const MAIN_LINE_WIDTH = 5;
 
-      const tdRank = document.createElement('td');
-      tdRank.textContent = i + 1;
-      tr.appendChild(tdRank);
+const state = { rows: [], filtered: [] };
+const histCache = new Map();
+let lastCompared = [];
 
-      const tdName = document.createElement('td');
-      const a = document.createElement('a');
-      a.href = `../player/?id=${encodeURIComponent(r.id)}`;
-      a.textContent = r.name;
-      tdName.appendChild(a);
-      tr.appendChild(tdName);
+function render() {
+  const tbody = document.querySelector('#teams tbody');
+  tbody.innerHTML = '';
+  state.filtered.forEach((r, i) => {
+    const tr = document.createElement('tr');
 
-      const tdPeak = document.createElement('td');
-      tdPeak.className = 'right';
-      tdPeak.textContent = r.peak;
-      tr.appendChild(tdPeak);
+    const tdRank = document.createElement('td');
+    tdRank.textContent = i + 1;
+    tr.appendChild(tdRank);
 
-      const tdDate = document.createElement('td');
-      tdDate.textContent = r.peak_date || '';
-      tr.appendChild(tdDate);
+    const tdName = document.createElement('td');
+    const a = document.createElement('a');
+    a.href = `../player/?id=${encodeURIComponent(r.id)}`;
+    a.textContent = r.name;
+    tdName.appendChild(a);
+    tr.appendChild(tdName);
 
-      tbody.appendChild(tr);
+    const tdPeak = document.createElement('td');
+    tdPeak.className = 'right';
+    tdPeak.textContent = r.peak;
+    tr.appendChild(tdPeak);
+
+    const tdDate = document.createElement('td');
+    tdDate.textContent = r.peak_date || '';
+    tr.appendChild(tdDate);
+
+    tbody.appendChild(tr);
+  });
+
+  const count = document.getElementById('count');
+  if (count) count.textContent = `${state.filtered.length} teams`;
+}
+
+function applyFilter() {
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  state.filtered = q
+    ? state.rows.filter(r => r.name.toLowerCase().includes(q))
+    : state.rows.slice();
+  render();
+  hideCompare();
+}
+
+async function fetchHistoryFor(id) {
+  if (histCache.has(id)) return histCache.get(id);
+  try {
+    const res = await fetch(`../data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+    if (!res.ok) return null;
+    const rows = await res.json();
+    histCache.set(id, rows);
+    return rows;
+  } catch {
+    return null;
+  }
+}
+
+function normalise(series, dedupeByDay = false) {
+  const s = series
+    .filter(p => p && p.x && Number.isFinite(p.y))
+    .map(p => ({
+      x: p.x,
+      y: +p.y,
+      tournament: p.tournament || p.competition || ''
+    }))
+    .sort((a, b) => new Date(a.x) - new Date(b.x));
+
+  if (!dedupeByDay) return s;
+
+  const out = [];
+  let lastKey = null;
+  for (const p of s) {
+    const d = new Date(p.x);
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    if (key !== lastKey) out.push(p);
+    else out[out.length - 1] = p;
+    lastKey = key;
+  }
+  return out;
+}
+
+function aggregate(series, mode) {
+  if (mode === 'daily') return normalise(series, true);
+
+  const buckets = Object.create(null);
+  for (const p of series) {
+    const d = new Date(p.x);
+    const key = (mode === 'monthly')
+      ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
+      : `${d.getFullYear()}`;
+    (buckets[key] ||= []).push(p);
+  }
+
+  const out = Object.keys(buckets).sort().map(k => {
+    const pts = buckets[k].filter(p => Number.isFinite(p.y));
+    const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
+    const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
+    const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
+    return { x, y: avg, tournament: lastTournament };
+  });
+
+  return normalise(out, false);
+}
+
+function clamp(n, min, max) {
+  return Math.max(min, Math.min(max, n));
+}
+
+function smoothSeriesY(values, windowSize = 7) {
+  if (!Array.isArray(values) || values.length < 3 || windowSize <= 1) {
+    return values.slice();
+  }
+
+  const size = windowSize % 2 === 0 ? windowSize + 1 : windowSize;
+  const half = Math.floor(size / 2);
+  const out = [];
+
+  for (let i = 0; i < values.length; i++) {
+    if (!Number.isFinite(values[i])) {
+      out.push(values[i]);
+      continue;
+    }
+
+    let sum = 0;
+    let count = 0;
+
+    for (let j = i - half; j <= i + half; j++) {
+      const idx = clamp(j, 0, values.length - 1);
+      const v = values[idx];
+      if (Number.isFinite(v)) {
+        sum += v;
+        count++;
+      }
+    }
+
+    out.push(count ? (sum / count) : values[i]);
+  }
+
+  return out;
+}
+
+function getSmoothedValues(values, mode) {
+  if (mode === 'daily') return smoothSeriesY(values, 14);
+  if (mode === 'monthly') return smoothSeriesY(values, 18);
+  return smoothSeriesY(values, 5);
+}
+
+function getTeamColour(teamName) {
+  return TEAM_COLOURS[teamName] || '#2F80ED';
+}
+
+function hideCompare() {
+  document.getElementById('compare-wrap').style.display = 'none';
+  document.getElementById('compare-chart').innerHTML = '';
+  lastCompared = [];
+}
+
+async function buildComparison(teams) {
+  lastCompared = teams.slice();
+
+  const wrap = document.getElementById('compare-wrap');
+  const chart = document.getElementById('compare-chart');
+  wrap.style.display = 'block';
+  chart.innerHTML = 'Loading…';
+
+  const mode = 'monthly';
+  const traces = [];
+  let ymin = Infinity;
+  let ymax = -Infinity;
+
+  for (const t of teams) {
+    const hist = await fetchHistoryFor(t.id);
+    if (!hist || !hist.length) continue;
+
+    const raw = hist.map(d => ({
+      x: d.date,
+      y: Number(d.rating),
+      tournament: d.tournament || d.competition || ''
+    }));
+
+    const data = aggregate(raw, mode);
+    const xs = data.map(pt => pt.x);
+    const ysAll = data.map(pt => pt.y);
+    const ysDisplay = getSmoothedValues(ysAll, mode);
+    const tournaments = data.map(pt => pt.tournament || '');
+    if (!xs.length || !ysDisplay.length) continue;
+
+    const finiteY = ysDisplay.filter(Number.isFinite);
+    if (!finiteY.length) continue;
+
+    ymin = Math.min(ymin, ...finiteY);
+    ymax = Math.max(ymax, ...finiteY);
+
+    traces.push({
+      type: 'scatter',
+      x: xs,
+      y: ysDisplay,
+      mode: 'lines',
+      line: { width: OUTLINE_WIDTH, color: OUTLINE_COLOUR, shape: 'linear' },
+      hoverinfo: 'skip',
+      showlegend: false,
+      connectgaps: true
     });
 
-    const count = document.getElementById('count');
-    if (count) count.textContent = `${state.filtered.length} teams`;
-  }
-
-  function applyFilter() {
-    const q = document.getElementById('q').value.trim().toLowerCase();
-    state.filtered = q
-      ? state.rows.filter(r => r.name.toLowerCase().includes(q))
-      : state.rows.slice();
-    render();
-    hideCompare();
-  }
-
-  async function fetchHistoryFor(id) {
-    if (histCache.has(id)) return histCache.get(id);
-    try {
-      const res = await fetch(`../data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
-      if (!res.ok) return null;
-      const rows = await res.json();
-      histCache.set(id, rows);
-      return rows;
-    } catch {
-      return null;
-    }
-  }
-
-  function normalise(series, dedupeByDay = false) {
-    const s = series
-      .filter(p => p && p.x && Number.isFinite(p.y))
-      .map(p => ({
-        x: p.x,
-        y: +p.y,
-        tournament: p.tournament || ''
-      }))
-      .sort((a, b) => new Date(a.x) - new Date(b.x));
-
-    if (!dedupeByDay) return s;
-
-    const out = [];
-    let lastKey = null;
-    for (const p of s) {
-      const d = new Date(p.x);
-      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-      if (key !== lastKey) out.push(p);
-      else out[out.length - 1] = p;
-      lastKey = key;
-    }
-    return out;
-  }
-
-  function aggregate(series, mode) {
-    if (mode === 'daily') return normalise(series, true);
-
-    const buckets = Object.create(null);
-    for (const p of series) {
-      const d = new Date(p.x);
-      const key = (mode === 'monthly')
-        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
-        : `${d.getFullYear()}`;
-      (buckets[key] ||= []).push(p);
-    }
-
-    const out = Object.keys(buckets).sort().map(k => {
-      const pts = buckets[k].filter(p => Number.isFinite(p.y));
-      const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
-      const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
-      const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
-      return { x, y: avg, tournament: lastTournament };
+    traces.push({
+      type: 'scatter',
+      name: t.name,
+      x: xs,
+      y: ysDisplay,
+      customdata: ysAll.map((rating, i) => [tournaments[i], rating]),
+      mode: 'lines',
+      line: {
+        width: MAIN_LINE_WIDTH,
+        shape: 'linear',
+        color: getTeamColour(t.name)
+      },
+      hovertemplate: '%{x}<br>%{customdata[1]:.0f} Elo<extra>' + t.name + '</extra>',
+      showlegend: true,
+      connectgaps: true
     });
-
-    return normalise(out, false);
   }
 
-  function hideCompare() {
-    document.getElementById('compare-wrap').style.display = 'none';
-    document.getElementById('compare-chart').innerHTML = '';
-    lastCompared = [];
+  if (!traces.length) {
+    chart.innerHTML = 'No history found.';
+    return;
   }
 
-  async function buildComparison(teams) {
-    lastCompared = teams.slice();
+  ymin = Math.floor(ymin / 100) * 100;
+  ymax = Math.ceil(ymax / 100) * 100;
 
-    const wrap = document.getElementById('compare-wrap');
-    const chart = document.getElementById('compare-chart');
-    wrap.style.display = 'block';
-    chart.innerHTML = 'Loading…';
+  const shapes = [];
+  for (let v = ymin; v <= ymax; v += 100) {
+    shapes.push({
+      type: 'line',
+      xref: 'paper', x0: 0, x1: 1,
+      y0: v, y1: v,
+      line: { width: 1, color: 'rgba(128,128,128,0.35)' },
+      layer: 'below'
+    });
+  }
 
-    const mode = 'monthly';
+  const cs = getComputedStyle(document.body);
+  const layout = {
+    margin: { l: 50, r: 20, t: 10, b: 40 },
+    xaxis: { type: 'date' },
+    yaxis: { title: 'Rating' },
+    legend: { orientation: 'h' },
+    paper_bgcolor: cs.backgroundColor,
+    plot_bgcolor: cs.backgroundColor,
+    font: { color: cs.color },
+    shapes
+  };
 
-    const traces = [];
-    let ymin = Infinity, ymax = -Infinity;
+  Plotly.newPlot(chart, traces, layout, {
+    staticPlot: IS_TOUCH,
+    displayModeBar: false,
+    responsive: true
+  });
+}
 
-    for (const t of teams) {
-      const hist = await fetchHistoryFor(t.id);
-      if (!hist || !hist.length) continue;
+function setupCompareButton() {
+  const modal = document.getElementById('compare-modal');
+  const listDiv = document.getElementById('compare-list');
 
-      const raw = hist.map(d => ({
-        x: d.date,
-        y: Number(d.rating),
-        tournament: d.tournament || ''
-      }));
-      const data = aggregate(raw, mode);
+  function openModal() {
+    listDiv.innerHTML = '';
+    state.filtered.forEach(t => {
+      const id = `chk-${t.id}`;
+      const row = document.createElement('div');
+      row.innerHTML = `
+        <label>
+          <input type="checkbox" id="${id}" value="${t.id}" style="margin-right:6px">
+          ${t.name} (${t.peak})
+        </label>
+      `;
+      listDiv.appendChild(row);
+    });
+    modal.style.display = 'flex';
+  }
 
-      const xs = data.map(pt => pt.x);
-      const ys = data.map(pt => pt.y);
-      const tournaments = data.map(pt => pt.tournament || '');
-      if (!xs.length || !ys.length) continue;
+  function closeModal() {
+    modal.style.display = 'none';
+  }
 
-      ymin = Math.min(ymin, ...ys);
-      ymax = Math.max(ymax, ...ys);
-
-      traces.push({
-        type: 'scatter',
-        name: t.name,
-        x: xs,
-        y: ys,
-        customdata: tournaments,
-        mode: 'lines+markers',
-        line: { width: 2, shape: 'linear' },
-        marker: { size: 4 },
-        hovertemplate: '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
-        connectgaps: true
-      });
-    }
-
-    if (!traces.length) {
-      chart.innerHTML = 'No history found.';
+  function showSelected() {
+    const ids = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
+    if (!ids.length) {
+      alert('Please select at least one team.');
       return;
     }
-
-    ymin = Math.floor(ymin / 100) * 100;
-    ymax = Math.ceil(ymax / 100) * 100;
-
-    const shapes = [];
-    for (let v = ymin; v <= ymax; v += 100) {
-      shapes.push({
-        type: 'line',
-        xref: 'paper', x0: 0, x1: 1,
-        y0: v, y1: v,
-        line: { width: 1, color: 'rgba(128,128,128,0.35)' },
-        layer: 'below'
-      });
-    }
-
-    const cs = getComputedStyle(document.body);
-    const layout = {
-      margin: { l: 50, r: 20, t: 10, b: 40 },
-      xaxis: { type: 'date' },
-      yaxis: { title: 'Rating' },
-      legend: { orientation: 'h' },
-      paper_bgcolor: cs.backgroundColor,
-      plot_bgcolor: cs.backgroundColor,
-      font: { color: cs.color },
-      shapes
-    };
-
-    Plotly.newPlot(chart, traces, layout, {
-      staticPlot: IS_TOUCH,
-      displayModeBar: false,
-      responsive: true
-    });
+    closeModal();
+    const chosen = state.filtered.filter(t => ids.includes(t.id));
+    buildComparison(chosen);
   }
 
-  function setupCompareButton() {
-    const modal = document.getElementById('compare-modal');
-    const listDiv = document.getElementById('compare-list');
+  document.getElementById('compare-btn').addEventListener('click', openModal);
+  document.getElementById('compare-show-top').addEventListener('click', showSelected);
+  document.getElementById('compare-show-bottom').addEventListener('click', showSelected);
+  document.getElementById('compare-cancel-top').addEventListener('click', closeModal);
+  document.getElementById('compare-cancel-bottom').addEventListener('click', closeModal);
+}
 
-    function openModal() {
-      listDiv.innerHTML = '';
-      state.filtered.forEach(t => {
-        const id = `chk-${t.id}`;
-        const row = document.createElement('div');
-        row.innerHTML = `
-          <label>
-            <input type="checkbox" id="${id}" value="${t.id}" style="margin-right:6px">
-            ${t.name} (${t.peak})
-          </label>
-        `;
-        listDiv.appendChild(row);
-      });
-      modal.style.display = 'flex';
-    }
+async function load() {
+  try {
+    const res = await fetch(DATA_URL, { cache: 'no-cache' });
+    if (!res.ok) throw new Error('Failed to load teams.json');
+    const teams = await res.json();
 
-    function closeModal() {
-      modal.style.display = 'none';
-    }
+    const baseRows = teams
+      .filter(d => d && d.id && d.name)
+      .map(d => ({ id: d.id, name: d.name }));
 
-    function showSelected() {
-      const ids = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
-      if (!ids.length) {
-        alert('Please select at least one team.');
-        return;
-      }
-      closeModal();
-      const chosen = state.filtered.filter(t => ids.includes(t.id));
-      buildComparison(chosen);
-    }
+    const withPeaks = await Promise.all(baseRows.map(async (t) => {
+      const hist = await fetchHistoryFor(t.id);
+      if (!hist || !hist.length) return null;
 
-    document.getElementById('compare-btn').addEventListener('click', openModal);
-    document.getElementById('compare-show-top').addEventListener('click', showSelected);
-    document.getElementById('compare-show-bottom').addEventListener('click', showSelected);
-    document.getElementById('compare-cancel-top').addEventListener('click', closeModal);
-    document.getElementById('compare-cancel-bottom').addEventListener('click', closeModal);
-  }
-
-  async function load() {
-    try {
-      const res = await fetch(DATA_URL, { cache: 'no-cache' });
-      if (!res.ok) throw new Error('Failed to load teams.json');
-      const teams = await res.json();
-
-      const baseRows = teams
-        .filter(d => d && d.id && d.name)
-        .map(d => ({ id: d.id, name: d.name }));
-
-      const withPeaks = await Promise.all(baseRows.map(async (t) => {
-        const hist = await fetchHistoryFor(t.id);
-        if (!hist || !hist.length) return null;
-
-        let peak = -Infinity;
-        let peakDate = '';
-        for (const row of hist) {
-          const r = Number(row.rating);
-          if (!Number.isFinite(r)) continue;
-          if (r > peak) {
-            peak = r;
-            peakDate = row.date || '';
-          }
+      let peak = -Infinity;
+      let peakDate = '';
+      for (const row of hist) {
+        const r = Number(row.rating);
+        if (!Number.isFinite(r)) continue;
+        if (r > peak) {
+          peak = r;
+          peakDate = row.date || '';
         }
-        if (!Number.isFinite(peak)) return null;
+      }
+      if (!Number.isFinite(peak)) return null;
 
-        return {
-          id: t.id,
-          name: t.name,
-          peak: Math.round(peak),
-          peak_date: peakDate
-        };
-      }));
+      return {
+        id: t.id,
+        name: t.name,
+        peak: Math.round(peak),
+        peak_date: peakDate
+      };
+    }));
 
-      state.rows = withPeaks
-        .filter(Boolean)
-        .sort((a, b) => b.peak - a.peak || a.name.localeCompare(b.name));
+    state.rows = withPeaks
+      .filter(Boolean)
+      .sort((a, b) => b.peak - a.peak || a.name.localeCompare(b.name));
 
-      state.filtered = state.rows.slice();
-      render();
-    } catch (err) {
-      document.querySelector('#teams tbody').innerHTML =
-        `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
-    }
+    state.filtered = state.rows.slice();
+    render();
+  } catch (err) {
+    document.querySelector('#teams tbody').innerHTML =
+      `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
   }
+}
 
-  document.getElementById('q').addEventListener('input', applyFilter);
-  setupCompareButton();
-  load();
+document.getElementById('q').addEventListener('input', applyFilter);
+setupCompareButton();
+load();
 </script>
 </body>
 </html>

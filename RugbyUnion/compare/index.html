@@ -11,7 +11,7 @@
   </script>
 
   <meta charset="utf-8">
-  <title>J-Ratings: International Football</title>
+  <title>J-Ratings: Rugby Union</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="../style.css">
@@ -35,7 +35,6 @@
     .suggest-item { padding:8px 10px; cursor:pointer; }
     .suggest-item:hover { background:rgba(255,255,255,.05); }
 
-    /* Leave space for a larger legend on the right */
     #chart { height:520px; }
   </style>
 </head>
@@ -45,8 +44,8 @@
   <div class="wrap">
     <h1 class="site-title">
       <a id="home-link" href="../home/" class="brand-with-logo">
-        <span>J-Ratings <span class="title-football">International Football</span></span>
-        <img src="/Football Banner Logo.png" alt="Football logo" class="sport-logo">
+        <span>J-Ratings <span class="title-rugby">Rugby Union</span></span>
+        <img src="/Rugby Banner Logo.png" alt="Rugby logo" class="sport-logo">
       </a>
     </h1>
 
@@ -92,155 +91,256 @@
 <script>
 const TEAMS_URL = '../data/teams.json';
 const HIST_URL  = id => `../data/history/${encodeURIComponent(id)}.json`;
-const COLOURS_URL = '../team-colours.json';
 
 const MAX_TEAMS = 15;
 const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
 
-let TEAM_COLOURS = {};
+const TEAM_COLOURS = {
+  "New Zealand":"#000000",
+  "South Africa":"#006B3C",
+  "Ireland":"#169B62",
+  "Australia":"#FFCD00",
+  "England":"#FFFFFF",
+  "France":"#002395",
+  "Wales":"#D30731",
+  "Scotland":"#1E90FF",
+  "Argentina":"#75AADB",
+  "Fiji":"#000000",
+  "Japan":"#f5c9c4",
+  "Samoa":"#1E90FF",
+  "Italy":"#0066CC",
+  "Canada":"#D52B1E",
+  "Georgia":"#C8102E",
+  "Germany":"#000000",
+  "Romania":"#FFD700",
+  "Belgium":"#FFD100",
+  "Netherlands":"#FF7F00",
+  "Tonga":"#C8102E",
+  "Uruguay":"#7EC0EE",
+  "United States":"#1F3A93",
+  "Hong Kong":"#C8102E",
+  "Portugal":"#C8102E",
+  "Namibia":"#003DA5",
+  "Paraguay":"#D52B1E",
+  "Zimbabwe":"#FFD700",
+  "Brazil":"#FFDF00",
+  "Sri Lanka":"#8D153A",
+  "Spain":"#C60B1E",
+  "Kazakhstan":"#22D3EE",
+  "Malaysia":"#FFD700",
+  "India":"#FF9933",
+  "South Korea":"#E60026",
+  "Chile":"#D52B1E",
+  "United Arab Emirates":"#C8102E",
+  "Qatar":"#8A1538",
+  "Poland":"#E31E24",
+  "Kenya":"#C8102E",
+  "Algeria":"#00A86B",
+  "Switzerland":"#D52B1E",
+  "Uganda":"#FCDC04",
+  "Burkina Faso":"#EF2B2D",
+  "Colombia":"#FCD116"
+};
 
-  // Visual tuning
-  const LEGEND_FONT_SIZE = 16;     // bigger team names
-  const LEGEND_ITEM_GAP  = 20;     // more breathing room between legend entries
-  const AXIS_TITLE_SIZE  = 18;     // x/y axis title size
-  const AXIS_TICK_SIZE   = 18;     // x/y tick label size
+const OUTLINE_COLOUR = '#dbdbdb';
+const OUTLINE_WIDTH = 10;
+const MAIN_LINE_WIDTH = 5;
 
-  const state = {
-    teams: [],
-    inputs: [],
-    loaded: []
-  };
+const LEGEND_FONT_SIZE = 16;
+const LEGEND_ITEM_GAP  = 20;
+const AXIS_TITLE_SIZE  = 18;
+const AXIS_TICK_SIZE   = 18;
 
-  function normalise(series, dedupeByDay = false) {
-    const s = series
-      .filter(p => p && p.x && Number.isFinite(p.y))
-      .map(p => ({
-        x: p.x,
-        y: +p.y,
-        tournament: p.tournament || ''
-      }))
-      .sort((a, b) => new Date(a.x) - new Date(b.x));
+const state = {
+  teams: [],
+  inputs: [],
+  loaded: []
+};
 
-    if (!dedupeByDay) return s;
+function normalise(series, dedupeByDay = false) {
+  const s = series
+    .filter(p => p && p.x && Number.isFinite(p.y))
+    .map(p => ({
+      x: p.x,
+      y: +p.y,
+      tournament: p.tournament || p.competition || ''
+    }))
+    .sort((a, b) => new Date(a.x) - new Date(b.x));
 
-    const out = [];
-    let lastKey = null;
+  if (!dedupeByDay) return s;
 
-    for (const p of s) {
-      const d = new Date(p.x);
-      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-      if (key !== lastKey) out.push(p);
-      else out[out.length - 1] = p;
-      lastKey = key;
-    }
+  const out = [];
+  let lastKey = null;
 
-    return out;
+  for (const p of s) {
+    const d = new Date(p.x);
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    if (key !== lastKey) out.push(p);
+    else out[out.length - 1] = p;
+    lastKey = key;
   }
 
-  function aggregate(series, mode) {
-    if (mode === 'daily') return normalise(series, true);
+  return out;
+}
 
-    const buckets = Object.create(null);
+function aggregate(series, mode) {
+  if (mode === 'daily') return normalise(series, true);
 
-    for (const p of series) {
-      const d = new Date(p.x);
-      const key = (mode === 'monthly')
-        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
-        : `${d.getFullYear()}`;
-      (buckets[key] ||= []).push(p);
-    }
+  const buckets = Object.create(null);
 
-    const out = Object.keys(buckets).sort().map(k => {
-      const pts = buckets[k].filter(p => Number.isFinite(p.y));
-      const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
-      const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
-      const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
-      return { x, y: avg, tournament: lastTournament };
-    });
-
-    return normalise(out, false);
+  for (const p of series) {
+    const d = new Date(p.x);
+    const key = (mode === 'monthly')
+      ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
+      : `${d.getFullYear()}`;
+    (buckets[key] ||= []).push(p);
   }
 
-  function attachAutocomplete(input) {
-    const wrap = document.createElement('div');
-    wrap.className = 'suggest';
-    input.parentNode.insertBefore(wrap, input);
-    wrap.appendChild(input);
+  const out = Object.keys(buckets).sort().map(k => {
+    const pts = buckets[k].filter(p => Number.isFinite(p.y));
+    const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
+    const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
+    const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
+    return { x, y: avg, tournament: lastTournament };
+  });
 
-    const list = document.createElement('div');
-    list.className = 'suggest-list';
-    wrap.appendChild(list);
+  return normalise(out, false);
+}
 
-    function render(items) {
-      if (!items.length) { list.style.display = 'none'; list.innerHTML = ''; return; }
-      list.innerHTML = items.map(n => `<div class="suggest-item" data-name="${String(n).replace(/"/g, '&quot;')}">${n}</div>`).join('');
-      list.style.display = 'block';
+function clamp(n, min, max) {
+  return Math.max(min, Math.min(max, n));
+}
+
+function smoothSeriesY(values, windowSize = 7) {
+  if (!Array.isArray(values) || values.length < 3 || windowSize <= 1) {
+    return values.slice();
+  }
+
+  const size = windowSize % 2 === 0 ? windowSize + 1 : windowSize;
+  const half = Math.floor(size / 2);
+  const out = [];
+
+  for (let i = 0; i < values.length; i++) {
+    if (!Number.isFinite(values[i])) {
+      out.push(values[i]);
+      continue;
     }
 
-    input.addEventListener('input', () => {
-      const q = input.value.trim().toLowerCase();
-      if (!q) { render([]); return; }
-      const names = state.teams.map(t => t.name);
-      const starts = names.filter(n => n.toLowerCase().startsWith(q));
-      const contains = names.filter(n => !n.toLowerCase().startsWith(q) && n.toLowerCase().includes(q));
-      render(starts.concat(contains).slice(0, 12));
-    });
+    let sum = 0;
+    let count = 0;
 
-    list.addEventListener('mousedown', e => {
-      const item = e.target.closest('.suggest-item');
-      if (!item) return;
-      input.value = item.dataset.name;
-      list.style.display = 'none';
-    });
-
-    input.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        const first = list.querySelector('.suggest-item');
-        if (first) { input.value = first.dataset.name; list.style.display = 'none'; }
+    for (let j = i - half; j <= i + half; j++) {
+      const idx = clamp(j, 0, values.length - 1);
+      const v = values[idx];
+      if (Number.isFinite(v)) {
+        sum += v;
+        count++;
       }
-      if (e.key === 'Escape') list.style.display = 'none';
-    });
+    }
 
-    input.addEventListener('blur', () => setTimeout(() => { list.style.display = 'none'; }, 120));
+    out.push(count ? (sum / count) : values[i]);
   }
 
-  function makeRow() {
-    if (state.inputs.length >= MAX_TEAMS) return;
-    const rows = document.getElementById('rows');
+  return out;
+}
 
-    const wrap = document.createElement('div');
-    wrap.className = 'row';
+function getSmoothedValues(values, mode) {
+  if (mode === 'daily') return smoothSeriesY(values, 14);
+  if (mode === 'monthly') return smoothSeriesY(values, 18);
+  return smoothSeriesY(values, 5);
+}
 
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.placeholder = 'Search team…';
-    wrap.appendChild(input);
-    attachAutocomplete(input);
+function getTeamColour(teamName) {
+  return TEAM_COLOURS[teamName] || '#2F80ED';
+}
 
-    const remove = document.createElement('button');
-    remove.className = 'btn';
-    remove.type = 'button';
-    remove.textContent = 'Remove';
-    remove.addEventListener('click', () => {
-      rows.removeChild(wrap);
-      state.inputs = state.inputs.filter(r => r.el !== wrap);
-      document.getElementById('add').disabled = state.inputs.length >= MAX_TEAMS;
-    });
+function attachAutocomplete(input) {
+  const wrap = document.createElement('div');
+  wrap.className = 'suggest';
+  input.parentNode.insertBefore(wrap, input);
+  wrap.appendChild(input);
 
-    wrap.appendChild(remove);
-    rows.appendChild(wrap);
+  const list = document.createElement('div');
+  list.className = 'suggest-list';
+  wrap.appendChild(list);
 
-    state.inputs.push({ el: wrap, input });
+  function render(items) {
+    if (!items.length) {
+      list.style.display = 'none';
+      list.innerHTML = '';
+      return;
+    }
+    list.innerHTML = items.map(n => `<div class="suggest-item" data-name="${String(n).replace(/"/g, '&quot;')}">${n}</div>`).join('');
+    list.style.display = 'block';
+  }
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    if (!q) { render([]); return; }
+    const names = state.teams.map(t => t.name);
+    const starts = names.filter(n => n.toLowerCase().startsWith(q));
+    const contains = names.filter(n => !n.toLowerCase().startsWith(q) && n.toLowerCase().includes(q));
+    render(starts.concat(contains).slice(0, 12));
+  });
+
+  list.addEventListener('mousedown', e => {
+    const item = e.target.closest('.suggest-item');
+    if (!item) return;
+    input.value = item.dataset.name;
+    list.style.display = 'none';
+  });
+
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const first = list.querySelector('.suggest-item');
+      if (first) {
+        input.value = first.dataset.name;
+        list.style.display = 'none';
+      }
+    }
+    if (e.key === 'Escape') list.style.display = 'none';
+  });
+
+  input.addEventListener('blur', () => setTimeout(() => { list.style.display = 'none'; }, 120));
+}
+
+function makeRow() {
+  if (state.inputs.length >= MAX_TEAMS) return;
+  const rows = document.getElementById('rows');
+
+  const wrap = document.createElement('div');
+  wrap.className = 'row';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'Search team…';
+  wrap.appendChild(input);
+  attachAutocomplete(input);
+
+  const remove = document.createElement('button');
+  remove.className = 'btn';
+  remove.type = 'button';
+  remove.textContent = 'Remove';
+  remove.addEventListener('click', () => {
+    rows.removeChild(wrap);
+    state.inputs = state.inputs.filter(r => r.el !== wrap);
     document.getElementById('add').disabled = state.inputs.length >= MAX_TEAMS;
-  }
+  });
 
-  function clearAll() {
-    document.getElementById('rows').innerHTML = '';
-    state.inputs = [];
-    state.loaded = [];
-    document.getElementById('add').disabled = false;
-    document.getElementById('chart').textContent = 'Cleared.';
-  }
+  wrap.appendChild(remove);
+  rows.appendChild(wrap);
+
+  state.inputs.push({ el: wrap, input });
+  document.getElementById('add').disabled = state.inputs.length >= MAX_TEAMS;
+}
+
+function clearAll() {
+  document.getElementById('rows').innerHTML = '';
+  state.inputs = [];
+  state.loaded = [];
+  document.getElementById('add').disabled = false;
+  document.getElementById('chart').textContent = 'Cleared.';
+}
 
 async function loadTeams() {
   const res = await fetch(TEAMS_URL, { cache: 'no-cache' });
@@ -248,169 +348,175 @@ async function loadTeams() {
   state.teams = await res.json();
 }
 
-async function loadColours() {
-  const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
-  if (!res.ok) throw new Error('team-colours.json not found');
-  TEAM_COLOURS = await res.json();
+function majorGridShapes(ymin, ymax) {
+  const shapes = [];
+  for (let v = ymin; v <= ymax; v += 100) {
+    shapes.push({
+      type: 'line',
+      xref: 'paper', x0: 0, x1: 1,
+      y0: v, y1: v,
+      line: { width: 1, color: 'rgba(128,128,128,0.35)' },
+      layer: 'below'
+    });
+  }
+  return shapes;
 }
 
-  function majorGridShapes(ymin, ymax) {
-    const shapes = [];
-    for (let v = ymin; v <= ymax; v += 100) {
-      shapes.push({
-        type: 'line',
-        xref: 'paper', x0: 0, x1: 1,
-        y0: v, y1: v,
-        line: { width: 1, color: 'rgba(128,128,128,0.35)' },
-        layer: 'below'
-      });
-    }
-    return shapes;
+function drawChart() {
+  const el = document.getElementById('chart');
+  if (el.textContent && el.textContent.includes('Loading')) el.textContent = '';
+
+  if (!state.loaded.length) {
+    el.textContent = 'No teams selected.';
+    return;
   }
 
-  function drawChart() {
-    const el = document.getElementById('chart');
-    if (el.textContent && el.textContent.includes('Loading')) el.textContent = '';
+  const mode = document.getElementById('agg').value;
+  const traces = [];
 
-    if (!state.loaded.length) {
-      el.textContent = 'No teams selected.';
-      return;
-    }
+  for (const s of state.loaded) {
+    const data = aggregate(s.daily, mode);
+    const xs = data.map(p => p.x);
+    const ysAll = data.map(p => p.y);
+    const ysDisplay = getSmoothedValues(ysAll, mode);
+    const tournaments = data.map(p => p.tournament || '');
+    const teamColour = getTeamColour(s.name);
 
-    const mode = document.getElementById('agg').value;
-
-    const traces = state.loaded.map(s => {
-      const data = aggregate(s.daily, mode);
-      const xs = data.map(p => p.x);
-      const ys = data.map(p => p.y);
-      const tournaments = data.map(p => p.tournament || '');
-
-      return {
-        type: 'scatter',
-        name: s.name,
-        x: xs,
-        y: ys,
-        customdata: tournaments,
-        mode: (mode === 'daily') ? 'lines' : 'lines',
-        line: {
-  width: 2,
-  shape: 'linear',
-  color: TEAM_COLOURS[s.name] || undefined
-},
-        marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
-        hovertemplate: (mode === 'daily')
-          ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra></extra>'
-          : '%{x}<br>%{y:.0f} Elo<extra></extra>',
-        connectgaps: true
-      };
+    traces.push({
+      type: 'scatter',
+      x: xs,
+      y: ysDisplay,
+      mode: 'lines',
+      line: {
+        width: OUTLINE_WIDTH,
+        color: OUTLINE_COLOUR,
+        shape: 'linear'
+      },
+      hoverinfo: 'skip',
+      showlegend: false,
+      connectgaps: true
     });
 
-    const allY = traces.flatMap(t => t.y).filter(Number.isFinite);
-    if (!allY.length) {
-      el.textContent = 'No games';
-      return;
-    }
-
-    const ymin = Math.floor(Math.min(...allY) / 100) * 100;
-    const ymax = Math.ceil(Math.max(...allY) / 100) * 100;
-
-    const cs = getComputedStyle(document.body);
-
-    Plotly.newPlot('chart', traces, {
-      // Give the legend proper room on the right so it doesn't get cramped
-      margin: { l: 60, r: 200, t: 10, b: 50 },
-
-      xaxis: {
-        type: 'date',
-        title: { text: '', font: { size: AXIS_TITLE_SIZE } },
-        tickfont: { size: AXIS_TICK_SIZE }
+    traces.push({
+      type: 'scatter',
+      name: s.name,
+      x: xs,
+      y: ysDisplay,
+      customdata: ysAll.map((rating, i) => [tournaments[i], rating]),
+      mode: 'lines',
+      line: {
+        width: MAIN_LINE_WIDTH,
+        color: teamColour,
+        shape: 'linear'
       },
-      yaxis: {
-        title: { text: '', font: { size: AXIS_TITLE_SIZE } },
-        tickfont: { size: AXIS_TICK_SIZE }
-      },
-
-      paper_bgcolor: cs.backgroundColor,
-      plot_bgcolor: cs.backgroundColor,
-      font: { color: cs.color },
-
-      shapes: majorGridShapes(ymin, ymax),
-
-      legend: {
-        // Put legend outside plot area with more vertical space
-        x: 1.02,
-        xanchor: 'left',
-        y: 1,
-        yanchor: 'top',
-
-        // Bigger names + more spacing between them
-        font: { size: LEGEND_FONT_SIZE },
-        tracegroupgap: LEGEND_ITEM_GAP,
-        itemsizing: 'constant',
-
-        bgcolor: 'rgba(0,0,0,0)',
-        borderwidth: 0
-      }
-    }, {
-      staticPlot: IS_TOUCH,
-      displayModeBar: false,
-      responsive: true
+      hovertemplate: (mode === 'daily')
+        ? '%{x}<br>%{customdata[1]:.0f} Elo<br>%{customdata[0]}<extra></extra>'
+        : '%{x}<br>%{customdata[1]:.0f} Elo<extra></extra>',
+      showlegend: true,
+      connectgaps: true
     });
   }
 
-  async function createChart() {
-    const names = state.inputs
-      .map(r => r.input.value.trim())
-      .filter(Boolean);
-
-    const uniq = [...new Set(names)];
-    if (!uniq.length) { alert('Please add at least one team'); return; }
-
-    const lookups = uniq.map(name => {
-      const team = state.teams.find(t => t.name === name);
-      if (!team) return null;
-      return { name, id: team.id };
-    }).filter(Boolean);
-
-    if (!lookups.length) {
-      document.getElementById('chart').textContent = 'No valid teams.';
-      return;
-    }
-
-    const results = await Promise.all(lookups.map(async ({ name, id }) => {
-      const res = await fetch(HIST_URL(id), { cache: 'no-cache' });
-      if (!res.ok) return null;
-      const hist = await res.json();
-
-      const daily = normalise(hist.map(d => ({
-        x: d.date,
-        y: Number(d.rating),
-        tournament: d.tournament || ''
-      })), true);
-
-      if (!daily.length) return null;
-      return { name, daily };
-    }));
-
-    state.loaded = results.filter(Boolean);
-    drawChart();
+  const allY = traces.flatMap(t => t.y || []).filter(Number.isFinite);
+  if (!allY.length) {
+    el.textContent = 'No games';
+    return;
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('add').addEventListener('click', makeRow);
-    document.getElementById('clear').addEventListener('click', clearAll);
-    document.getElementById('create').addEventListener('click', createChart);
-    document.getElementById('agg').addEventListener('change', drawChart);
+  const ymin = Math.floor(Math.min(...allY) / 100) * 100;
+  const ymax = Math.ceil(Math.max(...allY) / 100) * 100;
 
-   Promise.all([loadTeams(), loadColours()])
-  .then(() => { makeRow(); })
-  .catch(e => {
-        console.error(e);
-        const note = document.querySelector('.muted-note');
-        if (note) note.textContent = 'Could not load team list. Check data path or run via a local server.';
-        makeRow();
-      });
+  const cs = getComputedStyle(document.body);
+
+  Plotly.newPlot('chart', traces, {
+    margin: { l: 60, r: 200, t: 10, b: 50 },
+    xaxis: {
+      type: 'date',
+      title: { text: '', font: { size: AXIS_TITLE_SIZE } },
+      tickfont: { size: AXIS_TICK_SIZE }
+    },
+    yaxis: {
+      title: { text: '', font: { size: AXIS_TITLE_SIZE } },
+      tickfont: { size: AXIS_TICK_SIZE }
+    },
+    paper_bgcolor: cs.backgroundColor,
+    plot_bgcolor: cs.backgroundColor,
+    font: { color: cs.color },
+    shapes: majorGridShapes(ymin, ymax),
+    legend: {
+      x: 1.02,
+      xanchor: 'left',
+      y: 1,
+      yanchor: 'top',
+      font: { size: LEGEND_FONT_SIZE },
+      tracegroupgap: LEGEND_ITEM_GAP,
+      itemsizing: 'constant',
+      bgcolor: 'rgba(0,0,0,0)',
+      borderwidth: 0
+    }
+  }, {
+    staticPlot: IS_TOUCH,
+    displayModeBar: false,
+    responsive: true
   });
+}
+
+async function createChart() {
+  const names = state.inputs
+    .map(r => r.input.value.trim())
+    .filter(Boolean);
+
+  const uniq = [...new Set(names)];
+  if (!uniq.length) {
+    alert('Please add at least one team');
+    return;
+  }
+
+  const lookups = uniq.map(name => {
+    const team = state.teams.find(t => t.name === name);
+    if (!team) return null;
+    return { name, id: team.id };
+  }).filter(Boolean);
+
+  if (!lookups.length) {
+    document.getElementById('chart').textContent = 'No valid teams.';
+    return;
+  }
+
+  const results = await Promise.all(lookups.map(async ({ name, id }) => {
+    const res = await fetch(HIST_URL(id), { cache: 'no-cache' });
+    if (!res.ok) return null;
+    const hist = await res.json();
+
+    const daily = normalise(hist.map(d => ({
+      x: d.date,
+      y: Number(d.rating),
+      tournament: d.tournament || d.competition || ''
+    })), true);
+
+    if (!daily.length) return null;
+    return { name, daily };
+  }));
+
+  state.loaded = results.filter(Boolean);
+  drawChart();
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('add').addEventListener('click', makeRow);
+  document.getElementById('clear').addEventListener('click', clearAll);
+  document.getElementById('create').addEventListener('click', createChart);
+  document.getElementById('agg').addEventListener('change', drawChart);
+
+  loadTeams()
+    .then(() => { makeRow(); })
+    .catch(e => {
+      console.error(e);
+      const note = document.querySelector('.muted-note');
+      if (note) note.textContent = 'Could not load team list. Check data path or run via a local server.';
+      makeRow();
+    });
+});
 </script>
 </body>
 </html>
