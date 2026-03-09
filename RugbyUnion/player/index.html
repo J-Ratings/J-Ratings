@@ -475,8 +475,8 @@
   }
 
   function getSmoothedValues(values, mode) {
-    if (mode === 'daily') return smoothSeriesY(values, 14);
-    if (mode === 'monthly') return smoothSeriesY(values, 18);
+    if (mode === 'daily') return smoothSeriesY(values, 5);
+    if (mode === 'monthly') return smoothSeriesY(values, 7);
     return smoothSeriesY(values, 5);
   }
 
