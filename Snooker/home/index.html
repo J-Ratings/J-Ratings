@@ -76,16 +76,23 @@
     .compare-controls { margin: 10px 0; }
     .compare-controls button { margin-right:10px; }
 
-    footer.site-footer {
-      margin-top: 24px;
-      padding: 18px 0;
-      border-top: 1px solid rgba(255,255,255,0.12);
-      opacity: 0.9;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      text-align: center;
-    }
-    footer.site-footer a { color: inherit; }
+footer.site-footer {
+  margin-top: 24px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  opacity: 0.9;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+footer.site-footer a {
+  color: inherit;
+}
+
+.data-source-link {
+  text-decoration: underline;
+}
 
     @media (max-width: 520px) {
       #players {
@@ -195,13 +202,13 @@
     </div>
   </div>
 
-  <footer class="site-footer">
-    <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
-    <div>
-  Snooker data provided by
-  <a href="https://www.snooker.org/" target="_blank" rel="noopener noreferrer">Snooker.org</a>.
-</div>
-  </footer>
+<footer class="site-footer">
+  <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
+  <div>
+    This site uses snooker data from
+    <a href="https://www.snooker.org/" target="_blank" rel="noopener noreferrer" class="data-source-link">Snooker.org</a>.
+  </div>
+</footer>
 </main>
 
 <script>
