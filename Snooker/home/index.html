@@ -560,7 +560,7 @@
         setAsOf('');
       }
 
-      const rows = data.filter(d => d && d.active !== false);
+      const rows = data.filter(d => d && d.active !== false && d.listable === true);
 
       state.rows = rows
         .filter(d => d && d.id != null && (d.display_name || d.name) && Number.isFinite(+d.rating))

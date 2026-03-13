@@ -145,14 +145,15 @@
       background-color: var(--panel-bg, #1a1a1a);
     }
 
-    table.matches th:nth-child(1), table.matches td:nth-child(1),
-    table.matches th:nth-child(2), table.matches td:nth-child(2),
-    table.matches th:nth-child(3), table.matches td:nth-child(3),
-    table.matches th:nth-child(4), table.matches td:nth-child(4),
-    table.matches th:nth-child(5), table.matches td:nth-child(5),
-    table.matches th:nth-child(6), table.matches td:nth-child(6) {
-      border-right: 3px double rgba(128,128,128,0.6);
-    }
+table.matches th:nth-child(1), table.matches td:nth-child(1),
+table.matches th:nth-child(2), table.matches td:nth-child(2),
+table.matches th:nth-child(3), table.matches td:nth-child(3),
+table.matches th:nth-child(4), table.matches td:nth-child(4),
+table.matches th:nth-child(5), table.matches td:nth-child(5),
+table.matches th:nth-child(6), table.matches td:nth-child(6),
+table.matches th:nth-child(7), table.matches td:nth-child(7) {
+  border-right: 3px double rgba(128,128,128,0.6);
+}
 
     .result { font-weight: 700; }
     .result.win { color: #2acd4e; }
@@ -504,7 +505,7 @@ const newRating = Number(g.new ?? g.New ?? g.rating_after ?? g.RatingAfter);
       const tdOpp = makeOpponentCell(oppId, oppName, players);
 
 const tdOppElo = document.createElement('td');
-tdOppElo.textContent = Number.isFinite(oppElo) ? oppElo.toFixed(1) : '';
+tdOppElo.textContent = Number.isFinite(oppElo) ? String(Math.round(oppElo)) : '';
 
 const tdScore = document.createElement('td');
 if (Number.isFinite(myScore) && Number.isFinite(oppScore)) {

@@ -385,15 +385,22 @@
       const payload = await res.json();
       const data = Array.isArray(payload) ? payload : (payload.players || []);
 
-      state.rows = data
-        .filter(d => d && d.id != null && (d.display_name || d.name) && Number.isFinite(+d.peak))
-        .map(d => ({
-          id: String(d.id),
-          name: d.display_name || d.name,
-          peak: +d.peak,
-          peak_date: d.peak_date || ''
-        }))
-        .sort((a,b) => b.peak - a.peak);
+state.rows = data
+  .filter(d =>
+    d &&
+    d.listable === true &&
+    d.id != null &&
+    (d.display_name || d.name) &&
+    Number.isFinite(+d.peak)
+  )
+  .map(d => ({
+    id: String(d.id),
+    name: d.display_name || d.name,
+    peak: +d.peak,
+    peak_date: d.peak_date || ''
+  }))
+  .sort((a,b) => b.peak - a.peak);
+  
 
       state.filtered = state.rows.slice();
       render();
