@@ -446,7 +446,7 @@
 
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
-    for (const h of ['Date', 'Event', 'Opponent', 'Score', 'Result', 'Δ', 'New']) {
+    for (const h of ['Date', 'Event', 'Opponent', 'Opp Elo', 'Score', 'Result', 'Δ', 'New']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -486,8 +486,9 @@
       const myScore = amA ? scoreA : scoreB;
       const oppScore = amA ? scoreB : scoreA;
 
-      const delta = Number(g.delta ?? g.Delta ?? g.elo_delta);
-      const newRating = Number(g.new ?? g.New ?? g.rating_after ?? g.RatingAfter);
+      const oppElo = Number(g.opponent_elo ?? g.OpponentElo ?? g.opponentElo);
+const delta = Number(g.delta ?? g.Delta ?? g.elo_delta);
+const newRating = Number(g.new ?? g.New ?? g.rating_after ?? g.RatingAfter);
 
       const tr = document.createElement('tr');
 
@@ -502,8 +503,15 @@
 
       const tdOpp = makeOpponentCell(oppId, oppName, players);
 
-      const tdScore = document.createElement('td');
-      tdScore.textContent = Number.isFinite(myScore) && Number.isFinite(oppScore) ? `${myScore}-${oppScore}` : '';
+const tdOppElo = document.createElement('td');
+tdOppElo.textContent = Number.isFinite(oppElo) ? oppElo.toFixed(1) : '';
+
+const tdScore = document.createElement('td');
+if (Number.isFinite(myScore) && Number.isFinite(oppScore)) {
+  tdScore.innerHTML = `<strong>${myScore}</strong>-${oppScore}`;
+} else {
+  tdScore.textContent = '';
+}
 
       const tdResult = document.createElement('td');
       let resultText = '';
@@ -520,24 +528,26 @@
       tdResult.textContent = resultText;
       tdResult.className = 'result' + (resultClass ? ' ' + resultClass : '');
 
-      const tdDelta = document.createElement('td');
-      if (Number.isFinite(delta)) {
-        tdDelta.textContent = delta > 0 ? `+${Math.round(delta)}` : `${Math.round(delta)}`;
-        tdDelta.className = 'delta ' + (delta > 0 ? 'pos' : (delta < 0 ? 'neg' : ''));
-      } else {
-        tdDelta.textContent = '';
-      }
+const tdDelta = document.createElement('td');
+if (Number.isFinite(delta)) {
+  tdDelta.textContent = delta > 0 ? `+${delta.toFixed(1)}` : delta.toFixed(1);
+  tdDelta.className = 'delta ' + (delta > 0 ? 'pos' : (delta < 0 ? 'neg' : ''));
+} else {
+  tdDelta.textContent = '';
+}
 
-      const tdNew = document.createElement('td');
-      tdNew.textContent = Number.isFinite(newRating) ? String(Math.round(newRating)) : '';
+const tdNew = document.createElement('td');
+tdNew.textContent = Number.isFinite(newRating) ? String(Math.round(newRating)) : '';
 
-      tr.appendChild(tdDate);
-      tr.appendChild(tdEvent);
-      tr.appendChild(tdOpp);
-      tr.appendChild(tdScore);
-      tr.appendChild(tdResult);
-      tr.appendChild(tdDelta);
-      tr.appendChild(tdNew);
+tr.appendChild(tdDate);
+tr.appendChild(tdEvent);
+tr.appendChild(tdOpp);
+tr.appendChild(tdOppElo);
+tr.appendChild(tdScore);
+tr.appendChild(tdResult);
+tr.appendChild(tdDelta);
+tr.appendChild(tdNew);
+
 
       tbody.appendChild(tr);
       added++;
@@ -546,7 +556,7 @@
     if (!added) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      td.colSpan = 7;
+      td.colSpan = 8;
       td.textContent = 'No matches found.';
       tr.appendChild(td);
       tbody.appendChild(tr);
@@ -585,7 +595,7 @@
 
     try {
       document.getElementById('chart').textContent = 'Loading…';
-      document.getElementById('matches').innerHTML = '<tbody><tr><td colspan="7">Loading…</td></tr></tbody>';
+      document.getElementById('matches').innerHTML = '<tbody><tr><td colspan="8">Loading…</td></tr></tbody>';
 
       const [playersRes, histRes, gamesRes] = await Promise.all([
         fetch(playersUrl(), { cache: 'no-cache' }),
@@ -628,13 +638,13 @@
         if (token !== LOAD_TOKEN) return;
         renderMatchesTable(me, players, Array.isArray(games) ? games : []);
       } else {
-        document.getElementById('matches').innerHTML = '<tbody><tr><td colspan="7">No matches found.</td></tr></tbody>';
+        document.getElementById('matches').innerHTML = '<tbody><tr><td colspan="8">No matches found.</td></tr></tbody>';
       }
     } catch (e) {
       if (token !== LOAD_TOKEN) return;
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
-      document.getElementById('matches').innerHTML = '<tbody><tr><td colspan="7">Error loading matches.</td></tr></tbody>';
+      document.getElementById('matches').innerHTML = '<tbody><tr><td colspan="8">Error loading matches.</td></tr></tbody>';
       renderPlayerStats([]);
     }
   }
