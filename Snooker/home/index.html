@@ -272,46 +272,36 @@
   function snapshotUrl(year) { return `../data/snapshots/${encodeURIComponent(year)}.json`; }
   function metaUrl() { return '../data/meta.json'; }
 
-  function nationalityToFlagCode(nationality) {
-    const map = {
-      'Wales': 'wales',
-      'England': 'england',
-      'Scotland': 'scotland',
-      'Northern Ireland': 'northern-ireland',
-      'Ireland': 'ireland',
-      'Republic of Ireland': 'ireland',
-      'China': 'china',
-      'Hong Kong': 'hong-kong',
-      'Thailand': 'thailand',
-      'Belgium': 'belgium',
-      'Germany': 'germany',
-      'Australia': 'australia',
-      'Iran': 'iran',
-      'India': 'india',
-      'Pakistan': 'pakistan',
-      'Malta': 'malta',
-      'Canada': 'canada',
-      'Brazil': 'brazil',
-      'Poland': 'poland',
-      'Israel': 'israel',
-      'Cyprus': 'cyprus',
-      'Austria': 'austria',
-      'UAE': 'uae',
-      'United Arab Emirates': 'uae',
-      'Turkey': 'turkey',
-      'Finland': 'finland',
-      'Netherlands': 'netherlands',
-      'France': 'france',
-      'Bulgaria': 'bulgaria',
-      'Estonia': 'estonia',
-      'Latvia': 'latvia',
-      'Egypt': 'egypt',
-      'South Africa': 'south-africa',
-      'New Zealand': 'new-zealand'
-    };
+function nationalityToFlagCode(n) {
 
-    return map[String(nationality || '').trim()] || null;
-  }
+  const map = {
+    "England": "gb-eng",
+    "Scotland": "gb-sct",
+    "Wales": "gb-wls",
+    "Northern Ireland": "gb-nir",
+    "Ireland": "ie",
+    "Republic of Ireland": "ie",
+    "China": "cn",
+    "Hong Kong": "hk",
+    "Belgium": "be",
+    "Germany": "de",
+    "Australia": "au",
+    "Thailand": "th",
+    "Iran": "ir",
+    "India": "in",
+    "Pakistan": "pk",
+    "Cyprus": "cy",
+    "Austria": "at",
+    "France": "fr",
+    "Finland": "fi",
+    "Netherlands": "nl",
+    "Canada": "ca",
+    "Brazil": "br"
+  };
+
+  return map[n] || null;
+}
+
 
   function flagImgHtml(nationality) {
     const code = nationalityToFlagCode(nationality);
