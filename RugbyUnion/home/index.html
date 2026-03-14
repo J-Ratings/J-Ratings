@@ -9,11 +9,14 @@
     gtag('js', new Date());
     gtag('config', 'G-1JXCC4EDPY');
   </script>
+
   <meta charset="utf-8">
   <title>J-Ratings: Rugby Union</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
   <style>
     #compare-chart { height: 500px; }
 
@@ -23,6 +26,14 @@
       gap: 10px;
       margin-bottom: 10px;
       flex-wrap: wrap;
+    }
+
+    .asof {
+      opacity: 0.8;
+      font-size: 0.95rem;
+      margin: 6px 0 12px 0;
+      white-space: nowrap;
+      padding-left: 12px;
     }
 
     #compare-modal {
@@ -114,6 +125,8 @@
       <button id="compare-btn" class="club-btn" type="button">Compare</button>
     </div>
 
+    <div id="asof" class="asof" aria-live="polite"></div>
+
     <div id="compare-wrap" style="display:none; padding:16px">
       <div class="compare-chart-toolbar">
         <label for="compare-agg">View:</label>
@@ -156,29 +169,26 @@
     </div>
   </div>
 
-<footer class="site-footer">
-  <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
+  <footer class="site-footer">
+    <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
 
-  <div>
-    Historical results data:
-    <a href="https://www.kaggle.com/datasets/lylebegbie/international-rugby-union-results-from-18712022">
-      International Rugby Union Results dataset (Kaggle)
-    </a>
-  </div>
+    <div>
+      Historical results data:
+      <a href="https://www.kaggle.com/datasets/lylebegbie/international-rugby-union-results-from-18712022">
+        International Rugby Union Results dataset (Kaggle)
+      </a>
+    </div>
 
-  <div>
-    Additional historical match results referenced from
-    <a href="https://www.rugbydatabase.co.nz/">RugbyDatabase</a>
-  </div>
+    <div>
+      Additional historical match results referenced from
+      <a href="https://www.rugbydatabase.co.nz/">RugbyDatabase</a>
+    </div>
 
-<div>
-  Recent match data provided via
-  <a href="https://www.thesportsdb.com/">TheSportsDB API</a>
-</div>
-
-<div id="last-updated"></div>
-</footer>
-
+    <div>
+      Recent match data provided via
+      <a href="https://www.thesportsdb.com/">TheSportsDB API</a>
+    </div>
+  </footer>
 </main>
 
 <script>
@@ -240,6 +250,7 @@ const MAIN_LINE_WIDTH = 4.5;
 
 const state = {
   mode: 'live',
+  meta: null,
   liveRows: [],
   eraStarts: [],
   rows: [],
@@ -255,6 +266,26 @@ function contextLabel(row) {
 
 function updateHeaders() {
   document.getElementById('rating-col-head').textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
+}
+
+function formatAsOf(iso) {
+  const [y, m, d] = String(iso || '').split('-').map(Number);
+  if (!y || !m || !d) return '';
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${d} ${months[m - 1]} ${y}`;
+}
+
+function setAsOfText() {
+  const el = document.getElementById('asof');
+  if (!el) return;
+
+  if (state.mode === 'live' && state.meta && state.meta.latest_game_date) {
+    el.style.display = 'block';
+    el.textContent = `Updated to: ${formatAsOf(state.meta.latest_game_date)}`;
+  } else {
+    el.style.display = 'none';
+    el.textContent = '';
+  }
 }
 
 function render() {
@@ -315,6 +346,7 @@ function rebuildRowsFromMode() {
       .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
   }
 
+  setAsOfText();
   applyFilter();
 }
 
@@ -489,43 +521,41 @@ async function buildComparison(teams) {
     ymin = Math.min(ymin, ...finiteY);
     ymax = Math.max(ymax, ...finiteY);
 
-traces.push({
-  type: 'scatter',
-  x: xs,
-  y: ysDisplay,
-  mode: 'lines',
-  line: {
-    width: OUTLINE_WIDTH,
-    shape: 'linear',
-    color: OUTLINE_COLOUR,
-    simplify: false
-  },
-  hoverinfo: 'skip',
-  showlegend: false,
-  connectgaps: true
-});
+    traces.push({
+      type: 'scatter',
+      x: xs,
+      y: ysDisplay,
+      mode: 'lines',
+      line: {
+        width: OUTLINE_WIDTH,
+        shape: 'linear',
+        color: OUTLINE_COLOUR,
+        simplify: false
+      },
+      hoverinfo: 'skip',
+      showlegend: false,
+      connectgaps: true
+    });
 
-
-traces.push({
-  type: 'scatter',
-  name: t.name,
-  x: xs,
-  y: ysDisplay,
-  customdata: ysAll.map((rating, i) => [tournaments[i], rating]),
-  mode: 'lines',
-  line: {
-    width: MAIN_LINE_WIDTH,
-    shape: 'linear',
-    color: getTeamColour(t.name),
-    simplify: false
-  },
-  hovertemplate: (mode === 'daily')
-    ? '%{x}<br>%{customdata[1]:.0f} Elo<br>%{customdata[0]}<extra>' + t.name + '</extra>'
-    : '%{x}<br>%{customdata[1]:.0f} Elo<extra>' + t.name + '</extra>',
-  showlegend: true,
-  connectgaps: true
-});
-
+    traces.push({
+      type: 'scatter',
+      name: t.name,
+      x: xs,
+      y: ysDisplay,
+      customdata: ysAll.map((rating, i) => [tournaments[i], rating]),
+      mode: 'lines',
+      line: {
+        width: MAIN_LINE_WIDTH,
+        shape: 'linear',
+        color: getTeamColour(t.name),
+        simplify: false
+      },
+      hovertemplate: (mode === 'daily')
+        ? '%{x}<br>%{customdata[1]:.0f} Elo<br>%{customdata[0]}<extra>' + t.name + '</extra>'
+        : '%{x}<br>%{customdata[1]:.0f} Elo<extra>' + t.name + '</extra>',
+      showlegend: true,
+      connectgaps: true
+    });
   }
 
   if (!traces.length) {
@@ -631,30 +661,9 @@ async function load() {
     const eraData = await eraRes.json();
     const metaData = await metaRes.json();
 
-const lastUpdatedEl = document.getElementById('last-updated');
+    state.meta = metaData;
 
-if (lastUpdatedEl) {
-  if (metaData.latest_game_date) {
-    const parts = String(metaData.latest_game_date).split('-');
-    const d = new Date(
-      Number(parts[0]),
-      Number(parts[1]) - 1,
-      Number(parts[2])
-    );
-
-    lastUpdatedEl.textContent =
-      `Last updated: ${d.toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      })}`;
-  } else {
-    lastUpdatedEl.textContent = 'Last updated: unavailable';
-  }
-}
-
-
-const latestTournamentById = new Map();
+    const latestTournamentById = new Map();
 
     state.liveRows = teamsData
       .filter(d => d && d.id && d.name && Number.isFinite(+d.rating))
@@ -678,17 +687,22 @@ const latestTournamentById = new Map();
       tournament: latestTournamentById.get(r.id) || ''
     }));
 
-    if (state.mode === 'live') applyFilter();
+    if (state.mode === 'live') {
+      setAsOfText();
+      applyFilter();
+    }
   } catch (err) {
-  const lastUpdatedEl = document.getElementById('last-updated');
-  if (lastUpdatedEl) {
-    lastUpdatedEl.textContent = `Last updated: error (${err.message})`;
-  }
+    const asofEl = document.getElementById('asof');
+    if (asofEl) {
+      asofEl.style.display = 'none';
+      asofEl.textContent = '';
+    }
 
-  document.querySelector('#teams tbody').innerHTML =
-    `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
+    document.querySelector('#teams tbody').innerHTML =
+      `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
+  }
 }
-}
+
 document.getElementById('compare-agg').addEventListener('change', () => {
   if (lastCompared.length) buildComparison(lastCompared);
 });
