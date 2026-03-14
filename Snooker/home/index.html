@@ -385,7 +385,7 @@
     const code = nationalityToFlagCode(nationality);
     if (!code) return '';
     const safeNationality = String(nationality || '').replace(/"/g, '&quot;');
-    return `<img src="../flags/${code}.svg" alt="${safeNationality}" title="${safeNationality}" class="flag-icon">`;
+    return `<img src="../../flags/${code}.svg" alt="${safeNationality}" title="${safeNationality}" class="flag-icon">`;
   }
 
   function formatAsOf(isoYMD) {
