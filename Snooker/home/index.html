@@ -18,14 +18,23 @@
 
   <style>
     #compare-chart { height: 500px; }
-    .toolbar { margin-bottom: 10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-    .compare-chart-toolbar {
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom:10px;
-      flex-wrap:wrap;
+
+    .toolbar {
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
     }
+
+    .compare-chart-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
     .asof {
       opacity: 0.8;
       font-size: 0.95rem;
@@ -33,6 +42,7 @@
       white-space: nowrap;
       padding-left: 12px;
     }
+
     .load-more-wrap {
       display: flex;
       justify-content: center;
@@ -40,77 +50,108 @@
       gap: 12px;
       padding: 14px 0 0 0;
     }
+
     .load-more-wrap button {
       padding: 10px 14px;
       border-radius: 6px;
       cursor: pointer;
     }
+
     .load-more-wrap .hint {
       opacity: 0.8;
       margin-left: 12px;
       align-self: center;
       white-space: nowrap;
     }
+
     #compare-modal {
-      display:none;
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.6);
-      justify-content:center;
-      align-items:center;
-      z-index:9999;
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
     }
+
     #compare-modal > div {
-      background:#1a1a1a;
-      padding:20px;
-      border-radius:8px;
-      max-width:500px;
-      width:90%;
-      max-height:80%;
-      overflow:auto;
-      color:#fff;
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80%;
+      overflow: auto;
+      color: #fff;
     }
-    .compare-controls { margin: 10px 0; }
-    .compare-controls button { margin-right:10px; }
 
-footer.site-footer {
-  margin-top: 24px;
-  padding: 18px 0;
-  border-top: 1px solid rgba(255,255,255,0.12);
-  opacity: 0.9;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  text-align: center;
-}
+    .compare-controls {
+      margin: 10px 0;
+    }
 
-footer.site-footer a {
-  color: inherit;
-}
+    .compare-controls button {
+      margin-right: 10px;
+    }
 
-.data-source-link {
-  text-decoration: underline;
-}
+    footer.site-footer {
+      margin-top: 24px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      opacity: 0.9;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    footer.site-footer a {
+      color: inherit;
+    }
+
+    .data-source-link {
+      text-decoration: underline;
+    }
+
+    .flag-cell {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .flag-icon {
+      width: 22px;
+      height: 16px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
 
     @media (max-width: 520px) {
       #players {
         width: 100%;
         table-layout: fixed;
       }
+
       #players th,
       #players td {
         min-width: 0 !important;
         padding: 10px 8px;
       }
+
       #players th:nth-child(1),
       #players td:nth-child(1) { width: 52px; }
-      #players th:nth-child(3),
-      #players td:nth-child(3) { width: 84px; }
+
       #players th:nth-child(2),
-      #players td:nth-child(2) { width: auto; }
-      #players td:nth-child(2) a {
+      #players td:nth-child(2) { width: 44px; }
+
+      #players th:nth-child(4),
+      #players td:nth-child(4) { width: 84px; }
+
+      #players th:nth-child(3),
+      #players td:nth-child(3) { width: auto; }
+
+      #players td:nth-child(3) a {
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -173,6 +214,7 @@ footer.site-footer a {
         <thead>
           <tr>
             <th style="min-width:60px">Rank</th>
+            <th style="min-width:56px">Flag</th>
             <th style="min-width:240px">Player</th>
             <th class="right" style="min-width:120px">Rating</th>
           </tr>
@@ -202,13 +244,13 @@ footer.site-footer a {
     </div>
   </div>
 
-<footer class="site-footer">
-  <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
-  <div>
-    Data generously provided by 
-    <a href="https://www.snooker.org/" target="_blank" rel="noopener noreferrer" class="data-source-link">Snooker.org</a>.
-  </div>
-</footer>
+  <footer class="site-footer">
+    <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
+    <div>
+      Data generously provided by
+      <a href="https://www.snooker.org/" target="_blank" rel="noopener noreferrer" class="data-source-link">Snooker.org</a>.
+    </div>
+  </footer>
 </main>
 
 <script>
@@ -229,6 +271,54 @@ footer.site-footer a {
   function snapshotsYearsUrl() { return '../data/snapshots/years.json'; }
   function snapshotUrl(year) { return `../data/snapshots/${encodeURIComponent(year)}.json`; }
   function metaUrl() { return '../data/meta.json'; }
+
+  function nationalityToFlagCode(nationality) {
+    const map = {
+      'Wales': 'wales',
+      'England': 'england',
+      'Scotland': 'scotland',
+      'Northern Ireland': 'northern-ireland',
+      'Ireland': 'ireland',
+      'Republic of Ireland': 'ireland',
+      'China': 'china',
+      'Hong Kong': 'hong-kong',
+      'Thailand': 'thailand',
+      'Belgium': 'belgium',
+      'Germany': 'germany',
+      'Australia': 'australia',
+      'Iran': 'iran',
+      'India': 'india',
+      'Pakistan': 'pakistan',
+      'Malta': 'malta',
+      'Canada': 'canada',
+      'Brazil': 'brazil',
+      'Poland': 'poland',
+      'Israel': 'israel',
+      'Cyprus': 'cyprus',
+      'Austria': 'austria',
+      'UAE': 'uae',
+      'United Arab Emirates': 'uae',
+      'Turkey': 'turkey',
+      'Finland': 'finland',
+      'Netherlands': 'netherlands',
+      'France': 'france',
+      'Bulgaria': 'bulgaria',
+      'Estonia': 'estonia',
+      'Latvia': 'latvia',
+      'Egypt': 'egypt',
+      'South Africa': 'south-africa',
+      'New Zealand': 'new-zealand'
+    };
+
+    return map[String(nationality || '').trim()] || null;
+  }
+
+  function flagImgHtml(nationality) {
+    const code = nationalityToFlagCode(nationality);
+    if (!code) return '';
+    const safeNationality = String(nationality || '').replace(/"/g, '&quot;');
+    return `<img src="../flags/${code}.svg" alt="${safeNationality}" title="${safeNationality}" class="flag-icon">`;
+  }
 
   function formatAsOf(isoYMD) {
     const [y, m, d] = String(isoYMD || '').split('-').map(Number);
@@ -290,6 +380,11 @@ footer.site-footer a {
       const tdRank = document.createElement('td');
       tdRank.textContent = i + 1;
       tr.appendChild(tdRank);
+
+      const tdFlag = document.createElement('td');
+      tdFlag.className = 'flag-cell';
+      tdFlag.innerHTML = flagImgHtml(r.nationality);
+      tr.appendChild(tdFlag);
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
@@ -359,7 +454,7 @@ footer.site-footer a {
 
     for (const p of s) {
       const d = new Date(p.x);
-      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
       if (key !== lastKey) out.push(p);
       else out[out.length - 1] = p;
       lastKey = key;
@@ -375,7 +470,7 @@ footer.site-footer a {
     for (const p of series) {
       const d = new Date(p.x);
       const key = (mode === 'monthly')
-        ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`
+        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
         : `${d.getFullYear()}`;
       (buckets[key] ||= []).push(p.y);
     }
@@ -455,6 +550,7 @@ footer.site-footer a {
     }
 
     const cs = getComputedStyle(document.body);
+
     Plotly.newPlot(chart, traces, {
       margin: { l: 50, r: 20, t: 10, b: 40 },
       xaxis: { type: 'date' },
@@ -577,6 +673,7 @@ footer.site-footer a {
         .map(d => ({
           id: String(d.id),
           name: d.display_name || d.name,
+          nationality: d.nationality || null,
           rating: +d.rating
         }))
         .sort((a, b) => b.rating - a.rating);
@@ -588,7 +685,7 @@ footer.site-footer a {
     } catch (err) {
       setAsOf('');
       document.querySelector('#players tbody').innerHTML =
-        `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
+        `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
       updateLoadMoreUI();
     }
   }
