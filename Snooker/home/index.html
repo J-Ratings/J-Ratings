@@ -10,7 +10,7 @@
   </script>
 
   <meta charset="utf-8">
-  <title>J-Ratings: Snooker</title>
+  <title>J-Ratings: International Football</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="../style.css">
@@ -43,25 +43,17 @@
       padding-left: 12px;
     }
 
-    .load-more-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 0 0 0;
+    .flag-cell {
+      text-align: center;
+      vertical-align: middle;
     }
 
-    .load-more-wrap button {
-      padding: 10px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .load-more-wrap .hint {
-      opacity: 0.8;
-      margin-left: 12px;
-      align-self: center;
-      white-space: nowrap;
+    .flag-icon {
+      width: 22px;
+      height: 16px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
     }
 
     #compare-modal {
@@ -110,48 +102,31 @@
       color: inherit;
     }
 
-    .data-source-link {
-      text-decoration: underline;
-    }
-
-    .flag-cell {
-      text-align: center;
-      vertical-align: middle;
-    }
-
-    .flag-icon {
-      width: 33px;
-      height: 24px;
-      display: block;
-      margin: 0 auto;
-      object-fit: contain;
-    }
-
     @media (max-width: 520px) {
-      #players {
+      #teams {
         width: 100%;
         table-layout: fixed;
       }
 
-      #players th,
-      #players td {
+      #teams th,
+      #teams td {
         min-width: 0 !important;
         padding: 10px 8px;
       }
 
-      #players th:nth-child(1),
-      #players td:nth-child(1) { width: 52px; }
+      #teams th:nth-child(1),
+      #teams td:nth-child(1) { width: 52px; }
 
-      #players th:nth-child(2),
-      #players td:nth-child(2) { width: 44px; }
+      #teams th:nth-child(2),
+      #teams td:nth-child(2) { width: 44px; }
 
-      #players th:nth-child(4),
-      #players td:nth-child(4) { width: 84px; }
+      #teams th:nth-child(4),
+      #teams td:nth-child(4) { width: 84px; }
 
-      #players th:nth-child(3),
-      #players td:nth-child(3) { width: auto; }
+      #teams th:nth-child(3),
+      #teams td:nth-child(3) { width: auto; }
 
-      #players td:nth-child(3) a {
+      #teams td:nth-child(3) a {
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -165,30 +140,31 @@
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a href="./" class="brand-with-logo">
-        <span>J-Ratings <span class="title-snooker">Snooker </span></span>
-        <img src="/Snooker Banner Logo.png" alt="Snooker logo" class="sport-logo">
+      <a id="home-link" href="./" class="brand-with-logo">
+        <span>J-Ratings <span class="title-football">International Football</span></span>
+        <img src="/Football Banner Logo.png" alt="Football logo" class="sport-logo">
       </a>
     </h1>
+
     <nav class="topnav" aria-label="Main">
       <a href="/index.html">Sports</a>
-      <a href="./" class="active-tab">Home</a>
-      <a href="../compare/">Compare</a>
-      <a href="../peak/">Peak</a>
+      <a id="nav-home" href="./" class="active-tab">Home</a>
+      <a id="nav-compare" href="../compare/">Compare</a>
+      <a id="nav-peak" href="../peak/">Peak</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <section class="panel" id="players-panel">
-    <h2>All players</h2>
+  <section class="panel" id="teams-panel">
+    <h2>All teams</h2>
 
     <div class="toolbar">
-      <input id="q" type="search" placeholder="Filter by name…">
+      <input id="q" type="search" placeholder="Filter by team…">
 
-      <label for="year" style="margin-left:auto">Year:</label>
-      <select id="year">
-        <option value="" selected>Live</option>
+      <label for="era" style="margin-left:auto">Era:</label>
+      <select id="era">
+        <option value="live" selected>Live</option>
       </select>
 
       <button id="compare-btn" class="club-btn" type="button">Compare</button>
@@ -210,28 +186,23 @@
     </div>
 
     <div class="table-wrap">
-      <table id="players">
+      <table id="teams">
         <thead>
           <tr>
             <th style="min-width:60px">Rank</th>
-            <th style="min-width:56px">Country</th>
-            <th style="min-width:240px">Player</th>
-            <th class="right" style="min-width:120px">Rating</th>
+            <th style="min-width:56px">Flag</th>
+            <th style="min-width:240px">Team</th>
+            <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
-
-      <div class="load-more-wrap">
-        <button id="load-more" type="button" style="display:none;">Load more</button>
-        <div id="load-more-hint" class="hint"></div>
-      </div>
     </div>
   </section>
 
   <div id="compare-modal">
     <div>
-      <h3>Select players to view:</h3>
+      <h3>Select teams to view:</h3>
       <div class="compare-controls">
         <button id="compare-show-top">Show selected</button>
         <button id="compare-cancel-top">Cancel</button>
@@ -247,200 +218,98 @@
   <footer class="site-footer">
     <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
     <div>
-      Data generously provided by
-      <a href="https://www.snooker.org/" target="_blank" rel="noopener noreferrer" class="data-source-link">Snooker.org</a>.
+      Data Source:
+      <a href="https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017" target="_blank" rel="noopener noreferrer">
+        martj42 – International Football Results (1872–2017)
+      </a>
     </div>
+    <div>Licence: CC0 1.0 (Public Domain)</div>
   </footer>
 </main>
 
 <script>
+  const DATA_URL = '../data/teams.json';
+  const ERA_STARTS_URL = '../data/era_starts.json';
+  const META_URL = '../data/meta.json';
+  const COLOURS_URL = '../team-colours.json';
+  const FLAGS_BASE = '../flags';
+
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
-  const PAGE_SIZE = 100;
+
+  let TEAM_COLOURS = {};
+
+  const LEGEND_FONT_SIZE = 16;
+  const LEGEND_ITEM_GAP  = 20;
+  const AXIS_TITLE_SIZE  = 18;
+  const AXIS_TICK_SIZE   = 18;
 
   const state = {
+    mode: 'live',
+    meta: null,
+    liveRows: [],
+    eraStarts: [],
     rows: [],
-    filtered: [],
-    visibleCount: PAGE_SIZE
+    filtered: []
   };
 
   const histCache = new Map();
   let lastCompared = [];
 
-  function playersUrl() { return '../data/players.json'; }
-  function historyUrl(id) { return `../data/history/${encodeURIComponent(id)}.json`; }
-  function snapshotsYearsUrl() { return '../data/snapshots/years.json'; }
-  function snapshotUrl(year) { return `../data/snapshots/${encodeURIComponent(year)}.json`; }
-  function metaUrl() { return '../data/meta.json'; }
-
-function nationalityToFlagCode(n) {
-
-  const map = {
-
-    "Afghanistan":"af",
-    "Albania":"al",
-    "Armenia":"am",
-    "Australia":"au",
-    "Austria":"at",
-    "Bahrain":"bh",
-    "Bangladesh":"bd",
-    "Belarus":"by",
-    "Belgium":"be",
-    "Bosnia and Herzegovina":"ba",
-    "Brazil":"br",
-    "Bulgaria":"bg",
-    "Cambodia":"kh",
-    "Canada":"ca",
-    "Chile":"cl",
-    "China":"cn",
-    "Croatia":"hr",
-    "Cyprus":"cy",
-    "Czech Republic":"cz",
-    "Denmark":"dk",
-    "Egypt":"eg",
-
-    "England":"gb-eng",
-    "Scotland":"gb-sct",
-    "Wales":"gb-wls",
-    "Northern Ireland":"gb-nir",
-
-    "Estonia":"ee",
-    "Fiji":"fj",
-    "Finland":"fi",
-    "France":"fr",
-    "Germany":"de",
-
-    "Gibraltar":"gi",
-    "Great Britain":"gb",
-    "Greece":"gr",
-    "Guatemala":"gt",
-    "Guernsey":"gg",
-
-    "Hong Kong":"hk",
-    "Hungary":"hu",
-    "Iceland":"is",
-    "India":"in",
-    "Indonesia":"id",
-    "Iran":"ir",
-    "Iraq":"iq",
-    "Ireland":"ie",
-    "Isle of Man":"im",
-    "Israel":"il",
-    "Italy":"it",
-    "Jamaica":"jm",
-    "Japan":"jp",
-    "Jersey":"je",
-    "Jordan":"jo",
-    "Kenya":"ke",
-    "Kuwait":"kw",
-    "Kyrgyzstan":"kg",
-    "Latvia":"lv",
-    "Libya":"ly",
-    "Lithuania":"lt",
-    "Malaysia":"my",
-    "Malta":"mt",
-    "Moldova":"md",
-    "Mongolia":"mn",
-    "Morocco":"ma",
-    "Nepal":"np",
-    "Netherlands":"nl",
-    "New Zealand":"nz",
-    "North Macedonia":"mk",
-    "Norway":"no",
-    "Oman":"om",
-    "Pakistan":"pk",
-    "Philippines":"ph",
-    "Poland":"pl",
-    "Portugal":"pt",
-    "Qatar":"qa",
-    "Romania":"ro",
-    "Russia":"ru",
-    "Samoa":"ws",
-    "Saudi Arabia":"sa",
-    "Serbia":"rs",
-    "Singapore":"sg",
-    "Slovakia":"sk",
-    "South Africa":"za",
-    "South Korea":"kr",
-    "Spain":"es",
-    "Sri Lanka":"lk",
-    "Sweden":"se",
-    "Switzerland":"ch",
-    "Syria":"sy",
-    "Taiwan":"tw",
-    "Thailand":"th",
-    "Trinidad and Tobago":"tt",
-    "Turkey":"tr",
-    "Ukraine":"ua",
-    "United Arab Emirates":"ae",
-    "United States":"us"
-
-  };
-
-  return map[n] || null;
-}
-
-  function flagImgHtml(nationality) {
-    const code = nationalityToFlagCode(nationality);
-    if (!code) return '';
-    const safeNationality = String(nationality || '').replace(/"/g, '&quot;');
-    return `<img src="../flags/${code}.svg" alt="${safeNationality}" title="${safeNationality}" class="flag-icon">`;
+  function updateHeaders() {
+    const h = document.getElementById('rating-col-head');
+    if (!h) return;
+    h.textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
   }
 
-  function formatAsOf(isoYMD) {
-    const [y, m, d] = String(isoYMD || '').split('-').map(Number);
+  function formatAsOf(iso) {
+    const [y, m, d] = String(iso || '').split('-').map(Number);
     if (!y || !m || !d) return '';
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     return `${d} ${months[m - 1]} ${y}`;
   }
 
-  function setAsOf(isoYMD) {
+  function setAsOfText() {
     const el = document.getElementById('asof');
     if (!el) return;
-    const pretty = formatAsOf(isoYMD);
-    if (pretty) {
+
+    if (state.mode === 'live' && state.meta && state.meta.asof) {
       el.style.display = 'block';
-      el.textContent = `Updated to: ${pretty}`;
+      el.textContent = `Updated to: ${formatAsOf(state.meta.asof)}`;
     } else {
       el.style.display = 'none';
       el.textContent = '';
     }
   }
 
-  function normaliseYMD(s) {
-    if (!s) return '';
-    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
-    const d = new Date(s);
-    if (Number.isNaN(+d)) return '';
-    const y = d.getFullYear();
-    const m = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    return `${y}-${m}-${day}`;
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
 
-  function updateLoadMoreUI() {
-    const btn = document.getElementById('load-more');
-    const hint = document.getElementById('load-more-hint');
-    const total = state.filtered.length;
-    const showing = Math.min(state.visibleCount, total);
+  function normaliseFlagCode(code) {
+    if (!code) return '';
+    return String(code).trim().toLowerCase();
+  }
 
-    if (total <= PAGE_SIZE) {
-      btn.style.display = 'none';
-      hint.textContent = total ? `Showing ${showing} of ${total}` : '';
-      return;
-    }
+  function flagImgHtml(flagCode, label) {
+    const code = normaliseFlagCode(flagCode);
+    if (!code) return '';
 
-    hint.textContent = total ? `Showing ${showing} of ${total}` : '';
-    btn.style.display = (showing < total) ? 'inline-block' : 'none';
+    const safeLabel = escapeHtml(label || '');
+    const src = `${FLAGS_BASE}/${encodeURIComponent(code)}.svg`;
+
+    return `<img src="${src}" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
   }
 
   function render() {
-    const tbody = document.querySelector('#players tbody');
+    const tbody = document.querySelector('#teams tbody');
     tbody.innerHTML = '';
 
-    const totalToShow = Math.min(state.visibleCount, state.filtered.length);
-
-    for (let i = 0; i < totalToShow; i++) {
-      const r = state.filtered[i];
+    state.filtered.forEach((r, i) => {
       const tr = document.createElement('tr');
 
       const tdRank = document.createElement('td');
@@ -449,7 +318,7 @@ function nationalityToFlagCode(n) {
 
       const tdFlag = document.createElement('td');
       tdFlag.className = 'flag-cell';
-      tdFlag.innerHTML = flagImgHtml(r.nationality);
+      tdFlag.innerHTML = flagImgHtml(r.flag, r.name);
       tr.appendChild(tdFlag);
 
       const tdName = document.createElement('td');
@@ -461,13 +330,11 @@ function nationalityToFlagCode(n) {
 
       const tdRt = document.createElement('td');
       tdRt.className = 'right';
-      tdRt.textContent = r.rating;
+      tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
       tr.appendChild(tdRt);
 
       tbody.appendChild(tr);
-    }
-
-    updateLoadMoreUI();
+    });
   }
 
   function hideCompare() {
@@ -478,18 +345,57 @@ function nationalityToFlagCode(n) {
 
   function applyFilter() {
     const q = document.getElementById('q').value.trim().toLowerCase();
+
     state.filtered = !q
       ? state.rows.slice()
       : state.rows.filter(r => r.name.toLowerCase().includes(q));
 
-    state.visibleCount = PAGE_SIZE;
+    updateHeaders();
     render();
     hideCompare();
   }
 
-  function loadMore() {
-    state.visibleCount += PAGE_SIZE;
-    render();
+  function rebuildRowsFromMode() {
+    const mode = document.getElementById('era').value;
+    state.mode = mode;
+
+    if (mode === 'live') {
+      state.rows = state.liveRows
+        .slice()
+        .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
+    } else {
+      state.rows = state.eraStarts
+        .filter(d => String(d.era) === String(mode))
+        .map(d => ({
+          id: String(d.id),
+          name: d.name,
+          rating: +d.elo,
+          flag: d.flag || d.flag_code || d.flagCode || ''
+        }))
+        .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
+    }
+
+    setAsOfText();
+    applyFilter();
+  }
+
+  function populateEraSelect() {
+    const sel = document.getElementById('era');
+
+    const eras = Array.from(new Set(
+      state.eraStarts.map(d => d.era).filter(Boolean)
+    )).sort((a, b) => {
+      const an = Number(a), bn = Number(b);
+      if (Number.isFinite(an) && Number.isFinite(bn)) return bn - an;
+      return String(b).localeCompare(String(a));
+    });
+
+    for (const e of eras) {
+      const opt = document.createElement('option');
+      opt.value = e;
+      opt.textContent = e;
+      sel.appendChild(opt);
+    }
   }
 
   async function fetchHistoryFor(id) {
@@ -497,7 +403,7 @@ function nationalityToFlagCode(n) {
     if (histCache.has(key)) return histCache.get(key);
 
     try {
-      const res = await fetch(historyUrl(id), { cache: 'no-cache' });
+      const res = await fetch(`../data/history/${encodeURIComponent(key)}.json`, { cache: 'no-cache' });
       if (!res.ok) return null;
       const rows = await res.json();
       histCache.set(key, rows);
@@ -510,7 +416,7 @@ function nationalityToFlagCode(n) {
   function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
-      .map(p => ({ x: p.x, y: +p.y }))
+      .map(p => ({ x: p.x, y: +p.y, tournament: p.tournament || '' }))
       .sort((a, b) => new Date(a.x) - new Date(b.x));
 
     if (!dedupeByDay) return s;
@@ -525,6 +431,7 @@ function nationalityToFlagCode(n) {
       else out[out.length - 1] = p;
       lastKey = key;
     }
+
     return out;
   }
 
@@ -538,69 +445,21 @@ function nationalityToFlagCode(n) {
       const key = (mode === 'monthly')
         ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
         : `${d.getFullYear()}`;
-      (buckets[key] ||= []).push(p.y);
+      (buckets[key] ||= []).push(p);
     }
 
     const out = Object.keys(buckets).sort().map(k => {
-      const ys = buckets[k].filter(Number.isFinite);
-      const avg = ys.reduce((a, b) => a + b, 0) / ys.length;
+      const pts = buckets[k].filter(p => Number.isFinite(p.y));
+      const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
+      const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
-      return { x, y: avg };
+      return { x, y: avg, tournament: lastTournament };
     });
 
     return normalise(out, false);
   }
 
-  async function buildComparison(players) {
-    lastCompared = players.slice();
-
-    const wrap = document.getElementById('compare-wrap');
-    const chart = document.getElementById('compare-chart');
-    const mode = document.getElementById('compare-agg').value;
-
-    wrap.style.display = 'block';
-    chart.innerHTML = 'Loading…';
-
-    const traces = [];
-    let ymin = Infinity;
-    let ymax = -Infinity;
-
-    for (const p of players) {
-      const hist = await fetchHistoryFor(p.id);
-      if (!hist || !hist.length) continue;
-
-      const raw = hist.map(d => ({ x: d.date, y: Number(d.rating) }));
-      const data = aggregate(raw, mode);
-
-      const xs = data.map(pt => pt.x);
-      const ys = data.map(pt => pt.y);
-
-      if (!xs.length || !ys.length) continue;
-
-      ymin = Math.min(ymin, ...ys);
-      ymax = Math.max(ymax, ...ys);
-
-      traces.push({
-        type: 'scatter',
-        name: p.name,
-        x: xs,
-        y: ys,
-        mode: (mode === 'daily') ? 'lines' : 'lines+markers',
-        line: { width: 2, shape: 'linear' },
-        marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
-        hovertemplate: '%{x}<br>%{y:.0f}<extra>' + p.name + '</extra>',
-        connectgaps: true
-      });
-    }
-
-    if (!traces.length) {
-      chart.innerHTML = 'No history found.';
-      return;
-    }
-
-    ymin = Math.floor(ymin / 100) * 100;
-    ymax = Math.ceil(ymax / 100) * 100;
-
+  function majorGridShapes(ymin, ymax) {
     const shapes = [];
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
@@ -614,19 +473,105 @@ function nationalityToFlagCode(n) {
         layer: 'below'
       });
     }
+    return shapes;
+  }
+
+  async function buildComparison(teams) {
+    lastCompared = teams.slice();
+
+    const wrap = document.getElementById('compare-wrap');
+    const chart = document.getElementById('compare-chart');
+    const modeSel = document.getElementById('compare-agg');
+
+    wrap.style.display = 'block';
+    chart.innerHTML = 'Loading…';
+
+    const mode = modeSel ? modeSel.value : 'monthly';
+
+    const traces = [];
+    let ymin = Infinity;
+    let ymax = -Infinity;
+
+    for (const t of teams) {
+      const hist = await fetchHistoryFor(t.id);
+      if (!hist || !hist.length) continue;
+
+      const raw = hist.map(d => ({
+        x: d.date,
+        y: Number(d.rating),
+        tournament: d.tournament || ''
+      }));
+
+      const data = aggregate(raw, mode);
+
+      const xs = data.map(pt => pt.x);
+      const ys = data.map(pt => pt.y);
+      const tournaments = data.map(pt => pt.tournament || '');
+
+      if (!xs.length || !ys.length) continue;
+
+      ymin = Math.min(ymin, ...ys);
+      ymax = Math.max(ymax, ...ys);
+
+      traces.push({
+        type: 'scatter',
+        name: t.name,
+        x: xs,
+        y: ys,
+        customdata: tournaments,
+        mode: 'lines',
+        line: {
+          width: 2,
+          shape: 'linear',
+          color: TEAM_COLOURS[t.name] || undefined
+        },
+        marker: { size: 0 },
+        hovertemplate: (mode === 'daily')
+          ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra>' + t.name + '</extra>'
+          : '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
+        connectgaps: true
+      });
+    }
+
+    if (!traces.length) {
+      chart.innerHTML = 'No history found.';
+      return;
+    }
+
+    ymin = Math.floor(ymin / 100) * 100;
+    ymax = Math.ceil(ymax / 100) * 100;
 
     const cs = getComputedStyle(document.body);
 
-    Plotly.newPlot(chart, traces, {
-      margin: { l: 50, r: 20, t: 10, b: 40 },
-      xaxis: { type: 'date' },
-      yaxis: { title: 'Rating' },
-      legend: { orientation: 'h' },
+    const layout = {
+      margin: { l: 60, r: 200, t: 10, b: 50 },
+      xaxis: {
+        type: 'date',
+        title: { text: '', font: { size: AXIS_TITLE_SIZE } },
+        tickfont: { size: AXIS_TICK_SIZE }
+      },
+      yaxis: {
+        title: { text: '', font: { size: AXIS_TITLE_SIZE } },
+        tickfont: { size: AXIS_TICK_SIZE }
+      },
+      legend: {
+        x: 1.02,
+        xanchor: 'left',
+        y: 1,
+        yanchor: 'top',
+        font: { size: LEGEND_FONT_SIZE },
+        tracegroupgap: LEGEND_ITEM_GAP,
+        itemsizing: 'constant',
+        bgcolor: 'rgba(0,0,0,0)',
+        borderwidth: 0
+      },
       paper_bgcolor: cs.backgroundColor,
       plot_bgcolor: cs.backgroundColor,
       font: { color: cs.color },
-      shapes
-    }, {
+      shapes: majorGridShapes(ymin, ymax)
+    };
+
+    Plotly.newPlot(chart, traces, layout, {
       staticPlot: IS_TOUCH,
       displayModeBar: false,
       responsive: true
@@ -639,17 +584,19 @@ function nationalityToFlagCode(n) {
 
     function openModal() {
       listDiv.innerHTML = '';
-      state.filtered.forEach(p => {
-        const id = `chk-${p.id}`;
+
+      state.filtered.forEach(t => {
+        const id = `chk-${t.id}`;
         const wrapper = document.createElement('div');
         wrapper.innerHTML = `
           <label>
-            <input type="checkbox" id="${id}" value="${p.id}" style="margin-right:6px">
-            ${p.name} (${p.rating})
+            <input type="checkbox" id="${id}" value="${t.id}" style="margin-right:6px">
+            ${escapeHtml(t.name)} (${Math.round(t.rating)})
           </label>
         `;
         listDiv.appendChild(wrapper);
       });
+
       modal.style.display = 'flex';
     }
 
@@ -659,14 +606,18 @@ function nationalityToFlagCode(n) {
 
     function showSelected() {
       const selectedIds = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
+
       if (!selectedIds.length) {
-        alert('Please select at least one player.');
+        alert('Please select at least one team.');
         return;
       }
 
       closeModal();
-      document.getElementById('compare-agg').value = 'monthly';
-      const chosen = state.filtered.filter(p => selectedIds.includes(String(p.id)));
+
+      const compareAgg = document.getElementById('compare-agg');
+      if (compareAgg) compareAgg.value = 'monthly';
+
+      const chosen = state.filtered.filter(t => selectedIds.includes(String(t.id)));
       buildComparison(chosen);
     }
 
@@ -677,82 +628,50 @@ function nationalityToFlagCode(n) {
     document.getElementById('compare-cancel-bottom').addEventListener('click', closeModal);
   }
 
-  async function loadYearsDropdown() {
-    const sel = document.getElementById('year');
-    const current = sel.value;
-    sel.innerHTML = `<option value="" selected>Live</option>`;
-
-    try {
-      const res = await fetch(snapshotsYearsUrl(), { cache: 'no-cache' });
-      if (!res.ok) throw new Error('years.json not found');
-
-      const years = await res.json();
-      years
-        .map(y => Number(y))
-        .filter(y => Number.isFinite(y))
-        .sort((a, b) => b - a)
-        .forEach(y => {
-          const opt = document.createElement('option');
-          opt.value = String(y);
-          opt.textContent = String(y);
-          sel.appendChild(opt);
-        });
-
-      sel.value = [...sel.options].some(o => o.value === current) ? current : '';
-    } catch {
-      sel.value = '';
-    }
-  }
-
   async function load() {
     try {
-      const year = document.getElementById('year')?.value || '';
-      const url = year ? snapshotUrl(year) : playersUrl();
+      const [teamsRes, eraRes, metaRes, coloursRes] = await Promise.all([
+        fetch(DATA_URL, { cache: 'no-cache' }),
+        fetch(ERA_STARTS_URL, { cache: 'no-cache' }),
+        fetch(META_URL, { cache: 'no-cache' }),
+        fetch(COLOURS_URL, { cache: 'no-cache' })
+      ]);
 
-      const res = await fetch(url, { cache: 'no-cache' });
-      if (!res.ok) throw new Error(`Failed to load ${url}`);
+      if (!teamsRes.ok) throw new Error('Failed to load teams.json');
+      if (!eraRes.ok) throw new Error('Failed to load era_starts.json');
+      if (!coloursRes.ok) throw new Error('Failed to load team-colours.json');
 
-      const payload = await res.json();
-      const data = Array.isArray(payload) ? payload : (payload.players || []);
+      const teamsData = await teamsRes.json();
+      const eraData = await eraRes.json();
+      TEAM_COLOURS = await coloursRes.json();
 
-      if (!year) {
-        try {
-          const mres = await fetch(metaUrl(), { cache: 'no-cache' });
-          if (mres.ok) {
-            const meta = await mres.json();
-            const raw = meta.updated_to || meta.asof || '';
-            setAsOf(normaliseYMD(raw));
-          } else {
-            setAsOf('');
-          }
-        } catch {
-          setAsOf('');
-        }
-      } else {
-        setAsOf('');
-      }
+      state.meta = metaRes.ok ? await metaRes.json() : null;
 
-      const rows = data.filter(d => d && d.active !== false && d.listable === true);
-
-      state.rows = rows
-        .filter(d => d && d.id != null && (d.display_name || d.name) && Number.isFinite(+d.rating))
+      state.liveRows = (Array.isArray(teamsData) ? teamsData : [])
+        .filter(d => d && d.id != null && (d.name || d.display_name) && Number.isFinite(+d.rating))
         .map(d => ({
           id: String(d.id),
           name: d.display_name || d.name,
-          nationality: d.nationality || null,
-          rating: +d.rating
+          rating: +d.rating,
+          flag: d.flag || d.flag_code || d.flagCode || ''
         }))
-        .sort((a, b) => b.rating - a.rating);
+        .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
 
-      state.filtered = state.rows.slice();
-      state.visibleCount = PAGE_SIZE;
-      render();
-      hideCompare();
+      state.eraStarts = Array.isArray(eraData)
+        ? eraData.filter(d => d && d.id != null && (d.name || d.display_name) && d.era && Number.isFinite(+d.elo))
+        : [];
+
+      populateEraSelect();
+      rebuildRowsFromMode();
     } catch (err) {
-      setAsOf('');
-      document.querySelector('#players tbody').innerHTML =
-        `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
-      updateLoadMoreUI();
+      const asofEl = document.getElementById('asof');
+      if (asofEl) {
+        asofEl.style.display = 'none';
+        asofEl.textContent = '';
+      }
+
+      document.querySelector('#teams tbody').innerHTML =
+        `<tr><td colspan="4">Error loading data: ${escapeHtml(err.message)}</td></tr>`;
     }
   }
 
@@ -760,16 +679,11 @@ function nationalityToFlagCode(n) {
     if (lastCompared.length) buildComparison(lastCompared);
   });
 
+  document.getElementById('era').addEventListener('change', rebuildRowsFromMode);
   document.getElementById('q').addEventListener('input', applyFilter);
-  document.getElementById('year').addEventListener('change', load);
-  document.getElementById('load-more').addEventListener('click', loadMore);
 
   setupCompareButton();
-
-  (async function boot() {
-    await loadYearsDropdown();
-    await load();
-  })();
+  load();
 </script>
 </body>
 </html>
