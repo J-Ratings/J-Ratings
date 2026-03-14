@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -20,6 +19,14 @@
   <style>
     #compare-chart { height: 500px; }
 
+    .toolbar {
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
     .compare-chart-toolbar {
       display: flex;
       align-items: center;
@@ -28,12 +35,34 @@
       flex-wrap: wrap;
     }
 
-    /* Modal */
+    .asof {
+      opacity: 0.8;
+      font-size: 0.95rem;
+      margin: 6px 0 12px 0;
+      white-space: nowrap;
+      padding-left: 12px;
+    }
+
+    .flag-cell {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .flag-icon {
+      width: 22px;
+      height: 16px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
     #compare-modal {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0,0,0,0.6);
       justify-content: center;
       align-items: center;
@@ -51,15 +80,26 @@
       color: #fff;
     }
 
-    .compare-controls { margin: 10px 0; }
-    .compare-controls button { margin-right: 10px; }
+    .compare-controls {
+      margin: 10px 0;
+    }
 
-    .asof {
-      opacity: 0.8;
+    .compare-controls button {
+      margin-right: 10px;
+    }
+
+    footer.site-footer {
+      margin-top: 24px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      opacity: 0.9;
       font-size: 0.95rem;
-      margin: 6px 0 12px 0;
-      white-space: nowrap;
-      padding-left: 12px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    footer.site-footer a {
+      color: inherit;
     }
 
     @media (max-width: 520px) {
@@ -77,13 +117,16 @@
       #teams th:nth-child(1),
       #teams td:nth-child(1) { width: 52px; }
 
-      #teams th:nth-child(3),
-      #teams td:nth-child(3) { width: 78px; }
-
       #teams th:nth-child(2),
-      #teams td:nth-child(2) { width: auto; }
+      #teams td:nth-child(2) { width: 44px; }
 
-      #teams td:nth-child(2) a {
+      #teams th:nth-child(4),
+      #teams td:nth-child(4) { width: 84px; }
+
+      #teams th:nth-child(3),
+      #teams td:nth-child(3) { width: auto; }
+
+      #teams td:nth-child(3) a {
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -115,7 +158,6 @@
 <main class="wrap">
   <section class="panel" id="teams-panel">
     <h2>All teams</h2>
-    <div id="asof" class="asof" aria-live="polite"></div>
 
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by team…">
@@ -127,6 +169,8 @@
 
       <button id="compare-btn" class="club-btn" type="button">Compare</button>
     </div>
+
+    <div id="asof" class="asof" aria-live="polite"></div>
 
     <div id="compare-wrap" style="display:none; padding:16px">
       <div class="compare-chart-toolbar">
@@ -146,42 +190,41 @@
         <thead>
           <tr>
             <th style="min-width:60px">Rank</th>
-            <th style="min-width:260px">Team</th>
+            <th style="min-width:56px">Flag</th>
+            <th style="min-width:240px">Team</th>
             <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
           </tr>
         </thead>
-        <tbody><!-- filled by JS --></tbody>
+        <tbody></tbody>
       </table>
     </div>
   </section>
 
-  <!-- Compare Selection Modal -->
   <div id="compare-modal">
     <div>
       <h3>Select teams to view:</h3>
       <div class="compare-controls">
-        <button id="compare-show-top">Show Selected</button>
+        <button id="compare-show-top">Show selected</button>
         <button id="compare-cancel-top">Cancel</button>
       </div>
       <div id="compare-list" style="margin:10px 0 20px 0;"></div>
       <div class="compare-controls">
-        <button id="compare-show-bottom">Show Selected</button>
+        <button id="compare-show-bottom">Show selected</button>
         <button id="compare-cancel-bottom">Cancel</button>
       </div>
     </div>
   </div>
 
-<footer class="site-footer">
-  <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
-  <div>
-    Data Source:
-    <a href="https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017">
-      martj42 – International Football Results (1872–2017)
-    </a>
-  </div>
-  <div>Licence: CC0 1.0 (Public Domain)</div>
-</footer>
-
+  <footer class="site-footer">
+    <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
+    <div>
+      Data Source:
+      <a href="https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017" target="_blank" rel="noopener noreferrer">
+        martj42 – International Football Results (1872–2017)
+      </a>
+    </div>
+    <div>Licence: CC0 1.0 (Public Domain)</div>
+  </footer>
 </main>
 
 <script>
@@ -189,15 +232,16 @@
   const ERA_STARTS_URL = '../data/era_starts.json';
   const META_URL = '../data/meta.json';
   const COLOURS_URL = '../team-colours.json';
+  const FLAGS_BASE = '../flags';
 
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
   let TEAM_COLOURS = {};
 
   const LEGEND_FONT_SIZE = 16;
-  const LEGEND_ITEM_GAP  = 20;
-  const AXIS_TITLE_SIZE  = 18;
-  const AXIS_TICK_SIZE   = 18;
+  const LEGEND_ITEM_GAP = 20;
+  const AXIS_TITLE_SIZE = 18;
+  const AXIS_TICK_SIZE = 18;
 
   const state = {
     mode: 'live',
@@ -218,8 +262,8 @@
   }
 
   function formatAsOf(iso) {
-    const [y, m, d] = String(iso).split('-').map(Number);
-    if (!y || !m || !d) return iso;
+    const [y, m, d] = String(iso || '').split('-').map(Number);
+    if (!y || !m || !d) return '';
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     return `${d} ${months[m - 1]} ${y}`;
   }
@@ -237,6 +281,26 @@
     }
   }
 
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function normaliseFlagCode(code) {
+    return String(code || '').trim().toLowerCase();
+  }
+
+  function flagImgHtml(flagCode, label) {
+    const code = normaliseFlagCode(flagCode);
+    if (!code) return '';
+    const safeLabel = escapeHtml(label || '');
+    return `<img src="${FLAGS_BASE}/${encodeURIComponent(code)}.svg" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
+  }
+
   function render() {
     const tbody = document.querySelector('#teams tbody');
     tbody.innerHTML = '';
@@ -247,6 +311,11 @@
       const tdRank = document.createElement('td');
       tdRank.textContent = i + 1;
       tr.appendChild(tdRank);
+
+      const tdFlag = document.createElement('td');
+      tdFlag.className = 'flag-cell';
+      tdFlag.innerHTML = flagImgHtml(r.flag, r.name);
+      tr.appendChild(tdFlag);
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
@@ -272,6 +341,7 @@
 
   function applyFilter() {
     const q = document.getElementById('q').value.trim().toLowerCase();
+
     state.filtered = !q
       ? state.rows.slice()
       : state.rows.filter(r => r.name.toLowerCase().includes(q));
@@ -293,8 +363,9 @@
       state.rows = state.eraStarts
         .filter(d => String(d.era) === String(mode))
         .map(d => ({
-          id: d.id,
-          name: d.name,
+          id: String(d.id),
+          name: d.display_name || d.name,
+          flag: d.flag || '',
           rating: +d.elo
         }))
         .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
@@ -323,20 +394,15 @@
     }
   }
 
-  async function loadColours() {
-    const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
-    if (!res.ok) throw new Error('Failed to load team-colours.json');
-    TEAM_COLOURS = await res.json();
-  }
-
   async function fetchHistoryFor(id) {
-    if (histCache.has(id)) return histCache.get(id);
+    const key = String(id);
+    if (histCache.has(key)) return histCache.get(key);
 
     try {
-      const res = await fetch(`../data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+      const res = await fetch(`../data/history/${encodeURIComponent(key)}.json`, { cache: 'no-cache' });
       if (!res.ok) return null;
       const rows = await res.json();
-      histCache.set(id, rows);
+      histCache.set(key, rows);
       return rows;
     } catch {
       return null;
@@ -356,7 +422,7 @@
 
     for (const p of s) {
       const d = new Date(p.x);
-      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
       if (key !== lastKey) out.push(p);
       else out[out.length - 1] = p;
       lastKey = key;
@@ -373,7 +439,7 @@
     for (const p of series) {
       const d = new Date(p.x);
       const key = (mode === 'monthly')
-        ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`
+        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
         : `${d.getFullYear()}`;
       (buckets[key] ||= []).push(p);
     }
@@ -394,8 +460,11 @@
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
         type: 'line',
-        xref: 'paper', x0: 0, x1: 1,
-        y0: v, y1: v,
+        xref: 'paper',
+        x0: 0,
+        x1: 1,
+        y0: v,
+        y1: v,
         line: { width: 1, color: 'rgba(128,128,128,0.35)' },
         layer: 'below'
       });
@@ -416,18 +485,25 @@
     const mode = modeSel ? modeSel.value : 'monthly';
 
     const traces = [];
-    let ymin = Infinity, ymax = -Infinity;
+    let ymin = Infinity;
+    let ymax = -Infinity;
 
     for (const t of teams) {
       const hist = await fetchHistoryFor(t.id);
       if (!hist || !hist.length) continue;
 
-      const raw = hist.map(d => ({ x: d.date, y: Number(d.rating), tournament: d.tournament || '' }));
+      const raw = hist.map(d => ({
+        x: d.date,
+        y: Number(d.rating),
+        tournament: d.tournament || ''
+      }));
+
       const data = aggregate(raw, mode);
 
       const xs = data.map(pt => pt.x);
       const ys = data.map(pt => pt.y);
       const tournaments = data.map(pt => pt.tournament || '');
+
       if (!xs.length || !ys.length) continue;
 
       ymin = Math.min(ymin, ...ys);
@@ -511,7 +587,7 @@
         wrapper.innerHTML = `
           <label>
             <input type="checkbox" id="${id}" value="${t.id}" style="margin-right:6px">
-            ${t.name} (${Math.round(t.rating)})
+            ${escapeHtml(t.name)} (${Math.round(t.rating)})
           </label>
         `;
         listDiv.appendChild(wrapper);
@@ -520,10 +596,13 @@
       modal.style.display = 'flex';
     }
 
-    function closeModal() { modal.style.display = 'none'; }
+    function closeModal() {
+      modal.style.display = 'none';
+    }
 
     function showSelected() {
       const selectedIds = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
+
       if (!selectedIds.length) {
         alert('Please select at least one team.');
         return;
@@ -534,7 +613,7 @@
       const compareAgg = document.getElementById('compare-agg');
       if (compareAgg) compareAgg.value = 'monthly';
 
-      const chosen = state.filtered.filter(t => selectedIds.includes(t.id));
+      const chosen = state.filtered.filter(t => selectedIds.includes(String(t.id)));
       buildComparison(chosen);
     }
 
@@ -561,30 +640,33 @@
       const teamsData = await teamsRes.json();
       const eraData = await eraRes.json();
       TEAM_COLOURS = await coloursRes.json();
-
       state.meta = metaRes.ok ? await metaRes.json() : null;
 
       state.liveRows = (Array.isArray(teamsData) ? teamsData : [])
-        .filter(d => d && d.id && d.name && Number.isFinite(+d.rating))
+        .filter(d => d && d.id != null && (d.name || d.display_name) && Number.isFinite(+d.rating))
         .map(d => ({
-          id: d.id,
-          name: d.name,
+          id: String(d.id),
+          name: d.display_name || d.name,
+          flag: d.flag || '',
           rating: +d.rating
         }))
         .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
 
       state.eraStarts = Array.isArray(eraData)
-        ? eraData.filter(d => d && d.id && d.name && d.era && Number.isFinite(+d.elo))
+        ? eraData.filter(d => d && d.id != null && (d.name || d.display_name) && d.era && Number.isFinite(+d.elo))
         : [];
 
       populateEraSelect();
       rebuildRowsFromMode();
     } catch (err) {
       const asofEl = document.getElementById('asof');
-      if (asofEl) { asofEl.style.display = 'none'; asofEl.textContent = ''; }
+      if (asofEl) {
+        asofEl.style.display = 'none';
+        asofEl.textContent = '';
+      }
 
       document.querySelector('#teams tbody').innerHTML =
-        `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
+        `<tr><td colspan="4">Error loading data: ${escapeHtml(err.message)}</td></tr>`;
     }
   }
 
