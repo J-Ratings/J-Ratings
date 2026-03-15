@@ -36,6 +36,19 @@
       padding-left: 12px;
     }
 
+    .flag-cell {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .flag-icon {
+      width: 36.3px;
+      height: 26.4px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
     #compare-modal {
       display: none;
       position: fixed;
@@ -76,13 +89,16 @@
       #teams th:nth-child(1),
       #teams td:nth-child(1) { width: 52px; }
 
-      #teams th:nth-child(3),
-      #teams td:nth-child(3) { width: 78px; }
-
       #teams th:nth-child(2),
-      #teams td:nth-child(2) { width: auto; }
+      #teams td:nth-child(2) { width: 44px; }
 
-      #teams td:nth-child(2) a {
+      #teams th:nth-child(4),
+      #teams td:nth-child(4) { width: 78px; }
+
+      #teams th:nth-child(3),
+      #teams td:nth-child(3) { width: auto; }
+
+      #teams td:nth-child(3) a {
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -145,6 +161,7 @@
         <thead>
           <tr>
             <th style="min-width:60px">Rank</th>
+            <th style="min-width:56px">Country</th>
             <th style="min-width:260px">Team</th>
             <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
           </tr>
@@ -195,6 +212,7 @@
 const DATA_URL = '../data/teams.json';
 const ERA_STARTS_URL = '../data/era_starts.json';
 const META_URL = '../data/meta.json';
+const FLAGS_BASE = '../../flags';
 const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
 const TEAM_COLOURS = {
@@ -288,6 +306,26 @@ function setAsOfText() {
   }
 }
 
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function normaliseFlagCode(code) {
+  return String(code || '').trim().toLowerCase();
+}
+
+function flagImgHtml(flagCode, label) {
+  const code = normaliseFlagCode(flagCode);
+  if (!code) return '';
+  const safeLabel = escapeHtml(label || '');
+  return `<img src="${FLAGS_BASE}/${encodeURIComponent(code)}.svg" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
+}
+
 function render() {
   const tbody = document.querySelector('#teams tbody');
   tbody.innerHTML = '';
@@ -298,6 +336,11 @@ function render() {
     const tdRank = document.createElement('td');
     tdRank.textContent = i + 1;
     tr.appendChild(tdRank);
+
+    const tdFlag = document.createElement('td');
+    tdFlag.className = 'flag-cell';
+    tdFlag.innerHTML = flagImgHtml(r.flag, r.name);
+    tr.appendChild(tdFlag);
 
     const tdName = document.createElement('td');
     const a = document.createElement('a');
@@ -339,7 +382,8 @@ function rebuildRowsFromMode() {
       .filter(d => d.era === mode)
       .map(d => ({
         id: d.id,
-        name: d.name,
+        name: d.display_name || d.name,
+        flag: d.flag || '',
         rating: +d.elo,
         tournament: d.tournament || ''
       }))
@@ -609,7 +653,7 @@ function setupCompareButton() {
       wrapper.innerHTML = `
         <label>
           <input type="checkbox" id="${id}" value="${t.id}" style="margin-right:6px">
-          ${t.name} (${Math.round(t.rating)})
+          ${escapeHtml(t.name)} (${Math.round(t.rating)})
         </label>
       `;
       listDiv.appendChild(wrapper);
@@ -666,17 +710,18 @@ async function load() {
     const latestTournamentById = new Map();
 
     state.liveRows = teamsData
-      .filter(d => d && d.id && d.name && Number.isFinite(+d.rating))
+      .filter(d => d && d.id && (d.name || d.display_name) && Number.isFinite(+d.rating))
       .map(d => ({
         id: d.id,
-        name: d.name,
+        name: d.display_name || d.name,
+        flag: d.flag || '',
         rating: +d.rating,
         tournament: ''
       }))
       .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
 
     state.eraStarts = Array.isArray(eraData)
-      ? eraData.filter(d => d && d.id && d.name && d.era && Number.isFinite(+d.elo))
+      ? eraData.filter(d => d && d.id && (d.name || d.display_name) && d.era && Number.isFinite(+d.elo))
       : [];
 
     populateEraSelect();
@@ -699,7 +744,7 @@ async function load() {
     }
 
     document.querySelector('#teams tbody').innerHTML =
-      `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
+      `<tr><td colspan="4">Error loading data: ${escapeHtml(err.message)}</td></tr>`;
   }
 }
 
