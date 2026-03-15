@@ -6,8 +6,11 @@
   "total_teams_seen": 57,
   "active_teams": 44,
   "inactive_teams": 13,
+  "flagged_teams": 43,
+  "unflagged_teams": 1,
   "input_files": {
     "final_ratings": "world_rugby_union_elo_final_ratings.csv",
-    "game_history": "world_rugby_union_elo_game_history.csv"
+    "game_history": "world_rugby_union_elo_game_history.csv",
+    "flag_lookup": "team_flag_lookup.csv"
   }
 }
