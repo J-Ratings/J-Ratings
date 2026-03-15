@@ -319,8 +319,16 @@ function normaliseFlagCode(code) {
   return String(code || '').trim().toLowerCase();
 }
 
+function resolveFlagCode(flagCode, teamName) {
+  const name = String(teamName || '').trim().toLowerCase();
+
+  if (name === 'ireland') return 'irfu';
+
+  return normaliseFlagCode(flagCode);
+}
+
 function flagImgHtml(flagCode, label) {
-  const code = normaliseFlagCode(flagCode);
+  const code = resolveFlagCode(flagCode, label);
   if (!code) return '';
   const safeLabel = escapeHtml(label || '');
   return `<img src="${FLAGS_BASE}/${encodeURIComponent(code)}.svg" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
