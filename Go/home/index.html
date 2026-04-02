@@ -143,13 +143,14 @@
 
     <div class="table-wrap">
       <table id="players">
-        <thead>
-          <tr>
-            <th style="min-width:60px">Rank</th>
-            <th style="min-width:260px">Player</th>
-            <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
-          </tr>
-        </thead>
+<thead>
+  <tr>
+    <th style="min-width:60px">Rank</th>
+    <th style="min-width:180px">Tournament</th>
+    <th style="min-width:260px">Player</th>
+    <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
+  </tr>
+</thead>
         <tbody><!-- filled by JS --></tbody>
       </table>
     </div>
@@ -225,40 +226,44 @@
     h.textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
   }
 
-  function render() {
-    const tbody = document.querySelector('#players tbody');
-    const showMoreBtn = document.getElementById('show-more-btn');
+function render() {
+  const tbody = document.querySelector('#players tbody');
+  const showMoreBtn = document.getElementById('show-more-btn');
 
-    tbody.innerHTML = '';
+  tbody.innerHTML = '';
 
-    const visibleRows = state.filtered.slice(0, state.visibleCount);
+  const visibleRows = state.filtered.slice(0, state.visibleCount);
 
-    visibleRows.forEach((r, i) => {
-      const tr = document.createElement('tr');
+  visibleRows.forEach((r, i) => {
+    const tr = document.createElement('tr');
 
-      const tdRank = document.createElement('td');
-      tdRank.textContent = i + 1;
-      tr.appendChild(tdRank);
+    const tdRank = document.createElement('td');
+    tdRank.textContent = i + 1;
+    tr.appendChild(tdRank);
 
-      const tdName = document.createElement('td');
-      const a = document.createElement('a');
-      a.href = `../player/?id=${encodeURIComponent(r.id)}`;
-      a.textContent = r.name || r.id;
-      tdName.appendChild(a);
-      tr.appendChild(tdName);
+    const tdTournament = document.createElement('td');
+    tdTournament.textContent = r.tournament || '';
+    tr.appendChild(tdTournament);
 
-      const tdRt = document.createElement('td');
-      tdRt.className = 'right';
-      tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
-      tr.appendChild(tdRt);
+    const tdName = document.createElement('td');
+    const a = document.createElement('a');
+    a.href = `../player/?id=${encodeURIComponent(r.id)}`;
+    a.textContent = r.name || r.id;
+    tdName.appendChild(a);
+    tr.appendChild(tdName);
 
-      tbody.appendChild(tr);
-    });
+    const tdRt = document.createElement('td');
+    tdRt.className = 'right';
+    tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
+    tr.appendChild(tdRt);
 
-    if (showMoreBtn) {
-      showMoreBtn.style.display = state.visibleCount < state.filtered.length ? 'inline-block' : 'none';
-    }
+    tbody.appendChild(tr);
+  });
+
+  if (showMoreBtn) {
+    showMoreBtn.style.display = state.visibleCount < state.filtered.length ? 'inline-block' : 'none';
   }
+}
 
   function hideCompare() {
     document.getElementById('compare-wrap').style.display = 'none';
@@ -547,16 +552,17 @@
 
       state.meta = metaRes.ok ? await metaRes.json() : null;
 
-      state.liveRows = (Array.isArray(playersData) ? playersData : [])
-        .filter(d => d && d.id && (d.name || d.display_name) && Number.isFinite(+d.rating))
-        .map(d => ({
-          id: d.id,
-          name: d.display_name || d.name || d.id,
-          rating: +d.rating,
-          peak: Number.isFinite(+d.peak) ? +d.peak : null,
-          peak_date: d.peak_date || null
-        }))
-        .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
+state.liveRows = (Array.isArray(playersData) ? playersData : [])
+  .filter(d => d && d.id && (d.name || d.display_name) && Number.isFinite(+d.rating))
+  .map(d => ({
+    id: d.id,
+    name: d.display_name || d.name || d.id,
+    tournament: d.tournament || '',
+    rating: +d.rating,
+    peak: Number.isFinite(+d.peak) ? +d.peak : null,
+    peak_date: d.peak_date || null
+  }))
+  .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
 
       state.eraStarts = Array.isArray(eraData)
         ? eraData.filter(d => d && d.id && d.era && Number.isFinite(+d.elo))
@@ -568,8 +574,8 @@
       const asofEl = document.getElementById('asof');
       if (asofEl) { asofEl.style.display = 'none'; asofEl.textContent = ''; }
 
-      document.querySelector('#players tbody').innerHTML =
-        `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
+document.querySelector('#players tbody').innerHTML =
+  `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
     }
   }
 
