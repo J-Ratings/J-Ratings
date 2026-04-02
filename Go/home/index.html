@@ -153,7 +153,12 @@
         <tbody><!-- filled by JS --></tbody>
       </table>
     </div>
-  </section>
+
+    <div style="padding:16px; text-align:center;">
+      <button id="show-more-btn" class="club-btn" type="button" style="display:none;">
+        Show More
+      </button>
+    </div>
 
   <!-- Compare Selection Modal -->
   <div id="compare-modal">
@@ -179,13 +184,16 @@
 
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
+  const PAGE_SIZE = 100;
+
   const state = {
     mode: 'live',
     meta: null,
     liveRows: [],
     eraStarts: [],
     rows: [],
-    filtered: []
+    filtered: [],
+    visibleCount: PAGE_SIZE
   };
 
   const histCache = new Map();
@@ -219,9 +227,13 @@
 
   function render() {
     const tbody = document.querySelector('#players tbody');
+    const showMoreBtn = document.getElementById('show-more-btn');
+
     tbody.innerHTML = '';
 
-    state.filtered.forEach((r, i) => {
+    const visibleRows = state.filtered.slice(0, state.visibleCount);
+
+    visibleRows.forEach((r, i) => {
       const tr = document.createElement('tr');
 
       const tdRank = document.createElement('td');
@@ -242,6 +254,10 @@
 
       tbody.appendChild(tr);
     });
+
+    if (showMoreBtn) {
+      showMoreBtn.style.display = state.visibleCount < state.filtered.length ? 'inline-block' : 'none';
+    }
   }
 
   function hideCompare() {
@@ -256,6 +272,8 @@
     state.filtered = !q
       ? state.rows.slice()
       : state.rows.filter(r => (r.name || '').toLowerCase().includes(q));
+
+    state.visibleCount = PAGE_SIZE;
 
     updateHeaders();
     render();
@@ -562,8 +580,14 @@
   document.getElementById('era').addEventListener('change', rebuildRowsFromMode);
   document.getElementById('q').addEventListener('input', applyFilter);
 
+  document.getElementById('show-more-btn').addEventListener('click', () => {
+    state.visibleCount += PAGE_SIZE;
+    render();
+  });
+
   setupCompareButton();
   load();
+  
 </script>
 </body>
 </html>
