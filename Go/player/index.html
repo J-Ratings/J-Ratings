@@ -155,7 +155,8 @@
     table.games th:nth-child(2), table.games td:nth-child(2),
     table.games th:nth-child(3), table.games td:nth-child(3),
     table.games th:nth-child(4), table.games td:nth-child(4),
-    table.games th:nth-child(5), table.games td:nth-child(5) {
+    table.games th:nth-child(5), table.games td:nth-child(5),
+    table.games th:nth-child(6), table.games td:nth-child(6) {
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
@@ -493,14 +494,13 @@
     return { cls: '', text: raw || '' };
   }
 
-  // Keep the original Go table (no Event column)
   function renderGamesTable(me, players, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
 
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
-    for (const h of ['Date', 'Opponent', 'Elo', 'Result', 'Δ', 'New']) {
+    for (const h of ['Date', 'Tournament', 'Opponent', 'Elo', 'Result', 'Δ', 'New']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -537,6 +537,9 @@
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date || '';
 
+      const tdTournament = document.createElement('td');
+      tdTournament.textContent = g.tournament || '';
+
       const tdOpp = makeOpponentCell(opponentName, players);
 
       const tdOppElo = document.createElement('td');
@@ -559,6 +562,7 @@
       tdNew.textContent = Number.isFinite(myEloAfter) ? String(myEloAfter) : '';
 
       tr.appendChild(tdDate);
+      tr.appendChild(tdTournament);
       tr.appendChild(tdOpp);
       tr.appendChild(tdOppElo);
       tr.appendChild(tdResult);
@@ -572,7 +576,7 @@
     if (!added) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      td.colSpan = 6;
+      td.colSpan = 7;
       td.textContent = 'No games';
       tr.appendChild(td);
       tbody.appendChild(tr);
@@ -612,7 +616,7 @@
 
     try {
       document.getElementById('chart').textContent = 'Loading…';
-      document.getElementById('games').innerHTML = '<tbody><tr><td colspan="6">Loading…</td></tr></tbody>';
+      document.getElementById('games').innerHTML = '<tbody><tr><td colspan="7">Loading…</td></tr></tbody>';
 
       const [playersRes, histRes, gamesRes] = await Promise.all([
         fetch(PLAYERS_URL, { cache: 'no-cache' }),
@@ -655,7 +659,7 @@
         renderGamesTable(me, players, Array.isArray(games) ? games : []);
       } else {
         document.getElementById('games').innerHTML =
-          '<tbody><tr><td colspan="6">No games</td></tr></tbody>';
+          '<tbody><tr><td colspan="7">No games</td></tr></tbody>';
       }
 
     } catch (e) {
@@ -663,7 +667,7 @@
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       document.getElementById('games').innerHTML =
-        '<tbody><tr><td colspan="6">Error loading games</td></tr></tbody>';
+        '<tbody><tr><td colspan="7">Error loading games</td></tr></tbody>';
       renderPlayerStats([]);
     }
   }
