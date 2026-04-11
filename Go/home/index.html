@@ -17,16 +17,29 @@
   <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
-  <style>
-    #compare-chart { height: 500px; }
+<style>
+  #compare-chart { height: 500px; }
 
-    .toolbar {
-      margin-bottom: 10px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+  .toolbar {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .flag-cell {
+    text-align: centre;
+    vertical-align: middle;
+  }
+
+  .flag-icon {
+    width: 39.93px;
+    height: 29.04px;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+  }
 
     .compare-chart-toolbar {
       display: flex;
@@ -142,15 +155,16 @@
     </div>
 
     <div class="table-wrap">
-      <table id="players">
-        <thead>
-          <tr>
-            <th style="min-width:60px">Rank</th>
-            <th style="min-width:260px">Player</th>
-            <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
-          </tr>
-        </thead>
-        <tbody><!-- filled by JS --></tbody>
+<table id="players">
+  <thead>
+    <tr>
+      <th style="min-width:60px">Rank</th>
+      <th style="min-width:56px">Country</th>
+      <th style="min-width:260px">Player</th>
+      <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
+    </tr>
+  </thead>
+          <tbody><!-- filled by JS --></tbody>
       </table>
     </div>
 
@@ -191,6 +205,7 @@
   const DATA_URL = '../data/players.json';
   const ERA_STARTS_URL = '../data/era_starts.json';
   const META_URL = '../data/meta.json';
+  const FLAGS_BASE = '../../flags';
 
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
@@ -209,12 +224,32 @@
   const histCache = new Map();
   let lastCompared = [];
 
-  function formatAsOf(iso) {
-    const [y, m, d] = String(iso).split('-').map(Number);
-    if (!y || !m || !d) return iso;
-    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    return `${d} ${months[m - 1]} ${y}`;
-  }
+function formatAsOf(iso) {
+  const [y, m, d] = String(iso).split('-').map(Number);
+  if (!y || !m || !d) return iso;
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${d} ${months[m - 1]} ${y}`;
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function normaliseFlagCode(code) {
+  return String(code || '').trim().toLowerCase();
+}
+
+function flagImgHtml(flagCode, label) {
+  const code = normaliseFlagCode(flagCode);
+  if (!code) return '';
+  const safeLabel = escapeHtml(label || '');
+  return `<img src="${FLAGS_BASE}/${encodeURIComponent(code)}.svg" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
+}
 
   function setAsOfText() {
     const el = document.getElementById('asof');
@@ -235,40 +270,45 @@
     h.textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
   }
 
-  function render() {
-    const tbody = document.querySelector('#players tbody');
-    const showMoreBtn = document.getElementById('show-more-btn');
+function render() {
+  const tbody = document.querySelector('#players tbody');
+  const showMoreBtn = document.getElementById('show-more-btn');
 
-    tbody.innerHTML = '';
+  tbody.innerHTML = '';
 
-    const visibleRows = state.filtered.slice(0, state.visibleCount);
+  const visibleRows = state.filtered.slice(0, state.visibleCount);
 
-    visibleRows.forEach((r, i) => {
-      const tr = document.createElement('tr');
+  visibleRows.forEach((r, i) => {
+    const tr = document.createElement('tr');
 
-      const tdRank = document.createElement('td');
-      tdRank.textContent = i + 1;
-      tr.appendChild(tdRank);
+    const tdRank = document.createElement('td');
+    tdRank.textContent = i + 1;
+    tr.appendChild(tdRank);
 
-      const tdName = document.createElement('td');
-      const a = document.createElement('a');
-      a.href = `../player/?id=${encodeURIComponent(r.id)}`;
-      a.textContent = r.name || r.id;
-      tdName.appendChild(a);
-      tr.appendChild(tdName);
+    const tdFlag = document.createElement('td');
+    tdFlag.className = 'flag-cell';
+    tdFlag.innerHTML = flagImgHtml(r.flag, r.name || r.id);
+    tr.appendChild(tdFlag);
 
-      const tdRt = document.createElement('td');
-      tdRt.className = 'right';
-      tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
-      tr.appendChild(tdRt);
+    const tdName = document.createElement('td');
+    const a = document.createElement('a');
+    a.href = `../player/?id=${encodeURIComponent(r.id)}`;
+    a.textContent = r.name || r.id;
+    tdName.appendChild(a);
+    tr.appendChild(tdName);
 
-      tbody.appendChild(tr);
-    });
+    const tdRt = document.createElement('td');
+    tdRt.className = 'right';
+    tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
+    tr.appendChild(tdRt);
 
-    if (showMoreBtn) {
-      showMoreBtn.style.display = state.visibleCount < state.filtered.length ? 'inline-block' : 'none';
-    }
+    tbody.appendChild(tr);
+  });
+
+  if (showMoreBtn) {
+    showMoreBtn.style.display = state.visibleCount < state.filtered.length ? 'inline-block' : 'none';
   }
+}
 
   function hideCompare() {
     document.getElementById('compare-wrap').style.display = 'none';
@@ -299,15 +339,16 @@
         .slice()
         .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
     } else {
-      state.rows = state.eraStarts
-        .filter(d => String(d.era) === String(mode))
-        .map(d => ({
-          id: d.id,
-          name: d.name || d.id,
-          rating: +d.elo,
-          tournament: d.tournament || ''
-        }))
-        .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
+state.rows = state.eraStarts
+  .filter(d => String(d.era) === String(mode))
+  .map(d => ({
+    id: d.id,
+    name: d.name || d.id,
+    flag: d.flag || '',
+    rating: +d.elo,
+    tournament: d.tournament || ''
+  }))
+  .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
     }
 
     setAsOfText();
@@ -557,16 +598,17 @@
 
       state.meta = metaRes.ok ? await metaRes.json() : null;
 
-      state.liveRows = (Array.isArray(playersData) ? playersData : [])
-        .filter(d => d && d.id && (d.name || d.display_name) && Number.isFinite(+d.rating))
-        .map(d => ({
-          id: d.id,
-          name: d.display_name || d.name || d.id,
-          rating: +d.rating,
-          peak: Number.isFinite(+d.peak) ? +d.peak : null,
-          peak_date: d.peak_date || null
-        }))
-        .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
+state.liveRows = (Array.isArray(playersData) ? playersData : [])
+  .filter(d => d && d.id && (d.name || d.display_name) && Number.isFinite(+d.rating))
+  .map(d => ({
+    id: d.id,
+    name: d.display_name || d.name || d.id,
+    flag: d.flag || '',
+    rating: +d.rating,
+    peak: Number.isFinite(+d.peak) ? +d.peak : null,
+    peak_date: d.peak_date || null
+  }))
+  .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
 
       state.eraStarts = Array.isArray(eraData)
         ? eraData.filter(d => d && d.id && d.era && Number.isFinite(+d.elo))
@@ -578,8 +620,8 @@
       const asofEl = document.getElementById('asof');
       if (asofEl) { asofEl.style.display = 'none'; asofEl.textContent = ''; }
 
-      document.querySelector('#players tbody').innerHTML =
-        `<tr><td colspan="3">Error loading data: ${err.message}</td></tr>`;
+document.querySelector('#players tbody').innerHTML =
+  `<tr><td colspan="4">Error loading data: ${escapeHtml(err.message)}</td></tr>`;
     }
   }
 
