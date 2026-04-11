@@ -28,10 +28,10 @@
     flex-wrap: wrap;
   }
 
-  .flag-cell {
-    text-align: centre;
-    vertical-align: middle;
-  }
+.flag-cell {
+  text-align: center;
+  vertical-align: middle;
+}
 
   .flag-icon {
     width: 39.93px;
@@ -90,19 +90,37 @@
       #players th:nth-child(1),
       #players td:nth-child(1) { width: 52px; }
 
-      #players th:nth-child(3),
-      #players td:nth-child(3) { width: 78px; }
+@media (max-width: 520px) {
+  #players {
+    width: 100%;
+    table-layout: fixed;
+  }
 
-      #players th:nth-child(2),
-      #players td:nth-child(2) { width: auto; }
+  #players th,
+  #players td {
+    min-width: 0 !important;
+    padding: 10px 8px;
+  }
 
-      #players td:nth-child(2) a {
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
+  #players th:nth-child(1),
+  #players td:nth-child(1) { width: 52px; }
+
+  #players th:nth-child(2),
+  #players td:nth-child(2) { width: 44px; }
+
+  #players th:nth-child(4),
+  #players td:nth-child(4) { width: 84px; }
+
+  #players th:nth-child(3),
+  #players td:nth-child(3) { width: auto; }
+
+  #players td:nth-child(3) a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
   </style>
 </head>
 
@@ -199,7 +217,6 @@
     used with permission. This dataset is not currently updated. Seeking alternative sources.
   </div>
 </footer>
-</main>
 
 <script>
   const DATA_URL = '../data/players.json';
