@@ -19,9 +19,28 @@
 
   <style>
     #compare-chart { height: 500px; }
-    .toolbar { margin-bottom: 10px; }
 
-    /* Modal */
+    .toolbar {
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .flag-cell {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .flag-icon {
+      width: 39.93px;
+      height: 29.04px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
     #compare-modal {
       display: none;
       position: fixed;
@@ -62,13 +81,19 @@
       #players th:nth-child(1),
       #players td:nth-child(1) { width: 52px; }
 
-      #players th:nth-child(3),
-      #players td:nth-child(3) { width: 78px; }
-
       #players th:nth-child(2),
-      #players td:nth-child(2) { width: auto; }
+      #players td:nth-child(2) { width: 44px; }
 
-      #players td:nth-child(2) a {
+      #players th:nth-child(4),
+      #players td:nth-child(4) { width: 78px; }
+
+      #players th:nth-child(5),
+      #players td:nth-child(5) { width: 92px; }
+
+      #players th:nth-child(3),
+      #players td:nth-child(3) { width: auto; }
+
+      #players td:nth-child(3) a {
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -117,6 +142,7 @@
         <thead>
           <tr>
             <th style="min-width:60px">Rank</th>
+            <th style="min-width:56px">Country</th>
             <th style="min-width:240px">Player</th>
             <th class="right" style="min-width:120px">Peak</th>
             <th style="min-width:140px">Peak Date</th>
@@ -124,6 +150,12 @@
         </thead>
         <tbody><!-- filled by JS --></tbody>
       </table>
+    </div>
+
+    <div style="padding:16px; text-align:center;">
+      <button id="show-more-btn" class="club-btn" type="button" style="display:none;">
+        Show More
+      </button>
     </div>
   </section>
 </main>
@@ -146,23 +178,58 @@
 
 <script>
   const DATA_URL = '../data/players.json';
+  const FLAGS_BASE = '../../flags';
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
+  const PAGE_SIZE = 100;
 
-  const state = { rows: [], filtered: [] };
+  const state = {
+    rows: [],
+    filtered: [],
+    visibleCount: PAGE_SIZE
+  };
+
   const histCache = new Map();
   let lastCompared = [];
 
-  /* ---------- table render ---------- */
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function normaliseFlagCode(code) {
+    return String(code || '').trim().toLowerCase();
+  }
+
+  function flagImgHtml(flagCode, label) {
+    const code = normaliseFlagCode(flagCode);
+    if (!code) return '';
+    const safeLabel = escapeHtml(label || '');
+    return `<img src="${FLAGS_BASE}/${encodeURIComponent(code)}.svg" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
+  }
+
   function render() {
     const tbody = document.querySelector('#players tbody');
+    const showMoreBtn = document.getElementById('show-more-btn');
+
     tbody.innerHTML = '';
 
-    state.filtered.forEach((r, i) => {
+    const visibleRows = state.filtered.slice(0, state.visibleCount);
+
+    visibleRows.forEach((r, i) => {
       const tr = document.createElement('tr');
 
       const tdRank = document.createElement('td');
       tdRank.textContent = i + 1;
       tr.appendChild(tdRank);
+
+      const tdFlag = document.createElement('td');
+      tdFlag.className = 'flag-cell';
+      tdFlag.innerHTML = flagImgHtml(r.flag, r.name);
+      tr.appendChild(tdFlag);
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
@@ -173,7 +240,7 @@
 
       const tdPeak = document.createElement('td');
       tdPeak.className = 'right';
-      tdPeak.textContent = r.peak;
+      tdPeak.textContent = Number.isFinite(+r.peak) ? Math.round(+r.peak) : '';
       tr.appendChild(tdPeak);
 
       const tdDate = document.createElement('td');
@@ -184,19 +251,33 @@
     });
 
     const countEl = document.getElementById('count');
-    if (countEl) countEl.textContent = state.filtered.length ? `${state.filtered.length} players` : '';
+    if (countEl) {
+      countEl.textContent = state.filtered.length ? `${state.filtered.length} players` : '';
+    }
+
+    if (showMoreBtn) {
+      showMoreBtn.style.display = state.visibleCount < state.filtered.length ? 'inline-block' : 'none';
+    }
+  }
+
+  function hideCompare() {
+    document.getElementById('compare-wrap').style.display = 'none';
+    document.getElementById('compare-chart').innerHTML = '';
+    lastCompared = [];
   }
 
   function applyFilter() {
     const q = document.getElementById('q').value.trim().toLowerCase();
+
     state.filtered = q
       ? state.rows.filter(r => r.name.toLowerCase().includes(q))
       : state.rows.slice();
+
+    state.visibleCount = PAGE_SIZE;
     render();
     hideCompare();
   }
 
-  /* ---------- history fetching ---------- */
   async function fetchHistoryFor(id) {
     if (histCache.has(id)) return histCache.get(id);
 
@@ -211,7 +292,6 @@
     }
   }
 
-  /* ---------- aggregation ---------- */
   function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
@@ -225,7 +305,7 @@
 
     for (const p of s) {
       const d = new Date(p.x);
-      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
       if (key !== lastKey) out.push(p);
       else out[out.length - 1] = p;
@@ -244,7 +324,7 @@
     for (const p of series) {
       const d = new Date(p.x);
       const key = (mode === 'monthly')
-        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2,'0')}`
+        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
         : `${d.getFullYear()}`;
 
       (buckets[key] ||= []).push(p.y);
@@ -260,13 +340,6 @@
     return normalise(out, false);
   }
 
-  /* ---------- compare chart ---------- */
-  function hideCompare() {
-    document.getElementById('compare-wrap').style.display = 'none';
-    document.getElementById('compare-chart').innerHTML = '';
-    lastCompared = [];
-  }
-
   async function buildComparison(players) {
     lastCompared = players.slice();
 
@@ -279,7 +352,8 @@
     const mode = 'monthly';
 
     const traces = [];
-    let ymin = Infinity, ymax = -Infinity;
+    let ymin = Infinity;
+    let ymax = -Infinity;
 
     for (const p of players) {
       const hist = await fetchHistoryFor(p.id);
@@ -360,7 +434,7 @@
         row.innerHTML = `
           <label>
             <input type="checkbox" id="${id}" value="${p.id}" style="margin-right:6px">
-            ${p.name} (${p.peak})
+            ${escapeHtml(p.name)} (${Math.round(p.peak)})
           </label>
         `;
         listDiv.appendChild(row);
@@ -369,14 +443,20 @@
       modal.style.display = 'flex';
     }
 
-    function closeModal() { modal.style.display = 'none'; }
+    function closeModal() {
+      modal.style.display = 'none';
+    }
 
     function showSelected() {
       const ids = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
-      if (!ids.length) { alert('Please select at least one player.'); return; }
+      if (!ids.length) {
+        alert('Please select at least one player.');
+        return;
+      }
+
       closeModal();
 
-      const chosen = state.filtered.filter(p => ids.includes(p.id));
+      const chosen = state.filtered.filter(p => ids.includes(String(p.id)));
       buildComparison(chosen);
     }
 
@@ -387,7 +467,6 @@
     document.getElementById('compare-cancel-bottom').addEventListener('click', closeModal);
   }
 
-  /* ---------- load ---------- */
   async function load() {
     try {
       const res = await fetch(DATA_URL, { cache: 'no-cache' });
@@ -395,25 +474,33 @@
 
       const data = await res.json();
 
-      state.rows = data
+      state.rows = (Array.isArray(data) ? data : [])
         .filter(d => d && d.id && d.name && Number.isFinite(+d.peak))
         .map(d => ({
-          id: d.id,
+          id: String(d.id),
           name: d.name,
+          flag: d.flag || '',
           peak: +d.peak,
           peak_date: d.peak_date || ''
         }))
         .sort((a, b) => b.peak - a.peak || a.name.localeCompare(b.name));
 
       state.filtered = state.rows.slice();
+      state.visibleCount = PAGE_SIZE;
       render();
     } catch (err) {
       document.querySelector('#players tbody').innerHTML =
-        `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
+        `<tr><td colspan="5">Error loading data: ${escapeHtml(err.message)}</td></tr>`;
     }
   }
 
   document.getElementById('q').addEventListener('input', applyFilter);
+
+  document.getElementById('show-more-btn').addEventListener('click', () => {
+    state.visibleCount += PAGE_SIZE;
+    render();
+  });
+
   setupCompareButton();
   load();
 </script>
