@@ -323,47 +323,75 @@
     lastCompared = [];
   }
 
-  function applyFilter() {
-    const q = document.getElementById('q').value.trim().toLowerCase();
-    const selectedCountry = document.getElementById('country').value;
+function applyFilter() {
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const selectedCountry = document.getElementById('country').value;
 
-    state.filtered = state.rows.filter(r => {
-      const matchesName = !q || (r.name || '').toLowerCase().includes(q);
-      const matchesCountry = selectedCountry === 'all' || String(r.country || '') === selectedCountry;
-      return matchesName && matchesCountry;
-    });
+  state.filtered = state.rows.filter(r => {
+    const matchesName = !q || (r.name || '').toLowerCase().includes(q);
+    const matchesCountry = selectedCountry === 'all' || String(r.flag || '').toLowerCase() === selectedCountry;
+    return matchesName && matchesCountry;
+  });
 
-    state.visibleCount = PAGE_SIZE;
+  state.visibleCount = PAGE_SIZE;
 
-    updateHeaders();
-    render();
-    hideCompare();
+  updateHeaders();
+  render();
+  hideCompare();
+}
+
+function populateCountrySelect() {
+  const sel = document.getElementById('country');
+  if (!sel) return;
+
+  const previousValue = sel.value || 'all';
+
+  const COUNTRY_LABELS = {
+    cn: 'China',
+    jp: 'Japan',
+    kr: 'Korea',
+    tw: 'Taiwan',
+    us: 'United States',
+    ru: 'Russia',
+    ca: 'Canada',
+    ro: 'Romania'
+  };
+
+  const PRIORITY_ORDER = ['cn', 'jp', 'kr'];
+
+  const countryCodes = Array.from(new Set(
+    state.rows
+      .map(r => String(r.flag || '').trim().toLowerCase())
+      .filter(Boolean)
+  ));
+
+  countryCodes.sort((a, b) => {
+    const ai = PRIORITY_ORDER.indexOf(a);
+    const bi = PRIORITY_ORDER.indexOf(b);
+
+    const aPriority = ai !== -1;
+    const bPriority = bi !== -1;
+
+    if (aPriority && bPriority) return ai - bi;
+    if (aPriority) return -1;
+    if (bPriority) return 1;
+
+    const aLabel = COUNTRY_LABELS[a] || a.toUpperCase();
+    const bLabel = COUNTRY_LABELS[b] || b.toUpperCase();
+    return aLabel.localeCompare(bLabel);
+  });
+
+  sel.innerHTML = '<option value="all">All</option>';
+
+  for (const code of countryCodes) {
+    const opt = document.createElement('option');
+    opt.value = code;
+    opt.textContent = COUNTRY_LABELS[code] || code.toUpperCase();
+    sel.appendChild(opt);
   }
 
-  function populateCountrySelect() {
-    const sel = document.getElementById('country');
-    if (!sel) return;
-
-    const previousValue = sel.value || 'all';
-
-    const countries = Array.from(new Set(
-      state.rows
-        .map(r => String(r.country || '').trim())
-        .filter(Boolean)
-    )).sort((a, b) => a.localeCompare(b));
-
-    sel.innerHTML = '<option value="all">All</option>';
-
-    for (const country of countries) {
-      const opt = document.createElement('option');
-      opt.value = country;
-      opt.textContent = country;
-      sel.appendChild(opt);
-    }
-
-    sel.value = countries.includes(previousValue) ? previousValue : 'all';
-  }
-
+  sel.value = countryCodes.includes(previousValue) ? previousValue : 'all';
+}
   function rebuildRowsFromMode() {
     const mode = document.getElementById('era').value;
     state.mode = mode;
