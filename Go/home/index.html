@@ -17,29 +17,29 @@
   <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
-<style>
-  #compare-chart { height: 500px; }
+  <style>
+    #compare-chart { height: 500px; }
 
-  .toolbar {
-    margin-bottom: 10px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+    .toolbar {
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-.flag-cell {
-  text-align: center;
-  vertical-align: middle;
-}
+    .flag-cell {
+      text-align: center;
+      vertical-align: middle;
+    }
 
-  .flag-icon {
-    width: 39.93px;
-    height: 29.04px;
-    display: block;
-    margin: 0 auto;
-    object-fit: contain;
-  }
+    .flag-icon {
+      width: 39.93px;
+      height: 29.04px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
 
     .compare-chart-toolbar {
       display: flex;
@@ -90,37 +90,22 @@
       #players th:nth-child(1),
       #players td:nth-child(1) { width: 52px; }
 
-@media (max-width: 520px) {
-  #players {
-    width: 100%;
-    table-layout: fixed;
-  }
+      #players th:nth-child(2),
+      #players td:nth-child(2) { width: 44px; }
 
-  #players th,
-  #players td {
-    min-width: 0 !important;
-    padding: 10px 8px;
-  }
+      #players th:nth-child(4),
+      #players td:nth-child(4) { width: 84px; }
 
-  #players th:nth-child(1),
-  #players td:nth-child(1) { width: 52px; }
+      #players th:nth-child(3),
+      #players td:nth-child(3) { width: auto; }
 
-  #players th:nth-child(2),
-  #players td:nth-child(2) { width: 44px; }
-
-  #players th:nth-child(4),
-  #players td:nth-child(4) { width: 84px; }
-
-  #players th:nth-child(3),
-  #players td:nth-child(3) { width: auto; }
-
-  #players td:nth-child(3) a {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}
+      #players td:nth-child(3) a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
   </style>
 </head>
 
@@ -156,6 +141,11 @@
         <option value="live" selected>Live</option>
       </select>
 
+      <label for="country">Country:</label>
+      <select id="country">
+        <option value="all" selected>All</option>
+      </select>
+
       <button id="compare-btn" class="club-btn" type="button">Compare</button>
     </div>
 
@@ -173,16 +163,16 @@
     </div>
 
     <div class="table-wrap">
-<table id="players">
-  <thead>
-    <tr>
-      <th style="min-width:60px">Rank</th>
-      <th style="min-width:56px">Country</th>
-      <th style="min-width:260px">Player</th>
-      <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
-    </tr>
-  </thead>
-          <tbody><!-- filled by JS --></tbody>
+      <table id="players">
+        <thead>
+          <tr>
+            <th style="min-width:60px">Rank</th>
+            <th style="min-width:56px">Country</th>
+            <th style="min-width:260px">Player</th>
+            <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
+          </tr>
+        </thead>
+        <tbody><!-- filled by JS --></tbody>
       </table>
     </div>
 
@@ -192,21 +182,22 @@
       </button>
     </div>
 
-  <!-- Compare Selection Modal -->
-  <div id="compare-modal">
-    <div>
-      <h3>Select players to view:</h3>
-      <div class="compare-controls">
-        <button id="compare-show-top">Show Selected</button>
-        <button id="compare-cancel-top">Cancel</button>
-      </div>
-      <div id="compare-list" style="margin:10px 0 20px 0;"></div>
-      <div class="compare-controls">
-        <button id="compare-show-bottom">Show Selected</button>
-        <button id="compare-cancel-bottom">Cancel</button>
+    <!-- Compare Selection Modal -->
+    <div id="compare-modal">
+      <div>
+        <h3>Select players to view:</h3>
+        <div class="compare-controls">
+          <button id="compare-show-top">Show Selected</button>
+          <button id="compare-cancel-top">Cancel</button>
+        </div>
+        <div id="compare-list" style="margin:10px 0 20px 0;"></div>
+        <div class="compare-controls">
+          <button id="compare-show-bottom">Show Selected</button>
+          <button id="compare-cancel-bottom">Cancel</button>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -225,7 +216,6 @@
   const FLAGS_BASE = '../../flags';
 
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
-
   const PAGE_SIZE = 100;
 
   const state = {
@@ -241,32 +231,32 @@
   const histCache = new Map();
   let lastCompared = [];
 
-function formatAsOf(iso) {
-  const [y, m, d] = String(iso).split('-').map(Number);
-  if (!y || !m || !d) return iso;
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return `${d} ${months[m - 1]} ${y}`;
-}
+  function formatAsOf(iso) {
+    const [y, m, d] = String(iso).split('-').map(Number);
+    if (!y || !m || !d) return iso;
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${d} ${months[m - 1]} ${y}`;
+  }
 
-function escapeHtml(value) {
-  return String(value ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
 
-function normaliseFlagCode(code) {
-  return String(code || '').trim().toLowerCase();
-}
+  function normaliseFlagCode(code) {
+    return String(code || '').trim().toLowerCase();
+  }
 
-function flagImgHtml(flagCode, label) {
-  const code = normaliseFlagCode(flagCode);
-  if (!code) return '';
-  const safeLabel = escapeHtml(label || '');
-  return `<img src="${FLAGS_BASE}/${encodeURIComponent(code)}.svg" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
-}
+  function flagImgHtml(flagCode, label) {
+    const code = normaliseFlagCode(flagCode);
+    if (!code) return '';
+    const safeLabel = escapeHtml(label || '');
+    return `<img src="${FLAGS_BASE}/${encodeURIComponent(code)}.svg" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
+  }
 
   function setAsOfText() {
     const el = document.getElementById('asof');
@@ -287,45 +277,45 @@ function flagImgHtml(flagCode, label) {
     h.textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
   }
 
-function render() {
-  const tbody = document.querySelector('#players tbody');
-  const showMoreBtn = document.getElementById('show-more-btn');
+  function render() {
+    const tbody = document.querySelector('#players tbody');
+    const showMoreBtn = document.getElementById('show-more-btn');
 
-  tbody.innerHTML = '';
+    tbody.innerHTML = '';
 
-  const visibleRows = state.filtered.slice(0, state.visibleCount);
+    const visibleRows = state.filtered.slice(0, state.visibleCount);
 
-  visibleRows.forEach((r, i) => {
-    const tr = document.createElement('tr');
+    visibleRows.forEach((r, i) => {
+      const tr = document.createElement('tr');
 
-    const tdRank = document.createElement('td');
-    tdRank.textContent = i + 1;
-    tr.appendChild(tdRank);
+      const tdRank = document.createElement('td');
+      tdRank.textContent = i + 1;
+      tr.appendChild(tdRank);
 
-    const tdFlag = document.createElement('td');
-    tdFlag.className = 'flag-cell';
-    tdFlag.innerHTML = flagImgHtml(r.flag, r.name || r.id);
-    tr.appendChild(tdFlag);
+      const tdFlag = document.createElement('td');
+      tdFlag.className = 'flag-cell';
+      tdFlag.innerHTML = flagImgHtml(r.flag, r.country || r.name || r.id);
+      tr.appendChild(tdFlag);
 
-    const tdName = document.createElement('td');
-    const a = document.createElement('a');
-    a.href = `../player/?id=${encodeURIComponent(r.id)}`;
-    a.textContent = r.name || r.id;
-    tdName.appendChild(a);
-    tr.appendChild(tdName);
+      const tdName = document.createElement('td');
+      const a = document.createElement('a');
+      a.href = `../player/?id=${encodeURIComponent(r.id)}`;
+      a.textContent = r.name || r.id;
+      tdName.appendChild(a);
+      tr.appendChild(tdName);
 
-    const tdRt = document.createElement('td');
-    tdRt.className = 'right';
-    tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
-    tr.appendChild(tdRt);
+      const tdRt = document.createElement('td');
+      tdRt.className = 'right';
+      tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
+      tr.appendChild(tdRt);
 
-    tbody.appendChild(tr);
-  });
+      tbody.appendChild(tr);
+    });
 
-  if (showMoreBtn) {
-    showMoreBtn.style.display = state.visibleCount < state.filtered.length ? 'inline-block' : 'none';
+    if (showMoreBtn) {
+      showMoreBtn.style.display = state.visibleCount < state.filtered.length ? 'inline-block' : 'none';
+    }
   }
-}
 
   function hideCompare() {
     document.getElementById('compare-wrap').style.display = 'none';
@@ -335,16 +325,43 @@ function render() {
 
   function applyFilter() {
     const q = document.getElementById('q').value.trim().toLowerCase();
+    const selectedCountry = document.getElementById('country').value;
 
-    state.filtered = !q
-      ? state.rows.slice()
-      : state.rows.filter(r => (r.name || '').toLowerCase().includes(q));
+    state.filtered = state.rows.filter(r => {
+      const matchesName = !q || (r.name || '').toLowerCase().includes(q);
+      const matchesCountry = selectedCountry === 'all' || String(r.country || '') === selectedCountry;
+      return matchesName && matchesCountry;
+    });
 
     state.visibleCount = PAGE_SIZE;
 
     updateHeaders();
     render();
     hideCompare();
+  }
+
+  function populateCountrySelect() {
+    const sel = document.getElementById('country');
+    if (!sel) return;
+
+    const previousValue = sel.value || 'all';
+
+    const countries = Array.from(new Set(
+      state.rows
+        .map(r => String(r.country || '').trim())
+        .filter(Boolean)
+    )).sort((a, b) => a.localeCompare(b));
+
+    sel.innerHTML = '<option value="all">All</option>';
+
+    for (const country of countries) {
+      const opt = document.createElement('option');
+      opt.value = country;
+      opt.textContent = country;
+      sel.appendChild(opt);
+    }
+
+    sel.value = countries.includes(previousValue) ? previousValue : 'all';
   }
 
   function rebuildRowsFromMode() {
@@ -356,19 +373,21 @@ function render() {
         .slice()
         .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
     } else {
-state.rows = state.eraStarts
-  .filter(d => String(d.era) === String(mode))
-  .map(d => ({
-    id: d.id,
-    name: d.name || d.id,
-    flag: d.flag || '',
-    rating: +d.elo,
-    tournament: d.tournament || ''
-  }))
-  .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
+      state.rows = state.eraStarts
+        .filter(d => String(d.era) === String(mode))
+        .map(d => ({
+          id: d.id,
+          name: d.name || d.id,
+          flag: d.flag || '',
+          country: d.country || d.country_name || d.flag || '',
+          rating: +d.elo,
+          tournament: d.tournament || ''
+        }))
+        .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
     }
 
     setAsOfText();
+    populateCountrySelect();
     applyFilter();
   }
 
@@ -615,17 +634,18 @@ state.rows = state.eraStarts
 
       state.meta = metaRes.ok ? await metaRes.json() : null;
 
-state.liveRows = (Array.isArray(playersData) ? playersData : [])
-  .filter(d => d && d.id && (d.name || d.display_name) && Number.isFinite(+d.rating))
-  .map(d => ({
-    id: d.id,
-    name: d.display_name || d.name || d.id,
-    flag: d.flag || '',
-    rating: +d.rating,
-    peak: Number.isFinite(+d.peak) ? +d.peak : null,
-    peak_date: d.peak_date || null
-  }))
-  .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
+      state.liveRows = (Array.isArray(playersData) ? playersData : [])
+        .filter(d => d && d.id && (d.name || d.display_name) && Number.isFinite(+d.rating))
+        .map(d => ({
+          id: d.id,
+          name: d.display_name || d.name || d.id,
+          flag: d.flag || '',
+          country: d.country || d.country_name || d.flag || '',
+          rating: +d.rating,
+          peak: Number.isFinite(+d.peak) ? +d.peak : null,
+          peak_date: d.peak_date || null
+        }))
+        .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
 
       state.eraStarts = Array.isArray(eraData)
         ? eraData.filter(d => d && d.id && d.era && Number.isFinite(+d.elo))
@@ -635,10 +655,13 @@ state.liveRows = (Array.isArray(playersData) ? playersData : [])
       rebuildRowsFromMode();
     } catch (err) {
       const asofEl = document.getElementById('asof');
-      if (asofEl) { asofEl.style.display = 'none'; asofEl.textContent = ''; }
+      if (asofEl) {
+        asofEl.style.display = 'none';
+        asofEl.textContent = '';
+      }
 
-document.querySelector('#players tbody').innerHTML =
-  `<tr><td colspan="4">Error loading data: ${escapeHtml(err.message)}</td></tr>`;
+      document.querySelector('#players tbody').innerHTML =
+        `<tr><td colspan="4">Error loading data: ${escapeHtml(err.message)}</td></tr>`;
     }
   }
 
@@ -647,6 +670,7 @@ document.querySelector('#players tbody').innerHTML =
   });
 
   document.getElementById('era').addEventListener('change', rebuildRowsFromMode);
+  document.getElementById('country').addEventListener('change', applyFilter);
   document.getElementById('q').addEventListener('input', applyFilter);
 
   document.getElementById('show-more-btn').addEventListener('click', () => {
@@ -656,7 +680,6 @@ document.querySelector('#players tbody').innerHTML =
 
   setupCompareButton();
   load();
-  
 </script>
 </body>
 </html>
