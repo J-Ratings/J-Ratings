@@ -347,14 +347,25 @@ function populateCountrySelect() {
   const previousValue = sel.value || 'all';
 
   const COUNTRY_LABELS = {
+    ar: 'Argentina',
+    ca: 'Canada',
     cn: 'China',
+    fr: 'France',
+    gb: 'United Kingdom',
+    hk: 'Hong Kong',
+    il: 'Israel',
     jp: 'Japan',
     kr: 'Korea',
-    tw: 'Taiwan',
-    us: 'United States',
+    my: 'Malaysia',
+    nl: 'Netherlands',
+    pl: 'Poland',
+    ro: 'Romania',
     ru: 'Russia',
-    ca: 'Canada',
-    ro: 'Romania'
+    sg: 'Singapore',
+    sk: 'Slovakia',
+    tw: 'Taiwan',
+    ua: 'Ukraine',
+    us: 'United States'
   };
 
   const PRIORITY_ORDER = ['cn', 'jp', 'kr'];
@@ -392,7 +403,8 @@ function populateCountrySelect() {
 
   sel.value = countryCodes.includes(previousValue) ? previousValue : 'all';
 }
-  function rebuildRowsFromMode() {
+
+function rebuildRowsFromMode() {
     const mode = document.getElementById('era').value;
     state.mode = mode;
 
