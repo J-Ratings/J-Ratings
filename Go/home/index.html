@@ -481,21 +481,6 @@
     }
   }
 
-  async function getLastPlayedDate(id) {
-    const hist = await fetchHistoryFor(id);
-    if (!hist || !hist.length) return null;
-
-    let latest = null;
-
-    for (const row of hist) {
-      if (!row || !row.date) continue;
-      const d = parseIsoDate(row.date);
-      if (!d) continue;
-      if (!latest || d > latest) latest = d;
-    }
-
-    return latest;
-  }
 
   function normalise(series, dedupeByDay = false) {
     const s = series
@@ -718,33 +703,29 @@
         ? subtractYears(asOfDate, 2)
         : null;
 
-      const baseLiveRows = (Array.isArray(playersData) ? playersData : [])
-        .filter(d => d && d.id && (d.name || d.display_name) && Number.isFinite(+d.rating))
-        .map(d => ({
-          id: d.id,
-          name: d.display_name || d.name || d.id,
-          flag: d.flag || '',
-          rating: +d.rating,
-          peak: Number.isFinite(+d.peak) ? +d.peak : null,
-          peak_date: d.peak_date || null
-        }));
+const baseLiveRows = (Array.isArray(playersData) ? playersData : [])
+  .filter(d => d && d.id && (d.name || d.display_name) && Number.isFinite(+d.rating))
+  .map(d => ({
+    id: d.id,
+    name: d.display_name || d.name || d.id,
+    flag: d.flag || '',
+    rating: +d.rating,
+    peak: Number.isFinite(+d.peak) ? +d.peak : null,
+    peak_date: d.peak_date || null,
+    last_date: d.last_date || null
+  }));
 
-      if (cutoffDate) {
-        const checkedPlayers = await Promise.all(
-          baseLiveRows.map(async player => {
-            const lastPlayed = await getLastPlayedDate(player.id);
-            return { ...player, lastPlayed };
-          })
-        );
-
-        state.liveRows = checkedPlayers
-          .filter(player => player.lastPlayed && player.lastPlayed >= cutoffDate)
-          .map(({ lastPlayed, ...player }) => player)
-          .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
-      } else {
-        state.liveRows = baseLiveRows
-          .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
-      }
+if (cutoffDate) {
+  state.liveRows = baseLiveRows
+    .filter(player => {
+      const lastPlayed = parseIsoDate(player.last_date);
+      return lastPlayed && lastPlayed >= cutoffDate;
+    })
+    .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
+} else {
+  state.liveRows = baseLiveRows
+    .sort((a, b) => b.rating - a.rating || (a.name || '').localeCompare(b.name || ''));
+}
 
       state.eraStarts = Array.isArray(eraData)
         ? eraData.filter(d => d && d.id && d.era && Number.isFinite(+d.elo))
