@@ -1,50 +1,37 @@
 id,name,rating,peak,peak_date,flag,games,first_date,last_date
-lee-sanghoon-jr,Lee Sanghoon Jr.,3205,3366,2001-05-30,NA,142,1990-12-28,2025-11-26
-lee-sanghoon-sr,Lee Sanghoon Sr.,3122,3329,2003-06-25,NA,167,1990-12-05,2025-09-16
-cho-inseon,Cho Inseon,3234,3321,2013-05-31,NA,40,2011-05-02,2024-07-09
-yoo-oseong,Yoo Oseong,3236,3294,2024-05-06,NA,32,2021-12-25,2024-07-05
-park-cheonggeun,Park Cheonggeun,3201,3290,2005-10-21,NA,38,2004-08-15,2014-03-31
-kang-hoon-sr,Kang Hoon Sr.,3083,3286,1986-03-27,NA,350,1977-06-09,2019-12-30
-murashima-yoshinori,Murashima Yoshinori,3166,3283,1957-04-03,NA,38,1950-06-07,1971-09-16
-kim-seongku,Kim Seongku,3272,3272,2025-08-19,NA,31,2023-01-30,2025-08-19
-wi-taeung,Wi Taeung,3127,3265,2023-01-23,NA,61,2014-07-06,2024-09-13
-lyu-tong-wan,Lyu Tong-wan,3214,3258,2008-11-22,NA,24,2003-08-29,2021-02-09
-park-chunseok,Park Chunseok,3204,3254,2012-09-20,NA,55,2008-03-22,2019-11-09
-choi-hyeonchae,Choi Hyeonchae,3184,3253,2016-10-28,NA,41,2010-01-16,2024-05-20
-yun-junho,Yun Junho,3148,3253,2012-09-06,NA,39,1993-08-21,2018-03-08
-lee-hyeonuk,Lee Hyeonuk,3169,3251,1999-06-29,NA,68,1995-08-19,2025-09-13
-kim-suyong,Kim Suyong,3158,3251,2016-05-21,NA,39,2002-02-24,2016-10-30
-hosokawa-senjin,Hosokawa Senjin,3019,3250,1956-03-28,NA,52,1950-01-06,1967-10-26
-cho-minsu,Cho Minsu,3249,3249,2018-07-02,NA,27,1994-04-03,2018-07-02
-maeda-nobuaki,Maeda Nobuaki,3187,3247,1961-02-08,NA,120,1950-06-13,1975-02-13
-oh-kyucheol,Oh Kyucheol,3065,3244,1988-03-10,NA,157,1979-01-21,2025-11-06
-hasegawa-akira,Hasegawa Akira,3192,3242,1955-01-12,NA,63,1950-01-12,1965-01-01
-li-xiaoxi-2,Li Xiaoxi (2),3159,3241,2024-12-11,NA,113,2019-09-19,2025-12-11
-kuwahara-munehisa,Kuwahara Munehisa,3053,3241,1962-06-14,NA,53,1952-06-11,1974-05-09
-heo-changheui,Heo Changheui,2908,3237,1983-11-02,NA,105,1980-10-21,2018-06-13
-cheon-yeonggyu,Cheon Yeonggyu,3211,3236,2023-04-08,NA,39,2000-07-26,2023-07-29
-wang-shuo-2,Wang Shuo (2),3231,3235,2025-11-05,NA,34,2019-09-20,2026-01-12
-nakamura-yutaro,Nakamura Yutaro,3073,3235,1957-06-19,NA,79,1952-01-01,1981-03-19
-kariya-hiraku,Kariya Hiraku,3097,3234,1953-05-21,NA,21,1950-11-22,1971-02-24
-kim-tongheui,Kim Tongheui,3105,3231,2006-05-15,NA,29,1997-06-15,2024-05-26
-hyeon-yupin,Hyeon Yupin,3183,3227,2023-04-17,NA,52,2016-08-06,2024-05-26
-cho-taehyeon,Cho Taehyeon,2968,3226,1986-04-03,NA,107,1978-09-25,2023-09-22
-cho-sangyeon-2,Cho Sangyeon (2),3179,3225,2025-07-19,NA,31,2024-04-01,2025-10-26
-harada-minoru,Harada Minoru,3172,3225,1992-09-20,NA,76,1958-06-10,2008-03-17
-li-daijun,Li Daijun,3181,3224,2002-01-18,NA,28,1998-01-01,2017-01-11
-mukai-kazuo,Mukai Kazuo,3151,3224,1963-08-08,NA,43,1952-12-26,1968-09-26
-hong-taeseon,Hong Taeseon,3151,3222,1993-05-12,NA,144,1979-05-29,2000-08-06
-kim-hyeonghwan,Kim Hyeonghwan,3179,3221,2008-05-26,NA,48,2001-08-11,2018-10-18
-moon-yongjik,Moon Yongjik,3118,3221,1988-05-12,NA,32,1978-09-25,1997-11-10
-hayashi-yutaro,Hayashi Yutaro,3184,3220,1950-11-03,NA,76,1950-01-19,1983-03-24
-suzuki-etsuo,Suzuki Etsuo,3139,3219,1958-11-01,NA,34,1951-04-04,1982-11-18
-moon-toweon,Moon Toweon,3000,3215,2011-01-14,NA,55,2008-03-23,2018-05-15
-kim-hwansu,Kim Hwansu,3213,3213,2015-08-15,NA,34,1997-05-18,2015-08-15
-shinohara-masami,Shinohara Masami,3034,3208,1950-11-15,NA,73,1950-04-19,1981-12-17
-aragaki-shoon,Aragaki Shoon,3011,3208,1994-07-10,NA,69,1981-08-04,2025-08-18
-saito-tadashi,Saito Tadashi,3088,3207,1997-10-22,NA,33,1980-08-05,2024-09-25
-i-ryo,I Ryo,3175,3205,2025-12-21,NA,23,2013-12-15,2026-01-10
-kang-pyeonggwon,Kang Pyeonggwon,3166,3204,2012-08-31,NA,27,2008-07-10,2015-09-21
-lu-liyan,Lu: Liyan,3176,3202,2020-03-14,NA,30,2015-05-31,2023-03-19
-choi-kwangho,Choi Kwangho,3141,3202,2018-09-22,NA,41,2009-10-18,2026-01-08
-kitani-reiko,Kitani Reiko,3107,3200,1971-12-15,NA,52,1960-07-12,1985-07-10
+lee-sanghoon-jr,Lee Sanghoon Jr.,3190,3330,2001-05-30,NA,142,1990-12-28,2025-11-26
+lee-sanghoon-sr,Lee Sanghoon Sr.,3108,3304,2003-06-25,NA,167,1990-12-05,2025-09-16
+kim-seongku,Kim Seongku,3277,3277,2025-08-19,NA,31,2023-01-30,2025-08-19
+murashima-yoshinori,Murashima Yoshinori,3162,3267,1957-04-03,NA,38,1950-06-07,1971-09-16
+wi-taeung,Wi Taeung,3133,3258,2023-01-23,NA,61,2014-07-06,2024-09-13
+heo-changheui,Heo Changheui,2898,3257,1983-11-02,NA,105,1980-10-21,2018-06-13
+kang-hoon-sr,Kang Hoon Sr.,3064,3255,1986-03-27,NA,350,1977-06-09,2019-12-30
+yoo-oseong,Yoo Oseong,3202,3254,2024-05-06,NA,32,2021-12-25,2024-07-05
+cho-inseon,Cho Inseon,3201,3250,2013-05-31,NA,40,2011-05-02,2024-07-09
+hosokawa-senjin,Hosokawa Senjin,3029,3250,1956-03-28,NA,52,1950-01-06,1967-10-26
+li-xiaoxi-2,Li Xiaoxi (2),3154,3233,2024-12-11,NA,113,2019-09-19,2025-12-11
+lyu-tong-wan,Lyu Tong-wan,3193,3232,2008-11-22,NA,24,2003-08-29,2021-02-09
+maeda-nobuaki,Maeda Nobuaki,3172,3232,1961-02-08,NA,120,1950-06-13,1975-02-13
+harada-minoru,Harada Minoru,3168,3230,1992-09-20,NA,76,1958-06-10,2008-03-17
+cho-minsu,Cho Minsu,3229,3229,2018-07-02,NA,27,1994-04-03,2018-07-02
+park-cheonggeun,Park Cheonggeun,3168,3228,2010-04-07,NA,38,2004-08-15,2014-03-31
+kim-suyong,Kim Suyong,3155,3227,2015-03-20,NA,39,2002-02-24,2016-10-30
+choi-hyeonchae,Choi Hyeonchae,3179,3224,2016-10-28,NA,41,2010-01-16,2024-05-20
+oh-kyucheol,Oh Kyucheol,3048,3223,1988-03-10,NA,157,1979-01-21,2025-11-06
+hasegawa-akira,Hasegawa Akira,3171,3222,1950-11-01,NA,63,1950-01-12,1965-01-01
+nakamura-yutaro,Nakamura Yutaro,3061,3222,1957-06-19,NA,79,1952-01-01,1981-03-19
+kuwahara-munehisa,Kuwahara Munehisa,3058,3221,1962-06-14,NA,53,1952-06-11,1974-05-09
+park-chunseok,Park Chunseok,3191,3219,2012-09-20,NA,55,2008-03-22,2019-11-09
+moon-toweon,Moon Toweon,3011,3215,2011-01-14,NA,55,2008-03-23,2018-05-15
+yun-junho,Yun Junho,3111,3214,2012-09-06,NA,39,1993-08-21,2018-03-08
+wang-shuo-2,Wang Shuo (2),3211,3213,2025-08-27,NA,34,2019-09-20,2026-01-12
+kim-tongheui,Kim Tongheui,3103,3213,2006-05-15,NA,29,1997-06-15,2024-05-26
+cheon-yeonggyu,Cheon Yeonggyu,3190,3208,2023-04-08,NA,39,2000-07-26,2023-07-29
+cho-sangyeon-2,Cho Sangyeon (2),3166,3208,2025-07-19,NA,31,2024-04-01,2025-10-26
+hyeon-yupin,Hyeon Yupin,3165,3207,2023-04-17,NA,52,2016-08-06,2024-05-26
+kariya-hiraku,Kariya Hiraku,3085,3206,1953-05-21,NA,21,1950-11-22,1971-02-24
+hong-taeseon,Hong Taeseon,3141,3204,1993-05-12,NA,144,1979-05-29,2000-08-06
+moon-yongjik,Moon Yongjik,3099,3203,1988-05-12,NA,32,1978-09-25,1997-11-10
+suzuki-etsuo,Suzuki Etsuo,3126,3201,1958-11-01,NA,34,1951-04-04,1982-11-18
+shinohara-masami,Shinohara Masami,3036,3201,1950-11-15,NA,73,1950-04-19,1981-12-17
+cheong-yujin,Cheong Yujin,3071,3200,2023-06-09,NA,119,2020-02-25,2025-12-12
