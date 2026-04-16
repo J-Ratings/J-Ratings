@@ -19,13 +19,35 @@
 
   <style>
     #compare-chart { height: 500px; }
-    .toolbar { margin-bottom: 10px; }
+
+    .toolbar {
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .flag-cell {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .flag-icon {
+      width: 39.93px;
+      height: 29.04px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
 
     #compare-modal {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0,0,0,0.6);
       justify-content: center;
       align-items: center;
@@ -61,13 +83,19 @@
       #teams th:nth-child(1),
       #teams td:nth-child(1) { width: 52px; }
 
-      #teams th:nth-child(3),
-      #teams td:nth-child(3) { width: 78px; }
-
       #teams th:nth-child(2),
-      #teams td:nth-child(2) { width: auto; }
+      #teams td:nth-child(2) { width: 44px; }
 
-      #teams td:nth-child(2) a {
+      #teams th:nth-child(4),
+      #teams td:nth-child(4) { width: 78px; }
+
+      #teams th:nth-child(5),
+      #teams td:nth-child(5) { width: 92px; }
+
+      #teams th:nth-child(3),
+      #teams td:nth-child(3) { width: auto; }
+
+      #teams td:nth-child(3) a {
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -116,6 +144,7 @@
         <thead>
           <tr>
             <th style="min-width:60px">Rank</th>
+            <th style="min-width:56px">Country</th>
             <th style="min-width:240px">Team</th>
             <th class="right" style="min-width:120px">Peak</th>
             <th style="min-width:140px">Peak Date</th>
@@ -145,6 +174,7 @@
 <script>
   const DATA_URL = '../data/teams.json';
   const COLOURS_URL = '../team-colours.json';
+  const FLAGS_BASE = '../../flags';
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
   let TEAM_COLOURS = {};
@@ -158,6 +188,26 @@
   const histCache = new Map();
   let lastCompared = [];
 
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function normaliseFlagCode(code) {
+    return String(code || '').trim().toLowerCase();
+  }
+
+  function flagImgHtml(flagCode, label) {
+    const code = normaliseFlagCode(flagCode);
+    if (!code) return '';
+    const safeLabel = escapeHtml(label || '');
+    return `<img src="${FLAGS_BASE}/${encodeURIComponent(code)}.svg" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
+  }
+
   function render() {
     const tbody = document.querySelector('#teams tbody');
     tbody.innerHTML = '';
@@ -168,6 +218,11 @@
       const tdRank = document.createElement('td');
       tdRank.textContent = i + 1;
       tr.appendChild(tdRank);
+
+      const tdFlag = document.createElement('td');
+      tdFlag.className = 'flag-cell';
+      tdFlag.innerHTML = flagImgHtml(r.flag, r.name);
+      tr.appendChild(tdFlag);
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
@@ -192,6 +247,12 @@
     if (countEl) countEl.textContent = state.filtered.length ? `(${state.filtered.length})` : '';
   }
 
+  function hideCompare() {
+    document.getElementById('compare-wrap').style.display = 'none';
+    document.getElementById('compare-chart').innerHTML = '';
+    lastCompared = [];
+  }
+
   function applyFilter() {
     const q = document.getElementById('q').value.trim().toLowerCase();
     state.filtered = q
@@ -202,13 +263,14 @@
   }
 
   async function fetchHistoryFor(id) {
-    if (histCache.has(id)) return histCache.get(id);
+    const key = String(id);
+    if (histCache.has(key)) return histCache.get(key);
 
     try {
-      const res = await fetch(`../data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+      const res = await fetch(`../data/history/${encodeURIComponent(key)}.json`, { cache: 'no-cache' });
       if (!res.ok) return null;
       const rows = await res.json();
-      histCache.set(id, rows);
+      histCache.set(key, rows);
       return rows;
     } catch {
       return null;
@@ -270,19 +332,16 @@
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
         type: 'line',
-        xref: 'paper', x0: 0, x1: 1,
-        y0: v, y1: v,
+        xref: 'paper',
+        x0: 0,
+        x1: 1,
+        y0: v,
+        y1: v,
         line: { width: 1, color: 'rgba(128,128,128,0.35)' },
         layer: 'below'
       });
     }
     return shapes;
-  }
-
-  function hideCompare() {
-    document.getElementById('compare-wrap').style.display = 'none';
-    document.getElementById('compare-chart').innerHTML = '';
-    lastCompared = [];
   }
 
   async function buildComparison(teams) {
@@ -297,7 +356,8 @@
     const mode = 'monthly';
 
     const traces = [];
-    let ymin = Infinity, ymax = -Infinity;
+    let ymin = Infinity;
+    let ymax = -Infinity;
 
     for (const t of teams) {
       const hist = await fetchHistoryFor(t.id);
@@ -308,11 +368,13 @@
         y: Number(d.rating),
         tournament: d.tournament || ''
       }));
+
       const data = aggregate(raw, mode);
 
       const xs = data.map(pt => pt.x);
       const ys = data.map(pt => pt.y);
       const tournaments = data.map(pt => pt.tournament || '');
+
       if (!xs.length || !ys.length) continue;
 
       ymin = Math.min(ymin, ...ys);
@@ -331,8 +393,7 @@
           color: TEAM_COLOURS[t.name] || undefined
         },
         marker: { size: 0 },
-        hovertemplate:
-          '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
+        hovertemplate: '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
         connectgaps: true
       });
     }
@@ -394,7 +455,7 @@
         row.innerHTML = `
           <label>
             <input type="checkbox" id="${id}" value="${t.id}" style="margin-right:6px">
-            ${t.name} (${t.peak})
+            ${escapeHtml(t.name)} (${t.peak})
           </label>
         `;
         listDiv.appendChild(row);
@@ -403,14 +464,20 @@
       modal.style.display = 'flex';
     }
 
-    function closeModal() { modal.style.display = 'none'; }
+    function closeModal() {
+      modal.style.display = 'none';
+    }
 
     function showSelected() {
       const ids = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
-      if (!ids.length) { alert('Please select at least one team.'); return; }
+      if (!ids.length) {
+        alert('Please select at least one team.');
+        return;
+      }
+
       closeModal();
 
-      const chosen = state.filtered.filter(t => ids.includes(t.id));
+      const chosen = state.filtered.filter(t => ids.includes(String(t.id)));
       buildComparison(chosen);
     }
 
@@ -436,7 +503,11 @@
 
       const baseRows = teams
         .filter(d => d && d.id && d.name)
-        .map(d => ({ id: d.id, name: d.name }));
+        .map(d => ({
+          id: String(d.id),
+          name: d.display_name || d.name,
+          flag: d.flag || ''
+        }));
 
       const withPeaks = await Promise.all(baseRows.map(async (t) => {
         const hist = await fetchHistoryFor(t.id);
@@ -444,6 +515,7 @@
 
         let peak = -Infinity;
         let peakDate = '';
+
         for (const row of hist) {
           const r = Number(row.rating);
           if (!Number.isFinite(r)) continue;
@@ -452,11 +524,13 @@
             peakDate = row.date || '';
           }
         }
+
         if (!Number.isFinite(peak)) return null;
 
         return {
           id: t.id,
           name: t.name,
+          flag: t.flag,
           peak: Math.round(peak),
           peak_date: peakDate
         };
@@ -470,7 +544,7 @@
       render();
     } catch (err) {
       document.querySelector('#teams tbody').innerHTML =
-        `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
+        `<tr><td colspan="5">Error loading data: ${escapeHtml(err.message)}</td></tr>`;
     }
   }
 
