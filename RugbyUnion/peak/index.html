@@ -21,6 +21,19 @@
 
     .toolbar { margin-bottom: 10px; }
 
+    .flag-cell {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .flag-icon {
+      width: 39.93px;
+      height: 29.04px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
     .compare-header-row {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -97,12 +110,6 @@
     #compare-wrap {
       display: none;
       margin-top: 8px;
-    }
-
-    #compare-empty {
-      text-align: center;
-      opacity: 0.8;
-      padding: 16px 0 6px 0;
     }
 
     #compare-modal {
@@ -190,16 +197,19 @@
       #teams th:nth-child(1),
       #teams td:nth-child(1) { width: 52px; }
 
-      #teams th:nth-child(3),
-      #teams td:nth-child(3) { width: 78px; }
+      #teams th:nth-child(2),
+      #teams td:nth-child(2) { width: 44px; }
 
       #teams th:nth-child(4),
-      #teams td:nth-child(4) { width: 96px; }
+      #teams td:nth-child(4) { width: 78px; }
 
-      #teams th:nth-child(2),
-      #teams td:nth-child(2) { width: auto; }
+      #teams th:nth-child(5),
+      #teams td:nth-child(5) { width: 96px; }
 
-      #teams td:nth-child(2) a {
+      #teams th:nth-child(3),
+      #teams td:nth-child(3) { width: auto; }
+
+      #teams td:nth-child(3) a {
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -288,13 +298,12 @@
       <div id="compare-chart">Loading…</div>
     </div>
 
-    <div id="compare-empty">Select teams and press Compare to view the graph.</div>
-
     <div class="table-wrap">
       <table id="teams">
         <thead>
           <tr>
             <th style="min-width:60px">Rank</th>
+            <th style="min-width:56px">Country</th>
             <th style="min-width:240px">Team</th>
             <th class="right" style="min-width:120px">Peak</th>
             <th style="min-width:140px">Peak Date</th>
@@ -326,6 +335,7 @@
 
 <script>
 const DATA_URL = '../data/teams.json';
+const FLAGS_BASE = '../../flags';
 const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
 const TEAM_COLOURS = {
@@ -395,6 +405,23 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
+function normaliseFlagCode(code) {
+  return String(code || '').trim().toLowerCase();
+}
+
+function resolveFlagCode(flagCode, teamName) {
+  const name = String(teamName || '').trim().toLowerCase();
+  if (name === 'ireland') return 'irfu';
+  return normaliseFlagCode(flagCode);
+}
+
+function flagImgHtml(flagCode, label) {
+  const code = resolveFlagCode(flagCode, label);
+  if (!code) return '';
+  const safeLabel = escapeHtml(label || '');
+  return `<img src="${FLAGS_BASE}/${encodeURIComponent(code)}.svg" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
+}
+
 function render() {
   const tbody = document.querySelector('#teams tbody');
   tbody.innerHTML = '';
@@ -405,6 +432,11 @@ function render() {
     const tdRank = document.createElement('td');
     tdRank.textContent = i + 1;
     tr.appendChild(tdRank);
+
+    const tdFlag = document.createElement('td');
+    tdFlag.className = 'flag-cell';
+    tdFlag.innerHTML = flagImgHtml(r.flag, r.name);
+    tr.appendChild(tdFlag);
 
     const tdName = document.createElement('td');
     const a = document.createElement('a');
@@ -430,9 +462,10 @@ function render() {
 }
 
 function hideCompare() {
-  document.getElementById('compare-wrap').style.display = 'none';
-  document.getElementById('compare-chart').innerHTML = '';
-  document.getElementById('compare-empty').style.display = 'block';
+  const wrap = document.getElementById('compare-wrap');
+  const chart = document.getElementById('compare-chart');
+  if (wrap) wrap.style.display = 'none';
+  if (chart) chart.innerHTML = '';
   lastCompared = [];
 }
 
@@ -580,12 +613,10 @@ async function buildComparison(teams) {
   lastCompared = teams.slice();
 
   const wrap = document.getElementById('compare-wrap');
-  const empty = document.getElementById('compare-empty');
   const chart = document.getElementById('compare-chart');
   const modeSel = document.getElementById('compare-agg');
 
   wrap.style.display = 'block';
-  empty.style.display = 'none';
   chart.innerHTML = 'Loading…';
 
   const mode = modeSel ? modeSel.value : 'monthly';
@@ -751,8 +782,12 @@ async function load() {
     const teams = await res.json();
 
     const baseRows = teams
-      .filter(d => d && d.id && d.name)
-      .map(d => ({ id: d.id, name: d.name }));
+      .filter(d => d && d.id && (d.name || d.display_name))
+      .map(d => ({
+        id: d.id,
+        name: d.display_name || d.name,
+        flag: d.flag || ''
+      }));
 
     const withPeaks = await Promise.all(baseRows.map(async (t) => {
       const hist = await fetchHistoryFor(t.id);
@@ -776,6 +811,7 @@ async function load() {
       return {
         id: t.id,
         name: t.name,
+        flag: t.flag,
         peak: Math.round(peak),
         peak_date: peakDate
       };
@@ -789,7 +825,7 @@ async function load() {
     render();
   } catch (err) {
     document.querySelector('#teams tbody').innerHTML =
-      `<tr><td colspan="4">Error loading data: ${escapeHtml(err.message)}</td></tr>`;
+      `<tr><td colspan="5">Error loading data: ${escapeHtml(err.message)}</td></tr>`;
   }
 }
 
