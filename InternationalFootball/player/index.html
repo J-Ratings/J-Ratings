@@ -428,7 +428,7 @@
 
     const lum = relativeLuminance(rgb);
 
-    if (lum >= 0.18) return raw;
+    if (lum >= 0.05) return raw;
 
     const lifted = mixWithWhite(rgb, 0.45);
     return rgbToHex(lifted.r, lifted.g, lifted.b);
