@@ -527,9 +527,14 @@ function render() {
 }
 
 function hideCompare() {
-  document.getElementById('compare-wrap').style.display = 'none';
-  document.getElementById('compare-chart').innerHTML = '';
-  document.getElementById('compare-empty').style.display = 'block';
+  const wrap = document.getElementById('compare-wrap');
+  const chart = document.getElementById('compare-chart');
+  const empty = document.getElementById('compare-empty');
+
+  if (wrap) wrap.style.display = 'none';
+  if (chart) chart.innerHTML = '';
+  if (empty) empty.style.display = 'block';
+
   lastCompared = [];
 }
 
