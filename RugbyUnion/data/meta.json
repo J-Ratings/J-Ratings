@@ -3,10 +3,10 @@
   "latest_game_date": "2026-03-14",
   "inactive_years": 4,
   "inactive_cutoff_days": 1461,
-  "total_teams_seen": 57,
-  "active_teams": 44,
+  "total_teams_seen": 59,
+  "active_teams": 46,
   "inactive_teams": 13,
-  "flagged_teams": 43,
+  "flagged_teams": 45,
   "unflagged_teams": 1,
   "input_files": {
     "final_ratings": "world_rugby_union_elo_final_ratings.csv",
