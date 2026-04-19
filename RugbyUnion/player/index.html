@@ -163,12 +163,14 @@
     .result.loss{ color: #dc2222; }
     .result.draw{ color: #e5b523; }
 
-.score{ font-weight: 400; }
-.score.win{ color: #3ad542; }
-.score.loss{ color: #dc2222; }
-.score.draw{ color: #e5b523; }
-.score .score-strong{ font-weight: 700; }
+    .score{
+      font-weight: 400;
+      color: inherit;
+    }
 
+    .score .score-strong{
+      font-weight: 700;
+    }
 
     .delta{ font-weight: 700; }
     .delta.pos{ color: #3ad542; }
@@ -573,48 +575,43 @@
     return { cls: 'draw', text: raw || 'Draw' };
   }
 
- function getScoreClassAndParts(g, myName) {
-  const hs = Number(g.homeScore);
-  const as = Number(g.awayScore);
+  function getScoreParts(g, myName) {
+    const hs = Number(g.homeScore);
+    const as = Number(g.awayScore);
 
-  if (!Number.isFinite(hs) || !Number.isFinite(as)) {
+    if (!Number.isFinite(hs) || !Number.isFinite(as)) {
+      return {
+        left: '',
+        strong: '',
+        right: ''
+      };
+    }
+
+    const isHome = g.home === myName;
+    const isAway = g.away === myName;
+
+    if (isHome) {
+      return {
+        left: '',
+        strong: String(hs),
+        right: `-${as}`
+      };
+    }
+
+    if (isAway) {
+      return {
+        left: `${hs}-`,
+        strong: String(as),
+        right: ''
+      };
+    }
+
     return {
-      cls: '',
-      left: '',
-      strong: '',
-      right: ''
-    };
-  }
-
-  const resultInfo = getResultClassAndText(g, myName);
-  const isHome = g.home === myName;
-  const isAway = g.away === myName;
-
-  if (isHome) {
-    return {
-      cls: resultInfo.cls,
-      left: '',
-      strong: String(hs),
-      right: `-${as}`
-    };
-  }
-
-  if (isAway) {
-    return {
-      cls: resultInfo.cls,
       left: `${hs}-`,
       strong: String(as),
       right: ''
     };
   }
-
-  return {
-    cls: resultInfo.cls,
-    left: `${hs}-`,
-    strong: String(as),
-    right: ''
-  };
-}
 
   function renderGamesTable(me, teams, games) {
     const tbl = document.getElementById('games');
@@ -686,17 +683,17 @@
       const tdOppElo = document.createElement('td');
       tdOppElo.textContent = Number.isFinite(opponentElo) ? String(Math.round(opponentElo)) : '';
 
-const tdScore = document.createElement('td');
-const scoreInfo = getScoreClassAndParts(g, myName);
-tdScore.className = scoreInfo.cls ? ('score ' + scoreInfo.cls) : 'score';
+      const tdScore = document.createElement('td');
+      tdScore.className = 'score';
 
-const scoreStrong = document.createElement('span');
-scoreStrong.className = 'score-strong';
-scoreStrong.textContent = scoreInfo.strong;
+      const scoreInfo = getScoreParts(g, myName);
+      const scoreStrong = document.createElement('span');
+      scoreStrong.className = 'score-strong';
+      scoreStrong.textContent = scoreInfo.strong;
 
-tdScore.appendChild(document.createTextNode(scoreInfo.left));
-tdScore.appendChild(scoreStrong);
-tdScore.appendChild(document.createTextNode(scoreInfo.right));
+      tdScore.appendChild(document.createTextNode(scoreInfo.left));
+      tdScore.appendChild(scoreStrong);
+      tdScore.appendChild(document.createTextNode(scoreInfo.right));
 
       const tdResult = document.createElement('td');
       const r = getResultClassAndText(g, myName);
