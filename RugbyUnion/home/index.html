@@ -300,8 +300,8 @@
             </div>
 
             <div class="range-buttons" role="group" aria-label="Time range">
-              <button type="button" class="range-btn is-active" data-since="">All</button>
-              <button type="button" class="range-btn" data-since="2000">Since 2000</button>
+              <button type="button" class="range-btn" data-since="">All</button>
+              <button type="button" class="range-btn is-active" data-since="2000">Since 2000</button>
               <button type="button" class="range-btn" data-since="2020">Since 2020</button>
             </div>
           </div>
@@ -441,7 +441,7 @@ const state = {
 
 const histCache = new Map();
 let lastCompared = [];
-let COMPARE_SINCE_YEAR = null;
+let COMPARE_SINCE_YEAR = 2000;
 
 function updateHeaders() {
   document.getElementById('rating-col-head').textContent =
@@ -732,9 +732,9 @@ async function buildComparison(teams) {
   const chart = document.getElementById('compare-chart');
   const modeSel = document.getElementById('compare-agg');
 
-  wrap.style.display = 'block';
-  empty.style.display = 'none';
-  chart.innerHTML = 'Loading…';
+  if (wrap) wrap.style.display = 'block';
+  if (empty) empty.style.display = 'none';
+  if (chart) chart.innerHTML = 'Loading…';
 
   const mode = modeSel ? modeSel.value : 'monthly';
   const traces = [];
@@ -788,7 +788,7 @@ async function buildComparison(teams) {
   }
 
   if (!traces.length) {
-    chart.innerHTML = 'No history found.';
+    if (chart) chart.innerHTML = 'No history found.';
     return;
   }
 
