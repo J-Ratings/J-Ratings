@@ -174,7 +174,7 @@
 <header>
   <div class="wrap">
     <h1 class="site-title">
-      <a id="home-link" href="./" class="brand-with-logo">
+      <a id="home-link" href="../home/" class="brand-with-logo">
         <span>J-Ratings <span class="title-football">International Football</span></span>
         <img src="/Football Banner Logo.png" alt="Football logo" class="sport-logo">
       </a>
@@ -182,16 +182,16 @@
 
     <nav class="topnav" aria-label="Main">
       <a href="/index.html">Sports</a>
-      <a id="nav-home" href="./" class="active-tab">Home</a>
+      <a id="nav-home" href="../home/">Home</a>
       <a id="nav-compare" href="../compare/">Compare</a>
-      <a id="nav-peak" href="../peak/">Peak</a>
+      <a id="nav-peak" href="./" class="active-tab">Peak</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
   <section class="panel" id="teams-panel">
-    <h2>All teams</h2>
+    <h2>Peak ratings</h2>
 
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by team…">
@@ -236,7 +236,7 @@
             <th style="min-width:60px">Rank</th>
             <th style="min-width:56px">Country</th>
             <th style="min-width:240px">Team</th>
-            <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
+            <th class="right" style="min-width:120px" id="rating-col-head">Peak</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -303,7 +303,7 @@
   function updateHeaders() {
     const h = document.getElementById('rating-col-head');
     if (!h) return;
-    h.textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
+    h.textContent = (state.mode === 'live') ? 'Peak' : 'Start Elo';
   }
 
   function formatAsOf(iso) {
