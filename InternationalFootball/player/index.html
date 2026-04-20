@@ -154,7 +154,8 @@
     table.games th:nth-child(3), table.games td:nth-child(3),
     table.games th:nth-child(4), table.games td:nth-child(4),
     table.games th:nth-child(5), table.games td:nth-child(5),
-    table.games th:nth-child(6), table.games td:nth-child(6) {
+    table.games th:nth-child(6), table.games td:nth-child(6),
+    table.games th:nth-child(7), table.games td:nth-child(7) {
       border-right: 3px double rgba(128,128,128,0.6);
     }
 
@@ -162,6 +163,15 @@
     .result.win{ color: #3ad542; }
     .result.loss{ color: #dc2222; }
     .result.draw{ color: #e5b523; }
+
+    .score{
+      font-weight: 400;
+      color: inherit;
+    }
+
+    .score .score-strong{
+      font-weight: 700;
+    }
 
     .delta{ font-weight: 700; }
     .delta.pos{ color: #3ad542; }
@@ -522,6 +532,56 @@
     return { cls: 'draw', text: raw || 'Draw' };
   }
 
+  function getScoreParts(g, myName) {
+    const score = String(g.score || '').trim();
+
+    if (!score) {
+      return {
+        left: '',
+        strong: '',
+        right: ''
+      };
+    }
+
+    const match = score.match(/^(\d+)-(\d+)(.*)$/);
+    if (!match) {
+      return {
+        left: '',
+        strong: score,
+        right: ''
+      };
+    }
+
+    const homeGoals = match[1];
+    const awayGoals = match[2];
+    const suffix = match[3] || '';
+
+    const isHome = g.home === myName;
+    const isAway = g.away === myName;
+
+    if (isHome) {
+      return {
+        left: '',
+        strong: homeGoals,
+        right: `-${awayGoals}${suffix}`
+      };
+    }
+
+    if (isAway) {
+      return {
+        left: `${homeGoals}-`,
+        strong: awayGoals,
+        right: suffix
+      };
+    }
+
+    return {
+      left: `${homeGoals}-`,
+      strong: awayGoals,
+      right: suffix
+    };
+  }
+
   function renderGamesTable(me, teams, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
@@ -529,7 +589,7 @@
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
 
-    for (const h of ['Date', 'Event', 'Opponent', 'Elo', 'Result', 'Δ', 'New']) {
+    for (const h of ['Date', 'Event', 'Opponent', 'Elo', 'Score', 'Result', 'Δ', 'New']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -592,6 +652,18 @@
       const tdOppElo = document.createElement('td');
       tdOppElo.textContent = Number.isFinite(opponentElo) ? String(Math.round(opponentElo)) : '';
 
+      const tdScore = document.createElement('td');
+      tdScore.className = 'score';
+
+      const scoreInfo = getScoreParts(g, myName);
+      const scoreStrong = document.createElement('span');
+      scoreStrong.className = 'score-strong';
+      scoreStrong.textContent = scoreInfo.strong;
+
+      tdScore.appendChild(document.createTextNode(scoreInfo.left));
+      tdScore.appendChild(scoreStrong);
+      tdScore.appendChild(document.createTextNode(scoreInfo.right));
+
       const tdResult = document.createElement('td');
       const r = getResultClassAndText(g, myName);
       tdResult.textContent = r.text;
@@ -612,6 +684,7 @@
       tr.appendChild(tdTournament);
       tr.appendChild(tdOpp);
       tr.appendChild(tdOppElo);
+      tr.appendChild(tdScore);
       tr.appendChild(tdResult);
       tr.appendChild(tdDelta);
       tr.appendChild(tdNew);
@@ -622,7 +695,7 @@
     if (!tbody.children.length) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      td.colSpan = 7;
+      td.colSpan = 8;
       td.textContent = 'No games';
       tr.appendChild(td);
       tbody.appendChild(tr);
@@ -722,13 +795,13 @@
         renderGamesTable(me, teams, Array.isArray(games) ? games : []);
       } else {
         const tbl = document.getElementById('games');
-        tbl.innerHTML = '<tbody><tr><td colspan="7">No games</td></tr></tbody>';
+        tbl.innerHTML = '<tbody><tr><td colspan="8">No games</td></tr></tbody>';
       }
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="7">Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="8">Error loading games</td></tr></tbody>';
     }
   }
 
@@ -738,7 +811,7 @@
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="7">Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="8">Error loading games</td></tr></tbody>';
     });
 </script>
 </body>
