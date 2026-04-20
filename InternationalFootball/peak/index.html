@@ -272,7 +272,7 @@
 </main>
 
 <script>
-  const PEAK_URL = '../data/peak.json';
+  const DATA_URL = '../data/teams.json';
   const ERA_STARTS_URL = '../data/era_starts.json';
   const META_URL = '../data/meta.json';
   const COLOURS_URL = '../team-colours.json';
@@ -747,29 +747,29 @@
 
   async function load() {
     try {
-      const [peakRes, eraRes, metaRes, coloursRes] = await Promise.all([
-        fetch(PEAK_URL, { cache: 'no-cache' }),
+      const [teamsRes, eraRes, metaRes, coloursRes] = await Promise.all([
+        fetch(DATA_URL, { cache: 'no-cache' }),
         fetch(ERA_STARTS_URL, { cache: 'no-cache' }),
         fetch(META_URL, { cache: 'no-cache' }),
         fetch(COLOURS_URL, { cache: 'no-cache' })
       ]);
 
-      if (!peakRes.ok) throw new Error('Failed to load peak.json');
+      if (!teamsRes.ok) throw new Error('Failed to load teams.json');
       if (!eraRes.ok) throw new Error('Failed to load era_starts.json');
       if (!coloursRes.ok) throw new Error('Failed to load team-colours.json');
 
-      const peakData = await peakRes.json();
+      const teamsData = await teamsRes.json();
       const eraData = await eraRes.json();
       TEAM_COLOURS = await coloursRes.json();
       state.meta = metaRes.ok ? await metaRes.json() : null;
 
-      state.liveRows = (Array.isArray(peakData) ? peakData : [])
-        .filter(d => d && d.id != null && (d.name || d.display_name) && Number.isFinite(+(d.peak ?? d.rating)))
+      state.liveRows = (Array.isArray(teamsData) ? teamsData : [])
+        .filter(d => d && d.id != null && (d.name || d.display_name) && Number.isFinite(+d.rating))
         .map(d => ({
           id: String(d.id),
           name: d.display_name || d.name,
           flag: d.flag || '',
-          rating: +(d.peak ?? d.rating)
+          rating: +d.rating
         }))
         .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
 
