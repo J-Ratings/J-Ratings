@@ -17,21 +17,13 @@
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
-    #compare-chart { height: 500px; }
+    #compare-chart { height: 520px; }
 
     .toolbar {
       margin-bottom: 10px;
       display: flex;
       gap: 10px;
       align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .compare-chart-toolbar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
       flex-wrap: wrap;
     }
 
@@ -88,6 +80,44 @@
       margin-right: 10px;
     }
 
+    .toolbar-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toolbar-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .range-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .range-btn {
+      padding: 8px 10px;
+      border: 1px solid #2b2f36;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      color: inherit;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .range-btn:hover {
+      opacity: 0.92;
+    }
+
+    .range-btn.is-active {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(200,200,200,0.55);
+      font-weight: 700;
+    }
+
     footer.site-footer {
       margin-top: 24px;
       padding: 18px 0;
@@ -132,6 +162,10 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+
+      #compare-chart {
+        height: 420px;
+      }
     }
   </style>
 </head>
@@ -173,13 +207,23 @@
     <div id="asof" class="asof" aria-live="polite"></div>
 
     <div id="compare-wrap" style="display:none; padding:16px">
-      <div class="compare-chart-toolbar">
-        <label for="compare-agg">View:</label>
-        <select id="compare-agg">
-          <option value="daily">Daily</option>
-          <option value="monthly" selected>Monthly</option>
-          <option value="yearly">Yearly</option>
-        </select>
+      <div class="toolbar">
+        <div class="toolbar-stack">
+          <div class="toolbar-top">
+            <label for="compare-agg">View:</label>
+            <select id="compare-agg">
+              <option value="daily">Daily</option>
+              <option value="monthly" selected>Monthly</option>
+              <option value="yearly">Yearly</option>
+            </select>
+          </div>
+
+          <div class="range-buttons" role="group" aria-label="Time range">
+            <button type="button" class="range-btn" data-since="">All</button>
+            <button type="button" class="range-btn is-active" data-since="2000">Since 2000</button>
+            <button type="button" class="range-btn" data-since="2020">Since 2020</button>
+          </div>
+        </div>
       </div>
 
       <div id="compare-chart">Loading…</div>
@@ -232,8 +276,7 @@
   const ERA_STARTS_URL = '../data/era_starts.json';
   const META_URL = '../data/meta.json';
   const COLOURS_URL = '../team-colours.json';
-const FLAGS_BASE = '../../flags';
-
+  const FLAGS_BASE = '../../flags';
 
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
@@ -255,6 +298,7 @@ const FLAGS_BASE = '../../flags';
 
   const histCache = new Map();
   let lastCompared = [];
+  let COMPARE_SINCE_YEAR = 2000;
 
   function updateHeaders() {
     const h = document.getElementById('rating-col-head');
@@ -265,7 +309,7 @@ const FLAGS_BASE = '../../flags';
   function formatAsOf(iso) {
     const [y, m, d] = String(iso || '').split('-').map(Number);
     if (!y || !m || !d) return '';
-    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return `${d} ${months[m - 1]} ${y}`;
   }
 
@@ -382,7 +426,8 @@ const FLAGS_BASE = '../../flags';
     const eras = Array.from(new Set(
       state.eraStarts.map(d => d.era).filter(Boolean)
     )).sort((a, b) => {
-      const an = Number(a), bn = Number(b);
+      const an = Number(a);
+      const bn = Number(b);
       if (Number.isFinite(an) && Number.isFinite(bn)) return bn - an;
       return String(b).localeCompare(String(a));
     });
@@ -413,7 +458,11 @@ const FLAGS_BASE = '../../flags';
   function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
-      .map(p => ({ x: p.x, y: +p.y, tournament: p.tournament || '' }))
+      .map(p => ({
+        x: p.x,
+        y: +p.y,
+        tournament: p.tournament || ''
+      }))
       .sort((a, b) => new Date(a.x) - new Date(b.x));
 
     if (!dedupeByDay) return s;
@@ -424,8 +473,10 @@ const FLAGS_BASE = '../../flags';
     for (const p of s) {
       const d = new Date(p.x);
       const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
       if (key !== lastKey) out.push(p);
       else out[out.length - 1] = p;
+
       lastKey = key;
     }
 
@@ -439,9 +490,10 @@ const FLAGS_BASE = '../../flags';
 
     for (const p of series) {
       const d = new Date(p.x);
-      const key = (mode === 'monthly')
+      const key = mode === 'monthly'
         ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
         : `${d.getFullYear()}`;
+
       (buckets[key] ||= []).push(p);
     }
 
@@ -449,11 +501,18 @@ const FLAGS_BASE = '../../flags';
       const pts = buckets[k].filter(p => Number.isFinite(p.y));
       const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
       const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
-      const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
+      const x = k.length === 7 ? `${k}-01` : `${k}-01-01`;
+
       return { x, y: avg, tournament: lastTournament };
     });
 
     return normalise(out, false);
+  }
+
+  function applySinceFilter(series, sinceYear) {
+    if (!sinceYear) return series;
+    const start = new Date(`${sinceYear}-01-01T00:00:00Z`).getTime();
+    return series.filter(p => new Date(p.x).getTime() >= start);
   }
 
   function majorGridShapes(ymin, ymax) {
@@ -471,6 +530,61 @@ const FLAGS_BASE = '../../flags';
       });
     }
     return shapes;
+  }
+
+  function hexToRgb(hex) {
+    const clean = String(hex || '').trim();
+    const match = clean.match(/^#([0-9a-f]{6})$/i);
+    if (!match) return null;
+
+    const value = match[1];
+    return {
+      r: parseInt(value.slice(0, 2), 16),
+      g: parseInt(value.slice(2, 4), 16),
+      b: parseInt(value.slice(4, 6), 16)
+    };
+  }
+
+  function rgbToHex(r, g, b) {
+    return '#' + [r, g, b]
+      .map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0'))
+      .join('');
+  }
+
+  function relativeLuminance({ r, g, b }) {
+    const toLinear = c => {
+      const s = c / 255;
+      return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+    };
+
+    const R = toLinear(r);
+    const G = toLinear(g);
+    const B = toLinear(b);
+
+    return 0.2126 * R + 0.7152 * G + 0.0722 * B;
+  }
+
+  function mixWithWhite(rgb, amount) {
+    return {
+      r: rgb.r + (255 - rgb.r) * amount,
+      g: rgb.g + (255 - rgb.g) * amount,
+      b: rgb.b + (255 - rgb.b) * amount
+    };
+  }
+
+  function getDisplayColour(teamName) {
+    const fallback = '#2F80ED';
+    const raw = TEAM_COLOURS[teamName] || fallback;
+    const rgb = hexToRgb(raw);
+
+    if (!rgb) return fallback;
+
+    const lum = relativeLuminance(rgb);
+
+    if (lum >= 0.05) return raw;
+
+    const lifted = mixWithWhite(rgb, 0.45);
+    return rgbToHex(lifted.r, lifted.g, lifted.b);
   }
 
   async function buildComparison(teams) {
@@ -493,16 +607,21 @@ const FLAGS_BASE = '../../flags';
       const hist = await fetchHistoryFor(t.id);
       if (!hist || !hist.length) continue;
 
-      const raw = hist.map(d => ({
-        x: d.date,
-        y: Number(d.rating),
-        tournament: d.tournament || ''
-      }));
+      const raw = normalise(
+        hist.map(d => ({
+          x: d.date,
+          y: Number(d.rating),
+          tournament: d.tournament || ''
+        })),
+        true
+      );
 
-      const data = aggregate(raw, mode);
+      const filtered = applySinceFilter(raw, COMPARE_SINCE_YEAR);
+      const data = aggregate(filtered, mode);
 
       const xs = data.map(pt => pt.x);
-      const ys = data.map(pt => pt.y);
+      const ysAll = data.map(pt => pt.y);
+      const ys = ysAll.filter(Number.isFinite);
       const tournaments = data.map(pt => pt.tournament || '');
 
       if (!xs.length || !ys.length) continue;
@@ -514,19 +633,17 @@ const FLAGS_BASE = '../../flags';
         type: 'scatter',
         name: t.name,
         x: xs,
-        y: ys,
+        y: ysAll,
         customdata: tournaments,
         mode: 'lines',
         line: {
-          width: 2,
+          width: 3,
           shape: 'linear',
-          color: TEAM_COLOURS[t.name] || undefined
+          color: getDisplayColour(t.name)
         },
-        marker: { size: 0 },
-        hovertemplate: (mode === 'daily')
-          ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra>' + t.name + '</extra>'
-          : '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
-        connectgaps: true
+        hovertemplate: `%{x}<br>%{y:.0f} Elo${mode === 'daily' ? '<br>%{customdata}' : ''}<extra>${t.name}</extra>`,
+        connectgaps: true,
+        showlegend: true
       });
     }
 
@@ -540,15 +657,15 @@ const FLAGS_BASE = '../../flags';
 
     const cs = getComputedStyle(document.body);
 
-    const layout = {
-      margin: { l: 60, r: 200, t: 10, b: 50 },
+    Plotly.newPlot(chart, traces, {
+      margin: { l: 60, r: 200, t: 10, b: 45 },
       xaxis: {
         type: 'date',
         title: { text: '', font: { size: AXIS_TITLE_SIZE } },
         tickfont: { size: AXIS_TICK_SIZE }
       },
       yaxis: {
-        title: { text: '', font: { size: AXIS_TITLE_SIZE } },
+        title: 'Rating',
         tickfont: { size: AXIS_TICK_SIZE }
       },
       legend: {
@@ -564,11 +681,9 @@ const FLAGS_BASE = '../../flags';
       },
       paper_bgcolor: cs.backgroundColor,
       plot_bgcolor: cs.backgroundColor,
-      font: { color: cs.color },
+      font: { color: cs.color, size: 14 },
       shapes: majorGridShapes(ymin, ymax)
-    };
-
-    Plotly.newPlot(chart, traces, layout, {
+    }, {
       staticPlot: IS_TOUCH,
       displayModeBar: false,
       responsive: true
@@ -613,6 +728,11 @@ const FLAGS_BASE = '../../flags';
 
       const compareAgg = document.getElementById('compare-agg');
       if (compareAgg) compareAgg.value = 'monthly';
+
+      document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
+      const defaultBtn = document.querySelector('.range-btn[data-since="2000"]');
+      if (defaultBtn) defaultBtn.classList.add('is-active');
+      COMPARE_SINCE_YEAR = 2000;
 
       const chosen = state.filtered.filter(t => selectedIds.includes(String(t.id)));
       buildComparison(chosen);
@@ -673,6 +793,18 @@ const FLAGS_BASE = '../../flags';
 
   document.getElementById('compare-agg').addEventListener('change', () => {
     if (lastCompared.length) buildComparison(lastCompared);
+  });
+
+  document.querySelectorAll('.range-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      const v = btn.getAttribute('data-since');
+      COMPARE_SINCE_YEAR = v ? Number(v) : null;
+
+      if (lastCompared.length) buildComparison(lastCompared);
+    });
   });
 
   document.getElementById('era').addEventListener('change', rebuildRowsFromMode);
