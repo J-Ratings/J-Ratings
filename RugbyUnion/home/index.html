@@ -18,7 +18,10 @@
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
-    #compare-chart { height: 520px; }
+    #compare-chart {
+      height: 520px;
+      margin-bottom: 20px;
+    }
 
     .asof {
       opacity: 0.8;
@@ -117,6 +120,7 @@
     #compare-wrap {
       display: none;
       margin-top: 8px;
+      margin-bottom: 28px;
     }
 
     #compare-empty {
@@ -172,6 +176,12 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+    }
+
+    .table-wrap {
+      position: relative;
+      z-index: 1;
+      margin-top: 12px;
     }
 
     @media (max-width: 700px) {
@@ -812,7 +822,7 @@ async function buildComparison(teams) {
   const cs = getComputedStyle(document.body);
 
   Plotly.newPlot('compare-chart', traces, {
-    margin: { l: 60, r: 20, t: 10, b: 45 },
+    margin: { l: 60, r: 20, t: 50, b: 55 },
     xaxis: { type: 'date' },
     yaxis: { title: 'Rating' },
     legend: {
@@ -872,9 +882,9 @@ function setupCompareButton() {
     if (compareAgg) compareAgg.value = 'monthly';
 
     document.querySelectorAll('.range-btn').forEach(btn => btn.classList.remove('is-active'));
-    const allBtn = document.querySelector('.range-btn[data-since=""]');
-    if (allBtn) allBtn.classList.add('is-active');
-    COMPARE_SINCE_YEAR = null;
+    const since2000Btn = document.querySelector('.range-btn[data-since="2000"]');
+    if (since2000Btn) since2000Btn.classList.add('is-active');
+    COMPARE_SINCE_YEAR = 2000;
 
     const chosen = state.filtered.filter(t => selectedIds.includes(t.id));
     buildComparison(chosen);
