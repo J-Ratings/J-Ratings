@@ -163,19 +163,27 @@
       <div id="compare-chart">Loading…</div>
     </div>
 
-    <div class="table-wrap">
-      <table id="players">
-        <thead>
-          <tr>
-            <th style="min-width:60px">Rank</th>
-            <th style="min-width:56px">Country</th>
-            <th style="min-width:260px">Player</th>
-            <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
-          </tr>
-        </thead>
-        <tbody><!-- filled by JS --></tbody>
-      </table>
-    </div>
+<div class="table-wrap">
+  <div style="padding:12px 16px; font-size:14px; line-height:1.4; color:#ccc;">
+    This dataset contains historical Go game records sourced from
+    <a href="https://gogodonline.co.uk/" target="_blank" rel="noopener noreferrer" class="data-source-link">GoGoD</a>
+    but only goes to January 2026. Attempts to obtain permission for regularly updating data have not been successful.
+    Anyone interested in supplying updated data should contact
+    <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a>.
+  </div>
+
+  <table id="players">
+    <thead>
+      <tr>
+        <th style="min-width:60px">Rank</th>
+        <th style="min-width:56px">Country</th>
+        <th style="min-width:260px">Player</th>
+        <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
+      </tr>
+    </thead>
+    <tbody><!-- filled by JS --></tbody>
+  </table>
+</div>
 
     <div style="padding:16px; text-align:center;">
       <button id="show-more-btn" class="club-btn" type="button" style="display:none;">
