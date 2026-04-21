@@ -11,10 +11,44 @@
   </script>
 
   <meta charset="utf-8">
-  <title>J-Ratings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <title>J-Ratings | Sports and Mind Sport Ratings</title>
+  <meta name="description" content="J-Ratings provides Elo ratings and rankings for Go, Chess, Snooker, Football and Rugby Union.">
+
+  <link rel="canonical" href="https://jratings.org/">
+
+  <!-- Favicon / site icon -->
+  <link rel="icon" type="image/png" href="logo.png">
+
   <link rel="stylesheet" href="style.css">
+
+  <!-- Link preview metadata -->
+  <meta property="og:title" content="J-Ratings | Sports and Mind Sport Ratings">
+  <meta property="og:description" content="Elo ratings and rankings for Go, Chess, Snooker, Football and Rugby Union.">
+  <meta property="og:url" content="https://jratings.org/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://jratings.org/logo.png">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "J-Ratings",
+    "url": "https://jratings.org/"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "J-Ratings",
+    "url": "https://jratings.org/",
+    "logo": "https://jratings.org/logo.png"
+  }
+  </script>
 
   <style>
     .sports-grid {
@@ -35,7 +69,6 @@
       text-decoration: none;
       position: relative;
       overflow: hidden;
-
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -50,7 +83,9 @@
       pointer-events: none;
     }
 
-    .sport-card:hover { border-color: var(--accent); }
+    .sport-card:hover {
+      border-color: var(--accent);
+    }
 
     .sport-inner {
       position: relative;
@@ -64,7 +99,6 @@
       font-weight: 800;
       color: #fff;
       text-align: center;
-
       text-shadow:
         -3px -3px 0 #000,
          3px -3px 0 #000,
@@ -89,6 +123,10 @@
          1px  1px 0 #000;
     }
 
+    .intro-text {
+      margin: 8px 18px 0;
+    }
+
     .bg-go       { background-image: url("Go Button.png"); }
     .bg-chess    { background-image: url("Chess Button.png"); }
     .bg-snooker  { background-image: url("Snooker Button.png"); }
@@ -107,6 +145,9 @@
         <span>J-Ratings</span>
       </a>
     </h1>
+    <p class="intro-text">
+      Elo ratings and rankings for Go, Chess, Snooker, Football and Rugby Union.
+    </p>
   </div>
 </header>
 
@@ -117,41 +158,39 @@
     <div style="padding:16px 18px">
       <div class="sports-grid">
 
-
-
         <a class="sport-card bg-go" href="Go/home/">
           <div class="sport-inner">
-            <p class="sport-title">Go </p>
+            <p class="sport-title">Go</p>
           </div>
         </a>
 
         <a class="sport-card bg-chess" href="Chess/home/">
           <div class="sport-inner">
-            <p class="sport-title">Chess </p>
+            <p class="sport-title">Chess</p>
           </div>
         </a>
 
         <a class="sport-card bg-snooker" href="Snooker/home/">
           <div class="sport-inner">
-            <p class="sport-title">Snooker </p>
+            <p class="sport-title">Snooker</p>
           </div>
         </a>
 
         <a class="sport-card bg-football" href="EnglishFootball/home/">
           <div class="sport-inner">
-            <p class="sport-title">English Football </p>
+            <p class="sport-title">English Football</p>
           </div>
         </a>
 
         <a class="sport-card bg-football" href="InternationalFootball/home/">
           <div class="sport-inner">
-            <p class="sport-title">International Football </p>
+            <p class="sport-title">International Football</p>
           </div>
         </a>
 
         <a class="sport-card bg-rugby" href="RugbyUnion/home/">
           <div class="sport-inner">
-            <p class="sport-title">Rugby Union </p>
+            <p class="sport-title">Rugby Union</p>
           </div>
         </a>
 
