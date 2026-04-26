@@ -440,9 +440,8 @@
       x: xs,
       y: ysAll,
       customdata: custom,
-      mode: mode === 'daily' ? 'lines' : 'lines+markers',
-      line: { width: 3, shape: 'linear' },
-      marker: mode === 'daily' ? { size: 0 } : { size: 6 },
+      mode: 'lines',
+line: { width: 3, shape: 'linear' },
       hovertemplate: `%{x|%b %Y}<br>%{y:.0f} Rating<br>%{customdata[1]}<extra></extra>`,
       connectgaps: true
     };
