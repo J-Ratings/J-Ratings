@@ -8,6 +8,9 @@
   "inactive_teams": 13,
   "flagged_teams": 46,
   "unflagged_teams": 1,
+  "history_has_world_rank": true,
+  "games_have_world_rank": true,
+  "rank_method": "Ranked by latest known Elo on each match date. Teams inactive for more than 4 years at that date are excluded.",
   "input_files": {
     "final_ratings": "world_rugby_union_elo_final_ratings.csv",
     "game_history": "world_rugby_union_elo_game_history.csv",
