@@ -269,3 +269,45 @@ button {
 .title-go {
   color: var(--wood);
 }
+
+/* Shared graph controls */
+.jr-chart {
+  height: 420px;
+  touch-action: pan-y;
+}
+
+.jr-chart-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: .5rem 0 .25rem 0;
+}
+
+.range-buttons {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: .5rem 0 .25rem 0;
+}
+
+.range-buttons .seg {
+  background: #0f1623;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: .9rem;
+}
+
+.range-buttons .seg:hover {
+  background: rgba(255,255,255,.05);
+}
+
+.range-buttons .seg.active {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.9);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);
+}
