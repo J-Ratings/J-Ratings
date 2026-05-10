@@ -129,15 +129,44 @@ clean_text <- function(x) {
 }
 
 make_name <- function(df) {
-  if (all(c("FirstName", "MiddleName", "LastName") %in% names(df))) {
-    apply(
-      df[, c("FirstName", "MiddleName", "LastName"), drop = FALSE],
-      1,
-      function(x) paste(x[x != "" & !is.na(x)], collapse = " ")
-    )
+  if (!all(c("FirstName", "MiddleName", "LastName") %in% names(df))) {
+    return(rep(NA_character_, nrow(df)))
+  }
+  
+  first <- trimws(as.character(df$FirstName))
+  middle <- trimws(as.character(df$MiddleName))
+  last <- trimws(as.character(df$LastName))
+  
+  first[first %in% c("", "NA", "NULL")] <- NA_character_
+  middle[middle %in% c("", "NA", "NULL")] <- NA_character_
+  last[last %in% c("", "NA", "NULL")] <- NA_character_
+  
+  nationality <- if ("Nationality" %in% names(df)) {
+    trimws(as.character(df$Nationality))
   } else {
     rep(NA_character_, nrow(df))
   }
+  
+  family_name_first <- nationality %in% c(
+    "China",
+    "Hong Kong",
+    "Taiwan"
+  )
+  
+  out <- character(nrow(df))
+  
+  for (i in seq_len(nrow(df))) {
+    if (isTRUE(family_name_first[i])) {
+      parts <- c(last[i], first[i], middle[i])
+    } else {
+      parts <- c(first[i], middle[i], last[i])
+    }
+    
+    parts <- parts[!is.na(parts) & parts != ""]
+    out[i] <- paste(parts, collapse = " ")
+  }
+  
+  out
 }
 
 # ============================================================

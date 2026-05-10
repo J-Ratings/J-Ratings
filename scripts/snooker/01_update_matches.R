@@ -12,6 +12,12 @@ options(stringsAsFactors = FALSE)
 #   - Update combined season match CSVs directly
 #   - Avoid storing thousands of small per-event CSVs in Git
 #
+# Important safety rule:
+#   - Do not delete old event rows before checking new API rows.
+#   - Keep existing rows, append refreshed rows, then de-duplicate by MatchID.
+#   - Prefer scored rows over 0-0/placeholders.
+#   - If both rows are scored, prefer the newly refreshed row.
+#
 # Reads/writes only inside the Git repo:
 #   Snooker/pipeline_data/Events/events_YYYY.csv
 #   Snooker/pipeline_data/Matches_Clean_Combined/matches_YYYY_all.csv
@@ -57,7 +63,7 @@ REQUEST_PAUSE <- as.numeric(Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "8"))
 MAX_RETRIES <- 3L
 
 # Monthly automation default.
-# Refreshes events ending/starting in the last 35 days.
+# Refreshes events overlapping the last MATCH_REFRESH_DAYS.
 MATCH_REFRESH_DAYS <- as.integer(Sys.getenv("MATCH_REFRESH_DAYS", unset = "45"))
 
 # -----------------------------
@@ -171,12 +177,40 @@ deduplicate_matches <- function(dt) {
   
   dt[, MergeMatchID := clean_id(get(id_col))]
   
+  score1_col <- first_existing_col(dt, c("ScoreA", "Score1"))
+  score2_col <- first_existing_col(dt, c("ScoreB", "Score2"))
+  
+  if (!is.null(score1_col) && !is.null(score2_col)) {
+    s1 <- suppressWarnings(as.numeric(dt[[score1_col]]))
+    s2 <- suppressWarnings(as.numeric(dt[[score2_col]]))
+    
+    dt[, HasResultForMerge := !is.na(s1) & !is.na(s2) & !(s1 == 0 & s2 == 0)]
+  } else {
+    dt[, HasResultForMerge := FALSE]
+  }
+  
+  if (!"IsNewRefreshRow" %in% names(dt)) {
+    dt[, IsNewRefreshRow := 0L]
+  }
+  
+  dt[, IsNewRefreshRow := fifelse(is.na(IsNewRefreshRow), 0L, as.integer(IsNewRefreshRow))]
+  
   with_id <- dt[!is.na(MergeMatchID) & MergeMatchID != ""]
   without_id <- dt[is.na(MergeMatchID) | MergeMatchID == ""]
   
   rows_before <- nrow(dt)
   
-  setorder(with_id, MergeMatchID)
+  # Preference:
+  #   1. Rows with real results
+  #   2. New refreshed rows
+  #   3. Existing rows
+  setorder(
+    with_id,
+    MergeMatchID,
+    -HasResultForMerge,
+    -IsNewRefreshRow
+  )
+  
   with_id <- with_id[!duplicated(MergeMatchID)]
   
   out <- rbindlist(
@@ -185,7 +219,7 @@ deduplicate_matches <- function(dt) {
     fill = TRUE
   )
   
-  out[, MergeMatchID := NULL]
+  out[, c("MergeMatchID", "HasResultForMerge", "IsNewRefreshRow") := NULL]
   
   cat("Rows before match de-duplication:", rows_before, "\n")
   cat("Rows after match de-duplication:", nrow(out), "\n")
@@ -219,6 +253,31 @@ sort_matches_stably <- function(dt) {
   }
   
   dt
+}
+
+force_date_columns_to_character <- function(existing, add_rows) {
+  date_cols <- c(
+    "EventStartDate",
+    "EventEndDate",
+    "StartDate",
+    "EndDate",
+    "Date",
+    "MatchDate",
+    "ScheduledDate",
+    "PlayedDate"
+  )
+  
+  for (col in date_cols) {
+    if (col %in% names(existing)) {
+      existing[, (col) := as.character(get(col))]
+    }
+    
+    if (col %in% names(add_rows)) {
+      add_rows[, (col) := as.character(get(col))]
+    }
+  }
+  
+  list(existing = existing, add_rows = add_rows)
 }
 
 # -----------------------------
@@ -314,7 +373,6 @@ events_all[, EndDate2 := safe_date(EndDate)]
 # ============================================================
 
 cutoff_date <- Sys.Date() - MATCH_REFRESH_DAYS
-
 today <- Sys.Date()
 
 events_to_refresh <- events_all[
@@ -392,13 +450,16 @@ for (i in seq_len(nrow(events_to_refresh))) {
   if (!is.null(dat) && is.data.frame(dat) && nrow(dat) > 0L) {
     dat <- as.data.table(dat)
     
-    if ("EventID" %in% names(dat)) dat[, EventID := as.character(EventID)]
+    if ("EventID" %in% names(dat)) {
+      dat[, EventID := as.character(EventID)]
+    }
     
     dat[, EventID := as.character(event_id)]
     dat[, EventName := as.character(event_name)]
     dat[, EventStartDate := as.character(events_to_refresh$StartDate[i])]
     dat[, EventEndDate := as.character(events_to_refresh$EndDate[i])]
     dat[, Season := as.integer(season)]
+    dat[, IsNewRefreshRow := 1L]
     
     new_match_rows[[new_match_index]] <- dat
     new_match_index <- new_match_index + 1L
@@ -442,22 +503,8 @@ for (season_name in names(refresh_by_season)) {
   
   cat("Existing rows:", nrow(existing), "\n")
   
-  refresh_event_ids <- clean_id(refresh_by_season[[season_name]]$ID)
-  
-  # Remove old rows for every selected event in this season.
-  # This prevents duplicates and stale rows.
   if (nrow(existing) > 0L) {
-    event_col <- first_existing_col(existing, c("EventID", "Event_ID", "EID", "Event"))
-    
-    if (!is.null(event_col)) {
-      existing[, MergeEventID := clean_id(get(event_col))]
-      existing <- existing[!(MergeEventID %in% refresh_event_ids)]
-      existing[, MergeEventID := NULL]
-      
-      cat("Rows after removing refreshed EventIDs:", nrow(existing), "\n")
-    } else {
-      cat("Existing file has no EventID column. Existing rows kept unchanged.\n")
-    }
+    existing[, IsNewRefreshRow := 0L]
   }
   
   add_rows <- if (nrow(new_matches) > 0L) {
@@ -468,16 +515,9 @@ for (season_name in names(refresh_by_season)) {
   
   cat("Rows to add for season:", nrow(add_rows), "\n")
   
-  date_cols <- c("EventStartDate", "EventEndDate", "StartDate", "EndDate", "Date", "MatchDate")
-  
-  for (col in date_cols) {
-    if (col %in% names(existing)) {
-      existing[, (col) := as.character(get(col))]
-    }
-    if (col %in% names(add_rows)) {
-      add_rows[, (col) := as.character(get(col))]
-    }
-  }
+  fixed_tables <- force_date_columns_to_character(existing, add_rows)
+  existing <- fixed_tables$existing
+  add_rows <- fixed_tables$add_rows
   
   combined <- rbindlist(
     list(existing, add_rows),
