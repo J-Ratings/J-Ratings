@@ -138,6 +138,25 @@ first_existing_col <- function(dt, candidates) {
   hit[1]
 }
 
+coalesce_first_existing <- function(dt, candidates) {
+  found <- candidates[candidates %in% names(dt)]
+  
+  if (length(found) == 0L) {
+    return(NULL)
+  }
+  
+  out <- dt[[found[1]]]
+  
+  if (length(found) > 1L) {
+    for (col in found[-1]) {
+      missing <- is.na(out) | trimws(as.character(out)) == ""
+      out[missing] <- dt[[col]][missing]
+    }
+  }
+  
+  out
+}
+
 normalise_event_file <- function(events, season) {
   events <- as.data.table(events)
   
@@ -168,14 +187,14 @@ deduplicate_matches <- function(dt) {
     return(dt)
   }
   
-  id_col <- first_existing_col(dt, c("MatchID", "ID"))
+  match_id_raw <- coalesce_first_existing(dt, c("MatchID", "ID"))
   
-  if (is.null(id_col)) {
+  if (is.null(match_id_raw)) {
     cat("No MatchID/ID column found; no match de-duplication applied.\n")
     return(dt)
   }
   
-  dt[, MergeMatchID := clean_id(get(id_col))]
+  dt[, MergeMatchID := clean_id(match_id_raw)]
   
   score1_col <- first_existing_col(dt, c("ScoreA", "Score1"))
   score2_col <- first_existing_col(dt, c("ScoreB", "Score2"))

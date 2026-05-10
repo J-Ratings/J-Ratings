@@ -159,6 +159,25 @@ first_existing_col <- function(dt, candidates) {
   hit[1]
 }
 
+coalesce_first_existing <- function(dt, candidates) {
+  found <- candidates[candidates %in% names(dt)]
+  
+  if (length(found) == 0L) {
+    return(NULL)
+  }
+  
+  out <- dt[[found[1]]]
+  
+  if (length(found) > 1L) {
+    for (col in found[-1]) {
+      missing <- is.na(out) | trimws(as.character(out)) == ""
+      out[missing] <- dt[[col]][missing]
+    }
+  }
+  
+  out
+}
+
 opponent_weight <- function(opponent_frames_before,
                             threshold = PROVISIONAL_FRAME_THRESHOLD,
                             min_weight = MIN_OPP_WEIGHT) {
@@ -320,16 +339,21 @@ dt_raw <- rbindlist(match_list, use.names = TRUE, fill = TRUE)
 # Standardise match columns
 # ============================================================
 
-match_id_col <- first_existing_col(dt_raw, c("MatchID", "ID"))
-player_a_col <- first_existing_col(dt_raw, c("PlayerA_ID", "Player1ID", "A_ID"))
-player_b_col <- first_existing_col(dt_raw, c("PlayerB_ID", "Player2ID", "B_ID"))
-score_a_col <- first_existing_col(dt_raw, c("ScoreA", "Score1"))
-score_b_col <- first_existing_col(dt_raw, c("ScoreB", "Score2"))
+match_id_raw <- coalesce_first_existing(dt_raw, c("MatchID", "ID"))
+player_a_raw <- coalesce_first_existing(dt_raw, c("PlayerA_ID", "Player1ID", "A_ID"))
+player_b_raw <- coalesce_first_existing(dt_raw, c("PlayerB_ID", "Player2ID", "B_ID"))
 winner_col <- first_existing_col(dt_raw, c("WinnerID", "Winner_ID", "Winner"))
-match_date_col <- first_existing_col(dt_raw, c("MatchDate", "StartDate", "PlayedDate"))
 event_id_col <- first_existing_col(dt_raw, c("EventID", "Event_ID", "EID", "Event"))
 
-required_hits <- list(match_id_col, player_a_col, player_b_col, score_a_col, score_b_col)
+score_a_raw <- coalesce_first_existing(dt_raw, c("ScoreA", "Score1"))
+score_b_raw <- coalesce_first_existing(dt_raw, c("ScoreB", "Score2"))
+match_date_raw <- coalesce_first_existing(dt_raw, c("MatchDate", "StartDate", "PlayedDate", "Date"))
+
+required_hits <- list(player_a_raw, player_b_raw)
+
+if (is.null(match_id_raw)) {
+  stop("No MatchID or ID column found in cleaned match files.")
+}
 
 if (any(vapply(required_hits, is.null, logical(1)))) {
   stop("One or more required match columns were not found.")
@@ -340,13 +364,13 @@ if (is.null(event_id_col)) {
 }
 
 dt <- data.table(
-  MatchID = clean_id(dt_raw[[match_id_col]]),
-  PlayerA_ID = clean_id(dt_raw[[player_a_col]]),
-  PlayerB_ID = clean_id(dt_raw[[player_b_col]]),
-  ScoreA = suppressWarnings(as.integer(dt_raw[[score_a_col]])),
-  ScoreB = suppressWarnings(as.integer(dt_raw[[score_b_col]])),
+  MatchID = clean_id(match_id_raw),
+  PlayerA_ID = clean_id(player_a_raw),
+  PlayerB_ID = clean_id(player_b_raw),
+  ScoreA = suppressWarnings(as.integer(score_a_raw)),
+  ScoreB = suppressWarnings(as.integer(score_b_raw)),
   WinnerID = if (!is.null(winner_col)) clean_id(dt_raw[[winner_col]]) else "",
-  MatchDateRaw = if (!is.null(match_date_col)) clean_text(dt_raw[[match_date_col]]) else NA_character_,
+  MatchDateRaw = clean_text(match_date_raw),
   EventID = clean_id(dt_raw[[event_id_col]]),
   SourceFile = dt_raw$SourceFile
 )
