@@ -7,27 +7,27 @@ library(data.table)
 options(stringsAsFactors = FALSE)
 
 # ============================================================
-# Export SNOOKER ratings + history to JSON for website
+# 03_write_json.R
 #
-# Inputs:
-#   C:/Users/stjuk/OneDrive/Desktop/Baduk/Go-Go-Ratings/Snooker/Elo
-#     - snooker_elo_final_ratings.csv
-#     - snooker_elo_match_history.csv
-#     - season_snapshots/snapshot_season_YYYY.csv
-#     - season_snapshots/snapshot_current.csv
+# Export SNOOKER ratings + history to JSON for website.
 #
-# Outputs:
-#   C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings/Snooker/data
-#     - meta.json
-#     - players.json
-#     - history/<player_id>.json
-#     - games/<player_id>.json
-#     - snapshots/seasons.json
-#     - snapshots/<season>.json
-#     - snapshots/current.json
+# Reads/writes only inside the Git repo:
+#   Reads:
+#     Snooker/pipeline_data/Elo/snooker_elo_final_ratings.csv
+#     Snooker/pipeline_data/Elo/snooker_elo_match_history.csv
+#     Snooker/pipeline_data/Elo/season_snapshots/
+#
+#   Writes:
+#     Snooker/data/meta.json
+#     Snooker/data/players.json
+#     Snooker/data/history/<player_id>.json
+#     Snooker/data/games/<player_id>.json
+#     Snooker/data/snapshots/seasons.json
+#     Snooker/data/snapshots/<season>.json
+#     Snooker/data/snapshots/current.json
 #
 # Notes:
-#   - rating method now comes from the single-pass calculation:
+#   - rating method comes from the single-pass calculation:
 #       * all players start at 2600
 #       * first 20 matches use double K
 #       * opponent-frame dampening is applied
@@ -40,23 +40,28 @@ options(stringsAsFactors = FALSE)
 # ============================================================
 
 # -----------------------------
-# Paths
+# Repo paths
 # -----------------------------
-repo_dir <- "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"
-site_dir <- file.path(repo_dir, "Snooker")
+REPO_DIR <- Sys.getenv(
+  "GITHUB_WORKSPACE",
+  unset = "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"
+)
 
-elo_src_dir <- "C:/Users/stjuk/OneDrive/Desktop/Baduk/Go-Go-Ratings/Snooker/Elo"
-season_snapshots_src_dir <- file.path(elo_src_dir, "season_snapshots")
+SNOOKER_DIR <- file.path(REPO_DIR, "Snooker")
+PIPELINE_DIR <- file.path(SNOOKER_DIR, "pipeline_data")
 
-base_data_dir <- file.path(site_dir, "data")
-history_out <- file.path(base_data_dir, "history")
-games_out <- file.path(base_data_dir, "games")
-snapshots_out <- file.path(base_data_dir, "snapshots")
+ELO_SRC_DIR <- file.path(PIPELINE_DIR, "Elo")
+SEASON_SNAPSHOTS_SRC_DIR <- file.path(ELO_SRC_DIR, "season_snapshots")
 
-dir.create(base_data_dir, recursive = TRUE, showWarnings = FALSE)
-dir.create(history_out, recursive = TRUE, showWarnings = FALSE)
-dir.create(games_out, recursive = TRUE, showWarnings = FALSE)
-dir.create(snapshots_out, recursive = TRUE, showWarnings = FALSE)
+BASE_DATA_DIR <- file.path(SNOOKER_DIR, "data")
+HISTORY_OUT <- file.path(BASE_DATA_DIR, "history")
+GAMES_OUT <- file.path(BASE_DATA_DIR, "games")
+SNAPSHOTS_OUT <- file.path(BASE_DATA_DIR, "snapshots")
+
+dir.create(BASE_DATA_DIR, recursive = TRUE, showWarnings = FALSE)
+dir.create(HISTORY_OUT, recursive = TRUE, showWarnings = FALSE)
+dir.create(GAMES_OUT, recursive = TRUE, showWarnings = FALSE)
+dir.create(SNAPSHOTS_OUT, recursive = TRUE, showWarnings = FALSE)
 
 # -----------------------------
 # Rules
@@ -67,8 +72,8 @@ ACTIVE_YEARS <- 2L
 # -----------------------------
 # Input files
 # -----------------------------
-final_csv <- file.path(elo_src_dir, "snooker_elo_final_ratings.csv")
-hist_csv  <- file.path(elo_src_dir, "snooker_elo_match_history.csv")
+final_csv <- file.path(ELO_SRC_DIR, "snooker_elo_final_ratings.csv")
+hist_csv  <- file.path(ELO_SRC_DIR, "snooker_elo_match_history.csv")
 
 if (!file.exists(final_csv)) stop("Missing file: ", final_csv)
 if (!file.exists(hist_csv))  stop("Missing file: ", hist_csv)
@@ -76,8 +81,17 @@ if (!file.exists(hist_csv))  stop("Missing file: ", hist_csv)
 # -----------------------------
 # Load CSVs
 # -----------------------------
-final <- read_csv(final_csv, show_col_types = FALSE, locale = locale(encoding = "UTF-8"))
-mhist <- read_csv(hist_csv, show_col_types = FALSE, locale = locale(encoding = "UTF-8"))
+final <- read_csv(
+  final_csv,
+  show_col_types = FALSE,
+  locale = locale(encoding = "UTF-8")
+)
+
+mhist <- read_csv(
+  hist_csv,
+  show_col_types = FALSE,
+  locale = locale(encoding = "UTF-8")
+)
 
 # -----------------------------
 # Required columns
@@ -114,11 +128,11 @@ required_hist <- c(
 miss_final <- setdiff(required_final, names(final))
 miss_hist  <- setdiff(required_hist, names(mhist))
 
-if (length(miss_final) > 0) {
+if (length(miss_final) > 0L) {
   stop("Missing columns in final CSV: ", paste(miss_final, collapse = ", "))
 }
 
-if (length(miss_hist) > 0) {
+if (length(miss_hist) > 0L) {
   stop("Missing columns in history CSV: ", paste(miss_hist, collapse = ", "))
 }
 
@@ -190,6 +204,12 @@ asof_date <- max(as.Date(mhist$MatchDate), na.rm = TRUE)
 current_season <- max(mhist$EventSeason, na.rm = TRUE)
 latest_completed_season <- current_season - 1L
 
+cat("Repo directory:", REPO_DIR, "\n")
+cat("Pipeline directory:", PIPELINE_DIR, "\n")
+cat("Website data directory:", BASE_DATA_DIR, "\n")
+cat("As of:", format(asof_date, "%Y-%m-%d"), "\n")
+cat("Current EventSeason:", current_season, "\n")
+
 # -----------------------------
 # Last played per player
 # -----------------------------
@@ -248,12 +268,12 @@ meta <- list(
 
 write_json(
   meta,
-  file.path(base_data_dir, "meta.json"),
+  file.path(BASE_DATA_DIR, "meta.json"),
   auto_unbox = TRUE,
   pretty = FALSE
 )
 
-cat("Wrote meta.json (asof =", meta$asof, ")\n")
+cat("Wrote meta.json\n")
 
 # -----------------------------
 # Long history per player
@@ -295,8 +315,7 @@ hist_long <- bind_rows(
 # Historical world rank
 #
 # Rank is calculated at each match timestamp.
-# This version walks forward through time and keeps current player state,
-# rather than repeatedly scanning the whole history.
+# This walks forward through time and keeps current player state.
 # -----------------------------
 cat("Building historical world ranks...\n")
 
@@ -315,6 +334,7 @@ state <- data.table(
   cum_frames = numeric(),
   date = as.Date(character())
 )
+
 setkey(state, PlayerID)
 
 rank_rows <- vector("list", length(rank_times))
@@ -336,6 +356,7 @@ for (i in seq_along(rank_times)) {
       cum_frames,
       date
     )]
+    
     setkey(updates_state, PlayerID)
     
     # Update existing players
@@ -455,7 +476,7 @@ players_tbl <- final %>%
 
 write_json(
   players_tbl,
-  file.path(base_data_dir, "players.json"),
+  file.path(BASE_DATA_DIR, "players.json"),
   auto_unbox = TRUE,
   pretty = FALSE,
   na = "null"
@@ -490,11 +511,12 @@ for (pid in all_ids) {
   if (nrow(df) > 0L) {
     write_json(
       df,
-      file.path(history_out, paste0(pid, ".json")),
+      file.path(HISTORY_OUT, paste0(pid, ".json")),
       auto_unbox = TRUE,
       pretty = FALSE,
       na = "null"
     )
+    
     n_hist_written <- n_hist_written + 1L
   }
 }
@@ -505,20 +527,20 @@ cat("Wrote history files:", n_hist_written, "\n")
 # Season snapshots
 #
 # Source:
-#   Elo/season_snapshots/snapshot_season_YYYY.csv
-#   Elo/season_snapshots/snapshot_current.csv
+#   pipeline_data/Elo/season_snapshots/snapshot_season_YYYY.csv
+#   pipeline_data/Elo/season_snapshots/snapshot_current.csv
 #
 # Website output:
-#   snapshots/seasons.json
-#   snapshots/YYYY.json
-#   snapshots/current.json
+#   data/snapshots/seasons.json
+#   data/snapshots/YYYY.json
+#   data/snapshots/current.json
 # -----------------------------
-if (!dir.exists(season_snapshots_src_dir)) {
-  stop("Missing season snapshots directory: ", season_snapshots_src_dir)
+if (!dir.exists(SEASON_SNAPSHOTS_SRC_DIR)) {
+  stop("Missing season snapshots directory: ", SEASON_SNAPSHOTS_SRC_DIR)
 }
 
 season_snapshot_files <- list.files(
-  season_snapshots_src_dir,
+  SEASON_SNAPSHOTS_SRC_DIR,
   pattern = "^snapshot_season_\\d{4}\\.csv$",
   full.names = TRUE
 )
@@ -535,7 +557,7 @@ season_snapshot_info <- data.table(
 season_snapshot_info <- season_snapshot_info[!is.na(season)]
 
 # Avoid exporting the live/current season as if it were final.
-# The live table is exported separately as current.json.
+# Live current season is exported separately as current.json.
 season_snapshot_info <- season_snapshot_info[season < current_season]
 
 setorder(season_snapshot_info, season)
@@ -544,7 +566,7 @@ snapshot_seasons <- season_snapshot_info$season
 
 write_json(
   snapshot_seasons,
-  file.path(snapshots_out, "seasons.json"),
+  file.path(SNAPSHOTS_OUT, "seasons.json"),
   auto_unbox = TRUE,
   pretty = FALSE
 )
@@ -557,7 +579,11 @@ for (i in seq_len(nrow(season_snapshot_info))) {
   season <- season_snapshot_info$season[i]
   f <- season_snapshot_info$file[i]
   
-  snap <- read_csv(f, show_col_types = FALSE, locale = locale(encoding = "UTF-8"))
+  snap <- read_csv(
+    f,
+    show_col_types = FALSE,
+    locale = locale(encoding = "UTF-8")
+  )
   
   required_snap_cols <- c(
     "Season",
@@ -577,7 +603,12 @@ for (i in seq_len(nrow(season_snapshot_info))) {
   miss_snap <- setdiff(required_snap_cols, names(snap))
   
   if (length(miss_snap) > 0L) {
-    stop("Missing columns in season snapshot ", basename(f), ": ", paste(miss_snap, collapse = ", "))
+    stop(
+      "Missing columns in season snapshot ",
+      basename(f),
+      ": ",
+      paste(miss_snap, collapse = ", ")
+    )
   }
   
   snapshot_tbl <- snap %>%
@@ -602,17 +633,18 @@ for (i in seq_len(nrow(season_snapshot_info))) {
   
   write_json(
     snapshot_tbl,
-    file.path(snapshots_out, paste0(season, ".json")),
+    file.path(SNAPSHOTS_OUT, paste0(season, ".json")),
     auto_unbox = TRUE,
     pretty = FALSE,
     na = "null"
   )
   
   n_snapshots_written <- n_snapshots_written + 1L
+  
   cat("Wrote season snapshot:", season, "(players =", nrow(snapshot_tbl), ")\n")
 }
 
-current_snapshot_file <- file.path(season_snapshots_src_dir, "snapshot_current.csv")
+current_snapshot_file <- file.path(SEASON_SNAPSHOTS_SRC_DIR, "snapshot_current.csv")
 
 if (file.exists(current_snapshot_file)) {
   current_snap <- read_csv(
@@ -643,7 +675,7 @@ if (file.exists(current_snapshot_file)) {
   
   write_json(
     current_tbl,
-    file.path(snapshots_out, "current.json"),
+    file.path(SNAPSHOTS_OUT, "current.json"),
     auto_unbox = TRUE,
     pretty = FALSE,
     na = "null"
@@ -737,11 +769,12 @@ for (pid in all_ids) {
   if (nrow(df) > 0L) {
     write_json(
       df,
-      file.path(games_out, paste0(pid, ".json")),
+      file.path(GAMES_OUT, paste0(pid, ".json")),
       auto_unbox = TRUE,
       pretty = FALSE,
       na = "null"
     )
+    
     n_games_written <- n_games_written + 1L
   }
 }

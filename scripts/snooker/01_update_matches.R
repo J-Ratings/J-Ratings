@@ -5,80 +5,78 @@ library(data.table)
 options(stringsAsFactors = FALSE)
 
 # ============================================================
-# SNOOKER API MATCH REFRESH
+# 01_update_matches.R
 #
 # Purpose:
-#   - Refresh selected event-level raw match CSVs from snooker.org
-#   - Save/update season event list
-#   - Rebuild one raw combined season CSV from all event-level CSVs
+#   - Refresh recent snooker match data from snooker.org
+#   - Update combined season match CSVs directly
+#   - Avoid storing thousands of small per-event CSVs in Git
 #
-# Important:
-#   - This script writes raw API files in Matches/
-#   - It does not write Matches_Clean or Matches_Clean_Combined
-#   - Cleaned combined files should be rebuilt after the cleaning step
+# Reads/writes only inside the Git repo:
+#   Snooker/pipeline_data/Events/events_YYYY.csv
+#   Snooker/pipeline_data/Matches_Clean_Combined/matches_YYYY_all.csv
 #
-# Output:
-#   Events/events_YYYY.csv
-#   Matches/matches_YYYY/event_<event_id>.csv
-#   Matches/matches_YYYY_all.csv
-#   Matches/latest_filled_match_YYYY.csv
+# Does NOT write:
+#   raw per-event match CSVs
+#   cleaned per-event match CSVs
+#   failed-call logs
 # ============================================================
 
 # -----------------------------
-# Paths
+# Repo paths
 # -----------------------------
-ROOT_DIR <- "C:/Users/stjuk/OneDrive/Desktop/Baduk/Go-Go-Ratings/Snooker"
+REPO_DIR <- Sys.getenv(
+  "GITHUB_WORKSPACE",
+  unset = "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"
+)
 
-MATCHES_DIR <- file.path(ROOT_DIR, "Matches")
-EVENTS_DIR <- file.path(ROOT_DIR, "Events")
+SNOOKER_DIR <- file.path(REPO_DIR, "Snooker")
+PIPELINE_DIR <- file.path(SNOOKER_DIR, "pipeline_data")
 
-dir.create(MATCHES_DIR, recursive = TRUE, showWarnings = FALSE)
+EVENTS_DIR <- file.path(PIPELINE_DIR, "Events")
+MATCHES_COMBINED_DIR <- file.path(PIPELINE_DIR, "Matches_Clean_Combined")
+
 dir.create(EVENTS_DIR, recursive = TRUE, showWarnings = FALSE)
+dir.create(MATCHES_COMBINED_DIR, recursive = TRUE, showWarnings = FALSE)
 
 # -----------------------------
 # API settings
 # -----------------------------
 base_url <- "https://api.snooker.org/"
 
-# For GitHub Actions later, use:
-#   header_value <- Sys.getenv("SNOOKER_API_HEADER")
-#
-# For local use, this fallback keeps your existing behaviour.
-header_value <- Sys.getenv("SNOOKER_API_HEADER", unset = "SamJRatings262")
+header_value <- Sys.getenv("SNOOKER_API_HEADER")
 
 if (header_value == "") {
-  stop("Missing API header. Set SNOOKER_API_HEADER or hard-code header_value locally.")
+  stop(
+    "Missing SNOOKER_API_HEADER environment variable. ",
+    "For local testing, run: Sys.setenv(SNOOKER_API_HEADER = 'your header value')"
+  )
 }
 
-REQUEST_PAUSE <- 8
-MAX_RETRIES <- 3
+REQUEST_PAUSE <- as.numeric(Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "8"))
+MAX_RETRIES <- 3L
+
+# Monthly automation default.
+# Refreshes events ending/starting in the last 35 days.
+MATCH_REFRESH_DAYS <- as.integer(Sys.getenv("MATCH_REFRESH_DAYS", unset = "45"))
 
 # -----------------------------
-# Refresh settings
-# -----------------------------
-# REFRESH_MODE options:
-#   "all_season"        = refresh every event in the selected season(s)
-#   "since_last_update" = refresh events with EndDate on/after LAST_UPDATE_DATE
-#   "last_n_days"       = refresh events with EndDate in the last LAST_N_DAYS
-#
-# For monthly automation, "last_n_days" is safer than manually editing LAST_UPDATE_DATE.
-REFRESH_MODE <- "last_n_days"
-LAST_N_DAYS <- 35L
-
-# -----------------------------
-# Seasons
-# -----------------------------
-# snooker.org season year is not calendar year:
-#   2025 = 2025/2026 season
-#   2026 = 2026/2027 season
-START_SEASON <- 2025
-END_SEASON <- 2025
-
-# ============================================================
 # Helpers
-# ============================================================
+# -----------------------------
+get_current_snooker_season <- function(date = Sys.Date()) {
+  y <- as.integer(format(date, "%Y"))
+  m <- as.integer(format(date, "%m"))
+  
+  # Snooker season generally runs June to May.
+  # 2025 = 2025/2026 season.
+  if (m >= 6L) {
+    y
+  } else {
+    y - 1L
+  }
+}
 
-get_snooker <- function(query, pause = 8, retries = 3) {
+get_snooker <- function(query, pause = REQUEST_PAUSE, retries = MAX_RETRIES) {
   url <- paste0(base_url, query)
   last_error <- NULL
   
@@ -120,212 +118,89 @@ get_snooker <- function(query, pause = 8, retries = 3) {
   stop(last_error)
 }
 
-
-first_existing_col <- function(dt, possible_cols) {
-  found <- possible_cols[possible_cols %in% names(dt)]
-  
-  if (length(found) == 0L) {
-    return(NULL)
-  }
-  
-  found[1]
-}
-
-
-safe_as_numeric <- function(x) {
-  suppressWarnings(as.numeric(x))
-}
-
-
-safe_as_date <- function(x) {
-  suppressWarnings(as.Date(x))
-}
-
-
 clean_id <- function(x) {
   trimws(as.character(x))
 }
 
+safe_date <- function(x) {
+  suppressWarnings(as.Date(x))
+}
 
-select_events_to_refresh <- function(events,
-                                     refresh_mode,
-                                     last_update_date,
-                                     last_n_days) {
-  events <- as.data.frame(events, stringsAsFactors = FALSE)
+first_existing_col <- function(dt, candidates) {
+  hit <- candidates[candidates %in% names(dt)]
+  if (length(hit) == 0L) return(NULL)
+  hit[1]
+}
+
+normalise_event_file <- function(events, season) {
+  events <- as.data.table(events)
   
-  if (!"StartDate" %in% names(events)) events$StartDate <- NA_character_
-  if (!"EndDate" %in% names(events)) events$EndDate <- NA_character_
+  keep_cols <- intersect(
+    c(
+      "ID", "Name", "StartDate", "EndDate", "Sponsor", "Season",
+      "Tour", "Type", "Num", "Venue", "City", "Country",
+      "Discipline", "Main", "Sex", "AgeGroup", "TV",
+      "WorldSnookerId", "NumCompetitors", "NumUpcoming",
+      "NumActive", "NumResults"
+    ),
+    names(events)
+  )
   
-  events$StartDate2 <- as.Date(events$StartDate)
-  events$EndDate2 <- as.Date(events$EndDate)
+  out <- events[, ..keep_cols]
   
-  if (refresh_mode == "all_season") {
-    out <- events
-    cat("Refreshing all events in season.\n")
-    
-  } else if (refresh_mode == "since_last_update") {
-    cutoff_date <- as.Date(last_update_date)
-    
-    out <- events[
-      !is.na(events$EndDate2) & events$EndDate2 >= cutoff_date,
-      ,
-      drop = FALSE
-    ]
-    
-    cat("Refreshing events ending on or after", format(cutoff_date, "%Y-%m-%d"), "\n")
-    
-  } else if (refresh_mode == "last_n_days") {
-    cutoff_date <- Sys.Date() - as.integer(last_n_days)
-    
-    out <- events[
-      !is.na(events$EndDate2) & events$EndDate2 >= cutoff_date,
-      ,
-      drop = FALSE
-    ]
-    
-    cat(
-      "Refreshing events ending in the last",
-      as.integer(last_n_days),
-      "days from",
-      format(cutoff_date, "%Y-%m-%d"),
-      "\n"
-    )
-    
-  } else {
-    stop("Invalid REFRESH_MODE. Use 'all_season', 'since_last_update', or 'last_n_days'.")
+  if (!"Season" %in% names(out)) {
+    out[, Season := season]
   }
   
   out
 }
 
-
-detect_filled_result_rows <- function(matches_all) {
-  n <- nrow(matches_all)
+deduplicate_matches <- function(dt) {
+  dt <- as.data.table(dt)
   
-  if (n == 0L) {
-    return(logical(0))
+  if (nrow(dt) == 0L) {
+    return(dt)
   }
   
-  has_result <- rep(FALSE, n)
+  id_col <- first_existing_col(dt, c("MatchID", "ID"))
   
-  if (all(c("Score1", "Score2") %in% names(matches_all))) {
-    score1 <- safe_as_numeric(matches_all$Score1)
-    score2 <- safe_as_numeric(matches_all$Score2)
-    
-    has_result <- has_result | (!is.na(score1) & !is.na(score2))
+  if (is.null(id_col)) {
+    cat("No MatchID/ID column found; no match de-duplication applied.\n")
+    return(dt)
   }
   
-  possible_result_cols <- c(
-    "WinnerID",
-    "Winner",
-    "Result",
-    "FrameScores",
-    "Frames",
-    "Scores"
+  dt[, MergeMatchID := clean_id(get(id_col))]
+  
+  with_id <- dt[!is.na(MergeMatchID) & MergeMatchID != ""]
+  without_id <- dt[is.na(MergeMatchID) | MergeMatchID == ""]
+  
+  rows_before <- nrow(dt)
+  
+  setorder(with_id, MergeMatchID)
+  with_id <- with_id[!duplicated(MergeMatchID)]
+  
+  out <- rbindlist(
+    list(with_id, without_id),
+    use.names = TRUE,
+    fill = TRUE
   )
   
-  for (col in possible_result_cols) {
-    if (col %in% names(matches_all)) {
-      value <- as.character(matches_all[[col]])
-      has_result <- has_result | (!is.na(value) & trimws(value) != "")
-    }
-  }
+  out[, MergeMatchID := NULL]
   
-  possible_finished_cols <- c("Finished", "Completed", "Played")
+  cat("Rows before match de-duplication:", rows_before, "\n")
+  cat("Rows after match de-duplication:", nrow(out), "\n")
   
-  for (col in possible_finished_cols) {
-    if (col %in% names(matches_all)) {
-      value <- tolower(as.character(matches_all[[col]]))
-      
-      finished_yes <- value %in% c(
-        "true", "t", "1", "yes", "y",
-        "finished", "complete", "completed", "played"
-      )
-      
-      has_result <- has_result | finished_yes
-    }
-  }
-  
-  has_result
+  out
 }
 
-
-rebuild_raw_combined_season <- function(season,
-                                        season_match_dir,
-                                        matches_dir) {
-  files <- list.files(
-    season_match_dir,
-    full.names = TRUE,
-    pattern = "^event_.*\\.csv$"
-  )
-  
-  if (length(files) == 0L) {
-    cat(sprintf("No raw event match CSV files exist for season %s\n", season))
-    return(NULL)
-  }
-  
-  cat("\n========== Rebuilding raw combined season file ==========\n")
-  cat("Season:", season, "\n")
-  cat("Raw event files:", length(files), "\n")
-  
-  matches_list <- lapply(files, function(f) {
-    dt <- fread(f, encoding = "UTF-8")
-    dt[, SourceFile := basename(f)]
-    dt
-  })
-  
-  matches_all <- rbindlist(
-    matches_list,
-    fill = TRUE,
-    use.names = TRUE,
-    ignore.attr = TRUE
-  )
-  
-  rows_before <- nrow(matches_all)
-  duplicate_id_values <- NA_integer_
-  duplicate_rows_removed <- 0L
-  
-  id_col <- first_existing_col(matches_all, c("MatchID", "ID"))
-  
-  if (!is.null(id_col)) {
-    matches_all[, MergeMatchID := clean_id(get(id_col))]
-    
-    duplicate_id_values <- matches_all[
-      !is.na(MergeMatchID) & MergeMatchID != "",
-      .N,
-      by = MergeMatchID
-    ][N > 1L, .N]
-    
-    with_id <- matches_all[!is.na(MergeMatchID) & MergeMatchID != ""]
-    without_id <- matches_all[is.na(MergeMatchID) | MergeMatchID == ""]
-    
-    # Keep first version after stable ordering.
-    setorder(with_id, MergeMatchID, SourceFile)
-    with_id <- with_id[!duplicated(MergeMatchID)]
-    
-    matches_all <- rbindlist(
-      list(with_id, without_id),
-      use.names = TRUE,
-      fill = TRUE
-    )
-    
-    matches_all[, MergeMatchID := NULL]
-    
-    duplicate_rows_removed <- rows_before - nrow(matches_all)
-    
-    cat("ID column used for de-duplication:", id_col, "\n")
-    cat("Duplicate MatchID/ID values found:", duplicate_id_values, "\n")
-    cat("Duplicate rows removed:", duplicate_rows_removed, "\n")
-  } else {
-    cat("No MatchID or ID column found; no de-duplication applied.\n")
-  }
+sort_matches_stably <- function(dt) {
+  dt <- as.data.table(dt)
   
   sort_cols <- intersect(
     c(
       "EventID",
       "EventName",
       "Date",
-      "ScheduledDate",
       "MatchDate",
       "StartDate",
       "Round",
@@ -336,335 +211,287 @@ rebuild_raw_combined_season <- function(season,
       "ID",
       "MatchID"
     ),
-    names(matches_all)
+    names(dt)
   )
   
   if (length(sort_cols) > 0L) {
-    setorderv(matches_all, sort_cols)
+    setorderv(dt, sort_cols)
   }
   
-  combined_file <- file.path(
-    matches_dir,
-    paste0("matches_", season, "_all.csv")
-  )
-  
-  fwrite(matches_all, combined_file)
-  
-  cat("Rows before de-duplication:", rows_before, "\n")
-  cat("Rows after de-duplication:", nrow(matches_all), "\n")
-  cat("Combined columns:", ncol(matches_all), "\n")
-  cat("Saved to:", combined_file, "\n")
-  cat("=========================================================\n")
-  
-  matches_all
+  dt
 }
 
+# -----------------------------
+# Select seasons to inspect
+# -----------------------------
+current_season <- get_current_snooker_season()
 
-report_latest_filled_match <- function(matches_all,
-                                       season,
-                                       output_dir = NULL,
-                                       save_csv = TRUE) {
-  matches_all <- as.data.table(matches_all)
-  
-  if (nrow(matches_all) == 0L) {
-    cat("\n========== Latest filled match ==========\n")
-    cat("Season:", season, "\n")
-    cat("No rows exist in the combined match file.\n")
-    cat("=========================================\n")
-    return(invisible(NULL))
-  }
-  
-  date_col <- first_existing_col(
-    matches_all,
-    c(
-      "Date",
-      "ScheduledDate",
-      "MatchDate",
-      "StartDate",
-      "EventEndDate",
-      "EventStartDate"
-    )
-  )
-  
-  if (is.null(date_col)) {
-    cat("\n========== Latest filled match ==========\n")
-    cat("Season:", season, "\n")
-    cat("Could not determine latest filled match because no usable date column exists.\n")
-    cat("Available columns:\n")
-    print(names(matches_all))
-    cat("=========================================\n")
-    return(invisible(NULL))
-  }
-  
-  matches_all[, MatchDateForCheck := safe_as_date(get(date_col))]
-  
-  if (all(is.na(matches_all$MatchDateForCheck))) {
-    if ("EventEndDate" %in% names(matches_all)) {
-      date_col <- "EventEndDate"
-      matches_all[, MatchDateForCheck := safe_as_date(EventEndDate)]
-    } else if ("EventStartDate" %in% names(matches_all)) {
-      date_col <- "EventStartDate"
-      matches_all[, MatchDateForCheck := safe_as_date(EventStartDate)]
-    }
-  }
-  
-  has_result <- detect_filled_result_rows(matches_all)
-  
-  filled <- matches_all[
-    has_result &
-      !is.na(MatchDateForCheck) &
-      MatchDateForCheck <= Sys.Date()
-  ]
-  
-  if (nrow(filled) == 0L) {
-    cat("\n========== Latest filled match ==========\n")
-    cat("Season:", season, "\n")
-    cat("No filled result rows found.\n")
-    cat("This probably means the API currently only returned placeholders or future matches.\n")
-    cat("Date column checked:", date_col, "\n")
-    cat("=========================================\n")
-    return(invisible(NULL))
-  }
-  
-  setorder(filled, -MatchDateForCheck)
-  
-  latest <- filled[1]
-  
-  cat("\n========== Latest filled match ==========\n")
-  cat("Season:", season, "\n")
-  cat("Date column used:", date_col, "\n")
-  cat("Latest filled date:", as.character(latest$MatchDateForCheck), "\n")
-  
-  if ("EventID" %in% names(latest)) {
-    cat("Event ID:", latest$EventID, "\n")
-  }
-  
-  if ("EventName" %in% names(latest)) {
-    cat("Event:", latest$EventName, "\n")
-  }
-  
-  if (all(c("Player1", "Player2") %in% names(latest))) {
-    cat("Match:", latest$Player1, "v", latest$Player2, "\n")
-  } else if (all(c("Player1ID", "Player2ID") %in% names(latest))) {
-    cat("Player IDs:", latest$Player1ID, "v", latest$Player2ID, "\n")
-  }
-  
-  if (all(c("Score1", "Score2") %in% names(latest))) {
-    cat("Score:", latest$Score1, "-", latest$Score2, "\n")
-  }
-  
-  if ("WinnerID" %in% names(latest)) {
-    cat("Winner ID:", latest$WinnerID, "\n")
-  }
-  
-  if ("Winner" %in% names(latest)) {
-    cat("Winner:", latest$Winner, "\n")
-  }
-  
-  cat("=========================================\n")
-  
-  if (!is.null(output_dir) && isTRUE(save_csv)) {
-    out_file <- file.path(output_dir, paste0("latest_filled_match_", season, ".csv"))
-    
-    latest_to_write <- copy(latest)
-    latest_to_write[, MatchDateForCheck := as.character(MatchDateForCheck)]
-    
-    fwrite(latest_to_write, out_file)
-    
-    cat("Latest filled match saved to:\n")
-    cat(out_file, "\n")
-  }
-  
-  invisible(latest)
-}
+candidate_seasons <- sort(unique(c(
+  current_season - 1L,
+  current_season,
+  current_season + 1L
+)))
+
+cat("Repo directory:", REPO_DIR, "\n")
+cat("Snooker pipeline directory:", PIPELINE_DIR, "\n")
+cat("Current inferred snooker season:", current_season, "\n")
+cat("Candidate seasons:", paste(candidate_seasons, collapse = ", "), "\n")
+cat("Match refresh window:", MATCH_REFRESH_DAYS, "days\n")
 
 # ============================================================
-# Main loop
+# 1) Refresh/load event lists for candidate seasons
 # ============================================================
 
-for (season in START_SEASON:END_SEASON) {
-  cat(sprintf("\n========== Season %s ==========\n", season))
+events_list <- list()
+event_list_index <- 1L
+
+for (season in candidate_seasons) {
+  cat("\n========== Event list season", season, "==========\n")
   
-  season_match_dir <- file.path(MATCHES_DIR, paste0("matches_", season))
-  dir.create(season_match_dir, recursive = TRUE, showWarnings = FALSE)
+  event_file <- file.path(EVENTS_DIR, paste0("events_", season, ".csv"))
   
-  # -----------------------------
-  # 1) Get event list for the season
-  # -----------------------------
-  events <- tryCatch(
-    get_snooker(
-      paste0("?t=5&s=", season),
-      pause = REQUEST_PAUSE,
-      retries = MAX_RETRIES
-    ),
+  events_api <- tryCatch(
+    get_snooker(paste0("?t=5&s=", season)),
     error = function(e) {
-      cat(sprintf("Failed to get events for season %s: %s\n", season, conditionMessage(e)))
+      cat("Failed to refresh event list for season", season, ":", conditionMessage(e), "\n")
       NULL
     }
   )
   
-  if (is.null(events) || !is.data.frame(events) || nrow(events) == 0L) {
-    cat(sprintf("No events returned for season %s\n", season))
+  if (!is.null(events_api) && is.data.frame(events_api) && nrow(events_api) > 0L) {
+    events_api <- normalise_event_file(events_api, season)
+    fwrite(events_api, event_file)
+    
+    cat("Wrote event file:", event_file, "\n")
+    cat("Event rows:", nrow(events_api), "\n")
+    
+    events_dt <- copy(events_api)
+    
+  } else if (file.exists(event_file)) {
+    events_dt <- fread(event_file, encoding = "UTF-8")
+    
+    cat("Using existing event file:", event_file, "\n")
+    cat("Event rows:", nrow(events_dt), "\n")
+    
+  } else {
+    cat("No API event data and no existing event file for season", season, "\n")
     next
   }
   
-  cat("Events returned for season:", nrow(events), "\n")
-  
-  # -----------------------------
-  # 2) Save season event file
-  # -----------------------------
-  keep_event_cols <- intersect(
-    c(
-      "ID", "Name", "StartDate", "EndDate", "Season", "Tour", "Type",
-      "Venue", "City", "Country", "Main", "Sex", "AgeGroup",
-      "WorldSnookerId", "NumCompetitors", "NumUpcoming", "NumActive", "NumResults"
-    ),
-    names(events)
-  )
-  
-  fwrite(
-    as.data.table(events[, keep_event_cols, drop = FALSE]),
-    file.path(EVENTS_DIR, paste0("events_", season, ".csv"))
-  )
-  
-  # -----------------------------
-  # 3) Select events to refresh
-  # -----------------------------
-  events_recent <- select_events_to_refresh(
-    events = events,
-    refresh_mode = REFRESH_MODE,
-    last_update_date = LAST_UPDATE_DATE,
-    last_n_days = LAST_N_DAYS
-  )
-  
-  cat("Events selected for refresh:", nrow(events_recent), "\n")
-  
-  if (nrow(events_recent) > 0L) {
-    print(
-      events_recent[
-        ,
-        intersect(c("ID", "Name", "StartDate", "EndDate", "Tour"), names(events_recent)),
-        drop = FALSE
-      ]
+  events_dt[, EventSeason := season]
+  events_list[[event_list_index]] <- events_dt
+  event_list_index <- event_list_index + 1L
+}
+
+if (length(events_list) == 0L) {
+  stop("No event data available.")
+}
+
+events_all <- rbindlist(events_list, use.names = TRUE, fill = TRUE)
+
+if (!"ID" %in% names(events_all)) {
+  stop("Event data has no ID column.")
+}
+
+if (!"Name" %in% names(events_all)) {
+  events_all[, Name := NA_character_]
+}
+
+if (!"StartDate" %in% names(events_all)) {
+  events_all[, StartDate := NA_character_]
+}
+
+if (!"EndDate" %in% names(events_all)) {
+  events_all[, EndDate := NA_character_]
+}
+
+events_all[, ID := clean_id(ID)]
+events_all[, StartDate2 := safe_date(StartDate)]
+events_all[, EndDate2 := safe_date(EndDate)]
+
+# ============================================================
+# 2) Select events to refresh
+# ============================================================
+
+cutoff_date <- Sys.Date() - MATCH_REFRESH_DAYS
+
+today <- Sys.Date()
+
+events_to_refresh <- events_all[
+  ID != "" &
+    (
+      # Event overlaps the refresh window
+      (
+        !is.na(StartDate2) &
+          !is.na(EndDate2) &
+          StartDate2 <= today &
+          EndDate2 >= cutoff_date
+      ) |
+        # Fallback for events with no EndDate
+        (
+          !is.na(StartDate2) &
+            is.na(EndDate2) &
+            StartDate2 >= cutoff_date &
+            StartDate2 <= today
+        )
     )
-  }
+]
+
+events_to_refresh <- unique(events_to_refresh, by = c("EventSeason", "ID"))
+
+setorder(events_to_refresh, EventSeason, StartDate2, EndDate2, ID)
+
+cat("\n========== Events selected for match refresh ==========\n")
+cat("Cutoff date:", format(cutoff_date, "%Y-%m-%d"), "\n")
+cat("Events selected:", nrow(events_to_refresh), "\n")
+
+if (nrow(events_to_refresh) > 0L) {
+  print(events_to_refresh[, .(
+    EventSeason,
+    ID,
+    Name,
+    StartDate,
+    EndDate
+  )])
+}
+
+if (nrow(events_to_refresh) == 0L) {
+  cat("No events matched the refresh window. Done.\n")
+  quit(save = "no")
+}
+
+# ============================================================
+# 3) Pull match data for selected events
+# ============================================================
+
+new_match_rows <- list()
+new_match_index <- 1L
+
+for (i in seq_len(nrow(events_to_refresh))) {
+  event_id <- events_to_refresh$ID[i]
+  event_name <- events_to_refresh$Name[i]
+  season <- events_to_refresh$EventSeason[i]
   
-  event_ids <- unique(events_recent$ID)
+  cat(sprintf(
+    "\n[%d/%d] Refreshing season %s event %s (%s)\n",
+    i,
+    nrow(events_to_refresh),
+    season,
+    event_id,
+    event_name
+  ))
   
-  # -----------------------------
-  # 4) Refresh selected raw event files
-  # -----------------------------
-  if (length(event_ids) == 0L) {
-    cat("No events matched the refresh filter for this season.\n")
+  dat <- tryCatch(
+    get_snooker(paste0("?t=6&e=", event_id)),
+    error = function(e) {
+      cat("  -> failed:", conditionMessage(e), "\n")
+      NULL
+    }
+  )
+  
+  if (!is.null(dat) && is.data.frame(dat) && nrow(dat) > 0L) {
+    dat <- as.data.table(dat)
+    
+    if ("EventID" %in% names(dat)) dat[, EventID := as.character(EventID)]
+    
+    dat[, EventID := as.character(event_id)]
+    dat[, EventName := as.character(event_name)]
+    dat[, EventStartDate := as.character(events_to_refresh$StartDate[i])]
+    dat[, EventEndDate := as.character(events_to_refresh$EndDate[i])]
+    dat[, Season := as.integer(season)]
+    
+    new_match_rows[[new_match_index]] <- dat
+    new_match_index <- new_match_index + 1L
+    
+    cat("  -> got", nrow(dat), "rows\n")
     
   } else {
-    season_failed <- data.frame(
-      Season = integer(),
-      EventID = character(),
-      EventName = character(),
-      Error = character(),
-      stringsAsFactors = FALSE
-    )
-    
-    for (i in seq_along(event_ids)) {
-      event_id <- event_ids[i]
-      
-      event_row <- events_recent[events_recent$ID == event_id, , drop = FALSE]
-      
-      event_name <- if ("Name" %in% names(event_row)) {
-        as.character(event_row$Name[1])
-      } else {
-        NA_character_
-      }
-      
-      out_file <- file.path(season_match_dir, paste0("event_", event_id, ".csv"))
-      
-      cat(sprintf(
-        "[%d/%d] Season %s - Refreshing event %s (%s)\n",
-        i, length(event_ids), season, event_id, event_name
-      ))
-      
-      dat <- tryCatch(
-        get_snooker(
-          paste0("?t=6&e=", event_id),
-          pause = REQUEST_PAUSE,
-          retries = MAX_RETRIES
-        ),
-        error = function(e) {
-          season_failed <<- rbind(
-            season_failed,
-            data.frame(
-              Season = season,
-              EventID = as.character(event_id),
-              EventName = as.character(event_name),
-              Error = conditionMessage(e),
-              stringsAsFactors = FALSE
-            )
-          )
-          
-          NULL
-        }
-      )
-      
-      if (!is.null(dat) && is.data.frame(dat) && nrow(dat) > 0L) {
-        dat$EventID <- event_id
-        dat$EventName <- event_name
-        dat$EventStartDate <- if ("StartDate" %in% names(event_row)) event_row$StartDate[1] else NA
-        dat$EventEndDate <- if ("EndDate" %in% names(event_row)) event_row$EndDate[1] else NA
-        dat$Season <- season
-        
-        fwrite(as.data.table(dat), out_file)
-        
-        cat(sprintf("  -> wrote %d rows\n", nrow(dat)))
-        
-      } else {
-        cat("  -> no match rows returned\n")
-        
-        # If a selected event now returns nothing, remove its cached raw file.
-        # This prevents stale rows from staying in the rebuilt combined file.
-        if (file.exists(out_file)) {
-          file.remove(out_file)
-          cat("  -> removed old raw event file because API returned no rows\n")
-        }
-      }
-    }
-    
-    if (nrow(season_failed) > 0L) {
-      failed_file <- file.path(MATCHES_DIR, paste0("failed_match_calls_", season, ".csv"))
-      
-      fwrite(
-        as.data.table(season_failed),
-        failed_file
-      )
-      
-      cat("Failed event calls logged:", nrow(season_failed), "\n")
-      cat("Failed calls saved to:", failed_file, "\n")
-    }
+    cat("  -> no rows returned\n")
   }
+}
+
+new_matches <- if (length(new_match_rows) > 0L) {
+  rbindlist(new_match_rows, use.names = TRUE, fill = TRUE)
+} else {
+  data.table()
+}
+
+cat("\nNew/refreshed match rows returned:", nrow(new_matches), "\n")
+
+# ============================================================
+# 4) Update combined season files directly
+# ============================================================
+
+refresh_by_season <- split(events_to_refresh, events_to_refresh$EventSeason)
+
+for (season_name in names(refresh_by_season)) {
+  season <- as.integer(season_name)
   
-  # -----------------------------
-  # 5) Rebuild raw combined file from all cached raw event files
-  # -----------------------------
-  matches_all <- rebuild_raw_combined_season(
-    season = season,
-    season_match_dir = season_match_dir,
-    matches_dir = MATCHES_DIR
+  cat("\n========== Updating combined season", season, "==========\n")
+  
+  combined_file <- file.path(
+    MATCHES_COMBINED_DIR,
+    paste0("matches_", season, "_all.csv")
   )
   
-  # -----------------------------
-  # 6) Report latest filled match
-  # -----------------------------
-  if (!is.null(matches_all) && nrow(matches_all) > 0L) {
-    latest_filled_match <- report_latest_filled_match(
-      matches_all = matches_all,
-      season = season,
-      output_dir = MATCHES_DIR,
-      save_csv = TRUE
-    )
-    
-    cat("\nFirst few rows of raw combined file:\n")
-    print(head(matches_all))
+  existing <- if (file.exists(combined_file)) {
+    fread(combined_file, encoding = "UTF-8")
+  } else {
+    data.table()
   }
+  
+  cat("Existing rows:", nrow(existing), "\n")
+  
+  refresh_event_ids <- clean_id(refresh_by_season[[season_name]]$ID)
+  
+  # Remove old rows for every selected event in this season.
+  # This prevents duplicates and stale rows.
+  if (nrow(existing) > 0L) {
+    event_col <- first_existing_col(existing, c("EventID", "Event_ID", "EID", "Event"))
+    
+    if (!is.null(event_col)) {
+      existing[, MergeEventID := clean_id(get(event_col))]
+      existing <- existing[!(MergeEventID %in% refresh_event_ids)]
+      existing[, MergeEventID := NULL]
+      
+      cat("Rows after removing refreshed EventIDs:", nrow(existing), "\n")
+    } else {
+      cat("Existing file has no EventID column. Existing rows kept unchanged.\n")
+    }
+  }
+  
+  add_rows <- if (nrow(new_matches) > 0L) {
+    new_matches[Season == season]
+  } else {
+    data.table()
+  }
+  
+  cat("Rows to add for season:", nrow(add_rows), "\n")
+  
+  date_cols <- c("EventStartDate", "EventEndDate", "StartDate", "EndDate", "Date", "MatchDate")
+  
+  for (col in date_cols) {
+    if (col %in% names(existing)) {
+      existing[, (col) := as.character(get(col))]
+    }
+    if (col %in% names(add_rows)) {
+      add_rows[, (col) := as.character(get(col))]
+    }
+  }
+  
+  combined <- rbindlist(
+    list(existing, add_rows),
+    use.names = TRUE,
+    fill = TRUE
+  )
+  
+  combined <- deduplicate_matches(combined)
+  combined <- sort_matches_stably(combined)
+  
+  fwrite(combined, combined_file)
+  
+  cat("Final combined rows:", nrow(combined), "\n")
+  cat("Wrote:", combined_file, "\n")
 }
 
 cat("\nDone.\n")

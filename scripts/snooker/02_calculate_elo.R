@@ -3,6 +3,8 @@ library(data.table)
 options(stringsAsFactors = FALSE)
 
 # ============================================================
+# 02_calculate_elo.R
+#
 # Snooker Elo - SINGLE PASS CHECKPOINT VERSION
 #
 # Method:
@@ -11,34 +13,46 @@ options(stringsAsFactors = FALSE)
 #   - First 20 matches use double K
 #   - Opponent-frame dampening remains in place
 #   - Checkpoints are saved at end of completed EventSeason
-#   - Snapshots are end-of-season, not end-of-calendar-year
+#   - Snapshots are season-end snapshots, not calendar-year snapshots
 #
-# Input:
-#   Matches_Clean_Combined/matches_YYYY_all.csv
-#   Events/events_YYYY.csv
-#   Players/snooker_player_lookup_complete.csv
+# Reads/writes only inside the Git repo:
+#   Snooker/pipeline_data/
 #
-# Output:
-#   Elo/snooker_elo_match_history.csv
-#   Elo/snooker_elo_final_ratings.csv
-#   Elo/season_history/snooker_elo_match_history_season_YYYY.csv
-#   Elo/checkpoints/checkpoint_season_YYYY_end.csv
-#   Elo/season_snapshots/snapshot_season_YYYY.csv
+# Inputs:
+#   Snooker/pipeline_data/Matches_Clean_Combined/matches_YYYY_all.csv
+#   Snooker/pipeline_data/Events/events_YYYY.csv
+#   Snooker/pipeline_data/Players/snooker_player_lookup_complete.csv
+#
+# Outputs:
+#   Snooker/pipeline_data/Elo/snooker_elo_match_history.csv
+#   Snooker/pipeline_data/Elo/snooker_elo_final_ratings.csv
+#   Snooker/pipeline_data/Elo/checkpoints/checkpoint_season_YYYY_end.csv
+#   Snooker/pipeline_data/Elo/season_history/snooker_elo_match_history_season_YYYY.csv
+#   Snooker/pipeline_data/Elo/season_snapshots/snapshot_season_YYYY.csv
+#   Snooker/pipeline_data/Elo/season_snapshots/snapshot_current.csv
 # ============================================================
 
 # -----------------------------
-# Paths
+# Repo paths
 # -----------------------------
-ROOT_DIR <- "C:/Users/stjuk/OneDrive/Desktop/Baduk/Go-Go-Ratings/Snooker"
+REPO_DIR <- Sys.getenv(
+  "GITHUB_WORKSPACE",
+  unset = "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"
+)
 
-EVENTS_DIR <- file.path(ROOT_DIR, "Events")
-MATCHES_CLEAN_DIR <- file.path(ROOT_DIR, "Matches_Clean_Combined")
-OUT_DIR <- file.path(ROOT_DIR, "Elo")
-PLAYER_LOOKUP_FILE <- file.path(ROOT_DIR, "Players", "snooker_player_lookup_complete.csv")
+SNOOKER_DIR <- file.path(REPO_DIR, "Snooker")
+PIPELINE_DIR <- file.path(SNOOKER_DIR, "pipeline_data")
 
+EVENTS_DIR <- file.path(PIPELINE_DIR, "Events")
+MATCHES_CLEAN_DIR <- file.path(PIPELINE_DIR, "Matches_Clean_Combined")
+PLAYERS_DIR <- file.path(PIPELINE_DIR, "Players")
+
+OUT_DIR <- file.path(PIPELINE_DIR, "Elo")
 CHECKPOINT_DIR <- file.path(OUT_DIR, "checkpoints")
 SEASON_HISTORY_DIR <- file.path(OUT_DIR, "season_history")
 SEASON_SNAPSHOT_DIR <- file.path(OUT_DIR, "season_snapshots")
+
+PLAYER_LOOKUP_FILE <- file.path(PLAYERS_DIR, "snooker_player_lookup_complete.csv")
 
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
 dir.create(CHECKPOINT_DIR, recursive = TRUE, showWarnings = FALSE)
@@ -68,21 +82,25 @@ ACTIVE_YEARS <- 2L
 # -----------------------------
 # Checkpoint settings
 # -----------------------------
-# Normal use:
+# Normal monthly/cloud use:
 #   FORCE_FULL_REBUILD <- FALSE
 #   REBUILD_FROM_SEASON <- NA_integer_
+#   FINALISE_CURRENT_SEASON <- FALSE
 #
-# If you correct old data and want to rebuild from that season:
-#   REBUILD_FROM_SEASON <- 2018L
+# Full rebuild:
+#   set FORCE_FULL_REBUILD=true in environment
 #
-# If you want to rebuild everything:
-#   FORCE_FULL_REBUILD <- TRUE
+# Rebuild from old corrected season:
+#   set REBUILD_FROM_SEASON=2018 in environment
 #
-# Current highest EventSeason is treated as live and is not checkpointed
-# unless FINALISE_CURRENT_SEASON <- TRUE.
-FORCE_FULL_REBUILD <- FALSE
-REBUILD_FROM_SEASON <- NA_integer_
-FINALISE_CURRENT_SEASON <- FALSE
+# Finalise season after season ends:
+#   set FINALISE_CURRENT_SEASON=true in environment
+FORCE_FULL_REBUILD <- tolower(Sys.getenv("FORCE_FULL_REBUILD", unset = "false")) %in% c("true", "1", "yes", "y")
+FINALISE_CURRENT_SEASON <- tolower(Sys.getenv("FINALISE_CURRENT_SEASON", unset = "false")) %in% c("true", "1", "yes", "y")
+
+REBUILD_FROM_SEASON_RAW <- Sys.getenv("REBUILD_FROM_SEASON", unset = "")
+REBUILD_FROM_SEASON <- suppressWarnings(as.integer(REBUILD_FROM_SEASON_RAW))
+if (is.na(REBUILD_FROM_SEASON)) REBUILD_FROM_SEASON <- NA_integer_
 
 # ============================================================
 # Helpers
@@ -207,6 +225,8 @@ player_lookup <- player_lookup[ID != ""]
 setorder(player_lookup, ID)
 player_lookup <- player_lookup[!duplicated(ID), .(ID, Name, Nationality)]
 
+cat("Repo directory:", REPO_DIR, "\n")
+cat("Pipeline directory:", PIPELINE_DIR, "\n")
 cat("Player lookup rows:", nrow(player_lookup), "\n")
 cat("Unique player IDs in lookup:", uniqueN(player_lookup$ID), "\n")
 
@@ -1086,7 +1106,7 @@ write_season_snapshot <- function(state, season, season_end_date) {
   
   snapshot[, `:=`(
     Season = season,
-    SeasonLabel = paste0(season, "/", season + 1),
+    SeasonLabel = paste0(season, "/", season + 1L),
     SeasonEndDate = format(as.Date(season_end_date), "%Y-%m-%d"),
     Rating = round(Rating, 2),
     EntryRating = round(EntryRating, 2),
@@ -1202,10 +1222,9 @@ if (length(seasons_to_process) == 0L) {
 # Process seasons
 # ============================================================
 
-new_history_files <- character()
-
 for (season in seasons_to_process) {
   season_dt <- dt[EventSeason == season]
+  
   setorder(
     season_dt,
     Date,
@@ -1229,7 +1248,6 @@ for (season in seasons_to_process) {
   season_history_out <- format_history_for_write(run$history)
   season_history_file <- season_history_file_for_season(season)
   fwrite(season_history_out, season_history_file)
-  new_history_files <- c(new_history_files, season_history_file)
   
   cat("Wrote season match history:", season_history_file, "\n")
   
@@ -1241,9 +1259,9 @@ for (season in seasons_to_process) {
   } else {
     cat("Season", season, "treated as live/current. No final checkpoint written.\n")
     
+    temp_snapshot_path <- season_snapshot_file_for_season(season)
     current_snapshot_file <- file.path(SEASON_SNAPSHOT_DIR, "snapshot_current.csv")
     
-    temp_snapshot_path <- season_snapshot_file_for_season(season)
     write_season_snapshot(state, season, season_end_date)
     
     if (file.exists(temp_snapshot_path)) {
