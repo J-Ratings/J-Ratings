@@ -1,0 +1,15 @@
+# Snooker pipeline waste/cache
+Snooker/pipeline_data/Matches/
+Snooker/pipeline_data/Matches_Clean/
+Snooker/pipeline_data/**/failed_*csv
+Snooker/pipeline_data/**/latest_*csv
+Snooker/pipeline_data/**/merge_summary.csv
+
+# Old multi-pass Elo outputs
+Snooker/pipeline_data/Elo/snooker_elo_match_history_pass*.csv
+Snooker/pipeline_data/Elo/snooker_elo_final_ratings_pass*.csv
+
+# R session files
+.Rhistory
+.RData
+.Rproj.user/

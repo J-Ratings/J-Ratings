@@ -1,0 +1,1304 @@
+library(data.table)
+
+options(stringsAsFactors = FALSE)
+
+# ============================================================
+# Snooker Elo - SINGLE PASS CHECKPOINT VERSION
+#
+# Method:
+#   - Single global Elo pool
+#   - Everyone starts at 2600
+#   - First 20 matches use double K
+#   - Opponent-frame dampening remains in place
+#   - Checkpoints are saved at end of completed EventSeason
+#   - Snapshots are end-of-season, not end-of-calendar-year
+#
+# Input:
+#   Matches_Clean_Combined/matches_YYYY_all.csv
+#   Events/events_YYYY.csv
+#   Players/snooker_player_lookup_complete.csv
+#
+# Output:
+#   Elo/snooker_elo_match_history.csv
+#   Elo/snooker_elo_final_ratings.csv
+#   Elo/season_history/snooker_elo_match_history_season_YYYY.csv
+#   Elo/checkpoints/checkpoint_season_YYYY_end.csv
+#   Elo/season_snapshots/snapshot_season_YYYY.csv
+# ============================================================
+
+# -----------------------------
+# Paths
+# -----------------------------
+ROOT_DIR <- "C:/Users/stjuk/OneDrive/Desktop/Baduk/Go-Go-Ratings/Snooker"
+
+EVENTS_DIR <- file.path(ROOT_DIR, "Events")
+MATCHES_CLEAN_DIR <- file.path(ROOT_DIR, "Matches_Clean_Combined")
+OUT_DIR <- file.path(ROOT_DIR, "Elo")
+PLAYER_LOOKUP_FILE <- file.path(ROOT_DIR, "Players", "snooker_player_lookup_complete.csv")
+
+CHECKPOINT_DIR <- file.path(OUT_DIR, "checkpoints")
+SEASON_HISTORY_DIR <- file.path(OUT_DIR, "season_history")
+SEASON_SNAPSHOT_DIR <- file.path(OUT_DIR, "season_snapshots")
+
+dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
+dir.create(CHECKPOINT_DIR, recursive = TRUE, showWarnings = FALSE)
+dir.create(SEASON_HISTORY_DIR, recursive = TRUE, showWarnings = FALSE)
+dir.create(SEASON_SNAPSHOT_DIR, recursive = TRUE, showWarnings = FALSE)
+
+OUTPUT_MATCH_HISTORY_CSV <- file.path(OUT_DIR, "snooker_elo_match_history.csv")
+OUTPUT_FINAL_RATINGS_CSV <- file.path(OUT_DIR, "snooker_elo_final_ratings.csv")
+
+# -----------------------------
+# Elo settings
+# -----------------------------
+BASELINE_START_RATING <- 2600
+K_VALUE <- 5
+NEW_PLAYER_MATCHES <- 20L
+NEW_PLAYER_K_MULTIPLIER <- 2
+
+MODERN_SEASON_START <- 2008L
+PLAUSIBLE_EVENT_WINDOW_DAYS <- 45L
+
+PROVISIONAL_FRAME_THRESHOLD <- 200L
+MIN_OPP_WEIGHT <- 0.1
+
+MIN_LIST_FRAMES <- 200L
+ACTIVE_YEARS <- 2L
+
+# -----------------------------
+# Checkpoint settings
+# -----------------------------
+# Normal use:
+#   FORCE_FULL_REBUILD <- FALSE
+#   REBUILD_FROM_SEASON <- NA_integer_
+#
+# If you correct old data and want to rebuild from that season:
+#   REBUILD_FROM_SEASON <- 2018L
+#
+# If you want to rebuild everything:
+#   FORCE_FULL_REBUILD <- TRUE
+#
+# Current highest EventSeason is treated as live and is not checkpointed
+# unless FINALISE_CURRENT_SEASON <- TRUE.
+FORCE_FULL_REBUILD <- FALSE
+REBUILD_FROM_SEASON <- NA_integer_
+FINALISE_CURRENT_SEASON <- FALSE
+
+# ============================================================
+# Helpers
+# ============================================================
+
+expected_score <- function(Ra, Rb) {
+  1 / (1 + 10 ^ ((Rb - Ra) / 400))
+}
+
+clean_id <- function(x) {
+  trimws(as.character(x))
+}
+
+clean_text <- function(x) {
+  trimws(as.character(x))
+}
+
+parse_dt_multi <- function(x) {
+  x <- trimws(as.character(x))
+  x[x %in% c("", "NA", "NULL")] <- NA_character_
+  
+  out <- as.POSIXct(rep(NA_character_, length(x)), tz = "UTC")
+  
+  fmts <- c(
+    "%Y-%m-%dT%H:%M:%SZ",
+    "%Y-%m-%d %H:%M:%S",
+    "%Y-%m-%d %H:%M",
+    "%Y-%m-%d",
+    "%d/%m/%Y %H:%M:%S",
+    "%d/%m/%Y %H:%M",
+    "%d/%m/%Y",
+    "%Y/%m/%d %H:%M:%S",
+    "%Y/%m/%d %H:%M",
+    "%Y/%m/%d",
+    "%d-%b-%Y %H:%M:%S",
+    "%d-%b-%Y"
+  )
+  
+  remaining <- is.na(out) & !is.na(x)
+  
+  for (fmt in fmts) {
+    if (!any(remaining)) break
+    
+    parsed <- as.POSIXct(x[remaining], format = fmt, tz = "UTC")
+    idx <- which(remaining)
+    out[idx[!is.na(parsed)]] <- parsed[!is.na(parsed)]
+    remaining <- is.na(out) & !is.na(x)
+  }
+  
+  out
+}
+
+first_existing_col <- function(dt, candidates) {
+  hit <- candidates[candidates %in% names(dt)]
+  if (length(hit) == 0L) return(NULL)
+  hit[1]
+}
+
+opponent_weight <- function(opponent_frames_before,
+                            threshold = PROVISIONAL_FRAME_THRESHOLD,
+                            min_weight = MIN_OPP_WEIGHT) {
+  if (is.na(opponent_frames_before) || opponent_frames_before <= 0) {
+    return(min_weight)
+  }
+  
+  w <- opponent_frames_before / threshold
+  w <- max(min_weight, min(1, w))
+  w
+}
+
+player_k_multiplier <- function(matches_before) {
+  ifelse(matches_before < NEW_PLAYER_MATCHES, NEW_PLAYER_K_MULTIPLIER, 1)
+}
+
+checkpoint_file_for_season <- function(season) {
+  file.path(CHECKPOINT_DIR, paste0("checkpoint_season_", season, "_end.csv"))
+}
+
+season_history_file_for_season <- function(season) {
+  file.path(SEASON_HISTORY_DIR, paste0("snooker_elo_match_history_season_", season, ".csv"))
+}
+
+season_snapshot_file_for_season <- function(season) {
+  file.path(SEASON_SNAPSHOT_DIR, paste0("snapshot_season_", season, ".csv"))
+}
+
+extract_checkpoint_season <- function(path) {
+  suppressWarnings(as.integer(sub("^checkpoint_season_(\\d{4})_end\\.csv$", "\\1", basename(path))))
+}
+
+# ============================================================
+# Load player lookup
+# ============================================================
+
+if (!file.exists(PLAYER_LOOKUP_FILE)) {
+  stop("Player lookup file not found: ", PLAYER_LOOKUP_FILE)
+}
+
+player_lookup <- fread(PLAYER_LOOKUP_FILE, encoding = "UTF-8")
+
+required_lookup_cols <- c("ID", "Name")
+missing_lookup_cols <- setdiff(required_lookup_cols, names(player_lookup))
+
+if (length(missing_lookup_cols) > 0L) {
+  stop(
+    "Player lookup file is missing required columns: ",
+    paste(missing_lookup_cols, collapse = ", ")
+  )
+}
+
+player_lookup[, ID := clean_id(ID)]
+player_lookup[, Name := clean_text(Name)]
+
+if ("Nationality" %in% names(player_lookup)) {
+  player_lookup[, Nationality := clean_text(Nationality)]
+} else {
+  player_lookup[, Nationality := NA_character_]
+}
+
+player_lookup[Nationality %in% c("", "NA", "NULL"), Nationality := NA_character_]
+player_lookup <- player_lookup[ID != ""]
+setorder(player_lookup, ID)
+player_lookup <- player_lookup[!duplicated(ID), .(ID, Name, Nationality)]
+
+cat("Player lookup rows:", nrow(player_lookup), "\n")
+cat("Unique player IDs in lookup:", uniqueN(player_lookup$ID), "\n")
+
+# ============================================================
+# Load event files
+# ============================================================
+
+event_files <- list.files(
+  EVENTS_DIR,
+  pattern = "^events_\\d{4}\\.csv$",
+  full.names = TRUE
+)
+
+if (length(event_files) == 0L) {
+  stop("No event CSV files found in: ", EVENTS_DIR)
+}
+
+cat("\nFound", length(event_files), "event CSV files.\n")
+
+event_list <- lapply(event_files, function(f) {
+  cat("Reading event file:", basename(f), "\n")
+  e <- fread(f, encoding = "UTF-8")
+  
+  id_col <- first_existing_col(e, c("ID", "EventID", "Event_ID"))
+  name_col <- first_existing_col(e, c("Name", "EventName"))
+  start_col <- first_existing_col(e, c("StartDate", "EventStartDate"))
+  end_col <- first_existing_col(e, c("EndDate", "EventEndDate"))
+  season_col <- first_existing_col(e, c("Season"))
+  
+  if (is.null(id_col) || is.null(start_col)) {
+    stop("Event file missing required columns: ", basename(f))
+  }
+  
+  out <- data.table(
+    EventID = clean_id(e[[id_col]]),
+    EventName = if (!is.null(name_col)) clean_text(e[[name_col]]) else NA_character_,
+    EventStartDateRaw = clean_text(e[[start_col]]),
+    EventEndDateRaw = if (!is.null(end_col)) clean_text(e[[end_col]]) else NA_character_,
+    EventSeason = if (!is.null(season_col)) suppressWarnings(as.integer(e[[season_col]])) else NA_integer_
+  )
+  
+  file_season <- suppressWarnings(as.integer(sub("^events_(\\d{4})\\.csv$", "\\1", basename(f))))
+  out[is.na(EventSeason), EventSeason := file_season]
+  
+  out[, EventStartDate := parse_dt_multi(EventStartDateRaw)]
+  out[, EventEndDate := parse_dt_multi(EventEndDateRaw)]
+  
+  out
+})
+
+events_dt <- rbindlist(event_list, use.names = TRUE, fill = TRUE)
+events_dt <- events_dt[EventID != ""]
+setorder(events_dt, EventID, EventStartDate)
+events_dt <- events_dt[!duplicated(EventID)]
+
+cat("\nUnique events loaded:", nrow(events_dt), "\n")
+cat(
+  "Event date range:",
+  format(min(events_dt$EventStartDate, na.rm = TRUE), "%Y-%m-%d"),
+  "to",
+  format(max(events_dt$EventStartDate, na.rm = TRUE), "%Y-%m-%d"),
+  "\n"
+)
+
+# ============================================================
+# Load cleaned combined season match files
+# ============================================================
+
+match_files <- list.files(
+  MATCHES_CLEAN_DIR,
+  pattern = "^matches_\\d{4}_all\\.csv$",
+  full.names = TRUE
+)
+
+if (length(match_files) == 0L) {
+  stop("No cleaned combined match CSV files found in: ", MATCHES_CLEAN_DIR)
+}
+
+cat("\nFound", length(match_files), "cleaned combined match CSV files.\n")
+
+match_list <- lapply(match_files, function(f) {
+  cat("Reading match file:", basename(f), "\n")
+  m <- fread(f, encoding = "UTF-8")
+  m[, SourceFile := basename(f)]
+  m
+})
+
+dt_raw <- rbindlist(match_list, use.names = TRUE, fill = TRUE)
+
+# ============================================================
+# Standardise match columns
+# ============================================================
+
+match_id_col <- first_existing_col(dt_raw, c("MatchID", "ID"))
+player_a_col <- first_existing_col(dt_raw, c("PlayerA_ID", "Player1ID", "A_ID"))
+player_b_col <- first_existing_col(dt_raw, c("PlayerB_ID", "Player2ID", "B_ID"))
+score_a_col <- first_existing_col(dt_raw, c("ScoreA", "Score1"))
+score_b_col <- first_existing_col(dt_raw, c("ScoreB", "Score2"))
+winner_col <- first_existing_col(dt_raw, c("WinnerID", "Winner_ID", "Winner"))
+match_date_col <- first_existing_col(dt_raw, c("MatchDate", "StartDate", "PlayedDate"))
+event_id_col <- first_existing_col(dt_raw, c("EventID", "Event_ID", "EID", "Event"))
+
+required_hits <- list(match_id_col, player_a_col, player_b_col, score_a_col, score_b_col)
+
+if (any(vapply(required_hits, is.null, logical(1)))) {
+  stop("One or more required match columns were not found.")
+}
+
+if (is.null(event_id_col)) {
+  stop("No event ID column found in cleaned match files.")
+}
+
+dt <- data.table(
+  MatchID = clean_id(dt_raw[[match_id_col]]),
+  PlayerA_ID = clean_id(dt_raw[[player_a_col]]),
+  PlayerB_ID = clean_id(dt_raw[[player_b_col]]),
+  ScoreA = suppressWarnings(as.integer(dt_raw[[score_a_col]])),
+  ScoreB = suppressWarnings(as.integer(dt_raw[[score_b_col]])),
+  WinnerID = if (!is.null(winner_col)) clean_id(dt_raw[[winner_col]]) else "",
+  MatchDateRaw = if (!is.null(match_date_col)) clean_text(dt_raw[[match_date_col]]) else NA_character_,
+  EventID = clean_id(dt_raw[[event_id_col]]),
+  SourceFile = dt_raw$SourceFile
+)
+
+event_name_col <- first_existing_col(dt_raw, c("EventName"))
+event_season_col <- first_existing_col(dt_raw, c("EventSeason", "Season"))
+event_start_col <- first_existing_col(dt_raw, c("EventStartDate"))
+event_end_col <- first_existing_col(dt_raw, c("EventEndDate"))
+
+dt[, EventName_File := if (!is.null(event_name_col)) clean_text(dt_raw[[event_name_col]]) else NA_character_]
+dt[, EventSeason_File := if (!is.null(event_season_col)) suppressWarnings(as.integer(dt_raw[[event_season_col]])) else NA_integer_]
+dt[, EventStartDate_File := if (!is.null(event_start_col)) parse_dt_multi(dt_raw[[event_start_col]]) else as.POSIXct(NA, tz = "UTC")]
+dt[, EventEndDate_File := if (!is.null(event_end_col)) parse_dt_multi(dt_raw[[event_end_col]]) else as.POSIXct(NA, tz = "UTC")]
+
+round_col <- first_existing_col(dt_raw, c("Round", "RoundName", "RoundNo"))
+table_col <- first_existing_col(dt_raw, c("TableNo"))
+match_num_col <- first_existing_col(dt_raw, c("MatchNo", "MatchNum", "Number", "Num"))
+
+dt[, RoundSort := if (!is.null(round_col)) clean_text(dt_raw[[round_col]]) else NA_character_]
+dt[, TableNoSort := if (!is.null(table_col)) suppressWarnings(as.integer(dt_raw[[table_col]])) else NA_integer_]
+dt[, MatchNumSort := if (!is.null(match_num_col)) suppressWarnings(as.integer(dt_raw[[match_num_col]])) else NA_integer_]
+
+# -----------------------------
+# De-duplicate by MatchID
+# -----------------------------
+dup_before <- dt[MatchID != "", .N, by = MatchID][N > 1L]
+cat("\nDuplicate MatchID count before de-duplication:", nrow(dup_before), "\n")
+
+dt[, HasEventID := as.integer(!is.na(EventID) & EventID != "")]
+dt[, MetadataScore :=
+     as.integer(!is.na(EventName_File) & EventName_File != "") +
+     as.integer(!is.na(EventSeason_File)) +
+     as.integer(!is.na(EventStartDate_File)) +
+     as.integer(!is.na(EventEndDate_File))
+]
+
+setorder(
+  dt,
+  MatchID,
+  -HasEventID,
+  -MetadataScore,
+  SourceFile
+)
+
+dt <- dt[MatchID != ""]
+dt <- dt[!duplicated(MatchID)]
+
+cat("Rows after MatchID de-duplication:", nrow(dt), "\n")
+
+# ============================================================
+# Join event reference data
+# ============================================================
+
+dt[events_dt, on = .(EventID), `:=`(
+  EventName_Ref = i.EventName,
+  EventSeason_Ref = i.EventSeason,
+  EventStartDate_Ref = i.EventStartDate,
+  EventEndDate_Ref = i.EventEndDate
+)]
+
+dt[, EventName := EventName_File]
+dt[is.na(EventName) | EventName == "", EventName := EventName_Ref]
+
+dt[, EventSeason := EventSeason_File]
+dt[is.na(EventSeason), EventSeason := EventSeason_Ref]
+
+dt[, EventStartDate := EventStartDate_File]
+dt[is.na(EventStartDate), EventStartDate := EventStartDate_Ref]
+
+dt[, EventEndDate := EventEndDate_File]
+dt[is.na(EventEndDate), EventEndDate := EventEndDate_Ref]
+
+dt[, MatchDateParsed := parse_dt_multi(MatchDateRaw)]
+
+cat("\nEvent metadata check:\n")
+print(dt[, .(
+  MissingEventName = sum(is.na(EventName) | EventName == ""),
+  MissingEventSeason = sum(is.na(EventSeason)),
+  MissingEventStartDate = sum(is.na(EventStartDate)),
+  MissingEventEndDate = sum(is.na(EventEndDate))
+)])
+
+# ============================================================
+# Build final Elo date
+# ============================================================
+
+dt[, DateSource := NA_character_]
+dt[, Date := as.POSIXct(NA, tz = "UTC")]
+
+old_data_idx <- !is.na(dt$EventSeason) & dt$EventSeason < MODERN_SEASON_START
+
+dt[old_data_idx, `:=`(
+  Date = EventStartDate,
+  DateSource = "EventStart_Pre2008Season"
+)]
+
+modern_idx <- !old_data_idx
+
+modern_match_ok <- modern_idx &
+  !is.na(dt$MatchDateParsed) &
+  !is.na(dt$EventStartDate) &
+  (
+    (
+      !is.na(dt$EventEndDate) &
+        dt$MatchDateParsed >= (dt$EventStartDate - PLAUSIBLE_EVENT_WINDOW_DAYS * 86400) &
+        dt$MatchDateParsed <= (dt$EventEndDate + PLAUSIBLE_EVENT_WINDOW_DAYS * 86400)
+    ) |
+      (
+        is.na(dt$EventEndDate) &
+          abs(as.numeric(difftime(dt$MatchDateParsed, dt$EventStartDate, units = "days"))) <= PLAUSIBLE_EVENT_WINDOW_DAYS
+      )
+  )
+
+dt[modern_match_ok, `:=`(
+  Date = MatchDateParsed,
+  DateSource = "MatchDate_Modern"
+)]
+
+modern_fallback_idx <- modern_idx & is.na(dt$Date)
+
+dt[modern_fallback_idx, `:=`(
+  Date = EventStartDate,
+  DateSource = "EventStart_Fallback"
+)]
+
+dt[is.na(Date) & !is.na(MatchDateParsed), `:=`(
+  Date = MatchDateParsed,
+  DateSource = "MatchDate_LastResort"
+)]
+
+cat("\nDate source breakdown:\n")
+print(dt[, .N, by = DateSource][order(DateSource)])
+
+cat("\nRows with missing event start date after join:", dt[is.na(EventStartDate), .N], "\n")
+cat("Rows with missing final Date:", dt[is.na(Date), .N], "\n")
+
+# ============================================================
+# Drop unusable rows
+# ============================================================
+
+dt <- dt[
+  !is.na(Date) &
+    MatchID != "" &
+    PlayerA_ID != "" &
+    PlayerB_ID != "" &
+    EventID != "" &
+    !is.na(EventSeason) &
+    !is.na(ScoreA) &
+    !is.na(ScoreB)
+]
+
+dt <- dt[PlayerA_ID != PlayerB_ID]
+dt <- dt[ScoreA >= 0 & ScoreB >= 0]
+
+high_score_rows <- dt[ScoreA > 20 | ScoreB > 20]
+
+if (nrow(high_score_rows) > 0L) {
+  cat("\nSkipping", nrow(high_score_rows), "rows where a player's score is > 20.\n")
+  print(high_score_rows[1:min(20, .N), .(
+    MatchID, EventID, EventName, PlayerA_ID, PlayerB_ID,
+    ScoreA, ScoreB, MatchDateRaw, DateSource, SourceFile
+  )])
+}
+
+dt <- dt[!(ScoreA > 20 | ScoreB > 20)]
+
+zero_zero_rows <- dt[ScoreA == 0 & ScoreB == 0]
+
+if (nrow(zero_zero_rows) > 0L) {
+  cat("\nSkipping", nrow(zero_zero_rows), "rows with 0-0 scores.\n")
+  print(zero_zero_rows[1:min(20, .N), .(
+    MatchID, EventID, EventName, PlayerA_ID, PlayerB_ID,
+    ScoreA, ScoreB, MatchDateRaw, DateSource, SourceFile
+  )])
+}
+
+dt <- dt[!(ScoreA == 0 & ScoreB == 0)]
+
+dt[, WinnerFromScore := fifelse(
+  ScoreA > ScoreB,
+  PlayerA_ID,
+  fifelse(ScoreB > ScoreA, PlayerB_ID, NA_character_)
+)]
+
+winner_mismatches <- dt[
+  !is.na(WinnerFromScore) &
+    WinnerID != "" &
+    WinnerID != WinnerFromScore
+]
+
+if (nrow(winner_mismatches) > 0L) {
+  cat("\nFound", nrow(winner_mismatches), "winner/score mismatches.\n")
+  cat("Using score as source of truth for Elo calculations.\n")
+  print(winner_mismatches[1:min(20, .N), .(
+    MatchID, EventID, EventName, PlayerA_ID, PlayerB_ID,
+    ScoreA, ScoreB, WinnerID, WinnerFromScore,
+    MatchDateRaw, DateSource, SourceFile
+  )])
+}
+
+setorder(
+  dt,
+  EventSeason,
+  Date,
+  EventID,
+  RoundSort,
+  MatchNumSort,
+  TableNoSort,
+  MatchID,
+  PlayerA_ID,
+  PlayerB_ID
+)
+
+cat("\nMatches to process after cleaning:", nrow(dt), "\n")
+cat(
+  "Date range:",
+  format(min(dt$Date), "%Y-%m-%d"),
+  "to",
+  format(max(dt$Date), "%Y-%m-%d"),
+  "\n"
+)
+cat(
+  "Season range:",
+  min(dt$EventSeason, na.rm = TRUE),
+  "to",
+  max(dt$EventSeason, na.rm = TRUE),
+  "\n"
+)
+
+# ============================================================
+# State helpers
+# ============================================================
+
+empty_state <- function() {
+  data.table(
+    PlayerID = character(),
+    Rating = numeric(),
+    MatchesPlayed = integer(),
+    FramesPlayed = integer(),
+    FirstMatchDate = as.POSIXct(character(), tz = "UTC"),
+    LastMatchDate = as.POSIXct(character(), tz = "UTC"),
+    EntryRating = numeric()
+  )
+}
+
+load_state_from_checkpoint <- function(path) {
+  if (!file.exists(path)) {
+    stop("Checkpoint not found: ", path)
+  }
+  
+  s <- fread(path, encoding = "UTF-8")
+  
+  s[, PlayerID := clean_id(PlayerID)]
+  s[, Rating := as.numeric(Rating)]
+  s[, MatchesPlayed := as.integer(MatchesPlayed)]
+  s[, FramesPlayed := as.integer(FramesPlayed)]
+  s[, FirstMatchDate := parse_dt_multi(FirstMatchDate)]
+  s[, LastMatchDate := parse_dt_multi(LastMatchDate)]
+  s[, EntryRating := as.numeric(EntryRating)]
+  
+  s[PlayerID != ""]
+}
+
+write_checkpoint <- function(state, season) {
+  out <- copy(state)
+  out[, Rating := round(Rating, 6)]
+  out[, EntryRating := round(EntryRating, 6)]
+  out[, FirstMatchDate := format(FirstMatchDate, "%Y-%m-%d %H:%M:%S")]
+  out[, LastMatchDate := format(LastMatchDate, "%Y-%m-%d %H:%M:%S")]
+  
+  out_file <- checkpoint_file_for_season(season)
+  fwrite(out, out_file)
+  cat("Wrote checkpoint:", out_file, "\n")
+}
+
+state_to_envs <- function(state) {
+  ratings_env <- new.env(hash = TRUE, parent = emptyenv())
+  matches_env <- new.env(hash = TRUE, parent = emptyenv())
+  frames_env <- new.env(hash = TRUE, parent = emptyenv())
+  first_date_env <- new.env(hash = TRUE, parent = emptyenv())
+  last_date_env <- new.env(hash = TRUE, parent = emptyenv())
+  entry_rating_env <- new.env(hash = TRUE, parent = emptyenv())
+  
+  if (nrow(state) > 0L) {
+    for (i in seq_len(nrow(state))) {
+      p <- state$PlayerID[i]
+      assign(p, state$Rating[i], envir = ratings_env)
+      assign(p, state$MatchesPlayed[i], envir = matches_env)
+      assign(p, state$FramesPlayed[i], envir = frames_env)
+      assign(p, state$FirstMatchDate[i], envir = first_date_env)
+      assign(p, state$LastMatchDate[i], envir = last_date_env)
+      assign(p, state$EntryRating[i], envir = entry_rating_env)
+    }
+  }
+  
+  list(
+    ratings = ratings_env,
+    matches = matches_env,
+    frames = frames_env,
+    first_date = first_date_env,
+    last_date = last_date_env,
+    entry_rating = entry_rating_env
+  )
+}
+
+envs_to_state <- function(envs) {
+  players <- ls(envs$ratings, all.names = TRUE)
+  
+  if (length(players) == 0L) {
+    return(empty_state())
+  }
+  
+  out <- data.table(
+    PlayerID = players,
+    Rating = as.numeric(unlist(mget(players, envir = envs$ratings))),
+    MatchesPlayed = as.integer(unlist(mget(players, envir = envs$matches))),
+    FramesPlayed = as.integer(unlist(mget(players, envir = envs$frames))),
+    FirstMatchDate = as.POSIXct(
+      unlist(mget(players, envir = envs$first_date)),
+      origin = "1970-01-01",
+      tz = "UTC"
+    ),
+    LastMatchDate = as.POSIXct(
+      unlist(mget(players, envir = envs$last_date)),
+      origin = "1970-01-01",
+      tz = "UTC"
+    ),
+    EntryRating = as.numeric(unlist(mget(players, envir = envs$entry_rating)))
+  )
+  
+  setorder(out, -Rating, PlayerID)
+  out
+}
+
+# ============================================================
+# Elo runner for one segment/season
+# ============================================================
+
+run_elo_segment <- function(dt_input, state = empty_state(), label = "segment") {
+  n <- nrow(dt_input)
+  
+  cat("\n", strrep("=", 60), "\n", sep = "")
+  cat("Running Elo segment:", label, "\n")
+  cat("Matches:", n, "\n")
+  
+  if (n == 0L) {
+    return(list(
+      history = data.table(),
+      state = state
+    ))
+  }
+  
+  envs <- state_to_envs(state)
+  
+  MatchIDVec <- dt_input$MatchID
+  PlayerAVec <- dt_input$PlayerA_ID
+  PlayerBVec <- dt_input$PlayerB_ID
+  ScoreAVec <- dt_input$ScoreA
+  ScoreBVec <- dt_input$ScoreB
+  DateVec <- dt_input$Date
+  
+  AFirstAppearance <- logical(n)
+  BFirstAppearance <- logical(n)
+  
+  AGamesBefore <- integer(n)
+  BGamesBefore <- integer(n)
+  AFramesBefore <- integer(n)
+  BFramesBefore <- integer(n)
+  
+  ARating_Before <- numeric(n)
+  BRating_Before <- numeric(n)
+  
+  AStartRating <- numeric(n)
+  BStartRating <- numeric(n)
+  
+  ABaseK <- numeric(n)
+  BBaseK <- numeric(n)
+  AKMultiplier <- numeric(n)
+  BKMultiplier <- numeric(n)
+  AEffectiveK <- numeric(n)
+  BEffectiveK <- numeric(n)
+  
+  ExpectedA <- numeric(n)
+  ExpectedB <- numeric(n)
+  
+  OppWeightA <- numeric(n)
+  OppWeightB <- numeric(n)
+  
+  FramesA <- integer(n)
+  FramesB <- integer(n)
+  TotalFrames <- integer(n)
+  
+  ActualScoreA <- numeric(n)
+  ActualScoreB <- numeric(n)
+  
+  DeltaA <- numeric(n)
+  DeltaB <- numeric(n)
+  
+  ARating_After <- numeric(n)
+  BRating_After <- numeric(n)
+  AGamesAfter <- integer(n)
+  BGamesAfter <- integer(n)
+  AFramesAfter <- integer(n)
+  BFramesAfter <- integer(n)
+  
+  for (i in seq_len(n)) {
+    a <- PlayerAVec[i]
+    b <- PlayerBVec[i]
+    score_a <- ScoreAVec[i]
+    score_b <- ScoreBVec[i]
+    match_date <- DateVec[i]
+    
+    a_exists <- exists(a, envir = envs$ratings, inherits = FALSE)
+    b_exists <- exists(b, envir = envs$ratings, inherits = FALSE)
+    
+    a_first <- !a_exists
+    b_first <- !b_exists
+    
+    if (a_first) {
+      assign(a, BASELINE_START_RATING, envir = envs$ratings)
+      assign(a, 0L, envir = envs$matches)
+      assign(a, 0L, envir = envs$frames)
+      assign(a, match_date, envir = envs$first_date)
+      assign(a, match_date, envir = envs$last_date)
+      assign(a, BASELINE_START_RATING, envir = envs$entry_rating)
+    }
+    
+    if (b_first) {
+      assign(b, BASELINE_START_RATING, envir = envs$ratings)
+      assign(b, 0L, envir = envs$matches)
+      assign(b, 0L, envir = envs$frames)
+      assign(b, match_date, envir = envs$first_date)
+      assign(b, match_date, envir = envs$last_date)
+      assign(b, BASELINE_START_RATING, envir = envs$entry_rating)
+    }
+    
+    Ra <- get(a, envir = envs$ratings, inherits = FALSE)
+    Rb <- get(b, envir = envs$ratings, inherits = FALSE)
+    
+    Ga <- get(a, envir = envs$matches, inherits = FALSE)
+    Gb <- get(b, envir = envs$matches, inherits = FALSE)
+    
+    Fa_before <- get(a, envir = envs$frames, inherits = FALSE)
+    Fb_before <- get(b, envir = envs$frames, inherits = FALSE)
+    
+    a_entry <- get(a, envir = envs$entry_rating, inherits = FALSE)
+    b_entry <- get(b, envir = envs$entry_rating, inherits = FALSE)
+    
+    total_frames <- score_a + score_b
+    
+    Ea <- expected_score(Ra, Rb)
+    Eb <- 1 - Ea
+    
+    Sa <- score_a / total_frames
+    Sb <- score_b / total_frames
+    
+    mult_a <- player_k_multiplier(Ga)
+    mult_b <- player_k_multiplier(Gb)
+    
+    base_k_a <- K_VALUE
+    base_k_b <- K_VALUE
+    
+    effective_k_a <- base_k_a * mult_a
+    effective_k_b <- base_k_b * mult_b
+    
+    weight_a <- opponent_weight(Fb_before)
+    weight_b <- opponent_weight(Fa_before)
+    
+    delta_a <- effective_k_a * weight_a * (score_a - total_frames * Ea)
+    delta_b <- effective_k_b * weight_b * (score_b - total_frames * Eb)
+    
+    Ra_new <- Ra + delta_a
+    Rb_new <- Rb + delta_b
+    
+    Ga_new <- Ga + 1L
+    Gb_new <- Gb + 1L
+    
+    Fa_new <- Fa_before + total_frames
+    Fb_new <- Fb_before + total_frames
+    
+    assign(a, Ra_new, envir = envs$ratings)
+    assign(b, Rb_new, envir = envs$ratings)
+    
+    assign(a, Ga_new, envir = envs$matches)
+    assign(b, Gb_new, envir = envs$matches)
+    
+    assign(a, Fa_new, envir = envs$frames)
+    assign(b, Fb_new, envir = envs$frames)
+    
+    assign(a, match_date, envir = envs$last_date)
+    assign(b, match_date, envir = envs$last_date)
+    
+    AFirstAppearance[i] <- a_first
+    BFirstAppearance[i] <- b_first
+    
+    AGamesBefore[i] <- Ga
+    BGamesBefore[i] <- Gb
+    AFramesBefore[i] <- Fa_before
+    BFramesBefore[i] <- Fb_before
+    
+    ARating_Before[i] <- Ra
+    BRating_Before[i] <- Rb
+    
+    AStartRating[i] <- a_entry
+    BStartRating[i] <- b_entry
+    
+    ABaseK[i] <- base_k_a
+    BBaseK[i] <- base_k_b
+    AKMultiplier[i] <- mult_a
+    BKMultiplier[i] <- mult_b
+    AEffectiveK[i] <- effective_k_a
+    BEffectiveK[i] <- effective_k_b
+    
+    ExpectedA[i] <- Ea
+    ExpectedB[i] <- Eb
+    
+    OppWeightA[i] <- weight_a
+    OppWeightB[i] <- weight_b
+    
+    FramesA[i] <- score_a
+    FramesB[i] <- score_b
+    TotalFrames[i] <- total_frames
+    
+    ActualScoreA[i] <- Sa
+    ActualScoreB[i] <- Sb
+    
+    DeltaA[i] <- delta_a
+    DeltaB[i] <- delta_b
+    
+    ARating_After[i] <- Ra_new
+    BRating_After[i] <- Rb_new
+    AGamesAfter[i] <- Ga_new
+    BGamesAfter[i] <- Gb_new
+    AFramesAfter[i] <- Fa_new
+    BFramesAfter[i] <- Fb_new
+    
+    if (i %% 50000L == 0L) {
+      cat("Processed", i, "matches (", round(100 * i / n, 1), "%)\n")
+      flush.console()
+    }
+  }
+  
+  history <- copy(dt_input)
+  history[, `:=`(
+    AFirstAppearance = AFirstAppearance,
+    BFirstAppearance = BFirstAppearance,
+    AGamesBefore = AGamesBefore,
+    BGamesBefore = BGamesBefore,
+    AFramesBefore = AFramesBefore,
+    BFramesBefore = BFramesBefore,
+    ARating_Before = ARating_Before,
+    BRating_Before = BRating_Before,
+    AStartRating = AStartRating,
+    BStartRating = BStartRating,
+    ABaseK = ABaseK,
+    BBaseK = BBaseK,
+    AKMultiplier = AKMultiplier,
+    BKMultiplier = BKMultiplier,
+    AEffectiveK = AEffectiveK,
+    BEffectiveK = BEffectiveK,
+    ExpectedA = ExpectedA,
+    ExpectedB = ExpectedB,
+    OppWeightA = OppWeightA,
+    OppWeightB = OppWeightB,
+    FramesA = FramesA,
+    FramesB = FramesB,
+    TotalFrames = TotalFrames,
+    ActualScoreA = ActualScoreA,
+    ActualScoreB = ActualScoreB,
+    DeltaA = DeltaA,
+    DeltaB = DeltaB,
+    ARating_After = ARating_After,
+    BRating_After = BRating_After,
+    AGamesAfter = AGamesAfter,
+    BGamesAfter = BGamesAfter,
+    AFramesAfter = AFramesAfter,
+    BFramesAfter = BFramesAfter
+  )]
+  
+  list(
+    history = history,
+    state = envs_to_state(envs)
+  )
+}
+
+# ============================================================
+# Output helpers
+# ============================================================
+
+add_player_names_to_history <- function(history) {
+  out <- copy(history)
+  
+  out[player_lookup, on = .(PlayerA_ID = ID), `:=`(
+    PlayerA_Name = i.Name,
+    PlayerA_Nationality = i.Nationality
+  )]
+  
+  out[player_lookup, on = .(PlayerB_ID = ID), `:=`(
+    PlayerB_Name = i.Name,
+    PlayerB_Nationality = i.Nationality
+  )]
+  
+  out[player_lookup, on = .(WinnerID = ID), `:=`(
+    Winner_Name = i.Name,
+    Winner_Nationality = i.Nationality
+  )]
+  
+  out[player_lookup, on = .(WinnerFromScore = ID), `:=`(
+    WinnerFromScore_Name = i.Name,
+    WinnerFromScore_Nationality = i.Nationality
+  )]
+  
+  out
+}
+
+format_history_for_write <- function(history) {
+  out <- add_player_names_to_history(history)
+  
+  out <- out[, .(
+    MatchID,
+    MatchDate = format(Date, "%Y-%m-%d %H:%M:%S"),
+    DateSource,
+    EventID,
+    EventName,
+    EventSeason,
+    EventStartDate = format(EventStartDate, "%Y-%m-%d %H:%M:%S"),
+    EventEndDate = format(EventEndDate, "%Y-%m-%d %H:%M:%S"),
+    RawMatchDate = MatchDateRaw,
+    SourceFile,
+    
+    PlayerA_ID,
+    PlayerA_Name,
+    PlayerA_Nationality,
+    PlayerB_ID,
+    PlayerB_Name,
+    PlayerB_Nationality,
+    
+    WinnerID,
+    Winner_Name,
+    Winner_Nationality,
+    WinnerFromScore,
+    WinnerFromScore_Name,
+    WinnerFromScore_Nationality,
+    
+    ScoreA,
+    ScoreB,
+    FramesA,
+    FramesB,
+    TotalFrames,
+    
+    AFirstAppearance,
+    BFirstAppearance,
+    AGamesBefore,
+    BGamesBefore,
+    AFramesBefore,
+    BFramesBefore,
+    ARating_Before,
+    BRating_Before,
+    AStartRating,
+    BStartRating,
+    
+    ABaseK,
+    BBaseK,
+    AKMultiplier,
+    BKMultiplier,
+    AEffectiveK,
+    BEffectiveK,
+    
+    ExpectedA,
+    ExpectedB,
+    OppWeightA,
+    OppWeightB,
+    ActualScoreA,
+    ActualScoreB,
+    DeltaA,
+    DeltaB,
+    ARating_After,
+    BRating_After,
+    AGamesAfter,
+    BGamesAfter,
+    AFramesAfter,
+    BFramesAfter
+  )]
+  
+  out
+}
+
+format_final_for_write <- function(state) {
+  out <- copy(state)
+  
+  out[player_lookup, on = .(PlayerID = ID), `:=`(
+    PlayerName = i.Name,
+    Nationality = i.Nationality
+  )]
+  
+  out[, `:=`(
+    Rating = round(Rating, 2),
+    EntryRating = round(EntryRating, 2),
+    FirstMatchDate = format(FirstMatchDate, "%Y-%m-%d %H:%M:%S"),
+    LastMatchDate = format(LastMatchDate, "%Y-%m-%d %H:%M:%S"),
+    Method = "SinglePass_FixedStart_DoubleKFirst20",
+    KValue = K_VALUE,
+    BaselineStartRating = BASELINE_START_RATING,
+    NewPlayerMatches = NEW_PLAYER_MATCHES,
+    NewPlayerKMultiplier = NEW_PLAYER_K_MULTIPLIER,
+    ProvisionalFrameThreshold = PROVISIONAL_FRAME_THRESHOLD,
+    MinOpponentWeight = MIN_OPP_WEIGHT
+  )]
+  
+  setcolorder(out, c(
+    "PlayerID",
+    "PlayerName",
+    "Nationality",
+    "Rating",
+    "MatchesPlayed",
+    "FramesPlayed",
+    "FirstMatchDate",
+    "LastMatchDate",
+    "EntryRating",
+    "Method",
+    "KValue",
+    "BaselineStartRating",
+    "NewPlayerMatches",
+    "NewPlayerKMultiplier",
+    "ProvisionalFrameThreshold",
+    "MinOpponentWeight"
+  ))
+  
+  setorder(out, -Rating, PlayerID)
+  out
+}
+
+write_season_snapshot <- function(state, season, season_end_date) {
+  snapshot <- copy(state)
+  
+  snapshot[player_lookup, on = .(PlayerID = ID), `:=`(
+    PlayerName = i.Name,
+    Nationality = i.Nationality
+  )]
+  
+  inactive_days_int <- as.integer(round(ACTIVE_YEARS * 365.25))
+  active_cutoff <- as.Date(season_end_date) - inactive_days_int
+  
+  snapshot[, ListedFrames := FramesPlayed]
+  snapshot[, Listable := ListedFrames >= MIN_LIST_FRAMES]
+  snapshot[, Active := as.Date(LastMatchDate) >= active_cutoff]
+  snapshot[, RankEligible := Listable & Active]
+  
+  snapshot <- snapshot[RankEligible == TRUE]
+  
+  if (nrow(snapshot) > 0L) {
+    setorder(snapshot, -Rating, PlayerName, PlayerID)
+    snapshot[, Rank := frank(-Rating, ties.method = "min")]
+  } else {
+    snapshot[, Rank := integer()]
+  }
+  
+  snapshot[, `:=`(
+    Season = season,
+    SeasonLabel = paste0(season, "/", season + 1),
+    SeasonEndDate = format(as.Date(season_end_date), "%Y-%m-%d"),
+    Rating = round(Rating, 2),
+    EntryRating = round(EntryRating, 2),
+    FirstMatchDate = format(FirstMatchDate, "%Y-%m-%d %H:%M:%S"),
+    LastMatchDate = format(LastMatchDate, "%Y-%m-%d %H:%M:%S")
+  )]
+  
+  snapshot <- snapshot[, .(
+    Season,
+    SeasonLabel,
+    SeasonEndDate,
+    Rank,
+    PlayerID,
+    PlayerName,
+    Nationality,
+    Rating,
+    MatchesPlayed,
+    FramesPlayed,
+    ListedFrames,
+    FirstMatchDate,
+    LastMatchDate,
+    EntryRating,
+    Active,
+    Listable
+  )]
+  
+  out_file <- season_snapshot_file_for_season(season)
+  fwrite(snapshot, out_file)
+  
+  cat("Wrote season snapshot:", out_file, "players:", nrow(snapshot), "\n")
+}
+
+# ============================================================
+# Decide checkpoint start point
+# ============================================================
+
+all_seasons <- sort(unique(dt$EventSeason))
+max_season <- max(all_seasons, na.rm = TRUE)
+
+if (FINALISE_CURRENT_SEASON) {
+  completed_seasons <- all_seasons
+} else {
+  completed_seasons <- all_seasons[all_seasons < max_season]
+}
+
+cat("\nAvailable seasons:", paste(all_seasons, collapse = ", "), "\n")
+cat("Current/live season:", max_season, "\n")
+cat("Completed seasons eligible for checkpoints:", paste(completed_seasons, collapse = ", "), "\n")
+
+checkpoint_files <- list.files(
+  CHECKPOINT_DIR,
+  pattern = "^checkpoint_season_\\d{4}_end\\.csv$",
+  full.names = TRUE
+)
+
+checkpoint_info <- data.table(
+  file = checkpoint_files,
+  season = extract_checkpoint_season(checkpoint_files)
+)
+
+checkpoint_info <- checkpoint_info[!is.na(season)]
+
+if (FORCE_FULL_REBUILD) {
+  start_checkpoint_season <- NA_integer_
+  state <- empty_state()
+  seasons_to_process <- all_seasons
+  
+  cat("\nFORCE_FULL_REBUILD is TRUE. Rebuilding from the beginning.\n")
+  
+} else if (!is.na(REBUILD_FROM_SEASON)) {
+  start_checkpoint_candidates <- checkpoint_info[season < REBUILD_FROM_SEASON]
+  
+  if (nrow(start_checkpoint_candidates) > 0L) {
+    setorder(start_checkpoint_candidates, -season)
+    start_checkpoint_season <- start_checkpoint_candidates$season[1]
+    state <- load_state_from_checkpoint(start_checkpoint_candidates$file[1])
+    seasons_to_process <- all_seasons[all_seasons > start_checkpoint_season]
+    
+    cat("\nRebuilding from season", REBUILD_FROM_SEASON, "\n")
+    cat("Loaded checkpoint before rebuild season:", start_checkpoint_season, "\n")
+    
+  } else {
+    start_checkpoint_season <- NA_integer_
+    state <- empty_state()
+    seasons_to_process <- all_seasons[all_seasons >= REBUILD_FROM_SEASON]
+    
+    cat("\nNo earlier checkpoint found. Rebuilding from season", REBUILD_FROM_SEASON, "with empty state.\n")
+  }
+  
+} else if (nrow(checkpoint_info) > 0L) {
+  setorder(checkpoint_info, -season)
+  start_checkpoint_season <- checkpoint_info$season[1]
+  state <- load_state_from_checkpoint(checkpoint_info$file[1])
+  seasons_to_process <- all_seasons[all_seasons > start_checkpoint_season]
+  
+  cat("\nLoaded latest checkpoint:", start_checkpoint_season, "\n")
+  
+} else {
+  start_checkpoint_season <- NA_integer_
+  state <- empty_state()
+  seasons_to_process <- all_seasons
+  
+  cat("\nNo checkpoints found. Rebuilding from the beginning.\n")
+}
+
+if (length(seasons_to_process) == 0L) {
+  cat("\nNo seasons to process after latest checkpoint.\n")
+} else {
+  cat("Seasons to process:", paste(seasons_to_process, collapse = ", "), "\n")
+}
+
+# ============================================================
+# Process seasons
+# ============================================================
+
+new_history_files <- character()
+
+for (season in seasons_to_process) {
+  season_dt <- dt[EventSeason == season]
+  setorder(
+    season_dt,
+    Date,
+    EventID,
+    RoundSort,
+    MatchNumSort,
+    TableNoSort,
+    MatchID,
+    PlayerA_ID,
+    PlayerB_ID
+  )
+  
+  run <- run_elo_segment(
+    dt_input = season_dt,
+    state = state,
+    label = paste0("EventSeason ", season, " (", season, "/", season + 1, ")")
+  )
+  
+  state <- run$state
+  
+  season_history_out <- format_history_for_write(run$history)
+  season_history_file <- season_history_file_for_season(season)
+  fwrite(season_history_out, season_history_file)
+  new_history_files <- c(new_history_files, season_history_file)
+  
+  cat("Wrote season match history:", season_history_file, "\n")
+  
+  season_end_date <- max(season_dt$Date, na.rm = TRUE)
+  
+  if (season %in% completed_seasons) {
+    write_checkpoint(state, season)
+    write_season_snapshot(state, season, season_end_date)
+  } else {
+    cat("Season", season, "treated as live/current. No final checkpoint written.\n")
+    
+    current_snapshot_file <- file.path(SEASON_SNAPSHOT_DIR, "snapshot_current.csv")
+    
+    temp_snapshot_path <- season_snapshot_file_for_season(season)
+    write_season_snapshot(state, season, season_end_date)
+    
+    if (file.exists(temp_snapshot_path)) {
+      file.copy(temp_snapshot_path, current_snapshot_file, overwrite = TRUE)
+      cat("Wrote current live snapshot:", current_snapshot_file, "\n")
+    }
+  }
+}
+
+# ============================================================
+# Build combined match history output
+# ============================================================
+
+history_files_to_combine <- list.files(
+  SEASON_HISTORY_DIR,
+  pattern = "^snooker_elo_match_history_season_\\d{4}\\.csv$",
+  full.names = TRUE
+)
+
+if (length(history_files_to_combine) > 0L) {
+  history_all <- rbindlist(
+    lapply(history_files_to_combine, fread, encoding = "UTF-8"),
+    use.names = TRUE,
+    fill = TRUE
+  )
+  
+  if ("MatchDate" %in% names(history_all)) {
+    history_all[, MatchDateSort := parse_dt_multi(MatchDate)]
+    setorder(history_all, MatchDateSort, EventSeason, EventID, MatchID)
+    history_all[, MatchDateSort := NULL]
+  }
+  
+  fwrite(history_all, OUTPUT_MATCH_HISTORY_CSV)
+  cat("\nWrote combined match history:", OUTPUT_MATCH_HISTORY_CSV, "\n")
+  cat("Combined match history rows:", nrow(history_all), "\n")
+  
+} else {
+  cat("\nNo season history files found to combine.\n")
+}
+
+# ============================================================
+# Write final ratings
+# ============================================================
+
+final_out <- format_final_for_write(state)
+fwrite(final_out, OUTPUT_FINAL_RATINGS_CSV)
+
+cat("\nWrote final ratings:", OUTPUT_FINAL_RATINGS_CSV, "\n")
+cat("Final rating rows:", nrow(final_out), "\n")
+cat("Unmatched final rating names:", final_out[is.na(PlayerName), .N], "\n")
+
+cat("\nDone.\n")
+cat("Method: Single pass, fixed 2600 starts, double K for first 20 matches.\n")
+cat("Current/live EventSeason:", max_season, "\n")
+cat("Final ratings:", OUTPUT_FINAL_RATINGS_CSV, "\n")
+cat("Match history:", OUTPUT_MATCH_HISTORY_CSV, "\n")
+cat("Checkpoints:", CHECKPOINT_DIR, "\n")
+cat("Season snapshots:", SEASON_SNAPSHOT_DIR, "\n")
