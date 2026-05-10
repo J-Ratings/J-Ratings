@@ -1,0 +1,52 @@
+name: Update Snooker ratings
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 1 * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-snooker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    env:
+      SNOOKER_API_HEADER: ${{ secrets.SNOOKER_API_HEADER }}
+      SNOOKER_REQUEST_PAUSE: "8"
+      MATCH_REFRESH_DAYS: "45"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install R packages
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::httr
+            any::jsonlite
+            any::data.table
+            any::dplyr
+            any::readr
+            any::stringr
+
+      - name: Run snooker pipeline
+        run: |
+          Rscript -e "source('scripts/snooker/00_refresh_lookups.R')"
+          Rscript -e "source('scripts/snooker/01_update_matches.R')"
+          Rscript -e "source('scripts/snooker/02_calculate_elo.R')"
+          Rscript -e "source('scripts/snooker/03_write_json.R')"
+
+      - name: Commit updated snooker data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Snooker/data Snooker/pipeline_data
+          git diff --cached --quiet || git commit -m "Update snooker ratings"
+          git push
