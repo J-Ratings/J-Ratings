@@ -192,10 +192,10 @@
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by name…">
 
-      <label for="year" style="margin-left:auto">Year:</label>
-      <select id="year">
-        <option value="" selected>Live</option>
-      </select>
+      <label for="year" style="margin-left:auto">Season:</label>
+<select id="year">
+  <option value="" selected>Live</option>
+</select>
 
       <button id="compare-btn" class="club-btn" type="button">Compare</button>
     </div>
@@ -274,8 +274,8 @@
 
   function playersUrl() { return '../data/players.json'; }
   function historyUrl(id) { return `../data/history/${encodeURIComponent(id)}.json`; }
-  function snapshotsYearsUrl() { return '../data/snapshots/years.json'; }
-  function snapshotUrl(year) { return `../data/snapshots/${encodeURIComponent(year)}.json`; }
+  function snapshotsSeasonsUrl() { return '../data/snapshots/seasons.json'; }
+function snapshotUrl(season) { return `../data/snapshots/${encodeURIComponent(season)}.json`; }
   function metaUrl() { return '../data/meta.json'; }
 
   function nationalityToFlagCode(n) {
@@ -680,31 +680,31 @@
   }
 
   async function loadYearsDropdown() {
-    const sel = document.getElementById('year');
-    const current = sel.value;
-    sel.innerHTML = `<option value="" selected>Live</option>`;
+  const sel = document.getElementById('year');
+  const current = sel.value;
+  sel.innerHTML = `<option value="" selected>Live</option>`;
 
-    try {
-      const res = await fetch(snapshotsYearsUrl(), { cache: 'no-cache' });
-      if (!res.ok) throw new Error('years.json not found');
+  try {
+    const res = await fetch(snapshotsSeasonsUrl(), { cache: 'no-cache' });
+    if (!res.ok) throw new Error('seasons.json not found');
 
-      const years = await res.json();
-      years
-        .map(y => Number(y))
-        .filter(y => Number.isFinite(y))
-        .sort((a, b) => b - a)
-        .forEach(y => {
-          const opt = document.createElement('option');
-          opt.value = String(y);
-          opt.textContent = String(y);
-          sel.appendChild(opt);
-        });
+    const seasons = await res.json();
+    seasons
+      .map(s => Number(s))
+      .filter(s => Number.isFinite(s))
+      .sort((a, b) => b - a)
+      .forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = String(s);
+        opt.textContent = `${s}/${s + 1}`;
+        sel.appendChild(opt);
+      });
 
-      sel.value = [...sel.options].some(o => o.value === current) ? current : '';
-    } catch {
-      sel.value = '';
-    }
+    sel.value = [...sel.options].some(o => o.value === current) ? current : '';
+  } catch {
+    sel.value = '';
   }
+}
 
   async function load() {
     try {
