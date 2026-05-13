@@ -126,9 +126,20 @@
 
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by name…">
-      <span id="count" class="muted"></span>
 
-      <button id="compare-btn" class="club-btn" type="button" style="margin-left:auto">Compare</button>
+      <label for="country" style="margin-left:auto">Country:</label>
+      <select id="country">
+        <option value="all" selected>All</option>
+      </select>
+
+      <label for="gender">Gender:</label>
+      <select id="gender">
+        <option value="all" selected>All</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <button id="compare-btn" class="club-btn" type="button">Compare</button>
     </div>
 
     <div id="compare-wrap" style="display:none; padding:16px">
@@ -202,6 +213,30 @@ const DATA_URL = '../data/players.json';
 const FLAGS_BASE = '../../flags';
 const PAGE_SIZE = 100;
 
+const COUNTRY_LABELS = {
+  ar: 'Argentina',
+  ca: 'Canada',
+  cn: 'China',
+  fr: 'France',
+  gb: 'United Kingdom',
+  hk: 'Hong Kong',
+  il: 'Israel',
+  jp: 'Japan',
+  kr: 'Korea',
+  my: 'Malaysia',
+  nl: 'Netherlands',
+  pl: 'Poland',
+  ro: 'Romania',
+  ru: 'Russia',
+  sg: 'Singapore',
+  sk: 'Slovakia',
+  tw: 'Taiwan',
+  ua: 'Ukraine',
+  us: 'United States'
+};
+
+const PRIORITY_COUNTRY_ORDER = ['cn', 'jp', 'kr', 'tw'];
+
 const state = {
   rows: [],
   filtered: [],
@@ -224,6 +259,23 @@ function escapeHtml(value) {
 
 function normaliseFlagCode(code) {
   return String(code || '').trim().toLowerCase();
+}
+
+function normaliseGender(value) {
+  const g = String(value || '').trim().toLowerCase();
+
+  if (g === '♀' || g === 'female' || g === 'f') return 'female';
+  if (g === '♂' || g === 'male' || g === 'm') return 'male';
+
+  return '';
+}
+
+function getCountryLabel(flagCode) {
+  const code = normaliseFlagCode(flagCode);
+
+  if (!code) return '';
+
+  return COUNTRY_LABELS[code] || code.toUpperCase();
 }
 
 function flagImgHtml(flagCode, label) {
@@ -253,7 +305,7 @@ function render() {
 
     const tdFlag = document.createElement('td');
     tdFlag.className = 'flag-cell';
-    tdFlag.innerHTML = flagImgHtml(r.flag, r.name);
+    tdFlag.innerHTML = flagImgHtml(r.flag, getCountryLabel(r.flag) || r.name);
     tr.appendChild(tdFlag);
 
     const tdName = document.createElement('td');
@@ -277,13 +329,6 @@ function render() {
     tbody.appendChild(tr);
   });
 
-  const countEl = document.getElementById('count');
-
-  if (countEl) {
-    countEl.textContent =
-      state.filtered.length ? `${state.filtered.length} players` : '';
-  }
-
   if (showMoreBtn) {
     showMoreBtn.style.display =
       state.visibleCount < state.filtered.length ? 'inline-block' : 'none';
@@ -298,15 +343,66 @@ function hideCompare() {
 
 function applyFilter() {
   const q = document.getElementById('q').value.trim().toLowerCase();
+  const selectedCountry = document.getElementById('country').value;
+  const selectedGender = document.getElementById('gender').value;
 
-  state.filtered = q
-    ? state.rows.filter(r => r.name.toLowerCase().includes(q))
-    : state.rows.slice();
+  state.filtered = state.rows.filter(r => {
+    const matchesName = !q || r.name.toLowerCase().includes(q);
+
+    const matchesCountry =
+      selectedCountry === 'all' ||
+      normaliseFlagCode(r.flag) === selectedCountry;
+
+    const matchesGender =
+      selectedGender === 'all' ||
+      normaliseGender(r.gender) === selectedGender;
+
+    return matchesName && matchesCountry && matchesGender;
+  });
 
   state.visibleCount = PAGE_SIZE;
 
   render();
   hideCompare();
+}
+
+function populateCountrySelect() {
+  const sel = document.getElementById('country');
+
+  if (!sel) return;
+
+  const previousValue = sel.value || 'all';
+
+  const countryCodes = Array.from(new Set(
+    state.rows
+      .map(r => normaliseFlagCode(r.flag))
+      .filter(Boolean)
+  ));
+
+  countryCodes.sort((a, b) => {
+    const ai = PRIORITY_COUNTRY_ORDER.indexOf(a);
+    const bi = PRIORITY_COUNTRY_ORDER.indexOf(b);
+
+    const aPriority = ai !== -1;
+    const bPriority = bi !== -1;
+
+    if (aPriority && bPriority) return ai - bi;
+    if (aPriority) return -1;
+    if (bPriority) return 1;
+
+    return getCountryLabel(a).localeCompare(getCountryLabel(b));
+  });
+
+  sel.innerHTML = '<option value="all">All</option>';
+
+  for (const code of countryCodes) {
+    const opt = document.createElement('option');
+    opt.value = code;
+    opt.textContent = getCountryLabel(code);
+    sel.appendChild(opt);
+  }
+
+  sel.value = countryCodes.includes(previousValue) ? previousValue : 'all';
 }
 
 async function fetchHistoryFor(id) {
@@ -433,6 +529,7 @@ async function load() {
         id: String(d.id),
         name: d.name,
         flag: d.flag || '',
+        gender: d.gender || '',
         peak: +d.peak,
         peak_date: d.peak_date || ''
       }))
@@ -444,6 +541,7 @@ async function load() {
     state.filtered = state.rows.slice();
     state.visibleCount = PAGE_SIZE;
 
+    populateCountrySelect();
     render();
   } catch (err) {
     document.querySelector('#players tbody').innerHTML =
@@ -461,6 +559,8 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('q').addEventListener('input', applyFilter);
+  document.getElementById('country').addEventListener('change', applyFilter);
+  document.getElementById('gender').addEventListener('change', applyFilter);
 
   document.getElementById('show-more-btn').addEventListener('click', () => {
     state.visibleCount += PAGE_SIZE;
