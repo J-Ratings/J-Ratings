@@ -136,6 +136,13 @@
         <option value="all" selected>All</option>
       </select>
 
+      <label for="gender">Gender:</label>
+      <select id="gender">
+        <option value="all" selected>All</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
       <button id="compare-btn" class="club-btn" type="button">Compare</button>
     </div>
 
@@ -290,6 +297,10 @@ function normaliseFlagCode(code) {
   return String(code || '').trim().toLowerCase();
 }
 
+function normaliseGender(value) {
+  return String(value || '').trim().toLowerCase();
+}
+
 function getCountryLabel(flagCode) {
   const code = normaliseFlagCode(flagCode);
 
@@ -391,14 +402,20 @@ function hideCompare() {
 function applyFilter() {
   const q = document.getElementById('q').value.trim().toLowerCase();
   const selectedCountry = document.getElementById('country').value;
+  const selectedGender = document.getElementById('gender').value;
 
   state.filtered = state.rows.filter(r => {
     const matchesName = !q || (r.name || '').toLowerCase().includes(q);
+
     const matchesCountry =
       selectedCountry === 'all' ||
       normaliseFlagCode(r.flag) === selectedCountry;
 
-    return matchesName && matchesCountry;
+    const matchesGender =
+      selectedGender === 'all' ||
+      normaliseGender(r.gender) === selectedGender;
+
+    return matchesName && matchesCountry && matchesGender;
   });
 
   state.visibleCount = PAGE_SIZE;
@@ -465,6 +482,7 @@ function rebuildRowsFromMode() {
         id: d.id,
         name: d.name || d.id,
         flag: d.flag || '',
+        gender: d.gender || '',
         rating: +d.elo,
         tournament: d.tournament || ''
       }))
@@ -648,6 +666,7 @@ async function load() {
         id: String(d.id),
         name: d.display_name || d.name || d.id,
         flag: d.flag || '',
+        gender: d.gender || '',
         rating: +d.rating,
         peak: Number.isFinite(+d.peak) ? +d.peak : null,
         peak_date: d.peak_date || null,
@@ -702,6 +721,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('era').addEventListener('change', rebuildRowsFromMode);
   document.getElementById('country').addEventListener('change', applyFilter);
+  document.getElementById('gender').addEventListener('change', applyFilter);
   document.getElementById('q').addEventListener('input', applyFilter);
 
   document.getElementById('show-more-btn').addEventListener('click', () => {
