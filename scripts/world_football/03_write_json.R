@@ -10,7 +10,7 @@ options(stringsAsFactors = FALSE)
 # Paths
 # -----------------------------
 repo_dir <- normalizePath(
-  "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings",
+  getwd(),
   winslash = "/",
   mustWork = TRUE
 )
