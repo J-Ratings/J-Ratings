@@ -1,0 +1,51 @@
+name: Update world football ratings
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 1 * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-world-football:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Kaggle CLI
+        run: |
+          python -m pip install --upgrade pip
+          pip install kaggle
+
+      - name: Install R packages
+        run: |
+          Rscript -e 'install.packages(c("data.table", "readr", "dplyr", "lubridate", "jsonlite", "stringi", "stringr"))'
+
+      - name: Run world football pipeline
+        env:
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+        run: |
+          Rscript scripts/world_football/00_download_data.R
+          Rscript scripts/world_football/01_combine_results.R
+          Rscript scripts/world_football/02_calculate_elo.R
+          Rscript scripts/world_football/03_write_json.R
+
+      - name: Commit updated world football data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/world_football InternationalFootball/pipeline_data InternationalFootball/data
+          git commit -m "Update world football ratings" || echo "No changes to commit"
+          git push
