@@ -1857,10 +1857,10 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2745,British Women's Open Group E,2026-03-27,2026-03-29,"",2025,women,Ranking,5,Landywood Snooker Club,Walsall,England,snooker,2497,Women,O,0,0,0,0,6,2025
 2746,British Women's Open Group F,2026-03-27,2026-03-29,"",2025,women,Ranking,6,Landywood Snooker Club,Walsall,England,snooker,2497,Women,O,0,0,0,0,6,2025
 2747,British Women's Open Group G,2026-03-27,2026-03-29,"",2025,women,Ranking,7,Landywood Snooker Club,Walsall,England,snooker,2497,Women,O,0,0,0,0,6,2025
-2748,Women's World Championship,2026-05-12,2026-05-19,Liber Win x Nanjiang,2025,women,Ranking,0,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,77,31,0,0,2025
+2748,Women's World Championship,2026-05-12,2026-05-19,Liber Win x Nanjiang,2025,women,Ranking,0,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,77,1,1,29,2025
 2749,Tour Championship,2027-03-29,2027-04-04,"",2026,main,Ranking,0,Manchester Central,Manchester,England,snooker,2749,Both,O,0,0,0,0,0,2026
-2750,Qualifying School 1 - Asia & Oceania ,2026-05-13,2026-05-18,"",2025,main,Qualifying School,0,Kiatthada Billiards & Snooker Club,Bangkok,Thailand,snooker,2750,Both,O,0,63,61,0,0,2025
-2751,Qualifying School 2 - Asia & Oceania ,2026-05-19,2026-05-24,"",2025,main,Qualifying School,0,Kiatthada Billiards & Snooker Club,Bangkok,Thailand,snooker,2751,Both,O,0,63,61,0,0,2025
+2750,Qualifying School 1 - Asia & Oceania ,2026-05-14,2026-05-18,"",2025,main,Qualifying School,0,Kiatthada Billiards & Snooker Club,Bangkok,Thailand,snooker,2750,Both,O,0,63,0,0,60,2025
+2751,Qualifying School 2 - Asia & Oceania ,2026-05-20,2026-05-24,"",2025,main,Qualifying School,0,Kiatthada Billiards & Snooker Club,Bangkok,Thailand,snooker,2751,Both,O,0,63,61,0,0,2025
 2752,Q School 1,2026-05-20,2026-05-25,"",2025,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2752,Both,O,0,156,152,0,0,2025
 2753,Q School 2,2026-05-26,2026-05-31,"",2025,main,Qualifying School,2,Mattioli Arena,Leicester,England,snooker,2753,Both,O,0,156,152,0,0,2025
 2755,China Open,2026-08-08,2026-08-16,"",2026,main,Ranking,0,Unknown,Taiyuan,China,snooker,2755,Both,O,0,0,0,0,0,2026
@@ -1887,24 +1887,24 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2774,UK Championship Qualifiers,2026-11-21,2026-11-26,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2561,Both,O,0,0,0,0,0,2026
 2775,Welsh Open Qualifiers,2027-02-02,2027-02-03,"",2026,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,2650,Both,O,0,0,0,0,0,2026
 2776,World Open Qualifiers,2027-02-04,2027-02-06,"",2026,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,2766,Both,O,0,0,0,0,0,2026
-2777,Women's World Championship Group A,2026-05-12,2026-05-19,"",2025,women,Ranking,1,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
-2778,Women's World Championship Group B,2026-05-12,2026-05-19,"",2025,women,Ranking,2,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
-2779,Women's World Championship Group C,2026-05-12,2026-05-19,"",2025,women,Ranking,3,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
+2777,Women's World Championship Group A,2026-05-12,2026-05-19,"",2025,women,Ranking,1,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
+2778,Women's World Championship Group B,2026-05-12,2026-05-19,"",2025,women,Ranking,2,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
+2779,Women's World Championship Group C,2026-05-12,2026-05-19,"",2025,women,Ranking,3,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
 278,European Tour Event Six,2013-11-07,2013-11-10,"",2013,main,Players Tour Championship,6,The Capital Venue,Gloucester,England,snooker,278,Both,O,,,,,,2013
-2780,Women's World Championship Group D,2026-05-12,2026-05-19,"",2025,women,Ranking,4,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
-2781,Women's World Championship Group E,2026-05-12,2026-05-19,"",2025,women,Ranking,5,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
-2782,Women's World Championship Group F,2026-05-12,2026-05-19,"",2025,women,Ranking,6,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
-2783,Women's World Championship Group G,2026-05-12,2026-05-19,"",2025,women,Ranking,7,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
-2784,Women's World Championship Group H,2026-05-12,2026-05-19,"",2025,women,Ranking,8,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,6,0,0,2025
-2785,Women's World Championship Group I,2026-05-12,2026-05-19,"",2025,women,Ranking,9,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
-2786,Women's World Championship Group J,2026-05-12,2026-05-19,"",2025,women,Ranking,10,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
-2787,Women's World Championship Group K,2026-05-12,2026-05-19,"",2025,women,Ranking,11,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,6,0,0,2025
-2788,Women's World Championship Group L,2026-05-12,2026-05-19,"",2025,women,Ranking,12,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
-2789,Women's World Championship Group M,2026-05-12,2026-05-19,"",2025,women,Ranking,13,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
+2780,Women's World Championship Group D,2026-05-12,2026-05-19,"",2025,women,Ranking,4,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
+2781,Women's World Championship Group E,2026-05-12,2026-05-19,"",2025,women,Ranking,5,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
+2782,Women's World Championship Group F,2026-05-12,2026-05-19,"",2025,women,Ranking,6,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
+2783,Women's World Championship Group G,2026-05-12,2026-05-19,"",2025,women,Ranking,7,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
+2784,Women's World Championship Group H,2026-05-12,2026-05-19,"",2025,women,Ranking,8,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,6,2025
+2785,Women's World Championship Group I,2026-05-12,2026-05-19,"",2025,women,Ranking,9,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
+2786,Women's World Championship Group J,2026-05-12,2026-05-19,"",2025,women,Ranking,10,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
+2787,Women's World Championship Group K,2026-05-12,2026-05-19,"",2025,women,Ranking,11,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,6,2025
+2788,Women's World Championship Group L,2026-05-12,2026-05-19,"",2025,women,Ranking,12,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
+2789,Women's World Championship Group M,2026-05-12,2026-05-19,"",2025,women,Ranking,13,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
 279,European Tour Event Seven,2013-11-14,2013-11-17,"",2013,main,Players Tour Championship,7,Lotto Arena,Antwerp,Belgium,snooker,279,Both,O,,,,,,2013
-2790,Women's World Championship Group N,2026-05-12,2026-05-19,"",2025,women,Ranking,14,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
-2791,Women's World Championship Group O,2026-05-12,2026-05-19,"",2025,women,Ranking,15,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,10,0,0,2025
-2792,Women's World Championship Group P,2026-05-12,2026-05-19,"",2025,women,Ranking,16,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,6,0,0,2025
+2790,Women's World Championship Group N,2026-05-12,2026-05-19,"",2025,women,Ranking,14,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
+2791,Women's World Championship Group O,2026-05-12,2026-05-19,"",2025,women,Ranking,15,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,10,2025
+2792,Women's World Championship Group P,2026-05-12,2026-05-19,"",2025,women,Ranking,16,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,6,2025
 28,World Championship,2011-04-16,2011-05-02,Betfred.com,2010,main,Ranking,0,Crucible Theatre,Sheffield,England,snooker,28,Both,O,,,,,,2010
 280,Champion of Champions,2013-11-19,2013-11-24,888casino,2013,main,Invitational,0,Ricoh Arena,Coventry,England,snooker,280,Both,O,,,,,,2013
 281,UK Championship,2013-11-26,2013-12-08,williamhill.com,2013,main,Ranking,0,Barbican Centre,York,England,snooker,281,Both,O,,,,,,2013
