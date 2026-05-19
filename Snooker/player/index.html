@@ -240,8 +240,8 @@
             <label for="agg">View:</label>
             <select id="agg">
               <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
-              <option value="monthly" selected>Monthly</option>
+              <option value="weekly" selected>Weekly</option>
+              <option value="monthly">Monthly</option>
               <option value="yearly">Yearly</option>
             </select>
           </div>
@@ -293,7 +293,7 @@
 
   let RAW = [];
   let SINCE_YEAR = null;
-  let AGG_MODE = 'monthly';
+  let AGG_MODE = 'weekly';
   let LOAD_TOKEN = 0;
 
   function playersUrl() { return '../data/players.json'; }
