@@ -240,6 +240,7 @@
             <label for="agg">View:</label>
             <select id="agg">
               <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
               <option value="monthly" selected>Monthly</option>
               <option value="yearly">Yearly</option>
             </select>
@@ -328,6 +329,14 @@
     return out;
   }
 
+  function weekStartKey(date) {
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    const day = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() - day + 1);
+
+    return d.toISOString().slice(0, 10);
+  }
+
   function aggregate(series, mode) {
     if (mode === 'daily') return normalise(series, true);
 
@@ -335,9 +344,15 @@
 
     for (const p of series) {
       const d = new Date(p.x);
-      const key = mode === 'monthly'
-        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
-        : `${d.getFullYear()}`;
+      let key;
+
+      if (mode === 'weekly') {
+        key = weekStartKey(d);
+      } else if (mode === 'monthly') {
+        key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+      } else {
+        key = `${d.getFullYear()}`;
+      }
 
       (buckets[key] ||= []).push(p);
     }
@@ -348,7 +363,7 @@
       const lastPoint = pts.length ? pts[pts.length - 1] : null;
       const lastEvent = lastPoint ? (lastPoint.event || '') : '';
       const lastRank = lastPoint ? Number(lastPoint.rank) : NaN;
-      const x = k.length === 7 ? `${k}-01` : `${k}-01-01`;
+      const x = k.length === 10 ? k : (k.length === 7 ? `${k}-01` : `${k}-01-01`);
 
       return {
         x,
