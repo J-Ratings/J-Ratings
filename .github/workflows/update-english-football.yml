@@ -1,0 +1,53 @@
+name: Update English Football data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 1 * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-english-football:
+    runs-on: ubuntu-latest
+
+    env:
+      J_RATINGS_REPO: ${{ github.workspace }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "release"
+
+      - name: Install R packages
+        run: |
+          Rscript -e 'install.packages(c("data.table", "dplyr", "readr", "jsonlite", "stringi", "stringr"), repos = "https://cloud.r-project.org")'
+
+      - name: Run English Football pipeline
+        run: |
+          Rscript -e 'source("scripts/england_football/00_download_openfootball_current.R")'
+          Rscript -e 'source("scripts/england_football/01_parse_openfootball.R")'
+          Rscript -e 'source("scripts/england_football/02_calculate_elo.R")'
+          Rscript -e 'source("scripts/england_football/03_write_json.R")'
+
+      - name: Commit updated English Football data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add EnglishFootball/pipeline_data/Source/openfootball/england/
+          git add EnglishFootball/pipeline_data/Matches_Clean_Combined/
+          git add EnglishFootball/pipeline_data/Elo/
+          git add EnglishFootball/data/
+
+          if git diff --cached --quiet; then
+            echo "No English Football data changes to commit."
+          else
+            git commit -m "Update English Football data"
+            git push
+          fi
