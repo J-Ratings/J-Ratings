@@ -17,7 +17,7 @@ INPUT_CSV <- file.path(
   "EnglishFootball",
   "pipeline_data",
   "Matches_Clean_Combined",
-  "england_leagues_1_to_4_all_seasons.csv"
+  "england_leagues_1_to_5_all_seasons.csv"
 )
 
 OUT_DIR <- file.path(
@@ -42,10 +42,11 @@ K_NORMAL <- 20
 K_NEW <- 20
 K_NEW_GAMES <- 100L
 
-SEED_TIER_1 <- 2600
-SEED_TIER_2 <- 2400
-SEED_TIER_3 <- 2200
-SEED_TIER_4 <- 2000
+SEED_TIER_1 <- 2800
+SEED_TIER_2 <- 2600
+SEED_TIER_3 <- 2400
+SEED_TIER_4 <- 2200
+SEED_TIER_5 <- 2000
 
 RETRO_GAMES_N <- 50L
 
@@ -80,6 +81,7 @@ league_to_tier <- function(x) {
   out[is.na(out) & grepl("^division\\s*1$|^championship$", lx)] <- 2L
   out[is.na(out) & grepl("^division\\s*2$|^league\\s*1$|^league one$", lx)] <- 3L
   out[is.na(out) & grepl("^division\\s*3$|^league\\s*2$|^league two$", lx)] <- 4L
+  out[is.na(out) & grepl("^national league$", lx)] <- 5L
   
   out
 }
@@ -90,6 +92,7 @@ seed_from_tier <- function(tier) {
   out[tier == 2L] <- SEED_TIER_2
   out[tier == 3L] <- SEED_TIER_3
   out[tier == 4L] <- SEED_TIER_4
+  out[tier == 5L] <- SEED_TIER_5
   out
 }
 
@@ -391,6 +394,21 @@ dt[, Score   := if ("Score" %in% names(dt)) trimws(as.character(Score)) else NA_
 dt[, Home := normalise_team_name(HomeRaw)]
 dt[, Away := normalise_team_name(AwayRaw)]
 dt[, Result := trimws(as.character(Result))]
+
+bad_name_rows <- dt[
+  is.na(Home) | Home == "" |
+    is.na(Away) | Away == ""
+]
+
+if (nrow(bad_name_rows) > 0) {
+  cat("\nDropping rows with bad parsed team names:\n")
+  print(bad_name_rows[, .(League, DateRaw, HomeRaw, AwayRaw, Result, Score)])
+}
+
+dt <- dt[
+  !(is.na(Home) | Home == "" |
+      is.na(Away) | Away == "")
+]
 
 dt[, Date := as.Date(DateRaw, format = "%Y-%m-%d")]
 dt[, Tier := league_to_tier(League)]
@@ -712,6 +730,7 @@ final_pass1[, `:=`(
   SeedTier2 = SEED_TIER_2,
   SeedTier3 = SEED_TIER_3,
   SeedTier4 = SEED_TIER_4,
+  SeedTier5 = SEED_TIER_5,
   RetroGamesN = RETRO_GAMES_N
 )]
 fwrite(final_pass1, OUTPUT_FINAL_RATINGS_CSV_PASS1)
@@ -771,6 +790,7 @@ final_ratings[, `:=`(
   SeedTier2 = SEED_TIER_2,
   SeedTier3 = SEED_TIER_3,
   SeedTier4 = SEED_TIER_4,
+  SeedTier5 = SEED_TIER_5,
   RetroGamesN = RETRO_GAMES_N
 )]
 fwrite(final_ratings, OUTPUT_FINAL_RATINGS_CSV)

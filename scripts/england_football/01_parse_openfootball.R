@@ -30,7 +30,7 @@ dir.create(combined_dir, recursive = TRUE, showWarnings = FALSE)
 
 out_file <- file.path(
   combined_dir,
-  "england_leagues_1_to_4_all_seasons.csv"
+  "england_leagues_1_to_5_all_seasons.csv"
 )
 
 # -----------------------------
@@ -310,7 +310,8 @@ file_to_league <- c(
   "3-division2.txt"     = "Division 2",
   "3-league1.txt"       = "League 1",
   "4-division3.txt"     = "Division 3",
-  "4-league2.txt"       = "League 2"
+  "4-league2.txt"       = "League 2",
+  "5-nationalleague.txt" = "National League"
 )
 
 candidate_files <- names(file_to_league)

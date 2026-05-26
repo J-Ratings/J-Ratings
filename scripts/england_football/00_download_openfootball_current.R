@@ -99,12 +99,18 @@ out_dir <- file.path(
   season_folder
 )
 
-files <- c(
+files_required <- c(
   "1-premierleague.txt",
   "2-championship.txt",
   "3-league1.txt",
   "4-league2.txt"
 )
+
+files_optional <- c(
+  "5-nationalleague.txt"
+)
+
+files <- c(files_required, files_optional)
 
 base_url <- "https://raw.githubusercontent.com/openfootball/england/master"
 
@@ -118,24 +124,51 @@ cat("Output folder:", out_dir, "\n\n")
 
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
+download_results <- data.frame(
+  file = character(),
+  status = character(),
+  stringsAsFactors = FALSE
+)
+
 for (f in files) {
   url <- paste(base_url, season_folder, f, sep = "/")
   dest <- file.path(out_dir, f)
   
-  download_one_file(url, dest)
-}
-
-downloaded_files <- file.path(out_dir, files)
-missing_files <- downloaded_files[!file.exists(downloaded_files)]
-
-if (length(missing_files) > 0) {
-  stop(
-    "Missing downloaded file(s):\n",
-    paste0(" - ", missing_files, collapse = "\n")
+  is_optional <- f %in% files_optional
+  
+  result <- tryCatch(
+    {
+      download_one_file(url, dest)
+      "downloaded"
+    },
+    error = function(e) {
+      if (is_optional) {
+        message("Optional file not downloaded: ", f)
+        message("Reason: ", conditionMessage(e))
+        "missing_optional"
+      } else {
+        stop(e)
+      }
+    }
+  )
+  
+  download_results <- rbind(
+    download_results,
+    data.frame(file = f, status = result, stringsAsFactors = FALSE)
   )
 }
 
-cat("All OpenFootball files downloaded successfully.\n")
+downloaded_required_files <- file.path(out_dir, files_required)
+missing_required_files <- downloaded_required_files[!file.exists(downloaded_required_files)]
+
+if (length(missing_required_files) > 0) {
+  stop(
+    "Missing required downloaded file(s):\n",
+    paste0(" - ", missing_required_files, collapse = "\n")
+  )
+}
+
+cat("OpenFootball download complete.\n")
 cat("Season:", season_folder, "\n")
 cat("Files:\n")
-cat(paste0(" - ", downloaded_files, collapse = "\n"), "\n")
+print(download_results)
