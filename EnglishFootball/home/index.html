@@ -228,7 +228,7 @@
         </div>
       </div>
 
-      <div id="compare-chart">Loading…</div>
+      <div id="compare-chart"></div>
     </div>
 
     <div class="table-wrap">
@@ -687,61 +687,66 @@ function labelStepForRange(y0, y1) {
   }
 
   async function buildComparison(teams) {
-    lastCompared = teams.slice();
+  lastCompared = teams.slice();
 
-    const wrap = document.getElementById('compare-wrap');
-    const chart = document.getElementById('compare-chart');
-    const modeSel = document.getElementById('compare-agg');
+  const wrap = document.getElementById('compare-wrap');
+  const chart = document.getElementById('compare-chart');
+  const modeSel = document.getElementById('compare-agg');
 
-    wrap.style.display = 'block';
-    chart.innerHTML = 'Loading…';
+  wrap.style.display = 'block';
+  chart.innerHTML = '';
 
-    const mode = modeSel ? modeSel.value : COMPARE_AGG_MODE;
-    COMPARE_AGG_MODE = mode;
+  const mode = modeSel ? modeSel.value : COMPARE_AGG_MODE;
+  COMPARE_AGG_MODE = mode;
 
-    const traces = [];
-    compareVisibleSeries = [];
+  const traceItems = [];
+  compareVisibleSeries = [];
 
-    let xmin = null;
-    let xmax = null;
-    let ymin = Infinity;
-    let ymax = -Infinity;
+  let xmin = null;
+  let xmax = null;
+  let ymin = Infinity;
+  let ymax = -Infinity;
 
-    for (const t of teams) {
-      const hist = await fetchHistoryFor(t.id);
-      if (!hist || !hist.length) continue;
+  for (const t of teams) {
+    const hist = await fetchHistoryFor(t.id);
+    if (!hist || !hist.length) continue;
 
-      const raw = hist.map(d => ({
-        x: d.date,
-        y: Number(d.rating),
-        tier: Number(d.tier)
-      }));
+    const raw = hist.map(d => ({
+      x: d.date,
+      y: Number(d.rating),
+      tier: Number(d.tier)
+    }));
 
-      const filtered = applySinceFilter(raw, COMPARE_SINCE_YEAR);
-      const data = aggregate(filtered, mode);
+    const filtered = applySinceFilter(raw, COMPARE_SINCE_YEAR);
+    const data = aggregate(filtered, mode);
 
-      const xs = data.map(pt => pt.x);
-      const ysAll = data.map(pt => pt.y);
-      const ys = ysAll.filter(Number.isFinite);
-      const tiers = data.map(pt => pt.tier ?? '');
+    const xs = data.map(pt => pt.x);
+    const ysAll = data.map(pt => pt.y);
+    const ys = ysAll.filter(Number.isFinite);
+    const tiers = data.map(pt => pt.tier ?? '');
 
-      if (!xs.length || !ys.length) continue;
+    if (!xs.length || !ys.length) continue;
 
-      compareVisibleSeries.push(data);
+    compareVisibleSeries.push(data);
 
-      for (const pt of data) {
-        if (!pt.x || !Number.isFinite(pt.y)) continue;
+    let finalRating = -Infinity;
 
-        const d = new Date(pt.x);
+    for (const pt of data) {
+      if (!pt.x || !Number.isFinite(pt.y)) continue;
 
-        if (!xmin || d < xmin) xmin = d;
-        if (!xmax || d > xmax) xmax = d;
+      const d = new Date(pt.x);
 
-        ymin = Math.min(ymin, pt.y);
-        ymax = Math.max(ymax, pt.y);
-      }
+      if (!xmin || d < xmin) xmin = d;
+      if (!xmax || d > xmax) xmax = d;
 
-      traces.push({
+      ymin = Math.min(ymin, pt.y);
+      ymax = Math.max(ymax, pt.y);
+      finalRating = pt.y;
+    }
+
+    traceItems.push({
+      finalRating,
+      trace: {
         type: 'scatter',
         name: t.name,
         x: xs,
@@ -749,78 +754,96 @@ function labelStepForRange(y0, y1) {
         customdata: tiers,
         mode: 'lines',
         line: {
-          width: 3,
+          width: 4,
           shape: 'linear',
           color: getDisplayColour(t.name)
         },
         hovertemplate: '%{x}<br>%{y:.0f} Elo<br>Tier %{customdata}<extra>' + t.name + '</extra>',
         connectgaps: true
-      });
-    }
-
-    if (!traces.length) {
-      chart.innerHTML = 'No history found.';
-      return;
-    }
-
-    const pad = (ymax - ymin) * 0.12 || 10;
-    const y0 = ymin - pad;
-    const y1 = ymax + pad;
-    const step = labelStepForRange(y0, y1);
-
-    const cs = getComputedStyle(document.body);
-
-    const layout = {
-      margin: { l: 60, r: 20, t: 10, b: 45 },
-
-      xaxis: {
-        type: 'date',
-        showgrid: false
-      },
-
-      yaxis: {
-        title: 'Rating',
-        showgrid: false,
-        zeroline: false,
-        ticks: 'outside',
-        ticklen: 4,
-        tickmode: 'array',
-        tickvals: [],
-        ticktext: []
-      },
-
-      legend: { orientation: 'h' },
-      paper_bgcolor: cs.backgroundColor,
-      plot_bgcolor: cs.backgroundColor,
-      font: { color: cs.color, size: 14 },
-      shapes: makeCompareYGridShapes(y0, y1, step)
-    };
-
-    Plotly.newPlot(chart, traces, layout, {
-      staticPlot: IS_TOUCH,
-      displayModeBar: false,
-      responsive: true
-    }).then(() => {
-      const gd = document.getElementById('compare-chart');
-
-      if (xmin && xmax) {
-        adjustCompareYToVisible(xmin.toISOString(), xmax.toISOString());
-      }
-
-      if (!gd._jrCompareHandlersAttached) {
-        gd.on('plotly_relayout', ev => {
-          const x0 = ev['xaxis.range[0]'] ?? (ev['xaxis.range'] && ev['xaxis.range'][0]);
-          const x1 = ev['xaxis.range[1]'] ?? (ev['xaxis.range'] && ev['xaxis.range'][1]);
-
-          if (x0 && x1) {
-            adjustCompareYToVisible(x0, x1);
-          }
-        });
-
-        gd._jrCompareHandlersAttached = true;
       }
     });
   }
+
+  if (!traceItems.length) {
+    chart.innerHTML = 'No history found.';
+    return;
+  }
+
+  traceItems.sort((a, b) => b.finalRating - a.finalRating);
+
+  const traces = traceItems.map(item => item.trace);
+
+  const pad = (ymax - ymin) * 0.12 || 10;
+  const y0 = ymin - pad;
+  const y1 = ymax + pad;
+  const step = labelStepForRange(y0, y1);
+
+  const cs = getComputedStyle(document.body);
+
+  const layout = {
+    margin: { l: 60, r: 300, t: 10, b: 45 },
+
+    xaxis: {
+      type: 'date',
+      showgrid: false
+    },
+
+    yaxis: {
+      title: 'Rating',
+      showgrid: false,
+      zeroline: false,
+      ticks: 'outside',
+      ticklen: 4,
+      tickmode: 'array',
+      tickvals: [],
+      ticktext: []
+    },
+
+    legend: {
+      orientation: 'v',
+      x: 1.02,
+      xanchor: 'left',
+      y: 1,
+      yanchor: 'top',
+      font: {
+        size: 17,
+        color: cs.color
+      },
+      itemwidth: 45,
+      traceorder: 'normal'
+    },
+
+    paper_bgcolor: cs.backgroundColor,
+    plot_bgcolor: cs.backgroundColor,
+    font: { color: cs.color, size: 14 },
+    shapes: makeCompareYGridShapes(y0, y1, step)
+  };
+
+  Plotly.newPlot(chart, traces, layout, {
+    staticPlot: IS_TOUCH,
+    displayModeBar: false,
+    responsive: true
+  }).then(() => {
+    const gd = document.getElementById('compare-chart');
+
+    if (xmin && xmax) {
+      adjustCompareYToVisible(xmin.toISOString(), xmax.toISOString());
+    }
+
+    if (!gd._jrCompareHandlersAttached) {
+      gd.on('plotly_relayout', ev => {
+        const x0 = ev['xaxis.range[0]'] ?? (ev['xaxis.range'] && ev['xaxis.range'][0]);
+        const x1 = ev['xaxis.range[1]'] ?? (ev['xaxis.range'] && ev['xaxis.range'][1]);
+
+        if (x0 && x1) {
+          adjustCompareYToVisible(x0, x1);
+        }
+      });
+
+      gd._jrCompareHandlersAttached = true;
+    }
+  });
+}
 
   function resetCompareControls() {
     COMPARE_SINCE_YEAR = null;
