@@ -18,23 +18,147 @@
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
-    .controls { display:flex; flex-direction:column; gap:10px; padding:14px 18px; border-bottom:1px solid var(--border, #444); }
-    .row { display:flex; gap:8px; align-items:center; width:100%; }
-    .row input[type="text"] { flex:1; min-width:220px; padding:10px; border-radius:8px; border:1px solid var(--border, #444); background:transparent; color:inherit; }
-    .btn { background:transparent; border:1px solid var(--border, #444); color:inherit; padding:8px 12px; border-radius:6px; cursor:pointer; }
-    .btn:hover { background:rgba(255,255,255,0.05); }
-    .muted-note { opacity:.8; font-size:.9rem; }
-    .toolbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-    .suggest { position:relative; flex:1; }
-    .suggest-list {
-      position:absolute; left:0; right:0; top:100%;
-      max-height:220px; overflow:auto; margin-top:4px;
-      border:1px solid var(--border, #444); background:inherit; border-radius:6px;
-      display:none; z-index:20;
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border, #444);
     }
-    .suggest-item { padding:8px 10px; cursor:pointer; }
-    .suggest-item:hover { background:rgba(255,255,255,.05); }
-    #chart { height:520px; }
+
+    .row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .row input[type="text"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border, #444);
+      background: transparent;
+      color: inherit;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid var(--border, #444);
+      color: inherit;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn:hover { background: rgba(255,255,255,0.05); }
+
+    .muted-note {
+      opacity: .8;
+      font-size: .9rem;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .chart-toolbar-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chart-toolbar-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chart-toolbar-top label {
+      margin-right: 6px;
+      font-size: 1.05rem;
+    }
+
+    .range-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .range-btn {
+      padding: 8px 10px;
+      border: 1px solid #2b2f36;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      color: inherit;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .range-btn:hover { opacity: 0.92; }
+
+    .range-btn.is-active {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(200,200,200,0.55);
+      font-weight: 700;
+    }
+
+    .suggest {
+      position: relative;
+      flex: 1;
+    }
+
+    .suggest-list {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      max-height: 220px;
+      overflow: auto;
+      margin-top: 4px;
+      border: 1px solid var(--border, #444);
+      background: inherit;
+      border-radius: 6px;
+      display: none;
+      z-index: 20;
+    }
+
+    .suggest-item {
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+
+    .suggest-item:hover {
+      background: rgba(255,255,255,.05);
+    }
+
+    #chart { height: 520px; }
+
+    @media (max-width: 600px) {
+      #chart { height: 420px; }
+
+      .toolbar {
+        flex-direction: column;
+      }
+
+      .row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .suggest {
+        width: 100%;
+      }
+
+      .row input[type="text"] {
+        min-width: 0;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -64,13 +188,22 @@
     <div class="controls">
       <div class="toolbar">
         <div id="rows" style="flex:1"></div>
-        <div style="display:flex; gap:8px; align-items:center">
-          <label for="agg">View:</label>
-          <select id="agg">
-            <option value="daily">Daily</option>
-            <option value="monthly" selected>Monthly</option>
-            <option value="yearly">Yearly</option>
-          </select>
+
+        <div class="chart-toolbar-stack">
+          <div class="chart-toolbar-top">
+            <label for="agg">View:</label>
+            <select id="agg">
+              <option value="daily">Daily</option>
+              <option value="monthly" selected>Monthly</option>
+              <option value="yearly">Yearly</option>
+            </select>
+          </div>
+
+          <div class="range-buttons" role="group" aria-label="Time range">
+            <button type="button" class="range-btn is-active" data-since="">All</button>
+            <button type="button" class="range-btn" data-since="2000">Since 2000</button>
+            <button type="button" class="range-btn" data-since="2020">Since 2020</button>
+          </div>
         </div>
       </div>
 
@@ -79,6 +212,7 @@
         <button id="create" class="btn" type="button">Create</button>
         <button id="clear" class="btn" type="button">Clear</button>
       </div>
+
       <div class="muted-note">Up to 15 teams. Start typing a name, pick a suggestion, then Create.</div>
     </div>
 
@@ -91,6 +225,7 @@
 <script>
   const TEAMS_URL = '../data/teams.json';
   const HIST_URL  = id => `../data/history/${encodeURIComponent(id)}.json`;
+  const COLOURS_URL = '../team-colours.json';
   const MAX_TEAMS = 15;
   const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
 
@@ -99,6 +234,10 @@
     inputs: [],
     loaded: []
   };
+
+  let TEAM_COLOURS = {};
+  let SINCE_YEAR = null;
+  let AGG_MODE = 'monthly';
 
   function normalise(series, dedupeByDay = false) {
     const s = series
@@ -118,8 +257,10 @@
     for (const p of s) {
       const d = new Date(p.x);
       const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
       if (key !== lastKey) out.push(p);
       else out[out.length - 1] = p;
+
       lastKey = key;
     }
 
@@ -136,6 +277,7 @@
       const key = (mode === 'monthly')
         ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
         : `${d.getFullYear()}`;
+
       (buckets[key] ||= []).push(p);
     }
 
@@ -144,10 +286,87 @@
       const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
       const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
       const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
+
       return { x, y: avg, tournament: lastTournament };
     });
 
     return normalise(out, false);
+  }
+
+  function applySinceFilter(series, sinceYear) {
+    if (!sinceYear) return series;
+    const start = new Date(`${sinceYear}-01-01T00:00:00Z`).getTime();
+    return series.filter(p => new Date(p.x).getTime() >= start);
+  }
+
+  async function loadColours() {
+    try {
+      const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
+      if (!res.ok) {
+        TEAM_COLOURS = {};
+        return;
+      }
+
+      TEAM_COLOURS = await res.json();
+    } catch {
+      TEAM_COLOURS = {};
+    }
+  }
+
+  function hexToRgb(hex) {
+    const clean = String(hex || '').trim();
+    const match = clean.match(/^#([0-9a-f]{6})$/i);
+    if (!match) return null;
+
+    const value = match[1];
+
+    return {
+      r: parseInt(value.slice(0, 2), 16),
+      g: parseInt(value.slice(2, 4), 16),
+      b: parseInt(value.slice(4, 6), 16)
+    };
+  }
+
+  function rgbToHex(r, g, b) {
+    return '#' + [r, g, b]
+      .map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0'))
+      .join('');
+  }
+
+  function relativeLuminance({ r, g, b }) {
+    const toLinear = c => {
+      const s = c / 255;
+      return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+    };
+
+    const R = toLinear(r);
+    const G = toLinear(g);
+    const B = toLinear(b);
+
+    return 0.2126 * R + 0.7152 * G + 0.0722 * B;
+  }
+
+  function mixWithWhite(rgb, amount) {
+    return {
+      r: rgb.r + (255 - rgb.r) * amount,
+      g: rgb.g + (255 - rgb.g) * amount,
+      b: rgb.b + (255 - rgb.b) * amount
+    };
+  }
+
+  function getDisplayColour(teamName) {
+    const fallback = '#2F80ED';
+    const raw = TEAM_COLOURS[teamName] || fallback;
+    const rgb = hexToRgb(raw);
+
+    if (!rgb) return fallback;
+
+    const lum = relativeLuminance(rgb);
+
+    if (lum >= 0.05) return raw;
+
+    const lifted = mixWithWhite(rgb, 0.45);
+    return rgbToHex(lifted.r, lifted.g, lifted.b);
   }
 
   function attachAutocomplete(input) {
@@ -160,28 +379,47 @@
     list.className = 'suggest-list';
     wrap.appendChild(list);
 
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
     function render(items) {
       if (!items.length) {
         list.style.display = 'none';
         list.innerHTML = '';
         return;
       }
-      list.innerHTML = items.map(n => `<div class="suggest-item" data-name="${String(n).replace(/"/g, '&quot;')}">${n}</div>`).join('');
+
+      list.innerHTML = items
+        .map(n => `<div class="suggest-item" data-name="${escapeHtml(n)}">${escapeHtml(n)}</div>`)
+        .join('');
+
       list.style.display = 'block';
     }
 
     input.addEventListener('input', () => {
       const q = input.value.trim().toLowerCase();
-      if (!q) { render([]); return; }
+
+      if (!q) {
+        render([]);
+        return;
+      }
+
       const names = state.teams.map(t => t.name);
       const starts = names.filter(n => n.toLowerCase().startsWith(q));
       const contains = names.filter(n => !n.toLowerCase().startsWith(q) && n.toLowerCase().includes(q));
+
       render(starts.concat(contains).slice(0, 12));
     });
 
     list.addEventListener('mousedown', e => {
       const item = e.target.closest('.suggest-item');
       if (!item) return;
+
       input.value = item.dataset.name;
       list.style.display = 'none';
     });
@@ -189,15 +427,23 @@
     input.addEventListener('keydown', e => {
       if (e.key === 'Enter') {
         const first = list.querySelector('.suggest-item');
+
         if (first) {
           input.value = first.dataset.name;
           list.style.display = 'none';
         }
       }
-      if (e.key === 'Escape') list.style.display = 'none';
+
+      if (e.key === 'Escape') {
+        list.style.display = 'none';
+      }
     });
 
-    input.addEventListener('blur', () => setTimeout(() => { list.style.display = 'none'; }, 120));
+    input.addEventListener('blur', () => {
+      setTimeout(() => {
+        list.style.display = 'none';
+      }, 120);
+    });
   }
 
   function makeRow() {
@@ -217,6 +463,7 @@
     remove.className = 'btn';
     remove.type = 'button';
     remove.textContent = 'Remove';
+
     remove.addEventListener('click', () => {
       rows.removeChild(wrap);
       state.inputs = state.inputs.filter(r => r.el !== wrap);
@@ -236,6 +483,16 @@
     state.loaded = [];
     document.getElementById('add').disabled = false;
     document.getElementById('chart').textContent = 'Cleared.';
+
+    SINCE_YEAR = null;
+    AGG_MODE = 'monthly';
+
+    const agg = document.getElementById('agg');
+    if (agg) agg.value = AGG_MODE;
+
+    document.querySelectorAll('.range-btn').forEach(btn => {
+      btn.classList.toggle('is-active', btn.getAttribute('data-since') === '');
+    });
   }
 
   async function loadTeams() {
@@ -246,21 +503,29 @@
 
   function majorGridShapes(ymin, ymax) {
     const shapes = [];
+
     for (let v = ymin; v <= ymax; v += 100) {
       shapes.push({
         type: 'line',
-        xref: 'paper', x0: 0, x1: 1,
-        y0: v, y1: v,
+        xref: 'paper',
+        x0: 0,
+        x1: 1,
+        y0: v,
+        y1: v,
         line: { width: 1, color: 'rgba(128,128,128,0.35)' },
         layer: 'below'
       });
     }
+
     return shapes;
   }
 
   function drawChart() {
     const el = document.getElementById('chart');
-    if (el.textContent && el.textContent.includes('Loading')) el.textContent = '';
+
+    if (el.textContent && el.textContent.includes('Loading')) {
+      el.textContent = '';
+    }
 
     if (!state.loaded.length) {
       el.textContent = 'No teams selected.';
@@ -268,30 +533,40 @@
     }
 
     const mode = document.getElementById('agg').value;
+    AGG_MODE = mode;
 
-    const traces = state.loaded.map(s => {
-      const data = aggregate(s.daily, mode);
+    const traces = [];
+
+    for (const s of state.loaded) {
+      const filtered = applySinceFilter(s.daily, SINCE_YEAR);
+      const data = aggregate(filtered, mode);
+
       const xs = data.map(p => p.x);
-      const ys = data.map(p => p.y);
+      const ysAll = data.map(p => p.y);
+      const ys = ysAll.filter(Number.isFinite);
       const tournaments = data.map(p => p.tournament || '');
 
-      return {
+      if (!xs.length || !ys.length) continue;
+
+      traces.push({
         type: 'scatter',
         name: s.name,
         x: xs,
-        y: ys,
+        y: ysAll,
         customdata: tournaments,
-        mode: (mode === 'daily') ? 'lines' : 'lines+markers',
-        line: { width: 2, shape: 'linear' },
-        marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
-        hovertemplate: (mode === 'daily')
-          ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra></extra>'
-          : '%{x}<br>%{y:.0f} Elo<extra></extra>',
+        mode: 'lines',
+        line: {
+          width: 3,
+          shape: 'linear',
+          color: getDisplayColour(s.name)
+        },
+        hovertemplate: '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra>' + s.name + '</extra>',
         connectgaps: true
-      };
-    });
+      });
+    }
 
     const allY = traces.flatMap(t => t.y).filter(Number.isFinite);
+
     if (!allY.length) {
       el.textContent = 'No games';
       return;
@@ -301,15 +576,16 @@
     const ymax = Math.ceil(Math.max(...allY) / 100) * 100;
 
     const cs = getComputedStyle(document.body);
+
     Plotly.newPlot('chart', traces, {
-      margin: { l: 50, r: 20, t: 10, b: 40 },
+      margin: { l: 60, r: 20, t: 10, b: 45 },
       xaxis: { type: 'date' },
       yaxis: { title: 'Rating' },
       paper_bgcolor: cs.backgroundColor,
       plot_bgcolor: cs.backgroundColor,
-      font: { color: cs.color },
+      font: { color: cs.color, size: 14 },
       shapes: majorGridShapes(ymin, ymax),
-      legend: { x: 1, y: 0, bgcolor: 'rgba(0,0,0,0)' }
+      legend: { orientation: 'h' }
     }, {
       staticPlot: IS_TOUCH,
       displayModeBar: false,
@@ -320,6 +596,7 @@
   async function createChart() {
     const names = state.inputs.map(r => r.input.value.trim()).filter(Boolean);
     const uniq = [...new Set(names)];
+
     if (!uniq.length) {
       alert('Please add at least one team');
       return;
@@ -336,37 +613,75 @@
       return;
     }
 
+    document.getElementById('chart').textContent = 'Loading…';
+
     const results = await Promise.all(lookups.map(async ({ name, id }) => {
-      const res = await fetch(HIST_URL(id), { cache: 'no-cache' });
-      if (!res.ok) return null;
-      const hist = await res.json();
+      try {
+        const res = await fetch(HIST_URL(id), { cache: 'no-cache' });
+        if (!res.ok) return null;
 
-      const daily = normalise(hist.map(d => ({
-        x: d.date,
-        y: Number(d.rating),
-        tournament: d.tournament || ''
-      })), true);
+        const hist = await res.json();
 
-      if (!daily.length) return null;
-      return { name, daily };
+        const daily = normalise(hist.map(d => ({
+          x: d.date,
+          y: Number(d.rating),
+          tournament: d.tournament || ''
+        })), true);
+
+        if (!daily.length) return null;
+
+        return { name, daily };
+      } catch {
+        return null;
+      }
     }));
 
     state.loaded = results.filter(Boolean);
     drawChart();
   }
 
+  function setupRangeButtons() {
+    document.querySelectorAll('.range-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        const v = btn.getAttribute('data-since');
+        SINCE_YEAR = v ? Number(v) : null;
+
+        drawChart();
+      });
+    });
+  }
+
   window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('add').addEventListener('click', makeRow);
     document.getElementById('clear').addEventListener('click', clearAll);
     document.getElementById('create').addEventListener('click', createChart);
-    document.getElementById('agg').addEventListener('change', drawChart);
 
-    loadTeams()
-      .then(() => { makeRow(); })
+    document.getElementById('agg').addEventListener('change', e => {
+      AGG_MODE = e.target.value;
+      drawChart();
+    });
+
+    setupRangeButtons();
+
+    Promise.all([
+      loadTeams(),
+      loadColours()
+    ])
+      .then(() => {
+        makeRow();
+        document.getElementById('chart').textContent = 'Select teams, then Create.';
+      })
       .catch(e => {
         console.error(e);
+
         const note = document.querySelector('.muted-note');
-        if (note) note.textContent = 'Could not load team list. Check data path or run via a local server.';
+        if (note) {
+          note.textContent = 'Could not load team list. Check data path or run via a local server.';
+        }
+
         makeRow();
       });
   });
