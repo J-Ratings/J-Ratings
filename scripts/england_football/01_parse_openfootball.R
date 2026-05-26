@@ -1,5 +1,3 @@
-# scripts/england_football/01_parse_openfootball.R
-
 options(stringsAsFactors = FALSE)
 
 # -----------------------------
@@ -35,7 +33,9 @@ out_file <- file.path(
   "england_leagues_1_to_4_all_seasons.csv"
 )
 
-# ---------------- helpers ----------------
+# -----------------------------
+# Helpers
+# -----------------------------
 
 trim <- function(x) {
   gsub("^\\s+|\\s+$", "", x)
@@ -92,12 +92,20 @@ result_code <- function(hg, ag) {
   }
 }
 
-# ---------------- parser ----------------
+normalise_openfootball_season_label <- function(season_folder) {
+  # Converts folder style 2025-26 to file/header style 2025/26
+  gsub("-", "/", season_folder, fixed = TRUE)
+}
+
+# -----------------------------
+# Parser
+# -----------------------------
 
 parse_comp_file <- function(txt_path, league_label) {
-  lines <- readLines(txt_path, warn = FALSE)
+  lines <- readLines(txt_path, warn = FALSE, encoding = "UTF-8")
   
   hdr_idx <- grep("^\\s*=\\s*.*\\b\\d{4}/\\d{2,4}\\b\\s*$", lines)
+  
   if (length(hdr_idx) == 0) {
     stop("Could not find season header in: ", txt_path)
   }
@@ -115,41 +123,78 @@ parse_comp_file <- function(txt_path, league_label) {
   out_res    <- character()
   out_score  <- character()
   
-  date_pat_old_bracket <- "^\\s*\\[[A-Za-z]{3}\\s+([A-Za-z]{3})/(\\d{1,2})\\]\\s*$"
-  date_pat_new_plain   <- "^\\s*[A-Za-z]{3}\\s+([A-Za-z]{3})/(\\d{1,2})(?:\\s+(\\d{4}))?\\s*$"
+  # Supports:
+  #   [Sat Aug/15]
+  #   [Sat Aug 15]
+  #   Sat Aug/15
+  #   Sat Aug 15
+  #   Fri Aug 15 2025
+  date_pat_old_bracket <- "^\\s*\\[[A-Za-z]{3}\\s+([A-Za-z]{3})(?:/|\\s+)(\\d{1,2})(?:\\s+(\\d{4}))?\\]\\s*$"
+  date_pat_new_plain   <- "^\\s*[A-Za-z]{3}\\s+([A-Za-z]{3})(?:/|\\s+)(\\d{1,2})(?:\\s+(\\d{4}))?\\s*$"
   
-  match_pat_old   <- "^\\s*(?:\\d{1,2}\\.\\d{2}\\s+)?(.+?)\\s+(\\d+)-(\\d+)(?:\\s+\\([^)]*\\))?\\s+(.+?)\\s*$"
-  match_pat_new_v <- "^\\s*(?:\\d{1,2}\\.\\d{2}\\s+)?(.+?)\\s+v\\s+(.+?)\\s+(\\d+)-(\\d+)(?:\\s+\\([^)]*\\))?\\s*$"
-  match_pat_pen   <- "^\\s*(?:\\d{1,2}\\.\\d{2}\\s+)?(.+?)\\s+(\\d+)-(\\d+)\\s+pen\\.?\\s+(\\d+)-(\\d+)(?:\\s+a\\.e\\.t\\.)?(?:\\s+\\([^)]*\\))?\\s+(.+?)\\s*$"
-  match_pat_aet   <- "^\\s*(?:\\d{1,2}\\.\\d{2}\\s+)?(.+?)\\s+(\\d+)-(\\d+)\\s+a\\.e\\.t\\.(?:\\s+\\([^)]*\\))?\\s+(.+?)\\s*$"
+  # Supports:
+  #   20.00  Team A v Team B 2-1
+  #   20:00  Team A v Team B 2-1
+  #          Team A v Team B 2-1
+  #   Team A 2-1 Team B
+  time_pat <- "(?:\\d{1,2}[:.]\\d{2}\\s+)?"
+  
+  match_pat_old <- paste0(
+    "^\\s*", time_pat,
+    "(.+?)\\s+(\\d+)-(\\d+)(?:\\s+\\([^)]*\\))?\\s+(.+?)\\s*$"
+  )
+  
+  match_pat_new_v <- paste0(
+    "^\\s*", time_pat,
+    "(.+?)\\s+v\\s+(.+?)\\s+(\\d+)-(\\d+)(?:\\s+\\([^)]*\\))?\\s*$"
+  )
+  
+  match_pat_pen <- paste0(
+    "^\\s*", time_pat,
+    "(.+?)\\s+(\\d+)-(\\d+)\\s+pen\\.?\\s+(\\d+)-(\\d+)(?:\\s+a\\.e\\.t\\.)?(?:\\s+\\([^)]*\\))?\\s+(.+?)\\s*$"
+  )
+  
+  match_pat_aet <- paste0(
+    "^\\s*", time_pat,
+    "(.+?)\\s+(\\d+)-(\\d+)\\s+a\\.e\\.t\\.(?:\\s+\\([^)]*\\))?\\s+(.+?)\\s*$"
+  )
   
   for (ln in lines) {
     ln <- gsub("\t", " ", ln)
+    ln <- gsub("\u00a0", " ", ln, fixed = TRUE)
     
     if (grepl("^\\s*#", ln)) next
     if (grepl("^\\s*==", ln)) next
     if (grepl("Matchday", ln, ignore.case = TRUE)) next
     if (trim(ln) == "") next
     
-    # Old date style: [Sat Aug/15]
+    # Old/new bracket date style
     if (grepl(date_pat_old_bracket, ln)) {
       mon <- sub(date_pat_old_bracket, "\\1", ln)
       dd  <- as.integer(sub(date_pat_old_bracket, "\\2", ln))
-      mm  <- month_num(mon)
+      yy_txt <- sub(date_pat_old_bracket, "\\3", ln)
+      mm <- month_num(mon)
       
-      yy <- if (!is.na(mm) && mm >= 8) yrs$start_year else yrs$end_year
+      yy <- suppressWarnings(as.integer(yy_txt))
+      
+      if (is.na(yy)) {
+        yy <- if (!is.na(mm) && mm >= 8) yrs$start_year else yrs$end_year
+      }
+      
       current_date <- as.Date(sprintf("%04d-%02d-%02d", yy, mm, dd))
       next
     }
     
-    # New date style: Sat Aug/17 or Wed Jan/1 2025
-    if (grepl(date_pat_new_plain, ln) && !grepl("^\\s*\\d{1,2}\\.\\d{2}\\s+", ln)) {
+    # New plain date style
+    # Prevent timed match rows like "20:00 Team A..." from being read as dates.
+    if (grepl(date_pat_new_plain, ln) && !grepl("^\\s*\\d{1,2}[:.]\\d{2}\\s+", ln)) {
       mon <- sub(date_pat_new_plain, "\\1", ln)
       dd  <- as.integer(sub(date_pat_new_plain, "\\2", ln))
       yy_txt <- sub(date_pat_new_plain, "\\3", ln)
       mm <- month_num(mon)
       
       yy <- suppressWarnings(as.integer(yy_txt))
+      
       if (is.na(yy)) {
         yy <- if (!is.na(mm) && mm >= 8) yrs$start_year else yrs$end_year
       }
@@ -254,7 +299,9 @@ parse_comp_file <- function(txt_path, league_label) {
   )
 }
 
-# ---------------- league file map ----------------
+# -----------------------------
+# League file map
+# -----------------------------
 
 file_to_league <- c(
   "1-premierleague.txt" = "Premier League",
@@ -268,12 +315,30 @@ file_to_league <- c(
 
 candidate_files <- names(file_to_league)
 
-# ---------------- current season ----------------
+# -----------------------------
+# Current season
+# -----------------------------
 
 season_folder <- Sys.getenv(
   "OPENFOOTBALL_SEASON",
   unset = current_openfootball_season()
 )
+
+expected_season_folder <- current_openfootball_season()
+
+cat("System date:", as.character(Sys.Date()), "\n")
+cat("Repo dir:", repo_dir, "\n")
+cat("OPENFOOTBALL_SEASON env var:", Sys.getenv("OPENFOOTBALL_SEASON", unset = "<not set>"), "\n")
+cat("Expected OpenFootball season from current date:", expected_season_folder, "\n")
+cat("Using OpenFootball season folder:", season_folder, "\n")
+
+if (!identical(season_folder, expected_season_folder)) {
+  warning(
+    "Using season folder '", season_folder,
+    "' but current date implies '", expected_season_folder, "'. ",
+    "This may be deliberate if OPENFOOTBALL_SEASON is set."
+  )
+}
 
 season_dir <- file.path(source_root_dir, season_folder)
 
@@ -281,10 +346,11 @@ if (!dir.exists(season_dir)) {
   stop("Missing OpenFootball season folder: ", season_dir)
 }
 
-cat("OpenFootball season folder:", season_folder, "\n")
 cat("Source folder:", season_dir, "\n")
 
-# ---------------- parse current season only ----------------
+# -----------------------------
+# Parse current season only
+# -----------------------------
 
 all_df_list <- list()
 k <- 1L
@@ -304,8 +370,19 @@ for (cf in candidate_files) {
   )
   
   if (!is.null(tmp) && nrow(tmp) > 0) {
+    cat(
+      "Parsed ", cf,
+      " | League: ", league_label,
+      " | Rows: ", nrow(tmp),
+      " | Date range: ", min(tmp$Date), " to ", max(tmp$Date),
+      "\n",
+      sep = ""
+    )
+    
     all_df_list[[k]] <- tmp
     k <- k + 1L
+  } else {
+    cat("Parsed ", cf, " | League: ", league_label, " | Rows: 0\n", sep = "")
   }
 }
 
@@ -323,13 +400,53 @@ if (length(current_seasons) != 1L) {
 }
 
 current_season <- current_seasons[[1]]
+current_max_date <- max(as.Date(current_df$Date), na.rm = TRUE)
 
 cat("Parsed current season:", current_season, "\n")
 cat("Current-season rows parsed:", nrow(current_df), "\n")
+cat("Current-season latest parsed date:", as.character(current_max_date), "\n")
 
-# ---------------- merge current season into combined CSV ----------------
+# -----------------------------
+# Hard sanity checks for the completed 2025/26 season
+# -----------------------------
+
+if (current_season == "2025/26") {
+  pl_rows <- current_df[current_df$League == "Premier League", ]
+  
+  cat("Premier League 2025/26 parsed rows:", nrow(pl_rows), "\n")
+  
+  if (nrow(pl_rows) != 380L) {
+    stop(
+      "Premier League 2025/26 should have 380 parsed rows, but parser found ",
+      nrow(pl_rows),
+      ". Refusing to continue."
+    )
+  }
+  
+  pl_max_date <- max(as.Date(pl_rows$Date), na.rm = TRUE)
+  
+  if (pl_max_date < as.Date("2026-05-24")) {
+    stop(
+      "Premier League 2025/26 does not parse through 2026-05-24. ",
+      "Latest parsed Premier League date: ", pl_max_date,
+      ". Refusing to continue."
+    )
+  }
+}
+
+# -----------------------------
+# Merge current season into combined CSV
+# -----------------------------
 
 required_cols <- c("Season", "League", "Date", "Home", "Away", "Result", "Score")
+
+current_df$Date <- as.character(current_df$Date)
+
+new_current_max_date <- max(as.Date(current_df$Date), na.rm = TRUE)
+new_current_rows <- nrow(current_df)
+
+cat("New parsed current-season max date:", as.character(new_current_max_date), "\n")
+cat("New parsed current-season rows:", new_current_rows, "\n")
 
 if (file.exists(out_file)) {
   old_df <- read.csv(out_file, stringsAsFactors = FALSE)
@@ -340,15 +457,58 @@ if (file.exists(out_file)) {
   }
   
   old_df <- old_df[, required_cols]
+  old_df$Date <- as.character(old_df$Date)
   
-  old_rows_before <- nrow(old_df)
-  old_df <- old_df[old_df$Season != current_season, ]
-  removed_rows <- old_rows_before - nrow(old_df)
+  old_current_df <- old_df[old_df$Season == current_season, ]
+  old_other_df <- old_df[old_df$Season != current_season, ]
+  
+  old_current_rows <- nrow(old_current_df)
+  old_current_max_date <- if (old_current_rows > 0) {
+    max(as.Date(old_current_df$Date), na.rm = TRUE)
+  } else {
+    as.Date(NA)
+  }
   
   cat("Existing combined CSV:", out_file, "\n")
-  cat("Rows removed for ", current_season, ": ", removed_rows, "\n", sep = "")
+  cat("Old current-season rows:", old_current_rows, "\n")
+  cat("Old current-season max date:", as.character(old_current_max_date), "\n")
   
-  all_df <- rbind(old_df, current_df)
+  if (
+    old_current_rows > 0 &&
+    !is.na(old_current_max_date) &&
+    !is.na(new_current_max_date) &&
+    new_current_max_date < old_current_max_date
+  ) {
+    stop(
+      "Refusing to overwrite current season with older data.\n",
+      "Season: ", current_season, "\n",
+      "Old max date: ", old_current_max_date, "\n",
+      "New max date: ", new_current_max_date, "\n",
+      "This usually means the parser has missed rows or the downloaded source is incomplete."
+    )
+  }
+  
+  if (
+    old_current_rows > 0 &&
+    new_current_rows < old_current_rows &&
+    !is.na(old_current_max_date) &&
+    !is.na(new_current_max_date) &&
+    new_current_max_date <= old_current_max_date
+  ) {
+    stop(
+      "Refusing to overwrite current season with fewer rows.\n",
+      "Season: ", current_season, "\n",
+      "Old rows: ", old_current_rows, "\n",
+      "New rows: ", new_current_rows, "\n",
+      "Old max date: ", old_current_max_date, "\n",
+      "New max date: ", new_current_max_date, "\n"
+    )
+  }
+  
+  cat("Rows removed for ", current_season, ": ", old_current_rows, "\n", sep = "")
+  cat("Rows added for ", current_season, ": ", new_current_rows, "\n", sep = "")
+  
+  all_df <- rbind(old_other_df, current_df)
 } else {
   cat("No existing combined CSV found. Creating a new one.\n")
   all_df <- current_df
@@ -363,4 +523,5 @@ cat("\nWrote:", out_file, "\n")
 cat("Total rows:", nrow(all_df), "\n")
 cat("Current season:", current_season, "\n")
 cat("Current-season rows:", nrow(current_df), "\n")
+cat("Current-season latest date:", as.character(max(as.Date(current_df$Date), na.rm = TRUE)), "\n")
 cat("Leagues in file:", paste(sort(unique(all_df$League)), collapse = ", "), "\n")
