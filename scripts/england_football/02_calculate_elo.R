@@ -347,6 +347,37 @@ team_alias_map <- c(
   "Newport County AFC" = "Newport County"
 )
 
+
+team_alias_map <- c(
+  team_alias_map,
+  "Accrington" = "Accrington Stanley",
+  "Aldershot" = "Aldershot Town",
+  "Bristol Rvs" = "Bristol Rovers",
+  "Burton" = "Burton Albion",
+  "Bury" = "Bury",
+  "Cambridge" = "Cambridge United",
+  "Cheltenham" = "Cheltenham Town",
+  "Dag and Red" = "Dagenham & Redbridge",
+  "Dagenham and Redbridge" = "Dagenham & Redbridge",
+  "Ebbsfleet" = "Ebbsfleet United",
+  "Forest Green" = "Forest Green Rovers",
+  "Gravesend" = "Ebbsfleet United",
+  "Grays" = "Grays Athletic",
+  "Hayes & Yeading" = "Hayes & Yeading United",
+  "Hereford" = "Hereford United",
+  "Hyde" = "Hyde United",
+  "Kidderminster" = "Kidderminster Harriers",
+  "King's Lynn" = "King's Lynn Town",
+  "Lincoln" = "Lincoln City",
+  "Northwich" = "Northwich Victoria",
+  "Oxford" = "Oxford United",
+  "Rochdale" = "Rochdale",
+  "Rushden & D" = "Rushden & Diamonds",
+  "Salisbury" = "Salisbury City",
+  "Stockport" = "Stockport County",
+  "Tranmere" = "Tranmere Rovers"
+)
+
 is_clearly_bad_team_name <- function(x) {
   x <- trimws(as.character(x))
   

@@ -1,178 +1,161 @@
 Team,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRating,IsSeed,Pass,EntryMode,BaseK,NewK,NewGames,SeedTier1,SeedTier2,SeedTier3,SeedTier4,SeedTier5,RetroGamesN
-Arsenal,3030,1304,Premier League,1,1992-08-15,2769.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Manchester City,3010,1252,Premier League,1,1992-08-17,2734.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Liverpool,2921,1304,Premier League,1,1992-08-16,2758.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Manchester United,2918,1304,Premier League,1,1992-08-15,2898.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Aston Villa,2904,1328,Premier League,1,1992-08-15,2828.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Bournemouth,2884,1216,Division 2,3,1998-08-07,2399.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Brighton & Hove Albion,2851,1216,Division 3,4,1998-08-07,2115.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Chelsea,2847,1304,Premier League,1,1992-08-15,2751.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Brentford,2843,1247,Division 3,4,1998-08-07,2277.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Newcastle United,2835,1278,Premier League,1,1993-08-14,2880.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Fulham,2823,1136,Division 2,3,1998-08-07,2530.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Nottingham Forest,2817,1411,Premier League,1,1992-08-16,2746.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Everton,2811,1304,Premier League,1,1992-08-15,2751.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Leeds United,2810,1451,Premier League,1,1992-08-15,2743.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Crystal Palace,2808,1298,Premier League,1,1992-08-15,2720.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-West Ham United,2775,1286,Premier League,1,1993-08-14,2727.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Sunderland,2765,1192,Premier League,1,1996-08-17,2732.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Tottenham Hotspur,2759,1304,Premier League,1,1992-08-15,2775.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Wolverhampton Wanderers,2694,1192,Division 1,2,1998-08-07,2625.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Coventry City,2685,1496,Premier League,1,1992-08-15,2747.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Burnley,2684,1208,Division 2,3,1998-08-07,2396.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Ipswich Town,2674,1380,Premier League,1,1992-08-15,2720.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Southampton,2665,1380,Premier League,1,1992-08-15,2667.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Millwall,2637,1290,Division 2,3,1998-08-07,2339,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Middlesbrough,2604,1314,Premier League,1,1992-08-15,2733.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Hull City,2601,1251,Division 3,4,1998-08-07,2118,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Norwich City,2587,1360,Premier League,1,1992-08-15,2793,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Tranmere,2581,92,Division 1,2,1998-08-07,2565.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Wrexham,2581,1271,Division 2,3,1998-08-07,2346.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Birmingham City,2579,1232,Division 1,2,1998-08-07,2657.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Swansea City,2578,1232,Division 3,4,1998-08-07,2214.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Sheffield United,2574,1345,Premier League,1,1992-08-15,2728.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Derby County,2567,1324,Premier League,1,1996-08-17,2784.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Cardiff City,2560,1256,Division 3,4,1998-08-07,2229,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Bristol City,2552,1290,Division 1,2,1998-08-07,2500.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Leicester City,2541,1286,Premier League,1,1994-08-21,2673.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Portsmouth,2539,1221,Division 1,2,1998-08-07,2542.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-West Bromwich Albion,2537,1186,Division 1,2,1998-08-07,2579.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Stockport County,2535,800,Division 1,2,2000-08-12,2529.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Blackburn Rovers,2528,1432,Premier League,1,1992-08-15,2811.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Preston North End,2525,1288,Division 2,3,1998-08-07,2422.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Queens Park Rangers,2518,1428,Premier League,1,1992-08-17,2762.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Luton Town,2511,1266,Division 2,3,1998-08-07,2363.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Watford,2506,1224,Division 1,2,1998-08-07,2662.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Charlton Athletic,2495,1224,Premier League,1,1998-08-15,2727.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Oxford United,2494,1093,Division 1,2,1998-08-07,2503.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Stoke City,2490,1208,Division 2,3,1998-08-07,2345.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Bolton Wanderers,2489,1248,Premier League,1,1995-08-19,2686,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Wycombe Wanderers,2462,1260,Division 2,3,1998-08-07,2365.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Lincoln City,2438,1077,Division 2,3,1998-08-07,2298.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Huddersfield Town,2428,1259,Division 1,2,1998-08-07,2579.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Plymouth Argyle,2415,1263,Division 3,4,1998-08-07,2132.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Barnsley,2411,1307,Premier League,1,1997-08-09,2652.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Rotherham United,2402,1259,Division 3,4,1998-08-07,2185.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Wigan Athletic,2392,1208,Division 2,3,1998-08-07,2455.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Peterborough United,2391,1261,Division 3,4,1998-08-07,2186.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Reading,2387,1248,Division 2,3,1998-08-07,2330.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Sheffield Wednesday,2385,1512,Premier League,1,1992-08-15,2733.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Arsenal,3032,1304,Premier League,1,1992-08-15,2769.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Manchester City,3012,1252,Premier League,1,1992-08-17,2734.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Liverpool,2923,1304,Premier League,1,1992-08-16,2758.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Manchester United,2920,1304,Premier League,1,1992-08-15,2898.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Aston Villa,2906,1328,Premier League,1,1992-08-15,2828.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Bournemouth,2886,1216,Division 2,3,1998-08-07,2399.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Brighton & Hove Albion,2853,1216,Division 3,4,1998-08-07,2115.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Chelsea,2850,1304,Premier League,1,1992-08-15,2751.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Brentford,2845,1247,Division 3,4,1998-08-07,2277.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Newcastle United,2837,1278,Premier League,1,1993-08-14,2880.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Fulham,2826,1136,Division 2,3,1998-08-07,2530.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Nottingham Forest,2819,1411,Premier League,1,1992-08-16,2746.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Everton,2814,1304,Premier League,1,1992-08-15,2751.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Leeds United,2812,1451,Premier League,1,1992-08-15,2743.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Crystal Palace,2810,1298,Premier League,1,1992-08-15,2720.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+West Ham United,2777,1286,Premier League,1,1993-08-14,2727.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Sunderland,2767,1192,Premier League,1,1996-08-17,2732.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Tottenham Hotspur,2761,1304,Premier League,1,1992-08-15,2775.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Wolverhampton Wanderers,2696,1192,Division 1,2,1998-08-07,2625.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Coventry City,2688,1496,Premier League,1,1992-08-15,2747.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Burnley,2687,1208,Division 2,3,1998-08-07,2396.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Ipswich Town,2676,1380,Premier League,1,1992-08-15,2720.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Southampton,2668,1380,Premier League,1,1992-08-15,2667.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Millwall,2640,1290,Division 2,3,1998-08-07,2339,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Middlesbrough,2607,1314,Premier League,1,1992-08-15,2733.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Hull City,2603,1251,Division 3,4,1998-08-07,2118,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Norwich City,2589,1360,Premier League,1,1992-08-15,2793,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Wrexham,2582,1271,Division 2,3,1998-08-07,2346.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Birmingham City,2581,1232,Division 1,2,1998-08-07,2657.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Swansea City,2580,1232,Division 3,4,1998-08-07,2214.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Sheffield United,2577,1345,Premier League,1,1992-08-15,2728.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Derby County,2569,1324,Premier League,1,1996-08-17,2784.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Cardiff City,2562,1256,Division 3,4,1998-08-07,2229,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Bristol City,2554,1290,Division 1,2,1998-08-07,2500.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Leicester City,2543,1286,Premier League,1,1994-08-21,2673.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Portsmouth,2541,1221,Division 1,2,1998-08-07,2542.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+West Bromwich Albion,2539,1186,Division 1,2,1998-08-07,2579.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Stockport County,2536,984,Division 1,2,1998-08-07,2573.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Blackburn Rovers,2530,1432,Premier League,1,1992-08-15,2811.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Preston North End,2527,1288,Division 2,3,1998-08-07,2422.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Queens Park Rangers,2520,1428,Premier League,1,1992-08-17,2762.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Luton Town,2513,1266,Division 2,3,1998-08-07,2363.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Watford,2508,1224,Division 1,2,1998-08-07,2662.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Charlton Athletic,2497,1224,Premier League,1,1998-08-15,2727.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Oxford United,2496,1275,Division 1,2,1998-08-07,2503.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Stoke City,2492,1208,Division 2,3,1998-08-07,2345.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Bolton Wanderers,2490,1248,Premier League,1,1995-08-19,2686,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Wycombe Wanderers,2463,1260,Division 2,3,1998-08-07,2365.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Lincoln City,2439,1261,Division 2,3,1998-08-07,2298.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Huddersfield Town,2429,1259,Division 1,2,1998-08-07,2579.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Plymouth Argyle,2417,1263,Division 3,4,1998-08-07,2132.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Barnsley,2412,1307,Premier League,1,1997-08-09,2652.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Rotherham United,2403,1259,Division 3,4,1998-08-07,2185.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Wigan Athletic,2393,1208,Division 2,3,1998-08-07,2455.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Peterborough United,2393,1261,Division 3,4,1998-08-07,2186.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Reading,2388,1248,Division 2,3,1998-08-07,2330.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Sheffield Wednesday,2388,1512,Premier League,1,1992-08-15,2733.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
 Bradford City,2357,1247,Division 1,2,1998-08-07,2678.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Blackpool,2349,1253,Division 2,3,1998-08-07,2327.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Stevenage,2348,932,National League,5,2005-08-13,1965.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Exeter City,2347,1167,Division 3,4,1998-08-07,2186.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Leyton Orient,2335,1262,Division 3,4,1998-08-07,2162.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Mansfield Town,2330,1259,Division 3,4,1998-08-07,2116.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Wimbledon,2328,1253,Premier League,1,1992-08-15,2782.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Salford City,2313,336,National League,5,2018-08-04,2098.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Walsall,2304,1255,Division 2,3,1998-08-07,2466.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Blackpool,2351,1253,Division 2,3,1998-08-07,2327.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Stevenage,2350,932,National League,5,2005-08-13,1975.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Exeter City,2348,1167,Division 3,4,1998-08-07,2186.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Leyton Orient,2336,1262,Division 3,4,1998-08-07,2162.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Mansfield Town,2331,1259,Division 3,4,1998-08-07,2116.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Wimbledon,2329,1253,Premier League,1,1992-08-15,2782.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Salford City,2313,336,National League,5,2018-08-04,2096.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Walsall,2303,1255,Division 2,3,1998-08-07,2466.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
 Notts County,2297,1251,Division 2,3,1998-08-07,2352.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Doncaster Rovers,2295,1030,Division 3,4,2003-08-09,2283.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Bury,2294,966,Division 1,2,1998-08-07,2519,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Bristol Rovers,2292,1208,Division 2,3,1998-08-07,2371.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Bury,2296,966,Division 1,2,1998-08-07,2519,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Doncaster Rovers,2296,1030,Division 3,4,2003-08-09,2284.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Bristol Rovers,2293,1254,Division 2,3,1998-08-07,2371.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
 Gillingham,2289,1254,Division 2,3,1998-08-07,2422,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Northampton Town,2285,1263,Division 2,3,1998-08-07,2328,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Milton Keynes Dons,2279,978,League 1,3,2004-08-07,2334.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Burton Albion,2270,755,League 2,4,2009-08-08,2176,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Chesterfield,2256,1251,Division 2,3,1998-08-07,2348.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Northampton Town,2287,1263,Division 2,3,1998-08-07,2328,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Milton Keynes Dons,2278,978,League 1,3,2004-08-07,2335.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Burton Albion,2271,935,National League,5,2005-08-13,1995.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
 Port Vale,2256,1262,Division 1,2,1998-08-07,2522.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Crewe Alexandra,2256,1256,Division 1,2,1998-08-07,2558.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Cambridge United,2254,842,Division 3,4,1998-08-07,2219,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Bromley,2252,469,National League,5,2015-08-08,1960,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Swindon Town,2248,1297,Premier League,1,1993-08-14,2631.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Fleetwood Town,2244,702,National League,5,2010-08-14,2055.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Barrow,2236,702,National League,5,2008-08-08,1939.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Forest Green Rovers,2213,475,National League,5,2015-08-08,2094.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Carlisle United,2212,1212,Division 3,4,1998-08-07,2098.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-York City,2208,984,Division 2,3,1998-08-07,2284.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Colchester United,2208,1256,Division 2,3,1998-08-07,2336.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Cheltenham,2207,46,Division 3,4,1999-08-06,2194.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Rochdale,2204,1253,Division 3,4,1998-08-07,2140.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Bristol Rvs,2201,46,National League,5,2014-08-09,2130.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Chesterfield,2255,1251,Division 2,3,1998-08-07,2348.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Crewe Alexandra,2255,1256,Division 1,2,1998-08-07,2558.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Cambridge United,2254,1250,Division 3,4,1998-08-07,2219,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Bromley,2250,469,National League,5,2015-08-08,1957.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Swindon Town,2247,1297,Premier League,1,1993-08-14,2631.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Fleetwood Town,2243,702,National League,5,2010-08-14,2063,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Barrow,2236,702,National League,5,2008-08-08,1952.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Carlisle United,2210,1212,Division 3,4,1998-08-07,2098.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Forest Green Rovers,2209,929,National League,5,2005-08-13,1870.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Colchester United,2207,1256,Division 2,3,1998-08-07,2336.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+York City,2203,984,Division 2,3,1998-08-07,2284.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Rochdale,2199,1253,Division 3,4,1998-08-07,2140.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
 Shrewsbury Town,2187,1207,Division 3,4,1998-08-07,2105.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Grimsby Town,2171,1254,Division 1,2,1998-08-08,2543.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Barnet,2170,1064,Division 3,4,1998-08-07,2158.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Southend United,2169,1253,Division 3,4,1998-08-07,2117.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Tranmere Rovers,2161,1161,Division 1,2,2000-08-12,2449.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Accrington Stanley,2160,886,League 2,4,2006-08-05,2132.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Hereford United,2159,276,League 2,4,2006-08-05,2174,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Cheltenham Town,2151,1163,Division 3,4,2000-08-12,2169.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Crawley Town,2151,928,National League,5,2005-08-13,1956,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Macclesfield Town,2147,1003,Division 2,3,1998-08-07,2283.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Accrington,2142,42,National League,5,2005-08-13,2087.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Forest Green,2137,454,National League,5,2005-08-13,1856.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Harrogate Town,2121,336,National League,5,2018-08-04,2017.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Rushden & Diamonds,2120,230,Division 3,4,2001-08-11,2233.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Oxford,2120,182,National League,5,2006-08-12,2023.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Oldham Athletic,2114,1340,Premier League,1,1992-08-15,2695.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Newport County,2111,703,National League,5,2010-08-14,2016.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Halifax Town,2097,834,Division 3,4,1998-08-07,2130.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Boreham Wood,2094,424,National League,5,2015-08-08,2010,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Scunthorpe United,2093,1165,Division 3,4,1998-08-07,2181.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Dag and Red,2088,88,National League,5,2005-08-13,2002.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Cambridge,2085,408,National League,5,2005-08-13,1917.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Burton,2066,180,National League,5,2005-08-13,1981.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Hartlepool United,2065,1256,Division 3,4,1998-08-07,2093.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Eastleigh,2061,516,National League,5,2014-08-09,2092.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Solihull Moors,2048,425,National League,5,2016-08-06,1951.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Woking,2045,743,National League,5,2005-08-13,1969.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Salisbury,2042,182,National League,5,2007-08-11,2006.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Rushden & D,2034,228,National League,5,2006-08-12,1962.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Torquay United,2030,1088,Division 3,4,1998-08-07,2143.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Maidenhead United,2029,354,National League,5,2017-08-05,1990.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Morecambe,2021,931,National League,5,2005-08-13,2038.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Dagenham & Redbridge,2017,813,League 2,4,2007-08-11,2172.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Kidderminster,2016,454,National League,5,2005-08-13,1916.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Stockport,2015,184,Division 1,2,1998-08-07,2573.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Lincoln,2013,184,National League,5,2011-08-13,1939.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Aldershot,2012,226,National League,5,2005-08-13,1989.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Altrincham,2008,611,National League,5,2005-08-13,1889.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Hereford,2004,134,National League,5,2005-08-13,2061.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Aldershot Town,2001,702,League 2,4,2008-08-09,2149.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Wealdstone,1998,248,National League,5,2020-10-06,1907.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Tamworth,1991,387,National League,5,2005-08-13,1893.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Gravesend,1990,88,National League,5,2005-08-13,1942.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Gateshead,1988,621,National League,5,2009-08-08,1927.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Kidderminster Harriers,1987,322,Division 3,4,2000-08-12,2120.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Boston United,1986,301,Division 3,4,2002-08-10,2172.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Yeovil Town,1986,976,Division 3,4,2003-08-09,2211.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Sutton United,1984,427,National League,5,2016-08-06,2019.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Alfreton Town,1981,184,National League,5,2011-08-13,1988.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Darlington,1964,644,Division 3,4,1998-08-07,2184.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Canvey Island,1957,42,National League,5,2005-08-13,1948.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Dorking Wanderers,1954,92,National League,5,2022-08-06,1976.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Nuneaton Town,1954,138,National League,5,2012-08-11,2031.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Southport,1946,410,National League,5,2005-08-13,1916.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Fylde,1946,221,National League,5,2017-08-05,2069.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Dartford,1939,138,National League,5,2012-08-11,1983.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Braintree Town,1935,393,National League,5,2011-08-13,1979,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Chester City,1933,552,Division 3,4,1998-08-07,2113.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Havant & Waterlooville,1929,46,National League,5,2018-08-04,1914.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Scarborough,1929,88,Division 3,4,1998-08-07,2072.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Brackley Town,1928,24,National League,5,2025-08-09,1930.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Telford United,1926,138,National League,5,2011-08-16,1959.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Guiseley,1926,138,National League,5,2015-08-08,1934.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Hayes & Yeading,1926,136,National League,5,2009-08-08,1951.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Ebbsfleet,1921,228,National League,5,2007-08-11,1995.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Northwich,1918,138,National League,5,2006-08-12,1901.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Welling United,1914,138,National League,5,2013-08-10,1970.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Bath City,1911,92,National League,5,2010-08-14,1983.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Eastbourne Borough,1907,136,National League,5,2008-08-09,1951.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-North Ferriby United,1903,46,National League,5,2016-08-06,1900.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-King's Lynn,1901,86,National League,5,2020-10-03,1885.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Ebbsfleet United,1898,223,National League,5,2017-08-05,2059.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Truro City,1897,25,National League,5,2025-08-09,1910.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Chorley,1895,38,National League,5,2019-08-03,1896.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Kettering Town,1886,182,National League,5,2008-08-09,2039.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Grays,1884,224,National League,5,2005-08-13,2046,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Oxford City,1865,46,National League,5,2023-08-05,1875.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Histon,1864,182,National League,5,2007-08-11,2005.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Weymouth,1861,224,National League,5,2006-08-12,1912,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Dover Athletic,1860,312,National League,5,2014-08-09,2041.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Maidstone United,1846,184,National League,5,2016-08-06,1992.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-St. Albans,1842,46,National League,5,2006-08-12,1864.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Farsley,1832,46,National League,5,2007-08-11,1858.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Hyde United,1809,92,National League,5,2012-08-11,1956.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Stafford Rangers,1798,92,National League,5,2006-08-12,1875.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Droylsden,1774,46,National League,5,2007-08-11,1817.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
-Lewes,1757,46,National League,5,2008-08-09,1804.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Grimsby Town,2170,1254,Division 1,2,1998-08-08,2543.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Barnet,2166,1064,Division 3,4,1998-08-07,2158.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Southend United,2164,1253,Division 3,4,1998-08-07,2117.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Tranmere Rovers,2160,1253,Division 1,2,1998-08-07,2565.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Accrington Stanley,2159,928,National League,5,2005-08-13,2096.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Cheltenham Town,2151,1209,Division 3,4,1999-08-06,2210.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Crawley Town,2151,928,National League,5,2005-08-13,1969,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Macclesfield Town,2148,1003,Division 2,3,1998-08-07,2283.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Harrogate Town,2120,336,National League,5,2018-08-04,2016,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Oldham Athletic,2111,1340,Premier League,1,1992-08-15,2695.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Newport County,2110,703,National League,5,2010-08-14,2024.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Halifax Town,2092,834,Division 3,4,1998-08-07,2130.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Boreham Wood,2089,424,National League,5,2015-08-08,2010.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Scunthorpe United,2088,1165,Division 3,4,1998-08-07,2181.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Hartlepool United,2061,1256,Division 3,4,1998-08-07,2093.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Salisbury City,2058,182,National League,5,2007-08-11,2023.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Eastleigh,2057,516,National League,5,2014-08-09,2100,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Rushden & Diamonds,2055,458,Division 3,4,2001-08-11,2234.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Solihull Moors,2043,425,National League,5,2016-08-06,1950.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Woking,2040,743,National League,5,2005-08-13,1980.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Maidenhead United,2023,354,National League,5,2017-08-05,1988.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Torquay United,2023,1088,Division 3,4,1998-08-07,2143.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Morecambe,2019,931,National League,5,2005-08-13,2052.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Hereford United,2018,410,National League,5,2005-08-13,2092.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Dagenham & Redbridge,2012,901,National League,5,2005-08-13,2017.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Altrincham,2004,611,National League,5,2005-08-13,1902.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Aldershot Town,1996,928,National League,5,2005-08-13,1998.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Alfreton Town,1994,184,National League,5,2011-08-13,1986.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Wealdstone,1993,248,National League,5,2020-10-06,1902.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Tamworth,1988,387,National League,5,2005-08-13,1906.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Gateshead,1984,621,National League,5,2009-08-08,1937.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Boston United,1982,301,Division 3,4,2002-08-10,2173.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Yeovil Town,1981,976,Division 3,4,2003-08-09,2212.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Sutton United,1980,427,National League,5,2016-08-06,2019.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Canvey Island,1980,42,National League,5,2005-08-13,1958.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Kidderminster Harriers,1977,776,Division 3,4,2000-08-12,2122,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Darlington,1972,644,Division 3,4,1998-08-07,2184.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Nuneaton Town,1966,138,National League,5,2012-08-11,2031.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Dartford,1952,138,National League,5,2012-08-11,1986.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Scarborough,1949,88,Division 3,4,1998-08-07,2076.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Dorking Wanderers,1948,92,National League,5,2022-08-06,1973.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Northwich Victoria,1946,138,National League,5,2006-08-12,1920.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Southport,1945,410,National League,5,2005-08-13,1930.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Fylde,1940,221,National League,5,2017-08-05,2068.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Telford United,1937,138,National League,5,2011-08-16,1960.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Hayes & Yeading United,1937,136,National League,5,2009-08-08,1961.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Braintree Town,1930,393,National League,5,2011-08-13,1977,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Eastbourne Borough,1928,136,National League,5,2008-08-09,1964.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Chester City,1927,552,Division 3,4,1998-08-07,2113.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Havant & Waterlooville,1925,46,National League,5,2018-08-04,1912.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Brackley Town,1925,24,National League,5,2025-08-09,1928.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Bath City,1921,92,National League,5,2010-08-14,1991.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Guiseley,1920,138,National League,5,2015-08-08,1933.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Welling United,1915,138,National League,5,2013-08-10,1975.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Grays Athletic,1910,224,National League,5,2005-08-13,2059.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+North Ferriby United,1901,46,National League,5,2016-08-06,1899.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Kettering Town,1898,182,National League,5,2008-08-09,2052.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+King's Lynn Town,1894,86,National League,5,2020-10-03,1881.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Truro City,1894,25,National League,5,2025-08-09,1908.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Ebbsfleet United,1892,539,National League,5,2005-08-13,1952.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Chorley,1886,38,National League,5,2019-08-03,1890.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Histon,1885,182,National League,5,2007-08-11,2022,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+St. Albans,1872,46,National League,5,2006-08-12,1882.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Farsley,1859,46,National League,5,2007-08-11,1874.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Oxford City,1859,46,National League,5,2023-08-05,1871.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Weymouth,1858,224,National League,5,2006-08-12,1930.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Dover Athletic,1852,312,National League,5,2014-08-09,2044.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Maidstone United,1840,184,National League,5,2016-08-06,1990.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Stafford Rangers,1830,92,National League,5,2006-08-12,1895.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Hyde United,1818,92,National League,5,2012-08-11,1957.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Droylsden,1800,46,National League,5,2007-08-11,1833.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
+Lewes,1779,46,National League,5,2008-08-09,1816.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,2750,2550,2350,2150,1950,50
