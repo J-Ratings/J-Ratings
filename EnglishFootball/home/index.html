@@ -651,26 +651,35 @@
     ymin = Math.floor(ymin / 100) * 100;
     ymax = Math.ceil(ymax / 100) * 100;
 
-    const shapes = [];
-    for (let v = ymin; v <= ymax; v += 100) {
-      shapes.push({
-        type: 'line',
-        xref: 'paper',
-        x0: 0,
-        x1: 1,
-        y0: v,
-        y1: v,
-        line: { width: 1, color: 'rgba(128,128,128,0.35)' },
-        layer: 'below'
-      });
-    }
+const shapes = [];
+
+for (let v = ymin; v <= ymax; v += 50) {
+  const isMajor = v % 100 === 0;
+
+  shapes.push({
+    type: 'line',
+    xref: 'paper',
+    x0: 0,
+    x1: 1,
+    y0: v,
+    y1: v,
+    line: {
+      width: isMajor ? 2 : 1,
+      color: isMajor ? 'rgba(180,180,180,0.55)' : 'rgba(128,128,128,0.22)'
+    },
+    layer: 'below'
+  });
+}
 
     const cs = getComputedStyle(document.body);
 
     const layout = {
       margin: { l: 60, r: 20, t: 10, b: 45 },
       xaxis: { type: 'date' },
-      yaxis: { title: 'Rating' },
+      yaxis: {
+  title: 'Rating',
+  dtick: 50
+},
       legend: { orientation: 'h' },
       paper_bgcolor: cs.backgroundColor,
       plot_bgcolor: cs.backgroundColor,
