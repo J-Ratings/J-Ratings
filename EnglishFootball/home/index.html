@@ -113,6 +113,8 @@
       line-height: 1;
       white-space: nowrap;
       box-shadow: 0 0 0 2px rgba(0,0,0,0.35);
+      min-width: 38px;
+      text-align: center;
     }
 
     /* Division colours + text colours */
@@ -133,6 +135,11 @@
 
     .tier-league-2 {
       background: #BB1731;
+      color: #000000;
+    }
+
+    .tier-national-league {
+      background: #E6B84A;
       color: #000000;
     }
 
@@ -158,6 +165,9 @@
       #teams th:nth-child(3),
       #teams td:nth-child(3) { width: 78px; }
 
+      #teams th:nth-child(4),
+      #teams td:nth-child(4) { width: 58px; }
+
       #teams th:nth-child(2),
       #teams td:nth-child(2) { width: auto; }
 
@@ -168,7 +178,11 @@
         white-space: nowrap;
       }
 
-      .tier-badge { padding: 6px 10px; font-size: 0.9rem; }
+      .tier-badge {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+        min-width: 34px;
+      }
     }
   </style>
 </head>
@@ -238,7 +252,7 @@
             <th style="min-width:60px">Rank</th>
             <th style="min-width:240px">Team</th>
             <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
-            <th style="min-width:180px">Tier</th>
+            <th style="min-width:80px">Tier</th>
           </tr>
         </thead>
         <tbody><!-- filled by JS --></tbody>
@@ -264,13 +278,22 @@
 
   <footer class="site-footer">
     <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
+
     <div>
-      Data Source:
+      Primary Data Source:
       <a href="https://github.com/openfootball/england/tree/master">
         openfootball/england (GitHub)
       </a>
+      ~ CC0 1.0 (Public Domain)
     </div>
-    <div>Licence: CC0 1.0 (Public Domain)</div>
+
+    <div>
+      Secondary Data Source:
+      <a href="https://www.football-data.co.uk/englandm.php">
+        Football-Data.co.uk
+      </a>
+      ~ used only to fill National League / Conference gaps before 2015.
+    </div>
   </footer>
 </main>
 
@@ -321,21 +344,27 @@
   }
 
   function tierLabel(row) {
-    if (row.division && String(row.division).trim()) return row.division;
+    const div = String(row.division || '').trim().toLowerCase();
     const t = Number(row.tier);
-    if (t === 1) return 'Premier League';
-    if (t === 2) return 'Championship';
-    if (t === 3) return 'League 1';
-    if (t === 4) return 'League 2';
+
+    if (div === 'premier league' || t === 1) return 'PL';
+    if (div === 'championship' || t === 2) return 'C';
+    if (div === 'league 1' || div === 'league one' || t === 3) return 'L1';
+    if (div === 'league 2' || div === 'league two' || t === 4) return 'L2';
+    if (div === 'national league' || t === 5) return 'NL';
+
     return '';
   }
 
   function tierClass(label) {
     const s = String(label || '').trim().toLowerCase();
-    if (s === 'premier league') return 'tier-premier-league';
-    if (s === 'championship') return 'tier-championship';
-    if (s === 'league 1' || s === 'league one') return 'tier-league-1';
-    if (s === 'league 2' || s === 'league two') return 'tier-league-2';
+
+    if (s === 'pl' || s === 'premier league') return 'tier-premier-league';
+    if (s === 'c' || s === 'championship') return 'tier-championship';
+    if (s === 'l1' || s === 'league 1' || s === 'league one') return 'tier-league-1';
+    if (s === 'l2' || s === 'league 2' || s === 'league two') return 'tier-league-2';
+    if (s === 'nl' || s === 'national league') return 'tier-national-league';
+
     return '';
   }
 
@@ -589,13 +618,13 @@
     return series.filter(p => new Date(p.x).getTime() >= start);
   }
 
-function labelStepForRange(y0, y1) {
-  const span = Math.abs(y1 - y0);
+  function labelStepForRange(y0, y1) {
+    const span = Math.abs(y1 - y0);
 
-  if (span <= 150) return 25;
-  if (span <= 600) return 50;
-  return 100;
-}
+    if (span <= 150) return 25;
+    if (span <= 600) return 50;
+    return 100;
+  }
 
   function setCompareTickLabelsEvery(yMin, yMax, step) {
     const lo = Math.floor(yMin / step) * step;
@@ -687,163 +716,163 @@ function labelStepForRange(y0, y1) {
   }
 
   async function buildComparison(teams) {
-  lastCompared = teams.slice();
+    lastCompared = teams.slice();
 
-  const wrap = document.getElementById('compare-wrap');
-  const chart = document.getElementById('compare-chart');
-  const modeSel = document.getElementById('compare-agg');
+    const wrap = document.getElementById('compare-wrap');
+    const chart = document.getElementById('compare-chart');
+    const modeSel = document.getElementById('compare-agg');
 
-  wrap.style.display = 'block';
-  chart.innerHTML = '';
+    wrap.style.display = 'block';
+    chart.innerHTML = '';
 
-  const mode = modeSel ? modeSel.value : COMPARE_AGG_MODE;
-  COMPARE_AGG_MODE = mode;
+    const mode = modeSel ? modeSel.value : COMPARE_AGG_MODE;
+    COMPARE_AGG_MODE = mode;
 
-  const traceItems = [];
-  compareVisibleSeries = [];
+    const traceItems = [];
+    compareVisibleSeries = [];
 
-  let xmin = null;
-  let xmax = null;
-  let ymin = Infinity;
-  let ymax = -Infinity;
+    let xmin = null;
+    let xmax = null;
+    let ymin = Infinity;
+    let ymax = -Infinity;
 
-  for (const t of teams) {
-    const hist = await fetchHistoryFor(t.id);
-    if (!hist || !hist.length) continue;
+    for (const t of teams) {
+      const hist = await fetchHistoryFor(t.id);
+      if (!hist || !hist.length) continue;
 
-    const raw = hist.map(d => ({
-      x: d.date,
-      y: Number(d.rating),
-      tier: Number(d.tier)
-    }));
+      const raw = hist.map(d => ({
+        x: d.date,
+        y: Number(d.rating),
+        tier: Number(d.tier)
+      }));
 
-    const filtered = applySinceFilter(raw, COMPARE_SINCE_YEAR);
-    const data = aggregate(filtered, mode);
+      const filtered = applySinceFilter(raw, COMPARE_SINCE_YEAR);
+      const data = aggregate(filtered, mode);
 
-    const xs = data.map(pt => pt.x);
-    const ysAll = data.map(pt => pt.y);
-    const ys = ysAll.filter(Number.isFinite);
-    const tiers = data.map(pt => pt.tier ?? '');
+      const xs = data.map(pt => pt.x);
+      const ysAll = data.map(pt => pt.y);
+      const ys = ysAll.filter(Number.isFinite);
+      const tiers = data.map(pt => pt.tier ?? '');
 
-    if (!xs.length || !ys.length) continue;
+      if (!xs.length || !ys.length) continue;
 
-    compareVisibleSeries.push(data);
+      compareVisibleSeries.push(data);
 
-    let finalRating = -Infinity;
+      let finalRating = -Infinity;
 
-    for (const pt of data) {
-      if (!pt.x || !Number.isFinite(pt.y)) continue;
+      for (const pt of data) {
+        if (!pt.x || !Number.isFinite(pt.y)) continue;
 
-      const d = new Date(pt.x);
+        const d = new Date(pt.x);
 
-      if (!xmin || d < xmin) xmin = d;
-      if (!xmax || d > xmax) xmax = d;
+        if (!xmin || d < xmin) xmin = d;
+        if (!xmax || d > xmax) xmax = d;
 
-      ymin = Math.min(ymin, pt.y);
-      ymax = Math.max(ymax, pt.y);
-      finalRating = pt.y;
+        ymin = Math.min(ymin, pt.y);
+        ymax = Math.max(ymax, pt.y);
+        finalRating = pt.y;
+      }
+
+      traceItems.push({
+        finalRating,
+        trace: {
+          type: 'scatter',
+          name: t.name,
+          x: xs,
+          y: ysAll,
+          customdata: tiers,
+          mode: 'lines',
+          line: {
+            width: 4,
+            shape: 'linear',
+            color: getDisplayColour(t.name)
+          },
+          hovertemplate: '%{x}<br>%{y:.0f} Elo<br>Tier %{customdata}<extra>' + t.name + '</extra>',
+          connectgaps: true
+        }
+      });
     }
 
-    traceItems.push({
-      finalRating,
-      trace: {
-        type: 'scatter',
-        name: t.name,
-        x: xs,
-        y: ysAll,
-        customdata: tiers,
-        mode: 'lines',
-        line: {
-          width: 4,
-          shape: 'linear',
-          color: getDisplayColour(t.name)
+    if (!traceItems.length) {
+      chart.innerHTML = 'No history found.';
+      return;
+    }
+
+    traceItems.sort((a, b) => b.finalRating - a.finalRating);
+
+    const traces = traceItems.map(item => item.trace);
+
+    const pad = (ymax - ymin) * 0.12 || 10;
+    const y0 = ymin - pad;
+    const y1 = ymax + pad;
+    const step = labelStepForRange(y0, y1);
+
+    const cs = getComputedStyle(document.body);
+
+    const layout = {
+      margin: { l: 60, r: 300, t: 10, b: 45 },
+
+      xaxis: {
+        type: 'date',
+        showgrid: false
+      },
+
+      yaxis: {
+        title: 'Rating',
+        showgrid: false,
+        zeroline: false,
+        ticks: 'outside',
+        ticklen: 4,
+        tickmode: 'array',
+        tickvals: [],
+        ticktext: []
+      },
+
+      legend: {
+        orientation: 'v',
+        x: 1.02,
+        xanchor: 'left',
+        y: 1,
+        yanchor: 'top',
+        font: {
+          size: 17,
+          color: cs.color
         },
-        hovertemplate: '%{x}<br>%{y:.0f} Elo<br>Tier %{customdata}<extra>' + t.name + '</extra>',
-        connectgaps: true
+        itemwidth: 45,
+        traceorder: 'normal'
+      },
+
+      paper_bgcolor: cs.backgroundColor,
+      plot_bgcolor: cs.backgroundColor,
+      font: { color: cs.color, size: 14 },
+      shapes: makeCompareYGridShapes(y0, y1, step)
+    };
+
+    Plotly.newPlot(chart, traces, layout, {
+      staticPlot: IS_TOUCH,
+      displayModeBar: false,
+      responsive: true
+    }).then(() => {
+      const gd = document.getElementById('compare-chart');
+
+      if (xmin && xmax) {
+        adjustCompareYToVisible(xmin.toISOString(), xmax.toISOString());
+      }
+
+      if (!gd._jrCompareHandlersAttached) {
+        gd.on('plotly_relayout', ev => {
+          const x0 = ev['xaxis.range[0]'] ?? (ev['xaxis.range'] && ev['xaxis.range'][0]);
+          const x1 = ev['xaxis.range[1]'] ?? (ev['xaxis.range'] && ev['xaxis.range'][1]);
+
+          if (x0 && x1) {
+            adjustCompareYToVisible(x0, x1);
+          }
+        });
+
+        gd._jrCompareHandlersAttached = true;
       }
     });
   }
-
-  if (!traceItems.length) {
-    chart.innerHTML = 'No history found.';
-    return;
-  }
-
-  traceItems.sort((a, b) => b.finalRating - a.finalRating);
-
-  const traces = traceItems.map(item => item.trace);
-
-  const pad = (ymax - ymin) * 0.12 || 10;
-  const y0 = ymin - pad;
-  const y1 = ymax + pad;
-  const step = labelStepForRange(y0, y1);
-
-  const cs = getComputedStyle(document.body);
-
-  const layout = {
-    margin: { l: 60, r: 300, t: 10, b: 45 },
-
-    xaxis: {
-      type: 'date',
-      showgrid: false
-    },
-
-    yaxis: {
-      title: 'Rating',
-      showgrid: false,
-      zeroline: false,
-      ticks: 'outside',
-      ticklen: 4,
-      tickmode: 'array',
-      tickvals: [],
-      ticktext: []
-    },
-
-    legend: {
-      orientation: 'v',
-      x: 1.02,
-      xanchor: 'left',
-      y: 1,
-      yanchor: 'top',
-      font: {
-        size: 17,
-        color: cs.color
-      },
-      itemwidth: 45,
-      traceorder: 'normal'
-    },
-
-    paper_bgcolor: cs.backgroundColor,
-    plot_bgcolor: cs.backgroundColor,
-    font: { color: cs.color, size: 14 },
-    shapes: makeCompareYGridShapes(y0, y1, step)
-  };
-
-  Plotly.newPlot(chart, traces, layout, {
-    staticPlot: IS_TOUCH,
-    displayModeBar: false,
-    responsive: true
-  }).then(() => {
-    const gd = document.getElementById('compare-chart');
-
-    if (xmin && xmax) {
-      adjustCompareYToVisible(xmin.toISOString(), xmax.toISOString());
-    }
-
-    if (!gd._jrCompareHandlersAttached) {
-      gd.on('plotly_relayout', ev => {
-        const x0 = ev['xaxis.range[0]'] ?? (ev['xaxis.range'] && ev['xaxis.range'][0]);
-        const x1 = ev['xaxis.range[1]'] ?? (ev['xaxis.range'] && ev['xaxis.range'][1]);
-
-        if (x0 && x1) {
-          adjustCompareYToVisible(x0, x1);
-        }
-      });
-
-      gd._jrCompareHandlersAttached = true;
-    }
-  });
-}
 
   function resetCompareControls() {
     COMPARE_SINCE_YEAR = null;
