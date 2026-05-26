@@ -1,119 +1,117 @@
-Team,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRating,IsSeed,Pass,EntryMode,BaseK,NewK,NewGames,SeedTier1,SeedTier2,SeedTier3,SeedTier4,RetroGamesN
-Arsenal,2872,1304,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Manchester City,2852,1252,Premier League,1,1992-08-17,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Liverpool,2763,1304,Premier League,1,1992-08-16,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Manchester United,2760,1304,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Aston Villa,2746,1328,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Bournemouth,2726,1216,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Brighton & Hove Albion,2693,1216,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Chelsea,2689,1304,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Brentford,2685,1247,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Newcastle United,2677,1278,Premier League,1,1993-08-14,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Fulham,2666,1136,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Nottingham Forest,2659,1411,Premier League,1,1992-08-16,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Everton,2654,1304,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Leeds United,2652,1451,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Crystal Palace,2650,1298,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-West Ham United,2617,1286,Premier League,1,1993-08-14,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Sunderland,2607,1192,Premier League,1,1996-08-17,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Tottenham Hotspur,2601,1304,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Wolverhampton Wanderers,2536,1192,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Burnley,2527,1208,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Coventry City,2526,1496,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Ipswich Town,2515,1380,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Southampton,2506,1380,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Millwall,2478,1290,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Middlesbrough,2445,1314,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Hull City,2442,1251,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Norwich City,2428,1360,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Swansea City,2419,1232,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Birmingham City,2419,1232,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Tranmere,2417,92,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Wrexham,2417,598,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Sheffield United,2415,1345,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Derby County,2408,1324,Premier League,1,1996-08-17,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Cardiff City,2399,1256,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Bristol City,2393,1290,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Stockport,2389,92,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Leicester City,2382,1286,Premier League,1,1994-08-21,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Portsmouth,2380,1221,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-West Bromwich Albion,2378,1186,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Stockport County,2370,675,Division 1,2,2000-08-12,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Blackburn Rovers,2369,1432,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Preston North End,2366,1288,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Queens Park Rangers,2359,1428,Premier League,1,1992-08-17,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Luton Town,2350,1038,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Watford,2347,1224,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Oxford United,2335,1093,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Charlton Athletic,2335,1224,Premier League,1,1998-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Stoke City,2331,1208,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Bolton Wanderers,2326,1248,Premier League,1,1995-08-19,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Wycombe Wanderers,2299,1260,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Lincoln City,2274,985,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Huddersfield Town,2265,1259,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Plymouth Argyle,2254,1263,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Barnsley,2247,1307,Premier League,1,1997-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Rotherham United,2239,1259,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Wigan Athletic,2229,1208,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Peterborough United,2228,1261,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Sheffield Wednesday,2226,1512,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Reading,2224,1248,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Bradford City,2191,1247,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Blackpool,2186,1253,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Stevenage,2185,708,League 2,4,2010-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Exeter City,2183,1033,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Leyton Orient,2171,1170,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Mansfield Town,2165,1031,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Wimbledon,2162,1163,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Salford City,2144,290,League 2,4,2019-08-03,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Walsall,2135,1255,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Bury,2131,966,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Doncaster Rovers,2129,1030,Division 3,4,2003-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Notts County,2125,1081,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Bristol Rovers,2125,1208,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Northampton Town,2122,1263,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Gillingham,2120,1254,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Milton Keynes Dons,2109,978,League 1,3,2004-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Burton Albion,2107,755,League 2,4,2009-08-08,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Port Vale,2091,1262,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Bromley,2088,69,League 2,4,2024-08-10,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Cambridge United,2087,842,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Crewe Alexandra,2086,1256,Division 1,2,1998-08-07,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Chesterfield,2084,989,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Swindon Town,2079,1297,Premier League,1,1993-08-14,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Fleetwood Town,2076,610,League 2,4,2012-08-18,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Barrow,2067,253,League 2,4,2020-09-12,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Cheltenham,2045,46,Division 3,4,1999-08-06,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Colchester United,2039,1256,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Aldershot Town,2031,230,League 2,4,2008-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Shrewsbury Town,2021,1207,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Southend United,2018,1047,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Hereford United,2008,276,League 2,4,2006-08-05,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Sutton United,2004,138,League 2,4,2021-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Grimsby Town,2002,934,Division 1,2,1998-08-08,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Torquay United,1993,644,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Tranmere Rovers,1991,1023,Division 1,2,2000-08-12,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Accrington Stanley,1990,886,League 2,4,2006-08-05,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Carlisle United,1989,1187,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Crawley Town,1984,658,League 2,4,2011-08-06,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Cheltenham Town,1983,1117,Division 3,4,2000-08-12,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Forest Green Rovers,1983,312,League 2,4,2017-08-05,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Hartlepool United,1981,966,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Boston United,1980,230,Division 3,4,2002-08-10,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Macclesfield Town,1973,727,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Barnet,1972,667,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Rochdale,1970,1138,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-York City,1964,460,Division 2,3,1998-08-07,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Oldham Athletic,1959,1202,Premier League,1,1992-08-15,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Rushden & Diamonds,1958,230,Division 3,4,2001-08-11,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Dagenham & Redbridge,1957,414,League 2,4,2007-08-11,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Harrogate Town,1952,253,League 2,4,2020-09-12,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Darlington,1948,552,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Scarborough,1946,46,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Newport County,1941,565,League 2,4,2013-08-03,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Yeovil Town,1939,736,Division 3,4,2003-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Morecambe,1933,819,League 2,4,2007-08-11,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Kidderminster Harriers,1932,230,Division 3,4,2000-08-12,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Chester City,1923,322,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Halifax Town,1902,184,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
-Scunthorpe United,1879,1095,Division 3,4,1998-08-07,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2600,2400,2200,2000,50
+Team,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRating,IsSeed,Pass,EntryMode,BaseK,NewK,NewGames,SeedTier1,SeedTier2,SeedTier3,SeedTier4,SeedTier5,RetroGamesN
+Arsenal,2928,38,Premier League,1,2025-08-17,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Manchester City,2906,38,Premier League,1,2025-08-16,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Manchester United,2893,38,Premier League,1,2025-08-17,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Bournemouth,2852,38,Premier League,1,2025-08-15,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Aston Villa,2840,38,Premier League,1,2025-08-16,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Liverpool,2821,38,Premier League,1,2025-08-15,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Sunderland,2808,38,Premier League,1,2025-08-16,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Brentford,2807,38,Premier League,1,2025-08-17,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Brighton & Hove Albion,2803,38,Premier League,1,2025-08-16,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Leeds United,2800,38,Premier League,1,2025-08-18,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Fulham,2794,38,Premier League,1,2025-08-16,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Nottingham Forest,2783,38,Premier League,1,2025-08-17,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Chelsea,2783,38,Premier League,1,2025-08-17,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Newcastle United,2778,38,Premier League,1,2025-08-16,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Everton,2778,38,Premier League,1,2025-08-18,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Crystal Palace,2764,38,Premier League,1,2025-08-17,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+West Ham United,2760,38,Premier League,1,2025-08-16,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Tottenham Hotspur,2748,38,Premier League,1,2025-08-16,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Coventry City,2716,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Southampton,2696,47,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Ipswich Town,2693,46,Championship,2,2025-08-08,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Wolverhampton Wanderers,2683,38,Premier League,1,2025-08-16,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Burnley,2673,38,Premier League,1,2025-08-16,2800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Millwall,2669,48,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Hull City,2647,49,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Middlesbrough,2643,48,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Wrexham,2638,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Norwich City,2629,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Derby County,2619,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Swansea City,2617,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Birmingham City,2608,46,Championship,2,2025-08-08,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Sheffield United,2587,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Bristol City,2586,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Portsmouth,2585,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Preston North End,2575,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+West Bromwich Albion,2571,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Blackburn Rovers,2569,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Queens Park Rangers,2561,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Watford,2558,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Charlton Athletic,2555,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Leicester City,2555,46,Championship,2,2025-08-10,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Oxford United,2551,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Stoke City,2538,46,Championship,2,2025-08-09,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Cardiff City,2526,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Stockport County,2500,31,League 1,3,2025-08-03,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Bolton Wanderers,2495,31,League 1,3,2025-08-03,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Luton Town,2451,29,League 1,3,2025-08-01,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Wycombe Wanderers,2448,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Huddersfield Town,2447,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Lincoln City,2446,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Sheffield Wednesday,2432,46,Championship,2,2025-08-10,2600,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Barnsley,2429,27,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Rotherham United,2417,28,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Peterborough United,2412,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Bradford City,2408,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Wigan Athletic,2403,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Wimbledon,2400,30,League 1,3,2025-08-01,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Reading,2382,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Exeter City,2380,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Plymouth Argyle,2376,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Stevenage,2375,28,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Mansfield Town,2371,29,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Blackpool,2341,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Doncaster Rovers,2334,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Leyton Orient,2320,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Northampton Town,2318,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Port Vale,2314,29,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Burton Albion,2307,30,League 1,3,2025-08-02,2400,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Salford City,2282,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Milton Keynes Dons,2277,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Walsall,2274,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Notts County,2272,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Gillingham,2269,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Bristol Rovers,2251,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Crewe Alexandra,2247,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Bromley,2229,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Chesterfield,2225,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Barrow,2222,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Swindon Town,2221,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Fleetwood Town,2220,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Cambridge United,2208,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Colchester United,2178,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Accrington Stanley,2163,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Oldham Athletic,2162,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Shrewsbury Town,2160,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Tranmere Rovers,2157,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Grimsby Town,2155,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Barnet,2147,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Newport County,2137,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Rochdale,2130,23,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Cheltenham Town,2127,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Harrogate Town,2116,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Forest Green Rovers,2111,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Carlisle United,2109,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Scunthorpe United,2104,24,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Crawley Town,2099,23,League 2,4,2025-08-02,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+York City,2096,24,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Southend United,2090,24,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Boreham Wood,2055,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Halifax Town,2033,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Eastleigh,2019,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Hartlepool United,2012,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Solihull Moors,2001,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Woking,1988,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Yeovil Town,1963,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Wealdstone,1957,24,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Aldershot Town,1954,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Altrincham,1954,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Tamworth,1950,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Morecambe,1945,24,National League,5,2025-08-23,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Gateshead,1938,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Brackley Town,1938,24,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Boston United,1924,25,National League,5,2025-08-16,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Sutton United,1919,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Truro City,1917,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
+Braintree Town,1894,25,National League,5,2025-08-09,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,2800,2600,2400,2200,2000,50
