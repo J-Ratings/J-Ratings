@@ -589,13 +589,13 @@
     return series.filter(p => new Date(p.x).getTime() >= start);
   }
 
-  function labelStepForRange(y0, y1) {
-    const span = Math.abs(y1 - y0);
+function labelStepForRange(y0, y1) {
+  const span = Math.abs(y1 - y0);
 
-    if (span < 100) return 25;
-    if (span < 300) return 50;
-    return 100;
-  }
+  if (span <= 150) return 25;
+  if (span <= 600) return 50;
+  return 100;
+}
 
   function setCompareTickLabelsEvery(yMin, yMax, step) {
     const lo = Math.floor(yMin / step) * step;
