@@ -6,6 +6,9 @@
 #   RugbyUnion/pipeline_data/Elo/world_rugby_union_elo_game_history.csv
 #   team_flag_lookup.csv
 #
+# Optional future fixtures input:
+#   RugbyUnion/pipeline_data/source/results.csv
+#
 # Outputs:
 #   RugbyUnion/data/teams.json
 #   RugbyUnion/data/era_starts.json
@@ -31,6 +34,7 @@ options(stringsAsFactors = FALSE)
 # -----------------------------
 # Resolve repo root
 # -----------------------------
+
 get_repo_dir <- function() {
   github_workspace <- Sys.getenv("GITHUB_WORKSPACE", unset = "")
   
@@ -58,9 +62,12 @@ repo_dir <- get_repo_dir()
 # -----------------------------
 # Paths
 # -----------------------------
+
 elo_dir <- file.path(
   repo_dir,
-  "RugbyUnion", "pipeline_data", "Elo"
+  "RugbyUnion",
+  "pipeline_data",
+  "Elo"
 )
 
 final_csv <- file.path(
@@ -73,6 +80,14 @@ hist_csv <- file.path(
   "world_rugby_union_elo_game_history.csv"
 )
 
+source_results_csv <- file.path(
+  repo_dir,
+  "RugbyUnion",
+  "pipeline_data",
+  "source",
+  "results.csv"
+)
+
 flag_lookup_csv <- file.path(
   repo_dir,
   "team_flag_lookup.csv"
@@ -80,11 +95,12 @@ flag_lookup_csv <- file.path(
 
 base_data_dir <- file.path(
   repo_dir,
-  "RugbyUnion", "data"
+  "RugbyUnion",
+  "data"
 )
 
 history_out <- file.path(base_data_dir, "history")
-games_out   <- file.path(base_data_dir, "games")
+games_out <- file.path(base_data_dir, "games")
 
 dir.create(base_data_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(history_out, recursive = TRUE, showWarnings = FALSE)
@@ -109,6 +125,7 @@ if (!file.exists(flag_lookup_csv)) {
 # -----------------------------
 # Settings
 # -----------------------------
+
 INACTIVE_YEARS <- suppressWarnings(
   as.numeric(Sys.getenv("RUGBY_INACTIVE_YEARS", unset = "4"))
 )
@@ -117,14 +134,13 @@ if (is.na(INACTIVE_YEARS) || INACTIVE_YEARS <= 0) {
   stop("RUGBY_INACTIVE_YEARS must be a positive number if supplied.")
 }
 
-# TRUE = use latest match date in the dataset
-# FALSE = use manual date below
 USE_DATA_MAX_AS_LATEST_DATE <- TRUE
 MANUAL_LATEST_DATE <- as.Date("2026-12-31")
 
 # -----------------------------
 # Helpers
 # -----------------------------
+
 slug <- function(x) {
   x <- stringi::stri_trans_general(x, "Latin-ASCII")
   x <- tolower(trimws(x))
@@ -152,6 +168,46 @@ safe_num <- function(x) {
   suppressWarnings(as.numeric(x))
 }
 
+clean_flag <- function(x) {
+  x <- trimws(tolower(as.character(x)))
+  x[x %in% c("", "na", "null")] <- NA_character_
+  x
+}
+
+clean_score_num <- function(x) {
+  x_chr <- trimws(as.character(x))
+  x_chr[x_chr %in% c("", "NA", "NaN", "NULL", "null", "na")] <- NA_character_
+  suppressWarnings(as.integer(x_chr))
+}
+
+parse_mixed_date <- function(x) {
+  x_chr <- trimws(as.character(x))
+  
+  out <- rep(as.Date(NA), length(x_chr))
+  
+  is_blank <- is.na(x_chr) | x_chr == ""
+  is_excel_num <- grepl("^[0-9]+$", x_chr)
+  is_dmy <- grepl("^\\d{1,2}/\\d{1,2}/\\d{4}$", x_chr)
+  is_ymd <- grepl("^\\d{4}-\\d{1,2}-\\d{1,2}$", x_chr)
+  
+  out[!is_blank & is_excel_num] <- as.Date(
+    as.numeric(x_chr[!is_blank & is_excel_num]),
+    origin = "1899-12-30"
+  )
+  
+  out[!is_blank & is_dmy] <- as.Date(
+    x_chr[!is_blank & is_dmy],
+    format = "%d/%m/%Y"
+  )
+  
+  out[!is_blank & is_ymd] <- as.Date(
+    x_chr[!is_blank & is_ymd],
+    format = "%Y-%m-%d"
+  )
+  
+  out
+}
+
 write_json_compact <- function(x, path, na = "null") {
   write_json(
     x,
@@ -162,9 +218,42 @@ write_json_compact <- function(x, path, na = "null") {
   )
 }
 
+elo_expected <- function(team_elo, opponent_elo) {
+  1 / (1 + 10 ^ ((opponent_elo - team_elo) / 400))
+}
+
+clamp <- function(x, lo, hi) {
+  pmax(lo, pmin(hi, x))
+}
+
+draw_rate_from_gap <- function(abs_gap) {
+  abs_gap <- as.numeric(abs_gap)
+  
+  # Rugby union draw model:
+  # - 4.00% for evenly matched teams
+  # - 0.20% at a 600 Elo gap
+  # - tends towards 0% for very large mismatches
+  max_draw <- 0.0400
+  target_gap <- 600
+  target_draw <- 0.0020
+  
+  decay <- -log(target_draw / max_draw) / target_gap
+  
+  max_draw * exp(-decay * abs_gap)
+}
+
+make_score <- function(home_score, away_score) {
+  ifelse(
+    !is.na(home_score) & !is.na(away_score),
+    paste0(home_score, "-", away_score),
+    NA_character_
+  )
+}
+
 # -----------------------------
 # Load CSVs
 # -----------------------------
+
 final <- read_csv(
   final_csv,
   show_col_types = FALSE,
@@ -183,19 +272,30 @@ flag_lookup <- read_csv(
   locale = locale(encoding = "Windows-1252")
 )
 
+# -----------------------------
+# Validate columns
+# -----------------------------
+
 required_final <- c("Team", "Rating", "Games")
 
 required_hist <- c(
-  "date", "competition", "home_team", "away_team",
-  "home_score", "away_score", "result",
-  "HomeRating_Before", "AwayRating_Before",
-  "HomeRating_After", "AwayRating_After"
+  "date",
+  "competition",
+  "home_team",
+  "away_team",
+  "home_score",
+  "away_score",
+  "result",
+  "HomeRating_Before",
+  "AwayRating_Before",
+  "HomeRating_After",
+  "AwayRating_After"
 )
 
 required_flags <- c("Team", "Flag")
 
 miss_final <- setdiff(required_final, names(final))
-miss_hist  <- setdiff(required_hist, names(ghist))
+miss_hist <- setdiff(required_hist, names(ghist))
 miss_flags <- setdiff(required_flags, names(flag_lookup))
 
 if (length(miss_final) > 0) {
@@ -213,18 +313,18 @@ if (length(miss_flags) > 0) {
 # -----------------------------
 # Prepare flag lookup
 # -----------------------------
+
 flag_lookup_tbl <- flag_lookup %>%
   transmute(
     lookup_name = trimws(as.character(Team)),
-    lookup_key  = norm_name(Team),
-    flag        = trimws(as.character(Flag))
+    lookup_key = norm_name(Team),
+    flag = clean_flag(Flag)
   ) %>%
   filter(lookup_name != "") %>%
   group_by(lookup_key) %>%
   slice_head(n = 1) %>%
   ungroup()
 
-# Rugby names that may differ from the shared football flag lookup
 flag_aliases <- tibble(
   rugby_name = c(
     "USA",
@@ -245,7 +345,7 @@ flag_aliases <- tibble(
 ) %>%
   transmute(
     rugby_name = trimws(as.character(rugby_name)),
-    rugby_key  = norm_name(rugby_name),
+    rugby_key = norm_name(rugby_name),
     lookup_key = norm_name(lookup_name)
   )
 
@@ -271,13 +371,18 @@ get_flag_for_team <- function(team_names) {
 # -----------------------------
 # Clean final ratings
 # -----------------------------
+
 final <- final %>%
   mutate(
     Team = trimws(as.character(Team)),
     Rating = safe_num(Rating),
     Games = safe_int(Games)
   ) %>%
-  filter(Team != "", !is.na(Rating), !is.na(Games))
+  filter(
+    Team != "",
+    !is.na(Rating),
+    !is.na(Games)
+  )
 
 if (nrow(final) == 0) {
   stop("No usable rows in final ratings.")
@@ -286,19 +391,21 @@ if (nrow(final) == 0) {
 # -----------------------------
 # Clean game history
 # -----------------------------
+
 ghist <- ghist %>%
   mutate(
-    date        = as.Date(date),
-    home_team   = trimws(as.character(home_team)),
-    away_team   = trimws(as.character(away_team)),
-    home_score  = safe_int(home_score),
-    away_score  = safe_int(away_score),
+    date = as.Date(date),
+    home_team = trimws(as.character(home_team)),
+    away_team = trimws(as.character(away_team)),
+    home_score = safe_int(home_score),
+    away_score = safe_int(away_score),
     competition = trimws(as.character(competition)),
-    result      = trimws(as.character(result)),
+    result = trimws(as.character(result)),
+    result = if_else(tolower(result) == "draw", "Draw", result),
     HomeRating_Before = safe_num(HomeRating_Before),
     AwayRating_Before = safe_num(AwayRating_Before),
-    HomeRating_After  = safe_num(HomeRating_After),
-    AwayRating_After  = safe_num(AwayRating_After)
+    HomeRating_After = safe_num(HomeRating_After),
+    AwayRating_After = safe_num(AwayRating_After)
   ) %>%
   filter(
     !is.na(date),
@@ -314,6 +421,7 @@ if (nrow(ghist) == 0) {
 # -----------------------------
 # Latest game date
 # -----------------------------
+
 latest_game_date <- if (USE_DATA_MAX_AS_LATEST_DATE) {
   max(ghist$date, na.rm = TRUE)
 } else {
@@ -327,6 +435,7 @@ if (is.na(latest_game_date)) {
 # -----------------------------
 # Last played per team
 # -----------------------------
+
 last_played_tbl <- bind_rows(
   ghist %>% transmute(team = home_team, last_played = date),
   ghist %>% transmute(team = away_team, last_played = date)
@@ -355,15 +464,16 @@ cat("Inactive teams: ", nrow(team_status_tbl) - length(active_teams), "\n", sep 
 # -----------------------------
 # teams.json
 # -----------------------------
+
 teams_tbl <- final %>%
   transmute(
-    name   = Team,
+    name = Team,
     rating = as.integer(round(Rating)),
-    games  = as.integer(Games)
+    games = as.integer(Games)
   ) %>%
   filter(name %in% active_teams) %>%
   mutate(
-    id   = slug(name),
+    id = slug(name),
     flag = get_flag_for_team(name)
   ) %>%
   select(id, name, flag, rating, games) %>%
@@ -391,32 +501,37 @@ write_json_compact(
 
 cat("Wrote teams.json, n = ", nrow(teams_tbl), "\n", sep = "")
 
-name_to_id   <- setNames(teams_tbl$id, teams_tbl$name)
+name_to_id <- setNames(teams_tbl$id, teams_tbl$name)
 name_to_flag <- setNames(teams_tbl$flag, teams_tbl$name)
+name_to_rating <- setNames(teams_tbl$rating, teams_tbl$name)
 
 # -----------------------------
 # Long rating history
-# history uses after-match rating
 # -----------------------------
+
 hist_long_all <- bind_rows(
   ghist %>%
     transmute(
-      team        = home_team,
-      date        = date,
-      era         = era_label(date),
-      rating      = HomeRating_After,
+      team = home_team,
+      date = date,
+      era = era_label(date),
+      rating = HomeRating_After,
       competition = competition
     ),
   ghist %>%
     transmute(
-      team        = away_team,
-      date        = date,
-      era         = era_label(date),
-      rating      = AwayRating_After,
+      team = away_team,
+      date = date,
+      era = era_label(date),
+      rating = AwayRating_After,
       competition = competition
     )
 ) %>%
-  filter(!is.na(rating), team != "", !is.na(date)) %>%
+  filter(
+    !is.na(rating),
+    team != "",
+    !is.na(date)
+  ) %>%
   arrange(team, date) %>%
   group_by(team, date) %>%
   slice_tail(n = 1) %>%
@@ -428,13 +543,8 @@ if (nrow(hist_long_all) == 0) {
 
 # -----------------------------
 # Historical world rank
-#
-# Rank is calculated at each match date.
-# For each rank date:
-#   - take every team's latest known rating up to that date
-#   - exclude teams inactive for more than INACTIVE_YEARS before that date
-#   - rank by rating descending
 # -----------------------------
+
 cat("Building historical world ranks...\n")
 
 rank_dt <- as.data.table(hist_long_all)
@@ -493,47 +603,50 @@ cat("Historical rank rows: ", nrow(rank_tbl), "\n", sep = "")
 
 # -----------------------------
 # era_starts.json
-#
-# Era is calendar year.
-# Elo at start of era = pre-match Elo from team's first match in that era.
 # -----------------------------
+
 era_starts_long <- bind_rows(
   ghist %>%
     transmute(
-      team        = home_team,
-      date        = date,
-      era         = era_label(date),
-      elo         = HomeRating_Before,
+      team = home_team,
+      date = date,
+      era = era_label(date),
+      elo = HomeRating_Before,
       competition = competition
     ),
   ghist %>%
     transmute(
-      team        = away_team,
-      date        = date,
-      era         = era_label(date),
-      elo         = AwayRating_Before,
+      team = away_team,
+      date = date,
+      era = era_label(date),
+      elo = AwayRating_Before,
       competition = competition
     )
 ) %>%
-  filter(team != "", !is.na(date), !is.na(elo), !is.na(era)) %>%
+  filter(
+    team != "",
+    !is.na(date),
+    !is.na(elo),
+    !is.na(era)
+  ) %>%
   filter(team %in% active_teams) %>%
   arrange(team, era, date) %>%
   group_by(team, era) %>%
   slice_head(n = 1) %>%
   ungroup() %>%
   mutate(
-    id   = unname(name_to_id[team]),
+    id = unname(name_to_id[team]),
     flag = unname(name_to_flag[team]),
-    elo  = as.integer(round(elo))
+    elo = as.integer(round(elo))
   ) %>%
   filter(!is.na(id)) %>%
   mutate(flag = if_else(is.na(flag), "", flag)) %>%
   transmute(
-    era         = as.character(era),
-    id          = as.character(id),
-    name        = as.character(team),
-    flag        = as.character(flag),
-    elo         = as.integer(elo),
+    era = as.character(era),
+    id = as.character(id),
+    name = as.character(team),
+    flag = as.character(flag),
+    elo = as.integer(elo),
     competition = as.character(competition)
   ) %>%
   arrange(desc(era), desc(elo), name)
@@ -548,12 +661,15 @@ cat("Wrote era_starts.json, rows = ", nrow(era_starts_long), "\n", sep = "")
 # -----------------------------
 # meta.json
 # -----------------------------
-flagged_teams   <- sum(teams_tbl$flag != "", na.rm = TRUE)
+
+flagged_teams <- sum(teams_tbl$flag != "", na.rm = TRUE)
 unflagged_teams <- sum(teams_tbl$flag == "", na.rm = TRUE)
 
 meta <- list(
   sport = "World Rugby Union",
   latest_game_date = format(latest_game_date, "%Y-%m-%d"),
+  asof = format(latest_game_date, "%Y-%m-%d"),
+  games = nrow(ghist),
   inactive_years = INACTIVE_YEARS,
   inactive_cutoff_days = unname(inactive_cutoff_days),
   total_teams_seen = nrow(team_status_tbl),
@@ -563,11 +679,13 @@ meta <- list(
   unflagged_teams = unflagged_teams,
   history_has_world_rank = TRUE,
   games_have_world_rank = TRUE,
+  games_have_expected_wdl = TRUE,
   rank_method = paste0(
     "Ranked by latest known Elo on each match date. ",
     "Teams inactive for more than ", INACTIVE_YEARS,
     " years at that date are excluded."
   ),
+  expected_wdl_method = "Temporary football draw-rate curve copied for rugby until a rugby-specific draw model is supplied.",
   input_files = list(
     final_ratings = basename(final_csv),
     game_history = basename(hist_csv),
@@ -592,6 +710,7 @@ cat("Teams without flags: ", unflagged_teams, "\n", sep = "")
 # Output:
 #   [{date, era, rating, rank, competition}]
 # -----------------------------
+
 n_hist_written <- 0L
 
 for (tm in names(name_to_id)) {
@@ -601,10 +720,10 @@ for (tm in names(name_to_id)) {
     filter(team == tm) %>%
     arrange(date) %>%
     transmute(
-      date        = format(date, "%Y-%m-%d"),
-      era         = as.character(era),
-      rating      = as.integer(round(rating)),
-      rank        = as.integer(rank),
+      date = format(date, "%Y-%m-%d"),
+      era = as.character(era),
+      rating = as.integer(round(rating)),
+      rank = as.integer(rank),
       competition = as.character(competition)
     )
   
@@ -622,18 +741,126 @@ for (tm in names(name_to_id)) {
 cat("Wrote rating history files: ", n_hist_written, "\n", sep = "")
 
 # -----------------------------
+# Future fixtures
+#
+# Optional. If RugbyUnion/pipeline_data/source/results.csv exists and has
+# blank scores after latest_game_date, they are added as scheduled games.
+# -----------------------------
+
+future_fixtures <- tibble()
+
+if (file.exists(source_results_csv)) {
+  source_results <- read_csv(
+    source_results_csv,
+    show_col_types = FALSE,
+    locale = locale(encoding = "UTF-8")
+  )
+  
+  required_source_cols <- c(
+    "date",
+    "home_team",
+    "away_team",
+    "home_score",
+    "away_score",
+    "competition"
+  )
+  
+  missing_source_cols <- setdiff(required_source_cols, names(source_results))
+  
+  if (length(missing_source_cols) > 0) {
+    warning(
+      "Skipping future fixtures because results.csv is missing columns: ",
+      paste(missing_source_cols, collapse = ", ")
+    )
+  } else {
+    future_fixtures <- source_results %>%
+      mutate(
+        date = parse_mixed_date(date),
+        home_team = trimws(as.character(home_team)),
+        away_team = trimws(as.character(away_team)),
+        home_score = clean_score_num(home_score),
+        away_score = clean_score_num(away_score),
+        competition = trimws(as.character(competition))
+      ) %>%
+      filter(
+        !is.na(date),
+        date > latest_game_date,
+        home_team != "",
+        away_team != "",
+        is.na(home_score),
+        is.na(away_score)
+      ) %>%
+      mutate(
+        HomeRating_Before = as.numeric(unname(name_to_rating[home_team])),
+        AwayRating_Before = as.numeric(unname(name_to_rating[away_team])),
+        home_id = unname(name_to_id[home_team]),
+        away_id = unname(name_to_id[away_team])
+      ) %>%
+      filter(
+        is.finite(HomeRating_Before),
+        is.finite(AwayRating_Before),
+        !is.na(home_id),
+        !is.na(away_id)
+      ) %>%
+      mutate(
+        era = era_label(date),
+        
+        home_expected = elo_expected(HomeRating_Before, AwayRating_Before),
+        away_expected = 1 - home_expected,
+        
+        abs_elo_gap = abs(HomeRating_Before - AwayRating_Before),
+        draw_prob = draw_rate_from_gap(abs_elo_gap),
+        
+        home_win_prob = home_expected - draw_prob / 2,
+        away_win_prob = away_expected - draw_prob / 2,
+        
+        home_win_prob = clamp(home_win_prob, 0, 1 - draw_prob),
+        away_win_prob = 1 - draw_prob - home_win_prob
+      ) %>%
+      transmute(
+        date = format(date, "%Y-%m-%d"),
+        era = as.character(era),
+        competition = as.character(competition),
+        tournament = as.character(competition),
+        
+        home = as.character(home_team),
+        homeElo = as.integer(round(HomeRating_Before)),
+        
+        away = as.character(away_team),
+        awayElo = as.integer(round(AwayRating_Before)),
+        
+        result = NA_character_,
+        score = NA_character_,
+        delta = NA_character_,
+        
+        homeWinPct = as.integer(round(100 * home_win_prob)),
+        drawPct = as.integer(round(100 * draw_prob)),
+        awayWinPct = as.integer(round(100 * away_win_prob)),
+        
+        rank = NA_integer_,
+        status = "scheduled"
+      )
+  }
+} else {
+  warning("No Rugby source results.csv found, so no future fixtures were added: ", source_results_csv)
+}
+
+cat("Future fixtures loaded: ", nrow(future_fixtures), "\n", sep = "")
+
+# -----------------------------
 # Per-team games JSON
 #
-# Output:
+# Football-style output:
 #   [{
-#     date, era, competition,
-#     home, homeScore, homeElo,
-#     away, awayScore, awayElo,
-#     result, delta, rank
+#     date, era, competition, tournament,
+#     home, homeElo,
+#     away, awayElo,
+#     result, score, delta,
+#     homeWinPct, drawPct, awayWinPct,
+#     rank, status
 #   }]
-#
-# rank = team's world rank after that match date
 # -----------------------------
+
 n_games_written <- 0L
 
 team_rank_lookup <- hist_long %>%
@@ -652,6 +879,7 @@ for (tm in names(name_to_id)) {
     arrange(desc(date)) %>%
     mutate(
       era = era_label(date),
+      
       delta_num = case_when(
         home_team == tm ~ HomeRating_After - HomeRating_Before,
         away_team == tm ~ AwayRating_After - AwayRating_Before,
@@ -661,7 +889,19 @@ for (tm in names(name_to_id)) {
         !is.na(delta_num),
         sprintf("%+0.1f", round(delta_num, 1)),
         NA_character_
-      )
+      ),
+      
+      home_expected = elo_expected(HomeRating_Before, AwayRating_Before),
+      away_expected = 1 - home_expected,
+      
+      abs_elo_gap = abs(HomeRating_Before - AwayRating_Before),
+      draw_prob = draw_rate_from_gap(abs_elo_gap),
+      
+      home_win_prob = home_expected - draw_prob / 2,
+      away_win_prob = away_expected - draw_prob / 2,
+      
+      home_win_prob = clamp(home_win_prob, 0, 1 - draw_prob),
+      away_win_prob = 1 - draw_prob - home_win_prob
     ) %>%
     left_join(
       team_rank_lookup %>%
@@ -670,19 +910,34 @@ for (tm in names(name_to_id)) {
       by = "date"
     ) %>%
     transmute(
-      date        = format(date, "%Y-%m-%d"),
-      era         = as.character(era),
+      date = format(date, "%Y-%m-%d"),
+      era = as.character(era),
       competition = as.character(competition),
-      home        = as.character(home_team),
-      homeScore   = home_score,
-      homeElo     = as.integer(round(HomeRating_Before)),
-      away        = as.character(away_team),
-      awayScore   = away_score,
-      awayElo     = as.integer(round(AwayRating_Before)),
-      result      = as.character(result),
-      delta       = as.character(delta),
-      rank        = as.integer(rank)
+      tournament = as.character(competition),
+      
+      home = as.character(home_team),
+      homeElo = as.integer(round(HomeRating_Before)),
+      
+      away = as.character(away_team),
+      awayElo = as.integer(round(AwayRating_Before)),
+      
+      result = as.character(result),
+      score = as.character(make_score(home_score, away_score)),
+      delta = as.character(delta),
+      
+      homeWinPct = as.integer(round(100 * home_win_prob)),
+      drawPct = as.integer(round(100 * draw_prob)),
+      awayWinPct = as.integer(round(100 * away_win_prob)),
+      
+      rank = as.integer(rank),
+      status = "completed"
     )
+  
+  scheduled_df <- future_fixtures %>%
+    filter(home == tm | away == tm)
+  
+  df <- bind_rows(df, scheduled_df) %>%
+    arrange(desc(as.Date(date)))
   
   if (nrow(df) > 0) {
     write_json_compact(
@@ -696,4 +951,22 @@ for (tm in names(name_to_id)) {
 }
 
 cat("Wrote games files: ", n_games_written, "\n", sep = "")
+
+# -----------------------------
+# Final checks
+# -----------------------------
+
+expected_outputs <- c(
+  file.path(base_data_dir, "meta.json"),
+  file.path(base_data_dir, "teams.json"),
+  file.path(base_data_dir, "era_starts.json")
+)
+
+missing_outputs <- expected_outputs[!file.exists(expected_outputs)]
+
+if (length(missing_outputs) > 0) {
+  stop("Missing expected JSON outputs: ", paste(missing_outputs, collapse = ", "))
+}
+
 cat("Done.\n")
+cat("JSON output directory: ", base_data_dir, "\n", sep = "")
