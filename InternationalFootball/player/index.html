@@ -18,6 +18,12 @@
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
+    :root{
+      --wdl-win: #14b85a;
+      --wdl-draw: #f4c430;
+      --wdl-loss: #e53935;
+    }
+
     #chart { height: 520px; }
 
     .header-row{
@@ -137,9 +143,15 @@
     table.games td{
       padding: 10px 12px;
       border-bottom: 1px solid #2b2f36;
+      border-right: 1px solid rgba(128,128,128,0.45);
       text-align: center;
       vertical-align: middle;
       white-space: nowrap;
+    }
+
+    table.games th:first-child,
+    table.games td:first-child{
+      border-left: 1px solid rgba(128,128,128,0.45);
     }
 
     table.games th{
@@ -149,20 +161,33 @@
       background-color: var(--panel-bg, #1a1a1a);
     }
 
-    table.games th:nth-child(1), table.games td:nth-child(1),
-    table.games th:nth-child(2), table.games td:nth-child(2),
-    table.games th:nth-child(3), table.games td:nth-child(3),
-    table.games th:nth-child(4), table.games td:nth-child(4),
-    table.games th:nth-child(5), table.games td:nth-child(5),
-    table.games th:nth-child(6), table.games td:nth-child(6),
-    table.games th:nth-child(7), table.games td:nth-child(7) {
-      border-right: 3px double rgba(128,128,128,0.6);
+    .team-cell{
+      text-align: left;
     }
 
-    .result{ font-weight: 700; }
-    .result.win{ color: #3ad542; }
-    .result.loss{ color: #dc2222; }
-    .result.draw{ color: #e5b523; }
+    .team-cell a{
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .team-cell a:hover{
+      opacity: 0.9;
+    }
+
+    .team-cell .profile-team,
+    .team-cell a.profile-team{
+      font-weight: 900;
+      text-decoration-thickness: 2px;
+    }
+
+    .result{
+      font-weight: 800;
+    }
+
+    .result.win{ color: var(--wdl-win); }
+    .result.loss{ color: var(--wdl-loss); }
+    .result.draw{ color: var(--wdl-draw); }
 
     .score{
       font-weight: 400;
@@ -170,28 +195,52 @@
     }
 
     .score .score-strong{
-      font-weight: 700;
+      font-weight: 800;
     }
 
-    .delta{ font-weight: 700; }
-    .delta.pos{ color: #3ad542; }
-    .delta.neg{ color: #dc2222; }
+    .delta{
+      font-weight: 800;
+    }
 
-    .opp{ text-align: left; }
-    .tourn{
-      text-align: left;
-      max-width: 260px;
+    .delta.pos{ color: var(--wdl-win); }
+    .delta.neg{ color: var(--wdl-loss); }
+    .delta.zero{ color: var(--wdl-draw); }
+
+    .wdl-cell{
+      min-width: 178px;
+    }
+
+    .wdl-bar{
+      display: flex;
+      width: 170px;
+      height: 26px;
+      border-radius: 7px;
       overflow: hidden;
-      text-overflow: ellipsis;
+      border: 1px solid rgba(128,128,128,0.45);
+      background: rgba(255,255,255,0.04);
+      margin: 0 auto;
     }
 
-    td.opp a{
-      color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 2px;
+    .wdl-seg{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 900;
+      color: #111;
+      min-width: 14px;
+      overflow: hidden;
     }
 
-    td.opp a:hover{ opacity: 0.9; }
+    .wdl-win{ background: var(--wdl-win); }
+    .wdl-draw{ background: var(--wdl-draw); }
+    .wdl-loss{ background: var(--wdl-loss); }
+
+    .wdl-seg span{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+    }
 
     @media (max-width: 600px){
       #chart{ height: 420px; }
@@ -199,7 +248,19 @@
       h3.section-title{ font-size: 1.25rem; }
       table.games{ font-size: 0.92rem; }
       table.games th, table.games td{ padding: 8px 10px; }
-      .tourn{ max-width: 180px; }
+
+      .wdl-cell{
+        min-width: 148px;
+      }
+
+      .wdl-bar{
+        width: 140px;
+        height: 24px;
+      }
+
+      .wdl-seg{
+        font-size: 0.7rem;
+      }
     }
 
     @media (max-width: 700px){
@@ -582,6 +643,85 @@
     };
   }
 
+  function renderTeamCell(teamName, teams, myName) {
+    const isProfileTeam = teamName === myName;
+    const team = teams.find(t => t.name === teamName);
+
+    if (team && team.id) {
+      const a = document.createElement('a');
+      a.href = `../player/?id=${encodeURIComponent(team.id)}`;
+      a.textContent = teamName || '';
+
+      if (isProfileTeam) {
+        a.className = 'profile-team';
+      }
+
+      return a;
+    }
+
+    const span = document.createElement('span');
+    span.textContent = teamName || '';
+
+    if (isProfileTeam) {
+      span.className = 'profile-team';
+    }
+
+    return span;
+  }
+
+  function renderWdlBar(g, myName) {
+    const isHome = g.home === myName;
+    const isAway = g.away === myName;
+
+    if (!isHome && !isAway) {
+      return document.createTextNode('');
+    }
+
+    const homeWin = Number(g.homeWinPct);
+    const draw = Number(g.drawPct);
+    const awayWin = Number(g.awayWinPct);
+
+    if (
+      !Number.isFinite(homeWin) ||
+      !Number.isFinite(draw) ||
+      !Number.isFinite(awayWin)
+    ) {
+      return document.createTextNode('');
+    }
+
+    const win = isHome ? homeWin : awayWin;
+    const loss = isHome ? awayWin : homeWin;
+
+    const safeWin = Math.max(0, win);
+    const safeDraw = Math.max(0, draw);
+    const safeLoss = Math.max(0, loss);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'wdl-bar';
+    wrap.title = `Win ${safeWin}% / Draw ${safeDraw}% / Loss ${safeLoss}%`;
+
+    const winSeg = document.createElement('div');
+    winSeg.className = 'wdl-seg wdl-win';
+    winSeg.style.width = `${safeWin}%`;
+    winSeg.innerHTML = `<span>${safeWin}%</span>`;
+
+    const drawSeg = document.createElement('div');
+    drawSeg.className = 'wdl-seg wdl-draw';
+    drawSeg.style.width = `${safeDraw}%`;
+    drawSeg.innerHTML = `<span>${safeDraw}%</span>`;
+
+    const lossSeg = document.createElement('div');
+    lossSeg.className = 'wdl-seg wdl-loss';
+    lossSeg.style.width = `${safeLoss}%`;
+    lossSeg.innerHTML = `<span>${safeLoss}%</span>`;
+
+    wrap.appendChild(winSeg);
+    wrap.appendChild(drawSeg);
+    wrap.appendChild(lossSeg);
+
+    return wrap;
+  }
+
   function renderGamesTable(me, teams, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
@@ -589,7 +729,7 @@
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
 
-    for (const h of ['Date', 'Event', 'Opponent', 'Elo', 'Score', 'Result', 'Δ', 'New']) {
+    for (const h of ['Date', 'Home', 'Elo', 'Away', 'Elo', 'Expected W/D/L', 'Score', 'Result', 'Δ']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -612,45 +752,32 @@
       const isAway = g.away === myName;
       if (!isHome && !isAway) continue;
 
-      const opponentName = isHome ? g.away : g.home;
-      const opponentElo = isHome ? Number(g.awayElo) : Number(g.homeElo);
-      const myEloBefore = isHome ? Number(g.homeElo) : Number(g.awayElo);
-
+      const homeElo = Number(g.homeElo);
+      const awayElo = Number(g.awayElo);
       const numDelta = Number(g.delta);
-      const myEloAfter = Number.isFinite(myEloBefore) && Number.isFinite(numDelta)
-        ? Math.round(myEloBefore + numDelta)
-        : NaN;
 
       const tr = document.createElement('tr');
 
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date || '';
 
-      const tdTournament = document.createElement('td');
-      tdTournament.className = 'tourn';
-      tdTournament.title = g.tournament || '';
-      tdTournament.textContent = g.tournament || '';
+      const tdHome = document.createElement('td');
+      tdHome.className = 'team-cell';
+      tdHome.appendChild(renderTeamCell(g.home, teams, myName));
 
-      const tdOpp = document.createElement('td');
-      tdOpp.className = 'opp';
+      const tdHomeElo = document.createElement('td');
+      tdHomeElo.textContent = Number.isFinite(homeElo) ? String(Math.round(homeElo)) : '';
 
-      if (opponentName) {
-        const opponentTeam = teams.find(t => t.name === opponentName);
+      const tdAway = document.createElement('td');
+      tdAway.className = 'team-cell';
+      tdAway.appendChild(renderTeamCell(g.away, teams, myName));
 
-        if (opponentTeam && opponentTeam.id) {
-          const a = document.createElement('a');
-          a.href = `../player/?id=${encodeURIComponent(opponentTeam.id)}`;
-          a.textContent = opponentName;
-          tdOpp.appendChild(a);
-        } else {
-          tdOpp.textContent = opponentName;
-        }
-      } else {
-        tdOpp.textContent = '';
-      }
+      const tdAwayElo = document.createElement('td');
+      tdAwayElo.textContent = Number.isFinite(awayElo) ? String(Math.round(awayElo)) : '';
 
-      const tdOppElo = document.createElement('td');
-      tdOppElo.textContent = Number.isFinite(opponentElo) ? String(Math.round(opponentElo)) : '';
+      const tdWdl = document.createElement('td');
+      tdWdl.className = 'wdl-cell';
+      tdWdl.appendChild(renderWdlBar(g, myName));
 
       const tdScore = document.createElement('td');
       tdScore.className = 'score';
@@ -672,22 +799,20 @@
       const tdDelta = document.createElement('td');
       if (!Number.isNaN(numDelta)) {
         tdDelta.textContent = g.delta;
-        tdDelta.className = 'delta ' + (numDelta > 0 ? 'pos' : (numDelta < 0 ? 'neg' : ''));
+        tdDelta.className = 'delta ' + (numDelta > 0 ? 'pos' : (numDelta < 0 ? 'neg' : 'zero'));
       } else {
         tdDelta.textContent = '';
       }
 
-      const tdNew = document.createElement('td');
-      tdNew.textContent = Number.isFinite(myEloAfter) ? String(myEloAfter) : '';
-
       tr.appendChild(tdDate);
-      tr.appendChild(tdTournament);
-      tr.appendChild(tdOpp);
-      tr.appendChild(tdOppElo);
+      tr.appendChild(tdHome);
+      tr.appendChild(tdHomeElo);
+      tr.appendChild(tdAway);
+      tr.appendChild(tdAwayElo);
+      tr.appendChild(tdWdl);
       tr.appendChild(tdScore);
       tr.appendChild(tdResult);
       tr.appendChild(tdDelta);
-      tr.appendChild(tdNew);
 
       tbody.appendChild(tr);
     }
@@ -695,7 +820,7 @@
     if (!tbody.children.length) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      td.colSpan = 8;
+      td.colSpan = 9;
       td.textContent = 'No games';
       tr.appendChild(td);
       tbody.appendChild(tr);
@@ -795,13 +920,13 @@
         renderGamesTable(me, teams, Array.isArray(games) ? games : []);
       } else {
         const tbl = document.getElementById('games');
-        tbl.innerHTML = '<tbody><tr><td colspan="8">No games</td></tr></tbody>';
+        tbl.innerHTML = '<tbody><tr><td colspan="9">No games</td></tr></tbody>';
       }
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="8">Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
     }
   }
 
@@ -811,7 +936,7 @@
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="8">Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
     });
 </script>
 </body>
