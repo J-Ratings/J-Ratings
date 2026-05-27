@@ -84,6 +84,7 @@
       border-collapse:separate;
       border-spacing:0;
       font-size:1rem;
+      table-layout:fixed;
     }
 
     table.games th,
@@ -108,8 +109,53 @@
       background-color:var(--card);
     }
 
+    table.games th:nth-child(1),
+    table.games td:nth-child(1){
+      width:120px;
+    }
+
+    table.games th:nth-child(2),
+    table.games td:nth-child(2){
+      width:220px;
+      max-width:220px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+
+    table.games th:nth-child(3),
+    table.games td:nth-child(3),
+    table.games th:nth-child(5),
+    table.games td:nth-child(5){
+      width:170px;
+    }
+
+    table.games th:nth-child(4),
+    table.games td:nth-child(4),
+    table.games th:nth-child(6),
+    table.games td:nth-child(6){
+      width:72px;
+    }
+
+    table.games th:nth-child(7),
+    table.games td:nth-child(7){
+      width:180px;
+    }
+
+    table.games th:nth-child(8),
+    table.games td:nth-child(8){
+      width:90px;
+    }
+
+    table.games th:nth-child(9),
+    table.games td:nth-child(9){
+      width:80px;
+    }
+
     .player-cell{
       text-align:left;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
     .player-cell a{
@@ -193,6 +239,46 @@
       table.games th,
       table.games td{
         padding:8px 10px;
+      }
+
+      table.games th:nth-child(1),
+      table.games td:nth-child(1){
+        width:110px;
+      }
+
+      table.games th:nth-child(2),
+      table.games td:nth-child(2){
+        width:180px;
+        max-width:180px;
+      }
+
+      table.games th:nth-child(3),
+      table.games td:nth-child(3),
+      table.games th:nth-child(5),
+      table.games td:nth-child(5){
+        width:145px;
+      }
+
+      table.games th:nth-child(4),
+      table.games td:nth-child(4),
+      table.games th:nth-child(6),
+      table.games td:nth-child(6){
+        width:68px;
+      }
+
+      table.games th:nth-child(7),
+      table.games td:nth-child(7){
+        width:150px;
+      }
+
+      table.games th:nth-child(8),
+      table.games td:nth-child(8){
+        width:85px;
+      }
+
+      table.games th:nth-child(9),
+      table.games td:nth-child(9){
+        width:75px;
       }
 
       .wl-cell{
@@ -449,6 +535,7 @@ function renderGamesTable(me, players, games) {
 
     const tdTournament = document.createElement('td');
     tdTournament.textContent = g.tournament || '';
+    tdTournament.title = g.tournament || '';
 
     const tdBlack = document.createElement('td');
     tdBlack.className = 'player-cell';
