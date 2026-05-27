@@ -50,6 +50,7 @@ tier_to_division <- function(tier, fallback_league = NULL) {
     tier == 2L ~ "Championship",
     tier == 3L ~ "League 1",
     tier == 4L ~ "League 2",
+    tier == 5L ~ "National League",
     TRUE ~ NA_character_
   )
   
@@ -71,6 +72,59 @@ season_label <- function(d) {
   paste0(start_year, "-", end_short)
 }
 
+elo_expected <- function(team_elo, opponent_elo) {
+  1 / (1 + 10 ^ ((opponent_elo - team_elo) / 400))
+}
+
+clamp <- function(x, lo, hi) {
+  pmax(lo, pmin(hi, x))
+}
+
+draw_rate_from_tier_gap <- function(tier, abs_gap) {
+  tier <- as.integer(tier)
+  
+  # Calibrated from English football match data, 2005 onwards.
+  # The model is intentionally simple:
+  # draw_rate = base + slope * abs_elo_gap, clamped by tier.
+  base <- dplyr::case_when(
+    tier == 1L ~ 0.302,
+    tier == 2L ~ 0.291,
+    tier == 3L ~ 0.282,
+    tier == 4L ~ 0.284,
+    tier == 5L ~ 0.274,
+    TRUE       ~ 0.282
+  )
+  
+  slope <- dplyr::case_when(
+    tier == 1L ~ -0.00048,
+    tier == 2L ~ -0.00022,
+    tier == 3L ~ -0.00018,
+    tier == 4L ~ -0.00018,
+    tier == 5L ~ -0.00025,
+    TRUE       ~ -0.00018
+  )
+  
+  min_draw <- dplyr::case_when(
+    tier == 1L ~ 0.13,
+    tier == 2L ~ 0.18,
+    tier == 3L ~ 0.17,
+    tier == 4L ~ 0.17,
+    tier == 5L ~ 0.16,
+    TRUE       ~ 0.17
+  )
+  
+  max_draw <- dplyr::case_when(
+    tier == 1L ~ 0.31,
+    tier == 2L ~ 0.30,
+    tier == 3L ~ 0.29,
+    tier == 4L ~ 0.29,
+    tier == 5L ~ 0.28,
+    TRUE       ~ 0.29
+  )
+  
+  clamp(base + slope * abs_gap, min_draw, max_draw)
+}
+
 # -----------------------------
 # Load CSVs
 # -----------------------------
@@ -89,6 +143,7 @@ ghist <- read_csv(hist_csv, show_col_types = FALSE)
 # -----------------------------
 
 required_final <- c("Team", "Rating", "Games")
+
 required_hist <- c(
   "League", "Tier", "Date", "Home", "Away", "Result", "Score",
   "HomeRating_Before", "AwayRating_Before",
@@ -354,7 +409,19 @@ for (tm in names(name_to_id)) {
         sprintf("%+0.1f", round(delta_num, 1)),
         NA_character_
       ),
-      division = tier_to_division(as.integer(Tier), League)
+      division = tier_to_division(as.integer(Tier), League),
+      
+      home_expected = elo_expected(HomeRating_Before, AwayRating_Before),
+      away_expected = 1 - home_expected,
+      
+      abs_elo_gap = abs(HomeRating_Before - AwayRating_Before),
+      draw_prob = draw_rate_from_tier_gap(as.integer(Tier), abs_elo_gap),
+      
+      home_win_prob = home_expected - draw_prob / 2,
+      away_win_prob = away_expected - draw_prob / 2,
+      
+      home_win_prob = clamp(home_win_prob, 0, 1 - draw_prob),
+      away_win_prob = 1 - draw_prob - home_win_prob
     ) %>%
     transmute(
       date = format(Date, "%Y-%m-%d"),
@@ -362,13 +429,20 @@ for (tm in names(name_to_id)) {
       league = as.character(League),
       tier = as.integer(Tier),
       division = as.character(division),
+      
       home = as.character(Home),
       homeElo = as.integer(round(HomeRating_Before)),
+      
       away = as.character(Away),
       awayElo = as.integer(round(AwayRating_Before)),
+      
       result = as.character(Result),
       score = as.character(Score),
-      delta
+      delta,
+      
+      homeWinPct = as.integer(round(100 * home_win_prob)),
+      drawPct = as.integer(round(100 * draw_prob)),
+      awayWinPct = as.integer(round(100 * away_win_prob))
     )
   
   if (nrow(df) > 0) {

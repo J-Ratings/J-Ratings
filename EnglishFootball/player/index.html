@@ -186,12 +186,61 @@
 
     td.opp a:hover{ opacity: 0.9; }
 
+    .ldw-cell{
+      min-width: 190px;
+    }
+
+    .ldw-bar{
+      display: flex;
+      width: 180px;
+      height: 28px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(128,128,128,0.45);
+      background: rgba(255,255,255,0.04);
+      margin: 0 auto;
+    }
+
+    .ldw-seg{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #111;
+      min-width: 18px;
+      overflow: hidden;
+    }
+
+    .ldw-loss{ background: #e53935; }
+    .ldw-draw{ background: #f4c430; }
+    .ldw-win{ background: #14b85a; }
+
+    .ldw-seg span{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+
     @media (max-width: 600px){
       #chart{ height: 420px; }
       h2#pname{ font-size: 1.6rem; }
       h3.section-title{ font-size: 1.25rem; }
       table.games{ font-size: 0.92rem; }
       table.games th, table.games td{ padding: 8px 10px; }
+
+      .ldw-cell{
+        min-width: 150px;
+      }
+
+      .ldw-bar{
+        width: 145px;
+        height: 26px;
+      }
+
+      .ldw-seg{
+        font-size: 0.7rem;
+      }
     }
 
     @media (max-width: 700px){
@@ -575,6 +624,60 @@
     };
   }
 
+  function renderLdwBar(g, myName) {
+    const isHome = g.home === myName;
+    const isAway = g.away === myName;
+
+    if (!isHome && !isAway) {
+      return document.createTextNode('');
+    }
+
+    const homeWin = Number(g.homeWinPct);
+    const draw = Number(g.drawPct);
+    const awayWin = Number(g.awayWinPct);
+
+    if (
+      !Number.isFinite(homeWin) ||
+      !Number.isFinite(draw) ||
+      !Number.isFinite(awayWin)
+    ) {
+      return document.createTextNode('');
+    }
+
+    const loss = isHome ? awayWin : homeWin;
+    const win = isHome ? homeWin : awayWin;
+
+    const total = loss + draw + win;
+    const safeLoss = total > 0 ? Math.max(0, loss) : 0;
+    const safeDraw = total > 0 ? Math.max(0, draw) : 0;
+    const safeWin = total > 0 ? Math.max(0, win) : 0;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'ldw-bar';
+    wrap.title = `Loss ${safeLoss}% / Draw ${safeDraw}% / Win ${safeWin}%`;
+
+    const lossSeg = document.createElement('div');
+    lossSeg.className = 'ldw-seg ldw-loss';
+    lossSeg.style.width = `${safeLoss}%`;
+    lossSeg.innerHTML = `<span>${safeLoss}%</span>`;
+
+    const drawSeg = document.createElement('div');
+    drawSeg.className = 'ldw-seg ldw-draw';
+    drawSeg.style.width = `${safeDraw}%`;
+    drawSeg.innerHTML = `<span>${safeDraw}%</span>`;
+
+    const winSeg = document.createElement('div');
+    winSeg.className = 'ldw-seg ldw-win';
+    winSeg.style.width = `${safeWin}%`;
+    winSeg.innerHTML = `<span>${safeWin}%</span>`;
+
+    wrap.appendChild(lossSeg);
+    wrap.appendChild(drawSeg);
+    wrap.appendChild(winSeg);
+
+    return wrap;
+  }
+
   function renderGamesTable(me, teams, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
@@ -582,7 +685,7 @@
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
 
-    for (const h of ['Date', 'Opponent', 'Elo', 'Score', 'Result', 'Δ', 'New']) {
+    for (const h of ['Date', 'Opponent', 'Elo', 'Score', 'Result', 'Δ', 'New', 'L/D/W']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -668,6 +771,10 @@
       const tdNew = document.createElement('td');
       tdNew.textContent = Number.isFinite(myEloAfter) ? String(myEloAfter) : '';
 
+      const tdLdw = document.createElement('td');
+      tdLdw.className = 'ldw-cell';
+      tdLdw.appendChild(renderLdwBar(g, myName));
+
       tr.appendChild(tdDate);
       tr.appendChild(tdOpp);
       tr.appendChild(tdOppElo);
@@ -675,6 +782,7 @@
       tr.appendChild(tdResult);
       tr.appendChild(tdDelta);
       tr.appendChild(tdNew);
+      tr.appendChild(tdLdw);
 
       tbody.appendChild(tr);
     }
@@ -682,7 +790,7 @@
     if (!tbody.children.length) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      td.colSpan = 7;
+      td.colSpan = 8;
       td.textContent = 'No games';
       tr.appendChild(td);
       tbody.appendChild(tr);
@@ -782,13 +890,13 @@
         renderGamesTable(me, teams, Array.isArray(games) ? games : []);
       } else {
         const tbl = document.getElementById('games');
-        tbl.innerHTML = '<tbody><tr><td colspan="7">No games</td></tr></tbody>';
+        tbl.innerHTML = '<tbody><tr><td colspan="8">No games</td></tr></tbody>';
       }
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="7">Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="8">Error loading games</td></tr></tbody>';
     }
   }
 
@@ -798,7 +906,7 @@
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="7">Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="8">Error loading games</td></tr></tbody>';
     });
 </script>
 </body>
