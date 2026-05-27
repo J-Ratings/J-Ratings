@@ -13404,6 +13404,8 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 237,John Higgins,John,"",Higgins,Scotland,1975-05-18,"",M,1,1992,0,2026,p
 239,Alexander Ursenbacher,Alexander,"",Ursenbacher,Switzerland,1996-04-26,"",M,1,2013,0,2026,p
 546,Gary Wilson,Gary,"",Wilson,England,1985-08-11,"",M,1,2004,0,2026,p
+550,Phil O'Kane,Phil,"",O'Kane,England,1992-09-25,"",M,1,2026,0,2026,p
+552,Sean O'Sullivan,Sean,"",O'Sullivan,England,1994-04-29,"",M,1,2012,0,2026,p
 592,Oliver Lines,Oliver,"",Lines,England,1995-06-16,"",M,1,2014,0,2026,p
 593,Hammad Miah,Hammad,"",Miah,England,1993-07-06,"",M,1,2013,2024,2026,p
 605,Steven Hallworth,Steven,"",Hallworth,England,1995-12-01,"",M,1,2014,0,2026,p
@@ -13421,6 +13423,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 1044,Chris Wakelin,Chris,"",Wakelin,England,1992-03-16,"",M,1,2013,0,2026,p
 1045,Louis Heathcote,Louis,"",Heathcote,England,1997-07-03,"",M,1,2019,0,2026,p
 1108,Yuan Sijun,Sijun,"",Yuan,China,2000-05-29,"",M,1,2017,0,2026,p
+1149,Huang Jiahao,Jiahao,"",Huang,China,1995-08-17,"",M,1,2024,0,2026,p
 1160,Yao Pengcheng,Pengcheng,"",Yao,China,1997-01-03,"",M,1,2025,0,2026,p
 1231,Zhao Hanyang,Hanyang,"",Zhao,China,1999-10-20,"",M,1,2025,0,2026,p
 1257,Pang Junxu,Junxu,"",Pang,China,2000-02-15,"",M,1,2020,0,2026,p
@@ -13433,25 +13436,27 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 1485,Ng On Yee,On Yee,"",Ng,Hong Kong,1990-11-17,"",F,1,2021,0,2026,p
 1835,Florian Nüßle,Florian,"",Nüßle,Austria,2001-12-18,"",M,1,2025,0,2026,p
 1889,Iulian Boiko,Iulian,"",Boiko,Ukraine,2005-09-22,"",M,1,2020,0,2026,p
+1893,Cheung Ka Wai,Ka Wai,"",Cheung,Hong Kong,1999-02-17,"",M,1,2024,0,2026,p
 1923,Ben Mertens,Ben,"",Mertens,Belgium,2004-10-13,"",M,1,2022,0,2026,p
 1981,Chang Bingyu,Bingyu,"",Chang,China,2002-08-08,"",M,1,2019,0,2026,p
 1982,Si Jiahui,Jiahui,"",Si,China,2002-07-11,"",M,1,2019,0,2026,p
-2046,Paul Norris,Paul,"",Norris,England,"","",M,1,2026,0,2026,p
+2046,Paul Norris,Paul,"",Norris,England,1966-08-02,"",M,1,2026,0,2026,p
 2066,Ishpreet Singh Chadha,Ishpreet,Singh,Chadha,India,1996-05-30,"",M,1,2023,0,2026,p
 2103,Xu Yichen,Yichen,"",Xu,China,1986-11-21,"",M,1,2025,0,2026,p
 2166,Jackson Page,Jackson,"",Page,Wales,2001-08-08,"",M,1,2019,0,2026,p
 2317,Fergal Quinn,Fergal,"",Quinn,Northern Ireland,2000-03-11,"",M,1,2025,0,2026,p
 2320,Dylan Emery,Dylan,"",Emery,Wales,2001-03-31,"",M,1,2022,0,2026,p
 2379,Luo Zetao,Zetao,"",Luo,China,2001-02-14,"",M,1,2026,0,2026,p
+2438,Liam Davies,Liam,"",Davies,Wales,2006-06-28,"",M,1,2024,0,2026,p
 2439,Liam Graham,Liam,"",Graham,Scotland,2004-09-12,"",M,1,2023,0,2026,p
 2469,Wu Yize,Yize,"",Wu,China,2003-10-14,"",M,1,2021,0,2026,p
 2470,Aaron Hill,Aaron,"",Hill,Ireland,2002-02-28,"",M,1,2020,0,2026,p
 2498,Lei Peifan,Peifan,"",Lei,China,2003-05-31,"",M,1,2019,0,2026,p
-2533,Panchaya Channoi,Panchaya,"",Channoi,Thailand,"","",F,1,0,0,2026,p
+2533,Panchaya Channoi,Panchaya,"",Channoi,Thailand,2008-02-12,"",F,1,2026,0,2026,p
 2607,Gao Yang,Yang,"",Gao,China,2004-09-05,"",M,1,2020,0,2026,p
 2611,Liu Hongyu,Hongyu,"",Liu,China,2004-04-21,"",M,1,2023,0,2026,p
 2616,Bai Yulu,Yulu,"",Bai,China,2003-07-10,"",F,1,2024,0,2026,p
-2628,Deng Haohui,Haohui,"",Deng,China,2002-10-13,"",M,1,0,0,2026,p
+2628,Deng Haohui,Haohui,"",Deng,China,2002-10-13,"",M,1,2026,0,2026,p
 2640,Jiang Jun,Jun,"",Jiang,China,2005-08-28,"",M,1,2023,0,2026,p
 2746,Connor Benzey,Connor,"",Benzey,England,2002-02-13,"",M,1,2025,0,2026,p
 2754,Julien Leclercq,Julien,"",Leclercq,Belgium,2003-02-03,"",M,1,2022,0,2026,p
@@ -13469,6 +13474,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 3534,Artemijs Zizins,Artemijs,"",Zizins,Latvia,2006-06-02,"",M,1,2024,0,2026,p
 3832,Sahil Nayyar,Sahil,"",Nayyar,Canada,1993-09-29,"",M,1,2025,0,2026,p
 4148,Lan Yuhao,Yuhao,"",Lan,China,2008-08-26,"",M,1,2025,0,2026,p
+4199,Liu Yang,Yang,"",Liu,China,2003-12-23,"",M,1,2026,0,2026,p
 1,Mark J Williams,Mark,J,Williams,Wales,1975-03-21,"",M,1,1992,0,2025,p
 2,Stephen Maguire,Stephen,"",Maguire,Scotland,1981-03-13,"",M,1,1998,0,2025,p
 4,Fu Marco,Marco,"",Fu,Hong Kong,1978-01-08,"",M,1,1998,0,2025,p
@@ -13659,7 +13665,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 537,Ben Judge,Ben,"",Judge,Australia,1983-09-18,"",M,1,2012,2012,2025,a
 540,Jason Tart,Jason,"",Tart,England,1992-06-04,"",M,1,0,0,2025,a
 549,Robin Hull,Robin,"",Hull,Finland,1974-08-16,"",M,1,1993,2018,2025,a
-550,Phil O'Kane,Phil,"",O'Kane,England,1992-09-25,"",M,1,0,0,2025,a
+550,Phil O'Kane,Phil,"",O'Kane,England,1992-09-25,"",M,1,2026,0,2025,a
 552,Sean O'Sullivan,Sean,"",O'Sullivan,England,1994-04-29,"",M,1,2012,0,2025,a
 557,Lee Stephens,Lee,"",Stephens,England,1982-03-06,"",M,1,0,0,2025,a
 580,Steve Mifsud,Steve,"",Mifsud,Australia,1972-08-25,"",M,1,1991,2020,2025,a
@@ -13790,7 +13796,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2033,Anthony Green,Anthony,"",Green,England,1992-10-03,"",M,1,0,0,2025,a
 2038,Darren Burns,Darren,"",Burns,England,1974-11-18,"",M,1,0,0,2025,a
 2044,Stuart Watson,Stuart,"",Watson,England,1976-05-29,"",M,1,0,0,2025,a
-2046,Paul Norris,Paul,"",Norris,England,"","",M,1,2026,0,2025,a
+2046,Paul Norris,Paul,"",Norris,England,1966-08-02,"",M,1,2026,0,2025,a
 2049,Simon Blackwell,Simon,"",Blackwell,England,1992-09-08,"",M,1,0,0,2025,a
 2055,Joshua Thomond,Joshua,"",Thomond,England,1996-06-15,"",M,1,0,0,2025,a
 2064,Kurt Dunham,Kurt,"",Dunham,Australia,1991-12-06,"",M,1,2016,2017,2025,a
@@ -13862,7 +13868,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2490,Garry Coulson,Garry,"",Coulson,England,1976-07-03,"",M,1,0,0,2025,a
 2499,Dean Young,Dean,"",Young,Scotland,2002-01-07,"",M,1,2021,2024,2025,a
 2502,Levi Meiller,Levi,"",Meiller,Canada,1978-11-09,"",M,1,2001,2002,2025,a
-2533,Panchaya Channoi,Panchaya,"",Channoi,Thailand,"","",F,1,0,0,2025,a
+2533,Panchaya Channoi,Panchaya,"",Channoi,Thailand,2008-02-12,"",F,1,2026,0,2025,a
 2536,Thitapon Nakkaew,Thitapon,"",Nakkaew,Thailand,"","",F,1,0,0,2025,a
 2537,Zeinab Shahi,Zeinab,"",Shahi,Iran,"","",F,1,0,0,2025,a
 2540,Theresa Whitten,Theresa,"",Whitten,Australia,"","",F,1,0,0,2025,a
@@ -13878,7 +13884,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2606,Agnes Kimura,Agnes,"",Kimura,Australia,"","",F,1,0,0,2025,a
 2608,Ma Hailong,Hailong,"",Ma,China,2003-09-04,"",M,1,2023,2024,2025,a
 2610,Liang Xiaolong,Xiaolong,"",Liang,China,2001-05-12,"",M,1,0,0,2025,a
-2628,Deng Haohui,Haohui,"",Deng,China,2002-10-13,"",M,1,0,0,2025,a
+2628,Deng Haohui,Haohui,"",Deng,China,2002-10-13,"",M,1,2026,0,2025,a
 2630,Xing Zihao,Zihao,"",Xing,China,2004-11-06,"",M,1,2023,2024,2025,a
 2667,Deborah Fladgate,Deborah,"",Fladgate,Scotland,"","",F,1,0,0,2025,a
 2680,Laura Killington,Laura,"",Killington,England,"","",F,1,0,0,2025,a
@@ -14280,7 +14286,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 4194,Nipitpon Manamuti,Nipitpon,"",Manamuti,Thailand,"","","",1,0,0,2025,a
 4196,Hassan Gull,Hassan,"",Gull,Pakistan,"","",M,1,0,0,2025,a
 4198,Cao Zeyi,Zeyi,"",Cao,China,"","",M,1,0,0,2025,a
-4199,Liu Yang,Yang,"",Liu,China,2003-12-23,"",M,1,2006,0,2025,a
+4199,Liu Yang,Yang,"",Liu,China,2003-12-23,"",M,1,2026,0,2025,a
 4200,Passakorn Sittikrai,Passakorn,"",Sittikrai,Thailand,"","","",1,0,0,2025,a
 4203,Abdulaziz Shetail,Abdulaziz,"",Shetail,Kuwait,"","",M,1,0,0,2025,a
 4205,Karar Najim,Karar,"",Najim,Iraq,"","",M,1,0,0,2025,a
@@ -15062,7 +15068,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 537,Ben Judge,Ben,"",Judge,Australia,1983-09-18,"",M,1,2012,2012,2024,a
 540,Jason Tart,Jason,"",Tart,England,1992-06-04,"",M,1,0,0,2024,a
 549,Robin Hull,Robin,"",Hull,Finland,1974-08-16,"",M,1,1993,2018,2024,a
-550,Phil O'Kane,Phil,"",O'Kane,England,1992-09-25,"",M,1,0,0,2024,a
+550,Phil O'Kane,Phil,"",O'Kane,England,1992-09-25,"",M,1,2026,0,2024,a
 552,Sean O'Sullivan,Sean,"",O'Sullivan,England,1994-04-29,"",M,1,2012,0,2024,a
 557,Lee Stephens,Lee,"",Stephens,England,1982-03-06,"",M,1,0,0,2024,a
 580,Steve Mifsud,Steve,"",Mifsud,Australia,1972-08-25,"",M,1,1991,2020,2024,a
@@ -15192,7 +15198,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2033,Anthony Green,Anthony,"",Green,England,1992-10-03,"",M,1,0,0,2024,a
 2038,Darren Burns,Darren,"",Burns,England,1974-11-18,"",M,1,0,0,2024,a
 2044,Stuart Watson,Stuart,"",Watson,England,1976-05-29,"",M,1,0,0,2024,a
-2046,Paul Norris,Paul,"",Norris,England,"","",M,1,2026,0,2024,a
+2046,Paul Norris,Paul,"",Norris,England,1966-08-02,"",M,1,2026,0,2024,a
 2049,Simon Blackwell,Simon,"",Blackwell,England,1992-09-08,"",M,1,0,0,2024,a
 2055,Joshua Thomond,Joshua,"",Thomond,England,1996-06-15,"",M,1,0,0,2024,a
 2064,Kurt Dunham,Kurt,"",Dunham,Australia,1991-12-06,"",M,1,2016,2017,2024,a
@@ -15276,7 +15282,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2489,Jack Harris,Jack,"",Harris,England,2000-01-20,"",M,1,0,0,2024,a
 2500,James Lee,James,"",Lee,England,1988-04-14,"",M,1,0,0,2024,a
 2502,Levi Meiller,Levi,"",Meiller,Canada,1978-11-09,"",M,1,2001,2002,2024,a
-2533,Panchaya Channoi,Panchaya,"",Channoi,Thailand,"","",F,1,0,0,2024,a
+2533,Panchaya Channoi,Panchaya,"",Channoi,Thailand,2008-02-12,"",F,1,2026,0,2024,a
 2537,Zeinab Shahi,Zeinab,"",Shahi,Iran,"","",F,1,0,0,2024,a
 2540,Theresa Whitten,Theresa,"",Whitten,Australia,"","",F,1,0,0,2024,a
 2549,Miina Tani,Miina,"",Tani,Japan,2005-01-13,"",F,1,0,0,2024,a
@@ -15744,7 +15750,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 4191,Zhou Jinhao,Jinhao,"",Zhou,China,2008-06-16,"",M,1,0,0,2024,a
 4196,Hassan Gull,Hassan,"",Gull,Pakistan,"","",M,1,0,0,2024,a
 4198,Cao Zeyi,Zeyi,"",Cao,China,"","",M,1,0,0,2024,a
-4199,Liu Yang,Yang,"",Liu,China,2003-12-23,"",M,1,2006,0,2024,a
+4199,Liu Yang,Yang,"",Liu,China,2003-12-23,"",M,1,2026,0,2024,a
 4200,Passakorn Sittikrai,Passakorn,"",Sittikrai,Thailand,"","","",1,0,0,2024,a
 4201,Mohammed Al Saqer,Mohammed,"",Al Saqer,Bahrain,"","",M,1,0,0,2024,a
 4202,Adel Abul,Adel,"",Abul,Kuwait,"","",M,1,0,0,2024,a

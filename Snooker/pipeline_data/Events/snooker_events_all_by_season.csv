@@ -1887,9 +1887,9 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 1726,Masters,1975-01-13,1975-01-17,Benson & Hedges,1974,main,Invitational,0,New London Theatre,London,England,snooker,1726,Both,O,,,,,,1974
 2759,China Open Qualifiers,2026-06-10,2026-06-14,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2755,Both,O,0,0,0,0,0,2026
 2758,Wuhan Open Qualifiers,2026-06-15,2026-06-18,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2757,Both,O,0,0,0,0,0,2026
-2768,Xi'an Grand Prix Qualifiers,2026-06-19,2026-06-22,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2761,Both,O,0,0,0,0,0,2026
 2760,Championship League,2026-06-22,2026-07-15,"",2026,main,Ranking,0,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,0,2026
 2644,Asia Pacific Q Tour: West Coast International,2026-06-26,2026-06-28,"",2026,q,Ranking,0,Pot Black North Perth,Perth,Australia,snooker,2644,Both,O,0,0,0,0,0,2026
+2768,Xi'an Grand Prix Qualifiers,2026-07-19,2026-07-22,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2761,Both,O,0,0,0,0,0,2026
 2767,British Open Qualifiers,2026-07-23,2026-07-24,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2547,Both,O,0,0,0,0,0,2026
 2769,English Open Qualifiers,2026-07-25,2026-07-26,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2546,Both,O,0,0,0,0,0,2026
 2764,Shanghai Masters,2026-07-27,2026-08-02,"",2026,main,Invitational,0,"",Shanghai,China,snooker,2764,Both,O,0,0,0,0,0,2026
@@ -2300,8 +2300,8 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2792,Women's World Championship Group P,2026-05-12,2026-05-19,"",2025,women,Ranking,16,Dongguan Changping Snooker Centre,Dongguan,China,snooker,2748,Women,O,0,0,0,0,6,2025
 2750,Qualifying School 1 - Asia & Oceania ,2026-05-14,2026-05-18,"",2025,main,Qualifying School,0,Kiatthada Billiards & Snooker Club,Bangkok,Thailand,snooker,2750,Both,O,0,63,0,0,61,2025
 2751,Qualifying School 2 - Asia & Oceania ,2026-05-20,2026-05-24,"",2025,main,Qualifying School,0,Kiatthada Billiards & Snooker Club,Bangkok,Thailand,snooker,2751,Both,O,0,63,0,0,61,2025
-2752,Q School 1,2026-05-20,2026-05-25,"",2025,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2752,Both,O,0,156,0,4,148,2025
-2753,Q School 2,2026-05-26,2026-05-31,"",2025,main,Qualifying School,2,Mattioli Arena,Leicester,England,snooker,2753,Both,O,0,156,152,0,0,2025
+2752,Q School 1,2026-05-20,2026-05-25,"",2025,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2752,Both,O,0,156,0,0,152,2025
+2753,Q School 2,2026-05-26,2026-05-31,"",2025,main,Qualifying School,2,Mattioli Arena,Leicester,England,snooker,2753,Both,O,0,156,103,13,45,2025
 2009,Americas Q Tour 1,2024-03-07,2024-03-10,"",2024,q,Ranking,0,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,37,0,0,15,2024
 2010,Americas Q Tour 1 - Group A,2024-03-07,2024-03-10,"",2024,q,Ranking,1,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,6,2024
 2011,Americas Q Tour 1 - Group B,2024-03-07,2024-03-10,"",2024,q,Ranking,2,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,10,2024
