@@ -747,7 +747,24 @@ cat("Wrote rating history files: ", n_hist_written, "\n", sep = "")
 # blank scores after latest_game_date, they are added as scheduled games.
 # -----------------------------
 
-future_fixtures <- tibble()
+future_fixtures <- tibble(
+  date = character(),
+  era = character(),
+  competition = character(),
+  tournament = character(),
+  home = character(),
+  homeElo = integer(),
+  away = character(),
+  awayElo = integer(),
+  result = character(),
+  score = character(),
+  delta = character(),
+  homeWinPct = integer(),
+  drawPct = integer(),
+  awayWinPct = integer(),
+  rank = integer(),
+  status = character()
+)
 
 if (file.exists(source_results_csv)) {
   source_results <- read_csv(
