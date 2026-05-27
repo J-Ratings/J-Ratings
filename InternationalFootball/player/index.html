@@ -189,6 +189,11 @@
     .result.loss{ color: var(--wdl-loss); }
     .result.draw{ color: var(--wdl-draw); }
 
+    .result.scheduled{
+      color: inherit;
+      opacity: 0.8;
+    }
+
     .score{
       font-weight: 400;
       color: inherit;
@@ -583,6 +588,10 @@
     const isAway = g.away === myName;
     const raw = (g.result || '').trim();
 
+    if (g.status === 'scheduled') {
+      return { cls: 'scheduled', text: 'Scheduled' };
+    }
+
     if (/^draw$/i.test(raw)) return { cls: 'draw', text: 'Draw' };
     if (raw === myName) return { cls: 'win', text: 'Win' };
 
@@ -782,14 +791,18 @@
       const tdScore = document.createElement('td');
       tdScore.className = 'score';
 
-      const scoreInfo = getScoreParts(g, myName);
-      const scoreStrong = document.createElement('span');
-      scoreStrong.className = 'score-strong';
-      scoreStrong.textContent = scoreInfo.strong;
+      if (g.status === 'scheduled') {
+        tdScore.textContent = '—';
+      } else {
+        const scoreInfo = getScoreParts(g, myName);
+        const scoreStrong = document.createElement('span');
+        scoreStrong.className = 'score-strong';
+        scoreStrong.textContent = scoreInfo.strong;
 
-      tdScore.appendChild(document.createTextNode(scoreInfo.left));
-      tdScore.appendChild(scoreStrong);
-      tdScore.appendChild(document.createTextNode(scoreInfo.right));
+        tdScore.appendChild(document.createTextNode(scoreInfo.left));
+        tdScore.appendChild(scoreStrong);
+        tdScore.appendChild(document.createTextNode(scoreInfo.right));
+      }
 
       const tdResult = document.createElement('td');
       const r = getResultClassAndText(g, myName);
@@ -797,7 +810,7 @@
       tdResult.className = 'result ' + r.cls;
 
       const tdDelta = document.createElement('td');
-      if (!Number.isNaN(numDelta)) {
+      if (g.status !== 'scheduled' && !Number.isNaN(numDelta)) {
         tdDelta.textContent = g.delta;
         tdDelta.className = 'delta ' + (numDelta > 0 ? 'pos' : (numDelta < 0 ? 'neg' : 'zero'));
       } else {

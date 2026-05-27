@@ -23,6 +23,14 @@ src_dir <- file.path(
   "Elo"
 )
 
+source_results_csv <- file.path(
+  repo_dir,
+  "InternationalFootball",
+  "pipeline_data",
+  "source",
+  "results.csv"
+)
+
 base_data_dir <- file.path(
   repo_dir,
   "InternationalFootball",
@@ -58,6 +66,16 @@ slug <- function(x) {
   gsub("(^-+|-+$)", "", x)
 }
 
+normalise_team_name <- function(x) {
+  x0 <- trimws(as.character(x))
+  
+  team_map <- c(
+    "Åland" = "Åland Islands"
+  )
+  
+  ifelse(x0 %in% names(team_map), unname(team_map[x0]), x0)
+}
+
 era_label <- function(d) {
   format(as.Date(d), "%Y")
 }
@@ -66,6 +84,40 @@ clean_flag <- function(x) {
   x <- trimws(tolower(as.character(x)))
   x[x %in% c("", "na", "null")] <- NA_character_
   x
+}
+
+parse_mixed_date <- function(x) {
+  x_chr <- trimws(as.character(x))
+  
+  out <- rep(as.Date(NA), length(x_chr))
+  
+  is_blank <- is.na(x_chr) | x_chr == ""
+  is_excel_num <- grepl("^[0-9]+$", x_chr)
+  is_dmy <- grepl("^\\d{1,2}/\\d{1,2}/\\d{4}$", x_chr)
+  is_ymd <- grepl("^\\d{4}-\\d{1,2}-\\d{1,2}$", x_chr)
+  
+  out[!is_blank & is_excel_num] <- as.Date(
+    as.numeric(x_chr[!is_blank & is_excel_num]),
+    origin = "1899-12-30"
+  )
+  
+  out[!is_blank & is_dmy] <- as.Date(
+    x_chr[!is_blank & is_dmy],
+    format = "%d/%m/%Y"
+  )
+  
+  out[!is_blank & is_ymd] <- as.Date(
+    x_chr[!is_blank & is_ymd],
+    format = "%Y-%m-%d"
+  )
+  
+  out
+}
+
+clean_score_num <- function(x) {
+  x_chr <- trimws(as.character(x))
+  x_chr[x_chr %in% c("", "NA", "NaN", "NULL", "null", "na")] <- NA_character_
+  suppressWarnings(as.integer(x_chr))
 }
 
 elo_expected <- function(team_elo, opponent_elo) {
@@ -159,7 +211,7 @@ if (length(miss_hist) > 0) {
 
 final <- final %>%
   mutate(
-    Team = trimws(as.character(Team)),
+    Team = normalise_team_name(Team),
     Flag = clean_flag(Flag),
     Rating = as.numeric(Rating),
     Games = as.integer(Games)
@@ -173,12 +225,13 @@ final <- final %>%
 ghist <- ghist %>%
   mutate(
     date = as.Date(date),
-    home_team = trimws(as.character(home_team)),
-    away_team = trimws(as.character(away_team)),
+    home_team = normalise_team_name(home_team),
+    away_team = normalise_team_name(away_team),
     HomeFlag = clean_flag(HomeFlag),
     AwayFlag = clean_flag(AwayFlag),
     tournament = trimws(as.character(tournament)),
     result = trimws(as.character(result)),
+    result = if_else(tolower(result) == "draw", "Draw", normalise_team_name(result)),
     score = trimws(as.character(score)),
     HomeRating_Before = as.numeric(HomeRating_Before),
     AwayRating_Before = as.numeric(AwayRating_Before),
@@ -285,6 +338,7 @@ cat(
 
 name_to_id <- setNames(teams_all$id, teams_all$name)
 name_to_flag <- setNames(teams_all$flag, teams_all$name)
+name_to_rating <- setNames(teams_all$rating, teams_all$name)
 
 # -----------------------------
 # Long rating history
@@ -410,6 +464,108 @@ for (tm in names(name_to_id)) {
 cat("Wrote rating history files:", n_hist_written, "\n")
 
 # -----------------------------
+# Future fixtures
+# -----------------------------
+
+future_fixtures <- tibble()
+
+if (file.exists(source_results_csv)) {
+  source_results <- read_csv(
+    source_results_csv,
+    show_col_types = FALSE,
+    locale = locale(encoding = "UTF-8")
+  )
+  
+  required_source_cols <- c(
+    "date",
+    "home_team",
+    "away_team",
+    "home_score",
+    "away_score",
+    "tournament"
+  )
+  
+  missing_source_cols <- setdiff(required_source_cols, names(source_results))
+  
+  if (length(missing_source_cols) > 0) {
+    warning(
+      "Skipping future fixtures because results.csv is missing columns: ",
+      paste(missing_source_cols, collapse = ", ")
+    )
+  } else {
+    future_fixtures <- source_results %>%
+      mutate(
+        date = parse_mixed_date(date),
+        home_team = normalise_team_name(home_team),
+        away_team = normalise_team_name(away_team),
+        home_score = clean_score_num(home_score),
+        away_score = clean_score_num(away_score),
+        tournament = trimws(as.character(tournament))
+      ) %>%
+      filter(
+        !is.na(date),
+        date > asof_date,
+        home_team != "",
+        away_team != "",
+        is.na(home_score),
+        is.na(away_score)
+      ) %>%
+      mutate(
+        HomeRating_Before = as.numeric(unname(name_to_rating[home_team])),
+        AwayRating_Before = as.numeric(unname(name_to_rating[away_team])),
+        home_id = unname(name_to_id[home_team]),
+        away_id = unname(name_to_id[away_team])
+      ) %>%
+      filter(
+        is.finite(HomeRating_Before),
+        is.finite(AwayRating_Before),
+        !is.na(home_id),
+        !is.na(away_id)
+      ) %>%
+      mutate(
+        era = era_label(date),
+        
+        home_expected = elo_expected(HomeRating_Before, AwayRating_Before),
+        away_expected = 1 - home_expected,
+        
+        abs_elo_gap = abs(HomeRating_Before - AwayRating_Before),
+        draw_prob = draw_rate_from_gap(abs_elo_gap),
+        
+        home_win_prob = home_expected - draw_prob / 2,
+        away_win_prob = away_expected - draw_prob / 2,
+        
+        home_win_prob = clamp(home_win_prob, 0, 1 - draw_prob),
+        away_win_prob = 1 - draw_prob - home_win_prob
+      ) %>%
+      transmute(
+        date = format(date, "%Y-%m-%d"),
+        era = as.character(era),
+        tournament = as.character(tournament),
+        
+        home = as.character(home_team),
+        homeElo = as.integer(round(HomeRating_Before)),
+        
+        away = as.character(away_team),
+        awayElo = as.integer(round(AwayRating_Before)),
+        
+        result = NA_character_,
+        score = NA_character_,
+        delta = NA_character_,
+        
+        homeWinPct = as.integer(round(100 * home_win_prob)),
+        drawPct = as.integer(round(100 * draw_prob)),
+        awayWinPct = as.integer(round(100 * away_win_prob)),
+        
+        status = "scheduled"
+      )
+  }
+} else {
+  warning("No source results.csv found, so no future fixtures were added: ", source_results_csv)
+}
+
+cat("Future fixtures loaded:", nrow(future_fixtures), "\n")
+
+# -----------------------------
 # Per-team games JSON
 # -----------------------------
 
@@ -463,8 +619,16 @@ for (tm in names(name_to_id)) {
       
       homeWinPct = as.integer(round(100 * home_win_prob)),
       drawPct = as.integer(round(100 * draw_prob)),
-      awayWinPct = as.integer(round(100 * away_win_prob))
+      awayWinPct = as.integer(round(100 * away_win_prob)),
+      
+      status = "completed"
     )
+  
+  scheduled_df <- future_fixtures %>%
+    filter(home == tm | away == tm)
+  
+  df <- bind_rows(df, scheduled_df) %>%
+    arrange(desc(as.Date(date)))
   
   if (nrow(df) > 0) {
     write_json(
