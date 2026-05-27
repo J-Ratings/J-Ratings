@@ -132,29 +132,16 @@ draw_rate_from_gap <- function(abs_gap) {
   abs_gap <- as.numeric(abs_gap)
   
   # Calibrated from International Football match data, last 50 years.
-  # Buckets are absolute pre-match Elo gap bands.
-  gap_mid <- c(
-    12, 37, 62, 87, 112, 137, 162, 187, 212, 237,
-    262, 287, 312, 337, 362, 387, 412, 437, 462, 487,
-    512, 537, 562, 587, 625
-  )
+  # Smooth logistic curve:
+  # - close teams sit around a 26% draw rate
+  # - draw probability falls as the Elo gap grows
+  # - very large mismatches approach a low floor
+  floor <- 0.014
+  amplitude <- 0.252
+  midpoint <- 380
+  scale <- 85
   
-  draw_rate <- c(
-    0.265, 0.262, 0.261, 0.267, 0.252,
-    0.252, 0.241, 0.230, 0.225, 0.202,
-    0.193, 0.156, 0.183, 0.171, 0.170,
-    0.134, 0.112, 0.087, 0.077, 0.060,
-    0.051, 0.074, 0.053, 0.055, 0.014
-  )
-  
-  out <- approx(
-    x = gap_mid,
-    y = draw_rate,
-    xout = abs_gap,
-    rule = 2
-  )$y
-  
-  clamp(out, 0.014, 0.267)
+  floor + amplitude / (1 + exp((abs_gap - midpoint) / scale))
 }
 
 # -----------------------------
