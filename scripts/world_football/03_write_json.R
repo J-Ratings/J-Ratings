@@ -9,6 +9,7 @@ options(stringsAsFactors = FALSE)
 # -----------------------------
 # Paths
 # -----------------------------
+
 repo_dir <- normalizePath(
   getwd(),
   winslash = "/",
@@ -49,6 +50,7 @@ if (!file.exists(hist_csv)) {
 # -----------------------------
 # Helpers
 # -----------------------------
+
 slug <- function(x) {
   x <- stringi::stri_trans_general(x, "Latin-ASCII")
   x <- tolower(trimws(x))
@@ -66,9 +68,47 @@ clean_flag <- function(x) {
   x
 }
 
+elo_expected <- function(team_elo, opponent_elo) {
+  1 / (1 + 10 ^ ((opponent_elo - team_elo) / 400))
+}
+
+clamp <- function(x, lo, hi) {
+  pmax(lo, pmin(hi, x))
+}
+
+draw_rate_from_gap <- function(abs_gap) {
+  abs_gap <- as.numeric(abs_gap)
+  
+  # Calibrated from International Football match data, last 50 years.
+  # Buckets are absolute pre-match Elo gap bands.
+  gap_mid <- c(
+    12, 37, 62, 87, 112, 137, 162, 187, 212, 237,
+    262, 287, 312, 337, 362, 387, 412, 437, 462, 487,
+    512, 537, 562, 587, 625
+  )
+  
+  draw_rate <- c(
+    0.265, 0.262, 0.261, 0.267, 0.252,
+    0.252, 0.241, 0.230, 0.225, 0.202,
+    0.193, 0.156, 0.183, 0.171, 0.170,
+    0.134, 0.112, 0.087, 0.077, 0.060,
+    0.051, 0.074, 0.053, 0.055, 0.014
+  )
+  
+  out <- approx(
+    x = gap_mid,
+    y = draw_rate,
+    xout = abs_gap,
+    rule = 2
+  )$y
+  
+  clamp(out, 0.014, 0.267)
+}
+
 # -----------------------------
 # Load CSVs
 # -----------------------------
+
 final <- read_csv(
   final_csv,
   show_col_types = FALSE,
@@ -80,6 +120,10 @@ ghist <- read_csv(
   show_col_types = FALSE,
   locale = locale(encoding = "UTF-8")
 )
+
+# -----------------------------
+# Validate columns
+# -----------------------------
 
 required_final <- c("Team", "Flag", "Rating", "Games")
 
@@ -108,6 +152,10 @@ if (length(miss_final) > 0) {
 if (length(miss_hist) > 0) {
   stop("Missing columns in history CSV: ", paste(miss_hist, collapse = ", "))
 }
+
+# -----------------------------
+# Prepare data
+# -----------------------------
 
 final <- final %>%
   mutate(
@@ -154,6 +202,7 @@ if (nrow(ghist) == 0) {
 # -----------------------------
 # Last played per team
 # -----------------------------
+
 team_last <- bind_rows(
   ghist %>% transmute(team = home_team, date = date),
   ghist %>% transmute(team = away_team, date = date)
@@ -169,6 +218,7 @@ team_last <- bind_rows(
 # -----------------------------
 # meta.json
 # -----------------------------
+
 asof_date <- max(ghist$date, na.rm = TRUE)
 
 meta <- list(
@@ -188,6 +238,7 @@ cat("Wrote meta.json (asof =", meta$asof, ")\n")
 # -----------------------------
 # teams.json
 # -----------------------------
+
 teams_all <- final %>%
   transmute(
     name = trimws(as.character(Team)),
@@ -238,6 +289,7 @@ name_to_flag <- setNames(teams_all$flag, teams_all$name)
 # -----------------------------
 # Long rating history
 # -----------------------------
+
 hist_long <- bind_rows(
   ghist %>%
     transmute(
@@ -268,6 +320,7 @@ hist_long <- bind_rows(
 # -----------------------------
 # era_starts.json
 # -----------------------------
+
 era_starts_long <- bind_rows(
   ghist %>%
     transmute(
@@ -326,6 +379,7 @@ cat("Wrote era_starts.json (rows =", nrow(era_starts_long), ")\n")
 # -----------------------------
 # Per-team rating history JSON
 # -----------------------------
+
 n_hist_written <- 0L
 
 for (tm in names(name_to_id)) {
@@ -358,6 +412,7 @@ cat("Wrote rating history files:", n_hist_written, "\n")
 # -----------------------------
 # Per-team games JSON
 # -----------------------------
+
 n_games_written <- 0L
 
 for (tm in names(name_to_id)) {
@@ -377,19 +432,38 @@ for (tm in names(name_to_id)) {
         !is.na(delta_num),
         sprintf("%+0.1f", round(delta_num, 1)),
         NA_character_
-      )
+      ),
+      
+      home_expected = elo_expected(HomeRating_Before, AwayRating_Before),
+      away_expected = 1 - home_expected,
+      
+      abs_elo_gap = abs(HomeRating_Before - AwayRating_Before),
+      draw_prob = draw_rate_from_gap(abs_elo_gap),
+      
+      home_win_prob = home_expected - draw_prob / 2,
+      away_win_prob = away_expected - draw_prob / 2,
+      
+      home_win_prob = clamp(home_win_prob, 0, 1 - draw_prob),
+      away_win_prob = 1 - draw_prob - home_win_prob
     ) %>%
     transmute(
       date = format(date, "%Y-%m-%d"),
       era = as.character(era),
       tournament = as.character(tournament),
+      
       home = as.character(home_team),
       homeElo = as.integer(round(HomeRating_Before)),
+      
       away = as.character(away_team),
       awayElo = as.integer(round(AwayRating_Before)),
+      
       result = as.character(result),
       score = as.character(score),
-      delta = as.character(delta)
+      delta = as.character(delta),
+      
+      homeWinPct = as.integer(round(100 * home_win_prob)),
+      drawPct = as.integer(round(100 * draw_prob)),
+      awayWinPct = as.integer(round(100 * away_win_prob))
     )
   
   if (nrow(df) > 0) {
@@ -409,6 +483,7 @@ cat("Wrote games files:", n_games_written, "\n")
 # -----------------------------
 # Final checks
 # -----------------------------
+
 expected_outputs <- c(
   file.path(base_data_dir, "meta.json"),
   file.path(base_data_dir, "teams.json"),
