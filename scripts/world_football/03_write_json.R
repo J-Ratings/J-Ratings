@@ -135,13 +135,12 @@ draw_rate_from_gap <- function(abs_gap) {
   # Smooth logistic curve:
   # - close teams sit around a 26% draw rate
   # - draw probability falls as the Elo gap grows
-  # - very large mismatches approach a low floor
-  floor <- 0.014
-  amplitude <- 0.252
+  # - very large mismatches tend towards 0%
+  max_draw <- 0.266
   midpoint <- 380
   scale <- 85
   
-  floor + amplitude / (1 + exp((abs_gap - midpoint) / scale))
+  max_draw / (1 + exp((abs_gap - midpoint) / scale))
 }
 
 # -----------------------------
