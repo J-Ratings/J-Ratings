@@ -19,6 +19,11 @@
   <script src="../../jratings-graph.js"></script>
 
   <style>
+    :root{
+      --wl-win:#14b85a;
+      --wl-loss:#e53935;
+    }
+
     .player-head{
       display:flex;
       justify-content:space-between;
@@ -85,9 +90,15 @@
     table.games td{
       padding:10px 12px;
       border-bottom:1px solid var(--border);
+      border-right:1px solid rgba(128,128,128,0.45);
       text-align:center;
       vertical-align:middle;
       white-space:nowrap;
+    }
+
+    table.games th:first-child,
+    table.games td:first-child{
+      border-left:1px solid rgba(128,128,128,0.45);
     }
 
     table.games th{
@@ -97,36 +108,68 @@
       background-color:var(--card);
     }
 
-    table.games th:nth-child(1), table.games td:nth-child(1),
-    table.games th:nth-child(2), table.games td:nth-child(2),
-    table.games th:nth-child(3), table.games td:nth-child(3),
-    table.games th:nth-child(4), table.games td:nth-child(4),
-    table.games th:nth-child(5), table.games td:nth-child(5),
-    table.games th:nth-child(6), table.games td:nth-child(6),
-    table.games th:nth-child(7), table.games td:nth-child(7){
-      border-right:3px double rgba(128,128,128,0.6);
+    .player-cell{
+      text-align:left;
     }
 
-    .result{ font-weight:700; }
-    .result.win{ color:#2acd4e; }
-    .result.loss{ color:#e03232; }
-    .result.draw{ color:#e8a81f; }
-
-    .delta{ font-weight:700; }
-    .delta.pos{ color:#2acd4e; }
-    .delta.neg{ color:#e03232; }
-
-    .rank{ font-weight:700; }
-    .opp{ text-align:left; }
-
-    td.opp a{
+    .player-cell a{
       color:inherit;
       text-decoration:underline;
       text-underline-offset:2px;
     }
 
-    td.opp a:hover{
+    .player-cell a:hover{
       opacity:.9;
+    }
+
+    .player-cell .profile-player,
+    .player-cell a.profile-player{
+      font-weight:900;
+      text-decoration-thickness:2px;
+    }
+
+    .result{ font-weight:800; }
+    .result.win{ color:var(--wl-win); }
+    .result.loss{ color:var(--wl-loss); }
+    .result.draw{ color:#e8a81f; }
+
+    .delta{ font-weight:800; }
+    .delta.pos{ color:var(--wl-win); }
+    .delta.neg{ color:var(--wl-loss); }
+    .delta.zero{ color:#e8a81f; }
+
+    .wl-cell{
+      min-width:150px;
+    }
+
+    .wl-bar{
+      display:flex;
+      width:142px;
+      height:26px;
+      border-radius:7px;
+      overflow:hidden;
+      border:1px solid rgba(128,128,128,0.45);
+      background:rgba(255,255,255,0.04);
+      margin:0 auto;
+    }
+
+    .wl-seg{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.78rem;
+      font-weight:900;
+      color:#111;
+      overflow:hidden;
+    }
+
+    .wl-win{ background:var(--wl-win); }
+    .wl-loss{ background:var(--wl-loss); }
+
+    .wl-seg span{
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:clip;
     }
 
     @media (max-width:700px){
@@ -150,6 +193,19 @@
       table.games th,
       table.games td{
         padding:8px 10px;
+      }
+
+      .wl-cell{
+        min-width:132px;
+      }
+
+      .wl-bar{
+        width:124px;
+        height:24px;
+      }
+
+      .wl-seg{
+        font-size:.7rem;
       }
     }
   </style>
@@ -249,22 +305,30 @@ function makePlayerGraphItems() {
   }];
 }
 
-function makeOpponentCell(opponentName, players) {
-  const td = document.createElement('td');
-  td.className = 'opp';
-
-  const player = players.find(p => p.name === opponentName);
+function renderPlayerCell(playerName, players, myName) {
+  const isProfilePlayer = playerName === myName;
+  const player = players.find(p => p.name === playerName);
 
   if (player && player.id) {
     const a = document.createElement('a');
     a.href = `../player/?id=${encodeURIComponent(player.id)}`;
-    a.textContent = opponentName || '';
-    td.appendChild(a);
-  } else {
-    td.textContent = opponentName || '';
+    a.textContent = playerName || '';
+
+    if (isProfilePlayer) {
+      a.className = 'profile-player';
+    }
+
+    return a;
   }
 
-  return td;
+  const span = document.createElement('span');
+  span.textContent = playerName || '';
+
+  if (isProfilePlayer) {
+    span.className = 'profile-player';
+  }
+
+  return span;
 }
 
 function getResultForPlayer(g, myName) {
@@ -294,6 +358,56 @@ function getResultForPlayer(g, myName) {
   return { cls: '', text: raw || '' };
 }
 
+function renderWlBar(g, myName) {
+  const isBlack = g.black === myName;
+  const isWhite = g.white === myName;
+
+  if (!isBlack && !isWhite) {
+    return document.createTextNode('');
+  }
+
+  let blackWin = Number(g.blackWinPct);
+  let whiteWin = Number(g.whiteWinPct);
+
+  if (!Number.isFinite(blackWin) || !Number.isFinite(whiteWin)) {
+    const blackElo = Number(g.blackElo);
+    const whiteElo = Number(g.whiteElo);
+
+    if (!Number.isFinite(blackElo) || !Number.isFinite(whiteElo)) {
+      return document.createTextNode('');
+    }
+
+    const expectedBlack = 1 / (1 + Math.pow(10, (whiteElo - blackElo) / 400));
+    blackWin = Math.round(100 * expectedBlack);
+    whiteWin = 100 - blackWin;
+  }
+
+  const win = isBlack ? blackWin : whiteWin;
+  const loss = isBlack ? whiteWin : blackWin;
+
+  const safeWin = Math.max(0, Math.min(100, win));
+  const safeLoss = Math.max(0, Math.min(100, loss));
+
+  const wrap = document.createElement('div');
+  wrap.className = 'wl-bar';
+  wrap.title = `Win ${safeWin}% / Loss ${safeLoss}%`;
+
+  const winSeg = document.createElement('div');
+  winSeg.className = 'wl-seg wl-win';
+  winSeg.style.width = `${safeWin}%`;
+  winSeg.innerHTML = `<span>${safeWin}%</span>`;
+
+  const lossSeg = document.createElement('div');
+  lossSeg.className = 'wl-seg wl-loss';
+  lossSeg.style.width = `${safeLoss}%`;
+  lossSeg.innerHTML = `<span>${safeLoss}%</span>`;
+
+  wrap.appendChild(winSeg);
+  wrap.appendChild(lossSeg);
+
+  return wrap;
+}
+
 function renderGamesTable(me, players, games) {
   const tbl = document.getElementById('games');
   tbl.innerHTML = '';
@@ -301,7 +415,7 @@ function renderGamesTable(me, players, games) {
   const thead = document.createElement('thead');
   const hr = document.createElement('tr');
 
-  for (const h of ['Date', 'Tournament', 'Opponent', 'Elo', 'Result', 'Δ', 'New', 'Rank']) {
+  for (const h of ['Date', 'Tournament', 'Black', 'Elo', 'White', 'Elo', 'Expected W/L', 'Result', 'Δ']) {
     const th = document.createElement('th');
     th.textContent = h;
     hr.appendChild(th);
@@ -324,15 +438,9 @@ function renderGamesTable(me, players, games) {
 
     if (!isBlack && !isWhite) continue;
 
-    const opponentName = isBlack ? g.white : g.black;
-    const opponentElo  = isBlack ? Number(g.whiteElo) : Number(g.blackElo);
-    const myEloBefore  = isBlack ? Number(g.blackElo) : Number(g.whiteElo);
+    const blackElo = Number(g.blackElo);
+    const whiteElo = Number(g.whiteElo);
     const numDelta = Number(g.delta);
-
-    const myEloAfter =
-      Number.isFinite(myEloBefore) && Number.isFinite(numDelta)
-        ? Math.round(myEloBefore + numDelta)
-        : NaN;
 
     const tr = document.createElement('tr');
 
@@ -342,12 +450,27 @@ function renderGamesTable(me, players, games) {
     const tdTournament = document.createElement('td');
     tdTournament.textContent = g.tournament || '';
 
-    const tdOpp = makeOpponentCell(opponentName, players);
+    const tdBlack = document.createElement('td');
+    tdBlack.className = 'player-cell';
+    tdBlack.appendChild(renderPlayerCell(g.black, players, myName));
 
-    const tdOppElo = document.createElement('td');
-    tdOppElo.textContent = Number.isFinite(opponentElo)
-      ? String(Math.round(opponentElo))
+    const tdBlackElo = document.createElement('td');
+    tdBlackElo.textContent = Number.isFinite(blackElo)
+      ? String(Math.round(blackElo))
       : '';
+
+    const tdWhite = document.createElement('td');
+    tdWhite.className = 'player-cell';
+    tdWhite.appendChild(renderPlayerCell(g.white, players, myName));
+
+    const tdWhiteElo = document.createElement('td');
+    tdWhiteElo.textContent = Number.isFinite(whiteElo)
+      ? String(Math.round(whiteElo))
+      : '';
+
+    const tdWl = document.createElement('td');
+    tdWl.className = 'wl-cell';
+    tdWl.appendChild(renderWlBar(g, myName));
 
     const tdResult = document.createElement('td');
     const r = getResultForPlayer(g, myName);
@@ -359,30 +482,21 @@ function renderGamesTable(me, players, games) {
     if (!Number.isNaN(numDelta)) {
       tdDelta.textContent = g.delta;
       tdDelta.className = 'delta ' + (
-        numDelta > 0 ? 'pos' : (numDelta < 0 ? 'neg' : '')
+        numDelta > 0 ? 'pos' : (numDelta < 0 ? 'neg' : 'zero')
       );
     } else {
       tdDelta.textContent = '';
     }
 
-    const tdNew = document.createElement('td');
-    tdNew.textContent = Number.isFinite(myEloAfter)
-      ? String(myEloAfter)
-      : '';
-
-    const tdRank = document.createElement('td');
-    const rankNum = Number(g.rank);
-    tdRank.textContent = Number.isFinite(rankNum) ? `#${rankNum}` : '';
-    tdRank.className = 'rank';
-
     tr.appendChild(tdDate);
     tr.appendChild(tdTournament);
-    tr.appendChild(tdOpp);
-    tr.appendChild(tdOppElo);
+    tr.appendChild(tdBlack);
+    tr.appendChild(tdBlackElo);
+    tr.appendChild(tdWhite);
+    tr.appendChild(tdWhiteElo);
+    tr.appendChild(tdWl);
     tr.appendChild(tdResult);
     tr.appendChild(tdDelta);
-    tr.appendChild(tdNew);
-    tr.appendChild(tdRank);
 
     tbody.appendChild(tr);
     added++;
@@ -392,7 +506,7 @@ function renderGamesTable(me, players, games) {
     const tr = document.createElement('tr');
     const td = document.createElement('td');
 
-    td.colSpan = 8;
+    td.colSpan = 9;
     td.textContent = 'No games';
 
     tr.appendChild(td);
@@ -437,7 +551,7 @@ async function load() {
   try {
     document.getElementById('chart').textContent = 'Loading…';
     document.getElementById('games').innerHTML =
-      '<tbody><tr><td colspan="8">Loading…</td></tr></tbody>';
+      '<tbody><tr><td colspan="9">Loading…</td></tr></tbody>';
 
     const [playersRes, histRes, gamesRes] = await Promise.all([
       fetch(PLAYERS_URL, { cache: 'no-cache' }),
@@ -495,7 +609,7 @@ async function load() {
       renderGamesTable(me, players, Array.isArray(games) ? games : []);
     } else {
       document.getElementById('games').innerHTML =
-        '<tbody><tr><td colspan="8">No games</td></tr></tbody>';
+        '<tbody><tr><td colspan="9">No games</td></tr></tbody>';
     }
   } catch (e) {
     if (token !== LOAD_TOKEN) return;
@@ -504,7 +618,7 @@ async function load() {
 
     document.getElementById('chart').textContent = 'Error: ' + e.message;
     document.getElementById('games').innerHTML =
-      '<tbody><tr><td colspan="8">Error loading games</td></tr></tbody>';
+      '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
 
     renderPlayerStats([]);
   }
