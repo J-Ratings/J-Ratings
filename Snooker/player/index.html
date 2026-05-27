@@ -17,197 +17,350 @@
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
-    #chart { height: 520px; }
-
-    .header-row {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 16px;
-      padding: 20px;
+    :root{
+      --wl-win:#14b85a;
+      --wl-loss:#e53935;
     }
 
-    h2#pname {
-      justify-self: center;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      font-size: 2rem;
+    #chart{ height:520px; }
+
+    .header-row{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:16px;
+      padding:20px;
     }
 
-    .toolbar {
-      justify-self: start;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 10px;
-      padding: 0;
-      flex-wrap: wrap;
+    h2#pname{
+      justify-self:center;
+      margin:0;
+      padding:0;
+      text-align:center;
+      font-size:2rem;
     }
 
-    .toolbar-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .toolbar{
+      justify-self:start;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:10px;
+      padding:0;
+      flex-wrap:wrap;
     }
 
-    .toolbar-top {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+    .toolbar-stack{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
     }
 
-    .range-buttons {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
+    .toolbar-top{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
-    .range-btn {
-      padding: 8px 10px;
-      border: 1px solid #2b2f36;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.03);
-      color: inherit;
-      cursor: pointer;
-      font-size: 0.95rem;
+    .range-buttons{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
     }
 
-    .range-btn:hover { opacity: 0.92; }
-
-    .range-btn.is-active {
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(200,200,200,0.55);
-      font-weight: 700;
+    .range-btn{
+      padding:8px 10px;
+      border:1px solid #2b2f36;
+      border-radius:10px;
+      background:rgba(255,255,255,0.03);
+      color:inherit;
+      cursor:pointer;
+      font-size:.95rem;
     }
 
-    .player-stats {
-      justify-self: end;
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      text-align: center;
+    .range-btn:hover{ opacity:.92; }
+
+    .range-btn.is-active{
+      background:rgba(255,255,255,0.10);
+      border-color:rgba(200,200,200,0.55);
+      font-weight:700;
     }
 
-    .player-stats .stat {
-      padding: 10px 12px;
-      border: 1px solid #2b2f36;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.03);
-      min-width: 90px;
+    .player-stats{
+      justify-self:end;
+      display:flex;
+      gap:14px;
+      align-items:center;
+      text-align:center;
     }
 
-    .player-stats .stat-label {
-      font-size: 0.9rem;
-      opacity: 0.8;
+    .player-stats .stat{
+      padding:10px 12px;
+      border:1px solid #2b2f36;
+      border-radius:10px;
+      background:rgba(255,255,255,0.03);
+      min-width:90px;
     }
 
-    .player-stats .stat-value {
-      font-size: 1.4rem;
-      font-weight: 800;
-      line-height: 1.1;
+    .player-stats .stat-label{
+      font-size:.9rem;
+      opacity:.8;
     }
 
-    h3.section-title {
-      text-align: center;
-      font-size: 1.6rem;
-      margin-top: 20px;
-      margin-bottom: 10px;
+    .player-stats .stat-value{
+      font-size:1.4rem;
+      font-weight:800;
+      line-height:1.1;
     }
 
-    #matchesWrap {
-      max-height: 520px;
-      overflow: auto;
-      margin-top: 12px;
+    h3.section-title{
+      text-align:center;
+      font-size:1.6rem;
+      margin-top:20px;
+      margin-bottom:10px;
     }
 
-    table.matches {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      font-size: 1rem;
+    #matchesWrap{
+      max-height:520px;
+      overflow:auto;
+      margin-top:12px;
+    }
+
+    table.matches{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      font-size:1rem;
+      table-layout:fixed;
     }
 
     table.matches th,
-    table.matches td {
-      padding: 10px 12px;
-      border-bottom: 1px solid #2b2f36;
-      text-align: center;
-      vertical-align: middle;
-      white-space: nowrap;
+    table.matches td{
+      padding:10px 12px;
+      border-bottom:1px solid #2b2f36;
+      border-right:1px solid rgba(128,128,128,0.45);
+      text-align:center;
+      vertical-align:middle;
+      white-space:nowrap;
     }
 
-    table.matches th {
-      position: sticky;
-      top: 0;
-      z-index: 2;
-      background-color: var(--panel-bg, #1a1a1a);
+    table.matches th:first-child,
+    table.matches td:first-child{
+      border-left:1px solid rgba(128,128,128,0.45);
     }
 
-    table.matches th:nth-child(1), table.matches td:nth-child(1),
-    table.matches th:nth-child(2), table.matches td:nth-child(2),
-    table.matches th:nth-child(3), table.matches td:nth-child(3),
-    table.matches th:nth-child(4), table.matches td:nth-child(4),
-    table.matches th:nth-child(5), table.matches td:nth-child(5),
-    table.matches th:nth-child(6), table.matches td:nth-child(6),
-    table.matches th:nth-child(7), table.matches td:nth-child(7),
-    table.matches th:nth-child(8), table.matches td:nth-child(8) {
-      border-right: 3px double rgba(128,128,128,0.6);
+    table.matches th{
+      position:sticky;
+      top:0;
+      z-index:2;
+      background-color:var(--panel-bg, #1a1a1a);
     }
 
-    .result { font-weight: 700; }
-    .result.win { color: #2acd4e; }
-    .result.loss { color: #e03232; }
-
-    .delta { font-weight: 700; }
-    .delta.pos { color: #2acd4e; }
-    .delta.neg { color: #e03232; }
-
-    .rank { font-weight: 700; }
-
-    .opp { text-align: left; }
-
-    .event {
-      text-align: left;
-      max-width: 260px;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    table.matches th:nth-child(1),
+    table.matches td:nth-child(1){
+      width:120px;
     }
 
-    td.opp a {
-      color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 2px;
+    table.matches th:nth-child(2),
+    table.matches td:nth-child(2){
+      width:190px;
+      max-width:190px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
     }
 
-    td.opp a:hover { opacity: 0.9; }
+    table.matches th:nth-child(3),
+    table.matches td:nth-child(3),
+    table.matches th:nth-child(5),
+    table.matches td:nth-child(5){
+      width:170px;
+    }
 
-    @media (max-width: 700px) {
-      .header-row {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        text-align: center;
+    table.matches th:nth-child(4),
+    table.matches td:nth-child(4),
+    table.matches th:nth-child(6),
+    table.matches td:nth-child(6){
+      width:72px;
+    }
+
+    table.matches th:nth-child(7),
+    table.matches td:nth-child(7){
+      width:180px;
+    }
+
+    table.matches th:nth-child(8),
+    table.matches td:nth-child(8){
+      width:90px;
+    }
+
+    table.matches th:nth-child(9),
+    table.matches td:nth-child(9){
+      width:90px;
+    }
+
+    table.matches th:nth-child(10),
+    table.matches td:nth-child(10){
+      width:85px;
+    }
+
+    .player-cell{
+      text-align:left;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .player-cell a{
+      color:inherit;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+
+    .player-cell a:hover{ opacity:.9; }
+
+    .player-cell .profile-player,
+    .player-cell a.profile-player{
+      font-weight:900;
+      text-decoration-thickness:2px;
+    }
+
+    .result{ font-weight:800; }
+    .result.win{ color:var(--wl-win); }
+    .result.loss{ color:var(--wl-loss); }
+
+    .score{ font-weight:400; }
+    .score .score-strong{ font-weight:800; }
+
+    .delta{ font-weight:800; }
+    .delta.pos{ color:var(--wl-win); }
+    .delta.neg{ color:var(--wl-loss); }
+    .delta.zero{ color:#e8a81f; }
+
+    .wl-cell{
+      min-width:150px;
+    }
+
+    .wl-bar{
+      display:flex;
+      width:142px;
+      height:26px;
+      border-radius:7px;
+      overflow:hidden;
+      border:1px solid rgba(128,128,128,0.45);
+      background:rgba(255,255,255,0.04);
+      margin:0 auto;
+    }
+
+    .wl-seg{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.78rem;
+      font-weight:900;
+      color:#111;
+      overflow:hidden;
+    }
+
+    .wl-win{ background:var(--wl-win); }
+    .wl-loss{ background:var(--wl-loss); }
+
+    .wl-seg span{
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:clip;
+    }
+
+    @media (max-width:700px){
+      .header-row{
+        grid-template-columns:1fr;
+        justify-items:center;
+        text-align:center;
       }
-      .toolbar { justify-self: center; }
-      .player-stats { justify-self: center; }
+
+      .toolbar{ justify-self:center; }
+      .player-stats{ justify-self:center; }
     }
 
-    @media (max-width: 600px) {
-      #chart { height: 420px; }
-      h2#pname { font-size: 1.6rem; }
-      h3.section-title { font-size: 1.25rem; }
-      table.matches { font-size: 0.92rem; }
-      table.matches th, table.matches td { padding: 8px 10px; }
-      .event { max-width: 180px; }
+    @media (max-width:600px){
+      #chart{ height:420px; }
+      h2#pname{ font-size:1.6rem; }
+      h3.section-title{ font-size:1.25rem; }
+
+      table.matches{
+        font-size:.92rem;
+      }
+
+      table.matches th,
+      table.matches td{
+        padding:8px 10px;
+      }
+
+      table.matches th:nth-child(1),
+      table.matches td:nth-child(1){
+        width:110px;
+      }
+
+      table.matches th:nth-child(2),
+      table.matches td:nth-child(2){
+        width:160px;
+        max-width:160px;
+      }
+
+      table.matches th:nth-child(3),
+      table.matches td:nth-child(3),
+      table.matches th:nth-child(5),
+      table.matches td:nth-child(5){
+        width:145px;
+      }
+
+      table.matches th:nth-child(4),
+      table.matches td:nth-child(4),
+      table.matches th:nth-child(6),
+      table.matches td:nth-child(6){
+        width:68px;
+      }
+
+      table.matches th:nth-child(7),
+      table.matches td:nth-child(7){
+        width:150px;
+      }
+
+      table.matches th:nth-child(8),
+      table.matches td:nth-child(8){
+        width:80px;
+      }
+
+      table.matches th:nth-child(9),
+      table.matches td:nth-child(9){
+        width:85px;
+      }
+
+      table.matches th:nth-child(10),
+      table.matches td:nth-child(10){
+        width:80px;
+      }
+
+      .wl-cell{
+        min-width:132px;
+      }
+
+      .wl-bar{
+        width:124px;
+        height:24px;
+      }
+
+      .wl-seg{
+        font-size:.7rem;
+      }
     }
 
     .header-row,
-    .header-row * {
-      border-bottom: none !important;
-      box-shadow: none !important;
-      background-image: none !important;
-      text-decoration: none !important;
+    .header-row *{
+      border-bottom:none !important;
+      box-shadow:none !important;
+      background-image:none !important;
+      text-decoration:none !important;
     }
   </style>
 </head>
@@ -466,22 +619,88 @@
     });
   }
 
-  function makeOpponentCell(opponentId, opponentName, players) {
-    const td = document.createElement('td');
-    td.className = 'opp';
-
-    const player = players.find(p => String(p.id) === String(opponentId));
+  function renderPlayerCell(playerId, playerName, players, myId) {
+    const isProfilePlayer = String(playerId) === String(myId);
+    const player = players.find(p => String(p.id) === String(playerId));
+    const label = playerName || player?.display_name || player?.name || String(playerId || '');
 
     if (player && player.id) {
       const a = document.createElement('a');
       a.href = `./?id=${encodeURIComponent(player.id)}`;
-      a.textContent = opponentName || player.display_name || player.name || String(opponentId);
-      td.appendChild(a);
-    } else {
-      td.textContent = opponentName || String(opponentId || '');
+      a.textContent = label;
+
+      if (isProfilePlayer) {
+        a.className = 'profile-player';
+      }
+
+      return a;
     }
 
-    return td;
+    const span = document.createElement('span');
+    span.textContent = label;
+
+    if (isProfilePlayer) {
+      span.className = 'profile-player';
+    }
+
+    return span;
+  }
+
+  function renderWlBar(g) {
+    let win = Number(g.winPct);
+    let loss = Number(g.lossPct);
+
+    if (!Number.isFinite(win) || !Number.isFinite(loss)) {
+      const playerElo = Number(g.player_elo ?? g.elo);
+      const opponentElo = Number(g.opponent_elo ?? g.OpponentElo ?? g.opponentElo);
+
+      if (!Number.isFinite(playerElo) || !Number.isFinite(opponentElo)) {
+        return document.createTextNode('');
+      }
+
+      const expected = 1 / (1 + Math.pow(10, (opponentElo - playerElo) / 400));
+      win = Math.round(100 * expected);
+      loss = 100 - win;
+    }
+
+    const safeWin = Math.max(0, Math.min(100, win));
+    const safeLoss = Math.max(0, Math.min(100, loss));
+
+    const wrap = document.createElement('div');
+    wrap.className = 'wl-bar';
+    wrap.title = `Win ${safeWin}% / Loss ${safeLoss}%`;
+
+    const winSeg = document.createElement('div');
+    winSeg.className = 'wl-seg wl-win';
+    winSeg.style.width = `${safeWin}%`;
+    winSeg.innerHTML = `<span>${safeWin}%</span>`;
+
+    const lossSeg = document.createElement('div');
+    lossSeg.className = 'wl-seg wl-loss';
+    lossSeg.style.width = `${safeLoss}%`;
+    lossSeg.innerHTML = `<span>${safeLoss}%</span>`;
+
+    wrap.appendChild(winSeg);
+    wrap.appendChild(lossSeg);
+
+    return wrap;
+  }
+
+  function getResultClassAndText(g) {
+    const raw = String(g.result || '').trim();
+
+    if (/^win$/i.test(raw)) return { cls: 'win', text: 'Win' };
+    if (/^loss$/i.test(raw)) return { cls: 'loss', text: 'Loss' };
+
+    const playerScore = Number(g.player_score);
+    const opponentScore = Number(g.opponent_score);
+
+    if (Number.isFinite(playerScore) && Number.isFinite(opponentScore)) {
+      if (playerScore > opponentScore) return { cls: 'win', text: 'Win' };
+      if (playerScore < opponentScore) return { cls: 'loss', text: 'Loss' };
+    }
+
+    return { cls: '', text: raw };
   }
 
   function renderMatchesTable(me, players, matches) {
@@ -491,7 +710,7 @@
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
 
-    for (const h of ['Date', 'Event', 'Opponent', 'Opp Elo', 'Score', 'Result', 'Δ', 'New', 'Rank']) {
+    for (const h of ['Date', 'Event', 'Player', 'Elo', 'Opponent', 'Elo', 'Expected W/L', 'Score', 'Result', 'Δ']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -511,32 +730,18 @@
     });
 
     let added = 0;
+    const meId = String(me.id);
 
     for (const g of rows) {
-      const playerA = String(g.player_a_id ?? g.PlayerA_ID ?? g.playerAId ?? '');
-      const playerB = String(g.player_b_id ?? g.PlayerB_ID ?? g.playerBId ?? '');
-      const meId = String(me.id);
+      const playerId = String(g.player_id ?? me.id);
+      const opponentId = String(g.opponent_id ?? '');
 
-      const amA = playerA === meId;
-      const amB = playerB === meId;
+      const playerName = g.player_name || me.display_name || me.name || 'Player';
+      const opponentName = g.opponent_name || '';
 
-      if (!amA && !amB) continue;
-
-      const oppId = amA ? playerB : playerA;
-      const oppName = amA
-        ? (g.player_b_name || g.PlayerB_Name || g.opponent_name || '')
-        : (g.player_a_name || g.PlayerA_Name || g.opponent_name || '');
-
-      const scoreA = Number(g.score_a ?? g.ScoreA);
-      const scoreB = Number(g.score_b ?? g.ScoreB);
-
-      const myScore = amA ? scoreA : scoreB;
-      const oppScore = amA ? scoreB : scoreA;
-
-      const oppElo = Number(g.opponent_elo ?? g.OpponentElo ?? g.opponentElo);
+      const playerElo = Number(g.player_elo ?? g.elo);
+      const opponentElo = Number(g.opponent_elo ?? g.OpponentElo ?? g.opponentElo);
       const delta = Number(g.delta ?? g.Delta ?? g.elo_delta);
-      const newRating = Number(g.new ?? g.New ?? g.rating_after ?? g.RatingAfter);
-      const rankNum = Number(g.rank);
 
       const tr = document.createElement('tr');
 
@@ -544,64 +749,70 @@
       tdDate.textContent = g.date || g.match_date || '';
 
       const tdEvent = document.createElement('td');
-      tdEvent.className = 'event';
       const fullEvent = String(g.event || g.EventName || '');
       tdEvent.title = fullEvent;
       tdEvent.textContent = fullEvent;
 
-      const tdOpp = makeOpponentCell(oppId, oppName, players);
+      const tdPlayer = document.createElement('td');
+      tdPlayer.className = 'player-cell';
+      tdPlayer.appendChild(renderPlayerCell(playerId, playerName, players, meId));
 
-      const tdOppElo = document.createElement('td');
-      tdOppElo.textContent = Number.isFinite(oppElo) ? String(Math.round(oppElo)) : '';
+      const tdPlayerElo = document.createElement('td');
+      tdPlayerElo.textContent = Number.isFinite(playerElo) ? String(Math.round(playerElo)) : '';
+
+      const tdOpponent = document.createElement('td');
+      tdOpponent.className = 'player-cell';
+      tdOpponent.appendChild(renderPlayerCell(opponentId, opponentName, players, meId));
+
+      const tdOpponentElo = document.createElement('td');
+      tdOpponentElo.textContent = Number.isFinite(opponentElo) ? String(Math.round(opponentElo)) : '';
+
+      const tdWl = document.createElement('td');
+      tdWl.className = 'wl-cell';
+      tdWl.appendChild(renderWlBar(g));
 
       const tdScore = document.createElement('td');
-      if (Number.isFinite(myScore) && Number.isFinite(oppScore)) {
-        tdScore.innerHTML = `<strong>${myScore}</strong>-${oppScore}`;
+      tdScore.className = 'score';
+
+      const playerScore = Number(g.player_score);
+      const opponentScore = Number(g.opponent_score);
+
+      if (Number.isFinite(playerScore) && Number.isFinite(opponentScore)) {
+        const scoreStrong = document.createElement('span');
+        scoreStrong.className = 'score-strong';
+        scoreStrong.textContent = String(playerScore);
+
+        tdScore.appendChild(scoreStrong);
+        tdScore.appendChild(document.createTextNode(`-${opponentScore}`));
+      } else if (g.score) {
+        tdScore.textContent = g.score;
       } else {
         tdScore.textContent = '';
       }
 
       const tdResult = document.createElement('td');
-      let resultText = '';
-      let resultClass = '';
-
-      if (Number.isFinite(myScore) && Number.isFinite(oppScore)) {
-        if (myScore > oppScore) {
-          resultText = 'Win';
-          resultClass = 'win';
-        } else if (myScore < oppScore) {
-          resultText = 'Loss';
-          resultClass = 'loss';
-        }
-      }
-
-      tdResult.textContent = resultText;
-      tdResult.className = 'result' + (resultClass ? ' ' + resultClass : '');
+      const r = getResultClassAndText(g);
+      tdResult.textContent = r.text;
+      tdResult.className = 'result' + (r.cls ? ' ' + r.cls : '');
 
       const tdDelta = document.createElement('td');
       if (Number.isFinite(delta)) {
         tdDelta.textContent = delta > 0 ? `+${delta.toFixed(1)}` : delta.toFixed(1);
-        tdDelta.className = 'delta ' + (delta > 0 ? 'pos' : (delta < 0 ? 'neg' : ''));
+        tdDelta.className = 'delta ' + (delta > 0 ? 'pos' : (delta < 0 ? 'neg' : 'zero'));
       } else {
         tdDelta.textContent = '';
       }
 
-      const tdNew = document.createElement('td');
-      tdNew.textContent = Number.isFinite(newRating) ? String(Math.round(newRating)) : '';
-
-      const tdRank = document.createElement('td');
-      tdRank.textContent = Number.isFinite(rankNum) ? `#${rankNum}` : '';
-      tdRank.className = 'rank';
-
       tr.appendChild(tdDate);
       tr.appendChild(tdEvent);
-      tr.appendChild(tdOpp);
-      tr.appendChild(tdOppElo);
+      tr.appendChild(tdPlayer);
+      tr.appendChild(tdPlayerElo);
+      tr.appendChild(tdOpponent);
+      tr.appendChild(tdOpponentElo);
+      tr.appendChild(tdWl);
       tr.appendChild(tdScore);
       tr.appendChild(tdResult);
       tr.appendChild(tdDelta);
-      tr.appendChild(tdNew);
-      tr.appendChild(tdRank);
 
       tbody.appendChild(tr);
       added++;
@@ -610,7 +821,7 @@
     if (!added) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      td.colSpan = 9;
+      td.colSpan = 10;
       td.textContent = 'No matches found.';
       tr.appendChild(td);
       tbody.appendChild(tr);
@@ -654,7 +865,7 @@
     try {
       document.getElementById('chart').textContent = 'Loading…';
       document.getElementById('matches').innerHTML =
-        '<tbody><tr><td colspan="9">Loading…</td></tr></tbody>';
+        '<tbody><tr><td colspan="10">Loading…</td></tr></tbody>';
 
       const [playersRes, histRes, gamesRes] = await Promise.all([
         fetch(playersUrl(), { cache: 'no-cache' }),
@@ -691,7 +902,7 @@
         document.getElementById('chart').textContent = 'No history found.';
         renderPlayerStats([]);
       } else {
-        AGG_MODE = document.getElementById('agg').value || 'monthly';
+        AGG_MODE = document.getElementById('agg').value || 'weekly';
         refreshView();
       }
 
@@ -703,7 +914,7 @@
         renderMatchesTable(me, players, Array.isArray(games) ? games : []);
       } else {
         document.getElementById('matches').innerHTML =
-          '<tbody><tr><td colspan="9">No matches found.</td></tr></tbody>';
+          '<tbody><tr><td colspan="10">No matches found.</td></tr></tbody>';
       }
     } catch (e) {
       if (token !== LOAD_TOKEN) return;
@@ -711,7 +922,7 @@
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       document.getElementById('matches').innerHTML =
-        '<tbody><tr><td colspan="9">Error loading matches.</td></tr></tbody>';
+        '<tbody><tr><td colspan="10">Error loading matches.</td></tr></tbody>';
       renderPlayerStats([]);
     }
   }

@@ -37,6 +37,8 @@ options(stringsAsFactors = FALSE)
 #   - snapshots are season-end snapshots, not calendar-year snapshots
 #   - player must have at least MIN_LIST_FRAMES cumulative frames to be ranked
 #   - player must have played within ACTIVE_YEARS at that historical point to be ranked
+#   - per-player games JSON is exported from the profile player's perspective
+#   - expected W/L is calculated from pre-match Elo ratings; snooker has no draw
 # ============================================================
 
 # -----------------------------
@@ -68,6 +70,23 @@ dir.create(SNAPSHOTS_OUT, recursive = TRUE, showWarnings = FALSE)
 # -----------------------------
 MIN_LIST_FRAMES <- 200L
 ACTIVE_YEARS <- 2L
+
+# -----------------------------
+# Helpers
+# -----------------------------
+elo_expected <- function(player_elo, opponent_elo) {
+  1 / (1 + 10 ^ ((opponent_elo - player_elo) / 400))
+}
+
+write_json_compact <- function(x, path, na = "null") {
+  write_json(
+    x,
+    path,
+    auto_unbox = TRUE,
+    pretty = FALSE,
+    na = na
+  )
+}
 
 # -----------------------------
 # Input files
@@ -258,19 +277,19 @@ meta <- list(
   active_years = ACTIVE_YEARS,
   history_has_world_rank = TRUE,
   games_have_world_rank = TRUE,
+  games_have_expected_wl = TRUE,
   rating_method = "Single-pass Elo. Players start at 2600. First 20 matches use double K. Opponent-frame dampening is applied.",
   rank_method = paste0(
     "Ranked by latest known Elo at each match timestamp. ",
     "Players need at least ", MIN_LIST_FRAMES, " cumulative frames and must have played within ",
     ACTIVE_YEARS, " years at that historical point."
-  )
+  ),
+  expected_wl_method = "Win/loss expectation from profile player's pre-match Elo versus opponent's pre-match Elo. Draw probability is zero for snooker."
 )
 
-write_json(
+write_json_compact(
   meta,
-  file.path(BASE_DATA_DIR, "meta.json"),
-  auto_unbox = TRUE,
-  pretty = FALSE
+  file.path(BASE_DATA_DIR, "meta.json")
 )
 
 cat("Wrote meta.json\n")
@@ -359,7 +378,6 @@ for (i in seq_along(rank_times)) {
     
     setkey(updates_state, PlayerID)
     
-    # Update existing players
     state[updates_state, `:=`(
       PlayerName = i.PlayerName,
       rating = i.rating,
@@ -367,7 +385,6 @@ for (i in seq_along(rank_times)) {
       date = i.date
     )]
     
-    # Add new players
     new_players <- updates_state[!state, on = "PlayerID"]
     
     if (nrow(new_players) > 0L) {
@@ -474,12 +491,9 @@ players_tbl <- final %>%
   ) %>%
   arrange(desc(rating), name)
 
-write_json(
+write_json_compact(
   players_tbl,
-  file.path(BASE_DATA_DIR, "players.json"),
-  auto_unbox = TRUE,
-  pretty = FALSE,
-  na = "null"
+  file.path(BASE_DATA_DIR, "players.json")
 )
 
 cat(
@@ -509,12 +523,9 @@ for (pid in all_ids) {
     )
   
   if (nrow(df) > 0L) {
-    write_json(
+    write_json_compact(
       df,
-      file.path(HISTORY_OUT, paste0(pid, ".json")),
-      auto_unbox = TRUE,
-      pretty = FALSE,
-      na = "null"
+      file.path(HISTORY_OUT, paste0(pid, ".json"))
     )
     
     n_hist_written <- n_hist_written + 1L
@@ -555,20 +566,15 @@ season_snapshot_info <- data.table(
 )
 
 season_snapshot_info <- season_snapshot_info[!is.na(season)]
-
-# Avoid exporting the live/current season as if it were final.
-# Live current season is exported separately as current.json.
 season_snapshot_info <- season_snapshot_info[season < current_season]
 
 setorder(season_snapshot_info, season)
 
 snapshot_seasons <- season_snapshot_info$season
 
-write_json(
+write_json_compact(
   snapshot_seasons,
-  file.path(SNAPSHOTS_OUT, "seasons.json"),
-  auto_unbox = TRUE,
-  pretty = FALSE
+  file.path(SNAPSHOTS_OUT, "seasons.json")
 )
 
 cat("Wrote snapshots/seasons.json (n =", length(snapshot_seasons), ")\n")
@@ -631,12 +637,9 @@ for (i in seq_len(nrow(season_snapshot_info))) {
     ) %>%
     arrange(rank, desc(rating), name)
   
-  write_json(
+  write_json_compact(
     snapshot_tbl,
-    file.path(SNAPSHOTS_OUT, paste0(season, ".json")),
-    auto_unbox = TRUE,
-    pretty = FALSE,
-    na = "null"
+    file.path(SNAPSHOTS_OUT, paste0(season, ".json"))
   )
   
   n_snapshots_written <- n_snapshots_written + 1L
@@ -673,16 +676,12 @@ if (file.exists(current_snapshot_file)) {
     ) %>%
     arrange(rank, desc(rating), name)
   
-  write_json(
+  write_json_compact(
     current_tbl,
-    file.path(SNAPSHOTS_OUT, "current.json"),
-    auto_unbox = TRUE,
-    pretty = FALSE,
-    na = "null"
+    file.path(SNAPSHOTS_OUT, "current.json")
   )
   
   cat("Wrote snapshots/current.json (players =", nrow(current_tbl), ")\n")
-  
 } else {
   cat("No snapshot_current.csv found; snapshots/current.json was not written.\n")
 }
@@ -691,6 +690,12 @@ cat("Wrote completed season snapshots:", n_snapshots_written, "\n")
 
 # -----------------------------
 # Per-player games JSON
+#
+# Output is from the profile player's perspective:
+#   player on the left, opponent on the right.
+#   winPct/lossPct use pre-match Elo expected score.
+#
+# Also keeps legacy fields used by the old profile page.
 # -----------------------------
 rank_lookup_games <- hist_long %>%
   select(PlayerID, datetime, rank) %>%
@@ -712,30 +717,33 @@ for (pid in all_ids) {
       am_a = PlayerA_ID == pid,
       am_b = PlayerB_ID == pid,
       
-      delta_num = case_when(
-        am_a ~ DeltaA,
-        am_b ~ DeltaB,
-        TRUE ~ NA_real_
+      player_id = pid,
+      player_name = if_else(am_a, PlayerA_Name, PlayerB_Name),
+      opponent_id = if_else(am_a, PlayerB_ID, PlayerA_ID),
+      opponent_name = if_else(am_a, PlayerB_Name, PlayerA_Name),
+      
+      player_score = if_else(am_a, ScoreA, ScoreB),
+      opponent_score = if_else(am_a, ScoreB, ScoreA),
+      score = if_else(
+        !is.na(player_score) & !is.na(opponent_score),
+        paste0(player_score, "-", opponent_score),
+        NA_character_
       ),
-      new_num = case_when(
-        am_a ~ ARating_After,
-        am_b ~ BRating_After,
-        TRUE ~ NA_real_
-      ),
-      elo_num = case_when(
-        am_a ~ ARating_Before,
-        am_b ~ BRating_Before,
-        TRUE ~ NA_real_
-      ),
-      opponent_elo_num = case_when(
-        am_a ~ BRating_Before,
-        am_b ~ ARating_Before,
-        TRUE ~ NA_real_
-      ),
-      games_after = case_when(
-        am_a ~ AGamesAfter,
-        am_b ~ BGamesAfter,
-        TRUE ~ NA_integer_
+      
+      player_elo_num = if_else(am_a, ARating_Before, BRating_Before),
+      opponent_elo_num = if_else(am_a, BRating_Before, ARating_Before),
+      player_new_num = if_else(am_a, ARating_After, BRating_After),
+      player_delta_num = if_else(am_a, DeltaA, DeltaB),
+      games_after = if_else(am_a, AGamesAfter, BGamesAfter),
+      
+      expected_win = elo_expected(player_elo_num, opponent_elo_num),
+      winPct_num = as.integer(round(100 * expected_win)),
+      lossPct_num = 100L - winPct_num,
+      
+      result = case_when(
+        player_score > opponent_score ~ "Win",
+        player_score < opponent_score ~ "Loss",
+        TRUE ~ NA_character_
       )
     ) %>%
     left_join(
@@ -749,30 +757,41 @@ for (pid in all_ids) {
       season = ifelse(is.na(season), NA_character_, as.character(season)),
       event = as.character(EventName),
       
+      player_id = as.character(player_id),
+      player_name = as.character(player_name),
+      player_elo = ifelse(!is.na(player_elo_num), as.integer(round(player_elo_num)), NA_integer_),
+      
+      opponent_id = as.character(opponent_id),
+      opponent_name = as.character(opponent_name),
+      opponent_elo = ifelse(!is.na(opponent_elo_num), as.integer(round(opponent_elo_num)), NA_integer_),
+      
+      score = as.character(score),
+      player_score = as.integer(player_score),
+      opponent_score = as.integer(opponent_score),
+      result = as.character(result),
+      
+      winPct = as.integer(winPct_num),
+      lossPct = as.integer(lossPct_num),
+      
+      delta = ifelse(!is.na(player_delta_num), round(player_delta_num, 1), NA_real_),
+      new = ifelse(!is.na(player_new_num), as.integer(round(player_new_num)), NA_integer_),
+      games_after = as.integer(games_after),
+      rank = as.integer(rank),
+      
+      # Legacy fields retained for compatibility with older profile pages.
       player_a_id = as.character(PlayerA_ID),
       player_a_name = as.character(PlayerA_Name),
       player_b_id = as.character(PlayerB_ID),
       player_b_name = as.character(PlayerB_Name),
-      
       score_a = as.integer(ScoreA),
       score_b = as.integer(ScoreB),
-      
-      elo = ifelse(!is.na(elo_num), as.integer(round(elo_num)), NA_integer_),
-      opponent_elo = ifelse(!is.na(opponent_elo_num), as.integer(round(opponent_elo_num)), NA_integer_),
-      delta = ifelse(!is.na(delta_num), round(delta_num, 1), NA_real_),
-      new = ifelse(!is.na(new_num), as.integer(round(new_num)), NA_integer_),
-      
-      games_after = as.integer(games_after),
-      rank = as.integer(rank)
+      elo = ifelse(!is.na(player_elo_num), as.integer(round(player_elo_num)), NA_integer_)
     )
   
   if (nrow(df) > 0L) {
-    write_json(
+    write_json_compact(
       df,
-      file.path(GAMES_OUT, paste0(pid, ".json")),
-      auto_unbox = TRUE,
-      pretty = FALSE,
-      na = "null"
+      file.path(GAMES_OUT, paste0(pid, ".json"))
     )
     
     n_games_written <- n_games_written + 1L
