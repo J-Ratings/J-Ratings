@@ -131,14 +131,9 @@ clamp <- function(x, lo, hi) {
 draw_rate_from_gap <- function(abs_gap) {
   abs_gap <- as.numeric(abs_gap)
   
-  # Calibrated from International Football match data, last 50 years.
-  # Smooth logistic curve:
-  # - close teams sit around a 26% draw rate
-  # - draw probability falls as the Elo gap grows
-  # - very large mismatches tend towards 0%
   max_draw <- 0.266
-  midpoint <- 380
-  scale <- 85
+  midpoint <- 295.472
+  scale <- 68.851
   
   max_draw / (1 + exp((abs_gap - midpoint) / scale))
 }
