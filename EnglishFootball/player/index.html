@@ -690,12 +690,22 @@
       return document.createTextNode('');
     }
 
-    const win = isHome ? homeWin : awayWin;
-    const loss = isHome ? awayWin : homeWin;
+const win = isHome ? homeWin : awayWin;
+const loss = isHome ? awayWin : homeWin;
 
-    const safeWin = Math.max(0, win);
-    const safeDraw = Math.max(0, draw);
-    const safeLoss = Math.max(0, loss);
+let safeWin = Math.max(0, Math.round(win));
+let safeDraw = Math.max(0, Math.round(draw));
+let safeLoss = Math.max(0, Math.round(loss));
+
+const total = safeWin + safeDraw + safeLoss;
+
+if (total === 99) {
+  const max = Math.max(safeWin, safeDraw, safeLoss);
+
+  if (safeWin === max) safeWin += 1;
+  else if (safeDraw === max) safeDraw += 1;
+  else safeLoss += 1;
+}
 
     const wrap = document.createElement('div');
     wrap.className = 'wdl-bar';
