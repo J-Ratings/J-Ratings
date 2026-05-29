@@ -59,7 +59,7 @@ if (header_value == "") {
   )
 }
 
-REQUEST_PAUSE <- as.numeric(Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "8"))
+REQUEST_PAUSE <- as.numeric(Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "31"))
 MAX_RETRIES <- 3L
 
 # Monthly automation default.
