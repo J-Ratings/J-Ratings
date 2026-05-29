@@ -303,7 +303,7 @@
   function updateHeaders() {
     const h = document.getElementById('rating-col-head');
     if (!h) return;
-    h.textContent = (state.mode === 'live') ? 'Peak' : 'Start Elo';
+    h.textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
   }
 
   function formatAsOf(iso) {
@@ -374,7 +374,7 @@
       tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
       tr.appendChild(tdRt);
 
-      tbody.appendChild(tr);
+      tbody.appendChild(tr); 
     });
   }
 
