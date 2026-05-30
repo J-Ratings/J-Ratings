@@ -32,13 +32,12 @@ if (token == "") {
   )
 }
 
-# The newer Kaggle token format uses KAGGLE_API_TOKEN directly.
-# The Kaggle CLI reads this environment variable when authenticating.
+# The Kaggle CLI reads KAGGLE_API_TOKEN when authenticating.
 
 # -----------------------------
 # Download dataset using Kaggle CLI
 # -----------------------------
-dataset_slug <- "martj42/international-football-results-from-1872-to-2017"
+dataset_slug <- "patateriedata/all-international-football-results"
 
 cmd <- paste(
   "kaggle datasets download",
@@ -61,36 +60,112 @@ if (!identical(status, 0L)) {
 # -----------------------------
 # Check expected files
 # -----------------------------
-expected_files <- file.path(
+required_files <- file.path(
   source_dir,
   c(
-    "results.csv",
-    "shootouts.csv",
-    "goalscorers.csv",
-    "former_names.csv"
+    "all_matches.csv"
   )
 )
 
-missing_files <- expected_files[!file.exists(expected_files)]
+optional_files <- file.path(
+  source_dir,
+  c(
+    "countries_names.csv"
+  )
+)
 
-if (length(missing_files) > 0) {
+missing_required_files <- required_files[!file.exists(required_files)]
+
+if (length(missing_required_files) > 0) {
   stop(
-    "Kaggle download completed, but expected files are missing: ",
-    paste(missing_files, collapse = ", ")
+    "Kaggle download completed, but required files are missing: ",
+    paste(missing_required_files, collapse = ", ")
   )
 }
 
-cat("Downloaded files:\n")
-print(basename(expected_files))
+missing_optional_files <- optional_files[!file.exists(optional_files)]
 
-results_file <- file.path(source_dir, "results.csv")
+cat("Required files found:\n")
+print(basename(required_files))
 
-if (file.exists(results_file)) {
-  results <- read.csv(results_file, stringsAsFactors = FALSE)
+if (length(missing_optional_files) > 0) {
+  warning(
+    "Optional files are missing: ",
+    paste(basename(missing_optional_files), collapse = ", ")
+  )
+} else {
+  cat("Optional files found:\n")
+  print(basename(optional_files))
+}
+
+# -----------------------------
+# Basic source sanity checks
+# -----------------------------
+all_matches_file <- file.path(source_dir, "all_matches.csv")
+
+all_matches <- read.csv(
+  all_matches_file,
+  stringsAsFactors = FALSE,
+  fileEncoding = "UTF-8"
+)
+
+required_columns <- c(
+  "date",
+  "home_team",
+  "away_team",
+  "home_score",
+  "away_score",
+  "tournament",
+  "country",
+  "neutral"
+)
+
+missing_columns <- setdiff(required_columns, names(all_matches))
+
+if (length(missing_columns) > 0) {
+  stop(
+    "all_matches.csv is missing required columns: ",
+    paste(missing_columns, collapse = ", ")
+  )
+}
+
+all_matches$date <- as.Date(all_matches$date)
+
+if (all(is.na(all_matches$date))) {
+  stop("Could not parse any dates from all_matches.csv.")
+}
+
+latest_source_date <- max(all_matches$date, na.rm = TRUE)
+
+cat("Downloaded rows:", nrow(all_matches), "\n")
+cat("Latest all_matches.csv date:", as.character(latest_source_date), "\n")
+
+# -----------------------------
+# Optional country-name mapping check
+# -----------------------------
+countries_names_file <- file.path(source_dir, "countries_names.csv")
+
+if (file.exists(countries_names_file)) {
+  countries_names <- read.csv(
+    countries_names_file,
+    stringsAsFactors = FALSE,
+    fileEncoding = "UTF-8"
+  )
   
-  if ("date" %in% names(results)) {
-    latest_source_date <- max(as.Date(results$date), na.rm = TRUE)
-    cat("Latest source results.csv date:", as.character(latest_source_date), "\n")
+  required_country_columns <- c(
+    "original_name",
+    "current_name"
+  )
+  
+  missing_country_columns <- setdiff(required_country_columns, names(countries_names))
+  
+  if (length(missing_country_columns) > 0) {
+    warning(
+      "countries_names.csv exists but is missing columns: ",
+      paste(missing_country_columns, collapse = ", ")
+    )
+  } else {
+    cat("Country name mapping rows:", nrow(countries_names), "\n")
   }
 }
 

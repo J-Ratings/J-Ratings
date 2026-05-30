@@ -29,16 +29,11 @@ processed_dir <- file.path(
 
 dir.create(processed_dir, recursive = TRUE, showWarnings = FALSE)
 
-results_file <- file.path(source_dir, "results.csv")
-shootouts_file <- file.path(source_dir, "shootouts.csv")
+all_matches_file <- file.path(source_dir, "all_matches.csv")
 output_file <- file.path(processed_dir, "results_with_winner.csv")
 
-if (!file.exists(results_file)) {
-  stop("Missing results file: ", results_file)
-}
-
-if (!file.exists(shootouts_file)) {
-  stop("Missing shootouts file: ", shootouts_file)
+if (!file.exists(all_matches_file)) {
+  stop("Missing all_matches file: ", all_matches_file)
 }
 
 # -----------------------------
@@ -57,22 +52,22 @@ parse_mixed_date <- function(x) {
   as.Date(parsed)
 }
 
+clean_score_num <- function(x) {
+  x_chr <- trimws(as.character(x))
+  x_chr[x_chr %in% c("", "NA", "NaN", "NULL", "null", "na")] <- NA_character_
+  suppressWarnings(as.integer(x_chr))
+}
+
 # -----------------------------
 # Load source data
 # -----------------------------
-results <- read_csv(
-  results_file,
+all_matches <- read_csv(
+  all_matches_file,
   show_col_types = FALSE,
   locale = locale(encoding = "UTF-8")
 )
 
-shootouts <- read_csv(
-  shootouts_file,
-  show_col_types = FALSE,
-  locale = locale(encoding = "UTF-8")
-)
-
-required_results_cols <- c(
+required_cols <- c(
   "date",
   "home_team",
   "away_team",
@@ -81,28 +76,12 @@ required_results_cols <- c(
   "tournament"
 )
 
-required_shootouts_cols <- c(
-  "date",
-  "home_team",
-  "away_team",
-  "winner",
-  "first_shooter"
-)
+missing_cols <- setdiff(required_cols, names(all_matches))
 
-missing_results_cols <- setdiff(required_results_cols, names(results))
-missing_shootouts_cols <- setdiff(required_shootouts_cols, names(shootouts))
-
-if (length(missing_results_cols) > 0) {
+if (length(missing_cols) > 0) {
   stop(
-    "results.csv is missing required columns: ",
-    paste(missing_results_cols, collapse = ", ")
-  )
-}
-
-if (length(missing_shootouts_cols) > 0) {
-  stop(
-    "shootouts.csv is missing required columns: ",
-    paste(missing_shootouts_cols, collapse = ", ")
+    "all_matches.csv is missing required columns: ",
+    paste(missing_cols, collapse = ", ")
   )
 }
 
@@ -111,13 +90,13 @@ if (length(missing_shootouts_cols) > 0) {
 # -----------------------------
 today <- Sys.Date()
 
-results <- results %>%
+results <- all_matches %>%
   mutate(
     date = parse_mixed_date(date),
     home_team = trimws(as.character(home_team)),
     away_team = trimws(as.character(away_team)),
-    home_score = as.integer(home_score),
-    away_score = as.integer(away_score),
+    home_score = clean_score_num(home_score),
+    away_score = clean_score_num(away_score),
     tournament = trimws(as.character(tournament))
   ) %>%
   filter(
@@ -126,46 +105,21 @@ results <- results %>%
     !is.na(home_score),
     !is.na(away_score),
     home_team != "",
-    away_team != ""
+    away_team != "",
+    tournament != ""
   )
 
 # -----------------------------
-# Clean shootouts
-# -----------------------------
-shootouts <- shootouts %>%
-  mutate(
-    date = parse_mixed_date(date),
-    home_team = trimws(as.character(home_team)),
-    away_team = trimws(as.character(away_team)),
-    winner = trimws(as.character(winner)),
-    first_shooter = trimws(as.character(first_shooter))
-  ) %>%
-  filter(
-    !is.na(date),
-    home_team != "",
-    away_team != ""
-  ) %>%
-  select(date, home_team, away_team, winner, first_shooter)
-
-# -----------------------------
-# Combine results and shootouts
+# Build downstream results file
 # -----------------------------
 out <- results %>%
-  left_join(
-    shootouts,
-    by = c("date", "home_team", "away_team")
-  ) %>%
   mutate(
     result = case_when(
       home_score > away_score ~ home_team,
       away_score > home_score ~ away_team,
-      home_score == away_score & !is.na(winner) & winner != "" ~ winner,
       TRUE ~ "Draw"
     ),
-    score = case_when(
-      home_score == away_score & !is.na(winner) & winner != "" ~ paste0(home_score, "-", away_score, " (pens)"),
-      TRUE ~ paste0(home_score, "-", away_score)
-    ),
+    score = paste0(home_score, "-", away_score),
     date = format(date, "%Y-%m-%d")
   ) %>%
   select(
@@ -179,6 +133,37 @@ out <- results %>%
   arrange(date, tournament, home_team, away_team)
 
 # -----------------------------
+# Sanity checks
+# -----------------------------
+if (nrow(out) == 0) {
+  stop("No usable rows were produced from all_matches.csv.")
+}
+
+bad_results <- out %>%
+  filter(
+    result != "Draw",
+    result != home_team,
+    result != away_team
+  )
+
+if (nrow(bad_results) > 0) {
+  print(bad_results)
+  stop("Some result labels do not match home_team, away_team, or Draw.")
+}
+
+duplicate_rows <- out %>%
+  count(date, home_team, away_team, score, tournament, name = "n") %>%
+  filter(n > 1)
+
+if (nrow(duplicate_rows) > 0) {
+  warning(
+    "Possible duplicate match rows found: ",
+    nrow(duplicate_rows),
+    ". These were not removed."
+  )
+}
+
+# -----------------------------
 # Write output
 # -----------------------------
 write_csv(out, output_file)
@@ -187,7 +172,7 @@ cat("Wrote:", output_file, "\n")
 cat("Rows:", nrow(out), "\n")
 cat("Latest date:", max(out$date, na.rm = TRUE), "\n")
 
-# Basic check for 2022 World Cup final penalty handling
+# Basic penalty sanity check: 2022 World Cup final should remain a draw
 check_row <- out %>%
   filter(
     home_team == "Argentina",

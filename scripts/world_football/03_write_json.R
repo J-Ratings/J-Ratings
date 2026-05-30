@@ -1,3 +1,4 @@
+```r
 library(dplyr)
 library(readr)
 library(jsonlite)
@@ -28,7 +29,7 @@ source_results_csv <- file.path(
   "InternationalFootball",
   "pipeline_data",
   "source",
-  "results.csv"
+  "all_matches.csv"
 )
 
 base_data_dir <- file.path(
@@ -447,6 +448,9 @@ cat("Wrote rating history files:", n_hist_written, "\n")
 # -----------------------------
 # Future fixtures
 # -----------------------------
+# The new source usually contains completed matches only.
+# This section is kept so the website still supports scheduled fixtures
+# if all_matches.csv ever includes future rows with blank scores.
 
 future_fixtures <- tibble()
 
@@ -470,7 +474,7 @@ if (file.exists(source_results_csv)) {
   
   if (length(missing_source_cols) > 0) {
     warning(
-      "Skipping future fixtures because results.csv is missing columns: ",
+      "Skipping future fixtures because all_matches.csv is missing columns: ",
       paste(missing_source_cols, collapse = ", ")
     )
   } else {
@@ -541,7 +545,7 @@ if (file.exists(source_results_csv)) {
       )
   }
 } else {
-  warning("No source results.csv found, so no future fixtures were added: ", source_results_csv)
+  warning("No source all_matches.csv found, so no future fixtures were added: ", source_results_csv)
 }
 
 cat("Future fixtures loaded:", nrow(future_fixtures), "\n")
@@ -643,3 +647,4 @@ if (length(missing_outputs) > 0) {
 
 cat("Done.\n")
 cat("JSON output directory:", base_data_dir, "\n")
+```
