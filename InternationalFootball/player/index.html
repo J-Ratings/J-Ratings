@@ -875,11 +875,10 @@ if (total === 99) {
     peakEl.textContent = peak ? String(Math.round(peak.y)) : '—';
   }
 
-  function refreshView() {
-    const filtered = applySinceFilter(RAW, SINCE_YEAR);
-    renderTeamStats(filtered);
-    draw(AGG_MODE);
-  }
+function refreshView() {
+  renderTeamStats(RAW);
+  draw(AGG_MODE);
+}
 
   async function load() {
     try {
