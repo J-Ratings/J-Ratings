@@ -58,6 +58,39 @@ clean_score_num <- function(x) {
   suppressWarnings(as.integer(x_chr))
 }
 
+normalise_team_name <- function(x) {
+  x0 <- trimws(as.character(x))
+  
+  team_map <- c(
+    "Åland" = "Åland Islands",
+    
+    # Match new data-source names to existing site asset names
+    "Czechia" = "Czech Republic",
+    "Ireland" = "Republic of Ireland",
+    "China" = "China PR",
+    
+    # Spelling / diacritics
+    "Curacao" = "Curaçao",
+    "Reunion" = "Réunion",
+    "Sao Tome and Principe" = "São Tomé and Príncipe",
+    "São Tome and Principe" = "São Tomé and Príncipe",
+    "Saint Barthelemy" = "Saint Barthélemy",
+    
+    # Common abbreviations
+    "St Vincent & Grenadines" = "Saint Vincent and the Grenadines",
+    "St. Vincent and the Grenadines" = "Saint Vincent and the Grenadines",
+    "Saint Vincent & Grenadines" = "Saint Vincent and the Grenadines",
+    
+    # Territory / country naming
+    "US Virgin Islands" = "United States Virgin Islands",
+    "Macao" = "Macau",
+    "Eastern Samoa" = "American Samoa",
+    "East Timor" = "Timor-Leste"
+  )
+  
+  ifelse(x0 %in% names(team_map), unname(team_map[x0]), x0)
+}
+
 # -----------------------------
 # Load source data
 # -----------------------------
@@ -93,8 +126,8 @@ today <- Sys.Date()
 results <- all_matches %>%
   mutate(
     date = parse_mixed_date(date),
-    home_team = trimws(as.character(home_team)),
-    away_team = trimws(as.character(away_team)),
+    home_team = normalise_team_name(home_team),
+    away_team = normalise_team_name(away_team),
     home_score = clean_score_num(home_score),
     away_score = clean_score_num(away_score),
     tournament = trimws(as.character(tournament))
@@ -161,6 +194,8 @@ if (nrow(duplicate_rows) > 0) {
     nrow(duplicate_rows),
     ". These were not removed."
   )
+  
+  print(duplicate_rows, n = min(20, nrow(duplicate_rows)))
 }
 
 # -----------------------------
