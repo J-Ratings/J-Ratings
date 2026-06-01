@@ -1885,8 +1885,326 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 1727,World Championship,1977-04-18,1977-04-30,Embassy,1976,main,Ranking,0,Crucible Theatre,Sheffield,England,snooker,1727,Both,O,,,,,,1976
 1725,Masters,1976-01-26,1976-01-30,Benson & Hedges,1975,main,Invitational,0,New London Theatre,London,England,snooker,1725,Both,O,,,,,,1975
 1726,Masters,1975-01-13,1975-01-17,Benson & Hedges,1974,main,Invitational,0,New London Theatre,London,England,snooker,1726,Both,O,,,,,,1974
-2759,China Open Qualifiers,2026-06-10,2026-06-14,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2755,Both,O,0,0,0,0,0,2026
-2758,Wuhan Open Qualifiers,2026-06-15,2026-06-18,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2757,Both,O,0,0,0,0,0,2026
+2009,Americas Q Tour 1,2024-03-07,2024-03-10,"",2024,q,Ranking,0,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,37,0,0,15,2024
+2010,Americas Q Tour 1 - Group A,2024-03-07,2024-03-10,"",2024,q,Ranking,1,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,6,2024
+2011,Americas Q Tour 1 - Group B,2024-03-07,2024-03-10,"",2024,q,Ranking,2,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,10,2024
+2012,Americas Q Tour 1 - Group C,2024-03-07,2024-03-10,"",2024,q,Ranking,3,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,10,2024
+2013,Americas Q Tour 1 - Group D,2024-03-07,2024-03-10,"",2024,q,Ranking,4,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,6,2024
+2014,Americas Q Tour 1 - Group E,2024-03-07,2024-03-10,"",2024,q,Ranking,5,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,6,2024
+2015,Americas Q Tour 1 - Group F,2024-03-07,2024-03-10,"",2024,q,Ranking,6,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,10,2024
+2016,Americas Q Tour 1 - Group G,2024-03-07,2024-03-10,"",2024,q,Ranking,7,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,10,2024
+2017,Americas Q Tour 1 - Group H,2024-03-07,2024-03-10,"",2024,q,Ranking,8,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,10,2024
+1949,Middle East Q Tour 1,2024-05-21,2024-05-23,"",2024,q,Ranking,0,Bahrain Snooker Academy,Manama,Bahrain,snooker,1949,Both,O,0,40,0,0,39,2024
+1960,Championship League Stage One Group 11,2024-06-10,2024-06-10,"",2024,main,Ranking,22,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1970,Championship League Stage One Group 21,2024-06-10,2024-06-10,"",2024,main,Ranking,32,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1941,Championship League,2024-06-10,2024-07-03,BetVictor,2024,main,Ranking,1,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,128,0,0,1,2024
+1953,Championship League Stage One Group 4,2024-06-11,2024-06-11,"",2024,main,Ranking,15,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1966,Championship League Stage One Group 17,2024-06-11,2024-06-11,"",2024,main,Ranking,28,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1974,Championship League Stage One Group 25,2024-06-12,2024-06-12,"",2024,main,Ranking,36,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1980,Championship League Stage One Group 31,2024-06-12,2024-06-12,"",2024,main,Ranking,42,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1971,Championship League Stage One Group 22,2024-06-13,2024-06-13,"",2024,main,Ranking,33,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1972,Championship League Stage One Group 23,2024-06-13,2024-06-13,"",2024,main,Ranking,34,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1959,Championship League Stage One Group 10,2024-06-14,2024-06-14,"",2024,main,Ranking,21,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1981,Championship League Stage One Group 32,2024-06-14,2024-06-14,"",2024,main,Ranking,43,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1978,Championship League Stage One Group 29,2024-06-15,2024-06-15,"",2024,main,Ranking,40,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1979,Championship League Stage One Group 30,2024-06-15,2024-06-15,"",2024,main,Ranking,41,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1956,Championship League Stage One Group 7,2024-06-17,2024-06-17,"",2024,main,Ranking,18,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1957,Championship League Stage One Group 8,2024-06-17,2024-06-17,"",2024,main,Ranking,19,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1973,Championship League Stage One Group 24,2024-06-18,2024-06-18,"",2024,main,Ranking,35,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1977,Championship League Stage One Group 28,2024-06-18,2024-06-18,"",2024,main,Ranking,39,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1975,Championship League Stage One Group 26,2024-06-19,2024-06-19,"",2024,main,Ranking,37,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1976,Championship League Stage One Group 27,2024-06-19,2024-06-19,"",2024,main,Ranking,38,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1950,Championship League Stage One Group 1,2024-06-20,2024-06-20,"",2024,main,Ranking,12,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1963,Championship League Stage One Group 14,2024-06-20,2024-06-20,"",2024,main,Ranking,25,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1962,Championship League Stage One Group 13,2024-06-21,2024-06-21,"",2024,main,Ranking,24,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1967,Championship League Stage One Group 18,2024-06-21,2024-06-21,"",2024,main,Ranking,29,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1968,Championship League Stage One Group 19,2024-06-22,2024-06-22,"",2024,main,Ranking,30,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1969,Championship League Stage One Group 20,2024-06-22,2024-06-22,"",2024,main,Ranking,31,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1955,Championship League Stage One Group 6,2024-06-24,2024-06-24,"",2024,main,Ranking,17,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1958,Championship League Stage One Group 9,2024-06-24,2024-06-24,"",2024,main,Ranking,20,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1951,Championship League Stage One Group 2,2024-06-25,2024-06-25,"",2024,main,Ranking,13,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1961,Championship League Stage One Group 12,2024-06-25,2024-06-25,"",2024,main,Ranking,23,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1954,Championship League Stage One Group 5,2024-06-26,2024-06-26,"",2024,main,Ranking,16,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1965,Championship League Stage One Group 16,2024-06-26,2024-06-26,"",2024,main,Ranking,27,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1952,Championship League Stage One Group 3,2024-06-27,2024-06-27,"",2024,main,Ranking,14,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1964,Championship League Stage One Group 15,2024-06-27,2024-06-27,"",2024,main,Ranking,26,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1983,Championship League Stage Two Group B,2024-06-28,2024-06-28,"",2024,main,Ranking,5,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1984,Championship League Stage Two Group C,2024-06-28,2024-06-28,"",2024,main,Ranking,6,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+2004,Asia Pacific Q Tour: West Coast International,2024-06-28,2024-06-30,"",2024,q,Ranking,0,Pot Black North Perth,Perth,Australia,snooker,2004,Both,O,0,44,0,0,43,2024
+1982,Championship League Stage Two Group A,2024-06-29,2024-06-29,"",2024,main,Ranking,4,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1986,Championship League Stage Two Group E,2024-06-29,2024-06-29,"",2024,main,Ranking,8,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1985,Championship League Stage Two Group D,2024-07-01,2024-07-01,"",2024,main,Ranking,7,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1989,Championship League Stage Two Group H,2024-07-01,2024-07-01,"",2024,main,Ranking,11,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1987,Championship League Stage Two Group F,2024-07-02,2024-07-02,"",2024,main,Ranking,9,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1988,Championship League Stage Two Group G,2024-07-02,2024-07-02,"",2024,main,Ranking,10,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1990,Championship League Stage Three Group A,2024-07-03,2024-07-03,"",2024,main,Ranking,2,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1991,Championship League Stage Three Group B,2024-07-03,2024-07-03,"",2024,main,Ranking,3,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
+1847,Shanghai Masters,2024-07-15,2024-07-21,"",2024,main,Invitational,0,Shanghai Indoor Stadium,Shanghai,China,snooker,1847,Both,O,0,24,0,0,23,2024
+1993,Middle East Q Tour 2,2024-07-19,2024-07-21,"",2024,q,Ranking,0,Emirates Snooker Academy,Abu Dhabi,UAE,snooker,1993,Both,O,0,56,0,0,55,2024
+1844,Xi'an Grand Prix Qualifiers,2024-07-25,2024-07-27,"",2024,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,1832,Both,O,0,0,0,0,64,2024
+1841,Wuhan Open Qualifiers,2024-07-28,2024-07-30,"",2024,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,1840,Both,O,0,0,0,0,64,2024
+1938,British Open Qualifiers,2024-07-31,2024-08-03,"",2024,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,1834,Both,O,0,0,0,0,64,2024
+2005,Asia Pacific Q Tour Event 2: Fred Osbourne Classic,2024-08-02,2024-08-04,"",2024,q,Ranking,0,Commercial Club Albury,Albury,Australia,snooker,2005,Both,O,0,81,0,0,80,2024
+1937,US Women's Open Group A,2024-08-09,2024-08-10,"",2024,women,Ranking,0,OX Billiards,Seattle,USA,snooker,2018,Women,O,0,0,0,0,6,2024
+2076,US Women's Open Group B,2024-08-09,2024-08-10,"",2024,women,Ranking,2,OX Billiards,Seattle,USA,snooker,2018,Women,O,0,0,0,0,10,2024
+2077,US Women's Open Group C,2024-08-09,2024-08-10,"",2024,women,Ranking,3,OX Billiards,Seattle,USA,snooker,2018,Women,O,0,0,0,0,10,2024
+2018,US Women's Open,2024-08-09,2024-08-11,WineCellars.com,2024,women,Ranking,0,OX Billiards,Seattle,USA,snooker,2018,Women,O,0,14,0,0,7,2024
+2043,Q Tour 1,2024-08-15,2024-08-18,"",2024,q,Ranking,1,Northern Snooker Centre,Leeds,England,snooker,2043,Both,O,0,154,0,0,153,2024
+1832,Xi'an Grand Prix,2024-08-19,2024-08-25,Du Xiaoman,2024,main,Ranking,0,Qujiang E-sports Centre,Xi'an,China,snooker,1832,Both,O,0,128,0,0,63,2024
+1839,Saudi Arabia Masters,2024-08-30,2024-09-07,"",2024,main,Ranking,0,Green Halls,Riyadh,Saudi Arabia,snooker,1839,Both,O,0,144,0,0,143,2024
+2078,UK Women's Championships Group A,2024-09-06,2024-09-07,"",2024,women,Ranking,1,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
+2079,UK Women's Championships Group B,2024-09-06,2024-09-07,"",2024,women,Ranking,2,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
+2080,UK Women's Championships Group C,2024-09-06,2024-09-07,"",2024,women,Ranking,3,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
+2081,UK Women's Championships Group D,2024-09-06,2024-09-07,"",2024,women,Ranking,4,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
+2082,UK Women's Championships Group E,2024-09-06,2024-09-07,"",2024,women,Ranking,5,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
+2083,UK Women's Championships Group F,2024-09-06,2024-09-07,"",2024,women,Ranking,6,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
+2084,UK Women's Championships Group G,2024-09-06,2024-09-07,"",2024,women,Ranking,7,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
+2085,UK Women's Championships Group H,2024-09-06,2024-09-07,"",2024,women,Ranking,8,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
+2020,UK Women's Championship,2024-09-06,2024-09-08,Taom,2024,women,Ranking,0,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,37,0,0,20,2024
+1936,English Open Qualifiers,2024-09-12,2024-09-14,"",2024,main,Qualifying,0,Brentwood Leisure Centre,Brentwood,England,snooker,1833,Both,O,0,0,0,0,64,2024
+1833,English Open,2024-09-16,2024-09-22,BetVictor,2024,main,Ranking,0,Brentwood Leisure Centre,Brentwood,England,snooker,1833,Both,O,0,128,0,0,63,2024
+2044,Q Tour 2,2024-09-20,2024-09-22,"",2024,q,Ranking,2,Bulgarian Snooker Academy,Sofia,Bulgaria,snooker,2044,Both,O,0,108,0,0,107,2024
+1834,British Open,2024-09-23,2024-09-29,Unibet,2024,main,Ranking,0,The Centaur,Cheltenham,England,snooker,1834,Both,O,0,128,0,0,63,2024
+2006,Asia Pacific Q Tour Event 3: New Zealand Open,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,30,0,0,15,2024
+2087,Asia Pacific Q Tour Event 3: New Zealand Open - Group A,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,0,0,0,10,2024
+2088,Asia Pacific Q Tour Event 3: New Zealand Open - Group B,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,0,0,0,10,2024
+2089,Asia Pacific Q Tour Event 3: New Zealand Open - Group C,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,0,0,0,10,2024
+2090,Asia Pacific Q Tour Event 3: New Zealand Open - Group D,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,0,0,0,10,2024
+2091,Asia Pacific Q Tour Event 3: New Zealand Open - Group E,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,0,0,0,10,2024
+2092,Asia Pacific Q Tour Event 3: New Zealand Open - Group F,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,0,0,0,10,2024
+1939,Northern Ireland Open Qualifiers,2024-09-28,2024-09-29,"",2024,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,1835,Both,O,0,0,0,0,64,2024
+1845,International Championship Qualifiers,2024-09-30,2024-10-02,"",2024,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,1846,Both,O,0,0,0,0,64,2024
+2045,Q Tour 3,2024-10-04,2024-10-06,"",2024,q,Ranking,3,Snookerhallen,Stockholm,Sweden,snooker,2045,Both,O,0,116,0,0,114,2024
+2095,Australian Women's Open Group A,2024-10-05,2024-10-06,"",2024,women,Ranking,1,Mt Pritchard & District Community Club,Sydney,Australia,snooker,2019,Women,O,0,0,0,0,21,2024
+2096,Australian Women's Open Group B,2024-10-05,2024-10-06,"",2024,women,Ranking,2,Mt Pritchard & District Community Club,Sydney,Australia,snooker,2019,Women,O,0,0,0,0,21,2024
+2097,Australian Women's Open Group C,2024-10-05,2024-10-06,"",2024,women,Ranking,3,Mt Pritchard & District Community Club,Sydney,Australia,snooker,2019,Women,O,0,0,0,0,21,2024
+2098,Australian Women's Open Group D,2024-10-05,2024-10-06,"",2024,women,Ranking,4,Mt Pritchard & District Community Club,Sydney,Australia,snooker,2019,Women,O,0,0,0,0,15,2024
+2019,Australian Women's Open,2024-10-05,2024-10-08,"",2024,women,Ranking,0,Mt Pritchard & District Community Club,Sydney,Australia,snooker,2019,Women,O,0,27,0,0,15,2024
+1840,Wuhan Open,2024-10-06,2024-10-12,Optics Valley of China,2024,main,Ranking,0,China Optics Valley Convention & Exhibition Centre,Wuhan,China,snooker,1840,Both,O,0,128,0,0,63,2024
+2007,Asia Pacific Q Tour Event 4: Bob Hawke AC Australian Open,2024-10-10,2024-10-13,"",2024,q,Ranking,0,Mounties,Mount Pritchard,Australia,snooker,2007,Both,O,0,91,0,0,90,2024
+1835,Northern Ireland Open,2024-10-20,2024-10-27,BetVictor,2024,main,Ranking,0,Waterfront Hall,Belfast,Northern Ireland,snooker,1835,Both,O,0,128,0,0,63,2024
+1940,Scottish Open Qualifiers,2024-10-28,2024-10-30,"",2024,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,1836,Both,O,0,0,0,0,64,2024
+1846,International Championship,2024-11-03,2024-11-10,"",2024,main,Ranking,0,SNC National Fitness Center,Nanjing,China,snooker,1846,Both,O,0,128,0,0,63,2024
+2046,Q Tour 4,2024-11-07,2024-11-10,"",2024,q,Ranking,4,Club 200,Manchester,England,snooker,2046,Both,O,0,156,0,0,155,2024
+1935,Champion of Champions,2024-11-11,2024-11-17,Grosvenor Casinos,2024,main,Invitational,0,Toughsheet Community Stadium,Bolton,England,snooker,1935,Both,O,0,16,0,0,15,2024
+1934,UK Championship Qualifiers,2024-11-16,2024-11-21,"",2024,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,1837,Both,O,0,0,0,0,112,2024
+2116,Women's Masters Group B,2024-11-22,2024-11-23,"",2024,women,Ranking,2,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
+2117,Women's Masters Group A,2024-11-22,2024-11-23,"",2024,women,Ranking,1,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
+2118,Women's Masters Group C,2024-11-22,2024-11-23,"",2024,women,Ranking,3,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
+2119,Women's Masters Group D,2024-11-22,2024-11-23,"",2024,women,Ranking,4,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
+2120,Women's Masters Group E,2024-11-22,2024-11-23,"",2024,women,Ranking,5,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
+2121,Women's Masters Group F,2024-11-22,2024-11-23,"",2024,women,Ranking,6,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
+2122,Women's Masters Group G,2024-11-22,2024-11-23,"",2024,women,Ranking,7,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
+2123,Women's Masters Group H,2024-11-22,2024-11-23,"",2024,women,Ranking,8,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
+2124,Women's Masters Group I,2024-11-22,2024-11-23,"",2024,women,Ranking,9,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
+2099,Women's Masters,2024-11-22,2024-11-24,"",2024,women,Ranking,0,Frames Sports Bar,London,England,snooker,2099,Women,O,0,39,0,0,20,2024
+1837,UK Championship,2024-11-23,2024-12-01,Victorian Plumbing,2024,main,Ranking,0,Barbican Centre,York,England,snooker,1837,Both,O,0,144,0,0,31,2024
+1943,Shoot Out,2024-12-04,2024-12-07,9Club,2024,main,Ranking,0,Mattioli Arena,Leicester,England,snooker,1943,Both,O,0,128,0,0,127,2024
+1836,Scottish Open,2024-12-09,2024-12-15,BetVictor,2024,main,Ranking,0,Meadowbank Sports Centre,Edinburgh,Scotland,snooker,1836,Both,O,0,128,0,0,63,2024
+2047,Q Tour 5,2024-12-13,2024-12-15,"",2024,q,Ranking,5,National Training Academy,Vienna,Austria,snooker,2047,Both,O,0,103,0,0,102,2024
+2074,Americas Q Tour 2,2024-12-13,2024-12-15,"",2024,q,Ranking,0,Arizona Snooker Academy,Chandler,USA,snooker,2074,Both,O,0,20,0,0,19,2024
+1933,German Masters Qualifiers,2024-12-16,2024-12-19,"",2024,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,1838,Both,O,0,0,0,0,64,2024
+2107,Snooker Championship,2024-12-18,2024-12-20,Riyadh Season,2024,main,Invitational,0,Unknown,"Boulevard City, Riyadh",Saudi Arabia,snooker,2107,Both,O,0,12,0,0,11,2024
+1843,World Open Qualifiers,2024-12-20,2024-12-22,"",2024,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,1842,Both,O,0,0,0,0,64,2024
+2109,Championship League - Group 1,2025-01-03,2025-01-04,"",2024,main,Invitational,1,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
+2110,Championship League - Group 2,2025-01-06,2025-01-07,"",2024,main,Invitational,2,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
+2111,Championship League - Group 3,2025-01-08,2025-01-09,"",2024,main,Invitational,3,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
+2112,Championship League - Group 4,2025-01-10,2025-01-11,"",2024,main,Invitational,4,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
+2048,Q Tour 6,2025-01-10,2025-01-12,"",2024,q,Ranking,6,Delta Moon,Mons,Belgium,snooker,2048,Both,O,0,87,0,0,86,2024
+1760,Masters,2025-01-12,2025-01-19,Johnstone's Paint,2024,main,Invitational,0,Alexandra Palace,London,England,snooker,1760,Both,O,0,16,0,0,15,2024
+2125,Middle East Q Tour 3,2025-01-17,2025-01-19,"",2024,q,Ranking,0,Cue Sports Academy,Abu Dhabi,UAE,snooker,2125,Both,O,0,25,0,0,24,2024
+2075,Americas Q Tour 3,2025-01-18,2025-01-19,"",2024,q,Ranking,0,The Corner Bank,Toronto,Canada,snooker,2075,Both,O,0,16,0,0,15,2024
+2127,WSF Junior Championship - Group A,2025-01-18,2025-01-20,"",2024,wsf,Amateur,1,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
+2128,WSF Junior Championship - Group B,2025-01-18,2025-01-20,"",2024,wsf,Amateur,2,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
+2129,WSF Junior Championship - Group C,2025-01-18,2025-01-20,"",2024,wsf,Amateur,3,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
+2130,WSF Junior Championship - Group D,2025-01-18,2025-01-20,"",2024,wsf,Amateur,4,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,6,2024
+2131,WSF Junior Championship - Group E,2025-01-18,2025-01-20,"",2024,wsf,Amateur,5,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,6,2024
+2132,WSF Junior Championship - Group F,2025-01-18,2025-01-20,"",2024,wsf,Amateur,6,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
+2133,WSF Junior Championship - Group G,2025-01-18,2025-01-20,"",2024,wsf,Amateur,7,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,6,2024
+2134,WSF Junior Championship - Group H,2025-01-18,2025-01-20,"",2024,wsf,Amateur,8,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
+2149,WSF Junior Championship - Group I,2025-01-18,2025-01-20,"",2024,wsf,Amateur,9,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
+2150,WSF Junior Championship - Group J,2025-01-18,2025-01-20,"",2024,wsf,Amateur,10,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
+2151,WSF Junior Championship - Group K,2025-01-18,2025-01-20,"",2024,wsf,Amateur,11,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
+2152,WSF Junior Championship - Group L,2025-01-18,2025-01-20,"",2024,wsf,Amateur,12,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
+2153,WSF Women's Championship - Group A,2025-01-18,2025-01-20,"",2024,women,Ranking,1,Radisson Blu Resort,Saidia,Morocco,snooker,2126,Women,O,0,0,0,0,6,2024
+2154,WSF Women's Championship - Group B,2025-01-18,2025-01-20,"",2024,women,Ranking,2,Radisson Blu Resort,Saidia,Morocco,snooker,2126,Women,O,0,0,0,0,6,2024
+2155,WSF Women's Championship - Group C,2025-01-18,2025-01-20,"",2024,women,Ranking,3,Radisson Blu Resort,Saidia,Morocco,snooker,2126,Women,O,0,0,0,0,6,2024
+2156,WSF Women's Championship - Group D,2025-01-18,2025-01-20,"",2024,women,Ranking,4,Radisson Blu Resort,Saidia,Morocco,snooker,2126,Women,O,0,0,0,0,6,2024
+2093,WSF Junior Championship,2025-01-18,2025-01-23,"",2024,wsf,Amateur,0,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,57,0,0,23,2024
+2126,WSF Women's Championship,2025-01-18,2025-01-23,"",2024,women,Ranking,0,Radisson Blu Resort,Saidia,Morocco,snooker,2126,Women,O,0,16,0,0,7,2024
+2113,Championship League - Group 5,2025-01-20,2025-01-21,"",2024,main,Invitational,5,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
+2114,Championship League - Group 6,2025-01-22,2025-01-23,"",2024,main,Invitational,6,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
+2115,Championship League - Group 7,2025-01-24,2025-01-25,"",2024,main,Invitational,7,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
+2008,Asia Pacific Q Tour Event 5: Queensland Open,2025-01-24,2025-01-27,"",2024,q,Ranking,0,Redcliffe Snooker Club,Redcliffe,Australia,snooker,2008,Both,O,0,66,0,0,65,2024
+2137,WSF Championship - Group A,2025-01-24,2025-01-27,"",2024,wsf,Amateur,1,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2138,WSF Championship - Group B,2025-01-24,2025-01-27,"",2024,wsf,Amateur,2,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2139,WSF Championship - Group C,2025-01-24,2025-01-27,"",2024,wsf,Amateur,3,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2140,WSF Championship - Group D,2025-01-24,2025-01-27,"",2024,wsf,Amateur,4,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,6,2024
+2141,WSF Championship - Group E,2025-01-24,2025-01-27,"",2024,wsf,Amateur,5,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2142,WSF Championship - Group F,2025-01-24,2025-01-27,"",2024,wsf,Amateur,6,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2143,WSF Championship - Group G,2025-01-24,2025-01-27,"",2024,wsf,Amateur,7,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2144,WSF Championship - Group H,2025-01-24,2025-01-27,"",2024,wsf,Amateur,8,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2145,WSF Championship - Group I,2025-01-24,2025-01-27,"",2024,wsf,Amateur,9,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2146,WSF Championship - Group J,2025-01-24,2025-01-27,"",2024,wsf,Amateur,10,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2147,WSF Championship - Group K,2025-01-24,2025-01-27,"",2024,wsf,Amateur,11,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2148,WSF Championship - Group L,2025-01-24,2025-01-27,"",2024,wsf,Amateur,12,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,6,2024
+2157,WSF Championship - Group M,2025-01-24,2025-01-27,"",2024,wsf,Amateur,13,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,6,2024
+2158,WSF Championship - Group N,2025-01-24,2025-01-27,"",2024,wsf,Amateur,14,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2159,WSF Championship - Group O,2025-01-24,2025-01-27,"",2024,wsf,Amateur,15,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2160,WSF Championship - Group P,2025-01-24,2025-01-27,"",2024,wsf,Amateur,16,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2161,WSF Championship - Group Q,2025-01-24,2025-01-27,"",2024,wsf,Amateur,17,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2162,WSF Championship - Group R,2025-01-24,2025-01-27,"",2024,wsf,Amateur,18,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,6,2024
+2163,WSF Championship - Group S,2025-01-24,2025-01-27,"",2024,wsf,Amateur,19,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2164,WSF Championship - Group T,2025-01-24,2025-01-27,"",2024,wsf,Amateur,20,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2165,WSF Championship - Group U,2025-01-24,2025-01-27,"",2024,wsf,Amateur,21,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2166,WSF Championship - Group V,2025-01-24,2025-01-27,"",2024,wsf,Amateur,22,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2167,WSF Championship - Group W,2025-01-24,2025-01-27,"",2024,wsf,Amateur,23,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2168,WSF Championship - Group X,2025-01-24,2025-01-27,"",2024,wsf,Amateur,24,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2169,WSF Championship - Group Y,2025-01-24,2025-01-27,"",2024,wsf,Amateur,25,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2170,WSF Championship - Group Z,2025-01-24,2025-01-27,"",2024,wsf,Amateur,26,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2171,WSF Championship - Group AA,2025-01-24,2025-01-27,"",2024,wsf,Amateur,27,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,6,2024
+2172,WSF Championship - Group AB,2025-01-24,2025-01-27,"",2024,wsf,Amateur,28,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2173,WSF Championship - Group AC,2025-01-24,2025-01-27,"",2024,wsf,Amateur,29,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2174,WSF Championship - Group AD,2025-01-24,2025-01-27,"",2024,wsf,Amateur,30,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2175,WSF Championship - Group AE,2025-01-24,2025-01-27,"",2024,wsf,Amateur,31,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2176,WSF Championship - Group AF,2025-01-24,2025-01-27,"",2024,wsf,Amateur,32,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2177,WSF Championship - Group AG,2025-01-24,2025-01-27,"",2024,wsf,Amateur,33,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2178,WSF Championship - Group AH,2025-01-24,2025-01-27,"",2024,wsf,Amateur,34,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2179,WSF Championship - Group AI,2025-01-24,2025-01-27,"",2024,wsf,Amateur,35,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
+2086,WSF Championship,2025-01-24,2025-02-01,"",2024,wsf,Amateur,0,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,170,0,0,69,2024
+1838,German Masters,2025-01-27,2025-02-02,Machineseeker,2024,main,Ranking,0,Tempodrom,Berlin,Germany,snooker,1838,Both,O,0,128,0,0,63,2024
+2108,Championship League - Winners' Group,2025-02-04,2025-02-05,"",2024,main,Invitational,0,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,27,0,0,24,2024
+2041,Welsh Open Qualifiers,2025-02-04,2025-02-06,"",2024,main,Qualifying,0,Barnsley Metrodome,Barnsley,England,snooker,1992,Both,O,0,0,0,0,64,2024
+2101,Belgian Women's Open Group A,2025-02-07,2025-02-08,"",2024,women,Ranking,1,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
+2105,Belgian Women's Open Group B,2025-02-07,2025-02-08,"",2024,women,Ranking,2,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
+2196,Belgian Women's Open Group C,2025-02-07,2025-02-08,"",2024,women,Ranking,3,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
+2197,Belgian Women's Open Group D,2025-02-07,2025-02-08,"",2024,women,Ranking,4,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
+2198,Belgian Women's Open Group E,2025-02-07,2025-02-08,"",2024,women,Ranking,5,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
+2199,Belgian Women's Open Group F,2025-02-07,2025-02-08,"",2024,women,Ranking,6,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
+2200,Belgian Women's Open Group G,2025-02-07,2025-02-08,"",2024,women,Ranking,7,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
+2201,Belgian Women's Open Group H,2025-02-07,2025-02-08,"",2024,women,Ranking,8,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
+2049,Q Tour 7,2025-02-07,2025-02-09,"",2024,q,Ranking,7,Landywood Snooker Club,Walsall,England,snooker,2049,Both,O,0,124,0,0,123,2024
+2100,Belgian Women's Open,2025-02-07,2025-02-09,"",2024,women,Ranking,0,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,37,0,0,20,2024
+1992,Welsh Open,2025-02-10,2025-02-16,BetVictor,2024,main,Ranking,0,Venue Cymru,Llandudno,Wales,snooker,1992,Both,O,0,128,0,0,63,2024
+1842,World Open,2025-02-23,2025-03-01,Weide Cup,2024,main,Ranking,0,Yushan Sport Centre,Yushan,China,snooker,1842,Both,O,0,128,0,0,63,2024
+2104,World Grand Prix,2025-03-04,2025-03-09,"",2024,main,Ranking,0,Kai Tak Arena,Hong Kong,Hong Kong,snooker,2104,Both,O,0,32,0,0,31,2024
+2180,Q Tour Global Play-Offs,2025-03-11,2025-03-13,"",2024,q,Play-off,0,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2180,Both,O,0,24,0,0,21,2024
+2216,European Under 21 Championship - Group A,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,1,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,10,2024
+2217,European Under 21 Championship - Group B,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,2,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2218,European Under 21 Championship - Group C,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,3,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2219,European Under 21 Championship - Group D,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,4,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2220,European Under 21 Championship - Group E,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,5,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2221,European Under 21 Championship - Group F,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,6,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2222,European Under 21 Championship - Group G,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,7,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2223,European Under 21 Championship - Group H,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,8,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2224,European Under 21 Championship - Group J,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,9,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2225,European Under 21 Championship - Group K,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,10,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2226,European Under 21 Championship - Group L,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,11,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2227,European Under 21 Championship - Group M,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,12,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2228,European Under 21 Championship - Group N,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,13,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2229,European Under 21 Championship - Group P,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,14,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2230,European Under 21 Championship - Group Q,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,15,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2231,European Under 21 Championship - Group R,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,16,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2232,European Under 21 Championship - Group S,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,17,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2233,European Under 21 Championship - Group T,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,18,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2234,European Under 21 Championship - Group U,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,19,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2235,European Under 21 Championship - Group V,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,20,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2236,European Under 21 Championship - Group W,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,21,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2237,European Under 21 Championship - Group X,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,22,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
+2207,European Under 21 Championship,2025-03-14,2025-03-17,"",2024,ebsa,Amateur,0,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,89,0,0,43,2024
+2206,European Championship,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,0,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,172,0,0,85,2024
+2238,European Championship - Group A,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,1,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2239,European Championship - Group B,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,2,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2240,European Championship - Group C,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,3,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2241,European Championship - Group D,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,4,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2242,European Championship - Group E,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,5,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2243,European Championship - Group F,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,6,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2244,European Championship - Group G,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,7,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2245,European Championship - Group H,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,8,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2246,European Championship - Group I,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,9,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2247,European Championship - Group J,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,10,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2248,European Championship - Group K,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,11,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2249,European Championship - Group L,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,12,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2250,European Championship - Group M,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,13,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2251,European Championship - Group N,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,14,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2252,European Championship - Group O,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,15,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2253,European Championship - Group P,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,16,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2254,European Championship - Group Q,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,17,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2255,European Championship - Group R,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,18,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2256,European Championship - Group S,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,19,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2257,European Championship - Group T,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,20,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2258,European Championship - Group U,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,21,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2259,European Championship - Group V,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,22,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2260,European Championship - Group W,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,23,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2261,European Championship - Group X,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,24,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2262,European Championship - Group Y,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,25,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2263,European Championship - Group Z,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,26,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2264,European Championship - Group AB,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,28,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2265,European Championship - Group AA,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,27,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2266,European Championship - Group AC,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,29,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2267,European Championship - Group AD,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,30,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2268,European Championship - Group AE,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,31,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2269,European Championship - Group AF,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,32,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2270,European Championship - Group AG,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,33,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2271,European Championship - Group AH,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,34,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2272,European Championship - Group AI,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,35,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2273,European Championship - Group AJ,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,36,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2274,European Championship - Group AK,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,37,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2275,European Championship - Group AL,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,38,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2276,European Championship - Group AM,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,39,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2277,European Championship - Group AN,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,40,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2278,European Championship - Group AO,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,41,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2279,European Championship - Group AP,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,42,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+2280,European Championship - Group AQ,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,43,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
+1848,Players Championship,2025-03-17,2025-03-23,Sportsbet.io,2024,main,Ranking,0,Telford International Centre,Telford,England,snooker,1848,Both,O,0,16,0,0,15,2024
+2281,British Women's Open Group A,2025-03-28,2025-03-29,"",2024,women,Ranking,1,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
+2291,British Women's Open Group B,2025-03-28,2025-03-29,"",2024,women,Ranking,2,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
+2292,British Women's Open Group C,2025-03-28,2025-03-29,"",2024,women,Ranking,3,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
+2293,British Women's Open Group D,2025-03-28,2025-03-29,"",2024,women,Ranking,4,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
+2294,British Women's Open Group E,2025-03-28,2025-03-29,"",2024,women,Ranking,5,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
+2295,British Women's Open Group F,2025-03-28,2025-03-29,"",2024,women,Ranking,6,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
+2296,British Women's Open Group G,2025-03-28,2025-03-29,"",2024,women,Ranking,7,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
+2102,British Women's Open,2025-03-28,2025-03-30,Landywood,2024,women,Ranking,0,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,32,0,0,17,2024
+2298,Asia Pacific Open Snooker Championship - Group A,2025-03-31,2025-04-01,"",2024,other,Amateur,1,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
+2299,Asia Pacific Open Snooker Championship - Group B,2025-03-31,2025-04-01,"",2024,other,Amateur,2,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
+2300,Asia Pacific Open Snooker Championship - Group C,2025-03-31,2025-04-01,"",2024,other,Amateur,3,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
+2301,Asia Pacific Open Snooker Championship - Group D,2025-03-31,2025-04-01,"",2024,other,Amateur,4,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
+2302,Asia Pacific Open Snooker Championship - Group E,2025-03-31,2025-04-01,"",2024,other,Amateur,5,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
+2303,Asia Pacific Open Snooker Championship - Group F,2025-03-31,2025-04-01,"",2024,other,Amateur,6,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
+2304,Asia Pacific Open Snooker Championship - Group G,2025-03-31,2025-04-01,"",2024,other,Amateur,7,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
+2305,Asia Pacific Open Snooker Championship - Group H,2025-03-31,2025-04-01,"",2024,other,Amateur,8,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
+2306,Asia Pacific Open Snooker Championship - Group J,2025-03-31,2025-04-01,"",2024,other,Amateur,9,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
+2307,Asia Pacific Open Snooker Championship - Group K,2025-03-31,2025-04-01,"",2024,other,Amateur,10,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
+2308,Asia Pacific Open Snooker Championship - Group L,2025-03-31,2025-04-01,"",2024,other,Amateur,11,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,6,2024
+2309,Asia Pacific Open Snooker Championship - Group M,2025-03-31,2025-04-01,"",2024,other,Amateur,12,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,6,2024
+2297,Asia Pacific Open Snooker Championship,2025-03-31,2025-04-03,"",2024,other,Amateur,0,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,58,0,0,35,2024
+1946,Tour Championship,2025-03-31,2025-04-06,Sportsbet.io,2024,main,Ranking,0,Manchester Central,Manchester,England,snooker,1946,Both,O,0,12,0,0,11,2024
+2042,World Championship Qualifiers,2025-04-07,2025-04-16,"",2024,main,Qualifying,0,English Institute of Sport,Sheffield,England,snooker,1942,Both,O,0,0,0,0,112,2024
+1942,World Championship,2025-04-19,2025-05-05,Halo,2024,main,Ranking,0,Crucible Theatre,Sheffield,England,snooker,1942,Both,O,0,144,0,0,31,2024
+2288,World Seniors Championship,2025-05-07,2025-05-11,JENNINGSbet,2024,seniors,Ranking,0,Crucible Theatre,Sheffield,England,snooker,2288,Both,S,0,16,0,0,15,2024
+2282,Qualifying School 1 - Asia & Oceania,2025-05-13,2025-05-18,"",2024,main,Qualifying School,1,"",Bangkok,Thailand,snooker,2282,Both,O,0,86,0,0,84,2024
+2050,Helsinki International Snooker Cup,2025-05-17,2025-05-18,Taom,2024,other,Invitational,0,Kulttuuritalo,Helsinki,Finland,snooker,2050,Both,O,0,8,0,0,7,2024
+2283,Qualifying School 2 - Asia & Oceania,2025-05-19,2025-05-24,"",2024,main,Qualifying School,0,BSAT Academy,Bangkok,Thailand,snooker,2283,Both,O,0,86,0,0,84,2024
+2353,Women's World Championship Group A,2025-05-20,2025-05-23,"",2024,women,Ranking,1,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
+2354,Women's World Championship Group B,2025-05-20,2025-05-23,"",2024,women,Ranking,2,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
+2355,Women's World Championship Group C,2025-05-20,2025-05-23,"",2024,women,Ranking,3,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
+2356,Women's World Championship Group D,2025-05-20,2025-05-23,"",2024,women,Ranking,4,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,6,2024
+2357,Women's World Championship Group E,2025-05-20,2025-05-23,"",2024,women,Ranking,5,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
+2358,Women's World Championship Group F,2025-05-20,2025-05-23,"",2024,women,Ranking,6,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,6,2024
+2359,Women's World Championship Group G,2025-05-20,2025-05-23,"",2024,women,Ranking,7,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
+2360,Women's World Championship Group H,2025-05-20,2025-05-23,"",2024,women,Ranking,8,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
+2361,Women's World Championship Group I,2025-05-20,2025-05-23,"",2024,women,Ranking,9,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
+2362,Women's World Championship Group J,2025-05-20,2025-05-23,"",2024,women,Ranking,10,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
+2363,Women's World Championship Group K,2025-05-20,2025-05-23,"",2024,women,Ranking,11,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
+2364,Women's World Championship Group L,2025-05-20,2025-05-23,"",2024,women,Ranking,12,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,6,2024
+2365,Women's World Championship Group M,2025-05-20,2025-05-23,"",2024,women,Ranking,13,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
+2366,Women's World Championship Group N,2025-05-20,2025-05-23,"",2024,women,Ranking,14,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
+2367,Women's World Championship Group O,2025-05-20,2025-05-23,"",2024,women,Ranking,15,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
+2204,Women's World Championship,2025-05-20,2025-05-27,Nanjiang,2024,women,Ranking,0,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,72,0,0,31,2024
+2284,Q School 1,2025-05-21,2025-05-26,"",2024,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2284,Both,O,0,171,0,0,167,2024
+2285,Q School 2,2025-05-27,2025-06-01,"",2024,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2285,Both,O,0,171,0,0,167,2024
+2759,China Open Qualifiers,2026-06-10,2026-06-14,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2755,Both,O,0,0,112,0,0,2026
+2758,Wuhan Open Qualifiers,2026-06-15,2026-06-18,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2757,Both,O,0,0,78,0,0,2026
 2760,Championship League,2026-06-22,2026-07-15,"",2026,main,Ranking,0,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,0,2026
 2644,Asia Pacific Q Tour: West Coast International,2026-06-26,2026-06-28,"",2026,q,Ranking,0,Pot Black North Perth,Perth,Australia,snooker,2644,Both,O,0,0,0,0,0,2026
 2768,Xi'an Grand Prix Qualifiers,2026-07-19,2026-07-22,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2761,Both,O,0,0,0,0,0,2026
@@ -1894,8 +2212,8 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2769,English Open Qualifiers,2026-07-25,2026-07-26,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2546,Both,O,0,0,0,0,0,2026
 2764,Shanghai Masters,2026-07-27,2026-08-02,"",2026,main,Invitational,0,"",Shanghai,China,snooker,2764,Both,O,0,0,0,0,0,2026
 2645,Asia Pacific Q Tour: Fred Osbourne Snooker Classic,2026-07-31,2026-08-02,"",2026,q,Ranking,0,Commercial Club Albury,Albury,Australia,snooker,2645,Both,O,0,0,0,0,0,2026
-2755,China Open,2026-08-08,2026-08-16,"",2026,main,Ranking,0,Unknown,Taiyuan,China,snooker,2755,Both,O,0,0,0,0,0,2026
-2757,Wuhan Open,2026-08-23,2026-08-29,"",2026,main,Ranking,0,"",Wuhan,China,snooker,2757,Both,O,0,0,0,0,0,2026
+2755,China Open,2026-08-08,2026-08-16,"",2026,main,Ranking,0,Unknown,Taiyuan,China,snooker,2755,Both,O,0,118,0,0,0,2026
+2757,Wuhan Open,2026-08-23,2026-08-29,"",2026,main,Ranking,0,"",Wuhan,China,snooker,2757,Both,O,0,121,0,0,0,2026
 2547,British Open,2026-08-31,2026-09-06,"",2026,main,Ranking,0,The Centaur,Cheltenham,England,snooker,2547,Both,O,0,0,0,0,0,2026
 2546,English Open,2026-09-07,2026-09-13,"",2026,main,Ranking,0,Brentwood Leisure Centre,Brentwood,England,snooker,2546,Both,O,0,0,0,0,0,2026
 2770,Northern Ireland Open Qualifiers,2026-09-13,2026-09-16,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2548,Both,O,0,0,0,0,0,2026
@@ -1914,6 +2232,7 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2574,Shoot Out,2026-12-09,2026-12-12,"",2026,main,Ranking,0,Tower Circus,Blackpool,England,snooker,2574,Both,O,0,0,0,0,0,2026
 2756,Scottish Open,2026-12-14,2026-12-20,"",2026,main,Ranking,0,Meadowbank Sports Centre,Edinburgh,Scotland,snooker,2756,Both,O,0,0,0,0,0,2026
 2794,Championship League - Group 1,2026-12-21,2026-12-22,"",2026,main,Invitational,1,Mattioli Arena,Leicester,England,snooker,2793,Both,O,0,0,0,0,0,2026
+2801,British Seniors Open,2026-12-27,2026-12-28,"",2026,seniors,Seniors,0,Vaillant Live,Derby,England,snooker,2801,Both,O,0,0,0,0,0,2026
 2795,Championship League - Group 2,2027-01-02,2027-01-03,"",2026,main,Invitational,2,Mattioli Arena,Leicester,England,snooker,2793,Both,O,0,0,0,0,0,2026
 2796,Championship League - Group 3,2027-01-04,2027-01-05,"",2026,main,Invitational,3,Mattioli Arena,Leicester,England,snooker,2793,Both,O,0,0,0,0,0,2026
 2797,Championship League - Group 4,2027-01-06,2027-01-07,"",2026,main,Invitational,4,Mattioli Arena,Leicester,England,snooker,2793,Both,O,0,0,0,0,0,2026
@@ -2301,322 +2620,4 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2750,Qualifying School 1 - Asia & Oceania ,2026-05-14,2026-05-18,"",2025,main,Qualifying School,0,Kiatthada Billiards & Snooker Club,Bangkok,Thailand,snooker,2750,Both,O,0,63,0,0,61,2025
 2751,Qualifying School 2 - Asia & Oceania ,2026-05-20,2026-05-24,"",2025,main,Qualifying School,0,Kiatthada Billiards & Snooker Club,Bangkok,Thailand,snooker,2751,Both,O,0,63,0,0,61,2025
 2752,Q School 1,2026-05-20,2026-05-25,"",2025,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2752,Both,O,0,156,0,0,152,2025
-2753,Q School 2,2026-05-26,2026-05-31,"",2025,main,Qualifying School,2,Mattioli Arena,Leicester,England,snooker,2753,Both,O,0,156,103,13,45,2025
-2009,Americas Q Tour 1,2024-03-07,2024-03-10,"",2024,q,Ranking,0,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,37,0,0,15,2024
-2010,Americas Q Tour 1 - Group A,2024-03-07,2024-03-10,"",2024,q,Ranking,1,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,6,2024
-2011,Americas Q Tour 1 - Group B,2024-03-07,2024-03-10,"",2024,q,Ranking,2,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,10,2024
-2012,Americas Q Tour 1 - Group C,2024-03-07,2024-03-10,"",2024,q,Ranking,3,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,10,2024
-2013,Americas Q Tour 1 - Group D,2024-03-07,2024-03-10,"",2024,q,Ranking,4,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,6,2024
-2014,Americas Q Tour 1 - Group E,2024-03-07,2024-03-10,"",2024,q,Ranking,5,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,6,2024
-2015,Americas Q Tour 1 - Group F,2024-03-07,2024-03-10,"",2024,q,Ranking,6,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,10,2024
-2016,Americas Q Tour 1 - Group G,2024-03-07,2024-03-10,"",2024,q,Ranking,7,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,10,2024
-2017,Americas Q Tour 1 - Group H,2024-03-07,2024-03-10,"",2024,q,Ranking,8,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2009,Both,O,0,0,0,0,10,2024
-1949,Middle East Q Tour 1,2024-05-21,2024-05-23,"",2024,q,Ranking,0,Bahrain Snooker Academy,Manama,Bahrain,snooker,1949,Both,O,0,40,0,0,39,2024
-1960,Championship League Stage One Group 11,2024-06-10,2024-06-10,"",2024,main,Ranking,22,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1970,Championship League Stage One Group 21,2024-06-10,2024-06-10,"",2024,main,Ranking,32,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1941,Championship League,2024-06-10,2024-07-03,BetVictor,2024,main,Ranking,1,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,128,0,0,1,2024
-1953,Championship League Stage One Group 4,2024-06-11,2024-06-11,"",2024,main,Ranking,15,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1966,Championship League Stage One Group 17,2024-06-11,2024-06-11,"",2024,main,Ranking,28,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1974,Championship League Stage One Group 25,2024-06-12,2024-06-12,"",2024,main,Ranking,36,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1980,Championship League Stage One Group 31,2024-06-12,2024-06-12,"",2024,main,Ranking,42,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1971,Championship League Stage One Group 22,2024-06-13,2024-06-13,"",2024,main,Ranking,33,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1972,Championship League Stage One Group 23,2024-06-13,2024-06-13,"",2024,main,Ranking,34,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1959,Championship League Stage One Group 10,2024-06-14,2024-06-14,"",2024,main,Ranking,21,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1981,Championship League Stage One Group 32,2024-06-14,2024-06-14,"",2024,main,Ranking,43,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1978,Championship League Stage One Group 29,2024-06-15,2024-06-15,"",2024,main,Ranking,40,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1979,Championship League Stage One Group 30,2024-06-15,2024-06-15,"",2024,main,Ranking,41,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1956,Championship League Stage One Group 7,2024-06-17,2024-06-17,"",2024,main,Ranking,18,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1957,Championship League Stage One Group 8,2024-06-17,2024-06-17,"",2024,main,Ranking,19,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1973,Championship League Stage One Group 24,2024-06-18,2024-06-18,"",2024,main,Ranking,35,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1977,Championship League Stage One Group 28,2024-06-18,2024-06-18,"",2024,main,Ranking,39,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1975,Championship League Stage One Group 26,2024-06-19,2024-06-19,"",2024,main,Ranking,37,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1976,Championship League Stage One Group 27,2024-06-19,2024-06-19,"",2024,main,Ranking,38,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1950,Championship League Stage One Group 1,2024-06-20,2024-06-20,"",2024,main,Ranking,12,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1963,Championship League Stage One Group 14,2024-06-20,2024-06-20,"",2024,main,Ranking,25,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1962,Championship League Stage One Group 13,2024-06-21,2024-06-21,"",2024,main,Ranking,24,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1967,Championship League Stage One Group 18,2024-06-21,2024-06-21,"",2024,main,Ranking,29,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1968,Championship League Stage One Group 19,2024-06-22,2024-06-22,"",2024,main,Ranking,30,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1969,Championship League Stage One Group 20,2024-06-22,2024-06-22,"",2024,main,Ranking,31,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1955,Championship League Stage One Group 6,2024-06-24,2024-06-24,"",2024,main,Ranking,17,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1958,Championship League Stage One Group 9,2024-06-24,2024-06-24,"",2024,main,Ranking,20,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1951,Championship League Stage One Group 2,2024-06-25,2024-06-25,"",2024,main,Ranking,13,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1961,Championship League Stage One Group 12,2024-06-25,2024-06-25,"",2024,main,Ranking,23,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1954,Championship League Stage One Group 5,2024-06-26,2024-06-26,"",2024,main,Ranking,16,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1965,Championship League Stage One Group 16,2024-06-26,2024-06-26,"",2024,main,Ranking,27,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1952,Championship League Stage One Group 3,2024-06-27,2024-06-27,"",2024,main,Ranking,14,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1964,Championship League Stage One Group 15,2024-06-27,2024-06-27,"",2024,main,Ranking,26,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1983,Championship League Stage Two Group B,2024-06-28,2024-06-28,"",2024,main,Ranking,5,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1984,Championship League Stage Two Group C,2024-06-28,2024-06-28,"",2024,main,Ranking,6,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-2004,Asia Pacific Q Tour: West Coast International,2024-06-28,2024-06-30,"",2024,q,Ranking,0,Pot Black North Perth,Perth,Australia,snooker,2004,Both,O,0,44,0,0,43,2024
-1982,Championship League Stage Two Group A,2024-06-29,2024-06-29,"",2024,main,Ranking,4,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1986,Championship League Stage Two Group E,2024-06-29,2024-06-29,"",2024,main,Ranking,8,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1985,Championship League Stage Two Group D,2024-07-01,2024-07-01,"",2024,main,Ranking,7,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1989,Championship League Stage Two Group H,2024-07-01,2024-07-01,"",2024,main,Ranking,11,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1987,Championship League Stage Two Group F,2024-07-02,2024-07-02,"",2024,main,Ranking,9,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1988,Championship League Stage Two Group G,2024-07-02,2024-07-02,"",2024,main,Ranking,10,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1990,Championship League Stage Three Group A,2024-07-03,2024-07-03,"",2024,main,Ranking,2,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1991,Championship League Stage Three Group B,2024-07-03,2024-07-03,"",2024,main,Ranking,3,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
-1847,Shanghai Masters,2024-07-15,2024-07-21,"",2024,main,Invitational,0,Shanghai Indoor Stadium,Shanghai,China,snooker,1847,Both,O,0,24,0,0,23,2024
-1993,Middle East Q Tour 2,2024-07-19,2024-07-21,"",2024,q,Ranking,0, Emirates Snooker Academy,Abu Dhabi,UAE,snooker,1993,Both,O,0,56,0,0,55,2024
-1844,Xi'an Grand Prix Qualifiers,2024-07-25,2024-07-27,"",2024,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,1832,Both,O,0,0,0,0,64,2024
-1841,Wuhan Open Qualifiers,2024-07-28,2024-07-30,"",2024,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,1840,Both,O,0,0,0,0,64,2024
-1938,British Open Qualifiers,2024-07-31,2024-08-03,"",2024,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,1834,Both,O,0,0,0,0,64,2024
-2005,Asia Pacific Q Tour Event 2: Fred Osbourne Classic,2024-08-02,2024-08-04,"",2024,q,Ranking,0,Commercial Club Albury,Albury,Australia,snooker,2005,Both,O,0,81,0,0,80,2024
-1937,US Women's Open Group A,2024-08-09,2024-08-10,"",2024,women,Ranking,0,OX Billiards,Seattle,USA,snooker,2018,Women,O,0,0,0,0,6,2024
-2076,US Women's Open Group B,2024-08-09,2024-08-10,"",2024,women,Ranking,2,OX Billiards,Seattle,USA,snooker,2018,Women,O,0,0,0,0,10,2024
-2077,US Women's Open Group C,2024-08-09,2024-08-10,"",2024,women,Ranking,3,OX Billiards,Seattle,USA,snooker,2018,Women,O,0,0,0,0,10,2024
-2018,US Women's Open,2024-08-09,2024-08-11,WineCellars.com,2024,women,Ranking,0,OX Billiards,Seattle,USA,snooker,2018,Women,O,0,14,0,0,7,2024
-2043,Q Tour 1,2024-08-15,2024-08-18,"",2024,q,Ranking,1,Northern Snooker Centre,Leeds,England,snooker,2043,Both,O,0,154,0,0,153,2024
-1832,Xi'an Grand Prix,2024-08-19,2024-08-25,Du Xiaoman,2024,main,Ranking,0,Qujiang E-sports Centre,Xi'an,China,snooker,1832,Both,O,0,128,0,0,63,2024
-1839,Saudi Arabia Masters,2024-08-30,2024-09-07,"",2024,main,Ranking,0,Green Halls,Riyadh,Saudi Arabia,snooker,1839,Both,O,0,144,0,0,143,2024
-2078,UK Women's Championships Group A,2024-09-06,2024-09-07,"",2024,women,Ranking,1,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
-2079,UK Women's Championships Group B,2024-09-06,2024-09-07,"",2024,women,Ranking,2,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
-2080,UK Women's Championships Group C,2024-09-06,2024-09-07,"",2024,women,Ranking,3,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
-2081,UK Women's Championships Group D,2024-09-06,2024-09-07,"",2024,women,Ranking,4,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
-2082,UK Women's Championships Group E,2024-09-06,2024-09-07,"",2024,women,Ranking,5,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
-2083,UK Women's Championships Group F,2024-09-06,2024-09-07,"",2024,women,Ranking,6,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
-2084,UK Women's Championships Group G,2024-09-06,2024-09-07,"",2024,women,Ranking,7,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
-2085,UK Women's Championships Group H,2024-09-06,2024-09-07,"",2024,women,Ranking,8,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,0,0,0,6,2024
-2020,UK Women's Championship,2024-09-06,2024-09-08,Taom,2024,women,Ranking,0,Northern Snooker Centre,Leeds,England,snooker,2020,Women,O,0,37,0,0,20,2024
-1936,English Open Qualifiers,2024-09-12,2024-09-14,"",2024,main,Qualifying,0,Brentwood Leisure Centre,Brentwood,England,snooker,1833,Both,O,0,0,0,0,64,2024
-1833,English Open,2024-09-16,2024-09-22,BetVictor,2024,main,Ranking,0,Brentwood Leisure Centre,Brentwood,England,snooker,1833,Both,O,0,128,0,0,63,2024
-2044,Q Tour 2,2024-09-20,2024-09-22,"",2024,q,Ranking,2,Bulgarian Snooker Academy,Sofia,Bulgaria,snooker,2044,Both,O,0,108,0,0,107,2024
-1834,British Open,2024-09-23,2024-09-29,Unibet,2024,main,Ranking,0,The Centaur,Cheltenham,England,snooker,1834,Both,O,0,128,0,0,63,2024
-2006,Asia Pacific Q Tour Event 3: New Zealand Open,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,30,0,0,15,2024
-2087,Asia Pacific Q Tour Event 3: New Zealand Open - Group A,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,0,0,0,10,2024
-2088,Asia Pacific Q Tour Event 3: New Zealand Open - Group B,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,0,0,0,10,2024
-2089,Asia Pacific Q Tour Event 3: New Zealand Open - Group C,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,0,0,0,10,2024
-2090,Asia Pacific Q Tour Event 3: New Zealand Open - Group D,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,0,0,0,10,2024
-2091,Asia Pacific Q Tour Event 3: New Zealand Open - Group E,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,0,0,0,10,2024
-2092,Asia Pacific Q Tour Event 3: New Zealand Open - Group F,2024-09-26,2024-09-29,"",2024,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2006,Both,O,0,0,0,0,10,2024
-1939,Northern Ireland Open Qualifiers,2024-09-28,2024-09-29,"",2024,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,1835,Both,O,0,0,0,0,64,2024
-1845,International Championship Qualifiers,2024-09-30,2024-10-02,"",2024,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,1846,Both,O,0,0,0,0,64,2024
-2045,Q Tour 3,2024-10-04,2024-10-06,"",2024,q,Ranking,3,Snookerhallen,Stockholm,Sweden,snooker,2045,Both,O,0,116,0,0,114,2024
-2095,Australian Women's Open Group A,2024-10-05,2024-10-06,"",2024,women,Ranking,1,Mt Pritchard & District Community Club,Sydney,Australia,snooker,2019,Women,O,0,0,0,0,21,2024
-2096,Australian Women's Open Group B,2024-10-05,2024-10-06,"",2024,women,Ranking,2,Mt Pritchard & District Community Club,Sydney,Australia,snooker,2019,Women,O,0,0,0,0,21,2024
-2097,Australian Women's Open Group C,2024-10-05,2024-10-06,"",2024,women,Ranking,3,Mt Pritchard & District Community Club,Sydney,Australia,snooker,2019,Women,O,0,0,0,0,21,2024
-2098,Australian Women's Open Group D,2024-10-05,2024-10-06,"",2024,women,Ranking,4,Mt Pritchard & District Community Club,Sydney,Australia,snooker,2019,Women,O,0,0,0,0,15,2024
-2019,Australian Women's Open,2024-10-05,2024-10-08,"",2024,women,Ranking,0,Mt Pritchard & District Community Club,Sydney,Australia,snooker,2019,Women,O,0,27,0,0,15,2024
-1840,Wuhan Open,2024-10-06,2024-10-12,Optics Valley of China,2024,main,Ranking,0,China Optics Valley Convention & Exhibition Centre,Wuhan,China,snooker,1840,Both,O,0,128,0,0,63,2024
-2007,Asia Pacific Q Tour Event 4: Bob Hawke AC Australian Open,2024-10-10,2024-10-13,"",2024,q,Ranking,0,Mounties,Mount Pritchard,Australia,snooker,2007,Both,O,0,91,0,0,90,2024
-1835,Northern Ireland Open,2024-10-20,2024-10-27,BetVictor,2024,main,Ranking,0,Waterfront Hall,Belfast,Northern Ireland,snooker,1835,Both,O,0,128,0,0,63,2024
-1940,Scottish Open Qualifiers,2024-10-28,2024-10-30,"",2024,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,1836,Both,O,0,0,0,0,64,2024
-1846,International Championship,2024-11-03,2024-11-10,"",2024,main,Ranking,0,SNC National Fitness Center,Nanjing,China,snooker,1846,Both,O,0,128,0,0,63,2024
-2046,Q Tour 4,2024-11-07,2024-11-10,"",2024,q,Ranking,4,Club 200,Manchester,England,snooker,2046,Both,O,0,156,0,0,155,2024
-1935,Champion of Champions,2024-11-11,2024-11-17,Grosvenor Casinos,2024,main,Invitational,0,Toughsheet Community Stadium,Bolton,England,snooker,1935,Both,O,0,16,0,0,15,2024
-1934,UK Championship Qualifiers,2024-11-16,2024-11-21,"",2024,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,1837,Both,O,0,0,0,0,112,2024
-2116,Women's Masters Group B,2024-11-22,2024-11-23,"",2024,women,Ranking,2,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
-2117,Women's Masters Group A,2024-11-22,2024-11-23,"",2024,women,Ranking,1,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
-2118,Women's Masters Group C,2024-11-22,2024-11-23,"",2024,women,Ranking,3,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
-2119,Women's Masters Group D,2024-11-22,2024-11-23,"",2024,women,Ranking,4,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
-2120,Women's Masters Group E,2024-11-22,2024-11-23,"",2024,women,Ranking,5,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
-2121,Women's Masters Group F,2024-11-22,2024-11-23,"",2024,women,Ranking,6,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
-2122,Women's Masters Group G,2024-11-22,2024-11-23,"",2024,women,Ranking,7,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
-2123,Women's Masters Group H,2024-11-22,2024-11-23,"",2024,women,Ranking,8,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
-2124,Women's Masters Group I,2024-11-22,2024-11-23,"",2024,women,Ranking,9,Frames Sports Bar,London,England,snooker,2099,Women,O,0,0,0,0,6,2024
-2099,Women's Masters,2024-11-22,2024-11-24,"",2024,women,Ranking,0,Frames Sports Bar,London,England,snooker,2099,Women,O,0,39,0,0,20,2024
-1837,UK Championship,2024-11-23,2024-12-01,Victorian Plumbing,2024,main,Ranking,0,Barbican Centre,York,England,snooker,1837,Both,O,0,144,0,0,31,2024
-1943,Shoot Out,2024-12-04,2024-12-07,9Club,2024,main,Ranking,0,Mattioli Arena,Leicester,England,snooker,1943,Both,O,0,128,0,0,127,2024
-1836,Scottish Open,2024-12-09,2024-12-15,BetVictor,2024,main,Ranking,0,Meadowbank Sports Centre,Edinburgh,Scotland,snooker,1836,Both,O,0,128,0,0,63,2024
-2047,Q Tour 5,2024-12-13,2024-12-15,"",2024,q,Ranking,5,National Training Academy,Vienna,Austria,snooker,2047,Both,O,0,103,0,0,102,2024
-2074,Americas Q Tour 2,2024-12-13,2024-12-15,"",2024,q,Ranking,0,Arizona Snooker Academy,Chandler,USA,snooker,2074,Both,O,0,20,0,0,19,2024
-1933,German Masters Qualifiers,2024-12-16,2024-12-19,"",2024,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,1838,Both,O,0,0,0,0,64,2024
-2107,Snooker Championship,2024-12-18,2024-12-20,Riyadh Season,2024,main,Invitational,0,Unknown,"Boulevard City, Riyadh",Saudi Arabia,snooker,2107,Both,O,0,12,0,0,11,2024
-1843,World Open Qualifiers,2024-12-20,2024-12-22,"",2024,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,1842,Both,O,0,0,0,0,64,2024
-2109,Championship League - Group 1,2025-01-03,2025-01-04,"",2024,main,Invitational,1,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
-2110,Championship League - Group 2,2025-01-06,2025-01-07,"",2024,main,Invitational,2,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
-2111,Championship League - Group 3,2025-01-08,2025-01-09,"",2024,main,Invitational,3,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
-2112,Championship League - Group 4,2025-01-10,2025-01-11,"",2024,main,Invitational,4,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
-2048,Q Tour 6,2025-01-10,2025-01-12,"",2024,q,Ranking,6,Delta Moon,Mons,Belgium,snooker,2048,Both,O,0,87,0,0,86,2024
-1760,Masters,2025-01-12,2025-01-19,Johnstone's Paint,2024,main,Invitational,0,Alexandra Palace,London,England,snooker,1760,Both,O,0,16,0,0,15,2024
-2125,Middle East Q Tour 3,2025-01-17,2025-01-19,"",2024,q,Ranking,0,Cue Sports Academy,Abu Dhabi,UAE,snooker,2125,Both,O,0,25,0,0,24,2024
-2075,Americas Q Tour 3,2025-01-18,2025-01-19,"",2024,q,Ranking,0,The Corner Bank,Toronto,Canada,snooker,2075,Both,O,0,16,0,0,15,2024
-2127,WSF Junior Championship - Group A,2025-01-18,2025-01-20,"",2024,wsf,Amateur,1,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
-2128,WSF Junior Championship - Group B,2025-01-18,2025-01-20,"",2024,wsf,Amateur,2,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
-2129,WSF Junior Championship - Group C,2025-01-18,2025-01-20,"",2024,wsf,Amateur,3,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
-2130,WSF Junior Championship - Group D,2025-01-18,2025-01-20,"",2024,wsf,Amateur,4,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,6,2024
-2131,WSF Junior Championship - Group E,2025-01-18,2025-01-20,"",2024,wsf,Amateur,5,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,6,2024
-2132,WSF Junior Championship - Group F,2025-01-18,2025-01-20,"",2024,wsf,Amateur,6,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
-2133,WSF Junior Championship - Group G,2025-01-18,2025-01-20,"",2024,wsf,Amateur,7,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,6,2024
-2134,WSF Junior Championship - Group H,2025-01-18,2025-01-20,"",2024,wsf,Amateur,8,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
-2149,WSF Junior Championship - Group I,2025-01-18,2025-01-20,"",2024,wsf,Amateur,9,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
-2150,WSF Junior Championship - Group J,2025-01-18,2025-01-20,"",2024,wsf,Amateur,10,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
-2151,WSF Junior Championship - Group K,2025-01-18,2025-01-20,"",2024,wsf,Amateur,11,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
-2152,WSF Junior Championship - Group L,2025-01-18,2025-01-20,"",2024,wsf,Amateur,12,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,0,0,0,10,2024
-2153,WSF Women's Championship - Group A,2025-01-18,2025-01-20,"",2024,women,Ranking,1,Radisson Blu Resort,Saidia,Morocco,snooker,2126,Women,O,0,0,0,0,6,2024
-2154,WSF Women's Championship - Group B,2025-01-18,2025-01-20,"",2024,women,Ranking,2,Radisson Blu Resort,Saidia,Morocco,snooker,2126,Women,O,0,0,0,0,6,2024
-2155,WSF Women's Championship - Group C,2025-01-18,2025-01-20,"",2024,women,Ranking,3,Radisson Blu Resort,Saidia,Morocco,snooker,2126,Women,O,0,0,0,0,6,2024
-2156,WSF Women's Championship - Group D,2025-01-18,2025-01-20,"",2024,women,Ranking,4,Radisson Blu Resort,Saidia,Morocco,snooker,2126,Women,O,0,0,0,0,6,2024
-2093,WSF Junior Championship,2025-01-18,2025-01-23,"",2024,wsf,Amateur,0,Radisson Blu Resort,Saidia,Morocco,snooker,2093,Both,U19,0,57,0,0,23,2024
-2126,WSF Women's Championship,2025-01-18,2025-01-23,"",2024,women,Ranking,0,Radisson Blu Resort,Saidia,Morocco,snooker,2126,Women,O,0,16,0,0,7,2024
-2113,Championship League - Group 5,2025-01-20,2025-01-21,"",2024,main,Invitational,5,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
-2114,Championship League - Group 6,2025-01-22,2025-01-23,"",2024,main,Invitational,6,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
-2115,Championship League - Group 7,2025-01-24,2025-01-25,"",2024,main,Invitational,7,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,0,0,0,24,2024
-2008,Asia Pacific Q Tour Event 5: Queensland Open,2025-01-24,2025-01-27,"",2024,q,Ranking,0,Redcliffe Snooker Club,Redcliffe,Australia,snooker,2008,Both,O,0,66,0,0,65,2024
-2137,WSF Championship - Group A,2025-01-24,2025-01-27,"",2024,wsf,Amateur,1,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2138,WSF Championship - Group B,2025-01-24,2025-01-27,"",2024,wsf,Amateur,2,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2139,WSF Championship - Group C,2025-01-24,2025-01-27,"",2024,wsf,Amateur,3,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2140,WSF Championship - Group D,2025-01-24,2025-01-27,"",2024,wsf,Amateur,4,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,6,2024
-2141,WSF Championship - Group E,2025-01-24,2025-01-27,"",2024,wsf,Amateur,5,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2142,WSF Championship - Group F,2025-01-24,2025-01-27,"",2024,wsf,Amateur,6,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2143,WSF Championship - Group G,2025-01-24,2025-01-27,"",2024,wsf,Amateur,7,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2144,WSF Championship - Group H,2025-01-24,2025-01-27,"",2024,wsf,Amateur,8,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2145,WSF Championship - Group I,2025-01-24,2025-01-27,"",2024,wsf,Amateur,9,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2146,WSF Championship - Group J,2025-01-24,2025-01-27,"",2024,wsf,Amateur,10,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2147,WSF Championship - Group K,2025-01-24,2025-01-27,"",2024,wsf,Amateur,11,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2148,WSF Championship - Group L,2025-01-24,2025-01-27,"",2024,wsf,Amateur,12,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,6,2024
-2157,WSF Championship - Group M,2025-01-24,2025-01-27,"",2024,wsf,Amateur,13,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,6,2024
-2158,WSF Championship - Group N,2025-01-24,2025-01-27,"",2024,wsf,Amateur,14,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2159,WSF Championship - Group O,2025-01-24,2025-01-27,"",2024,wsf,Amateur,15,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2160,WSF Championship - Group P,2025-01-24,2025-01-27,"",2024,wsf,Amateur,16,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2161,WSF Championship - Group Q,2025-01-24,2025-01-27,"",2024,wsf,Amateur,17,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2162,WSF Championship - Group R,2025-01-24,2025-01-27,"",2024,wsf,Amateur,18,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,6,2024
-2163,WSF Championship - Group S,2025-01-24,2025-01-27,"",2024,wsf,Amateur,19,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2164,WSF Championship - Group T,2025-01-24,2025-01-27,"",2024,wsf,Amateur,20,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2165,WSF Championship - Group U,2025-01-24,2025-01-27,"",2024,wsf,Amateur,21,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2166,WSF Championship - Group V,2025-01-24,2025-01-27,"",2024,wsf,Amateur,22,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2167,WSF Championship - Group W,2025-01-24,2025-01-27,"",2024,wsf,Amateur,23,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2168,WSF Championship - Group X,2025-01-24,2025-01-27,"",2024,wsf,Amateur,24,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2169,WSF Championship - Group Y,2025-01-24,2025-01-27,"",2024,wsf,Amateur,25,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2170,WSF Championship - Group Z,2025-01-24,2025-01-27,"",2024,wsf,Amateur,26,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2171,WSF Championship - Group AA,2025-01-24,2025-01-27,"",2024,wsf,Amateur,27,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,6,2024
-2172,WSF Championship - Group AB,2025-01-24,2025-01-27,"",2024,wsf,Amateur,28,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2173,WSF Championship - Group AC,2025-01-24,2025-01-27,"",2024,wsf,Amateur,29,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2174,WSF Championship - Group AD,2025-01-24,2025-01-27,"",2024,wsf,Amateur,30,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2175,WSF Championship - Group AE,2025-01-24,2025-01-27,"",2024,wsf,Amateur,31,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2176,WSF Championship - Group AF,2025-01-24,2025-01-27,"",2024,wsf,Amateur,32,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2177,WSF Championship - Group AG,2025-01-24,2025-01-27,"",2024,wsf,Amateur,33,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2178,WSF Championship - Group AH,2025-01-24,2025-01-27,"",2024,wsf,Amateur,34,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2179,WSF Championship - Group AI,2025-01-24,2025-01-27,"",2024,wsf,Amateur,35,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,0,0,0,10,2024
-2086,WSF Championship,2025-01-24,2025-02-01,"",2024,wsf,Amateur,0,Radisson Blu Resort,Saidia,Morocco,snooker,2086,Both,O,0,170,0,0,69,2024
-1838,German Masters,2025-01-27,2025-02-02,Machineseeker,2024,main,Ranking,0,Tempodrom,Berlin,Germany,snooker,1838,Both,O,0,128,0,0,63,2024
-2108,Championship League - Winners' Group,2025-02-04,2025-02-05,"",2024,main,Invitational,0,Mattioli Arena,Leicester,England,snooker,2108,Both,O,0,27,0,0,24,2024
-2041,Welsh Open Qualifiers,2025-02-04,2025-02-06,"",2024,main,Qualifying,0,Barnsley Metrodome,Barnsley,England,snooker,1992,Both,O,0,0,0,0,64,2024
-2101,Belgian Women's Open Group A,2025-02-07,2025-02-08,"",2024,women,Ranking,1,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
-2105,Belgian Women's Open Group B,2025-02-07,2025-02-08,"",2024,women,Ranking,2,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
-2196,Belgian Women's Open Group C,2025-02-07,2025-02-08,"",2024,women,Ranking,3,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
-2197,Belgian Women's Open Group D,2025-02-07,2025-02-08,"",2024,women,Ranking,4,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
-2198,Belgian Women's Open Group E,2025-02-07,2025-02-08,"",2024,women,Ranking,5,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
-2199,Belgian Women's Open Group F,2025-02-07,2025-02-08,"",2024,women,Ranking,6,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
-2200,Belgian Women's Open Group G,2025-02-07,2025-02-08,"",2024,women,Ranking,7,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
-2201,Belgian Women's Open Group H,2025-02-07,2025-02-08,"",2024,women,Ranking,8,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,0,0,0,6,2024
-2049,Q Tour 7,2025-02-07,2025-02-09,"",2024,q,Ranking,7,Landywood Snooker Club,Walsall,England,snooker,2049,Both,O,0,124,0,0,123,2024
-2100,Belgian Women's Open,2025-02-07,2025-02-09,"",2024,women,Ranking,0,The Trickshot,Bruges,Belgium,snooker,2100,Women,O,0,37,0,0,20,2024
-1992,Welsh Open,2025-02-10,2025-02-16,BetVictor,2024,main,Ranking,0,Venue Cymru,Llandudno,Wales,snooker,1992,Both,O,0,128,0,0,63,2024
-1842,World Open,2025-02-23,2025-03-01,Weide Cup,2024,main,Ranking,0,Yushan Sport Centre,Yushan,China,snooker,1842,Both,O,0,128,0,0,63,2024
-2104,World Grand Prix,2025-03-04,2025-03-09,"",2024,main,Ranking,0,Kai Tak Arena,Hong Kong,Hong Kong,snooker,2104,Both,O,0,32,0,0,31,2024
-2180,Q Tour Global Play-Offs,2025-03-11,2025-03-13,"",2024,q,Play-off,0,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2180,Both,O,0,24,0,0,21,2024
-2216,European Under 21 Championship - Group A,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,1,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,10,2024
-2217,European Under 21 Championship - Group B,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,2,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2218,European Under 21 Championship - Group C,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,3,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2219,European Under 21 Championship - Group D,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,4,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2220,European Under 21 Championship - Group E,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,5,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2221,European Under 21 Championship - Group F,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,6,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2222,European Under 21 Championship - Group G,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,7,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2223,European Under 21 Championship - Group H,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,8,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2224,European Under 21 Championship - Group J,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,9,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2225,European Under 21 Championship - Group K,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,10,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2226,European Under 21 Championship - Group L,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,11,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2227,European Under 21 Championship - Group M,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,12,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2228,European Under 21 Championship - Group N,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,13,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2229,European Under 21 Championship - Group P,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,14,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2230,European Under 21 Championship - Group Q,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,15,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2231,European Under 21 Championship - Group R,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,16,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2232,European Under 21 Championship - Group S,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,17,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2233,European Under 21 Championship - Group T,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,18,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2234,European Under 21 Championship - Group U,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,19,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2235,European Under 21 Championship - Group V,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,20,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2236,European Under 21 Championship - Group W,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,21,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2237,European Under 21 Championship - Group X,2025-03-14,2025-03-15,"",2024,ebsa,Amateur,22,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,0,0,0,6,2024
-2207,European Under 21 Championship,2025-03-14,2025-03-17,"",2024,ebsa,Amateur,0,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2207,Both,U21,0,89,0,0,43,2024
-2206,European Championship,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,0,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,172,0,0,85,2024
-2238,European Championship - Group A,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,1,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2239,European Championship - Group B,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,2,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2240,European Championship - Group C,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,3,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2241,European Championship - Group D,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,4,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2242,European Championship - Group E,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,5,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2243,European Championship - Group F,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,6,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2244,European Championship - Group G,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,7,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2245,European Championship - Group H,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,8,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2246,European Championship - Group I,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,9,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2247,European Championship - Group J,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,10,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2248,European Championship - Group K,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,11,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2249,European Championship - Group L,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,12,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2250,European Championship - Group M,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,13,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2251,European Championship - Group N,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,14,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2252,European Championship - Group O,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,15,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2253,European Championship - Group P,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,16,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2254,European Championship - Group Q,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,17,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2255,European Championship - Group R,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,18,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2256,European Championship - Group S,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,19,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2257,European Championship - Group T,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,20,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2258,European Championship - Group U,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,21,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2259,European Championship - Group V,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,22,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2260,European Championship - Group W,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,23,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2261,European Championship - Group X,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,24,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2262,European Championship - Group Y,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,25,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2263,European Championship - Group Z,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,26,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2264,European Championship - Group AB,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,28,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2265,European Championship - Group AA,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,27,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2266,European Championship - Group AC,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,29,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2267,European Championship - Group AD,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,30,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2268,European Championship - Group AE,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,31,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2269,European Championship - Group AF,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,32,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2270,European Championship - Group AG,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,33,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2271,European Championship - Group AH,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,34,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2272,European Championship - Group AI,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,35,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2273,European Championship - Group AJ,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,36,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2274,European Championship - Group AK,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,37,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2275,European Championship - Group AL,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,38,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2276,European Championship - Group AM,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,39,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2277,European Championship - Group AN,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,40,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2278,European Championship - Group AO,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,41,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2279,European Championship - Group AP,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,42,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-2280,European Championship - Group AQ,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,43,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
-1848,Players Championship,2025-03-17,2025-03-23,Sportsbet.io,2024,main,Ranking,0,Telford International Centre,Telford,England,snooker,1848,Both,O,0,16,0,0,15,2024
-2281,British Women's Open Group A,2025-03-28,2025-03-29,"",2024,women,Ranking,1,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
-2291,British Women's Open Group B,2025-03-28,2025-03-29,"",2024,women,Ranking,2,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
-2292,British Women's Open Group C,2025-03-28,2025-03-29,"",2024,women,Ranking,3,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
-2293,British Women's Open Group D,2025-03-28,2025-03-29,"",2024,women,Ranking,4,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
-2294,British Women's Open Group E,2025-03-28,2025-03-29,"",2024,women,Ranking,5,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
-2295,British Women's Open Group F,2025-03-28,2025-03-29,"",2024,women,Ranking,6,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
-2296,British Women's Open Group G,2025-03-28,2025-03-29,"",2024,women,Ranking,7,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
-2102,British Women's Open,2025-03-28,2025-03-30,Landywood,2024,women,Ranking,0,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,32,0,0,17,2024
-2298,Asia Pacific Open Snooker Championship - Group A,2025-03-31,2025-04-01,"",2024,other,Amateur,1,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
-2299,Asia Pacific Open Snooker Championship - Group B,2025-03-31,2025-04-01,"",2024,other,Amateur,2,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
-2300,Asia Pacific Open Snooker Championship - Group C,2025-03-31,2025-04-01,"",2024,other,Amateur,3,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
-2301,Asia Pacific Open Snooker Championship - Group D,2025-03-31,2025-04-01,"",2024,other,Amateur,4,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
-2302,Asia Pacific Open Snooker Championship - Group E,2025-03-31,2025-04-01,"",2024,other,Amateur,5,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
-2303,Asia Pacific Open Snooker Championship - Group F,2025-03-31,2025-04-01,"",2024,other,Amateur,6,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
-2304,Asia Pacific Open Snooker Championship - Group G,2025-03-31,2025-04-01,"",2024,other,Amateur,7,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
-2305,Asia Pacific Open Snooker Championship - Group H,2025-03-31,2025-04-01,"",2024,other,Amateur,8,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
-2306,Asia Pacific Open Snooker Championship - Group J,2025-03-31,2025-04-01,"",2024,other,Amateur,9,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
-2307,Asia Pacific Open Snooker Championship - Group K,2025-03-31,2025-04-01,"",2024,other,Amateur,10,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,10,2024
-2308,Asia Pacific Open Snooker Championship - Group L,2025-03-31,2025-04-01,"",2024,other,Amateur,11,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,6,2024
-2309,Asia Pacific Open Snooker Championship - Group M,2025-03-31,2025-04-01,"",2024,other,Amateur,12,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,0,0,0,6,2024
-2297,Asia Pacific Open Snooker Championship,2025-03-31,2025-04-03,"",2024,other,Amateur,0,Commercial Club Albury,Albury,Australia,snooker,2297,Both,O,0,58,0,0,35,2024
-1946,Tour Championship,2025-03-31,2025-04-06,Sportsbet.io,2024,main,Ranking,0,Manchester Central,Manchester,England,snooker,1946,Both,O,0,12,0,0,11,2024
-2042,World Championship Qualifiers,2025-04-07,2025-04-16,"",2024,main,Qualifying,0,English Institute of Sport,Sheffield,England,snooker,1942,Both,O,0,0,0,0,112,2024
-1942,World Championship,2025-04-19,2025-05-05,Halo,2024,main,Ranking,0,Crucible Theatre,Sheffield,England,snooker,1942,Both,O,0,144,0,0,31,2024
-2288,World Seniors Championship,2025-05-07,2025-05-11,JENNINGSbet,2024,seniors,Ranking,0,Crucible Theatre,Sheffield,England,snooker,2288,Both,S,0,16,0,0,15,2024
-2282,Qualifying School 1 - Asia & Oceania ,2025-05-13,2025-05-18,"",2024,main,Qualifying School,1,"",Bangkok,Thailand,snooker,2282,Both,O,0,86,0,0,84,2024
-2050,Helsinki International Snooker Cup,2025-05-17,2025-05-18,Taom,2024,other,Invitational,0,Kulttuuritalo,Helsinki,Finland,snooker,2050,Both,O,0,8,0,0,7,2024
-2283,Qualifying School 2 - Asia & Oceania ,2025-05-19,2025-05-24,"",2024,main,Qualifying School,0,BSAT Academy,Bangkok,Thailand,snooker,2283,Both,O,0,86,0,0,84,2024
-2353,Women's World Championship Group A,2025-05-20,2025-05-23,"",2024,women,Ranking,1,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
-2354,Women's World Championship Group B,2025-05-20,2025-05-23,"",2024,women,Ranking,2,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
-2355,Women's World Championship Group C,2025-05-20,2025-05-23,"",2024,women,Ranking,3,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
-2356,Women's World Championship Group D,2025-05-20,2025-05-23,"",2024,women,Ranking,4,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,6,2024
-2357,Women's World Championship Group E,2025-05-20,2025-05-23,"",2024,women,Ranking,5,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
-2358,Women's World Championship Group F,2025-05-20,2025-05-23,"",2024,women,Ranking,6,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,6,2024
-2359,Women's World Championship Group G,2025-05-20,2025-05-23,"",2024,women,Ranking,7,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
-2360,Women's World Championship Group H,2025-05-20,2025-05-23,"",2024,women,Ranking,8,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
-2361,Women's World Championship Group I,2025-05-20,2025-05-23,"",2024,women,Ranking,9,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
-2362,Women's World Championship Group J,2025-05-20,2025-05-23,"",2024,women,Ranking,10,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
-2363,Women's World Championship Group K,2025-05-20,2025-05-23,"",2024,women,Ranking,11,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
-2364,Women's World Championship Group L,2025-05-20,2025-05-23,"",2024,women,Ranking,12,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,6,2024
-2365,Women's World Championship Group M,2025-05-20,2025-05-23,"",2024,women,Ranking,13,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
-2366,Women's World Championship Group N,2025-05-20,2025-05-23,"",2024,women,Ranking,14,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
-2367,Women's World Championship Group O,2025-05-20,2025-05-23,"",2024,women,Ranking,15,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,0,0,0,10,2024
-2204,Women's World Championship,2025-05-20,2025-05-27,Nanjiang,2024,women,Ranking,0,Changping Gymnasium,Dongguan,China,snooker,2204,Women,O,0,72,0,0,31,2024
-2284,Q School 1,2025-05-21,2025-05-26,"",2024,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2284,Both,O,0,171,0,0,167,2024
-2285,Q School 2,2025-05-27,2025-06-01,"",2024,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2285,Both,O,0,171,0,0,167,2024
+2753,Q School 2,2026-05-26,2026-05-31,"",2025,main,Qualifying School,2,Mattioli Arena,Leicester,England,snooker,2753,Both,O,0,156,0,0,152,2025

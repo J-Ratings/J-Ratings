@@ -1068,7 +1068,7 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 1990,Championship League Stage Three Group A,2024-07-03,2024-07-03,"",2024,main,Ranking,2,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
 1991,Championship League Stage Three Group B,2024-07-03,2024-07-03,"",2024,main,Ranking,3,Mattioli Arena,Leicester,England,snooker,1941,Both,O,0,0,0,0,6,2024
 1992,Welsh Open,2025-02-10,2025-02-16,BetVictor,2024,main,Ranking,0,Venue Cymru,Llandudno,Wales,snooker,1992,Both,O,0,128,0,0,63,2024
-1993,Middle East Q Tour 2,2024-07-19,2024-07-21,"",2024,q,Ranking,0, Emirates Snooker Academy,Abu Dhabi,UAE,snooker,1993,Both,O,0,56,0,0,55,2024
+1993,Middle East Q Tour 2,2024-07-19,2024-07-21,"",2024,q,Ranking,0,Emirates Snooker Academy,Abu Dhabi,UAE,snooker,1993,Both,O,0,56,0,0,55,2024
 1994,British Women's Open Group A,2024-05-24,2024-05-25,"",2023,women,Ranking,1,Landywood Snooker Club,Walsall,England,snooker,1749,Women,O,,,,,,2023
 1995,British Women's Open Group B,2024-05-24,2024-05-25,"",2023,women,Ranking,2,Landywood Snooker Club,Walsall,England,snooker,1749,Women,O,,,,,,2023
 1996,British Women's Open Group C,2024-05-24,2024-05-25,"",2023,women,Ranking,3,Landywood Snooker Club,Walsall,England,snooker,1749,Women,O,,,,,,2023
@@ -1355,8 +1355,8 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2279,European Championship - Group AP,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,42,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
 2280,European Championship - Group AQ,2025-03-17,2025-03-22,"",2024,ebsa,Amateur,43,Pine Beach Belek Hotel,Antalya,Turkey,snooker,2206,Both,O,0,0,0,0,6,2024
 2281,British Women's Open Group A,2025-03-28,2025-03-29,"",2024,women,Ranking,1,Landywood Snooker Club,Walsall,England,snooker,2102,Women,O,0,0,0,0,6,2024
-2282,Qualifying School 1 - Asia & Oceania ,2025-05-13,2025-05-18,"",2024,main,Qualifying School,1,"",Bangkok,Thailand,snooker,2282,Both,O,0,86,0,0,84,2024
-2283,Qualifying School 2 - Asia & Oceania ,2025-05-19,2025-05-24,"",2024,main,Qualifying School,0,BSAT Academy,Bangkok,Thailand,snooker,2283,Both,O,0,86,0,0,84,2024
+2282,Qualifying School 1 - Asia & Oceania,2025-05-13,2025-05-18,"",2024,main,Qualifying School,1,"",Bangkok,Thailand,snooker,2282,Both,O,0,86,0,0,84,2024
+2283,Qualifying School 2 - Asia & Oceania,2025-05-19,2025-05-24,"",2024,main,Qualifying School,0,BSAT Academy,Bangkok,Thailand,snooker,2283,Both,O,0,86,0,0,84,2024
 2284,Q School 1,2025-05-21,2025-05-26,"",2024,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2284,Both,O,0,171,0,0,167,2024
 2285,Q School 2,2025-05-27,2025-06-01,"",2024,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2285,Both,O,0,171,0,0,167,2024
 2286,Pan American Open,2025-09-03,2025-09-07,"",2025,other,Other,0,Aryan Snooker Club,Sacramento,USA,snooker,2286,Both,O,0,64,0,0,31,2025
@@ -1862,12 +1862,12 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2750,Qualifying School 1 - Asia & Oceania ,2026-05-14,2026-05-18,"",2025,main,Qualifying School,0,Kiatthada Billiards & Snooker Club,Bangkok,Thailand,snooker,2750,Both,O,0,63,0,0,61,2025
 2751,Qualifying School 2 - Asia & Oceania ,2026-05-20,2026-05-24,"",2025,main,Qualifying School,0,Kiatthada Billiards & Snooker Club,Bangkok,Thailand,snooker,2751,Both,O,0,63,0,0,61,2025
 2752,Q School 1,2026-05-20,2026-05-25,"",2025,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2752,Both,O,0,156,0,0,152,2025
-2753,Q School 2,2026-05-26,2026-05-31,"",2025,main,Qualifying School,2,Mattioli Arena,Leicester,England,snooker,2753,Both,O,0,156,103,13,45,2025
-2755,China Open,2026-08-08,2026-08-16,"",2026,main,Ranking,0,Unknown,Taiyuan,China,snooker,2755,Both,O,0,0,0,0,0,2026
+2753,Q School 2,2026-05-26,2026-05-31,"",2025,main,Qualifying School,2,Mattioli Arena,Leicester,England,snooker,2753,Both,O,0,156,0,0,152,2025
+2755,China Open,2026-08-08,2026-08-16,"",2026,main,Ranking,0,Unknown,Taiyuan,China,snooker,2755,Both,O,0,118,0,0,0,2026
 2756,Scottish Open,2026-12-14,2026-12-20,"",2026,main,Ranking,0,Meadowbank Sports Centre,Edinburgh,Scotland,snooker,2756,Both,O,0,0,0,0,0,2026
-2757,Wuhan Open,2026-08-23,2026-08-29,"",2026,main,Ranking,0,"",Wuhan,China,snooker,2757,Both,O,0,0,0,0,0,2026
-2758,Wuhan Open Qualifiers,2026-06-15,2026-06-18,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2757,Both,O,0,0,0,0,0,2026
-2759,China Open Qualifiers,2026-06-10,2026-06-14,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2755,Both,O,0,0,0,0,0,2026
+2757,Wuhan Open,2026-08-23,2026-08-29,"",2026,main,Ranking,0,"",Wuhan,China,snooker,2757,Both,O,0,121,0,0,0,2026
+2758,Wuhan Open Qualifiers,2026-06-15,2026-06-18,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2757,Both,O,0,0,78,0,0,2026
+2759,China Open Qualifiers,2026-06-10,2026-06-14,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2755,Both,O,0,0,112,0,0,2026
 276,World Seniors Championship,2013-10-19,2013-10-20,888casino.com,2013,main,Invitational,0,Mountbatten Centre,Portsmouth,England,snooker,276,Both,S,,,,,,2013
 2760,Championship League,2026-06-22,2026-07-15,"",2026,main,Ranking,0,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,0,2026
 2761,Xi'an Grand Prix,2026-09-28,2026-10-04,"",2026,main,Ranking,0,Unknown,Xi'an,China,snooker,2761,Both,O,0,0,0,0,0,2026
@@ -1915,6 +1915,7 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 28,World Championship,2011-04-16,2011-05-02,Betfred.com,2010,main,Ranking,0,Crucible Theatre,Sheffield,England,snooker,28,Both,O,,,,,,2010
 280,Champion of Champions,2013-11-19,2013-11-24,888casino,2013,main,Invitational,0,Ricoh Arena,Coventry,England,snooker,280,Both,O,,,,,,2013
 2800,Championship League - Group 7,2027-01-20,2027-01-21,"",2026,main,Invitational,7,Mattioli Arena,Leicester,England,snooker,2793,Both,O,0,0,0,0,0,2026
+2801,British Seniors Open,2026-12-27,2026-12-28,"",2026,seniors,Seniors,0,Vaillant Live,Derby,England,snooker,2801,Both,O,0,0,0,0,0,2026
 281,UK Championship,2013-11-26,2013-12-08,williamhill.com,2013,main,Ranking,0,Barbican Centre,York,England,snooker,281,Both,O,,,,,,2013
 282,European Tour Event Eight,2014-02-06,2014-02-09,"",2013,main,Players Tour Championship,8,Gdynia Sports Arena,Gdynia,Poland,snooker,282,Both,O,,,,,,2013
 283,German Masters,2014-01-29,2014-02-02,"",2013,main,Ranking,0,Tempodrom,Berlin,Germany,snooker,283,Both,O,,,,,,2013
