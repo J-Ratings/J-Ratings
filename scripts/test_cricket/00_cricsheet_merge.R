@@ -177,10 +177,10 @@ make_margin <- function(winner, outcome_by, outcome_result) {
     res <- safe_chr(outcome_result)
     if (!is.na(res) && tolower(res) == "draw") return("Draw")
     if (!is.na(res) && tolower(res) == "tie") return("Tie")
-    return(res)
+    return("Not finished")
   }
   
-  NA_character_
+  "Not finished"
 }
 
 parse_match_file <- function(path) {
@@ -227,14 +227,14 @@ parse_match_file <- function(path) {
     !is.na(winner) ~ winner,
     !is.na(outcome_result) & tolower(outcome_result) == "draw" ~ "Draw",
     !is.na(outcome_result) & tolower(outcome_result) == "tie" ~ "Draw",
-    TRUE ~ NA_character_
+    TRUE ~ "Not finished"
   )
   
   result_type <- case_when(
     !is.na(winner) ~ "W",
     !is.na(outcome_result) & tolower(outcome_result) == "draw" ~ "D",
     !is.na(outcome_result) & tolower(outcome_result) == "tie" ~ "T",
-    TRUE ~ NA_character_
+    TRUE ~ "N"
   )
   
   margin <- make_margin(
@@ -249,7 +249,7 @@ parse_match_file <- function(path) {
     !is.null(outcome$by$wickets) ~ "wickets",
     !is.na(outcome_result) & tolower(outcome_result) == "draw" ~ "draw",
     !is.na(outcome_result) & tolower(outcome_result) == "tie" ~ "tie",
-    TRUE ~ NA_character_
+    TRUE ~ "not_finished"
   )
   
   margin_value <- case_when(
@@ -386,7 +386,7 @@ if (nrow(master) == 0) {
 # -----------------------------
 
 bad_results <- master %>%
-  filter(!(result %in% c(home_team, away_team, "Draw"))) %>%
+  filter(!(result %in% c(home_team, away_team, "Draw", "Not finished"))) %>%
   count(result, sort = TRUE)
 
 if (nrow(bad_results) > 0) {

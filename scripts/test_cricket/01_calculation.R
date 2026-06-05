@@ -185,6 +185,7 @@ if (length(missing_cols) > 0) {
 
 # Optional columns from 00_cricsheet_merge.R.
 optional_cols <- c(
+  "result_type",
   "margin",
   "margin_type",
   "margin_value",
@@ -212,6 +213,7 @@ dt[, home_team := normalise_team_name(home_team)]
 dt[, away_team := normalise_team_name(away_team)]
 dt[, result := trimws(as.character(result))]
 dt[, result := ifelse(tolower(result) %in% c("draw", "tie"), "Draw", normalise_team_name(result))]
+dt[, result_type := trimws(as.character(result_type))]
 dt[, competition := trimws(as.character(competition))]
 
 dt[, margin := trimws(as.character(margin))]
@@ -239,7 +241,7 @@ dt <- dt[
 dt <- dt[!(home_team %in% excluded_teams | away_team %in% excluded_teams)]
 
 # Also remove rows where result names an excluded side.
-dt <- dt[result == "Draw" | !(result %in% excluded_teams)]
+dt <- dt[result %in% c("Draw", "Not finished") | !(result %in% excluded_teams)]
 
 # Parse date. Master is expected to be ISO: YYYY-MM-DD.
 dt[, Date := as.Date(date_raw, format = "%Y-%m-%d")]
@@ -273,6 +275,8 @@ dt[, ResultType := fcase(
   result == home_team, "H",
   result == away_team, "A",
   result == "Draw", "D",
+  result == "Not finished", "N",
+  result_type == "N", "N",
   default = NA_character_
 )]
 
@@ -298,7 +302,13 @@ if (nrow(bad_labels) > 0) {
 dt[, HomeScore := fcase(
   ResultType == "H", 1,
   ResultType == "A", 0,
-  ResultType == "D", 0.5
+  ResultType == "D", 0.5,
+  ResultType == "N", NA_real_
+)]
+
+dt[, AwayScore := fcase(
+  ResultType == "N", NA_real_,
+  default = 1 - HomeScore
 )]
 
 dt[, AwayScore := 1 - HomeScore]
@@ -423,14 +433,27 @@ run_elo <- function(dt_input,
     Sh <- HomeScoreVec[i]
     Sa <- AwayScoreVec[i]
     
-    Kh <- if (Gh < PROVISIONAL_GAMES) PROVISIONAL_K else K_VALUE
-    Ka <- if (Ga < PROVISIONAL_GAMES) PROVISIONAL_K else K_VALUE
+    is_finished <- is.finite(Sh) && is.finite(Sa)
     
-    Rh_new <- Rh + Kh * (Sh - Eh)
-    Ra_new <- Ra + Ka * (Sa - Ea)
-    
-    Gh_new <- Gh + 1L
-    Ga_new <- Ga + 1L
+    if (is_finished) {
+      Kh <- if (Gh < PROVISIONAL_GAMES) PROVISIONAL_K else K_VALUE
+      Ka <- if (Ga < PROVISIONAL_GAMES) PROVISIONAL_K else K_VALUE
+      
+      Rh_new <- Rh + Kh * (Sh - Eh)
+      Ra_new <- Ra + Ka * (Sa - Ea)
+      
+      Gh_new <- Gh + 1L
+      Ga_new <- Ga + 1L
+    } else {
+      Kh <- 0
+      Ka <- 0
+      
+      Rh_new <- Rh
+      Ra_new <- Ra
+      
+      Gh_new <- Gh
+      Ga_new <- Ga
+    }
     
     assign(home, Rh_new, envir = ratings_env)
     assign(away, Ra_new, envir = ratings_env)
