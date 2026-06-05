@@ -66,7 +66,7 @@ repo_dir <- get_repo_dir()
 
 elo_dir <- file.path(
   repo_dir,
-  "Cricket", "Test Cricket",
+  "Cricket",
   "pipeline_data",
   "Elo"
 )
@@ -88,7 +88,7 @@ flag_lookup_csv <- file.path(
 
 base_data_dir <- file.path(
   repo_dir,
-  "Cricket", "Test Cricket",
+  "Cricket",
   "data"
 )
 

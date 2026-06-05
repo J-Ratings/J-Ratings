@@ -45,7 +45,7 @@ get_repo_dir <- function() {
   wd <- normalizePath(getwd(), winslash = "/", mustWork = TRUE)
   
   if (
-    dir.exists(file.path(wd, "Cricket", "Test Cricket")) &&
+    dir.exists(file.path(wd, "Cricket")) &&
     dir.exists(file.path(wd, "scripts", "test_cricket"))
   ) {
     return(wd)
@@ -65,7 +65,7 @@ repo_dir <- get_repo_dir()
 
 source_dir <- file.path(
   repo_dir,
-  "Cricket", "Test Cricket", "pipeline_data", "Source", "cricsheet"
+  "Cricket", "pipeline_data", "Source", "cricsheet"
 )
 
 json_dir <- file.path(source_dir, "tests_male_json")
@@ -73,7 +73,7 @@ zip_file <- file.path(source_dir, "tests_male_json.zip")
 
 match_dir <- file.path(
   repo_dir,
-  "Cricket", "Test Cricket", "pipeline_data", "Matches"
+  "Cricket", "pipeline_data", "Matches"
 )
 
 out_file <- file.path(

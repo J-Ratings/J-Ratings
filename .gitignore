@@ -6,8 +6,8 @@ Snooker/pipeline_data/**/latest_*csv
 Snooker/pipeline_data/**/merge_summary.csv
 
 # Raw Cricsheet JSON downloads for Test cricket
-Cricket/Test Cricket/pipeline_data/Source/cricsheet/*.zip
-Cricket/Test Cricket/pipeline_data/Source/cricsheet/tests_male_json/
+Cricket/pipeline_data/Source/cricsheet/*.zip
+Cricket/pipeline_data/Source/cricsheet/tests_male_json/
 
 # Old multi-pass Elo outputs
 Snooker/pipeline_data/Elo/snooker_elo_match_history_pass*.csv

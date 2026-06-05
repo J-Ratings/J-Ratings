@@ -68,13 +68,13 @@ repo_dir <- get_repo_dir()
 
 INPUT_CSV <- file.path(
   repo_dir,
-  "Cricket", "Test Cricket", "pipeline_data", "Matches",
+  "Cricket", "pipeline_data", "Matches",
   "test_cricket_results_master.csv"
 )
 
 OUT_DIR <- file.path(
   repo_dir,
-  "Cricket", "Test Cricket", "pipeline_data", "Elo"
+  "Cricket", "pipeline_data", "Elo"
 )
 
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
@@ -750,7 +750,7 @@ library(ggplot2)
 
 PLOT_DIR <- file.path(
   repo_dir,
-  "Cricket", "Test Cricket", "pipeline_data", "Elo", "plots"
+  "Cricket", "pipeline_data", "Elo", "plots"
 )
 
 dir.create(PLOT_DIR, recursive = TRUE, showWarnings = FALSE)
