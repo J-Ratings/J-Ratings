@@ -18,8 +18,8 @@
     "ICC World XI"
   ],
   "rank_method": "Ranked by latest known Elo on each match date. Teams inactive for more than 6 years at that date are excluded.",
-  "expected_wdl_method": "Elo expected score converted into win/draw/loss using a Test cricket draw-rate curve. Draw probability starts around 28% for evenly matched teams and falls as the Elo gap increases.",
-  "score_method": "Score field uses Cricsheet outcome margin text rather than innings-by-innings scorecards.",
+  "expected_wdl_method": "Elo expected score converted into win/draw/loss using a Test cricket draw-rate curve. Draw probability depends on both match year and Elo gap: the era baseline is higher in the 2000s and lower in recent Tests, while larger Elo gaps reduce the draw probability.",
+  "score_method": "Score field uses Cricsheet outcome margin text rather than innings-by-innings scorecards. Not finished matches are included in team game logs but carry no rating delta.",
   "input_files": {
     "final_ratings": "test_cricket_elo_final_ratings.csv",
     "game_history": "test_cricket_elo_game_history.csv",

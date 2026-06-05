@@ -185,19 +185,30 @@ clamp <- function(x, lo, hi) {
   pmax(lo, pmin(hi, x))
 }
 
-draw_rate_from_gap <- function(abs_gap) {
+draw_rate_from_gap_and_year <- function(abs_gap, year) {
   abs_gap <- as.numeric(abs_gap)
+  year <- as.numeric(year)
   
   # Test cricket draw model:
-  # - Draws are much more common than rugby / football.
-  # - Stronger mismatches still have lower draw probability.
-  max_draw <- 0.2800
-  target_gap <- 600
-  target_draw <- 0.0800
+  # - Draws were more common in the 2000s than in recent Tests.
+  # - Evenly matched teams have the highest draw probability.
+  # - Larger Elo gaps reduce the draw probability.
+  #
+  # Era baseline for evenly matched teams:
+  #   ~30% in the early 2000s
+  #   ~19% around 2018
+  #   ~12% by 2025
+  era_max_draw <- 0.10 + 0.20 / (1 + exp((year - 2017) / 3.5))
   
-  decay <- -log(target_draw / max_draw) / target_gap
+  # Elo-gap multiplier:
+  #   0 gap   => 100% of era baseline
+  #   600 gap => about 37% of era baseline
+  gap_multiplier <- exp(-abs_gap / 600)
   
-  max_draw * exp(-decay * abs_gap)
+  draw_rate <- era_max_draw * gap_multiplier
+  
+  # Safety bounds to avoid impossible or silly values in the W/D/L bar.
+  pmax(0.015, pmin(0.350, draw_rate))
 }
 
 make_score <- function(margin, result) {
@@ -270,6 +281,7 @@ if (length(miss_flags) > 0) {
 }
 
 optional_hist_cols <- c(
+  "result_type",
   "event_name",
   "season",
   "city",
@@ -379,6 +391,7 @@ ghist <- ghist %>%
     away_team = trimws(as.character(away_team)),
     result = trimws(as.character(result)),
     result = if_else(tolower(result) %in% c("draw", "tie"), "Draw", result),
+    result_type = trimws(as.character(result_type)),
     margin = trimws(as.character(margin)),
     margin_type = trimws(as.character(margin_type)),
     margin_value = safe_int(margin_value),
@@ -678,9 +691,10 @@ meta <- list(
   ),
   expected_wdl_method = paste0(
     "Elo expected score converted into win/draw/loss using a Test cricket draw-rate curve. ",
-    "Draw probability starts around 28% for evenly matched teams and falls as the Elo gap increases."
+    "Draw probability depends on both match year and Elo gap: the era baseline is higher in the 2000s ",
+    "and lower in recent Tests, while larger Elo gaps reduce the draw probability."
   ),
-  score_method = "Score field uses Cricsheet outcome margin text rather than innings-by-innings scorecards.",
+  score_method = "Score field uses Cricsheet outcome margin text rather than innings-by-innings scorecards. Not finished matches are included in team game logs but carry no rating delta.",
   input_files = list(
     final_ratings = basename(final_csv),
     game_history = basename(hist_csv),
@@ -769,7 +783,10 @@ for (tm in names(name_to_id)) {
     mutate(
       era = era_label(date),
       
+      is_finished = !(result == "Not finished" | result_type == "N"),
+      
       delta_num = case_when(
+        !is_finished ~ NA_real_,
         home_team == tm ~ HomeRating_After - HomeRating_Before,
         away_team == tm ~ AwayRating_After - AwayRating_Before,
         TRUE ~ NA_real_
@@ -783,8 +800,9 @@ for (tm in names(name_to_id)) {
       home_expected = elo_expected(HomeRating_Before, AwayRating_Before),
       away_expected = 1 - home_expected,
       
+      match_year = lubridate::year(date),
       abs_elo_gap = abs(HomeRating_Before - AwayRating_Before),
-      draw_prob = draw_rate_from_gap(abs_elo_gap),
+      draw_prob = draw_rate_from_gap_and_year(abs_elo_gap, match_year),
       
       home_win_prob = home_expected - draw_prob / 2,
       away_win_prob = away_expected - draw_prob / 2,
@@ -792,7 +810,11 @@ for (tm in names(name_to_id)) {
       home_win_prob = clamp(home_win_prob, 0, 1 - draw_prob),
       away_win_prob = 1 - draw_prob - home_win_prob,
       
-      score = make_score(margin, result)
+      score = if_else(
+        is_finished,
+        make_score(margin, result),
+        "Not finished"
+      )
     ) %>%
     left_join(
       team_rank_lookup %>%
@@ -825,7 +847,7 @@ for (tm in names(name_to_id)) {
       awayWinPct = as.integer(round(100 * away_win_prob)),
       
       rank = as.integer(rank),
-      status = "completed",
+      status = if_else(is_finished, "completed", "not_finished"),
       
       venue = as.character(venue),
       city = as.character(city),
