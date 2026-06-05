@@ -101,7 +101,7 @@ cat("Output dir: ", OUT_DIR, "\n", sep = "")
 # Elo settings
 # -----------------------------
 
-BASELINE_START_RATING <- 2850
+BASELINE_START_RATING <- 2600
 K_VALUE <- 50
 
 # Test cricket is sparse, so use fewer provisional games than rugby.
@@ -111,8 +111,8 @@ PROVISIONAL_K <- 50
 # Time-varying entry rating settings for Pass 1.
 # Cricsheet men’s Test data starts from 2001, but these dates keep the
 # same long-run style as the rugby model.
-ENTRY_RATING_START <- 2450
-ENTRY_RATING_END   <- 1950
+ENTRY_RATING_START <- 2600
+ENTRY_RATING_END   <- 2600
 ENTRY_DATE_START   <- as.Date("1877-03-15")
 ENTRY_DATE_END     <- as.Date("2020-01-01")
 
