@@ -11,7 +11,7 @@
   </script>
 
   <meta charset="utf-8">
-  <title>J-Ratings: Rugby Union</title>
+  <title>J-Ratings: Test Cricket</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="../style.css">
@@ -95,7 +95,9 @@
       font-size: 0.95rem;
     }
 
-    .range-btn:hover { opacity: 0.92; }
+    .range-btn:hover {
+      opacity: 0.92;
+    }
 
     .range-btn.is-active {
       background: rgba(255,255,255,0.10);
@@ -201,8 +203,13 @@
     }
 
     @media (max-width: 600px) {
-      #compare-chart { height: 420px; }
-      h2.compare-title { font-size: 1.7rem; }
+      #compare-chart {
+        height: 420px;
+      }
+
+      h2.compare-title {
+        font-size: 1.7rem;
+      }
     }
 
     @media (max-width: 520px) {
@@ -218,16 +225,24 @@
       }
 
       #teams th:nth-child(1),
-      #teams td:nth-child(1) { width: 52px; }
+      #teams td:nth-child(1) {
+        width: 52px;
+      }
 
       #teams th:nth-child(2),
-      #teams td:nth-child(2) { width: 44px; }
+      #teams td:nth-child(2) {
+        width: 44px;
+      }
 
       #teams th:nth-child(4),
-      #teams td:nth-child(4) { width: 78px; }
+      #teams td:nth-child(4) {
+        width: 78px;
+      }
 
       #teams th:nth-child(3),
-      #teams td:nth-child(3) { width: auto; }
+      #teams td:nth-child(3) {
+        width: auto;
+      }
 
       #teams td:nth-child(3) a {
         display: block;
@@ -260,13 +275,14 @@
     }
   </style>
 </head>
+
 <body>
 <header>
   <div class="wrap">
     <h1 class="site-title">
       <a id="home-link" href="./" class="brand-with-logo">
-        <span>J-Ratings <span class="title-rugby">Rugby Union</span></span>
-        <img src="/Rugby Banner Logo.png" alt="Rugby logo" class="sport-logo">
+        <span>J-Ratings <span class="title-rugby">Test Cricket</span></span>
+        <img src="/Cricket Banner Logo.png" alt="Cricket logo" class="sport-logo">
       </a>
     </h1>
 
@@ -281,7 +297,7 @@
 
 <main class="wrap">
   <section class="panel" id="teams-panel">
-    <h2>All teams</h2>
+    <h2>Test teams</h2>
 
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by team…">
@@ -362,20 +378,12 @@
     <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
 
     <div>
-      Historical results data:
-      <a href="https://www.kaggle.com/datasets/lylebegbie/international-rugby-union-results-from-18712022">
-        International Rugby Union Results dataset (Kaggle)
-      </a>
+      Test cricket match data:
+      <a href="https://cricsheet.org/">Cricsheet</a>
     </div>
 
     <div>
-      Additional historical match results referenced from
-      <a href="https://www.rugbydatabase.co.nz/">RugbyDatabase</a>
-    </div>
-
-    <div>
-      Recent match data provided via
-      <a href="https://www.thesportsdb.com/">TheSportsDB API</a>
+      Cricsheet data is used under its published licence terms. Ratings are independently calculated by J-Ratings.
     </div>
   </footer>
 </main>
@@ -388,56 +396,21 @@ const FLAGS_BASE = '../../flags';
 const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
 const TEAM_COLOURS = {
-  "New Zealand":"#000000",
-  "South Africa":"#0B7A3B",
-  "Ireland":"#169B62",
-  "Australia":"#FFCD00",
-  "England":"#FFFFFF",
-  "France":"#002654",
-  "Wales":"#C8102E",
-  "Scotland":"#1E3A8A",
-  "Argentina":"#75AADB",
-  "Fiji":"#000000",
-  "Japan":"#BC002D",
-  "Samoa":"#1E3A8A",
-  "Italy":"#0066CC",
-  "Canada":"#D52B1E",
-  "Georgia":"#C8102E",
-  "Germany":"#000000",
-  "Romania":"#FFD700",
-  "Belgium":"#FFD100",
-  "Netherlands":"#FF7F00",
-  "Tonga":"#C8102E",
-  "Uruguay":"#7EC0EE",
-  "United States":"#1F3A93",
-  "Hong Kong":"#C8102E",
-  "Portugal":"#C8102E",
-  "Namibia":"#003DA5",
-  "Paraguay":"#D52B1E",
-  "Zimbabwe":"#FFD700",
-  "Brazil":"#FFDF00",
-  "Sri Lanka":"#8D153A",
-  "Spain":"#C60B1E",
-  "Kazakhstan":"#22D3EE",
-  "Malaysia":"#FFD700",
-  "India":"#FF9933",
-  "South Korea":"#E60026",
-  "Chile":"#D52B1E",
-  "United Arab Emirates":"#C8102E",
-  "Qatar":"#8A1538",
-  "Poland":"#E31E24",
-  "Kenya":"#C8102E",
-  "Algeria":"#00A86B",
-  "Switzerland":"#D52B1E",
-  "Uganda":"#FCDC04",
-  "Burkina Faso":"#EF2B2D",
-  "Colombia":"#FCD116"
+  "Australia": "#FFCD00",
+  "Bangladesh": "#006A4E",
+  "England": "#00247D",
+  "India": "#FF9933",
+  "Ireland": "#169B62",
+  "New Zealand": "#000000",
+  "Pakistan": "#01411C",
+  "South Africa": "#007A4D",
+  "Sri Lanka": "#8D153A",
+  "West Indies": "#7A263A",
+  "Zimbabwe": "#FFD200"
 };
 
 const DARK_LINE_OVERRIDES = {
-  "New Zealand": "#BFBFBF",
-  "Fiji": "#D6D6D6",
-  "Germany": "#BFBFBF"
+  "New Zealand": "#BFBFBF"
 };
 
 const state = {
@@ -461,6 +434,7 @@ function updateHeaders() {
 function formatAsOf(iso) {
   const [y, m, d] = String(iso || '').split('-').map(Number);
   if (!y || !m || !d) return '';
+
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   return `${d} ${months[m - 1]} ${y}`;
 }
@@ -492,15 +466,15 @@ function normaliseFlagCode(code) {
 }
 
 function resolveFlagCode(flagCode, teamName) {
-  const name = String(teamName || '').trim().toLowerCase();
-  if (name === 'ireland') return 'irfu';
   return normaliseFlagCode(flagCode);
 }
 
 function flagImgHtml(flagCode, label) {
   const code = resolveFlagCode(flagCode, label);
   if (!code) return '';
+
   const safeLabel = escapeHtml(label || '');
+
   return `<img src="${FLAGS_BASE}/${encodeURIComponent(code)}.svg" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
 }
 
@@ -576,7 +550,7 @@ function rebuildRowsFromMode() {
         name: d.display_name || d.name,
         flag: d.flag || '',
         rating: +d.elo,
-        tournament: d.tournament || ''
+        tournament: d.tournament || d.competition || ''
       }))
       .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
   }
@@ -610,8 +584,10 @@ async function fetchHistoryFor(id) {
   try {
     const res = await fetch(`../data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
     if (!res.ok) return null;
+
     const rows = await res.json();
     histCache.set(id, rows);
+
     return rows;
   } catch {
     return null;
@@ -637,8 +613,11 @@ function normalise(series, dedupeByDay = false) {
     const d = new Date(p.x);
     const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
-    if (key !== lastKey) out.push(p);
-    else out[out.length - 1] = p;
+    if (key !== lastKey) {
+      out.push(p);
+    } else {
+      out[out.length - 1] = p;
+    }
 
     lastKey = key;
   }
@@ -653,6 +632,7 @@ function aggregate(series, mode) {
 
   for (const p of series) {
     const d = new Date(p.x);
+
     const key = mode === 'monthly'
       ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
       : `${d.getFullYear()}`;
@@ -674,6 +654,7 @@ function aggregate(series, mode) {
 
 function applySinceFilter(series, sinceYear) {
   if (!sinceYear) return series;
+
   const start = new Date(`${sinceYear}-01-01T00:00:00Z`).getTime();
   return series.filter(p => new Date(p.x).getTime() >= start);
 }
@@ -681,9 +662,11 @@ function applySinceFilter(series, sinceYear) {
 function hexToRgb(hex) {
   const clean = String(hex || '').trim();
   const match = clean.match(/^#([0-9a-f]{6})$/i);
+
   if (!match) return null;
 
   const value = match[1];
+
   return {
     r: parseInt(value.slice(0, 2), 16),
     g: parseInt(value.slice(2, 4), 16),
@@ -728,6 +711,7 @@ function getDisplayColour(teamName) {
   if (!rgb) return fallback;
 
   const lum = relativeLuminance(rgb);
+
   if (lum >= 0.05) return raw;
 
   const lifted = mixWithWhite(rgb, 0.45);
@@ -806,6 +790,7 @@ async function buildComparison(teams) {
   ymax = Math.ceil(ymax / 100) * 100;
 
   const shapes = [];
+
   for (let v = ymin; v <= ymax; v += 100) {
     shapes.push({
       type: 'line',
@@ -814,7 +799,10 @@ async function buildComparison(teams) {
       x1: 1,
       y0: v,
       y1: v,
-      line: { width: 1, color: 'rgba(128,128,128,0.35)' },
+      line: {
+        width: 1,
+        color: 'rgba(128,128,128,0.35)'
+      },
       layer: 'below'
     });
   }
@@ -822,9 +810,18 @@ async function buildComparison(teams) {
   const cs = getComputedStyle(document.body);
 
   Plotly.newPlot('compare-chart', traces, {
-    margin: { l: 60, r: 20, t: 50, b: 55 },
-    xaxis: { type: 'date' },
-    yaxis: { title: 'Rating' },
+    margin: {
+      l: 60,
+      r: 20,
+      t: 50,
+      b: 55
+    },
+    xaxis: {
+      type: 'date'
+    },
+    yaxis: {
+      title: 'Rating'
+    },
     legend: {
       orientation: 'h',
       y: 1.12,
@@ -832,7 +829,10 @@ async function buildComparison(teams) {
     },
     paper_bgcolor: cs.backgroundColor,
     plot_bgcolor: cs.backgroundColor,
-    font: { color: cs.color, size: 14 },
+    font: {
+      color: cs.color,
+      size: 14
+    },
     shapes
   }, {
     staticPlot: IS_TOUCH,
@@ -852,12 +852,14 @@ function setupCompareButton() {
       const id = `chk-${t.id}`;
       const wrapper = document.createElement('div');
       wrapper.className = 'compare-list-row';
+
       wrapper.innerHTML = `
         <label for="${id}">
           <input type="checkbox" id="${id}" value="${t.id}">
           ${escapeHtml(t.name)} (${Math.round(t.rating)})
         </label>
       `;
+
       listDiv.appendChild(wrapper);
     });
 
@@ -882,8 +884,10 @@ function setupCompareButton() {
     if (compareAgg) compareAgg.value = 'monthly';
 
     document.querySelectorAll('.range-btn').forEach(btn => btn.classList.remove('is-active'));
+
     const since2000Btn = document.querySelector('.range-btn[data-since="2000"]');
     if (since2000Btn) since2000Btn.classList.add('is-active');
+
     COMPARE_SINCE_YEAR = 2000;
 
     const chosen = state.filtered.filter(t => selectedIds.includes(t.id));
@@ -938,6 +942,7 @@ async function load() {
     rebuildRowsFromMode();
   } catch (err) {
     const asofEl = document.getElementById('asof');
+
     if (asofEl) {
       asofEl.style.display = 'none';
       asofEl.textContent = '';
