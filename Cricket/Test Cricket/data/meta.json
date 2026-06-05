@@ -1,0 +1,28 @@
+{
+  "sport": "Test Cricket",
+  "latest_game_date": "2026-05-27",
+  "asof": "2026-05-27",
+  "games": 879,
+  "inactive_years": 6,
+  "inactive_cutoff_days": 2191.5,
+  "total_teams_seen": 11,
+  "active_teams": 11,
+  "inactive_teams": 0,
+  "flagged_teams": 9,
+  "unflagged_teams": 2,
+  "history_has_world_rank": true,
+  "games_have_world_rank": true,
+  "games_have_expected_wdl": true,
+  "source": "Cricsheet men's Test match JSON",
+  "excluded_teams": [
+    "ICC World XI"
+  ],
+  "rank_method": "Ranked by latest known Elo on each match date. Teams inactive for more than 6 years at that date are excluded.",
+  "expected_wdl_method": "Elo expected score converted into win/draw/loss using a Test cricket draw-rate curve. Draw probability starts around 28% for evenly matched teams and falls as the Elo gap increases.",
+  "score_method": "Score field uses Cricsheet outcome margin text rather than innings-by-innings scorecards.",
+  "input_files": {
+    "final_ratings": "test_cricket_elo_final_ratings.csv",
+    "game_history": "test_cricket_elo_game_history.csv",
+    "flag_lookup": "team_flag_lookup.csv"
+  }
+}
