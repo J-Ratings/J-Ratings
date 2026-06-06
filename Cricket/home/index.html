@@ -191,61 +191,68 @@
     These only apply from 900px upwards, so the phone layout is protected.
   */
   @media (min-width: 900px) {
-    .table-wrap {
-      max-width: 1040px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    #teams {
-      width: 100%;
-    }
-
-    #teams th,
-    #teams td {
-      font-size: 1.18rem;
-      padding-top: 18px;
-      padding-bottom: 18px;
-    }
-
-    #teams th {
-      font-weight: 800;
-      letter-spacing: 0.01em;
-    }
-
-    #teams td:nth-child(1) {
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-
-    #teams td:nth-child(3) a {
-      font-size: 1.32rem;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      text-decoration: none;
-      text-shadow:
-        -1px -1px 0 rgba(0,0,0,0.9),
-         1px -1px 0 rgba(0,0,0,0.9),
-        -1px  1px 0 rgba(0,0,0,0.9),
-         1px  1px 0 rgba(0,0,0,0.9);
-    }
-
-    #teams td:nth-child(3) a:hover {
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    #teams td:nth-child(4) {
-      font-size: 1.28rem;
-      font-weight: 800;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .flag-icon {
-      width: 58px;
-      height: 42px;
-    }
+  .table-wrap {
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
   }
+
+  #teams {
+    width: 100%;
+  }
+
+  #teams th,
+  #teams td {
+    font-size: 1.18rem;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  #teams th {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+  }
+
+  #teams td:nth-child(1) {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  #teams td:nth-child(2) {
+    font-size: 1.4rem;
+  }
+
+  #teams td:nth-child(3) a {
+    font-size: 1.58rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    text-shadow:
+      -1px -1px 0 rgba(0,0,0,0.9),
+       1px -1px 0 rgba(0,0,0,0.9),
+      -1px  1px 0 rgba(0,0,0,0.9),
+       1px  1px 0 rgba(0,0,0,0.9);
+  }
+
+  #teams td:nth-child(3) a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  #teams td:nth-child(4) {
+    font-family: "Agency FB", "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
+    font-size: 2.55rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.03em;
+  }
+
+  .flag-icon {
+    width: 70px;
+    height: 50px;
+  }
+}
 
   @media (max-width: 700px) {
     .compare-header-row {
