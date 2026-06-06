@@ -37,8 +37,8 @@
   }
 
   .flag-icon {
-    width: 39.93px;
-    height: 29.04px;
+    width: 78px;
+    height: 56px;
     display: block;
     margin: 0 auto;
     object-fit: contain;
@@ -186,21 +186,7 @@
     margin-top: 12px;
   }
 
-  /*
-    Desktop-only table improvements.
-    These only apply from 900px upwards, so the phone layout is protected.
-  */
-  @media (min-width: 900px) {
-  .table-wrap {
-    max-width: 784px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #teams {
-    width: 100%;
-  }
-
+  /* Shared table styling for desktop and phone */
   #teams th,
   #teams td {
     font-size: 0.94rem;
@@ -254,11 +240,18 @@
     letter-spacing: 0.03em;
   }
 
-  .flag-icon {
-    width: 78px;
-    height: 56px;
+  /* Desktop/tablet width only */
+  @media (min-width: 900px) {
+    .table-wrap {
+      max-width: 784px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #teams {
+      width: 100%;
+    }
   }
-}
 
   @media (max-width: 700px) {
     .compare-header-row {
@@ -305,12 +298,12 @@
 
     #teams th:nth-child(2),
     #teams td:nth-child(2) {
-      width: 44px;
+      width: 72px;
     }
 
     #teams th:nth-child(4),
     #teams td:nth-child(4) {
-      width: 78px;
+      width: 82px;
     }
 
     #teams th:nth-child(3),
@@ -318,11 +311,29 @@
       width: auto;
     }
 
+    #teams th {
+      font-size: 1.05rem;
+    }
+
+    #teams td:nth-child(1) {
+      font-size: 1.15rem;
+    }
+
     #teams td:nth-child(3) a {
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      font-size: 1.12rem;
+    }
+
+    #teams td:nth-child(4) {
+      font-size: 1.65rem;
+    }
+
+    .flag-icon {
+      width: 56px;
+      height: 40px;
     }
   }
 
