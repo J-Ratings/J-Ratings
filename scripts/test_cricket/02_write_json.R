@@ -316,6 +316,7 @@ flag_lookup_tbl <- flag_lookup %>%
   ungroup()
 
 flag_aliases <- tibble(
+  cricket_name = c(
     "England",
     "Ireland",
     "West Indies",
