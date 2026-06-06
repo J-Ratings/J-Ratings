@@ -211,15 +211,41 @@ draw_rate_from_gap_and_year <- function(abs_gap, year) {
   pmax(0.015, pmin(0.350, draw_rate))
 }
 
-make_score <- function(margin, result) {
-  margin <- trimws(as.character(margin))
+make_score <- function(result, margin, margin_type, margin_value) {
   result <- trimws(as.character(result))
+  margin <- trimws(as.character(margin))
+  margin_type <- trimws(as.character(margin_type))
+  margin_value <- suppressWarnings(as.integer(margin_value))
   
-  ifelse(
-    !is.na(margin) & margin != "",
-    margin,
-    ifelse(!is.na(result) & result != "", result, NA_character_)
-  )
+  if (!is.na(margin) && margin != "") {
+    return(margin)
+  }
+  
+  if (is.na(result) || result == "") {
+    return(NA_character_)
+  }
+  
+  if (result == "Draw") {
+    return("Draw")
+  }
+  
+  if (result == "Not finished") {
+    return("Not finished")
+  }
+  
+  if (!is.na(margin_type) && margin_type == "innings_runs" && !is.na(margin_value)) {
+    return(paste0(result, " won by an innings and ", margin_value, " runs"))
+  }
+  
+  if (!is.na(margin_type) && margin_type == "runs" && !is.na(margin_value)) {
+    return(paste0(result, " won by ", margin_value, " runs"))
+  }
+  
+  if (!is.na(margin_type) && margin_type == "wickets" && !is.na(margin_value)) {
+    return(paste0(result, " won by ", margin_value, " wickets"))
+  }
+  
+  result
 }
 
 # -----------------------------
@@ -783,7 +809,11 @@ for (tm in names(name_to_id)) {
     mutate(
       era = era_label(date),
       
-      is_finished = !(result == "Not finished" | result_type == "N"),
+      is_finished = case_when(
+        result == "Not finished" ~ FALSE,
+        result_type == "N" ~ FALSE,
+        TRUE ~ TRUE
+      ),
       
       delta_num = case_when(
         !is_finished ~ NA_real_,
@@ -810,10 +840,25 @@ for (tm in names(name_to_id)) {
       home_win_prob = clamp(home_win_prob, 0, 1 - draw_prob),
       away_win_prob = 1 - draw_prob - home_win_prob,
       
-      score = if_else(
+      score = mapply(
+        function(result, margin, margin_type, margin_value, is_finished) {
+          if (is.na(is_finished) || !is_finished) {
+            return("Not finished")
+          }
+          
+          make_score(
+            result = result,
+            margin = margin,
+            margin_type = margin_type,
+            margin_value = margin_value
+          )
+        },
+        result,
+        margin,
+        margin_type,
+        margin_value,
         is_finished,
-        make_score(margin, result),
-        "Not finished"
+        USE.NAMES = FALSE
       )
     ) %>%
     left_join(
