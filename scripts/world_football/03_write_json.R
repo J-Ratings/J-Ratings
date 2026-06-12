@@ -32,6 +32,14 @@ source_results_csv <- file.path(
   "all_matches.csv"
 )
 
+manual_games_csv <- file.path(
+  repo_dir,
+  "InternationalFootball",
+  "pipeline_data",
+  "source",
+  "manual_games.csv"
+)
+
 base_data_dir <- file.path(
   repo_dir,
   "InternationalFootball",
@@ -57,22 +65,6 @@ if (!file.exists(hist_csv)) {
 }
 
 # -----------------------------
-# Manual future fixtures
-# -----------------------------
-# Add known fixtures here.
-# These are not duplicated once the real completed match appears in ghist.
-
-manual_world_cup_fixtures <- tibble::tribble(
-  ~date,        ~tournament,       ~home_team, ~away_team, ~source,
-  "2026-06-17", "FIFA World Cup",  "Ghana",    "Panama",   "manual_world_cup_2026",
-  "2026-06-17", "FIFA World Cup",  "England",  "Croatia",  "manual_world_cup_2026",
-  "2026-06-23", "FIFA World Cup",  "England",  "Ghana",    "manual_world_cup_2026",
-  "2026-06-24", "FIFA World Cup",  "Croatia",  "Panama",   "manual_world_cup_2026",
-  "2026-06-27", "FIFA World Cup",  "Panama",   "England",  "manual_world_cup_2026",
-  "2026-06-27", "FIFA World Cup",  "Croatia",  "Ghana",    "manual_world_cup_2026"
-)
-
-# -----------------------------
 # Helpers
 # -----------------------------
 
@@ -89,11 +81,14 @@ normalise_team_name <- function(x) {
   team_map <- c(
     "Åland" = "Åland Islands",
     "Türkiye" = "Turkey",
+    "Turkiye" = "Turkey",
     "Curaçao" = "Curacao",
     "Côte d'Ivoire" = "Ivory Coast",
+    "Cote d'Ivoire" = "Ivory Coast",
     "Congo DR" = "DR Congo",
     "Democratic Republic of the Congo" = "DR Congo",
     "USA" = "United States",
+    "USMNT" = "United States",
     "United States of America" = "United States",
     "Korea Republic" = "South Korea",
     "Czech Republic" = "Czechia"
@@ -250,7 +245,11 @@ ghist <- ghist %>%
     AwayFlag = clean_flag(AwayFlag),
     tournament = trimws(as.character(tournament)),
     result = trimws(as.character(result)),
-    result = if_else(tolower(result) == "draw", "Draw", normalise_team_name(result)),
+    result = if_else(
+      tolower(result) == "draw",
+      "Draw",
+      normalise_team_name(result)
+    ),
     score = trimws(as.character(score)),
     HomeRating_Before = as.numeric(HomeRating_Before),
     AwayRating_Before = as.numeric(AwayRating_Before),
@@ -485,12 +484,15 @@ cat("Wrote rating history files:", n_hist_written, "\n")
 # -----------------------------
 # Future fixtures
 # -----------------------------
-# This combines:
+# Combines:
 # 1. future rows from all_matches.csv, if that source ever contains them
-# 2. manually coded fixtures from manual_world_cup_fixtures
+# 2. future rows from manual_games.csv
 #
-# Manual fixtures are removed automatically once the completed match appears
-# in ghist, using a same-date, same-tournament, same-two-teams key.
+# Manual rows are removed automatically once the completed match appears
+# in world_football_elo_game_history.csv.
+#
+# Duplicate check uses:
+# same date + same tournament + same two teams, ignoring home/away order.
 
 future_fixtures_raw <- tibble()
 
@@ -563,28 +565,105 @@ if (file.exists(source_results_csv)) {
     future_fixtures_raw <- bind_rows(future_fixtures_raw, source_future)
   }
 } else {
-  warning("No source all_matches.csv found, so only manually coded fixtures will be used: ", source_results_csv)
+  warning(
+    "No source all_matches.csv found, so future fixtures will only come from manual_games.csv: ",
+    source_results_csv
+  )
 }
 
 # -----------------------------
-# Future fixtures from hard-coded manual fixtures
+# Future fixtures from manual_games.csv
 # -----------------------------
 
-manual_future <- manual_world_cup_fixtures %>%
+if (file.exists(manual_games_csv)) {
+  manual_games <- read_csv(
+    manual_games_csv,
+    show_col_types = FALSE,
+    locale = locale(encoding = "UTF-8")
+  )
+  
+  required_manual_cols <- c(
+    "date",
+    "tournament",
+    "home_team",
+    "away_team",
+    "source"
+  )
+  
+  missing_manual_cols <- setdiff(required_manual_cols, names(manual_games))
+  
+  if (length(missing_manual_cols) > 0) {
+    warning(
+      "Skipping manual_games.csv because it is missing columns: ",
+      paste(missing_manual_cols, collapse = ", ")
+    )
+  } else {
+    manual_future <- manual_games %>%
+      mutate(
+        date = parse_mixed_date(date),
+        home_team = normalise_team_name(home_team),
+        away_team = normalise_team_name(away_team),
+        tournament = trimws(as.character(tournament)),
+        source = trimws(as.character(source)),
+        fixture_key = fixture_key_any_order(date, home_team, away_team, tournament)
+      ) %>%
+      filter(
+        !is.na(date),
+        date > asof_date,
+        home_team != "",
+        away_team != "",
+        !(fixture_key %in% completed_fixture_keys)
+      ) %>%
+      transmute(
+        date,
+        tournament,
+        home_team,
+        away_team,
+        source,
+        fixture_key
+      )
+    
+    future_fixtures_raw <- bind_rows(future_fixtures_raw, manual_future)
+  }
+} else {
+  warning("No manual_games.csv found: ", manual_games_csv)
+}
+
+# -----------------------------
+# De-duplicate future fixtures
+# -----------------------------
+# If all_matches.csv and manual_games.csv both contain the same future match,
+# prefer all_matches.csv over manual_games.csv.
+
+future_fixtures_raw <- future_fixtures_raw %>%
   mutate(
-    date = parse_mixed_date(date),
-    home_team = normalise_team_name(home_team),
-    away_team = normalise_team_name(away_team),
-    tournament = trimws(as.character(tournament)),
-    source = trimws(as.character(source)),
-    fixture_key = fixture_key_any_order(date, home_team, away_team, tournament)
+    source_priority = case_when(
+      source == "source_all_matches" ~ 1L,
+      TRUE ~ 2L
+    )
   ) %>%
+  arrange(date, tournament, fixture_key, source_priority) %>%
+  distinct(fixture_key, .keep_all = TRUE) %>%
+  select(-fixture_key, -source_priority)
+
+# -----------------------------
+# Add Elo probabilities
+# -----------------------------
+
+future_fixtures_with_ratings <- future_fixtures_raw %>%
+  mutate(
+    HomeRating_Before = as.numeric(unname(name_to_rating[home_team])),
+    AwayRating_Before = as.numeric(unname(name_to_rating[away_team])),
+    home_id = unname(name_to_id[home_team]),
+    away_id = unname(name_to_id[away_team])
+  )
+
+missing_future_ratings <- future_fixtures_with_ratings %>%
   filter(
-    !is.na(date),
-    date > asof_date,
-    home_team != "",
-    away_team != "",
-    !(fixture_key %in% completed_fixture_keys)
+    !is.finite(HomeRating_Before) |
+      !is.finite(AwayRating_Before) |
+      is.na(home_id) |
+      is.na(away_id)
   ) %>%
   transmute(
     date,
@@ -592,34 +671,29 @@ manual_future <- manual_world_cup_fixtures %>%
     home_team,
     away_team,
     source,
-    fixture_key
+    HomeRating_Before,
+    AwayRating_Before,
+    home_id,
+    away_id
   )
 
-future_fixtures_raw <- bind_rows(future_fixtures_raw, manual_future)
+if (nrow(missing_future_ratings) > 0) {
+  warning(
+    "Some future fixtures were skipped because one or both teams were not found in the ratings table:\n",
+    paste(
+      paste(
+        missing_future_ratings$date,
+        missing_future_ratings$home_team,
+        "v",
+        missing_future_ratings$away_team,
+        sep = " "
+      ),
+      collapse = "\n"
+    )
+  )
+}
 
-# -----------------------------
-# De-duplicate future fixtures
-# -----------------------------
-# If all_matches.csv and manual fixtures both contain the same upcoming match,
-# keep the first one after ordering. You can change arrange() if you want
-# manual rows to take priority.
-
-future_fixtures_raw <- future_fixtures_raw %>%
-  arrange(date, tournament, home_team, away_team, source) %>%
-  distinct(fixture_key, .keep_all = TRUE) %>%
-  select(-fixture_key)
-
-# -----------------------------
-# Add Elo probabilities
-# -----------------------------
-
-future_fixtures <- future_fixtures_raw %>%
-  mutate(
-    HomeRating_Before = as.numeric(unname(name_to_rating[home_team])),
-    AwayRating_Before = as.numeric(unname(name_to_rating[away_team])),
-    home_id = unname(name_to_id[home_team]),
-    away_id = unname(name_to_id[away_team])
-  ) %>%
+future_fixtures <- future_fixtures_with_ratings %>%
   filter(
     is.finite(HomeRating_Before),
     is.finite(AwayRating_Before),
