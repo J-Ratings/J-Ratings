@@ -1,9 +1,9 @@
-
 library(dplyr)
 library(readr)
 library(jsonlite)
 library(stringi)
 library(stringr)
+library(tibble)
 
 options(stringsAsFactors = FALSE)
 
@@ -57,6 +57,22 @@ if (!file.exists(hist_csv)) {
 }
 
 # -----------------------------
+# Manual future fixtures
+# -----------------------------
+# Add known fixtures here.
+# These are not duplicated once the real completed match appears in ghist.
+
+manual_world_cup_fixtures <- tibble::tribble(
+  ~date,        ~tournament,       ~home_team, ~away_team, ~source,
+  "2026-06-17", "FIFA World Cup",  "Ghana",    "Panama",   "manual_world_cup_2026",
+  "2026-06-17", "FIFA World Cup",  "England",  "Croatia",  "manual_world_cup_2026",
+  "2026-06-23", "FIFA World Cup",  "England",  "Ghana",    "manual_world_cup_2026",
+  "2026-06-24", "FIFA World Cup",  "Croatia",  "Panama",   "manual_world_cup_2026",
+  "2026-06-27", "FIFA World Cup",  "Panama",   "England",  "manual_world_cup_2026",
+  "2026-06-27", "FIFA World Cup",  "Croatia",  "Ghana",    "manual_world_cup_2026"
+)
+
+# -----------------------------
 # Helpers
 # -----------------------------
 
@@ -71,7 +87,16 @@ normalise_team_name <- function(x) {
   x0 <- trimws(as.character(x))
   
   team_map <- c(
-    "Åland" = "Åland Islands"
+    "Åland" = "Åland Islands",
+    "Türkiye" = "Turkey",
+    "Curaçao" = "Curacao",
+    "Côte d'Ivoire" = "Ivory Coast",
+    "Congo DR" = "DR Congo",
+    "Democratic Republic of the Congo" = "DR Congo",
+    "USA" = "United States",
+    "United States of America" = "United States",
+    "Korea Republic" = "South Korea",
+    "Czech Republic" = "Czechia"
   )
   
   ifelse(x0 %in% names(team_map), unname(team_map[x0]), x0)
@@ -137,6 +162,18 @@ draw_rate_from_gap <- function(abs_gap) {
   scale <- 68.851
   
   max_draw / (1 + exp((abs_gap - midpoint) / scale))
+}
+
+fixture_key_any_order <- function(date, team_a, team_b, tournament) {
+  d <- format(as.Date(date), "%Y-%m-%d")
+  a <- normalise_team_name(team_a)
+  b <- normalise_team_name(team_b)
+  t <- trimws(as.character(tournament))
+  
+  team_1 <- pmin(a, b)
+  team_2 <- pmax(a, b)
+  
+  paste(d, team_1, team_2, t, sep = "||")
 }
 
 # -----------------------------
@@ -448,11 +485,27 @@ cat("Wrote rating history files:", n_hist_written, "\n")
 # -----------------------------
 # Future fixtures
 # -----------------------------
-# The new source usually contains completed matches only.
-# This section is kept so the website still supports scheduled fixtures
-# if all_matches.csv ever includes future rows with blank scores.
+# This combines:
+# 1. future rows from all_matches.csv, if that source ever contains them
+# 2. manually coded fixtures from manual_world_cup_fixtures
+#
+# Manual fixtures are removed automatically once the completed match appears
+# in ghist, using a same-date, same-tournament, same-two-teams key.
 
-future_fixtures <- tibble()
+future_fixtures_raw <- tibble()
+
+completed_fixture_keys <- fixture_key_any_order(
+  ghist$date,
+  ghist$home_team,
+  ghist$away_team,
+  ghist$tournament
+)
+
+completed_fixture_keys <- unique(completed_fixture_keys)
+
+# -----------------------------
+# Future fixtures from all_matches.csv
+# -----------------------------
 
 if (file.exists(source_results_csv)) {
   source_results <- read_csv(
@@ -474,18 +527,20 @@ if (file.exists(source_results_csv)) {
   
   if (length(missing_source_cols) > 0) {
     warning(
-      "Skipping future fixtures because all_matches.csv is missing columns: ",
+      "Skipping future fixtures from all_matches.csv because it is missing columns: ",
       paste(missing_source_cols, collapse = ", ")
     )
   } else {
-    future_fixtures <- source_results %>%
+    source_future <- source_results %>%
       mutate(
         date = parse_mixed_date(date),
         home_team = normalise_team_name(home_team),
         away_team = normalise_team_name(away_team),
         home_score = clean_score_num(home_score),
         away_score = clean_score_num(away_score),
-        tournament = trimws(as.character(tournament))
+        tournament = trimws(as.character(tournament)),
+        source = "source_all_matches",
+        fixture_key = fixture_key_any_order(date, home_team, away_team, tournament)
       ) %>%
       filter(
         !is.na(date),
@@ -493,60 +548,121 @@ if (file.exists(source_results_csv)) {
         home_team != "",
         away_team != "",
         is.na(home_score),
-        is.na(away_score)
-      ) %>%
-      mutate(
-        HomeRating_Before = as.numeric(unname(name_to_rating[home_team])),
-        AwayRating_Before = as.numeric(unname(name_to_rating[away_team])),
-        home_id = unname(name_to_id[home_team]),
-        away_id = unname(name_to_id[away_team])
-      ) %>%
-      filter(
-        is.finite(HomeRating_Before),
-        is.finite(AwayRating_Before),
-        !is.na(home_id),
-        !is.na(away_id)
-      ) %>%
-      mutate(
-        era = era_label(date),
-        
-        home_expected = elo_expected(HomeRating_Before, AwayRating_Before),
-        away_expected = 1 - home_expected,
-        
-        abs_elo_gap = abs(HomeRating_Before - AwayRating_Before),
-        draw_prob = draw_rate_from_gap(abs_elo_gap),
-        
-        home_win_prob = home_expected - draw_prob / 2,
-        away_win_prob = away_expected - draw_prob / 2,
-        
-        home_win_prob = clamp(home_win_prob, 0, 1 - draw_prob),
-        away_win_prob = 1 - draw_prob - home_win_prob
+        is.na(away_score),
+        !(fixture_key %in% completed_fixture_keys)
       ) %>%
       transmute(
-        date = format(date, "%Y-%m-%d"),
-        era = as.character(era),
-        tournament = as.character(tournament),
-        
-        home = as.character(home_team),
-        homeElo = as.integer(round(HomeRating_Before)),
-        
-        away = as.character(away_team),
-        awayElo = as.integer(round(AwayRating_Before)),
-        
-        result = NA_character_,
-        score = NA_character_,
-        delta = NA_character_,
-        
-        homeWinPct = as.integer(round(100 * home_win_prob)),
-        drawPct = as.integer(round(100 * draw_prob)),
-        awayWinPct = as.integer(round(100 * away_win_prob)),
-        
-        status = "scheduled"
+        date,
+        tournament,
+        home_team,
+        away_team,
+        source,
+        fixture_key
       )
+    
+    future_fixtures_raw <- bind_rows(future_fixtures_raw, source_future)
   }
 } else {
-  warning("No source all_matches.csv found, so no future fixtures were added: ", source_results_csv)
+  warning("No source all_matches.csv found, so only manually coded fixtures will be used: ", source_results_csv)
 }
+
+# -----------------------------
+# Future fixtures from hard-coded manual fixtures
+# -----------------------------
+
+manual_future <- manual_world_cup_fixtures %>%
+  mutate(
+    date = parse_mixed_date(date),
+    home_team = normalise_team_name(home_team),
+    away_team = normalise_team_name(away_team),
+    tournament = trimws(as.character(tournament)),
+    source = trimws(as.character(source)),
+    fixture_key = fixture_key_any_order(date, home_team, away_team, tournament)
+  ) %>%
+  filter(
+    !is.na(date),
+    date > asof_date,
+    home_team != "",
+    away_team != "",
+    !(fixture_key %in% completed_fixture_keys)
+  ) %>%
+  transmute(
+    date,
+    tournament,
+    home_team,
+    away_team,
+    source,
+    fixture_key
+  )
+
+future_fixtures_raw <- bind_rows(future_fixtures_raw, manual_future)
+
+# -----------------------------
+# De-duplicate future fixtures
+# -----------------------------
+# If all_matches.csv and manual fixtures both contain the same upcoming match,
+# keep the first one after ordering. You can change arrange() if you want
+# manual rows to take priority.
+
+future_fixtures_raw <- future_fixtures_raw %>%
+  arrange(date, tournament, home_team, away_team, source) %>%
+  distinct(fixture_key, .keep_all = TRUE) %>%
+  select(-fixture_key)
+
+# -----------------------------
+# Add Elo probabilities
+# -----------------------------
+
+future_fixtures <- future_fixtures_raw %>%
+  mutate(
+    HomeRating_Before = as.numeric(unname(name_to_rating[home_team])),
+    AwayRating_Before = as.numeric(unname(name_to_rating[away_team])),
+    home_id = unname(name_to_id[home_team]),
+    away_id = unname(name_to_id[away_team])
+  ) %>%
+  filter(
+    is.finite(HomeRating_Before),
+    is.finite(AwayRating_Before),
+    !is.na(home_id),
+    !is.na(away_id)
+  ) %>%
+  mutate(
+    era = era_label(date),
+    
+    home_expected = elo_expected(HomeRating_Before, AwayRating_Before),
+    away_expected = 1 - home_expected,
+    
+    abs_elo_gap = abs(HomeRating_Before - AwayRating_Before),
+    draw_prob = draw_rate_from_gap(abs_elo_gap),
+    
+    home_win_prob = home_expected - draw_prob / 2,
+    away_win_prob = away_expected - draw_prob / 2,
+    
+    home_win_prob = clamp(home_win_prob, 0, 1 - draw_prob),
+    away_win_prob = 1 - draw_prob - home_win_prob
+  ) %>%
+  transmute(
+    date = format(date, "%Y-%m-%d"),
+    era = as.character(era),
+    tournament = as.character(tournament),
+    
+    home = as.character(home_team),
+    homeElo = as.integer(round(HomeRating_Before)),
+    
+    away = as.character(away_team),
+    awayElo = as.integer(round(AwayRating_Before)),
+    
+    result = NA_character_,
+    score = NA_character_,
+    delta = NA_character_,
+    
+    homeWinPct = as.integer(round(100 * home_win_prob)),
+    drawPct = as.integer(round(100 * draw_prob)),
+    awayWinPct = as.integer(round(100 * away_win_prob)),
+    
+    status = "scheduled",
+    source = as.character(source)
+  )
 
 cat("Future fixtures loaded:", nrow(future_fixtures), "\n")
 
@@ -606,14 +722,15 @@ for (tm in names(name_to_id)) {
       drawPct = as.integer(round(100 * draw_prob)),
       awayWinPct = as.integer(round(100 * away_win_prob)),
       
-      status = "completed"
+      status = "completed",
+      source = NA_character_
     )
   
   scheduled_df <- future_fixtures %>%
     filter(home == tm | away == tm)
   
   df <- bind_rows(df, scheduled_df) %>%
-    arrange(desc(as.Date(date)))
+    arrange(desc(as.Date(date)), desc(status == "scheduled"))
   
   if (nrow(df) > 0) {
     write_json(
@@ -647,4 +764,3 @@ if (length(missing_outputs) > 0) {
 
 cat("Done.\n")
 cat("JSON output directory:", base_data_dir, "\n")
-
