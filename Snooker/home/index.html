@@ -446,8 +446,8 @@ function snapshotUrl(season) { return `../data/snapshots/${encodeURIComponent(se
       const tr = document.createElement('tr');
 
       const tdRank = document.createElement('td');
-      tdRank.textContent = i + 1;
-      tr.appendChild(tdRank);
+tdRank.textContent = r.rank;
+tr.appendChild(tdRank);
 
       const tdCountry = document.createElement('td');
       tdCountry.className = 'flag-cell';
@@ -736,16 +736,19 @@ function snapshotUrl(season) { return `../data/snapshots/${encodeURIComponent(se
 
       const rows = data.filter(d => d && d.active !== false && d.listable === true);
 
-      state.rows = rows
-        .filter(d => d && d.id != null && (d.display_name || d.name) && Number.isFinite(+d.rating))
-        .map(d => ({
-          id: String(d.id),
-          name: d.display_name || d.name,
-          nationality: d.nationality || null,
-          rating: +d.rating
-        }))
-        .sort((a, b) => b.rating - a.rating);
-
+state.rows = rows
+  .filter(d => d && d.id != null && (d.display_name || d.name) && Number.isFinite(+d.rating))
+  .map(d => ({
+    id: String(d.id),
+    name: d.display_name || d.name,
+    nationality: d.nationality || null,
+    rating: +d.rating
+  }))
+  .sort((a, b) => b.rating - a.rating)
+  .map((r, i) => ({
+    ...r,
+    rank: i + 1
+  }));
       state.filtered = state.rows.slice();
       state.visibleCount = PAGE_SIZE;
       render();
