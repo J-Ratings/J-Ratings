@@ -381,9 +381,9 @@
     state.filtered.forEach((r, i) => {
       const tr = document.createElement('tr');
 
-      const tdRank = document.createElement('td');
-      tdRank.textContent = i + 1;
-      tr.appendChild(tdRank);
+const tdRank = document.createElement('td');
+tdRank.textContent = r.rank;
+tr.appendChild(tdRank);
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
@@ -454,8 +454,13 @@
         .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
     }
 
-    setAsOfText();
-    applyFilter();
+state.rows = state.rows.map((r, i) => ({
+  ...r,
+  rank: i + 1
+}));
+
+setAsOfText();
+applyFilter();
   }
 
   function populateSeasonSelect() {
