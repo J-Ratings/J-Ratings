@@ -14832,7 +14832,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 3151,Liu Wenwei,Wenwei,"",Liu,China,2003-12-08,"",M,1,2025,0,2026,p
 3192,Michał Szubarczyk,Michał,"",Szubarczyk,Poland,2011-01-12,"",M,1,2025,0,2026,p
 3461,Wang Xinbo,Xinbo,"",Wang,China,2008-01-11,"",M,1,2026,0,2026,p
-3528,Mykhailo Larkov,Mykhailo,"",Larkov,Ukraine,2009-01-05,"",M,1,2026,0,2026,p
+3528,Michael Larkov,Michael,"",Larkov,Ukraine,2009-01-05,"",M,1,2026,0,2026,p
 3534,Artemijs Zizins,Artemijs,"",Zizins,Latvia,2006-06-02,"",M,1,2024,0,2026,p
 3832,Sahil Nayyar,Sahil,"",Nayyar,Canada,1993-09-29,"",M,1,2025,0,2026,p
 4148,Lan Yuhao,Yuhao,"",Lan,China,2008-08-26,"",M,1,2025,0,2026,p
@@ -14840,9 +14840,11 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 26,Allan Taylor,Allan,"",Taylor,England,1984-11-28,"",M,1,2013,2025,2026,a
 37,Peter Lines,Peter,"",Lines,England,1969-12-11,"",M,1,1991,2022,2026,a
 48,Mark Joyce,Mark,"",Joyce,England,1983-08-11,"",M,1,2006,2023,2026,a
+79,Jamie O'Neill,Jamie,"",O'Neill,England,1986-08-19,"",M,1,2003,2022,2026,a
 92,Robert Milkins,Robert,"",Milkins,England,1976-03-06,"",M,1,1995,2025,2026,a
 376,TBD,TBD,"", ,"","","","",1,0,0,2026,a
 448,Duane Jones,Duane,"",Jones,Wales,1993-04-30,"",M,1,2015,2025,2026,a
+613,Jack Bradford,Jack,"",Bradford,Wales,1991-07-30,"",M,1,0,0,2026,a
 733,George Pragnell,George,"",Pragnell,England,1995-03-28,"",M,1,0,0,2026,a
 741,Ryan Thomerson,Ryan,"",Thomerson,Australia,1994-10-01,"",M,1,2022,2023,2026,a
 936,Zhang Yang,Yang,"",Zhang,China,"","",M,1,0,0,2026,a
@@ -14851,7 +14853,12 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2010,Daniel Womersley,Daniel,"",Womersley,England,1992-01-26,"",M,1,0,0,2026,a
 2049,Simon Blackwell,Simon,"",Blackwell,England,1992-09-08,"",M,1,0,0,2026,a
 2055,Joshua Thomond,Joshua,"",Thomond,England,1996-06-15,"",M,1,0,0,2026,a
+2061,Haydon Pinhey,Haydon,"",Pinhey,England,1996-07-30,"",M,1,2024,2025,2026,a
+2157,Ian Martin,Ian,"",Martin,England,1982-04-14,"",M,1,0,0,2026,a
+2274,Brian Ochoiski,Brian,"",Ochoiski,France,1999-01-22,"",M,1,0,0,2026,a
 2286,WILDCARD,WILDCARD,"", ,"","","","",1,0,0,2026,a
+2340,Sean Maddocks,Sean,"",Maddocks,England,2002-04-10,"",M,1,2020,2021,2026,a
+2499,Dean Young,Dean,"",Young,Scotland,2002-01-07,"",M,1,2021,2024,2026,a
 2803,Alfie Davies,Alfie,"",Davies,Wales,2000-10-09,"",M,1,0,0,2026,a
 2895,Nattanapong Chaikul,Nattanapong,"",Chaikul,Thailand,2005-03-18,"",M,1,0,0,2026,a
 4332,Zhou Yichen,Yichen,"",Zhou,China,"","",M,1,0,0,2026,a
@@ -15396,7 +15403,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 3520,Jia Shuangyu,Shuangyu,"",Jia,China,"","",F,1,0,0,2025,a
 3523,Olivier Pechenart,Olivier,"",Pechenart,Belgium,"","",M,1,0,0,2025,a
 3525,Alexander Widau,Alexander,"",Widau,Germany,2003-09-10,"",M,1,0,0,2025,a
-3528,Mykhailo Larkov,Mykhailo,"",Larkov,Ukraine,2009-01-05,"",M,1,2026,0,2025,a
+3528,Michael Larkov,Michael,"",Larkov,Ukraine,2009-01-05,"",M,1,2026,0,2025,a
 3536,Jakub Chromy,Jakub,"",Chromy,Poland,"","",M,1,0,0,2025,a
 3537,Deepakh Bala,Deepakh,"",Bala,New Zealand,"","",M,1,0,0,2025,a
 3539,Lawrence Seinafo,Lawrence,"",Seinafo,New Zealand,"","",M,1,0,0,2025,a
