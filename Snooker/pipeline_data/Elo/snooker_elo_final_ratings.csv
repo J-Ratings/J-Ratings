@@ -7,8 +7,8 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 202,Mark Allen,Northern Ireland,2819.07,1063,7851,2005-07-20 00:00:00,2026-04-30 18:06:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 237,John Higgins,Scotland,2812.11,1565,12170,1992-10-12 00:00:00,2026-04-30 11:51:49,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 5,Ronnie O'Sullivan,England,2803.65,1093,9721,1992-06-20 00:00:00,2026-05-10 10:58:37,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+39,Kyren Wilson,England,2797.79,1087,7107,2010-08-01 10:00:00,2026-06-22 10:01:55,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 16,Barry Hawkins,England,2796.93,1209,8518,1997-01-03 00:00:00,2026-04-28 08:56:55,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-39,Kyren Wilson,England,2793.61,1086,7104,2010-08-01 10:00:00,2026-04-23 18:05:20,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1260,Yan Bingtao,China,2792,344,2469,2013-06-12 13:01:51,2022-12-01 15:03:57,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 666,Hossein Vafaei,Iran,2789.56,389,2802,2011-09-05 06:37:39,2026-06-14 09:16:25,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 154,Neil Robertson,Australia,2785.53,1280,9435,1999-01-03 00:00:00,2026-04-28 13:24:25,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -36,10 +36,10 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 118,David Gilbert,England,2741.62,876,6047,2002-10-04 00:00:00,2026-06-14 15:04:05,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 22,Anthony McGill,Scotland,2740.14,719,5001,2010-08-01 10:00:00,2026-06-14 09:16:25,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1038,Joe O'Connor,England,2728.38,410,2536,2012-09-05 14:16:08,2026-06-14 09:16:25,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+1407,Xu Si,China,2728.37,270,1815,2013-10-20 10:39:17,2026-06-22 10:01:26,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 507,Cao Yupeng,China,2727.72,345,2410,2009-03-30 00:00:00,2024-02-12 14:58:49,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2470,Aaron Hill,Ireland,2727.59,190,1191,2019-04-10 14:04:18,2026-06-14 15:04:05,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1982,Si Jiahui,China,2726.88,296,1972,2015-10-20 12:58:33,2026-04-22 13:21:30,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-1407,Xu Si,China,2725.22,269,1811,2013-10-20 10:39:17,2026-06-14 15:04:05,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 8,Tom Ford,England,2723.37,872,5968,2001-02-20 00:00:00,2026-06-14 09:16:25,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 4,Fu Marco,Hong Kong,2722.81,863,6380,1998-01-02 00:00:00,2026-06-12 18:33:44,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2166,Jackson Page,Wales,2722.22,295,1842,2017-02-13 12:41:23,2026-06-14 09:16:25,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -47,7 +47,7 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 295,Li Hang,China,2721.15,377,2681,2006-03-20 00:00:00,2022-11-26 19:01:07,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 47,Matthew Selt,England,2720.74,816,5278,2002-10-04 00:00:00,2026-06-14 09:16:25,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 85,Jack Lisowski,England,2719.99,816,5500,2010-08-01 10:00:00,2026-06-14 15:04:05,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-125,Michael Holt,England,2713.36,837,5930,1997-01-03 00:00:00,2026-06-13 08:29:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+125,Michael Holt,England,2715.66,838,5933,1997-01-03 00:00:00,2026-06-22 11:43:25,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2,Stephen Maguire,Scotland,2711.78,1070,7789,1999-01-03 00:00:00,2026-06-12 18:33:44,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 585,Pankaj Advani,India,2708.5,115,791,2012-06-05 08:58:49,2025-05-23 13:08:17,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1108,Yuan Sijun,China,2707.95,334,2206,2012-09-24 07:23:55,2026-06-14 09:16:25,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -57,13 +57,13 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 89,Zak Surety,England,2706.31,328,1964,2010-08-01 10:00:00,2026-06-13 13:25:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 894,Scott Donaldson,Scotland,2705.97,532,3490,2011-12-10 09:57:06,2026-06-12 08:27:15,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1323,Ashley Hugill,England,2705.52,380,2183,2013-08-14 15:39:09,2026-06-10 08:27:51,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-2754,Julien Leclercq,Belgium,2703.91,124,802,2020-08-03 18:55:41,2026-06-11 13:25:24,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2498,Lei Peifan,China,2703.68,200,1313,2019-05-19 18:46:38,2026-06-13 13:25:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1923,Ben Mertens,Belgium,2702.78,178,1054,2015-08-27 07:31:09,2026-06-13 08:29:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 62,Ricky Walden,England,2702.78,1078,7232,2001-02-20 00:00:00,2026-06-13 08:29:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2778,Liam Pullen,England,2702.77,119,764,2021-05-27 19:40:36,2026-06-13 13:25:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 52,Graeme Dott,Scotland,2701.8,973,7085,1996-01-01 00:00:00,2025-02-24 05:49:49,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1383,He Guoqiang,China,2701.76,116,780,2013-09-24 07:12:06,2026-06-14 15:04:05,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+2754,Julien Leclercq,Belgium,2701.61,125,805,2020-08-03 18:55:41,2026-06-22 11:43:25,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 109,Sam Craigie,England,2699.28,357,2168,2010-08-01 10:00:00,2026-06-13 08:29:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1045,Louis Heathcote,England,2698,259,1570,2012-09-06 14:49:44,2026-06-13 08:29:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 96,Robbie Williams,England,2697.96,501,3378,2010-08-01 10:00:00,2026-06-12 13:17:12,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -72,12 +72,12 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 184,Yu Delu,China,2693.96,277,1957,2006-03-20 00:00:00,2018-04-16 08:57:05,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 68,Ryan Day,Wales,2693.03,1164,7742,1999-01-03 00:00:00,2026-06-12 18:33:44,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 9,Matthew Stevens,Wales,2692.73,899,6710,1995-10-16 00:00:00,2026-06-13 18:30:39,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+2320,Dylan Emery,Wales,2692.23,237,1391,2018-03-08 13:19:57,2026-06-22 11:58:11,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 592,Oliver Lines,England,2692,430,2774,2011-06-18 19:20:08,2026-06-11 13:25:24,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2607,Gao Yang,China,2691.82,127,806,2019-10-24 17:08:11,2026-06-13 08:29:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 44,Alan McManus,Scotland,2691.43,686,5652,1990-10-08 00:00:00,2021-04-09 13:23:55,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 908,Lu Ning,China,2691.41,262,1616,2012-02-27 11:42:20,2022-11-23 19:06:13,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 19,Ben Woollaston,England,2690.73,747,4955,2004-10-02 00:00:00,2026-06-13 13:25:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-2320,Dylan Emery,Wales,2690.61,235,1385,2018-03-08 13:19:57,2026-06-13 18:30:39,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1261,Long Zehuang,China,2689.39,118,780,2013-06-12 13:52:51,2026-06-13 13:25:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 120,Martin O'Donnell,England,2689.03,499,3289,2010-08-01 10:00:00,2026-06-12 18:33:44,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 87,Ian Burns,England,2687.91,474,3132,2010-08-01 10:00:00,2026-06-12 18:33:44,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -118,10 +118,10 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 954,Wang Yuchen,Hong Kong,2661.97,162,1053,2012-06-20 07:40:20,2026-05-30 09:04:40,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 193,James Wattana,Thailand,2661.28,511,4286,1989-08-17 00:00:00,2023-03-09 04:00:51,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1893,Cheung Ka Wai,Hong Kong,2660.3,152,813,2015-07-18 16:04:12,2026-06-10 08:27:51,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-131,Craig Steadman,England,2660.21,520,3369,2005-02-23 00:00:00,2026-06-15 09:00:09,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 28,Mark King,England,2660.08,836,5856,1992-06-20 00:00:00,2023-02-13 10:00:51,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 33,Dominic Dale,Wales,2657.76,802,5566,1992-06-20 00:00:00,2026-05-07 18:04:53,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 3242,Mark Bennett,England,2657.44,76,700,1986-10-18 00:00:00,2000-01-03 00:00:00,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+131,Craig Steadman,England,2657.06,521,3373,2005-02-23 00:00:00,2026-06-22 10:01:26,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1465,Antoni Kowalski,Poland,2657.05,125,748,2014-02-06 11:29:04,2026-06-15 08:59:27,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2616,Bai Yulu,China,2655.94,153,741,2019-10-24 17:04:02,2026-06-11 08:29:50,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 733,George Pragnell,England,2654.88,226,1115,2011-10-05 14:13:13,2026-06-10 18:31:38,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -190,12 +190,12 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 418,Mohammed Shehab,United Arab Emirates,2628.48,50,351,1997-01-03 00:00:00,2026-02-11 19:07:13,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 520,Lee Walker,Wales,2628.45,301,2259,1997-01-03 00:00:00,2023-05-03 18:06:21,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 25,Andrew Higginson,England,2628.33,672,4647,1998-01-02 00:00:00,2026-06-11 18:31:45,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-2061,Haydon Pinhey,England,2628.15,166,907,2016-05-13 14:22:13,2026-05-30 09:04:40,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 14,Nigel Bond,England,2627.72,625,4734,1989-10-09 00:00:00,2026-05-08 10:55:41,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 35,Joe Swail,Northern Ireland,2626.91,534,4158,1992-01-14 00:00:00,2019-04-10 09:02:48,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1350,Amir Sarkhosh,Iran,2626.85,108,630,2013-09-02 07:14:53,2026-05-23 11:58:06,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 3478,Pat Kenny,England,2626.21,5,85,1992-03-21 00:00:00,1992-06-20 00:00:00,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1237,Luo Honghao,China,2625.97,132,797,2013-06-11 06:28:59,2025-05-19 11:46:48,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+2061,Haydon Pinhey,England,2624.95,168,912,2016-05-13 14:22:13,2026-06-22 11:58:11,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 63,Fergal O'Brien,Ireland,2624.82,670,4830,1993-03-13 00:00:00,2024-01-27 19:01:33,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 963,Da Hailin,China,2624.72,17,110,1997-09-17 00:00:00,2014-10-23 04:49:31,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1812,Patrick Whelan,England,2623.95,245,1194,2015-07-30 09:55:34,2026-06-10 18:31:38,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -338,7 +338,6 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 2567,"",Hong Kong,2605.89,6,30,2019-06-30 22:56:34,2019-07-01 00:17:15,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2226,"",Thailand,2605.79,7,36,2017-07-03 04:43:11,2017-07-09 05:06:12,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 552,Sean O'Sullivan,England,2605.79,376,2245,2011-05-14 18:32:35,2026-06-10 13:15:46,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-3192,Michał Szubarczyk,Poland,2605.77,67,383,2023-09-15 10:51:41,2026-06-11 13:25:24,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 328,Rene Van Rijsbergen,Netherlands,2605.73,2,12,2010-08-01 10:00:00,2010-08-01 10:00:00,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 4858,Zhang Hao,China,2605.55,3,21,2025-06-22 00:00:00,2025-10-09 04:13:26,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1298,Peter Francisco,South Africa,2605.51,83,712,1984-10-20 00:00:00,2017-07-27 07:59:45,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -385,6 +384,7 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 3255,Karl Broughton,England,2603.38,25,295,1992-01-14 00:00:00,2001-02-20 00:00:00,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1781,"",Scotland,2603.34,8,42,2015-06-15 13:43:35,2015-06-21 11:35:02,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2932,Mubashir Raza,Pakistan,2603.27,20,111,2022-06-01 11:06:44,2026-05-22 03:08:07,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+3192,Michał Szubarczyk,Poland,2603.16,68,387,2023-09-15 10:51:41,2026-06-22 11:09:01,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 4863,Peter Du,United States,2603.12,7,28,2025-09-03 19:05:50,2026-02-15 18:11:31,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 3441,Bj&oslash;rn L'Orange,Norway,2603.11,7,109,1992-03-21 00:00:00,1996-01-01 00:00:00,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 3239,Craig Harrison,England,2603.08,10,119,1997-01-03 00:00:00,2001-02-20 00:00:00,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
