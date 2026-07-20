@@ -1638,7 +1638,7 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2541,Australian Women's Open - Group C,2025-10-04,2025-10-07,"",2025,women,Ranking,3,Mounties,Sydney,Australia,snooker,2203,Women,O,0,0,0,0,15,2025
 2544,Snooker Championship,2025-11-19,2025-11-21,Riyadh Season,2025,main,Invitational,0,Global Theater,Riyadh,Saudi Arabia,snooker,2544,Both,O,0,12,0,0,11,2025
 2545,Americas Q Tour 2 - Group A,2025-10-30,2025-11-02,"",2025,q,Ranking,1,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2459,Both,O,0,0,0,0,10,2025
-2546,English Open,2026-09-07,2026-09-13,"",2026,main,Ranking,0,Brentwood Leisure Centre,Brentwood,England,snooker,2546,Both,O,0,96,0,0,0,2026
+2546,English Open,2026-09-07,2026-09-13,BetVictor,2026,main,Ranking,0,Brentwood Leisure Centre,Brentwood,England,snooker,2546,Both,O,0,128,32,0,0,2026
 2547,British Open,2026-08-31,2026-09-06,Unibet,2026,main,Ranking,0,The Centaur,Cheltenham,England,snooker,2547,Both,O,0,128,0,0,0,2026
 2548,Northern Ireland Open,2026-10-18,2026-10-25,BetVictor,2026,main,Ranking,0,Waterfront Hall,Belfast,Northern Ireland,snooker,2548,Both,O,0,0,0,0,0,2026
 2549,WSF Championship,2026-01-24,2026-02-01,"",2025,wsf,Amateur,0,Marinela,Sofia,Bulgaria,snooker,2549,Both,O,0,192,0,0,77,2025
@@ -1751,7 +1751,7 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2648,European Under 21 Championship,2026-03-05,2026-03-08,"",2025,ebsa,Amateur,0,Palace Hotel,Gandia,Spain,snooker,2648,Both,U21,0,100,0,0,49,2025
 2649,European Championship,2026-03-08,2026-03-14,"",2025,ebsa,Amateur,0,Palace Hotel,Gandia,Spain,snooker,2649,Both,O,0,171,0,0,85,2025
 265,Shanghai Masters Qualifiers,2013-08-07,2013-08-10,Bank of Communications,2013,main,Qualifying,0,Doncaster Dome,Doncaster,England,snooker,264,Both,O,,,,,,2013
-2650,Welsh Open,2027-02-08,2027-02-14,"",2026,main,Ranking,0,Venue Cymru,Llandudno,Wales,snooker,2650,Both,O,0,0,0,0,0,2026
+2650,Welsh Open,2027-02-08,2027-02-14,BetVictor,2026,main,Ranking,0,Venue Cymru,Llandudno,Wales,snooker,2650,Both,O,0,0,0,0,0,2026
 2651,Players Championship,2027-03-02,2027-03-07,"",2026,main,Ranking,0,Telford International Centre,Telford,England,snooker,2651,Both,O,0,0,0,0,0,2026
 2652,World Championship,2027-04-17,2027-05-03,"",2026,main,Ranking,0,Crucible Theatre,Sheffield,England,snooker,2652,Both,O,0,0,0,0,0,2026
 2653,World Championship Qualifiers,2027-04-05,2027-04-14,"",2026,main,Qualifying,0,English Institute of Sport,Sheffield,England,snooker,2652,Both,O,0,0,0,0,0,2026
@@ -1864,12 +1864,12 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2752,Q School 1,2026-05-20,2026-05-25,"",2025,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2752,Both,O,0,156,0,0,152,2025
 2753,Q School 2,2026-05-26,2026-05-31,"",2025,main,Qualifying School,2,Mattioli Arena,Leicester,England,snooker,2753,Both,O,0,156,0,0,152,2025
 2755,China Open,2026-08-08,2026-08-16,SATUO Window Cleaning Robot,2026,main,Ranking,0,Unknown,Taiyuan,China,snooker,2755,Both,O,0,144,18,0,0,2026
-2756,Scottish Open,2026-12-14,2026-12-20,"",2026,main,Ranking,0,Meadowbank Sports Centre,Edinburgh,Scotland,snooker,2756,Both,O,0,0,0,0,0,2026
+2756,Scottish Open,2026-12-14,2026-12-20,BetVictor,2026,main,Ranking,0,Meadowbank Sports Centre,Edinburgh,Scotland,snooker,2756,Both,O,0,0,0,0,0,2026
 2757,Wuhan Open,2026-08-23,2026-08-29,"",2026,main,Ranking,0,"",Wuhan,China,snooker,2757,Both,O,0,126,0,0,0,2026
 2758,Wuhan Open Qualifiers,2026-06-15,2026-06-18,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2757,Both,O,0,0,20,0,78,2026
 2759,China Open Qualifiers,2026-06-10,2026-06-14,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2755,Both,O,0,0,0,0,112,2026
 276,World Seniors Championship,2013-10-19,2013-10-20,888casino.com,2013,main,Invitational,0,Mountbatten Centre,Portsmouth,England,snooker,276,Both,S,,,,,,2013
-2760,Championship League,2026-06-22,2026-07-15,"",2026,main,Ranking,1,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,128,0,0,0,2026
+2760,Championship League,2026-06-22,2026-07-15,"",2026,main,Ranking,1,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,128,0,0,1,2026
 2761,Shenzhen Open,2026-09-28,2026-10-04,"",2026,main,Ranking,0,Unknown,Shenzhen,China,snooker,2761,Both,O,0,126,0,0,0,2026
 2762,International Championship,2026-10-31,2026-11-07,"",2026,main,Ranking,0,Unknown,Nanjing,China,snooker,2762,Both,O,0,0,0,0,0,2026
 2763,German Masters,2027-01-25,2027-01-31,Machineseeker,2026,main,Ranking,0,Tempodrom,Berlin,Germany,snooker,2763,Both,O,0,0,0,0,0,2026
@@ -1877,7 +1877,7 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2765,World Grand Prix,2027-02-16,2027-02-21,"",2026,main,Ranking,0,Kai Tak Arena,Hong Kong,Hong Kong,snooker,2765,Both,O,0,0,0,0,0,2026
 2766,World Open,2027-03-15,2027-03-21,"",2026,main,Ranking,0,Yushan Sport Centre,Yushan,China,snooker,2766,Both,O,0,0,0,0,0,2026
 2767,British Open Qualifiers,2026-07-23,2026-07-24,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2547,Both,O,0,0,48,0,0,2026
-2768,Shenzhen Open Qualifiers,2026-07-19,2026-07-22,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2761,Both,O,0,0,78,0,0,2026
+2768,Shenzhen Open Qualifiers,2026-07-19,2026-07-22,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2761,Both,O,0,0,46,8,24,2026
 2769,English Open Qualifiers,2026-07-25,2026-07-26,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2546,Both,O,0,0,64,0,0,2026
 277,Asian Tour Event Three,2013-10-20,2013-10-24,"",2013,main,Players Tour Championship,3,Guanhua Grand Hotel,Zhengzhou,China,snooker,277,Both,O,,,,,,2013
 2770,Northern Ireland Open Qualifiers,2026-09-13,2026-09-16,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2548,Both,O,0,0,0,0,0,2026
@@ -1955,13 +1955,13 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2835,Championship League Stage Two Group B,2026-06-22,2026-07-15,"",2026,main,Ranking,5,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,6,2026
 2836,Championship League Stage Two Group C,2026-06-22,2026-07-15,"",2026,main,Ranking,6,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,6,2026
 2837,Championship League Stage Two Group D,2026-06-22,2026-07-15,"",2026,main,Ranking,7,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,6,2026
-2838,Championship League Stage Two Group E,2026-06-22,2026-07-15,"",2026,main,Ranking,8,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,6,1,0,2026
-2839,Championship League Stage Two Group F,2026-06-22,2026-07-15,"",2026,main,Ranking,9,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,6,1,0,2026
+2838,Championship League Stage Two Group E,2026-06-22,2026-07-15,"",2026,main,Ranking,8,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,6,2026
+2839,Championship League Stage Two Group F,2026-06-22,2026-07-15,"",2026,main,Ranking,9,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,6,2026
 284,German Masters Qualifiers,2013-12-11,2013-12-12,"",2013,main,Qualifying,0,Barnsley Metrodome,Barnsley,England,snooker,283,Both,O,,,,,,2013
-2840,Championship League Stage Two Group G,2026-06-22,2026-07-15,"",2026,main,Ranking,10,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,6,0,0,2026
-2841,Championship League Stage Two Group H,2026-06-22,2026-07-15,"",2026,main,Ranking,11,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,6,0,0,2026
-2842,Championship League Stage Three Group A,2026-06-22,2026-07-15,"",2026,main,Ranking,2,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,0,2026
-2843,Championship League Stage Three Group B,2026-06-22,2026-07-15,"",2026,main,Ranking,3,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,0,2026
+2840,Championship League Stage Two Group G,2026-06-22,2026-07-15,"",2026,main,Ranking,10,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,6,2026
+2841,Championship League Stage Two Group H,2026-06-22,2026-07-15,"",2026,main,Ranking,11,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,6,2026
+2842,Championship League Stage Three Group A,2026-06-22,2026-07-15,"",2026,main,Ranking,2,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,6,2026
+2843,Championship League Stage Three Group B,2026-06-22,2026-07-15,"",2026,main,Ranking,3,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,6,2026
 2844,Asia Pacific Q Tour: New Zealand Open,2026-07-10,2026-07-12,"",2026,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2844,Both,O,0,45,0,0,23,2026
 2845,Asia Pacific Q Tour: Queensland Open,2027-01-22,2027-01-25,"",2026,q,Ranking,0,Redcliffe Snooker Club,Brisbane,Australia,snooker,2845,Both,O,0,0,0,0,0,2026
 2846,Asia Pacific Q Tour: NZ Open - Group A,2026-07-10,2026-07-12,"",2026,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2844,Both,O,0,0,0,0,10,2026
