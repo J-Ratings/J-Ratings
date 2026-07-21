@@ -1,8 +1,8 @@
 Team,Flag,Rating,Games,FirstMatchDate,EntryRating,Pass,BaseK,ProvisionalK,ProvisionalGames,EntryMode,EntryRatingStart,EntryRatingEnd,EntryDateStart,EntryDateEnd,BaselineStartRating,RetroGamesN
-Spain,es,2942,788,1920-08-28,2710.1,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
-Argentina,ar,2940,1113,1902-07-20,2533.4,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
-France,fr,2901,943,1904-05-01,2380.6,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
-England,gb-eng,2843,1161,1872-11-30,2600,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
+Spain,es,2979,790,1920-08-28,2710.1,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
+Argentina,ar,2935,1115,1902-07-20,2533.4,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
+France,fr,2860,945,1904-05-01,2380.6,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
+England,gb-eng,2851,1163,1872-11-30,2600,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 West Germany,,2813,377,1950-11-22,2620,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Portugal,pt,2808,701,1921-12-18,2460.7,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Colombia,co,2795,658,1938-02-10,2342.5,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
@@ -114,10 +114,10 @@ French Congo,,2336,1,1954-12-31,2316.7,Pass2_RetroStartFromPass1,40,40,50,RetroF
 Southern Rhodesia,,2332,16,1946-12-31,2343.3,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Ubangi-Shari,,2329,1,1956-12-31,2310,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Mali Federation,,2329,4,1960-04-14,2299.1,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
+Vietnam,vn,2328,303,1991-11-26,2169.8,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Thailand,th,2327,933,1948-08-20,2184.9,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Curaçao,,2326,274,1924-04-06,2559.3,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Syria,sy,2326,580,1944-03-10,2270.9,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
-Vietnam,vn,2323,302,1991-11-26,2169.8,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Palestine,ps,2320,286,1934-03-16,2178.9,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Portuguese Guinea,,2315,5,1953-06-02,2321.9,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Rhodesia,,2314,14,1967-11-12,2273.8,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
@@ -250,7 +250,7 @@ Aruba,aw,2018,208,1924-04-06,2393.8,Pass2_RetroStartFromPass1,40,40,50,RetroFrom
 Saint Martin,mf,2015,88,1988-06-14,2076.9,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Saint Lucia,lc,2007,253,1936-01-31,2309.4,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Greenland,gl,2004,18,1980-07-02,2231.7,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
-Myanmar,mm,1995,265,1989-08-22,2152.8,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
+Myanmar,mm,1989,266,1989-08-22,2152.8,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Samoa,ws,1985,56,1998-09-02,2101.5,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 São Tomé and Príncipe,,1960,80,1976-05-02,2022.7,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
 Somalia,so,1954,147,1963-11-14,2126.4,Pass2_RetroStartFromPass1,40,40,50,RetroFromPass1FirstN,2600,2100,1870-01-01,2020-01-01,2400,50
