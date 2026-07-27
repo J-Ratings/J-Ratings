@@ -48135,6 +48135,7 @@ date,home_team,away_team,result,score,tournament
 2023-06-14,Uruguay,Nicaragua,Uruguay,4-1,Friendly
 2023-06-14,Kenya,Pakistan,Kenya,1-0,Friendly tournament
 2023-06-14,Mauritius,Djibouti,Djibouti,1-3,Friendly tournament
+2023-06-14,Germany,Curaçao,Germany,7-1,World Cup
 2023-06-15,Canada,Panama,Canada,2-0,CONCACAF Nations League
 2023-06-15,United States,Mexico,United States,3-0,CONCACAF Nations League
 2023-06-15,Spain,Italy,Spain,2-1,European Nations League
@@ -50657,12 +50658,7 @@ date,home_team,away_team,result,score,tournament
 2025-07-12,Japan,China PR,Japan,2-0,East Asian Championship
 2025-07-15,China PR,Hong Kong,China PR,1-0,East Asian Championship
 2025-07-15,South Korea,Japan,Japan,0-1,East Asian Championship
-2025-08-13,Turks and Caicos Islands,United States Virgin Islands,Draw,1-1,Friendly tournament
 2025-08-13,Turks and Caicos Islands,United States Virgin Islands,Draw,1-1,Outrigger Challenger Cup
-2025-08-14,United States Virgin Islands,Marshall Islands,United States Virgin Islands,4-0,Friendly tournament
-2025-08-14,United States Virgin Islands,Marshall Islands,United States Virgin Islands,4-0,Outrigger Challenger Cup
-2025-08-16,Turks and Caicos Islands,Marshall Islands,Turks and Caicos Islands,3-2,Friendly tournament
-2025-08-16,Turks and Caicos Islands,Marshall Islands,Turks and Caicos Islands,3-2,Outrigger Challenger Cup
 2025-08-24,Qatar,Lebanon,Lebanon,0-1,Friendly
 2025-08-29,Iran,Afghanistan,Iran,3-1,Central Asian Nations Cup
 2025-08-29,Tajikistan,India,India,1-2,Central Asian Nations Cup
@@ -50692,8 +50688,6 @@ date,home_team,away_team,result,score,tournament
 2025-09-04,Cameroon,Eswatini,Cameroon,3-0,World Cup qualifier
 2025-09-04,Chad,Ghana,Draw,1-1,World Cup qualifier
 2025-09-04,Colombia,Bolivia,Colombia,3-0,World Cup qualifier
-2025-09-04,Equatorial Guinea,São Tomé and Príncipe,Equatorial Guinea,3-2,World Cup qualifier
-2025-09-04,Equatorial Guinea,São Tomé and Príncipe,Equatorial Guinea,3-2,World Cup qualifier
 2025-09-04,Equatorial Guinea,São Tomé and Príncipe,Equatorial Guinea,3-2,World Cup qualifier
 2025-09-04,Georgia,Turkey,Turkey,2-3,World Cup qualifier
 2025-09-04,Guatemala,El Salvador,El Salvador,0-1,World Cup qualifier
@@ -50829,8 +50823,6 @@ date,home_team,away_team,result,score,tournament
 2025-09-09,Kenya,Seychelles,Kenya,5-0,World Cup qualifier
 2025-09-09,Mauritania,South Sudan,Draw,0-0,World Cup qualifier
 2025-09-09,Namibia,São Tomé and Príncipe,Namibia,3-0,World Cup qualifier
-2025-09-09,Namibia,São Tomé and Príncipe,Namibia,3-0,World Cup qualifier
-2025-09-09,Namibia,São Tomé and Príncipe,Namibia,3-0,World Cup qualifier
 2025-09-09,Norway,Moldova,Norway,11-1,World Cup qualifier
 2025-09-09,Peru,Paraguay,Paraguay,0-1,World Cup qualifier
 2025-09-09,Rwanda,Zimbabwe,Rwanda,1-0,World Cup qualifier
@@ -50921,8 +50913,6 @@ date,home_team,away_team,result,score,tournament
 2025-10-10,Sweden,Switzerland,Switzerland,0-2,World Cup qualifier
 2025-10-10,Togo,DR Congo,DR Congo,0-1,World Cup qualifier
 2025-10-10,Tunisia,São Tomé and Príncipe,Tunisia,6-0,World Cup qualifier
-2025-10-10,Tunisia,São Tomé and Príncipe,Tunisia,6-0,World Cup qualifier
-2025-10-10,Tunisia,São Tomé and Príncipe,Tunisia,6-0,World Cup qualifier
 2025-10-11,Colombia,Mexico,Colombia,4-0,Friendly
 2025-10-11,Grenada,Cuba,Grenada,2-0,Friendly
 2025-10-11,Bulgaria,Turkey,Turkey,1-6,World Cup qualifier
@@ -50967,8 +50957,6 @@ date,home_team,away_team,result,score,tournament
 2025-10-13,Slovenia,Switzerland,Draw,0-0,World Cup qualifier
 2025-10-13,South Sudan,Togo,Draw,0-0,World Cup qualifier
 2025-10-13,Sweden,Kosovo,Kosovo,0-1,World Cup qualifier
-2025-10-13,São Tomé and Príncipe,Malawi,São Tomé and Príncipe,1-0,World Cup qualifier
-2025-10-13,São Tomé and Príncipe,Malawi,São Tomé and Príncipe,1-0,World Cup qualifier
 2025-10-13,São Tomé and Príncipe,Malawi,São Tomé and Príncipe,1-0,World Cup qualifier
 2025-10-13,Tunisia,Namibia,Tunisia,3-0,World Cup qualifier
 2025-10-13,Ukraine,Azerbaijan,Ukraine,2-1,World Cup qualifier
@@ -51560,7 +51548,6 @@ date,home_team,away_team,result,score,tournament
 2026-06-05,Georgia,Bahrain,Georgia,2-0,Friendly
 2026-06-05,Hong Kong,Mongolia,Hong Kong,2-0,Friendly
 2026-06-05,Hungary,Finland,Hungary,2-1,Friendly
-2026-06-05,Indonesia,Oman,Indonesia,3-0,Friendly
 2026-06-05,Malta,Azerbaijan,Malta,2-0,Friendly
 2026-06-05,Moldova,Bulgaria,Draw,2-2,Friendly
 2026-06-05,Paraguay,Nicaragua,Paraguay,4-0,Friendly
@@ -51645,3 +51632,107 @@ date,home_team,away_team,result,score,tournament
 2026-06-10,England,Costa Rica,England,3-0,Friendly
 2026-06-10,Portugal,Nigeria,Portugal,2-1,Friendly
 2026-06-11,Mexico,South Africa,Mexico,2-0,World Cup
+2026-06-11,South Korea,Czech Republic,South Korea,2-1,World Cup
+2026-06-12,Canada,Bosnia and Herzegovina,Draw,1-1,World Cup
+2026-06-12,United States,Paraguay,United States,4-1,World Cup
+2026-06-13,Australia,Turkey,Australia,2-0,World Cup
+2026-06-13,Brazil,Morocco,Draw,1-1,World Cup
+2026-06-13,Qatar,Switzerland,Draw,1-1,World Cup
+2026-06-13,Scotland,Haiti,Scotland,1-0,World Cup
+2026-06-14,Germany,Curaçao,Germany,7-1,World Cup
+2026-06-14,Ivory Coast,Ecuador,Ivory Coast,1-0,World Cup
+2026-06-14,Japan,Netherlands,Draw,2-2,World Cup
+2026-06-14,Sweden,Tunisia,Sweden,5-1,World Cup
+2026-06-15,Belgium,Egypt,Draw,1-1,World Cup
+2026-06-15,Cape Verde,Spain,Draw,0-0,World Cup
+2026-06-15,Iran,New Zealand,Draw,2-2,World Cup
+2026-06-15,Saudi Arabia,Uruguay,Draw,1-1,World Cup
+2026-06-16,Argentina,Algeria,Argentina,3-0,World Cup
+2026-06-16,Austria,Jordan,Austria,3-1,World Cup
+2026-06-16,France,Senegal,France,3-1,World Cup
+2026-06-16,Norway,Iraq,Norway,4-1,World Cup
+2026-06-17,Colombia,Uzbekistan,Colombia,3-1,World Cup
+2026-06-17,DR Congo,Portugal,Draw,1-1,World Cup
+2026-06-17,England,Croatia,England,4-2,World Cup
+2026-06-17,Ghana,Panama,Ghana,1-0,World Cup
+2026-06-18,Canada,Qatar,Canada,6-0,World Cup
+2026-06-18,Czech Republic,South Africa,Draw,1-1,World Cup
+2026-06-18,Mexico,South Korea,Mexico,1-0,World Cup
+2026-06-18,Switzerland,Bosnia and Herzegovina,Switzerland,4-1,World Cup
+2026-06-19,Brazil,Haiti,Brazil,3-0,World Cup
+2026-06-19,Morocco,Scotland,Morocco,1-0,World Cup
+2026-06-19,Paraguay,Turkey,Paraguay,1-0,World Cup
+2026-06-19,United States,Australia,United States,2-0,World Cup
+2026-06-20,Curaçao,Ecuador,Draw,0-0,World Cup
+2026-06-20,Germany,Ivory Coast,Germany,2-1,World Cup
+2026-06-20,Japan,Tunisia,Japan,4-0,World Cup
+2026-06-20,Netherlands,Sweden,Netherlands,5-1,World Cup
+2026-06-21,Belgium,Iran,Draw,0-0,World Cup
+2026-06-21,Cape Verde,Uruguay,Draw,2-2,World Cup
+2026-06-21,Egypt,New Zealand,Egypt,3-1,World Cup
+2026-06-21,Spain,Saudi Arabia,Spain,4-0,World Cup
+2026-06-22,Algeria,Jordan,Algeria,2-1,World Cup
+2026-06-22,Argentina,Austria,Argentina,2-0,World Cup
+2026-06-22,France,Iraq,France,3-0,World Cup
+2026-06-22,Norway,Senegal,Norway,3-2,World Cup
+2026-06-23,Colombia,DR Congo,Colombia,1-0,World Cup
+2026-06-23,Croatia,Panama,Croatia,1-0,World Cup
+2026-06-23,England,Ghana,Draw,0-0,World Cup
+2026-06-23,Portugal,Uzbekistan,Portugal,5-0,World Cup
+2026-06-24,Bosnia and Herzegovina,Qatar,Bosnia and Herzegovina,3-1,World Cup
+2026-06-24,Brazil,Scotland,Brazil,3-0,World Cup
+2026-06-24,Canada,Switzerland,Switzerland,1-2,World Cup
+2026-06-24,Mexico,Czech Republic,Mexico,3-0,World Cup
+2026-06-24,Morocco,Haiti,Morocco,4-2,World Cup
+2026-06-24,South Africa,South Korea,South Africa,1-0,World Cup
+2026-06-25,Australia,Paraguay,Draw,0-0,World Cup
+2026-06-25,Ecuador,Germany,Ecuador,2-1,World Cup
+2026-06-25,Ivory Coast,Curaçao,Ivory Coast,2-0,World Cup
+2026-06-25,Japan,Sweden,Draw,1-1,World Cup
+2026-06-25,Netherlands,Tunisia,Netherlands,3-1,World Cup
+2026-06-25,United States,Turkey,Turkey,2-3,World Cup
+2026-06-26,Belgium,New Zealand,Belgium,5-1,World Cup
+2026-06-26,Cape Verde,Saudi Arabia,Draw,0-0,World Cup
+2026-06-26,Egypt,Iran,Draw,1-1,World Cup
+2026-06-26,France,Norway,France,4-1,World Cup
+2026-06-26,Senegal,Iraq,Senegal,5-0,World Cup
+2026-06-26,Spain,Uruguay,Spain,1-0,World Cup
+2026-06-27,Algeria,Austria,Draw,3-3,World Cup
+2026-06-27,Argentina,Jordan,Argentina,3-1,World Cup
+2026-06-27,Colombia,Portugal,Draw,0-0,World Cup
+2026-06-27,Croatia,Ghana,Croatia,2-1,World Cup
+2026-06-27,DR Congo,Uzbekistan,DR Congo,3-1,World Cup
+2026-06-27,England,Panama,England,2-0,World Cup
+2026-06-28,Canada,South Africa,Canada,1-0,World Cup
+2026-06-29,Brazil,Japan,Brazil,2-1,World Cup
+2026-06-29,Germany,Paraguay,Draw,1-1,World Cup
+2026-06-29,Morocco,Netherlands,Draw,1-1,World Cup
+2026-06-30,France,Sweden,France,3-0,World Cup
+2026-06-30,Mexico,Ecuador,Mexico,2-0,World Cup
+2026-06-30,Norway,Ivory Coast,Norway,2-1,World Cup
+2026-07-01,Belgium,Senegal,Belgium,3-2,World Cup
+2026-07-01,England,DR Congo,England,2-1,World Cup
+2026-07-01,United States,Bosnia and Herzegovina,United States,2-0,World Cup
+2026-07-02,Portugal,Croatia,Portugal,2-1,World Cup
+2026-07-02,Spain,Austria,Spain,3-0,World Cup
+2026-07-02,Switzerland,Algeria,Switzerland,2-0,World Cup
+2026-07-03,Argentina,Cape Verde,Argentina,3-2,World Cup
+2026-07-03,Australia,Egypt,Draw,1-1,World Cup
+2026-07-03,Colombia,Ghana,Colombia,1-0,World Cup
+2026-07-04,France,Paraguay,France,1-0,World Cup
+2026-07-04,Morocco,Canada,Morocco,3-0,World Cup
+2026-07-05,Mexico,England,England,2-3,World Cup
+2026-07-05,Norway,Brazil,Norway,2-1,World Cup
+2026-07-06,Spain,Portugal,Spain,1-0,World Cup
+2026-07-06,United States,Belgium,Belgium,1-4,World Cup
+2026-07-07,Argentina,Egypt,Argentina,3-2,World Cup
+2026-07-07,Colombia,Switzerland,Draw,0-0,World Cup
+2026-07-09,France,Morocco,France,2-0,World Cup
+2026-07-10,Spain,Belgium,Spain,2-1,World Cup
+2026-07-11,Argentina,Switzerland,Argentina,3-1,World Cup
+2026-07-11,England,Norway,England,2-1,World Cup
+2026-07-14,Spain,France,Spain,2-0,World Cup
+2026-07-15,Argentina,England,Argentina,2-1,World Cup
+2026-07-18,Vietnam,Myanmar,Vietnam,4-0,Friendly
+2026-07-18,England,France,England,6-4,World Cup
+2026-07-19,Spain,Argentina,Spain,1-0,World Cup
