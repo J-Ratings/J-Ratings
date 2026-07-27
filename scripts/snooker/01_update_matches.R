@@ -59,12 +59,20 @@ if (header_value == "") {
   )
 }
 
-REQUEST_PAUSE <- as.numeric(Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "31"))
+# Allow a safety margin below the API limit of two requests per minute.
+REQUEST_PAUSE <- as.numeric(
+  Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "35")
+)
+
 MAX_RETRIES <- 3L
 
-# Monthly automation default.
-# Refreshes events overlapping the last MATCH_REFRESH_DAYS.
-MATCH_REFRESH_DAYS <- as.integer(Sys.getenv("MATCH_REFRESH_DAYS", unset = "45"))
+# Active events are refreshed on every run.
+#
+# Completed events continue to be refreshed for seven days so that
+# delayed results and corrections can still be collected.
+COMPLETED_EVENT_REFRESH_DAYS <- as.integer(
+  Sys.getenv("COMPLETED_EVENT_REFRESH_DAYS", unset = "7")
+)
 
 # -----------------------------
 # Helpers
@@ -100,6 +108,13 @@ get_snooker <- function(query, pause = REQUEST_PAUSE, retries = MAX_RETRIES) {
     
     status <- status_code(res)
     txt <- content(res, "text", encoding = "UTF-8")
+    
+    if (status == 403) {
+      stop(
+        "HTTP 403. Request refused by the API; ",
+        "this request will not be retried."
+      )
+    }
     
     if (status != 200) {
       last_error <- paste("HTTP", status)
@@ -314,8 +329,7 @@ cat("Repo directory:", REPO_DIR, "\n")
 cat("Snooker pipeline directory:", PIPELINE_DIR, "\n")
 cat("Current inferred snooker season:", current_season, "\n")
 cat("Candidate seasons:", paste(candidate_seasons, collapse = ", "), "\n")
-cat("Match refresh window:", MATCH_REFRESH_DAYS, "days\n")
-
+cat("Completed-event refresh window:", COMPLETED_EVENT_REFRESH_DAYS, "days\n")
 # ============================================================
 # 1) Refresh/load event lists for candidate seasons
 # ============================================================
@@ -391,25 +405,34 @@ events_all[, EndDate2 := safe_date(EndDate)]
 # 2) Select events to refresh
 # ============================================================
 
-cutoff_date <- Sys.Date() - MATCH_REFRESH_DAYS
 today <- Sys.Date()
+completed_cutoff_date <- today - COMPLETED_EVENT_REFRESH_DAYS
 
 events_to_refresh <- events_all[
   ID != "" &
     (
-      # Event overlaps the refresh window
+      # Event is currently active.
       (
         !is.na(StartDate2) &
           !is.na(EndDate2) &
           StartDate2 <= today &
-          EndDate2 >= cutoff_date
+          EndDate2 >= today
       ) |
-        # Fallback for events with no EndDate
+        
+        # Event completed recently. Continue refreshing it briefly
+        # to collect delayed results or corrections.
+        (
+          !is.na(EndDate2) &
+            EndDate2 < today &
+            EndDate2 >= completed_cutoff_date
+        ) |
+        
+        # Fallback for events that do not have an end date.
         (
           !is.na(StartDate2) &
             is.na(EndDate2) &
-            StartDate2 >= cutoff_date &
-            StartDate2 <= today
+            StartDate2 <= today &
+            StartDate2 >= completed_cutoff_date
         )
     )
 ]
@@ -419,7 +442,7 @@ events_to_refresh <- unique(events_to_refresh, by = c("EventSeason", "ID"))
 setorder(events_to_refresh, EventSeason, StartDate2, EndDate2, ID)
 
 cat("\n========== Events selected for match refresh ==========\n")
-cat("Cutoff date:", format(cutoff_date, "%Y-%m-%d"), "\n")
+cat("Completed-event cutoff date:",  format(completed_cutoff_date, "%Y-%m-%d"),  "\n")
 cat("Events selected:", nrow(events_to_refresh), "\n")
 
 if (nrow(events_to_refresh) > 0L) {

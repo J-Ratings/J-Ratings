@@ -627,6 +627,14 @@ if (nrow(secondary_duplicate_groups) > 0L) {
 
 rows_before_secondary_dedup <- nrow(dt)
 
+dt[, DateSourcePreference := fcase(
+  DateSource == "MatchDate_Modern", 1L,
+  DateSource == "MatchDate_LastResort", 2L,
+  DateSource == "EventStart_Fallback", 3L,
+  DateSource == "EventStart_Pre2008Season", 4L,
+  default = 5L
+)]
+
 setorder(
   dt,
   PlayerLow,
@@ -635,6 +643,7 @@ setorder(
   MatchDay,
   ScoreLow,
   ScoreHigh,
+  DateSourcePreference,
   MatchID
 )
 
@@ -663,7 +672,8 @@ dt[, c(
   "PlayerHigh",
   "ScoreLow",
   "ScoreHigh",
-  "MatchDay"
+  "MatchDay",
+  "DateSourcePreference"
 ) := NULL]
 
 dt[, WinnerFromScore := fifelse(

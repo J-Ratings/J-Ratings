@@ -52,7 +52,11 @@ if (header_value == "") {
   stop("Missing SNOOKER_API_HEADER environment variable.")
 }
 
-REQUEST_PAUSE <- as.numeric(Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "8"))
+# Allow a safety margin below the API limit of two requests per minute.
+REQUEST_PAUSE <- as.numeric(
+  Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "35")
+)
+
 MAX_RETRIES <- 3L
 
 # -----------------------------
@@ -100,6 +104,13 @@ get_snooker <- function(query, pause = REQUEST_PAUSE, retries = MAX_RETRIES) {
     
     status <- status_code(res)
     txt <- content(res, "text", encoding = "UTF-8")
+    
+    if (status == 403) {
+      stop(
+        "HTTP 403. Request refused by the API; ",
+        "this request will not be retried."
+      )
+    }
     
     if (status != 200) {
       last_error <- paste("HTTP", status)
