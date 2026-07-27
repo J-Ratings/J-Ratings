@@ -549,6 +549,123 @@ if (nrow(zero_zero_rows) > 0L) {
 
 dt <- dt[!(ScoreA == 0 & ScoreB == 0)]
 
+# ============================================================
+# Secondary de-duplication
+#
+# Removes matches with different MatchIDs when they have:
+#   - the same two players
+#   - the same event
+#   - the same day
+#   - the same score
+#
+# Player order is standardised so A-v-B and B-v-A still match.
+# ============================================================
+
+dt[, PlayerLow := pmin(PlayerA_ID, PlayerB_ID)]
+dt[, PlayerHigh := pmax(PlayerA_ID, PlayerB_ID)]
+
+dt[, ScoreLow := fifelse(
+  PlayerA_ID == PlayerLow,
+  ScoreA,
+  ScoreB
+)]
+
+dt[, ScoreHigh := fifelse(
+  PlayerA_ID == PlayerLow,
+  ScoreB,
+  ScoreA
+)]
+
+dt[, MatchDay := as.Date(Date)]
+
+secondary_duplicate_groups <- dt[
+  ,
+  .N,
+  by = .(
+    PlayerLow,
+    PlayerHigh,
+    EventID,
+    MatchDay,
+    ScoreLow,
+    ScoreHigh
+  )
+][N > 1L]
+
+cat(
+  "\nSecondary duplicate groups found:",
+  nrow(secondary_duplicate_groups),
+  "\n"
+)
+
+if (nrow(secondary_duplicate_groups) > 0L) {
+  secondary_duplicate_rows <- dt[
+    secondary_duplicate_groups,
+    on = .(
+      PlayerLow,
+      PlayerHigh,
+      EventID,
+      MatchDay,
+      ScoreLow,
+      ScoreHigh
+    )
+  ]
+  
+  cat("Rows belonging to secondary duplicate groups:\n")
+  
+  print(secondary_duplicate_rows[, .(
+    MatchID,
+    EventID,
+    EventName,
+    Date,
+    PlayerA_ID,
+    PlayerB_ID,
+    ScoreA,
+    ScoreB,
+    SourceFile
+  )])
+}
+
+rows_before_secondary_dedup <- nrow(dt)
+
+setorder(
+  dt,
+  PlayerLow,
+  PlayerHigh,
+  EventID,
+  MatchDay,
+  ScoreLow,
+  ScoreHigh,
+  MatchID
+)
+
+dt <- dt[
+  !duplicated(
+    dt,
+    by = c(
+      "PlayerLow",
+      "PlayerHigh",
+      "EventID",
+      "MatchDay",
+      "ScoreLow",
+      "ScoreHigh"
+    )
+  )
+]
+
+cat(
+  "Rows removed by secondary de-duplication:",
+  rows_before_secondary_dedup - nrow(dt),
+  "\n"
+)
+
+dt[, c(
+  "PlayerLow",
+  "PlayerHigh",
+  "ScoreLow",
+  "ScoreHigh",
+  "MatchDay"
+) := NULL]
+
 dt[, WinnerFromScore := fifelse(
   ScoreA > ScoreB,
   PlayerA_ID,
