@@ -1743,7 +1743,7 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 264,Shanghai Masters,2013-09-16,2013-09-22,Bank of Communications,2013,main,Ranking,0,Shanghai Grand Stage,Shanghai,China,snooker,264,Both,O,,,,,,2013
 2640,Belgian Women's Open Group E,2026-02-06,2026-02-07,"",2025,women,Ranking,5,The Trickshot,Bruges,Belgium,snooker,2470,Women,O,0,0,0,0,6,2025
 2641,Belgian Women's Open Group F,2026-02-06,2026-02-07,"",2025,women,Ranking,6,The Trickshot,Bruges,Belgium,snooker,2470,Women,O,0,0,0,0,6,2025
-2642,Australian Women's Open,2026-10-03,2026-10-06,"",2026,women,Ranking,0,Mounties,Sydney,Australia,snooker,2642,Women,O,0,0,0,0,0,2026
+2642,Australian Women's Open,2026-10-17,2026-10-20,"",2026,women,Ranking,0,Mounties,Sydney,Australia,snooker,2642,Women,O,0,0,0,0,0,2026
 2643,Asia Pacific Open Snooker Championship,2026-03-25,2026-03-28,"",2025,other,Amateur,0,Commercial Club Albury,Albury,Australia,snooker,2643,Both,O,0,67,0,0,31,2025
 2644,Asia Pacific Q Tour: West Coast International,2026-06-26,2026-06-28,"",2026,q,Ranking,0,Pot Black North Perth,Perth,Australia,snooker,2644,Both,O,0,36,0,0,35,2026
 2645,Asia Pacific Q Tour: Fred Osbourne Snooker Classic,2026-07-31,2026-08-02,"",2026,q,Ranking,0,Commercial Club Albury,Albury,Australia,snooker,2645,Both,O,0,0,0,0,0,2026
@@ -1873,12 +1873,12 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2761,Shenzhen Open,2026-09-28,2026-10-04,"",2026,main,Ranking,0,Unknown,Shenzhen,China,snooker,2761,Both,O,0,126,0,0,0,2026
 2762,International Championship,2026-10-31,2026-11-07,"",2026,main,Ranking,0,Unknown,Nanjing,China,snooker,2762,Both,O,0,0,0,0,0,2026
 2763,German Masters,2027-01-25,2027-01-31,Machineseeker,2026,main,Ranking,0,Tempodrom,Berlin,Germany,snooker,2763,Both,O,0,0,0,0,0,2026
-2764,Shanghai Masters,2026-07-27,2026-08-02,"",2026,main,Invitational,0,"",Shanghai,China,snooker,2764,Both,O,0,20,23,0,0,2026
+2764,Shanghai Masters,2026-07-27,2026-08-02,"",2026,main,Invitational,0,Luwan Gymnasium,Shanghai,China,snooker,2764,Both,O,0,24,20,2,3,2026
 2765,World Grand Prix,2027-02-16,2027-02-21,"",2026,main,Ranking,0,Kai Tak Arena,Hong Kong,Hong Kong,snooker,2765,Both,O,0,0,0,0,0,2026
 2766,World Open,2027-03-15,2027-03-21,"",2026,main,Ranking,0,Yushan Sport Centre,Yushan,China,snooker,2766,Both,O,0,0,0,0,0,2026
-2767,British Open Qualifiers,2026-07-23,2026-07-24,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2547,Both,O,0,0,48,0,0,2026
-2768,Shenzhen Open Qualifiers,2026-07-19,2026-07-22,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2761,Both,O,0,0,46,8,24,2026
-2769,English Open Qualifiers,2026-07-25,2026-07-26,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2546,Both,O,0,0,64,0,0,2026
+2767,British Open Qualifiers,2026-07-23,2026-07-24,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2547,Both,O,0,0,0,0,48,2026
+2768,Shenzhen Open Qualifiers,2026-07-19,2026-07-22,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2761,Both,O,0,0,0,0,78,2026
+2769,English Open Qualifiers,2026-07-25,2026-07-26,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2546,Both,O,0,0,0,0,64,2026
 277,Asian Tour Event Three,2013-10-20,2013-10-24,"",2013,main,Players Tour Championship,3,Guanhua Grand Hotel,Zhengzhou,China,snooker,277,Both,O,,,,,,2013
 2770,Northern Ireland Open Qualifiers,2026-09-13,2026-09-16,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2548,Both,O,0,0,0,0,0,2026
 2771,International Championship Qualifiers,2026-09-17,2026-09-19,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2762,Both,O,0,0,0,0,0,2026
@@ -1974,7 +1974,15 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2852,Asia Pacific Q Tour: NZ Open - Group G,2026-07-10,2026-07-12,"",2026,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2844,Both,O,0,0,0,0,10,2026
 2853,Asia Pacific Q Tour: NZ Open - Group H,2026-07-10,2026-07-12,"",2026,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2844,Both,O,0,0,0,0,10,2026
 2854,Asia Pacific Q Tour: NZ Open - Group I,2026-07-10,2026-07-12,"",2026,q,Ranking,0,Papatoetoe Cosmopolitan Club,Auckland,New Zealand,snooker,2844,Both,O,0,0,0,0,10,2026
+2855,Q Tour 1,2026-08-27,2026-08-30,"",2026,q,Ranking,1,Northern Snooker Centre,Leeds,England,snooker,2855,Both,O,0,0,0,0,0,2026
+2856,Q Tour 2,2026-09-21,2026-09-24,"",2026,q,Ranking,1,Princess Hotel,Sofia,Bulgaria,snooker,2856,Both,O,0,0,0,0,0,2026
+2857,Q Tour 3,2026-10-22,2026-10-25,"",2026,q,Ranking,1,Snooker Arena Germany,Oberhausen,Germany,snooker,2857,Both,O,0,0,0,0,0,2026
+2858,Q Tour 4,2026-11-12,2026-11-15,"",2026,q,Ranking,1,Austrian Snooker Academy,Vienna,Austria,snooker,2858,Both,O,0,0,0,0,0,2026
+2859,Q Tour 5,2026-12-03,2026-12-06,"",2026,q,Ranking,1,Landywood Snooker Club,Walsall,England,snooker,2859,Both,O,0,0,0,0,0,2026
 286,Haikou World Open Qualifiers,2013-12-13,2013-12-14,Gujinggong Liquor,2013,main,Qualifying,0,Barnsley Metrodome,Barnsley,England,snooker,285,Both,O,,,,,,2013
+2860,Q Tour 6,2027-01-07,2027-01-10,"",2026,q,Ranking,1,De Pomerans Snooker,Dochristi,Belgium,snooker,2860,Both,O,0,0,0,0,0,2026
+2861,Q Tour 7,2027-02-11,2027-02-14,"",2026,q,Ranking,1,Ding Junhui Snooker Academy,Sheffield,England,snooker,2861,Both,O,0,0,0,0,0,2026
+2862,UK Women's Championship,2026-09-04,2026-09-06,Taom,2026,women,Ranking,0,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,0,2026
 287,Championship League - Group 2,2014-01-08,2014-01-09,"",2013,main,Invitational,2,Crondon Park Golf Club,Stock,England,snooker,289,Both,O,,,,,,2013
 288,Championship League - Group 1,2014-01-06,2014-01-07,"",2013,main,Invitational,1,Crondon Park Golf Club,Stock,England,snooker,289,Both,O,,,,,,2013
 289,Championship League - Winners' Group,2014-03-05,2014-03-06,"",2013,main,Invitational,8,Crondon Park Golf Club,Stock,England,snooker,289,Both,O,,,,,,2013
