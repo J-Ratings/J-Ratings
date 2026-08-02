@@ -57,7 +57,7 @@ src_dir <- file.path(
   repo_dir,
   "Go",
   "pipeline_data",
-  "Elo"
+  "live_Elo"
 )
 
 source_dir <- file.path(
@@ -80,8 +80,15 @@ dir.create(data_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(history_out, recursive = TRUE, showWarnings = FALSE)
 dir.create(games_out, recursive = TRUE, showWarnings = FALSE)
 
-final_csv <- file.path(src_dir, "final_ratings.csv")
-hist_csv  <- file.path(src_dir, "game_history.csv")
+final_csv <- file.path(
+  src_dir,
+  "combined_final_ratings.csv"
+)
+
+hist_csv <- file.path(
+  src_dir,
+  "combined_game_history.csv"
+)
 
 name_country_file <- file.path(
   source_dir,
@@ -442,9 +449,21 @@ final <- final_raw %>%
 # -----------------------------
 asof_date <- max(ghist$Date, na.rm = TRUE)
 
-meta <- list(
-  asof = format(asof_date, "%Y-%m-%d"),
-  games = nrow(ghist),
+ meta <- list(
+    asof = format(asof_date, "%Y-%m-%d"),
+    games = nrow(ghist),
+    sources = list(
+      list(
+        name = "GoGoD",
+        period = "Through 2025-12-31"
+      ),
+      list(
+        name = "GoRatings",
+        period = "From 2026-01-01",
+        url = "https://www.goratings.org/en",
+        credit = "GoRatings data by Rémi Coulom"
+      )
+    ),
   min_games_for_table = MIN_GAMES_FOR_TABLE,
   history_has_world_rank = TRUE,
   games_have_world_rank = TRUE,
