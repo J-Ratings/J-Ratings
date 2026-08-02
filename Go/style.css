@@ -317,15 +317,14 @@ button {
   padding: 8px 16px 18px;
 }
 
-.go-meta-summary .asof {
-  display: block;
-  margin: 0;
-  font-size: 1.05rem;
-}
-
 .go-source-summary {
-  margin-top: 6px;
   font-size: 14px;
   line-height: 1.4;
   color: #ccc;
+}
+
+.go-meta-summary .asof {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.05rem;
 }
