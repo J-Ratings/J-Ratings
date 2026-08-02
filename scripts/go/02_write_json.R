@@ -17,9 +17,13 @@
 #   - Go/data/games/<player_id>.json
 #
 # Flag and gender priority:
-#   1. Manual flag overrides
-#   2. GoRatings homepage metadata matched by GoRatings ID
-#   3. Historical name-country lookup
+#   1. GoRatings homepage metadata matched by GoRatings ID
+#   2. GoRatings homepage metadata matched by exact player name
+#   3. Manual flag override
+#   4. Historical name-country lookup
+#
+# The historical code "GF" is treated as missing because it is
+# not a reliable nationality code in the GoGoD metadata.
 # ============================================================
 
 library(dplyr)
@@ -671,6 +675,56 @@ if (file.exists(goratings_homepage_file)) {
       .keep_all = TRUE
     )
 }
+
+# Exact-name fallback for players whose GoRatings ID
+# has not been linked in the player map.
+# Exact-name fallback for players whose GoRatings ID
+# has not been linked in the player map.
+goratings_homepage_by_name <- goratings_homepage %>%
+  filter(
+    !is.na(goratings_name),
+    goratings_name != ""
+  ) %>%
+  group_by(goratings_name) %>%
+  summarise(
+    goratings_flag_by_name = {
+      values <- goratings_flag[
+        !is.na(goratings_flag) &
+          goratings_flag != ""
+      ]
+      
+      if (length(values) == 0L) {
+        NA_character_
+      } else {
+        values[[1]]
+      }
+    },
+    
+    goratings_gender_by_name = {
+      values <- goratings_gender[
+        !is.na(goratings_gender) &
+          goratings_gender != ""
+      ]
+      
+      if (length(values) == 0L) {
+        NA_character_
+      } else {
+        values[[1]]
+      }
+    },
+    
+    goratings_name_matches = n(),
+    
+    .groups = "drop"
+  ) %>%
+  filter(
+    goratings_name_matches == 1L
+  ) %>%
+  transmute(
+    name = goratings_name,
+    goratings_flag_by_name,
+    goratings_gender_by_name
+  )
 
 cat(
   "Name-country rows loaded:",
@@ -1326,6 +1380,10 @@ players_tbl <- final %>%
     by = "goratings_id"
   ) %>%
   left_join(
+    goratings_homepage_by_name,
+    by = "name"
+  ) %>%
+  left_join(
     flag_overrides,
     by = "name"
   ) %>%
@@ -1334,14 +1392,22 @@ players_tbl <- final %>%
     by = "name"
   ) %>%
   mutate(
+    historical_flag = if_else(
+      historical_flag == "gf",
+      NA_character_,
+      historical_flag
+    ),
+    
     flag = coalesce(
-      override_flag,
       goratings_flag,
+      goratings_flag_by_name,
+      override_flag,
       historical_flag
     ),
     
     gender = coalesce(
       goratings_gender,
+      goratings_gender_by_name,
       historical_gender
     ),
     
