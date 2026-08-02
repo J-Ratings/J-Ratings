@@ -1,0 +1,132 @@
+name: Update Go ratings
+
+on:
+  workflow_dispatch:
+    inputs:
+      full_profile_scrape:
+        description: Check every GoRatings player profile
+        required: false
+        type: boolean
+        default: false
+
+  schedule:
+    - cron: "0 7 * * 0"
+      timezone: "Europe/London"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-go-ratings
+  cancel-in-progress: false
+
+jobs:
+  update-go:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install R packages
+        run: |
+          Rscript -e 'install.packages(
+            c(
+              "data.table",
+              "readr",
+              "dplyr",
+              "lubridate",
+              "jsonlite",
+              "stringi",
+              "stringr",
+              "tibble",
+              "purrr",
+              "rvest",
+              "xml2"
+            ),
+            repos = "https://cloud.r-project.org"
+          )'
+
+      - name: Decide scrape mode
+        id: scrape_mode
+        shell: bash
+        run: |
+          DAY_OF_MONTH="$(date +%-d)"
+
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && \
+                "${{ inputs.full_profile_scrape }}" == "true" ]]; then
+            MODE="full"
+          elif [[ "${{ github.event_name }}" == "schedule" && \
+                  "$DAY_OF_MONTH" -le 7 ]]; then
+            MODE="full"
+          else
+            MODE="weekly"
+          fi
+
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "GoRatings scrape mode: $MODE"
+
+      - name: Run GoRatings scraper
+        env:
+          GORATINGS_SCRAPE_MODE: ${{ steps.scrape_mode.outputs.mode }}
+        run: |
+          Rscript scripts/go/04_scrape_goratings.R
+
+      - name: Build GoRatings games
+        run: |
+          Rscript scripts/go/05_build_games.R
+
+      - name: Update GoRatings player map
+        run: |
+          Rscript scripts/go/06_build_player_map.R
+
+      - name: Calculate live Go Elo
+        run: |
+          Rscript scripts/go/07_calculate_live_elo.R
+
+      - name: Build combined ratings
+        run: |
+          Rscript scripts/go/08_build_combined_ratings.R
+
+      - name: Build combined history
+        run: |
+          Rscript scripts/go/09_build_combined_history.R
+
+      - name: Write website JSON
+        run: |
+          Rscript scripts/go/02_write_json.R
+
+      - name: Show generated changes
+        run: |
+          git status --short
+
+      - name: Commit updated Go data
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            Go/data \
+            Go/pipeline_data/goratings/goratings_games_2026_observations.csv \
+            Go/pipeline_data/goratings/goratings_players_homepage.csv \
+            Go/pipeline_data/goratings/goratings_scrape_log.csv \
+            Go/pipeline_data/goratings/goratings_failed_profiles.csv \
+            Go/pipeline_data/goratings/goratings_player_map.csv \
+            Go/pipeline_data/goratings/goratings_unmatched_players.csv \
+            Go/pipeline_data/goratings/goratings_match_candidates.csv \
+            Go/pipeline_data/goratings/goratings_match_evidence.csv \
+            Go/pipeline_data/processed/goratings_games_2026.csv \
+            Go/pipeline_data/processed/goratings_games_2026_issues.csv
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "Update Go ratings"
+          git push

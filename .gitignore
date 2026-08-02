@@ -18,9 +18,8 @@ Snooker/pipeline_data/Elo/snooker_elo_final_ratings_pass*.csv
 .RData
 .Rproj.user/
 
-# GoRatings raw and matching-history downloads
+# GoRatings large raw downloads
 Go/pipeline_data/goratings/goratings_games_all_raw.csv
-Go/pipeline_data/goratings/goratings_games_2015_2025.csv
 Go/pipeline_data/goratings/goratings_games_2023_2025.csv
 Go/pipeline_data/goratings/failed_profiles_all.csv
 
