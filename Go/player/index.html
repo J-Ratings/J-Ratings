@@ -114,43 +114,34 @@
       width:120px;
     }
 
-    table.games th:nth-child(2),
-    table.games td:nth-child(2){
-      width:190px;
-      max-width:190px;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-    }
+table.games th:nth-child(2),
+table.games td:nth-child(2),
+table.games th:nth-child(4),
+table.games td:nth-child(4){
+  width:190px;
+}
 
-    table.games th:nth-child(3),
-    table.games td:nth-child(3),
-    table.games th:nth-child(5),
-    table.games td:nth-child(5){
-      width:170px;
-    }
+table.games th:nth-child(3),
+table.games td:nth-child(3),
+table.games th:nth-child(5),
+table.games td:nth-child(5){
+  width:72px;
+}
 
-    table.games th:nth-child(4),
-    table.games td:nth-child(4),
-    table.games th:nth-child(6),
-    table.games td:nth-child(6){
-      width:72px;
-    }
+table.games th:nth-child(6),
+table.games td:nth-child(6){
+  width:180px;
+}
 
-    table.games th:nth-child(7),
-    table.games td:nth-child(7){
-      width:180px;
-    }
+table.games th:nth-child(7),
+table.games td:nth-child(7){
+  width:90px;
+}
 
-    table.games th:nth-child(8),
-    table.games td:nth-child(8){
-      width:90px;
-    }
-
-    table.games th:nth-child(9),
-    table.games td:nth-child(9){
-      width:80px;
-    }
+table.games th:nth-child(8),
+table.games td:nth-child(8){
+  width:80px;
+}
 
     .player-cell{
       text-align:left;
@@ -246,40 +237,34 @@
         width:110px;
       }
 
-      table.games th:nth-child(2),
-      table.games td:nth-child(2){
-        width:180px;
-        max-width:180px;
-      }
+table.games th:nth-child(2),
+table.games td:nth-child(2),
+table.games th:nth-child(4),
+table.games td:nth-child(4){
+  width:145px;
+}
 
-      table.games th:nth-child(3),
-      table.games td:nth-child(3),
-      table.games th:nth-child(5),
-      table.games td:nth-child(5){
-        width:145px;
-      }
+table.games th:nth-child(3),
+table.games td:nth-child(3),
+table.games th:nth-child(5),
+table.games td:nth-child(5){
+  width:68px;
+}
 
-      table.games th:nth-child(4),
-      table.games td:nth-child(4),
-      table.games th:nth-child(6),
-      table.games td:nth-child(6){
-        width:68px;
-      }
+table.games th:nth-child(6),
+table.games td:nth-child(6){
+  width:150px;
+}
 
-      table.games th:nth-child(7),
-      table.games td:nth-child(7){
-        width:150px;
-      }
+table.games th:nth-child(7),
+table.games td:nth-child(7){
+  width:85px;
+}
 
-      table.games th:nth-child(8),
-      table.games td:nth-child(8){
-        width:85px;
-      }
-
-      table.games th:nth-child(9),
-      table.games td:nth-child(9){
-        width:75px;
-      }
+table.games th:nth-child(8),
+table.games td:nth-child(8){
+  width:75px;
+}
 
       .wl-cell{
         min-width:132px;
@@ -501,8 +486,8 @@ function renderGamesTable(me, players, games) {
   const thead = document.createElement('thead');
   const hr = document.createElement('tr');
 
-  for (const h of ['Date', 'Tournament', 'Black', 'Elo', 'White', 'Elo', 'Expected W/L', 'Result', 'Δ']) {
-    const th = document.createElement('th');
+for (const h of ['Date', 'Black', 'Elo', 'White', 'Elo', 'Expected W/L', 'Result', 'Δ']) {
+      const th = document.createElement('th');
     th.textContent = h;
     hr.appendChild(th);
   }
@@ -532,10 +517,6 @@ function renderGamesTable(me, players, games) {
 
     const tdDate = document.createElement('td');
     tdDate.textContent = g.date || '';
-
-    const tdTournament = document.createElement('td');
-    tdTournament.textContent = g.tournament || '';
-    tdTournament.title = g.tournament || '';
 
     const tdBlack = document.createElement('td');
     tdBlack.className = 'player-cell';
@@ -576,7 +557,6 @@ function renderGamesTable(me, players, games) {
     }
 
     tr.appendChild(tdDate);
-    tr.appendChild(tdTournament);
     tr.appendChild(tdBlack);
     tr.appendChild(tdBlackElo);
     tr.appendChild(tdWhite);
@@ -638,7 +618,7 @@ async function load() {
   try {
     document.getElementById('chart').textContent = 'Loading…';
     document.getElementById('games').innerHTML =
-      '<tbody><tr><td colspan="9">Loading…</td></tr></tbody>';
+      '<tbody><tr><td colspan="8">Loading…</td></tr></tbody>';
 
     const [playersRes, histRes, gamesRes] = await Promise.all([
       fetch(PLAYERS_URL, { cache: 'no-cache' }),
@@ -696,7 +676,7 @@ async function load() {
       renderGamesTable(me, players, Array.isArray(games) ? games : []);
     } else {
       document.getElementById('games').innerHTML =
-        '<tbody><tr><td colspan="9">No games</td></tr></tbody>';
+        '<tbody><tr><td colspan="8">No games</td></tr></tbody>';
     }
   } catch (e) {
     if (token !== LOAD_TOKEN) return;
@@ -705,7 +685,7 @@ async function load() {
 
     document.getElementById('chart').textContent = 'Error: ' + e.message;
     document.getElementById('games').innerHTML =
-      '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
+      '<tbody><tr><td colspan="8">Error loading games</td></tr></tbody>';
 
     renderPlayerStats([]);
   }
