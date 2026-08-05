@@ -853,7 +853,11 @@ games_out <- canonical_games %>%
     perspective_count =
       as.integer(perspective_count),
     
-    as.integer(occurrence),
+    occurrence =
+      as.integer(occurrence),
+    
+    SameSignatureSequence =
+      as.integer(occurrence)
     
   ) %>%
   arrange(
