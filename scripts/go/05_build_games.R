@@ -857,7 +857,10 @@ games_out <- canonical_games %>%
       as.integer(occurrence),
     
     SameSignatureSequence =
-      as.integer(occurrence)
+      as.integer(occurrence),
+    
+    GameKey =
+      as.character(GameKey)
     
   ) %>%
   arrange(
