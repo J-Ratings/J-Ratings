@@ -1173,6 +1173,18 @@ if (nrow(profiles_to_scrape) > 0L) {
     }
     
     if (
+      i < nrow(profiles_to_scrape)
+    ) {
+      Sys.sleep(
+        runif(
+          1,
+          min = REQUEST_DELAY_MIN,
+          max = REQUEST_DELAY_MAX
+        )
+      )
+    }
+    
+    if (
       i %% BATCH_SIZE == 0L &&
       i < nrow(profiles_to_scrape)
     ) {

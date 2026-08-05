@@ -38,7 +38,7 @@ jobs:
       - name: Install R dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          cache-version: 1
+          cache-version: 2
           packages: |
             any::data.table
             any::readr
@@ -78,6 +78,27 @@ jobs:
         run: |
           Rscript scripts/go/04_scrape_goratings.R
 
+      # Save the scrape before running the rest of the pipeline.
+      # This prevents a later R error from forcing another long scrape.
+      - name: Save scraped GoRatings data
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            Go/pipeline_data/goratings/goratings_games_2026_observations.csv \
+            Go/pipeline_data/goratings/goratings_players_homepage.csv \
+            Go/pipeline_data/goratings/goratings_scrape_log.csv \
+            Go/pipeline_data/goratings/goratings_failed_profiles.csv
+
+          if git diff --cached --quiet; then
+            echo "No scraped data changes to commit"
+          else
+            git commit -m "Update GoRatings scrape data"
+            git push
+          fi
+
       - name: Build GoRatings games
         run: |
           Rscript scripts/go/05_build_games.R
@@ -106,7 +127,7 @@ jobs:
         run: |
           git status --short
 
-      - name: Commit updated Go data
+      - name: Commit updated Go ratings and website data
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
@@ -114,19 +135,15 @@ jobs:
 
           git add \
             Go/data \
-            Go/pipeline_data/goratings/goratings_games_2026_observations.csv \
-            Go/pipeline_data/goratings/goratings_players_homepage.csv \
-            Go/pipeline_data/goratings/goratings_scrape_log.csv \
-            Go/pipeline_data/goratings/goratings_failed_profiles.csv \
-            Go/pipeline_data/goratings/goratings_player_map.csv \
-            Go/pipeline_data/goratings/goratings_unmatched_players.csv \
-            Go/pipeline_data/goratings/goratings_match_candidates.csv \
-            Go/pipeline_data/goratings/goratings_match_evidence.csv \
             Go/pipeline_data/processed/goratings_games_2026.csv \
-            Go/pipeline_data/processed/goratings_games_2026_issues.csv
+            Go/pipeline_data/processed/goratings_games_2026_issues.csv \
+            Go/pipeline_data/processed/goratings_player_map.csv \
+            Go/pipeline_data/processed/goratings_unmatched_players.csv \
+            Go/pipeline_data/processed/goratings_match_candidates.csv \
+            Go/pipeline_data/processed/goratings_match_evidence.csv
 
           if git diff --cached --quiet; then
-            echo "No changes to commit"
+            echo "No ratings or website changes to commit"
             exit 0
           fi
 

@@ -776,6 +776,17 @@ games_out <- canonical_games %>%
     white_id =
       as.character(white_id),
     
+    WinnerID = case_when(
+      result_code == "B" ~
+        as.character(black_id),
+      
+      result_code == "W" ~
+        as.character(white_id),
+      
+      TRUE ~
+        NA_character_
+    ),
+    
     black_goratings_id =
       as.character(black_id),
     
@@ -842,11 +853,8 @@ games_out <- canonical_games %>%
     perspective_count =
       as.integer(perspective_count),
     
-    occurrence =
-      as.integer(occurrence),
+    as.integer(occurrence),
     
-    GameKey =
-      as.character(GameKey)
   ) %>%
   arrange(
     date,
