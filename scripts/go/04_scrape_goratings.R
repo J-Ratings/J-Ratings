@@ -44,8 +44,8 @@ LIVE_START_DATE <- as.Date("2026-01-01")
 
 ACTIVE_WINDOW_DAYS <- 120L
 
-REQUEST_DELAY_MIN <- 1.0
-REQUEST_DELAY_MAX <- 1.5
+REQUEST_DELAY_MIN <- 0.8
+REQUEST_DELAY_MAX <- 1.2
 
 SAVE_EVERY <- 25L
 
@@ -770,18 +770,6 @@ profile_selection <- homepage_players %>%
     is_new_player =
       is.na(previous_homepage_elo),
     
-    homepage_elo_changed =
-      !is.na(previous_homepage_elo) &
-      !is.na(homepage_elo) &
-      homepage_elo !=
-      previous_homepage_elo,
-    
-    homepage_rank_changed =
-      !is.na(previous_homepage_rank) &
-      !is.na(homepage_rank) &
-      homepage_rank !=
-      previous_homepage_rank,
-    
     recently_active =
       !is.na(last_known_game_date) &
       last_known_game_date >=
@@ -794,9 +782,6 @@ profile_selection <- homepage_players %>%
       is_new_player ~
         "new player",
       
-      homepage_elo_changed ~
-        "homepage Elo changed",
-      
       recently_active ~
         "recently active",
       
@@ -807,7 +792,6 @@ profile_selection <- homepage_players %>%
     should_scrape =
       SCRAPE_MODE == "full" |
       is_new_player |
-      homepage_elo_changed |
       recently_active
   )
 

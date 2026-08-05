@@ -48,6 +48,7 @@ jobs:
             any::stringi
             any::stringr
             any::tibble
+            any::tidyr
             any::purrr
             any::rvest
             any::xml2
