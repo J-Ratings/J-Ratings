@@ -49,6 +49,9 @@ REQUEST_DELAY_MAX <- 1.2
 
 SAVE_EVERY <- 25L
 
+BATCH_SIZE <- 100L
+BATCH_PAUSE_SECONDS <- 10
+
 SCRAPE_MODE <- tolower(
   trimws(
     Sys.getenv(
@@ -1170,15 +1173,19 @@ if (nrow(profiles_to_scrape) > 0L) {
     }
     
     if (
-      i <
-      nrow(profiles_to_scrape)
+      i %% BATCH_SIZE == 0L &&
+      i < nrow(profiles_to_scrape)
     ) {
+      cat(
+        "Pausing for",
+        BATCH_PAUSE_SECONDS,
+        "seconds after",
+        i,
+        "profiles\n"
+      )
+      
       Sys.sleep(
-        runif(
-          1,
-          min = REQUEST_DELAY_MIN,
-          max = REQUEST_DELAY_MAX
-        )
+        BATCH_PAUSE_SECONDS
       )
     }
   }
