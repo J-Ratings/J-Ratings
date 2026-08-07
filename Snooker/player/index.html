@@ -121,6 +121,12 @@
       margin-bottom:10px;
     }
 
+    #upcomingWrap{
+      margin-top:12px;
+      margin-bottom:28px;
+      overflow-x:auto;
+    }
+
     #matchesWrap{
       max-height:520px;
       overflow:auto;
@@ -426,7 +432,14 @@
 
     <div id="chart">Loading…</div>
 
-    <h3 class="section-title">Matches</h3>
+    <div id="upcomingSection" style="display:none;">
+      <h3 class="section-title">Next Match</h3>
+      <div id="upcomingWrap">
+        <table id="upcomingMatch" class="matches"></table>
+      </div>
+    </div>
+
+    <h3 class="section-title">Past Matches</h3>
     <div id="matchesWrap">
       <table id="matches" class="matches"></table>
     </div>
@@ -706,6 +719,96 @@
     return { cls: '', text: raw };
   }
 
+  function renderUpcomingTable(me, players, matches) {
+    const section = document.getElementById('upcomingSection');
+    const tbl = document.getElementById('upcomingMatch');
+
+    tbl.innerHTML = '';
+
+    const rows = (Array.isArray(matches) ? matches : [])
+      .filter(g => g && g.upcoming === true)
+      .sort((a, b) => {
+        const ta = Date.parse(a.date || a.match_date || '');
+        const tb = Date.parse(b.date || b.match_date || '');
+        if (ta !== tb) return ta - tb;
+        return (Number(a.seq) || 0) - (Number(b.seq) || 0);
+      })
+      .slice(0, 1);
+
+    if (!rows.length) {
+      section.style.display = 'none';
+      return;
+    }
+
+    section.style.display = '';
+
+    const thead = document.createElement('thead');
+    const hr = document.createElement('tr');
+
+    for (const h of ['Date', 'Event', 'Player', 'Elo', 'Opponent', 'Elo', 'Expected W/L']) {
+      const th = document.createElement('th');
+      th.textContent = h;
+      hr.appendChild(th);
+    }
+
+    thead.appendChild(hr);
+    tbl.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    const meId = String(me.id);
+
+    for (const g of rows) {
+      const playerId = String(g.player_id ?? me.id);
+      const opponentId = String(g.opponent_id ?? '');
+
+      const playerName = g.player_name || me.display_name || me.name || 'Player';
+      const opponentName = g.opponent_name || '';
+
+      const playerElo = Number(g.player_elo ?? g.elo);
+      const opponentElo = Number(g.opponent_elo ?? g.OpponentElo ?? g.opponentElo);
+
+      const tr = document.createElement('tr');
+
+      const tdDate = document.createElement('td');
+      tdDate.textContent = g.date || g.match_date || '';
+
+      const tdEvent = document.createElement('td');
+      const fullEvent = String(g.event || g.EventName || '');
+      tdEvent.title = fullEvent;
+      tdEvent.textContent = fullEvent;
+
+      const tdPlayer = document.createElement('td');
+      tdPlayer.className = 'player-cell';
+      tdPlayer.appendChild(renderPlayerCell(playerId, playerName, players, meId));
+
+      const tdPlayerElo = document.createElement('td');
+      tdPlayerElo.textContent = Number.isFinite(playerElo) ? String(Math.round(playerElo)) : '';
+
+      const tdOpponent = document.createElement('td');
+      tdOpponent.className = 'player-cell';
+      tdOpponent.appendChild(renderPlayerCell(opponentId, opponentName, players, meId));
+
+      const tdOpponentElo = document.createElement('td');
+      tdOpponentElo.textContent = Number.isFinite(opponentElo) ? String(Math.round(opponentElo)) : '';
+
+      const tdWl = document.createElement('td');
+      tdWl.className = 'wl-cell';
+      tdWl.appendChild(renderWlBar(g));
+
+      tr.appendChild(tdDate);
+      tr.appendChild(tdEvent);
+      tr.appendChild(tdPlayer);
+      tr.appendChild(tdPlayerElo);
+      tr.appendChild(tdOpponent);
+      tr.appendChild(tdOpponentElo);
+      tr.appendChild(tdWl);
+
+      tbody.appendChild(tr);
+    }
+
+    tbl.appendChild(tbody);
+  }
+
   function renderMatchesTable(me, players, matches) {
     const tbl = document.getElementById('matches');
     tbl.innerHTML = '';
@@ -723,7 +826,8 @@
     tbl.appendChild(thead);
 
     const tbody = document.createElement('tbody');
-    const rows = Array.isArray(matches) ? [...matches] : [];
+    const rows = (Array.isArray(matches) ? matches : [])
+      .filter(g => g && g.upcoming !== true);
 
     rows.sort((a, b) => {
       const ta = Date.parse(a.date || a.match_date || '');
@@ -867,6 +971,8 @@
 
     try {
       document.getElementById('chart').textContent = 'Loading…';
+      document.getElementById('upcomingSection').style.display = 'none';
+      document.getElementById('upcomingMatch').innerHTML = '';
       document.getElementById('matches').innerHTML =
         '<tbody><tr><td colspan="10">Loading…</td></tr></tbody>';
 
@@ -914,8 +1020,12 @@
 
         if (token !== LOAD_TOKEN) return;
 
-        renderMatchesTable(me, players, Array.isArray(games) ? games : []);
+        const matchRows = Array.isArray(games) ? games : [];
+
+        renderUpcomingTable(me, players, matchRows);
+        renderMatchesTable(me, players, matchRows);
       } else {
+        document.getElementById('upcomingSection').style.display = 'none';
         document.getElementById('matches').innerHTML =
           '<tbody><tr><td colspan="10">No matches found.</td></tr></tbody>';
       }
@@ -924,6 +1034,7 @@
 
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
+      document.getElementById('upcomingSection').style.display = 'none';
       document.getElementById('matches').innerHTML =
         '<tbody><tr><td colspan="10">Error loading matches.</td></tr></tbody>';
       renderPlayerStats([]);

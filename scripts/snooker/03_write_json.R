@@ -91,11 +91,13 @@ write_json_compact <- function(x, path, na = "null") {
 # -----------------------------
 # Input files
 # -----------------------------
-final_csv <- file.path(ELO_SRC_DIR, "snooker_elo_final_ratings.csv")
-hist_csv  <- file.path(ELO_SRC_DIR, "snooker_elo_match_history.csv")
+final_csv    <- file.path(ELO_SRC_DIR, "snooker_elo_final_ratings.csv")
+hist_csv     <- file.path(ELO_SRC_DIR, "snooker_elo_match_history.csv")
+upcoming_csv <- file.path(ELO_SRC_DIR, "snooker_upcoming_matches.csv")
 
-if (!file.exists(final_csv)) stop("Missing file: ", final_csv)
-if (!file.exists(hist_csv))  stop("Missing file: ", hist_csv)
+if (!file.exists(final_csv))    stop("Missing file: ", final_csv)
+if (!file.exists(hist_csv))     stop("Missing file: ", hist_csv)
+if (!file.exists(upcoming_csv)) stop("Missing file: ", upcoming_csv)
 
 # -----------------------------
 # Load CSVs
@@ -108,6 +110,12 @@ final <- read_csv(
 
 mhist <- read_csv(
   hist_csv,
+  show_col_types = FALSE,
+  locale = locale(encoding = "UTF-8")
+)
+
+upcoming <- read_csv(
+  upcoming_csv,
   show_col_types = FALSE,
   locale = locale(encoding = "UTF-8")
 )
@@ -173,6 +181,60 @@ final <- final %>%
     }
   ) %>%
   filter(PlayerID != "", PlayerName != "", !is.na(Rating))
+
+# -----------------------------
+# Prepare confirmed upcoming matches
+# -----------------------------
+
+upcoming <- upcoming %>%
+  mutate(
+    MatchID = trimws(as.character(MatchID)),
+    EventID = trimws(as.character(EventID)),
+    EventName = trimws(as.character(EventName)),
+    EventSeason = suppressWarnings(as.integer(EventSeason)),
+    ScheduledDate = as.POSIXct(
+      ScheduledDate,
+      format = "%Y-%m-%d %H:%M:%S",
+      tz = "UTC"
+    ),
+    PlayerA_ID = trimws(as.character(PlayerA_ID)),
+    PlayerB_ID = trimws(as.character(PlayerB_ID))
+  ) %>%
+  filter(
+    MatchID != "",
+    PlayerA_ID != "",
+    PlayerB_ID != "",
+    !is.na(ScheduledDate)
+  )
+
+current_player_lookup <- final %>%
+  select(
+    PlayerID,
+    PlayerName,
+    Rating
+  )
+
+upcoming <- upcoming %>%
+  left_join(
+    current_player_lookup %>%
+      rename(
+        PlayerA_ID = PlayerID,
+        PlayerA_Name = PlayerName,
+        ARating = Rating
+      ),
+    by = "PlayerA_ID"
+  ) %>%
+  left_join(
+    current_player_lookup %>%
+      rename(
+        PlayerB_ID = PlayerID,
+        PlayerB_Name = PlayerName,
+        BRating = Rating
+      ),
+    by = "PlayerB_ID"
+  )
+
+cat("Confirmed upcoming matches loaded:", nrow(upcoming), "\n")
 
 # -----------------------------
 # Clean / standardise match history
@@ -506,197 +568,15 @@ cat(
 all_ids <- players_tbl$id
 
 # -----------------------------
-# Per-player history JSON
-# -----------------------------
-n_hist_written <- 0L
-
-for (pid in all_ids) {
-  df <- hist_daily %>%
-    filter(PlayerID == pid) %>%
-    arrange(datetime, match_id) %>%
-    transmute(
-      date = format(date, "%Y-%m-%d"),
-      season = ifelse(is.na(season), NA_character_, as.character(season)),
-      rating = as.integer(round(rating)),
-      rank = as.integer(rank),
-      event = as.character(event)
-    )
-  
-  if (nrow(df) > 0L) {
-    write_json_compact(
-      df,
-      file.path(HISTORY_OUT, paste0(pid, ".json"))
-    )
-    
-    n_hist_written <- n_hist_written + 1L
-  }
-}
-
-cat("Wrote history files:", n_hist_written, "\n")
-
-# -----------------------------
-# Season snapshots
-#
-# Source:
-#   pipeline_data/Elo/season_snapshots/snapshot_season_YYYY.csv
-#   pipeline_data/Elo/season_snapshots/snapshot_current.csv
-#
-# Website output:
-#   data/snapshots/seasons.json
-#   data/snapshots/YYYY.json
-#   data/snapshots/current.json
-# -----------------------------
-if (!dir.exists(SEASON_SNAPSHOTS_SRC_DIR)) {
-  stop("Missing season snapshots directory: ", SEASON_SNAPSHOTS_SRC_DIR)
-}
-
-season_snapshot_files <- list.files(
-  SEASON_SNAPSHOTS_SRC_DIR,
-  pattern = "^snapshot_season_\\d{4}\\.csv$",
-  full.names = TRUE
-)
-
-extract_season_from_snapshot <- function(path) {
-  suppressWarnings(as.integer(sub("^snapshot_season_(\\d{4})\\.csv$", "\\1", basename(path))))
-}
-
-season_snapshot_info <- data.table(
-  file = season_snapshot_files,
-  season = extract_season_from_snapshot(season_snapshot_files)
-)
-
-season_snapshot_info <- season_snapshot_info[!is.na(season)]
-season_snapshot_info <- season_snapshot_info[season < current_season]
-
-setorder(season_snapshot_info, season)
-
-snapshot_seasons <- season_snapshot_info$season
-
-write_json_compact(
-  snapshot_seasons,
-  file.path(SNAPSHOTS_OUT, "seasons.json")
-)
-
-cat("Wrote snapshots/seasons.json (n =", length(snapshot_seasons), ")\n")
-
-n_snapshots_written <- 0L
-
-for (i in seq_len(nrow(season_snapshot_info))) {
-  season <- season_snapshot_info$season[i]
-  f <- season_snapshot_info$file[i]
-  
-  snap <- read_csv(
-    f,
-    show_col_types = FALSE,
-    locale = locale(encoding = "UTF-8")
-  )
-  
-  required_snap_cols <- c(
-    "Season",
-    "SeasonLabel",
-    "SeasonEndDate",
-    "Rank",
-    "PlayerID",
-    "PlayerName",
-    "Nationality",
-    "Rating",
-    "MatchesPlayed",
-    "FramesPlayed",
-    "ListedFrames",
-    "LastMatchDate"
-  )
-  
-  miss_snap <- setdiff(required_snap_cols, names(snap))
-  
-  if (length(miss_snap) > 0L) {
-    stop(
-      "Missing columns in season snapshot ",
-      basename(f),
-      ": ",
-      paste(miss_snap, collapse = ", ")
-    )
-  }
-  
-  snapshot_tbl <- snap %>%
-    transmute(
-      season = as.integer(Season),
-      season_label = as.character(SeasonLabel),
-      season_end_date = as.character(SeasonEndDate),
-      rank = as.integer(Rank),
-      id = as.character(PlayerID),
-      name = as.character(PlayerName),
-      display_name = as.character(PlayerName),
-      nationality = as.character(Nationality),
-      rating = as.integer(round(as.numeric(Rating))),
-      games = as.integer(MatchesPlayed),
-      frames = as.integer(FramesPlayed),
-      listed_frames = as.integer(ListedFrames),
-      last_played = format(as.Date(LastMatchDate), "%Y-%m-%d"),
-      active = if ("Active" %in% names(snap)) as.logical(Active) else TRUE,
-      listable = if ("Listable" %in% names(snap)) as.logical(Listable) else TRUE
-    ) %>%
-    arrange(rank, desc(rating), name)
-  
-  write_json_compact(
-    snapshot_tbl,
-    file.path(SNAPSHOTS_OUT, paste0(season, ".json"))
-  )
-  
-  n_snapshots_written <- n_snapshots_written + 1L
-  
-  cat("Wrote season snapshot:", season, "(players =", nrow(snapshot_tbl), ")\n")
-}
-
-current_snapshot_file <- file.path(SEASON_SNAPSHOTS_SRC_DIR, "snapshot_current.csv")
-
-if (file.exists(current_snapshot_file)) {
-  current_snap <- read_csv(
-    current_snapshot_file,
-    show_col_types = FALSE,
-    locale = locale(encoding = "UTF-8")
-  )
-  
-  current_tbl <- current_snap %>%
-    transmute(
-      season = as.integer(Season),
-      season_label = as.character(SeasonLabel),
-      season_end_date = as.character(SeasonEndDate),
-      rank = as.integer(Rank),
-      id = as.character(PlayerID),
-      name = as.character(PlayerName),
-      display_name = as.character(PlayerName),
-      nationality = as.character(Nationality),
-      rating = as.integer(round(as.numeric(Rating))),
-      games = as.integer(MatchesPlayed),
-      frames = as.integer(FramesPlayed),
-      listed_frames = as.integer(ListedFrames),
-      last_played = format(as.Date(LastMatchDate), "%Y-%m-%d"),
-      active = if ("Active" %in% names(current_snap)) as.logical(Active) else TRUE,
-      listable = if ("Listable" %in% names(current_snap)) as.logical(Listable) else TRUE
-    ) %>%
-    arrange(rank, desc(rating), name)
-  
-  write_json_compact(
-    current_tbl,
-    file.path(SNAPSHOTS_OUT, "current.json")
-  )
-  
-  cat("Wrote snapshots/current.json (players =", nrow(current_tbl), ")\n")
-} else {
-  cat("No snapshot_current.csv found; snapshots/current.json was not written.\n")
-}
-
-cat("Wrote completed season snapshots:", n_snapshots_written, "\n")
-
-# -----------------------------
 # Per-player games JSON
 #
 # Output is from the profile player's perspective:
 #   player on the left, opponent on the right.
-#   winPct/lossPct use pre-match Elo expected score.
 #
-# Also keeps legacy fields used by the old profile page.
+# Completed matches use pre-match Elo.
+# Upcoming matches use current Elo.
 # -----------------------------
+
 rank_lookup_games <- hist_long %>%
   select(PlayerID, datetime, rank) %>%
   filter(!is.na(rank)) %>%
@@ -708,7 +588,12 @@ rank_lookup_games <- hist_long %>%
 n_games_written <- 0L
 
 for (pid in all_ids) {
-  df <- mhist %>%
+  
+  # ==========================================================
+  # Past matches
+  # ==========================================================
+  
+  past_df <- mhist %>%
     filter(PlayerA_ID == pid | PlayerB_ID == pid) %>%
     arrange(desc(MatchDate), desc(MatchID)) %>%
     mutate(
@@ -724,6 +609,7 @@ for (pid in all_ids) {
       
       player_score = if_else(am_a, ScoreA, ScoreB),
       opponent_score = if_else(am_a, ScoreB, ScoreA),
+      
       score = if_else(
         !is.na(player_score) & !is.na(opponent_score),
         paste0(player_score, "-", opponent_score),
@@ -736,7 +622,11 @@ for (pid in all_ids) {
       player_delta_num = if_else(am_a, DeltaA, DeltaB),
       games_after = if_else(am_a, AGamesAfter, BGamesAfter),
       
-      expected_win = elo_expected(player_elo_num, opponent_elo_num),
+      expected_win = elo_expected(
+        player_elo_num,
+        opponent_elo_num
+      ),
+      
       winPct_num = as.integer(round(100 * expected_win)),
       lossPct_num = 100L - winPct_num,
       
@@ -754,16 +644,28 @@ for (pid in all_ids) {
     ) %>%
     transmute(
       date = format(as.Date(MatchDate), "%Y-%m-%d"),
-      season = ifelse(is.na(season), NA_character_, as.character(season)),
+      season = ifelse(
+        is.na(season),
+        NA_character_,
+        as.character(season)
+      ),
       event = as.character(EventName),
       
       player_id = as.character(player_id),
       player_name = as.character(player_name),
-      player_elo = ifelse(!is.na(player_elo_num), as.integer(round(player_elo_num)), NA_integer_),
+      player_elo = ifelse(
+        !is.na(player_elo_num),
+        as.integer(round(player_elo_num)),
+        NA_integer_
+      ),
       
       opponent_id = as.character(opponent_id),
       opponent_name = as.character(opponent_name),
-      opponent_elo = ifelse(!is.na(opponent_elo_num), as.integer(round(opponent_elo_num)), NA_integer_),
+      opponent_elo = ifelse(
+        !is.na(opponent_elo_num),
+        as.integer(round(opponent_elo_num)),
+        NA_integer_
+      ),
       
       score = as.character(score),
       player_score = as.integer(player_score),
@@ -773,25 +675,181 @@ for (pid in all_ids) {
       winPct = as.integer(winPct_num),
       lossPct = as.integer(lossPct_num),
       
-      delta = ifelse(!is.na(player_delta_num), round(player_delta_num, 1), NA_real_),
-      new = ifelse(!is.na(player_new_num), as.integer(round(player_new_num)), NA_integer_),
+      delta = ifelse(
+        !is.na(player_delta_num),
+        round(player_delta_num, 1),
+        NA_real_
+      ),
+      
+      new = ifelse(
+        !is.na(player_new_num),
+        as.integer(round(player_new_num)),
+        NA_integer_
+      ),
+      
       games_after = as.integer(games_after),
       rank = as.integer(rank),
       
-      # Legacy fields retained for compatibility with older profile pages.
+      upcoming = FALSE,
+      
+      # Legacy fields retained for compatibility.
       player_a_id = as.character(PlayerA_ID),
       player_a_name = as.character(PlayerA_Name),
       player_b_id = as.character(PlayerB_ID),
       player_b_name = as.character(PlayerB_Name),
       score_a = as.integer(ScoreA),
       score_b = as.integer(ScoreB),
-      elo = ifelse(!is.na(player_elo_num), as.integer(round(player_elo_num)), NA_integer_)
+      
+      elo = ifelse(
+        !is.na(player_elo_num),
+        as.integer(round(player_elo_num)),
+        NA_integer_
+      )
     )
   
+  # ==========================================================
+  # Next match
+  # ==========================================================
+  
+  future_df <- upcoming %>%
+    filter(
+      PlayerA_ID == pid |
+        PlayerB_ID == pid
+    ) %>%
+    arrange(ScheduledDate, MatchID) %>%
+    slice_head(n = 1)
+  
+  if (nrow(future_df) > 0L) {
+    
+    future_df <- future_df %>%
+      mutate(
+        am_a = PlayerA_ID == pid,
+        
+        player_id = pid,
+        
+        player_name = if_else(
+          am_a,
+          PlayerA_Name,
+          PlayerB_Name
+        ),
+        
+        opponent_id = if_else(
+          am_a,
+          PlayerB_ID,
+          PlayerA_ID
+        ),
+        
+        opponent_name = if_else(
+          am_a,
+          PlayerB_Name,
+          PlayerA_Name
+        ),
+        
+        player_elo_num = if_else(
+          am_a,
+          ARating,
+          BRating
+        ),
+        
+        opponent_elo_num = if_else(
+          am_a,
+          BRating,
+          ARating
+        ),
+        
+        expected_win = elo_expected(
+          player_elo_num,
+          opponent_elo_num
+        ),
+        
+        winPct_num = as.integer(
+          round(100 * expected_win)
+        ),
+        
+        lossPct_num = 100L - winPct_num
+      ) %>%
+      transmute(
+        date = format(
+          as.Date(ScheduledDate),
+          "%Y-%m-%d"
+        ),
+        
+        season = ifelse(
+          is.na(EventSeason),
+          NA_character_,
+          as.character(EventSeason)
+        ),
+        
+        event = as.character(EventName),
+        
+        player_id = as.character(player_id),
+        player_name = as.character(player_name),
+        
+        player_elo = ifelse(
+          !is.na(player_elo_num),
+          as.integer(round(player_elo_num)),
+          NA_integer_
+        ),
+        
+        opponent_id = as.character(opponent_id),
+        opponent_name = as.character(opponent_name),
+        
+        opponent_elo = ifelse(
+          !is.na(opponent_elo_num),
+          as.integer(round(opponent_elo_num)),
+          NA_integer_
+        ),
+        
+        score = NA_character_,
+        player_score = NA_integer_,
+        opponent_score = NA_integer_,
+        result = NA_character_,
+        
+        winPct = as.integer(winPct_num),
+        lossPct = as.integer(lossPct_num),
+        
+        delta = NA_real_,
+        new = NA_integer_,
+        games_after = NA_integer_,
+        rank = NA_integer_,
+        
+        upcoming = TRUE,
+        
+        # Legacy fields retained for compatibility.
+        player_a_id = as.character(PlayerA_ID),
+        player_a_name = as.character(PlayerA_Name),
+        player_b_id = as.character(PlayerB_ID),
+        player_b_name = as.character(PlayerB_Name),
+        
+        score_a = NA_integer_,
+        score_b = NA_integer_,
+        
+        elo = ifelse(
+          !is.na(player_elo_num),
+          as.integer(round(player_elo_num)),
+          NA_integer_
+        )
+      )
+    
+  } else {
+    
+    future_df <- past_df[0, ]
+  }
+  
+  # Next match first, followed by completed matches.
+  df <- bind_rows(
+    future_df,
+    past_df
+  )
+  
   if (nrow(df) > 0L) {
+    
     write_json_compact(
       df,
-      file.path(GAMES_OUT, paste0(pid, ".json"))
+      file.path(
+        GAMES_OUT,
+        paste0(pid, ".json")
+      )
     )
     
     n_games_written <- n_games_written + 1L
