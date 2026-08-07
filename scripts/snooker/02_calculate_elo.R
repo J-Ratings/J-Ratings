@@ -61,6 +61,7 @@ dir.create(SEASON_SNAPSHOT_DIR, recursive = TRUE, showWarnings = FALSE)
 
 OUTPUT_MATCH_HISTORY_CSV <- file.path(OUT_DIR, "snooker_elo_match_history.csv")
 OUTPUT_FINAL_RATINGS_CSV <- file.path(OUT_DIR, "snooker_elo_final_ratings.csv")
+OUTPUT_UPCOMING_MATCHES_CSV <- file.path(OUT_DIR, "snooker_upcoming_matches.csv")
 
 # -----------------------------
 # Elo settings
@@ -348,6 +349,7 @@ event_id_col <- first_existing_col(dt_raw, c("EventID", "Event_ID", "EID", "Even
 score_a_raw <- coalesce_first_existing(dt_raw, c("ScoreA", "Score1"))
 score_b_raw <- coalesce_first_existing(dt_raw, c("ScoreB", "Score2"))
 match_date_raw <- coalesce_first_existing(dt_raw, c("MatchDate", "StartDate", "PlayedDate", "Date"))
+scheduled_date_raw <- coalesce_first_existing(dt_raw, c("ScheduledDate"))
 
 required_hits <- list(player_a_raw, player_b_raw)
 
@@ -371,9 +373,15 @@ dt <- data.table(
   ScoreB = suppressWarnings(as.integer(score_b_raw)),
   WinnerID = if (!is.null(winner_col)) clean_id(dt_raw[[winner_col]]) else "",
   MatchDateRaw = clean_text(match_date_raw),
+  ScheduledDateRaw = if (!is.null(scheduled_date_raw)) {
+    clean_text(scheduled_date_raw)
+  } else {
+    NA_character_
+  },
   EventID = clean_id(dt_raw[[event_id_col]]),
   SourceFile = dt_raw$SourceFile
 )
+
 
 event_name_col <- first_existing_col(dt_raw, c("EventName"))
 event_season_col <- first_existing_col(dt_raw, c("EventSeason", "Season"))
@@ -444,6 +452,7 @@ dt[, EventEndDate := EventEndDate_File]
 dt[is.na(EventEndDate), EventEndDate := EventEndDate_Ref]
 
 dt[, MatchDateParsed := parse_dt_multi(MatchDateRaw)]
+dt[, ScheduledDate := parse_dt_multi(ScheduledDateRaw)]
 
 cat("\nEvent metadata check:\n")
 print(dt[, .(
@@ -537,16 +546,137 @@ if (nrow(high_score_rows) > 0L) {
 
 dt <- dt[!(ScoreA > 20 | ScoreB > 20)]
 
+# ============================================================
+# Preserve confirmed future matches before removing 0-0 rows
+# ============================================================
+
 zero_zero_rows <- dt[ScoreA == 0 & ScoreB == 0]
 
 if (nrow(zero_zero_rows) > 0L) {
-  cat("\nSkipping", nrow(zero_zero_rows), "rows with 0-0 scores.\n")
-  print(zero_zero_rows[1:min(20, .N), .(
-    MatchID, EventID, EventName, PlayerA_ID, PlayerB_ID,
-    ScoreA, ScoreB, MatchDateRaw, DateSource, SourceFile
-  )])
+  cat(
+    "\nFound",
+    nrow(zero_zero_rows),
+    "rows with 0-0 scores.\n"
+  )
 }
 
+future_matches <- zero_zero_rows[
+  !is.na(ScheduledDate) &
+    ScheduledDate > Sys.time()
+]
+
+cat(
+  "Future 0-0 matches found:",
+  nrow(future_matches),
+  "\n"
+)
+
+if (nrow(future_matches) > 0L) {
+  
+  # Put both players into one long table so we can determine
+  # each player's earliest scheduled future match.
+  player_future <- rbind(
+    future_matches[, .(
+      PlayerID = PlayerA_ID,
+      OpponentID = PlayerB_ID,
+      MatchID,
+      EventID,
+      EventName,
+      ScheduledDate
+    )],
+    future_matches[, .(
+      PlayerID = PlayerB_ID,
+      OpponentID = PlayerA_ID,
+      MatchID,
+      EventID,
+      EventName,
+      ScheduledDate
+    )]
+  )
+  
+  # Find each player's earliest scheduled future time.
+  player_future[
+    ,
+    EarliestDT := min(ScheduledDate),
+    by = PlayerID
+  ]
+  
+  player_next <- player_future[
+    ScheduledDate == EarliestDT
+  ]
+  
+  # A player must have exactly one possible opponent at that
+  # earliest scheduled time.
+  player_next[
+    ,
+    OpponentCount := uniqueN(OpponentID),
+    by = PlayerID
+  ]
+  
+  player_next_confirmed <- player_next[
+    OpponentCount == 1L
+  ]
+  
+  # A match is only confirmed when BOTH players regard this
+  # same MatchID as their unique earliest future match.
+  confirmed_ids <- player_next_confirmed[
+    ,
+    .N,
+    by = MatchID
+  ][N == 2L, MatchID]
+  
+  upcoming_matches <- future_matches[
+    MatchID %in% confirmed_ids
+  ]
+  
+  setorder(
+    upcoming_matches,
+    ScheduledDate,
+    EventID,
+    MatchID
+  )
+  
+  upcoming_matches_out <- upcoming_matches[, .(
+    MatchID,
+    EventID,
+    EventName,
+    EventSeason,
+    ScheduledDate = format(
+      ScheduledDate,
+      "%Y-%m-%d %H:%M:%S",
+      tz = "UTC"
+    ),
+    PlayerA_ID,
+    PlayerB_ID
+  )]
+  
+} else {
+  
+  upcoming_matches_out <- data.table(
+    MatchID = character(),
+    EventID = character(),
+    EventName = character(),
+    EventSeason = integer(),
+    ScheduledDate = character(),
+    PlayerA_ID = character(),
+    PlayerB_ID = character()
+  )
+}
+
+fwrite(
+  upcoming_matches_out,
+  OUTPUT_UPCOMING_MATCHES_CSV
+)
+
+cat(
+  "Confirmed upcoming matches written:",
+  nrow(upcoming_matches_out),
+  "|",
+  OUTPUT_UPCOMING_MATCHES_CSV,
+  "\n"
+)
+
+# Remove all 0-0 placeholders before Elo calculation.
 dt <- dt[!(ScoreA == 0 & ScoreB == 0)]
 
 # ============================================================
