@@ -126,6 +126,12 @@
       margin-bottom: 10px;
     }
 
+    #upcomingWrap{
+      margin-top: 12px;
+      margin-bottom: 28px;
+      overflow-x: auto;
+    }
+
     #gamesWrap{
       max-height: 520px;
       overflow: auto;
@@ -356,7 +362,12 @@
 
     <div id="chart">Loading…</div>
 
-    <h3 class="section-title">Games</h3>
+    <h3 class="section-title" id="upcomingTitle">Next 5</h3>
+    <div id="upcomingWrap">
+      <table id="upcomingGames" class="games"></table>
+    </div>
+
+    <h3 class="section-title">Past Games</h3>
     <div id="gamesWrap">
       <table id="games" class="games"></table>
     </div>
@@ -733,6 +744,89 @@ if (total === 99) {
     return wrap;
   }
 
+  function renderUpcomingTable(me, teams, games) {
+    const tbl = document.getElementById('upcomingGames');
+    const title = document.getElementById('upcomingTitle');
+    const wrap = document.getElementById('upcomingWrap');
+
+    tbl.innerHTML = '';
+
+    const myName = me.name;
+
+    const rows = (Array.isArray(games) ? games : [])
+      .filter(g =>
+        g.upcoming === true &&
+        (g.home === myName || g.away === myName)
+      )
+      .sort((a, b) => new Date(a.date) - new Date(b.date))
+      .slice(0, 5);
+
+    if (!rows.length) {
+      title.style.display = 'none';
+      wrap.style.display = 'none';
+      return;
+    }
+
+    title.style.display = '';
+    wrap.style.display = '';
+
+    const thead = document.createElement('thead');
+    const hr = document.createElement('tr');
+
+    for (const h of ['Date', 'Home', 'Elo', 'Away', 'Elo', 'Expected W/D/L']) {
+      const th = document.createElement('th');
+      th.textContent = h;
+      hr.appendChild(th);
+    }
+
+    thead.appendChild(hr);
+    tbl.appendChild(thead);
+
+    const panelBg = getComputedStyle(document.querySelector('.panel')).backgroundColor;
+    thead.style.backgroundColor = panelBg;
+
+    const tbody = document.createElement('tbody');
+
+    for (const g of rows) {
+      const homeElo = Number(g.homeElo);
+      const awayElo = Number(g.awayElo);
+
+      const tr = document.createElement('tr');
+
+      const tdDate = document.createElement('td');
+      tdDate.textContent = g.date || '';
+
+      const tdHome = document.createElement('td');
+      tdHome.className = 'team-cell';
+      tdHome.appendChild(renderTeamCell(g.home, teams, myName));
+
+      const tdHomeElo = document.createElement('td');
+      tdHomeElo.textContent = Number.isFinite(homeElo) ? String(Math.round(homeElo)) : '';
+
+      const tdAway = document.createElement('td');
+      tdAway.className = 'team-cell';
+      tdAway.appendChild(renderTeamCell(g.away, teams, myName));
+
+      const tdAwayElo = document.createElement('td');
+      tdAwayElo.textContent = Number.isFinite(awayElo) ? String(Math.round(awayElo)) : '';
+
+      const tdWdl = document.createElement('td');
+      tdWdl.className = 'wdl-cell';
+      tdWdl.appendChild(renderWdlBar(g, myName));
+
+      tr.appendChild(tdDate);
+      tr.appendChild(tdHome);
+      tr.appendChild(tdHomeElo);
+      tr.appendChild(tdAway);
+      tr.appendChild(tdAwayElo);
+      tr.appendChild(tdWdl);
+
+      tbody.appendChild(tr);
+    }
+
+    tbl.appendChild(tbody);
+  }
+
   function renderGamesTable(me, teams, games) {
     const tbl = document.getElementById('games');
     tbl.innerHTML = '';
@@ -753,8 +847,10 @@ if (total === 99) {
     thead.style.backgroundColor = panelBg;
 
     const tbody = document.createElement('tbody');
-    const rows = Array.isArray(games) ? [...games] : [];
-    rows.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const rows = (Array.isArray(games) ? games : [])
+      .filter(g => g.upcoming !== true)
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
 
     const myName = me.name;
 
@@ -928,14 +1024,23 @@ if (total === 99) {
 
       if (gamesRes.ok) {
         const games = await gamesRes.json();
-        renderGamesTable(me, teams, Array.isArray(games) ? games : []);
+        const gameRows = Array.isArray(games) ? games : [];
+
+        renderUpcomingTable(me, teams, gameRows);
+        renderGamesTable(me, teams, gameRows);
       } else {
+        document.getElementById('upcomingTitle').style.display = 'none';
+        document.getElementById('upcomingWrap').style.display = 'none';
+
         const tbl = document.getElementById('games');
         tbl.innerHTML = '<tbody><tr><td colspan="9">No games</td></tr></tbody>';
       }
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
+      document.getElementById('upcomingTitle').style.display = 'none';
+      document.getElementById('upcomingWrap').style.display = 'none';
+
       const tbl = document.getElementById('games');
       tbl.innerHTML = '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
     }
@@ -946,6 +1051,9 @@ if (total === 99) {
     .catch(e => {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
+      document.getElementById('upcomingTitle').style.display = 'none';
+      document.getElementById('upcomingWrap').style.display = 'none';
+
       const tbl = document.getElementById('games');
       tbl.innerHTML = '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
     });

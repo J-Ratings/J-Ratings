@@ -42,23 +42,22 @@ download_one_file <- function(url, dest) {
   
   ok <- tryCatch(
     {
-      download.file(
-        url = url,
-        destfile = tmp,
-        mode = "wb",
-        quiet = FALSE
+      suppressWarnings(
+        download.file(
+          url = url,
+          destfile = tmp,
+          mode = "wb",
+          quiet = FALSE
+        )
       )
       TRUE
     },
     error = function(e) {
       message("Download failed: ", conditionMessage(e))
       FALSE
-    },
-    warning = function(w) {
-      message("Download warning: ", conditionMessage(w))
-      invokeRestart("muffleWarning")
     }
   )
+  
   
   if (!ok) {
     if (file.exists(tmp)) file.remove(tmp)
@@ -99,16 +98,16 @@ out_dir <- file.path(
   season_folder
 )
 
-files_required <- c(
+files_required <- character()
+
+files_optional <- c(
   "1-premierleague.txt",
   "2-championship.txt",
   "3-league1.txt",
-  "4-league2.txt"
-)
-
-files_optional <- c(
+  "4-league2.txt",
   "5-nationalleague.txt"
 )
+
 
 files <- c(files_required, files_optional)
 

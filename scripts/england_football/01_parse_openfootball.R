@@ -149,6 +149,11 @@ parse_comp_file <- function(txt_path, league_label) {
     "(.+?)\\s+v\\s+(.+?)\\s+(\\d+)-(\\d+)(?:\\s+\\([^)]*\\))?\\s*$"
   )
   
+  fixture_pat_v <- paste0(
+    "^\\s*", time_pat,
+    "(.+?)\\s+v\\s+(.+?)\\s*$"
+  )
+  
   match_pat_pen <- paste0(
     "^\\s*", time_pat,
     "(.+?)\\s+(\\d+)-(\\d+)\\s+pen\\.?\\s+(\\d+)-(\\d+)(?:\\s+a\\.e\\.t\\.)?(?:\\s+\\([^)]*\\))?\\s+(.+?)\\s*$"
@@ -239,7 +244,7 @@ parse_comp_file <- function(txt_path, league_label) {
       next
     }
     
-    # New "v" format
+    # New "v" format - completed match
     if (grepl(match_pat_new_v, ln)) {
       home <- trim(sub(match_pat_new_v, "\\1", ln))
       away <- trim(sub(match_pat_new_v, "\\2", ln))
@@ -252,6 +257,20 @@ parse_comp_file <- function(txt_path, league_label) {
       out_away   <- c(out_away, away)
       out_res    <- c(out_res, result_code(hg, ag))
       out_score  <- c(out_score, sprintf("%d-%d", hg, ag))
+      next
+    }
+    
+    # New "v" format - unplayed fixture
+    if (grepl(fixture_pat_v, ln)) {
+      home <- trim(sub(fixture_pat_v, "\\1", ln))
+      away <- trim(sub(fixture_pat_v, "\\2", ln))
+      
+      out_season <- c(out_season, season_str)
+      out_date   <- c(out_date, format(current_date, "%Y-%m-%d"))
+      out_home   <- c(out_home, home)
+      out_away   <- c(out_away, away)
+      out_res    <- c(out_res, "")
+      out_score  <- c(out_score, "")
       next
     }
     

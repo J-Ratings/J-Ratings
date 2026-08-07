@@ -129,14 +129,18 @@ draw_rate_from_tier_gap <- function(tier, abs_gap) {
 # Load CSVs
 # -----------------------------
 
-final_csv <- file.path(src_dir, "football_elo_final_ratings.csv")
-hist_csv  <- file.path(src_dir, "football_elo_game_history.csv")
+final_csv    <- file.path(src_dir, "football_elo_final_ratings.csv")
+hist_csv     <- file.path(src_dir, "football_elo_game_history.csv")
+fixtures_csv <- file.path(src_dir, "football_upcoming_fixtures.csv")
 
-if (!file.exists(final_csv)) stop("Missing file: ", final_csv)
-if (!file.exists(hist_csv))  stop("Missing file: ", hist_csv)
+if (!file.exists(final_csv))    stop("Missing file: ", final_csv)
+if (!file.exists(hist_csv))     stop("Missing file: ", hist_csv)
+if (!file.exists(fixtures_csv)) stop("Missing file: ", fixtures_csv)
 
-final <- read_csv(final_csv, show_col_types = FALSE)
-ghist <- read_csv(hist_csv, show_col_types = FALSE)
+final    <- read_csv(final_csv, show_col_types = FALSE)
+ghist    <- read_csv(hist_csv, show_col_types = FALSE)
+fixtures <- read_csv(fixtures_csv, show_col_types = FALSE)
+
 
 # -----------------------------
 # Validate columns
@@ -172,6 +176,16 @@ ghist <- ghist %>%
     Away   = trimws(as.character(Away)),
     League = trimws(as.character(League)),
     Score  = trimws(as.character(Score)),
+    Tier   = as.integer(Tier)
+  ) %>%
+  filter(!is.na(Date), Home != "", Away != "")
+
+fixtures <- fixtures %>%
+  mutate(
+    Date   = as.Date(Date),
+    Home   = trimws(as.character(Home)),
+    Away   = trimws(as.character(Away)),
+    League = trimws(as.character(League)),
     Tier   = as.integer(Tier)
   ) %>%
   filter(!is.na(Date), Home != "", Away != "")
@@ -268,6 +282,14 @@ cat(
 
 name_to_id <- setNames(teams_all$id, teams_all$name)
 
+rating_lookup <- setNames(
+  as.numeric(final$Rating),
+  trimws(as.character(final$Team))
+)
+
+# -----------------------------
+# Long rating history
+# -----------------------------
 # -----------------------------
 # Long rating history
 # -----------------------------
@@ -394,33 +416,117 @@ n_games_written <- 0L
 for (tm in names(name_to_id)) {
   id <- name_to_id[[tm]]
   
-  df <- ghist %>%
+  # -----------------------------
+  # Next five fixtures
+  # -----------------------------
+  
+  future_df <- fixtures %>%
+    filter(
+      Home == tm | Away == tm,
+      Date > asof_date
+    ) %>%
+    arrange(Date) %>%
+    slice_head(n = 5) %>%
+    mutate(
+      season = season_label(Date),
+      division = tier_to_division(as.integer(Tier), League),
+      
+      home_elo = unname(rating_lookup[Home]),
+      away_elo = unname(rating_lookup[Away]),
+      
+      home_expected = elo_expected(home_elo, away_elo),
+      away_expected = 1 - home_expected,
+      
+      abs_elo_gap = abs(home_elo - away_elo),
+      draw_prob = draw_rate_from_tier_gap(
+        as.integer(Tier),
+        abs_elo_gap
+      ),
+      
+      home_win_prob = home_expected - draw_prob / 2,
+      away_win_prob = away_expected - draw_prob / 2,
+      
+      home_win_prob = clamp(
+        home_win_prob,
+        0,
+        1 - draw_prob
+      ),
+      
+      away_win_prob = 1 - draw_prob - home_win_prob
+    ) %>%
+    transmute(
+      date = format(Date, "%Y-%m-%d"),
+      season = as.character(season),
+      league = as.character(League),
+      tier = as.integer(Tier),
+      division = as.character(division),
+      
+      home = as.character(Home),
+      homeElo = as.integer(round(home_elo)),
+      
+      away = as.character(Away),
+      awayElo = as.integer(round(away_elo)),
+      
+      result = NA_character_,
+      score = NA_character_,
+      delta = NA_character_,
+      
+      homeWinPct = as.integer(round(100 * home_win_prob)),
+      drawPct = as.integer(round(100 * draw_prob)),
+      awayWinPct = as.integer(round(100 * away_win_prob)),
+      
+      upcoming = TRUE
+    )
+  
+  # -----------------------------
+  # Completed matches
+  # -----------------------------
+  
+  past_df <- ghist %>%
     filter(Home == tm | Away == tm) %>%
     arrange(desc(Date)) %>%
     mutate(
       season = season_label(Date),
+      
       delta_num = case_when(
         Home == tm ~ HomeRating_After - HomeRating_Before,
         Away == tm ~ AwayRating_After - AwayRating_Before,
         TRUE ~ NA_real_
       ),
+      
       delta = ifelse(
         !is.na(delta_num),
         sprintf("%+0.1f", round(delta_num, 1)),
         NA_character_
       ),
+      
       division = tier_to_division(as.integer(Tier), League),
       
-      home_expected = elo_expected(HomeRating_Before, AwayRating_Before),
+      home_expected = elo_expected(
+        HomeRating_Before,
+        AwayRating_Before
+      ),
+      
       away_expected = 1 - home_expected,
       
-      abs_elo_gap = abs(HomeRating_Before - AwayRating_Before),
-      draw_prob = draw_rate_from_tier_gap(as.integer(Tier), abs_elo_gap),
+      abs_elo_gap = abs(
+        HomeRating_Before - AwayRating_Before
+      ),
+      
+      draw_prob = draw_rate_from_tier_gap(
+        as.integer(Tier),
+        abs_elo_gap
+      ),
       
       home_win_prob = home_expected - draw_prob / 2,
       away_win_prob = away_expected - draw_prob / 2,
       
-      home_win_prob = clamp(home_win_prob, 0, 1 - draw_prob),
+      home_win_prob = clamp(
+        home_win_prob,
+        0,
+        1 - draw_prob
+      ),
+      
       away_win_prob = 1 - draw_prob - home_win_prob
     ) %>%
     transmute(
@@ -442,8 +548,16 @@ for (tm in names(name_to_id)) {
       
       homeWinPct = as.integer(round(100 * home_win_prob)),
       drawPct = as.integer(round(100 * draw_prob)),
-      awayWinPct = as.integer(round(100 * away_win_prob))
+      awayWinPct = as.integer(round(100 * away_win_prob)),
+      
+      upcoming = FALSE
     )
+  
+  # Upcoming games first, followed by historical games
+  df <- bind_rows(
+    future_df,
+    past_df
+  )
   
   if (nrow(df) > 0) {
     write_json(

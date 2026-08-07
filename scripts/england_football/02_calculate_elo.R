@@ -34,6 +34,7 @@ OUTPUT_FINAL_RATINGS_CSV_PASS1 <- file.path(OUT_DIR, "football_elo_final_ratings
 
 OUTPUT_GAME_HISTORY_CSV  <- file.path(OUT_DIR, "football_elo_game_history.csv")
 OUTPUT_FINAL_RATINGS_CSV <- file.path(OUT_DIR, "football_elo_final_ratings.csv")
+OUTPUT_UPCOMING_FIXTURES_CSV <- file.path(OUT_DIR, "football_upcoming_fixtures.csv")
 
 # -----------------------------
 # Elo settings
@@ -446,6 +447,7 @@ dt[, Tier := league_to_tier(League)]
 dt[, SeedRatingForTier := seed_from_tier(Tier)]
 
 bad_leagues <- unique(dt[is.na(Tier), League])
+bad_leagues <- unique(dt[is.na(Tier), League])
 if (length(bad_leagues) > 0) {
   stop(
     "Unrecognised league name(s) in League column:\n",
@@ -453,10 +455,46 @@ if (length(bad_leagues) > 0) {
   )
 }
 
+# -----------------------------
+# Upcoming fixtures
+# -----------------------------
+
+upcoming_fixtures <- dt[
+  !is.na(Date) &
+    !is.na(Home) & Home != "" &
+    !is.na(Away) & Away != "" &
+    (is.na(Result) | Result == "")
+]
+
+upcoming_fixtures <- upcoming_fixtures[, .(
+  League,
+  Tier,
+  Date = format(Date, "%Y-%m-%d"),
+  Home,
+  Away
+)]
+
+setorder(upcoming_fixtures, Date, Tier, League, Home, Away)
+
+fwrite(
+  upcoming_fixtures,
+  OUTPUT_UPCOMING_FIXTURES_CSV
+)
+
+cat(
+  "Upcoming fixtures written:",
+  nrow(upcoming_fixtures),
+  "|",
+  OUTPUT_UPCOMING_FIXTURES_CSV,
+  "\n"
+)
+
+# Keep only completed matches for Elo calculation
 dt <- dt[
   !is.na(Date) &
     !is.na(Home) & Home != "" &
     !is.na(Away) & Away != "" &
+    !is.na(Result) &
     Result != ""
 ]
 
