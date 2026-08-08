@@ -431,8 +431,19 @@ function render() {
   visibleRows.forEach((r, i) => {
     const tr = document.createElement('tr');
 
-const tdRank = document.createElement('td');
-tdRank.textContent = r.rank;
+    const tdRank = document.createElement('td');
+
+const selectedCountry = document.getElementById('country').value;
+const selectedGender = document.getElementById('gender').value;
+
+const hasRankingFilter =
+  selectedCountry !== 'all' ||
+  selectedGender !== 'all';
+
+tdRank.textContent = hasRankingFilter
+  ? `${i + 1} (${r.rank})`
+  : r.rank;
+
 tr.appendChild(tdRank);
 
     const tdFlag = document.createElement('td');
