@@ -1,7 +1,7 @@
 (function () {
   const DEFAULTS = {
     defaultRange: '2020',
-    lineWidth: 3
+    lineWidth: 6
   };
 
   function iso(d) {
