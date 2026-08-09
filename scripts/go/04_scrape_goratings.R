@@ -1276,7 +1276,12 @@ existing_log <- if (
 ) {
   read_csv(
     scrape_log_file,
-    show_col_types = FALSE
+    show_col_types = FALSE,
+    col_types = cols(
+      run_time_utc = col_character(),
+      latest_game_date = col_character(),
+      .default = col_guess()
+    )
   )
 } else {
   tibble()
