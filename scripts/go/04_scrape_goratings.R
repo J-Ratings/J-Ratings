@@ -1041,6 +1041,17 @@ parse_player_profile <- function(
     }
   )
   
+  if (
+    nrow(games) == 0L ||
+    !"player_id" %in% names(games) ||
+    !"opponent_id" %in% names(games) ||
+    !"date" %in% names(games)
+  ) {
+    return(
+      empty_observations()
+    )
+  }
+  
   games %>%
     filter(
       !is.na(player_id),

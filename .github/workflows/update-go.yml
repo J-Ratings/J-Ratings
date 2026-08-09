@@ -81,6 +81,7 @@ jobs:
       # Save the scrape before running the rest of the pipeline.
       # This prevents a later R error from forcing another long scrape.
       - name: Save scraped GoRatings data
+        if: always()
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
