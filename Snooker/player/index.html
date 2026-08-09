@@ -568,6 +568,54 @@
     return { lo: min - pad, hi: max + pad };
   }
 
+  function labelStepForRange(y0, y1) {
+  const span = Math.abs(y1 - y0);
+
+  if (span < 100) return 25;
+  if (span < 300) return 50;
+
+  return 100;
+}
+
+function makeYGridShapes(yMin, yMax, step) {
+  if (!Number.isFinite(yMin) || !Number.isFinite(yMax) || !step) {
+    return [];
+  }
+
+  const lo = Math.floor((yMin - 1) / step) * step;
+  const hi = Math.ceil((yMax + 1) / step) * step;
+  const shapes = [];
+
+  for (let y = lo; y <= hi; y += step) {
+    let width;
+    let color;
+
+    if (step === 100) {
+      width = 2.2;
+      color = 'rgba(255,255,255,0.28)';
+    } else if (step === 50) {
+      width = 1.4;
+      color = 'rgba(255,255,255,0.16)';
+    } else {
+      width = 1.0;
+      color = 'rgba(255,255,255,0.08)';
+    }
+
+    shapes.push({
+      type: 'line',
+      xref: 'paper',
+      x0: 0,
+      x1: 1,
+      yref: 'y',
+      y0: y,
+      y1: y,
+      line: { width, color }
+    });
+  }
+
+  return shapes;
+}
+
   function draw(mode) {
     AGG_MODE = mode;
 
@@ -596,22 +644,8 @@
       return;
     }
 
-    const ymin = Math.floor(bounds.lo / 100) * 100;
-    const ymax = Math.ceil(bounds.hi / 100) * 100;
-
-    const shapes = [];
-    for (let v = ymin; v <= ymax; v += 100) {
-      shapes.push({
-        type: 'line',
-        xref: 'paper',
-        x0: 0,
-        x1: 1,
-        y0: v,
-        y1: v,
-        line: { width: 1, color: 'rgba(128,128,128,0.35)' },
-        layer: 'below'
-      });
-    }
+const step = labelStepForRange(bounds.lo, bounds.hi);
+const shapes = makeYGridShapes(bounds.lo, bounds.hi, step);
 
     const bg = getComputedStyle(document.body).backgroundColor;
 
@@ -621,13 +655,20 @@
       y: ysAll,
       customdata: custom,
       mode: 'lines',
-      line: { width: 6, shape: 'linear' },
+      line: { width: 8, shape: 'linear' },
       hovertemplate: `%{x|%b %Y}<br>%{y:.0f} Rating<br>%{customdata[1]}<extra></extra>`,
       connectgaps: true
     }], {
       margin: { l: 60, r: 20, t: 10, b: 45 },
       xaxis: { type: 'date' },
-      yaxis: { title: 'Rating', range: [bounds.lo, bounds.hi] },
+      yaxis: {
+  title: 'Rating',
+  range: [bounds.lo, bounds.hi],
+  tick0: 0,
+  dtick: step,
+  showgrid: false,
+  zeroline: false
+},
       paper_bgcolor: bg,
       plot_bgcolor: bg,
       font: { color: getComputedStyle(document.body).color, size: 14 },
