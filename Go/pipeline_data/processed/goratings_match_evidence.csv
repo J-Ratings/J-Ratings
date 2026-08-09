@@ -978,11 +978,13 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1873,Han Sangcho,Han Sangjo,1,2022-10-05,White,Win,Hong Seongji,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2022-12-23,Black,Loss,Kim Kyeongeun,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2022-12-29,Black,Win,Shin Minjun,1,1,1
+1873,Han Sangcho,Han Sangjo,1,2023-01-05,White,Win,Kim Jinhwi,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2023-01-08,White,Loss,Lee Wonyoung,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2023-01-19,Black,Win,Kwon Hyojin  (m),1,1,1
 1873,Han Sangcho,Han Sangjo,1,2023-01-20,White,Loss,Han Taehee,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2023-02-17,White,Win,Sakai Yuki,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2023-03-02,Black,Loss,Lee Wonyoung,1,1,1
+1873,Han Sangcho,Han Sangjo,1,2023-03-08,White,Loss,Kim Jinhwi,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2023-03-22,White,Loss,Kwon Hyojin  (m),1,1,1
 1873,Han Sangcho,Han Sangjo,1,2023-04-16,Black,Loss,Lee Wonyoung,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2023-04-21,White,Win,Park Geunho,1,1,1
@@ -1006,6 +1008,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1873,Han Sangcho,Han Sangjo,1,2024-05-12,White,Loss,Choi Jaeyoung,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2024-05-15,White,Win,Park Yeonghun,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2024-05-16,White,Loss,Lee Jihyun  (m),1,1,1
+1873,Han Sangcho,Han Sangjo,1,2024-05-17,Black,Win,Kim Jinhwi,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2024-05-20,White,Win,Ida Atsushi,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2024-05-22,Black,Win,Shin Jinseo,1,1,1
 1873,Han Sangcho,Han Sangjo,1,2024-09-30,White,Loss,Ke Jie,1,1,1
@@ -2192,6 +2195,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1099,Kim Seongjae,Kim Seungchae,1,2023-02-20,White,Loss,Kim Jiseok,1,1,1
 1099,Kim Seongjae,Kim Seungchae,1,2023-02-24,White,Loss,Han Seungjoo,1,1,1
 1099,Kim Seongjae,Kim Seungchae,1,2023-03-30,Black,Loss,Kim Myounghoon,1,1,1
+1099,Kim Seongjae,Kim Seungchae,1,2023-04-01,Black,Loss,Kim Jinhwi,1,1,1
 1099,Kim Seongjae,Kim Seungchae,1,2023-06-02,Black,Loss,Kim Myounghoon,1,1,1
 1099,Kim Seongjae,Kim Seungchae,1,2023-06-10,Black,Win,Kang Seungmin,1,1,1
 1099,Kim Seongjae,Kim Seungchae,1,2023-06-11,Black,Win,Kang Seungmin,1,1,1
@@ -3180,6 +3184,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1823,Seki Koutarou,Seki Kotaro,1,2023-01-27,Black,Loss,Kim Jiseok,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2023-02-02,Black,Win,Cho Chikun,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2023-02-17,White,Loss,Lee Jihyun  (m),1,1,1
+1823,Seki Koutarou,Seki Kotaro,1,2023-03-03,White,Loss,Kim Jinhwi,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2023-03-13,White,Win,Jo Bunen,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2023-03-19,Black,Loss,Shin Jinseo,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2023-04-02,White,Win,Ahn Kukhyun,1,1,1
@@ -3190,6 +3195,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1823,Seki Koutarou,Seki Kotaro,1,2023-04-21,White,Loss,Lee Changseok,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2023-04-27,Black,Loss,Oba Junya,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2023-05-05,Black,Loss,Lian Xiao,1,1,1
+1823,Seki Koutarou,Seki Kotaro,1,2023-05-12,White,Loss,Kim Jinhwi,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2023-06-15,White,Loss,Kyo Kagen,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2023-07-10,White,Loss,Yu Zhengqi,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2023-08-03,Black,Loss,Tan Xiao,1,1,1
@@ -4770,6 +4776,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1225,Yu Zhiying,Yoo Zhiying,1,2015-05-26,Black,Win,Oh Yujin,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2015-06-02,White,Loss,Shin Jinseo,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2015-06-03,Black,Loss,Choi Jeong,1,1,1
+1225,Yu Zhiying,Yoo Zhiying,1,2015-06-03,Black,Loss,Kim Jinhwi,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2015-06-17,Black,Loss,Shin Jinseo,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2015-06-18,White,Win,Oh Yujin,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2015-06-20,Black,Win,Park Geunho,1,1,1
