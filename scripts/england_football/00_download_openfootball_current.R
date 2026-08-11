@@ -98,33 +98,6 @@ download_one_file <- function(url, dest) {
   cat("Done.\n\n")
 }
 
-make_season_jobs <- function(
-    repo,
-    source_folder,
-    first_start_year,
-    current_start_year,
-    remote_file_fun,
-    local_file_fun = remote_file_fun,
-    current_optional = TRUE
-) {
-  seasons <- vapply(
-    first_start_year:current_start_year,
-    season_folder_from_start_year,
-    character(1)
-  )
-  
-  data.frame(
-    repo = repo,
-    source_folder = source_folder,
-    season = seasons,
-    remote_file = vapply(seasons, remote_file_fun, character(1)),
-    local_file = vapply(seasons, local_file_fun, character(1)),
-    required = rep(FALSE, length(seasons)),
-    refresh_current = TRUE,
-    stringsAsFactors = FALSE
-  )
-}
-
 # -----------------------------
 # Current season
 # -----------------------------
@@ -134,13 +107,14 @@ season_folder <- Sys.getenv(
   unset = current_openfootball_season()
 )
 
-current_start_year <- season_start_year(season_folder)
 
 # -----------------------------
 # Download jobs
 # -----------------------------
 
-# England: current season only.
+# Historical league files are already cached locally.
+# Normal runs now check/refresh the current season only.
+
 england_jobs <- data.frame(
   repo = rep("england", 5),
   source_folder = rep("england", 5),
@@ -160,95 +134,60 @@ england_jobs <- data.frame(
     "5-nationalleague.txt"
   ),
   required = rep(FALSE, 5),
-  refresh_current = rep(TRUE, 5),
   stringsAsFactors = FALSE
 )
 
-# La Liga: historical backfill is already complete, so current season only.
-la_liga_jobs <- data.frame(
-  repo = "espana",
-  source_folder = "espana",
-  season = season_folder,
-  remote_file = "1-liga.txt",
-  local_file = "1-liga.txt",
-  required = FALSE,
-  refresh_current = TRUE,
+spain_jobs <- data.frame(
+  repo = rep("espana", 2),
+  source_folder = rep("espana", 2),
+  season = rep(season_folder, 2),
+  remote_file = c("1-liga.txt", "2-liga2.txt"),
+  local_file = c("1-liga.txt", "2-liga2.txt"),
+  required = rep(FALSE, 2),
   stringsAsFactors = FALSE
 )
 
-# Segunda División: Spain division 2, backfill once from 2012/13.
-segunda_jobs <- make_season_jobs(
-  repo = "espana",
-  source_folder = "espana",
-  first_start_year = 2012L,
-  current_start_year = current_start_year,
-  remote_file_fun = function(s) "2-liga2.txt"
+italy_jobs <- data.frame(
+  repo = rep("italy", 2),
+  source_folder = rep("italy", 2),
+  season = rep(season_folder, 2),
+  remote_file = c("1-seriea.txt", "2-serieb.txt"),
+  local_file = c("1-seriea.txt", "2-serieb.txt"),
+  required = rep(FALSE, 2),
+  stringsAsFactors = FALSE
 )
 
-# Italy: Serie A and Serie B, backfill once from 2013/14.
-serie_a_jobs <- make_season_jobs(
-  repo = "italy",
-  source_folder = "italy",
-  first_start_year = 2013L,
-  current_start_year = current_start_year,
-  remote_file_fun = function(s) "1-seriea.txt"
-)
-
-serie_b_jobs <- make_season_jobs(
-  repo = "italy",
-  source_folder = "italy",
-  first_start_year = 2013L,
-  current_start_year = current_start_year,
-  remote_file_fun = function(s) "2-serieb.txt"
-)
-
-# Germany: Bundesliga and 2. Bundesliga, backfill once from 2010/11.
-bundesliga_jobs <- make_season_jobs(
-  repo = "deutschland",
-  source_folder = "deutschland",
-  first_start_year = 2010L,
-  current_start_year = current_start_year,
-  remote_file_fun = function(s) "1-bundesliga.txt"
-)
-
-bundesliga2_jobs <- make_season_jobs(
-  repo = "deutschland",
-  source_folder = "deutschland",
-  first_start_year = 2010L,
-  current_start_year = current_start_year,
-  remote_file_fun = function(s) "2-bundesliga2.txt"
+germany_jobs <- data.frame(
+  repo = rep("deutschland", 2),
+  source_folder = rep("deutschland", 2),
+  season = rep(season_folder, 2),
+  remote_file = c("1-bundesliga.txt", "2-bundesliga2.txt"),
+  local_file = c("1-bundesliga.txt", "2-bundesliga2.txt"),
+  required = rep(FALSE, 2),
+  stringsAsFactors = FALSE
 )
 
 # France is stored differently in the OpenFootball Europe repository:
-# files live under /france and include the season in the filename.
-ligue1_jobs <- make_season_jobs(
-  repo = "europe",
-  source_folder = "france",
-  first_start_year = 2014L,
-  current_start_year = current_start_year,
-  remote_file_fun = function(s) paste0("france/", s, "_fr1.txt"),
-  local_file_fun = function(s) "1-ligue1.txt"
-)
-
-ligue2_jobs <- make_season_jobs(
-  repo = "europe",
-  source_folder = "france",
-  first_start_year = 2014L,
-  current_start_year = current_start_year,
-  remote_file_fun = function(s) paste0("france/", s, "_fr2.txt"),
-  local_file_fun = function(s) "2-ligue2.txt"
+# remote files live under /france and include the season in the filename.
+france_jobs <- data.frame(
+  repo = rep("europe", 2),
+  source_folder = rep("france", 2),
+  season = rep(season_folder, 2),
+  remote_file = c(
+    paste0("france/", season_folder, "_fr1.txt"),
+    paste0("france/", season_folder, "_fr2.txt")
+  ),
+  local_file = c("1-ligue1.txt", "2-ligue2.txt"),
+  required = rep(FALSE, 2),
+  stringsAsFactors = FALSE
 )
 
 download_jobs <- rbind(
   england_jobs,
-  la_liga_jobs,
-  segunda_jobs,
-  serie_a_jobs,
-  serie_b_jobs,
-  bundesliga_jobs,
-  bundesliga2_jobs,
-  ligue1_jobs,
-  ligue2_jobs
+  spain_jobs,
+  italy_jobs,
+  germany_jobs,
+  france_jobs
 )
 
 # -----------------------------
@@ -277,47 +216,39 @@ for (i in seq_len(nrow(download_jobs))) {
     job$local_file
   )
   
-  is_current <- identical(as.character(job$season), season_folder)
+  base_url <- paste0(
+    "https://raw.githubusercontent.com/openfootball/",
+    job$repo,
+    "/master"
+  )
   
-  # Historical files are cached permanently once downloaded.
-  # Only current-season files are refreshed on every normal run.
-  if (file.exists(dest) && !is_current) {
-    result <- "already_exists"
-  } else {
-    base_url <- paste0(
-      "https://raw.githubusercontent.com/openfootball/",
-      job$repo,
-      "/master"
-    )
-    
-    url <- paste(base_url, job$season, job$remote_file, sep = "/")
-    
-    # France remote files are flat under /france rather than /<season>/.
-    if (job$repo == "europe" && job$source_folder == "france") {
-      url <- paste(base_url, job$remote_file, sep = "/")
-    }
-    
-    result <- tryCatch(
-      {
-        download_one_file(url, dest)
-        "downloaded"
-      },
-      error = function(e) {
-        if (!isTRUE(job$required)) {
-          message(
-            "Optional file not downloaded: ",
-            job$source_folder, "/", job$season, "/", job$local_file
-          )
-          message("Reason: ", conditionMessage(e))
-          "missing_optional"
-        } else {
-          stop(e)
-        }
-      }
-    )
-    
-    Sys.sleep(1)
+  url <- paste(base_url, job$season, job$remote_file, sep = "/")
+  
+  # France remote files are flat under /france rather than /<season>/.
+  if (job$repo == "europe" && job$source_folder == "france") {
+    url <- paste(base_url, job$remote_file, sep = "/")
   }
+  
+  result <- tryCatch(
+    {
+      download_one_file(url, dest)
+      "downloaded"
+    },
+    error = function(e) {
+      if (!isTRUE(job$required)) {
+        message(
+          "Optional file not downloaded: ",
+          job$source_folder, "/", job$season, "/", job$local_file
+        )
+        message("Reason: ", conditionMessage(e))
+        "missing_optional"
+      } else {
+        stop(e)
+      }
+    }
+  )
+  
+  Sys.sleep(1)
   
   download_results <- rbind(
     download_results,
