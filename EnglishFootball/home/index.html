@@ -143,6 +143,50 @@
       color: #000000;
     }
 
+    /* Spain */
+    .tier-la-liga {
+      background: #00A99D;
+      color: #000000;
+    }
+
+    .tier-segunda {
+      background: #FF6B00;
+      color: #000000;
+    }
+
+    /* Italy */
+    .tier-serie-a {
+      background: #1478D4;
+      color: #ffffff;
+    }
+
+    .tier-serie-b {
+      background: #1F4E79;
+      color: #ffffff;
+    }
+
+    /* Germany */
+    .tier-bundesliga {
+      background: #D20515;
+      color: #ffffff;
+    }
+
+    .tier-bundesliga-2 {
+      background: #8E111B;
+      color: #ffffff;
+    }
+
+    /* France */
+    .tier-ligue-1 {
+      background: #163A70;
+      color: #ffffff;
+    }
+
+    .tier-ligue-2 {
+      background: #00A6C8;
+      color: #000000;
+    }
+
     @media (max-width: 600px) {
       #compare-chart { height: 420px; }
     }
@@ -166,7 +210,7 @@
       #teams td:nth-child(3) { width: 78px; }
 
       #teams th:nth-child(4),
-      #teams td:nth-child(4) { width: 58px; }
+      #teams td:nth-child(4) { width: 135px; }
 
       #teams th:nth-child(2),
       #teams td:nth-child(2) { width: auto; }
@@ -180,7 +224,7 @@
 
       .tier-badge {
         padding: 6px 10px;
-        font-size: 0.9rem;
+        font-size: 0.82rem;
         min-width: 34px;
       }
     }
@@ -267,7 +311,7 @@
             <th style="min-width:60px">Rank</th>
             <th style="min-width:240px">Team</th>
             <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
-            <th style="min-width:80px">Tier</th>
+            <th style="min-width:150px">Competition</th>
           </tr>
         </thead>
         <tbody><!-- filled by JS --></tbody>
@@ -359,26 +403,53 @@
   }
 
   function tierLabel(row) {
-    const div = String(row.division || '').trim().toLowerCase();
-    const t = Number(row.tier);
+    const div = String(row.division || '').trim();
 
-    if (div === 'premier league' || t === 1) return 'PL';
-    if (div === 'championship' || t === 2) return 'C';
-    if (div === 'league 1' || div === 'league one' || t === 3) return 'L1';
-    if (div === 'league 2' || div === 'league two' || t === 4) return 'L2';
-    if (div === 'national league' || t === 5) return 'NL';
+    const labels = {
+      'Premier League': 'Premier League',
+      'Championship': 'Championship',
+      'League 1': 'League 1',
+      'League One': 'League 1',
+      'League 2': 'League 2',
+      'League Two': 'League 2',
+      'National League': 'National League',
 
-    return '';
+      'La Liga': 'La Liga',
+      'Segunda División': 'Segunda División',
+
+      'Serie A': 'Serie A',
+      'Serie B': 'Serie B',
+
+      'Bundesliga': 'Bundesliga',
+      '2. Bundesliga': '2. Bundesliga',
+
+      'Ligue 1': 'Ligue 1',
+      'Ligue 2': 'Ligue 2'
+    };
+
+    return labels[div] || div || '';
   }
 
   function tierClass(label) {
     const s = String(label || '').trim().toLowerCase();
 
-    if (s === 'pl' || s === 'premier league') return 'tier-premier-league';
-    if (s === 'c' || s === 'championship') return 'tier-championship';
-    if (s === 'l1' || s === 'league 1' || s === 'league one') return 'tier-league-1';
-    if (s === 'l2' || s === 'league 2' || s === 'league two') return 'tier-league-2';
-    if (s === 'nl' || s === 'national league') return 'tier-national-league';
+    if (s === 'premier league') return 'tier-premier-league';
+    if (s === 'championship') return 'tier-championship';
+    if (s === 'league 1' || s === 'league one') return 'tier-league-1';
+    if (s === 'league 2' || s === 'league two') return 'tier-league-2';
+    if (s === 'national league') return 'tier-national-league';
+
+    if (s === 'la liga') return 'tier-la-liga';
+    if (s === 'segunda división' || s === 'segunda division') return 'tier-segunda';
+
+    if (s === 'serie a') return 'tier-serie-a';
+    if (s === 'serie b') return 'tier-serie-b';
+
+    if (s === 'bundesliga') return 'tier-bundesliga';
+    if (s === '2. bundesliga') return 'tier-bundesliga-2';
+
+    if (s === 'ligue 1') return 'tier-ligue-1';
+    if (s === 'ligue 2') return 'tier-ligue-2';
 
     return '';
   }

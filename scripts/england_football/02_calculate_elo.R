@@ -20,6 +20,14 @@ INPUT_CSV <- file.path(
   "england_leagues_1_to_5_all_seasons.csv"
 )
 
+TEAM_ALIASES_CSV <- file.path(
+  repo_dir,
+  "EnglishFootball",
+  "pipeline_data",
+  "Reference",
+  "team_aliases.csv"
+)
+
 OUT_DIR <- file.path(
   repo_dir,
   "EnglishFootball",
@@ -84,372 +92,83 @@ seed_from_tier <- function(tier) {
   out
 }
 
-canonical_teams <- c(
-  "Liverpool","Manchester City","Chelsea","Manchester United","Arsenal",
-  "Tottenham Hotspur","Aston Villa","Blackburn Rovers","Leeds United",
-  "Newcastle United","Everton","Leicester City","Brighton & Hove Albion",
-  "Crystal Palace","West Ham United","Sunderland","Bournemouth","Southampton",
-  "Brentford","Bolton Wanderers","Nottingham Forest","Wolverhampton Wanderers",
-  "Norwich City","Portsmouth","Fulham","Middlesbrough","Ipswich Town",
-  "Charlton Athletic","Wimbledon","Stoke City","Burnley","West Bromwich Albion",
-  "Sheffield Wednesday","Queens Park Rangers","Derby County","Swansea City",
-  "Birmingham City","Sheffield United","Reading","Coventry City","Wigan Athletic",
-  "Watford","Bradford City","Oldham Athletic","Cardiff City","Hull City",
-  "Preston North End","Barnsley","Luton Town","Blackpool","Huddersfield Town",
-  "Millwall","Bristol City","Swindon Town","Stockport County","Gillingham",
-  "Grimsby Town","Tranmere Rovers","Plymouth Argyle","Doncaster Rovers",
-  "Crewe Alexandra","Peterborough United","Colchester United","Rotherham United",
-  "Wrexham","Walsall","Port Vale","Oxford United","Burton Albion",
-  "Milton Keynes Dons","Wycombe Wanderers","Leyton Orient","Bristol Rovers",
-  "Fleetwood Town","Carlisle United","Shrewsbury Town","Lincoln City",
-  "Stevenage","Notts County","Northampton Town","Crawley Town","Chesterfield",
-  "Accrington Stanley","Exeter City","Mansfield Town","Cheltenham Town",
-  "Cambridge United","Morecambe","Salford City","Newport County","Barrow",
-  "Bromley","Barnet","Harrogate Town"
+# -----------------------------
+# Team-name aliases
+# -----------------------------
+if (!file.exists(TEAM_ALIASES_CSV)) {
+  stop(
+    "Team alias file not found:\n",
+    TEAM_ALIASES_CSV,
+    "\n\nExpected columns: Country, SourceName, CanonicalName"
+  )
+}
+
+team_aliases <- fread(
+  TEAM_ALIASES_CSV,
+  encoding = "UTF-8",
+  na.strings = c("", "NA")
 )
 
-team_alias_map <- c(
-  "Arsenal FC" = "Arsenal",
-  "Arsenal.FC" = "Arsenal",
-  "Chelsea FC" = "Chelsea",
-  "Coventry City FC" = "Coventry City",
-  "Crystal Palace FC" = "Crystal Palace",
-  "Everton FC" = "Everton",
-  "Ipswich Town FC" = "Ipswich Town",
-  "Leeds United FC" = "Leeds United",
-  "Sheffield United FC" = "Sheffield United",
-  "Sheffield Utd" = "Sheffield United",
-  "Southampton FC" = "Southampton",
-  "Nottingham Forest FC" = "Nottingham Forest",
-  "Manchester City FC" = "Manchester City",
-  "Manchester City" = "Manchester City",
-  "Blackburn Rovers FC" = "Blackburn Rovers",
-  "Blackburn Rovers" = "Blackburn Rovers",
-  "Blackburn" = "Blackburn Rovers",
-  "Wimbledon FC" = "Wimbledon",
-  "Aston Villa FC" = "Aston Villa",
-  "Liverpool FC" = "Liverpool",
-  "Manchester United FC" = "Manchester United",
-  "Manchester United" = "Manchester United",
-  "Middlesbrough FC" = "Middlesbrough",
-  "Norwich City FC" = "Norwich City",
-  "Norwich" = "Norwich City",
-  "Oldham Athletic AFC" = "Oldham Athletic",
-  "Oldham Athletic" = "Oldham Athletic",
-  "Oldham" = "Oldham Athletic",
-  "Queens Park Rangers FC" = "Queens Park Rangers",
-  "Queens Park Rangers" = "Queens Park Rangers",
-  "QPR" = "Queens Park Rangers",
-  "Sheffield Wednesday FC" = "Sheffield Wednesday",
-  "Sheffield Wednesday" = "Sheffield Wednesday",
-  "Sheffield Wed" = "Sheffield Wednesday",
-  "Tottenham Hotspur FC" = "Tottenham Hotspur",
-  "Tottenham Hotspur" = "Tottenham Hotspur",
-  "Tottenham" = "Tottenham Hotspur",
-  "Newcastle United FC" = "Newcastle United",
-  "Newcastle United" = "Newcastle United",
-  "Newcastle Utd" = "Newcastle United",
-  "West Ham United FC" = "West Ham United",
-  "West Ham United" = "West Ham United",
-  "West Ham" = "West Ham United",
-  "Swindon Town FC" = "Swindon Town",
-  "Swindon Town" = "Swindon Town",
-  "Swindon" = "Swindon Town",
-  "Leicester City FC" = "Leicester City",
-  "Leicester City" = "Leicester City",
-  "Leicester" = "Leicester City",
-  "Bolton Wanderers FC" = "Bolton Wanderers",
-  "Bolton Wanderers" = "Bolton Wanderers",
-  "Bolton" = "Bolton Wanderers",
-  "Derby County FC" = "Derby County",
-  "Derby County" = "Derby County",
-  "Derby" = "Derby County",
-  "Sunderland AFC" = "Sunderland",
-  "Sunderland" = "Sunderland",
-  "Barnsley FC" = "Barnsley",
-  "Barnsley" = "Barnsley",
-  "Bradford" = "Bradford City",
-  "Bradford City" = "Bradford City",
-  "Crystal Palace" = "Crystal Palace",
-  "Port Vale FC" = "Port Vale",
-  "Port Vale" = "Port Vale",
-  "Portsmouth FC" = "Portsmouth",
-  "Portsmouth" = "Portsmouth",
-  "Wolves" = "Wolverhampton Wanderers",
-  "Wolverhampton Wanderers" = "Wolverhampton Wanderers",
-  "Wolverhampton Wanderers FC" = "Wolverhampton Wanderers",
-  "Bournemouth" = "Bournemouth",
-  "AFC Bournemouth" = "Bournemouth",
-  "Burnley FC" = "Burnley",
-  "Burnley" = "Burnley",
-  "Colchester" = "Colchester United",
-  "Colchester United" = "Colchester United",
-  "Gillingham FC" = "Gillingham",
-  "Gillingham" = "Gillingham",
-  "Macclesfield" = "Macclesfield Town",
-  "Macclesfield Town" = "Macclesfield Town",
-  "Northampton" = "Northampton Town",
-  "Northampton Town" = "Northampton Town",
-  "Preston" = "Preston North End",
-  "Preston North End" = "Preston North End",
-  "Preston North End FC" = "Preston North End",
-  "Wigan" = "Wigan Athletic",
-  "Wigan Athletic" = "Wigan Athletic",
-  "Wigan Athletic FC" = "Wigan Athletic",
-  "Wrexham" = "Wrexham",
-  "Wrexham AFC" = "Wrexham",
-  "Wrexham FC" = "Wrexham",
-  "Wycombe" = "Wycombe Wanderers",
-  "Wycombe Wanderers" = "Wycombe Wanderers",
-  "Wycombe Wanderers FC" = "Wycombe Wanderers",
-  "Brentford" = "Brentford",
-  "Brentford FC" = "Brentford",
-  "Carlisle" = "Carlisle United",
-  "Carlisle United" = "Carlisle United",
-  "Chester" = "Chester City",
-  "Darlington" = "Darlington",
-  "Hartlepool" = "Hartlepool United",
-  "Hartlepool United" = "Hartlepool United",
-  "Peterborough" = "Peterborough United",
-  "Peterborough United" = "Peterborough United",
-  "Peterborough United FC" = "Peterborough United",
-  "Plymouth" = "Plymouth Argyle",
-  "Plymouth Argyle" = "Plymouth Argyle",
-  "Plymouth Argyle FC" = "Plymouth Argyle",
-  "Rotherham" = "Rotherham United",
-  "Rotherham United" = "Rotherham United",
-  "Rotherham United FC" = "Rotherham United",
-  "Scarborough FC" = "Scarborough",
-  "Shrewsbury" = "Shrewsbury Town",
-  "Shrewsbury Town" = "Shrewsbury Town",
-  "Swansea" = "Swansea City",
-  "Swansea City" = "Swansea City",
-  "Swansea City AFC" = "Swansea City",
-  "Torquay" = "Torquay United",
-  "Torquay United" = "Torquay United",
-  "Grimsby" = "Grimsby Town",
-  "Grimsby Town" = "Grimsby Town",
-  "Fulham FC" = "Fulham",
-  "Fulham" = "Fulham",
-  "Crewe" = "Crewe Alexandra",
-  "Crewe Alexandra" = "Crewe Alexandra",
-  "Huddersfield" = "Huddersfield Town",
-  "Huddersfield Town" = "Huddersfield Town",
-  "Huddersfield Town AFC" = "Huddersfield Town",
-  "Ipswich" = "Ipswich Town",
-  "Oxford Utd" = "Oxford United",
-  "Oxford United" = "Oxford United",
-  "Oxford United FC" = "Oxford United",
-  "Watford FC" = "Watford",
-  "Watford" = "Watford",
-  "West Brom" = "West Bromwich Albion",
-  "West Bromwich Albion" = "West Bromwich Albion",
-  "West Bromwich Albion FC" = "West Bromwich Albion",
-  "Blackpool FC" = "Blackpool",
-  "Blackpool" = "Blackpool",
-  "Bristol Rovers" = "Bristol Rovers",
-  "Chesterfield FC" = "Chesterfield",
-  "Chesterfield" = "Chesterfield",
-  "Lincoln City" = "Lincoln City",
-  "Luton" = "Luton Town",
-  "Luton Town" = "Luton Town",
-  "Luton Town FC" = "Luton Town",
-  "Millwall FC" = "Millwall",
-  "Millwall" = "Millwall",
-  "Walsall FC" = "Walsall",
-  "Walsall" = "Walsall",
-  "York" = "York City",
-  "York City" = "York City",
-  "Barnet FC" = "Barnet",
-  "Barnet" = "Barnet",
-  "Brighton" = "Brighton & Hove Albion",
-  "Brighton & Hove Albion" = "Brighton & Hove Albion",
-  "Brighton & Hove Albion FC" = "Brighton & Hove Albion",
-  "Cambridge Utd" = "Cambridge United",
-  "Cambridge United" = "Cambridge United",
-  "Cardiff" = "Cardiff City",
-  "Cardiff City" = "Cardiff City",
-  "Cardiff City FC" = "Cardiff City",
-  "Exeter" = "Exeter City",
-  "Exeter City" = "Exeter City",
-  "Halifax" = "Halifax Town",
-  "Halifax Town" = "Halifax Town",
-  "Hull City" = "Hull City",
-  "Hull City AFC" = "Hull City",
-  "Leyton Orient" = "Leyton Orient",
-  "Mansfield" = "Mansfield Town",
-  "Mansfield Town" = "Mansfield Town",
-  "Rochdale" = "Rochdale",
-  "Rochdale AFC" = "Rochdale",
-  "Scunthorpe" = "Scunthorpe United",
-  "Scunthorpe United" = "Scunthorpe United",
-  "Southend" = "Southend United",
-  "Southend United" = "Southend United",
-  "Birmingham" = "Birmingham City",
-  "Birmingham City" = "Birmingham City",
-  "Birmingham City FC" = "Birmingham City",
-  "Reading FC" = "Reading",
-  "Reading" = "Reading",
-  "Charlton Athletic FC" = "Charlton Athletic",
-  "Charlton Athletic" = "Charlton Athletic",
-  "Charlton" = "Charlton Athletic",
-  "Chelsea" = "Chelsea",
-  "Coventry" = "Coventry City",
-  "Leeds" = "Leeds United",
-  "Everton" = "Everton",
-  "Aston Villa" = "Aston Villa",
-  "Southampton" = "Southampton",
-  "Nottingham Forest" = "Nottingham Forest",
-  "Liverpool" = "Liverpool",
-  "Grimsby Town FC" = "Grimsby Town",
-  "Cambridge United FC" = "Cambridge United",
-  "Burnley" = "Burnley",
-  "Doncaster Rovers" = "Doncaster Rovers",
-  "Yeovil Town" = "Yeovil Town",
-  "Milton Keynes Dons" = "Milton Keynes Dons",
-  "Chester City" = "Chester City",
-  "Accrington Stanley" = "Accrington Stanley",
-  "Hereford United" = "Hereford United",
-  "Morecambe FC" = "Morecambe",
-  "Morecambe" = "Morecambe",
-  "Dagenham & Redbridge" = "Dagenham & Redbridge",
-  "Aldershot Town" = "Aldershot Town",
-  "Burton Albion" = "Burton Albion",
-  "Stevenage FC" = "Stevenage",
-  "Stevenage" = "Stevenage",
-  "AFC Wimbledon" = "Wimbledon",
-  "Crawley Town" = "Crawley Town",
-  "Fleetwood Town" = "Fleetwood Town",
-  "Newport County" = "Newport County",
-  "Forest Green Rovers" = "Forest Green Rovers",
-  "Salford City" = "Salford City",
-  "Bristol City FC" = "Bristol City",
-  "Harrogate Town" = "Harrogate Town",
-  "Stoke City FC" = "Stoke City",
-  "Stoke City" = "Stoke City",
-  "Barrow AFC" = "Barrow",
-  "Barrow" = "Barrow",
-  "Sutton United" = "Sutton United",
-  "Bromley FC" = "Bromley",
-  "Bromley" = "Bromley",
-  "Newport County AFC" = "Newport County",
-  
-  # Spain
-  "FC Barcelona" = "Barcelona",
-  "Atlético de Madrid" = "Atlético Madrid",
-  "Club Atlético de Madrid" = "Atlético Madrid",
-  "CD Alavés" = "Deportivo Alavés",
-  "Rayo Vallecano de Madrid" = "Rayo Vallecano",
-  "RC Celta" = "Celta Vigo",
-  "RC Celta de Vigo" = "Celta Vigo",
-  "RC Deportivo La Coruña" = "Deportivo La Coruña",
-  "Espanyol Barcelona" = "Espanyol",
-  "RCD Espanyol" = "Espanyol",
-  "RCD Espanyol de Barcelona" = "Espanyol",
-  
-  "Real Betis Balompié" = "Real Betis",
-  "Real Madrid C.F." = "Real Madrid",
-  "Real Madrid CF" = "Real Madrid",
-  "Real Sociedad de Fútbol" = "Real Sociedad",
-  "Real Valladolid CF" = "Real Valladolid",
-  "Sevilla FC" = "Sevilla",
-  "Villarreal CF" = "Villarreal",
+required_alias_cols <- c("Country", "SourceName", "CanonicalName")
+missing_alias_cols <- setdiff(required_alias_cols, names(team_aliases))
 
-  "Accrington" = "Accrington Stanley",
-  "Aldershot" = "Aldershot Town",
-  "Bristol Rvs" = "Bristol Rovers",
-  "Burton" = "Burton Albion",
-  "Bury" = "Bury",
-  "Cambridge" = "Cambridge United",
-  "Cheltenham" = "Cheltenham Town",
-  "Dag and Red" = "Dagenham & Redbridge",
-  "Dagenham and Redbridge" = "Dagenham & Redbridge",
-  "Ebbsfleet" = "Ebbsfleet United",
-  "Forest Green" = "Forest Green Rovers",
-  "Gravesend" = "Ebbsfleet United",
-  "Grays" = "Grays Athletic",
-  "Hayes & Yeading" = "Hayes & Yeading United",
-  "Hereford" = "Hereford United",
-  "Hyde" = "Hyde United",
-  "Kidderminster" = "Kidderminster Harriers",
-  "King's Lynn" = "King's Lynn Town",
-  "Lincoln" = "Lincoln City",
-  "Northwich" = "Northwich Victoria",
-  "Oxford" = "Oxford United",
-  "Rochdale" = "Rochdale",
-  "Rushden & D" = "Rushden & Diamonds",
-  "Salisbury" = "Salisbury City",
-  "Stockport" = "Stockport County",
-  "Tranmere" = "Tranmere Rovers",
-  
-  # Spain
-  "Real Racing Club de Santander" = "Racing Santander",
-  
-  # Italy
-  "Atalanta BC" = "Atalanta",
-  "Bologna FC" = "Bologna",
-  "Bologna FC 1909" = "Bologna",
-  "Cagliari Calcio" = "Cagliari",
-  "Como 1907" = "Como",
-  "Como Calcio" = "Como",
-  "FC Internazionale Milano" = "Inter Milan",
-  "Inter" = "Inter Milan",
-  "ACF Fiorentina" = "Fiorentina",
-  "Genoa CFC" = "Genoa",
-  "Hellas Verona FC" = "Hellas Verona",
-  "Juventus FC" = "Juventus",
-  "Lazio Roma" = "Lazio",
-  "SS Lazio" = "Lazio",
-  "Milan" = "AC Milan",
-  "SSC Napoli" = "Napoli",
-  "Parma FC" = "Parma",
-  "Parma Calcio 1913" = "Parma",
-  "Pisa SC" = "Pisa",
-  "AC Pisa" = "Pisa",
-  "UC Sampdoria" = "Sampdoria",
-  "Sassuolo Calcio" = "Sassuolo",
-  "US Sassuolo Calcio" = "Sassuolo",
-  "Torino FC" = "Torino",
-  "Udinese Calcio" = "Udinese",
-  "L.R. Vicenza Virtus" = "L.R. Vicenza",
-  "Vicenza Calcio" = "L.R. Vicenza",
-  "AS Bari" = "Bari",
-  "FC Bari 1908" = "Bari",
-  "SSC Bari" = "Bari",
-  "Ascoli Picchio FC" = "Ascoli Calcio",
-  "US Avellino" = "AS Avellino",
-  
-  # Germany
-  "Bayer 04 Leverkusen" = "Bayer Leverkusen",
-  "FC Bayern München" = "Bayern München",
-  "Bor. Mönchengladbach" = "Borussia Mönchengladbach",
-  "Borussia M'gladbach" = "Borussia Mönchengladbach",
-  "Heidenheim" = "1. FC Heidenheim 1846",
-  "FC St. Pauli 1910" = "FC St. Pauli",
-  "St. Pauli" = "FC St. Pauli",
-  "TSG 1899 Hoffenheim" = "1899 Hoffenheim",
-  "Union Berlin" = "1. FC Union Berlin",
-  "VfL Bochum 1848" = "VfL Bochum",
-  "SV Werder Bremen" = "Werder Bremen",
-  "Wolfsburg" = "VfL Wolfsburg",
-  "SpVgg Greuther Fürth 1903" = "SpVgg Greuther Fürth",
-  
-  # France
-  "AS Monaco FC" = "AS Monaco",
-  "Auxerre" = "AJ Auxerre",
-  "ES Troyes AC" = "ESTAC Troyes",
-  "Havre AC" = "Le Havre",
-  "Le Havre AC" = "Le Havre",
-  "Lille OSC" = "Lille",
-  "Olympique Marseille" = "Olympique de Marseille",
-  "Paris Saint-Germain FC" = "Paris Saint-Germain",
-  "Lens" = "RC Lens",
-  "Racing Club de Lens" = "RC Lens",
-  "RC Strasbourg Alsace" = "RC Strasbourg",
-  "Rennes" = "Stade Rennais",
-  "Stade Rennais FC 1901" = "Stade Rennais",
-  "Stade Brestois" = "Stade Brestois 29"
-  
+if (length(missing_alias_cols) > 0) {
+  stop(
+    "team_aliases.csv is missing required column(s): ",
+    paste(missing_alias_cols, collapse = ", ")
+  )
+}
+
+team_aliases[, Country := trimws(as.character(Country))]
+team_aliases[, SourceName := trimws(as.character(SourceName))]
+team_aliases[, CanonicalName := trimws(as.character(CanonicalName))]
+
+team_aliases <- team_aliases[
+  !is.na(Country) & Country != "" &
+    !is.na(SourceName) & SourceName != "" &
+    !is.na(CanonicalName) & CanonicalName != ""
+]
+
+alias_conflicts <- team_aliases[
+  ,
+  .(CanonicalNames = uniqueN(CanonicalName)),
+  by = .(Country, SourceName)
+][CanonicalNames > 1L]
+
+if (nrow(alias_conflicts) > 0) {
+  stop(
+    "Conflicting team aliases found in team_aliases.csv for:\n",
+    paste0(
+      alias_conflicts$Country,
+      " | ",
+      alias_conflicts$SourceName,
+      collapse = "\n"
+    )
+  )
+}
+
+team_aliases <- unique(
+  team_aliases[, .(Country, SourceName, CanonicalName)],
+  by = c("Country", "SourceName")
+)
+
+team_alias_key <- paste(
+  team_aliases$Country,
+  team_aliases$SourceName,
+  sep = "\r"
+)
+
+team_alias_map <- setNames(
+  team_aliases$CanonicalName,
+  team_alias_key
+)
+
+cat(
+  "Loaded team aliases:",
+  nrow(team_aliases),
+  "|",
+  TEAM_ALIASES_CSV,
+  "\n"
 )
 
 is_clearly_bad_team_name <- function(x) {
@@ -465,16 +184,21 @@ is_clearly_bad_team_name <- function(x) {
   bad
 }
 
-normalise_team_name <- function(x) {
+normalise_team_name <- function(x, country) {
   x0 <- trimws(as.character(x))
+  country0 <- trimws(as.character(country))
+  
   x0[is_clearly_bad_team_name(x0)] <- NA_character_
   x0 <- gsub("\\s*\\[.*?\\]\\s*$", "", x0, perl = TRUE)
-  x0 <- gsub("\\s+(FC|AFC)$", "", x0, ignore.case = TRUE)
-  x0 <- gsub("^AFC\\s+", "", x0, ignore.case = TRUE)
   x0 <- gsub("\\s+", " ", x0)
   x0 <- trimws(x0)
   
-  out <- ifelse(x0 %in% names(team_alias_map), unname(team_alias_map[x0]), x0)
+  key <- paste(country0, x0, sep = "\r")
+  matched <- key %in% names(team_alias_map)
+  
+  out <- x0
+  out[matched] <- unname(team_alias_map[key[matched]])
+  
   out[is_clearly_bad_team_name(out)] <- NA_character_
   out
 }
@@ -501,8 +225,8 @@ dt[, HomeRaw := trimws(as.character(Home))]
 dt[, AwayRaw := trimws(as.character(Away))]
 dt[, Score   := if ("Score" %in% names(dt)) trimws(as.character(Score)) else NA_character_]
 
-dt[, Home := normalise_team_name(HomeRaw)]
-dt[, Away := normalise_team_name(AwayRaw)]
+dt[, Home := normalise_team_name(HomeRaw, Country)]
+dt[, Away := normalise_team_name(AwayRaw, Country)]
 dt[, Result := trimws(as.character(Result))]
 
 bad_name_rows <- dt[
