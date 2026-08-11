@@ -163,6 +163,23 @@ team_alias_map <- setNames(
   team_alias_key
 )
 
+# Continental files use Country = "Europe", so country-specific alias lookup
+# cannot be used directly there. Build a second lookup only for source names
+# that map unambiguously to one canonical club across all countries.
+continental_alias_candidates <- team_aliases[
+  ,
+  .(
+    CanonicalNames = uniqueN(CanonicalName),
+    CanonicalName = CanonicalName[1L]
+  ),
+  by = SourceName
+][CanonicalNames == 1L]
+
+continental_alias_map <- setNames(
+  continental_alias_candidates$CanonicalName,
+  continental_alias_candidates$SourceName
+)
+
 cat(
   "Loaded team aliases:",
   nrow(team_aliases),
@@ -198,6 +215,14 @@ normalise_team_name <- function(x, country) {
   
   out <- x0
   out[matched] <- unname(team_alias_map[key[matched]])
+  
+  # For continental rows, use a source-name alias only when it resolves to
+  # exactly one canonical club across the domestic alias registry.
+  is_continental_country <- country0 == "Europe"
+  continental_matched <- is_continental_country & x0 %in% names(continental_alias_map)
+  out[continental_matched] <- unname(
+    continental_alias_map[x0[continental_matched]]
+  )
   
   out[is_clearly_bad_team_name(out)] <- NA_character_
   out
@@ -243,6 +268,48 @@ dt <- dt[
   !(is.na(Home) | Home == "" |
       is.na(Away) | Away == "")
 ]
+
+# Continental matches count only when BOTH clubs already appear somewhere in
+# the domestic league database. The complete Champions League source stays in
+# the combined CSV, so these games can be recovered automatically when more
+# domestic leagues are added later.
+domestic_team_set <- sort(unique(c(
+  dt[CompetitionType == "league", Home],
+  dt[CompetitionType == "league", Away]
+)))
+
+continental_rows <- dt[CompetitionType == "continental"]
+
+if (nrow(continental_rows) > 0) {
+  continental_keep <- continental_rows[
+    Home %in% domestic_team_set &
+      Away %in% domestic_team_set
+  ]
+  
+  continental_drop <- continental_rows[
+    !(Home %in% domestic_team_set &
+        Away %in% domestic_team_set)
+  ]
+  
+  cat(
+    "\nContinental match eligibility:\n",
+    "  Domestic teams in database: ", length(domestic_team_set), "\n",
+    "  Continental rows available: ", nrow(continental_rows), "\n",
+    "  Continental rows kept: ", nrow(continental_keep), "\n",
+    "  Continental rows dropped (one/both clubs absent domestically): ",
+    nrow(continental_drop), "\n",
+    sep = ""
+  )
+  
+  dt <- rbindlist(
+    list(
+      dt[CompetitionType != "continental"],
+      continental_keep
+    ),
+    use.names = TRUE,
+    fill = TRUE
+  )
+}
 
 dt[, Date := as.Date(DateRaw, format = "%Y-%m-%d")]
 dt[, SeedRatingForTier := seed_from_tier(Tier)]

@@ -136,6 +136,13 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
     home <- sub("\\s+\\d+-\\d+\\s+pen\\.?\\s*$", "", home, ignore.case = TRUE)
     away <- sub("\\s+\\d+-\\d+\\s+pen\\.?\\s*$", "", away, ignore.case = TRUE)
     
+    # Champions League files append a three-letter association code to clubs,
+    # e.g. "Arsenal FC (ENG)" or "FC Barcelona (ESP)".
+    if (identical(competition_type, "continental")) {
+      home <- sub("\\s+\\([A-Z]{3}\\)\\s*$", "", home)
+      away <- sub("\\s+\\([A-Z]{3}\\)\\s*$", "", away)
+    }
+    
     home <- trim(home)
     away <- trim(away)
     
@@ -294,6 +301,28 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
       # Penalty marker at the end. In some OpenFootball files this contains
       # only the shoot-out score; the actual match score is on the next line.
       # Store the shoot-out temporarily and wait for that actual score.
+      # Penalty shoot-out and actual match score on the same line, e.g.
+      # "Team B 4-3 pen. 1-1 a.e.t. (1-1, 0-1)".
+      # Elo uses the actual match score, never the shoot-out score.
+      pen_same_line <- "^(.*?)\\s+(\\d+)-(\\d+)\\s+pen\\.?\\s+(\\d+)-(\\d+)(?:\\s+a\\.e\\.t\\.)?(?:\\s+\\([^)]*\\))?\\s*$"
+      
+      if (grepl(pen_same_line, rhs, ignore.case = TRUE)) {
+        away  <- trim(sub(pen_same_line, "\\1", rhs, ignore.case = TRUE))
+        pen_h <- as.integer(sub(pen_same_line, "\\2", rhs, ignore.case = TRUE))
+        pen_a <- as.integer(sub(pen_same_line, "\\3", rhs, ignore.case = TRUE))
+        hg    <- as.integer(sub(pen_same_line, "\\4", rhs, ignore.case = TRUE))
+        ag    <- as.integer(sub(pen_same_line, "\\5", rhs, ignore.case = TRUE))
+        
+        append_match(
+          home,
+          away,
+          hg,
+          ag,
+          sprintf("%d-%d (p %d-%d)", hg, ag, pen_h, pen_a)
+        )
+        next
+      }
+      
       pen_tail <- "^(.*?)\\s+(\\d+)-(\\d+)\\s+pen\\.?\\s*$"
       
       if (grepl(pen_tail, rhs, ignore.case = TRUE)) {
@@ -534,7 +563,8 @@ make_jobs <- function(
     country,
     competition,
     league,
-    tier
+    tier,
+    competition_type = "league"
 ) {
   seasons <- vapply(
     first_start_year:current_start_year,
@@ -547,7 +577,7 @@ make_jobs <- function(
     source_folder = rep(source_folder, length(seasons)),
     country = rep(country, length(seasons)),
     competition = rep(competition, length(seasons)),
-    competition_type = rep("league", length(seasons)),
+    competition_type = rep(competition_type, length(seasons)),
     league = rep(league, length(seasons)),
     tier = rep(as.integer(tier), length(seasons)),
     source = rep("openfootball", length(seasons)),
@@ -652,6 +682,16 @@ ligue2_jobs <- make_jobs(
   "ligue_2", "Ligue 2", 2L
 )
 
+# UEFA Champions League.
+# Historical files are available from 2011/12 onward. The current season will
+# parse automatically as soon as OpenFootball publishes cl.txt.
+champions_league_jobs <- make_jobs(
+  2011L, current_start_year,
+  "cl.txt", "champions-league", "Europe",
+  "champions_league", "Champions League", NA_integer_,
+  competition_type = "continental"
+)
+
 parse_jobs <- rbind(
   english_jobs,
   la_liga_jobs,
@@ -661,7 +701,8 @@ parse_jobs <- rbind(
   bundesliga_jobs,
   bundesliga2_jobs,
   ligue1_jobs,
-  ligue2_jobs
+  ligue2_jobs,
+  champions_league_jobs
 )
 
 # -----------------------------

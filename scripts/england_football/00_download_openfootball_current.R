@@ -98,6 +98,28 @@ download_one_file <- function(url, dest) {
   cat("Done.\n\n")
 }
 
+make_champions_league_jobs <- function(current_season) {
+  historical_start_years <- 2011:2025
+  historical_seasons <- vapply(
+    historical_start_years,
+    season_folder_from_start_year,
+    character(1)
+  )
+  
+  seasons <- unique(c(historical_seasons, current_season))
+  
+  data.frame(
+    repo = rep("champions-league", length(seasons)),
+    source_folder = rep("champions-league", length(seasons)),
+    season = seasons,
+    remote_file = rep("cl.txt", length(seasons)),
+    local_file = rep("cl.txt", length(seasons)),
+    required = rep(FALSE, length(seasons)),
+    refresh_current = seasons == current_season,
+    stringsAsFactors = FALSE
+  )
+}
+
 # -----------------------------
 # Current season
 # -----------------------------
@@ -182,12 +204,25 @@ france_jobs <- data.frame(
   stringsAsFactors = FALSE
 )
 
+# UEFA Champions League:
+# OpenFootball has cl.txt season folders from 2011/12 onward.
+# Historical seasons are downloaded once if missing; current season is refreshed weekly.
+champions_league_jobs <- make_champions_league_jobs(season_folder)
+
 download_jobs <- rbind(
   england_jobs,
   spain_jobs,
   italy_jobs,
   germany_jobs,
-  france_jobs
+  france_jobs,
+  champions_league_jobs[, c(
+    "repo",
+    "source_folder",
+    "season",
+    "remote_file",
+    "local_file",
+    "required"
+  )]
 )
 
 # -----------------------------
@@ -216,39 +251,47 @@ for (i in seq_len(nrow(download_jobs))) {
     job$local_file
   )
   
-  base_url <- paste0(
-    "https://raw.githubusercontent.com/openfootball/",
-    job$repo,
-    "/master"
-  )
+  is_current <- identical(as.character(job$season), season_folder)
+  should_refresh <- is_current || isTRUE(job$refresh_current)
   
-  url <- paste(base_url, job$season, job$remote_file, sep = "/")
-  
-  # France remote files are flat under /france rather than /<season>/.
-  if (job$repo == "europe" && job$source_folder == "france") {
-    url <- paste(base_url, job$remote_file, sep = "/")
-  }
-  
-  result <- tryCatch(
-    {
-      download_one_file(url, dest)
-      "downloaded"
-    },
-    error = function(e) {
-      if (!isTRUE(job$required)) {
-        message(
-          "Optional file not downloaded: ",
-          job$source_folder, "/", job$season, "/", job$local_file
-        )
-        message("Reason: ", conditionMessage(e))
-        "missing_optional"
-      } else {
-        stop(e)
-      }
+  # Historical Champions League files are cached permanently once downloaded.
+  if (file.exists(dest) && !should_refresh) {
+    result <- "already_exists"
+  } else {
+    base_url <- paste0(
+      "https://raw.githubusercontent.com/openfootball/",
+      job$repo,
+      "/master"
+    )
+    
+    url <- paste(base_url, job$season, job$remote_file, sep = "/")
+    
+    # France remote files are flat under /france rather than /<season>/.
+    if (job$repo == "europe" && job$source_folder == "france") {
+      url <- paste(base_url, job$remote_file, sep = "/")
     }
-  )
-  
-  Sys.sleep(1)
+    
+    result <- tryCatch(
+      {
+        download_one_file(url, dest)
+        "downloaded"
+      },
+      error = function(e) {
+        if (!isTRUE(job$required)) {
+          message(
+            "Optional file not downloaded: ",
+            job$source_folder, "/", job$season, "/", job$local_file
+          )
+          message("Reason: ", conditionMessage(e))
+          "missing_optional"
+        } else {
+          stop(e)
+        }
+      }
+    )
+    
+    Sys.sleep(1)
+  }
   
   download_results <- rbind(
     download_results,
