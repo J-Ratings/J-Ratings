@@ -44,23 +44,6 @@ slug <- function(x) {
   gsub("(^-+|-+$)", "", x)
 }
 
-tier_to_division <- function(tier, fallback_league = NULL) {
-  out <- dplyr::case_when(
-    tier == 1L ~ "Premier League",
-    tier == 2L ~ "Championship",
-    tier == 3L ~ "League 1",
-    tier == 4L ~ "League 2",
-    tier == 5L ~ "National League",
-    TRUE ~ NA_character_
-  )
-  
-  if (!is.null(fallback_league)) {
-    out[is.na(out)] <- as.character(fallback_league[is.na(out)])
-  }
-  
-  out
-}
-
 season_label <- function(d) {
   d <- as.Date(d)
   y <- as.integer(format(d, "%Y"))
@@ -149,7 +132,7 @@ fixtures <- read_csv(fixtures_csv, show_col_types = FALSE)
 required_final <- c("Team", "Rating", "Games")
 
 required_hist <- c(
-  "League", "Tier", "Date", "Home", "Away", "Result", "Score",
+  "Country", "Competition", "CompetitionType", "League", "Tier", "Date", "Home", "Away", "Result", "Score",
   "HomeRating_Before", "AwayRating_Before",
   "HomeRating_After", "AwayRating_After"
 )
@@ -172,21 +155,29 @@ if (length(miss_hist) > 0) {
 ghist <- ghist %>%
   mutate(
     Date   = as.Date(Date),
-    Home   = trimws(as.character(Home)),
-    Away   = trimws(as.character(Away)),
-    League = trimws(as.character(League)),
-    Score  = trimws(as.character(Score)),
-    Tier   = as.integer(Tier)
+    Home            = trimws(as.character(Home)),
+    Away            = trimws(as.character(Away)),
+    Country         = trimws(as.character(Country)),
+    Competition     = trimws(as.character(Competition)),
+    CompetitionType = trimws(as.character(CompetitionType)),
+    League          = trimws(as.character(League)),
+    Source          = if ("Source" %in% names(ghist)) trimws(as.character(Source)) else NA_character_,
+    Score           = trimws(as.character(Score)),
+    Tier            = as.integer(Tier)
   ) %>%
   filter(!is.na(Date), Home != "", Away != "")
 
 fixtures <- fixtures %>%
   mutate(
     Date   = as.Date(Date),
-    Home   = trimws(as.character(Home)),
-    Away   = trimws(as.character(Away)),
-    League = trimws(as.character(League)),
-    Tier   = as.integer(Tier)
+    Home            = trimws(as.character(Home)),
+    Away            = trimws(as.character(Away)),
+    Country         = trimws(as.character(Country)),
+    Competition     = trimws(as.character(Competition)),
+    CompetitionType = trimws(as.character(CompetitionType)),
+    League          = trimws(as.character(League)),
+    Source          = if ("Source" %in% names(fixtures)) trimws(as.character(Source)) else NA_character_,
+    Tier            = as.integer(Tier)
   ) %>%
   filter(!is.na(Date), Home != "", Away != "")
 
@@ -215,10 +206,18 @@ cat("Wrote meta.json (asof =", meta$asof, ")\n")
 # -----------------------------
 
 team_last <- bind_rows(
-  ghist %>% transmute(team = Home, Date, Tier, League),
-  ghist %>% transmute(team = Away, Date, Tier, League)
+  ghist %>% transmute(
+    team = Home, Date, Country, Competition, CompetitionType, Tier, League
+  ),
+  ghist %>% transmute(
+    team = Away, Date, Country, Competition, CompetitionType, Tier, League
+  )
 ) %>%
-  filter(!is.na(Date), team != "") %>%
+  filter(
+    !is.na(Date),
+    team != "",
+    CompetitionType == "league"
+  ) %>%
   arrange(team, Date) %>%
   group_by(team) %>%
   slice_tail(n = 1) %>%
@@ -226,8 +225,10 @@ team_last <- bind_rows(
   transmute(
     name = team,
     last_played = as.Date(Date),
+    country = as.character(Country),
+    competition = as.character(Competition),
     tier = as.integer(Tier),
-    division = tier_to_division(as.integer(Tier), League)
+    division = as.character(League)
   )
 
 # -----------------------------
@@ -244,7 +245,7 @@ teams_all <- final %>%
   mutate(
     id = slug(name)
   ) %>%
-  select(id, name, rating, games, last_played, tier, division) %>%
+  select(id, name, rating, games, last_played, country, competition, tier, division) %>%
   arrange(desc(rating), name)
 
 if (anyDuplicated(teams_all$id)) {
@@ -262,7 +263,7 @@ cutoff_date <- as.Date(asof_date) - 365L
 
 teams_tbl <- teams_all %>%
   filter(!is.na(last_played) & last_played >= cutoff_date) %>%
-  select(id, name, rating, games, tier, division) %>%
+  select(id, name, rating, games, country, competition, tier, division) %>%
   arrange(desc(rating), name)
 
 write_json(
@@ -301,8 +302,11 @@ hist_long <- bind_rows(
       date = Date,
       season = season_label(Date),
       rating = HomeRating_After,
+      country = as.character(Country),
+      competition = as.character(Competition),
+      competition_type = as.character(CompetitionType),
       tier = as.integer(Tier),
-      division = tier_to_division(as.integer(Tier), League)
+      division = if_else(CompetitionType == "league", as.character(League), NA_character_)
     ),
   ghist %>%
     transmute(
@@ -310,8 +314,11 @@ hist_long <- bind_rows(
       date = Date,
       season = season_label(Date),
       rating = AwayRating_After,
+      country = as.character(Country),
+      competition = as.character(Competition),
+      competition_type = as.character(CompetitionType),
       tier = as.integer(Tier),
-      division = tier_to_division(as.integer(Tier), League)
+      division = if_else(CompetitionType == "league", as.character(League), NA_character_)
     )
 ) %>%
   filter(!is.na(rating), team != "") %>%
@@ -331,8 +338,11 @@ season_starts_long <- bind_rows(
       date = Date,
       season = season_label(Date),
       elo = HomeRating_Before,
+      country = as.character(Country),
+      competition = as.character(Competition),
+      competition_type = as.character(CompetitionType),
       tier = as.integer(Tier),
-      division = tier_to_division(as.integer(Tier), League)
+      division = if_else(CompetitionType == "league", as.character(League), NA_character_)
     ),
   ghist %>%
     transmute(
@@ -340,8 +350,11 @@ season_starts_long <- bind_rows(
       date = Date,
       season = season_label(Date),
       elo = AwayRating_Before,
+      country = as.character(Country),
+      competition = as.character(Competition),
+      competition_type = as.character(CompetitionType),
       tier = as.integer(Tier),
-      division = tier_to_division(as.integer(Tier), League)
+      division = if_else(CompetitionType == "league", as.character(League), NA_character_)
     )
 ) %>%
   filter(team != "", !is.na(date), !is.na(elo), !is.na(season)) %>%
@@ -359,6 +372,9 @@ season_starts_long <- bind_rows(
     id = as.character(id),
     name = as.character(team),
     elo = as.integer(elo),
+    country = as.character(country),
+    competition = as.character(competition),
+    competition_type = as.character(competition_type),
     tier = as.integer(tier),
     division = as.character(division)
   ) %>%
@@ -389,6 +405,9 @@ for (tm in names(name_to_id)) {
       date = format(date, "%Y-%m-%d"),
       season = as.character(season),
       rating = as.integer(round(rating)),
+      country = as.character(country),
+      competition = as.character(competition),
+      competitionType = as.character(competition_type),
       tier = as.integer(tier),
       division = as.character(division)
     )
@@ -429,7 +448,7 @@ for (tm in names(name_to_id)) {
     slice_head(n = 5) %>%
     mutate(
       season = season_label(Date),
-      division = tier_to_division(as.integer(Tier), League),
+      division = if_else(CompetitionType == "league", as.character(League), NA_character_),
       
       home_elo = unname(rating_lookup[Home]),
       away_elo = unname(rating_lookup[Away]),
@@ -457,9 +476,13 @@ for (tm in names(name_to_id)) {
     transmute(
       date = format(Date, "%Y-%m-%d"),
       season = as.character(season),
+      country = as.character(Country),
+      competition = as.character(Competition),
+      competitionType = as.character(CompetitionType),
       league = as.character(League),
       tier = as.integer(Tier),
       division = as.character(division),
+      source = as.character(Source),
       
       home = as.character(Home),
       homeElo = as.integer(round(home_elo)),
@@ -500,7 +523,7 @@ for (tm in names(name_to_id)) {
         NA_character_
       ),
       
-      division = tier_to_division(as.integer(Tier), League),
+      division = if_else(CompetitionType == "league", as.character(League), NA_character_),
       
       home_expected = elo_expected(
         HomeRating_Before,
@@ -532,9 +555,13 @@ for (tm in names(name_to_id)) {
     transmute(
       date = format(Date, "%Y-%m-%d"),
       season = as.character(season),
+      country = as.character(Country),
+      competition = as.character(Competition),
+      competitionType = as.character(CompetitionType),
       league = as.character(League),
       tier = as.integer(Tier),
       division = as.character(division),
+      source = as.character(Source),
       
       home = as.character(Home),
       homeElo = as.integer(round(HomeRating_Before)),

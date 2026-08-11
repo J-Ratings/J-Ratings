@@ -15,8 +15,7 @@ source_root_dir <- file.path(
   "EnglishFootball",
   "pipeline_data",
   "Source",
-  "openfootball",
-  "england"
+  "openfootball"
 )
 
 combined_dir <- file.path(
@@ -101,7 +100,7 @@ normalise_openfootball_season_label <- function(season_folder) {
 # Parser
 # -----------------------------
 
-parse_comp_file <- function(txt_path, league_label) {
+parse_comp_file <- function(txt_path, country, competition_id, competition_type, league_label, tier, source = "openfootball") {
   lines <- readLines(txt_path, warn = FALSE, encoding = "UTF-8")
   
   hdr_idx <- grep("^\\s*=\\s*.*\\b\\d{4}/\\d{2,4}\\b\\s*$", lines)
@@ -295,48 +294,122 @@ parse_comp_file <- function(txt_path, league_label) {
   
   if (n == 0) {
     return(data.frame(
-      Season = character(),
-      League = character(),
-      Date   = character(),
-      Home   = character(),
-      Away   = character(),
-      Result = character(),
-      Score  = character(),
+      Season          = character(),
+      Country         = character(),
+      Competition     = character(),
+      CompetitionType = character(),
+      Tier            = integer(),
+      League          = character(),
+      Date            = character(),
+      Home            = character(),
+      Away            = character(),
+      Result          = character(),
+      Score           = character(),
+      Source          = character(),
       stringsAsFactors = FALSE
     ))
   }
   
   data.frame(
-    Season = rep(season_str, n),
-    League = rep(league_label, n),
-    Date   = out_date,
-    Home   = out_home,
-    Away   = out_away,
-    Result = out_res,
-    Score  = out_score,
+    Season          = rep(season_str, n),
+    Country         = rep(country, n),
+    Competition     = rep(competition_id, n),
+    CompetitionType = rep(competition_type, n),
+    Tier            = rep(as.integer(tier), n),
+    League          = rep(league_label, n),
+    Date            = out_date,
+    Home            = out_home,
+    Away            = out_away,
+    Result          = out_res,
+    Score           = out_score,
+    Source          = rep(source, n),
     stringsAsFactors = FALSE
   )
 }
 
 # -----------------------------
-# League file map
+# Competition configuration
 # -----------------------------
 
-file_to_league <- c(
-  "1-premierleague.txt" = "Premier League",
-  "2-division1.txt"     = "Division 1",
-  "2-championship.txt"  = "Championship",
-  "3-division2.txt"     = "Division 2",
-  "3-league1.txt"       = "League 1",
-  "4-division3.txt"     = "Division 3",
-  "4-league2.txt"       = "League 2",
-  "5-nationalleague.txt" = "National League"
+english_competition_files <- data.frame(
+  file = c(
+    "1-premierleague.txt",
+    "2-division1.txt",
+    "2-championship.txt",
+    "3-division2.txt",
+    "3-league1.txt",
+    "4-division3.txt",
+    "4-league2.txt",
+    "5-nationalleague.txt"
+  ),
+  source_folder = rep("england", 8),
+  country = rep("England", 8),
+  competition = c(
+    "premier_league",
+    "championship",
+    "championship",
+    "league_one",
+    "league_one",
+    "league_two",
+    "league_two",
+    "national_league"
+  ),
+  competition_type = rep("league", 8),
+  league = c(
+    "Premier League",
+    "Division 1",
+    "Championship",
+    "Division 2",
+    "League 1",
+    "Division 3",
+    "League 2",
+    "National League"
+  ),
+  tier = c(1L, 2L, 2L, 3L, 3L, 4L, 4L, 5L),
+  source = rep("openfootball", 8),
+  stringsAsFactors = FALSE
 )
 
-candidate_files <- names(file_to_league)
+english_competition_from_league <- function(x) {
+  lx <- tolower(trimws(as.character(x)))
+  out <- rep(NA_character_, length(lx))
+  out[grepl("^premier league$", lx)] <- "premier_league"
+  out[is.na(out) & grepl("^division\\s*1$|^championship$", lx)] <- "championship"
+  out[is.na(out) & grepl("^division\\s*2$|^league\\s*1$|^league one$", lx)] <- "league_one"
+  out[is.na(out) & grepl("^division\\s*3$|^league\\s*2$|^league two$", lx)] <- "league_two"
+  out[is.na(out) & grepl("^national league$", lx)] <- "national_league"
+  out
+}
+
+english_tier_from_league <- function(x) {
+  comp <- english_competition_from_league(x)
+  out <- rep(NA_integer_, length(comp))
+  out[comp == "premier_league"] <- 1L
+  out[comp == "championship"] <- 2L
+  out[comp == "league_one"] <- 3L
+  out[comp == "league_two"] <- 4L
+  out[comp == "national_league"] <- 5L
+  out
+}
+
+season_folder_from_start_year <- function(start_year) {
+  paste0(
+    as.integer(start_year),
+    "-",
+    sprintf("%02d", (as.integer(start_year) + 1L) %% 100L)
+  )
+}
+
+season_start_year <- function(season_folder) {
+  as.integer(substr(season_folder, 1, 4))
+}
+
+season_header_label <- function(season_folder) {
+  gsub("-", "/", season_folder, fixed = TRUE)
+}
 
 # -----------------------------
-# Current season
+# Seasons and parse jobs
 # -----------------------------
 
 season_folder <- Sys.getenv(
@@ -345,12 +418,13 @@ season_folder <- Sys.getenv(
 )
 
 expected_season_folder <- current_openfootball_season()
+current_start_year <- season_start_year(season_folder)
 
 cat("System date:", as.character(Sys.Date()), "\n")
 cat("Repo dir:", repo_dir, "\n")
 cat("OPENFOOTBALL_SEASON env var:", Sys.getenv("OPENFOOTBALL_SEASON", unset = "<not set>"), "\n")
 cat("Expected OpenFootball season from current date:", expected_season_folder, "\n")
-cat("Using OpenFootball season folder:", season_folder, "\n")
+cat("Using OpenFootball current season folder:", season_folder, "\n")
 
 if (!identical(season_folder, expected_season_folder)) {
   warning(
@@ -360,29 +434,75 @@ if (!identical(season_folder, expected_season_folder)) {
   )
 }
 
-season_dir <- file.path(source_root_dir, season_folder)
+# England continues to refresh only the current season because the historical
+# English data is already present in the combined CSV.
+english_jobs <- english_competition_files
+english_jobs$season_folder <- season_folder
 
-if (!dir.exists(season_dir)) {
-  stop("Missing OpenFootball season folder: ", season_dir)
-}
+# First new competition: La Liga (Spain division 1).
+# OpenFootball's España repository contains La Liga from 2012/13 onwards.
+la_liga_season_folders <- vapply(
+  2012L:current_start_year,
+  season_folder_from_start_year,
+  character(1)
+)
 
-cat("Source folder:", season_dir, "\n")
+la_liga_jobs <- data.frame(
+  file = rep("1-liga.txt", length(la_liga_season_folders)),
+  source_folder = rep("espana", length(la_liga_season_folders)),
+  country = rep("Spain", length(la_liga_season_folders)),
+  competition = rep("la_liga", length(la_liga_season_folders)),
+  competition_type = rep("league", length(la_liga_season_folders)),
+  league = rep("La Liga", length(la_liga_season_folders)),
+  tier = rep(1L, length(la_liga_season_folders)),
+  source = rep("openfootball", length(la_liga_season_folders)),
+  season_folder = la_liga_season_folders,
+  stringsAsFactors = FALSE
+)
+
+parse_jobs <- rbind(
+  english_jobs,
+  la_liga_jobs
+)
+
+cat(
+  "La Liga seasons to parse:",
+  paste(la_liga_season_folders, collapse = ", "),
+  "\n"
+)
 
 # -----------------------------
-# Parse current season only
+# Parse configured files
 # -----------------------------
 
 all_df_list <- list()
 k <- 1L
 
-for (cf in candidate_files) {
-  fpath <- file.path(season_dir, cf)
-  if (!file.exists(fpath)) next
+for (i in seq_len(nrow(parse_jobs))) {
+  cfg <- parse_jobs[i, ]
   
-  league_label <- unname(file_to_league[cf])
+  season_dir <- file.path(
+    source_root_dir,
+    cfg$source_folder,
+    cfg$season_folder
+  )
+  
+  fpath <- file.path(season_dir, cfg$file)
+  
+  if (!file.exists(fpath)) {
+    next
+  }
   
   tmp <- tryCatch(
-    parse_comp_file(fpath, league_label),
+    parse_comp_file(
+      txt_path = fpath,
+      country = cfg$country,
+      competition_id = cfg$competition,
+      competition_type = cfg$competition_type,
+      league_label = cfg$league,
+      tier = cfg$tier,
+      source = cfg$source
+    ),
     error = function(e) {
       message("Skipping parse error: ", fpath, " | ", conditionMessage(e))
       NULL
@@ -391,8 +511,8 @@ for (cf in candidate_files) {
   
   if (!is.null(tmp) && nrow(tmp) > 0) {
     cat(
-      "Parsed ", cf,
-      " | League: ", league_label,
+      "Parsed ", cfg$source_folder, "/", cfg$season_folder, "/", cfg$file,
+      " | Competition: ", cfg$competition,
       " | Rows: ", nrow(tmp),
       " | Date range: ", min(tmp$Date), " to ", max(tmp$Date),
       "\n",
@@ -402,48 +522,61 @@ for (cf in candidate_files) {
     all_df_list[[k]] <- tmp
     k <- k + 1L
   } else {
-    cat("Parsed ", cf, " | League: ", league_label, " | Rows: 0\n", sep = "")
+    cat(
+      "Parsed ", cfg$source_folder, "/", cfg$season_folder, "/", cfg$file,
+      " | Competition: ", cfg$competition,
+      " | Rows: 0\n",
+      sep = ""
+    )
   }
 }
 
 if (length(all_df_list) == 0) {
-  stop("No current-season data parsed. Check season folder: ", season_dir)
+  stop("No OpenFootball data parsed.")
 }
 
-current_df <- do.call(rbind, all_df_list)
-current_df <- current_df[, c("Season", "League", "Date", "Home", "Away", "Result", "Score")]
+parsed_df <- do.call(rbind, all_df_list)
 
-current_seasons <- unique(current_df$Season)
+required_cols <- c(
+  "Season",
+  "Country",
+  "Competition",
+  "CompetitionType",
+  "Tier",
+  "League",
+  "Date",
+  "Home",
+  "Away",
+  "Result",
+  "Score",
+  "Source"
+)
 
-if (length(current_seasons) != 1L) {
-  stop("Expected exactly one parsed season, got: ", paste(current_seasons, collapse = ", "))
-}
-
-current_season <- current_seasons[[1]]
-current_max_date <- max(as.Date(current_df$Date), na.rm = TRUE)
-
-cat("Parsed current season:", current_season, "\n")
-cat("Current-season rows parsed:", nrow(current_df), "\n")
-cat("Current-season latest parsed date:", as.character(current_max_date), "\n")
+parsed_df <- parsed_df[, required_cols]
+parsed_df$Date <- as.character(parsed_df$Date)
 
 # -----------------------------
-# Hard sanity checks for the completed 2025/26 season
+# Sanity checks
 # -----------------------------
 
-if (current_season == "2025/26") {
-  pl_rows <- current_df[current_df$League == "Premier League", ]
+# Keep the existing completed Premier League 2025/26 check.
+pl_2526 <- parsed_df[
+  parsed_df$Competition == "premier_league" &
+    parsed_df$Season == "2025/26",
+]
+
+if (nrow(pl_2526) > 0) {
+  cat("Premier League 2025/26 parsed rows:", nrow(pl_2526), "\n")
   
-  cat("Premier League 2025/26 parsed rows:", nrow(pl_rows), "\n")
-  
-  if (nrow(pl_rows) != 380L) {
+  if (nrow(pl_2526) != 380L) {
     stop(
       "Premier League 2025/26 should have 380 parsed rows, but parser found ",
-      nrow(pl_rows),
+      nrow(pl_2526),
       ". Refusing to continue."
     )
   }
   
-  pl_max_date <- max(as.Date(pl_rows$Date), na.rm = TRUE)
+  pl_max_date <- max(as.Date(pl_2526$Date), na.rm = TRUE)
   
   if (pl_max_date < as.Date("2026-05-24")) {
     stop(
@@ -454,94 +587,211 @@ if (current_season == "2025/26") {
   }
 }
 
+# Every completed La Liga season in our backfill should contain 380 fixtures.
+current_season_label <- season_header_label(season_folder)
+
+la_liga_completed <- parsed_df[
+  parsed_df$Competition == "la_liga" &
+    parsed_df$Season != current_season_label,
+]
+
+if (nrow(la_liga_completed) > 0) {
+  la_liga_counts <- aggregate(
+    Date ~ Season,
+    data = la_liga_completed,
+    FUN = length
+  )
+  
+  names(la_liga_counts)[names(la_liga_counts) == "Date"] <- "Rows"
+  
+  bad_la_liga_seasons <- la_liga_counts[
+    la_liga_counts$Rows != 380L,
+  ]
+  
+  if (nrow(bad_la_liga_seasons) > 0) {
+    stop(
+      "One or more completed La Liga seasons did not parse to 380 rows:\n",
+      paste(
+        paste0(
+          bad_la_liga_seasons$Season,
+          " = ",
+          bad_la_liga_seasons$Rows
+        ),
+        collapse = "\n"
+      )
+    )
+  }
+}
+
+cat(
+  "Parsed competitions:",
+  paste(sort(unique(parsed_df$Competition)), collapse = ", "),
+  "\n"
+)
+
+cat(
+  "Parsed rows:",
+  nrow(parsed_df),
+  "\n"
+)
+
 # -----------------------------
-# Merge current season into combined CSV
+# Merge parsed competition-seasons into combined CSV
 # -----------------------------
 
-required_cols <- c("Season", "League", "Date", "Home", "Away", "Result", "Score")
+# Important: replacement is now keyed by Season + Country + Competition.
+# This means we can refresh England's current season and backfill La Liga
+# without deleting unrelated competitions from the same season.
 
-current_df$Date <- as.character(current_df$Date)
+make_key <- function(season, country, competition) {
+  paste(season, country, competition, sep = "||")
+}
 
-new_current_max_date <- max(as.Date(current_df$Date), na.rm = TRUE)
-new_current_rows <- nrow(current_df)
-
-cat("New parsed current-season max date:", as.character(new_current_max_date), "\n")
-cat("New parsed current-season rows:", new_current_rows, "\n")
+parsed_keys <- unique(
+  make_key(
+    parsed_df$Season,
+    parsed_df$Country,
+    parsed_df$Competition
+  )
+)
 
 if (file.exists(out_file)) {
   old_df <- read.csv(out_file, stringsAsFactors = FALSE)
   
+  # Backwards-compatible migration for the existing English-only CSV.
+  if (!"Country" %in% names(old_df)) old_df$Country <- "England"
+  
+  if (!"Competition" %in% names(old_df)) {
+    old_df$Competition <- english_competition_from_league(old_df$League)
+  }
+  
+  if (!"CompetitionType" %in% names(old_df)) {
+    old_df$CompetitionType <- "league"
+  }
+  
+  if (!"Tier" %in% names(old_df)) {
+    old_df$Tier <- english_tier_from_league(old_df$League)
+  }
+  
+  if (!"Source" %in% names(old_df)) {
+    old_df$Source <- "openfootball"
+  }
+  
   missing_cols <- setdiff(required_cols, names(old_df))
+  
   if (length(missing_cols) > 0) {
-    stop("Existing combined CSV is missing columns: ", paste(missing_cols, collapse = ", "))
+    stop(
+      "Existing combined CSV is missing columns: ",
+      paste(missing_cols, collapse = ", ")
+    )
   }
   
   old_df <- old_df[, required_cols]
   old_df$Date <- as.character(old_df$Date)
   
-  old_current_df <- old_df[old_df$Season == current_season, ]
-  old_other_df <- old_df[old_df$Season != current_season, ]
+  old_keys <- make_key(
+    old_df$Season,
+    old_df$Country,
+    old_df$Competition
+  )
   
-  old_current_rows <- nrow(old_current_df)
-  old_current_max_date <- if (old_current_rows > 0) {
-    max(as.Date(old_current_df$Date), na.rm = TRUE)
-  } else {
-    as.Date(NA)
-  }
+  rows_replaced <- sum(old_keys %in% parsed_keys)
   
   cat("Existing combined CSV:", out_file, "\n")
-  cat("Old current-season rows:", old_current_rows, "\n")
-  cat("Old current-season max date:", as.character(old_current_max_date), "\n")
+  cat("Existing rows replaced by freshly parsed competition-seasons:", rows_replaced, "\n")
   
-  if (
-    old_current_rows > 0 &&
-    !is.na(old_current_max_date) &&
-    !is.na(new_current_max_date) &&
-    new_current_max_date < old_current_max_date
-  ) {
-    stop(
-      "Refusing to overwrite current season with older data.\n",
-      "Season: ", current_season, "\n",
-      "Old max date: ", old_current_max_date, "\n",
-      "New max date: ", new_current_max_date, "\n",
-      "This usually means the parser has missed rows or the downloaded source is incomplete."
-    )
-  }
-  
-  if (
-    old_current_rows > 0 &&
-    new_current_rows < old_current_rows &&
-    !is.na(old_current_max_date) &&
-    !is.na(new_current_max_date) &&
-    new_current_max_date <= old_current_max_date
-  ) {
-    stop(
-      "Refusing to overwrite current season with fewer rows.\n",
-      "Season: ", current_season, "\n",
-      "Old rows: ", old_current_rows, "\n",
-      "New rows: ", new_current_rows, "\n",
-      "Old max date: ", old_current_max_date, "\n",
-      "New max date: ", new_current_max_date, "\n"
-    )
-  }
-  
-  cat("Rows removed for ", current_season, ": ", old_current_rows, "\n", sep = "")
-  cat("Rows added for ", current_season, ": ", new_current_rows, "\n", sep = "")
-  
-  all_df <- rbind(old_other_df, current_df)
+  old_keep <- old_df[!(old_keys %in% parsed_keys), ]
+  all_df <- rbind(old_keep, parsed_df)
 } else {
   cat("No existing combined CSV found. Creating a new one.\n")
-  all_df <- current_df
+  all_df <- parsed_df
 }
 
-all_df <- all_df[, required_cols]
-all_df <- all_df[order(all_df$Date, all_df$League, all_df$Home, all_df$Away), ]
+# -----------------------------
+# Duplicate protection
+# -----------------------------
 
-write.csv(all_df, out_file, row.names = FALSE)
+# A match/fixture should only appear once within a competition.
+match_key <- paste(
+  all_df$Season,
+  all_df$Country,
+  all_df$Competition,
+  all_df$Date,
+  all_df$Home,
+  all_df$Away,
+  sep = "||"
+)
+
+if (anyDuplicated(match_key)) {
+  dup_rows <- all_df[duplicated(match_key) | duplicated(match_key, fromLast = TRUE), ]
+  
+  cat("\nDuplicate match keys detected:\n")
+  print(
+    dup_rows[
+      order(
+        dup_rows$Season,
+        dup_rows$Competition,
+        dup_rows$Date,
+        dup_rows$Home,
+        dup_rows$Away
+      ),
+    ]
+  )
+  
+  stop("Duplicate match records detected. Refusing to write combined CSV.")
+}
+
+# -----------------------------
+# Write
+# -----------------------------
+
+all_df <- all_df[, required_cols]
+
+all_df <- all_df[
+  order(
+    all_df$Date,
+    all_df$Country,
+    all_df$Competition,
+    all_df$Home,
+    all_df$Away
+  ),
+]
+
+write.csv(
+  all_df,
+  out_file,
+  row.names = FALSE
+)
 
 cat("\nWrote:", out_file, "\n")
 cat("Total rows:", nrow(all_df), "\n")
-cat("Current season:", current_season, "\n")
-cat("Current-season rows:", nrow(current_df), "\n")
-cat("Current-season latest date:", as.character(max(as.Date(current_df$Date), na.rm = TRUE)), "\n")
-cat("Leagues in file:", paste(sort(unique(all_df$League)), collapse = ", "), "\n")
+
+cat(
+  "Countries:",
+  paste(sort(unique(all_df$Country)), collapse = ", "),
+  "\n"
+)
+
+cat(
+  "Competitions:",
+  paste(sort(unique(all_df$Competition)), collapse = ", "),
+  "\n"
+)
+
+la_liga_all <- all_df[all_df$Competition == "la_liga", ]
+
+if (nrow(la_liga_all) > 0) {
+  cat("La Liga rows:", nrow(la_liga_all), "\n")
+  cat(
+    "La Liga seasons:",
+    paste(sort(unique(la_liga_all$Season)), collapse = ", "),
+    "\n"
+  )
+  cat(
+    "La Liga date range:",
+    min(la_liga_all$Date),
+    "to",
+    max(la_liga_all$Date),
+    "\n"
+  )
+}

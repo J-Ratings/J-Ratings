@@ -74,19 +74,6 @@ result_to_scores <- function(res) {
   c(0.5, 0.5)
 }
 
-league_to_tier <- function(x) {
-  lx <- tolower(trimws(as.character(x)))
-  out <- rep(NA_integer_, length(lx))
-  
-  out[grepl("^premier league$", lx)] <- 1L
-  out[is.na(out) & grepl("^division\\s*1$|^championship$", lx)] <- 2L
-  out[is.na(out) & grepl("^division\\s*2$|^league\\s*1$|^league one$", lx)] <- 3L
-  out[is.na(out) & grepl("^division\\s*3$|^league\\s*2$|^league two$", lx)] <- 4L
-  out[is.na(out) & grepl("^national league$", lx)] <- 5L
-  
-  out
-}
-
 seed_from_tier <- function(tier) {
   out <- rep(NA_real_, length(tier))
   out[tier == 1L] <- SEED_TIER_1
@@ -345,7 +332,28 @@ team_alias_map <- c(
   "Sutton United" = "Sutton United",
   "Bromley FC" = "Bromley",
   "Bromley" = "Bromley",
-  "Newport County AFC" = "Newport County"
+  "Newport County AFC" = "Newport County",
+  
+  # Spain
+  "FC Barcelona" = "Barcelona",
+  "Atlético de Madrid" = "Atlético Madrid",
+  "Club Atlético de Madrid" = "Atlético Madrid",
+  "CD Alavés" = "Deportivo Alavés",
+  "Rayo Vallecano de Madrid" = "Rayo Vallecano",
+  "RC Celta" = "Celta Vigo",
+  "RC Celta de Vigo" = "Celta Vigo",
+  "RC Deportivo La Coruña" = "Deportivo La Coruña",
+  "Espanyol Barcelona" = "Espanyol",
+  "RCD Espanyol" = "Espanyol",
+  "RCD Espanyol de Barcelona" = "Espanyol",
+  
+  "Real Betis Balompié" = "Real Betis",
+  "Real Madrid C.F." = "Real Madrid",
+  "Real Madrid CF" = "Real Madrid",
+  "Real Sociedad de Fútbol" = "Real Sociedad",
+  "Real Valladolid CF" = "Real Valladolid",
+  "Sevilla FC" = "Sevilla",
+  "Villarreal CF" = "Villarreal"
 )
 
 
@@ -411,13 +419,18 @@ normalise_team_name <- function(x) {
 # -----------------------------
 dt <- fread(INPUT_CSV)
 
-required_cols <- c("League", "Date", "Home", "Away", "Result")
+required_cols <- c("Country", "Competition", "CompetitionType", "Tier", "League", "Date", "Home", "Away", "Result")
 missing_cols <- setdiff(required_cols, names(dt))
 if (length(missing_cols) > 0) {
   stop("Missing required columns: ", paste(missing_cols, collapse = ", "))
 }
 
+dt[, Country := trimws(as.character(Country))]
+dt[, Competition := trimws(as.character(Competition))]
+dt[, CompetitionType := trimws(as.character(CompetitionType))]
+dt[, Tier := as.integer(Tier)]
 dt[, League  := trimws(as.character(League))]
+dt[, Source := if ("Source" %in% names(dt)) trimws(as.character(Source)) else NA_character_]
 dt[, DateRaw := trimws(as.character(Date))]
 dt[, HomeRaw := trimws(as.character(Home))]
 dt[, AwayRaw := trimws(as.character(Away))]
@@ -434,7 +447,7 @@ bad_name_rows <- dt[
 
 if (nrow(bad_name_rows) > 0) {
   cat("\nDropping rows with bad parsed team names:\n")
-  print(bad_name_rows[, .(League, DateRaw, HomeRaw, AwayRaw, Result, Score)])
+  print(bad_name_rows[, .(Country, Competition, League, DateRaw, HomeRaw, AwayRaw, Result, Score)])
 }
 
 dt <- dt[
@@ -443,15 +456,16 @@ dt <- dt[
 ]
 
 dt[, Date := as.Date(DateRaw, format = "%Y-%m-%d")]
-dt[, Tier := league_to_tier(League)]
 dt[, SeedRatingForTier := seed_from_tier(Tier)]
 
-bad_leagues <- unique(dt[is.na(Tier), League])
-bad_leagues <- unique(dt[is.na(Tier), League])
-if (length(bad_leagues) > 0) {
+bad_tier_rows <- dt[CompetitionType == "league" & (is.na(Tier) | is.na(SeedRatingForTier))]
+if (nrow(bad_tier_rows) > 0) {
   stop(
-    "Unrecognised league name(s) in League column:\n",
-    paste0(" - ", bad_leagues, collapse = "\n")
+    "League match row(s) have missing or unsupported Tier values.\n",
+    paste0(
+      unique(paste(bad_tier_rows$Country, bad_tier_rows$Competition, bad_tier_rows$League, bad_tier_rows$Tier, sep = " | ")),
+      collapse = "\n"
+    )
   )
 }
 
@@ -467,14 +481,18 @@ upcoming_fixtures <- dt[
 ]
 
 upcoming_fixtures <- upcoming_fixtures[, .(
+  Country,
+  Competition,
+  CompetitionType,
   League,
   Tier,
+  Source,
   Date = format(Date, "%Y-%m-%d"),
   Home,
   Away
 )]
 
-setorder(upcoming_fixtures, Date, Tier, League, Home, Away)
+setorder(upcoming_fixtures, Date, Country, Tier, Competition, League, Home, Away)
 
 fwrite(
   upcoming_fixtures,
@@ -503,7 +521,7 @@ dt[, HomeScore := scores[, 1]]
 dt[, AwayScore := scores[, 2]]
 dt <- dt[!is.na(HomeScore) & !is.na(AwayScore)]
 
-setorder(dt, Date, Tier, League, Home, Away, Result)
+setorder(dt, Date, Country, Tier, Competition, League, Home, Away, Result)
 
 # -----------------------------
 # Generic Elo runner
@@ -760,8 +778,12 @@ pass1 <- run_elo(
 )
 
 game_history_out_pass1 <- pass1$dt[, .(
+  Country,
+  Competition,
+  CompetitionType,
   League,
   Tier,
+  Source,
   Date = format(Date, "%Y-%m-%d"),
   Home,
   Away,
@@ -820,8 +842,12 @@ pass2 <- run_elo(
 )
 
 game_history_out <- pass2$dt[, .(
+  Country,
+  Competition,
+  CompetitionType,
   League,
   Tier,
+  Source,
   Date = format(Date, "%Y-%m-%d"),
   Home,
   Away,
