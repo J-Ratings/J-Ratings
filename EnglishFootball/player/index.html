@@ -793,6 +793,14 @@ if (total === 99) {
     return wrap;
   }
 
+  function competitionLabel(g) {
+    const league = String(g.league || '').trim();
+    const season = String(g.season || '').trim();
+
+    if (league && season) return `${league} ${season}`;
+    return league || season || '';
+  }
+
   function renderUpcomingTable(me, teams, games) {
     const tbl = document.getElementById('upcomingGames');
     const title = document.getElementById('upcomingTitle');
@@ -822,7 +830,7 @@ if (total === 99) {
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
 
-    for (const h of ['Date', 'Home', 'Elo', 'Away', 'Elo', 'Expected W/D/L']) {
+    for (const h of ['Date', 'Competition', 'Home', 'Elo', 'Away', 'Elo', 'Expected W/D/L']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -845,6 +853,9 @@ if (total === 99) {
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date || '';
 
+      const tdCompetition = document.createElement('td');
+      tdCompetition.textContent = competitionLabel(g);
+
       const tdHome = document.createElement('td');
       tdHome.className = 'team-cell';
       tdHome.appendChild(renderTeamCell(g.home, teams, myName));
@@ -864,6 +875,7 @@ if (total === 99) {
       tdWdl.appendChild(renderWdlBar(g, myName));
 
       tr.appendChild(tdDate);
+      tr.appendChild(tdCompetition);
       tr.appendChild(tdHome);
       tr.appendChild(tdHomeElo);
       tr.appendChild(tdAway);
@@ -883,7 +895,7 @@ if (total === 99) {
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
 
-    for (const h of ['Date', 'Home', 'Elo', 'Away', 'Elo', 'Expected W/D/L', 'Score', 'Result', 'Δ']) {
+    for (const h of ['Date', 'Competition', 'Home', 'Elo', 'Away', 'Elo', 'Expected W/D/L', 'Score', 'Result', 'Δ']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -916,6 +928,9 @@ if (total === 99) {
 
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date || '';
+
+      const tdCompetition = document.createElement('td');
+      tdCompetition.textContent = competitionLabel(g);
 
       const tdHome = document.createElement('td');
       tdHome.className = 'team-cell';
@@ -961,6 +976,7 @@ if (total === 99) {
       }
 
       tr.appendChild(tdDate);
+      tr.appendChild(tdCompetition);
       tr.appendChild(tdHome);
       tr.appendChild(tdHomeElo);
       tr.appendChild(tdAway);
@@ -976,7 +992,7 @@ if (total === 99) {
     if (!tbody.children.length) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      td.colSpan = 9;
+      td.colSpan = 10;
       td.textContent = 'No games';
       tr.appendChild(td);
       tbody.appendChild(tr);
@@ -1082,7 +1098,7 @@ if (total === 99) {
         document.getElementById('upcomingWrap').style.display = 'none';
 
         const tbl = document.getElementById('games');
-        tbl.innerHTML = '<tbody><tr><td colspan="9">No games</td></tr></tbody>';
+        tbl.innerHTML = '<tbody><tr><td colspan="10">No games</td></tr></tbody>';
       }
     } catch (e) {
       console.error(e);
@@ -1091,7 +1107,7 @@ if (total === 99) {
       document.getElementById('upcomingWrap').style.display = 'none';
 
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="10">Error loading games</td></tr></tbody>';
     }
   }
 
@@ -1104,7 +1120,7 @@ if (total === 99) {
       document.getElementById('upcomingWrap').style.display = 'none';
 
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="10">Error loading games</td></tr></tbody>';
     });
 </script>
 </body>
