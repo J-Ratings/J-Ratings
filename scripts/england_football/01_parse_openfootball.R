@@ -122,6 +122,41 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
   out_res    <- character()
   out_score  <- character()
   
+  # Some OpenFootball files split a penalty-decided match across two lines:
+  #   Home v Away 2-4 pen.
+  #   1-0 a.e.t. (...)
+  # The first score is the shoot-out; the second is the actual match score.
+  pending_penalty <- NULL
+  
+  append_match <- function(home, away, hg = NA_integer_, ag = NA_integer_, score = "") {
+    home <- trim(home)
+    away <- trim(away)
+    
+    # Remove penalty shoot-out text accidentally attached to a team name.
+    home <- sub("\\s+\\d+-\\d+\\s+pen\\.?\\s*$", "", home, ignore.case = TRUE)
+    away <- sub("\\s+\\d+-\\d+\\s+pen\\.?\\s*$", "", away, ignore.case = TRUE)
+    
+    home <- trim(home)
+    away <- trim(away)
+    
+    if (home == "" || away == "") return(invisible(NULL))
+    
+    out_season <<- c(out_season, season_str)
+    out_date   <<- c(out_date, format(current_date, "%Y-%m-%d"))
+    out_home   <<- c(out_home, home)
+    out_away   <<- c(out_away, away)
+    
+    if (is.na(hg) || is.na(ag)) {
+      out_res   <<- c(out_res, "")
+      out_score <<- c(out_score, "")
+    } else {
+      out_res   <<- c(out_res, result_code(hg, ag))
+      out_score <<- c(out_score, if (score == "") sprintf("%d-%d", hg, ag) else score)
+    }
+    
+    invisible(NULL)
+  }
+  
   # Supports:
   #   [Sat Aug/15]
   #   [Sat Aug 15]
@@ -131,28 +166,15 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
   date_pat_old_bracket <- "^\\s*\\[[A-Za-z]{3}\\s+([A-Za-z]{3})(?:/|\\s+)(\\d{1,2})(?:\\s+(\\d{4}))?\\]\\s*$"
   date_pat_new_plain   <- "^\\s*[A-Za-z]{3}\\s+([A-Za-z]{3})(?:/|\\s+)(\\d{1,2})(?:\\s+(\\d{4}))?\\s*$"
   
-  # Supports:
-  #   20.00  Team A v Team B 2-1
-  #   20:00  Team A v Team B 2-1
-  #          Team A v Team B 2-1
-  #   Team A 2-1 Team B
   time_pat <- "(?:\\d{1,2}[:.]\\d{2}\\s+)?"
   
+  # Old score-in-the-middle format, e.g. Team A 2-1 Team B.
   match_pat_old <- paste0(
     "^\\s*", time_pat,
     "(.+?)\\s+(\\d+)-(\\d+)(?:\\s+\\([^)]*\\))?\\s+(.+?)\\s*$"
   )
   
-  match_pat_new_v <- paste0(
-    "^\\s*", time_pat,
-    "(.+?)\\s+v\\s+(.+?)\\s+(\\d+)-(\\d+)(?:\\s+\\([^)]*\\))?\\s*$"
-  )
-  
-  fixture_pat_v <- paste0(
-    "^\\s*", time_pat,
-    "(.+?)\\s+v\\s+(.+?)\\s*$"
-  )
-  
+  # Older cup-style formats retained for future knockout competitions.
   match_pat_pen <- paste0(
     "^\\s*", time_pat,
     "(.+?)\\s+(\\d+)-(\\d+)\\s+pen\\.?\\s+(\\d+)-(\\d+)(?:\\s+a\\.e\\.t\\.)?(?:\\s+\\([^)]*\\))?\\s+(.+?)\\s*$"
@@ -164,21 +186,62 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
   )
   
   for (ln in lines) {
-    ln <- gsub("\t", " ", ln)
+    ln <- gsub("\\t", " ", ln)
     ln <- gsub("\u00a0", " ", ln, fixed = TRUE)
+    ln <- gsub("\\s+", " ", ln)
+    ln <- trim(ln)
     
-    if (grepl("^\\s*#", ln)) next
-    if (grepl("^\\s*==", ln)) next
+    # Resolve a split penalty record. Elo uses the actual match score,
+    # never the penalty shoot-out score.
+    if (!is.null(pending_penalty)) {
+      if (ln == "" || grepl("^#", ln) || grepl("^==", ln)) {
+        next
+      }
+      
+      continuation_pat <- "^(\\d+)-(\\d+)(?:\\s+a\\.e\\.t\\.)?(?:\\s+\\([^)]*\\))?\\s*$"
+      
+      if (!grepl(continuation_pat, ln, ignore.case = TRUE)) {
+        stop(
+          "Penalty shoot-out line was not followed by an actual match score.\n",
+          "File: ", txt_path, "\n",
+          "Home: ", pending_penalty$home, "\n",
+          "Away: ", pending_penalty$away, "\n",
+          "Penalty score: ", pending_penalty$pen_h, "-", pending_penalty$pen_a, "\n",
+          "Next line: ", ln
+        )
+      }
+      
+      hg <- as.integer(sub(continuation_pat, "\\1", ln, ignore.case = TRUE))
+      ag <- as.integer(sub(continuation_pat, "\\2", ln, ignore.case = TRUE))
+      
+      append_match(
+        pending_penalty$home,
+        pending_penalty$away,
+        hg,
+        ag,
+        sprintf(
+          "%d-%d (p %d-%d)",
+          hg, ag,
+          pending_penalty$pen_h,
+          pending_penalty$pen_a
+        )
+      )
+      
+      pending_penalty <- NULL
+      next
+    }
+    
+    if (grepl("^#", ln)) next
+    if (grepl("^==", ln)) next
     if (grepl("Matchday", ln, ignore.case = TRUE)) next
-    if (trim(ln) == "") next
+    if (ln == "") next
     
-    # Old/new bracket date style
+    # Date headers.
     if (grepl(date_pat_old_bracket, ln)) {
       mon <- sub(date_pat_old_bracket, "\\1", ln)
       dd  <- as.integer(sub(date_pat_old_bracket, "\\2", ln))
       yy_txt <- sub(date_pat_old_bracket, "\\3", ln)
       mm <- month_num(mon)
-      
       yy <- suppressWarnings(as.integer(yy_txt))
       
       if (is.na(yy)) {
@@ -189,14 +252,11 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
       next
     }
     
-    # New plain date style
-    # Prevent timed match rows like "20:00 Team A..." from being read as dates.
-    if (grepl(date_pat_new_plain, ln) && !grepl("^\\s*\\d{1,2}[:.]\\d{2}\\s+", ln)) {
+    if (grepl(date_pat_new_plain, ln) && !grepl("^\\d{1,2}[:.]\\d{2}\\s+", ln)) {
       mon <- sub(date_pat_new_plain, "\\1", ln)
       dd  <- as.integer(sub(date_pat_new_plain, "\\2", ln))
       yy_txt <- sub(date_pat_new_plain, "\\3", ln)
       mm <- month_num(mon)
-      
       yy <- suppressWarnings(as.integer(yy_txt))
       
       if (is.na(yy)) {
@@ -209,7 +269,83 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
     
     if (is.na(current_date)) next
     
-    # Penalties
+    # Historical source annotations. Cancelled/postponed/abandoned matches did
+    # not take place and must not become fixtures or team names.
+    if (grepl("\\[(cancelled|postponed|abandoned)\\]", ln, ignore.case = TRUE)) {
+      next
+    }
+    
+    # Awarded matches count using the score supplied by OpenFootball; remove
+    # the annotation before parsing the teams and score.
+    ln <- gsub("\\s*\\[awarded\\]\\s*$", "", ln, ignore.case = TRUE)
+    ln <- trim(ln)
+    
+    # Strip a leading kick-off time once. This makes v-format parsing much
+    # less fragile than embedding the time in every regular expression.
+    ln_no_time <- sub("^\\d{1,2}[:.]\\d{2}\\s+", "", ln)
+    
+    # Modern OpenFootball format: Home v Away [metadata] score [metadata].
+    # Parse every v-line here BEFORE the old score-in-the-middle fallback.
+    if (grepl("\\s+v\\s+", ln_no_time)) {
+      vpos <- regexpr("\\s+v\\s+", ln_no_time)
+      home <- trim(substr(ln_no_time, 1, vpos[1] - 1))
+      rhs  <- trim(substr(ln_no_time, vpos[1] + attr(vpos, "match.length"), nchar(ln_no_time)))
+      
+      # Penalty marker at the end. In some OpenFootball files this contains
+      # only the shoot-out score; the actual match score is on the next line.
+      # Store the shoot-out temporarily and wait for that actual score.
+      pen_tail <- "^(.*?)\\s+(\\d+)-(\\d+)\\s+pen\\.?\\s*$"
+      
+      if (grepl(pen_tail, rhs, ignore.case = TRUE)) {
+        away <- trim(sub(pen_tail, "\\1", rhs, ignore.case = TRUE))
+        pen_h <- as.integer(sub(pen_tail, "\\2", rhs, ignore.case = TRUE))
+        pen_a <- as.integer(sub(pen_tail, "\\3", rhs, ignore.case = TRUE))
+        
+        pending_penalty <- list(
+          home = home,
+          away = away,
+          pen_h = pen_h,
+          pen_a = pen_a
+        )
+        next
+      }
+      
+      # Score at the end with optional aggregate/leg information BEFORE it,
+      # e.g. "Team B (0-1, 0-0) 1-1".
+      score_after_meta <- "^(.*?)\\s+\\([^)]*\\)\\s+(\\d+)-(\\d+)\\s*$"
+      
+      if (grepl(score_after_meta, rhs)) {
+        away <- trim(sub(score_after_meta, "\\1", rhs))
+        hg <- as.integer(sub(score_after_meta, "\\2", rhs))
+        ag <- as.integer(sub(score_after_meta, "\\3", rhs))
+        append_match(home, away, hg, ag)
+        next
+      }
+      
+      # Normal completed match, optionally followed by half-time/leg metadata
+      # or an a.e.t. marker.
+      normal_score <- "^(.*?)\\s+(\\d+)-(\\d+)(?:\\s+a\\.e\\.t\\.)?(?:\\s+\\([^)]*\\))?\\s*$"
+      
+      if (grepl(normal_score, rhs, ignore.case = TRUE)) {
+        away <- trim(sub(normal_score, "\\1", rhs, ignore.case = TRUE))
+        hg <- as.integer(sub(normal_score, "\\2", rhs, ignore.case = TRUE))
+        ag <- as.integer(sub(normal_score, "\\3", rhs, ignore.case = TRUE))
+        append_match(home, away, hg, ag)
+        next
+      }
+      
+      # If a score-like token or source annotation remains, this is a format
+      # we have not safely understood. Do not turn the remainder into a team.
+      if (grepl("\\d+\\s*-\\s*\\d+|\\[[^]]+\\]", rhs)) {
+        next
+      }
+      
+      # Otherwise it is a genuine future fixture.
+      append_match(home, rhs)
+      next
+    }
+    
+    # Penalties in old score-in-the-middle format.
     if (grepl(match_pat_pen, ln, ignore.case = TRUE)) {
       home  <- trim(sub(match_pat_pen, "\\1", ln, ignore.case = TRUE))
       pen_h <- as.integer(sub(match_pat_pen, "\\2", ln, ignore.case = TRUE))
@@ -217,77 +353,45 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
       hg    <- as.integer(sub(match_pat_pen, "\\4", ln, ignore.case = TRUE))
       ag    <- as.integer(sub(match_pat_pen, "\\5", ln, ignore.case = TRUE))
       away  <- trim(sub(match_pat_pen, "\\6", ln, ignore.case = TRUE))
-      
-      out_season <- c(out_season, season_str)
-      out_date   <- c(out_date, format(current_date, "%Y-%m-%d"))
-      out_home   <- c(out_home, home)
-      out_away   <- c(out_away, away)
-      out_res    <- c(out_res, result_code(pen_h, pen_a))
-      out_score  <- c(out_score, sprintf("%d-%d (p %d-%d)", hg, ag, pen_h, pen_a))
+      append_match(
+        home,
+        away,
+        hg,
+        ag,
+        sprintf("%d-%d (p %d-%d)", hg, ag, pen_h, pen_a)
+      )
       next
     }
     
-    # Extra time, no penalties
+    # Extra time in old score-in-the-middle format.
     if (grepl(match_pat_aet, ln, ignore.case = TRUE)) {
       home <- trim(sub(match_pat_aet, "\\1", ln, ignore.case = TRUE))
       hg   <- as.integer(sub(match_pat_aet, "\\2", ln, ignore.case = TRUE))
       ag   <- as.integer(sub(match_pat_aet, "\\3", ln, ignore.case = TRUE))
       away <- trim(sub(match_pat_aet, "\\4", ln, ignore.case = TRUE))
-      
-      out_season <- c(out_season, season_str)
-      out_date   <- c(out_date, format(current_date, "%Y-%m-%d"))
-      out_home   <- c(out_home, home)
-      out_away   <- c(out_away, away)
-      out_res    <- c(out_res, result_code(hg, ag))
-      out_score  <- c(out_score, sprintf("%d-%d", hg, ag))
+      append_match(home, away, hg, ag)
       next
     }
     
-    # New "v" format - completed match
-    if (grepl(match_pat_new_v, ln)) {
-      home <- trim(sub(match_pat_new_v, "\\1", ln))
-      away <- trim(sub(match_pat_new_v, "\\2", ln))
-      hg   <- as.integer(sub(match_pat_new_v, "\\3", ln))
-      ag   <- as.integer(sub(match_pat_new_v, "\\4", ln))
-      
-      out_season <- c(out_season, season_str)
-      out_date   <- c(out_date, format(current_date, "%Y-%m-%d"))
-      out_home   <- c(out_home, home)
-      out_away   <- c(out_away, away)
-      out_res    <- c(out_res, result_code(hg, ag))
-      out_score  <- c(out_score, sprintf("%d-%d", hg, ag))
-      next
-    }
-    
-    # New "v" format - unplayed fixture
-    if (grepl(fixture_pat_v, ln)) {
-      home <- trim(sub(fixture_pat_v, "\\1", ln))
-      away <- trim(sub(fixture_pat_v, "\\2", ln))
-      
-      out_season <- c(out_season, season_str)
-      out_date   <- c(out_date, format(current_date, "%Y-%m-%d"))
-      out_home   <- c(out_home, home)
-      out_away   <- c(out_away, away)
-      out_res    <- c(out_res, "")
-      out_score  <- c(out_score, "")
-      next
-    }
-    
-    # Old format
+    # Old score-in-the-middle format.
     if (grepl("\\d+-\\d+", ln) && grepl(match_pat_old, ln)) {
       home <- trim(sub(match_pat_old, "\\1", ln))
       hg   <- as.integer(sub(match_pat_old, "\\2", ln))
       ag   <- as.integer(sub(match_pat_old, "\\3", ln))
       away <- trim(sub(match_pat_old, "\\4", ln))
-      
-      out_season <- c(out_season, season_str)
-      out_date   <- c(out_date, format(current_date, "%Y-%m-%d"))
-      out_home   <- c(out_home, home)
-      out_away   <- c(out_away, away)
-      out_res    <- c(out_res, result_code(hg, ag))
-      out_score  <- c(out_score, sprintf("%d-%d", hg, ag))
+      append_match(home, away, hg, ag)
       next
     }
+  }
+  
+  if (!is.null(pending_penalty)) {
+    stop(
+      "Unresolved penalty shoot-out record at end of file.\n",
+      "File: ", txt_path, "\n",
+      "Home: ", pending_penalty$home, "\n",
+      "Away: ", pending_penalty$away, "\n",
+      "Penalty score: ", pending_penalty$pen_h, "-", pending_penalty$pen_a
+    )
   }
   
   n <- length(out_date)
@@ -310,7 +414,7 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
     ))
   }
   
-  data.frame(
+  out <- data.frame(
     Season          = rep(season_str, n),
     Country         = rep(country, n),
     Competition     = rep(competition_id, n),
@@ -325,6 +429,20 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
     Source          = rep(source, n),
     stringsAsFactors = FALSE
   )
+  
+  # Hard safety check: source annotations or whole match fragments must never
+  # survive as team names. Stop immediately rather than contaminating Elo.
+  bad_team <- grepl("\\[[^]]+\\]|\\s+v\\s+|^\\s*\\(", out$Home, ignore.case = TRUE) |
+    grepl("\\[[^]]+\\]|\\s+v\\s+|^\\s*\\(", out$Away, ignore.case = TRUE)
+  
+  if (any(bad_team)) {
+    bad <- out[bad_team, c("Season", "Country", "Competition", "Date", "Home", "Away", "Result", "Score")]
+    cat("\\nInvalid parsed team names detected in:\\n", txt_path, "\\n", sep = "")
+    print(bad)
+    stop("Parser safety check failed: source annotation/match fragment found in team name.")
+  }
+  
+  out
 }
 
 # -----------------------------
@@ -408,6 +526,49 @@ season_header_label <- function(season_folder) {
   gsub("-", "/", season_folder, fixed = TRUE)
 }
 
+make_jobs <- function(
+    first_start_year,
+    current_start_year,
+    file,
+    source_folder,
+    country,
+    competition,
+    league,
+    tier
+) {
+  seasons <- vapply(
+    first_start_year:current_start_year,
+    season_folder_from_start_year,
+    character(1)
+  )
+  
+  data.frame(
+    file = rep(file, length(seasons)),
+    source_folder = rep(source_folder, length(seasons)),
+    country = rep(country, length(seasons)),
+    competition = rep(competition, length(seasons)),
+    competition_type = rep("league", length(seasons)),
+    league = rep(league, length(seasons)),
+    tier = rep(as.integer(tier), length(seasons)),
+    source = rep("openfootball", length(seasons)),
+    season_folder = seasons,
+    stringsAsFactors = FALSE
+  )
+}
+
+declared_match_count <- function(txt_path) {
+  lines <- readLines(txt_path, warn = FALSE, encoding = "UTF-8")
+  hit <- grep("^\\s*#\\s*Matches\\s+\\d+", lines, value = TRUE)
+  
+  if (length(hit) == 0) {
+    return(NA_integer_)
+  }
+  
+  suppressWarnings(
+    as.integer(sub("^.*?([0-9]+)\\s*$", "\\1", hit[1]))
+  )
+}
+
 # -----------------------------
 # Seasons and parse jobs
 # -----------------------------
@@ -434,41 +595,73 @@ if (!identical(season_folder, expected_season_folder)) {
   )
 }
 
-# England continues to refresh only the current season because the historical
-# English data is already present in the combined CSV.
+# England: only refresh current season because historical England data is
+# already in the combined CSV.
 english_jobs <- english_competition_files
 english_jobs$season_folder <- season_folder
 
-# First new competition: La Liga (Spain division 1).
-# OpenFootball's España repository contains La Liga from 2012/13 onwards.
-la_liga_season_folders <- vapply(
-  2012L:current_start_year,
-  season_folder_from_start_year,
-  character(1)
+# Spain
+la_liga_jobs <- make_jobs(
+  2012L, current_start_year,
+  "1-liga.txt", "espana", "Spain",
+  "la_liga", "La Liga", 1L
 )
 
-la_liga_jobs <- data.frame(
-  file = rep("1-liga.txt", length(la_liga_season_folders)),
-  source_folder = rep("espana", length(la_liga_season_folders)),
-  country = rep("Spain", length(la_liga_season_folders)),
-  competition = rep("la_liga", length(la_liga_season_folders)),
-  competition_type = rep("league", length(la_liga_season_folders)),
-  league = rep("La Liga", length(la_liga_season_folders)),
-  tier = rep(1L, length(la_liga_season_folders)),
-  source = rep("openfootball", length(la_liga_season_folders)),
-  season_folder = la_liga_season_folders,
-  stringsAsFactors = FALSE
+segunda_jobs <- make_jobs(
+  2012L, current_start_year,
+  "2-liga2.txt", "espana", "Spain",
+  "segunda_division", "Segunda División", 2L
+)
+
+# Italy
+serie_a_jobs <- make_jobs(
+  2013L, current_start_year,
+  "1-seriea.txt", "italy", "Italy",
+  "serie_a", "Serie A", 1L
+)
+
+serie_b_jobs <- make_jobs(
+  2013L, current_start_year,
+  "2-serieb.txt", "italy", "Italy",
+  "serie_b", "Serie B", 2L
+)
+
+# Germany
+bundesliga_jobs <- make_jobs(
+  2010L, current_start_year,
+  "1-bundesliga.txt", "deutschland", "Germany",
+  "bundesliga", "Bundesliga", 1L
+)
+
+bundesliga2_jobs <- make_jobs(
+  2010L, current_start_year,
+  "2-bundesliga2.txt", "deutschland", "Germany",
+  "bundesliga_2", "2. Bundesliga", 2L
+)
+
+# France
+ligue1_jobs <- make_jobs(
+  2014L, current_start_year,
+  "1-ligue1.txt", "france", "France",
+  "ligue_1", "Ligue 1", 1L
+)
+
+ligue2_jobs <- make_jobs(
+  2014L, current_start_year,
+  "2-ligue2.txt", "france", "France",
+  "ligue_2", "Ligue 2", 2L
 )
 
 parse_jobs <- rbind(
   english_jobs,
-  la_liga_jobs
-)
-
-cat(
-  "La Liga seasons to parse:",
-  paste(la_liga_season_folders, collapse = ", "),
-  "\n"
+  la_liga_jobs,
+  segunda_jobs,
+  serie_a_jobs,
+  serie_b_jobs,
+  bundesliga_jobs,
+  bundesliga2_jobs,
+  ligue1_jobs,
+  ligue2_jobs
 )
 
 # -----------------------------
@@ -510,6 +703,52 @@ for (i in seq_len(nrow(parse_jobs))) {
   )
   
   if (!is.null(tmp) && nrow(tmp) > 0) {
+    declared_matches <- declared_match_count(fpath)
+    
+    # OpenFootball's declared match count can include fixtures marked
+    # cancelled, postponed or abandoned. We deliberately do not import
+    # those placeholder rows.
+    if (!is.na(declared_matches) && nrow(tmp) != declared_matches) {
+      
+      source_lines <- readLines(
+        fpath,
+        warn = FALSE,
+        encoding = "UTF-8"
+      )
+      
+      ignored_annotation_rows <- sum(
+        grepl(
+          "\\s+v\\s+.*\\[(cancelled|postponed|abandoned)\\]\\s*$",
+          source_lines,
+          ignore.case = TRUE
+        )
+      )
+      
+      unexplained_missing <- declared_matches - nrow(tmp)
+      
+      if (
+        unexplained_missing < 0 ||
+        unexplained_missing > ignored_annotation_rows
+      ) {
+        stop(
+          "Parsed row count does not match source-declared match count.\n",
+          "File: ", fpath, "\n",
+          "Competition: ", cfg$competition, "\n",
+          "Parsed rows: ", nrow(tmp), "\n",
+          "Declared matches: ", declared_matches, "\n",
+          "Ignored cancelled/postponed/abandoned rows: ",
+          ignored_annotation_rows
+        )
+      }
+      
+      cat(
+        "Note: ",
+        declared_matches - nrow(tmp),
+        " cancelled/postponed/abandoned fixture(s) deliberately excluded.\n",
+        sep = ""
+      )
+    }
+    
     cat(
       "Parsed ", cfg$source_folder, "/", cfg$season_folder, "/", cfg$file,
       " | Competition: ", cfg$competition,
@@ -555,74 +794,6 @@ required_cols <- c(
 parsed_df <- parsed_df[, required_cols]
 parsed_df$Date <- as.character(parsed_df$Date)
 
-# -----------------------------
-# Sanity checks
-# -----------------------------
-
-# Keep the existing completed Premier League 2025/26 check.
-pl_2526 <- parsed_df[
-  parsed_df$Competition == "premier_league" &
-    parsed_df$Season == "2025/26",
-]
-
-if (nrow(pl_2526) > 0) {
-  cat("Premier League 2025/26 parsed rows:", nrow(pl_2526), "\n")
-  
-  if (nrow(pl_2526) != 380L) {
-    stop(
-      "Premier League 2025/26 should have 380 parsed rows, but parser found ",
-      nrow(pl_2526),
-      ". Refusing to continue."
-    )
-  }
-  
-  pl_max_date <- max(as.Date(pl_2526$Date), na.rm = TRUE)
-  
-  if (pl_max_date < as.Date("2026-05-24")) {
-    stop(
-      "Premier League 2025/26 does not parse through 2026-05-24. ",
-      "Latest parsed Premier League date: ", pl_max_date,
-      ". Refusing to continue."
-    )
-  }
-}
-
-# Every completed La Liga season in our backfill should contain 380 fixtures.
-current_season_label <- season_header_label(season_folder)
-
-la_liga_completed <- parsed_df[
-  parsed_df$Competition == "la_liga" &
-    parsed_df$Season != current_season_label,
-]
-
-if (nrow(la_liga_completed) > 0) {
-  la_liga_counts <- aggregate(
-    Date ~ Season,
-    data = la_liga_completed,
-    FUN = length
-  )
-  
-  names(la_liga_counts)[names(la_liga_counts) == "Date"] <- "Rows"
-  
-  bad_la_liga_seasons <- la_liga_counts[
-    la_liga_counts$Rows != 380L,
-  ]
-  
-  if (nrow(bad_la_liga_seasons) > 0) {
-    stop(
-      "One or more completed La Liga seasons did not parse to 380 rows:\n",
-      paste(
-        paste0(
-          bad_la_liga_seasons$Season,
-          " = ",
-          bad_la_liga_seasons$Rows
-        ),
-        collapse = "\n"
-      )
-    )
-  }
-}
-
 cat(
   "Parsed competitions:",
   paste(sort(unique(parsed_df$Competition)), collapse = ", "),
@@ -639,10 +810,6 @@ cat(
 # Merge parsed competition-seasons into combined CSV
 # -----------------------------
 
-# Important: replacement is now keyed by Season + Country + Competition.
-# This means we can refresh England's current season and backfill La Liga
-# without deleting unrelated competitions from the same season.
-
 make_key <- function(season, country, competition) {
   paste(season, country, competition, sep = "||")
 }
@@ -658,7 +825,7 @@ parsed_keys <- unique(
 if (file.exists(out_file)) {
   old_df <- read.csv(out_file, stringsAsFactors = FALSE)
   
-  # Backwards-compatible migration for the existing English-only CSV.
+  # Backwards-compatible migration for the original English-only CSV.
   if (!"Country" %in% names(old_df)) old_df$Country <- "England"
   
   if (!"Competition" %in% names(old_df)) {
@@ -711,7 +878,6 @@ if (file.exists(out_file)) {
 # Duplicate protection
 # -----------------------------
 
-# A match/fixture should only appear once within a competition.
 match_key <- paste(
   all_df$Season,
   all_df$Country,
@@ -723,7 +889,9 @@ match_key <- paste(
 )
 
 if (anyDuplicated(match_key)) {
-  dup_rows <- all_df[duplicated(match_key) | duplicated(match_key, fromLast = TRUE), ]
+  dup_rows <- all_df[
+    duplicated(match_key) | duplicated(match_key, fromLast = TRUE),
+  ]
   
   cat("\nDuplicate match keys detected:\n")
   print(
@@ -778,20 +946,17 @@ cat(
   "\n"
 )
 
-la_liga_all <- all_df[all_df$Competition == "la_liga", ]
+competition_summary <- aggregate(
+  Date ~ Country + Competition,
+  data = all_df,
+  FUN = length
+)
 
-if (nrow(la_liga_all) > 0) {
-  cat("La Liga rows:", nrow(la_liga_all), "\n")
-  cat(
-    "La Liga seasons:",
-    paste(sort(unique(la_liga_all$Season)), collapse = ", "),
-    "\n"
-  )
-  cat(
-    "La Liga date range:",
-    min(la_liga_all$Date),
-    "to",
-    max(la_liga_all$Date),
-    "\n"
-  )
-}
+names(competition_summary)[names(competition_summary) == "Date"] <- "Rows"
+
+cat("\nCompetition row summary:\n")
+print(
+  competition_summary[
+    order(competition_summary$Country, competition_summary$Competition),
+  ]
+)

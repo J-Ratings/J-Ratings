@@ -353,12 +353,8 @@ team_alias_map <- c(
   "Real Sociedad de Fútbol" = "Real Sociedad",
   "Real Valladolid CF" = "Real Valladolid",
   "Sevilla FC" = "Sevilla",
-  "Villarreal CF" = "Villarreal"
-)
+  "Villarreal CF" = "Villarreal",
 
-
-team_alias_map <- c(
-  team_alias_map,
   "Accrington" = "Accrington Stanley",
   "Aldershot" = "Aldershot Town",
   "Bristol Rvs" = "Bristol Rovers",
@@ -384,7 +380,75 @@ team_alias_map <- c(
   "Rushden & D" = "Rushden & Diamonds",
   "Salisbury" = "Salisbury City",
   "Stockport" = "Stockport County",
-  "Tranmere" = "Tranmere Rovers"
+  "Tranmere" = "Tranmere Rovers",
+  
+  # Spain
+  "Real Racing Club de Santander" = "Racing Santander",
+  
+  # Italy
+  "Atalanta BC" = "Atalanta",
+  "Bologna FC" = "Bologna",
+  "Bologna FC 1909" = "Bologna",
+  "Cagliari Calcio" = "Cagliari",
+  "Como 1907" = "Como",
+  "Como Calcio" = "Como",
+  "FC Internazionale Milano" = "Inter",
+  "ACF Fiorentina" = "Fiorentina",
+  "Genoa CFC" = "Genoa",
+  "Hellas Verona FC" = "Hellas Verona",
+  "Juventus FC" = "Juventus",
+  "Lazio Roma" = "Lazio",
+  "SS Lazio" = "Lazio",
+  "Milan" = "AC Milan",
+  "SSC Napoli" = "Napoli",
+  "Parma FC" = "Parma",
+  "Parma Calcio 1913" = "Parma",
+  "Pisa SC" = "Pisa",
+  "AC Pisa" = "Pisa",
+  "UC Sampdoria" = "Sampdoria",
+  "Sassuolo Calcio" = "Sassuolo",
+  "US Sassuolo Calcio" = "Sassuolo",
+  "Torino FC" = "Torino",
+  "Udinese Calcio" = "Udinese",
+  "L.R. Vicenza Virtus" = "L.R. Vicenza",
+  "Vicenza Calcio" = "L.R. Vicenza",
+  "AS Bari" = "Bari",
+  "FC Bari 1908" = "Bari",
+  "SSC Bari" = "Bari",
+  "Ascoli Picchio FC" = "Ascoli Calcio",
+  "US Avellino" = "AS Avellino",
+  
+  # Germany
+  "Bayer 04 Leverkusen" = "Bayer Leverkusen",
+  "FC Bayern München" = "Bayern München",
+  "Bor. Mönchengladbach" = "Borussia Mönchengladbach",
+  "Borussia M'gladbach" = "Borussia Mönchengladbach",
+  "Heidenheim" = "1. FC Heidenheim 1846",
+  "FC St. Pauli 1910" = "FC St. Pauli",
+  "St. Pauli" = "FC St. Pauli",
+  "TSG 1899 Hoffenheim" = "1899 Hoffenheim",
+  "Union Berlin" = "1. FC Union Berlin",
+  "VfL Bochum 1848" = "VfL Bochum",
+  "SV Werder Bremen" = "Werder Bremen",
+  "Wolfsburg" = "VfL Wolfsburg",
+  "SpVgg Greuther Fürth 1903" = "SpVgg Greuther Fürth",
+  
+  # France
+  "AS Monaco FC" = "AS Monaco",
+  "Auxerre" = "AJ Auxerre",
+  "ES Troyes AC" = "ESTAC Troyes",
+  "Havre AC" = "Le Havre",
+  "Le Havre AC" = "Le Havre",
+  "Lille OSC" = "Lille",
+  "Olympique Marseille" = "Olympique de Marseille",
+  "Paris Saint-Germain FC" = "Paris Saint-Germain",
+  "Lens" = "RC Lens",
+  "Racing Club de Lens" = "RC Lens",
+  "RC Strasbourg Alsace" = "RC Strasbourg",
+  "Rennes" = "Stade Rennais",
+  "Stade Rennais FC 1901" = "Stade Rennais",
+  "Stade Brestois" = "Stade Brestois 29"
+  
 )
 
 is_clearly_bad_team_name <- function(x) {
