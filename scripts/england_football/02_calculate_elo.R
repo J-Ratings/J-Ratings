@@ -269,37 +269,65 @@ dt <- dt[
       is.na(Away) | Away == "")
 ]
 
-# Continental matches count only when BOTH clubs already appear somewhere in
-# the domestic league database. The complete Champions League source stays in
-# the combined CSV, so these games can be recovered automatically when more
-# domestic leagues are added later.
-domestic_team_set <- sort(unique(c(
-  dt[CompetitionType == "league", Home],
-  dt[CompetitionType == "league", Away]
-)))
+# Continental matches count only when BOTH clubs have already appeared in a
+# covered domestic league by the date of that continental match. This avoids
+# seeding a club from a Tier = NA Champions League row before its domestic
+# history begins. The complete Champions League source stays in the combined
+# CSV, so older games can become eligible later if more domestic history or
+# leagues are added.
+domestic_appearances <- rbindlist(list(
+  dt[CompetitionType == "league", .(Team = Home, DateRaw)],
+  dt[CompetitionType == "league", .(Team = Away, DateRaw)]
+), use.names = TRUE)
+
+domestic_appearances[, Date := as.Date(DateRaw, format = "%Y-%m-%d")]
+
+first_domestic_date <- domestic_appearances[
+  !is.na(Team) & Team != "" & !is.na(Date),
+  .(FirstDomesticDate = min(Date)),
+  by = Team
+]
+
+first_domestic_map <- setNames(
+  first_domestic_date$FirstDomesticDate,
+  first_domestic_date$Team
+)
 
 continental_rows <- dt[CompetitionType == "continental"]
 
 if (nrow(continental_rows) > 0) {
+  continental_rows[, MatchDate := as.Date(DateRaw, format = "%Y-%m-%d")]
+  continental_rows[, HomeFirstDomestic := as.Date(first_domestic_map[Home], origin = "1970-01-01")]
+  continental_rows[, AwayFirstDomestic := as.Date(first_domestic_map[Away], origin = "1970-01-01")]
+  
   continental_keep <- continental_rows[
-    Home %in% domestic_team_set &
-      Away %in% domestic_team_set
+    !is.na(HomeFirstDomestic) &
+      !is.na(AwayFirstDomestic) &
+      MatchDate >= HomeFirstDomestic &
+      MatchDate >= AwayFirstDomestic
   ]
   
   continental_drop <- continental_rows[
-    !(Home %in% domestic_team_set &
-        Away %in% domestic_team_set)
+    is.na(HomeFirstDomestic) |
+      is.na(AwayFirstDomestic) |
+      MatchDate < HomeFirstDomestic |
+      MatchDate < AwayFirstDomestic
   ]
+  
+  continental_keep[, c("MatchDate", "HomeFirstDomestic", "AwayFirstDomestic") := NULL]
+  continental_drop[, c("MatchDate", "HomeFirstDomestic", "AwayFirstDomestic") := NULL]
   
   cat(
     "\nContinental match eligibility:\n",
-    "  Domestic teams in database: ", length(domestic_team_set), "\n",
+    "  Domestic teams in database: ", nrow(first_domestic_date), "\n",
     "  Continental rows available: ", nrow(continental_rows), "\n",
     "  Continental rows kept: ", nrow(continental_keep), "\n",
-    "  Continental rows dropped (one/both clubs absent domestically): ",
+    "  Continental rows dropped (club absent/not yet domestically covered): ",
     nrow(continental_drop), "\n",
     sep = ""
   )
+  
+  continental_rows[, c("MatchDate", "HomeFirstDomestic", "AwayFirstDomestic") := NULL]
   
   dt <- rbindlist(
     list(
