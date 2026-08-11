@@ -560,14 +560,43 @@ tr.appendChild(tdRank);
     const leagueSelect = document.getElementById('league');
     const currentValue = leagueSelect.value;
 
-    const leagues = Array.from(
-      new Set(
-        state.rows
-          .filter(r => country === 'all' || countryForTeam(r) === country)
-          .map(r => String(r.division || '').trim())
-          .filter(Boolean)
-      )
-    ).sort((a, b) => a.localeCompare(b));
+const leagueOrder = [
+  'Premier League',
+  'Championship',
+  'League 1',
+  'League 2',
+  'National League',
+
+  'Ligue 1',
+  'Ligue 2',
+
+  'Bundesliga',
+  '2. Bundesliga',
+
+  'Serie A',
+  'Serie B',
+
+  'La Liga',
+  'Segunda División'
+];
+
+const leagues = Array.from(
+  new Set(
+    state.rows
+      .filter(r => country === 'all' || countryForTeam(r) === country)
+      .map(r => String(r.division || '').trim())
+      .filter(Boolean)
+  )
+).sort((a, b) => {
+  const ai = leagueOrder.indexOf(a);
+  const bi = leagueOrder.indexOf(b);
+
+  if (ai === -1 && bi === -1) return a.localeCompare(b);
+  if (ai === -1) return 1;
+  if (bi === -1) return -1;
+
+  return ai - bi;
+});
 
     leagueSelect.innerHTML = '<option value="all">All</option>';
 
