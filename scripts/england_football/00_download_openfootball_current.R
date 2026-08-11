@@ -142,11 +142,11 @@ england_jobs <- data.frame(
 # to be missing temporarily because OpenFootball may publish it shortly
 # before the league begins.
 spain_jobs <- data.frame(
-  repo = rep("espana", length(la_liga_seasons)),
-  source_folder = rep("espana", length(la_liga_seasons)),
-  season = la_liga_seasons,
-  file = rep("1-liga.txt", length(la_liga_seasons)),
-  required = la_liga_seasons != season_folder,
+  repo = "espana",
+  source_folder = "espana",
+  season = season_folder,
+  file = "1-liga.txt",
+  required = FALSE,
   stringsAsFactors = FALSE
 )
 
