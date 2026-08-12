@@ -51,11 +51,55 @@ K_NORMAL <- 20
 K_NEW <- 20
 K_NEW_GAMES <- 100L
 
-SEED_TIER_1 <- 2750
-SEED_TIER_2 <- 2550
-SEED_TIER_3 <- 2350
-SEED_TIER_4 <- 2150
-SEED_TIER_5 <- 1950
+# Country-specific starting seeds.
+#
+# Tier 1 values come from the UEFA top-club calibration adjusted for each
+# country's observed top-6-to-full-league depth.
+#
+# Tier 2 values use each country's historical median Tier 1 -> Tier 2 gap:
+#   England 222
+#   Spain   185
+#   France  194
+#   Germany 194
+#   Italy   196
+#
+# England Tiers 3-5 are deliberately left at their existing absolute seeds
+# for this test. Other currently covered countries only have Tiers 1 and 2.
+
+COUNTRY_TIER_SEEDS <- data.table(
+  Country = c(
+    "England", "England", "England", "England", "England",
+    "Spain",   "Spain",
+    "France",  "France",
+    "Germany", "Germany",
+    "Italy",   "Italy"
+  ),
+  Tier = c(
+    1L, 2L, 3L, 4L, 5L,
+    1L, 2L,
+    1L, 2L,
+    1L, 2L,
+    1L, 2L
+  ),
+  SeedRating = c(
+    2750, 2528, 2350, 2150, 1950,
+    2737, 2552,
+    2689, 2495,
+    2685, 2491,
+    2675, 2479
+  )
+)
+
+COUNTRY_TIER_SEED_KEY <- paste(
+  COUNTRY_TIER_SEEDS$Country,
+  COUNTRY_TIER_SEEDS$Tier,
+  sep = "\r"
+)
+
+COUNTRY_TIER_SEED_MAP <- setNames(
+  COUNTRY_TIER_SEEDS$SeedRating,
+  COUNTRY_TIER_SEED_KEY
+)
 
 RETRO_GAMES_N <- 50L
 
@@ -82,13 +126,28 @@ result_to_scores <- function(res) {
   c(0.5, 0.5)
 }
 
-seed_from_tier <- function(tier) {
-  out <- rep(NA_real_, length(tier))
-  out[tier == 1L] <- SEED_TIER_1
-  out[tier == 2L] <- SEED_TIER_2
-  out[tier == 3L] <- SEED_TIER_3
-  out[tier == 4L] <- SEED_TIER_4
-  out[tier == 5L] <- SEED_TIER_5
+seed_from_country_tier <- function(country, tier) {
+  country <- trimws(as.character(country))
+  tier <- as.integer(tier)
+  
+  key <- paste(
+    country,
+    tier,
+    sep = "\r"
+  )
+  
+  out <- rep(NA_real_, length(key))
+  
+  matched <- key %in% names(
+    COUNTRY_TIER_SEED_MAP
+  )
+  
+  out[matched] <- as.numeric(
+    COUNTRY_TIER_SEED_MAP[
+      key[matched]
+    ]
+  )
+  
   out
 }
 
@@ -340,14 +399,30 @@ if (nrow(continental_rows) > 0) {
 }
 
 dt[, Date := as.Date(DateRaw, format = "%Y-%m-%d")]
-dt[, SeedRatingForTier := seed_from_tier(Tier)]
+dt[, SeedRatingForTier := seed_from_country_tier(Country, Tier)]
 
-bad_tier_rows <- dt[CompetitionType == "league" & (is.na(Tier) | is.na(SeedRatingForTier))]
+bad_tier_rows <- dt[
+  CompetitionType == "league" &
+    (
+      is.na(Tier) |
+        is.na(SeedRatingForTier)
+    )
+]
+
 if (nrow(bad_tier_rows) > 0) {
   stop(
-    "League match row(s) have missing or unsupported Tier values.\n",
+    "League match row(s) have a missing/unsupported Tier or no country-specific seed.\n",
+    "Add the missing Country/Tier combination to COUNTRY_TIER_SEEDS.\n\n",
     paste0(
-      unique(paste(bad_tier_rows$Country, bad_tier_rows$Competition, bad_tier_rows$League, bad_tier_rows$Tier, sep = " | ")),
+      unique(
+        paste(
+          bad_tier_rows$Country,
+          bad_tier_rows$Competition,
+          bad_tier_rows$League,
+          bad_tier_rows$Tier,
+          sep = " | "
+        )
+      ),
       collapse = "\n"
     )
   )
@@ -701,11 +776,7 @@ final_pass1[, `:=`(
   BaseK = K_NORMAL,
   NewK = K_NEW,
   NewGames = K_NEW_GAMES,
-  SeedTier1 = SEED_TIER_1,
-  SeedTier2 = SEED_TIER_2,
-  SeedTier3 = SEED_TIER_3,
-  SeedTier4 = SEED_TIER_4,
-  SeedTier5 = SEED_TIER_5,
+  SeedModel = "CountrySpecific_Tier1AndTier2",
   RetroGamesN = RETRO_GAMES_N
 )]
 fwrite(final_pass1, OUTPUT_FINAL_RATINGS_CSV_PASS1)
@@ -765,11 +836,7 @@ final_ratings[, `:=`(
   BaseK = K_NORMAL,
   NewK = K_NEW,
   NewGames = K_NEW_GAMES,
-  SeedTier1 = SEED_TIER_1,
-  SeedTier2 = SEED_TIER_2,
-  SeedTier3 = SEED_TIER_3,
-  SeedTier4 = SEED_TIER_4,
-  SeedTier5 = SEED_TIER_5,
+  SeedModel = "CountrySpecific_Tier1AndTier2",
   RetroGamesN = RETRO_GAMES_N
 )]
 fwrite(final_ratings, OUTPUT_FINAL_RATINGS_CSV)
