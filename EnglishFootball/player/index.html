@@ -274,6 +274,62 @@
       text-overflow: clip;
     }
 
+    /* Competition badges - matches the home-page pill style. */
+    .competition-badge{
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 0.82rem;
+      line-height: 1.05;
+      white-space: nowrap;
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.35);
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      vertical-align: middle;
+    }
+
+    .tier-premier-league { background:#59127a; color:#fff; }
+    .tier-championship { background:#081e9a; color:#fff; }
+    .tier-league-1 { background:#8D8E8E; color:#000; }
+    .tier-league-2 { background:#BB1731; color:#000; }
+    .tier-national-league { background:#E6B84A; color:#000; }
+
+    .tier-la-liga { background:#00A99D; color:#000; }
+    .tier-segunda { background:#FF6B00; color:#000; }
+
+    .tier-serie-a { background:#1478D4; color:#fff; }
+    .tier-serie-b { background:#1F4E79; color:#fff; }
+
+    .tier-bundesliga { background:#D20515; color:#fff; }
+    .tier-bundesliga-2 { background:#8E111B; color:#fff; }
+
+    .tier-ligue-1 { background:#163A70; color:#fff; }
+    .tier-ligue-2 { background:#00A6C8; color:#000; }
+
+    .tier-primeira-liga { background:#0B6E4F; color:#fff; }
+    .tier-eredivisie { background:#F58220; color:#000; }
+    .tier-belgian-pro-league { background:#F2C94C; color:#000; }
+    .tier-austrian-bundesliga { background:#C8102E; color:#fff; }
+    .tier-super-lig { background:#D71920; color:#fff; }
+    .tier-scottish-premiership { background:#1B4D89; color:#fff; }
+    .tier-swiss-super-league { background:#D52B1E; color:#fff; }
+    .tier-super-league-greece { background:#1769AA; color:#fff; }
+    .tier-czech-first-league { background:#11457E; color:#fff; }
+    .tier-ukrainian-premier-league { background:#FFD700; color:#000; }
+
+    .tier-champions-league { background:#173B7A; color:#fff; }
+    .tier-europa-league { background:#F28C28; color:#000; }
+    .tier-conference-league { background:#43B02A; color:#000; }
+
+    .tier-fa-cup { background:#D71920; color:#fff; }
+    .tier-efl-cup { background:#18488F; color:#fff; }
+    .tier-copa-del-rey { background:#C9A227; color:#000; }
+    .tier-coppa-italia { background:#008C45; color:#fff; }
+    .tier-dfb-pokal { background:#111; color:#fff; }
+    .tier-coupe-de-france { background:#1B4F9C; color:#fff; }
+
     @media (max-width: 600px){
       #chart{ height: 420px; }
       h2#pname{ font-size: 1.6rem; }
@@ -819,12 +875,83 @@ if (total === 99) {
     return wrap;
   }
 
+  function shortSeasonLabel(season) {
+    const s = String(season || '').trim();
+    const m = s.match(/^(\d{4})[\/-](\d{2,4})$/);
+
+    if (!m) return s;
+
+    const start = m[1].slice(2);
+    const end = m[2].slice(-2);
+    return `${start}/${end}`;
+  }
+
   function competitionLabel(g) {
     const league = String(g.league || '').trim();
-    const season = String(g.season || '').trim();
+    const season = shortSeasonLabel(g.season);
 
     if (league && season) return `${league} ${season}`;
     return league || season || '';
+  }
+
+  function competitionBadgeClass(g) {
+    const league = String(g.league || '').trim().toLowerCase();
+
+    const classes = {
+      'premier league': 'tier-premier-league',
+      'championship': 'tier-championship',
+      'league 1': 'tier-league-1',
+      'league one': 'tier-league-1',
+      'league 2': 'tier-league-2',
+      'league two': 'tier-league-2',
+      'national league': 'tier-national-league',
+
+      'la liga': 'tier-la-liga',
+      'segunda división': 'tier-segunda',
+      'segunda division': 'tier-segunda',
+
+      'serie a': 'tier-serie-a',
+      'serie b': 'tier-serie-b',
+
+      'bundesliga': 'tier-bundesliga',
+      '2. bundesliga': 'tier-bundesliga-2',
+
+      'ligue 1': 'tier-ligue-1',
+      'ligue 2': 'tier-ligue-2',
+
+      'primeira liga': 'tier-primeira-liga',
+      'eredivisie': 'tier-eredivisie',
+      'belgian pro league': 'tier-belgian-pro-league',
+      'austrian bundesliga': 'tier-austrian-bundesliga',
+      'süper lig': 'tier-super-lig',
+      'super lig': 'tier-super-lig',
+      'scottish premiership': 'tier-scottish-premiership',
+      'swiss super league': 'tier-swiss-super-league',
+      'super league greece': 'tier-super-league-greece',
+      'czech first league': 'tier-czech-first-league',
+      'ukrainian premier league': 'tier-ukrainian-premier-league',
+
+      'champions league': 'tier-champions-league',
+      'europa league': 'tier-europa-league',
+      'conference league': 'tier-conference-league',
+
+      'fa cup': 'tier-fa-cup',
+      'efl cup': 'tier-efl-cup',
+      'copa del rey': 'tier-copa-del-rey',
+      'coppa italia': 'tier-coppa-italia',
+      'dfb-pokal': 'tier-dfb-pokal',
+      'coupe de france': 'tier-coupe-de-france'
+    };
+
+    return classes[league] || '';
+  }
+
+  function renderCompetitionBadge(g) {
+    const span = document.createElement('span');
+    span.className = `competition-badge ${competitionBadgeClass(g)}`.trim();
+    span.textContent = competitionLabel(g);
+    span.title = span.textContent;
+    return span;
   }
 
   function renderUpcomingTable(me, teams, games) {
@@ -880,7 +1007,7 @@ if (total === 99) {
       tdDate.textContent = g.date || '';
 
       const tdCompetition = document.createElement('td');
-      tdCompetition.textContent = competitionLabel(g);
+      tdCompetition.appendChild(renderCompetitionBadge(g));
 
       const tdHome = document.createElement('td');
       tdHome.className = 'team-cell';
@@ -956,7 +1083,7 @@ if (total === 99) {
       tdDate.textContent = g.date || '';
 
       const tdCompetition = document.createElement('td');
-      tdCompetition.textContent = competitionLabel(g);
+      tdCompetition.appendChild(renderCompetitionBadge(g));
 
       const tdHome = document.createElement('td');
       tdHome.className = 'team-cell';

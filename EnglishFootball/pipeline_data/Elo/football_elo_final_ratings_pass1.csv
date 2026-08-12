@@ -1,474 +1,474 @@
 Team,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRating,IsSeed,Pass,EntryMode,BaseK,NewK,NewGames,SeedModel,RetroGamesN
-Bayern Munich,3039,683,Bundesliga,1,2010-08-20,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Barcelona,3006,714,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Arsenal,3000,1560,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bayern Munich,3053,683,Bundesliga,1,2010-08-20,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Arsenal,3017,1560,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Barcelona,2999,714,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Paris Saint-Germain,2997,592,Ligue 1,1,2014-08-08,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Manchester City,2993,1527,Premier League,1,1992-08-17,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Paris Saint-Germain,2976,592,Ligue 1,1,2014-08-08,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Real Madrid,2960,714,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Inter Milan,2959,570,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Aston Villa,2893,1463,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Inter Milan,2962,570,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Real Madrid,2957,714,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Aston Villa,2915,1463,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Manchester United,2885,1552,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sporting Lisbon,2881,327,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Borussia Dortmund,2880,675,Bundesliga,1,2010-08-22,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Manchester United,2876,1552,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Atlético Madrid,2874,683,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-PSV,2874,317,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Liverpool,2864,1551,Premier League,1,1992-08-16,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bayer Leverkusen,2861,640,Bundesliga,1,2010-08-22,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Benfica,2858,340,Primeira Liga,1,2018-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Napoli,2844,593,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Juventus,2843,629,Serie A,1,2013-08-24,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Porto,2841,340,Primeira Liga,1,2018-08-11,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lens,2838,461,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Galatasaray,2838,234,Süper Lig,1,2018-08-10,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Roma,2836,616,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bournemouth,2836,1307,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Villarreal,2827,630,Segunda División,2,2012-08-17,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-RB Leipzig,2819,498,2. Bundesliga,2,2014-08-02,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-AC Milan,2816,586,Serie A,1,2013-08-24,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Atalanta,2812,592,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Brighton & Hove Albion,2811,1319,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Newcastle United,2809,1406,Premier League,1,1993-08-14,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Borussia Dortmund,2879,675,Bundesliga,1,2010-08-22,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Atlético Madrid,2873,683,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+PSV,2867,317,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Liverpool,2866,1551,Premier League,1,1992-08-16,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bayer Leverkusen,2864,640,Bundesliga,1,2010-08-22,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Benfica,2849,340,Primeira Liga,1,2018-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Juventus,2844,629,Serie A,1,2013-08-24,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bournemouth,2840,1307,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Napoli,2837,593,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lens,2835,461,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Roma,2833,616,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Galatasaray,2833,234,Süper Lig,1,2018-08-10,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Porto,2833,340,Primeira Liga,1,2018-08-11,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+AC Milan,2817,586,Serie A,1,2013-08-24,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Newcastle United,2816,1406,Premier League,1,1993-08-14,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Brighton & Hove Albion,2816,1319,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+RB Leipzig,2815,498,2. Bundesliga,2,2014-08-02,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Atalanta,2813,592,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Chelsea,2811,1563,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Villarreal,2810,630,Segunda División,2,2012-08-17,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Como,2809,243,Serie B,2,2015-09-06,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lyon,2808,518,Ligue 1,1,2014-08-10,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Chelsea,2807,1563,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Real Betis,2806,608,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-VfB Stuttgart,2803,582,Bundesliga,1,2010-08-22,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lille,2796,499,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Brentford,2791,1330,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Monaco,2786,518,Ligue 1,1,2014-08-10,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lazio,2786,584,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Crystal Palace,2785,1408,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Union Saint-Gilloise,2784,113,Belgian Pro League,1,2023-07-28,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Marseille,2783,515,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Nottingham Forest,2780,1509,Premier League,1,1992-08-16,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Fenerbahçe,2777,228,Süper Lig,1,2018-08-11,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Celta Vigo,2777,579,La Liga,1,2012-08-18,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bologna,2777,544,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Valencia,2773,613,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Club Brugge,2767,267,Belgian Pro League,1,2018-08-05,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Rayo Vallecano,2766,586,La Liga,1,2012-08-20,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Fulham,2764,1249,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Freiburg,2762,595,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Olympiacos,2761,227,Super League Greece,1,2018-08-26,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Rennes,2760,488,Ligue 1,1,2014-08-10,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Everton,2758,1426,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Strasbourg,2755,380,Ligue 2,2,2016-07-29,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Hoffenheim,2755,564,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Leeds United,2751,1545,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Feyenoord,2749,313,Eredivisie,1,2018-08-12,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Tottenham Hotspur,2748,1514,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Real Sociedad,2744,620,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Braga,2740,313,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Athletic Club,2740,569,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-West Ham United,2735,1415,Premier League,1,1993-08-14,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Mainz 05,2734,566,Bundesliga,1,2010-08-22,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Alavés,2725,536,Segunda División,2,2013-08-16,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Getafe,2725,573,La Liga,1,2012-08-18,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Fiorentina,2723,578,Serie A,1,2013-08-26,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Eintracht Frankfurt,2721,586,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Ajax,2714,332,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Osasuna,2713,578,La Liga,1,2012-08-20,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Twente,2712,237,Eredivisie,1,2019-08-03,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Celtic,2709,228,Scottish Premiership,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Paris FC,2709,370,Ligue 2,2,2015-07-31,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Slavia Prague,2708,193,Czech First League,1,2018-08-03,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Toulouse,2708,463,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Levante,2707,576,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lorient,2707,452,Ligue 1,1,2014-08-10,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Mallorca,2705,538,La Liga,1,2012-08-18,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Girona,2703,597,Segunda División,2,2012-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sunderland,2702,1289,Premier League,1,1996-08-17,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Espanyol,2699,581,La Liga,1,2012-08-18,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Augsburg,2698,524,Bundesliga,1,2011-08-06,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Elche,2698,543,Segunda División,2,2012-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sevilla,2695,661,La Liga,1,2012-08-18,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Torino,2694,526,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Brest,2694,459,Ligue 2,2,2014-08-04,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Borussia Mönchengladbach,2692,588,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Udinese,2690,523,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-AZ,2681,297,Eredivisie,1,2018-08-12,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Viktoria Plzeň,2679,170,Czech First League,1,2018-07-20,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lyon,2807,518,Ligue 1,1,2014-08-10,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Crystal Palace,2796,1408,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Brentford,2796,1330,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Nottingham Forest,2795,1509,Premier League,1,1992-08-16,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Real Betis,2795,608,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+VfB Stuttgart,2792,582,Bundesliga,1,2010-08-22,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lazio,2788,584,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lille,2786,499,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Union Saint-Gilloise,2786,113,Belgian Pro League,1,2023-07-28,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Monaco,2784,518,Ligue 1,1,2014-08-10,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bologna,2779,544,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Fenerbahçe,2779,228,Süper Lig,1,2018-08-11,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Club Brugge,2776,267,Belgian Pro League,1,2018-08-05,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Celta Vigo,2775,579,La Liga,1,2012-08-18,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Marseille,2774,515,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Freiburg,2771,595,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Tottenham Hotspur,2769,1514,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Valencia,2769,613,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Olympiacos,2769,227,Super League Greece,1,2018-08-26,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Fulham,2769,1249,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Everton,2762,1426,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Rayo Vallecano,2762,586,La Liga,1,2012-08-20,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Rennes,2756,488,Ligue 1,1,2014-08-10,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Leeds United,2754,1545,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Hoffenheim,2754,564,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Braga,2747,313,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Strasbourg,2746,380,Ligue 2,2,2016-07-29,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+West Ham United,2740,1415,Premier League,1,1993-08-14,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Real Sociedad,2739,620,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Mainz 05,2738,566,Bundesliga,1,2010-08-22,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Feyenoord,2735,313,Eredivisie,1,2018-08-12,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Athletic Club,2733,569,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Celtic,2722,228,Scottish Premiership,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Alavés,2721,536,Segunda División,2,2013-08-16,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Fiorentina,2721,578,Serie A,1,2013-08-26,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Getafe,2721,573,La Liga,1,2012-08-18,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Eintracht Frankfurt,2712,586,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Osasuna,2708,578,La Liga,1,2012-08-20,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Twente,2708,237,Eredivisie,1,2019-08-03,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Paris FC,2707,370,Ligue 2,2,2015-07-31,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sunderland,2706,1289,Premier League,1,1996-08-17,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Toulouse,2705,463,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lorient,2704,452,Ligue 1,1,2014-08-10,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Levante,2704,576,La Liga,1,2012-08-19,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Ajax,2703,332,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Mallorca,2701,538,La Liga,1,2012-08-18,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Augsburg,2697,524,Bundesliga,1,2011-08-06,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Viktoria Plzeň,2697,170,Czech First League,1,2018-07-20,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Torino,2695,526,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Girona,2695,597,Segunda División,2,2012-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Genk,2695,228,Belgian Pro League,1,2018-08-05,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Elche,2695,543,Segunda División,2,2012-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Espanyol,2695,581,La Liga,1,2012-08-18,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Brest,2691,459,Ligue 2,2,2014-08-04,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Borussia Mönchengladbach,2691,588,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Udinese,2691,523,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sevilla,2690,661,La Liga,1,2012-08-18,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Slavia Prague,2686,193,Czech First League,1,2018-08-03,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+AZ,2680,297,Eredivisie,1,2018-08-12,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sassuolo,2678,525,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Nice,2676,485,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Union Berlin,2676,504,2. Bundesliga,2,2012-08-06,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-LASK,2676,353,Austrian Bundesliga,1,2010-08-07,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-PAOK,2676,207,Super League Greece,1,2018-08-25,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Genk,2676,228,Belgian Pro League,1,2018-08-05,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+PAOK,2677,207,Super League Greece,1,2018-08-25,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Genoa,2676,520,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Union Berlin,2675,504,2. Bundesliga,2,2012-08-06,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Parma,2675,446,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Genoa,2675,520,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-NEC,2673,170,Eredivisie,1,2021-08-14,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Racing Santander,2673,282,Segunda División,2,2012-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sturm Graz,2669,575,Austrian Bundesliga,1,2010-08-01,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Auxerre,2667,453,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Racing Santander,2672,282,Segunda División,2,2012-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+NEC,2670,170,Eredivisie,1,2021-08-14,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+LASK,2670,353,Austrian Bundesliga,1,2010-08-07,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cagliari,2666,530,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Utrecht,2664,270,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Auxerre,2664,453,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Nice,2664,485,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Wolverhampton Wanderers,2662,1299,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hamburg,2662,559,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Wolverhampton Wanderers,2658,1299,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Werder Bremen,2653,562,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Anderlecht,2652,218,Belgian Pro League,1,2018-08-05,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sturm Graz,2657,575,Austrian Bundesliga,1,2010-08-01,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Anderlecht,2656,218,Belgian Pro League,1,2018-08-05,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Werder Bremen,2651,562,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Utrecht,2651,270,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+AEK Athens,2649,200,Super League Greece,1,2018-08-25,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Southampton,2648,1506,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Famalicão,2648,238,Primeira Liga,1,2019-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Shakhtar Donetsk,2647,81,Ukrainian Premier League,1,2023-08-02,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Leganés,2646,479,Segunda División,2,2014-08-24,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Almería,2645,571,Segunda División,2,2012-08-17,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Shakhtar Donetsk,2648,81,Ukrainian Premier League,1,2023-08-02,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Panathinaikos,2646,195,Super League Greece,1,2018-08-26,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Famalicão,2646,238,Primeira Liga,1,2019-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Venezia,2645,364,Serie B,2,2017-08-26,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Le Havre,2641,441,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Heerenveen,2640,263,Eredivisie,1,2018-08-10,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Real Oviedo,2640,457,Segunda División,2,2015-08-23,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Almería,2644,571,Segunda División,2,2012-08-17,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Leganés,2644,479,Segunda División,2,2014-08-24,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Le Havre,2638,441,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Heerenveen,2638,263,Eredivisie,1,2018-08-10,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Real Oviedo,2637,457,Segunda División,2,2015-08-23,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Trabzonspor,2635,201,Süper Lig,1,2018-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-AEK Athens,2635,200,Super League Greece,1,2018-08-25,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Cádiz,2634,391,Segunda División,2,2016-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Wolfsburg,2634,578,Bundesliga,1,2010-08-20,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lecce,2633,316,Serie B,2,2018-08-27,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Panathinaikos,2632,195,Super League Greece,1,2018-08-26,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Angers,2632,455,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lecce,2634,316,Serie B,2,2018-08-27,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Wolfsburg,2633,578,Bundesliga,1,2010-08-20,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Cádiz,2633,391,Segunda División,2,2016-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Köln,2631,565,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Albacete,2630,401,Segunda División,2,2014-08-24,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Dynamo Kyiv,2627,68,Ukrainian Premier League,1,2023-08-04,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Red Bull Salzburg,2626,616,Austrian Bundesliga,1,2010-08-01,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Las Palmas,2625,567,Segunda División,2,2012-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Angers,2629,455,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Dynamo Kyiv,2626,68,Ukrainian Premier League,1,2023-08-04,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Coventry City,2624,1583,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Deportivo La Coruña,2623,392,La Liga,1,2012-08-20,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Paderborn,2620,399,2. Bundesliga,2,2012-08-03,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Las Palmas,2622,567,Segunda División,2,2012-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Paderborn,2619,399,2. Bundesliga,2,2012-08-03,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Burnley,2617,1302,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Red Bull Salzburg,2616,616,Austrian Bundesliga,1,2010-08-01,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ipswich Town,2615,1454,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Burnley,2613,1302,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Burgos,2610,183,Segunda División,2,2021-08-15,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Reims,2610,427,Ligue 1,1,2014-08-08,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Austria Vienna,2610,563,Austrian Bundesliga,1,2010-08-01,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Servette,2610,154,Swiss Super League,1,2019-08-03,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Rangers,2609,241,Scottish Premiership,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Servette,2609,154,Swiss Super League,1,2019-08-03,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Reims,2608,427,Ligue 1,1,2014-08-08,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Austria Vienna,2605,563,Austrian Bundesliga,1,2010-08-01,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Rangers,2604,241,Scottish Premiership,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Real Murcia,2603,84,Segunda División,2,2012-08-20,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Nantes,2601,465,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Heidenheim,2600,421,2. Bundesliga,2,2014-08-03,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Beşiktaş,2600,213,Süper Lig,1,2018-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Elversberg,2599,83,2. Bundesliga,2,2023-08-05,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Beşiktaş,2601,213,Süper Lig,1,2018-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Nantes,2598,465,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Elversberg,2598,83,2. Bundesliga,2,2023-08-05,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Monza,2598,238,Serie B,2,2020-09-25,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-St. Pauli,2598,520,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Frosinone,2597,488,Serie B,2,2014-08-30,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sparta Prague,2596,168,Czech First League,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Heidenheim,2598,421,2. Bundesliga,2,2014-08-03,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+St. Pauli,2597,520,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Frosinone,2596,488,Serie B,2,2014-08-30,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Samsunspor,2595,89,Süper Lig,1,2023-08-13,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Basel,2594,259,Swiss Super League,1,2014-07-19,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Granada,2593,549,La Liga,1,2012-08-20,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sporting Gijón,2592,577,Segunda División,2,2012-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Go Ahead Eagles,2589,177,Eredivisie,1,2021-08-13,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Granada,2592,549,La Liga,1,2012-08-20,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sporting Gijón,2591,577,Segunda División,2,2012-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sparta Prague,2587,168,Czech First League,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Córdoba,2586,367,Segunda División,2,2012-08-20,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Young Boys,2586,267,Swiss Super League,1,2014-07-19,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Karlsruher SC,2586,361,2. Bundesliga,2,2013-08-10,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Eibar,2586,509,Segunda División,2,2013-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Troyes,2585,429,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Vitória Guimarães,2585,272,Primeira Liga,1,2018-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Saint-Étienne,2583,447,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Karlsruher SC,2585,361,2. Bundesliga,2,2013-08-10,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Go Ahead Eagles,2585,177,Eredivisie,1,2021-08-13,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Eibar,2585,509,Segunda División,2,2013-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Basel,2584,259,Swiss Super League,1,2014-07-19,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Troyes,2583,429,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Vitória Guimarães,2583,272,Primeira Liga,1,2018-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cremonese,2582,369,Serie B,2,2017-08-25,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Oleksandriya,2582,60,Ukrainian Premier League,1,2023-08-05,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Millwall,2581,1378,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sparta Rotterdam,2579,230,Eredivisie,1,2019-08-04,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Saint-Étienne,2580,447,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Huesca,2578,480,Segunda División,2,2012-08-17,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sparta Rotterdam,2577,230,Eredivisie,1,2019-08-04,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cultural Leonesa,2576,66,Segunda División,2,2017-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Telstar,2576,34,Eredivisie,1,2025-08-10,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Kaiserslautern,2576,399,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Holstein Kiel,2576,293,2. Bundesliga,2,2017-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Groningen,2573,230,Eredivisie,1,2018-08-12,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Real Valladolid,2572,531,La Liga,1,2012-08-20,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Arouca,2571,170,Primeira Liga,1,2021-08-07,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Hannover 96,2571,535,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Kaiserslautern,2575,399,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Holstein Kiel,2575,293,2. Bundesliga,2,2017-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Telstar,2574,34,Eredivisie,1,2025-08-10,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Young Boys,2573,267,Swiss Super League,1,2014-07-19,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Groningen,2571,230,Eredivisie,1,2018-08-12,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Real Valladolid,2570,531,La Liga,1,2012-08-20,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Hannover 96,2570,535,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Mirandés,2570,495,Segunda División,2,2012-08-17,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Gent,2567,225,Belgian Pro League,1,2018-07-27,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Montpellier,2566,428,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Baník Ostrava,2565,140,Czech First League,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Gil Vicente,2564,238,Primeira Liga,1,2019-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Arouca,2569,170,Primeira Liga,1,2021-08-07,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Gent,2569,225,Belgian Pro League,1,2018-07-27,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lugano,2564,190,Swiss Super League,1,2018-08-04,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Baník Ostrava,2564,140,Czech First League,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Montpellier,2563,428,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Gil Vicente,2563,238,Primeira Liga,1,2019-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ceuta,2563,13,Segunda División,2,2025-08-15,2552,FALSE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bochum,2562,463,2. Bundesliga,2,2012-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Hellas Verona,2561,520,Serie A,1,2013-08-24,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lugano,2561,190,Swiss Super League,1,2018-08-04,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Hellas Verona,2562,520,Serie A,1,2013-08-24,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sint-Truiden,2561,184,Belgian Pro League,1,2018-08-05,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bochum,2561,463,2. Bundesliga,2,2012-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Palermo,2560,401,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sint-Truiden,2560,184,Belgian Pro League,1,2018-08-05,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Catanzaro,2559,114,Serie B,2,2023-08-19,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Hartberg,2558,262,Austrian Bundesliga,1,2018-08-05,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Mechelen,2559,165,Belgian Pro League,1,2019-08-03,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Istanbul Başakşehir,2558,216,Süper Lig,1,2018-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Rapid Vienna,2558,578,Austrian Bundesliga,1,2010-08-01,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Mechelen,2557,165,Belgian Pro League,1,2019-08-03,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hertha Berlin,2557,505,Bundesliga,1,2011-08-06,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Göztepe,2555,155,Süper Lig,1,2018-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Santa Clara,2554,238,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Middlesbrough,2554,1412,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Hartberg,2553,262,Austrian Bundesliga,1,2018-08-05,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Amorebieta,2553,87,Segunda División,2,2021-08-14,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Santa Clara,2553,238,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Darmstadt 98,2553,398,2. Bundesliga,2,2014-08-03,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Arminia Bielefeld,2553,331,2. Bundesliga,2,2013-08-11,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-PEC Zwolle,2551,230,Eredivisie,1,2018-08-10,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Fortuna Sittard,2551,264,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Málaga,2551,512,La Liga,1,2012-08-18,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Rapid Vienna,2552,578,Austrian Bundesliga,1,2010-08-01,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Arminia Bielefeld,2552,331,2. Bundesliga,2,2013-08-11,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Málaga,2550,512,La Liga,1,2012-08-18,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ponferradina,2550,354,Segunda División,2,2012-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Real Madrid Castilla,2549,84,Segunda División,2,2012-08-17,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Dunkerque,2549,168,Ligue 2,2,2020-08-22,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Estoril,2548,170,Primeira Liga,1,2021-08-07,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Alverca,2548,34,Primeira Liga,1,2025-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Guingamp,2547,435,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Fortuna Sittard,2549,264,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+PEC Zwolle,2549,230,Eredivisie,1,2018-08-10,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Dunkerque,2547,168,Ligue 2,2,2020-08-22,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Estoril,2547,170,Primeira Liga,1,2021-08-07,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Alverca,2547,34,Primeira Liga,1,2025-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Fortuna Düsseldorf,2547,465,Bundesliga,1,2012-08-25,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Metz,2547,447,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Guadalajara,2547,47,Segunda División,2,2012-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Charleroi,2547,185,Belgian Pro League,1,2018-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Guingamp,2546,435,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Castellón,2545,100,Segunda División,2,2020-09-12,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Charleroi,2545,185,Belgian Pro League,1,2018-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Birmingham City,2545,1328,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Metz,2544,447,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Eldense,2544,88,Segunda División,2,2023-08-13,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Hearts,2543,156,Scottish Premiership,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hull City,2543,1328,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Norwich City,2542,1442,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Jablonec,2542,143,Czech First League,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Moreirense,2542,238,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Schalke 04,2540,557,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Hearts,2542,156,Scottish Premiership,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Jablonec,2541,143,Czech First League,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Moreirense,2540,238,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Schalke 04,2539,557,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Gaziantep,2538,158,Süper Lig,1,2019-08-19,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Cardiff City,2538,1346,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Wolfsberger,2537,487,Austrian Bundesliga,1,2012-08-04,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Alanyaspor,2537,192,Süper Lig,1,2018-08-11,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Cardiff City,2537,1346,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wrexham,2536,1317,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Alanyaspor,2536,192,Süper Lig,1,2018-08-11,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Antwerp,2536,223,Belgian Pro League,1,2018-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Aris Thessaloniki,2536,179,Super League Greece,1,2018-08-27,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Antwerp,2535,223,Belgian Pro League,1,2018-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Extremadura,2534,88,Segunda División,2,2018-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-St. Gallen,2534,223,Swiss Super League,1,2014-07-19,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Extremadura,2535,88,Segunda División,2,2018-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Polissya Zhytomyr,2534,60,Ukrainian Premier League,1,2023-07-28,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Excelsior,2534,136,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bordeaux,2533,391,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lausanne-Sport,2532,115,Swiss Super League,1,2020-09-20,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Wolfsberger,2533,487,Austrian Bundesliga,1,2012-08-04,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Excelsior,2532,136,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+St. Gallen,2532,223,Swiss Super League,1,2014-07-19,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Andorra,2532,99,Segunda División,2,2022-08-15,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bordeaux,2531,391,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lausanne-Sport,2530,115,Swiss Super League,1,2020-09-20,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sabadell,2528,174,Segunda División,2,2012-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Pau,2527,203,Ligue 2,2,2020-08-22,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kryvbas Kryvyi Rih,2527,60,Ukrainian Premier League,1,2023-08-06,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Rayo Majadahonda,2526,47,Segunda División,2,2018-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Alcorcón,2526,486,Segunda División,2,2012-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Dnipro-1,2525,30,Ukrainian Premier League,1,2023-08-06,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Red Star,2525,170,Ligue 2,2,2015-07-31,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Zurich,2524,220,Swiss Super League,1,2014-08-03,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Pau,2525,203,Ligue 2,2,2020-08-22,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Zulte Waregem,2524,108,Belgian Pro League,1,2018-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Zurich,2524,220,Swiss Super League,1,2014-08-03,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Real Jaén,2524,45,Segunda División,2,2013-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Rio Ave,2524,238,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Red Star,2524,170,Ligue 2,2,2015-07-31,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Villarreal B,2523,84,Segunda División,2,2022-08-14,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Casa Pia,2523,136,Primeira Liga,1,2022-08-07,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Rio Ave,2523,238,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Casa Pia,2521,136,Primeira Liga,1,2022-08-07,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Siena,2521,46,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Llagostera,2520,89,Segunda División,2,2014-08-23,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Swansea City,2518,1319,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Rizespor,2518,193,Süper Lig,1,2018-08-11,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Rizespor,2517,193,Süper Lig,1,2018-08-11,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Standard Liège,2515,217,Belgian Pro League,1,2018-07-27,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kasımpaşa,2515,193,Süper Lig,1,2018-08-11,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Logroñés,2515,49,Segunda División,2,2020-09-12,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Tenerife,2515,520,Segunda División,2,2013-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sochaux,2514,350,Ligue 2,2,2014-08-02,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Tenerife,2514,520,Segunda División,2,2013-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Pisa,2514,328,Serie B,2,2016-09-04,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Standard Liège,2514,217,Belgian Pro League,1,2018-07-27,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-La Louvière,2513,15,Belgian Pro League,1,2025-08-02,2515,FALSE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+La Louvière,2514,15,Belgian Pro League,1,2025-08-02,2515,FALSE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sochaux,2513,350,Ligue 2,2,2014-08-02,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Vitesse,2512,204,Eredivisie,1,2018-08-12,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sheffield United,2512,1447,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Westerlo,2509,95,Belgian Pro League,1,2023-08-06,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Oostende,2508,99,Belgian Pro League,1,2018-08-05,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Westerlo,2508,95,Belgian Pro League,1,2023-08-06,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Grenoble,2508,272,Ligue 2,2,2018-07-27,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Konyaspor,2507,193,Süper Lig,1,2018-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Rodez,2507,234,Ligue 2,2,2019-07-26,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Chievo Verona,2507,308,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kayserispor,2507,192,Süper Lig,1,2018-08-13,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Annecy,2506,127,Ligue 2,2,2022-07-30,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Chievo Verona,2507,308,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Numancia,2506,349,Segunda División,2,2012-08-19,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Nürnberg,2504,531,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Grenoble,2506,272,Ligue 2,2,2018-07-27,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Rodez,2506,234,Ligue 2,2,2019-07-26,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Annecy,2505,127,Ligue 2,2,2022-07-30,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 UCAM Murcia,2504,50,Segunda División,2,2016-08-22,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Nürnberg,2504,531,Bundesliga,1,2010-08-21,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Karpaty Lviv,2503,30,Ukrainian Premier League,1,2024-08-03,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Luzern,2502,220,Swiss Super League,1,2014-08-03,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Luzern,2503,220,Swiss Super League,1,2014-08-03,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Stockport County,2502,1026,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kocaelispor,2501,11,Süper Lig,1,2025-08-11,2510,FALSE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Derby County,2500,1414,Premier League,1,1996-08-17,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ibiza,2500,85,Segunda División,2,2021-08-13,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Modena,2500,284,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Hibernian,2499,183,Scottish Premiership,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Hibernian,2500,183,Scottish Premiership,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Modena,2499,284,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Emmen,2499,128,Eredivisie,1,2018-08-12,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Catania,2497,89,Serie A,1,2013-08-26,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Thun,2497,108,Swiss Super League,1,2014-08-02,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Real Sociedad B,2497,53,Segunda División,2,2021-08-14,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Thun,2496,108,Swiss Super League,1,2014-08-02,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Recreativo Huelva,2496,126,Segunda División,2,2012-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 De Graafschap,2496,34,Eredivisie,1,2018-08-12,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bodrum,2496,35,Süper Lig,1,2024-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bodrum,2495,35,Süper Lig,1,2024-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sion,2495,186,Swiss Super League,1,2014-08-02,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Gimnàstic Tarragona,2495,168,Segunda División,2,2015-08-23,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Laval,2494,244,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Amiens,2494,353,Ligue 2,2,2016-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Clermont,2493,419,Ligue 2,2,2014-08-04,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Real Zaragoza,2493,554,La Liga,1,2012-08-20,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Ajaccio,2492,411,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sivasspor,2492,187,Süper Lig,1,2018-08-11,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Preußen Münster,2492,47,2. Bundesliga,2,2024-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Laval,2493,244,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Amiens,2492,353,Ligue 2,2,2016-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Real Zaragoza,2492,554,La Liga,1,2012-08-20,2737,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Clermont,2491,419,Ligue 2,2,2014-08-04,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Preußen Münster,2491,47,2. Bundesliga,2,2024-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sivasspor,2491,187,Süper Lig,1,2018-08-11,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Antalyaspor,2491,193,Süper Lig,1,2018-08-13,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Almere City,2491,68,Eredivisie,1,2023-08-13,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Empoli,2491,520,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Eyüpspor,2491,47,Süper Lig,1,2024-08-11,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Grazer AK,2491,64,Austrian Bundesliga,1,2024-08-02,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Empoli,2490,520,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Ajaccio,2490,411,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Almere City,2490,68,Eredivisie,1,2023-08-13,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hércules,2490,90,Segunda División,2,2012-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Évian,2489,77,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Barcelona B,2489,168,Segunda División,2,2012-08-17,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Juve Stabia,2489,161,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Rukh Lviv,2488,60,Ukrainian Premier League,1,2023-08-06,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Volendam,2488,102,Eredivisie,1,2022-08-07,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Ried,2487,383,Austrian Bundesliga,1,2010-08-08,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-RKC Waalwijk,2487,196,Eredivisie,1,2019-08-03,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Grazer AK,2487,64,Austrian Bundesliga,1,2024-08-02,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Vitória Setúbal,2487,68,Primeira Liga,1,2018-08-11,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Altach,2487,401,Austrian Bundesliga,1,2014-08-02,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+RKC Waalwijk,2486,196,Eredivisie,1,2019-08-03,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+OH Leuven,2486,129,Belgian Pro League,1,2020-08-10,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Volendam,2486,102,Eredivisie,1,2022-08-07,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Trapani,2486,216,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-OH Leuven,2485,129,Belgian Pro League,1,2020-08-10,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Südtirol,2484,151,Serie B,2,2022-08-14,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Cercle Brugge,2485,188,Belgian Pro League,1,2018-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Ried,2484,383,Austrian Bundesliga,1,2010-08-08,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lugo,2484,476,Segunda División,2,2012-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Portimonense,2484,204,Primeira Liga,1,2018-08-13,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Leicester City,2483,1420,Premier League,1,1994-08-21,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Belenenses,2483,136,Primeira Liga,1,2018-08-11,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Magdeburg,2483,155,2. Bundesliga,2,2018-08-05,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Belenenses,2484,136,Primeira Liga,1,2018-08-11,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Südtirol,2484,151,Serie B,2,2022-08-14,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Leicester City,2484,1420,Premier League,1,1994-08-21,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Altach,2483,401,Austrian Bundesliga,1,2014-08-02,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Fuenlabrada,2483,129,Segunda División,2,2019-08-07,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Farense,2482,102,Primeira Liga,1,2020-09-20,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Nacional,2482,136,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Magdeburg,2483,155,2. Bundesliga,2,2018-08-05,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Farense,2481,102,Primeira Liga,1,2020-09-20,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bursaspor,2481,34,Süper Lig,1,2018-08-11,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-NAC Breda,2481,101,Eredivisie,1,2018-08-12,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Nacional,2481,136,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 West Bromwich Albion,2481,1265,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Cercle Brugge,2481,188,Belgian Pro League,1,2018-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Le Mans,2480,47,Ligue 2,2,2019-08-02,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Estrela da Amadora,2478,102,Primeira Liga,1,2023-08-13,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+NAC Breda,2479,101,Eredivisie,1,2018-08-12,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bristol City,2478,1373,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Winterthur,2477,76,Swiss Super League,1,2023-07-22,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-AVS,2477,68,Primeira Liga,1,2024-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Winterthur,2478,76,Swiss Super League,1,2023-07-22,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Portsmouth,2477,1297,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Blackburn Rovers,2477,1548,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Spezia,2476,546,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Estrela da Amadora,2477,102,Primeira Liga,1,2023-08-13,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+AVS,2476,68,Primeira Liga,1,2024-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Vizela,2476,102,Primeira Liga,1,2021-08-06,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Salernitana,2476,407,Serie B,2,2015-09-06,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Brescia,2476,497,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Foggia,2475,79,Serie B,2,2017-08-27,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Quevilly-Rouen,2475,157,Ligue 2,2,2017-08-04,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Spezia,2476,546,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Salernitana,2475,407,Serie B,2,2015-09-06,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Paços de Ferreira,2475,136,Primeira Liga,1,2019-08-10,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-WSG Tirol,2474,227,Austrian Bundesliga,1,2019-08-03,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bastia,2473,286,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Luton Town,2473,1343,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Foggia,2475,79,Serie B,2,2017-08-27,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Brescia,2475,497,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Quevilly-Rouen,2474,157,Ligue 2,2,2017-08-04,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Luton Town,2472,1343,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Chaves,2472,102,Primeira Liga,1,2018-08-11,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bastia,2472,286,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hradec Králové,2471,69,Czech First League,1,2023-07-22,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Slovan Liberec,2471,135,Czech First League,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+WSG Tirol,2471,227,Austrian Bundesliga,1,2019-08-03,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Slovan Liberec,2470,135,Czech First League,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Marítimo,2469,170,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sevilla Atlético,2469,84,Segunda División,2,2016-08-21,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cesena,2469,296,Serie B,2,2013-08-26,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Marítimo,2469,170,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Dijon,2469,342,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Levadiakos,2468,75,Super League Greece,1,2018-08-26,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Grödig,2468,108,Austrian Bundesliga,1,2013-08-03,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Dijon,2468,342,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ascoli,2467,364,Serie B,2,2015-09-12,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Tondela,2467,170,Primeira Liga,1,2018-08-11,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Grödig,2467,108,Austrian Bundesliga,1,2013-08-03,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Avellino,2466,252,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Greuther Fürth,2465,459,Bundesliga,1,2012-08-25,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Reggina,2465,162,Serie B,2,2013-08-23,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Tondela,2466,170,Primeira Liga,1,2018-08-11,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Yverdon,2464,76,Swiss Super League,1,2023-08-06,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Greuther Fürth,2464,459,Bundesliga,1,2012-08-25,2685,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Reggina,2464,162,Serie B,2,2013-08-23,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Pendikspor,2464,38,Süper Lig,1,2023-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Preston North End,2464,1377,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kolos Kovalivka,2464,60,Ukrainian Premier League,1,2023-07-28,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Boulogne,2463,13,Ligue 2,2,2025-08-15,2495,FALSE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Carrarese,2462,70,Serie B,2,2024-08-18,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Preston North End,2463,1377,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Boulogne,2462,13,Ligue 2,2,2025-08-15,2495,FALSE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lorca,2462,44,Segunda División,2,2017-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Carrarese,2462,70,Serie B,2,2024-08-18,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Béziers,2461,38,Ligue 2,2,2018-07-27,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Mattersburg,2461,281,Austrian Bundesliga,1,2010-08-07,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Dender,2461,55,Belgian Pro League,1,2024-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Queens Park Rangers,2460,1493,Premier League,1,1992-08-17,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Willem II,2460,162,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Dender,2459,55,Belgian Pro League,1,2024-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Aalen,2459,103,2. Bundesliga,2,2012-08-05,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Willem II,2459,162,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Aalen,2458,103,2. Bundesliga,2,2012-08-05,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Athletic Club B,2458,42,Segunda División,2,2015-08-24,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Novara,2458,182,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 ADO Den Haag,2457,94,Eredivisie,1,2018-08-12,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Racing Ferrol,2457,88,Segunda División,2,2023-08-12,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Eintracht Braunschweig,2457,360,2. Bundesliga,2,2012-08-05,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Eintracht Braunschweig,2456,360,2. Bundesliga,2,2012-08-05,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sigma Olomouc,2456,138,Czech First League,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 MSV Duisburg,2455,141,2. Bundesliga,2,2012-08-05,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Blau-Weiß Linz,2455,96,Austrian Bundesliga,1,2023-08-06,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Mouscron,2454,93,Belgian Pro League,1,2018-08-05,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Martigues,2453,34,Ligue 2,2,2024-08-19,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Mouscron,2453,93,Belgian Pro League,1,2018-08-05,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Yeni Malatyaspor,2453,108,Süper Lig,1,2018-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Martigues,2453,34,Ligue 2,2,2024-08-19,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Chambly,2452,68,Ligue 2,2,2019-07-26,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Blau-Weiß Linz,2451,96,Austrian Bundesliga,1,2023-08-06,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Grasshoppers,2451,148,Swiss Super League,1,2014-08-02,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Mantova,2451,70,Serie B,2,2024-08-18,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Zorya Luhansk,2451,62,Ukrainian Premier League,1,2023-08-06,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Mantova,2451,70,Serie B,2,2024-08-18,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ankaragücü,2450,146,Süper Lig,1,2018-08-10,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Boavista,2450,238,Primeira Liga,1,2018-08-13,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Perugia,2450,340,Serie B,2,2014-08-29,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Austria Lustenau,2449,67,Austrian Bundesliga,1,2022-08-07,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Kortrijk,2449,165,Belgian Pro League,1,2018-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Kortrijk,2450,165,Belgian Pro League,1,2018-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Boavista,2449,238,Primeira Liga,1,2018-08-13,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Perugia,2449,340,Serie B,2,2014-08-29,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Charlton Athletic,2448,1305,Premier League,1,1998-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ulm,2448,36,2. Bundesliga,2,2024-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Benevento,2448,285,Serie B,2,2016-08-27,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sigma Olomouc,2447,138,Czech First League,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Austria Klagenfurt,2447,128,Austrian Bundesliga,1,2021-08-07,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Austria Lustenau,2448,67,Austrian Bundesliga,1,2022-08-07,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Cambuur,2448,68,Eredivisie,1,2021-08-15,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Benevento,2447,285,Serie B,2,2016-08-27,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bolton Wanderers,2447,1339,Premier League,1,1995-08-19,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sampdoria,2447,513,Serie A,1,2013-08-24,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-1860 Munich,2447,176,2. Bundesliga,2,2012-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Erzurumspor,2447,74,Süper Lig,1,2018-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sampdoria,2447,513,Serie A,1,2013-08-24,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Watford,2447,1312,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Cambuur,2447,68,Eredivisie,1,2021-08-15,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Heracles,2447,230,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-SPAL,2443,283,Serie B,2,2016-08-27,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+1860 Munich,2447,176,2. Bundesliga,2,2012-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Heracles,2445,230,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Austria Klagenfurt,2444,128,Austrian Bundesliga,1,2021-08-07,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 VVV-Venlo,2442,94,Eredivisie,1,2018-08-11,2575,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+SPAL,2442,283,Serie B,2,2016-08-27,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Falkirk,2442,11,Scottish Premiership,1,2025-08-03,2430,FALSE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bari,2442,377,Serie B,2,2013-08-23,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Nîmes,2441,341,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bari,2441,377,Serie B,2,2013-08-23,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Dundee United,2441,81,Scottish Premiership,1,2020-08-01,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wycombe Wanderers,2440,1339,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Dundee United,2440,81,Scottish Premiership,1,2020-08-01,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Cartagena,2439,218,Segunda División,2,2020-09-13,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Nîmes,2440,341,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Stoke City,2439,1304,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Concarneau,2439,40,Ligue 2,2,2023-08-05,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Cartagena,2439,218,Segunda División,2,2020-09-13,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Aarau,2439,36,Swiss Super League,1,2014-07-19,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Fatih Karagümrük,2439,89,Süper Lig,1,2020-09-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Fatih Karagümrük,2438,89,Süper Lig,1,2020-09-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Concarneau,2438,40,Ligue 2,2,2023-08-05,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Orléans,2438,187,Ligue 2,2,2014-08-02,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Ternana,2436,338,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Veres Rivne,2436,60,Ukrainian Premier League,1,2023-07-28,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Ternana,2436,338,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Vaduz,2436,74,Swiss Super League,1,2014-08-06,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Admira Wacker,2435,380,Austrian Bundesliga,1,2011-08-13,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Vaduz,2435,74,Swiss Super League,1,2014-08-06,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Gazélec Ajaccio,2434,193,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+St. Mirren,2433,182,Scottish Premiership,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Feirense,2433,34,Primeira Liga,1,2018-08-12,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-St. Mirren,2432,182,Scottish Premiership,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 FSV Frankfurt,2431,137,2. Bundesliga,2,2012-08-05,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lincoln City,2430,1321,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 LNZ Cherkasy,2430,60,Ukrainian Premier League,1,2023-08-05,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Atromitos,2429,170,Super League Greece,1,2018-08-25,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Beerschot,2428,70,Belgian Pro League,1,2020-08-10,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Virtus Lanciano,2428,130,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Beerschot,2427,70,Belgian Pro League,1,2020-08-10,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Xerez,2427,43,Segunda División,2,2012-08-18,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Cittadella,2427,466,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Reggiana,2427,151,Serie B,2,2020-09-27,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Dynamo Dresden,2427,258,2. Bundesliga,2,2012-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Hatayspor,2426,114,Süper Lig,1,2020-09-14,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Neuchâtel Xamax,2425,72,Swiss Super League,1,2018-07-21,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Reggiana,2426,151,Serie B,2,2020-09-27,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Cittadella,2426,466,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Dynamo Dresden,2426,258,2. Bundesliga,2,2012-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Neuchâtel Xamax,2426,72,Swiss Super League,1,2018-07-21,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Hatayspor,2425,114,Süper Lig,1,2020-09-14,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Obolon Kyiv,2425,60,Ukrainian Premier League,1,2023-07-28,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Pro Vercelli,2425,171,Serie B,2,2014-08-30,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Oxford United,2425,1366,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Motherwell,2425,182,Scottish Premiership,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Oxford United,2424,1366,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Osnabrück,2424,108,2. Bundesliga,2,2019-08-02,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Wiener Neustadt,2424,180,Austrian Bundesliga,1,2010-08-01,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Motherwell,2424,182,Scottish Premiership,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Vicenza,2424,216,Serie B,2,2014-09-07,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Wiener Neustadt,2424,180,Austrian Bundesliga,1,2010-08-01,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bourg-Péronnas,2423,116,Ligue 2,2,2015-07-31,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Volos,2423,144,Super League Greece,1,2019-08-25,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Nancy,2423,318,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Energie Cottbus,2422,75,2. Bundesliga,2,2012-08-03,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Hansa Rostock,2422,108,2. Bundesliga,2,2021-08-15,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Nancy,2422,318,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Energie Cottbus,2421,75,2. Bundesliga,2,2012-08-03,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wacker Innsbruck,2421,176,Austrian Bundesliga,1,2010-08-01,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Asteras Tripolis,2421,173,Super League Greece,1,2018-08-25,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Valenciennes,2421,383,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Feralpisalò,2421,38,Serie B,2,2023-08-20,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Hansa Rostock,2421,108,2. Bundesliga,2,2021-08-15,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Feralpisalò,2420,38,Serie B,2,2023-08-20,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Valenciennes,2420,383,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Gençlerbirliği,2419,85,Süper Lig,1,2019-08-17,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Jahn Regensburg,2419,284,2. Bundesliga,2,2012-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sandhausen,2418,384,2. Bundesliga,2,2012-08-05,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Wehen Wiesbaden,2418,75,2. Bundesliga,2,2019-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Latina,2418,175,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Jahn Regensburg,2418,284,2. Bundesliga,2,2012-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Mynai,2418,30,Ukrainian Premier League,1,2023-08-05,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Wehen Wiesbaden,2418,75,2. Bundesliga,2,2019-08-04,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sandhausen,2418,384,2. Bundesliga,2,2012-08-05,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Molenbeek,2418,36,Belgian Pro League,1,2023-08-05,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Erzgebirge Aue,2416,311,2. Bundesliga,2,2012-08-03,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lokeren,2415,30,Belgian Pro League,1,2018-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Akhisarspor,2415,38,Süper Lig,1,2018-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lausanne-Ouchy,2413,38,Swiss Super League,1,2023-08-05,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Mladá Boleslav,2412,142,Czech First League,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Erzgebirge Aue,2415,311,2. Bundesliga,2,2012-08-03,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Mladá Boleslav,2415,142,Czech First League,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lausanne-Ouchy,2414,38,Swiss Super League,1,2023-08-05,2500,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Carpi,2412,258,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Teplice,2411,135,Czech First League,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Cosenza,2411,273,Serie B,2,2018-08-26,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Panetolikos,2411,174,Super League Greece,1,2018-08-25,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Inhulets Petrove,2411,30,Ukrainian Premier League,1,2024-08-04,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Caen,2410,418,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Cosenza,2411,273,Serie B,2,2018-08-26,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Padova,2410,117,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bohemians 1905,2410,138,Czech First League,1,2018-08-06,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Arles-Avignon,2410,38,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Caen,2409,418,Ligue 1,1,2014-08-09,2689,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Würzburger Kickers,2409,72,2. Bundesliga,2,2016-08-07,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Alessandria,2409,38,Serie B,2,2021-08-22,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kallithea,2409,36,Super League Greece,1,2024-08-18,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Pescara,2406,373,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Alessandria,2409,38,Serie B,2,2021-08-22,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Pescara,2405,373,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Karviná,2405,136,Czech First League,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Waasland-Beveren,2404,93,Belgian Pro League,1,2018-08-03,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kapfenberg,2403,72,Austrian Bundesliga,1,2010-08-07,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -477,77 +477,77 @@ Livyi Bereh,2402,30,Ukrainian Premier League,1,2024-08-04,2475,TRUE,Pass1_SeedTi
 Barnsley,2401,1387,Premier League,1,1997-08-09,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Eupen,2401,129,Belgian Pro League,1,2018-08-04,2515,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kifisia,2400,42,Super League Greece,1,2023-08-20,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Aberdeen,2400,190,Scottish Premiership,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Tours,2399,155,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Huddersfield Town,2398,1329,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Aves,2397,68,Primeira Liga,1,2018-08-11,2550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Plymouth Argyle,2397,1342,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Plymouth Argyle,2396,1342,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Virtus Entella,2396,289,Serie B,2,2014-08-30,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Slovácko,2395,143,Czech First League,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kilmarnock,2395,183,Scottish Premiership,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Châteauroux,2393,187,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Slovácko,2394,143,Czech First League,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Aberdeen,2394,190,Scottish Premiership,1,2018-08-05,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Vorskla Poltava,2392,60,Ukrainian Premier League,1,2023-08-06,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Crotone,2392,364,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Châteauroux,2392,187,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Crotone,2391,364,Serie B,2,2013-08-24,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Metalist 1925 Kharkiv,2388,30,Ukrainian Premier League,1,2023-08-05,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 St. Pölten,2387,168,Austrian Bundesliga,1,2016-08-06,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ingolstadt,2386,279,2. Bundesliga,2,2012-08-03,2491,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Wigan Athletic,2385,1300,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Wigan Athletic,2384,1300,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Panionios,2384,63,Super League Greece,1,2018-08-26,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Niort,2384,337,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Xanthi,2384,63,Super League Greece,1,2018-08-26,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Varese,2383,90,Serie B,2,2013-08-26,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Reus,2381,130,Segunda División,2,2016-08-20,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-OFI Crete,2380,172,Super League Greece,1,2018-08-26,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Niort,2383,337,Ligue 2,2,2014-08-01,2495,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Reus,2382,130,Segunda División,2,2016-08-20,2552,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+OFI Crete,2379,172,Super League Greece,1,2018-08-26,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Denizlispor,2376,74,Süper Lig,1,2019-08-16,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Istanbulspor,2375,38,Süper Lig,1,2023-08-12,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lecco,2373,38,Serie B,2,2023-09-03,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lecco,2372,38,Serie B,2,2023-09-03,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Chornomorets Odesa,2372,60,Ukrainian Premier League,1,2023-08-06,2475,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Peterborough United,2371,1346,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Panserraikos,2361,78,Super League Greece,1,2023-08-20,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Zbrojovka Brno,2358,34,Czech First League,1,2020-08-22,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Larissa,2357,105,Super League Greece,1,2018-08-25,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Adana Demirspor,2357,73,Süper Lig,1,2023-08-13,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Dundee,2356,120,Scottish Premiership,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Dundee,2357,120,Scottish Premiership,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Adana Demirspor,2356,73,Süper Lig,1,2023-08-13,2510,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Reading,2355,1338,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bradford City,2355,1329,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Rotherham United,2352,1325,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bradford City,2354,1329,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Rotherham United,2351,1325,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Dukla Prague,2351,70,Czech First League,1,2018-07-20,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Příbram,2344,69,Czech First League,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sheffield Wednesday,2343,1620,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sheffield Wednesday,2342,1620,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Mansfield Town,2340,1319,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Salford City,2339,366,National League,5,2018-08-04,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hamilton Academical,2337,96,Scottish Premiership,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Pordenone,2331,118,Serie B,2,2019-08-09,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Pordenone,2330,118,Serie B,2,2019-08-09,2479,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Ross County,2330,139,Scottish Premiership,1,2019-08-03,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Pardubice,2330,104,Czech First League,1,2020-08-23,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Blackpool,2330,1327,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Ross County,2330,139,Scottish Premiership,1,2019-08-03,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Apollon Smyrnis,2329,63,Super League Greece,1,2018-08-25,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Walsall,2329,1336,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-PAS Giannina,2329,96,Super League Greece,1,2018-08-25,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+PAS Giannina,2328,96,Super League Greece,1,2018-08-25,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Zlín,2328,103,Czech First League,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Exeter City,2326,1230,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Stevenage,2326,991,National League,5,2005-08-13,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Livorno,2322,201,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 St. Johnstone,2322,171,Scottish Premiership,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Livorno,2322,201,Serie A,1,2013-08-25,2675,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Leyton Orient,2318,1328,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Livingston,2317,145,Scottish Premiership,1,2018-08-04,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Doncaster Rovers,2310,1105,Division 3,4,2003-08-09,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Port Vale,2304,1330,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bury,2302,1008,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wimbledon,2302,1333,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lamia,2301,168,Super League Greece,1,2018-08-27,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lamia,2300,168,Super League Greece,1,2018-08-27,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Notts County,2299,1309,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Opava,2291,69,Czech First League,1,2018-08-03,2430,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Milton Keynes Dons,2290,1050,League 1,3,2004-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Gillingham,2285,1336,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bristol Rovers,2270,1328,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bristol Rovers,2269,1328,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cambridge United,2266,1319,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Fleetwood Town,2261,760,National League,5,2010-08-14,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Swindon Town,2260,1360,Premier League,1,1993-08-14,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Crewe Alexandra,2256,1325,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bromley,2256,484,National League,5,2015-08-08,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Chesterfield,2247,1295,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Burton Albion,2244,1002,National League,5,2005-08-13,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Burton Albion,2243,1002,National League,5,2005-08-13,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Barrow,2242,725,National League,5,2008-08-08,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Northampton Town,2242,1323,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Carlisle United,2218,1277,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -559,13 +559,13 @@ York City,2193,1015,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirst
 Grimsby Town,2189,1319,Division 1,2,1998-08-08,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Shrewsbury Town,2179,1289,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Macclesfield Town,2168,1041,Division 2,3,1998-08-07,2350,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Accrington Stanley,2165,983,National League,5,2005-08-13,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Accrington Stanley,2164,983,National League,5,2005-08-13,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Tranmere Rovers,2164,1325,Division 1,2,1998-08-07,2528,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cheltenham Town,2162,1273,Division 3,4,1999-08-06,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Southend United,2160,1298,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Barnet,2152,1102,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Crawley Town,2141,985,National League,5,2005-08-13,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Harrogate Town,2122,355,National League,5,2018-08-04,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Harrogate Town,2121,355,National League,5,2018-08-04,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Oldham Athletic,2115,1410,Premier League,1,1992-08-15,2750,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Newport County,2112,768,National League,5,2010-08-14,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Boreham Wood,2111,447,National League,5,2015-08-08,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -586,11 +586,11 @@ Hereford United,2017,425,National League,5,2005-08-13,1950,TRUE,Pass1_SeedTier,S
 Altrincham,2009,620,National League,5,2005-08-13,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wealdstone,2007,252,National League,5,2020-10-06,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Aldershot Town,2003,953,National League,5,2005-08-13,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Gateshead,1999,636,National League,5,2009-08-08,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Gateshead,1998,636,National League,5,2009-08-08,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Tamworth,1996,396,National League,5,2005-08-13,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Yeovil Town,1987,1020,Division 3,4,2003-08-09,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Boston United,1987,309,Division 3,4,2002-08-10,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sutton United,1987,446,National League,5,2016-08-06,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sutton United,1986,446,National League,5,2016-08-06,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kidderminster Harriers,1981,792,Division 3,4,2000-08-12,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Darlington,1975,660,Division 3,4,1998-08-07,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Alfreton Town,1973,193,National League,5,2011-08-13,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -620,7 +620,7 @@ Kettering Town,1899,184,National League,5,2008-08-09,1950,TRUE,Pass1_SeedTier,Se
 Welling United,1898,141,National League,5,2013-08-10,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ebbsfleet United,1893,549,National League,5,2005-08-13,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Maidstone United,1892,197,National League,5,2016-08-06,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
-Oxford City,1887,46,National League,5,2023-08-05,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
+Oxford City,1886,46,National League,5,2023-08-05,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 St. Albans,1885,46,National League,5,2006-08-12,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Farsley,1877,46,National League,5,2007-08-11,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50
 Histon,1871,182,National League,5,2007-08-11,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,20,100,CountrySpecific_Tier1AndTier2,50

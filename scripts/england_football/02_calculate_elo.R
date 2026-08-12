@@ -48,6 +48,7 @@ OUTPUT_UPCOMING_FIXTURES_CSV <- file.path(OUT_DIR, "football_upcoming_fixtures.c
 # Elo settings
 # -----------------------------
 K_NORMAL <- 20
+K_CONTINENTAL <- 30
 K_NEW <- 20
 K_NEW_GAMES <- 100L
 
@@ -697,8 +698,14 @@ run_elo <- function(dt_input,
     home_entry_assigned <- get(home, envir = entry_rating_env, inherits = FALSE)
     away_entry_assigned <- get(away, envir = entry_rating_env, inherits = FALSE)
     
-    Kh <- if (Gh < K_NEW_GAMES) K_NEW else K_NORMAL
-    Ka <- if (Ga < K_NEW_GAMES) K_NEW else K_NORMAL
+    base_k <- if (dt_input$CompetitionType[i] == "continental") {
+      K_CONTINENTAL
+    } else {
+      K_NORMAL
+    }
+    
+    Kh <- if (Gh < K_NEW_GAMES) K_NEW else base_k
+    Ka <- if (Ga < K_NEW_GAMES) K_NEW else base_k
     
     Eh <- expected_score(Rh, Ra)
     Ea <- 1 - Eh
