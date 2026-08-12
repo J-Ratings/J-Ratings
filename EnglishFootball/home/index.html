@@ -187,6 +187,57 @@
       color: #000000;
     }
 
+    /* Other European top divisions */
+    .tier-primeira-liga {
+      background: #0B6E4F;
+      color: #ffffff;
+    }
+
+    .tier-eredivisie {
+      background: #F58220;
+      color: #000000;
+    }
+
+    .tier-belgian-pro-league {
+      background: #F2C94C;
+      color: #000000;
+    }
+
+    .tier-austrian-bundesliga {
+      background: #C8102E;
+      color: #ffffff;
+    }
+
+    .tier-super-lig {
+      background: #D71920;
+      color: #ffffff;
+    }
+
+    .tier-scottish-premiership {
+      background: #1B4D89;
+      color: #ffffff;
+    }
+
+    .tier-swiss-super-league {
+      background: #D52B1E;
+      color: #ffffff;
+    }
+
+    .tier-super-league-greece {
+      background: #1769AA;
+      color: #ffffff;
+    }
+
+    .tier-czech-first-league {
+      background: #11457E;
+      color: #ffffff;
+    }
+
+    .tier-ukrainian-premier-league {
+      background: #FFD700;
+      color: #000000;
+    }
+
     @media (max-width: 600px) {
       #compare-chart { height: 420px; }
     }
@@ -266,6 +317,16 @@
         <option value="italy">Italy</option>
         <option value="germany">Germany</option>
         <option value="france">France</option>
+        <option value="portugal">Portugal</option>
+        <option value="netherlands">Netherlands</option>
+        <option value="belgium">Belgium</option>
+        <option value="austria">Austria</option>
+        <option value="turkey">Turkey</option>
+        <option value="scotland">Scotland</option>
+        <option value="switzerland">Switzerland</option>
+        <option value="greece">Greece</option>
+        <option value="czechia">Czechia</option>
+        <option value="ukraine">Ukraine</option>
       </select>
 
       <label for="league">League:</label>
@@ -424,7 +485,18 @@
       '2. Bundesliga': '2. Bundesliga',
 
       'Ligue 1': 'Ligue 1',
-      'Ligue 2': 'Ligue 2'
+      'Ligue 2': 'Ligue 2',
+
+      'Primeira Liga': 'Primeira Liga',
+      'Eredivisie': 'Eredivisie',
+      'Belgian Pro League': 'Belgian Pro League',
+      'Austrian Bundesliga': 'Austrian Bundesliga',
+      'Süper Lig': 'Süper Lig',
+      'Scottish Premiership': 'Scottish Premiership',
+      'Swiss Super League': 'Swiss Super League',
+      'Super League Greece': 'Super League Greece',
+      'Czech First League': 'Czech First League',
+      'Ukrainian Premier League': 'Ukrainian Premier League'
     };
 
     return labels[div] || div || '';
@@ -450,6 +522,17 @@
 
     if (s === 'ligue 1') return 'tier-ligue-1';
     if (s === 'ligue 2') return 'tier-ligue-2';
+
+    if (s === 'primeira liga') return 'tier-primeira-liga';
+    if (s === 'eredivisie') return 'tier-eredivisie';
+    if (s === 'belgian pro league') return 'tier-belgian-pro-league';
+    if (s === 'austrian bundesliga') return 'tier-austrian-bundesliga';
+    if (s === 'süper lig' || s === 'super lig') return 'tier-super-lig';
+    if (s === 'scottish premiership') return 'tier-scottish-premiership';
+    if (s === 'swiss super league') return 'tier-swiss-super-league';
+    if (s === 'super league greece') return 'tier-super-league-greece';
+    if (s === 'czech first league') return 'tier-czech-first-league';
+    if (s === 'ukrainian premier league') return 'tier-ukrainian-premier-league';
 
     return '';
   }
@@ -552,6 +635,17 @@ tr.appendChild(tdRank);
       return 'france';
     }
 
+    if (div === 'primeira liga') return 'portugal';
+    if (div === 'eredivisie') return 'netherlands';
+    if (div === 'belgian pro league') return 'belgium';
+    if (div === 'austrian bundesliga') return 'austria';
+    if (div === 'süper lig' || div === 'super lig') return 'turkey';
+    if (div === 'scottish premiership') return 'scotland';
+    if (div === 'swiss super league') return 'switzerland';
+    if (div === 'super league greece') return 'greece';
+    if (div === 'czech first league') return 'czechia';
+    if (div === 'ukrainian premier league') return 'ukraine';
+
     return '';
   }
 
@@ -577,7 +671,18 @@ const leagueOrder = [
   'Serie B',
 
   'La Liga',
-  'Segunda División'
+  'Segunda División',
+
+  'Primeira Liga',
+  'Eredivisie',
+  'Belgian Pro League',
+  'Austrian Bundesliga',
+  'Süper Lig',
+  'Scottish Premiership',
+  'Swiss Super League',
+  'Super League Greece',
+  'Czech First League',
+  'Ukrainian Premier League'
 ];
 
 const leagues = Array.from(
