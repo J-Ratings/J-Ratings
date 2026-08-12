@@ -547,12 +547,19 @@
     const tbody = document.querySelector('#teams tbody');
     tbody.innerHTML = '';
 
+    const q = document.getElementById('q').value.trim();
+    const country = document.getElementById('country').value;
+    const league = document.getElementById('league').value;
+    const hasActiveFilter = q !== '' || country !== 'all' || league !== 'all';
+
     state.filtered.forEach((r, i) => {
       const tr = document.createElement('tr');
 
-const tdRank = document.createElement('td');
-tdRank.textContent = r.rank;
-tr.appendChild(tdRank);
+      const tdRank = document.createElement('td');
+      tdRank.textContent = hasActiveFilter
+        ? `${i + 1} (${r.rank})`
+        : String(r.rank);
+      tr.appendChild(tdRank);
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');

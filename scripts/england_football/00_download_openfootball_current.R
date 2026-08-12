@@ -353,40 +353,25 @@ champions_league_jobs <- data.frame(
 # -----------------------------
 # Smaller European top divisions
 # -----------------------------
-# Historical files are downloaded once if missing. The current season is
-# checked/refreshed on normal runs. Gaps in OpenFootball coverage are deliberate.
+# Historical files are now fully cached. Normal runs check/refresh ONLY the
+# current season. Gaps in OpenFootball coverage are deliberate.
 
 portugal_jobs <- make_flat_europe_league_jobs(
-  add_current_season(
-    c(
-      "2018-19", "2019-20", "2020-21", "2021-22",
-      "2022-23", "2023-24", "2024-25", "2025-26", "2026-27"
-    ),
-    season_folder
-  ),
+  season_folder,
   "portugal",
   "pt1",
   "1-primeira-liga.txt"
 )
 
 netherlands_jobs <- make_flat_europe_league_jobs(
-  add_current_season(
-    c(
-      "2018-19", "2019-20", "2020-21", "2021-22",
-      "2022-23", "2023-24", "2024-25", "2025-26", "2026-27"
-    ),
-    season_folder
-  ),
+  season_folder,
   "netherlands",
   "nl1",
   "1-eredivisie.txt"
 )
 
 austria_jobs <- make_repo_league_jobs(
-  add_current_season(
-    vapply(2010:2025, season_folder_from_start_year, character(1)),
-    season_folder
-  ),
+  season_folder,
   "austria",
   "austria",
   "1-bundesliga.txt",
@@ -394,13 +379,7 @@ austria_jobs <- make_repo_league_jobs(
 )
 
 belgium_jobs <- make_repo_league_jobs(
-  add_current_season(
-    c(
-      "2018-19", "2019-20", "2021-22",
-      "2023-24", "2024-25", "2025-26", "2026-27"
-    ),
-    season_folder
-  ),
+  season_folder,
   "belgium",
   "belgium",
   "be1.txt",
@@ -408,72 +387,42 @@ belgium_jobs <- make_repo_league_jobs(
 )
 
 switzerland_jobs <- make_flat_europe_league_jobs(
-  add_current_season(
-    c(
-      "2014-15", "2018-19", "2019-20", "2020-21",
-      "2023-24", "2024-25"
-    ),
-    season_folder
-  ),
+  season_folder,
   "switzerland",
   "ch1",
   "1-swiss-super-league.txt"
 )
 
 scotland_jobs <- make_flat_europe_league_jobs(
-  add_current_season(
-    c(
-      "2018-19", "2019-20", "2020-21",
-      "2023-24", "2024-25", "2025-26"
-    ),
-    season_folder
-  ),
+  season_folder,
   "scotland",
   "sco1",
   "1-scottish-premiership.txt"
 )
 
 turkey_jobs <- make_flat_europe_league_jobs(
-  add_current_season(
-    c(
-      "2018-19", "2019-20", "2020-21",
-      "2023-24", "2024-25", "2025-26"
-    ),
-    season_folder
-  ),
+  season_folder,
   "turkey",
   "tr1",
   "1-super-lig.txt"
 )
 
 greece_jobs <- make_flat_europe_league_jobs(
-  add_current_season(
-    c(
-      "2018-19", "2019-20", "2020-21",
-      "2023-24", "2024-25", "2025-26"
-    ),
-    season_folder
-  ),
+  season_folder,
   "greece",
   "gr1",
   "1-super-league-greece.txt"
 )
 
 czechia_jobs <- make_flat_europe_league_jobs(
-  add_current_season(
-    c("2018-19", "2020-21", "2023-24", "2024-25"),
-    season_folder
-  ),
+  season_folder,
   "czech-republic",
   "cz1",
   "1-czech-first-league.txt"
 )
 
 ukraine_jobs <- make_flat_europe_league_jobs(
-  add_current_season(
-    c("2023-24", "2024-25"),
-    season_folder
-  ),
+  season_folder,
   "ukraine",
   "ua1",
   "1-ukrainian-premier-league.txt"
@@ -481,10 +430,7 @@ ukraine_jobs <- make_flat_europe_league_jobs(
 
 
 dfb_pokal_jobs <- make_repo_league_jobs(
-  add_current_season(
-    vapply(2010:2025, season_folder_from_start_year, character(1)),
-    season_folder
-  ),
+  season_folder,
   "deutschland",
   "deutschland",
   "cup.txt",
@@ -537,10 +483,8 @@ for (i in seq_len(nrow(download_jobs))) {
     job$local_file
   )
   
-  # Historical files are cached once. Current-season files are refreshed.
-  should_refresh <- identical(as.character(job$season), season_folder)
-  
-  if (file.exists(dest) && !should_refresh) {
+  # Every configured job is now current-season only, so refresh it each run.
+  if (FALSE) {
     result <- "already_exists"
   } else {
     base_url <- paste0(
@@ -603,13 +547,13 @@ print(download_results)
 current_start_year <- season_start_year(season_folder)
 
 wikipedia_jobs <- rbind(
-  make_wikipedia_jobs(2011L, current_start_year, "europa_league"),
-  make_wikipedia_jobs(2021L, current_start_year, "conference_league"),
-  make_wikipedia_domestic_cup_jobs(1998L, current_start_year, "fa_cup"),
-  make_wikipedia_domestic_cup_jobs(1998L, current_start_year, "efl_cup"),
-  make_wikipedia_domestic_cup_jobs(2012L, current_start_year, "copa_del_rey"),
-  make_wikipedia_domestic_cup_jobs(2013L, current_start_year, "coppa_italia"),
-  make_wikipedia_domestic_cup_jobs(2014L, current_start_year, "coupe_de_france")
+  make_wikipedia_jobs(current_start_year, current_start_year, "europa_league"),
+  make_wikipedia_jobs(current_start_year, current_start_year, "conference_league"),
+  make_wikipedia_domestic_cup_jobs(current_start_year, current_start_year, "fa_cup"),
+  make_wikipedia_domestic_cup_jobs(current_start_year, current_start_year, "efl_cup"),
+  make_wikipedia_domestic_cup_jobs(current_start_year, current_start_year, "copa_del_rey"),
+  make_wikipedia_domestic_cup_jobs(current_start_year, current_start_year, "coppa_italia"),
+  make_wikipedia_domestic_cup_jobs(current_start_year, current_start_year, "coupe_de_france")
 )
 
 wikimedia_user_agent <- Sys.getenv(
@@ -645,8 +589,8 @@ for (i in seq_len(nrow(wikipedia_jobs))) {
   
   is_current <- isTRUE(job$refresh_current)
   
-  # Historical pages are cached once; only the current season refreshes.
-  if (file.exists(dest) && !is_current) {
+  # Every configured Wikipedia job is now current-season only.
+  if (FALSE) {
     result <- "already_exists"
   } else {
     result <- tryCatch(
