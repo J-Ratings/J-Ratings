@@ -167,6 +167,53 @@ wikipedia_page_url <- function(page_title) {
   )
 }
 
+
+make_flat_europe_league_jobs <- function(
+    seasons,
+    source_folder,
+    remote_suffix,
+    local_file
+) {
+  seasons <- unique(as.character(seasons))
+  
+  data.frame(
+    repo = rep("europe", length(seasons)),
+    source_folder = rep(source_folder, length(seasons)),
+    season = seasons,
+    remote_file = paste0(
+      source_folder, "/",
+      seasons, "_", remote_suffix, ".txt"
+    ),
+    local_file = rep(local_file, length(seasons)),
+    required = rep(FALSE, length(seasons)),
+    stringsAsFactors = FALSE
+  )
+}
+
+make_repo_league_jobs <- function(
+    seasons,
+    repo,
+    source_folder,
+    remote_file,
+    local_file
+) {
+  seasons <- unique(as.character(seasons))
+  
+  data.frame(
+    repo = rep(repo, length(seasons)),
+    source_folder = rep(source_folder, length(seasons)),
+    season = seasons,
+    remote_file = rep(remote_file, length(seasons)),
+    local_file = rep(local_file, length(seasons)),
+    required = rep(FALSE, length(seasons)),
+    stringsAsFactors = FALSE
+  )
+}
+
+add_current_season <- function(seasons, current_season) {
+  unique(c(as.character(seasons), as.character(current_season)))
+}
+
 # -----------------------------
 # Current season
 # -----------------------------
@@ -263,13 +310,153 @@ champions_league_jobs <- data.frame(
   stringsAsFactors = FALSE
 )
 
+
+# -----------------------------
+# Smaller European top divisions
+# -----------------------------
+# Historical files are downloaded once if missing. The current season is
+# checked/refreshed on normal runs. Gaps in OpenFootball coverage are deliberate.
+
+portugal_jobs <- make_flat_europe_league_jobs(
+  add_current_season(
+    c(
+      "2018-19", "2019-20", "2020-21", "2021-22",
+      "2022-23", "2023-24", "2024-25", "2025-26", "2026-27"
+    ),
+    season_folder
+  ),
+  "portugal",
+  "pt1",
+  "1-primeira-liga.txt"
+)
+
+netherlands_jobs <- make_flat_europe_league_jobs(
+  add_current_season(
+    c(
+      "2018-19", "2019-20", "2020-21", "2021-22",
+      "2022-23", "2023-24", "2024-25", "2025-26", "2026-27"
+    ),
+    season_folder
+  ),
+  "netherlands",
+  "nl1",
+  "1-eredivisie.txt"
+)
+
+austria_jobs <- make_repo_league_jobs(
+  add_current_season(
+    vapply(2010:2025, season_folder_from_start_year, character(1)),
+    season_folder
+  ),
+  "austria",
+  "austria",
+  "1-bundesliga.txt",
+  "1-austrian-bundesliga.txt"
+)
+
+belgium_jobs <- make_repo_league_jobs(
+  add_current_season(
+    c(
+      "2018-19", "2019-20", "2021-22",
+      "2023-24", "2024-25", "2025-26", "2026-27"
+    ),
+    season_folder
+  ),
+  "belgium",
+  "belgium",
+  "be1.txt",
+  "1-belgian-pro-league.txt"
+)
+
+switzerland_jobs <- make_flat_europe_league_jobs(
+  add_current_season(
+    c(
+      "2014-15", "2018-19", "2019-20", "2020-21",
+      "2023-24", "2024-25"
+    ),
+    season_folder
+  ),
+  "switzerland",
+  "ch1",
+  "1-swiss-super-league.txt"
+)
+
+scotland_jobs <- make_flat_europe_league_jobs(
+  add_current_season(
+    c(
+      "2018-19", "2019-20", "2020-21",
+      "2023-24", "2024-25", "2025-26"
+    ),
+    season_folder
+  ),
+  "scotland",
+  "sco1",
+  "1-scottish-premiership.txt"
+)
+
+turkey_jobs <- make_flat_europe_league_jobs(
+  add_current_season(
+    c(
+      "2018-19", "2019-20", "2020-21",
+      "2023-24", "2024-25", "2025-26"
+    ),
+    season_folder
+  ),
+  "turkey",
+  "tr1",
+  "1-super-lig.txt"
+)
+
+greece_jobs <- make_flat_europe_league_jobs(
+  add_current_season(
+    c(
+      "2018-19", "2019-20", "2020-21",
+      "2023-24", "2024-25", "2025-26"
+    ),
+    season_folder
+  ),
+  "greece",
+  "gr1",
+  "1-super-league-greece.txt"
+)
+
+czechia_jobs <- make_flat_europe_league_jobs(
+  add_current_season(
+    c("2018-19", "2020-21", "2023-24", "2024-25"),
+    season_folder
+  ),
+  "czech-republic",
+  "cz1",
+  "1-czech-first-league.txt"
+)
+
+ukraine_jobs <- make_flat_europe_league_jobs(
+  add_current_season(
+    c("2023-24", "2024-25"),
+    season_folder
+  ),
+  "ukraine",
+  "ua1",
+  "1-ukrainian-premier-league.txt"
+)
+
 download_jobs <- rbind(
   england_jobs,
   spain_jobs,
   italy_jobs,
   germany_jobs,
   france_jobs,
-  champions_league_jobs
+  champions_league_jobs,
+  portugal_jobs,
+  netherlands_jobs,
+  austria_jobs,
+  belgium_jobs,
+  switzerland_jobs,
+  scotland_jobs,
+  turkey_jobs,
+  greece_jobs,
+  czechia_jobs,
+  ukraine_jobs
 )
 
 # -----------------------------
@@ -298,9 +485,8 @@ for (i in seq_len(nrow(download_jobs))) {
     job$local_file
   )
   
-  # Every OpenFootball job in this script is the current season, including
-  # Champions League. Refresh it on each normal pipeline run.
-  should_refresh <- TRUE
+  # Historical files are cached once. Current-season files are refreshed.
+  should_refresh <- identical(as.character(job$season), season_folder)
   
   if (file.exists(dest) && !should_refresh) {
     result <- "already_exists"
@@ -313,8 +499,9 @@ for (i in seq_len(nrow(download_jobs))) {
     
     url <- paste(base_url, job$season, job$remote_file, sep = "/")
     
-    # France remote files are flat under /france rather than /<season>/.
-    if (job$repo == "europe" && job$source_folder == "france") {
+    # The OpenFootball Europe repository stores country files flat inside
+    # country folders, with the season embedded in the filename.
+    if (job$repo == "europe") {
       url <- paste(base_url, job$remote_file, sep = "/")
     }
     

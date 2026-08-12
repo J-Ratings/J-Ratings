@@ -1,5 +1,8 @@
 Country,Competition,CompetitionType,League,Tier,Source,Date,Home,Away
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-05-31,Málaga,Burgos
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-05-31,Adana Demirspor,Gaziantep FK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-05-31,Alanyaspor,Sivasspor
+Austria,austrian_bundesliga,league,Austrian Bundesliga,1,openfootball,2025-06-01,Rapid Wien,LASK
 Italy,serie_b,league,Serie B,2,openfootball,2025-06-01,Spezia,Cremonese
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Almería,Tenerife
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Cartagena,Mirandés
@@ -9,6 +12,8 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Huesca
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Levante,Eibar
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Racing Santander,Granada
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Real Oviedo,Cádiz
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-06-01,Bodrum FK,Beşiktaş
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-06-01,Samsunspor,Kayserispor
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-05,Real Sociedad B,Huesca
 France,ligue_2,league,Ligue 2,2,openfootball,2025-11-07,Bastia,Reims
 France,ligue_2,league,Ligue 2,2,openfootball,2025-11-07,Clermont,Amiens
@@ -19,6 +24,7 @@ France,ligue_2,league,Ligue 2,2,openfootball,2025-11-07,Nancy,Laval
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-07,Dynamo Dresden,Nürnberg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-07,Greuther Fürth,Preußen Münster
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-07,Mirandés,Sporting Gijón
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-07,Gençlerbirliği,İstanbul Başakşehir
 France,ligue_2,league,Ligue 2,2,openfootball,2025-11-08,Guingamp,Pau
 France,ligue_2,league,Ligue 2,2,openfootball,2025-11-08,Le Mans,Red Star
 France,ligue_2,league,Ligue 2,2,openfootball,2025-11-08,Troyes,Saint-Étienne
@@ -26,18 +32,39 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-08,Arminia Biel
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-08,Hannover 96,Darmstadt 98
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-08,Kaiserslautern,Hertha Berlin
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-08,Schalke 04,Elversberg
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-08,Panetolikos,AE Lárissa
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-08,Falkirk FC,Livingston FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-08,St. Mirren FC,Hibernian FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-08,Deportivo La Coruña,Cultural Leonesa
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-08,Eibar,Albacete
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-08,Huesca,Andorra
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-08,Málaga,Córdoba
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-08,Real Sociedad B,Leganés
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-08,Antalyaspor,Beşiktaş
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-08,Gaziantep FK,Çaykur Rizespor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-08,Kasımpaşa SK,Göztepe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-08,Trabzonspor,Alanyaspor
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-09,Eintracht Braunschweig,Bochum
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-09,Holstein Kiel,Fortuna Düsseldorf
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-09,Magdeburg,Paderborn
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-09,AE Kifisias,Olympiakos Piraeus
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-09,Aris Saloniki,Asteras Tripolis
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-09,Atromitos,Volos NFC
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-09,Levadiakos,Panserraikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-09,OFI Heraklion,AEK Athen
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-09,Panathinaikos,PAOK Saloniki
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-09,Aberdeen FC,Motherwell FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-09,Celtic FC,Kilmarnock FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-09,Dundee FC,Rangers FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-09,Heart of Midlothian,Dundee United
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-09,Ceuta,Almería
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-09,Cádiz,Real Valladolid
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-09,Granada,Real Zaragoza
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-09,Las Palmas,Racing Santander
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-09,Fatih Karagümrük,Konyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-09,Fenerbahçe,Kayserispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-09,Kocaelispor,Galatasaray
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-09,Samsunspor,Eyüpspor
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-10,Burgos,Castellón
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-14,Real Valladolid,Las Palmas
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-15,Albacete,Andorra
@@ -65,46 +92,108 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-22,Darmstadt 98
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-22,Fortuna Düsseldorf,Magdeburg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-22,Paderborn,Hannover 96
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-22,Preußen Münster,Schalke 04
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-22,Asteras Tripolis,Panetolikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-22,Olympiakos Piraeus,Atromitos
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-22,Dundee United,Falkirk FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-22,Hibernian FC,Dundee FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-22,Kilmarnock FC,Motherwell FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-22,Rangers FC,Livingston FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-22,St. Mirren FC,Celtic FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-22,Andorra,Castellón
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-22,Eibar,Real Zaragoza
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-22,Granada,Córdoba
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-22,Leganés,Almería
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-22,Eyüpspor,Fatih Karagümrük
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-22,Galatasaray,Gençlerbirliği
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-22,Kayserispor,Gaziantep FK
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-23,Kaiserslautern,Holstein Kiel
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-23,Karlsruher SC,Elversberg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-23,Nürnberg,Arminia Bielefeld
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-23,AEK Athen,Aris Saloniki
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-23,PAOK Saloniki,AE Kifisias
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-23,Panserraikos,Panathinaikos
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-23,Aberdeen FC,Heart of Midlothian
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-23,Burgos,Racing Santander
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-23,Cádiz,Cultural Leonesa
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-23,Deportivo La Coruña,Ceuta
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-23,Huesca,Sporting Gijón
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-23,Málaga,Mirandés
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-23,Alanyaspor,Kasımpaşa SK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-23,Beşiktaş,Samsunspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-23,Göztepe,Kocaelispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-23,Çaykur Rizespor,Fenerbahçe
 France,ligue_2,league,Ligue 2,2,openfootball,2025-11-24,Reims,Montpellier
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-24,AE Lárissa,OFI Heraklion
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-24,Volos NFC,Levadiakos
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-24,Real Sociedad B,Real Valladolid
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-24,Konyaspor,Antalyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-24,İstanbul Başakşehir,Trabzonspor
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-25,Motherwell FC,Hibernian FC
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-28,Hannover 96,Karlsruher SC
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-28,Schalke 04,Paderborn
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-28,Sporting Gijón,Andorra
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-28,Kocaelispor,Gençlerbirliği
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-11-29,FCV Dender EH,KVC Westerlo
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-11-29,SV Zulte Waregem,Cercle Brugge
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-11-29,Sporting Charleroi,RAAL La Louviére
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-29,Eintracht Braunschweig,Kaiserslautern
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-29,Greuther Fürth,Bochum
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-29,Holstein Kiel,Hertha Berlin
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-29,Magdeburg,Nürnberg
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-29,AE Kifisias,Panserraikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-29,Aris Saloniki,AE Lárissa
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-29,OFI Heraklion,Volos NFC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-29,Dundee FC,St. Mirren FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-29,Kilmarnock FC,Dundee United
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-29,Motherwell FC,Heart of Midlothian
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-29,Albacete,Deportivo La Coruña
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-29,Almería,Huesca
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-29,Ceuta,Burgos
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-29,Cultural Leonesa,Granada
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-29,Real Valladolid,Málaga
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-29,Gaziantep FK,Eyüpspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-29,Kasımpaşa SK,İstanbul Başakşehir
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-29,Trabzonspor,Konyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-29,Çaykur Rizespor,Kayserispor
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-11-30,Club Brugge KV,Royal Antwerp FC
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-11-30,KAA Gent,Sint-Truidense VV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-11-30,KRC Genk,Oud-Heverlee Leuven
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-11-30,RSC Anderlecht,Union Saint-Gilloise
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-30,Arminia Bielefeld,Preußen Münster
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-30,Dynamo Dresden,Fortuna Düsseldorf
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-30,Elversberg,Darmstadt 98
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-30,Atromitos,Asteras Tripolis
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-30,Levadiakos,PAOK Saloniki
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-30,Panathinaikos,AEK Athen
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-30,Panetolikos,Olympiakos Piraeus
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-30,Hibernian FC,Celtic FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-30,Livingston FC,Aberdeen FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-30,Rangers FC,Falkirk FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-30,Castellón,Las Palmas
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-30,Córdoba,Cádiz
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-30,Racing Santander,Eibar
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-30,Real Zaragoza,Leganés
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-30,Antalyaspor,Göztepe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-30,Fatih Karagümrük,Beşiktaş
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-01,Mirandés,Real Sociedad B
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-01,Fenerbahçe,Galatasaray
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-01,Samsunspor,Alanyaspor
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-03,Aberdeen FC,St. Mirren FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-03,Celtic FC,Dundee FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-03,Dundee United,Rangers FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-03,Falkirk FC,Motherwell FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-03,Heart of Midlothian,Kilmarnock FC
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-05,RAAL La Louviére,FCV Dender EH
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-05,Bastia,Red Star
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-05,Clermont,Boulogne
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-05,Grenoble,Nancy
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-05,Guingamp,Annecy
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-05,Le Mans,Amiens
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-05,Burgos,Albacete
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-05,Galatasaray,Samsunspor
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-06,KVC Westerlo,RSC Anderlecht
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-06,Sint-Truidense VV,Club Brugge KV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-06,Union Saint-Gilloise,KAA Gent
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-06,Dunkerque,Saint-Étienne
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-06,Montpellier,Pau
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-06,Troyes,Rodez
@@ -117,17 +206,43 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-06,Kaiserslaute
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-06,Nürnberg,Greuther Fürth
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-06,Paderborn,Elversberg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-06,Preußen Münster,Hannover 96
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-06,Olympiakos Piraeus,OFI Heraklion
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-06,Volos NFC,AE Kifisias
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-06,Dundee FC,Aberdeen FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-06,Hibernian FC,Falkirk FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-06,Kilmarnock FC,Rangers FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-06,Motherwell FC,Livingston FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-06,St. Mirren FC,Dundee United
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-06,Andorra,Almería
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-06,Huesca,Real Valladolid
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-06,Real Sociedad B,Sporting Gijón
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-06,Eyüpspor,Kayserispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-06,Konyaspor,Çaykur Rizespor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-06,İstanbul Başakşehir,Fenerbahçe
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-07,Cercle Brugge,Standard Liège
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-07,KV Mechelen,Sporting Charleroi
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-07,Oud-Heverlee Leuven,SV Zulte Waregem
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-07,Royal Antwerp FC,KRC Genk
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-07,AE Lárissa,Panathinaikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-07,AEK Athen,Atromitos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-07,Asteras Tripolis,Levadiakos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-07,PAOK Saloniki,Aris Saloniki
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-07,Celtic FC,Heart of Midlothian
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-07,Cádiz,Racing Santander
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-07,Deportivo La Coruña,Castellón
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-07,Eibar,Cultural Leonesa
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-07,Granada,Ceuta
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-07,Leganés,Córdoba
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-07,Gençlerbirliği,Fatih Karagümrük
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-07,Göztepe,Trabzonspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-07,Kocaelispor,Kasımpaşa SK
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-08,Reims,Laval
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-08,Panserraikos,Panetolikos
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-08,Las Palmas,Mirandés
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-08,Málaga,Real Zaragoza
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-08,Alanyaspor,Antalyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-08,Beşiktaş,Gaziantep FK
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-12,Standard Liège,Oud-Heverlee Leuven
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-12,Annecy,Le Mans
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-12,Laval,Dunkerque
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-12,Nancy,Clermont
@@ -142,9 +257,33 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-12,Hannover 96,
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-12,Karlsruher SC,Paderborn
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-12,Magdeburg,Holstein Kiel
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-12,Schalke 04,Nürnberg
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-12,Kasımpaşa SK,Gençlerbirliği
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-13,Cercle Brugge,KV Mechelen
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-13,RSC Anderlecht,Sint-Truidense VV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-13,SV Zulte Waregem,RAAL La Louviére
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-13,Grenoble,Montpellier
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-13,Red Star,Reims
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-13,Saint-Étienne,Bastia
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-13,AE Kifisias,Asteras Tripolis
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-13,Levadiakos,AE Lárissa
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-13,OFI Heraklion,Panserraikos
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-13,Dundee United,Motherwell FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-13,Heart of Midlothian,St. Mirren FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-13,Livingston FC,Dundee FC
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-13,Antalyaspor,Galatasaray
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-13,Kayserispor,Alanyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-13,Çaykur Rizespor,Eyüpspor
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-14,FCV Dender EH,Club Brugge KV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-14,KAA Gent,Royal Antwerp FC
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-14,KRC Genk,KVC Westerlo
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-14,Sporting Charleroi,Union Saint-Gilloise
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-14,Aris Saloniki,Olympiakos Piraeus
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-14,Atromitos,PAOK Saloniki
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-14,Panathinaikos,Volos NFC
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-14,Panetolikos,AEK Athen
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-14,Aberdeen FC,Kilmarnock FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-14,Falkirk FC,Celtic FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-14,Rangers FC,Hibernian FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-14,Albacete,Málaga
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-14,Almería,Burgos
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-14,Castellón,Mirandés
@@ -156,7 +295,17 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-14,Racing
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-14,Real Valladolid,Andorra
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-14,Real Zaragoza,Cádiz
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-14,Sporting Gijón,Granada
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-14,Fatih Karagümrük,Kocaelispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-14,Fenerbahçe,Konyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-14,Gaziantep FK,Göztepe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-14,Samsunspor,İstanbul Başakşehir
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-14,Trabzonspor,Beşiktaş
 France,ligue_2,league,Ligue 2,2,openfootball,2025-12-15,Boulogne,Troyes
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-17,Dundee United,Celtic FC
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-19,Sporting Charleroi,KRC Genk
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-20,FCV Dender EH,Standard Liège
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-20,KVC Westerlo,RAAL La Louviére
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-20,Union Saint-Gilloise,SV Zulte Waregem
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-20,Bochum,Karlsruher SC
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-20,Eintracht Braunschweig,Schalke 04
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-20,Fortuna Düsseldorf,Greuther Fürth
@@ -166,6 +315,22 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-20,Kaiserslaute
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-20,Nürnberg,Hannover 96
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-20,Paderborn,Darmstadt 98
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-12-20,Preußen Münster,Elversberg
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-20,Asteras Tripolis,Aris Saloniki
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-20,Olympiakos Piraeus,AE Kifisias
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-20,Volos NFC,Panetolikos
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-20,Dundee United,Hibernian FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-20,Heart of Midlothian,Rangers FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-20,Kilmarnock FC,Falkirk FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-20,Motherwell FC,Dundee FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-20,St. Mirren FC,Livingston FC
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-21,Club Brugge KV,KAA Gent
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-21,Oud-Heverlee Leuven,Cercle Brugge
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-21,Royal Antwerp FC,RSC Anderlecht
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-21,Sint-Truidense VV,KV Mechelen
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-21,AE Lárissa,Atromitos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-21,AEK Athen,OFI Heraklion
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-21,PAOK Saloniki,Panathinaikos
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-21,Celtic FC,Aberdeen FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-21,Andorra,Deportivo La Coruña
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-21,Burgos,Real Zaragoza
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-21,Cádiz,Castellón
@@ -177,6 +342,36 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-21,Legan�
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-21,Mirandés,Córdoba
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-21,Málaga,Almería
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-12-21,Real Sociedad B,Ceuta
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-21,Alanyaspor,Fatih Karagümrük
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-21,Beşiktaş,Çaykur Rizespor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-21,Eyüpspor,Fenerbahçe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-21,Galatasaray,Kasımpaşa SK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-21,Gençlerbirliği,Trabzonspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-21,Göztepe,Samsunspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-21,Kocaelispor,Antalyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-21,Konyaspor,Kayserispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2025-12-21,İstanbul Başakşehir,Gaziantep FK
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-12-22,Panserraikos,Levadiakos
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-26,Cercle Brugge,Union Saint-Gilloise
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-26,KRC Genk,Club Brugge KV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-26,RSC Anderlecht,Sporting Charleroi
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-26,Standard Liège,Sint-Truidense VV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-27,KAA Gent,KVC Westerlo
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-27,KV Mechelen,FCV Dender EH
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-27,RAAL La Louviére,Oud-Heverlee Leuven
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2025-12-27,Royal Antwerp FC,SV Zulte Waregem
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-27,Aberdeen FC,Dundee United
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-27,Dundee FC,Falkirk FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-27,Hibernian FC,Heart of Midlothian
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-27,Livingston FC,Celtic FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-27,Rangers FC,Motherwell FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-27,St. Mirren FC,Kilmarnock FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-30,Dundee FC,Kilmarnock FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-30,Falkirk FC,Heart of Midlothian
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-30,Hibernian FC,Aberdeen FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-30,Livingston FC,Dundee United
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-30,Motherwell FC,Celtic FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-30,Rangers FC,St. Mirren FC
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Amiens,Nancy
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Bastia,Grenoble
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Clermont,Laval
@@ -186,6 +381,12 @@ France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Montpellier,Dunkerque
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Pau,Rodez
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Reims,Annecy
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Troyes,Red Star
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-03,Celtic FC,Rangers FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-03,Dundee United,Dundee FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-03,Falkirk FC,Aberdeen FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-03,Heart of Midlothian,Livingston FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-03,Kilmarnock FC,Hibernian FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-03,Motherwell FC,St. Mirren FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-04,Albacete,Leganés
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-04,Almería,Granada
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-04,Castellón,Huesca
@@ -197,6 +398,21 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-04,Eibar,
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-04,Real Valladolid,Racing Santander
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-04,Real Zaragoza,Las Palmas
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-04,Sporting Gijón,Málaga
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-06,Livingston FC,St. Mirren FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-06,Rangers FC,Aberdeen FC
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-10,AE Kifisias,AE Lárissa
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-10,Aris Saloniki,AEK Athen
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-10,Atromitos,Olympiakos Piraeus
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-10,Levadiakos,Volos NFC
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-10,OFI Heraklion,Asteras Tripolis
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-10,Panathinaikos,Panserraikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-10,Panetolikos,PAOK Saloniki
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-10,Aberdeen FC,Rangers FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-10,Celtic FC,Dundee United
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-10,Dundee FC,Heart of Midlothian
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-10,Hibernian FC,Motherwell FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-10,Livingston FC,Kilmarnock FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-10,St. Mirren FC,Falkirk FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-11,Andorra,Cultural Leonesa
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-11,Burgos,Eibar
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-11,Cádiz,Sporting Gijón
@@ -217,6 +433,14 @@ France,ligue_2,league,Ligue 2,2,openfootball,2026-01-16,Nancy,Guingamp
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-16,Rodez,Le Mans
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-16,Saint-Étienne,Clermont
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-16,Troyes,Reims
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-17,Club Brugge KV,RAAL La Louviére
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-17,FCV Dender EH,Royal Antwerp FC
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-17,KAA Gent,RSC Anderlecht
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-17,KVC Westerlo,Cercle Brugge
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-17,SV Zulte Waregem,KRC Genk
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-17,Sint-Truidense VV,Oud-Heverlee Leuven
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-17,Sporting Charleroi,Standard Liège
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-17,Union Saint-Gilloise,KV Mechelen
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-17,Bochum,Darmstadt 98
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-17,Dynamo Dresden,Greuther Fürth
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-17,Eintracht Braunschweig,Magdeburg
@@ -226,6 +450,13 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-17,Holstein Kie
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-17,Kaiserslautern,Hannover 96
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-17,Nürnberg,Elversberg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-17,Preußen Münster,Karlsruher SC
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-17,AE Lárissa,Aris Saloniki
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-17,AEK Athen,Panathinaikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-17,Asteras Tripolis,Olympiakos Piraeus
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-17,PAOK Saloniki,OFI Heraklion
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-17,Panetolikos,Levadiakos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-17,Panserraikos,AE Kifisias
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-17,Volos NFC,Atromitos
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-18,Albacete,Cádiz
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-18,Almería,Deportivo La Coruña
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-18,Burgos,Huesca
@@ -237,6 +468,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-18,Granad
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-18,Mirandés,Andorra
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-18,Racing Santander,Las Palmas
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-18,Real Zaragoza,Real Sociedad B
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,Alanyaspor,Fenerbahçe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,Beşiktaş,Kayserispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,Galatasaray,Gaziantep FK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,Gençlerbirliği,Samsunspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,Göztepe,Çaykur Rizespor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,Kasımpaşa SK,Antalyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,Kocaelispor,Trabzonspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,Konyaspor,Eyüpspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,İstanbul Başakşehir,Fatih Karagümrük
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-23,Amiens,Laval
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-23,Annecy,Clermont
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-23,Bastia,Montpellier
@@ -255,6 +495,27 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-23,Karlsruher S
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-23,Magdeburg,Dynamo Dresden
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-23,Paderborn,Preußen Münster
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-23,Schalke 04,Kaiserslautern
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-24,Club Brugge KV,SV Zulte Waregem
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-24,KRC Genk,Cercle Brugge
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-24,KV Mechelen,KVC Westerlo
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-24,Oud-Heverlee Leuven,Union Saint-Gilloise
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-24,RAAL La Louviére,Sint-Truidense VV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-24,RSC Anderlecht,FCV Dender EH
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-24,Royal Antwerp FC,Sporting Charleroi
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-24,Standard Liège,KAA Gent
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-24,AE Kifisias,PAOK Saloniki
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-24,AE Lárissa,Panserraikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-24,Aris Saloniki,Levadiakos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-24,Asteras Tripolis,AEK Athen
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-24,Atromitos,Panathinaikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-24,OFI Heraklion,Panetolikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-24,Olympiakos Piraeus,Volos NFC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-24,Aberdeen FC,Livingston FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-24,Dundee United,St. Mirren FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-24,Falkirk FC,Hibernian FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-24,Motherwell FC,Kilmarnock FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-25,Heart of Midlothian,Celtic FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-25,Rangers FC,Dundee FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-25,Andorra,Huesca
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-25,Ceuta,Cultural Leonesa
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-25,Cádiz,Granada
@@ -266,6 +527,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-25,Málag
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-25,Real Valladolid,Albacete
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-25,Real Zaragoza,Castellón
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-25,Sporting Gijón,Mirandés
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Antalyaspor,Gençlerbirliği
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Eyüpspor,Beşiktaş
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Fatih Karagümrük,Galatasaray
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Fenerbahçe,Göztepe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Gaziantep FK,Konyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Kayserispor,İstanbul Başakşehir
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Samsunspor,Kocaelispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Trabzonspor,Kasımpaşa SK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Çaykur Rizespor,Alanyaspor
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-30,Bastia,Nancy
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-30,Clermont,Reims
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-30,Dunkerque,Annecy
@@ -275,6 +545,14 @@ France,ligue_2,league,Ligue 2,2,openfootball,2026-01-30,Montpellier,Guingamp
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-30,Rodez,Red Star
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-30,Saint-Étienne,Boulogne
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-30,Troyes,Le Mans
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-31,Cercle Brugge,Royal Antwerp FC
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-31,FCV Dender EH,KRC Genk
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-31,Oud-Heverlee Leuven,KV Mechelen
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-31,RAAL La Louviére,KAA Gent
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-31,SV Zulte Waregem,KVC Westerlo
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-31,Sint-Truidense VV,Sporting Charleroi
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-31,Standard Liège,RSC Anderlecht
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-31,Union Saint-Gilloise,Club Brugge KV
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-31,Bochum,Schalke 04
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-31,Dynamo Dresden,Arminia Bielefeld
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-31,Eintracht Braunschweig,Karlsruher SC
@@ -284,6 +562,19 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-31,Holstein Kie
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-31,Kaiserslautern,Elversberg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-31,Magdeburg,Hannover 96
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-31,Nürnberg,Preußen Münster
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-31,AEK Athen,Olympiakos Piraeus
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-31,Atromitos,OFI Heraklion
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-31,Levadiakos,Asteras Tripolis
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-31,PAOK Saloniki,Panserraikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-31,Panathinaikos,AE Kifisias
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-31,Panetolikos,Aris Saloniki
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-31,Volos NFC,AE Lárissa
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-31,Dundee United,Heart of Midlothian
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-31,Kilmarnock FC,Aberdeen FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-31,Livingston FC,Motherwell FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-31,St. Mirren FC,Dundee FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-01,Celtic FC,Falkirk FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-01,Hibernian FC,Rangers FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-01,Albacete,Real Zaragoza
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-01,Almería,Ceuta
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-01,Burgos,Leganés
@@ -295,6 +586,21 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-01,Granad
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-01,Huesca,Cádiz
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-01,Mirandés,Málaga
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-01,Real Sociedad B,Las Palmas
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-01,Alanyaspor,Eyüpspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-01,Antalyaspor,Trabzonspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-01,Beşiktaş,Konyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-01,Galatasaray,Kayserispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-01,Gençlerbirliği,Gaziantep FK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-01,Göztepe,Fatih Karagümrük
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-01,Kasımpaşa SK,Samsunspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-01,Kocaelispor,Fenerbahçe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-01,İstanbul Başakşehir,Çaykur Rizespor
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-04,Aberdeen FC,Celtic FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-04,Dundee FC,Motherwell FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-04,Hibernian FC,Dundee United
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-04,Livingston FC,Falkirk FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-04,Rangers FC,Kilmarnock FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-04,St. Mirren FC,Heart of Midlothian
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-06,Amiens,Clermont
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-06,Annecy,Grenoble
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-06,Boulogne,Rodez
@@ -313,6 +619,21 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-06,Karlsruher S
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-06,Paderborn,Nürnberg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-06,Preußen Münster,Bochum
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-06,Schalke 04,Dynamo Dresden
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-07,Club Brugge KV,Standard Liège
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-07,KAA Gent,Oud-Heverlee Leuven
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-07,KRC Genk,RSC Anderlecht
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-07,KV Mechelen,Royal Antwerp FC
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-07,KVC Westerlo,Sint-Truidense VV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-07,SV Zulte Waregem,FCV Dender EH
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-07,Sporting Charleroi,Cercle Brugge
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-07,Union Saint-Gilloise,RAAL La Louviére
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-07,AE Kifisias,Atromitos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-07,AE Lárissa,Panetolikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-07,Aris Saloniki,PAOK Saloniki
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-07,Asteras Tripolis,Volos NFC
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-07,OFI Heraklion,Levadiakos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-07,Olympiakos Piraeus,Panathinaikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-07,Panserraikos,AEK Athen
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-08,Andorra,Real Sociedad B
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-08,Ceuta,Córdoba
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-08,Cádiz,Almería
@@ -324,6 +645,21 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-08,Racing
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-08,Real Valladolid,Castellón
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-08,Real Zaragoza,Eibar
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-08,Sporting Gijón,Huesca
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Beşiktaş,Alanyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Eyüpspor,İstanbul Başakşehir
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Fatih Karagümrük,Antalyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Fenerbahçe,Gençlerbirliği
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Gaziantep FK,Kasımpaşa SK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Kayserispor,Kocaelispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Konyaspor,Göztepe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Samsunspor,Trabzonspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Çaykur Rizespor,Galatasaray
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-11,Celtic FC,Livingston FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-11,Dundee United,Aberdeen FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-11,Falkirk FC,Dundee FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-11,Heart of Midlothian,Hibernian FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-11,Kilmarnock FC,St. Mirren FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-11,Motherwell FC,Rangers FC
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-13,Amiens,Dunkerque
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-13,Bastia,Troyes
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-13,Clermont,Rodez
@@ -333,6 +669,14 @@ France,ligue_2,league,Ligue 2,2,openfootball,2026-02-13,Laval,Annecy
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-13,Montpellier,Le Mans
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-13,Pau,Boulogne
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-13,Red Star,Nancy
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-14,Cercle Brugge,Club Brugge KV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-14,KV Mechelen,KRC Genk
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-14,Oud-Heverlee Leuven,FCV Dender EH
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-14,RSC Anderlecht,RAAL La Louviére
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-14,Royal Antwerp FC,KVC Westerlo
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-14,Sint-Truidense VV,SV Zulte Waregem
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-14,Sporting Charleroi,KAA Gent
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-14,Standard Liège,Union Saint-Gilloise
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-14,Bochum,Paderborn
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-14,Dynamo Dresden,Elversberg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-14,Eintracht Braunschweig,Darmstadt 98
@@ -342,6 +686,19 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-14,Holstein Kie
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-14,Kaiserslautern,Greuther Fürth
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-14,Magdeburg,Arminia Bielefeld
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-14,Nürnberg,Karlsruher SC
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-14,AE Kifisias,OFI Heraklion
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-14,Atromitos,Panserraikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-14,Levadiakos,Olympiakos Piraeus
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-14,PAOK Saloniki,AEK Athen
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-14,Panathinaikos,AE Lárissa
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-14,Panetolikos,Asteras Tripolis
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-14,Volos NFC,Aris Saloniki
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-14,Dundee FC,Livingston FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-14,Falkirk FC,Dundee United
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-14,Hibernian FC,St. Mirren FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-14,Kilmarnock FC,Celtic FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-14,Motherwell FC,Aberdeen FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-14,Rangers FC,Heart of Midlothian
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-15,Albacete,Sporting Gijón
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-15,Almería,Andorra
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-15,Burgos,Cádiz
@@ -353,6 +710,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-15,Granad
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-15,Huesca,Ceuta
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-15,Mirandés,Las Palmas
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-15,Real Sociedad B,Málaga
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,Alanyaspor,Konyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,Antalyaspor,Samsunspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,Galatasaray,Eyüpspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,Gençlerbirliği,Çaykur Rizespor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,Göztepe,Kayserispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,Kasımpaşa SK,Fatih Karagümrük
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,Kocaelispor,Gaziantep FK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,Trabzonspor,Fenerbahçe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,İstanbul Başakşehir,Beşiktaş
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-20,Annecy,Red Star
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-20,Boulogne,Clermont
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-20,Dunkerque,Bastia
@@ -371,6 +737,27 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-20,Karlsruher S
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-20,Paderborn,Hertha Berlin
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-20,Preußen Münster,Kaiserslautern
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-20,Schalke 04,Magdeburg
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-21,Club Brugge KV,Oud-Heverlee Leuven
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-21,FCV Dender EH,Sint-Truidense VV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-21,KAA Gent,Cercle Brugge
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-21,KRC Genk,Standard Liège
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-21,KVC Westerlo,Sporting Charleroi
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-21,RAAL La Louviére,KV Mechelen
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-21,SV Zulte Waregem,RSC Anderlecht
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-21,Union Saint-Gilloise,Royal Antwerp FC
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-21,AE Lárissa,PAOK Saloniki
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-21,AEK Athen,Levadiakos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-21,Aris Saloniki,AE Kifisias
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-21,Asteras Tripolis,Atromitos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-21,OFI Heraklion,Panathinaikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-21,Olympiakos Piraeus,Panetolikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-21,Panserraikos,Volos NFC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-21,Aberdeen FC,Dundee FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-21,Celtic FC,Hibernian FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-21,Dundee United,Kilmarnock FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-21,Heart of Midlothian,Falkirk FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-21,Livingston FC,Rangers FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-21,St. Mirren FC,Motherwell FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-22,Almería,Córdoba
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-22,Andorra,Real Zaragoza
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-22,Ceuta,Granada
@@ -382,6 +769,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-22,Legan�
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-22,Málaga,Albacete
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-22,Racing Santander,Burgos
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-02-22,Sporting Gijón,Real Valladolid
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Alanyaspor,İstanbul Başakşehir
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Beşiktaş,Göztepe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Eyüpspor,Gençlerbirliği
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Fatih Karagümrük,Samsunspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Fenerbahçe,Kasımpaşa SK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Gaziantep FK,Trabzonspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Kayserispor,Antalyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Konyaspor,Galatasaray
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Çaykur Rizespor,Kocaelispor
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-27,Amiens,Troyes
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-27,Bastia,Annecy
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-27,Clermont,Dunkerque
@@ -391,6 +787,14 @@ France,ligue_2,league,Ligue 2,2,openfootball,2026-02-27,Laval,Nancy
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-27,Montpellier,Reims
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-27,Pau,Saint-Étienne
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-27,Red Star,Le Mans
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-28,Cercle Brugge,FCV Dender EH
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-28,KRC Genk,KAA Gent
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-28,KV Mechelen,SV Zulte Waregem
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-28,KVC Westerlo,Union Saint-Gilloise
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-28,RSC Anderlecht,Oud-Heverlee Leuven
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-28,Royal Antwerp FC,Sint-Truidense VV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-28,Sporting Charleroi,Club Brugge KV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-28,Standard Liège,RAAL La Louviére
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-28,Arminia Bielefeld,Hannover 96
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-28,Dynamo Dresden,Darmstadt 98
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-28,Eintracht Braunschweig,Preußen Münster
@@ -400,6 +804,19 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-28,Hertha Berli
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-28,Holstein Kiel,Elversberg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-28,Kaiserslautern,Paderborn
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-28,Magdeburg,Karlsruher SC
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-28,AE Kifisias,Levadiakos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-28,Atromitos,Panetolikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-28,OFI Heraklion,AE Lárissa
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-28,PAOK Saloniki,Asteras Tripolis
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-28,Panathinaikos,Aris Saloniki
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-28,Panserraikos,Olympiakos Piraeus
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-28,Volos NFC,AEK Athen
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-28,Dundee FC,Hibernian FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-28,Falkirk FC,Kilmarnock FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-28,Heart of Midlothian,Aberdeen FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-28,Livingston FC,St. Mirren FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-28,Motherwell FC,Dundee United
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-28,Rangers FC,Celtic FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-01,Albacete,Almería
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-01,Castellón,Racing Santander
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-01,Cultural Leonesa,Las Palmas
@@ -411,6 +828,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-01,Real S
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-01,Real Valladolid,Huesca
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-01,Real Zaragoza,Burgos
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-01,Sporting Gijón,Leganés
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-01,Antalyaspor,Fenerbahçe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-01,Galatasaray,Alanyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-01,Gençlerbirliği,Kayserispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-01,Göztepe,Eyüpspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-01,Kasımpaşa SK,Çaykur Rizespor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-01,Kocaelispor,Beşiktaş
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-01,Samsunspor,Gaziantep FK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-01,Trabzonspor,Fatih Karagümrük
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-01,İstanbul Başakşehir,Konyaspor
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-06,Boulogne,Amiens
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-06,Dunkerque,Reims
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-06,Laval,Guingamp
@@ -429,6 +855,21 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-06,Nürnberg,Fo
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-06,Paderborn,Eintracht Braunschweig
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-06,Preußen Münster,Hertha Berlin
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-06,Schalke 04,Arminia Bielefeld
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-07,Club Brugge KV,RSC Anderlecht
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-07,FCV Dender EH,Sporting Charleroi
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-07,KAA Gent,KV Mechelen
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-07,Oud-Heverlee Leuven,KVC Westerlo
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-07,RAAL La Louviére,Royal Antwerp FC
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-07,SV Zulte Waregem,Standard Liège
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-07,Sint-Truidense VV,Cercle Brugge
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-07,Union Saint-Gilloise,KRC Genk
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-07,AEK Athen,AE Lárissa
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-07,Aris Saloniki,Atromitos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-07,Asteras Tripolis,Panserraikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-07,Levadiakos,Panathinaikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-07,Olympiakos Piraeus,PAOK Saloniki
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-07,Panetolikos,AE Kifisias
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-07,Volos NFC,OFI Heraklion
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-08,Almería,Cultural Leonesa
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-08,Andorra,Sporting Gijón
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-08,Burgos,Mirandés
@@ -440,6 +881,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-08,Legan�
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-08,Málaga,Real Valladolid
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-08,Racing Santander,Córdoba
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-08,Real Sociedad B,Castellón
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-08,Alanyaspor,Gençlerbirliği
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-08,Beşiktaş,Galatasaray
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-08,Eyüpspor,Kocaelispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-08,Fenerbahçe,Samsunspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-08,Gaziantep FK,Fatih Karagümrük
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-08,Kayserispor,Trabzonspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-08,Konyaspor,Kasımpaşa SK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-08,Çaykur Rizespor,Antalyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-08,İstanbul Başakşehir,Göztepe
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-13,Annecy,Troyes
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-13,Bastia,Boulogne
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-13,Clermont,Pau
@@ -449,6 +899,14 @@ France,ligue_2,league,Ligue 2,2,openfootball,2026-03-13,Montpellier,Laval
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-13,Nancy,Le Mans
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-13,Red Star,Dunkerque
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-13,Reims,Rodez
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-14,Cercle Brugge,RAAL La Louviére
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-14,KAA Gent,SV Zulte Waregem
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-14,KRC Genk,Sint-Truidense VV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-14,KV Mechelen,RSC Anderlecht
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-14,KVC Westerlo,Club Brugge KV
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-14,Royal Antwerp FC,Standard Liège
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-14,Sporting Charleroi,Oud-Heverlee Leuven
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-14,Union Saint-Gilloise,FCV Dender EH
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-14,Arminia Bielefeld,Paderborn
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-14,Dynamo Dresden,Preußen Münster
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-14,Eintracht Braunschweig,Fortuna Düsseldorf
@@ -458,6 +916,19 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-14,Holstein Kie
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-14,Kaiserslautern,Karlsruher SC
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-14,Magdeburg,Darmstadt 98
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-14,Schalke 04,Hannover 96
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-14,AE Kifisias,Volos NFC
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-14,AE Lárissa,Asteras Tripolis
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-14,Atromitos,AEK Athen
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-14,OFI Heraklion,Olympiakos Piraeus
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-14,PAOK Saloniki,Levadiakos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-14,Panathinaikos,Panetolikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-14,Panserraikos,Aris Saloniki
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-03-14,Aberdeen FC,Falkirk FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-03-14,Celtic FC,Motherwell FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-03-14,Dundee FC,Dundee United
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-03-14,Hibernian FC,Livingston FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-03-14,Kilmarnock FC,Heart of Midlothian
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-03-14,St. Mirren FC,Rangers FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-15,Albacete,Las Palmas
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-15,Ceuta,Deportivo La Coruña
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-15,Cultural Leonesa,Racing Santander
@@ -469,6 +940,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-15,Málag
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-15,Real Valladolid,Leganés
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-15,Real Zaragoza,Almería
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-15,Sporting Gijón,Castellón
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Antalyaspor,Gaziantep FK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Fatih Karagümrük,Fenerbahçe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Galatasaray,İstanbul Başakşehir
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Gençlerbirliği,Beşiktaş
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Göztepe,Alanyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Kasımpaşa SK,Eyüpspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Kocaelispor,Konyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Samsunspor,Kayserispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Trabzonspor,Çaykur Rizespor
 Italy,serie_b,league,Serie B,2,openfootball,2026-03-17,Catanzaro,Modena
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-20,Amiens,Le Mans
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-20,Boulogne,Nancy
@@ -488,6 +968,21 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-20,Karlsruher S
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-20,Nürnberg,Kaiserslautern
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-20,Paderborn,Dynamo Dresden
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-20,Preußen Münster,Magdeburg
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-21,Club Brugge KV,KV Mechelen
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-21,FCV Dender EH,KAA Gent
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-21,Oud-Heverlee Leuven,Royal Antwerp FC
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-21,RAAL La Louviére,KRC Genk
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-21,RSC Anderlecht,Cercle Brugge
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-21,SV Zulte Waregem,Sporting Charleroi
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-21,Sint-Truidense VV,Union Saint-Gilloise
+Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-21,Standard Liège,KVC Westerlo
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-21,AEK Athen,AE Kifisias
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-21,Aris Saloniki,OFI Heraklion
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-21,Asteras Tripolis,Panathinaikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-21,Levadiakos,Atromitos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-21,Olympiakos Piraeus,AE Lárissa
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-21,Panetolikos,Panserraikos
+Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-21,Volos NFC,PAOK Saloniki
 Italy,serie_b,league,Serie B,2,openfootball,2026-03-21,Bari,Carrarese
 Italy,serie_b,league,Serie B,2,openfootball,2026-03-21,Cesena,Catanzaro
 Italy,serie_b,league,Serie B,2,openfootball,2026-03-21,Empoli,Pescara
@@ -498,6 +993,12 @@ Italy,serie_b,league,Serie B,2,openfootball,2026-03-21,Padova,Palermo
 Italy,serie_b,league,Serie B,2,openfootball,2026-03-21,Sampdoria,Avellino
 Italy,serie_b,league,Serie B,2,openfootball,2026-03-21,Südtirol,Frosinone
 Italy,serie_b,league,Serie B,2,openfootball,2026-03-21,Virtus Entella,Reggiana
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-03-21,Dundee United,Celtic FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-03-21,Falkirk FC,St. Mirren FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-03-21,Heart of Midlothian,Dundee FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-03-21,Kilmarnock FC,Livingston FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-03-21,Motherwell FC,Hibernian FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-03-21,Rangers FC,Aberdeen FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-22,Andorra,Eibar
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-22,Burgos,Córdoba
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-22,Castellón,Cultural Leonesa
@@ -509,6 +1010,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-22,Legan�
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-22,Mirandés,Real Valladolid
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-22,Racing Santander,Albacete
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-22,Real Sociedad B,Granada
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,Alanyaspor,Kocaelispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,Beşiktaş,Kasımpaşa SK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,Eyüpspor,Trabzonspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,Fenerbahçe,Gaziantep FK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,Göztepe,Galatasaray
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,Kayserispor,Fatih Karagümrük
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,Konyaspor,Gençlerbirliği
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,Çaykur Rizespor,Samsunspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,İstanbul Başakşehir,Antalyaspor
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-29,Albacete,Castellón
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-29,Almería,Real Sociedad B
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-29,Ceuta,Cádiz
@@ -540,6 +1050,12 @@ France,ligue_2,league,Ligue 2,2,openfootball,2026-04-03,Montpellier,Troyes
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-03,Nancy,Saint-Étienne
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-03,Red Star,Laval
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-03,Reims,Boulogne
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-04-04,Dundee FC,Celtic FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-04-04,Hibernian FC,Kilmarnock FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-04-04,Livingston FC,Heart of Midlothian
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-04-04,Motherwell FC,Falkirk FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-04-04,Rangers FC,Dundee United
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-04-04,St. Mirren FC,Aberdeen FC
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-05,Arminia Bielefeld,Darmstadt 98
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-05,Dynamo Dresden,Hertha Berlin
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-05,Eintracht Braunschweig,Nürnberg
@@ -560,6 +1076,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-05,Eibar,
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-05,Las Palmas,Huesca
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-05,Real Zaragoza,Mirandés
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-05,Sporting Gijón,Real Sociedad B
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Antalyaspor,Eyüpspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Fatih Karagümrük,Çaykur Rizespor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Fenerbahçe,Beşiktaş
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Gaziantep FK,Alanyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Gençlerbirliği,Göztepe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Kasımpaşa SK,Kayserispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Kocaelispor,İstanbul Başakşehir
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Samsunspor,Konyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Trabzonspor,Galatasaray
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-06,Bari,Modena
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-06,Carrarese,Spezia
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-06,Catanzaro,Monza
@@ -598,6 +1123,12 @@ Italy,serie_b,league,Serie B,2,openfootball,2026-04-11,Reggiana,Carrarese
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-11,Spezia,Mantova
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-11,Südtirol,Modena
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-11,Virtus Entella,Venezia
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-04-11,Aberdeen FC,Hibernian FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-04-11,Celtic FC,St. Mirren FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-04-11,Dundee United,Livingston FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-04-11,Falkirk FC,Rangers FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-04-11,Heart of Midlothian,Motherwell FC
+Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-04-11,Kilmarnock FC,Dundee FC
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-12,Burgos,Sporting Gijón
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-12,Ceuta,Real Sociedad B
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-12,Cádiz,Andorra
@@ -609,6 +1140,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-12,Mirand
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-12,Málaga,Las Palmas
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-12,Racing Santander,Almería
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-12,Real Valladolid,Eibar
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-12,Alanyaspor,Trabzonspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-12,Beşiktaş,Antalyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-12,Eyüpspor,Samsunspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-12,Galatasaray,Kocaelispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-12,Göztepe,Kasımpaşa SK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-12,Kayserispor,Fenerbahçe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-12,Konyaspor,Fatih Karagümrük
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-12,Çaykur Rizespor,Gaziantep FK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-12,İstanbul Başakşehir,Gençlerbirliği
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-17,Bastia,Saint-Étienne
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-17,Dunkerque,Laval
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-17,Le Mans,Clermont
@@ -648,6 +1188,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-19,Las Pa
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-19,Real Sociedad B,Racing Santander
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-19,Real Zaragoza,Ceuta
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-19,Sporting Gijón,Cádiz
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-19,Antalyaspor,Konyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-19,Fatih Karagümrük,Eyüpspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-19,Fenerbahçe,Çaykur Rizespor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-19,Gaziantep FK,Kayserispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-19,Gençlerbirliği,Galatasaray
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-19,Kasımpaşa SK,Alanyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-19,Kocaelispor,Göztepe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-19,Samsunspor,Beşiktaş
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-19,Trabzonspor,İstanbul Başakşehir
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-24,Amiens,Montpellier
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-24,Annecy,Pau
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-24,Boulogne,Dunkerque
@@ -687,6 +1236,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-26,Legan�
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-26,Mirandés,Cultural Leonesa
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-26,Málaga,Castellón
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-26,Real Valladolid,Real Sociedad B
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-26,Alanyaspor,Samsunspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-26,Beşiktaş,Fatih Karagümrük
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-26,Eyüpspor,Gaziantep FK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-26,Galatasaray,Fenerbahçe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-26,Gençlerbirliği,Kocaelispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-26,Göztepe,Antalyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-26,Kayserispor,Çaykur Rizespor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-26,Konyaspor,Trabzonspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-26,İstanbul Başakşehir,Kasımpaşa SK
 France,ligue_2,league,Ligue 2,2,openfootball,2026-05-01,Amiens,Red Star
 France,ligue_2,league,Ligue 2,2,openfootball,2026-05-01,Boulogne,Annecy
 France,ligue_2,league,Ligue 2,2,openfootball,2026-05-01,Dunkerque,Grenoble
@@ -726,6 +1284,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-03,Racing
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-03,Real Sociedad B,Burgos
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-03,Real Zaragoza,Granada
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-03,Sporting Gijón,Ceuta
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-03,Antalyaspor,Alanyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-03,Fatih Karagümrük,Gençlerbirliği
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-03,Fenerbahçe,İstanbul Başakşehir
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-03,Gaziantep FK,Beşiktaş
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-03,Kasımpaşa SK,Kocaelispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-03,Kayserispor,Eyüpspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-03,Samsunspor,Galatasaray
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-03,Trabzonspor,Göztepe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-03,Çaykur Rizespor,Konyaspor
 France,ligue_2,league,Ligue 2,2,openfootball,2026-05-08,Annecy,Rodez
 France,ligue_2,league,Ligue 2,2,openfootball,2026-05-08,Bastia,Le Mans
 France,ligue_2,league,Ligue 2,2,openfootball,2026-05-08,Clermont,Guingamp
@@ -765,6 +1332,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-10,Legan�
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-10,Mirandés,Eibar
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-10,Málaga,Sporting Gijón
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-10,Real Valladolid,Real Zaragoza
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-10,Alanyaspor,Kayserispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-10,Beşiktaş,Trabzonspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-10,Eyüpspor,Çaykur Rizespor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-10,Galatasaray,Antalyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-10,Gençlerbirliği,Kasımpaşa SK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-10,Göztepe,Gaziantep FK
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-10,Kocaelispor,Fatih Karagümrük
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-10,Konyaspor,Fenerbahçe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-10,İstanbul Başakşehir,Samsunspor
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-05-17,Arminia Bielefeld,Hertha Berlin
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-05-17,Darmstadt 98,Paderborn
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-05-17,Dynamo Dresden,Holstein Kiel
@@ -785,6 +1361,15 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-17,Legan�
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-17,Racing Santander,Real Valladolid
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-17,Real Sociedad B,Mirandés
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-17,Real Zaragoza,Sporting Gijón
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-17,Antalyaspor,Kocaelispor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-17,Fatih Karagümrük,Alanyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-17,Fenerbahçe,Eyüpspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-17,Gaziantep FK,İstanbul Başakşehir
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-17,Kasımpaşa SK,Galatasaray
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-17,Kayserispor,Konyaspor
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-17,Samsunspor,Göztepe
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-17,Trabzonspor,Gençlerbirliği
+Turkey,super_lig,league,Süper Lig,1,openfootball,2026-05-17,Çaykur Rizespor,Beşiktaş
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-24,Albacete,Real Sociedad B
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-24,Andorra,Ceuta
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-24,Cultural Leonesa,Burgos
@@ -807,7 +1392,26 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-31,Legan�
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-31,Racing Santander,Cádiz
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-31,Real Sociedad B,Cultural Leonesa
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-05-31,Real Zaragoza,Málaga
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-07,SC Cambuur-Leeuwarden,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-08,AZ,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-08,Go Ahead Eagles,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-08,NEC,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-08,PSV,Fortuna Sittard
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-08,CD Santa Clara,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-08,CF Estrela da Amadora,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-08,CS Marítimo,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-08,FC Porto,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-08,GD Estoril Praia,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-08,Gil Vicente FC,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-08,Moreirense FC,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-08,Sport Lisboa e Benfica,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-08,Vitória Guimarães,FC Arouca
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-09,FC Groningen,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-09,PEC Zwolle,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-09,SC Heerenveen,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-09,Sparta Rotterdam,Feyenoord Rotterdam
 England,championship,league,Championship,2,openfootball,2026-08-14,Wolverhampton Wanderers,Blackburn Rovers
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-14,Telstar 1963,Sparta Rotterdam
 England,championship,league,Championship,2,openfootball,2026-08-15,Bolton Wanderers,Preston North End
 England,championship,league,Championship,2,openfootball,2026-08-15,Bristol City,Millwall
 England,championship,league,Championship,2,openfootball,2026-08-15,Charlton Athletic,Derby County
@@ -816,8 +1420,25 @@ England,championship,league,Championship,2,openfootball,2026-08-15,Norwich City,
 England,championship,league,Championship,2,openfootball,2026-08-15,Portsmouth,Queens Park Rangers
 England,championship,league,Championship,2,openfootball,2026-08-15,Sheffield United,Birmingham City
 England,championship,league,Championship,2,openfootball,2026-08-15,Stoke City,Swansea City
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-15,FC Utrecht,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-15,Fortuna Sittard,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-15,SBV Excelsior,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-15,Willem II Tilburg,NEC
 England,championship,league,Championship,2,openfootball,2026-08-16,Burnley,West Ham United
 England,championship,league,Championship,2,openfootball,2026-08-16,Watford,Southampton
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-16,ADO Den Haag,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-16,AFC Ajax,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-16,FC Twente '65,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-16,Feyenoord Rotterdam,Go Ahead Eagles
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-16,Académico de Viseu FC,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-16,CD Nacional,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-16,Casa Pia AC,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-16,FC Alverca,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-16,FC Arouca,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-16,FC Famalicão,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-16,Rio Ave FC,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-16,Sporting Clube de Braga,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-16,Sporting Clube de Portugal,Vitória Guimarães
 Spain,la_liga,league,La Liga,1,openfootball,2026-08-16,Alavés,Getafe
 Spain,la_liga,league,La Liga,1,openfootball,2026-08-16,Atlético Madrid,Málaga
 Spain,la_liga,league,La Liga,1,openfootball,2026-08-16,Barcelona,Athletic Club
@@ -856,6 +1477,10 @@ France,ligue_1,league,Ligue 1,1,openfootball,2026-08-22,Nice,Lorient
 France,ligue_1,league,Ligue 1,1,openfootball,2026-08-22,Paris Saint-Germain,Rennes
 France,ligue_1,league,Ligue 1,1,openfootball,2026-08-22,Toulouse,Lyon
 France,ligue_1,league,Ligue 1,1,openfootball,2026-08-22,Troyes,Paris FC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-22,Fortuna Sittard,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-22,NEC,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-22,SC Heerenveen,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-22,Sparta Rotterdam,FC Utrecht
 England,premier_league,league,Premier League,1,openfootball,2026-08-23,Brighton & Hove Albion,Aston Villa
 England,premier_league,league,Premier League,1,openfootball,2026-08-23,Manchester City,Bournemouth
 England,premier_league,league,Premier League,1,openfootball,2026-08-23,Newcastle United,Liverpool
@@ -869,6 +1494,18 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-08-23,Roma,Fiorentina
 Italy,serie_a,league,Serie A,1,openfootball,2026-08-23,Torino,AC Milan
 Italy,serie_a,league,Serie A,1,openfootball,2026-08-23,Udinese,Como
 Italy,serie_a,league,Serie A,1,openfootball,2026-08-23,Venezia,Lecce
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-23,Go Ahead Eagles,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-23,PSV,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-23,SC Cambuur-Leeuwarden,Feyenoord Rotterdam
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-23,CD Santa Clara,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-23,CF Estrela da Amadora,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-23,CS Marítimo,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-23,FC Porto,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-23,GD Estoril Praia,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-23,Gil Vicente FC,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-23,Moreirense FC,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-23,Sporting Clube de Portugal,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-23,Vitória Guimarães,CD Nacional
 Spain,la_liga,league,La Liga,1,openfootball,2026-08-23,Athletic Club,Sevilla
 Spain,la_liga,league,La Liga,1,openfootball,2026-08-23,Atlético Madrid,Villarreal
 Spain,la_liga,league,La Liga,1,openfootball,2026-08-23,Elche,Barcelona
@@ -881,6 +1518,7 @@ Spain,la_liga,league,La Liga,1,openfootball,2026-08-23,Real Betis,Real Sociedad
 Spain,la_liga,league,La Liga,1,openfootball,2026-08-23,Valencia,Celta Vigo
 England,premier_league,league,Premier League,1,openfootball,2026-08-24,Fulham,Chelsea
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-08-28,Bayern Munich,VfB Stuttgart
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-28,FC Groningen,Fortuna Sittard
 England,premier_league,league,Premier League,1,openfootball,2026-08-29,Aston Villa,Arsenal
 England,premier_league,league,Premier League,1,openfootball,2026-08-29,Bournemouth,Everton
 England,premier_league,league,Premier League,1,openfootball,2026-08-29,Chelsea,Brighton & Hove Albion
@@ -919,6 +1557,9 @@ Germany,bundesliga,league,Bundesliga,1,openfootball,2026-08-29,Köln,Hoffenheim
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-08-29,Mainz 05,Paderborn
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-08-29,RB Leipzig,Borussia Mönchengladbach
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-08-29,Union Berlin,Eintracht Frankfurt
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-29,AZ,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-29,PEC Zwolle,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-29,SBV Excelsior,Sparta Rotterdam
 France,ligue_1,league,Ligue 1,1,openfootball,2026-08-30,Lille,Paris Saint-Germain
 Italy,serie_a,league,Serie A,1,openfootball,2026-08-30,AC Milan,Venezia
 Italy,serie_a,league,Serie A,1,openfootball,2026-08-30,Atalanta,Bologna
@@ -930,6 +1571,20 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-08-30,Lecce,Roma
 Italy,serie_a,league,Serie A,1,openfootball,2026-08-30,Monza,Udinese
 Italy,serie_a,league,Serie A,1,openfootball,2026-08-30,Napoli,Como
 Italy,serie_a,league,Serie A,1,openfootball,2026-08-30,Sassuolo,Torino
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-30,FC Utrecht,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-30,Feyenoord Rotterdam,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-30,SC Cambuur-Leeuwarden,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-30,Telstar 1963,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-08-30,Willem II Tilburg,SC Heerenveen
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-30,Académico de Viseu FC,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-30,CD Nacional,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-30,Casa Pia AC,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-30,FC Alverca,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-30,FC Arouca,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-30,FC Famalicão,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-30,Rio Ave FC,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-30,Sport Lisboa e Benfica,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-08-30,Sporting Clube de Braga,Vitória Guimarães
 Spain,la_liga,league,La Liga,1,openfootball,2026-08-30,Alavés,Villarreal
 Spain,la_liga,league,La Liga,1,openfootball,2026-08-30,Barcelona,Rayo Vallecano
 Spain,la_liga,league,La Liga,1,openfootball,2026-08-30,Celta Vigo,Athletic Club
@@ -952,6 +1607,7 @@ England,championship,league,Championship,2,openfootball,2026-09-02,Burnley,Middl
 England,championship,league,Championship,2,openfootball,2026-09-02,Millwall,Wrexham
 England,championship,league,Championship,2,openfootball,2026-09-02,Queens Park Rangers,Cardiff City
 England,championship,league,Championship,2,openfootball,2026-09-02,West Bromwich Albion,Charlton Athletic
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-04,Sparta Rotterdam,PEC Zwolle
 England,premier_league,league,Premier League,1,openfootball,2026-09-05,Arsenal,Chelsea
 England,premier_league,league,Premier League,1,openfootball,2026-09-05,Brentford,Sunderland
 England,premier_league,league,Premier League,1,openfootball,2026-09-05,Brighton & Hove Albion,Leeds United
@@ -992,6 +1648,10 @@ Germany,bundesliga,league,Bundesliga,1,openfootball,2026-09-05,Paderborn,Freibur
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-09-05,Schalke 04,Bayern Munich
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-09-05,VfB Stuttgart,Köln
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-09-05,Werder Bremen,RB Leipzig
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-05,AFC Ajax,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-05,FC Utrecht,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-05,NEC,Feyenoord Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-05,Willem II Tilburg,SBV Excelsior
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-06,Bologna,Sassuolo
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-06,Cagliari,Lecce
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-06,Fiorentina,Torino
@@ -1002,6 +1662,19 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-09-06,Juventus,AC Milan
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-06,Parma,Monza
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-06,Roma,Atalanta
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-06,Udinese,Lazio
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-06,ADO Den Haag,Fortuna Sittard
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-06,FC Groningen,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-06,SC Heerenveen,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-06,Telstar 1963,SC Cambuur-Leeuwarden
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-06,CD Santa Clara,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-06,CF Estrela da Amadora,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-06,CS Marítimo,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-06,FC Alverca,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-06,FC Porto,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-06,GD Estoril Praia,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-06,Gil Vicente FC,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-06,Sporting Clube de Portugal,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-06,Vitória Guimarães,Casa Pia AC
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-06,Alavés,Osasuna
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-06,Athletic Club,Atlético Madrid
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-06,Elche,Real Sociedad
@@ -1024,6 +1697,8 @@ England,championship,league,Championship,2,openfootball,2026-09-09,Charlton Athl
 England,championship,league,Championship,2,openfootball,2026-09-09,Derby County,West Bromwich Albion
 England,championship,league,Championship,2,openfootball,2026-09-09,Norwich City,Birmingham City
 England,championship,league,Championship,2,openfootball,2026-09-09,Wrexham,Burnley
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-09,FC Twente '65,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-11,AZ,Willem II Tilburg
 England,premier_league,league,Premier League,1,openfootball,2026-09-12,Aston Villa,Nottingham Forest
 England,premier_league,league,Premier League,1,openfootball,2026-09-12,Bournemouth,Brentford
 England,premier_league,league,Premier League,1,openfootball,2026-09-12,Chelsea,Hull City
@@ -1064,6 +1739,10 @@ Germany,bundesliga,league,Bundesliga,1,openfootball,2026-09-12,Köln,Werder Brem
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-09-12,Mainz 05,Eintracht Frankfurt
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-09-12,RB Leipzig,Hamburg
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-09-12,Union Berlin,Schalke 04
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-12,FC Twente '65,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-12,Fortuna Sittard,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-12,Go Ahead Eagles,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-12,SC Heerenveen,Telstar 1963
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-13,Atalanta,Cagliari
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-13,Como,Parma
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-13,Genoa,Frosinone
@@ -1074,6 +1753,19 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-09-13,Napoli,Bologna
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-13,Sassuolo,Juventus
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-13,Torino,Roma
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-13,Venezia,Fiorentina
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-13,PEC Zwolle,Feyenoord Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-13,PSV,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-13,SBV Excelsior,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-13,SC Cambuur-Leeuwarden,NEC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-13,Académico de Viseu FC,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-13,CD Nacional,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-13,Casa Pia AC,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-13,FC Arouca,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-13,FC Famalicão,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-13,Moreirense FC,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-13,Rio Ave FC,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-13,Sport Lisboa e Benfica,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-13,Sporting Clube de Braga,GD Estoril Praia
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-13,Athletic Club,Elche
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-13,Celta Vigo,Málaga
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-13,Getafe,Deportivo La Coruña
@@ -1084,6 +1776,7 @@ Spain,la_liga,league,La Liga,1,openfootball,2026-09-13,Real Madrid,Rayo Vallecan
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-13,Real Sociedad,Atlético Madrid
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-13,Sevilla,Valencia
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-13,Villarreal,Real Betis
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-15,AFC Ajax,Willem II Tilburg
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-16,Alavés,Valencia
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-16,Atlético Madrid,Osasuna
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-16,Barcelona,Racing Santander
@@ -1094,6 +1787,7 @@ Spain,la_liga,league,La Liga,1,openfootball,2026-09-16,Málaga,Villarreal
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-16,Rayo Vallecano,Espanyol
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-16,Real Betis,Getafe
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-16,Real Sociedad,Celta Vigo
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-18,Sparta Rotterdam,SC Heerenveen
 England,premier_league,league,Premier League,1,openfootball,2026-09-19,Bournemouth,Liverpool
 England,premier_league,league,Premier League,1,openfootball,2026-09-19,Brentford,Chelsea
 England,premier_league,league,Premier League,1,openfootball,2026-09-19,Brighton & Hove Albion,Arsenal
@@ -1133,6 +1827,10 @@ Germany,bundesliga,league,Bundesliga,1,openfootball,2026-09-19,Paderborn,Hoffenh
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-09-19,Schalke 04,Elversberg
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-09-19,VfB Stuttgart,Borussia Dortmund
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-09-19,Werder Bremen,Augsburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-19,ADO Den Haag,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-19,AFC Ajax,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-19,FC Groningen,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-19,Willem II Tilburg,Fortuna Sittard
 France,ligue_1,league,Ligue 1,1,openfootball,2026-09-20,Marseille,Paris Saint-Germain
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-20,AC Milan,Lecce
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-20,Bologna,Torino
@@ -1144,6 +1842,19 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-09-20,Parma,Genoa
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-20,Roma,Inter Milan
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-20,Udinese,Cagliari
 Italy,serie_a,league,Serie A,1,openfootball,2026-09-20,Venezia,Lazio
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-20,AZ,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-20,FC Twente '65,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-20,Feyenoord Rotterdam,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-09-20,NEC,Go Ahead Eagles
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-20,CD Nacional,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-20,CD Santa Clara,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-20,CF Estrela da Amadora,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-20,FC Alverca,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-20,FC Porto,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-20,GD Estoril Praia,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-20,Gil Vicente FC,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-20,Sporting Clube de Portugal,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-09-20,Vitória Guimarães,Moreirense FC
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-20,Athletic Club,Alavés
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-20,Atlético Madrid,Real Madrid
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-20,Celta Vigo,Racing Santander
@@ -1194,6 +1905,11 @@ Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-10,Mainz 05,Bayer Le
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-10,Paderborn,VfB Stuttgart
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-10,RB Leipzig,Eintracht Frankfurt
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-10,Union Berlin,Elversberg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-10,AFC Ajax,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-10,Feyenoord Rotterdam,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-10,Fortuna Sittard,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-10,Go Ahead Eagles,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-10,PSV,SC Heerenveen
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-11,Atalanta,Venezia
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-11,Cagliari,Juventus
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-11,Como,Roma
@@ -1204,6 +1920,19 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-10-11,Lecce,Bologna
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-11,Napoli,Frosinone
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-11,Sassuolo,AC Milan
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-11,Torino,Udinese
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-11,FC Utrecht,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-11,PEC Zwolle,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-11,SBV Excelsior,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-11,Telstar 1963,ADO Den Haag
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-11,Académico de Viseu FC,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-11,CS Marítimo,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-11,Casa Pia AC,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-11,FC Arouca,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-11,FC Famalicão,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-11,Moreirense FC,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-11,Rio Ave FC,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-11,Sport Lisboa e Benfica,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-11,Sporting Clube de Braga,Sporting Clube de Portugal
 Spain,la_liga,league,La Liga,1,openfootball,2026-10-11,Alavés,Atlético Madrid
 Spain,la_liga,league,La Liga,1,openfootball,2026-10-11,Barcelona,Getafe
 Spain,la_liga,league,La Liga,1,openfootball,2026-10-11,Elche,Celta Vigo
@@ -1226,6 +1955,7 @@ England,championship,league,Championship,2,openfootball,2026-10-14,Lincoln City 
 England,championship,league,Championship,2,openfootball,2026-10-14,Norwich City,Southampton
 England,championship,league,Championship,2,openfootball,2026-10-14,Portsmouth,Sheffield United
 England,championship,league,Championship,2,openfootball,2026-10-14,Queens Park Rangers,Derby County
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-16,SC Heerenveen,SBV Excelsior
 England,premier_league,league,Premier League,1,openfootball,2026-10-17,Bournemouth,Sunderland
 England,premier_league,league,Premier League,1,openfootball,2026-10-17,Brentford,Liverpool
 England,premier_league,league,Premier League,1,openfootball,2026-10-17,Brighton & Hove Albion,Crystal Palace
@@ -1266,6 +1996,10 @@ Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-17,Hamburg,VfB Stutt
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-17,Schalke 04,Mainz 05
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-17,Union Berlin,Borussia Dortmund
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-17,Werder Bremen,Paderborn
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-17,ADO Den Haag,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-17,NEC,Fortuna Sittard
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-17,Sparta Rotterdam,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-17,Telstar 1963,Feyenoord Rotterdam
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-18,AC Milan,Atalanta
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-18,Bologna,Inter Milan
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-18,Fiorentina,Como
@@ -1276,6 +2010,10 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-10-18,Parma,Torino
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-18,Roma,Genoa
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-18,Udinese,Lecce
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-18,Venezia,Napoli
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-18,FC Groningen,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-18,FC Twente '65,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-18,PEC Zwolle,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-18,SC Cambuur-Leeuwarden,AZ
 Spain,la_liga,league,La Liga,1,openfootball,2026-10-18,Celta Vigo,Alavés
 Spain,la_liga,league,La Liga,1,openfootball,2026-10-18,Deportivo La Coruña,Levante
 Spain,la_liga,league,La Liga,1,openfootball,2026-10-18,Espanyol,Atlético Madrid
@@ -1286,6 +2024,7 @@ Spain,la_liga,league,La Liga,1,openfootball,2026-10-18,Real Betis,Barcelona
 Spain,la_liga,league,La Liga,1,openfootball,2026-10-18,Real Madrid,Sevilla
 Spain,la_liga,league,La Liga,1,openfootball,2026-10-18,Valencia,Athletic Club
 Spain,la_liga,league,La Liga,1,openfootball,2026-10-18,Villarreal,Elche
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-23,Go Ahead Eagles,Telstar 1963
 England,premier_league,league,Premier League,1,openfootball,2026-10-24,Arsenal,Everton
 England,premier_league,league,Premier League,1,openfootball,2026-10-24,Aston Villa,Manchester City
 England,premier_league,league,Premier League,1,openfootball,2026-10-24,Chelsea,Tottenham Hotspur
@@ -1325,6 +2064,9 @@ Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-24,Mainz 05,Werder B
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-24,Paderborn,Hamburg
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-24,RB Leipzig,Elversberg
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-24,VfB Stuttgart,Borussia Mönchengladbach
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-24,ADO Den Haag,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-24,FC Utrecht,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-24,Willem II Tilburg,SC Cambuur-Leeuwarden
 France,ligue_1,league,Ligue 1,1,openfootball,2026-10-25,Paris Saint-Germain,Lyon
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-25,Atalanta,Frosinone
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-25,Cagliari,Bologna
@@ -1336,6 +2078,20 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-10-25,Lecce,Juventus
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-25,Napoli,Roma
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-25,Torino,Monza
 Italy,serie_a,league,Serie A,1,openfootball,2026-10-25,Udinese,AC Milan
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-25,AZ,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-25,Fortuna Sittard,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-25,NEC,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-25,PSV,Feyenoord Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-25,Sparta Rotterdam,AFC Ajax
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-25,CD Nacional,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-25,CD Santa Clara,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-25,CF Estrela da Amadora,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-25,FC Alverca,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-25,GD Estoril Praia,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-25,Gil Vicente FC,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-25,Rio Ave FC,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-25,Sporting Clube de Portugal,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-10-25,Vitória Guimarães,CS Marítimo
 Spain,la_liga,league,La Liga,1,openfootball,2026-10-25,Alavés,Málaga
 Spain,la_liga,league,La Liga,1,openfootball,2026-10-25,Athletic Club,Getafe
 Spain,la_liga,league,La Liga,1,openfootball,2026-10-25,Atlético Madrid,Deportivo La Coruña
@@ -1396,6 +2152,11 @@ Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-31,Elversberg,Mainz 
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-31,Schalke 04,RB Leipzig
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-31,Union Berlin,Köln
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-10-31,Werder Bremen,Hoffenheim
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-31,AFC Ajax,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-31,Feyenoord Rotterdam,Fortuna Sittard
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-31,PSV,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-31,SC Cambuur-Leeuwarden,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-31,SC Heerenveen,NEC
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-01,AC Milan,Inter Milan
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-01,Atalanta,Parma
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-01,Bologna,Monza
@@ -1406,6 +2167,19 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-11-01,Lazio,Cagliari
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-01,Lecce,Genoa
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-01,Sassuolo,Fiorentina
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-01,Udinese,Roma
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-01,FC Groningen,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-01,PEC Zwolle,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-01,SBV Excelsior,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-01,Telstar 1963,FC Utrecht
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-01,Académico de Viseu FC,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-01,CS Marítimo,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-01,Casa Pia AC,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-01,FC Arouca,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-01,FC Porto,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-01,Gil Vicente FC,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-01,Moreirense FC,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-01,Sport Lisboa e Benfica,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-01,Sporting Clube de Braga,FC Famalicão
 Spain,la_liga,league,La Liga,1,openfootball,2026-11-01,Athletic Club,Real Sociedad
 Spain,la_liga,league,La Liga,1,openfootball,2026-11-01,Barcelona,Alavés
 Spain,la_liga,league,La Liga,1,openfootball,2026-11-01,Deportivo La Coruña,Osasuna
@@ -1428,6 +2202,7 @@ England,championship,league,Championship,2,openfootball,2026-11-04,Bristol City,
 England,championship,league,Championship,2,openfootball,2026-11-04,Cardiff City,West Ham United
 England,championship,league,Championship,2,openfootball,2026-11-04,Charlton Athletic,Bolton Wanderers
 England,championship,league,Championship,2,openfootball,2026-11-04,Wrexham,Middlesbrough
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-06,Willem II Tilburg,PEC Zwolle
 England,premier_league,league,Premier League,1,openfootball,2026-11-07,Arsenal,Hull City
 England,premier_league,league,Premier League,1,openfootball,2026-11-07,Brighton & Hove Albion,Brentford
 England,premier_league,league,Premier League,1,openfootball,2026-11-07,Crystal Palace,Liverpool
@@ -1468,6 +2243,10 @@ Germany,bundesliga,league,Bundesliga,1,openfootball,2026-11-07,Mainz 05,Bayern M
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-11-07,Paderborn,Eintracht Frankfurt
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-11-07,RB Leipzig,Augsburg
 Germany,bundesliga,league,Bundesliga,1,openfootball,2026-11-07,VfB Stuttgart,Werder Bremen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-07,ADO Den Haag,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-07,Fortuna Sittard,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-07,SBV Excelsior,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-07,SC Cambuur-Leeuwarden,PSV
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-08,Cagliari,Frosinone
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-08,Fiorentina,Juventus
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-08,Genoa,AC Milan
@@ -1478,6 +2257,19 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-11-08,Parma,Bologna
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-08,Roma,Sassuolo
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-08,Torino,Lecce
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-08,Venezia,Udinese
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-08,AZ,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-08,FC Twente '65,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-08,FC Utrecht,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-08,SC Heerenveen,Feyenoord Rotterdam
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-08,CD Nacional,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-08,CD Santa Clara,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-08,CF Estrela da Amadora,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-08,FC Alverca,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-08,FC Famalicão,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-08,GD Estoril Praia,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-08,Rio Ave FC,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-08,Sporting Clube de Portugal,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-08,Vitória Guimarães,FC Porto
 Spain,la_liga,league,La Liga,1,openfootball,2026-11-08,Atlético Madrid,Barcelona
 Spain,la_liga,league,La Liga,1,openfootball,2026-11-08,Celta Vigo,Levante
 Spain,la_liga,league,La Liga,1,openfootball,2026-11-08,Elche,Real Betis
@@ -1538,6 +2330,15 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-11-22,Monza,Fiorentina
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-22,Napoli,Torino
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-22,Parma,Roma
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-22,Sassuolo,Genoa
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-22,AFC Ajax,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-22,FC Groningen,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-22,FC Twente '65,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-22,FC Utrecht,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-22,Feyenoord Rotterdam,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-22,Go Ahead Eagles,Fortuna Sittard
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-22,NEC,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-22,Sparta Rotterdam,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-22,Telstar 1963,PEC Zwolle
 Spain,la_liga,league,La Liga,1,openfootball,2026-11-22,Alavés,Deportivo La Coruña
 Spain,la_liga,league,La Liga,1,openfootball,2026-11-22,Athletic Club,Espanyol
 Spain,la_liga,league,La Liga,1,openfootball,2026-11-22,Barcelona,Villarreal
@@ -1610,6 +2411,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-11-29,Sassuolo,Napoli
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-29,Torino,Lazio
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-29,Udinese,Fiorentina
 Italy,serie_a,league,Serie A,1,openfootball,2026-11-29,Venezia,Bologna
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-29,ADO Den Haag,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-29,FC Groningen,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-29,Feyenoord Rotterdam,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-29,Fortuna Sittard,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-29,NEC,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-29,PEC Zwolle,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-29,PSV,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-29,SBV Excelsior,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-11-29,SC Cambuur-Leeuwarden,Sparta Rotterdam
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-29,Académico de Viseu FC,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-29,CS Marítimo,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-29,Casa Pia AC,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-29,FC Arouca,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-29,FC Porto,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-29,Gil Vicente FC,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-29,Moreirense FC,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-29,Sport Lisboa e Benfica,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-11-29,Vitória Guimarães,CF Estrela da Amadora
 Spain,la_liga,league,La Liga,1,openfootball,2026-11-29,Celta Vigo,Villarreal
 Spain,la_liga,league,La Liga,1,openfootball,2026-11-29,Deportivo La Coruña,Barcelona
 Spain,la_liga,league,La Liga,1,openfootball,2026-11-29,Elche,Atlético Madrid
@@ -1680,6 +2499,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-12-06,Lazio,Atalanta
 Italy,serie_a,league,Serie A,1,openfootball,2026-12-06,Monza,Como
 Italy,serie_a,league,Serie A,1,openfootball,2026-12-06,Napoli,Lecce
 Italy,serie_a,league,Serie A,1,openfootball,2026-12-06,Venezia,Sassuolo
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-06,ADO Den Haag,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-06,AFC Ajax,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-06,AZ,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-06,Fortuna Sittard,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-06,Go Ahead Eagles,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-06,SC Heerenveen,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-06,Sparta Rotterdam,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-06,Telstar 1963,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-06,Willem II Tilburg,Feyenoord Rotterdam
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-06,CD Nacional,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-06,CD Santa Clara,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-06,CF Estrela da Amadora,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-06,FC Alverca,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-06,FC Famalicão,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-06,GD Estoril Praia,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-06,Rio Ave FC,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-06,Sporting Clube de Braga,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-06,Sporting Clube de Portugal,CS Marítimo
 Spain,la_liga,league,La Liga,1,openfootball,2026-12-06,Alavés,Espanyol
 Spain,la_liga,league,La Liga,1,openfootball,2026-12-06,Athletic Club,Real Madrid
 Spain,la_liga,league,La Liga,1,openfootball,2026-12-06,Atlético Madrid,Real Betis
@@ -1752,6 +2589,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-12-13,Lecce,Sassuolo
 Italy,serie_a,league,Serie A,1,openfootball,2026-12-13,Napoli,AC Milan
 Italy,serie_a,league,Serie A,1,openfootball,2026-12-13,Parma,Fiorentina
 Italy,serie_a,league,Serie A,1,openfootball,2026-12-13,Udinese,Frosinone
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-13,AFC Ajax,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-13,AZ,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-13,FC Groningen,Feyenoord Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-13,FC Twente '65,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-13,FC Utrecht,Fortuna Sittard
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-13,PEC Zwolle,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-13,PSV,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-13,SC Heerenveen,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-13,Willem II Tilburg,ADO Den Haag
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-13,Académico de Viseu FC,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-13,CS Marítimo,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-13,Casa Pia AC,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-13,FC Porto,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-13,GD Estoril Praia,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-13,Gil Vicente FC,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-13,Moreirense FC,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-13,Sport Lisboa e Benfica,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-13,Vitória Guimarães,FC Alverca
 Spain,la_liga,league,La Liga,1,openfootball,2026-12-13,Atlético Madrid,Valencia
 Spain,la_liga,league,La Liga,1,openfootball,2026-12-13,Deportivo La Coruña,Athletic Club
 Spain,la_liga,league,La Liga,1,openfootball,2026-12-13,Elche,Sevilla
@@ -1803,6 +2658,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2026-12-20,Roma,Juventus
 Italy,serie_a,league,Serie A,1,openfootball,2026-12-20,Sassuolo,Parma
 Italy,serie_a,league,Serie A,1,openfootball,2026-12-20,Torino,Cagliari
 Italy,serie_a,league,Serie A,1,openfootball,2026-12-20,Venezia,Monza
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-20,FC Utrecht,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-20,Feyenoord Rotterdam,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-20,Fortuna Sittard,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-20,Go Ahead Eagles,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-20,NEC,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-20,PSV,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-20,SBV Excelsior,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-20,SC Cambuur-Leeuwarden,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-12-20,Telstar 1963,Willem II Tilburg
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-20,CD Nacional,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-20,CD Santa Clara,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-20,CF Estrela da Amadora,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-20,FC Alverca,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-20,FC Arouca,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-20,FC Famalicão,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-20,Rio Ave FC,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-20,Sporting Clube de Braga,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-20,Sporting Clube de Portugal,GD Estoril Praia
 Spain,la_liga,league,La Liga,1,openfootball,2026-12-20,Alavés,Elche
 Spain,la_liga,league,La Liga,1,openfootball,2026-12-20,Athletic Club,Real Betis
 Spain,la_liga,league,La Liga,1,openfootball,2026-12-20,Barcelona,Real Sociedad
@@ -1835,6 +2708,15 @@ England,championship,league,Championship,2,openfootball,2026-12-26,Sheffield Uni
 England,championship,league,Championship,2,openfootball,2026-12-26,Stoke City,Wrexham
 England,championship,league,Championship,2,openfootball,2026-12-26,West Ham United,Norwich City
 England,championship,league,Championship,2,openfootball,2026-12-26,Wolverhampton Wanderers,Swansea City
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-27,CD Santa Clara,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-27,CS Marítimo,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-27,Casa Pia AC,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-27,FC Porto,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-27,GD Estoril Praia,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-27,Gil Vicente FC,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-27,Moreirense FC,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-27,Sport Lisboa e Benfica,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2026-12-27,Vitória Guimarães,Rio Ave FC
 England,championship,league,Championship,2,openfootball,2026-12-29,Birmingham City,Cardiff City
 England,championship,league,Championship,2,openfootball,2026-12-29,Bristol City,Stoke City
 England,championship,league,Championship,2,openfootball,2026-12-29,Burnley,Lincoln City FC
@@ -1928,6 +2810,7 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-01-06,Lecce,Parma
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-06,Napoli,Cagliari
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-06,Sassuolo,Udinese
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-06,Venezia,Roma
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-08,FC Twente '65,Fortuna Sittard
 Germany,bundesliga,league,Bundesliga,1,openfootball,2027-01-09,Borussia Dortmund,Mainz 05
 Germany,bundesliga,league,Bundesliga,1,openfootball,2027-01-09,Borussia Mönchengladbach,Bayern Munich
 Germany,bundesliga,league,Bundesliga,1,openfootball,2027-01-09,Eintracht Frankfurt,Schalke 04
@@ -1937,6 +2820,10 @@ Germany,bundesliga,league,Bundesliga,1,openfootball,2027-01-09,Köln,Freiburg
 Germany,bundesliga,league,Bundesliga,1,openfootball,2027-01-09,Paderborn,RB Leipzig
 Germany,bundesliga,league,Bundesliga,1,openfootball,2027-01-09,VfB Stuttgart,Augsburg
 Germany,bundesliga,league,Bundesliga,1,openfootball,2027-01-09,Werder Bremen,Union Berlin
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-09,AZ,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-09,PEC Zwolle,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-09,Sparta Rotterdam,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-09,Willem II Tilburg,AFC Ajax
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-10,Bologna,Genoa
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-10,Cagliari,Sassuolo
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-10,Como,Lazio
@@ -1947,6 +2834,19 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-01-10,Parma,Venezia
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-10,Roma,AC Milan
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-10,Torino,Atalanta
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-10,Udinese,Napoli
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-10,ADO Den Haag,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-10,FC Groningen,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-10,Feyenoord Rotterdam,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-10,NEC,SC Cambuur-Leeuwarden
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-10,Académico de Viseu FC,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-10,CD Nacional,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-10,CF Estrela da Amadora,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-10,FC Alverca,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-10,FC Arouca,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-10,FC Famalicão,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-10,Rio Ave FC,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-10,Sporting Clube de Braga,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-10,Sporting Clube de Portugal,CD Santa Clara
 Spain,la_liga,league,La Liga,1,openfootball,2027-01-10,Alavés,Real Sociedad
 Spain,la_liga,league,La Liga,1,openfootball,2027-01-10,Athletic Club,Villarreal
 Spain,la_liga,league,La Liga,1,openfootball,2027-01-10,Atlético Madrid,Racing Santander
@@ -2016,6 +2916,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-01-17,Napoli,Fiorentina
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-17,Parma,Inter Milan
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-17,Sassuolo,Monza
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-17,Venezia,Frosinone
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-17,ADO Den Haag,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-17,AFC Ajax,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-17,FC Utrecht,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-17,Fortuna Sittard,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-17,Go Ahead Eagles,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-17,SBV Excelsior,Feyenoord Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-17,SC Cambuur-Leeuwarden,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-17,SC Heerenveen,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-17,Telstar 1963,NEC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-17,Académico de Viseu FC,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-17,CD Nacional,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-17,Casa Pia AC,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-17,FC Alverca,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-17,FC Arouca,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-17,FC Famalicão,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-17,Rio Ave FC,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-17,Sporting Clube de Braga,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-17,Sporting Clube de Portugal,CF Estrela da Amadora
 Spain,la_liga,league,La Liga,1,openfootball,2027-01-17,Atlético Madrid,Real Sociedad
 Spain,la_liga,league,La Liga,1,openfootball,2027-01-17,Barcelona,Elche
 Spain,la_liga,league,La Liga,1,openfootball,2027-01-17,Celta Vigo,Valencia
@@ -2076,6 +2994,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-01-24,Juventus,Cagliari
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-24,Lecce,Torino
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-24,Monza,Lazio
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-24,Roma,Udinese
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-24,AFC Ajax,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-24,AZ,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-24,FC Twente '65,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-24,Feyenoord Rotterdam,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-24,Go Ahead Eagles,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-24,NEC,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-24,PSV,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-24,SBV Excelsior,Fortuna Sittard
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-24,Sparta Rotterdam,FC Groningen
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-24,CD Santa Clara,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-24,CF Estrela da Amadora,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-24,CS Marítimo,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-24,FC Porto,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-24,GD Estoril Praia,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-24,Gil Vicente FC,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-24,Moreirense FC,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-24,Sport Lisboa e Benfica,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-24,Vitória Guimarães,Sporting Clube de Portugal
 Spain,la_liga,league,La Liga,1,openfootball,2027-01-24,Alavés,Barcelona
 Spain,la_liga,league,La Liga,1,openfootball,2027-01-24,Athletic Club,Levante
 Spain,la_liga,league,La Liga,1,openfootball,2027-01-24,Deportivo La Coruña,Atlético Madrid
@@ -2148,6 +3084,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-01-31,Napoli,Inter Milan
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-31,Sassuolo,Como
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-31,Torino,Frosinone
 Italy,serie_a,league,Serie A,1,openfootball,2027-01-31,Udinese,Bologna
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-31,ADO Den Haag,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-31,AZ,Feyenoord Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-31,FC Groningen,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-31,FC Twente '65,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-31,FC Utrecht,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-31,PEC Zwolle,Fortuna Sittard
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-31,SC Heerenveen,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-31,Sparta Rotterdam,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-01-31,Willem II Tilburg,PSV
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-31,Académico de Viseu FC,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-31,CD Nacional,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-31,Casa Pia AC,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-31,FC Alverca,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-31,FC Arouca,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-31,FC Famalicão,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-31,Rio Ave FC,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-31,Sport Lisboa e Benfica,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-01-31,Sporting Clube de Braga,CF Estrela da Amadora
 Spain,la_liga,league,La Liga,1,openfootball,2027-01-31,Atlético Madrid,Espanyol
 Spain,la_liga,league,La Liga,1,openfootball,2027-01-31,Barcelona,Valencia
 Spain,la_liga,league,La Liga,1,openfootball,2027-01-31,Celta Vigo,Getafe
@@ -2208,6 +3162,15 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-02-07,Lecce,Napoli
 Italy,serie_a,league,Serie A,1,openfootball,2027-02-07,Parma,Frosinone
 Italy,serie_a,league,Serie A,1,openfootball,2027-02-07,Roma,Torino
 Italy,serie_a,league,Serie A,1,openfootball,2027-02-07,Venezia,Genoa
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-07,CD Santa Clara,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-07,CF Estrela da Amadora,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-07,CS Marítimo,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-07,FC Porto,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-07,GD Estoril Praia,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-07,Gil Vicente FC,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-07,Moreirense FC,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-07,Sporting Clube de Portugal,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-07,Vitória Guimarães,Sporting Clube de Braga
 Spain,la_liga,league,La Liga,1,openfootball,2027-02-07,Alavés,Celta Vigo
 Spain,la_liga,league,La Liga,1,openfootball,2027-02-07,Athletic Club,Osasuna
 Spain,la_liga,league,La Liga,1,openfootball,2027-02-07,Barcelona,Atlético Madrid
@@ -2268,6 +3231,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-02-14,Napoli,Juventus
 Italy,serie_a,league,Serie A,1,openfootball,2027-02-14,Roma,Parma
 Italy,serie_a,league,Serie A,1,openfootball,2027-02-14,Torino,Sassuolo
 Italy,serie_a,league,Serie A,1,openfootball,2027-02-14,Udinese,Venezia
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-14,FC Groningen,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-14,Feyenoord Rotterdam,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-14,Fortuna Sittard,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-14,Go Ahead Eagles,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-14,PSV,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-14,SBV Excelsior,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-14,SC Cambuur-Leeuwarden,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-14,Telstar 1963,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-14,Willem II Tilburg,Sparta Rotterdam
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-14,Académico de Viseu FC,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-14,CD Nacional,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-14,Casa Pia AC,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-14,FC Arouca,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-14,FC Famalicão,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-14,Moreirense FC,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-14,Rio Ave FC,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-14,Sport Lisboa e Benfica,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-14,Sporting Clube de Braga,FC Alverca
 Spain,la_liga,league,La Liga,1,openfootball,2027-02-14,Celta Vigo,Rayo Vallecano
 Spain,la_liga,league,La Liga,1,openfootball,2027-02-14,Elche,Deportivo La Coruña
 Spain,la_liga,league,La Liga,1,openfootball,2027-02-14,Levante,Málaga
@@ -2340,6 +3321,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-02-21,Lecce,Frosinone
 Italy,serie_a,league,Serie A,1,openfootball,2027-02-21,Sassuolo,Roma
 Italy,serie_a,league,Serie A,1,openfootball,2027-02-21,Udinese,Parma
 Italy,serie_a,league,Serie A,1,openfootball,2027-02-21,Venezia,Cagliari
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-21,AFC Ajax,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-21,AZ,Fortuna Sittard
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-21,FC Twente '65,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-21,FC Utrecht,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-21,Feyenoord Rotterdam,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-21,NEC,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-21,PEC Zwolle,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-21,PSV,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-21,SC Heerenveen,Willem II Tilburg
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-21,CD Santa Clara,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-21,CF Estrela da Amadora,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-21,CS Marítimo,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-21,FC Alverca,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-21,FC Porto,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-21,GD Estoril Praia,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-21,Gil Vicente FC,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-21,Sporting Clube de Portugal,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-21,Vitória Guimarães,Académico de Viseu FC
 Spain,la_liga,league,La Liga,1,openfootball,2027-02-21,Alavés,Racing Santander
 Spain,la_liga,league,La Liga,1,openfootball,2027-02-21,Athletic Club,Celta Vigo
 Spain,la_liga,league,La Liga,1,openfootball,2027-02-21,Atlético Madrid,Elche
@@ -2400,6 +3399,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-02-28,Monza,Juventus
 Italy,serie_a,league,Serie A,1,openfootball,2027-02-28,Parma,Sassuolo
 Italy,serie_a,league,Serie A,1,openfootball,2027-02-28,Roma,Venezia
 Italy,serie_a,league,Serie A,1,openfootball,2027-02-28,Torino,Fiorentina
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-28,ADO Den Haag,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-28,AFC Ajax,Feyenoord Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-28,Fortuna Sittard,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-28,NEC,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-28,SBV Excelsior,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-28,SC Cambuur-Leeuwarden,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-28,Sparta Rotterdam,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-28,Telstar 1963,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-02-28,Willem II Tilburg,FC Groningen
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-28,Académico de Viseu FC,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-28,CS Marítimo,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-28,Casa Pia AC,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-28,FC Arouca,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-28,FC Famalicão,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-28,Moreirense FC,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-28,Rio Ave FC,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-28,Sport Lisboa e Benfica,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-02-28,Sporting Clube de Braga,CD Santa Clara
 Spain,la_liga,league,La Liga,1,openfootball,2027-02-28,Athletic Club,Barcelona
 Spain,la_liga,league,La Liga,1,openfootball,2027-02-28,Celta Vigo,Espanyol
 Spain,la_liga,league,La Liga,1,openfootball,2027-02-28,Getafe,Alavés
@@ -2481,6 +3498,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-03-07,Monza,Genoa
 Italy,serie_a,league,Serie A,1,openfootball,2027-03-07,Napoli,Parma
 Italy,serie_a,league,Serie A,1,openfootball,2027-03-07,Sassuolo,Bologna
 Italy,serie_a,league,Serie A,1,openfootball,2027-03-07,Udinese,Inter Milan
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-07,ADO Den Haag,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-07,FC Groningen,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-07,FC Twente '65,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-07,Feyenoord Rotterdam,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-07,Fortuna Sittard,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-07,Go Ahead Eagles,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-07,PEC Zwolle,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-07,PSV,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-07,Sparta Rotterdam,SC Cambuur-Leeuwarden
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-07,CD Nacional,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-07,CD Santa Clara,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-07,CF Estrela da Amadora,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-07,FC Alverca,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-07,FC Porto,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-07,GD Estoril Praia,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-07,Gil Vicente FC,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-07,Sporting Clube de Portugal,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-07,Vitória Guimarães,Sport Lisboa e Benfica
 Spain,la_liga,league,La Liga,1,openfootball,2027-03-07,Alavés,Athletic Club
 Spain,la_liga,league,La Liga,1,openfootball,2027-03-07,Atlético Madrid,Celta Vigo
 Spain,la_liga,league,La Liga,1,openfootball,2027-03-07,Barcelona,Real Betis
@@ -2541,6 +3576,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-03-14,Lazio,Juventus
 Italy,serie_a,league,Serie A,1,openfootball,2027-03-14,Parma,Lecce
 Italy,serie_a,league,Serie A,1,openfootball,2027-03-14,Torino,Inter Milan
 Italy,serie_a,league,Serie A,1,openfootball,2027-03-14,Venezia,Atalanta
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-14,AFC Ajax,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-14,AZ,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-14,FC Utrecht,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-14,Go Ahead Eagles,Feyenoord Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-14,SBV Excelsior,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-14,SC Cambuur-Leeuwarden,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-14,SC Heerenveen,Fortuna Sittard
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-14,Telstar 1963,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-14,Willem II Tilburg,FC Twente '65
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-14,Académico de Viseu FC,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-14,CS Marítimo,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-14,Casa Pia AC,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-14,FC Arouca,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-14,FC Famalicão,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-14,FC Porto,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-14,Moreirense FC,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-14,Sport Lisboa e Benfica,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-14,Sporting Clube de Braga,CD Nacional
 Spain,la_liga,league,La Liga,1,openfootball,2027-03-14,Alavés,Sevilla
 Spain,la_liga,league,La Liga,1,openfootball,2027-03-14,Athletic Club,Valencia
 Spain,la_liga,league,La Liga,1,openfootball,2027-03-14,Barcelona,Deportivo La Coruña
@@ -2613,6 +3666,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-03-21,Parma,Lazio
 Italy,serie_a,league,Serie A,1,openfootball,2027-03-21,Roma,Lecce
 Italy,serie_a,league,Serie A,1,openfootball,2027-03-21,Sassuolo,Cagliari
 Italy,serie_a,league,Serie A,1,openfootball,2027-03-21,Udinese,Torino
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-21,ADO Den Haag,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-21,AZ,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-21,FC Groningen,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-21,FC Twente '65,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-21,FC Utrecht,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-21,Feyenoord Rotterdam,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-21,NEC,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-21,PEC Zwolle,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-03-21,Telstar 1963,Fortuna Sittard
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-21,CD Nacional,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-21,CD Santa Clara,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-21,CF Estrela da Amadora,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-21,FC Alverca,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-21,FC Famalicão,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-21,GD Estoril Praia,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-21,Rio Ave FC,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-21,Sporting Clube de Portugal,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-03-21,Vitória Guimarães,Gil Vicente FC
 Spain,la_liga,league,La Liga,1,openfootball,2027-03-21,Atlético Madrid,Getafe
 Spain,la_liga,league,La Liga,1,openfootball,2027-03-21,Celta Vigo,Real Madrid
 Spain,la_liga,league,La Liga,1,openfootball,2027-03-21,Espanyol,Athletic Club
@@ -2663,6 +3734,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-04-04,Roma,Bologna
 Italy,serie_a,league,Serie A,1,openfootball,2027-04-04,Sassuolo,Atalanta
 Italy,serie_a,league,Serie A,1,openfootball,2027-04-04,Torino,Juventus
 Italy,serie_a,league,Serie A,1,openfootball,2027-04-04,Venezia,Parma
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-04,AFC Ajax,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-04,Fortuna Sittard,Feyenoord Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-04,Go Ahead Eagles,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-04,PSV,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-04,SBV Excelsior,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-04,SC Cambuur-Leeuwarden,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-04,SC Heerenveen,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-04,Sparta Rotterdam,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-04,Willem II Tilburg,FC Utrecht
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-04,Académico de Viseu FC,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-04,CS Marítimo,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-04,Casa Pia AC,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-04,FC Arouca,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-04,FC Porto,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-04,Gil Vicente FC,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-04,Moreirense FC,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-04,Sport Lisboa e Benfica,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-04,Sporting Clube de Braga,Rio Ave FC
 Spain,la_liga,league,La Liga,1,openfootball,2027-04-04,Athletic Club,Racing Santander
 Spain,la_liga,league,La Liga,1,openfootball,2027-04-04,Barcelona,Sevilla
 Spain,la_liga,league,La Liga,1,openfootball,2027-04-04,Deportivo La Coruña,Villarreal
@@ -2735,6 +3824,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-04-11,Lazio,Torino
 Italy,serie_a,league,Serie A,1,openfootball,2027-04-11,Napoli,Sassuolo
 Italy,serie_a,league,Serie A,1,openfootball,2027-04-11,Parma,Como
 Italy,serie_a,league,Serie A,1,openfootball,2027-04-11,Udinese,Monza
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-11,ADO Den Haag,Feyenoord Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-11,FC Groningen,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-11,FC Utrecht,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-11,NEC,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-11,PEC Zwolle,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-11,SC Cambuur-Leeuwarden,Fortuna Sittard
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-11,Sparta Rotterdam,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-11,Telstar 1963,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-11,Willem II Tilburg,AZ
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-11,CD Nacional,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-11,CD Santa Clara,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-11,CF Estrela da Amadora,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-11,FC Alverca,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-11,FC Famalicão,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-11,GD Estoril Praia,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-11,Rio Ave FC,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-11,Sporting Clube de Braga,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-11,Sporting Clube de Portugal,FC Porto
 Spain,la_liga,league,La Liga,1,openfootball,2027-04-11,Alavés,Real Betis
 Spain,la_liga,league,La Liga,1,openfootball,2027-04-11,Atlético Madrid,Levante
 Spain,la_liga,league,La Liga,1,openfootball,2027-04-11,Celta Vigo,Elche
@@ -2795,6 +3902,15 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-04-18,Roma,Lazio
 Italy,serie_a,league,Serie A,1,openfootball,2027-04-18,Sassuolo,Lecce
 Italy,serie_a,league,Serie A,1,openfootball,2027-04-18,Torino,Genoa
 Italy,serie_a,league,Serie A,1,openfootball,2027-04-18,Venezia,Juventus
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-18,Académico de Viseu FC,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-18,CS Marítimo,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-18,Casa Pia AC,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-18,FC Arouca,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-18,FC Porto,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-18,Gil Vicente FC,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-18,Moreirense FC,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-18,Sport Lisboa e Benfica,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-18,Vitória Guimarães,GD Estoril Praia
 Spain,la_liga,league,La Liga,1,openfootball,2027-04-18,Alavés,Rayo Vallecano
 Spain,la_liga,league,La Liga,1,openfootball,2027-04-18,Atlético Madrid,Sevilla
 Spain,la_liga,league,La Liga,1,openfootball,2027-04-18,Barcelona,Espanyol
@@ -2877,6 +3993,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-04-25,Lecce,AC Milan
 Italy,serie_a,league,Serie A,1,openfootball,2027-04-25,Napoli,Udinese
 Italy,serie_a,league,Serie A,1,openfootball,2027-04-25,Parma,Atalanta
 Italy,serie_a,league,Serie A,1,openfootball,2027-04-25,Venezia,Torino
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-25,AZ,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-25,FC Twente '65,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-25,Feyenoord Rotterdam,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-25,Fortuna Sittard,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-25,Go Ahead Eagles,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-25,PEC Zwolle,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-25,PSV,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-25,SBV Excelsior,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-04-25,SC Heerenveen,ADO Den Haag
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-25,CD Nacional,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-25,CD Santa Clara,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-25,CF Estrela da Amadora,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-25,FC Alverca,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-25,FC Arouca,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-25,FC Famalicão,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-25,Rio Ave FC,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-25,Sporting Clube de Braga,Sport Lisboa e Benfica
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-04-25,Sporting Clube de Portugal,Gil Vicente FC
 England,premier_league,league,Premier League,1,openfootball,2027-05-01,Arsenal,Tottenham Hotspur
 England,premier_league,league,Premier League,1,openfootball,2027-05-01,Brighton & Hove Albion,Nottingham Forest
 England,premier_league,league,Premier League,1,openfootball,2027-05-01,Coventry City,Manchester United
@@ -2918,6 +4052,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-05-02,Roma,Napoli
 Italy,serie_a,league,Serie A,1,openfootball,2027-05-02,Sassuolo,Frosinone
 Italy,serie_a,league,Serie A,1,openfootball,2027-05-02,Torino,Parma
 Italy,serie_a,league,Serie A,1,openfootball,2027-05-02,Udinese,Genoa
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-02,AFC Ajax,Fortuna Sittard
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-02,FC Groningen,ADO Den Haag
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-02,Feyenoord Rotterdam,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-02,Go Ahead Eagles,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-02,NEC,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-02,SBV Excelsior,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-02,SC Heerenveen,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-02,Sparta Rotterdam,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-02,Telstar 1963,AZ
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-02,Académico de Viseu FC,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-02,CS Marítimo,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-02,Casa Pia AC,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-02,FC Porto,FC Famalicão
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-02,GD Estoril Praia,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-02,Gil Vicente FC,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-02,Moreirense FC,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-02,Sport Lisboa e Benfica,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-02,Vitória Guimarães,CD Santa Clara
 Spain,la_liga,league,La Liga,1,openfootball,2027-05-02,Atlético Madrid,Alavés
 Spain,la_liga,league,La Liga,1,openfootball,2027-05-02,Barcelona,Osasuna
 Spain,la_liga,league,La Liga,1,openfootball,2027-05-02,Celta Vigo,Sevilla
@@ -2966,6 +4118,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-05-09,Parma,AC Milan
 Italy,serie_a,league,Serie A,1,openfootball,2027-05-09,Torino,Bologna
 Italy,serie_a,league,Serie A,1,openfootball,2027-05-09,Udinese,Juventus
 Italy,serie_a,league,Serie A,1,openfootball,2027-05-09,Venezia,Como
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-09,ADO Den Haag,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-09,AZ,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-09,FC Twente '65,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-09,FC Utrecht,Feyenoord Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-09,Fortuna Sittard,Go Ahead Eagles
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-09,PEC Zwolle,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-09,PSV,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-09,SC Cambuur-Leeuwarden,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-09,Willem II Tilburg,Telstar 1963
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-09,Académico de Viseu FC,Moreirense FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-09,CD Nacional,FC Porto
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-09,CF Estrela da Amadora,CD Santa Clara
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-09,FC Alverca,GD Estoril Praia
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-09,FC Arouca,Gil Vicente FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-09,FC Famalicão,Casa Pia AC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-09,Rio Ave FC,Vitória Guimarães
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-09,Sporting Clube de Braga,CS Marítimo
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-09,Sporting Clube de Portugal,Sport Lisboa e Benfica
 Spain,la_liga,league,La Liga,1,openfootball,2027-05-09,Alavés,Levante
 Spain,la_liga,league,La Liga,1,openfootball,2027-05-09,Athletic Club,Málaga
 Spain,la_liga,league,La Liga,1,openfootball,2027-05-09,Getafe,Elche
@@ -3014,6 +4184,24 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-05-16,Lecce,Fiorentina
 Italy,serie_a,league,Serie A,1,openfootball,2027-05-16,Monza,Parma
 Italy,serie_a,league,Serie A,1,openfootball,2027-05-16,Napoli,Genoa
 Italy,serie_a,league,Serie A,1,openfootball,2027-05-16,Sassuolo,Venezia
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-16,AFC Ajax,Sparta Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-16,AZ,PEC Zwolle
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-16,FC Groningen,SC Cambuur-Leeuwarden
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-16,FC Twente '65,Feyenoord Rotterdam
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-16,FC Utrecht,Telstar 1963
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-16,Fortuna Sittard,Willem II Tilburg
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-16,Go Ahead Eagles,SC Heerenveen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-16,PSV,NEC
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-16,SBV Excelsior,ADO Den Haag
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-16,CD Santa Clara,Sporting Clube de Portugal
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-16,CS Marítimo,FC Alverca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-16,Casa Pia AC,Académico de Viseu FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-16,FC Porto,Sporting Clube de Braga
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-16,GD Estoril Praia,CF Estrela da Amadora
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-16,Gil Vicente FC,CD Nacional
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-16,Moreirense FC,Rio Ave FC
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-16,Sport Lisboa e Benfica,FC Arouca
+Portugal,primeira_liga,league,Primeira Liga,1,openfootball,2027-05-16,Vitória Guimarães,FC Famalicão
 Spain,la_liga,league,La Liga,1,openfootball,2027-05-16,Atlético Madrid,Rayo Vallecano
 Spain,la_liga,league,La Liga,1,openfootball,2027-05-16,Deportivo La Coruña,Alavés
 Spain,la_liga,league,La Liga,1,openfootball,2027-05-16,Elche,Athletic Club
@@ -3062,6 +4250,15 @@ Italy,serie_a,league,Serie A,1,openfootball,2027-05-23,Roma,Como
 Italy,serie_a,league,Serie A,1,openfootball,2027-05-23,Torino,Napoli
 Italy,serie_a,league,Serie A,1,openfootball,2027-05-23,Udinese,Sassuolo
 Italy,serie_a,league,Serie A,1,openfootball,2027-05-23,Venezia,AC Milan
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-23,ADO Den Haag,AZ
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-23,Feyenoord Rotterdam,FC Groningen
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-23,NEC,FC Utrecht
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-23,PEC Zwolle,FC Twente '65
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-23,SC Cambuur-Leeuwarden,AFC Ajax
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-23,SC Heerenveen,PSV
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-23,Sparta Rotterdam,Fortuna Sittard
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-23,Telstar 1963,SBV Excelsior
+Netherlands,eredivisie,league,Eredivisie,1,openfootball,2027-05-23,Willem II Tilburg,Go Ahead Eagles
 Spain,la_liga,league,La Liga,1,openfootball,2027-05-23,Alavés,Real Madrid
 Spain,la_liga,league,La Liga,1,openfootball,2027-05-23,Atlético Madrid,Athletic Club
 Spain,la_liga,league,La Liga,1,openfootball,2027-05-23,Barcelona,Málaga

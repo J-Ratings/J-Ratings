@@ -63,8 +63,9 @@ K_NEW_GAMES <- 100L
 #   Germany 194
 #   Italy   196
 #
-# England Tiers 3-5 are deliberately left at their existing absolute seeds
-# for this test. Other currently covered countries only have Tiers 1 and 2.
+# England Tiers 3-5 remain at their existing absolute seeds.
+# Smaller European leagues are currently Tier 1 only and use provisional seeds
+# that can be recalibrated later from the expanded UEFA network.
 
 COUNTRY_TIER_SEEDS <- data.table(
   Country = c(
@@ -72,21 +73,51 @@ COUNTRY_TIER_SEEDS <- data.table(
     "Spain",   "Spain",
     "France",  "France",
     "Germany", "Germany",
-    "Italy",   "Italy"
+    "Italy",   "Italy",
+    "Portugal",
+    "Netherlands",
+    "Belgium",
+    "Austria",
+    "Turkey",
+    "Scotland",
+    "Switzerland",
+    "Greece",
+    "Czechia",
+    "Ukraine"
   ),
   Tier = c(
     1L, 2L, 3L, 4L, 5L,
     1L, 2L,
     1L, 2L,
     1L, 2L,
-    1L, 2L
+    1L, 2L,
+    1L,
+    1L,
+    1L,
+    1L,
+    1L,
+    1L,
+    1L,
+    1L,
+    1L,
+    1L
   ),
   SeedRating = c(
     2750, 2528, 2350, 2150, 1950,
     2737, 2552,
     2689, 2495,
     2685, 2491,
-    2675, 2479
+    2675, 2479,
+    2580,  # Portugal
+    2550,  # Netherlands
+    2490,  # Belgium
+    2470,  # Austria
+    2460,  # Turkey
+    2440,  # Scotland
+    2430,  # Switzerland
+    2400,  # Greece
+    2390,  # Czechia
+    2380   # Ukraine
   )
 )
 

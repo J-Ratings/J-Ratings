@@ -852,6 +852,46 @@ make_current_job <- function(
   )
 }
 
+make_cached_league_jobs <- function(
+    seasons,
+    file,
+    source_folder,
+    country,
+    competition,
+    league
+) {
+  seasons <- unique(as.character(seasons))
+  season_labels <- vapply(
+    seasons,
+    normalise_openfootball_season_label,
+    character(1)
+  )
+  
+  keys <- paste(
+    season_labels,
+    country,
+    competition,
+    sep = "||"
+  )
+  
+  # Import missing historical seasons once; always reparse current season.
+  needed <- !(keys %in% existing_keys) | seasons == season_folder
+  
+  data.frame(
+    file = rep(file, sum(needed)),
+    source_folder = rep(source_folder, sum(needed)),
+    country = rep(country, sum(needed)),
+    competition = rep(competition, sum(needed)),
+    competition_type = rep("league", sum(needed)),
+    league = rep(league, sum(needed)),
+    tier = rep(1L, sum(needed)),
+    source = rep("openfootball", sum(needed)),
+    season_folder = seasons[needed],
+    parser = rep("openfootball", sum(needed)),
+    stringsAsFactors = FALSE
+  )
+}
+
 # Established OpenFootball competitions: current season only.
 english_jobs <- english_competition_files
 english_jobs$season_folder <- season_folder
@@ -897,6 +937,95 @@ champions_league_jobs <- make_current_job(
   competition_type = "continental"
 )
 
+
+# Smaller European top divisions.
+portugal_jobs <- make_cached_league_jobs(
+  c(
+    "2018-19", "2019-20", "2020-21", "2021-22",
+    "2022-23", "2023-24", "2024-25", "2025-26", "2026-27"
+  ),
+  "1-primeira-liga.txt", "portugal", "Portugal",
+  "primeira_liga", "Primeira Liga"
+)
+
+netherlands_jobs <- make_cached_league_jobs(
+  c(
+    "2018-19", "2019-20", "2020-21", "2021-22",
+    "2022-23", "2023-24", "2024-25", "2025-26", "2026-27"
+  ),
+  "1-eredivisie.txt", "netherlands", "Netherlands",
+  "eredivisie", "Eredivisie"
+)
+
+austria_jobs <- make_cached_league_jobs(
+  unique(c(
+    vapply(2010:2025, season_folder_from_start_year, character(1)),
+    season_folder
+  )),
+  "1-austrian-bundesliga.txt", "austria", "Austria",
+  "austrian_bundesliga", "Austrian Bundesliga"
+)
+
+belgium_jobs <- make_cached_league_jobs(
+  unique(c(
+    "2018-19", "2019-20", "2021-22",
+    "2023-24", "2024-25", "2025-26", "2026-27",
+    season_folder
+  )),
+  "1-belgian-pro-league.txt", "belgium", "Belgium",
+  "belgian_pro_league", "Belgian Pro League"
+)
+
+switzerland_jobs <- make_cached_league_jobs(
+  unique(c(
+    "2014-15", "2018-19", "2019-20", "2020-21",
+    "2023-24", "2024-25", season_folder
+  )),
+  "1-swiss-super-league.txt", "switzerland", "Switzerland",
+  "swiss_super_league", "Swiss Super League"
+)
+
+scotland_jobs <- make_cached_league_jobs(
+  unique(c(
+    "2018-19", "2019-20", "2020-21",
+    "2023-24", "2024-25", "2025-26", season_folder
+  )),
+  "1-scottish-premiership.txt", "scotland", "Scotland",
+  "scottish_premiership", "Scottish Premiership"
+)
+
+turkey_jobs <- make_cached_league_jobs(
+  unique(c(
+    "2018-19", "2019-20", "2020-21",
+    "2023-24", "2024-25", "2025-26", season_folder
+  )),
+  "1-super-lig.txt", "turkey", "Turkey",
+  "super_lig", "Süper Lig"
+)
+
+greece_jobs <- make_cached_league_jobs(
+  unique(c(
+    "2018-19", "2019-20", "2020-21",
+    "2023-24", "2024-25", "2025-26", season_folder
+  )),
+  "1-super-league-greece.txt", "greece", "Greece",
+  "super_league_greece", "Super League Greece"
+)
+
+czechia_jobs <- make_cached_league_jobs(
+  unique(c(
+    "2018-19", "2020-21", "2023-24", "2024-25", season_folder
+  )),
+  "1-czech-first-league.txt", "czech-republic", "Czechia",
+  "czech_first_league", "Czech First League"
+)
+
+ukraine_jobs <- make_cached_league_jobs(
+  unique(c("2023-24", "2024-25", season_folder)),
+  "1-ukrainian-premier-league.txt", "ukraine", "Ukraine",
+  "ukrainian_premier_league", "Ukrainian Premier League"
+)
+
 openfootball_jobs <- rbind(
   english_jobs,
   la_liga_jobs,
@@ -907,7 +1036,17 @@ openfootball_jobs <- rbind(
   bundesliga2_jobs,
   ligue1_jobs,
   ligue2_jobs,
-  champions_league_jobs
+  champions_league_jobs,
+  portugal_jobs,
+  netherlands_jobs,
+  austria_jobs,
+  belgium_jobs,
+  switzerland_jobs,
+  scotland_jobs,
+  turkey_jobs,
+  greece_jobs,
+  czechia_jobs,
+  ukraine_jobs
 )
 
 make_wikipedia_parse_jobs <- function(
