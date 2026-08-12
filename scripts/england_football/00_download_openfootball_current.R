@@ -20,6 +20,14 @@ source_root_dir <- file.path(
   "openfootball"
 )
 
+wikipedia_source_root_dir <- file.path(
+  repo_dir,
+  "EnglishFootball",
+  "pipeline_data",
+  "Source",
+  "wikipedia"
+)
+
 # -----------------------------
 # Helpers
 # -----------------------------
@@ -46,14 +54,11 @@ season_start_year <- function(season_folder) {
   as.integer(substr(season_folder, 1, 4))
 }
 
-download_one_file <- function(url, dest) {
+download_one_file <- function(url, dest, headers = NULL) {
   dir.create(dirname(dest), recursive = TRUE, showWarnings = FALSE)
   
   tmp <- paste0(dest, ".tmp")
-  
-  if (file.exists(tmp)) {
-    file.remove(tmp)
-  }
+  if (file.exists(tmp)) file.remove(tmp)
   
   cat("Downloading:\n")
   cat("  ", url, "\n", sep = "")
@@ -62,14 +67,16 @@ download_one_file <- function(url, dest) {
   
   ok <- tryCatch(
     {
-      suppressWarnings(
-        download.file(
-          url = url,
-          destfile = tmp,
-          mode = "wb",
-          quiet = FALSE
-        )
+      args <- list(
+        url = url,
+        destfile = tmp,
+        mode = "wb",
+        quiet = FALSE,
+        method = "libcurl"
       )
+      if (!is.null(headers)) args$headers <- headers
+      
+      suppressWarnings(do.call(download.file, args))
       TRUE
     },
     error = function(e) {
@@ -82,11 +89,7 @@ download_one_file <- function(url, dest) {
     if (file.exists(tmp)) file.remove(tmp)
     stop("Failed to download: ", url)
   }
-  
-  if (!file.exists(tmp)) {
-    stop("Download did not create a file: ", tmp)
-  }
-  
+  if (!file.exists(tmp)) stop("Download did not create a file: ", tmp)
   if (file.info(tmp)$size == 0) {
     file.remove(tmp)
     stop("Downloaded file is empty: ", url)
@@ -94,29 +97,73 @@ download_one_file <- function(url, dest) {
   
   file.copy(tmp, dest, overwrite = TRUE)
   file.remove(tmp)
-  
   cat("Done.\n\n")
 }
 
-make_champions_league_jobs <- function(current_season) {
-  historical_start_years <- 2011:2025
-  historical_seasons <- vapply(
-    historical_start_years,
-    season_folder_from_start_year,
-    character(1)
-  )
+wikipedia_stage_page_title <- function(start_year, competition, stage) {
+  start_year <- as.integer(start_year)
+  end_short <- sprintf("%02d", (start_year + 1L) %% 100L)
+  season_title <- paste0(start_year, "\u2013", end_short)
   
-  seasons <- unique(c(historical_seasons, current_season))
+  competition_title <- if (competition == "europa_league") {
+    "UEFA Europa League"
+  } else if (competition == "conference_league") {
+    if (start_year <= 2023L) {
+      "UEFA Europa Conference League"
+    } else {
+      "UEFA Conference League"
+    }
+  } else {
+    stop("Unknown Wikipedia competition: ", competition)
+  }
   
-  data.frame(
-    repo = rep("champions-league", length(seasons)),
-    source_folder = rep("champions-league", length(seasons)),
-    season = seasons,
-    remote_file = rep("cl.txt", length(seasons)),
-    local_file = rep("cl.txt", length(seasons)),
-    required = rep(FALSE, length(seasons)),
-    refresh_current = seasons == current_season,
-    stringsAsFactors = FALSE
+  paste(season_title, competition_title, stage)
+}
+
+make_wikipedia_jobs <- function(first_start_year, current_start_year, competition) {
+  start_years <- first_start_year:current_start_year
+  
+  jobs <- list()
+  k <- 1L
+  
+  for (start_year in start_years) {
+    season <- season_folder_from_start_year(start_year)
+    
+    # UEFA changed from groups to a single league phase in 2024/25.
+    first_stage <- if (start_year >= 2024L) "league phase" else "group stage"
+    
+    stages <- c(first_stage, "knockout phase")
+    local_files <- c(
+      if (first_stage == "league phase") "league_phase.html" else "group_stage.html",
+      "knockout_phase.html"
+    )
+    
+    for (j in seq_along(stages)) {
+      jobs[[k]] <- data.frame(
+        competition = competition,
+        season = season,
+        stage = stages[j],
+        page_title = wikipedia_stage_page_title(
+          start_year,
+          competition,
+          stages[j]
+        ),
+        local_file = local_files[j],
+        refresh_current = season == season_folder_from_start_year(current_start_year),
+        stringsAsFactors = FALSE
+      )
+      k <- k + 1L
+    }
+  }
+  
+  do.call(rbind, jobs)
+}
+
+wikipedia_page_url <- function(page_title) {
+  slug <- gsub(" ", "_", page_title, fixed = TRUE)
+  paste0(
+    "https://en.wikipedia.org/wiki/",
+    URLencode(slug, reserved = TRUE)
   )
 }
 
@@ -205,9 +252,16 @@ france_jobs <- data.frame(
 )
 
 # UEFA Champions League:
-# OpenFootball has cl.txt season folders from 2011/12 onward.
-# Historical seasons are downloaded once if missing; current season is refreshed weekly.
-champions_league_jobs <- make_champions_league_jobs(season_folder)
+# Historical files are already cached. Only the current season is refreshed.
+champions_league_jobs <- data.frame(
+  repo = "champions-league",
+  source_folder = "champions-league",
+  season = season_folder,
+  remote_file = "cl.txt",
+  local_file = "cl.txt",
+  required = FALSE,
+  stringsAsFactors = FALSE
+)
 
 download_jobs <- rbind(
   england_jobs,
@@ -215,14 +269,7 @@ download_jobs <- rbind(
   italy_jobs,
   germany_jobs,
   france_jobs,
-  champions_league_jobs[, c(
-    "repo",
-    "source_folder",
-    "season",
-    "remote_file",
-    "local_file",
-    "required"
-  )]
+  champions_league_jobs
 )
 
 # -----------------------------
@@ -251,10 +298,10 @@ for (i in seq_len(nrow(download_jobs))) {
     job$local_file
   )
   
-  is_current <- identical(as.character(job$season), season_folder)
-  should_refresh <- is_current || isTRUE(job$refresh_current)
+  # Every OpenFootball job in this script is the current season, including
+  # Champions League. Refresh it on each normal pipeline run.
+  should_refresh <- TRUE
   
-  # Historical Champions League files are cached permanently once downloaded.
   if (file.exists(dest) && !should_refresh) {
     result <- "already_exists"
   } else {
@@ -309,3 +356,91 @@ cat("OpenFootball download complete.\n")
 cat("Current season:", season_folder, "\n")
 cat("Files:\n")
 print(download_results)
+
+# -----------------------------
+# Wikipedia UEFA competitions
+# -----------------------------
+
+current_start_year <- season_start_year(season_folder)
+
+wikipedia_jobs <- rbind(
+  make_wikipedia_jobs(2011L, current_start_year, "europa_league"),
+  make_wikipedia_jobs(2021L, current_start_year, "conference_league")
+)
+
+wikimedia_user_agent <- Sys.getenv(
+  "WIKIMEDIA_USER_AGENT",
+  unset = "J-Ratings/1.0 (European football ratings project)"
+)
+
+cat("\nWikipedia source root:", wikipedia_source_root_dir, "\n")
+cat(
+  "For Wikimedia best practice, WIKIMEDIA_USER_AGENT can be set to include ",
+  "a contact URL or email.\n\n",
+  sep = ""
+)
+
+wikipedia_results <- data.frame(
+  competition = character(),
+  season = character(),
+  stage = character(),
+  page_title = character(),
+  status = character(),
+  stringsAsFactors = FALSE
+)
+
+for (i in seq_len(nrow(wikipedia_jobs))) {
+  job <- wikipedia_jobs[i, ]
+  
+  dest <- file.path(
+    wikipedia_source_root_dir,
+    job$competition,
+    job$season,
+    job$local_file
+  )
+  
+  is_current <- isTRUE(job$refresh_current)
+  
+  # Historical pages are cached once; only the current season refreshes.
+  if (file.exists(dest) && !is_current) {
+    result <- "already_exists"
+  } else {
+    result <- tryCatch(
+      {
+        download_one_file(
+          wikipedia_page_url(job$page_title),
+          dest,
+          headers = c(
+            "User-Agent" = wikimedia_user_agent,
+            "Accept-Language" = "en-GB,en;q=0.9"
+          )
+        )
+        "downloaded"
+      },
+      error = function(e) {
+        message(
+          "Optional Wikipedia page not downloaded: ",
+          job$competition, "/", job$season, " / ", job$stage
+        )
+        message("Reason: ", conditionMessage(e))
+        "missing_optional"
+      }
+    )
+    Sys.sleep(1)
+  }
+  
+  wikipedia_results <- rbind(
+    wikipedia_results,
+    data.frame(
+      competition = job$competition,
+      season = job$season,
+      stage = job$stage,
+      page_title = job$page_title,
+      status = result,
+      stringsAsFactors = FALSE
+    )
+  )
+}
+
+cat("\nWikipedia download complete.\n")
+print(wikipedia_results)

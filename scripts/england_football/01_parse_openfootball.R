@@ -18,6 +18,14 @@ source_root_dir <- file.path(
   "openfootball"
 )
 
+wikipedia_source_root_dir <- file.path(
+  repo_dir,
+  "EnglishFootball",
+  "pipeline_data",
+  "Source",
+  "wikipedia"
+)
+
 combined_dir <- file.path(
   repo_dir,
   "EnglishFootball",
@@ -474,6 +482,178 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
   out
 }
 
+
+# -----------------------------
+# Wikipedia UEFA parser
+# -----------------------------
+
+clean_wikipedia_text <- function(x) {
+  if (length(x) == 0 || is.na(x)) return("")
+  x <- gsub("\u00a0", " ", x, fixed = TRUE)
+  x <- gsub("\\[[0-9]+\\]", "", x)
+  x <- gsub("\\s+", " ", x)
+  trim(x)
+}
+
+parse_wikipedia_date <- function(x) {
+  x <- clean_wikipedia_text(x)
+  
+  month_names <- paste(
+    c(
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ),
+    collapse = "|"
+  )
+  
+  pat <- paste0("(\\d{1,2}\\s+(?:", month_names, ")\\s+\\d{4})")
+  m <- regexpr(pat, x, perl = TRUE)
+  if (m[1] == -1) return(as.Date(NA))
+  
+  as.Date(regmatches(x, m), format = "%d %B %Y")
+}
+
+parse_wikipedia_competition_page <- function(
+    html_path,
+    season_folder,
+    competition_id,
+    league_label
+) {
+  if (!requireNamespace("xml2", quietly = TRUE)) {
+    stop(
+      "Package 'xml2' is required for Wikipedia parsing. ",
+      "Install it once with install.packages('xml2')."
+    )
+  }
+  
+  doc <- xml2::read_html(html_path, encoding = "UTF-8")
+  
+  boxes <- xml2::xml_find_all(
+    doc,
+    "//*[contains(concat(' ', normalize-space(@class), ' '), ' footballbox ')]"
+  )
+  
+  if (length(boxes) == 0) {
+    message("No Wikipedia football boxes found yet in: ", html_path)
+    return(data.frame(
+      Season = character(),
+      Country = character(),
+      Competition = character(),
+      CompetitionType = character(),
+      Tier = integer(),
+      League = character(),
+      Date = character(),
+      Home = character(),
+      Away = character(),
+      Result = character(),
+      Score = character(),
+      Source = character(),
+      stringsAsFactors = FALSE
+    ))
+  }
+  
+  season_str <- normalise_openfootball_season_label(season_folder)
+  rows <- list()
+  k <- 1L
+  
+  for (box in boxes) {
+    home_node <- xml2::xml_find_first(
+      box,
+      ".//*[contains(concat(' ', normalize-space(@class), ' '), ' fhome ')]"
+    )
+    away_node <- xml2::xml_find_first(
+      box,
+      ".//*[contains(concat(' ', normalize-space(@class), ' '), ' faway ')]"
+    )
+    score_node <- xml2::xml_find_first(
+      box,
+      ".//*[contains(concat(' ', normalize-space(@class), ' '), ' fscore ')]"
+    )
+    date_node <- xml2::xml_find_first(
+      box,
+      ".//*[contains(concat(' ', normalize-space(@class), ' '), ' fdate ')]"
+    )
+    
+    if (
+      inherits(home_node, "xml_missing") ||
+      inherits(away_node, "xml_missing") ||
+      inherits(date_node, "xml_missing")
+    ) next
+    
+    home <- clean_wikipedia_text(xml2::xml_text(home_node))
+    away <- clean_wikipedia_text(xml2::xml_text(away_node))
+    date <- parse_wikipedia_date(xml2::xml_text(date_node))
+    
+    if (home == "" || away == "" || is.na(date)) next
+    
+    score_text <- if (inherits(score_node, "xml_missing")) {
+      ""
+    } else {
+      clean_wikipedia_text(xml2::xml_text(score_node))
+    }
+    
+    # Wikipedia displays the actual match score first. Penalty shoot-out
+    # information, when present, is supplementary and is ignored by Elo.
+    score_pat <- "([0-9]+)\\s*[\\-\u2013\u2014]\\s*([0-9]+)"
+    
+    if (grepl(score_pat, score_text, perl = TRUE)) {
+      hg <- as.integer(sub(paste0("^.*?", score_pat, ".*$"), "\\1", score_text, perl = TRUE))
+      ag <- as.integer(sub(paste0("^.*?", score_pat, ".*$"), "\\2", score_text, perl = TRUE))
+      result <- result_code(hg, ag)
+      score <- sprintf("%d-%d", hg, ag)
+    } else {
+      result <- ""
+      score <- ""
+    }
+    
+    rows[[k]] <- data.frame(
+      Season = season_str,
+      Country = "Europe",
+      Competition = competition_id,
+      CompetitionType = "continental",
+      Tier = NA_integer_,
+      League = league_label,
+      Date = format(date, "%Y-%m-%d"),
+      Home = home,
+      Away = away,
+      Result = result,
+      Score = score,
+      Source = "wikipedia",
+      stringsAsFactors = FALSE
+    )
+    k <- k + 1L
+  }
+  
+  if (length(rows) == 0) {
+    return(data.frame(
+      Season = character(),
+      Country = character(),
+      Competition = character(),
+      CompetitionType = character(),
+      Tier = integer(),
+      League = character(),
+      Date = character(),
+      Home = character(),
+      Away = character(),
+      Result = character(),
+      Score = character(),
+      Source = character(),
+      stringsAsFactors = FALSE
+    ))
+  }
+  
+  out <- do.call(rbind, rows)
+  
+  local_key <- paste(out$Date, out$Home, out$Away, sep = "||")
+  if (anyDuplicated(local_key)) {
+    dup <- out[duplicated(local_key) | duplicated(local_key, fromLast = TRUE), ]
+    print(dup)
+    stop("Duplicate Wikipedia football boxes detected in: ", html_path)
+  }
+  
+  out
+}
+
 # -----------------------------
 # Competition configuration
 # -----------------------------
@@ -625,74 +805,99 @@ if (!identical(season_folder, expected_season_folder)) {
   )
 }
 
-# England: only refresh current season because historical England data is
-# already in the combined CSV.
+# Existing historical rows stay in the combined CSV. We only need their keys
+# here so the new Wikipedia competitions backfill missing seasons once.
+existing_keys <- character()
+existing_counts <- integer()
+names(existing_counts) <- character()
+
+if (file.exists(out_file)) {
+  existing_for_jobs <- read.csv(out_file, stringsAsFactors = FALSE)
+  
+  if (all(c("Season", "Country", "Competition") %in% names(existing_for_jobs))) {
+    existing_row_keys <- paste(
+      existing_for_jobs$Season,
+      existing_for_jobs$Country,
+      existing_for_jobs$Competition,
+      sep = "||"
+    )
+    
+    existing_keys <- unique(existing_row_keys)
+    existing_counts <- table(existing_row_keys)
+  }
+}
+
+make_current_job <- function(
+    file,
+    source_folder,
+    country,
+    competition,
+    league,
+    tier,
+    competition_type = "league",
+    source = "openfootball"
+) {
+  data.frame(
+    file = file,
+    source_folder = source_folder,
+    country = country,
+    competition = competition,
+    competition_type = competition_type,
+    league = league,
+    tier = as.integer(tier),
+    source = source,
+    season_folder = season_folder,
+    parser = "openfootball",
+    stringsAsFactors = FALSE
+  )
+}
+
+# Established OpenFootball competitions: current season only.
 english_jobs <- english_competition_files
 english_jobs$season_folder <- season_folder
+english_jobs$parser <- "openfootball"
 
-# Spain
-la_liga_jobs <- make_jobs(
-  2012L, current_start_year,
+la_liga_jobs <- make_current_job(
   "1-liga.txt", "espana", "Spain",
   "la_liga", "La Liga", 1L
 )
-
-segunda_jobs <- make_jobs(
-  2012L, current_start_year,
+segunda_jobs <- make_current_job(
   "2-liga2.txt", "espana", "Spain",
   "segunda_division", "Segunda División", 2L
 )
-
-# Italy
-serie_a_jobs <- make_jobs(
-  2013L, current_start_year,
+serie_a_jobs <- make_current_job(
   "1-seriea.txt", "italy", "Italy",
   "serie_a", "Serie A", 1L
 )
-
-serie_b_jobs <- make_jobs(
-  2013L, current_start_year,
+serie_b_jobs <- make_current_job(
   "2-serieb.txt", "italy", "Italy",
   "serie_b", "Serie B", 2L
 )
-
-# Germany
-bundesliga_jobs <- make_jobs(
-  2010L, current_start_year,
+bundesliga_jobs <- make_current_job(
   "1-bundesliga.txt", "deutschland", "Germany",
   "bundesliga", "Bundesliga", 1L
 )
-
-bundesliga2_jobs <- make_jobs(
-  2010L, current_start_year,
+bundesliga2_jobs <- make_current_job(
   "2-bundesliga2.txt", "deutschland", "Germany",
   "bundesliga_2", "2. Bundesliga", 2L
 )
-
-# France
-ligue1_jobs <- make_jobs(
-  2014L, current_start_year,
+ligue1_jobs <- make_current_job(
   "1-ligue1.txt", "france", "France",
   "ligue_1", "Ligue 1", 1L
 )
-
-ligue2_jobs <- make_jobs(
-  2014L, current_start_year,
+ligue2_jobs <- make_current_job(
   "2-ligue2.txt", "france", "France",
   "ligue_2", "Ligue 2", 2L
 )
 
-# UEFA Champions League.
-# Historical files are available from 2011/12 onward. The current season will
-# parse automatically as soon as OpenFootball publishes cl.txt.
-champions_league_jobs <- make_jobs(
-  2011L, current_start_year,
+# Champions League: current season only. Historical rows are preserved.
+champions_league_jobs <- make_current_job(
   "cl.txt", "champions-league", "Europe",
   "champions_league", "Champions League", NA_integer_,
   competition_type = "continental"
 )
 
-parse_jobs <- rbind(
+openfootball_jobs <- rbind(
   english_jobs,
   la_liga_jobs,
   segunda_jobs,
@@ -705,6 +910,96 @@ parse_jobs <- rbind(
   champions_league_jobs
 )
 
+make_wikipedia_parse_jobs <- function(
+    first_start_year,
+    competition,
+    league
+) {
+  start_years <- first_start_year:current_start_year
+  jobs <- list()
+  k <- 1L
+  
+  for (start_year in start_years) {
+    season <- season_folder_from_start_year(start_year)
+    season_label <- normalise_openfootball_season_label(season)
+    key <- paste(season_label, "Europe", competition, sep = "||")
+    
+    existing_n <- if (key %in% names(existing_counts)) {
+      as.integer(existing_counts[[key]])
+    } else {
+      0L
+    }
+    
+    # The previous parser accidentally imported only the final from each season.
+    # Treat obviously tiny historical seasons as incomplete and rebuild them once.
+    minimum_complete_rows <- if (competition == "europa_league") 50L else 20L
+    
+    needs_rebuild <- existing_n < minimum_complete_rows
+    is_current <- identical(season, season_folder)
+    
+    if (!needs_rebuild && !is_current) {
+      next
+    }
+    
+    first_stage <- if (start_year >= 2024L) "league_phase.html" else "group_stage.html"
+    
+    stage_files <- c(first_stage, "knockout_phase.html")
+    
+    for (stage_file in stage_files) {
+      jobs[[k]] <- data.frame(
+        file = stage_file,
+        source_folder = competition,
+        country = "Europe",
+        competition = competition,
+        competition_type = "continental",
+        league = league,
+        tier = NA_integer_,
+        source = "wikipedia",
+        season_folder = season,
+        parser = "wikipedia",
+        stringsAsFactors = FALSE
+      )
+      k <- k + 1L
+    }
+  }
+  
+  if (length(jobs) == 0) {
+    return(data.frame(
+      file = character(),
+      source_folder = character(),
+      country = character(),
+      competition = character(),
+      competition_type = character(),
+      league = character(),
+      tier = integer(),
+      source = character(),
+      season_folder = character(),
+      parser = character(),
+      stringsAsFactors = FALSE
+    ))
+  }
+  
+  do.call(rbind, jobs)
+}
+
+europa_league_jobs <- make_wikipedia_parse_jobs(
+  2011L,
+  "europa_league",
+  "Europa League"
+)
+
+conference_league_jobs <- make_wikipedia_parse_jobs(
+  2021L,
+  "conference_league",
+  "Conference League"
+)
+
+parse_jobs <- rbind(
+  openfootball_jobs,
+  europa_league_jobs,
+  conference_league_jobs
+)
+
 # -----------------------------
 # Parse configured files
 # -----------------------------
@@ -714,9 +1009,16 @@ k <- 1L
 
 for (i in seq_len(nrow(parse_jobs))) {
   cfg <- parse_jobs[i, ]
+  parser_name <- as.character(cfg$parser)
+  
+  root_dir <- if (identical(parser_name, "wikipedia")) {
+    wikipedia_source_root_dir
+  } else {
+    source_root_dir
+  }
   
   season_dir <- file.path(
-    source_root_dir,
+    root_dir,
     cfg$source_folder,
     cfg$season_folder
   )
@@ -728,15 +1030,26 @@ for (i in seq_len(nrow(parse_jobs))) {
   }
   
   tmp <- tryCatch(
-    parse_comp_file(
-      txt_path = fpath,
-      country = cfg$country,
-      competition_id = cfg$competition,
-      competition_type = cfg$competition_type,
-      league_label = cfg$league,
-      tier = cfg$tier,
-      source = cfg$source
-    ),
+    {
+      if (identical(parser_name, "wikipedia")) {
+        parse_wikipedia_competition_page(
+          html_path = fpath,
+          season_folder = cfg$season_folder,
+          competition_id = cfg$competition,
+          league_label = cfg$league
+        )
+      } else {
+        parse_comp_file(
+          txt_path = fpath,
+          country = cfg$country,
+          competition_id = cfg$competition,
+          competition_type = cfg$competition_type,
+          league_label = cfg$league,
+          tier = cfg$tier,
+          source = cfg$source
+        )
+      }
+    },
     error = function(e) {
       message("Skipping parse error: ", fpath, " | ", conditionMessage(e))
       NULL
@@ -744,7 +1057,11 @@ for (i in seq_len(nrow(parse_jobs))) {
   )
   
   if (!is.null(tmp) && nrow(tmp) > 0) {
-    declared_matches <- declared_match_count(fpath)
+    declared_matches <- if (identical(parser_name, "openfootball")) {
+      declared_match_count(fpath)
+    } else {
+      NA_integer_
+    }
     
     # OpenFootball's declared match count can include fixtures marked
     # cancelled, postponed or abandoned. We deliberately do not import
