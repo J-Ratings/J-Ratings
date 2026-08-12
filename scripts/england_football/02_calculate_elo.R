@@ -108,16 +108,16 @@ COUNTRY_TIER_SEEDS <- data.table(
     2689, 2495,
     2685, 2491,
     2675, 2479,
-    2580,  # Portugal
-    2550,  # Netherlands
-    2490,  # Belgium
-    2470,  # Austria
-    2460,  # Turkey
-    2440,  # Scotland
-    2430,  # Switzerland
-    2400,  # Greece
-    2390,  # Czechia
-    2380   # Ukraine
+    2550,  # Portugal
+    2575,  # Netherlands
+    2515,  # Belgium
+    2510,  # Austria
+    2510,  # Turkey
+    2430,  # Scotland
+    2500,  # Switzerland
+    2450,  # Greece
+    2430,  # Czechia
+    2475   # Ukraine
   )
 )
 
