@@ -214,6 +214,45 @@ add_current_season <- function(seasons, current_season) {
   unique(c(as.character(seasons), as.character(current_season)))
 }
 
+
+wikipedia_domestic_cup_title <- function(start_year, competition) {
+  start_year <- as.integer(start_year)
+  end_short <- sprintf("%02d", (start_year + 1L) %% 100L)
+  season_title <- paste0(start_year, "\u2013", end_short)
+  
+  if (competition == "fa_cup") return(paste(season_title, "FA Cup"))
+  if (competition == "efl_cup") {
+    if (start_year <= 2015L) return(paste(season_title, "Football League Cup"))
+    return(paste(season_title, "EFL Cup"))
+  }
+  if (competition == "copa_del_rey") return(paste(season_title, "Copa del Rey"))
+  if (competition == "coppa_italia") return(paste(season_title, "Coppa Italia"))
+  if (competition == "coupe_de_france") return(paste(season_title, "Coupe de France"))
+  
+  stop("Unknown Wikipedia domestic cup: ", competition)
+}
+
+make_wikipedia_domestic_cup_jobs <- function(first_start_year, current_start_year, competition) {
+  start_years <- first_start_year:current_start_year
+  seasons <- vapply(start_years, season_folder_from_start_year, character(1))
+  page_titles <- vapply(
+    start_years,
+    wikipedia_domestic_cup_title,
+    character(1),
+    competition = competition
+  )
+  
+  data.frame(
+    competition = rep(competition, length(seasons)),
+    season = seasons,
+    stage = rep("main page", length(seasons)),
+    page_title = page_titles,
+    local_file = rep("page.html", length(seasons)),
+    refresh_current = seasons == season_folder_from_start_year(current_start_year),
+    stringsAsFactors = FALSE
+  )
+}
+
 # -----------------------------
 # Current season
 # -----------------------------
@@ -440,6 +479,18 @@ ukraine_jobs <- make_flat_europe_league_jobs(
   "1-ukrainian-premier-league.txt"
 )
 
+
+dfb_pokal_jobs <- make_repo_league_jobs(
+  add_current_season(
+    vapply(2010:2025, season_folder_from_start_year, character(1)),
+    season_folder
+  ),
+  "deutschland",
+  "deutschland",
+  "cup.txt",
+  "cup-dfb-pokal.txt"
+)
+
 download_jobs <- rbind(
   england_jobs,
   spain_jobs,
@@ -456,7 +507,8 @@ download_jobs <- rbind(
   turkey_jobs,
   greece_jobs,
   czechia_jobs,
-  ukraine_jobs
+  ukraine_jobs,
+  dfb_pokal_jobs
 )
 
 # -----------------------------
@@ -552,7 +604,12 @@ current_start_year <- season_start_year(season_folder)
 
 wikipedia_jobs <- rbind(
   make_wikipedia_jobs(2011L, current_start_year, "europa_league"),
-  make_wikipedia_jobs(2021L, current_start_year, "conference_league")
+  make_wikipedia_jobs(2021L, current_start_year, "conference_league"),
+  make_wikipedia_domestic_cup_jobs(1998L, current_start_year, "fa_cup"),
+  make_wikipedia_domestic_cup_jobs(1998L, current_start_year, "efl_cup"),
+  make_wikipedia_domestic_cup_jobs(2012L, current_start_year, "copa_del_rey"),
+  make_wikipedia_domestic_cup_jobs(2013L, current_start_year, "coppa_italia"),
+  make_wikipedia_domestic_cup_jobs(2014L, current_start_year, "coupe_de_france")
 )
 
 wikimedia_user_agent <- Sys.getenv(

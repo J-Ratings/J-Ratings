@@ -488,7 +488,9 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
 # -----------------------------
 
 clean_wikipedia_text <- function(x) {
-  if (length(x) == 0 || is.na(x)) return("")
+  if (length(x) == 0) return("")
+  x <- as.character(x)
+  x[is.na(x)] <- ""
   x <- gsub("\u00a0", " ", x, fixed = TRUE)
   x <- gsub("\\[[0-9]+\\]", "", x)
   x <- gsub("\\s+", " ", x)
@@ -517,44 +519,77 @@ parse_wikipedia_competition_page <- function(
     html_path,
     season_folder,
     competition_id,
-    league_label
+    league_label,
+    country = "Europe",
+    competition_type = "continental"
 ) {
   if (!requireNamespace("xml2", quietly = TRUE)) {
-    stop(
-      "Package 'xml2' is required for Wikipedia parsing. ",
-      "Install it once with install.packages('xml2')."
-    )
+    stop("Package 'xml2' is required. Install it once with install.packages('xml2').")
   }
   
   doc <- xml2::read_html(html_path, encoding = "UTF-8")
+  season_str <- normalise_openfootball_season_label(season_folder)
+  rows <- list()
+  k <- 1L
   
+  clean_team_name <- function(x) {
+    x <- clean_wikipedia_text(x)
+    # Wikipedia cup pages commonly append the league-system tier, e.g. "(3)".
+    x <- gsub("\\s*\\([0-9]+\\)\\s*$", "", x, perl = TRUE)
+    trim(x)
+  }
+  
+  add_row <- function(date, home, away, score_text = "") {
+    if (length(date) == 0 || is.na(date[1])) return(invisible(NULL))
+    
+    home <- clean_team_name(home)
+    away <- clean_team_name(away)
+    score_text <- clean_wikipedia_text(score_text)
+    
+    if (length(home) == 0 || length(away) == 0 || home[1] == "" || away[1] == "") {
+      return(invisible(NULL))
+    }
+    
+    home <- home[1]
+    away <- away[1]
+    score_text <- score_text[1]
+    
+    score_pat <- "([0-9]+)\\s*[\\-\u2013\u2014]\\s*([0-9]+)"
+    
+    if (grepl(score_pat, score_text, perl = TRUE)) {
+      hg <- as.integer(sub(paste0("^.*?", score_pat, ".*$"), "\\1", score_text, perl = TRUE))
+      ag <- as.integer(sub(paste0("^.*?", score_pat, ".*$"), "\\2", score_text, perl = TRUE))
+      result <- result_code(hg, ag)
+      score <- sprintf("%d-%d", hg, ag)
+    } else {
+      result <- ""
+      score <- ""
+    }
+    
+    rows[[k]] <<- data.frame(
+      Season = season_str,
+      Country = country,
+      Competition = competition_id,
+      CompetitionType = competition_type,
+      Tier = NA_integer_,
+      League = league_label,
+      Date = format(date[1], "%Y-%m-%d"),
+      Home = home,
+      Away = away,
+      Result = result,
+      Score = score,
+      Source = "wikipedia",
+      stringsAsFactors = FALSE
+    )
+    k <<- k + 1L
+    invisible(NULL)
+  }
+  
+  # 1) Standard Wikipedia footballbox template.
   boxes <- xml2::xml_find_all(
     doc,
     "//*[contains(concat(' ', normalize-space(@class), ' '), ' footballbox ')]"
   )
-  
-  if (length(boxes) == 0) {
-    message("No Wikipedia football boxes found yet in: ", html_path)
-    return(data.frame(
-      Season = character(),
-      Country = character(),
-      Competition = character(),
-      CompetitionType = character(),
-      Tier = integer(),
-      League = character(),
-      Date = character(),
-      Home = character(),
-      Away = character(),
-      Result = character(),
-      Score = character(),
-      Source = character(),
-      stringsAsFactors = FALSE
-    ))
-  }
-  
-  season_str <- normalise_openfootball_season_label(season_folder)
-  rows <- list()
-  k <- 1L
   
   for (box in boxes) {
     home_node <- xml2::xml_find_first(
@@ -580,76 +615,88 @@ parse_wikipedia_competition_page <- function(
       inherits(date_node, "xml_missing")
     ) next
     
-    home <- clean_wikipedia_text(xml2::xml_text(home_node))
-    away <- clean_wikipedia_text(xml2::xml_text(away_node))
-    date <- parse_wikipedia_date(xml2::xml_text(date_node))
-    
-    if (home == "" || away == "" || is.na(date)) next
-    
-    score_text <- if (inherits(score_node, "xml_missing")) {
-      ""
-    } else {
-      clean_wikipedia_text(xml2::xml_text(score_node))
-    }
-    
-    # Wikipedia displays the actual match score first. Penalty shoot-out
-    # information, when present, is supplementary and is ignored by Elo.
-    score_pat <- "([0-9]+)\\s*[\\-\u2013\u2014]\\s*([0-9]+)"
-    
-    if (grepl(score_pat, score_text, perl = TRUE)) {
-      hg <- as.integer(sub(paste0("^.*?", score_pat, ".*$"), "\\1", score_text, perl = TRUE))
-      ag <- as.integer(sub(paste0("^.*?", score_pat, ".*$"), "\\2", score_text, perl = TRUE))
-      result <- result_code(hg, ag)
-      score <- sprintf("%d-%d", hg, ag)
-    } else {
-      result <- ""
-      score <- ""
-    }
-    
-    rows[[k]] <- data.frame(
-      Season = season_str,
-      Country = "Europe",
-      Competition = competition_id,
-      CompetitionType = "continental",
-      Tier = NA_integer_,
-      League = league_label,
-      Date = format(date, "%Y-%m-%d"),
-      Home = home,
-      Away = away,
-      Result = result,
-      Score = score,
-      Source = "wikipedia",
-      stringsAsFactors = FALSE
+    add_row(
+      parse_wikipedia_date(xml2::xml_text(date_node)),
+      xml2::xml_text(home_node),
+      xml2::xml_text(away_node),
+      if (inherits(score_node, "xml_missing")) "" else xml2::xml_text(score_node)
     )
-    k <- k + 1L
+  }
+  
+  # 2) Generic rendered Wikipedia result rows.
+  #
+  # Cup pages are inconsistent across seasons. Many use ordinary tables rather
+  # than the footballbox class. A match row normally contains:
+  #   date | home | score | away | ...
+  # Some tables put the date on a row immediately above the matches, so retain
+  # the most recent date found inside each table as a fallback.
+  score_pat <- "^[[:space:]]*[0-9]+[[:space:]]*[\\-\u2013\u2014][[:space:]]*[0-9]+"
+  tables <- xml2::xml_find_all(doc, "//table")
+  
+  for (tbl in tables) {
+    trs <- xml2::xml_find_all(tbl, ".//tr")
+    if (length(trs) == 0) next
+    
+    current_date <- as.Date(NA)
+    
+    for (tr in trs) {
+      cells <- xml2::xml_find_all(tr, "./th|./td")
+      vals <- clean_wikipedia_text(xml2::xml_text(cells))
+      if (length(vals) == 0) next
+      
+      # Update the table-local date whenever a row contains one.
+      row_dates <- lapply(vals, parse_wikipedia_date)
+      date_hits <- which(!vapply(row_dates, function(x) is.na(x[1]), logical(1)))
+      
+      if (length(date_hits) > 0) {
+        current_date <- row_dates[[date_hits[1]]][1]
+      }
+      
+      score_hits <- which(grepl(score_pat, vals, perl = TRUE))
+      if (length(score_hits) == 0) next
+      
+      # Prefer a score with a sensible cell on both sides.
+      for (score_col in score_hits) {
+        if (score_col <= 1L || score_col >= length(vals)) next
+        
+        home <- vals[score_col - 1L]
+        away <- vals[score_col + 1L]
+        
+        # If the same row contains a date, use that; otherwise use the most
+        # recent date heading encountered in this table.
+        row_date <- as.Date(NA)
+        if (length(date_hits) > 0) {
+          row_date <- row_dates[[date_hits[1]]][1]
+        } else if (!is.na(current_date)) {
+          row_date <- current_date
+        }
+        
+        if (is.na(row_date)) next
+        
+        add_row(row_date, home, away, vals[score_col])
+        break
+      }
+    }
   }
   
   if (length(rows) == 0) {
+    message("No Wikipedia match rows found yet in: ", html_path)
     return(data.frame(
-      Season = character(),
-      Country = character(),
-      Competition = character(),
-      CompetitionType = character(),
-      Tier = integer(),
-      League = character(),
-      Date = character(),
-      Home = character(),
-      Away = character(),
-      Result = character(),
-      Score = character(),
-      Source = character(),
-      stringsAsFactors = FALSE
+      Season=character(), Country=character(), Competition=character(),
+      CompetitionType=character(), Tier=integer(), League=character(),
+      Date=character(), Home=character(), Away=character(), Result=character(),
+      Score=character(), Source=character(), stringsAsFactors=FALSE
     ))
   }
   
   out <- do.call(rbind, rows)
   
-  local_key <- paste(out$Date, out$Home, out$Away, sep = "||")
-  if (anyDuplicated(local_key)) {
-    dup <- out[duplicated(local_key) | duplicated(local_key, fromLast = TRUE), ]
-    print(dup)
-    stop("Duplicate Wikipedia football boxes detected in: ", html_path)
-  }
+  # The same match can be exposed more than once on a page.
+  out$has_score <- out$Score != ""
+  out <- out[order(out$Date, out$Home, out$Away, -out$has_score), , drop=FALSE]
+  key <- paste(out$Date, out$Home, out$Away, sep="||")
+  out <- out[!duplicated(key), , drop=FALSE]
+  out$has_score <- NULL
   
   out
 }
@@ -1026,6 +1073,14 @@ ukraine_jobs <- make_cached_league_jobs(
   "ukrainian_premier_league", "Ukrainian Premier League"
 )
 
+dfb_pokal_jobs <- make_cached_league_jobs(
+  unique(c(vapply(2010:2025, season_folder_from_start_year, character(1)), season_folder)),
+  "cup-dfb-pokal.txt", "deutschland", "Germany",
+  "dfb_pokal", "DFB-Pokal"
+)
+dfb_pokal_jobs$competition_type <- "domestic_cup"
+dfb_pokal_jobs$tier <- NA_integer_
+
 openfootball_jobs <- rbind(
   english_jobs,
   la_liga_jobs,
@@ -1046,7 +1101,8 @@ openfootball_jobs <- rbind(
   turkey_jobs,
   greece_jobs,
   czechia_jobs,
-  ukraine_jobs
+  ukraine_jobs,
+  dfb_pokal_jobs
 )
 
 make_wikipedia_parse_jobs <- function(
@@ -1121,6 +1177,56 @@ make_wikipedia_parse_jobs <- function(
   do.call(rbind, jobs)
 }
 
+make_wikipedia_domestic_cup_parse_jobs <- function(first_start_year, competition, league, country) {
+  start_years <- first_start_year:current_start_year
+  seasons <- vapply(start_years, season_folder_from_start_year, character(1))
+  season_labels <- vapply(seasons, normalise_openfootball_season_label, character(1))
+  keys <- paste(season_labels, country, competition, sep="||")
+  
+  # Rebuild historical cup seasons that were previously imported with only
+  # a final or a handful of late-round matches. Once a season has a sensible
+  # number of rows it remains cached; the current season is always reparsed.
+  minimum_complete_rows <- switch(
+    competition,
+    fa_cup = 50L,
+    efl_cup = 30L,
+    copa_del_rey = 20L,
+    coppa_italia = 20L,
+    coupe_de_france = 30L,
+    20L
+  )
+  
+  existing_n <- vapply(
+    keys,
+    function(key) {
+      if (key %in% names(existing_counts)) {
+        as.integer(existing_counts[[key]])
+      } else {
+        0L
+      }
+    },
+    integer(1)
+  )
+  
+  needs_rebuild <- existing_n < minimum_complete_rows
+  is_current <- seasons == season_folder
+  needed <- needs_rebuild | is_current
+  
+  data.frame(
+    file=rep("page.html", sum(needed)),
+    source_folder=rep(competition, sum(needed)),
+    country=rep(country, sum(needed)),
+    competition=rep(competition, sum(needed)),
+    competition_type=rep("domestic_cup", sum(needed)),
+    league=rep(league, sum(needed)),
+    tier=rep(NA_integer_, sum(needed)),
+    source=rep("wikipedia", sum(needed)),
+    season_folder=seasons[needed],
+    parser=rep("wikipedia", sum(needed)),
+    stringsAsFactors=FALSE
+  )
+}
+
 europa_league_jobs <- make_wikipedia_parse_jobs(
   2011L,
   "europa_league",
@@ -1133,10 +1239,21 @@ conference_league_jobs <- make_wikipedia_parse_jobs(
   "Conference League"
 )
 
+fa_cup_jobs <- make_wikipedia_domestic_cup_parse_jobs(1998L, "fa_cup", "FA Cup", "England")
+efl_cup_jobs <- make_wikipedia_domestic_cup_parse_jobs(1998L, "efl_cup", "EFL Cup", "England")
+copa_del_rey_jobs <- make_wikipedia_domestic_cup_parse_jobs(2012L, "copa_del_rey", "Copa del Rey", "Spain")
+coppa_italia_jobs <- make_wikipedia_domestic_cup_parse_jobs(2013L, "coppa_italia", "Coppa Italia", "Italy")
+coupe_de_france_jobs <- make_wikipedia_domestic_cup_parse_jobs(2014L, "coupe_de_france", "Coupe de France", "France")
+
 parse_jobs <- rbind(
   openfootball_jobs,
   europa_league_jobs,
-  conference_league_jobs
+  conference_league_jobs,
+  fa_cup_jobs,
+  efl_cup_jobs,
+  copa_del_rey_jobs,
+  coppa_italia_jobs,
+  coupe_de_france_jobs
 )
 
 # -----------------------------
@@ -1175,7 +1292,9 @@ for (i in seq_len(nrow(parse_jobs))) {
           html_path = fpath,
           season_folder = cfg$season_folder,
           competition_id = cfg$competition,
-          league_label = cfg$league
+          league_label = cfg$league,
+          country = cfg$country,
+          competition_type = cfg$competition_type
         )
       } else {
         parse_comp_file(

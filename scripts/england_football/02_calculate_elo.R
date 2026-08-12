@@ -359,6 +359,77 @@ dt <- dt[
       is.na(Away) | Away == "")
 ]
 
+# Domestic cups can include clubs below J-Ratings' covered domestic leagues.
+# A domestic cup match counts only when BOTH clubs have already appeared in a
+# covered domestic league in that same country by the date of the cup match.
+# This prevents unseeded lower/non-covered cup clubs from entering Elo.
+
+cup_domestic_appearances <- rbindlist(list(
+  dt[CompetitionType == "league", .(Country, Team = Home, DateRaw)],
+  dt[CompetitionType == "league", .(Country, Team = Away, DateRaw)]
+), use.names = TRUE)
+
+cup_domestic_appearances[, Date := as.Date(DateRaw, format = "%Y-%m-%d")]
+
+cup_first_domestic <- cup_domestic_appearances[
+  !is.na(Date),
+  .(FirstDomesticDate = min(Date)),
+  by = .(Country, Team)
+]
+
+domestic_cup_rows <- dt[CompetitionType == "domestic_cup"]
+
+if (nrow(domestic_cup_rows) > 0) {
+  domestic_cup_rows[, MatchDate := as.Date(DateRaw, format = "%Y-%m-%d")]
+  
+  domestic_cup_rows[
+    cup_first_domestic,
+    on = .(Country, Home = Team),
+    HomeFirstDomestic := i.FirstDomesticDate
+  ]
+  
+  domestic_cup_rows[
+    cup_first_domestic,
+    on = .(Country, Away = Team),
+    AwayFirstDomestic := i.FirstDomesticDate
+  ]
+  
+  domestic_cup_keep <- domestic_cup_rows[
+    !is.na(HomeFirstDomestic) &
+      !is.na(AwayFirstDomestic) &
+      HomeFirstDomestic <= MatchDate &
+      AwayFirstDomestic <= MatchDate
+  ]
+  
+  domestic_cup_drop <- domestic_cup_rows[
+    is.na(HomeFirstDomestic) |
+      is.na(AwayFirstDomestic) |
+      HomeFirstDomestic > MatchDate |
+      AwayFirstDomestic > MatchDate
+  ]
+  
+  cat(
+    "\nDomestic cup match eligibility:\n",
+    "  Domestic cup rows available: ", nrow(domestic_cup_rows), "\n",
+    "  Domestic cup rows kept: ", nrow(domestic_cup_keep), "\n",
+    "  Domestic cup rows dropped (club absent/not yet domestically covered): ",
+    nrow(domestic_cup_drop), "\n",
+    sep = ""
+  )
+  
+  domestic_cup_keep[, c("MatchDate", "HomeFirstDomestic", "AwayFirstDomestic") := NULL]
+  domestic_cup_drop[, c("MatchDate", "HomeFirstDomestic", "AwayFirstDomestic") := NULL]
+  domestic_cup_rows[, c("MatchDate", "HomeFirstDomestic", "AwayFirstDomestic") := NULL]
+  
+  dt <- rbindlist(
+    list(
+      dt[CompetitionType != "domestic_cup"],
+      domestic_cup_keep
+    ),
+    use.names = TRUE
+  )
+}
+
 # Continental matches count only when BOTH clubs have already appeared in a
 # covered domestic league by the date of that continental match. This avoids
 # seeding a club from a Tier = NA Champions League row before its domestic
