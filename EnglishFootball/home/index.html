@@ -242,43 +242,44 @@
       #compare-chart { height: 420px; }
     }
 
-    @media (max-width: 520px) {
-      #teams {
-        width: 100%;
-        table-layout: fixed;
-      }
+@media (max-width: 520px) {
+  #teams {
+    width: 100%;
+    table-layout: fixed;
+  }
 
-      #teams th,
-      #teams td {
-        min-width: 0 !important;
-        padding: 10px 8px;
-      }
+  #teams th,
+  #teams td {
+    min-width: 0 !important;
+    padding: 10px 8px;
+  }
 
-      #teams th:nth-child(1),
-      #teams td:nth-child(1) { width: 52px; }
+  #teams th:nth-child(1),
+  #teams td:nth-child(1) {
+    width: 54px;
+  }
 
-      #teams th:nth-child(3),
-      #teams td:nth-child(3) { width: 78px; }
+  #teams th:nth-child(2),
+  #teams td:nth-child(2) {
+    width: auto;
+  }
 
-      #teams th:nth-child(4),
-      #teams td:nth-child(4) { width: 135px; }
+  #teams th:nth-child(3),
+  #teams td:nth-child(3) {
+    width: 82px;
+  }
 
-      #teams th:nth-child(2),
-      #teams td:nth-child(2) { width: auto; }
+  #teams th:nth-child(4),
+  #teams td:nth-child(4) {
+    display: none;
+  }
 
-      #teams td:nth-child(2) a {
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .tier-badge {
-        padding: 6px 10px;
-        font-size: 0.82rem;
-        min-width: 34px;
-      }
-    }
+  #teams td:nth-child(2) a {
+    display: block;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}    
   </style>
 </head>
 
