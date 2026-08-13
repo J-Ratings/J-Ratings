@@ -420,8 +420,8 @@
           </div>
 
           <div class="range-buttons" role="group" aria-label="Time range">
-            <button type="button" class="range-btn is-active" data-since="">All</button>
-            <button type="button" class="range-btn" data-since="2000">Since 2000</button>
+            <button type="button" class="range-btn" data-since="">All</button>
+            <button type="button" class="range-btn is-active" data-since="2000">Since 2000</button>
             <button type="button" class="range-btn" data-since="2020">Since 2020</button>
           </div>
         </div>
@@ -474,7 +474,7 @@
   let TEAM_COLOURS = {};
   let RAW = [];
   let CURRENT_TEAM = null;
-  let SINCE_YEAR = null;
+  let SINCE_YEAR = 2000;
   let AGG_MODE = 'monthly';
 
   function normalise(series, dedupeByDay = false) {
@@ -538,9 +538,13 @@
   }
 
   async function loadColours() {
-    const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
-    if (!res.ok) throw new Error('team-colours.json not found');
-    TEAM_COLOURS = await res.json();
+    try {
+      const res = await fetch(COLOURS_URL);
+      if (!res.ok) return;
+      TEAM_COLOURS = await res.json();
+    } catch (e) {
+      console.warn('Could not load team colours:', e);
+    }
   }
 
   function hexToRgb(hex) {
@@ -1186,14 +1190,10 @@ if (total === 99) {
 
   async function load() {
     try {
-      const [teamsRes, histRes, gamesRes] = await Promise.all([
-        fetch(TEAMS_URL, { cache: 'no-cache' }),
-        fetch(HIST_URL(idRaw), { cache: 'no-cache' }),
-        fetch(GAMES_URL(idRaw), { cache: 'no-cache' })
-      ]);
-
+      // Load the lightweight team registry first so the page title appears
+      // immediately. History and games then load independently.
+      const teamsRes = await fetch(TEAMS_URL);
       if (!teamsRes.ok) throw new Error('teams.json not found');
-      if (!histRes.ok) throw new Error('history not found');
 
       const teams = await teamsRes.json();
       const me = teams.find(t => t.id === idRaw);
@@ -1203,56 +1203,87 @@ if (total === 99) {
       CURRENT_TEAM = me;
       document.getElementById('pname').textContent = me.name;
 
-      const histJson = await histRes.json();
-      RAW = normalise(
-        (Array.isArray(histJson) ? histJson : []).map(d => ({
-          x: d.date,
-          y: Number(d.rating),
-          tier: Number(d.tier)
-        })),
-        true
-      );
+      // Colours are optional and must never hold up the page.
+      loadColours();
 
-      if (!RAW.length) {
-        document.getElementById('chart').textContent = 'No games';
-        renderTeamStats([]);
-      } else {
-        const initialMode = 'monthly';
-        AGG_MODE = initialMode;
-        document.getElementById('agg').value = initialMode;
+      // Start history and games in parallel, but render each as soon as its
+      // own request completes.
+      const historyPromise = fetch(HIST_URL(idRaw))
+        .then(async histRes => {
+          if (!histRes.ok) throw new Error('history not found');
 
-        refreshView();
+          const histJson = await histRes.json();
 
-        document.getElementById('agg').addEventListener('change', e => {
-          draw(e.target.value);
-        });
+          RAW = normalise(
+            (Array.isArray(histJson) ? histJson : []).map(d => ({
+              x: d.date,
+              y: Number(d.rating),
+              tier: Number(d.tier)
+            })),
+            true
+          );
 
-        document.querySelectorAll('.range-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
-            btn.classList.add('is-active');
+          const initialMode = 'monthly';
+          AGG_MODE = initialMode;
+          document.getElementById('agg').value = initialMode;
 
-            const v = btn.getAttribute('data-since');
-            SINCE_YEAR = v ? Number(v) : null;
-
+          if (!RAW.length) {
+            document.getElementById('chart').textContent = 'No games';
+            renderTeamStats([]);
+          } else {
             refreshView();
-          });
+          }
+        })
+        .catch(e => {
+          console.error(e);
+          document.getElementById('chart').textContent = 'Error loading history';
+          renderTeamStats([]);
         });
-      }
 
-      if (gamesRes.ok) {
-        const games = await gamesRes.json();
-        const gameRows = Array.isArray(games) ? games : [];
+      const gamesPromise = fetch(GAMES_URL(idRaw))
+        .then(async gamesRes => {
+          if (!gamesRes.ok) {
+            document.getElementById('upcomingTitle').style.display = 'none';
+            document.getElementById('upcomingWrap').style.display = 'none';
 
-        renderUpcomingTable(me, teams, gameRows);
-        renderGamesTable(me, teams, gameRows);
-      } else {
-        document.getElementById('upcomingTitle').style.display = 'none';
-        document.getElementById('upcomingWrap').style.display = 'none';
+            const tbl = document.getElementById('games');
+            tbl.innerHTML = '<tbody><tr><td colspan="10">No games</td></tr></tbody>';
+            return;
+          }
 
-        const tbl = document.getElementById('games');
-        tbl.innerHTML = '<tbody><tr><td colspan="10">No games</td></tr></tbody>';
-      }
+          const games = await gamesRes.json();
+          const gameRows = Array.isArray(games) ? games : [];
+
+          renderUpcomingTable(me, teams, gameRows);
+          renderGamesTable(me, teams, gameRows);
+        })
+        .catch(e => {
+          console.error(e);
+          document.getElementById('upcomingTitle').style.display = 'none';
+          document.getElementById('upcomingWrap').style.display = 'none';
+
+          const tbl = document.getElementById('games');
+          tbl.innerHTML = '<tbody><tr><td colspan="10">Error loading games</td></tr></tbody>';
+        });
+
+      document.getElementById('agg').addEventListener('change', e => {
+        draw(e.target.value);
+      });
+
+      document.querySelectorAll('.range-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+
+          const v = btn.getAttribute('data-since');
+          SINCE_YEAR = v ? Number(v) : null;
+
+          refreshView();
+        });
+      });
+
+      await Promise.allSettled([historyPromise, gamesPromise]);
+
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
@@ -1264,17 +1295,8 @@ if (total === 99) {
     }
   }
 
-  loadColours()
-    .then(load)
-    .catch(e => {
-      console.error(e);
-      document.getElementById('chart').textContent = 'Error: ' + e.message;
-      document.getElementById('upcomingTitle').style.display = 'none';
-      document.getElementById('upcomingWrap').style.display = 'none';
+  load();
 
-      const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="10">Error loading games</td></tr></tbody>';
-    });
 </script>
 </body>
 </html>
