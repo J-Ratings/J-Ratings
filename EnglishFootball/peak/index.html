@@ -100,34 +100,45 @@
       #compare-chart { height: 420px; }
     }
 
-    @media (max-width: 520px) {
-      #teams {
-        width: 100%;
-        table-layout: fixed;
-      }
+@media (max-width: 520px) {
+  #teams {
+    width: 100%;
+    table-layout: fixed;
+  }
 
-      #teams th,
-      #teams td {
-        min-width: 0 !important;
-        padding: 10px 8px;
-      }
+  #teams th,
+  #teams td {
+    min-width: 0 !important;
+    padding: 10px 6px;
+  }
 
-      #teams th:nth-child(1),
-      #teams td:nth-child(1) { width: 52px; }
+  #teams th:nth-child(1),
+  #teams td:nth-child(1) {
+    width: 48px;
+  }
 
-      #teams th:nth-child(3),
-      #teams td:nth-child(3) { width: 78px; }
+  #teams th:nth-child(2),
+  #teams td:nth-child(2) {
+    width: auto;
+  }
 
-      #teams th:nth-child(2),
-      #teams td:nth-child(2) { width: auto; }
+  #teams th:nth-child(3),
+  #teams td:nth-child(3) {
+    width: 66px;
+  }
 
-      #teams td:nth-child(2) a {
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
+  #teams th:nth-child(4),
+  #teams td:nth-child(4) {
+    width: 112px;
+  }
+
+  #teams td:nth-child(2) a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
   </style>
 </head>
 
