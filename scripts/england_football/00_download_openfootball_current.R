@@ -1,6 +1,8 @@
 # scripts/england_football/00_download_openfootball_current.R
 
 options(stringsAsFactors = FALSE)
+library(nanoparquet)
+library(beepr)
 
 # -----------------------------
 # Paths
@@ -26,6 +28,19 @@ wikipedia_source_root_dir <- file.path(
   "pipeline_data",
   "Source",
   "wikipedia"
+)
+
+schoch_source_root_dir <- file.path(
+  repo_dir,
+  "EnglishFootball",
+  "pipeline_data",
+  "Source",
+  "schochastics"
+)
+
+schoch_results_file <- file.path(
+  schoch_source_root_dir,
+  "games.parquet"
 )
 
 # -----------------------------
@@ -250,6 +265,52 @@ make_wikipedia_domestic_cup_jobs <- function(first_start_year, current_start_yea
     local_file = rep("page.html", length(seasons)),
     refresh_current = seasons == season_folder_from_start_year(current_start_year),
     stringsAsFactors = FALSE
+  )
+}
+
+# -----------------------------
+# Schochastics historical top-flight source
+# -----------------------------
+#
+# David Schoch's football-data repository supplies dated historical results
+# for top-tier domestic leagues. J-Ratings uses this only as the historical
+# top-flight backbone; current/recent seasons continue to come from the
+# existing OpenFootball sources.
+#
+# The parquet file is effectively a historical snapshot (currently through
+# the end of 2023), so normal weekly runs keep the local cached copy.
+#
+# To force a refresh after David publishes a newer snapshot:
+#   Sys.setenv(JR_REFRESH_SCHOCH = "1")
+#   source("00_download_openfootball_current.R")
+#   Sys.setenv(JR_REFRESH_SCHOCH = "0")
+
+dir.create(schoch_source_root_dir, recursive = TRUE, showWarnings = FALSE)
+
+refresh_schoch <- identical(
+  Sys.getenv("JR_REFRESH_SCHOCH", unset = "0"),
+  "1"
+)
+
+schoch_url <- paste0(
+  "https://raw.githubusercontent.com/",
+  "schochastics/football-data/master/data/results/games.parquet"
+)
+
+if (
+  !file.exists(schoch_results_file) ||
+  file.info(schoch_results_file)$size == 0 ||
+  refresh_schoch
+) {
+  cat("\nSchochastics historical source\n")
+  cat("===============================\n")
+  download_one_file(schoch_url, schoch_results_file)
+} else {
+  cat(
+    "\nSchochastics historical source already cached:\n  ",
+    schoch_results_file,
+    "\n",
+    sep = ""
   )
 }
 
@@ -632,3 +693,5 @@ for (i in seq_len(nrow(wikipedia_jobs))) {
 
 cat("\nWikipedia download complete.\n")
 print(wikipedia_results)
+
+beep()

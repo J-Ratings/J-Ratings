@@ -26,6 +26,19 @@ wikipedia_source_root_dir <- file.path(
   "wikipedia"
 )
 
+schoch_source_root_dir <- file.path(
+  repo_dir,
+  "EnglishFootball",
+  "pipeline_data",
+  "Source",
+  "schochastics"
+)
+
+schoch_results_file <- file.path(
+  schoch_source_root_dir,
+  "games.parquet"
+)
+
 combined_dir <- file.path(
   repo_dir,
   "EnglishFootball",
@@ -290,9 +303,11 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
       next
     }
     
-    # Awarded matches count using the score supplied by OpenFootball; remove
-    # the annotation before parsing the teams and score.
-    ln <- gsub("\\s*\\[awarded\\]\\s*$", "", ln, ignore.case = TRUE)
+    # Awarded matches count using the score supplied by OpenFootball.
+    # The [awarded] marker can occur either at the end of the line or between
+    # the away club and the supplied score, so remove it wherever it appears.
+    ln <- gsub("\\s*\\[awarded\\]\\s*", " ", ln, ignore.case = TRUE)
+    ln <- gsub("\\s+", " ", ln)
     ln <- trim(ln)
     
     # Strip a leading kick-off time once. This makes v-format parsing much
@@ -702,128 +717,543 @@ parse_wikipedia_competition_page <- function(
 }
 
 # -----------------------------
-# Competition configuration
+# Schochastics historical top-flight parser
 # -----------------------------
 
-english_competition_files <- data.frame(
-  file = c(
-    "1-premierleague.txt",
-    "2-division1.txt",
-    "2-championship.txt",
-    "3-division2.txt",
-    "3-league1.txt",
-    "4-division3.txt",
-    "4-league2.txt",
-    "5-nationalleague.txt"
-  ),
-  source_folder = rep("england", 8),
-  country = rep("England", 8),
-  competition = c(
-    "premier_league",
-    "championship",
-    "championship",
-    "league_one",
-    "league_one",
-    "league_two",
-    "league_two",
-    "national_league"
-  ),
-  competition_type = rep("league", 8),
-  league = c(
-    "Premier League",
-    "Division 1",
-    "Championship",
-    "Division 2",
-    "League 1",
-    "Division 3",
-    "League 2",
-    "National League"
-  ),
-  tier = c(1L, 2L, 2L, 3L, 3L, 4L, 4L, 5L),
-  source = rep("openfootball", 8),
-  stringsAsFactors = FALSE
-)
-
-english_competition_from_league <- function(x) {
-  lx <- tolower(trimws(as.character(x)))
-  out <- rep(NA_character_, length(lx))
-  out[grepl("^premier league$", lx)] <- "premier_league"
-  out[is.na(out) & grepl("^division\\s*1$|^championship$", lx)] <- "championship"
-  out[is.na(out) & grepl("^division\\s*2$|^league\\s*1$|^league one$", lx)] <- "league_one"
-  out[is.na(out) & grepl("^division\\s*3$|^league\\s*2$|^league two$", lx)] <- "league_two"
-  out[is.na(out) & grepl("^national league$", lx)] <- "national_league"
-  out
-}
-
-english_tier_from_league <- function(x) {
-  comp <- english_competition_from_league(x)
-  out <- rep(NA_integer_, length(comp))
-  out[comp == "premier_league"] <- 1L
-  out[comp == "championship"] <- 2L
-  out[comp == "league_one"] <- 3L
-  out[comp == "league_two"] <- 4L
-  out[comp == "national_league"] <- 5L
-  out
-}
-
-season_folder_from_start_year <- function(start_year) {
-  paste0(
-    as.integer(start_year),
-    "-",
-    sprintf("%02d", (as.integer(start_year) + 1L) %% 100L)
-  )
-}
-
-season_start_year <- function(season_folder) {
-  as.integer(substr(season_folder, 1, 4))
-}
-
-season_header_label <- function(season_folder) {
-  gsub("-", "/", season_folder, fixed = TRUE)
-}
-
-make_jobs <- function(
-    first_start_year,
-    current_start_year,
-    file,
-    source_folder,
-    country,
-    competition,
-    league,
-    tier,
-    competition_type = "league"
-) {
-  seasons <- vapply(
-    first_start_year:current_start_year,
-    season_folder_from_start_year,
-    character(1)
-  )
-  
-  data.frame(
-    file = rep(file, length(seasons)),
-    source_folder = rep(source_folder, length(seasons)),
-    country = rep(country, length(seasons)),
-    competition = rep(competition, length(seasons)),
-    competition_type = rep(competition_type, length(seasons)),
-    league = rep(league, length(seasons)),
-    tier = rep(as.integer(tier), length(seasons)),
-    source = rep("openfootball", length(seasons)),
-    season_folder = seasons,
-    stringsAsFactors = FALSE
-  )
-}
-
-declared_match_count <- function(txt_path) {
-  lines <- readLines(txt_path, warn = FALSE, encoding = "UTF-8")
-  hit <- grep("^\\s*#\\s*Matches\\s+\\d+", lines, value = TRUE)
-  
-  if (length(hit) == 0) {
-    return(NA_integer_)
+read_schoch_parquet <- function(path) {
+  if (!file.exists(path)) {
+    stop(
+      "Schochastics source file is missing:\n",
+      path,
+      "\nRun 00_download_openfootball_current.R first."
+    )
   }
   
-  suppressWarnings(
-    as.integer(sub("^.*?([0-9]+)\\s*$", "\\1", hit[1]))
+  if (requireNamespace("nanoparquet", quietly = TRUE)) {
+    return(as.data.frame(nanoparquet::read_parquet(path)))
+  }
+  
+  if (requireNamespace("arrow", quietly = TRUE)) {
+    return(as.data.frame(arrow::read_parquet(path)))
+  }
+  
+  stop(
+    "Reading Schochastics games.parquet requires either 'nanoparquet' ",
+    "or 'arrow'. Install once with:\n",
+    "  install.packages(\"nanoparquet\")"
   )
+}
+
+normalise_schoch_competition <- function(x) {
+  x <- tolower(trimws(as.character(x)))
+  x <- iconv(x, from = "", to = "ASCII//TRANSLIT")
+  x <- gsub("[^a-z0-9]+", " ", x)
+  trimws(gsub("\\s+", " ", x))
+}
+
+schoch_country_key <- function(x) {
+  x <- normalise_schoch_competition(x)
+  
+  # Small spelling/name variants that can occur in football datasets.
+  x[x %in% c("czech republic", "czechia")] <- "czechia"
+  x[x %in% c("turkiye", "turkey")] <- "turkey"
+  
+  x
+}
+
+schoch_season_start_year <- function(date) {
+  d <- as.Date(date)
+  y <- as.integer(format(d, "%Y"))
+  m <- as.integer(format(d, "%m"))
+  
+  # European leagues in this J-Ratings set use an autumn-to-spring season.
+  # July-December belongs to the season starting that calendar year;
+  # January-June belongs to the preceding start year.
+  ifelse(m >= 7L, y, y - 1L)
+}
+
+schoch_season_label <- function(country_key, start_year, date) {
+  d <- as.Date(date)
+  
+  # A few inaugural national leagues were short calendar-year competitions
+  # played entirely in the first half of the year.
+  if (country_key == "spain" && d >= as.Date("1929-01-01") && d <= as.Date("1929-06-30")) {
+    return("1929")
+  }
+  
+  if (country_key == "turkey" && d >= as.Date("1959-01-01") && d <= as.Date("1959-06-30")) {
+    return("1959")
+  }
+  
+  if (country_key == "ukraine" && d >= as.Date("1992-01-01") && d <= as.Date("1992-06-30")) {
+    return("1992")
+  }
+  
+  paste0(
+    start_year,
+    "/",
+    sprintf("%02d", (start_year + 1L) %% 100L)
+  )
+}
+
+schoch_league_label <- function(country_key, start_year, default_label) {
+  # Preserve the most important historical competition-name changes while
+  # keeping a stable Competition ID for Elo/filtering.
+  if (country_key == "england" && start_year < 1992L) {
+    return("First Division")
+  }
+  
+  if (country_key == "france" && start_year < 2002L) {
+    return("Division 1")
+  }
+  
+  default_label
+}
+
+parse_schoch_historical_top_flights <- function(path) {
+  raw <- read_schoch_parquet(path)
+  
+  required <- c(
+    "home", "away", "date", "gh", "ga",
+    "competition", "level"
+  )
+  
+  missing <- setdiff(required, names(raw))
+  if (length(missing) > 0) {
+    stop(
+      "Schochastics parquet is missing required columns: ",
+      paste(missing, collapse = ", ")
+    )
+  }
+  
+  raw$date <- as.Date(raw$date)
+  raw$competition_key <- schoch_country_key(raw$competition)
+  raw$level_key <- tolower(trimws(as.character(raw$level)))
+  
+  # Small country-name variants that may occur in historical datasets.
+  raw$competition_key[raw$competition_key == "holland"] <- "netherlands"
+  
+  # Cutover = first season handled by J-Ratings' existing source.
+  # Schoch is used only for seasons before this, so there is no source overlap.
+  cfg <- data.frame(
+    country_key = c(
+      "england", "spain", "italy", "germany", "france",
+      "portugal", "netherlands", "belgium", "austria", "turkey",
+      "scotland", "switzerland", "greece", "czechia", "ukraine"
+    ),
+    Country = c(
+      "England", "Spain", "Italy", "Germany", "France",
+      "Portugal", "Netherlands", "Belgium", "Austria", "Turkey",
+      "Scotland", "Switzerland", "Greece", "Czechia", "Ukraine"
+    ),
+    Competition = c(
+      "premier_league", "la_liga", "serie_a", "bundesliga", "ligue_1",
+      "primeira_liga", "eredivisie", "belgian_pro_league",
+      "austrian_bundesliga", "super_lig", "scottish_premiership",
+      "swiss_super_league", "super_league_greece",
+      "czech_first_league", "ukrainian_premier_league"
+    ),
+    League = c(
+      "Premier League", "La Liga", "Serie A", "Bundesliga", "Ligue 1",
+      "Primeira Liga", "Eredivisie", "Belgian Pro League",
+      "Austrian Bundesliga", "Süper Lig", "Scottish Premiership",
+      "Swiss Super League", "Super League Greece",
+      "Czech First League", "Ukrainian Premier League"
+    ),
+    FirstSeasonStartYear = c(
+      1888L, 1928L, 1929L, 1963L, 1932L,
+      1934L, 1956L, 1895L, 1911L, 1958L,
+      1890L, 1897L, 1959L, 1993L, 1991L
+    ),
+    CutoverStartYear = c(
+      1992L, 2012L, 2013L, 2010L, 2014L,
+      2018L, 2018L, 2018L, 2010L, 2018L,
+      2018L, 2014L, 2018L, 2018L, 2023L
+    ),
+    stringsAsFactors = FALSE
+  )
+  
+  # Conservative policy agreed after the all-15 audit:
+  #   PASS    -> import the whole season
+  #   CHECK   -> drop the whole season
+  #   MISSING -> naturally remains a gap
+  #
+  # A season is CHECK if it contains any missing team/score, self-match,
+  # duplicate fixture/date key, conflicting score, team double-booking,
+  # or an obvious placeholder-date pattern.
+  
+  audit_schoch_season <- function(z) {
+    home <- trimws(as.character(z$home))
+    away <- trimws(as.character(z$away))
+    
+    missing_date <- is.na(z$date)
+    missing_team <- is.na(z$home) | is.na(z$away) |
+      is.na(home) | is.na(away) | home == "" | away == ""
+    missing_score <- is.na(z$gh) | is.na(z$ga)
+    
+    home_key <- normalise_schoch_competition(home)
+    away_key <- normalise_schoch_competition(away)
+    
+    self_match <- !missing_team & home_key == away_key
+    
+    valid_fixture <- !missing_date & !missing_team
+    fixture_key <- paste(
+      z$date,
+      home_key,
+      away_key,
+      sep = "|||"
+    )
+    
+    fixture_tab <- table(fixture_key[valid_fixture])
+    duplicate_fixture_keys <- sum(fixture_tab > 1L)
+    
+    score_txt <- ifelse(
+      missing_score,
+      NA_character_,
+      paste(z$gh, z$ga, sep = "-")
+    )
+    
+    conflicting_fixture_keys <- 0L
+    if (any(valid_fixture)) {
+      split_idx <- split(
+        seq_len(nrow(z))[valid_fixture],
+        fixture_key[valid_fixture]
+      )
+      
+      conflicting_fixture_keys <- sum(vapply(
+        split_idx,
+        function(ii) {
+          scores <- unique(score_txt[ii][!is.na(score_txt[ii])])
+          length(scores) > 1L
+        },
+        logical(1)
+      ))
+    }
+    
+    valid_dates <- z$date[!missing_date]
+    date_tab <- table(valid_dates)
+    max_on_date <- if (length(date_tab)) max(date_tab) else 0L
+    share_one_date <- if (nrow(z)) 100 * max_on_date / nrow(z) else NA_real_
+    
+    team_dates <- rbind(
+      data.frame(date = z$date, team = home_key, stringsAsFactors = FALSE),
+      data.frame(date = z$date, team = away_key, stringsAsFactors = FALSE)
+    )
+    
+    team_dates <- team_dates[
+      !is.na(team_dates$date) &
+        !is.na(team_dates$team) &
+        team_dates$team != "",
+      ,
+      drop = FALSE
+    ]
+    
+    td_key <- paste(team_dates$date, team_dates$team, sep = "|||")
+    td_tab <- table(td_key)
+    team_double_booked <- sum(td_tab > 1L)
+    
+    reasons <- character()
+    
+    if (sum(missing_date) > 0L) {
+      reasons <- c(reasons, "MISSING_DATES")
+    }
+    if (sum(missing_team) > 0L) {
+      reasons <- c(reasons, "MISSING_TEAMS")
+    }
+    if (sum(missing_score) > 0L) {
+      reasons <- c(reasons, "MISSING_SCORES")
+    }
+    if (sum(self_match, na.rm = TRUE) > 0L) {
+      reasons <- c(reasons, "SELF_MATCH")
+    }
+    if (duplicate_fixture_keys > 0L) {
+      reasons <- c(reasons, "DUPLICATE_FIXTURE_DATE")
+    }
+    if (conflicting_fixture_keys > 0L) {
+      reasons <- c(reasons, "CONFLICTING_SCORE")
+    }
+    if (team_double_booked > 0L) {
+      reasons <- c(reasons, "TEAM_DOUBLE_BOOKED")
+    }
+    if (nrow(z) >= 50L && length(unique(valid_dates)) < 5L) {
+      reasons <- c(reasons, "TOO_FEW_UNIQUE_DATES")
+    }
+    if (
+      nrow(z) >= 50L &&
+      !is.na(share_one_date) &&
+      share_one_date >= 20
+    ) {
+      reasons <- c(reasons, "PLACEHOLDER_DATE_CONCENTRATION")
+    }
+    
+    list(
+      Status = if (length(reasons)) "CHECK" else "PASS",
+      Reason = if (length(reasons)) {
+        paste(unique(reasons), collapse = ";")
+      } else {
+        ""
+      },
+      Matches = nrow(z),
+      Teams = length(unique(c(
+        home[!is.na(home) & home != ""],
+        away[!is.na(away) & away != ""]
+      ))),
+      FirstDate = if (length(valid_dates)) min(valid_dates) else as.Date(NA),
+      LastDate = if (length(valid_dates)) max(valid_dates) else as.Date(NA)
+    )
+  }
+  
+  out_list <- list()
+  audit_list <- list()
+  k <- 1L
+  a <- 1L
+  
+  for (i in seq_len(nrow(cfg))) {
+    c0 <- cfg[i, ]
+    
+    z_country <- raw[
+      raw$level_key == "national" &
+        raw$competition_key == c0$country_key,
+      ,
+      drop = FALSE
+    ]
+    
+    if (nrow(z_country) == 0) {
+      warning(
+        "No Schochastics national top-flight rows found for ",
+        c0$Country,
+        "."
+      )
+      next
+    }
+    
+    # Rows with no date cannot be assigned safely to a season, so they are
+    # never imported. Dated rows are grouped into their inferred season.
+    z_country$SeasonStartYear <- schoch_season_start_year(z_country$date)
+    
+    z_country <- z_country[
+      !is.na(z_country$SeasonStartYear) &
+        z_country$SeasonStartYear >= c0$FirstSeasonStartYear &
+        z_country$SeasonStartYear < c0$CutoverStartYear,
+      ,
+      drop = FALSE
+    ]
+    
+    if (nrow(z_country) == 0) next
+    
+    season_years <- sort(unique(z_country$SeasonStartYear))
+    
+    for (sy in season_years) {
+      z <- z_country[
+        z_country$SeasonStartYear == sy,
+        ,
+        drop = FALSE
+      ]
+      
+      season_name <- schoch_season_label(
+        c0$country_key,
+        sy,
+        z$date[which(!is.na(z$date))[1]]
+      )
+      
+      qa <- audit_schoch_season(z)
+      
+      audit_list[[a]] <- data.frame(
+        Country = c0$Country,
+        Competition = c0$Competition,
+        Season = season_name,
+        SeasonStartYear = sy,
+        Matches = qa$Matches,
+        Teams = qa$Teams,
+        FirstDate = as.character(qa$FirstDate),
+        LastDate = as.character(qa$LastDate),
+        Status = qa$Status,
+        Reason = qa$Reason,
+        stringsAsFactors = FALSE
+      )
+      a <- a + 1L
+      
+      # Entire suspect season is deliberately excluded.
+      if (qa$Status != "PASS") next
+      
+      home_txt <- trimws(as.character(z$home))
+      away_txt <- trimws(as.character(z$away))
+      
+      # PASS guarantees these are all complete, but keep this as a local
+      # defensive filter as well.
+      keep <- !is.na(z$date) &
+        !is.na(z$gh) & !is.na(z$ga) &
+        !is.na(z$home) & !is.na(z$away) &
+        !is.na(home_txt) & !is.na(away_txt) &
+        nzchar(home_txt) & nzchar(away_txt)
+      
+      z <- z[keep, , drop = FALSE]
+      home_txt <- home_txt[keep]
+      away_txt <- away_txt[keep]
+      
+      if (nrow(z) == 0) next
+      
+      league_label <- schoch_league_label(
+        c0$country_key,
+        sy,
+        c0$League
+      )
+      
+      hg <- as.integer(z$gh)
+      ag <- as.integer(z$ga)
+      
+      out_list[[k]] <- data.frame(
+        Season = rep(season_name, nrow(z)),
+        Country = rep(c0$Country, nrow(z)),
+        Competition = rep(c0$Competition, nrow(z)),
+        CompetitionType = rep("league", nrow(z)),
+        Tier = rep(1L, nrow(z)),
+        League = rep(league_label, nrow(z)),
+        Date = format(z$date, "%Y-%m-%d"),
+        Home = home_txt,
+        Away = away_txt,
+        Result = ifelse(
+          hg > ag, "1-0",
+          ifelse(hg < ag, "0-1", "0.5-0.5")
+        ),
+        Score = sprintf("%d-%d", hg, ag),
+        Source = rep("schochastics", nrow(z)),
+        stringsAsFactors = FALSE
+      )
+      
+      k <- k + 1L
+    }
+  }
+  
+  if (length(audit_list) == 0) {
+    stop("No historical Schochastics seasons were available to audit.")
+  }
+  
+  audit_df <- do.call(rbind, audit_list)
+  audit_df <- audit_df[
+    order(
+      match(audit_df$Country, cfg$Country),
+      audit_df$SeasonStartYear
+    ),
+    ,
+    drop = FALSE
+  ]
+  
+  cat("\nSchochastics historical season screening:\n")
+  cat(
+    "  PASS seasons imported: ",
+    sum(audit_df$Status == "PASS"),
+    "\n",
+    sep = ""
+  )
+  cat(
+    "  CHECK seasons excluded: ",
+    sum(audit_df$Status == "CHECK"),
+    "\n",
+    sep = ""
+  )
+  
+  excluded <- audit_df[audit_df$Status == "CHECK", , drop = FALSE]
+  if (nrow(excluded)) {
+    cat("\nExcluded Schochastics seasons:\n")
+    print(
+      excluded[, c("Country", "Season", "Matches", "Reason")],
+      row.names = FALSE
+    )
+  }
+  
+  if (length(out_list) == 0) {
+    stop("No PASS historical Schochastics rows were produced.")
+  }
+  
+  out <- do.call(rbind, out_list)
+  
+  # Structural safety checks on the imported PASS rows.
+  if (any(is.na(as.Date(out$Date)))) {
+    stop("Schochastics parser produced an invalid date.")
+  }
+  
+  if (
+    any(is.na(out$Home)) ||
+    any(is.na(out$Away)) ||
+    any(out$Home == "", na.rm = TRUE) ||
+    any(out$Away == "", na.rm = TRUE)
+  ) {
+    stop("Schochastics parser produced a blank or missing team name.")
+  }
+  
+  if (any(out$Home == out$Away, na.rm = TRUE)) {
+    stop("Schochastics PASS import unexpectedly contains a self-match.")
+  }
+  
+  key <- paste(
+    out$Season, out$Country, out$Competition,
+    out$Date, out$Home, out$Away,
+    sep = "||"
+  )
+  
+  if (anyDuplicated(key)) {
+    dup <- out[
+      duplicated(key) | duplicated(key, fromLast = TRUE),
+      ,
+      drop = FALSE
+    ]
+    cat("\nDuplicate Schochastics PASS historical match keys:\n")
+    print(dup)
+    stop("Duplicate Schochastics PASS historical matches detected.")
+  }
+  
+  out <- out[
+    order(out$Date, out$Country, out$Home, out$Away),
+    ,
+    drop = FALSE
+  ]
+  
+  cat("\nSchochastics historical top-flight import:\n")
+  
+  schoch_summary <- aggregate(
+    Date ~ Country + Competition,
+    data = out,
+    FUN = length
+  )
+  names(schoch_summary)[3] <- "Rows"
+  
+  season_summary <- aggregate(
+    SeasonStartYear ~ Country,
+    data = audit_df[audit_df$Status == "PASS", , drop = FALSE],
+    FUN = length
+  )
+  names(season_summary)[2] <- "PASS_Seasons"
+  
+  schoch_summary <- merge(
+    schoch_summary,
+    season_summary,
+    by = "Country",
+    all.x = TRUE,
+    sort = FALSE
+  )
+  
+  print(
+    schoch_summary[order(match(schoch_summary$Country, cfg$Country)), ],
+    row.names = FALSE
+  )
+  
+  cat(
+    "Schochastics historical rows imported: ",
+    nrow(out),
+    "\n",
+    sep = ""
+  )
+  cat(
+    "Schochastics imported date range: ",
+    min(out$Date),
+    " to ",
+    max(out$Date),
+    "\n",
+    sep = ""
+  )
+  
+  out
 }
 
 # -----------------------------
@@ -939,10 +1369,37 @@ make_cached_league_jobs <- function(
   )
 }
 
-# Established OpenFootball competitions: current season only.
+# Established OpenFootball competitions: current season.
 english_jobs <- english_competition_files
 english_jobs$season_folder <- season_folder
 english_jobs$parser <- "openfootball"
+
+# One-time targeted Championship rebuilds.
+#
+# Older parser versions mishandled:
+#   - [awarded] appearing before the supplied score;
+#   - play-off aggregate/leg metadata around the score.
+#
+# Reparse the affected cached Championship seasons so their old malformed
+# rows are replaced by correctly parsed rows in the combined CSV.
+english_championship_repairs <- data.frame(
+  file = rep("2-championship.txt", 3L),
+  source_folder = rep("england", 3L),
+  country = rep("England", 3L),
+  competition = rep("championship", 3L),
+  competition_type = rep("league", 3L),
+  league = rep("Championship", 3L),
+  tier = rep(2L, 3L),
+  source = rep("openfootball", 3L),
+  season_folder = c("2018-19", "2024-25", "2025-26"),
+  parser = rep("openfootball", 3L),
+  stringsAsFactors = FALSE
+)
+
+english_jobs <- rbind(
+  english_jobs,
+  english_championship_repairs
+)
 
 la_liga_jobs <- make_current_job(
   "1-liga.txt", "espana", "Spain",
@@ -1387,10 +1844,15 @@ for (i in seq_len(nrow(parse_jobs))) {
 }
 
 if (length(all_df_list) == 0) {
-  stop("No OpenFootball data parsed.")
+  stop("No source data parsed.")
 }
 
 parsed_df <- do.call(rbind, all_df_list)
+
+# Add the historical top-flight backbone from Schochastics. This is deliberately
+# cut off immediately before each competition's existing J-Ratings source begins.
+schoch_df <- parse_schoch_historical_top_flights(schoch_results_file)
+parsed_df <- rbind(parsed_df, schoch_df)
 
 required_cols <- c(
   "Season",
@@ -1576,3 +2038,5 @@ print(
     order(competition_summary$Country, competition_summary$Competition),
   ]
 )
+
+beep()

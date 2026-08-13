@@ -30,3 +30,6 @@ Go/pipeline_data/live_Elo/
 
 # Generated diagnostic report
 Go/data/players_missing_flags_peak_3200_plus.csv
+
+EnglishFootball/pipeline_data/Elo/football_elo_game_history.csv
+EnglishFootball/pipeline_data/Elo/football_elo_game_history_pass1.csv
