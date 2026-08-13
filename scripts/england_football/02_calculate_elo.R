@@ -104,21 +104,21 @@ COUNTRY_TIER_SEEDS <- data.table(
     1L
   ),
   SeedRating = c(
-    2750, 2528, 2350, 2150, 1950,
-    2737, 2552,
-    2689, 2495,
-    2685, 2491,
-    2675, 2479,
-    2550,  # Portugal
-    2575,  # Netherlands
-    2515,  # Belgium
-    2510,  # Austria
-    2510,  # Turkey
-    2430,  # Scotland
-    2500,  # Switzerland
-    2450,  # Greece
-    2430,  # Czechia
-    2475   # Ukraine
+    2550, 2328, 2150, 1975, 1800,
+    2537, 2352,
+    2489, 2295,
+    2485, 2291,
+    2475, 2279,
+    2350,  # Portugal
+    2375,  # Netherlands
+    2315,  # Belgium
+    2310,  # Austria
+    2310,  # Turkey
+    2230,  # Scotland
+    2300,  # Switzerland
+    2250,  # Greece
+    2230,  # Czechia
+    2275   # Ukraine
   )
 )
 

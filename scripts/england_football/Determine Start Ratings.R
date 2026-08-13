@@ -55,6 +55,16 @@ HISTORY_FILE <- file.path(
   "football_elo_game_history.csv"
 )
 
+PASS1_HISTORY_FILE <- file.path(
+  ELO_DIR,
+  "football_elo_game_history_pass1.csv"
+)
+
+AUDIT_DIR <- file.path(
+  repo_dir, "EnglishFootball", "pipeline_data", "Audit", "elo_calibration"
+)
+dir.create(AUDIT_DIR, recursive = TRUE, showWarnings = FALSE)
+
 
 # ------------------------------------------------------------
 # 2. Settings
@@ -77,6 +87,12 @@ final_ratings <- fread(
 game_history <- fread(
   HISTORY_FILE
 )
+
+pass1_history <- if (file.exists(PASS1_HISTORY_FILE)) {
+  fread(PASS1_HISTORY_FILE)
+} else {
+  NULL
+}
 
 
 # ------------------------------------------------------------
@@ -1694,3 +1710,247 @@ print(
     20
   )
 )
+
+# ============================================================
+# 31. INFLATION / ENTRY CALIBRATION AUDIT
+# ============================================================
+# Main evidence for future seed changes.  This separates broad rating
+# inflation from top-end concentration, then tests new-team entry,
+# coverage expansion and promotion/relegation directly.
+#
+# PASS 1 is preferred for seed diagnostics because it contains the
+# actual initial seed assumptions before the retrospective second pass.
+# ============================================================
+
+safe_q <- function(x, p) {
+  x <- x[is.finite(x)]
+  if (!length(x)) return(NA_real_)
+  as.numeric(quantile(x, p, na.rm = TRUE, names = FALSE))
+}
+
+period_label <- function(y) {
+  fifelse(y < 1990, "Before 1990",
+          fifelse(y < 2000, "1990-1999",
+                  fifelse(y < 2010, "2000-2009",
+                          fifelse(y < 2020, "2010-2019", "2020-present"))))
+}
+
+prep_history <- function(x) {
+  y <- copy(x)
+  must <- c("Date","Country","CompetitionType","Tier","League","Home","Away",
+            "HomeRating_After","AwayRating_After")
+  miss <- setdiff(must, names(y))
+  if (length(miss)) stop("History file missing: ", paste(miss, collapse=", "))
+  y[, `:=`(
+    Date=as.Date(Date), Country=trimws(as.character(Country)),
+    CompetitionType=trimws(as.character(CompetitionType)), Tier=as.integer(Tier),
+    League=trimws(as.character(League)), Home=trimws(as.character(Home)),
+    Away=trimws(as.character(Away)), HomeRating_After=as.numeric(HomeRating_After),
+    AwayRating_After=as.numeric(AwayRating_After)
+  )]
+  if (all(c("HomeRating_Before","AwayRating_Before") %in% names(y))) {
+    y[, `:=`(HomeRating_Before=as.numeric(HomeRating_Before),
+             AwayRating_Before=as.numeric(AwayRating_Before))]
+  }
+  y
+}
+
+hf <- prep_history(game_history)
+hs <- if (!is.null(pass1_history)) prep_history(pass1_history) else copy(hf)
+cat("\nSeed diagnostics source:", if (!is.null(pass1_history)) "PASS 1" else "FINAL HISTORY", "\n")
+
+# ---- A. Active rating pool by calendar year -----------------
+make_yearly <- function(h) {
+  z <- rbind(
+    h[!is.na(Date) & is.finite(HomeRating_After), .(Team=Home, Date, Rating=HomeRating_After)],
+    h[!is.na(Date) & is.finite(AwayRating_After), .(Team=Away, Date, Rating=AwayRating_After)]
+  )
+  z <- z[!is.na(Team) & Team != "" & is.finite(Rating)]
+  z[, Year := as.integer(format(Date, "%Y"))]
+  setorder(z, Team, Year, Date)
+  z[, .SD[.N], by=.(Team, Year)]
+}
+
+yr <- make_yearly(hf)
+
+rating_pool_by_year <- yr[, .(
+  ActiveTeams=uniqueN(Team), TotalElo=round(sum(Rating)),
+  MeanElo=round(mean(Rating),1), MedianElo=round(median(Rating),1),
+  P10=round(safe_q(Rating,.10),1), P25=round(safe_q(Rating,.25),1),
+  P75=round(safe_q(Rating,.75),1), P90=round(safe_q(Rating,.90),1),
+  P95=round(safe_q(Rating,.95),1),
+  Top10Average=round(mean(sort(Rating,decreasing=TRUE)[seq_len(min(10L,.N))]),1)
+), by=Year]
+setorder(rating_pool_by_year, Year)
+fwrite(rating_pool_by_year, file.path(AUDIT_DIR,"rating_pool_by_year.csv"))
+
+# ---- B. Top-tier distribution by year -----------------------
+lg <- hf[CompetitionType=="league" & !is.na(Date) & !is.na(Tier)]
+mem <- rbind(
+  lg[,.(Team=Home,Year=as.integer(format(Date,"%Y")),Date,Country,Tier)],
+  lg[,.(Team=Away,Year=as.integer(format(Date,"%Y")),Date,Country,Tier)]
+)
+setorder(mem, Team, Year, Date)
+mem <- mem[, .SD[.N], by=.(Team,Year)]
+
+top <- merge(yr[,.(Team,Year,Rating)], mem[,.(Team,Year,Country,Tier)],
+             by=c("Team","Year"), all=FALSE)[Tier==1L]
+
+top_tier_distribution <- top[, .(
+  Teams=uniqueN(Team), MeanElo=round(mean(Rating),1), MedianElo=round(median(Rating),1),
+  P10=round(safe_q(Rating,.10),1), P25=round(safe_q(Rating,.25),1),
+  P75=round(safe_q(Rating,.75),1), P90=round(safe_q(Rating,.90),1),
+  P95=round(safe_q(Rating,.95),1),
+  Top6Average=round(mean(sort(Rating,decreasing=TRUE)[seq_len(min(6L,.N))]),1)
+), by=Year]
+top_tier_distribution[, `:=`(
+  Top6MinusMedian=round(Top6Average-MedianElo,1),
+  P90MinusMedian=round(P90-MedianElo,1),
+  P10MinusMedian=round(P10-MedianElo,1)
+)]
+setorder(top_tier_distribution, Year)
+fwrite(top_tier_distribution, file.path(AUDIT_DIR,"top_tier_distribution_by_year.csv"))
+
+country_top <- top[, .(
+  Teams=uniqueN(Team), MeanElo=round(mean(Rating),1), MedianElo=round(median(Rating),1),
+  P90=round(safe_q(Rating,.90),1),
+  Top6Average=round(mean(sort(Rating,decreasing=TRUE)[seq_len(min(6L,.N))]),1)
+), by=.(Country,Year)]
+fwrite(country_top, file.path(AUDIT_DIR,"top_tier_distribution_by_country_year.csv"))
+
+# ---- C. New-team / coverage-entry seed test -----------------
+seedlg <- hs[CompetitionType=="league" & !is.na(Date) & !is.na(Tier)]
+has_before <- all(c("HomeRating_Before","AwayRating_Before") %in% names(seedlg))
+entry_rating_change_summary <- data.table()
+coverage_entry_summary <- data.table()
+
+if (has_before) {
+  tm <- rbind(
+    seedlg[,.(Team=Home,Date,Country,Tier,League,Before=HomeRating_Before,After=HomeRating_After)],
+    seedlg[,.(Team=Away,Date,Country,Tier,League,Before=AwayRating_Before,After=AwayRating_After)]
+  )
+  tm <- tm[!is.na(Team) & Team!="" & is.finite(Before) & is.finite(After)]
+  setorder(tm, Team, Date)
+  tm[, GameNo:=seq_len(.N), by=Team]
+  
+  ent <- tm[GameNo==1L, .(Team,EntryDate=Date,EntryYear=as.integer(format(Date,"%Y")),
+                          EntryCountry=Country,EntryTier=Tier,InitialRating=Before)]
+  ent[, EntryPeriod:=period_label(EntryYear)]
+  
+  cp <- dcast(tm[GameNo %in% c(20L,50L,100L),
+                 .(Team,Key=paste0("R",GameNo),After)], Team~Key, value.var="After")
+  ent <- merge(ent, cp, by="Team", all.x=TRUE)
+  for (n in c(20L,50L,100L)) {
+    rc <- paste0("R",n); cc <- paste0("Change",n)
+    ent[, (cc) := if (rc %in% names(ent)) get(rc)-InitialRating else NA_real_]
+  }
+  
+  seedlg[, SeasonStart:=fifelse(as.integer(format(Date,"%m"))>=7,
+                                as.integer(format(Date,"%Y")),
+                                as.integer(format(Date,"%Y"))-1L)]
+  cov <- seedlg[,.(CoverageStartSeason=min(SeasonStart)), by=.(Country,Tier)]
+  ent[, EntrySeasonStart:=fifelse(as.integer(format(EntryDate,"%m"))>=7,
+                                  as.integer(format(EntryDate,"%Y")),
+                                  as.integer(format(EntryDate,"%Y"))-1L)]
+  ent <- merge(ent,cov,by.x=c("EntryCountry","EntryTier"),by.y=c("Country","Tier"),all.x=TRUE)
+  ent[, CoverageEntry:=EntrySeasonStart==CoverageStartSeason]
+  
+  entry_rating_change_summary <- ent[, .(
+    Teams=.N, MedianInitial=round(median(InitialRating,na.rm=TRUE),1),
+    Teams20=sum(is.finite(Change20)), MeanChange20=round(mean(Change20,na.rm=TRUE),1),
+    MedianChange20=round(median(Change20,na.rm=TRUE),1),
+    Teams50=sum(is.finite(Change50)), MeanChange50=round(mean(Change50,na.rm=TRUE),1),
+    MedianChange50=round(median(Change50,na.rm=TRUE),1),
+    Teams100=sum(is.finite(Change100)), MeanChange100=round(mean(Change100,na.rm=TRUE),1),
+    MedianChange100=round(median(Change100,na.rm=TRUE),1)
+  ), by=.(EntryCountry,EntryTier,EntryPeriod,CoverageEntry)]
+  
+  coverage_entry_summary <- ent[CoverageEntry==TRUE, .(
+    Teams=.N, MedianInitial=round(median(InitialRating),1),
+    MeanChange20=round(mean(Change20,na.rm=TRUE),1),
+    MeanChange50=round(mean(Change50,na.rm=TRUE),1),
+    MeanChange100=round(mean(Change100,na.rm=TRUE),1)
+  ), by=.(EntryCountry,EntryTier,CoverageStartSeason)]
+  
+  fwrite(ent, file.path(AUDIT_DIR,"team_entry_checkpoints.csv"))
+  fwrite(entry_rating_change_summary, file.path(AUDIT_DIR,"entry_rating_change_summary.csv"))
+  fwrite(coverage_entry_summary, file.path(AUDIT_DIR,"coverage_entry_summary.csv"))
+} else {
+  cat("WARNING: Before-rating columns absent; entry seed test skipped.\n")
+}
+
+# ---- D. Promotion / relegation test -------------------------
+tr <- rbind(
+  lg[,.(Team=Home,Country,Tier,Date,Rating=HomeRating_After)],
+  lg[,.(Team=Away,Country,Tier,Date,Rating=AwayRating_After)]
+)
+tr[, SeasonStart:=fifelse(as.integer(format(Date,"%m"))>=7,
+                          as.integer(format(Date,"%Y")),
+                          as.integer(format(Date,"%Y"))-1L)]
+setorder(tr,Team,SeasonStart,Date)
+ts <- tr[,.(Country=Country[.N],Tier=Tier[.N]),by=.(Team,SeasonStart)]
+setorder(ts,Team,SeasonStart)
+ts[,`:=`(PrevSeasonStart=shift(SeasonStart),PrevTier=shift(Tier),PrevCountry=shift(Country)),by=Team]
+changes <- ts[!is.na(PrevTier) & SeasonStart==PrevSeasonStart+1L & Country==PrevCountry & Tier!=PrevTier]
+changes[,Direction:=fifelse(Tier<PrevTier,"Promoted","Relegated")]
+
+tr2 <- merge(tr,changes[,.(Team,SeasonStart,Country,PrevTier,Tier,Direction)],
+             by=c("Team","SeasonStart","Country","Tier"),all=FALSE)
+setorder(tr2,Team,SeasonStart,Date)
+tr2[,N:=seq_len(.N),by=.(Team,SeasonStart)]
+chk <- tr2[,.(StartRating=Rating[1],R20=if(.N>=20L) Rating[20L] else NA_real_,
+              R30=if(.N>=30L) Rating[30L] else NA_real_),
+           by=.(Team,SeasonStart,Country,PrevTier,Tier,Direction)]
+chk[,`:=`(Change20=R20-StartRating,Change30=R30-StartRating)]
+
+promotion_relegation_summary <- chk[,.(
+  Clubs=.N, Clubs20=sum(is.finite(Change20)),
+  MeanChange20=round(mean(Change20,na.rm=TRUE),1), MedianChange20=round(median(Change20,na.rm=TRUE),1),
+  Clubs30=sum(is.finite(Change30)),
+  MeanChange30=round(mean(Change30,na.rm=TRUE),1), MedianChange30=round(median(Change30,na.rm=TRUE),1)
+),by=.(Country,PrevTier,Tier,Direction)]
+
+fwrite(chk,file.path(AUDIT_DIR,"promotion_relegation_checkpoints.csv"))
+fwrite(promotion_relegation_summary,file.path(AUDIT_DIR,"promotion_relegation_summary.csv"))
+
+# ---- E. Same-team cohort drift ------------------------------
+cohort_rows <- list()
+for (b in c(1990L,1995L,2000L)) {
+  teams_b <- yr[Year==b,unique(Team)]
+  if (!length(teams_b)) next
+  z <- yr[Team %in% teams_b & Year>=b,.(
+    ActiveCohortTeams=uniqueN(Team),MeanElo=round(mean(Rating),1),
+    MedianElo=round(median(Rating),1),P90=round(safe_q(Rating,.90),1)
+  ),by=Year]
+  z[,BenchmarkYear:=b]
+  cohort_rows[[as.character(b)]] <- z
+}
+stable_cohort_drift <- rbindlist(cohort_rows,fill=TRUE)
+if (nrow(stable_cohort_drift)) {
+  setcolorder(stable_cohort_drift,c("BenchmarkYear","Year","ActiveCohortTeams","MeanElo","MedianElo","P90"))
+  fwrite(stable_cohort_drift,file.path(AUDIT_DIR,"stable_cohort_drift.csv"))
+}
+
+# ---- F. Compact console output ------------------------------
+sel <- unique(c(1990L,1995L,2000L,2005L,2010L,2015L,2020L,max(rating_pool_by_year$Year)))
+cat("\n============================================================\nRATING POOL - SELECTED YEARS\n============================================================\n\n")
+print(rating_pool_by_year[Year %in% sel])
+cat("\n============================================================\nTOP-TIER DISTRIBUTION - SELECTED YEARS\n============================================================\n\n")
+print(top_tier_distribution[Year %in% sel])
+if (nrow(coverage_entry_summary)) {
+  cat("\n============================================================\nBULK COVERAGE ENTRY\n============================================================\n\n")
+  print(coverage_entry_summary)
+}
+if (nrow(entry_rating_change_summary)) {
+  cat("\n============================================================\nENTRY CHANGE AFTER 20 / 50 / 100 LEAGUE GAMES\n============================================================\n\n")
+  print(entry_rating_change_summary)
+}
+cat("\n============================================================\nPROMOTION / RELEGATION ADJUSTMENT\n============================================================\n\n")
+print(promotion_relegation_summary)
+if (nrow(stable_cohort_drift)) {
+  cat("\n============================================================\nSTABLE COHORT DRIFT - SELECTED YEARS\n============================================================\n\n")
+  print(stable_cohort_drift[Year %in% sel])
+}
+cat("\nAudit CSVs written to:\n",AUDIT_DIR,"\n")
+
+beep()

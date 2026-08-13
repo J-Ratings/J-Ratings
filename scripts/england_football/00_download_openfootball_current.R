@@ -272,47 +272,28 @@ make_wikipedia_domestic_cup_jobs <- function(first_start_year, current_start_yea
 # Schochastics historical top-flight source
 # -----------------------------
 #
-# David Schoch's football-data repository supplies dated historical results
-# for top-tier domestic leagues. J-Ratings uses this only as the historical
-# top-flight backbone; current/recent seasons continue to come from the
-# existing OpenFootball sources.
-#
-# The parquet file is effectively a historical snapshot (currently through
-# the end of 2023), so normal weekly runs keep the local cached copy.
-#
-# To force a refresh after David publishes a newer snapshot:
-#   Sys.setenv(JR_REFRESH_SCHOCH = "1")
-#   source("00_download_openfootball_current.R")
-#   Sys.setenv(JR_REFRESH_SCHOCH = "0")
-
-dir.create(schoch_source_root_dir, recursive = TRUE, showWarnings = FALSE)
-
-refresh_schoch <- identical(
-  Sys.getenv("JR_REFRESH_SCHOCH", unset = "0"),
-  "1"
-)
-
-schoch_url <- paste0(
-  "https://raw.githubusercontent.com/",
-  "schochastics/football-data/master/data/results/games.parquet"
-)
+# The Schochastics parquet is a fixed historical snapshot committed to this
+# repository. Normal local runs and GitHub Actions must use that committed copy
+# and must never redownload it automatically.
 
 if (
   !file.exists(schoch_results_file) ||
-  file.info(schoch_results_file)$size == 0 ||
-  refresh_schoch
+  file.info(schoch_results_file)$size == 0
 ) {
-  cat("\nSchochastics historical source\n")
-  cat("===============================\n")
-  download_one_file(schoch_url, schoch_results_file)
-} else {
-  cat(
-    "\nSchochastics historical source already cached:\n  ",
+  stop(
+    "Missing Schochastics historical source: ",
     schoch_results_file,
-    "\n",
-    sep = ""
+    "\nThe committed games.parquet file is required. ",
+    "Restore it from the repository before running the pipeline."
   )
 }
+
+cat(
+  "\nUsing committed Schochastics historical source:\n  ",
+  schoch_results_file,
+  "\n",
+  sep = ""
+)
 
 # -----------------------------
 # Current season
