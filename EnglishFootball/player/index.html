@@ -330,26 +330,55 @@
     .tier-dfb-pokal { background:#111; color:#fff; }
     .tier-coupe-de-france { background:#1B4F9C; color:#fff; }
 
-    @media (max-width: 600px){
-      #chart{ height: 420px; }
-      h2#pname{ font-size: 1.6rem; }
-      h3.section-title{ font-size: 1.25rem; }
-      table.games{ font-size: 0.92rem; }
-      table.games th, table.games td{ padding: 8px 10px; }
+@media (max-width: 600px){
+  #chart{ height: 420px; }
+  h2#pname{ font-size: 1.6rem; }
+  h3.section-title{ font-size: 1.25rem; }
 
-      .wdl-cell{
-        min-width: 148px;
-      }
+  #upcomingWrap,
+  #gamesWrap{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 
-      .wdl-bar{
-        width: 140px;
-        height: 24px;
-      }
+  table.games{
+    width: max-content;
+    min-width: 100%;
+    table-layout: auto;
+    font-size: 0.92rem;
+  }
 
-      .wdl-seg{
-        font-size: 0.7rem;
-      }
-    }
+  table.games th,
+  table.games td{
+    padding: 8px 10px;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+
+  table.games .team-cell{
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  table.games .competition-badge{
+    max-width: 220px;
+  }
+
+  .wdl-cell{
+    min-width: 148px;
+  }
+
+  .wdl-bar{
+    width: 140px;
+    height: 24px;
+  }
+
+  .wdl-seg{
+    font-size: 0.7rem;
+  }
+}
 
     @media (max-width: 700px){
       .header-row{
@@ -692,11 +721,11 @@ const shapes = makeYGridShapes(y0, y1, step);
       y: ysAll,
       customdata: tiers,
       mode: 'lines',
-      line: {
-        width: 8,
-        shape: 'linear',
-        color: teamColour
-      },
+line: {
+  width: window.matchMedia('(max-width: 600px)').matches ? 4 : 8,
+  shape: 'linear',
+  color: teamColour
+},
       hovertemplate: '%{x}<br>%{y:.0f} Elo<br>Tier %{customdata}<extra></extra>',
       connectgaps: true,
       showlegend: false
