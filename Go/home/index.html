@@ -47,21 +47,58 @@
 
     #compare-modal > div{
       background:#1a1a1a;
-      padding:20px;
       border-radius:8px;
       max-width:560px;
       width:90%;
       max-height:80%;
-      overflow:auto;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
       color:#fff;
     }
 
-    .compare-controls{
-      margin:10px 0;
+    .compare-modal-header{
+      position:sticky;
+      top:0;
+      z-index:2;
+      background:#1a1a1a;
+      padding:20px 20px 12px;
+      border-bottom:1px solid #2b2f36;
     }
 
-    .compare-controls button{
-      margin-right:10px;
+    .compare-modal-title-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:12px;
+    }
+
+    .compare-modal-title-row h3{
+      margin:0;
+    }
+
+    .compare-close{
+      border:0;
+      background:transparent;
+      color:inherit;
+      font-size:1.8rem;
+      line-height:1;
+      padding:0 4px;
+      cursor:pointer;
+    }
+
+    .compare-close:hover{
+      opacity:0.8;
+    }
+
+    .compare-controls{
+      margin:0;
+    }
+
+    #compare-list{
+      overflow-y:auto;
+      padding:12px 20px 20px;
     }
 
     /* Desktop player table */
@@ -113,6 +150,21 @@
 #players th:nth-child(4),
 #players td:nth-child(4){
   width:24%;
+}
+
+
+#players th,
+#players td{
+  border-right:1px solid rgba(128,128,128,0.18);
+}
+
+#players th:last-child,
+#players td:last-child{
+  border-right:none;
+}
+
+#players tbody tr:nth-child(even){
+  background:rgba(255,255,255,0.018);
 }
 
     @media (max-width:520px){
@@ -170,39 +222,7 @@
 
 <main class="wrap">
   <section class="panel" id="players-panel">
-    <h2>All players</h2>
-
-<div class="go-meta-summary">
-  <div class="go-source-summary">
-    <div>
-      Historical games up to 2025:
-      <a
-        href="https://gogodonline.co.uk/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="data-source-link"
-      >GoGoD</a>
-    </div>
-
-    <div>
-      Games from 2026 onwards:
-      <a
-        href="https://www.goratings.org/en"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="data-source-link"
-      >GoRatings</a>
-      by Rémi Coulom.
-    </div>
-
-    <div>
-      For game databases, SGF records and sources, please visit the links above.
-    </div>
-  </div>
-
-  <div id="asof" class="asof" aria-live="polite"></div>
-</div>
-</div>
+    <div id="asof" class="asof" aria-live="polite"></div>
 
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by name…">
@@ -274,21 +294,49 @@
       </button>
     </div>
 
+    <div class="go-meta-summary" style="padding:0 16px 20px; text-align:center;">
+      <div class="go-source-summary">
+        <div>
+          Historical games up to 2025:
+          <a
+            href="https://gogodonline.co.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="data-source-link"
+          >GoGoD</a>
+        </div>
+
+        <div>
+          Games from 2026 onwards:
+          <a
+            href="https://www.goratings.org/en"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="data-source-link"
+          >GoRatings</a>
+          by Rémi Coulom.
+        </div>
+
+        <div>
+          For game databases, SGF records and sources, please visit the links above.
+        </div>
+      </div>
+    </div>
+
     <div id="compare-modal">
       <div>
-        <h3>Select players to view:</h3>
+        <div class="compare-modal-header">
+          <div class="compare-modal-title-row">
+            <h3>Select players to view:</h3>
+            <button id="compare-close" class="compare-close" type="button" aria-label="Close comparison">×</button>
+          </div>
 
-        <div class="compare-controls">
-          <button id="compare-show-top" type="button">Show Selected</button>
-          <button id="compare-cancel-top" type="button">Cancel</button>
+          <div class="compare-controls">
+            <button id="compare-show-top" type="button">Show Selected</button>
+          </div>
         </div>
 
-        <div id="compare-list" style="margin:10px 0 20px 0;"></div>
-
-        <div class="compare-controls">
-          <button id="compare-show-bottom" type="button">Show Selected</button>
-          <button id="compare-cancel-bottom" type="button">Cancel</button>
-        </div>
+        <div id="compare-list"></div>
       </div>
     </div>
   </section>
@@ -710,9 +758,7 @@ function setupCompareButton() {
 
   document.getElementById('compare-btn').addEventListener('click', openModal);
   document.getElementById('compare-show-top').addEventListener('click', showSelected);
-  document.getElementById('compare-show-bottom').addEventListener('click', showSelected);
-  document.getElementById('compare-cancel-top').addEventListener('click', closeModal);
-  document.getElementById('compare-cancel-bottom').addEventListener('click', closeModal);
+  document.getElementById('compare-close').addEventListener('click', closeModal);
 }
 
 async function load() {
