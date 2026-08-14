@@ -280,6 +280,107 @@
     overflow-wrap: anywhere;
   }
 }    
+  
+
+    /* Home-page polish shared with the Go layout. */
+    #compare-modal > div {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .compare-modal-header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: #1a1a1a;
+      padding: 20px 20px 12px;
+      border-bottom: 1px solid #2b2f36;
+    }
+
+    .compare-modal-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .compare-modal-title-row h3 { margin: 0; }
+
+    .compare-close {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font-size: 1.8rem;
+      line-height: 1;
+      padding: 0 4px;
+      cursor: pointer;
+    }
+
+    .compare-close:hover { opacity: 0.8; }
+
+    .compare-controls { margin: 0; }
+
+    #compare-list {
+      overflow-y: auto;
+      padding: 12px 20px 20px;
+      margin: 0 !important;
+    }
+
+
+    .table-wrap {
+      width: min(86vw, 1200px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #teams {
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    #teams th,
+    #teams td {
+      border-right: 1px solid rgba(128,128,128,0.18);
+    }
+
+    #teams th:last-child,
+    #teams td:last-child { border-right: none; }
+
+    #teams tbody tr:nth-child(even) {
+      background: rgba(255,255,255,0.018);
+    }
+
+    @media (min-width: 521px) {
+      #teams th { font-size: 1.45rem; }
+      #teams td { font-size: 1.32rem; }
+      #teams th,
+      #teams td { padding: 14px 18px; }
+    }
+
+    @media (min-width: 769px) {
+      #teams-panel > .asof {
+        text-align: center;
+        font-size: 1.15rem;
+        margin: 18px 0 22px;
+        padding-left: 0;
+      }
+
+      #teams-panel > .toolbar { gap: 12px; }
+
+      #teams-panel > .toolbar input,
+      #teams-panel > .toolbar select,
+      #teams-panel > .toolbar button {
+        font-size: 1.05rem;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+
+      #teams-panel > .toolbar label { font-size: 1.05rem; }
+    }
+
   </style>
 </head>
 
@@ -304,8 +405,7 @@
 
 <main class="wrap">
   <section class="panel" id="teams-panel">
-    <h2>All teams</h2>
-    <div id="asof" class="asof" aria-live="polite"></div>
+<div id="asof" class="asof" aria-live="polite"></div>
 
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by team…">
@@ -384,18 +484,22 @@
   <!-- Compare Selection Modal -->
   <div id="compare-modal">
     <div>
-      <h3>Select teams to view:</h3>
-      <div class="compare-controls">
-        <button id="compare-show-top">Show Selected</button>
-        <button id="compare-cancel-top">Cancel</button>
+      <div class="compare-modal-header">
+        <div class="compare-modal-title-row">
+          <h3>Select teams to view:</h3>
+          <button id="compare-close" class="compare-close" type="button" aria-label="Close comparison">×</button>
+        </div>
+
+        <div class="compare-controls">
+          <button id="compare-show-top" type="button">Show Selected</button>
+        </div>
       </div>
-      <div id="compare-list" style="margin:10px 0 20px 0;"></div>
-      <div class="compare-controls">
-        <button id="compare-show-bottom">Show Selected</button>
-        <button id="compare-cancel-bottom">Cancel</button>
-      </div>
+
+      <div id="compare-list"></div>
     </div>
   </div>
+
+
 
   <footer class="site-footer">
     <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
@@ -1249,9 +1353,7 @@ applyFilter();
 
     document.getElementById('compare-btn').addEventListener('click', openModal);
     document.getElementById('compare-show-top').addEventListener('click', showSelected);
-    document.getElementById('compare-show-bottom').addEventListener('click', showSelected);
-    document.getElementById('compare-cancel-top').addEventListener('click', closeModal);
-    document.getElementById('compare-cancel-bottom').addEventListener('click', closeModal);
+  document.getElementById('compare-close').addEventListener('click', closeModal);
   }
 
   function setupCompareChartControls() {
