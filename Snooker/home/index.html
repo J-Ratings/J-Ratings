@@ -230,6 +230,20 @@
       border-right: 1px solid rgba(128,128,128,0.18);
     }
 
+    @media (min-width: 521px) {
+      #players th:nth-child(1),
+      #players td:nth-child(1) { width: 12%; }
+
+      #players th:nth-child(2),
+      #players td:nth-child(2) { width: 16%; }
+
+      #players th:nth-child(3),
+      #players td:nth-child(3) { width: 48%; }
+
+      #players th:nth-child(4),
+      #players td:nth-child(4) { width: 24%; }
+    }
+
     #players th:last-child,
     #players td:last-child { border-right: none; }
 
@@ -238,8 +252,8 @@
     }
 
     @media (min-width: 521px) {
-      #players th { font-size: 1.45rem; }
-      #players td { font-size: 1.32rem; }
+      #players th { font-size: 1.55rem; }
+      #players td { font-size: 1.45rem; }
       #players th,
       #players td { padding: 14px 18px; }
     }
