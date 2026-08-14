@@ -131,6 +131,14 @@
       text-align: center;
     }
 
+    @media (min-width: 521px) {
+  .tier-badge {
+    padding: 8px 15px;
+    font-size: 1.1rem;
+    min-width: 44px;
+  }
+}
+
     /* Division colours + text colours */
     .tier-premier-league {
       background: #59127a;
@@ -366,22 +374,22 @@
       border-right: 1px solid rgba(128,128,128,0.18);
     }
 
-    @media (min-width: 521px) {
-      #teams th:nth-child(1),
-      #teams td:nth-child(1) { width: 8%; }
+@media (min-width: 521px) {
+  #teams th:nth-child(1),
+  #teams td:nth-child(1) { width: 8%; }
 
-      #teams th:nth-child(2),
-      #teams td:nth-child(2) { width: 8%; }
+  #teams th:nth-child(2),
+  #teams td:nth-child(2) { width: 10%; }
 
-      #teams th:nth-child(3),
-      #teams td:nth-child(3) { width: 36%; }
+  #teams th:nth-child(3),
+  #teams td:nth-child(3) { width: 36%; }
 
-      #teams th:nth-child(4),
-      #teams td:nth-child(4) { width: 16%; }
+  #teams th:nth-child(4),
+  #teams td:nth-child(4) { width: 16%; }
 
-      #teams th:nth-child(5),
-      #teams td:nth-child(5) { width: 32%; }
-    }
+  #teams th:nth-child(5),
+  #teams td:nth-child(5) { width: 30%; }
+}
 
     #teams th:last-child,
     #teams td:last-child { border-right: none; }
