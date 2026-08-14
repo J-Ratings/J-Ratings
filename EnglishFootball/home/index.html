@@ -103,6 +103,20 @@
       padding-left: 12px;
     }
 
+
+    .flag-cell {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .flag-icon {
+      width: 39.93px;
+      height: 29.04px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
     /* Tier badges */
     .tier-badge {
       display: inline-block;
@@ -116,14 +130,6 @@
       min-width: 38px;
       text-align: center;
     }
-
-    @media (min-width: 521px) {
-  .tier-badge {
-    padding: 7px 14px;
-    font-size: 1.10rem;
-    min-width: 42px;
-  }
-}
 
     /* Division colours + text colours */
     .tier-premier-league {
@@ -264,25 +270,31 @@
 
   #teams th:nth-child(1),
   #teams td:nth-child(1) {
-    width: 54px;
+    width: 72px;
+    white-space: nowrap;
   }
 
   #teams th:nth-child(2),
   #teams td:nth-child(2) {
-    width: auto;
+    display: none;
   }
 
   #teams th:nth-child(3),
   #teams td:nth-child(3) {
-    width: 82px;
+    width: auto;
   }
 
   #teams th:nth-child(4),
   #teams td:nth-child(4) {
+    width: 72px;
+  }
+
+  #teams th:nth-child(5),
+  #teams td:nth-child(5) {
     display: none;
   }
 
-  #teams td:nth-child(2) a {
+  #teams td:nth-child(3) a {
     display: block;
     white-space: normal;
     overflow-wrap: anywhere;
@@ -356,16 +368,19 @@
 
     @media (min-width: 521px) {
       #teams th:nth-child(1),
-      #teams td:nth-child(1) { width: 10%; }
+      #teams td:nth-child(1) { width: 8%; }
 
       #teams th:nth-child(2),
-      #teams td:nth-child(2) { width: 42%; }
+      #teams td:nth-child(2) { width: 8%; }
 
       #teams th:nth-child(3),
-      #teams td:nth-child(3) { width: 18%; }
+      #teams td:nth-child(3) { width: 36%; }
 
       #teams th:nth-child(4),
-      #teams td:nth-child(4) { width: 30%; }
+      #teams td:nth-child(4) { width: 16%; }
+
+      #teams th:nth-child(5),
+      #teams td:nth-child(5) { width: 32%; }
     }
 
     #teams th:last-child,
@@ -376,6 +391,11 @@
     }
 
     @media (min-width: 521px) {
+      .flag-icon {
+        width: 54px;
+        height: 40px;
+      }
+
       #teams th { font-size: 1.55rem; }
       #teams td { font-size: 1.45rem; }
       #teams th,
@@ -493,6 +513,7 @@
         <thead>
           <tr>
             <th style="min-width:60px">Rank</th>
+            <th style="min-width:56px">Country</th>
             <th style="min-width:240px">Team</th>
             <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
             <th style="min-width:150px">Competition</th>
@@ -549,6 +570,7 @@
   const SEASON_STARTS_URL = '../data/season_starts.json';
   const META_URL = '../data/meta.json';
   const COLOURS_URL = '../team-colours.json';
+  const FLAGS_BASE = '../../flags';
 
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
@@ -664,6 +686,52 @@
     return '';
   }
 
+
+  const COUNTRY_FLAG_CODES = {
+    england: 'gb-eng',
+    spain: 'es',
+    italy: 'it',
+    germany: 'de',
+    france: 'fr',
+    portugal: 'pt',
+    netherlands: 'nl',
+    belgium: 'be',
+    austria: 'at',
+    turkey: 'tr',
+    scotland: 'gb-sct',
+    switzerland: 'ch',
+    greece: 'gr',
+    czechia: 'cz',
+    ukraine: 'ua'
+  };
+
+  const COUNTRY_LABELS = {
+    england: 'England',
+    spain: 'Spain',
+    italy: 'Italy',
+    germany: 'Germany',
+    france: 'France',
+    portugal: 'Portugal',
+    netherlands: 'Netherlands',
+    belgium: 'Belgium',
+    austria: 'Austria',
+    turkey: 'Turkey',
+    scotland: 'Scotland',
+    switzerland: 'Switzerland',
+    greece: 'Greece',
+    czechia: 'Czechia',
+    ukraine: 'Ukraine'
+  };
+
+  function flagImgHtmlForTeam(row) {
+    const country = countryForTeam(row);
+    const code = COUNTRY_FLAG_CODES[country];
+    if (!code) return '';
+
+    const label = COUNTRY_LABELS[country] || country;
+    return `<img src="${FLAGS_BASE}/${code}.svg" alt="${label}" title="${label}" class="flag-icon" loading="lazy">`;
+  }
+
   function updateRatingHeader() {
     const h = document.getElementById('rating-col-head');
     if (!h) return;
@@ -687,6 +755,11 @@
         ? `${i + 1} (${r.rank})`
         : String(r.rank);
       tr.appendChild(tdRank);
+
+      const tdFlag = document.createElement('td');
+      tdFlag.className = 'flag-cell';
+      tdFlag.innerHTML = flagImgHtmlForTeam(r);
+      tr.appendChild(tdFlag);
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
@@ -1438,7 +1511,7 @@ applyFilter();
       }
 
       document.querySelector('#teams tbody').innerHTML =
-        `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
+        `<tr><td colspan="5">Error loading data: ${err.message}</td></tr>`;
     }
   }
 
