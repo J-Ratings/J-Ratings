@@ -146,6 +146,148 @@
         height: 420px;
       }
     }
+  
+
+    /* Home-style comparison modal */
+    #compare-modal > div{
+      padding:0 !important;
+      max-width:560px;
+      width:90%;
+      max-height:80%;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden !important;
+    }
+
+    .compare-modal-header{
+      position:sticky;
+      top:0;
+      z-index:2;
+      background:#1a1a1a;
+      padding:20px 20px 12px;
+      border-bottom:1px solid #2b2f36;
+    }
+
+    .compare-modal-title-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:12px;
+    }
+
+    .compare-modal-title-row h3{ margin:0; }
+
+    .compare-close{
+      border:0;
+      background:transparent;
+      color:inherit;
+      font-size:1.8rem;
+      line-height:1;
+      padding:0 4px;
+      cursor:pointer;
+    }
+
+    .compare-close:hover{ opacity:.8; }
+
+    .compare-controls{ margin:0 !important; }
+
+    #compare-list{
+      overflow-y:auto;
+      padding:12px 20px 20px;
+      margin:0 !important;
+    }
+
+    @media (min-width:769px){
+      #players-panel > .toolbar,
+      #teams-panel > .toolbar{
+        gap:12px;
+        padding:22px 20px 18px;
+        margin-bottom:0;
+      }
+
+      #players-panel > .toolbar input,
+      #players-panel > .toolbar select,
+      #players-panel > .toolbar button,
+      #teams-panel > .toolbar input,
+      #teams-panel > .toolbar select,
+      #teams-panel > .toolbar button{
+        font-size:1.05rem;
+        padding-top:12px;
+        padding-bottom:12px;
+      }
+
+      #players-panel > .toolbar label,
+      #teams-panel > .toolbar label{
+        font-size:1.05rem;
+      }
+    }
+
+    /* Home-style peak table */
+    .table-wrap{
+      width:min(86vw, 1100px);
+      margin:0 auto;
+    }
+
+    #players,
+    #teams{
+      width:100%;
+      table-layout:fixed;
+    }
+
+    #players th,
+    #players td,
+    #teams th,
+    #teams td{
+      border-right:1px solid rgba(128,128,128,0.18);
+    }
+
+    #players th:last-child,
+    #players td:last-child,
+    #teams th:last-child,
+    #teams td:last-child{
+      border-right:none;
+    }
+
+    #players tbody tr:nth-child(even),
+    #teams tbody tr:nth-child(even){
+      background:rgba(255,255,255,0.018);
+    }
+
+    @media (min-width:521px){
+      #players th,
+      #teams th{
+        font-size:1.55rem;
+      }
+
+      #players td,
+      #teams td{
+        font-size:1.45rem;
+      }
+
+      .flag-icon{
+        width:54px;
+        height:40px;
+      }
+    }
+
+    @media (min-width:521px){
+      #players th:nth-child(1), #players td:nth-child(1),
+      #teams th:nth-child(1), #teams td:nth-child(1){ width:10%; }
+
+      #players th:nth-child(2), #players td:nth-child(2),
+      #teams th:nth-child(2), #teams td:nth-child(2){ width:12%; }
+
+      #players th:nth-child(3), #players td:nth-child(3),
+      #teams th:nth-child(3), #teams td:nth-child(3){ width:38%; }
+
+      #players th:nth-child(4), #players td:nth-child(4),
+      #teams th:nth-child(4), #teams td:nth-child(4){ width:16%; }
+
+      #players th:nth-child(5), #players td:nth-child(5),
+      #teams th:nth-child(5), #teams td:nth-child(5){ width:24%; }
+    }
+
   </style>
 </head>
 
@@ -170,8 +312,6 @@
 
 <main class="wrap">
   <section class="panel" id="teams-panel">
-    <h2>Peak ratings</h2>
-
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by team…">
       <span id="count" class="muted"></span>
@@ -221,17 +361,20 @@
 
 <div id="compare-modal">
   <div>
-    <h3>Select teams to view:</h3>
-    <div class="compare-controls">
-      <button id="compare-show-top">Show selected</button>
-      <button id="compare-cancel-top">Cancel</button>
+    <div class="compare-modal-header">
+      <div class="compare-modal-title-row">
+        <h3>Select teams to view:</h3>
+        <button id="compare-close" class="compare-close" type="button" aria-label="Close comparison">×</button>
+      </div>
+
+      <div class="compare-controls">
+        <button id="compare-show-top" type="button">Show Selected</button>
+      </div>
     </div>
-    <div id="compare-list" style="margin:10px 0 20px 0;"></div>
-    <div class="compare-controls">
-      <button id="compare-show-bottom">Show selected</button>
-      <button id="compare-cancel-bottom">Cancel</button>
-    </div>
+
+    <div id="compare-list"></div>
   </div>
+</div>
 </div>
 
 <script>
@@ -627,9 +770,7 @@
 
     document.getElementById('compare-btn').addEventListener('click', openModal);
     document.getElementById('compare-show-top').addEventListener('click', showSelected);
-    document.getElementById('compare-show-bottom').addEventListener('click', showSelected);
-    document.getElementById('compare-cancel-top').addEventListener('click', closeModal);
-    document.getElementById('compare-cancel-bottom').addEventListener('click', closeModal);
+    document.getElementById('compare-close').addEventListener('click', closeModal);
   }
 
   async function load() {
