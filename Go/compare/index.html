@@ -20,16 +20,24 @@
 
   <style>
     .controls{
+      width:min(900px, 92%);
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      padding:28px 24px 24px;
+      border-bottom:1px solid var(--border);
+    }
+
+    #rows{
       display:flex;
       flex-direction:column;
       gap:10px;
-      padding:14px 18px;
-      border-bottom:1px solid var(--border);
     }
 
     .row{
       display:flex;
-      gap:8px;
+      gap:10px;
       align-items:center;
       width:100%;
     }
@@ -37,29 +45,99 @@
     .row input[type="text"]{
       flex:1;
       min-width:220px;
-      padding:10px;
-      border-radius:8px;
+      padding:13px 14px;
+      border-radius:9px;
       border:1px solid var(--border);
       background:#0f1623;
       color:var(--text);
+      font-size:1.05rem;
     }
 
     .btn{
       background:#0f1623;
       border:1px solid var(--border);
       color:var(--text);
-      padding:8px 12px;
-      border-radius:6px;
+      padding:11px 16px;
+      border-radius:8px;
       cursor:pointer;
+      font-size:1.05rem;
     }
 
     .btn:hover{
       background:rgba(255,255,255,.05);
     }
 
-    .muted-note{
-      opacity:.8;
-      font-size:.9rem;
+    .compare-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .jr-chart-controls{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      padding-top:2px;
+    }
+
+    .jr-chart-controls label{
+      font-size:1.05rem;
+    }
+
+    .jr-chart-controls select{
+      font-size:1.05rem;
+      padding:10px 12px;
+    }
+
+    .range-buttons{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .range-buttons .seg{
+      font-size:1rem;
+      padding:9px 12px;
+    }
+
+    #chart{
+      width:min(1200px, 96%);
+      margin:0 auto;
+    }
+
+    @media (max-width:700px){
+      .controls{
+        width:100%;
+        padding:18px 14px;
+        gap:14px;
+      }
+
+      .row{
+        gap:8px;
+      }
+
+      .row input[type="text"]{
+        min-width:0;
+        padding:10px;
+        font-size:1rem;
+      }
+
+      .btn{
+        padding:9px 12px;
+        font-size:1rem;
+      }
+
+      .jr-chart-controls{
+        justify-content:flex-start;
+      }
+
+      .range-buttons{
+        justify-content:flex-start;
+      }
     }
 
     .suggest{
@@ -119,7 +197,7 @@
     <div class="controls">
       <div id="rows"></div>
 
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <div class="compare-actions">
         <button id="add" class="btn" type="button">Add player</button>
         <button id="create" class="btn" type="button">Create</button>
         <button id="clear" class="btn" type="button">Clear</button>
@@ -146,12 +224,9 @@
         </div>
       </div>
 
-      <div class="muted-note">
-        Up to 15 players. Start typing a name, pick a suggestion, then Create.
-      </div>
     </div>
 
-    <div style="padding:16px">
+    <div style="padding:24px 16px 28px">
       <div id="chart" class="jr-chart">No players selected.</div>
     </div>
   </section>
