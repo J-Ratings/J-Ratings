@@ -281,6 +281,47 @@
       font-size:1.15rem;
     }
 
+    .whatif-toggle{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:16px 18px;
+      border:0;
+      border-bottom:1px solid transparent;
+      background:transparent;
+      color:inherit;
+      font:inherit;
+      font-weight:800;
+      font-size:1.15rem;
+      cursor:pointer;
+      text-align:left;
+    }
+
+    .whatif-toggle[aria-expanded="true"]{
+      border-bottom-color:var(--sim-line);
+    }
+
+    .whatif-arrow{
+      font-size:1.4rem;
+      line-height:1;
+      transition:transform .15s ease;
+    }
+
+    .whatif-toggle[aria-expanded="true"] .whatif-arrow{
+      transform:rotate(180deg);
+    }
+
+    .whatif-body{
+      display:none;
+      padding:16px 18px;
+    }
+
+    .whatif-body.is-open{
+      display:block;
+    }
+
     .table-wrap{
       overflow-x:auto;
     }
@@ -391,16 +432,26 @@
             <option value="2000">2,000</option>
             <option value="10000" selected>10,000</option>
             <option value="100000">100,000</option>
+            <option value="1000000">1,000,000</option>
           </select>
         </div>
 
         <button id="simulate-btn" type="button" disabled>Simulate</button>
       </div>
 
-      <div class="results-card" style="margin-top:18px;">
-        <div class="results-title">What-if controls</div>
+      <div id="status" class="sim-status">Loading tournament data…</div>
 
-        <div style="padding:16px 18px;">
+      <div id="progress-wrap" class="progress-wrap">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+
+      <div class="results-card" style="margin-top:18px;">
+        <button id="whatif-toggle" type="button" class="whatif-toggle" aria-expanded="false">
+          <span>What-if controls</span>
+          <span id="whatif-arrow" class="whatif-arrow">⌄</span>
+        </button>
+
+        <div id="whatif-body" class="whatif-body">
           <div class="tool-grid">
 
             <div class="tool-card">
@@ -477,12 +528,6 @@
         </div>
       </div>
 
-      <div id="status" class="sim-status">Loading tournament data…</div>
-
-      <div id="progress-wrap" class="progress-wrap">
-        <div id="progress-bar" class="progress-bar"></div>
-      </div>
-
       <div class="summary-grid">
         <div class="summary-card">
           <div class="label">Played</div>
@@ -552,6 +597,9 @@
   const runtimeEl = document.getElementById('runtime');
 
   const resultsBody = document.getElementById('results-body');
+
+  const whatifToggleEl = document.getElementById('whatif-toggle');
+  const whatifBodyEl = document.getElementById('whatif-body');
 
   const teamOptionsEl = document.getElementById('team-options');
 
@@ -1223,6 +1271,20 @@
       statusEl.textContent = err.message;
       statusEl.classList.add('error');
     }
+  });
+
+  whatifToggleEl.addEventListener('click', () => {
+    const open = whatifToggleEl.getAttribute('aria-expanded') === 'true';
+
+    whatifToggleEl.setAttribute(
+      'aria-expanded',
+      open ? 'false' : 'true'
+    );
+
+    whatifBodyEl.classList.toggle(
+      'is-open',
+      !open
+    );
   });
 
   forceTeamEl.addEventListener('input', () => {
