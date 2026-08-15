@@ -604,7 +604,12 @@ window.addEventListener('DOMContentLoaded', () => {
     originalRender(items);
     requestAnimationFrame(() => {
       Plotly.relayout('chart', {
-        'legend.font.size': 16
+        'legend.font.size': 18,
+        'legend.itemsizing': 'constant'
+      });
+
+      Plotly.restyle('chart', {
+        'line.width': 3
       });
     });
   };
