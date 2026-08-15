@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>J-Ratings: Premier League Simulator Prototype</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --text:#172033;
+      --muted:#667085;
+      --line:#dfe4ec;
+      --accent:#23395d;
+      --accent2:#eef2f8;
+      --danger:#a12a2a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      padding:28px 18px 56px;
+    }
+    h1{
+      margin:0 0 6px;
+      font-size:2rem;
+      text-align:center;
+    }
+    .sub{
+      margin:0 0 24px;
+      color:var(--muted);
+      text-align:center;
+    }
+    .controls{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      justify-content:center;
+      align-items:end;
+      box-shadow:0 2px 10px rgba(0,0,0,.04);
+    }
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width:180px;
+    }
+    label{
+      font-weight:700;
+      font-size:.95rem;
+    }
+    input,select,button{
+      font:inherit;
+      border-radius:9px;
+    }
+    input,select{
+      border:1px solid #bfc7d4;
+      padding:10px 12px;
+      background:#fff;
+    }
+    button{
+      border:0;
+      padding:11px 20px;
+      cursor:pointer;
+      font-weight:700;
+      background:var(--accent);
+      color:#fff;
+      min-width:150px;
+    }
+    button:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+    }
+    .status{
+      margin:16px auto 0;
+      max-width:760px;
+      text-align:center;
+      color:var(--muted);
+      min-height:24px;
+    }
+    .progress-wrap{
+      max-width:760px;
+      height:10px;
+      background:#e8ecf2;
+      border-radius:999px;
+      margin:10px auto 0;
+      overflow:hidden;
+      display:none;
+    }
+    .progress{
+      height:100%;
+      width:0%;
+      background:var(--accent);
+      transition:width .08s linear;
+    }
+    .summary{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+      margin:22px 0;
+    }
+    .summary-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:14px;
+      text-align:center;
+    }
+    .summary-card .k{
+      color:var(--muted);
+      font-size:.85rem;
+      margin-bottom:4px;
+    }
+    .summary-card .v{
+      font-size:1.35rem;
+      font-weight:700;
+    }
+    .table-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 2px 10px rgba(0,0,0,.04);
+    }
+    .table-title{
+      padding:16px 18px;
+      font-weight:700;
+      border-bottom:1px solid var(--line);
+    }
+    .scroll{overflow-x:auto}
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:860px;
+    }
+    th,td{
+      padding:11px 12px;
+      border-bottom:1px solid #edf0f4;
+      text-align:right;
+      white-space:nowrap;
+    }
+    th{
+      background:#f8fafc;
+      position:sticky;
+      top:0;
+      z-index:1;
+      font-size:.92rem;
+    }
+    th:nth-child(2),td:nth-child(2){text-align:left}
+    tbody tr:nth-child(even){background:#fbfcfe}
+    .note{
+      color:var(--muted);
+      font-size:.9rem;
+      line-height:1.45;
+      margin-top:16px;
+    }
+    .error{color:var(--danger)}
+    @media(max-width:760px){
+      .page{padding:18px 10px 40px}
+      h1{font-size:1.55rem}
+      .controls{align-items:stretch}
+      .field{min-width:100%}
+      button{width:100%}
+      .summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>Premier League Simulator</h1>
+    <p class="sub">Prototype: choose a historical date and simulate the rest of the 2024–25 season.</p>
+
+    <section class="controls">
+      <div class="field">
+        <label for="cutoff">Simulation starts after</label>
+        <input id="cutoff" type="date">
+      </div>
+
+      <div class="field">
+        <label for="simCount">Iterations</label>
+        <select id="simCount">
+          <option value="500">500</option>
+          <option value="2000">2,000</option>
+          <option value="10000" selected>10,000</option>
+        </select>
+      </div>
+
+      <button id="simulate" type="button" disabled>Simulate</button>
+    </section>
+
+    <div id="status" class="status">Loading tournament data…</div>
+    <div id="progressWrap" class="progress-wrap"><div id="progress" class="progress"></div></div>
+
+    <section class="summary">
+      <div class="summary-card"><div class="k">Played</div><div id="playedCount" class="v">—</div></div>
+      <div class="summary-card"><div class="k">Remaining</div><div id="remainingCount" class="v">—</div></div>
+      <div class="summary-card"><div class="k">Iterations</div><div id="iterationCount" class="v">—</div></div>
+      <div class="summary-card"><div class="k">Run time</div><div id="runtime" class="v">—</div></div>
+    </section>
+
+    <section class="table-card">
+      <div class="table-title">Simulation results</div>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Current</th>
+              <th>Team</th>
+              <th>Pts</th>
+              <th>Elo</th>
+              <th>Title</th>
+              <th>Top 4</th>
+              <th>Relegation</th>
+              <th>Expected pts</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="note">
+      Actual Premier League results are used up to the selected date. Each club's J-Ratings Elo at that date is loaded from its rating history, so information from other competitions is retained. The remaining league fixtures are then simulated with Elo updating after every simulated match. Equal-points ties are currently broken randomly because exact future scorelines are not yet simulated.
+    </p>
+  </main>
+
+<script>
+(() => {
+  // Assumes this HTML file sits in the EnglishFootball folder.
+  const TOURNAMENT_URL = 'data/simulations/premier-league/2024-25.json';
+  const HISTORY_BASE_URL = 'data/history/';
+
+  const cutoffEl = document.getElementById('cutoff');
+  const simCountEl = document.getElementById('simCount');
+  const simulateBtn = document.getElementById('simulate');
+  const statusEl = document.getElementById('status');
+  const progressWrap = document.getElementById('progressWrap');
+  const progressEl = document.getElementById('progress');
+  const resultsBody = document.getElementById('resultsBody');
+
+  const playedCountEl = document.getElementById('playedCount');
+  const remainingCountEl = document.getElementById('remainingCount');
+  const iterationCountEl = document.getElementById('iterationCount');
+  const runtimeEl = document.getElementById('runtime');
+
+  let tournament = null;
+  let teamHistories = new Map();
+  let worker = null;
+
+  const parseDate = s => new Date(s + 'T00:00:00');
+  const fmtPct = x => `${x.toFixed(x < 1 ? 2 : 1)}%`;
+
+  function actualTable(cutoff) {
+    const teams = tournament.teams.map(t => t.name);
+    const ids = tournament.teams.map(t => t.id);
+    const idToIndex = new Map(ids.map((id, i) => [id, i]));
+    const stats = teams.map((team, i) => ({
+      i, team, played: 0, gf: 0, ga: 0, gd: 0, points: 0
+    }));
+
+    let played = 0;
+
+    for (const m of tournament.matches) {
+      if (m.date > cutoff) continue;
+
+      const h = idToIndex.get(m.home);
+      const a = idToIndex.get(m.away);
+      if (h == null || a == null) continue;
+
+      const hg = Number(m.homeScore);
+      const ag = Number(m.awayScore);
+      if (!Number.isFinite(hg) || !Number.isFinite(ag)) continue;
+
+      played++;
+
+      stats[h].played++;
+      stats[a].played++;
+      stats[h].gf += hg;
+      stats[h].ga += ag;
+      stats[a].gf += ag;
+      stats[a].ga += hg;
+
+      if (hg > ag) {
+        stats[h].points += 3;
+      } else if (hg < ag) {
+        stats[a].points += 3;
+      } else {
+        stats[h].points += 1;
+        stats[a].points += 1;
+      }
+    }
+
+    for (const s of stats) s.gd = s.gf - s.ga;
+
+    stats.sort((x, y) =>
+      y.points - x.points ||
+      y.gd - x.gd ||
+      y.gf - x.gf ||
+      x.team.localeCompare(y.team)
+    );
+
+    stats.forEach((s, idx) => s.position = idx + 1);
+
+    return { stats, played };
+  }
+
+  function ratingAt(teamId, cutoff) {
+    const hist = teamHistories.get(teamId) || [];
+    let best = null;
+
+    for (const row of hist) {
+      if (row.date <= cutoff && Number.isFinite(Number(row.rating))) {
+        best = Number(row.rating);
+      } else if (row.date > cutoff) {
+        break;
+      }
+    }
+    return best;
+  }
+
+  function buildSimulationInput(cutoff) {
+    const teams = tournament.teams.map(t => t.name);
+    const ids = tournament.teams.map(t => t.id);
+    const idToIndex = new Map(ids.map((id, i) => [id, i]));
+
+    const table = actualTable(cutoff);
+    const pointsByIndex = new Float64Array(teams.length);
+
+    for (const row of table.stats) {
+      pointsByIndex[row.i] = row.points;
+    }
+
+    const ratings = new Float64Array(teams.length);
+
+    ids.forEach((id, i) => {
+      const r = ratingAt(id, cutoff);
+      if (!Number.isFinite(r)) {
+        throw new Error(`No rating history available for ${teams[i]} on ${cutoff}.`);
+      }
+      ratings[i] = r;
+    });
+
+    const homeIdx = [];
+    const awayIdx = [];
+
+    for (const m of tournament.matches) {
+      if (m.date <= cutoff) continue;
+      homeIdx.push(idToIndex.get(m.home));
+      awayIdx.push(idToIndex.get(m.away));
+    }
+
+    return {
+      teams,
+      ratings: Array.from(ratings),
+      basePoints: Array.from(pointsByIndex),
+      homeIdx,
+      awayIdx,
+      currentTable: table.stats,
+      played: table.played,
+      remaining: homeIdx.length
+    };
+  }
+
+  function renderCurrentState(input) {
+    playedCountEl.textContent = input.played;
+    remainingCountEl.textContent = input.remaining;
+    iterationCountEl.textContent = '—';
+    runtimeEl.textContent = '—';
+
+    resultsBody.innerHTML = '';
+
+    for (const row of input.currentTable) {
+      const tr = document.createElement('tr');
+      const elo = input.ratings[row.i];
+
+      tr.innerHTML = `
+        <td>${row.position}</td>
+        <td>${row.team}</td>
+        <td>${row.points}</td>
+        <td>${Math.round(elo)}</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      `;
+      resultsBody.appendChild(tr);
+    }
+  }
+
+  function renderResults(input, result) {
+    const currentPos = new Map(input.currentTable.map(r => [r.team, r.position]));
+    const currentPts = new Map(input.currentTable.map(r => [r.team, r.points]));
+
+    const rows = result.rows.slice().sort((a, b) =>
+      b.titlePct - a.titlePct ||
+      b.top4Pct - a.top4Pct ||
+      b.expectedPoints - a.expectedPoints
+    );
+
+    resultsBody.innerHTML = '';
+
+    for (const row of rows) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${currentPos.get(row.team)}</td>
+        <td>${row.team}</td>
+        <td>${currentPts.get(row.team)}</td>
+        <td>${Math.round(row.startingElo)}</td>
+        <td>${fmtPct(row.titlePct)}</td>
+        <td>${fmtPct(row.top4Pct)}</td>
+        <td>${fmtPct(row.relegationPct)}</td>
+        <td>${row.expectedPoints.toFixed(1)}</td>
+      `;
+      resultsBody.appendChild(tr);
+    }
+
+    iterationCountEl.textContent = result.simulations.toLocaleString();
+    runtimeEl.textContent = `${result.elapsedSeconds.toFixed(2)}s`;
+  }
+
+  function makeWorker() {
+    const workerSource = `
+      self.onmessage = (event) => {
+        const {
+          teams,
+          ratings: startingRatings,
+          basePoints,
+          homeIdx,
+          awayIdx,
+          simulations,
+          kFactor
+        } = event.data;
+
+        const nTeams = teams.length;
+        const nFixtures = homeIdx.length;
+        const finishCounts = Array.from({length:nTeams}, () => new Uint32Array(nTeams));
+        const finalPointsSum = new Float64Array(nTeams);
+
+        const start = performance.now();
+
+        const clamp = (x, lo, hi) => Math.max(lo, Math.min(hi, x));
+
+        for (let sim = 0; sim < simulations; sim++) {
+          const ratings = Float64Array.from(startingRatings);
+          const points = Float64Array.from(basePoints);
+
+          for (let i = 0; i < nFixtures; i++) {
+            const h = homeIdx[i];
+            const a = awayIdx[i];
+
+            const homeElo = ratings[h];
+            const awayElo = ratings[a];
+
+            const expectedHome = 1 / (1 + Math.pow(10, (awayElo - homeElo) / 400));
+            const absGap = Math.abs(homeElo - awayElo);
+            const drawProb = clamp(0.302 - 0.00048 * absGap, 0.13, 0.31);
+            const homeWinProb = clamp(expectedHome - drawProb / 2, 0, 1 - drawProb);
+
+            const u = Math.random();
+
+            let homeScore, awayScore;
+
+            if (u < homeWinProb) {
+              homeScore = 1;
+              awayScore = 0;
+              points[h] += 3;
+            } else if (u < homeWinProb + drawProb) {
+              homeScore = 0.5;
+              awayScore = 0.5;
+              points[h] += 1;
+              points[a] += 1;
+            } else {
+              homeScore = 0;
+              awayScore = 1;
+              points[a] += 3;
+            }
+
+            ratings[h] = homeElo + kFactor * (homeScore - expectedHome);
+            ratings[a] = awayElo + kFactor * (awayScore - (1 - expectedHome));
+          }
+
+          const order = Array.from({length:nTeams}, (_, i) => i);
+          order.sort((x, y) => {
+            const d = points[y] - points[x];
+            return d !== 0 ? d : Math.random() - 0.5;
+          });
+
+          for (let pos = 0; pos < nTeams; pos++) {
+            finishCounts[order[pos]][pos]++;
+          }
+
+          for (let t = 0; t < nTeams; t++) {
+            finalPointsSum[t] += points[t];
+          }
+
+          if ((sim + 1) % Math.max(50, Math.floor(simulations / 100)) === 0 || sim + 1 === simulations) {
+            self.postMessage({
+              type: 'progress',
+              done: sim + 1,
+              total: simulations
+            });
+          }
+        }
+
+        const rows = teams.map((team, t) => {
+          let top4 = 0;
+          let relegation = 0;
+
+          for (let p = 0; p < Math.min(4, nTeams); p++) top4 += finishCounts[t][p];
+          for (let p = Math.max(0, nTeams - 3); p < nTeams; p++) relegation += finishCounts[t][p];
+
+          return {
+            team,
+            startingElo: startingRatings[t],
+            titlePct: 100 * finishCounts[t][0] / simulations,
+            top4Pct: 100 * top4 / simulations,
+            relegationPct: 100 * relegation / simulations,
+            expectedPoints: finalPointsSum[t] / simulations
+          };
+        });
+
+        self.postMessage({
+          type: 'done',
+          rows,
+          simulations,
+          elapsedSeconds: (performance.now() - start) / 1000
+        });
+      };
+    `;
+
+    const blob = new Blob([workerSource], {type:'text/javascript'});
+    return new Worker(URL.createObjectURL(blob));
+  }
+
+  async function loadData() {
+    try {
+      const response = await fetch(TOURNAMENT_URL);
+      if (!response.ok) throw new Error(`Could not load ${TOURNAMENT_URL}`);
+      tournament = await response.json();
+
+      tournament.matches.sort((a, b) =>
+        a.date.localeCompare(b.date) ||
+        a.home.localeCompare(b.home) ||
+        a.away.localeCompare(b.away)
+      );
+
+      const historyJobs = tournament.teams.map(async team => {
+        const url = `${HISTORY_BASE_URL}${team.id}.json`;
+        const r = await fetch(url);
+        if (!r.ok) throw new Error(`Could not load ${url}`);
+        const hist = await r.json();
+        hist.sort((a, b) => a.date.localeCompare(b.date));
+        teamHistories.set(team.id, hist);
+      });
+
+      await Promise.all(historyJobs);
+
+      const minDate = tournament.matches[0].date;
+      const maxDate = tournament.matches[tournament.matches.length - 1].date;
+
+      cutoffEl.min = minDate;
+      cutoffEl.max = maxDate;
+
+      // Start the prototype at 1 January 2025 if available.
+      cutoffEl.value = '2025-01-01';
+
+      const input = buildSimulationInput(cutoffEl.value);
+      renderCurrentState(input);
+
+      statusEl.textContent = 'Ready.';
+      simulateBtn.disabled = false;
+    } catch (err) {
+      console.error(err);
+      statusEl.textContent = err.message + ' If you opened the HTML directly from disk, serve the folder through a local web server so fetch() can read the JSON files.';
+      statusEl.classList.add('error');
+    }
+  }
+
+  cutoffEl.addEventListener('change', () => {
+    if (!tournament) return;
+    try {
+      const input = buildSimulationInput(cutoffEl.value);
+      renderCurrentState(input);
+      statusEl.textContent = 'Ready.';
+      statusEl.classList.remove('error');
+    } catch (err) {
+      statusEl.textContent = err.message;
+      statusEl.classList.add('error');
+    }
+  });
+
+  simulateBtn.addEventListener('click', () => {
+    if (!tournament) return;
+
+    try {
+      const input = buildSimulationInput(cutoffEl.value);
+      renderCurrentState(input);
+
+      if (worker) worker.terminate();
+      worker = makeWorker();
+
+      const simulations = Number(simCountEl.value);
+
+      simulateBtn.disabled = true;
+      progressWrap.style.display = 'block';
+      progressEl.style.width = '0%';
+      statusEl.textContent = `Simulating ${simulations.toLocaleString()} seasons…`;
+      statusEl.classList.remove('error');
+
+      worker.onmessage = e => {
+        const msg = e.data;
+
+        if (msg.type === 'progress') {
+          const pct = 100 * msg.done / msg.total;
+          progressEl.style.width = `${pct}%`;
+          statusEl.textContent = `Simulating… ${msg.done.toLocaleString()} / ${msg.total.toLocaleString()}`;
+        }
+
+        if (msg.type === 'done') {
+          renderResults(input, msg);
+          progressEl.style.width = '100%';
+          statusEl.textContent = `Complete in ${msg.elapsedSeconds.toFixed(2)} seconds.`;
+          simulateBtn.disabled = false;
+          setTimeout(() => {
+            progressWrap.style.display = 'none';
+          }, 350);
+        }
+      };
+
+      worker.onerror = err => {
+        console.error(err);
+        statusEl.textContent = 'Simulation failed. Check the browser console.';
+        statusEl.classList.add('error');
+        simulateBtn.disabled = false;
+        progressWrap.style.display = 'none';
+      };
+
+      worker.postMessage({
+        teams: input.teams,
+        ratings: input.ratings,
+        basePoints: input.basePoints,
+        homeIdx: input.homeIdx,
+        awayIdx: input.awayIdx,
+        simulations,
+        kFactor: 20
+      });
+
+    } catch (err) {
+      statusEl.textContent = err.message;
+      statusEl.classList.add('error');
+      simulateBtn.disabled = false;
+    }
+  });
+
+  loadData();
+})();
+</script>
+</body>
+</html>

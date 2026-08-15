@@ -1,4 +1,7 @@
 library(data.table)
+library(tictoc)
+
+tic()
 
 # ============================================================
 # J-RATINGS CALIBRATION DIAGNOSTIC
@@ -32,15 +35,15 @@ repo_dir <- normalizePath(
 
 MATCH_FILE <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Matches_Clean_Combined",
-  "england_leagues_1_to_5_all_seasons.csv"
+  "european_football_all_matches.csv"
 )
 
 ELO_DIR <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Elo"
 )
@@ -61,7 +64,7 @@ PASS1_HISTORY_FILE <- file.path(
 )
 
 AUDIT_DIR <- file.path(
-  repo_dir, "EnglishFootball", "pipeline_data", "Audit", "elo_calibration"
+  repo_dir, "EuropeanFootball", "pipeline_data", "Audit", "elo_calibration"
 )
 dir.create(AUDIT_DIR, recursive = TRUE, showWarnings = FALSE)
 
@@ -1952,5 +1955,7 @@ if (nrow(stable_cohort_drift)) {
   print(stable_cohort_drift[Year %in% sel])
 }
 cat("\nAudit CSVs written to:\n",AUDIT_DIR,"\n")
+
+toc()
 
 beep()

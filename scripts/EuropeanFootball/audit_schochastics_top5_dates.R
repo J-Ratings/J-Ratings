@@ -13,8 +13,11 @@
 #   install.packages("nanoparquet")
 # if neither nanoparquet nor arrow is already installed.
 
+library(tictoc)
 options(stringsAsFactors = FALSE)
 
+
+tic()
 repo_dir <- normalizePath(
   Sys.getenv(
     "J_RATINGS_REPO",
@@ -26,7 +29,7 @@ repo_dir <- normalizePath(
 
 SOURCE_PARQUET <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Source",
   "schochastics",
@@ -35,7 +38,7 @@ SOURCE_PARQUET <- file.path(
 
 OUT_DIR <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Audit",
   "schochastics_all15_dates"
@@ -179,7 +182,7 @@ season_label <- function(country_key, sy) {
   if (country_key == "spain" && sy == 1928L) return("1929")
   if (country_key == "turkey" && sy == 1958L) return("1959")
   if (country_key == "ukraine" && sy == 1991L) return("1992")
-
+  
   paste0(
     sy,
     "-",
@@ -219,7 +222,7 @@ empty_audit_row <- function(country, key, sy) {
 
 audit_one <- function(crow, sy) {
   aliases <- key_aliases[[crow$country_key]]
-
+  
   z <- games[
     games$level_key == "national" &
       games$competition_key %in% aliases &
@@ -227,21 +230,21 @@ audit_one <- function(crow, sy) {
     ,
     drop = FALSE
   ]
-
+  
   if (!nrow(z)) {
     return(empty_audit_row(crow$Country, crow$country_key, sy))
   }
-
+  
   home <- trimws(as.character(z$home))
   away <- trimws(as.character(z$away))
-
+  
   missing_date <- is.na(z$date)
   missing_team <- is.na(home) | is.na(away) | home == "" | away == ""
   missing_score <- is.na(z$gh) | is.na(z$ga)
-
+  
   self_match <- !missing_team &
     normalise_key(home) == normalise_key(away)
-
+  
   # Fixture/date duplicate checks.
   fixture_key <- paste(
     z$date,
@@ -250,23 +253,23 @@ audit_one <- function(crow, sy) {
     sep = "|||"
   )
   valid_fixture_key <- !missing_date & !missing_team
-
+  
   fixture_tab <- table(fixture_key[valid_fixture_key])
   duplicate_fixture_keys <- sum(fixture_tab > 1L)
-
+  
   score_txt <- ifelse(
     missing_score,
     NA_character_,
     paste(z$gh, z$ga, sep = "-")
   )
-
+  
   conflicting_keys <- 0L
   if (any(valid_fixture_key)) {
     idx <- split(
       seq_len(nrow(z))[valid_fixture_key],
       fixture_key[valid_fixture_key]
     )
-
+    
     conflicting_keys <- sum(vapply(
       idx,
       function(ii) {
@@ -276,20 +279,20 @@ audit_one <- function(crow, sy) {
       logical(1)
     ))
   }
-
+  
   # Date-distribution checks.
   valid_dates <- z$date[!missing_date]
   date_tab <- table(valid_dates)
   max_on_date <- if (length(date_tab)) max(date_tab) else 0L
   share <- if (nrow(z)) 100 * max_on_date / nrow(z) else NA_real_
-
+  
   # A club should not normally play two top-flight league matches on the
   # same calendar date. Count unique team/date combinations occurring >1.
   team_dates <- rbind(
     data.frame(date = z$date, team = normalise_key(home)),
     data.frame(date = z$date, team = normalise_key(away))
   )
-
+  
   team_dates <- team_dates[
     !is.na(team_dates$date) &
       !is.na(team_dates$team) &
@@ -297,13 +300,13 @@ audit_one <- function(crow, sy) {
     ,
     drop = FALSE
   ]
-
+  
   td_key <- paste(team_dates$date, team_dates$team, sep = "|||")
   td_tab <- table(td_key)
   double_booked <- sum(td_tab > 1L)
-
+  
   reasons <- character()
-
+  
   if (sum(missing_date) > 0L) {
     reasons <- c(reasons, "MISSING_DATES")
   }
@@ -331,9 +334,9 @@ audit_one <- function(crow, sy) {
   if (nrow(z) >= 50L && !is.na(share) && share >= 20) {
     reasons <- c(reasons, "PLACEHOLDER_DATE_CONCENTRATION")
   }
-
+  
   status <- if (length(reasons)) "CHECK" else "PASS"
-
+  
   data.frame(
     Country = crow$Country,
     CountryKey = crow$country_key,
@@ -376,7 +379,7 @@ k <- 1L
 
 for (i in seq_len(nrow(cfg))) {
   crow <- cfg[i, ]
-
+  
   for (sy in crow$FirstSeasonStartYear:(crow$CutoverStartYear - 1L)) {
     out[[k]] <- audit_one(crow, sy)
     k <- k + 1L
@@ -406,7 +409,7 @@ summary_rows <- lapply(seq_len(nrow(cfg)), function(i) {
   crow <- cfg[i, ]
   a <- audit[audit$CountryKey == crow$country_key, , drop = FALSE]
   present <- a[a$Matches > 0L, , drop = FALSE]
-
+  
   data.frame(
     Country = crow$Country,
     FirstTargetSeason = season_label(crow$country_key, crow$FirstSeasonStartYear),
@@ -442,7 +445,7 @@ s <- 1L
 for (i in seq_len(nrow(cfg))) {
   crow <- cfg[i, ]
   aliases <- key_aliases[[crow$country_key]]
-
+  
   z <- games[
     games$level_key == "national" &
       games$competition_key %in% aliases &
@@ -451,9 +454,9 @@ for (i in seq_len(nrow(cfg))) {
     needed,
     drop = FALSE
   ]
-
+  
   z <- z[order(z$date, z$home, z$away), , drop = FALSE]
-
+  
   if (nrow(z)) {
     z$Country <- crow$Country
     samples[[s]] <- head(z, 12)
@@ -476,14 +479,14 @@ cat("===============================================\n")
 for (i in seq_len(nrow(cfg))) {
   crow <- cfg[i, ]
   a <- audit[audit$CountryKey == crow$country_key, , drop = FALSE]
-
+  
   cat("\n", toupper(crow$Country), "\n", sep = "")
   cat("  Nominal years checked: ", nrow(a), "\n", sep = "")
   cat("  Seasons/years present: ", sum(a$Matches > 0L), "\n", sep = "")
   cat("  PASS: ", sum(a$Status == "PASS"), "\n", sep = "")
   cat("  CHECK: ", sum(a$Status == "CHECK"), "\n", sep = "")
   cat("  MISSING years: ", sum(a$Status == "MISSING"), "\n", sep = "")
-
+  
   present <- a[a$Matches > 0L, , drop = FALSE]
   if (nrow(present)) {
     cat(
@@ -497,9 +500,9 @@ for (i in seq_len(nrow(cfg))) {
       sep = ""
     )
   }
-
+  
   bad <- a[a$Status != "PASS", , drop = FALSE]
-
+  
   if (nrow(bad)) {
     cat("  First flagged/missing years:\n")
     print(
@@ -531,3 +534,5 @@ cat(
   "- This is a structural audit, not proof that every historical score is correct.\n",
   sep = ""
 )
+
+toc()

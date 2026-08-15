@@ -1,5 +1,8 @@
+library(tictoc)
 options(stringsAsFactors = FALSE)
 
+
+tic()
 # -----------------------------
 # Paths
 # -----------------------------
@@ -12,7 +15,7 @@ repo_dir <- normalizePath(
 
 source_root_dir <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Source",
   "openfootball"
@@ -20,7 +23,7 @@ source_root_dir <- file.path(
 
 wikipedia_source_root_dir <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Source",
   "wikipedia"
@@ -28,7 +31,7 @@ wikipedia_source_root_dir <- file.path(
 
 schoch_source_root_dir <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Source",
   "schochastics"
@@ -41,7 +44,7 @@ schoch_results_file <- file.path(
 
 combined_dir <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Matches_Clean_Combined"
 )
@@ -50,7 +53,7 @@ dir.create(combined_dir, recursive = TRUE, showWarnings = FALSE)
 
 out_file <- file.path(
   combined_dir,
-  "england_leagues_1_to_5_all_seasons.csv"
+  "european_football_all_matches.csv"
 )
 
 # -----------------------------
@@ -2038,5 +2041,7 @@ print(
     order(competition_summary$Country, competition_summary$Competition),
   ]
 )
+
+toc()
 
 beep()

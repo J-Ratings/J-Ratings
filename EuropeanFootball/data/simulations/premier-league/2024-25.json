@@ -1,0 +1,3522 @@
+{
+  "id": "premier-league-2024-25",
+  "name": "Premier League",
+  "country": "England",
+  "season": "2024-25",
+  "format": "league",
+  "rules": {
+    "winPoints": 3,
+    "drawPoints": 1,
+    "lossPoints": 0
+  },
+  "summary": {
+    "teams": 20,
+    "matches": 380,
+    "firstDate": "2024-08-16",
+    "lastDate": "2025-05-25"
+  },
+  "teams": [
+    {
+      "id": "arsenal",
+      "name": "Arsenal"
+    },
+    {
+      "id": "aston-villa",
+      "name": "Aston Villa"
+    },
+    {
+      "id": "bournemouth",
+      "name": "Bournemouth"
+    },
+    {
+      "id": "brentford",
+      "name": "Brentford"
+    },
+    {
+      "id": "brighton-hove-albion",
+      "name": "Brighton & Hove Albion"
+    },
+    {
+      "id": "chelsea",
+      "name": "Chelsea"
+    },
+    {
+      "id": "crystal-palace",
+      "name": "Crystal Palace"
+    },
+    {
+      "id": "everton",
+      "name": "Everton"
+    },
+    {
+      "id": "fulham",
+      "name": "Fulham"
+    },
+    {
+      "id": "ipswich-town",
+      "name": "Ipswich Town"
+    },
+    {
+      "id": "leicester-city",
+      "name": "Leicester City"
+    },
+    {
+      "id": "liverpool",
+      "name": "Liverpool"
+    },
+    {
+      "id": "manchester-city",
+      "name": "Manchester City"
+    },
+    {
+      "id": "manchester-united",
+      "name": "Manchester United"
+    },
+    {
+      "id": "newcastle-united",
+      "name": "Newcastle United"
+    },
+    {
+      "id": "nottingham-forest",
+      "name": "Nottingham Forest"
+    },
+    {
+      "id": "southampton",
+      "name": "Southampton"
+    },
+    {
+      "id": "tottenham-hotspur",
+      "name": "Tottenham Hotspur"
+    },
+    {
+      "id": "west-ham-united",
+      "name": "West Ham United"
+    },
+    {
+      "id": "wolverhampton-wanderers",
+      "name": "Wolverhampton Wanderers"
+    }
+  ],
+  "matches": [
+    {
+      "date": "2024-08-16",
+      "home": "manchester-united",
+      "away": "fulham",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2766,
+      "awayEloBefore": 2650
+    },
+    {
+      "date": "2024-08-17",
+      "home": "arsenal",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2863,
+      "awayEloBefore": 2632
+    },
+    {
+      "date": "2024-08-17",
+      "home": "everton",
+      "away": "brighton-hove-albion",
+      "homeScore": 0,
+      "awayScore": 3,
+      "homeEloBefore": 2658,
+      "awayEloBefore": 2680
+    },
+    {
+      "date": "2024-08-17",
+      "home": "ipswich-town",
+      "away": "liverpool",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2561,
+      "awayEloBefore": 2846
+    },
+    {
+      "date": "2024-08-17",
+      "home": "newcastle-united",
+      "away": "southampton",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2734,
+      "awayEloBefore": 2562
+    },
+    {
+      "date": "2024-08-17",
+      "home": "nottingham-forest",
+      "away": "bournemouth",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2576,
+      "awayEloBefore": 2632
+    },
+    {
+      "date": "2024-08-17",
+      "home": "west-ham-united",
+      "away": "aston-villa",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2671,
+      "awayEloBefore": 2701
+    },
+    {
+      "date": "2024-08-18",
+      "home": "brentford",
+      "away": "crystal-palace",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2628,
+      "awayEloBefore": 2676
+    },
+    {
+      "date": "2024-08-18",
+      "home": "chelsea",
+      "away": "manchester-city",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2771,
+      "awayEloBefore": 2982
+    },
+    {
+      "date": "2024-08-19",
+      "home": "leicester-city",
+      "away": "tottenham-hotspur",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2589,
+      "awayEloBefore": 2731
+    },
+    {
+      "date": "2024-08-24",
+      "home": "aston-villa",
+      "away": "arsenal",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2710,
+      "awayEloBefore": 2867
+    },
+    {
+      "date": "2024-08-24",
+      "home": "brighton-hove-albion",
+      "away": "manchester-united",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2690,
+      "awayEloBefore": 2773
+    },
+    {
+      "date": "2024-08-24",
+      "home": "crystal-palace",
+      "away": "west-ham-united",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2665,
+      "awayEloBefore": 2662
+    },
+    {
+      "date": "2024-08-24",
+      "home": "fulham",
+      "away": "leicester-city",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2644,
+      "awayEloBefore": 2593
+    },
+    {
+      "date": "2024-08-24",
+      "home": "manchester-city",
+      "away": "ipswich-town",
+      "homeScore": 4,
+      "awayScore": 1,
+      "homeEloBefore": 2986,
+      "awayEloBefore": 2557
+    },
+    {
+      "date": "2024-08-24",
+      "home": "southampton",
+      "away": "nottingham-forest",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2557,
+      "awayEloBefore": 2577
+    },
+    {
+      "date": "2024-08-24",
+      "home": "tottenham-hotspur",
+      "away": "everton",
+      "homeScore": 4,
+      "awayScore": 0,
+      "homeEloBefore": 2728,
+      "awayEloBefore": 2648
+    },
+    {
+      "date": "2024-08-25",
+      "home": "bournemouth",
+      "away": "newcastle-united",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2630,
+      "awayEloBefore": 2740
+    },
+    {
+      "date": "2024-08-25",
+      "home": "liverpool",
+      "away": "brentford",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2849,
+      "awayEloBefore": 2640
+    },
+    {
+      "date": "2024-08-25",
+      "home": "wolverhampton-wanderers",
+      "away": "chelsea",
+      "homeScore": 2,
+      "awayScore": 6,
+      "homeEloBefore": 2628,
+      "awayEloBefore": 2766
+    },
+    {
+      "date": "2024-08-31",
+      "home": "arsenal",
+      "away": "brighton-hove-albion",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2873,
+      "awayEloBefore": 2703
+    },
+    {
+      "date": "2024-08-31",
+      "home": "brentford",
+      "away": "southampton",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2636,
+      "awayEloBefore": 2553
+    },
+    {
+      "date": "2024-08-31",
+      "home": "everton",
+      "away": "bournemouth",
+      "homeScore": 2,
+      "awayScore": 3,
+      "homeEloBefore": 2642,
+      "awayEloBefore": 2624
+    },
+    {
+      "date": "2024-08-31",
+      "home": "ipswich-town",
+      "away": "fulham",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2548,
+      "awayEloBefore": 2656
+    },
+    {
+      "date": "2024-08-31",
+      "home": "leicester-city",
+      "away": "aston-villa",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2586,
+      "awayEloBefore": 2705
+    },
+    {
+      "date": "2024-08-31",
+      "home": "nottingham-forest",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2591,
+      "awayEloBefore": 2630
+    },
+    {
+      "date": "2024-08-31",
+      "home": "west-ham-united",
+      "away": "manchester-city",
+      "homeScore": 1,
+      "awayScore": 3,
+      "homeEloBefore": 2681,
+      "awayEloBefore": 2988
+    },
+    {
+      "date": "2024-09-01",
+      "home": "chelsea",
+      "away": "crystal-palace",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2773,
+      "awayEloBefore": 2660
+    },
+    {
+      "date": "2024-09-01",
+      "home": "manchester-united",
+      "away": "liverpool",
+      "homeScore": 0,
+      "awayScore": 3,
+      "homeEloBefore": 2761,
+      "awayEloBefore": 2854
+    },
+    {
+      "date": "2024-09-01",
+      "home": "newcastle-united",
+      "away": "tottenham-hotspur",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2732,
+      "awayEloBefore": 2735
+    },
+    {
+      "date": "2024-09-14",
+      "home": "aston-villa",
+      "away": "everton",
+      "homeScore": 3,
+      "awayScore": 2,
+      "homeEloBefore": 2711,
+      "awayEloBefore": 2632
+    },
+    {
+      "date": "2024-09-14",
+      "home": "bournemouth",
+      "away": "chelsea",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2635,
+      "awayEloBefore": 2770
+    },
+    {
+      "date": "2024-09-14",
+      "home": "brighton-hove-albion",
+      "away": "ipswich-town",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2707,
+      "awayEloBefore": 2551
+    },
+    {
+      "date": "2024-09-14",
+      "home": "crystal-palace",
+      "away": "leicester-city",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2663,
+      "awayEloBefore": 2580
+    },
+    {
+      "date": "2024-09-14",
+      "home": "fulham",
+      "away": "west-ham-united",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2653,
+      "awayEloBefore": 2678
+    },
+    {
+      "date": "2024-09-14",
+      "home": "liverpool",
+      "away": "nottingham-forest",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2861,
+      "awayEloBefore": 2592
+    },
+    {
+      "date": "2024-09-14",
+      "home": "manchester-city",
+      "away": "brentford",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2991,
+      "awayEloBefore": 2644
+    },
+    {
+      "date": "2024-09-14",
+      "home": "southampton",
+      "away": "manchester-united",
+      "homeScore": 0,
+      "awayScore": 3,
+      "homeEloBefore": 2546,
+      "awayEloBefore": 2753
+    },
+    {
+      "date": "2024-09-15",
+      "home": "tottenham-hotspur",
+      "away": "arsenal",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2725,
+      "awayEloBefore": 2869
+    },
+    {
+      "date": "2024-09-15",
+      "home": "wolverhampton-wanderers",
+      "away": "newcastle-united",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2629,
+      "awayEloBefore": 2743
+    },
+    {
+      "date": "2024-09-21",
+      "home": "aston-villa",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2728,
+      "awayEloBefore": 2614
+    },
+    {
+      "date": "2024-09-21",
+      "home": "crystal-palace",
+      "away": "manchester-united",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2665,
+      "awayEloBefore": 2760
+    },
+    {
+      "date": "2024-09-21",
+      "home": "fulham",
+      "away": "newcastle-united",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2648,
+      "awayEloBefore": 2749
+    },
+    {
+      "date": "2024-09-21",
+      "home": "leicester-city",
+      "away": "everton",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2582,
+      "awayEloBefore": 2622
+    },
+    {
+      "date": "2024-09-21",
+      "home": "liverpool",
+      "away": "bournemouth",
+      "homeScore": 3,
+      "awayScore": 0,
+      "homeEloBefore": 2854,
+      "awayEloBefore": 2629
+    },
+    {
+      "date": "2024-09-21",
+      "home": "southampton",
+      "away": "ipswich-town",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2543,
+      "awayEloBefore": 2555
+    },
+    {
+      "date": "2024-09-21",
+      "home": "tottenham-hotspur",
+      "away": "brentford",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2723,
+      "awayEloBefore": 2643
+    },
+    {
+      "date": "2024-09-21",
+      "home": "west-ham-united",
+      "away": "chelsea",
+      "homeScore": 0,
+      "awayScore": 3,
+      "homeEloBefore": 2677,
+      "awayEloBefore": 2776
+    },
+    {
+      "date": "2024-09-22",
+      "home": "brighton-hove-albion",
+      "away": "nottingham-forest",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2711,
+      "awayEloBefore": 2609
+    },
+    {
+      "date": "2024-09-22",
+      "home": "manchester-city",
+      "away": "arsenal",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2988,
+      "awayEloBefore": 2870
+    },
+    {
+      "date": "2024-09-28",
+      "home": "arsenal",
+      "away": "leicester-city",
+      "homeScore": 4,
+      "awayScore": 2,
+      "homeEloBefore": 2875,
+      "awayEloBefore": 2575
+    },
+    {
+      "date": "2024-09-28",
+      "home": "brentford",
+      "away": "west-ham-united",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2636,
+      "awayEloBefore": 2665
+    },
+    {
+      "date": "2024-09-28",
+      "home": "chelsea",
+      "away": "brighton-hove-albion",
+      "homeScore": 4,
+      "awayScore": 2,
+      "homeEloBefore": 2784,
+      "awayEloBefore": 2708
+    },
+    {
+      "date": "2024-09-28",
+      "home": "everton",
+      "away": "crystal-palace",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2621,
+      "awayEloBefore": 2667
+    },
+    {
+      "date": "2024-09-28",
+      "home": "newcastle-united",
+      "away": "manchester-city",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2737,
+      "awayEloBefore": 2986
+    },
+    {
+      "date": "2024-09-28",
+      "home": "nottingham-forest",
+      "away": "fulham",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2611,
+      "awayEloBefore": 2661
+    },
+    {
+      "date": "2024-09-28",
+      "home": "wolverhampton-wanderers",
+      "away": "liverpool",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2607,
+      "awayEloBefore": 2864
+    },
+    {
+      "date": "2024-09-29",
+      "home": "ipswich-town",
+      "away": "aston-villa",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2555,
+      "awayEloBefore": 2737
+    },
+    {
+      "date": "2024-09-29",
+      "home": "manchester-united",
+      "away": "tottenham-hotspur",
+      "homeScore": 0,
+      "awayScore": 3,
+      "homeEloBefore": 2750,
+      "awayEloBefore": 2731
+    },
+    {
+      "date": "2024-09-30",
+      "home": "bournemouth",
+      "away": "southampton",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2624,
+      "awayEloBefore": 2544
+    },
+    {
+      "date": "2024-10-05",
+      "home": "arsenal",
+      "away": "southampton",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2891,
+      "awayEloBefore": 2536
+    },
+    {
+      "date": "2024-10-05",
+      "home": "brentford",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 5,
+      "awayScore": 3,
+      "homeEloBefore": 2637,
+      "awayEloBefore": 2604
+    },
+    {
+      "date": "2024-10-05",
+      "home": "crystal-palace",
+      "away": "liverpool",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2656,
+      "awayEloBefore": 2876
+    },
+    {
+      "date": "2024-10-05",
+      "home": "everton",
+      "away": "newcastle-united",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2632,
+      "awayEloBefore": 2744
+    },
+    {
+      "date": "2024-10-05",
+      "home": "leicester-city",
+      "away": "bournemouth",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2572,
+      "awayEloBefore": 2632
+    },
+    {
+      "date": "2024-10-05",
+      "home": "manchester-city",
+      "away": "fulham",
+      "homeScore": 3,
+      "awayScore": 2,
+      "homeEloBefore": 2980,
+      "awayEloBefore": 2669
+    },
+    {
+      "date": "2024-10-05",
+      "home": "west-ham-united",
+      "away": "ipswich-town",
+      "homeScore": 4,
+      "awayScore": 1,
+      "homeEloBefore": 2664,
+      "awayEloBefore": 2560
+    },
+    {
+      "date": "2024-10-06",
+      "home": "aston-villa",
+      "away": "manchester-united",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2751,
+      "awayEloBefore": 2739
+    },
+    {
+      "date": "2024-10-06",
+      "home": "brighton-hove-albion",
+      "away": "tottenham-hotspur",
+      "homeScore": 3,
+      "awayScore": 2,
+      "homeEloBefore": 2700,
+      "awayEloBefore": 2741
+    },
+    {
+      "date": "2024-10-06",
+      "home": "chelsea",
+      "away": "nottingham-forest",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2797,
+      "awayEloBefore": 2603
+    },
+    {
+      "date": "2024-10-19",
+      "home": "bournemouth",
+      "away": "arsenal",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2620,
+      "awayEloBefore": 2893
+    },
+    {
+      "date": "2024-10-19",
+      "home": "fulham",
+      "away": "aston-villa",
+      "homeScore": 1,
+      "awayScore": 3,
+      "homeEloBefore": 2666,
+      "awayEloBefore": 2751
+    },
+    {
+      "date": "2024-10-19",
+      "home": "ipswich-town",
+      "away": "everton",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2552,
+      "awayEloBefore": 2635
+    },
+    {
+      "date": "2024-10-19",
+      "home": "manchester-united",
+      "away": "brentford",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2739,
+      "awayEloBefore": 2646
+    },
+    {
+      "date": "2024-10-19",
+      "home": "newcastle-united",
+      "away": "brighton-hove-albion",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2740,
+      "awayEloBefore": 2711
+    },
+    {
+      "date": "2024-10-19",
+      "home": "southampton",
+      "away": "leicester-city",
+      "homeScore": 2,
+      "awayScore": 3,
+      "homeEloBefore": 2534,
+      "awayEloBefore": 2584
+    },
+    {
+      "date": "2024-10-19",
+      "home": "tottenham-hotspur",
+      "away": "west-ham-united",
+      "homeScore": 4,
+      "awayScore": 1,
+      "homeEloBefore": 2730,
+      "awayEloBefore": 2671
+    },
+    {
+      "date": "2024-10-20",
+      "home": "liverpool",
+      "away": "chelsea",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2880,
+      "awayEloBefore": 2792
+    },
+    {
+      "date": "2024-10-20",
+      "home": "wolverhampton-wanderers",
+      "away": "manchester-city",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2595,
+      "awayEloBefore": 2982
+    },
+    {
+      "date": "2024-10-21",
+      "home": "nottingham-forest",
+      "away": "crystal-palace",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2608,
+      "awayEloBefore": 2652
+    },
+    {
+      "date": "2024-10-25",
+      "home": "leicester-city",
+      "away": "nottingham-forest",
+      "homeScore": 1,
+      "awayScore": 3,
+      "homeEloBefore": 2592,
+      "awayEloBefore": 2619
+    },
+    {
+      "date": "2024-10-26",
+      "home": "aston-villa",
+      "away": "bournemouth",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2770,
+      "awayEloBefore": 2637
+    },
+    {
+      "date": "2024-10-26",
+      "home": "brentford",
+      "away": "ipswich-town",
+      "homeScore": 4,
+      "awayScore": 3,
+      "homeEloBefore": 2638,
+      "awayEloBefore": 2545
+    },
+    {
+      "date": "2024-10-26",
+      "home": "brighton-hove-albion",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2722,
+      "awayEloBefore": 2593
+    },
+    {
+      "date": "2024-10-26",
+      "home": "everton",
+      "away": "fulham",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2643,
+      "awayEloBefore": 2659
+    },
+    {
+      "date": "2024-10-26",
+      "home": "manchester-city",
+      "away": "southampton",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2987,
+      "awayEloBefore": 2525
+    },
+    {
+      "date": "2024-10-27",
+      "home": "arsenal",
+      "away": "liverpool",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2882,
+      "awayEloBefore": 2897
+    },
+    {
+      "date": "2024-10-27",
+      "home": "chelsea",
+      "away": "newcastle-united",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2789,
+      "awayEloBefore": 2730
+    },
+    {
+      "date": "2024-10-27",
+      "home": "crystal-palace",
+      "away": "tottenham-hotspur",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2640,
+      "awayEloBefore": 2746
+    },
+    {
+      "date": "2024-10-27",
+      "home": "west-ham-united",
+      "away": "manchester-united",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2663,
+      "awayEloBefore": 2743
+    },
+    {
+      "date": "2024-11-02",
+      "home": "bournemouth",
+      "away": "manchester-city",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2641,
+      "awayEloBefore": 2972
+    },
+    {
+      "date": "2024-11-02",
+      "home": "ipswich-town",
+      "away": "leicester-city",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2537,
+      "awayEloBefore": 2577
+    },
+    {
+      "date": "2024-11-02",
+      "home": "liverpool",
+      "away": "brighton-hove-albion",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2902,
+      "awayEloBefore": 2713
+    },
+    {
+      "date": "2024-11-02",
+      "home": "newcastle-united",
+      "away": "arsenal",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2733,
+      "awayEloBefore": 2884
+    },
+    {
+      "date": "2024-11-02",
+      "home": "nottingham-forest",
+      "away": "west-ham-united",
+      "homeScore": 3,
+      "awayScore": 0,
+      "homeEloBefore": 2628,
+      "awayEloBefore": 2675
+    },
+    {
+      "date": "2024-11-02",
+      "home": "southampton",
+      "away": "everton",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2531,
+      "awayEloBefore": 2643
+    },
+    {
+      "date": "2024-11-02",
+      "home": "wolverhampton-wanderers",
+      "away": "crystal-palace",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2596,
+      "awayEloBefore": 2666
+    },
+    {
+      "date": "2024-11-03",
+      "home": "manchester-united",
+      "away": "chelsea",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2736,
+      "awayEloBefore": 2785
+    },
+    {
+      "date": "2024-11-03",
+      "home": "tottenham-hotspur",
+      "away": "aston-villa",
+      "homeScore": 4,
+      "awayScore": 1,
+      "homeEloBefore": 2749,
+      "awayEloBefore": 2754
+    },
+    {
+      "date": "2024-11-04",
+      "home": "fulham",
+      "away": "brentford",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2658,
+      "awayEloBefore": 2641
+    },
+    {
+      "date": "2024-11-09",
+      "home": "brentford",
+      "away": "bournemouth",
+      "homeScore": 3,
+      "awayScore": 2,
+      "homeEloBefore": 2631,
+      "awayEloBefore": 2658
+    },
+    {
+      "date": "2024-11-09",
+      "home": "brighton-hove-albion",
+      "away": "manchester-city",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2708,
+      "awayEloBefore": 2933
+    },
+    {
+      "date": "2024-11-09",
+      "home": "crystal-palace",
+      "away": "fulham",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2664,
+      "awayEloBefore": 2668
+    },
+    {
+      "date": "2024-11-09",
+      "home": "liverpool",
+      "away": "aston-villa",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2919,
+      "awayEloBefore": 2723
+    },
+    {
+      "date": "2024-11-09",
+      "home": "west-ham-united",
+      "away": "everton",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2664,
+      "awayEloBefore": 2630
+    },
+    {
+      "date": "2024-11-09",
+      "home": "wolverhampton-wanderers",
+      "away": "southampton",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2598,
+      "awayEloBefore": 2544
+    },
+    {
+      "date": "2024-11-10",
+      "home": "chelsea",
+      "away": "arsenal",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2783,
+      "awayEloBefore": 2855
+    },
+    {
+      "date": "2024-11-10",
+      "home": "manchester-united",
+      "away": "leicester-city",
+      "homeScore": 3,
+      "awayScore": 0,
+      "homeEloBefore": 2745,
+      "awayEloBefore": 2576
+    },
+    {
+      "date": "2024-11-10",
+      "home": "nottingham-forest",
+      "away": "newcastle-united",
+      "homeScore": 1,
+      "awayScore": 3,
+      "homeEloBefore": 2640,
+      "awayEloBefore": 2747
+    },
+    {
+      "date": "2024-11-10",
+      "home": "tottenham-hotspur",
+      "away": "ipswich-town",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2743,
+      "awayEloBefore": 2539
+    },
+    {
+      "date": "2024-11-23",
+      "home": "arsenal",
+      "away": "nottingham-forest",
+      "homeScore": 3,
+      "awayScore": 0,
+      "homeEloBefore": 2853,
+      "awayEloBefore": 2633
+    },
+    {
+      "date": "2024-11-23",
+      "home": "aston-villa",
+      "away": "crystal-palace",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2718,
+      "awayEloBefore": 2655
+    },
+    {
+      "date": "2024-11-23",
+      "home": "bournemouth",
+      "away": "brighton-hove-albion",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2647,
+      "awayEloBefore": 2724
+    },
+    {
+      "date": "2024-11-23",
+      "home": "everton",
+      "away": "brentford",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2631,
+      "awayEloBefore": 2642
+    },
+    {
+      "date": "2024-11-23",
+      "home": "fulham",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 1,
+      "awayScore": 4,
+      "homeEloBefore": 2678,
+      "awayEloBefore": 2607
+    },
+    {
+      "date": "2024-11-23",
+      "home": "leicester-city",
+      "away": "chelsea",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2571,
+      "awayEloBefore": 2785
+    },
+    {
+      "date": "2024-11-23",
+      "home": "manchester-city",
+      "away": "tottenham-hotspur",
+      "homeScore": 0,
+      "awayScore": 4,
+      "homeEloBefore": 2917,
+      "awayEloBefore": 2728
+    },
+    {
+      "date": "2024-11-24",
+      "home": "ipswich-town",
+      "away": "manchester-united",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2554,
+      "awayEloBefore": 2751
+    },
+    {
+      "date": "2024-11-24",
+      "home": "southampton",
+      "away": "liverpool",
+      "homeScore": 2,
+      "awayScore": 3,
+      "homeEloBefore": 2535,
+      "awayEloBefore": 2924
+    },
+    {
+      "date": "2024-11-25",
+      "home": "newcastle-united",
+      "away": "west-ham-united",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2754,
+      "awayEloBefore": 2663
+    },
+    {
+      "date": "2024-11-29",
+      "home": "brighton-hove-albion",
+      "away": "southampton",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2732,
+      "awayEloBefore": 2533
+    },
+    {
+      "date": "2024-11-30",
+      "home": "brentford",
+      "away": "leicester-city",
+      "homeScore": 4,
+      "awayScore": 1,
+      "homeEloBefore": 2642,
+      "awayEloBefore": 2566
+    },
+    {
+      "date": "2024-11-30",
+      "home": "crystal-palace",
+      "away": "newcastle-united",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2656,
+      "awayEloBefore": 2742
+    },
+    {
+      "date": "2024-11-30",
+      "home": "nottingham-forest",
+      "away": "ipswich-town",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2628,
+      "awayEloBefore": 2559
+    },
+    {
+      "date": "2024-11-30",
+      "home": "west-ham-united",
+      "away": "arsenal",
+      "homeScore": 2,
+      "awayScore": 5,
+      "homeEloBefore": 2676,
+      "awayEloBefore": 2870
+    },
+    {
+      "date": "2024-11-30",
+      "home": "wolverhampton-wanderers",
+      "away": "bournemouth",
+      "homeScore": 2,
+      "awayScore": 4,
+      "homeEloBefore": 2619,
+      "awayEloBefore": 2639
+    },
+    {
+      "date": "2024-12-01",
+      "home": "chelsea",
+      "away": "aston-villa",
+      "homeScore": 3,
+      "awayScore": 0,
+      "homeEloBefore": 2796,
+      "awayEloBefore": 2719
+    },
+    {
+      "date": "2024-12-01",
+      "home": "liverpool",
+      "away": "manchester-city",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2940,
+      "awayEloBefore": 2894
+    },
+    {
+      "date": "2024-12-01",
+      "home": "manchester-united",
+      "away": "everton",
+      "homeScore": 4,
+      "awayScore": 0,
+      "homeEloBefore": 2746,
+      "awayEloBefore": 2631
+    },
+    {
+      "date": "2024-12-01",
+      "home": "tottenham-hotspur",
+      "away": "fulham",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2740,
+      "awayEloBefore": 2666
+    },
+    {
+      "date": "2024-12-03",
+      "home": "ipswich-town",
+      "away": "crystal-palace",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2551,
+      "awayEloBefore": 2659
+    },
+    {
+      "date": "2024-12-03",
+      "home": "leicester-city",
+      "away": "west-ham-united",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2558,
+      "awayEloBefore": 2671
+    },
+    {
+      "date": "2024-12-04",
+      "home": "arsenal",
+      "away": "manchester-united",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2875,
+      "awayEloBefore": 2752
+    },
+    {
+      "date": "2024-12-04",
+      "home": "aston-villa",
+      "away": "brentford",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2711,
+      "awayEloBefore": 2649
+    },
+    {
+      "date": "2024-12-04",
+      "home": "everton",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 4,
+      "awayScore": 0,
+      "homeEloBefore": 2624,
+      "awayEloBefore": 2609
+    },
+    {
+      "date": "2024-12-04",
+      "home": "manchester-city",
+      "away": "nottingham-forest",
+      "homeScore": 3,
+      "awayScore": 0,
+      "homeEloBefore": 2886,
+      "awayEloBefore": 2636
+    },
+    {
+      "date": "2024-12-04",
+      "home": "newcastle-united",
+      "away": "liverpool",
+      "homeScore": 3,
+      "awayScore": 3,
+      "homeEloBefore": 2739,
+      "awayEloBefore": 2949
+    },
+    {
+      "date": "2024-12-04",
+      "home": "southampton",
+      "away": "chelsea",
+      "homeScore": 1,
+      "awayScore": 5,
+      "homeEloBefore": 2539,
+      "awayEloBefore": 2803
+    },
+    {
+      "date": "2024-12-05",
+      "home": "bournemouth",
+      "away": "tottenham-hotspur",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2649,
+      "awayEloBefore": 2738
+    },
+    {
+      "date": "2024-12-05",
+      "home": "fulham",
+      "away": "brighton-hove-albion",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2668,
+      "awayEloBefore": 2727
+    },
+    {
+      "date": "2024-12-07",
+      "home": "aston-villa",
+      "away": "southampton",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2719,
+      "awayEloBefore": 2535
+    },
+    {
+      "date": "2024-12-07",
+      "home": "brentford",
+      "away": "newcastle-united",
+      "homeScore": 4,
+      "awayScore": 2,
+      "homeEloBefore": 2641,
+      "awayEloBefore": 2745
+    },
+    {
+      "date": "2024-12-07",
+      "home": "crystal-palace",
+      "away": "manchester-city",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2666,
+      "awayEloBefore": 2890
+    },
+    {
+      "date": "2024-12-07",
+      "home": "manchester-united",
+      "away": "nottingham-forest",
+      "homeScore": 2,
+      "awayScore": 3,
+      "homeEloBefore": 2746,
+      "awayEloBefore": 2633
+    },
+    {
+      "date": "2024-12-08",
+      "home": "fulham",
+      "away": "arsenal",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2679,
+      "awayEloBefore": 2882
+    },
+    {
+      "date": "2024-12-08",
+      "home": "ipswich-town",
+      "away": "bournemouth",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2544,
+      "awayEloBefore": 2661
+    },
+    {
+      "date": "2024-12-08",
+      "home": "leicester-city",
+      "away": "brighton-hove-albion",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2571,
+      "awayEloBefore": 2715
+    },
+    {
+      "date": "2024-12-08",
+      "home": "tottenham-hotspur",
+      "away": "chelsea",
+      "homeScore": 3,
+      "awayScore": 4,
+      "homeEloBefore": 2725,
+      "awayEloBefore": 2807
+    },
+    {
+      "date": "2024-12-09",
+      "home": "west-ham-united",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2658,
+      "awayEloBefore": 2600
+    },
+    {
+      "date": "2024-12-14",
+      "home": "arsenal",
+      "away": "everton",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2886,
+      "awayEloBefore": 2634
+    },
+    {
+      "date": "2024-12-14",
+      "home": "liverpool",
+      "away": "fulham",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2949,
+      "awayEloBefore": 2685
+    },
+    {
+      "date": "2024-12-14",
+      "home": "newcastle-united",
+      "away": "leicester-city",
+      "homeScore": 4,
+      "awayScore": 0,
+      "homeEloBefore": 2732,
+      "awayEloBefore": 2575
+    },
+    {
+      "date": "2024-12-14",
+      "home": "nottingham-forest",
+      "away": "aston-villa",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2646,
+      "awayEloBefore": 2739
+    },
+    {
+      "date": "2024-12-14",
+      "home": "wolverhampton-wanderers",
+      "away": "ipswich-town",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2591,
+      "awayEloBefore": 2537
+    },
+    {
+      "date": "2024-12-15",
+      "home": "brighton-hove-albion",
+      "away": "crystal-palace",
+      "homeScore": 1,
+      "awayScore": 3,
+      "homeEloBefore": 2711,
+      "awayEloBefore": 2671
+    },
+    {
+      "date": "2024-12-15",
+      "home": "chelsea",
+      "away": "brentford",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2815,
+      "awayEloBefore": 2654
+    },
+    {
+      "date": "2024-12-15",
+      "home": "manchester-city",
+      "away": "manchester-united",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2864,
+      "awayEloBefore": 2740
+    },
+    {
+      "date": "2024-12-15",
+      "home": "southampton",
+      "away": "tottenham-hotspur",
+      "homeScore": 0,
+      "awayScore": 5,
+      "homeEloBefore": 2530,
+      "awayEloBefore": 2712
+    },
+    {
+      "date": "2024-12-16",
+      "home": "bournemouth",
+      "away": "west-ham-united",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2668,
+      "awayEloBefore": 2666
+    },
+    {
+      "date": "2024-12-21",
+      "home": "aston-villa",
+      "away": "manchester-city",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2726,
+      "awayEloBefore": 2851
+    },
+    {
+      "date": "2024-12-21",
+      "home": "brentford",
+      "away": "nottingham-forest",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2641,
+      "awayEloBefore": 2658
+    },
+    {
+      "date": "2024-12-21",
+      "home": "crystal-palace",
+      "away": "arsenal",
+      "homeScore": 1,
+      "awayScore": 5,
+      "homeEloBefore": 2678,
+      "awayEloBefore": 2885
+    },
+    {
+      "date": "2024-12-21",
+      "home": "ipswich-town",
+      "away": "newcastle-united",
+      "homeScore": 0,
+      "awayScore": 4,
+      "homeEloBefore": 2549,
+      "awayEloBefore": 2745
+    },
+    {
+      "date": "2024-12-21",
+      "home": "west-ham-united",
+      "away": "brighton-hove-albion",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2666,
+      "awayEloBefore": 2700
+    },
+    {
+      "date": "2024-12-22",
+      "home": "everton",
+      "away": "chelsea",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2640,
+      "awayEloBefore": 2820
+    },
+    {
+      "date": "2024-12-22",
+      "home": "fulham",
+      "away": "southampton",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2691,
+      "awayEloBefore": 2523
+    },
+    {
+      "date": "2024-12-22",
+      "home": "leicester-city",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 0,
+      "awayScore": 3,
+      "homeEloBefore": 2569,
+      "awayEloBefore": 2580
+    },
+    {
+      "date": "2024-12-22",
+      "home": "manchester-united",
+      "away": "bournemouth",
+      "homeScore": 0,
+      "awayScore": 3,
+      "homeEloBefore": 2742,
+      "awayEloBefore": 2668
+    },
+    {
+      "date": "2024-12-22",
+      "home": "tottenham-hotspur",
+      "away": "liverpool",
+      "homeScore": 3,
+      "awayScore": 6,
+      "homeEloBefore": 2728,
+      "awayEloBefore": 2944
+    },
+    {
+      "date": "2024-12-26",
+      "home": "bournemouth",
+      "away": "crystal-palace",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2680,
+      "awayEloBefore": 2673
+    },
+    {
+      "date": "2024-12-26",
+      "home": "chelsea",
+      "away": "fulham",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2816,
+      "awayEloBefore": 2687
+    },
+    {
+      "date": "2024-12-26",
+      "home": "liverpool",
+      "away": "leicester-city",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2948,
+      "awayEloBefore": 2560
+    },
+    {
+      "date": "2024-12-26",
+      "home": "manchester-city",
+      "away": "everton",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2837,
+      "awayEloBefore": 2645
+    },
+    {
+      "date": "2024-12-26",
+      "home": "newcastle-united",
+      "away": "aston-villa",
+      "homeScore": 3,
+      "awayScore": 0,
+      "homeEloBefore": 2750,
+      "awayEloBefore": 2740
+    },
+    {
+      "date": "2024-12-26",
+      "home": "nottingham-forest",
+      "away": "tottenham-hotspur",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2668,
+      "awayEloBefore": 2724
+    },
+    {
+      "date": "2024-12-26",
+      "home": "southampton",
+      "away": "west-ham-united",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2528,
+      "awayEloBefore": 2667
+    },
+    {
+      "date": "2024-12-26",
+      "home": "wolverhampton-wanderers",
+      "away": "manchester-united",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2590,
+      "awayEloBefore": 2730
+    },
+    {
+      "date": "2024-12-27",
+      "home": "arsenal",
+      "away": "ipswich-town",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2890,
+      "awayEloBefore": 2544
+    },
+    {
+      "date": "2024-12-27",
+      "home": "brighton-hove-albion",
+      "away": "brentford",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2699,
+      "awayEloBefore": 2631
+    },
+    {
+      "date": "2024-12-29",
+      "home": "crystal-palace",
+      "away": "southampton",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2673,
+      "awayEloBefore": 2521
+    },
+    {
+      "date": "2024-12-29",
+      "home": "everton",
+      "away": "nottingham-forest",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2650,
+      "awayEloBefore": 2679
+    },
+    {
+      "date": "2024-12-29",
+      "home": "fulham",
+      "away": "bournemouth",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2700,
+      "awayEloBefore": 2680
+    },
+    {
+      "date": "2024-12-29",
+      "home": "leicester-city",
+      "away": "manchester-city",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2558,
+      "awayEloBefore": 2832
+    },
+    {
+      "date": "2024-12-29",
+      "home": "tottenham-hotspur",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2712,
+      "awayEloBefore": 2603
+    },
+    {
+      "date": "2024-12-29",
+      "home": "west-ham-united",
+      "away": "liverpool",
+      "homeScore": 0,
+      "awayScore": 5,
+      "homeEloBefore": 2673,
+      "awayEloBefore": 2950
+    },
+    {
+      "date": "2024-12-30",
+      "home": "aston-villa",
+      "away": "brighton-hove-albion",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2730,
+      "awayEloBefore": 2697
+    },
+    {
+      "date": "2024-12-30",
+      "home": "ipswich-town",
+      "away": "chelsea",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2541,
+      "awayEloBefore": 2802
+    },
+    {
+      "date": "2024-12-30",
+      "home": "manchester-united",
+      "away": "newcastle-united",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2716,
+      "awayEloBefore": 2760
+    },
+    {
+      "date": "2025-01-01",
+      "home": "brentford",
+      "away": "arsenal",
+      "homeScore": 1,
+      "awayScore": 3,
+      "homeEloBefore": 2633,
+      "awayEloBefore": 2892
+    },
+    {
+      "date": "2025-01-04",
+      "home": "aston-villa",
+      "away": "leicester-city",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2729,
+      "awayEloBefore": 2554
+    },
+    {
+      "date": "2025-01-04",
+      "home": "bournemouth",
+      "away": "everton",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2680,
+      "awayEloBefore": 2641
+    },
+    {
+      "date": "2025-01-04",
+      "home": "brighton-hove-albion",
+      "away": "arsenal",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2698,
+      "awayEloBefore": 2896
+    },
+    {
+      "date": "2025-01-04",
+      "home": "crystal-palace",
+      "away": "chelsea",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2679,
+      "awayEloBefore": 2786
+    },
+    {
+      "date": "2025-01-04",
+      "home": "manchester-city",
+      "away": "west-ham-united",
+      "homeScore": 4,
+      "awayScore": 1,
+      "homeEloBefore": 2836,
+      "awayEloBefore": 2670
+    },
+    {
+      "date": "2025-01-04",
+      "home": "southampton",
+      "away": "brentford",
+      "homeScore": 0,
+      "awayScore": 5,
+      "homeEloBefore": 2515,
+      "awayEloBefore": 2630
+    },
+    {
+      "date": "2025-01-04",
+      "home": "tottenham-hotspur",
+      "away": "newcastle-united",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2709,
+      "awayEloBefore": 2769
+    },
+    {
+      "date": "2025-01-05",
+      "home": "fulham",
+      "away": "ipswich-town",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2700,
+      "awayEloBefore": 2558
+    },
+    {
+      "date": "2025-01-05",
+      "home": "liverpool",
+      "away": "manchester-united",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2954,
+      "awayEloBefore": 2708
+    },
+    {
+      "date": "2025-01-06",
+      "home": "wolverhampton-wanderers",
+      "away": "nottingham-forest",
+      "homeScore": 0,
+      "awayScore": 3,
+      "homeEloBefore": 2606,
+      "awayEloBefore": 2689
+    },
+    {
+      "date": "2025-01-14",
+      "home": "brentford",
+      "away": "manchester-city",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2620,
+      "awayEloBefore": 2842
+    },
+    {
+      "date": "2025-01-14",
+      "home": "chelsea",
+      "away": "bournemouth",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2783,
+      "awayEloBefore": 2694
+    },
+    {
+      "date": "2025-01-14",
+      "home": "nottingham-forest",
+      "away": "liverpool",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2700,
+      "awayEloBefore": 2932
+    },
+    {
+      "date": "2025-01-14",
+      "home": "west-ham-united",
+      "away": "fulham",
+      "homeScore": 3,
+      "awayScore": 2,
+      "homeEloBefore": 2656,
+      "awayEloBefore": 2699
+    },
+    {
+      "date": "2025-01-15",
+      "home": "arsenal",
+      "away": "tottenham-hotspur",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2873,
+      "awayEloBefore": 2717
+    },
+    {
+      "date": "2025-01-15",
+      "home": "everton",
+      "away": "aston-villa",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2634,
+      "awayEloBefore": 2742
+    },
+    {
+      "date": "2025-01-15",
+      "home": "leicester-city",
+      "away": "crystal-palace",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2556,
+      "awayEloBefore": 2684
+    },
+    {
+      "date": "2025-01-15",
+      "home": "newcastle-united",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 3,
+      "awayScore": 0,
+      "homeEloBefore": 2790,
+      "awayEloBefore": 2605
+    },
+    {
+      "date": "2025-01-16",
+      "home": "ipswich-town",
+      "away": "brighton-hove-albion",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2564,
+      "awayEloBefore": 2707
+    },
+    {
+      "date": "2025-01-16",
+      "home": "manchester-united",
+      "away": "southampton",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2718,
+      "awayEloBefore": 2516
+    },
+    {
+      "date": "2025-01-18",
+      "home": "arsenal",
+      "away": "aston-villa",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2879,
+      "awayEloBefore": 2749
+    },
+    {
+      "date": "2025-01-18",
+      "home": "brentford",
+      "away": "liverpool",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2625,
+      "awayEloBefore": 2926
+    },
+    {
+      "date": "2025-01-18",
+      "home": "leicester-city",
+      "away": "fulham",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2550,
+      "awayEloBefore": 2688
+    },
+    {
+      "date": "2025-01-18",
+      "home": "newcastle-united",
+      "away": "bournemouth",
+      "homeScore": 1,
+      "awayScore": 4,
+      "homeEloBefore": 2796,
+      "awayEloBefore": 2697
+    },
+    {
+      "date": "2025-01-18",
+      "home": "west-ham-united",
+      "away": "crystal-palace",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2667,
+      "awayEloBefore": 2691
+    },
+    {
+      "date": "2025-01-19",
+      "home": "everton",
+      "away": "tottenham-hotspur",
+      "homeScore": 3,
+      "awayScore": 2,
+      "homeEloBefore": 2627,
+      "awayEloBefore": 2711
+    },
+    {
+      "date": "2025-01-19",
+      "home": "ipswich-town",
+      "away": "manchester-city",
+      "homeScore": 0,
+      "awayScore": 6,
+      "homeEloBefore": 2558,
+      "awayEloBefore": 2836
+    },
+    {
+      "date": "2025-01-19",
+      "home": "manchester-united",
+      "away": "brighton-hove-albion",
+      "homeScore": 1,
+      "awayScore": 3,
+      "homeEloBefore": 2723,
+      "awayEloBefore": 2713
+    },
+    {
+      "date": "2025-01-19",
+      "home": "nottingham-forest",
+      "away": "southampton",
+      "homeScore": 3,
+      "awayScore": 2,
+      "homeEloBefore": 2705,
+      "awayEloBefore": 2512
+    },
+    {
+      "date": "2025-01-20",
+      "home": "chelsea",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2781,
+      "awayEloBefore": 2600
+    },
+    {
+      "date": "2025-01-25",
+      "home": "bournemouth",
+      "away": "nottingham-forest",
+      "homeScore": 5,
+      "awayScore": 0,
+      "homeEloBefore": 2709,
+      "awayEloBefore": 2710
+    },
+    {
+      "date": "2025-01-25",
+      "home": "brighton-hove-albion",
+      "away": "everton",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2724,
+      "awayEloBefore": 2640
+    },
+    {
+      "date": "2025-01-25",
+      "home": "liverpool",
+      "away": "ipswich-town",
+      "homeScore": 4,
+      "awayScore": 1,
+      "homeEloBefore": 2937,
+      "awayEloBefore": 2555
+    },
+    {
+      "date": "2025-01-25",
+      "home": "manchester-city",
+      "away": "chelsea",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2824,
+      "awayEloBefore": 2786
+    },
+    {
+      "date": "2025-01-25",
+      "home": "southampton",
+      "away": "newcastle-united",
+      "homeScore": 1,
+      "awayScore": 3,
+      "homeEloBefore": 2507,
+      "awayEloBefore": 2783
+    },
+    {
+      "date": "2025-01-25",
+      "home": "wolverhampton-wanderers",
+      "away": "arsenal",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2595,
+      "awayEloBefore": 2875
+    },
+    {
+      "date": "2025-01-26",
+      "home": "aston-villa",
+      "away": "west-ham-united",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2735,
+      "awayEloBefore": 2658
+    },
+    {
+      "date": "2025-01-26",
+      "home": "crystal-palace",
+      "away": "brentford",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2700,
+      "awayEloBefore": 2622
+    },
+    {
+      "date": "2025-01-26",
+      "home": "fulham",
+      "away": "manchester-united",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2694,
+      "awayEloBefore": 2722
+    },
+    {
+      "date": "2025-01-26",
+      "home": "tottenham-hotspur",
+      "away": "leicester-city",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2699,
+      "awayEloBefore": 2543
+    },
+    {
+      "date": "2025-02-01",
+      "home": "bournemouth",
+      "away": "liverpool",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2719,
+      "awayEloBefore": 2916
+    },
+    {
+      "date": "2025-02-01",
+      "home": "everton",
+      "away": "leicester-city",
+      "homeScore": 4,
+      "awayScore": 0,
+      "homeEloBefore": 2652,
+      "awayEloBefore": 2558
+    },
+    {
+      "date": "2025-02-01",
+      "home": "ipswich-town",
+      "away": "southampton",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2553,
+      "awayEloBefore": 2503
+    },
+    {
+      "date": "2025-02-01",
+      "home": "newcastle-united",
+      "away": "fulham",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2786,
+      "awayEloBefore": 2685
+    },
+    {
+      "date": "2025-02-01",
+      "home": "nottingham-forest",
+      "away": "brighton-hove-albion",
+      "homeScore": 7,
+      "awayScore": 0,
+      "homeEloBefore": 2700,
+      "awayEloBefore": 2711
+    },
+    {
+      "date": "2025-02-01",
+      "home": "wolverhampton-wanderers",
+      "away": "aston-villa",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2591,
+      "awayEloBefore": 2745
+    },
+    {
+      "date": "2025-02-02",
+      "home": "arsenal",
+      "away": "manchester-city",
+      "homeScore": 5,
+      "awayScore": 1,
+      "homeEloBefore": 2884,
+      "awayEloBefore": 2841
+    },
+    {
+      "date": "2025-02-02",
+      "home": "brentford",
+      "away": "tottenham-hotspur",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2635,
+      "awayEloBefore": 2685
+    },
+    {
+      "date": "2025-02-02",
+      "home": "manchester-united",
+      "away": "crystal-palace",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2731,
+      "awayEloBefore": 2688
+    },
+    {
+      "date": "2025-02-03",
+      "home": "chelsea",
+      "away": "west-ham-united",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2777,
+      "awayEloBefore": 2660
+    },
+    {
+      "date": "2025-02-12",
+      "home": "everton",
+      "away": "liverpool",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2651,
+      "awayEloBefore": 2906
+    },
+    {
+      "date": "2025-02-14",
+      "home": "brighton-hove-albion",
+      "away": "chelsea",
+      "homeScore": 3,
+      "awayScore": 0,
+      "homeEloBefore": 2713,
+      "awayEloBefore": 2771
+    },
+    {
+      "date": "2025-02-15",
+      "home": "aston-villa",
+      "away": "ipswich-town",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2740,
+      "awayEloBefore": 2549
+    },
+    {
+      "date": "2025-02-15",
+      "home": "crystal-palace",
+      "away": "everton",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2700,
+      "awayEloBefore": 2657
+    },
+    {
+      "date": "2025-02-15",
+      "home": "fulham",
+      "away": "nottingham-forest",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2700,
+      "awayEloBefore": 2702
+    },
+    {
+      "date": "2025-02-15",
+      "home": "leicester-city",
+      "away": "arsenal",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2545,
+      "awayEloBefore": 2880
+    },
+    {
+      "date": "2025-02-15",
+      "home": "manchester-city",
+      "away": "newcastle-united",
+      "homeScore": 4,
+      "awayScore": 0,
+      "homeEloBefore": 2822,
+      "awayEloBefore": 2790
+    },
+    {
+      "date": "2025-02-15",
+      "home": "southampton",
+      "away": "bournemouth",
+      "homeScore": 1,
+      "awayScore": 3,
+      "homeEloBefore": 2507,
+      "awayEloBefore": 2723
+    },
+    {
+      "date": "2025-02-15",
+      "home": "west-ham-united",
+      "away": "brentford",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2654,
+      "awayEloBefore": 2626
+    },
+    {
+      "date": "2025-02-16",
+      "home": "liverpool",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2900,
+      "awayEloBefore": 2611
+    },
+    {
+      "date": "2025-02-16",
+      "home": "tottenham-hotspur",
+      "away": "manchester-united",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2680,
+      "awayEloBefore": 2726
+    },
+    {
+      "date": "2025-02-19",
+      "home": "aston-villa",
+      "away": "liverpool",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2735,
+      "awayEloBefore": 2903
+    },
+    {
+      "date": "2025-02-21",
+      "home": "leicester-city",
+      "away": "brentford",
+      "homeScore": 0,
+      "awayScore": 4,
+      "homeEloBefore": 2542,
+      "awayEloBefore": 2637
+    },
+    {
+      "date": "2025-02-22",
+      "home": "arsenal",
+      "away": "west-ham-united",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2882,
+      "awayEloBefore": 2643
+    },
+    {
+      "date": "2025-02-22",
+      "home": "aston-villa",
+      "away": "chelsea",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2739,
+      "awayEloBefore": 2760
+    },
+    {
+      "date": "2025-02-22",
+      "home": "bournemouth",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2727,
+      "awayEloBefore": 2608
+    },
+    {
+      "date": "2025-02-22",
+      "home": "everton",
+      "away": "manchester-united",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2668,
+      "awayEloBefore": 2714
+    },
+    {
+      "date": "2025-02-22",
+      "home": "fulham",
+      "away": "crystal-palace",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2710,
+      "awayEloBefore": 2689
+    },
+    {
+      "date": "2025-02-22",
+      "home": "ipswich-town",
+      "away": "tottenham-hotspur",
+      "homeScore": 1,
+      "awayScore": 4,
+      "homeEloBefore": 2554,
+      "awayEloBefore": 2692
+    },
+    {
+      "date": "2025-02-22",
+      "home": "southampton",
+      "away": "brighton-hove-albion",
+      "homeScore": 0,
+      "awayScore": 4,
+      "homeEloBefore": 2502,
+      "awayEloBefore": 2725
+    },
+    {
+      "date": "2025-02-23",
+      "home": "manchester-city",
+      "away": "liverpool",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2819,
+      "awayEloBefore": 2898
+    },
+    {
+      "date": "2025-02-23",
+      "home": "newcastle-united",
+      "away": "nottingham-forest",
+      "homeScore": 4,
+      "awayScore": 3,
+      "homeEloBefore": 2780,
+      "awayEloBefore": 2692
+    },
+    {
+      "date": "2025-02-25",
+      "home": "brighton-hove-albion",
+      "away": "bournemouth",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2729,
+      "awayEloBefore": 2714
+    },
+    {
+      "date": "2025-02-25",
+      "home": "chelsea",
+      "away": "southampton",
+      "homeScore": 4,
+      "awayScore": 0,
+      "homeEloBefore": 2749,
+      "awayEloBefore": 2498
+    },
+    {
+      "date": "2025-02-25",
+      "home": "crystal-palace",
+      "away": "aston-villa",
+      "homeScore": 4,
+      "awayScore": 1,
+      "homeEloBefore": 2700,
+      "awayEloBefore": 2750
+    },
+    {
+      "date": "2025-02-25",
+      "home": "wolverhampton-wanderers",
+      "away": "fulham",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2621,
+      "awayEloBefore": 2699
+    },
+    {
+      "date": "2025-02-26",
+      "home": "brentford",
+      "away": "everton",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2644,
+      "awayEloBefore": 2670
+    },
+    {
+      "date": "2025-02-26",
+      "home": "liverpool",
+      "away": "newcastle-united",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2906,
+      "awayEloBefore": 2788
+    },
+    {
+      "date": "2025-02-26",
+      "home": "manchester-united",
+      "away": "ipswich-town",
+      "homeScore": 3,
+      "awayScore": 2,
+      "homeEloBefore": 2713,
+      "awayEloBefore": 2548
+    },
+    {
+      "date": "2025-02-26",
+      "home": "nottingham-forest",
+      "away": "arsenal",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2684,
+      "awayEloBefore": 2866
+    },
+    {
+      "date": "2025-02-26",
+      "home": "tottenham-hotspur",
+      "away": "manchester-city",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2698,
+      "awayEloBefore": 2812
+    },
+    {
+      "date": "2025-02-27",
+      "home": "west-ham-united",
+      "away": "leicester-city",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2659,
+      "awayEloBefore": 2535
+    },
+    {
+      "date": "2025-03-08",
+      "home": "brentford",
+      "away": "aston-villa",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2645,
+      "awayEloBefore": 2753
+    },
+    {
+      "date": "2025-03-08",
+      "home": "brighton-hove-albion",
+      "away": "fulham",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2750,
+      "awayEloBefore": 2708
+    },
+    {
+      "date": "2025-03-08",
+      "home": "crystal-palace",
+      "away": "ipswich-town",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2715,
+      "awayEloBefore": 2546
+    },
+    {
+      "date": "2025-03-08",
+      "home": "liverpool",
+      "away": "southampton",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2927,
+      "awayEloBefore": 2494
+    },
+    {
+      "date": "2025-03-08",
+      "home": "nottingham-forest",
+      "away": "manchester-city",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2685,
+      "awayEloBefore": 2820
+    },
+    {
+      "date": "2025-03-08",
+      "home": "wolverhampton-wanderers",
+      "away": "everton",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2616,
+      "awayEloBefore": 2669
+    },
+    {
+      "date": "2025-03-09",
+      "home": "chelsea",
+      "away": "leicester-city",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2753,
+      "awayEloBefore": 2528
+    },
+    {
+      "date": "2025-03-09",
+      "home": "manchester-united",
+      "away": "arsenal",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2716,
+      "awayEloBefore": 2871
+    },
+    {
+      "date": "2025-03-09",
+      "home": "tottenham-hotspur",
+      "away": "bournemouth",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2673,
+      "awayEloBefore": 2702
+    },
+    {
+      "date": "2025-03-10",
+      "home": "west-ham-united",
+      "away": "newcastle-united",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2665,
+      "awayEloBefore": 2770
+    },
+    {
+      "date": "2025-03-15",
+      "home": "bournemouth",
+      "away": "brentford",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2701,
+      "awayEloBefore": 2638
+    },
+    {
+      "date": "2025-03-15",
+      "home": "everton",
+      "away": "west-ham-united",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2668,
+      "awayEloBefore": 2658
+    },
+    {
+      "date": "2025-03-15",
+      "home": "ipswich-town",
+      "away": "nottingham-forest",
+      "homeScore": 2,
+      "awayScore": 4,
+      "homeEloBefore": 2541,
+      "awayEloBefore": 2699
+    },
+    {
+      "date": "2025-03-15",
+      "home": "manchester-city",
+      "away": "brighton-hove-albion",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2806,
+      "awayEloBefore": 2759
+    },
+    {
+      "date": "2025-03-15",
+      "home": "southampton",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2493,
+      "awayEloBefore": 2617
+    },
+    {
+      "date": "2025-03-16",
+      "home": "arsenal",
+      "away": "chelsea",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2860,
+      "awayEloBefore": 2757
+    },
+    {
+      "date": "2025-03-16",
+      "home": "fulham",
+      "away": "tottenham-hotspur",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2699,
+      "awayEloBefore": 2687
+    },
+    {
+      "date": "2025-03-16",
+      "home": "leicester-city",
+      "away": "manchester-united",
+      "homeScore": 0,
+      "awayScore": 3,
+      "homeEloBefore": 2524,
+      "awayEloBefore": 2733
+    },
+    {
+      "date": "2025-04-01",
+      "home": "arsenal",
+      "away": "fulham",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2867,
+      "awayEloBefore": 2699
+    },
+    {
+      "date": "2025-04-01",
+      "home": "nottingham-forest",
+      "away": "manchester-united",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2706,
+      "awayEloBefore": 2738
+    },
+    {
+      "date": "2025-04-01",
+      "home": "wolverhampton-wanderers",
+      "away": "west-ham-united",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2624,
+      "awayEloBefore": 2658
+    },
+    {
+      "date": "2025-04-02",
+      "home": "bournemouth",
+      "away": "ipswich-town",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2683,
+      "awayEloBefore": 2535
+    },
+    {
+      "date": "2025-04-02",
+      "home": "brighton-hove-albion",
+      "away": "aston-villa",
+      "homeScore": 0,
+      "awayScore": 3,
+      "homeEloBefore": 2759,
+      "awayEloBefore": 2773
+    },
+    {
+      "date": "2025-04-02",
+      "home": "liverpool",
+      "away": "everton",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2897,
+      "awayEloBefore": 2667
+    },
+    {
+      "date": "2025-04-02",
+      "home": "manchester-city",
+      "away": "leicester-city",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2812,
+      "awayEloBefore": 2519
+    },
+    {
+      "date": "2025-04-02",
+      "home": "newcastle-united",
+      "away": "brentford",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2791,
+      "awayEloBefore": 2650
+    },
+    {
+      "date": "2025-04-02",
+      "home": "southampton",
+      "away": "crystal-palace",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2486,
+      "awayEloBefore": 2730
+    },
+    {
+      "date": "2025-04-03",
+      "home": "chelsea",
+      "away": "tottenham-hotspur",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2750,
+      "awayEloBefore": 2677
+    },
+    {
+      "date": "2025-04-05",
+      "home": "aston-villa",
+      "away": "nottingham-forest",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2783,
+      "awayEloBefore": 2717
+    },
+    {
+      "date": "2025-04-05",
+      "home": "crystal-palace",
+      "away": "brighton-hove-albion",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2724,
+      "awayEloBefore": 2749
+    },
+    {
+      "date": "2025-04-05",
+      "home": "everton",
+      "away": "arsenal",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2663,
+      "awayEloBefore": 2873
+    },
+    {
+      "date": "2025-04-05",
+      "home": "ipswich-town",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2549,
+      "awayEloBefore": 2635
+    },
+    {
+      "date": "2025-04-05",
+      "home": "west-ham-united",
+      "away": "bournemouth",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2647,
+      "awayEloBefore": 2669
+    },
+    {
+      "date": "2025-04-06",
+      "home": "brentford",
+      "away": "chelsea",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2644,
+      "awayEloBefore": 2758
+    },
+    {
+      "date": "2025-04-06",
+      "home": "fulham",
+      "away": "liverpool",
+      "homeScore": 3,
+      "awayScore": 2,
+      "homeEloBefore": 2693,
+      "awayEloBefore": 2902
+    },
+    {
+      "date": "2025-04-06",
+      "home": "manchester-united",
+      "away": "manchester-city",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2727,
+      "awayEloBefore": 2815
+    },
+    {
+      "date": "2025-04-06",
+      "home": "tottenham-hotspur",
+      "away": "southampton",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2669,
+      "awayEloBefore": 2492
+    },
+    {
+      "date": "2025-04-07",
+      "home": "leicester-city",
+      "away": "newcastle-united",
+      "homeScore": 0,
+      "awayScore": 3,
+      "homeEloBefore": 2516,
+      "awayEloBefore": 2797
+    },
+    {
+      "date": "2025-04-12",
+      "home": "arsenal",
+      "away": "brentford",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2884,
+      "awayEloBefore": 2647
+    },
+    {
+      "date": "2025-04-12",
+      "home": "brighton-hove-albion",
+      "away": "leicester-city",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2738,
+      "awayEloBefore": 2513
+    },
+    {
+      "date": "2025-04-12",
+      "home": "manchester-city",
+      "away": "crystal-palace",
+      "homeScore": 5,
+      "awayScore": 2,
+      "homeEloBefore": 2813,
+      "awayEloBefore": 2735
+    },
+    {
+      "date": "2025-04-12",
+      "home": "nottingham-forest",
+      "away": "everton",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2709,
+      "awayEloBefore": 2668
+    },
+    {
+      "date": "2025-04-12",
+      "home": "southampton",
+      "away": "aston-villa",
+      "homeScore": 0,
+      "awayScore": 3,
+      "homeEloBefore": 2487,
+      "awayEloBefore": 2781
+    },
+    {
+      "date": "2025-04-13",
+      "home": "chelsea",
+      "away": "ipswich-town",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2755,
+      "awayEloBefore": 2542
+    },
+    {
+      "date": "2025-04-13",
+      "home": "liverpool",
+      "away": "west-ham-united",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2886,
+      "awayEloBefore": 2648
+    },
+    {
+      "date": "2025-04-13",
+      "home": "newcastle-united",
+      "away": "manchester-united",
+      "homeScore": 4,
+      "awayScore": 1,
+      "homeEloBefore": 2800,
+      "awayEloBefore": 2728
+    },
+    {
+      "date": "2025-04-13",
+      "home": "wolverhampton-wanderers",
+      "away": "tottenham-hotspur",
+      "homeScore": 4,
+      "awayScore": 2,
+      "homeEloBefore": 2643,
+      "awayEloBefore": 2674
+    },
+    {
+      "date": "2025-04-14",
+      "home": "bournemouth",
+      "away": "fulham",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2668,
+      "awayEloBefore": 2709
+    },
+    {
+      "date": "2025-04-16",
+      "home": "newcastle-united",
+      "away": "crystal-palace",
+      "homeScore": 5,
+      "awayScore": 0,
+      "homeEloBefore": 2808,
+      "awayEloBefore": 2727
+    },
+    {
+      "date": "2025-04-19",
+      "home": "aston-villa",
+      "away": "newcastle-united",
+      "homeScore": 4,
+      "awayScore": 1,
+      "homeEloBefore": 2804,
+      "awayEloBefore": 2816
+    },
+    {
+      "date": "2025-04-19",
+      "home": "brentford",
+      "away": "brighton-hove-albion",
+      "homeScore": 4,
+      "awayScore": 2,
+      "homeEloBefore": 2653,
+      "awayEloBefore": 2733
+    },
+    {
+      "date": "2025-04-19",
+      "home": "crystal-palace",
+      "away": "bournemouth",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2719,
+      "awayEloBefore": 2679
+    },
+    {
+      "date": "2025-04-19",
+      "home": "everton",
+      "away": "manchester-city",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2680,
+      "awayEloBefore": 2820
+    },
+    {
+      "date": "2025-04-19",
+      "home": "west-ham-united",
+      "away": "southampton",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2644,
+      "awayEloBefore": 2484
+    },
+    {
+      "date": "2025-04-20",
+      "home": "fulham",
+      "away": "chelsea",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2698,
+      "awayEloBefore": 2749
+    },
+    {
+      "date": "2025-04-20",
+      "home": "ipswich-town",
+      "away": "arsenal",
+      "homeScore": 0,
+      "awayScore": 4,
+      "homeEloBefore": 2547,
+      "awayEloBefore": 2893
+    },
+    {
+      "date": "2025-04-20",
+      "home": "leicester-city",
+      "away": "liverpool",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2519,
+      "awayEloBefore": 2890
+    },
+    {
+      "date": "2025-04-20",
+      "home": "manchester-united",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2735,
+      "awayEloBefore": 2654
+    },
+    {
+      "date": "2025-04-21",
+      "home": "tottenham-hotspur",
+      "away": "nottingham-forest",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2679,
+      "awayEloBefore": 2698
+    },
+    {
+      "date": "2025-04-22",
+      "home": "manchester-city",
+      "away": "aston-villa",
+      "homeScore": 2,
+      "awayScore": 1,
+      "homeEloBefore": 2826,
+      "awayEloBefore": 2815
+    },
+    {
+      "date": "2025-04-23",
+      "home": "arsenal",
+      "away": "crystal-palace",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2896,
+      "awayEloBefore": 2718
+    },
+    {
+      "date": "2025-04-26",
+      "home": "brighton-hove-albion",
+      "away": "west-ham-united",
+      "homeScore": 3,
+      "awayScore": 2,
+      "homeEloBefore": 2720,
+      "awayEloBefore": 2640
+    },
+    {
+      "date": "2025-04-26",
+      "home": "chelsea",
+      "away": "everton",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2758,
+      "awayEloBefore": 2673
+    },
+    {
+      "date": "2025-04-26",
+      "home": "newcastle-united",
+      "away": "ipswich-town",
+      "homeScore": 3,
+      "awayScore": 0,
+      "homeEloBefore": 2806,
+      "awayEloBefore": 2545
+    },
+    {
+      "date": "2025-04-26",
+      "home": "southampton",
+      "away": "fulham",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2488,
+      "awayEloBefore": 2689
+    },
+    {
+      "date": "2025-04-26",
+      "home": "wolverhampton-wanderers",
+      "away": "leicester-city",
+      "homeScore": 3,
+      "awayScore": 0,
+      "homeEloBefore": 2666,
+      "awayEloBefore": 2517
+    },
+    {
+      "date": "2025-04-27",
+      "home": "bournemouth",
+      "away": "manchester-united",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2680,
+      "awayEloBefore": 2723
+    },
+    {
+      "date": "2025-04-27",
+      "home": "liverpool",
+      "away": "tottenham-hotspur",
+      "homeScore": 5,
+      "awayScore": 1,
+      "homeEloBefore": 2892,
+      "awayEloBefore": 2669
+    },
+    {
+      "date": "2025-05-01",
+      "home": "nottingham-forest",
+      "away": "brentford",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2701,
+      "awayEloBefore": 2665
+    },
+    {
+      "date": "2025-05-02",
+      "home": "manchester-city",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2843,
+      "awayEloBefore": 2672
+    },
+    {
+      "date": "2025-05-03",
+      "home": "arsenal",
+      "away": "bournemouth",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2875,
+      "awayEloBefore": 2681
+    },
+    {
+      "date": "2025-05-03",
+      "home": "aston-villa",
+      "away": "fulham",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2793,
+      "awayEloBefore": 2694
+    },
+    {
+      "date": "2025-05-03",
+      "home": "everton",
+      "away": "ipswich-town",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2666,
+      "awayEloBefore": 2541
+    },
+    {
+      "date": "2025-05-03",
+      "home": "leicester-city",
+      "away": "southampton",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2511,
+      "awayEloBefore": 2483
+    },
+    {
+      "date": "2025-05-04",
+      "home": "brentford",
+      "away": "manchester-united",
+      "homeScore": 4,
+      "awayScore": 3,
+      "homeEloBefore": 2676,
+      "awayEloBefore": 2738
+    },
+    {
+      "date": "2025-05-04",
+      "home": "brighton-hove-albion",
+      "away": "newcastle-united",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2728,
+      "awayEloBefore": 2809
+    },
+    {
+      "date": "2025-05-04",
+      "home": "chelsea",
+      "away": "liverpool",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2766,
+      "awayEloBefore": 2897
+    },
+    {
+      "date": "2025-05-04",
+      "home": "west-ham-united",
+      "away": "tottenham-hotspur",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2632,
+      "awayEloBefore": 2665
+    },
+    {
+      "date": "2025-05-05",
+      "home": "crystal-palace",
+      "away": "nottingham-forest",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2735,
+      "awayEloBefore": 2690
+    },
+    {
+      "date": "2025-05-10",
+      "home": "bournemouth",
+      "away": "aston-villa",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2697,
+      "awayEloBefore": 2800
+    },
+    {
+      "date": "2025-05-10",
+      "home": "fulham",
+      "away": "everton",
+      "homeScore": 1,
+      "awayScore": 3,
+      "homeEloBefore": 2687,
+      "awayEloBefore": 2662
+    },
+    {
+      "date": "2025-05-10",
+      "home": "ipswich-town",
+      "away": "brentford",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2544,
+      "awayEloBefore": 2688
+    },
+    {
+      "date": "2025-05-10",
+      "home": "southampton",
+      "away": "manchester-city",
+      "homeScore": 0,
+      "awayScore": 0,
+      "homeEloBefore": 2474,
+      "awayEloBefore": 2848
+    },
+    {
+      "date": "2025-05-10",
+      "home": "wolverhampton-wanderers",
+      "away": "brighton-hove-albion",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2666,
+      "awayEloBefore": 2730
+    },
+    {
+      "date": "2025-05-11",
+      "home": "liverpool",
+      "away": "arsenal",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2883,
+      "awayEloBefore": 2845
+    },
+    {
+      "date": "2025-05-11",
+      "home": "manchester-united",
+      "away": "west-ham-united",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2742,
+      "awayEloBefore": 2633
+    },
+    {
+      "date": "2025-05-11",
+      "home": "newcastle-united",
+      "away": "chelsea",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2807,
+      "awayEloBefore": 2779
+    },
+    {
+      "date": "2025-05-11",
+      "home": "nottingham-forest",
+      "away": "leicester-city",
+      "homeScore": 2,
+      "awayScore": 2,
+      "homeEloBefore": 2691,
+      "awayEloBefore": 2520
+    },
+    {
+      "date": "2025-05-11",
+      "home": "tottenham-hotspur",
+      "away": "crystal-palace",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2664,
+      "awayEloBefore": 2734
+    },
+    {
+      "date": "2025-05-16",
+      "home": "aston-villa",
+      "away": "tottenham-hotspur",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2807,
+      "awayEloBefore": 2656
+    },
+    {
+      "date": "2025-05-16",
+      "home": "chelsea",
+      "away": "manchester-united",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2770,
+      "awayEloBefore": 2729
+    },
+    {
+      "date": "2025-05-18",
+      "home": "arsenal",
+      "away": "newcastle-united",
+      "homeScore": 1,
+      "awayScore": 0,
+      "homeEloBefore": 2846,
+      "awayEloBefore": 2816
+    },
+    {
+      "date": "2025-05-18",
+      "home": "brentford",
+      "away": "fulham",
+      "homeScore": 2,
+      "awayScore": 3,
+      "homeEloBefore": 2694,
+      "awayEloBefore": 2676
+    },
+    {
+      "date": "2025-05-18",
+      "home": "everton",
+      "away": "southampton",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2673,
+      "awayEloBefore": 2482
+    },
+    {
+      "date": "2025-05-18",
+      "home": "leicester-city",
+      "away": "ipswich-town",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2524,
+      "awayEloBefore": 2538
+    },
+    {
+      "date": "2025-05-18",
+      "home": "west-ham-united",
+      "away": "nottingham-forest",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2646,
+      "awayEloBefore": 2687
+    },
+    {
+      "date": "2025-05-19",
+      "home": "brighton-hove-albion",
+      "away": "liverpool",
+      "homeScore": 3,
+      "awayScore": 2,
+      "homeEloBefore": 2739,
+      "awayEloBefore": 2882
+    },
+    {
+      "date": "2025-05-20",
+      "home": "crystal-palace",
+      "away": "wolverhampton-wanderers",
+      "homeScore": 4,
+      "awayScore": 2,
+      "homeEloBefore": 2755,
+      "awayEloBefore": 2658
+    },
+    {
+      "date": "2025-05-20",
+      "home": "manchester-city",
+      "away": "bournemouth",
+      "homeScore": 3,
+      "awayScore": 1,
+      "homeEloBefore": 2827,
+      "awayEloBefore": 2689
+    },
+    {
+      "date": "2025-05-25",
+      "home": "bournemouth",
+      "away": "leicester-city",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2683,
+      "awayEloBefore": 2535
+    },
+    {
+      "date": "2025-05-25",
+      "home": "fulham",
+      "away": "manchester-city",
+      "homeScore": 0,
+      "awayScore": 2,
+      "homeEloBefore": 2686,
+      "awayEloBefore": 2834
+    },
+    {
+      "date": "2025-05-25",
+      "home": "ipswich-town",
+      "away": "west-ham-united",
+      "homeScore": 1,
+      "awayScore": 3,
+      "homeEloBefore": 2528,
+      "awayEloBefore": 2637
+    },
+    {
+      "date": "2025-05-25",
+      "home": "liverpool",
+      "away": "crystal-palace",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2868,
+      "awayEloBefore": 2762
+    },
+    {
+      "date": "2025-05-25",
+      "home": "manchester-united",
+      "away": "aston-villa",
+      "homeScore": 2,
+      "awayScore": 0,
+      "homeEloBefore": 2702,
+      "awayEloBefore": 2813
+    },
+    {
+      "date": "2025-05-25",
+      "home": "newcastle-united",
+      "away": "everton",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2807,
+      "awayEloBefore": 2678
+    },
+    {
+      "date": "2025-05-25",
+      "home": "nottingham-forest",
+      "away": "chelsea",
+      "homeScore": 0,
+      "awayScore": 1,
+      "homeEloBefore": 2695,
+      "awayEloBefore": 2779
+    },
+    {
+      "date": "2025-05-25",
+      "home": "southampton",
+      "away": "arsenal",
+      "homeScore": 1,
+      "awayScore": 2,
+      "homeEloBefore": 2477,
+      "awayEloBefore": 2856
+    },
+    {
+      "date": "2025-05-25",
+      "home": "tottenham-hotspur",
+      "away": "brighton-hove-albion",
+      "homeScore": 1,
+      "awayScore": 4,
+      "homeEloBefore": 2668,
+      "awayEloBefore": 2753
+    },
+    {
+      "date": "2025-05-25",
+      "home": "wolverhampton-wanderers",
+      "away": "brentford",
+      "homeScore": 1,
+      "awayScore": 1,
+      "homeEloBefore": 2651,
+      "awayEloBefore": 2683
+    }
+  ]
+}

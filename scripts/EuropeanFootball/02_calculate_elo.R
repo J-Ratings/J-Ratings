@@ -1,8 +1,11 @@
 
 library(data.table)
+library(tictoc)
 
 options(stringsAsFactors = FALSE)
 
+
+tic()
 # -----------------------------
 # Paths
 # -----------------------------
@@ -14,15 +17,15 @@ repo_dir <- normalizePath(
 
 INPUT_CSV <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Matches_Clean_Combined",
-  "england_leagues_1_to_5_all_seasons.csv"
+  "european_football_all_matches.csv"
 )
 
 TEAM_ALIASES_CSV <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Reference",
   "team_aliases.csv"
@@ -30,7 +33,7 @@ TEAM_ALIASES_CSV <- file.path(
 
 OUT_DIR <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Elo"
 )
@@ -955,6 +958,9 @@ cat("Pass 1 game history:", OUTPUT_GAME_HISTORY_CSV_PASS1, "\n")
 cat("Pass 1 final ratings:", OUTPUT_FINAL_RATINGS_CSV_PASS1, "\n")
 cat("Pass 2 game history (final):", OUTPUT_GAME_HISTORY_CSV, "\n")
 cat("Pass 2 final ratings (final):", OUTPUT_FINAL_RATINGS_CSV, "\n")
+
+
+toc()
 
 
 beep()

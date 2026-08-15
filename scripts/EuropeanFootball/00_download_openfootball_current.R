@@ -1,8 +1,11 @@
-# scripts/england_football/00_download_openfootball_current.R
+# scripts/EuropeanFootball/00_download_openfootball_current.R
 
 options(stringsAsFactors = FALSE)
+
+tic()
 library(nanoparquet)
 library(beepr)
+library(tictoc)
 
 # -----------------------------
 # Paths
@@ -16,7 +19,7 @@ repo_dir <- normalizePath(
 
 source_root_dir <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Source",
   "openfootball"
@@ -24,7 +27,7 @@ source_root_dir <- file.path(
 
 wikipedia_source_root_dir <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Source",
   "wikipedia"
@@ -32,7 +35,7 @@ wikipedia_source_root_dir <- file.path(
 
 schoch_source_root_dir <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Source",
   "schochastics"
@@ -674,5 +677,7 @@ for (i in seq_len(nrow(wikipedia_jobs))) {
 
 cat("\nWikipedia download complete.\n")
 print(wikipedia_results)
+
+toc()
 
 beep()

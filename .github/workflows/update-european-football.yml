@@ -1,4 +1,4 @@
-name: Update English Football data
+name: Update European Football data
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 jobs:
-  update-english-football:
+  update-european-football:
     runs-on: ubuntu-latest
 
     env:
@@ -38,32 +38,33 @@ jobs:
             any::stringi
             any::stringr
             any::tibble
+            any::tictoc
           needs: check
 
-      - name: Run English Football pipeline
+      - name: Run European Football pipeline
         run: |
-          Rscript -e 'source("scripts/england_football/00_download_openfootball_current.R")'
-          Rscript -e 'source("scripts/england_football/01_parse_openfootball.R")'
-          Rscript -e 'source("scripts/england_football/02_calculate_elo.R")'
-          Rscript -e 'source("scripts/england_football/03_write_json.R")'
+          Rscript -e 'source("scripts/EuropeanFootball/00_download_openfootball_current.R")'
+          Rscript -e 'source("scripts/EuropeanFootball/01_parse_openfootball.R")'
+          Rscript -e 'source("scripts/EuropeanFootball/02_calculate_elo.R")'
+          Rscript -e 'source("scripts/EuropeanFootball/03_write_json.R")'
 
       - name: Show website metadata
         run: |
-          Rscript -e 'print(jsonlite::fromJSON("EnglishFootball/data/meta.json"))'
+          Rscript -e 'print(jsonlite::fromJSON("EuropeanFootball/data/meta.json"))'
 
-      - name: Commit updated English Football data
+      - name: Commit updated European Football data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add EnglishFootball/pipeline_data/Source/openfootball/england/
-          git add EnglishFootball/pipeline_data/Matches_Clean_Combined/
-          git add EnglishFootball/pipeline_data/Elo/
-          git add EnglishFootball/data/
+          git add EuropeanFootball/pipeline_data/Source/openfootball/england/
+          git add EuropeanFootball/pipeline_data/Matches_Clean_Combined/
+          git add EuropeanFootball/pipeline_data/Elo/
+          git add EuropeanFootball/data/
 
           if git diff --cached --quiet; then
-            echo "No English Football data changes to commit."
+            echo "No European Football data changes to commit."
           else
-            git commit -m "Update English Football data"
+            git commit -m "Update European Football data"
             git push
           fi

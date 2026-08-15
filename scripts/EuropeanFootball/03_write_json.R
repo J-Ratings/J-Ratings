@@ -1,13 +1,16 @@
-# scripts/england_football/03_write_json.R
+# scripts/EuropeanFootball/03_write_json.R
 
 library(dplyr)
 library(readr)
 library(jsonlite)
 library(stringi)
 library(stringr)
+library(tictoc)
 
 options(stringsAsFactors = FALSE)
 
+
+tic()
 # -----------------------------
 # Paths
 # -----------------------------
@@ -20,12 +23,12 @@ repo_dir <- normalizePath(
 
 src_dir <- file.path(
   repo_dir,
-  "EnglishFootball",
+  "EuropeanFootball",
   "pipeline_data",
   "Elo"
 )
 
-base_data_dir <- file.path(repo_dir, "EnglishFootball", "data")
+base_data_dir <- file.path(repo_dir, "EuropeanFootball", "data")
 history_out   <- file.path(base_data_dir, "history")
 games_out     <- file.path(base_data_dir, "games")
 
@@ -600,6 +603,10 @@ for (tm in names(name_to_id)) {
 
 cat("Wrote games files:", n_games_written, "\n")
 cat("Done.\n")
+
+
+
+toc()
 
 
 
