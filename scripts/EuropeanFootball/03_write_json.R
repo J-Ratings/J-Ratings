@@ -601,6 +601,272 @@ for (tm in names(name_to_id)) {
   }
 }
 
+
+# -----------------------------
+# Simulation tournament files
+# -----------------------------
+#
+# Build Premier League season files directly from the normal pipeline data.
+# This replaces the old one-off tournament-build test script.
+#
+# Historical seasons come from completed Elo history. For the current season,
+# upcoming Premier League fixtures are appended from football_upcoming_fixtures.csv.
+#
+# Output:
+#   EuropeanFootball/data/simulations/premier-league/seasons.json
+#   EuropeanFootball/data/simulations/premier-league/YYYY-YY.json
+
+simulation_root <- file.path(
+  base_data_dir,
+  "simulations",
+  "premier-league"
+)
+
+dir.create(
+  simulation_root,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+pl_past <- ghist %>%
+  filter(
+    Country == "England",
+    Competition == "premier_league",
+    CompetitionType == "league",
+    Tier == 1L
+  ) %>%
+  mutate(
+    season = season_label(Date),
+    homeScore = suppressWarnings(
+      as.integer(
+        stringr::str_match(
+          as.character(Score),
+          "^(\\d+)\\s*-\\s*(\\d+)"
+        )[, 2]
+      )
+    ),
+    awayScore = suppressWarnings(
+      as.integer(
+        stringr::str_match(
+          as.character(Score),
+          "^(\\d+)\\s*-\\s*(\\d+)"
+        )[, 3]
+      )
+    )
+  ) %>%
+  transmute(
+    season = as.character(season),
+    date = as.Date(Date),
+    home = as.character(Home),
+    away = as.character(Away),
+    homeScore = as.integer(homeScore),
+    awayScore = as.integer(awayScore),
+    played = TRUE
+  )
+
+pl_future <- fixtures %>%
+  filter(
+    Country == "England",
+    Competition == "premier_league",
+    CompetitionType == "league",
+    Tier == 1L
+  ) %>%
+  mutate(
+    season = season_label(Date)
+  ) %>%
+  transmute(
+    season = as.character(season),
+    date = as.Date(Date),
+    home = as.character(Home),
+    away = as.character(Away),
+    homeScore = NA_integer_,
+    awayScore = NA_integer_,
+    played = FALSE
+  )
+
+pl_all <- bind_rows(
+  pl_past,
+  pl_future
+) %>%
+  filter(
+    !is.na(date),
+    home != "",
+    away != ""
+  ) %>%
+  arrange(
+    season,
+    date,
+    home,
+    away
+  )
+
+pl_seasons <- sort(
+  unique(pl_all$season),
+  decreasing = TRUE
+)
+
+season_manifest <- list()
+
+for (season_id in pl_seasons) {
+  season_matches <- pl_all %>%
+    filter(
+      season == season_id
+    ) %>%
+    arrange(
+      date,
+      home,
+      away
+    )
+  
+  # Avoid publishing a malformed/incomplete historical season.
+  # The current season may legitimately contain unplayed fixtures.
+  if (nrow(season_matches) == 0) next
+  
+  season_teams <- sort(
+    unique(
+      c(
+        season_matches$home,
+        season_matches$away
+      )
+    )
+  )
+  
+  team_tbl <- tibble(
+    id = slug(season_teams),
+    name = season_teams
+  )
+  
+  if (anyDuplicated(team_tbl$id)) {
+    stop(
+      "Team slug collision in Premier League season ",
+      season_id
+    )
+  }
+  
+  name_to_id <- setNames(
+    team_tbl$id,
+    team_tbl$name
+  )
+  
+  matches_tbl <- season_matches %>%
+    transmute(
+      date = format(date, "%Y-%m-%d"),
+      home = unname(name_to_id[home]),
+      away = unname(name_to_id[away]),
+      homeScore = as.integer(homeScore),
+      awayScore = as.integer(awayScore),
+      played = as.logical(played)
+    )
+  
+  first_date <- min(
+    season_matches$date,
+    na.rm = TRUE
+  )
+  
+  last_date <- max(
+    season_matches$date,
+    na.rm = TRUE
+  )
+  
+  tournament <- list(
+    id = paste0(
+      "premier-league-",
+      season_id
+    ),
+    competition = "premier-league",
+    name = "Premier League",
+    country = "England",
+    season = season_id,
+    format = "league",
+    rules = list(
+      winPoints = 3L,
+      drawPoints = 1L,
+      lossPoints = 0L,
+      relegationPlaces = 3L
+    ),
+    summary = list(
+      teams = as.integer(
+        length(season_teams)
+      ),
+      matches = as.integer(
+        nrow(season_matches)
+      ),
+      playedMatches = as.integer(
+        sum(season_matches$played)
+      ),
+      firstDate = format(
+        first_date,
+        "%Y-%m-%d"
+      ),
+      lastDate = format(
+        last_date,
+        "%Y-%m-%d"
+      )
+    ),
+    teams = team_tbl,
+    matches = matches_tbl
+  )
+  
+  write_json(
+    tournament,
+    file.path(
+      simulation_root,
+      paste0(
+        season_id,
+        ".json"
+      )
+    ),
+    auto_unbox = TRUE,
+    pretty = FALSE,
+    na = "null"
+  )
+  
+  season_manifest[[length(season_manifest) + 1L]] <- list(
+    id = season_id,
+    label = gsub(
+      "-",
+      "/",
+      season_id,
+      fixed = TRUE
+    ),
+    firstDate = format(
+      first_date,
+      "%Y-%m-%d"
+    ),
+    lastDate = format(
+      last_date,
+      "%Y-%m-%d"
+    ),
+    teams = as.integer(
+      length(season_teams)
+    ),
+    matches = as.integer(
+      nrow(season_matches)
+    ),
+    playedMatches = as.integer(
+      sum(season_matches$played)
+    )
+  )
+}
+
+write_json(
+  season_manifest,
+  file.path(
+    simulation_root,
+    "seasons.json"
+  ),
+  auto_unbox = TRUE,
+  pretty = FALSE,
+  na = "null"
+)
+
+cat(
+  "Wrote Premier League simulation seasons:",
+  length(season_manifest),
+  "\n"
+)
+
+
 cat("Wrote games files:", n_games_written, "\n")
 cat("Done.\n")
 

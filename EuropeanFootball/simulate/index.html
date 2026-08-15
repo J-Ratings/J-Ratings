@@ -416,10 +416,22 @@
 
   <main class="wrap">
     <section class="panel sim-panel">
-      <h2 class="sim-title">Premier League Simulator</h2>
-      <p class="sim-subtitle">Choose a date, set any what-if results, and simulate the rest of the 2024–25 season.</p>
+      <h2 class="sim-title">European Football Simulator</h2>
+      <p class="sim-subtitle">Choose a competition and season, then simulate from any date.</p>
 
       <div class="sim-controls">
+        <div class="sim-field">
+          <label for="competition">Competition</label>
+          <select id="competition">
+            <option value="premier-league" selected>Premier League</option>
+          </select>
+        </div>
+
+        <div class="sim-field">
+          <label for="season">Season</label>
+          <select id="season"></select>
+        </div>
+
         <div class="sim-field">
           <label for="cutoff">Simulate from</label>
           <input id="cutoff" type="date">
@@ -573,16 +585,18 @@
       </div>
 
       <p class="sim-note">
-        Actual Premier League results before the selected date are used. Each club's J-Ratings Elo at that date is loaded from its rating history unless the user overrides it. Remaining league fixtures are then simulated with Elo updating after every match. Forced results are applied exactly. If home advantage is enabled, the selected Elo bonus affects match probability only. Equal-points ties are currently broken randomly because exact future scorelines are not yet simulated.
+        Actual competition results before the selected date are used. Each club's J-Ratings Elo at that date is loaded from its rating history unless the user overrides it. Remaining league fixtures are then simulated with Elo updating after every match. Forced results are applied exactly. If home advantage is enabled, the selected Elo bonus affects match probability only. Equal-points ties are currently broken randomly because exact future scorelines are not yet simulated.
       </p>
     </section>
   </main>
 
 <script>
 (() => {
-  const TOURNAMENT_URL = '../data/simulations/premier-league/2024-25.json';
+  const SIMULATION_BASE_URL = '../data/simulations/';
   const HISTORY_BASE_URL = '../data/history/';
 
+  const competitionEl = document.getElementById('competition');
+  const seasonEl = document.getElementById('season');
   const cutoffEl = document.getElementById('cutoff');
   const simCountEl = document.getElementById('sim-count');
   const simulateBtn = document.getElementById('simulate-btn');
@@ -708,7 +722,7 @@
     let best = null;
 
     for (const row of hist){
-      if (row.date <= cutoff && Number.isFinite(Number(row.rating))){
+      if (row.date < cutoff && Number.isFinite(Number(row.rating))){
         best = Number(row.rating);
       } else if (row.date > cutoff){
         break;
@@ -1177,79 +1191,172 @@
     );
   }
 
-  async function loadData(){
-    try {
-      const response = await fetch(TOURNAMENT_URL);
+  async function loadSeasonManifest(){
+    const competition = competitionEl.value;
+    const url = `${SIMULATION_BASE_URL}${competition}/seasons.json`;
 
-      if (!response.ok){
-        throw new Error(`Could not load ${TOURNAMENT_URL}`);
+    const response = await fetch(url);
+
+    if (!response.ok){
+      throw new Error(`Could not load ${url}`);
+    }
+
+    const seasons = await response.json();
+
+    seasonEl.innerHTML = '';
+
+    for (const season of seasons){
+      const opt = document.createElement('option');
+      opt.value = season.id;
+      opt.textContent = season.label || season.id;
+
+      if (season.id === '2024-25'){
+        opt.selected = true;
       }
 
-      tournament = await response.json();
+      seasonEl.appendChild(opt);
+    }
 
-      tournament.matches.sort((a, b) =>
-        a.date.localeCompare(b.date) ||
-        a.home.localeCompare(b.home) ||
-        a.away.localeCompare(b.away)
+    if (!seasonEl.value && seasonEl.options.length){
+      seasonEl.selectedIndex = 0;
+    }
+  }
+
+  async function loadSelectedTournament(){
+    const competition = competitionEl.value;
+    const season = seasonEl.value;
+
+    if (!competition || !season){
+      throw new Error('Choose a competition and season.');
+    }
+
+    const url =
+      `${SIMULATION_BASE_URL}${competition}/${encodeURIComponent(season)}.json`;
+
+    const response = await fetch(url);
+
+    if (!response.ok){
+      throw new Error(`Could not load ${url}`);
+    }
+
+    tournament = await response.json();
+
+    tournament.matches.sort((a, b) =>
+      a.date.localeCompare(b.date) ||
+      a.home.localeCompare(b.home) ||
+      a.away.localeCompare(b.away)
+    );
+
+    teamHistories = new Map();
+
+    const historyJobs = tournament.teams.map(async team => {
+      const historyUrl =
+        `${HISTORY_BASE_URL}${encodeURIComponent(team.id)}.json`;
+
+      const r = await fetch(historyUrl);
+
+      if (!r.ok){
+        throw new Error(`Could not load ${historyUrl}`);
+      }
+
+      const hist = await r.json();
+
+      hist.sort((a, b) =>
+        a.date.localeCompare(b.date)
       );
 
-      const historyJobs = tournament.teams.map(async team => {
-        const url =
-          `${HISTORY_BASE_URL}${encodeURIComponent(team.id)}.json`;
+      teamHistories.set(
+        team.id,
+        hist
+      );
+    });
 
-        const r = await fetch(url);
+    await Promise.all(historyJobs);
 
-        if (!r.ok){
-          throw new Error(`Could not load ${url}`);
-        }
+    forcedResults.clear();
+    eloOverrides.clear();
 
-        const hist = await r.json();
+    forceTeamEl.value = '';
+    eloTeamEl.value = '';
+    eloValueEl.value = '';
 
-        hist.sort((a, b) =>
-          a.date.localeCompare(b.date)
-        );
+    populateTeamOptions();
+    renderForcedList();
+    renderEloList();
 
-        teamHistories.set(
-          team.id,
-          hist
-        );
-      });
+    const minDate =
+      tournament.summary?.firstDate ||
+      tournament.matches[0].date;
 
-      await Promise.all(historyJobs);
+    const maxDate =
+      tournament.summary?.lastDate ||
+      tournament.matches[
+        tournament.matches.length - 1
+      ].date;
 
-      const minDate = tournament.matches[0].date;
-      const maxDate =
-        tournament.matches[
-          tournament.matches.length - 1
-        ].date;
+    cutoffEl.min = minDate;
+    cutoffEl.max = maxDate;
+    cutoffEl.value = minDate;
 
-      cutoffEl.min = minDate;
-      cutoffEl.max = maxDate;
+    renderFixtureOptions(cutoffEl.value);
 
-      cutoffEl.value = minDate;
+    const input =
+      buildSimulationInput(cutoffEl.value);
 
-      populateTeamOptions();
-      renderFixtureOptions(cutoffEl.value);
-      renderForcedList();
-      renderEloList();
+    renderCurrentState(input);
 
-      const input =
-        buildSimulationInput(cutoffEl.value);
+    statusEl.textContent =
+      `${tournament.name} ${String(tournament.season).replace('-', '/')} ready.`;
 
-      renderCurrentState(input);
+    statusEl.classList.remove('error');
+    simulateBtn.disabled = false;
+  }
 
-      statusEl.textContent = 'Ready.';
-      simulateBtn.disabled = false;
+  async function loadData(){
+    try {
+      simulateBtn.disabled = true;
+      statusEl.textContent = 'Loading seasons…';
+
+      await loadSeasonManifest();
+      await loadSelectedTournament();
 
     } catch (err){
       console.error(err);
 
-      statusEl.textContent =
-        err.message;
-
+      statusEl.textContent = err.message;
       statusEl.classList.add('error');
+      simulateBtn.disabled = true;
     }
   }
+
+  competitionEl.addEventListener('change', async () => {
+    try {
+      simulateBtn.disabled = true;
+      statusEl.textContent = 'Loading seasons…';
+
+      await loadSeasonManifest();
+      await loadSelectedTournament();
+
+    } catch (err){
+      console.error(err);
+      statusEl.textContent = err.message;
+      statusEl.classList.add('error');
+    }
+  });
+
+  seasonEl.addEventListener('change', async () => {
+    try {
+      simulateBtn.disabled = true;
+      statusEl.textContent = 'Loading season…';
+
+      await loadSelectedTournament();
+
+    } catch (err){
+      console.error(err);
+      statusEl.textContent = err.message;
+      statusEl.classList.add('error');
+    }
+  });
 
   cutoffEl.addEventListener('change', () => {
     if (!tournament) return;
