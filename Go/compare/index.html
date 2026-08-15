@@ -232,6 +232,19 @@
     .suggest-item.is-active{
       background:rgba(255,255,255,.08);
     }
+  
+    @media (min-width:701px){
+      #chart{
+        height:560px;
+      }
+    }
+
+    @media (max-width:700px){
+      #chart{
+        height:460px;
+      }
+    }
+
   </style>
 </head>
 
@@ -585,6 +598,16 @@ window.addEventListener('DOMContentLoaded', () => {
     defaultRange: '2020',
     getItems: () => comparedPlayers
   });
+
+  const originalRender = compareChart.render.bind(compareChart);
+  compareChart.render = items => {
+    originalRender(items);
+    requestAnimationFrame(() => {
+      Plotly.relayout('chart', {
+        'legend.font.size': 16
+      });
+    });
+  };
 
   document.getElementById('add').addEventListener('click', makeRow);
   document.getElementById('clear').addEventListener('click', clearAll);
