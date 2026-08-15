@@ -18,147 +18,197 @@
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
   <style>
-    .controls {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border, #444);
+
+    .controls{
+      width:min(900px, 92%);
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      padding:28px 24px 24px;
+      border-bottom:1px solid var(--border, #444);
     }
 
-    .row {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      width: 100%;
+    #rows{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      width:100%;
     }
 
-    .row input[type="text"] {
-      flex: 1;
-      min-width: 220px;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid var(--border, #444);
-      background: transparent;
-      color: inherit;
+    #rows .row{
+      max-width:760px;
+      margin:0 auto;
     }
 
-    .btn {
-      background: transparent;
-      border: 1px solid var(--border, #444);
-      color: inherit;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      width:100%;
     }
 
-    .btn:hover { background: rgba(255,255,255,0.05); }
-
-    .muted-note {
-      opacity: .8;
-      font-size: .9rem;
+    .row input[type="text"]{
+      flex:1;
+      min-width:220px;
+      padding:13px 14px;
+      border-radius:9px;
+      border:1px solid var(--border, #444);
+      background:#0f1623;
+      color:var(--text, inherit);
+      font-size:1.05rem;
     }
 
-    .toolbar {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      flex-wrap: wrap;
+    .btn{
+      background:#0f1623;
+      border:1px solid var(--border, #444);
+      color:var(--text, inherit);
+      padding:11px 16px;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:1.05rem;
     }
 
-    .chart-toolbar-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .btn:hover{ background:rgba(255,255,255,.05); }
+
+    .compare-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
     }
 
-    .chart-toolbar-top {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .create-row{
+      display:flex;
+      justify-content:center;
     }
 
-    .chart-toolbar-top label {
-      margin-right: 6px;
-      font-size: 1.05rem;
+    .create-btn{
+      min-width:150px;
+      font-weight:700;
     }
 
-    .range-buttons {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
+    .compare-view{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      padding-top:2px;
     }
 
-    .range-btn {
-      padding: 8px 10px;
-      border: 1px solid #2b2f36;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.03);
-      color: inherit;
-      cursor: pointer;
-      font-size: 0.95rem;
+    .compare-view label{ font-size:1.05rem; }
+
+    .compare-view select{
+      font-size:1.05rem;
+      padding:10px 12px;
     }
 
-    .range-btn:hover { opacity: 0.92; }
-
-    .range-btn.is-active {
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(200,200,200,0.55);
-      font-weight: 700;
+    .range-buttons{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      flex-wrap:wrap;
     }
 
-    .suggest {
-      position: relative;
-      flex: 1;
+    .range-buttons button{
+      font-size:1rem;
+      padding:9px 12px;
     }
 
-    .suggest-list {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 100%;
-      max-height: 220px;
-      overflow: auto;
-      margin-top: 4px;
-      border: 1px solid var(--border, #444);
-      background: inherit;
-      border-radius: 6px;
-      display: none;
-      z-index: 20;
+    .suggest{
+      position:relative;
+      flex:1;
     }
 
-    .suggest-item {
-      padding: 8px 10px;
-      cursor: pointer;
+    .suggest-list{
+      position:absolute;
+      left:0;
+      right:0;
+      top:100%;
+      max-height:220px;
+      overflow:auto;
+      margin-top:4px;
+      border:1px solid var(--border, #444);
+      background:#0f1623;
+      border-radius:6px;
+      display:none;
+      z-index:20;
     }
 
-    .suggest-item:hover {
-      background: rgba(255,255,255,.05);
+    .suggest-item{
+      padding:8px 10px;
+      cursor:pointer;
     }
 
-    #chart { height: 520px; }
+    .suggest-item:hover,
+    .suggest-item.is-active{
+      background:rgba(255,255,255,.08);
+    }
 
-    @media (max-width: 600px) {
-      #chart { height: 420px; }
+    #chart{
+      width:min(1100px, 92%);
+      margin:0 auto;
+      height:560px;
+    }
 
-      .toolbar {
-        flex-direction: column;
+    @media (max-width:700px){
+      .controls{
+        width:100%;
+        padding:18px 14px 20px;
+        gap:16px;
       }
 
-      .row {
-        flex-direction: column;
-        align-items: stretch;
+      #rows .row{
+        max-width:none;
+        margin:0;
       }
 
-      .suggest {
-        width: 100%;
+      .row{
+        gap:8px;
+        align-items:stretch;
       }
 
-      .row input[type="text"] {
-        min-width: 0;
-        width: 100%;
+      .row input[type="text"]{
+        min-width:0;
+        padding:10px 12px;
+        font-size:1rem;
+      }
+
+      .row .suggest{ min-width:0; }
+      .row .btn{ flex:0 0 auto; }
+
+      .btn{
+        padding:9px 12px;
+        font-size:1rem;
+      }
+
+      .compare-actions,
+      .create-row{
+        justify-content:center;
+      }
+
+      .create-btn{ min-width:140px; }
+
+      .compare-view{
+        justify-content:flex-start;
+      }
+
+      .range-buttons{
+        justify-content:flex-start;
+      }
+
+      .range-buttons button{
+        padding:8px 10px;
+        font-size:.95rem;
+      }
+
+      #chart{
+        width:100%;
+        height:460px;
       }
     }
+
   </style>
 </head>
 
@@ -183,40 +233,36 @@
 
 <main class="wrap">
   <section class="panel">
-    <h2 style="margin:0; padding:16px 18px; border-bottom:1px solid var(--border, #444)">Compare teams</h2>
+    <h2>Compare</h2>
 
     <div class="controls">
-      <div class="toolbar">
-        <div id="rows" style="flex:1"></div>
+      <div id="rows"></div>
 
-        <div class="chart-toolbar-stack">
-          <div class="chart-toolbar-top">
-            <label for="agg">View:</label>
-            <select id="agg">
+      <div class="compare-actions">
+        <button id="add" class="btn" type="button">Add team</button>
+        <button id="clear" class="btn" type="button">Clear</button>
+      </div>
+
+      <div class="create-row">
+        <button id="create" class="btn create-btn" type="button">Create</button>
+      </div>
+
+      <div class="compare-view">
+        <label for="agg">View:</label>
+        <select id="agg">
               <option value="daily">Daily</option>
               <option value="monthly" selected>Monthly</option>
               <option value="yearly">Yearly</option>
             </select>
-          </div>
-
-          <div class="range-buttons" role="group" aria-label="Time range">
+        <div class="range-buttons">
             <button type="button" class="range-btn is-active" data-since="">All</button>
             <button type="button" class="range-btn" data-since="2000">Since 2000</button>
             <button type="button" class="range-btn" data-since="2020">Since 2020</button>
           </div>
-        </div>
       </div>
-
-      <div style="display:flex; gap:8px; flex-wrap:wrap">
-        <button id="add" class="btn" type="button">Add team</button>
-        <button id="create" class="btn" type="button">Create</button>
-        <button id="clear" class="btn" type="button">Clear</button>
-      </div>
-
-      <div class="muted-note">Up to 15 teams. Start typing a name, pick a suggestion, then Create.</div>
     </div>
 
-    <div style="padding:16px">
+    <div style="padding:24px 16px 28px">
       <div id="chart">Select teams, then Create.</div>
     </div>
   </section>
@@ -468,82 +514,129 @@
   }
 
   function attachAutocomplete(input) {
-    const wrap = document.createElement('div');
-    wrap.className = 'suggest';
-    input.parentNode.insertBefore(wrap, input);
-    wrap.appendChild(input);
+  const wrap = document.createElement('div');
+  wrap.className = 'suggest';
 
-    const list = document.createElement('div');
-    list.className = 'suggest-list';
-    wrap.appendChild(list);
+  input.parentNode.insertBefore(wrap, input);
+  wrap.appendChild(input);
 
-    function escapeHtml(value) {
-      return String(value)
-        .replace(/&/g, '&amp;')
-        .replace(/"/g, '&quot;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-    }
+  const list = document.createElement('div');
+  list.className = 'suggest-list';
+  wrap.appendChild(list);
 
-    function render(items) {
-      if (!items.length) {
-        list.style.display = 'none';
-        list.innerHTML = '';
-        return;
-      }
+  let activeIndex = -1;
 
-      list.innerHTML = items
-        .map(n => `<div class="suggest-item" data-name="${escapeHtml(n)}">${escapeHtml(n)}</div>`)
-        .join('');
-
-      list.style.display = 'block';
-    }
-
-    input.addEventListener('input', () => {
-      const q = input.value.trim().toLowerCase();
-
-      if (!q) {
-        render([]);
-        return;
-      }
-
-      const names = state.teams.map(t => t.name);
-      const starts = names.filter(n => n.toLowerCase().startsWith(q));
-      const contains = names.filter(n => !n.toLowerCase().startsWith(q) && n.toLowerCase().includes(q));
-
-      render(starts.concat(contains).slice(0, 12));
-    });
-
-    list.addEventListener('mousedown', e => {
-      const item = e.target.closest('.suggest-item');
-      if (!item) return;
-
-      input.value = item.dataset.name;
-      list.style.display = 'none';
-    });
-
-    input.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        const first = list.querySelector('.suggest-item');
-
-        if (first) {
-          input.value = first.dataset.name;
-          list.style.display = 'none';
-        }
-      }
-
-      if (e.key === 'Escape') {
-        list.style.display = 'none';
-      }
-    });
-
-    input.addEventListener('blur', () => {
-      setTimeout(() => {
-        list.style.display = 'none';
-      }, 120);
-    });
+  function getItems() {
+    return Array.from(list.querySelectorAll('.suggest-item'));
   }
 
+  function setActive(index) {
+    const items = getItems();
+
+    if (!items.length) {
+      activeIndex = -1;
+      return;
+    }
+
+    activeIndex = Math.max(0, Math.min(index, items.length - 1));
+
+    items.forEach((item, i) => {
+      item.classList.toggle('is-active', i === activeIndex);
+    });
+
+    items[activeIndex].scrollIntoView({ block: 'nearest' });
+  }
+
+  function chooseItem(item) {
+    if (!item) return;
+
+    input.value = item.dataset.name;
+    list.style.display = 'none';
+    activeIndex = -1;
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function render(items) {
+    activeIndex = -1;
+
+    if (!items.length) {
+      list.style.display = 'none';
+      list.innerHTML = '';
+      return;
+    }
+
+    list.innerHTML = items
+      .map(n => `<div class="suggest-item" data-name="${escapeHtml(n)}">${escapeHtml(n)}</div>`)
+      .join('');
+
+    list.style.display = 'block';
+  }
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+
+    if (!q) {
+      render([]);
+      return;
+    }
+
+    const names = state.teams.map(t => t.name);
+    const starts = names.filter(n => n.toLowerCase().startsWith(q));
+    const contains = names.filter(n => !n.toLowerCase().startsWith(q) && n.toLowerCase().includes(q));
+
+    render(starts.concat(contains).slice(0, 12));
+  });
+
+  list.addEventListener('mousedown', e => {
+    const item = e.target.closest('.suggest-item');
+    if (!item) return;
+    chooseItem(item);
+  });
+
+  input.addEventListener('keydown', e => {
+    const items = getItems();
+    const listOpen = list.style.display !== 'none' && items.length > 0;
+
+    if (e.key === 'ArrowDown' && listOpen) {
+      e.preventDefault();
+      setActive(activeIndex < items.length - 1 ? activeIndex + 1 : 0);
+      return;
+    }
+
+    if (e.key === 'ArrowUp' && listOpen) {
+      e.preventDefault();
+      setActive(activeIndex > 0 ? activeIndex - 1 : items.length - 1);
+      return;
+    }
+
+    if (e.key === 'Enter') {
+      if (listOpen) {
+        e.preventDefault();
+        chooseItem(items[activeIndex >= 0 ? activeIndex : 0]);
+      }
+      return;
+    }
+
+    if (e.key === 'Escape') {
+      list.style.display = 'none';
+      activeIndex = -1;
+    }
+  });
+
+  input.addEventListener('blur', () => {
+    setTimeout(() => {
+      list.style.display = 'none';
+      activeIndex = -1;
+    }, 120);
+  });
+}
   function makeRow() {
     if (state.inputs.length >= MAX_TEAMS) return;
 
@@ -686,7 +779,7 @@
     const cs = getComputedStyle(document.body);
 
     const layout = {
-      margin: { l: 60, r: 300, t: 10, b: 45 },
+      margin: { l: 60, r: 20, t: 55, b: 45 },
 
       xaxis: {
         type: 'date',
@@ -705,16 +798,13 @@
       },
 
       legend: {
-        orientation: 'v',
-        x: 1.02,
-        xanchor: 'left',
-        y: 1,
-        yanchor: 'top',
+        orientation: 'h',
+        x: 0,
+        y: 1.12,
         font: {
-          size: 17,
+          size: 18,
           color: cs.color
         },
-        itemwidth: 45,
         traceorder: 'normal'
       },
 
