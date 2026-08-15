@@ -71,7 +71,9 @@
       font:inherit;
     }
 
-    #simulate-btn{
+    #simulate-btn,
+    #apply-force,
+    #clear-forces{
       min-width:150px;
       padding:12px 18px;
       border-radius:9px;
@@ -83,13 +85,51 @@
       cursor:pointer;
     }
 
-    #simulate-btn:hover{
+    #simulate-btn:hover,
+    #apply-force:hover,
+    #clear-forces:hover{
       background:rgba(255,255,255,.06);
     }
 
     #simulate-btn:disabled{
       opacity:.55;
       cursor:not-allowed;
+    }
+
+    #apply-force,
+    #clear-forces{
+      padding:12px 18px;
+      border-radius:9px;
+      border:1px solid var(--border,#444);
+      background:#0f1623;
+      color:inherit;
+      font:inherit;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .forced-row{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      padding:9px 0;
+      border-bottom:1px solid rgba(128,128,128,.14);
+    }
+
+    .forced-row:last-child{border-bottom:0}
+
+    .forced-result-label{
+      font-weight:800;
+    }
+
+    .remove-force{
+      border:1px solid var(--border,#444);
+      background:#0f1623;
+      color:inherit;
+      border-radius:7px;
+      padding:6px 10px;
+      cursor:pointer;
     }
 
     .sim-status{
@@ -252,11 +292,11 @@
   <main class="wrap">
     <section class="panel sim-panel">
       <h2 class="sim-title">Premier League Simulator</h2>
-      <p class="sim-subtitle">Choose a historical date and simulate the rest of the 2024–25 season.</p>
+      <p class="sim-subtitle">Choose a date, set any what-if results, and simulate the rest of the 2024–25 season.</p>
 
       <div class="sim-controls">
         <div class="sim-field">
-          <label for="cutoff">Simulation starts after</label>
+          <label for="cutoff">Simulate from</label>
           <input id="cutoff" type="date">
         </div>
 
@@ -270,6 +310,33 @@
         </div>
 
         <button id="simulate-btn" type="button" disabled>Simulate</button>
+      </div>
+
+      <div class="results-card" style="margin-top:18px;">
+        <div class="results-title">What-if results</div>
+        <div style="padding:16px 18px;">
+          <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:end;">
+            <div class="sim-field" style="flex:1;min-width:280px;">
+              <label for="fixture-select">Remaining fixture</label>
+              <select id="fixture-select"></select>
+            </div>
+
+            <div class="sim-field" style="min-width:180px;">
+              <label for="forced-result">Force result</label>
+              <select id="forced-result">
+                <option value="">No forced result</option>
+                <option value="home">Home win</option>
+                <option value="draw">Draw</option>
+                <option value="away">Away win</option>
+              </select>
+            </div>
+
+            <button id="apply-force" type="button">Apply</button>
+            <button id="clear-forces" type="button">Clear all</button>
+          </div>
+
+          <div id="forced-list" style="margin-top:14px;"></div>
+        </div>
       </div>
 
       <div id="status" class="sim-status">Loading tournament data…</div>
@@ -323,7 +390,7 @@
       </div>
 
       <p class="sim-note">
-        Actual Premier League results are used up to the selected date. Each club's J-Ratings Elo at that date is loaded from its rating history, so information from other competitions is retained. The remaining league fixtures are simulated with Elo updating after every simulated match. Equal-points ties are currently broken randomly because exact future scorelines are not yet simulated.
+        Actual Premier League results before the selected date are used. Each club's J-Ratings Elo at that date is loaded from its rating history, so information from other competitions is retained. The remaining league fixtures are simulated with Elo updating after every simulated match. Equal-points ties are currently broken randomly because exact future scorelines are not yet simulated.
       </p>
     </section>
   </main>
@@ -347,10 +414,16 @@
   const runtimeEl = document.getElementById('runtime');
 
   const resultsBody = document.getElementById('results-body');
+  const fixtureSelectEl = document.getElementById('fixture-select');
+  const forcedResultEl = document.getElementById('forced-result');
+  const applyForceBtn = document.getElementById('apply-force');
+  const clearForcesBtn = document.getElementById('clear-forces');
+  const forcedListEl = document.getElementById('forced-list');
 
   let tournament = null;
   let teamHistories = new Map();
   let worker = null;
+  const forcedResults = new Map();
 
   function fmtPct(x){
     if (!Number.isFinite(x)) return '—';
@@ -375,7 +448,7 @@
     let played = 0;
 
     for (const m of tournament.matches){
-      if (m.date > cutoff) continue;
+      if (m.date >= cutoff) continue;
 
       const h = idToIndex.get(m.home);
       const a = idToIndex.get(m.away);
@@ -471,12 +544,16 @@
 
     const homeIdx = [];
     const awayIdx = [];
+    const forced = [];
 
     for (const m of tournament.matches){
-      if (m.date <= cutoff) continue;
+      if (m.date < cutoff) continue;
 
       homeIdx.push(idToIndex.get(m.home));
       awayIdx.push(idToIndex.get(m.away));
+
+      const key = `${m.date}|${m.home}|${m.away}`;
+      forced.push(forcedResults.get(key) || '');
     }
 
     return {
@@ -485,10 +562,83 @@
       basePoints:Array.from(basePoints),
       homeIdx,
       awayIdx,
+      forced,
       currentTable:table.stats,
       played:table.played,
       remaining:homeIdx.length
     };
+  }
+
+  function fixtureKey(m){
+    return `${m.date}|${m.home}|${m.away}`;
+  }
+
+  function remainingFixturesForDate(cutoff){
+    return tournament.matches.filter(m => m.date >= cutoff);
+  }
+
+  function renderFixtureOptions(cutoff){
+    const remaining = remainingFixturesForDate(cutoff);
+    fixtureSelectEl.innerHTML = '';
+
+    for (const m of remaining){
+      const homeName = tournament.teams.find(t => t.id === m.home)?.name || m.home;
+      const awayName = tournament.teams.find(t => t.id === m.away)?.name || m.away;
+
+      const opt = document.createElement('option');
+      opt.value = fixtureKey(m);
+      opt.textContent = `${m.date} — ${homeName} v ${awayName}`;
+      fixtureSelectEl.appendChild(opt);
+    }
+
+    if (!remaining.length){
+      const opt = document.createElement('option');
+      opt.textContent = 'No remaining fixtures';
+      opt.value = '';
+      fixtureSelectEl.appendChild(opt);
+    }
+  }
+
+  function renderForcedList(){
+    forcedListEl.innerHTML = '';
+
+    if (!forcedResults.size){
+      forcedListEl.innerHTML = '<span style="opacity:.7">No forced results.</span>';
+      return;
+    }
+
+    const teamNameById = new Map(
+      tournament.teams.map(t => [t.id, t.name])
+    );
+
+    for (const [key, result] of forcedResults.entries()){
+      const [date, homeId, awayId] = key.split('|');
+      const home = teamNameById.get(homeId) || homeId;
+      const away = teamNameById.get(awayId) || awayId;
+
+      const label =
+        result === 'home' ? `${home} win` :
+        result === 'draw' ? 'Draw' :
+        `${away} win`;
+
+      const row = document.createElement('div');
+      row.className = 'forced-row';
+      row.innerHTML = `
+        <div>
+          <div>${date} — ${home} v ${away}</div>
+          <div class="forced-result-label">${label}</div>
+        </div>
+        <button type="button" class="remove-force" data-key="${key}">Remove</button>
+      `;
+      forcedListEl.appendChild(row);
+    }
+
+    forcedListEl.querySelectorAll('.remove-force').forEach(btn => {
+      btn.addEventListener('click', () => {
+        forcedResults.delete(btn.dataset.key);
+        renderForcedList();
+      });
+    });
   }
 
   function renderCurrentState(input){
@@ -565,6 +715,7 @@
           basePoints,
           homeIdx,
           awayIdx,
+          forced,
           simulations,
           kFactor
         } = event.data;
@@ -612,12 +763,29 @@
               1 - drawProb
             );
 
+            const forcedResult = forced[i];
             const u = Math.random();
 
             let homeScore;
             let awayScore;
 
-            if (u < homeWinProb){
+            if (forcedResult === 'home'){
+              homeScore = 1;
+              awayScore = 0;
+              points[h] += 3;
+
+            } else if (forcedResult === 'draw'){
+              homeScore = 0.5;
+              awayScore = 0.5;
+              points[h] += 1;
+              points[a] += 1;
+
+            } else if (forcedResult === 'away'){
+              homeScore = 0;
+              awayScore = 1;
+              points[a] += 3;
+
+            } else if (u < homeWinProb){
               homeScore = 1;
               awayScore = 0;
               points[h] += 3;
@@ -774,7 +942,10 @@
       cutoffEl.min = minDate;
       cutoffEl.max = maxDate;
 
-      cutoffEl.value = '2025-01-01';
+      cutoffEl.value = minDate;
+
+      renderFixtureOptions(cutoffEl.value);
+      renderForcedList();
 
       const input =
         buildSimulationInput(cutoffEl.value);
@@ -798,6 +969,10 @@
     if (!tournament) return;
 
     try {
+      forcedResults.clear();
+      renderFixtureOptions(cutoffEl.value);
+      renderForcedList();
+
       const input =
         buildSimulationInput(cutoffEl.value);
 
@@ -810,6 +985,29 @@
       statusEl.textContent = err.message;
       statusEl.classList.add('error');
     }
+  });
+
+  applyForceBtn.addEventListener('click', () => {
+    const key = fixtureSelectEl.value;
+    const result = forcedResultEl.value;
+
+    if (!key || !result) return;
+
+    forcedResults.set(key, result);
+    renderForcedList();
+
+    const input = buildSimulationInput(cutoffEl.value);
+    renderCurrentState(input);
+    statusEl.textContent = 'What-if result applied. Ready to simulate.';
+  });
+
+  clearForcesBtn.addEventListener('click', () => {
+    forcedResults.clear();
+    renderForcedList();
+
+    const input = buildSimulationInput(cutoffEl.value);
+    renderCurrentState(input);
+    statusEl.textContent = 'Forced results cleared.';
   });
 
   simulateBtn.addEventListener('click', () => {
@@ -888,6 +1086,7 @@
         basePoints:input.basePoints,
         homeIdx:input.homeIdx,
         awayIdx:input.awayIdx,
+        forced:input.forced,
         simulations,
         kFactor:20
       });
