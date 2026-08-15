@@ -266,6 +266,7 @@
   <script>
     const TEAMS_URL = '../data/teams.json';
     const HIST_URL = id => `../data/history/${encodeURIComponent(id)}.json`;
+    const COLOURS_URL = '../team-colours.json';
     const MAX_TEAMS = 15;
     const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
@@ -274,6 +275,8 @@
       inputs: [],
       loaded: []
     };
+
+    let TEAM_COLOURS = {};
 
     function normalise(series, dedupeByDay = false) {
       const s = series
@@ -504,6 +507,70 @@
       state.teams = await res.json();
     }
 
+
+    async function loadColours() {
+      try {
+        const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
+        TEAM_COLOURS = res.ok ? await res.json() : {};
+      } catch {
+        TEAM_COLOURS = {};
+      }
+    }
+
+    function hexToRgb(hex) {
+      const clean = String(hex || '').trim();
+      const match = clean.match(/^#([0-9a-f]{6})$/i);
+      if (!match) return null;
+
+      const value = match[1];
+      return {
+        r: parseInt(value.slice(0, 2), 16),
+        g: parseInt(value.slice(2, 4), 16),
+        b: parseInt(value.slice(4, 6), 16)
+      };
+    }
+
+    function rgbToHex(r, g, b) {
+      return '#' + [r, g, b]
+        .map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0'))
+        .join('');
+    }
+
+    function relativeLuminance({ r, g, b }) {
+      const toLinear = c => {
+        const s = c / 255;
+        return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+      };
+
+      const R = toLinear(r);
+      const G = toLinear(g);
+      const B = toLinear(b);
+
+      return 0.2126 * R + 0.7152 * G + 0.0722 * B;
+    }
+
+    function mixWithWhite(rgb, amount) {
+      return {
+        r: rgb.r + (255 - rgb.r) * amount,
+        g: rgb.g + (255 - rgb.g) * amount,
+        b: rgb.b + (255 - rgb.b) * amount
+      };
+    }
+
+    function getDisplayColour(teamName) {
+      const fallback = '#2F80ED';
+      const raw = TEAM_COLOURS[teamName] || fallback;
+      const rgb = hexToRgb(raw);
+
+      if (!rgb) return fallback;
+
+      const lum = relativeLuminance(rgb);
+      if (lum >= 0.05) return raw;
+
+      const lifted = mixWithWhite(rgb, 0.45);
+      return rgbToHex(lifted.r, lifted.g, lifted.b);
+    }
+
     function majorGridShapes(ymin, ymax) {
       const shapes = [];
 
@@ -549,9 +616,12 @@
           x: xs,
           y: ys,
           customdata: tiers,
-          mode: (mode === 'daily') ? 'lines' : 'lines+markers',
-          line: { width: 3, shape: 'linear' },
-          marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
+          mode: 'lines',
+          line: {
+            width: 3,
+            shape: 'linear',
+            color: getDisplayColour(s.name)
+          },
           hovertemplate: '%{x}<br>%{y:.0f} Elo<br>Tier %{customdata}<extra></extra>',
           connectgaps: true
         };
@@ -639,7 +709,7 @@
       document.getElementById('create').addEventListener('click', createChart);
       document.getElementById('agg').addEventListener('change', drawChart);
 
-      loadTeams()
+      Promise.all([loadTeams(), loadColours()])
         .then(() => {
           makeRow();
         })

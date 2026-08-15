@@ -478,6 +478,14 @@ function attachAutocomplete(input) {
     activeIndex = -1;
   }
 
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
   function render(items) {
     activeIndex = -1;
 
@@ -488,7 +496,7 @@ function attachAutocomplete(input) {
     }
 
     list.innerHTML = items
-      .map(n => `<div class="suggest-item" data-name="${String(n).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}">${String(n).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`)
+      .map(n => `<div class="suggest-item" data-name="${escapeHtml(n)}">${escapeHtml(n)}</div>`)
       .join('');
 
     list.style.display = 'block';
@@ -552,7 +560,6 @@ function attachAutocomplete(input) {
     }, 120);
   });
 }
-
 function makeRow() {
   if (state.inputs.length >= MAX_TEAMS) return;
 

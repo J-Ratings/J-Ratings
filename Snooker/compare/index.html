@@ -369,6 +369,14 @@
     activeIndex = -1;
   }
 
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
   function render(items) {
     activeIndex = -1;
 
@@ -379,7 +387,7 @@
     }
 
     list.innerHTML = items
-      .map(n => `<div class="suggest-item" data-name="${String(n).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}">${String(n).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`)
+      .map(n => `<div class="suggest-item" data-name="${escapeHtml(n)}">${escapeHtml(n)}</div>`)
       .join('');
 
     list.style.display = 'block';
@@ -443,7 +451,6 @@
     }, 120);
   });
 }
-
   function makeRow() {
     if (state.inputs.length >= MAX_PLAYERS) return;
 
@@ -532,7 +539,7 @@
         x: data.map(p => p.x),
         y: data.map(p => p.y),
         mode: (mode === 'daily') ? 'lines' : 'lines+markers',
-        line: { width: 3, shape: 'linear' },
+        line: { width: 2, shape: 'linear' },
         marker: (mode === 'daily') ? { size: 0 } : { size: 4 },
         hovertemplate: '%{x}<br>%{y:.0f}<extra>' + s.name + '</extra>',
         connectgaps: true
