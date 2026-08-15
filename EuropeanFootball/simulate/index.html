@@ -119,6 +119,86 @@
 
     .forced-row:last-child{border-bottom:0}
 
+    .tool-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .tool-card{
+      border:1px solid var(--sim-line);
+      border-radius:10px;
+      padding:14px;
+      background:rgba(255,255,255,.015);
+    }
+
+    .tool-card h3{
+      margin:0 0 12px;
+      font-size:1rem;
+    }
+
+    .tool-card .sim-field{
+      min-width:0;
+      width:100%;
+      margin-bottom:10px;
+    }
+
+    .tool-card button{
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid var(--border,#444);
+      background:#0f1623;
+      color:inherit;
+      font:inherit;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .tool-card button:hover{
+      background:rgba(255,255,255,.06);
+    }
+
+    .checkbox-row{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      margin:8px 0 10px;
+    }
+
+    .checkbox-row input{
+      width:18px;
+      height:18px;
+    }
+
+    .applied-list{
+      margin-top:10px;
+      font-size:.92rem;
+    }
+
+    .applied-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:7px 0;
+      border-bottom:1px solid rgba(128,128,128,.12);
+    }
+
+    .applied-item:last-child{
+      border-bottom:0;
+    }
+
+    .remove-small{
+      border:1px solid var(--border,#444);
+      background:#0f1623;
+      color:inherit;
+      border-radius:7px;
+      padding:5px 9px;
+      cursor:pointer;
+    }
+
     .forced-result-label{
       font-weight:800;
     }
@@ -265,6 +345,10 @@
       .summary-grid{
         grid-template-columns:repeat(2,minmax(0,1fr));
       }
+
+      .tool-grid{
+        grid-template-columns:1fr;
+      }
     }
   </style>
 </head>
@@ -306,6 +390,7 @@
             <option value="500">500</option>
             <option value="2000">2,000</option>
             <option value="10000" selected>10,000</option>
+            <option value="100000">100,000</option>
           </select>
         </div>
 
@@ -313,29 +398,82 @@
       </div>
 
       <div class="results-card" style="margin-top:18px;">
-        <div class="results-title">What-if results</div>
+        <div class="results-title">What-if controls</div>
+
         <div style="padding:16px 18px;">
-          <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:end;">
-            <div class="sim-field" style="flex:1;min-width:280px;">
-              <label for="fixture-select">Remaining fixture</label>
-              <select id="fixture-select"></select>
+          <div class="tool-grid">
+
+            <div class="tool-card">
+              <h3>Force a result</h3>
+
+              <div class="sim-field">
+                <label for="force-team">Team</label>
+                <input id="force-team" type="search" list="team-options" placeholder="Type a team">
+              </div>
+
+              <div class="sim-field">
+                <label for="fixture-select">Remaining fixture</label>
+                <select id="fixture-select">
+                  <option value="">Select a team first</option>
+                </select>
+              </div>
+
+              <div class="sim-field">
+                <label for="forced-result">Force result</label>
+                <select id="forced-result">
+                  <option value="">No forced result</option>
+                  <option value="home">Home win</option>
+                  <option value="draw">Draw</option>
+                  <option value="away">Away win</option>
+                </select>
+              </div>
+
+              <button id="apply-force" type="button">Apply forced result</button>
+              <button id="clear-forces" type="button" style="margin-top:8px;">Clear forced results</button>
+
+              <div id="forced-list" class="applied-list"></div>
             </div>
 
-            <div class="sim-field" style="min-width:180px;">
-              <label for="forced-result">Force result</label>
-              <select id="forced-result">
-                <option value="">No forced result</option>
-                <option value="home">Home win</option>
-                <option value="draw">Draw</option>
-                <option value="away">Away win</option>
-              </select>
+            <div class="tool-card">
+              <h3>Override Elo</h3>
+
+              <div class="sim-field">
+                <label for="elo-team">Team</label>
+                <input id="elo-team" type="search" list="team-options" placeholder="Type a team">
+              </div>
+
+              <div class="sim-field">
+                <label for="elo-value">Override Elo</label>
+                <input id="elo-value" type="number" step="1" placeholder="e.g. 2900">
+              </div>
+
+              <button id="apply-elo" type="button">Apply Elo override</button>
+              <button id="clear-elos" type="button" style="margin-top:8px;">Clear Elo overrides</button>
+
+              <div id="elo-list" class="applied-list"></div>
             </div>
 
-            <button id="apply-force" type="button">Apply</button>
-            <button id="clear-forces" type="button">Clear all</button>
+            <div class="tool-card">
+              <h3>Home advantage</h3>
+
+              <label class="checkbox-row">
+                <input id="home-adv-enabled" type="checkbox">
+                <span>Account for home advantage</span>
+              </label>
+
+              <div class="sim-field">
+                <label for="home-adv-elo">Home Elo bonus</label>
+                <input id="home-adv-elo" type="number" value="50" min="0" step="1">
+              </div>
+
+              <div style="opacity:.72;font-size:.9rem;line-height:1.4;">
+                The bonus affects match probability only. It is not permanently added to the team's Elo.
+              </div>
+            </div>
+
           </div>
 
-          <div id="forced-list" style="margin-top:14px;"></div>
+          <datalist id="team-options"></datalist>
         </div>
       </div>
 
@@ -390,7 +528,7 @@
       </div>
 
       <p class="sim-note">
-        Actual Premier League results before the selected date are used. Each club's J-Ratings Elo at that date is loaded from its rating history, so information from other competitions is retained. The remaining league fixtures are simulated with Elo updating after every simulated match. Equal-points ties are currently broken randomly because exact future scorelines are not yet simulated.
+        Actual Premier League results before the selected date are used. Each club's J-Ratings Elo at that date is loaded from its rating history unless the user overrides it. Remaining league fixtures are then simulated with Elo updating after every match. Forced results are applied exactly. If home advantage is enabled, the selected Elo bonus affects match probability only. Equal-points ties are currently broken randomly because exact future scorelines are not yet simulated.
       </p>
     </section>
   </main>
@@ -414,16 +552,31 @@
   const runtimeEl = document.getElementById('runtime');
 
   const resultsBody = document.getElementById('results-body');
+
+  const teamOptionsEl = document.getElementById('team-options');
+
+  const forceTeamEl = document.getElementById('force-team');
   const fixtureSelectEl = document.getElementById('fixture-select');
   const forcedResultEl = document.getElementById('forced-result');
   const applyForceBtn = document.getElementById('apply-force');
   const clearForcesBtn = document.getElementById('clear-forces');
   const forcedListEl = document.getElementById('forced-list');
 
+  const eloTeamEl = document.getElementById('elo-team');
+  const eloValueEl = document.getElementById('elo-value');
+  const applyEloBtn = document.getElementById('apply-elo');
+  const clearElosBtn = document.getElementById('clear-elos');
+  const eloListEl = document.getElementById('elo-list');
+
+  const homeAdvEnabledEl = document.getElementById('home-adv-enabled');
+  const homeAdvEloEl = document.getElementById('home-adv-elo');
+
   let tournament = null;
   let teamHistories = new Map();
   let worker = null;
+
   const forcedResults = new Map();
+  const eloOverrides = new Map();
 
   function fmtPct(x){
     if (!Number.isFinite(x)) return '—';
@@ -533,7 +686,10 @@
     const ratings = new Float64Array(teams.length);
 
     ids.forEach((id, i) => {
-      const r = ratingAt(id, cutoff);
+      const override = eloOverrides.get(id);
+      const r = Number.isFinite(override)
+        ? override
+        : ratingAt(id, cutoff);
 
       if (!Number.isFinite(r)){
         throw new Error(`No rating history available for ${teams[i]} on ${cutoff}.`);
@@ -573,28 +729,62 @@
     return `${m.date}|${m.home}|${m.away}`;
   }
 
+  function teamByTypedName(value){
+    const q = String(value || '').trim().toLowerCase();
+    if (!q) return null;
+
+    return tournament.teams.find(
+      t => t.name.toLowerCase() === q
+    ) || null;
+  }
+
   function remainingFixturesForDate(cutoff){
     return tournament.matches.filter(m => m.date >= cutoff);
   }
 
+  function populateTeamOptions(){
+    teamOptionsEl.innerHTML = '';
+
+    for (const team of tournament.teams){
+      const opt = document.createElement('option');
+      opt.value = team.name;
+      teamOptionsEl.appendChild(opt);
+    }
+  }
+
   function renderFixtureOptions(cutoff){
-    const remaining = remainingFixturesForDate(cutoff);
+    const selectedTeam = teamByTypedName(forceTeamEl.value);
     fixtureSelectEl.innerHTML = '';
 
-    for (const m of remaining){
-      const homeName = tournament.teams.find(t => t.id === m.home)?.name || m.home;
-      const awayName = tournament.teams.find(t => t.id === m.away)?.name || m.away;
-
+    if (!selectedTeam){
       const opt = document.createElement('option');
-      opt.value = fixtureKey(m);
-      opt.textContent = `${m.date} — ${homeName} v ${awayName}`;
+      opt.value = '';
+      opt.textContent = 'Select a team first';
       fixtureSelectEl.appendChild(opt);
+      return;
     }
+
+    const remaining = remainingFixturesForDate(cutoff).filter(
+      m => m.home === selectedTeam.id || m.away === selectedTeam.id
+    );
 
     if (!remaining.length){
       const opt = document.createElement('option');
-      opt.textContent = 'No remaining fixtures';
       opt.value = '';
+      opt.textContent = 'No remaining fixtures for this team';
+      fixtureSelectEl.appendChild(opt);
+      return;
+    }
+
+    const teamNameById = new Map(
+      tournament.teams.map(t => [t.id, t.name])
+    );
+
+    for (const m of remaining){
+      const opt = document.createElement('option');
+      opt.value = fixtureKey(m);
+      opt.textContent =
+        `${m.date} — ${teamNameById.get(m.home)} v ${teamNameById.get(m.away)}`;
       fixtureSelectEl.appendChild(opt);
     }
   }
@@ -603,7 +793,8 @@
     forcedListEl.innerHTML = '';
 
     if (!forcedResults.size){
-      forcedListEl.innerHTML = '<span style="opacity:.7">No forced results.</span>';
+      forcedListEl.innerHTML =
+        '<span style="opacity:.7">No forced results.</span>';
       return;
     }
 
@@ -622,21 +813,55 @@
         `${away} win`;
 
       const row = document.createElement('div');
-      row.className = 'forced-row';
+      row.className = 'applied-item';
       row.innerHTML = `
         <div>
           <div>${date} — ${home} v ${away}</div>
           <div class="forced-result-label">${label}</div>
         </div>
-        <button type="button" class="remove-force" data-key="${key}">Remove</button>
+        <button type="button" class="remove-small" data-key="${key}">Remove</button>
       `;
       forcedListEl.appendChild(row);
     }
 
-    forcedListEl.querySelectorAll('.remove-force').forEach(btn => {
+    forcedListEl.querySelectorAll('.remove-small').forEach(btn => {
       btn.addEventListener('click', () => {
         forcedResults.delete(btn.dataset.key);
         renderForcedList();
+      });
+    });
+  }
+
+  function renderEloList(){
+    eloListEl.innerHTML = '';
+
+    if (!eloOverrides.size){
+      eloListEl.innerHTML =
+        '<span style="opacity:.7">No Elo overrides.</span>';
+      return;
+    }
+
+    const nameById = new Map(
+      tournament.teams.map(t => [t.id, t.name])
+    );
+
+    for (const [id, value] of eloOverrides.entries()){
+      const row = document.createElement('div');
+      row.className = 'applied-item';
+      row.innerHTML = `
+        <div><strong>${nameById.get(id) || id}</strong>: ${Math.round(value)}</div>
+        <button type="button" class="remove-small" data-id="${id}">Remove</button>
+      `;
+      eloListEl.appendChild(row);
+    }
+
+    eloListEl.querySelectorAll('.remove-small').forEach(btn => {
+      btn.addEventListener('click', () => {
+        eloOverrides.delete(btn.dataset.id);
+        renderEloList();
+
+        const input = buildSimulationInput(cutoffEl.value);
+        renderCurrentState(input);
       });
     });
   }
@@ -653,8 +878,11 @@
       const tr = document.createElement('tr');
       const elo = input.ratings[row.i];
 
+      const currentDisplay =
+        input.played === 0 ? '—' : row.position;
+
       tr.innerHTML = `
-        <td>${row.position}</td>
+        <td>${currentDisplay}</td>
         <td>${row.team}</td>
         <td>${row.points}</td>
         <td>${Math.round(elo)}</td>
@@ -688,8 +916,11 @@
     for (const row of rows){
       const tr = document.createElement('tr');
 
+      const currentDisplay =
+        input.played === 0 ? '—' : currentPos.get(row.team);
+
       tr.innerHTML = `
-        <td>${currentPos.get(row.team)}</td>
+        <td>${currentDisplay}</td>
         <td>${row.team}</td>
         <td>${currentPts.get(row.team)}</td>
         <td>${Math.round(row.startingElo)}</td>
@@ -717,7 +948,9 @@
           awayIdx,
           forced,
           simulations,
-          kFactor
+          kFactor,
+          homeAdvEnabled,
+          homeAdvElo
         } = event.data;
 
         const nTeams = teams.length;
@@ -746,10 +979,13 @@
             const homeElo = ratings[h];
             const awayElo = ratings[a];
 
-            const expectedHome =
-              1 / (1 + Math.pow(10, (awayElo - homeElo) / 400));
+            const effectiveHomeElo =
+              homeElo + (homeAdvEnabled ? homeAdvElo : 0);
 
-            const absGap = Math.abs(homeElo - awayElo);
+            const expectedHome =
+              1 / (1 + Math.pow(10, (awayElo - effectiveHomeElo) / 400));
+
+            const absGap = Math.abs(effectiveHomeElo - awayElo);
 
             const drawProb = clamp(
               0.302 - 0.00048 * absGap,
@@ -944,8 +1180,10 @@
 
       cutoffEl.value = minDate;
 
+      populateTeamOptions();
       renderFixtureOptions(cutoffEl.value);
       renderForcedList();
+      renderEloList();
 
       const input =
         buildSimulationInput(cutoffEl.value);
@@ -987,18 +1225,28 @@
     }
   });
 
+  forceTeamEl.addEventListener('input', () => {
+    renderFixtureOptions(cutoffEl.value);
+  });
+
   applyForceBtn.addEventListener('click', () => {
     const key = fixtureSelectEl.value;
     const result = forcedResultEl.value;
 
-    if (!key || !result) return;
+    if (!key || !result){
+      statusEl.textContent =
+        'Choose a team, fixture and forced result first.';
+      return;
+    }
 
     forcedResults.set(key, result);
     renderForcedList();
 
     const input = buildSimulationInput(cutoffEl.value);
     renderCurrentState(input);
-    statusEl.textContent = 'What-if result applied. Ready to simulate.';
+
+    statusEl.textContent =
+      'What-if result applied. Ready to simulate.';
   });
 
   clearForcesBtn.addEventListener('click', () => {
@@ -1007,7 +1255,40 @@
 
     const input = buildSimulationInput(cutoffEl.value);
     renderCurrentState(input);
-    statusEl.textContent = 'Forced results cleared.';
+
+    statusEl.textContent =
+      'Forced results cleared.';
+  });
+
+  applyEloBtn.addEventListener('click', () => {
+    const team = teamByTypedName(eloTeamEl.value);
+    const value = Number(eloValueEl.value);
+
+    if (!team || !Number.isFinite(value)){
+      statusEl.textContent =
+        'Choose a valid team and enter an Elo value.';
+      return;
+    }
+
+    eloOverrides.set(team.id, value);
+    renderEloList();
+
+    const input = buildSimulationInput(cutoffEl.value);
+    renderCurrentState(input);
+
+    statusEl.textContent =
+      `${team.name} Elo overridden to ${Math.round(value)}.`;
+  });
+
+  clearElosBtn.addEventListener('click', () => {
+    eloOverrides.clear();
+    renderEloList();
+
+    const input = buildSimulationInput(cutoffEl.value);
+    renderCurrentState(input);
+
+    statusEl.textContent =
+      'Elo overrides cleared.';
   });
 
   simulateBtn.addEventListener('click', () => {
@@ -1088,7 +1369,9 @@
         awayIdx:input.awayIdx,
         forced:input.forced,
         simulations,
-        kFactor:20
+        kFactor:20,
+        homeAdvEnabled:homeAdvEnabledEl.checked,
+        homeAdvElo:Number(homeAdvEloEl.value) || 0
       });
 
     } catch (err){
