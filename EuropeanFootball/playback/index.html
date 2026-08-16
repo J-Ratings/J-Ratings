@@ -1,0 +1,1112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>J-Ratings: European Football Playback</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    :root{
+      --pb-line:rgba(128,128,128,.22);
+      --pb-soft:rgba(255,255,255,.025);
+      --pb-muted:#7d8797;
+    }
+
+    main.wrap{
+      padding-top:24px;
+      padding-bottom:48px;
+    }
+
+    .playback-panel{
+      max-width:1180px;
+      margin:0 auto;
+      padding:24px;
+    }
+
+    .playback-title{
+      margin:0 0 8px;
+      text-align:center;
+      font-size:2rem;
+    }
+
+    .playback-subtitle{
+      margin:0 0 22px;
+      text-align:center;
+      opacity:.72;
+    }
+
+    .selector-bar{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:end;
+      justify-content:center;
+      padding:16px;
+      border:1px solid var(--pb-line);
+      border-radius:12px;
+      background:var(--pb-soft);
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width:180px;
+    }
+
+    .field label{
+      font-weight:700;
+    }
+
+    .field select{
+      padding:10px 12px;
+      border:1px solid var(--border,#444);
+      border-radius:9px;
+      background:var(--panel-bg,#0f1623);
+      color:inherit;
+      font:inherit;
+    }
+
+    .playback-stage{
+      display:grid;
+      grid-template-columns:minmax(320px,.85fr) minmax(520px,1.5fr);
+      gap:18px;
+      margin-top:18px;
+      align-items:start;
+    }
+
+    .story-panel,
+    .table-panel{
+      border:1px solid var(--pb-line);
+      border-radius:12px;
+      background:var(--pb-soft);
+      overflow:hidden;
+    }
+
+    .panel-title{
+      padding:13px 16px;
+      border-bottom:1px solid var(--pb-line);
+      font-weight:800;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .story-body{
+      padding:16px;
+    }
+
+    .status-line{
+      min-height:24px;
+      margin-bottom:12px;
+      text-align:center;
+      opacity:.74;
+      font-size:.92rem;
+    }
+
+    .result-card{
+      min-height:180px;
+      border:1px solid var(--pb-line);
+      border-radius:12px;
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:center;
+      background:rgba(255,255,255,.018);
+      overflow:hidden;
+    }
+
+    .result-card.animate{
+      animation:resultIn .42s ease both;
+    }
+
+    @keyframes resultIn{
+      from{
+        opacity:0;
+        transform:translateY(18px) scale(.985);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+      }
+    }
+
+    .result-date{
+      font-size:.92rem;
+      opacity:.68;
+      margin-bottom:10px;
+    }
+
+    .result-teams{
+      font-size:1.22rem;
+      font-weight:800;
+      line-height:1.35;
+    }
+
+    .result-score{
+      margin:10px 0 8px;
+      font-size:2.25rem;
+      font-weight:900;
+      letter-spacing:.03em;
+    }
+
+    .result-text{
+      opacity:.82;
+      line-height:1.45;
+    }
+
+    .preseason{
+      opacity:.76;
+      font-size:1.02rem;
+      line-height:1.55;
+    }
+
+    .controls{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:8px;
+      margin-top:14px;
+    }
+
+    .controls button{
+      min-width:76px;
+      padding:10px 12px;
+      border:1px solid var(--border,#444);
+      border-radius:9px;
+      background:#0f1623;
+      color:inherit;
+      font:inherit;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .controls button:hover{
+      background:rgba(255,255,255,.06);
+    }
+
+    .controls button:disabled{
+      opacity:.45;
+      cursor:not-allowed;
+    }
+
+    .play-button{
+      min-width:104px !important;
+    }
+
+    .options-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      justify-content:center;
+      margin-top:12px;
+      font-size:.92rem;
+    }
+
+    .options-row label{
+      display:flex;
+      align-items:center;
+      gap:7px;
+    }
+
+    .options-row select{
+      padding:6px 8px;
+      border:1px solid var(--border,#444);
+      border-radius:7px;
+      background:var(--panel-bg,#0f1623);
+      color:inherit;
+    }
+
+    .progress-track{
+      height:6px;
+      margin-top:14px;
+      border-radius:999px;
+      background:rgba(128,128,128,.18);
+      overflow:hidden;
+    }
+
+    .progress-fill{
+      width:0;
+      height:100%;
+      background:currentColor;
+      opacity:.55;
+      transition:width .3s ease;
+    }
+
+    .recent-title{
+      margin:16px 0 8px;
+      font-size:.9rem;
+      font-weight:800;
+      opacity:.74;
+    }
+
+    .recent-results{
+      max-height:230px;
+      overflow:auto;
+      border-top:1px solid rgba(128,128,128,.12);
+    }
+
+    .recent-item{
+      padding:9px 4px;
+      border-bottom:1px solid rgba(128,128,128,.12);
+      font-size:.9rem;
+      line-height:1.35;
+      animation:recentIn .3s ease both;
+    }
+
+    @keyframes recentIn{
+      from{opacity:0;transform:translateY(7px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .table-wrap{
+      overflow:auto;
+      max-height:690px;
+    }
+
+    #league-table{
+      width:100%;
+      min-width:650px;
+      border-collapse:collapse;
+      table-layout:auto;
+    }
+
+    #league-table th,
+    #league-table td{
+      padding:9px 10px;
+      border-bottom:1px solid rgba(128,128,128,.14);
+      text-align:right;
+      white-space:nowrap;
+    }
+
+    #league-table th{
+      position:sticky;
+      top:0;
+      z-index:2;
+      background:var(--panel-bg,#0f1623);
+      font-size:.9rem;
+    }
+
+    #league-table th:nth-child(2),
+    #league-table td:nth-child(2){
+      text-align:left;
+    }
+
+    #league-table tbody tr{
+      transition:background .25s ease, transform .25s ease;
+    }
+
+    #league-table tbody tr:nth-child(even){
+      background:rgba(255,255,255,.012);
+    }
+
+    #league-table tbody tr.focus-team{
+      background:rgba(255,255,255,.07);
+      font-weight:800;
+    }
+
+    .position{
+      width:36px;
+      text-align:center !important;
+      opacity:.72;
+    }
+
+    .loading-error{
+      color:#e38181;
+    }
+
+    @media (max-width:900px){
+      .playback-stage{
+        grid-template-columns:1fr;
+      }
+
+      .story-panel{
+        order:1;
+      }
+
+      .table-panel{
+        order:2;
+      }
+    }
+
+    @media (max-width:650px){
+      .playback-panel{
+        padding:16px 10px;
+      }
+
+      .playback-title{
+        font-size:1.55rem;
+      }
+
+      .selector-bar{
+        align-items:stretch;
+      }
+
+      .field{
+        min-width:100%;
+      }
+
+      .result-card{
+        min-height:150px;
+      }
+
+      .result-score{
+        font-size:1.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1 class="site-title">
+        <a href="../home/" class="brand-with-logo">
+          <span>J-Ratings <span class="title-football">European Football</span></span>
+          <img src="/Football Banner Logo.png" alt="Football logo" class="sport-logo">
+        </a>
+      </h1>
+
+      <!-- Playback remains direct-access only while it is being developed. -->
+      <nav class="topnav" aria-label="Main">
+        <a href="/index.html">Sports</a>
+        <a href="../home/">Home</a>
+        <a href="../compare/">Compare</a>
+        <a href="../peak/">Peak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel playback-panel">
+      <h2 class="playback-title">Tournament Playback</h2>
+      <p class="playback-subtitle">
+        Relive a season result by result and watch the table change as it happened.
+      </p>
+
+      <div class="selector-bar">
+        <div class="field">
+          <label for="competition">Competition</label>
+          <select id="competition">
+            <option value="premier-league" selected>Premier League</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="season">Season</label>
+          <select id="season"></select>
+        </div>
+
+        <div class="field">
+          <label for="team-filter">Follow</label>
+          <select id="team-filter">
+            <option value="all">All teams</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="playback-stage">
+        <section class="story-panel">
+          <div class="panel-title">
+            <span>Playback</span>
+            <span id="step-label">Pre-season</span>
+          </div>
+
+          <div class="story-body">
+            <div id="status" class="status-line">Loading season…</div>
+
+            <div id="result-card" class="result-card">
+              <div class="preseason">
+                The season has not started yet.<br>
+                Press <strong>Play</strong> to begin.
+              </div>
+            </div>
+
+            <div class="controls">
+              <button id="reset-btn" type="button">Reset</button>
+              <button id="prev-btn" type="button">◀</button>
+              <button id="play-btn" class="play-button" type="button">▶ Play</button>
+              <button id="next-btn" type="button">▶</button>
+            </div>
+
+            <div class="options-row">
+              <label>
+                <input id="speak-toggle" type="checkbox">
+                Speak results
+              </label>
+
+              <label>
+                Speed
+                <select id="speed">
+                  <option value="5000">Slow</option>
+                  <option value="3000" selected>Normal</option>
+                  <option value="1500">Fast</option>
+                  <option value="700">Very fast</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="progress-track" aria-hidden="true">
+              <div id="progress-fill" class="progress-fill"></div>
+            </div>
+
+            <div class="recent-title">Recent results</div>
+            <div id="recent-results" class="recent-results"></div>
+          </div>
+        </section>
+
+        <section class="table-panel">
+          <div class="panel-title">
+            <span id="table-title">Premier League table</span>
+            <span id="table-date">Pre-season</span>
+          </div>
+
+          <div class="table-wrap">
+            <table id="league-table">
+              <thead>
+                <tr>
+                  <th class="position">#</th>
+                  <th>Team</th>
+                  <th>P</th>
+                  <th>W</th>
+                  <th>D</th>
+                  <th>L</th>
+                  <th>GF</th>
+                  <th>GA</th>
+                  <th>GD</th>
+                  <th>Pts</th>
+                </tr>
+              </thead>
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+<script>
+(() => {
+  'use strict';
+
+  const SIMULATION_BASE_URL = '../data/simulations/';
+
+  const competitionEl = document.getElementById('competition');
+  const seasonEl = document.getElementById('season');
+  const teamFilterEl = document.getElementById('team-filter');
+
+  const statusEl = document.getElementById('status');
+  const resultCardEl = document.getElementById('result-card');
+  const recentResultsEl = document.getElementById('recent-results');
+  const tableBodyEl = document.getElementById('table-body');
+  const tableTitleEl = document.getElementById('table-title');
+  const tableDateEl = document.getElementById('table-date');
+  const stepLabelEl = document.getElementById('step-label');
+  const progressFillEl = document.getElementById('progress-fill');
+
+  const resetBtn = document.getElementById('reset-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const playBtn = document.getElementById('play-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const speakToggleEl = document.getElementById('speak-toggle');
+  const speedEl = document.getElementById('speed');
+
+  let tournament = null;
+  let matches = [];
+  let teamNameById = new Map();
+
+  // currentIndex is the number of actual matches already applied to the table.
+  let currentIndex = 0;
+  let isPlaying = false;
+  let timer = null;
+
+  function escapeHtml(value){
+    return String(value)
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+  }
+
+  function formatDate(iso){
+    const d = new Date(`${iso}T12:00:00`);
+    return new Intl.DateTimeFormat('en-GB', {
+      day:'numeric',
+      month:'short',
+      year:'numeric'
+    }).format(d);
+  }
+
+  function newStats(){
+    const stats = new Map();
+
+    for (const team of tournament.teams){
+      stats.set(team.id, {
+        id:team.id,
+        name:team.name,
+        p:0,
+        w:0,
+        d:0,
+        l:0,
+        gf:0,
+        ga:0,
+        gd:0,
+        pts:0
+      });
+    }
+
+    return stats;
+  }
+
+  function applyMatch(stats, m){
+    const hs = Number(m.homeScore);
+    const as = Number(m.awayScore);
+
+    if (!Number.isFinite(hs) || !Number.isFinite(as)){
+      return;
+    }
+
+    const home = stats.get(m.home);
+    const away = stats.get(m.away);
+
+    if (!home || !away) return;
+
+    home.p += 1;
+    away.p += 1;
+
+    home.gf += hs;
+    home.ga += as;
+    away.gf += as;
+    away.ga += hs;
+
+    if (hs > as){
+      home.w += 1;
+      away.l += 1;
+      home.pts += 3;
+    } else if (hs < as){
+      away.w += 1;
+      home.l += 1;
+      away.pts += 3;
+    } else {
+      home.d += 1;
+      away.d += 1;
+      home.pts += 1;
+      away.pts += 1;
+    }
+
+    home.gd = home.gf - home.ga;
+    away.gd = away.gf - away.ga;
+  }
+
+  function buildTable(upToIndex){
+    const stats = newStats();
+
+    for (let i = 0; i < upToIndex; i++){
+      applyMatch(stats, matches[i]);
+    }
+
+    const rows = Array.from(stats.values());
+
+    rows.sort((a, b) =>
+      b.pts - a.pts ||
+      b.gd - a.gd ||
+      b.gf - a.gf ||
+      a.name.localeCompare(b.name)
+    );
+
+    return rows;
+  }
+
+  function renderTable(){
+    const rows = buildTable(currentIndex);
+    const follow = teamFilterEl.value;
+
+    tableBodyEl.innerHTML = '';
+
+    rows.forEach((row, index) => {
+      const tr = document.createElement('tr');
+
+      if (follow !== 'all' && row.id === follow){
+        tr.classList.add('focus-team');
+      }
+
+      tr.innerHTML = `
+        <td class="position">${index + 1}</td>
+        <td>${escapeHtml(row.name)}</td>
+        <td>${row.p}</td>
+        <td>${row.w}</td>
+        <td>${row.d}</td>
+        <td>${row.l}</td>
+        <td>${row.gf}</td>
+        <td>${row.ga}</td>
+        <td>${row.gd > 0 ? '+' : ''}${row.gd}</td>
+        <td><strong>${row.pts}</strong></td>
+      `;
+
+      tableBodyEl.appendChild(tr);
+    });
+
+    if (currentIndex === 0){
+      tableDateEl.textContent = 'Pre-season';
+    } else {
+      tableDateEl.textContent =
+        formatDate(matches[currentIndex - 1].date);
+    }
+  }
+
+  function commentaryFor(m){
+    const home = teamNameById.get(m.home) || m.home;
+    const away = teamNameById.get(m.away) || m.away;
+    const hs = Number(m.homeScore);
+    const as = Number(m.awayScore);
+
+    if (hs > as){
+      return `${home} beat ${away} ${hs}-${as} at home.`;
+    }
+
+    if (hs < as){
+      return `${away} beat ${home} ${as}-${hs} away from home.`;
+    }
+
+    return `${home} and ${away} drew ${hs}-${as}.`;
+  }
+
+  function spokenCommentaryFor(m){
+    const home = teamNameById.get(m.home) || m.home;
+    const away = teamNameById.get(m.away) || m.away;
+    const hs = Number(m.homeScore);
+    const as = Number(m.awayScore);
+
+    if (hs > as){
+      return `${home} beat ${away} by ${hs} goals to ${as}, at home.`;
+    }
+
+    if (hs < as){
+      return `${away} beat ${home} by ${as} goals to ${hs}, away from home.`;
+    }
+
+    return `${home} and ${away} drew, ${hs} all.`;
+  }
+
+  function showMatch(m){
+    const home = teamNameById.get(m.home) || m.home;
+    const away = teamNameById.get(m.away) || m.away;
+
+    resultCardEl.classList.remove('animate');
+    void resultCardEl.offsetWidth;
+    resultCardEl.classList.add('animate');
+
+    resultCardEl.innerHTML = `
+      <div class="result-date">${formatDate(m.date)}</div>
+      <div class="result-teams">
+        ${escapeHtml(home)} v ${escapeHtml(away)}
+      </div>
+      <div class="result-score">
+        ${Number(m.homeScore)} – ${Number(m.awayScore)}
+      </div>
+      <div class="result-text">
+        ${escapeHtml(commentaryFor(m))}
+      </div>
+    `;
+  }
+
+  function showPreseason(){
+    resultCardEl.classList.remove('animate');
+    resultCardEl.innerHTML = `
+      <div class="preseason">
+        The season has not started yet.<br>
+        Press <strong>Play</strong> to begin.
+      </div>
+    `;
+  }
+
+  function renderRecentResults(){
+    recentResultsEl.innerHTML = '';
+
+    if (currentIndex === 0){
+      recentResultsEl.innerHTML =
+        '<div class="recent-item" style="opacity:.65">No results yet.</div>';
+      return;
+    }
+
+    const follow = teamFilterEl.value;
+    const visible = [];
+
+    for (let i = currentIndex - 1; i >= 0 && visible.length < 8; i--){
+      const m = matches[i];
+
+      if (
+        follow === 'all' ||
+        m.home === follow ||
+        m.away === follow
+      ){
+        visible.push(m);
+      }
+    }
+
+    for (const m of visible){
+      const home = teamNameById.get(m.home) || m.home;
+      const away = teamNameById.get(m.away) || m.away;
+
+      const div = document.createElement('div');
+      div.className = 'recent-item';
+      div.innerHTML = `
+        <strong>${escapeHtml(home)} ${m.homeScore}-${m.awayScore} ${escapeHtml(away)}</strong>
+        <div style="opacity:.66">${formatDate(m.date)}</div>
+      `;
+      recentResultsEl.appendChild(div);
+    }
+  }
+
+  function speak(m){
+    if (!speakToggleEl.checked) return;
+    if (!('speechSynthesis' in window)) return;
+
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(
+      spokenCommentaryFor(m)
+    );
+
+    utterance.lang = 'en-GB';
+    utterance.rate = 1;
+    utterance.pitch = 1;
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function nextRelevantIndex(fromIndex){
+    const follow = teamFilterEl.value;
+
+    if (follow === 'all'){
+      return fromIndex < matches.length ? fromIndex + 1 : matches.length;
+    }
+
+    for (let i = fromIndex; i < matches.length; i++){
+      const m = matches[i];
+
+      if (m.home === follow || m.away === follow){
+        return i + 1;
+      }
+    }
+
+    return matches.length;
+  }
+
+  function previousRelevantIndex(fromIndex){
+    const follow = teamFilterEl.value;
+
+    if (fromIndex <= 0) return 0;
+
+    if (follow === 'all'){
+      return Math.max(0, fromIndex - 1);
+    }
+
+    // Find the previously displayed match involving the followed team.
+    for (let i = fromIndex - 2; i >= 0; i--){
+      const m = matches[i];
+
+      if (m.home === follow || m.away === follow){
+        return i + 1;
+      }
+    }
+
+    return 0;
+  }
+
+  function renderState(options = {}){
+    renderTable();
+    renderRecentResults();
+
+    const progress = matches.length
+      ? (currentIndex / matches.length) * 100
+      : 0;
+
+    progressFillEl.style.width = `${progress}%`;
+
+    if (currentIndex === 0){
+      stepLabelEl.textContent = 'Pre-season';
+      statusEl.textContent =
+        `Ready — ${matches.length} results in this season.`;
+      showPreseason();
+    } else {
+      const m = matches[currentIndex - 1];
+      stepLabelEl.textContent =
+        `${currentIndex} / ${matches.length}`;
+
+      statusEl.textContent =
+        `${formatDate(m.date)} — ${currentIndex} of ${matches.length} results processed.`;
+
+      showMatch(m);
+
+      if (options.speak){
+        speak(m);
+      }
+    }
+
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= matches.length;
+
+    if (currentIndex >= matches.length){
+      stopPlayback();
+      statusEl.textContent = 'Season complete.';
+    }
+  }
+
+  function stepForward(speakResult = true){
+    if (currentIndex >= matches.length) return;
+
+    currentIndex = nextRelevantIndex(currentIndex);
+    renderState({speak:speakResult});
+  }
+
+  function stepBack(){
+    stopPlayback();
+    currentIndex = previousRelevantIndex(currentIndex);
+    renderState({speak:false});
+  }
+
+  function stopPlayback(){
+    isPlaying = false;
+
+    if (timer){
+      clearTimeout(timer);
+      timer = null;
+    }
+
+    if ('speechSynthesis' in window){
+      window.speechSynthesis.cancel();
+    }
+
+    playBtn.textContent = '▶ Play';
+  }
+
+  function scheduleNext(){
+    if (!isPlaying) return;
+
+    if (currentIndex >= matches.length){
+      stopPlayback();
+      return;
+    }
+
+    const delay = Number(speedEl.value) || 3000;
+
+    timer = setTimeout(() => {
+      stepForward(true);
+
+      if (isPlaying){
+        scheduleNext();
+      }
+    }, delay);
+  }
+
+  function startPlayback(){
+    if (currentIndex >= matches.length){
+      currentIndex = 0;
+      renderState({speak:false});
+    }
+
+    isPlaying = true;
+    playBtn.textContent = '❚❚ Pause';
+
+    // First result appears immediately.
+    stepForward(true);
+
+    if (isPlaying){
+      scheduleNext();
+    }
+  }
+
+  function resetPlayback(){
+    stopPlayback();
+    currentIndex = 0;
+    renderState({speak:false});
+  }
+
+  function populateTeamFilter(){
+    const previous = teamFilterEl.value;
+
+    teamFilterEl.innerHTML =
+      '<option value="all">All teams</option>';
+
+    const teams = [...tournament.teams]
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    for (const team of teams){
+      const opt = document.createElement('option');
+      opt.value = team.id;
+      opt.textContent = team.name;
+      teamFilterEl.appendChild(opt);
+    }
+
+    if (
+      previous &&
+      [...teamFilterEl.options].some(o => o.value === previous)
+    ){
+      teamFilterEl.value = previous;
+    }
+  }
+
+  async function loadSeasonManifest(){
+    const competition = competitionEl.value;
+    const url =
+      `${SIMULATION_BASE_URL}${competition}/seasons.json`;
+
+    const response = await fetch(url);
+
+    if (!response.ok){
+      throw new Error(`Could not load ${url}`);
+    }
+
+    const seasons = await response.json();
+
+    seasonEl.innerHTML = '';
+
+    for (const season of seasons){
+      const opt = document.createElement('option');
+      opt.value = season.id;
+      opt.textContent = season.label || season.id;
+
+      if (season.id === '2022-23'){
+        opt.selected = true;
+      }
+
+      seasonEl.appendChild(opt);
+    }
+
+    if (!seasonEl.value && seasonEl.options.length){
+      seasonEl.selectedIndex = 0;
+    }
+  }
+
+  async function loadSelectedSeason(){
+    stopPlayback();
+
+    const competition = competitionEl.value;
+    const season = seasonEl.value;
+    const url =
+      `${SIMULATION_BASE_URL}${competition}/${encodeURIComponent(season)}.json`;
+
+    statusEl.textContent = 'Loading season…';
+    statusEl.classList.remove('loading-error');
+
+    const response = await fetch(url);
+
+    if (!response.ok){
+      throw new Error(`Could not load ${url}`);
+    }
+
+    tournament = await response.json();
+
+    teamNameById = new Map(
+      tournament.teams.map(team => [team.id, team.name])
+    );
+
+    matches = tournament.matches
+      .filter(m =>
+        Number.isFinite(Number(m.homeScore)) &&
+        Number.isFinite(Number(m.awayScore))
+      )
+      .sort((a, b) =>
+        a.date.localeCompare(b.date) ||
+        a.home.localeCompare(b.home) ||
+        a.away.localeCompare(b.away)
+      );
+
+    populateTeamFilter();
+
+    tableTitleEl.textContent =
+      `${tournament.name || 'Premier League'} table`;
+
+    currentIndex = 0;
+    renderState({speak:false});
+  }
+
+  async function initialise(){
+    try {
+      resetBtn.disabled = true;
+      prevBtn.disabled = true;
+      playBtn.disabled = true;
+      nextBtn.disabled = true;
+
+      await loadSeasonManifest();
+      await loadSelectedSeason();
+
+      resetBtn.disabled = false;
+      playBtn.disabled = false;
+      nextBtn.disabled = false;
+
+    } catch (err){
+      console.error(err);
+      statusEl.textContent = err.message;
+      statusEl.classList.add('loading-error');
+    }
+  }
+
+  competitionEl.addEventListener('change', async () => {
+    try {
+      await loadSeasonManifest();
+      await loadSelectedSeason();
+    } catch (err){
+      console.error(err);
+      statusEl.textContent = err.message;
+      statusEl.classList.add('loading-error');
+    }
+  });
+
+  seasonEl.addEventListener('change', async () => {
+    try {
+      await loadSelectedSeason();
+    } catch (err){
+      console.error(err);
+      statusEl.textContent = err.message;
+      statusEl.classList.add('loading-error');
+    }
+  });
+
+  teamFilterEl.addEventListener('change', () => {
+    resetPlayback();
+    renderTable();
+  });
+
+  resetBtn.addEventListener('click', resetPlayback);
+
+  prevBtn.addEventListener('click', stepBack);
+
+  nextBtn.addEventListener('click', () => {
+    stopPlayback();
+    stepForward(true);
+  });
+
+  playBtn.addEventListener('click', () => {
+    if (isPlaying){
+      stopPlayback();
+    } else {
+      startPlayback();
+    }
+  });
+
+  speedEl.addEventListener('change', () => {
+    if (isPlaying){
+      if (timer){
+        clearTimeout(timer);
+      }
+      scheduleNext();
+    }
+  });
+
+  window.addEventListener('beforeunload', () => {
+    stopPlayback();
+  });
+
+  initialise();
+})();
+</script>
+</body>
+</html>
