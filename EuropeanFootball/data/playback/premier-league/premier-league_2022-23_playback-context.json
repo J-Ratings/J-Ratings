@@ -1,0 +1,951 @@
+{
+  "competition": "Premier League",
+  "competitionId": "premier-league",
+  "season": "2022-23",
+  "purpose": "Prototype curated context for J-Ratings Tournament Playback. These entries are intended to supplement automatically generated result/table/Elo commentary, not replace it.",
+  "notes": [
+    "Only notable matches and season events are included.",
+    "Match entries can be attached by date plus home/away team; event entries can appear between matches on the relevant date.",
+    "The 'narration' field is deliberately short enough for browser text-to-speech.",
+    "Before production use, team-name matching should be normalised against the exact names in the tournament JSON."
+  ],
+  "events": [
+    {
+      "id": "2022-08-07-haaland-debut",
+      "date": "2022-08-07",
+      "kind": "match",
+      "home": "West Ham United",
+      "away": "Manchester City",
+      "score": "0-2",
+      "teams": [
+        "West Ham United",
+        "Manchester City"
+      ],
+      "importance": 4,
+      "tags": [
+        "debut",
+        "title-race",
+        "player-record"
+      ],
+      "narration": "Erling Haaland announced himself to the Premier League with both goals on his league debut for Manchester City.",
+      "detail": "Haaland scored twice as the defending champions opened with a 2-0 win. After criticism of his Community Shield display, the debut immediately set the tone for a record-breaking league season.",
+      "sources": [
+        {
+          "title": "BBC Sport – 10 moments that defined the title race",
+          "url": "https://www.bbc.co.uk/sport/football/65574675"
+        }
+      ]
+    },
+    {
+      "id": "2022-08-13-brentford-man-utd",
+      "date": "2022-08-13",
+      "kind": "match",
+      "home": "Brentford",
+      "away": "Manchester United",
+      "score": "4-0",
+      "teams": [
+        "Brentford",
+        "Manchester United"
+      ],
+      "importance": 4,
+      "tags": [
+        "manager-pressure",
+        "shock",
+        "early-season"
+      ],
+      "narration": "Manchester United's difficult start under Erik ten Hag deepened dramatically as Brentford scored four first-half goals.",
+      "detail": "United lost their opening two league matches under Ten Hag. The heavy defeat intensified early scrutiny before the side recovered strongly over the following weeks.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2022-08-14-chelsea-spurs-handshake",
+      "date": "2022-08-14",
+      "kind": "match",
+      "home": "Chelsea",
+      "away": "Tottenham Hotspur",
+      "score": "2-2",
+      "teams": [
+        "Chelsea",
+        "Tottenham Hotspur"
+      ],
+      "importance": 4,
+      "tags": [
+        "controversy",
+        "red-card",
+        "managers"
+      ],
+      "narration": "A heated London derby ended with Thomas Tuchel and Antonio Conte both sent off after an angry touchline confrontation.",
+      "detail": "There were several flashpoints during the 2-2 draw, culminating in the managers clashing at full-time. Both later received FA sanctions.",
+      "sources": [
+        {
+          "title": "BBC Sport – Tuchel and Conte sanctions",
+          "url": "https://www.bbc.co.uk/sport/football/62611712"
+        }
+      ]
+    },
+    {
+      "id": "2022-08-21-newcastle-city",
+      "date": "2022-08-21",
+      "kind": "match",
+      "home": "Newcastle United",
+      "away": "Manchester City",
+      "score": "3-3",
+      "teams": [
+        "Newcastle United",
+        "Manchester City"
+      ],
+      "importance": 3,
+      "tags": [
+        "comeback",
+        "title-race",
+        "newcastle-rise"
+      ],
+      "narration": "Newcastle gave an early indication of their growing strength by pushing champions Manchester City to a six-goal draw.",
+      "detail": "City fell two goals behind before recovering a point. Newcastle would later emerge as a genuine Champions League qualification contender.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2022-08-27-liverpool-bournemouth",
+      "date": "2022-08-27",
+      "kind": "match",
+      "home": "Liverpool",
+      "away": "Bournemouth",
+      "score": "9-0",
+      "teams": [
+        "Liverpool",
+        "Bournemouth"
+      ],
+      "importance": 5,
+      "tags": [
+        "record",
+        "big-score",
+        "manager-change"
+      ],
+      "narration": "Liverpool equalled the biggest victory in Premier League history with a nine-goal demolition of Bournemouth.",
+      "detail": "Liverpool's 9-0 win equalled the competition's record winning margin. Bournemouth manager Scott Parker was sacked three days later, with his post-match criticism of the club's squad strategy also central to the decision.",
+      "sources": [
+        {
+          "title": "BBC Sport – Liverpool 9-0 Bournemouth",
+          "url": "https://www.bbc.co.uk/sport/football/62614438"
+        },
+        {
+          "title": "BBC Sport – Scott Parker sacked",
+          "url": "https://www.bbc.co.uk/sport/football/62722146"
+        }
+      ]
+    },
+    {
+      "id": "2022-09-04-man-utd-arsenal",
+      "date": "2022-09-04",
+      "kind": "match",
+      "home": "Manchester United",
+      "away": "Arsenal",
+      "score": "3-1",
+      "teams": [
+        "Manchester United",
+        "Arsenal"
+      ],
+      "importance": 4,
+      "tags": [
+        "title-race",
+        "streak-ended",
+        "early-season"
+      ],
+      "narration": "Arsenal's perfect start ended at Old Trafford after five consecutive league wins.",
+      "detail": "The defeat stopped Arsenal's five-match winning start, while confirming Manchester United's recovery after losing their opening two league games.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2022-09-07-tuchel-sacked",
+      "date": "2022-09-07",
+      "kind": "season_event",
+      "teams": [
+        "Chelsea"
+      ],
+      "importance": 4,
+      "tags": [
+        "manager-change"
+      ],
+      "narration": "Chelsea sacked Thomas Tuchel only weeks into the new ownership era.",
+      "detail": "Tuchel left after Chelsea had taken ten points from six Premier League matches. Brighton manager Graham Potter was appointed as his replacement the following day.",
+      "sources": [
+        {
+          "title": "BBC Sport – Chelsea appoint Graham Potter",
+          "url": "https://www.bbc.co.uk/sport/football/62838065"
+        },
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2022-09-17-spurs-leicester",
+      "date": "2022-09-17",
+      "kind": "match",
+      "home": "Tottenham Hotspur",
+      "away": "Leicester City",
+      "score": "6-2",
+      "teams": [
+        "Tottenham Hotspur",
+        "Leicester City"
+      ],
+      "importance": 3,
+      "tags": [
+        "big-score",
+        "early-season"
+      ],
+      "narration": "Tottenham's six-goal win extended their unbeaten league start to seven matches and briefly strengthened talk of a title challenge.",
+      "detail": "Spurs began the campaign strongly under Antonio Conte, but the optimism would not survive a difficult autumn and a turbulent second half of the season.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2022-10-01-liverpool-brighton",
+      "date": "2022-10-01",
+      "kind": "match",
+      "home": "Liverpool",
+      "away": "Brighton & Hove Albion",
+      "score": "3-3",
+      "teams": [
+        "Liverpool",
+        "Brighton & Hove Albion"
+      ],
+      "importance": 3,
+      "tags": [
+        "manager-debut",
+        "brighton-rise"
+      ],
+      "narration": "Roberto De Zerbi's first league match as Brighton manager produced an immediate statement: a 3-3 draw at Anfield.",
+      "detail": "The result offered an early glimpse of Brighton's attacking identity under De Zerbi. Liverpool, meanwhile, were struggling to rediscover the level of the previous season.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2022-10-02-manchester-derby",
+      "date": "2022-10-02",
+      "kind": "match",
+      "home": "Manchester City",
+      "away": "Manchester United",
+      "score": "6-3",
+      "teams": [
+        "Manchester City",
+        "Manchester United"
+      ],
+      "importance": 5,
+      "tags": [
+        "derby",
+        "hat-trick",
+        "big-score"
+      ],
+      "narration": "Manchester City overwhelmed their neighbours 6-3, with both Erling Haaland and Phil Foden scoring hat-tricks.",
+      "detail": "United had improved substantially after their poor opening weeks, making the scale of City's derby victory especially striking.",
+      "sources": [
+        {
+          "title": "BBC Sport – 10 moments that defined the title race",
+          "url": "https://www.bbc.co.uk/sport/football/65574675"
+        }
+      ]
+    },
+    {
+      "id": "2022-10-22-forest-liverpool",
+      "date": "2022-10-22",
+      "kind": "match",
+      "home": "Nottingham Forest",
+      "away": "Liverpool",
+      "score": "1-0",
+      "teams": [
+        "Nottingham Forest",
+        "Liverpool"
+      ],
+      "importance": 4,
+      "tags": [
+        "upset",
+        "survival",
+        "manager-pressure"
+      ],
+      "narration": "Bottom-side Nottingham Forest stunned Liverpool at the City Ground in a result that helped stabilise Steve Cooper's position.",
+      "detail": "Cooper had been under serious pressure after Forest's difficult return to the Premier League. The victory became an important early moment in their eventual survival campaign.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2022-10-29-leicester-city",
+      "date": "2022-10-29",
+      "kind": "match",
+      "home": "Leicester City",
+      "away": "Manchester City",
+      "score": "0-1",
+      "teams": [
+        "Leicester City",
+        "Manchester City"
+      ],
+      "importance": 3,
+      "tags": [
+        "title-race",
+        "key-player-absent"
+      ],
+      "narration": "With Erling Haaland unavailable, Kevin De Bruyne's free-kick supplied the only goal and temporarily sent City top.",
+      "detail": "Haaland had scored 22 goals in all competitions by this point, so City's ability to win without him was an important test.",
+      "sources": [
+        {
+          "title": "BBC Sport – 10 moments that defined the title race",
+          "url": "https://www.bbc.co.uk/sport/football/65574675"
+        }
+      ]
+    },
+    {
+      "id": "2022-11-06-villa-man-utd",
+      "date": "2022-11-06",
+      "kind": "match",
+      "home": "Aston Villa",
+      "away": "Manchester United",
+      "score": "3-1",
+      "teams": [
+        "Aston Villa",
+        "Manchester United"
+      ],
+      "importance": 4,
+      "tags": [
+        "manager-debut",
+        "villa-rise"
+      ],
+      "narration": "Unai Emery's first league match as Aston Villa manager ended in an emphatic 3-1 victory over Manchester United.",
+      "detail": "Villa had been close to the relegation places when Steven Gerrard was dismissed. Emery's debut win foreshadowed a dramatic rise that eventually carried the club into Europe.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2022-11-12-city-brentford",
+      "date": "2022-11-12",
+      "kind": "match",
+      "home": "Manchester City",
+      "away": "Brentford",
+      "score": "1-2",
+      "teams": [
+        "Manchester City",
+        "Brentford"
+      ],
+      "importance": 5,
+      "tags": [
+        "upset",
+        "title-race",
+        "world-cup-break"
+      ],
+      "narration": "Brentford shocked Manchester City at the Etihad immediately before the World Cup break, allowing Arsenal to carry a five-point lead into the pause.",
+      "detail": "The defeat was one of City's most damaging results of the first half of the season. Arsenal's advantage at the top stood at five points when league play stopped for the winter World Cup.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2022-11-13-world-cup-break",
+      "date": "2022-11-13",
+      "kind": "season_event",
+      "teams": [],
+      "importance": 5,
+      "tags": [
+        "world-cup-break",
+        "season-structure"
+      ],
+      "narration": "The Premier League now paused for more than a month for the winter World Cup in Qatar.",
+      "detail": "This was the first extended mid-season World Cup break in Premier League history. Domestic action would resume on Boxing Day, only eight days after the World Cup final.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2023-01-23-lampard-sacked",
+      "date": "2023-01-23",
+      "kind": "season_event",
+      "teams": [
+        "Everton"
+      ],
+      "importance": 4,
+      "tags": [
+        "manager-change",
+        "relegation"
+      ],
+      "narration": "Everton dismissed Frank Lampard with the club nineteenth in the table.",
+      "detail": "Everton's decline after the World Cup break left the club in severe relegation danger. Sean Dyche would replace Lampard and immediately face league leaders Arsenal.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2023-02-04-everton-arsenal",
+      "date": "2023-02-04",
+      "kind": "match",
+      "home": "Everton",
+      "away": "Arsenal",
+      "score": "1-0",
+      "teams": [
+        "Everton",
+        "Arsenal"
+      ],
+      "importance": 5,
+      "tags": [
+        "manager-debut",
+        "upset",
+        "title-race",
+        "relegation"
+      ],
+      "narration": "Sean Dyche's first match as Everton manager produced a major upset as the relegation-threatened side beat league leaders Arsenal.",
+      "detail": "The result began Arsenal's first sustained wobble of the title race, while giving Everton an immediate lift under their new manager.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2023-02-15-arsenal-city",
+      "date": "2023-02-15",
+      "kind": "match",
+      "home": "Arsenal",
+      "away": "Manchester City",
+      "score": "1-3",
+      "teams": [
+        "Arsenal",
+        "Manchester City"
+      ],
+      "importance": 5,
+      "tags": [
+        "title-race",
+        "top-of-table"
+      ],
+      "narration": "Manchester City beat Arsenal at the Emirates and returned to the top of the Premier League for the first time since November.",
+      "detail": "City moved above Arsenal on goal difference, although the Gunners still had a game in hand. The result was widely viewed as a major psychological shift in the title race.",
+      "sources": [
+        {
+          "title": "BBC Sport – Arsenal 1-3 Manchester City",
+          "url": "https://www.bbc.co.uk/sport/football/63224218"
+        }
+      ]
+    },
+    {
+      "id": "2023-02-18-forest-city",
+      "date": "2023-02-18",
+      "kind": "match",
+      "home": "Nottingham Forest",
+      "away": "Manchester City",
+      "score": "1-1",
+      "teams": [
+        "Nottingham Forest",
+        "Manchester City"
+      ],
+      "importance": 4,
+      "tags": [
+        "title-race",
+        "turning-point"
+      ],
+      "narration": "City dropped two points at Nottingham Forest. It would be the final league match in which they failed to win before becoming champions.",
+      "detail": "After this draw, Manchester City embarked on the relentless winning run that eventually overhauled Arsenal.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2023-03-04-arsenal-bournemouth",
+      "date": "2023-03-04",
+      "kind": "match",
+      "home": "Arsenal",
+      "away": "Bournemouth",
+      "score": "3-2",
+      "teams": [
+        "Arsenal",
+        "Bournemouth"
+      ],
+      "importance": 5,
+      "tags": [
+        "comeback",
+        "late-goal",
+        "title-race",
+        "record"
+      ],
+      "narration": "Arsenal came from two goals down to win with virtually the final kick, Reiss Nelson scoring a 97th-minute winner.",
+      "detail": "Bournemouth had taken the lead after only 9.11 seconds, the second-fastest goal in Premier League history at the time. Arsenal's dramatic comeback restored their five-point lead at the top.",
+      "sources": [
+        {
+          "title": "BBC Sport – Arsenal 3-2 Bournemouth",
+          "url": "https://www.bbc.co.uk/sport/football/64768041"
+        }
+      ]
+    },
+    {
+      "id": "2023-03-05-liverpool-man-utd",
+      "date": "2023-03-05",
+      "kind": "match",
+      "home": "Liverpool",
+      "away": "Manchester United",
+      "score": "7-0",
+      "teams": [
+        "Liverpool",
+        "Manchester United"
+      ],
+      "importance": 5,
+      "tags": [
+        "record",
+        "rivalry",
+        "big-score"
+      ],
+      "narration": "Liverpool inflicted a historic 7-0 defeat on Manchester United, the biggest winning margin in the history of this rivalry.",
+      "detail": "Six goals came in the second half. Mohamed Salah also became Liverpool's record Premier League goalscorer during the rout.",
+      "sources": [
+        {
+          "title": "BBC Sport – Liverpool 7-0 Manchester United",
+          "url": "https://www.bbc.co.uk/sport/football/64775037"
+        }
+      ]
+    },
+    {
+      "id": "2023-03-16-saliba-injury",
+      "date": "2023-03-16",
+      "kind": "season_event",
+      "teams": [
+        "Arsenal"
+      ],
+      "importance": 5,
+      "tags": [
+        "injury",
+        "title-race"
+      ],
+      "narration": "Arsenal suffered a major defensive blow when William Saliba was injured in Europe and did not return during the title run-in.",
+      "detail": "Saliba went off against Sporting Lisbon in the Europa League, with Takehiro Tomiyasu also injured in the same match. Arsenal failed to keep a clean sheet in their next seven Premier League games.",
+      "sources": [
+        {
+          "title": "BBC Sport – 10 moments that defined the title race",
+          "url": "https://www.bbc.co.uk/sport/football/65574675"
+        }
+      ]
+    },
+    {
+      "id": "2023-03-18-southampton-spurs",
+      "date": "2023-03-18",
+      "kind": "match",
+      "home": "Southampton",
+      "away": "Tottenham Hotspur",
+      "score": "3-3",
+      "teams": [
+        "Southampton",
+        "Tottenham Hotspur"
+      ],
+      "importance": 5,
+      "tags": [
+        "comeback",
+        "manager-dispute",
+        "manager-change"
+      ],
+      "narration": "Tottenham threw away a two-goal advantage, after which Antonio Conte launched an extraordinary public attack on his players and the club's culture.",
+      "detail": "Conte called his players selfish after the draw and questioned the culture around Tottenham. The match proved to be his final game in charge; he left by mutual consent just over a week later.",
+      "sources": [
+        {
+          "title": "BBC Sport – Conte criticises Tottenham",
+          "url": "https://www.bbc.co.uk/sport/football/65002960"
+        },
+        {
+          "title": "BBC Sport – Southampton 3-3 Tottenham",
+          "url": "https://www.bbc.co.uk/sport/football/64923719"
+        }
+      ]
+    },
+    {
+      "id": "2023-04-02-potter-sacked",
+      "date": "2023-04-02",
+      "kind": "season_event",
+      "teams": [
+        "Chelsea"
+      ],
+      "importance": 4,
+      "tags": [
+        "manager-change",
+        "club-crisis"
+      ],
+      "narration": "Chelsea dismissed Graham Potter after a disastrous run left the heavily spending club in the bottom half.",
+      "detail": "Potter lasted only 31 matches in charge. Chelsea had spent heavily under the new ownership but remained tenth and would finish the campaign twelfth.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2023-04-09-liverpool-arsenal",
+      "date": "2023-04-09",
+      "kind": "match",
+      "home": "Liverpool",
+      "away": "Arsenal",
+      "score": "2-2",
+      "teams": [
+        "Liverpool",
+        "Arsenal"
+      ],
+      "importance": 5,
+      "tags": [
+        "title-race",
+        "comeback",
+        "turning-point"
+      ],
+      "narration": "Arsenal raced into a two-goal lead at Anfield but Liverpool fought back, with Roberto Firmino's late equaliser changing the shape of the title race.",
+      "detail": "Arsenal had been on course for their first league win at Anfield since 2012. Dropping two points meant Manchester City increasingly controlled their own destiny.",
+      "sources": [
+        {
+          "title": "BBC Sport – Liverpool 2-2 Arsenal",
+          "url": "https://www.bbc.co.uk/sport/football/65152635"
+        }
+      ]
+    },
+    {
+      "id": "2023-04-16-west-ham-arsenal",
+      "date": "2023-04-16",
+      "kind": "match",
+      "home": "West Ham United",
+      "away": "Arsenal",
+      "score": "2-2",
+      "teams": [
+        "West Ham United",
+        "Arsenal"
+      ],
+      "importance": 5,
+      "tags": [
+        "title-race",
+        "comeback",
+        "penalty-miss"
+      ],
+      "narration": "For the second week running Arsenal surrendered a two-goal lead, this time against relegation-threatened West Ham.",
+      "detail": "Arsenal were 2-0 up after ten minutes. Bukayo Saka missed a penalty while the score was 2-1, and Jarrod Bowen equalised minutes later to further damage Arsenal's title challenge.",
+      "sources": [
+        {
+          "title": "BBC Sport – West Ham 2-2 Arsenal analysis",
+          "url": "https://www.bbc.co.uk/sport/articles/c6plyjgdv64o"
+        }
+      ]
+    },
+    {
+      "id": "2023-04-21-arsenal-southampton",
+      "date": "2023-04-21",
+      "kind": "match",
+      "home": "Arsenal",
+      "away": "Southampton",
+      "score": "3-3",
+      "teams": [
+        "Arsenal",
+        "Southampton"
+      ],
+      "importance": 5,
+      "tags": [
+        "title-race",
+        "upset",
+        "late-comeback"
+      ],
+      "narration": "Bottom club Southampton stunned Arsenal by scoring inside the opening minute and eventually held the leaders to a 3-3 draw.",
+      "detail": "Arsenal recovered from 3-1 down to rescue a point late on, but it was a third consecutive draw during the decisive collapse of their title advantage.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2023-04-23-newcastle-spurs",
+      "date": "2023-04-23",
+      "kind": "match",
+      "home": "Newcastle United",
+      "away": "Tottenham Hotspur",
+      "score": "6-1",
+      "teams": [
+        "Newcastle United",
+        "Tottenham Hotspur"
+      ],
+      "importance": 5,
+      "tags": [
+        "top-four",
+        "big-score",
+        "collapse"
+      ],
+      "narration": "Newcastle scored five times in the opening 21 minutes of a stunning 6-1 demolition of Tottenham in a major top-four showdown.",
+      "detail": "The rout strengthened Newcastle's grip on Champions League qualification and deepened Tottenham's crisis. Interim coach Cristian Stellini accepted responsibility for changing the team's system.",
+      "sources": [
+        {
+          "title": "BBC Sport – Newcastle 6-1 Tottenham",
+          "url": "https://www.bbc.co.uk/sport/football/65290299"
+        }
+      ]
+    },
+    {
+      "id": "2023-04-26-city-arsenal",
+      "date": "2023-04-26",
+      "kind": "match",
+      "home": "Manchester City",
+      "away": "Arsenal",
+      "score": "4-1",
+      "teams": [
+        "Manchester City",
+        "Arsenal"
+      ],
+      "importance": 5,
+      "tags": [
+        "title-race",
+        "decisive-match"
+      ],
+      "narration": "Manchester City dominated Arsenal 4-1 in the season's defining title-race confrontation.",
+      "detail": "Arsenal arrived still five points clear but City held two games in hand. Kevin De Bruyne scored twice as the champions took decisive control of the race.",
+      "sources": [
+        {
+          "title": "BBC Sport – Manchester City 4-1 Arsenal",
+          "url": "https://www.bbc.co.uk/sport/football/65319949"
+        }
+      ]
+    },
+    {
+      "id": "2023-05-01-leicester-everton",
+      "date": "2023-05-01",
+      "kind": "match",
+      "home": "Leicester City",
+      "away": "Everton",
+      "score": "2-2",
+      "teams": [
+        "Leicester City",
+        "Everton"
+      ],
+      "importance": 4,
+      "tags": [
+        "relegation",
+        "six-pointer"
+      ],
+      "narration": "Leicester and Everton shared the points in a chaotic relegation battle that left both clubs in severe danger.",
+      "detail": "Both teams began the match in the bottom three. The draw lifted Leicester out only on goal difference while Everton remained nineteenth.",
+      "sources": [
+        {
+          "title": "BBC Sport – Leicester 2-2 Everton",
+          "url": "https://www.bbc.co.uk/sport/football/65370333"
+        }
+      ]
+    },
+    {
+      "id": "2023-05-14-arsenal-brighton",
+      "date": "2023-05-14",
+      "kind": "match",
+      "home": "Arsenal",
+      "away": "Brighton & Hove Albion",
+      "score": "0-3",
+      "teams": [
+        "Arsenal",
+        "Brighton & Hove Albion"
+      ],
+      "importance": 5,
+      "tags": [
+        "title-race",
+        "brighton-rise"
+      ],
+      "narration": "Brighton's emphatic win at the Emirates effectively ended Arsenal's remaining hopes of catching Manchester City.",
+      "detail": "The 3-0 defeat left Arsenal's title challenge hanging by a thread, while Brighton continued a historic campaign that would bring European qualification for the first time.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2023-05-20-forest-arsenal",
+      "date": "2023-05-20",
+      "kind": "match",
+      "home": "Nottingham Forest",
+      "away": "Arsenal",
+      "score": "1-0",
+      "teams": [
+        "Nottingham Forest",
+        "Arsenal",
+        "Manchester City"
+      ],
+      "importance": 5,
+      "tags": [
+        "title-decided",
+        "survival"
+      ],
+      "narration": "Nottingham Forest's victory secured their own survival and mathematically confirmed Manchester City as Premier League champions.",
+      "detail": "Taiwo Awoniyi scored the only goal. Arsenal could no longer catch City, while Forest guaranteed a second consecutive season in the top flight.",
+      "sources": [
+        {
+          "title": "BBC Sport – Nottingham Forest 1-0 Arsenal",
+          "url": "https://www.bbc.co.uk/sport/football/65579920"
+        }
+      ]
+    },
+    {
+      "id": "2023-05-28-everton-bournemouth",
+      "date": "2023-05-28",
+      "kind": "match",
+      "home": "Everton",
+      "away": "Bournemouth",
+      "score": "1-0",
+      "teams": [
+        "Everton",
+        "Bournemouth"
+      ],
+      "importance": 5,
+      "tags": [
+        "relegation",
+        "final-day",
+        "survival"
+      ],
+      "narration": "Abdoulaye Doucouré's second-half strike kept Everton in the Premier League on a tense final day.",
+      "detail": "Everton knew victory would guarantee survival. Doucouré's goal meant results elsewhere could not send them down, condemning Leicester and Leeds to relegation.",
+      "sources": [
+        {
+          "title": "BBC Sport – Everton 1-0 Bournemouth",
+          "url": "https://www.bbc.co.uk/sport/football/65661812"
+        }
+      ]
+    },
+    {
+      "id": "2023-05-28-leicester-west-ham",
+      "date": "2023-05-28",
+      "kind": "match",
+      "home": "Leicester City",
+      "away": "West Ham United",
+      "score": "2-1",
+      "teams": [
+        "Leicester City",
+        "West Ham United"
+      ],
+      "importance": 5,
+      "tags": [
+        "relegation",
+        "final-day"
+      ],
+      "narration": "Leicester did what they had to do by beating West Ham, but Everton's victory elsewhere relegated the 2016 champions.",
+      "detail": "Leicester's nine-year Premier League stay ended despite a final-day win. Their fate had been out of their own hands before kick-off.",
+      "sources": [
+        {
+          "title": "BBC Sport – Leicester 2-1 West Ham",
+          "url": "https://www.bbc.co.uk/sport/football/65661852"
+        }
+      ]
+    },
+    {
+      "id": "2023-05-28-leeds-spurs",
+      "date": "2023-05-28",
+      "kind": "match",
+      "home": "Leeds United",
+      "away": "Tottenham Hotspur",
+      "score": "1-4",
+      "teams": [
+        "Leeds United",
+        "Tottenham Hotspur"
+      ],
+      "importance": 5,
+      "tags": [
+        "relegation",
+        "final-day"
+      ],
+      "narration": "Leeds needed a victory and help elsewhere to survive, but a heavy home defeat confirmed their relegation.",
+      "detail": "Sam Allardyce had been given the final four matches in an attempt to save Leeds, but they joined Southampton and Leicester in the Championship.",
+      "sources": [
+        {
+          "title": "BBC Sport – Final-day relegation reaction",
+          "url": "https://www.bbc.co.uk/sport/live/football/65448666"
+        },
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        }
+      ]
+    },
+    {
+      "id": "2023-05-28-villa-brighton",
+      "date": "2023-05-28",
+      "kind": "match",
+      "home": "Aston Villa",
+      "away": "Brighton & Hove Albion",
+      "score": "2-1",
+      "teams": [
+        "Aston Villa",
+        "Brighton & Hove Albion"
+      ],
+      "importance": 4,
+      "tags": [
+        "europe",
+        "final-day",
+        "villa-rise"
+      ],
+      "narration": "Aston Villa completed their remarkable turnaround under Unai Emery by securing seventh place and European football.",
+      "detail": "Villa had been hovering just above the relegation zone when Emery arrived in the autumn. Victory over Brighton guaranteed a Europa Conference League place.",
+      "sources": [
+        {
+          "title": "BBC Sport – Final-day Premier League reaction",
+          "url": "https://www.bbc.co.uk/sport/live/football/65448666"
+        }
+      ]
+    },
+    {
+      "id": "2023-season-end-summary",
+      "date": "2023-05-28",
+      "kind": "season_summary",
+      "teams": [],
+      "importance": 5,
+      "tags": [
+        "season-summary"
+      ],
+      "narration": "Manchester City finished champions after Arsenal had led the table for most of the season; Newcastle and Manchester United completed the Champions League places, while Leicester, Leeds and Southampton went down.",
+      "detail": "City won a third successive Premier League title and a fifth in six seasons. Arsenal had spent 248 days top. Brighton qualified for Europe for the first time, Aston Villa recovered to finish seventh, and all three clubs promoted the previous summer survived.",
+      "sources": [
+        {
+          "title": "Premier League – 2022/23 season review",
+          "url": "https://www.premierleague.com/en/news/3530592"
+        },
+        {
+          "title": "BBC Sport – 2022/23 team-by-team review",
+          "url": "https://www.bbc.co.uk/sport/football/65745007"
+        }
+      ]
+    }
+  ]
+}
