@@ -4,7 +4,7 @@ iteration,goratings_id,goratings_name,historical_name,matching_games,candidate_r
 1,1010,Li Yi Hsiu,Li Yixiu,32,1,1,0,32,TRUE,NA
 1,1013,Kim Hyun Jung,Kimu Hyonjon,7,1,1,0,7,TRUE,NA
 1,108,Chang Hsu,Cho U,222,1,1,0,222,TRUE,NA
-1,1099,Kim Seongjae,Kim Seungchae,96,1,1,0,96,TRUE,NA
+1,1099,Kim Seongjae,Kim Seungchae,99,1,1,0,99,TRUE,NA
 1,1114,Yu Chengchi,Yu Zhengqi,363,1,1,0,363,TRUE,NA
 1,1121,Cho Chien,Cho Chen,8,1,1,0,8,TRUE,NA
 1,1145,Wang Jing Yi,Oh Keii,48,1,1,1,47,TRUE,NA
@@ -13,11 +13,10 @@ iteration,goratings_id,goratings_name,historical_name,matching_games,candidate_r
 1,116,Pan Shan Chi,Han Zenki,26,1,1,0,26,TRUE,NA
 1,1169,Kim Miri,Kim Mili,38,1,1,0,38,TRUE,NA
 1,1174,Oda Hiromitsu,Oda Hiromitsoo,3,1,1,0,3,TRUE,NA
-1,1225,Yu Zhiying,Yoo Zhiying,317,1,1,1,316,TRUE,NA
+1,1225,Yu Zhiying,Yoo Zhiying,319,1,1,1,318,TRUE,NA
 1,1225,Yu Zhiying,Niu Yutian,1,2,1,1,0,FALSE,Not top candidate
 1,1225,Yu Zhiying,Xie Yimin,1,3,1,1,0,TRUE,NA
-1,1225,Yu Zhiying,Zhao Qianyue,1,4,1,1,0,FALSE,Not top candidate
-1,1262,Sun Zhe,Son Makoto,107,1,1,1,106,TRUE,NA
+1,1262,Sun Zhe,Son Makoto,108,1,1,1,107,TRUE,NA
 1,1262,Sun Zhe,Lin Shixun,1,2,1,1,0,FALSE,Not top candidate
 1,127,Park Shiun,Park Chieun,44,1,1,0,44,TRUE,NA
 1,1300,Kang Byeongkwon,Kang Pyeonggwon,1,1,1,0,1,FALSE,Below minimum matching games
@@ -26,7 +25,7 @@ iteration,goratings_id,goratings_name,historical_name,matching_games,candidate_r
 1,1321,Yao Zhi Teng,Yo Chito,1,3,1,1,0,FALSE,Not top candidate
 1,1353,Takeuchi Kousuke,Takeuchi Kosuke,10,1,1,0,10,TRUE,NA
 1,1410,Kim Sinyoung,Kim Sinyeong,31,1,1,0,31,TRUE,NA
-1,1451,Hsu Chia Yuan,Kyo Kagen,360,1,1,1,359,TRUE,NA
+1,1451,Hsu Chia Yuan,Kyo Kagen,361,1,1,1,360,TRUE,NA
 1,1451,Hsu Chia Yuan,Oh Keii,1,2,1,1,0,TRUE,NA
 1,1464,Watanabe Kouki,Watanabe Koki,31,1,1,1,30,TRUE,NA
 1,1464,Watanabe Kouki,Daito Kunio,1,2,1,1,0,FALSE,Not top candidate
@@ -34,7 +33,7 @@ iteration,goratings_id,goratings_name,historical_name,matching_games,candidate_r
 1,1535,Wu Boyi,U Boi,112,1,1,1,111,TRUE,NA
 1,1535,Wu Boyi,Son Makoto,1,2,1,1,0,TRUE,NA
 1,1545,Ota Ryou,Ota Ryo,12,1,1,0,12,TRUE,NA
-1,1554,Chang Ruei Jie,Cho Zuiketsoo,45,1,1,0,45,TRUE,NA
+1,1554,Chang Ruei Jie,Cho Zuiketsoo,46,1,1,0,46,TRUE,NA
 1,1561,Meyer Francis,Francis Meyer,6,1,1,0,6,TRUE,NA
 1,1607,Watanabe Yuu,Watanabe Yu,29,1,1,0,29,TRUE,NA
 1,1631,Park Jinyoung,Park Jinyeong,21,1,1,0,21,TRUE,NA
@@ -43,7 +42,7 @@ iteration,goratings_id,goratings_name,historical_name,matching_games,candidate_r
 1,1796,Cho Sang Yeun,Cho Sangyeon  (2),3,1,1,0,3,FALSE,Historical player claimed by multiple GoRatings IDs
 1,1802,Chen Yichun,Chen Yijun,53,1,1,0,53,TRUE,NA
 1,1823,Seki Koutarou,Seki Kotaro,109,1,1,0,109,TRUE,NA
-1,1873,Han Sangcho,Han Sangjo,59,1,1,0,59,TRUE,NA
+1,1873,Han Sangcho,Han Sangjo,60,1,1,0,60,TRUE,NA
 1,1874,Yi Liao,I Ryo,14,1,1,2,12,TRUE,NA
 1,1874,Yi Liao,Lee Liao,2,2,1,2,0,FALSE,Not top candidate
 1,1874,Yi Liao,Moon Minjong,1,3,1,2,-1,FALSE,Not top candidate
@@ -58,7 +57,7 @@ iteration,goratings_id,goratings_name,historical_name,matching_games,candidate_r
 1,2221,Yang Yoojun,Yang Yujun,8,1,1,0,8,TRUE,NA
 1,2228,Jeong Yujin,Cheong Yujin,84,1,1,0,84,TRUE,NA
 1,2263,Tsukada Chiharu,Tsukada Jiharu,10,1,1,0,10,TRUE,NA
-1,2305,Lee Suljoo,Lee Seuljoo,49,1,1,0,49,TRUE,NA
+1,2305,Lee Suljoo,Lee Seuljoo,50,1,1,0,50,TRUE,NA
 1,234,Park Byeongkyu,Park Pyeongkyu,3,1,1,0,3,TRUE,NA
 1,2344,Yoo Ohseong,Yoo Oseong,22,1,1,0,22,TRUE,NA
 1,2372,Hsiao Yu-Yang,Sho Gyokuyo,19,1,1,1,18,TRUE,NA
@@ -73,6 +72,8 @@ iteration,goratings_id,goratings_name,historical_name,matching_games,candidate_r
 1,2454,Kim Kieon,Kim Kiyeon,1,1,1,0,1,FALSE,Below minimum matching games
 1,246,Chang Luhsiang,Cho Rosho,1,1,1,0,1,FALSE,Below minimum matching games
 1,2460,Kim Minji,Kim Minchi,3,1,1,0,3,TRUE,NA
+1,2466,Zhao Chongheng,Zhang Jongheng,3,1,1,1,2,TRUE,NA
+1,2466,Zhao Chongheng,Cao Ruxu,1,2,1,1,0,FALSE,Not top candidate
 1,2491,Kang Jaewoo,Kang Jaeu,4,1,1,0,4,TRUE,NA
 1,2492,Cho Sangyeon (s),Cho Sangyeon  (2),14,1,1,1,13,FALSE,Historical player claimed by multiple GoRatings IDs
 1,2492,Cho Sangyeon (s),Hyeon Yupin,1,2,1,1,0,FALSE,Not top candidate
@@ -89,7 +90,7 @@ iteration,goratings_id,goratings_name,historical_name,matching_games,candidate_r
 1,2602,Kim Juhyeong,Kim Chuhyeong,1,1,1,0,1,FALSE,Below minimum matching games
 1,283,Chen Kayui,Chin Kaei,12,1,1,0,12,TRUE,NA
 1,284,Oya Kouichi,Oya Koichi,10,1,1,0,10,TRUE,NA
-1,315,Paek Hongseok,Baek Hongseok,88,1,1,0,88,TRUE,NA
+1,315,Paek Hongseok,Baek Hongseok,91,1,1,0,91,TRUE,NA
 1,316,Su Yaoguo,So Yokoku,72,1,1,0,72,TRUE,NA
 1,317,Song Kwang Bok,So Kofuku,5,1,1,0,5,TRUE,NA
 1,350,Kim Chongsu,Kim Jongsoo,31,1,1,1,30,TRUE,NA
@@ -104,7 +105,7 @@ iteration,goratings_id,goratings_name,historical_name,matching_games,candidate_r
 1,602,Lin Han Chieh,Rin Kanketsu,94,1,1,1,93,TRUE,NA
 1,602,Lin Han Chieh,Mannami Nao,1,2,1,1,0,FALSE,Not top candidate
 1,602,Lin Han Chieh,Yo Kaei,1,3,1,1,0,FALSE,Not top candidate
-1,604,Chang Li Yu,Cho Riyu,69,1,1,1,68,TRUE,NA
+1,604,Chang Li Yu,Cho Riyu,70,1,1,1,69,TRUE,NA
 1,604,Chang Li Yu,Koyama Ryugo,1,2,1,1,0,FALSE,Not top candidate
 1,604,Chang Li Yu,Shimoji Gensho,1,3,1,1,0,FALSE,Not top candidate
 1,70,Wang Ming Wan,Oh Meien,125,1,1,1,124,TRUE,NA
@@ -116,7 +117,7 @@ iteration,goratings_id,goratings_name,historical_name,matching_games,candidate_r
 1,888,Huang Yih Tzuu,Ko Iso,109,1,1,0,109,TRUE,NA
 1,911,Arakaki Shun,Aragaki Shoon,15,1,1,0,15,TRUE,NA
 1,914,Kim Byungmin,Kimu Pyonmin,7,1,1,0,7,TRUE,NA
-1,95,Cho Sun Jin,Cho Sonjin,89,1,1,0,89,TRUE,NA
+1,95,Cho Sun Jin,Cho Sonjin,90,1,1,0,90,TRUE,NA
 1,960,Hsieh Yi Min,Xie Yimin,245,1,1,1,244,TRUE,NA
 1,960,Hsieh Yi Min,Kurotaki Masaki,1,2,1,1,0,FALSE,Not top candidate
 1,960,Hsieh Yi Min,Mannami Nao,1,3,1,1,0,FALSE,Not top candidate
