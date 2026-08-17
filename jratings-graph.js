@@ -329,7 +329,7 @@
       const traces = renderedSeries.map(makeTrace);
 
       const layout = {
-        margin: { l: 50, r: 28, t: 10, b: 40 },
+        margin: { l: 50, r: 220, t: 10, b: 40 },
 
         xaxis: {
           type: 'date',
@@ -356,7 +356,14 @@
         plot_bgcolor: bg,
         font: { color: getComputedStyle(document.body).color },
         showlegend: renderedSeries.length > 1,
-        legend: { orientation: 'h', x: 0, y: 1.1 },
+        legend: {
+          orientation: 'v',
+          x: 1.02,
+          xanchor: 'left',
+          y: 0.5,
+          yanchor: 'middle',
+          traceorder: 'normal'
+        },
         shapes: makeYGridShapes(yMin0, yMax0, 100)
       };
 
