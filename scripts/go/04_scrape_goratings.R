@@ -35,6 +35,10 @@ library(purrr)
 
 options(stringsAsFactors = FALSE)
 
+if (requireNamespace("tictoc", quietly = TRUE)) {
+  tictoc::tic("04_scrape_goratings")
+}
+
 # -----------------------------
 # Settings
 # -----------------------------
@@ -297,7 +301,55 @@ deduplicate_observations <- function(df) {
       empty_observations()
     )
   }
-  
+
+  # Treat each profile scrape as a snapshot.
+  # The same historical game can be scraped again later with
+  # different displayed ratings, so ratings must not make an
+  # older snapshot look like a new game.
+  df <- df %>%
+    mutate(
+      snapshot_key = paste(
+        player_id,
+        opponent_id,
+        format(
+          as.Date(date),
+          "%Y-%m-%d"
+        ),
+        str_to_lower(
+          clean_text(colour)
+        ),
+        str_to_lower(
+          clean_text(result)
+        ),
+        sep = "|"
+      ),
+      scrape_stamp = coalesce(
+        clean_text(scraped_at),
+        ""
+      )
+    ) %>%
+    group_by(
+      snapshot_key
+    ) %>%
+    mutate(
+      latest_scrape_stamp = if (
+        any(scrape_stamp != "")
+      ) {
+        max(
+          scrape_stamp[
+            scrape_stamp != ""
+          ]
+        )
+      } else {
+        ""
+      }
+    ) %>%
+    filter(
+      latest_scrape_stamp == "" |
+        scrape_stamp == latest_scrape_stamp
+    ) %>%
+    ungroup()
+
   df %>%
     mutate(
       observation_key = observation_key(
@@ -323,7 +375,10 @@ deduplicate_observations <- function(df) {
       .keep_all = TRUE
     ) %>%
     select(
-      -observation_key
+      -observation_key,
+      -snapshot_key,
+      -scrape_stamp,
+      -latest_scrape_stamp
     ) %>%
     arrange(
       date,
@@ -1354,3 +1409,14 @@ cat(
   observations_file,
   "\n"
 )
+
+if (requireNamespace("tictoc", quietly = TRUE)) {
+  tictoc::toc()
+}
+
+if (
+  interactive() &&
+    requireNamespace("beepr", quietly = TRUE)
+) {
+  beepr::beep()
+}

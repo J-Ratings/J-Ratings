@@ -28,6 +28,10 @@ library(purrr)
 
 options(stringsAsFactors = FALSE)
 
+if (requireNamespace("tictoc", quietly = TRUE)) {
+  tictoc::tic("05_build_games")
+}
+
 # -----------------------------
 # Settings
 # -----------------------------
@@ -471,6 +475,57 @@ cat(
   nrow(invalid_observations),
   "\n"
 )
+
+# -----------------------------
+# Remove stale scrape snapshots
+#
+# The same historical game can appear in multiple
+# scraper runs with different displayed ratings.
+# Keep only the most recent scrape snapshot for each
+# player-perspective game signature before assigning
+# occurrence numbers.
+# -----------------------------
+valid_observations <- valid_observations %>%
+  mutate(
+    snapshot_key = paste(
+      perspective_player_id,
+      date,
+      black_id,
+      white_id,
+      result_code,
+      sep = "|"
+    ),
+    scrape_stamp = coalesce(
+      scraped_at,
+      ""
+    )
+  ) %>%
+  group_by(
+    snapshot_key
+  ) %>%
+  mutate(
+    latest_scrape_stamp = if (
+      any(scrape_stamp != "")
+    ) {
+      max(
+        scrape_stamp[
+          scrape_stamp != ""
+        ]
+      )
+    } else {
+      ""
+    }
+  ) %>%
+  filter(
+    latest_scrape_stamp == "" |
+      scrape_stamp == latest_scrape_stamp
+  ) %>%
+  ungroup() %>%
+  select(
+    -snapshot_key,
+    -scrape_stamp,
+    -latest_scrape_stamp
+  )
 
 # -----------------------------
 # Remove exact duplicate rows
@@ -960,3 +1015,14 @@ cat(
   issues_file,
   "\n"
 )
+
+if (requireNamespace("tictoc", quietly = TRUE)) {
+  tictoc::toc()
+}
+
+if (
+  interactive() &&
+    requireNamespace("beepr", quietly = TRUE)
+) {
+  beepr::beep()
+}
