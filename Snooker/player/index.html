@@ -1006,6 +1006,64 @@ const shapes = makeYGridShapes(bounds.lo, bounds.hi, step);
     peakEl.textContent = Number.isFinite(peak.y) ? String(Math.round(peak.y)) : '—';
   }
 
+
+  function extendHistoryFromGames(matches) {
+    if (!Array.isArray(matches) || !RAW.length) return;
+
+    const times = RAW.map(p => Date.parse(p.x)).filter(Number.isFinite);
+    if (!times.length) return;
+
+    const lastHistoryTime = Math.max(...times);
+    const additions = [];
+
+    for (const g of matches) {
+      if (!g || g.upcoming === true) continue;
+
+      const dateText = g.date || g.match_date || g.MatchDate || '';
+      const t = Date.parse(dateText);
+
+      if (!Number.isFinite(t) || t <= lastHistoryTime) continue;
+
+      const before = Number(
+        g.player_elo ??
+        g.elo ??
+        g.PlayerElo ??
+        g.playerElo
+      );
+
+      const delta = Number(
+        g.delta ??
+        g.Delta ??
+        g.elo_delta
+      );
+
+      const explicitAfter = Number(
+        g.player_elo_after ??
+        g.elo_after ??
+        g.rating_after ??
+        g.post_elo ??
+        g.playerEloAfter
+      );
+
+      const after = Number.isFinite(explicitAfter)
+        ? explicitAfter
+        : (Number.isFinite(before) && Number.isFinite(delta) ? before + delta : NaN);
+
+      if (!Number.isFinite(after)) continue;
+
+      additions.push({
+        x: dateText,
+        y: after,
+        rank: Number(g.rank ?? g.world_rank ?? g.WorldRank),
+        event: g.event || g.EventName || ''
+      });
+    }
+
+    if (!additions.length) return;
+
+    RAW = normalise(RAW.concat(additions), true);
+  }
+
   function refreshView() {
     renderPlayerStats(applySinceFilter(RAW, SINCE_YEAR));
     draw(AGG_MODE);
@@ -1066,6 +1124,14 @@ const shapes = makeYGridShapes(bounds.lo, bounds.hi, step);
         if (token !== LOAD_TOKEN) return;
 
         const matchRows = Array.isArray(games) ? games : [];
+
+        // The per-player games JSON can be newer than history JSON.
+        // Extend the chart with completed games beyond the last history point.
+        extendHistoryFromGames(matchRows);
+
+        if (RAW.length) {
+          refreshView();
+        }
 
         renderUpcomingTable(me, players, matchRows);
         renderMatchesTable(me, players, matchRows);
