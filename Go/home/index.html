@@ -249,6 +249,33 @@
         white-space:nowrap;
       }
     }
+  
+    /* Standardised J-Ratings home-page comparison graph: Go design, 10% smaller. */
+    #compare-wrap{
+      width:min(82.8vw, 1260px);
+      margin:0 auto;
+      padding:16px 0 !important;
+    }
+
+    #compare-chart{
+      width:100%;
+      height:585px !important;
+      min-height:585px;
+      margin-bottom:0 !important;
+    }
+
+    @media (max-width:768px){
+      #compare-wrap{
+        width:100%;
+        padding:12px 0 !important;
+      }
+
+      #compare-chart{
+        height:432px !important;
+        min-height:432px;
+      }
+    }
+
   </style>
 </head>
 

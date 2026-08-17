@@ -16,6 +16,7 @@
 
   <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="../../jratings-graph.js"></script>
 
   <style>
     #compare-chart {
@@ -377,18 +378,18 @@
       .flag-icon { width: 54px; height: 40px; }
     }
 
-
-    /* Standardised J-Ratings home-page comparison graph. */
+  
+    /* Standardised J-Ratings home-page comparison graph: Go design, 10% smaller. */
     #compare-wrap{
-      width:min(92vw, 1400px);
+      width:min(82.8vw, 1260px);
       margin:0 auto;
       padding:16px 0 !important;
     }
 
     #compare-chart{
       width:100%;
-      height:650px !important;
-      min-height:650px;
+      height:585px !important;
+      min-height:585px;
       margin-bottom:0 !important;
     }
 
@@ -399,8 +400,8 @@
       }
 
       #compare-chart{
-        height:480px !important;
-        min-height:480px;
+        height:432px !important;
+        min-height:432px;
       }
     }
 
@@ -592,7 +593,8 @@ const state = {
 };
 
 const histCache = new Map();
-let lastCompared = [];
+let compareChart = null;
+  let lastCompared = [];
 let COMPARE_SINCE_YEAR = '2020';
 
 function updateHeaders() {
@@ -919,109 +921,49 @@ function getDisplayColour(teamName) {
 }
 
 async function buildComparison(teams) {
-  lastCompared = teams.slice();
-
   const wrap = document.getElementById('compare-wrap');
-  const empty = document.getElementById('compare-empty');
   const chart = document.getElementById('compare-chart');
-  const modeSel = document.getElementById('compare-agg');
 
-  if (wrap) wrap.style.display = 'block';
-  if (empty) empty.style.display = 'none';
-  if (chart) chart.innerHTML = 'Loading…';
+  wrap.style.display = 'block';
+  chart.innerHTML = '';
 
-  const mode = modeSel ? modeSel.value : 'weekly';
-  const traces = [];
-  let ymin = Infinity;
-  let ymax = -Infinity;
+  lastCompared = [];
 
   for (const t of teams) {
     const hist = await fetchHistoryFor(t.id);
     if (!hist || !hist.length) continue;
 
-    const raw = normalise(
-      hist.map(d => ({
+    lastCompared.push({
+      name: t.name || t.id,
+      colour: getDisplayColour(t.name),
+      raw: hist.map(d => ({
         x: d.date,
         y: Number(d.rating),
         competition: d.competition || d.tournament || ''
       })),
-      true
-    );
-
-    const filtered = applySinceFilter(raw, COMPARE_SINCE_YEAR);
-    const data = aggregate(filtered, mode);
-
-    const xs = data.map(pt => pt.x);
-    const ysAll = data.map(pt => pt.y);
-    const competitions = data.map(pt => pt.competition || '');
-    const finiteY = ysAll.filter(Number.isFinite);
-
-    if (!xs.length || !finiteY.length) continue;
-
-    ymin = Math.min(ymin, ...finiteY);
-    ymax = Math.max(ymax, ...finiteY);
-
-    traces.push({
-      type: 'scatter',
-      name: t.name,
-      x: xs,
-      y: ysAll,
-      customdata: competitions,
-      mode: 'lines',
-      line: { width: 4,
-        shape: 'linear',
-        color: getDisplayColour(t.name)
-      },
-      hovertemplate: mode === 'daily'
-        ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra>' + t.name + '</extra>'
-        : '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
-      connectgaps: true,
-      showlegend: true
+      customData: pt => pt.competition || '',
+      hovertemplate:
+        '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' +
+        (t.name || t.id) +
+        '</extra>'
     });
   }
 
-  if (!traces.length) {
-    if (chart) chart.innerHTML = 'No history found.';
+  if (!lastCompared.length) {
+    chart.innerHTML = 'No history found.';
     return;
   }
 
-  ymin = Math.floor(ymin / 100) * 100;
-  ymax = Math.ceil(ymax / 100) * 100;
+  await Promise.resolve(compareChart.render(lastCompared));
 
-  const shapes = [];
-  for (let v = ymin; v <= ymax; v += 100) {
-    shapes.push({
-      type: 'line',
-      xref: 'paper',
-      x0: 0,
-      x1: 1,
-      y0: v,
-      y1: v,
-      line: { width: 1, color: 'rgba(128,128,128,0.35)' },
-      layer: 'below'
+  if (chart && Array.isArray(chart.data)) {
+    chart.data.forEach((trace, index) => {
+      const item = lastCompared.find(d => d.name === trace.name);
+      if (item && item.colour) {
+        Plotly.restyle(chart, { 'line.color': item.colour }, [index]);
+      }
     });
   }
-
-  const cs = getComputedStyle(document.body);
-
-  Plotly.newPlot('compare-chart', traces, {
-    margin: { l: 60, r: 20, t: 50, b: 55 },
-    xaxis: { type: 'date' },
-    yaxis: { title: 'Rating' },
-    legend: {
-      orientation: 'h',
-      y: 1.12,
-      x: 0
-    },
-    paper_bgcolor: cs.backgroundColor,
-    plot_bgcolor: cs.backgroundColor,
-    font: { color: cs.color, size: 14 },
-    shapes
-  }, {
-    staticPlot: IS_TOUCH,
-    displayModeBar: false,
-    responsive: true
-  });
 }
 
 function setupCompareButton() {
@@ -1064,10 +1006,9 @@ function setupCompareButton() {
     const compareAgg = document.getElementById('compare-agg');
     if (compareAgg) compareAgg.value = 'weekly';
 
-    document.querySelectorAll('.range-btn').forEach(btn => btn.classList.remove('is-active'));
-    const since2000Btn = document.querySelector('.range-btn[data-since="2000"]');
-    if (since2000Btn) since2000Btn.classList.add('is-active');
-    COMPARE_SINCE_YEAR = '2020';
+    document.querySelectorAll('#compare-wrap .seg[data-range]').forEach(btn => btn.classList.remove('active'));
+    const since2020Btn = document.querySelector('#compare-wrap .seg[data-range="2020"]');
+    if (since2020Btn) since2020Btn.classList.add('active');
 
     const chosen = state.filtered.filter(t => selectedIds.includes(t.id));
     buildComparison(chosen);
@@ -1129,23 +1070,13 @@ async function load() {
   }
 }
 
-document.getElementById('compare-agg').addEventListener('change', () => {
-  if (lastCompared.length) buildComparison(lastCompared);
+compareChart = JRGraph.createChart({
+  chartId: 'compare-chart',
+  aggId: 'compare-agg',
+  controlsEl: document.getElementById('compare-wrap'),
+  defaultRange: '2020',
+  getItems: () => lastCompared
 });
-
-document.querySelectorAll('#compare-wrap .seg[data-range]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('#compare-wrap .seg[data-range]').forEach(b => {
-          b.classList.remove('active');
-          b.classList.remove('is-active');
-        });
-        btn.classList.add('active');
-
-        COMPARE_SINCE_YEAR = btn.getAttribute('data-range') || 'ALL';
-
-        if (lastCompared.length) buildComparison(lastCompared);
-      });
-    });
 
 document.getElementById('era').addEventListener('change', rebuildRowsFromMode);
 document.getElementById('q').addEventListener('input', applyFilter);

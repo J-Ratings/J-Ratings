@@ -15,6 +15,7 @@
 
   <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="../../jratings-graph.js"></script>
 
   <style>
     #compare-chart { height: 500px; }
@@ -283,18 +284,18 @@
       .flag-icon { width: 54px; height: 40px; }
     }
 
-
-    /* Standardised J-Ratings home-page comparison graph. */
+  
+    /* Standardised J-Ratings home-page comparison graph: Go design, 10% smaller. */
     #compare-wrap{
-      width:min(92vw, 1400px);
+      width:min(82.8vw, 1260px);
       margin:0 auto;
       padding:16px 0 !important;
     }
 
     #compare-chart{
       width:100%;
-      height:650px !important;
-      min-height:650px;
+      height:585px !important;
+      min-height:585px;
       margin-bottom:0 !important;
     }
 
@@ -305,8 +306,8 @@
       }
 
       #compare-chart{
-        height:480px !important;
-        min-height:480px;
+        height:432px !important;
+        min-height:432px;
       }
     }
 
@@ -431,6 +432,7 @@
   };
 
   const histCache = new Map();
+  let compareChart = null;
   let lastCompared = [];
   let COMPARE_SINCE_YEAR = '2020';
 
@@ -763,87 +765,40 @@ tr.appendChild(tdRank);
 }
 
   async function buildComparison(players) {
-    lastCompared = players.slice();
+  const wrap = document.getElementById('compare-wrap');
+  const chart = document.getElementById('compare-chart');
 
-    const wrap = document.getElementById('compare-wrap');
-    const chart = document.getElementById('compare-chart');
-    const mode = document.getElementById('compare-agg').value;
+  wrap.style.display = 'block';
+  chart.innerHTML = '';
 
-    wrap.style.display = 'block';
-    chart.innerHTML = 'Loading…';
+  lastCompared = [];
 
-    const traces = [];
-    let ymin = Infinity;
-    let ymax = -Infinity;
+  for (const p of players) {
+    const hist = await fetchHistoryFor(p.id);
+    if (!hist || !hist.length) continue;
 
-    for (const p of players) {
-      const hist = await fetchHistoryFor(p.id);
-      if (!hist || !hist.length) continue;
-
-      const raw = hist.map(d => ({ x: d.date, y: Number(d.rating) }));
-      const filtered = applySinceFilter(raw, COMPARE_SINCE_YEAR);
-      const data = aggregate(filtered, mode);
-
-      const xs = data.map(pt => pt.x);
-      const ys = data.map(pt => pt.y);
-
-      if (!xs.length || !ys.length) continue;
-
-      ymin = Math.min(ymin, ...ys);
-      ymax = Math.max(ymax, ...ys);
-
-      traces.push({
-        type: 'scatter',
-        name: p.name,
-        x: xs,
-        y: ys,
-        mode: 'lines',
-        line: { width: 4, shape: 'linear' },
-        marker: { size: 0 },
-        hovertemplate: '%{x}<br>%{y:.0f}<extra>' + p.name + '</extra>',
-        connectgaps: true
-      });
-    }
-
-    if (!traces.length) {
-      chart.innerHTML = 'No history found.';
-      return;
-    }
-
-    ymin = Math.floor(ymin / 100) * 100;
-    ymax = Math.ceil(ymax / 100) * 100;
-
-    const shapes = [];
-    for (let v = ymin; v <= ymax; v += 100) {
-      shapes.push({
-        type: 'line',
-        xref: 'paper',
-        x0: 0,
-        x1: 1,
-        y0: v,
-        y1: v,
-        line: { width: 1, color: 'rgba(128,128,128,0.35)' },
-        layer: 'below'
-      });
-    }
-
-    const cs = getComputedStyle(document.body);
-
-    Plotly.newPlot(chart, traces, {
-      margin: { l: 50, r: 20, t: 10, b: 40 },
-      xaxis: { type: 'date' },
-      yaxis: { title: 'Rating' },
-      legend: { orientation: 'h' },
-      paper_bgcolor: cs.backgroundColor,
-      plot_bgcolor: cs.backgroundColor,
-      font: { color: cs.color },
-      shapes
-    }, {
-      staticPlot: IS_TOUCH,
-      displayModeBar: false,
-      responsive: true
+    lastCompared.push({
+      name: p.name || p.id,
+      raw: hist.map(d => ({
+        x: d.date,
+        y: Number(d.rating),
+        tournament: d.tournament || d.event || ''
+      })),
+      customData: pt => pt.tournament || '',
+      hovertemplate:
+        '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' +
+        (p.name || p.id) +
+        '</extra>'
     });
   }
+
+  if (!lastCompared.length) {
+    chart.innerHTML = 'No history found.';
+    return;
+  }
+
+  await Promise.resolve(compareChart.render(lastCompared));
+}
 
   function setupCompareButton() {
     const modal = document.getElementById('compare-modal');
@@ -969,20 +924,15 @@ state.rows = rows
     }
   }
 
-  document.getElementById('compare-agg').addEventListener('change', () => {
-    if (lastCompared.length) buildComparison(lastCompared);
-  });
+  compareChart = JRGraph.createChart({
+  chartId: 'compare-chart',
+  aggId: 'compare-agg',
+  controlsEl: document.getElementById('compare-wrap'),
+  defaultRange: '2020',
+  getItems: () => lastCompared
+});
 
-  document.querySelectorAll('#compare-wrap .seg[data-range]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('#compare-wrap .seg[data-range]').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      COMPARE_SINCE_YEAR = btn.getAttribute('data-range') || 'ALL';
-      if (lastCompared.length) buildComparison(lastCompared);
-    });
-  });
-
-  document.getElementById('q').addEventListener('input', applyFilter);
+document.getElementById('q').addEventListener('input', applyFilter);
   document.getElementById('year').addEventListener('change', load);
   document.getElementById('load-more').addEventListener('click', loadMore);
 

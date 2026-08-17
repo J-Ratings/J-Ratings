@@ -15,6 +15,7 @@
 
   <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="../../jratings-graph.js"></script>
 
   <style>
     #compare-chart { height: 520px; }
@@ -286,18 +287,18 @@
       .flag-icon { width: 54px; height: 40px; }
     }
 
-
-    /* Standardised J-Ratings home-page comparison graph. */
+  
+    /* Standardised J-Ratings home-page comparison graph: Go design, 10% smaller. */
     #compare-wrap{
-      width:min(92vw, 1400px);
+      width:min(82.8vw, 1260px);
       margin:0 auto;
       padding:16px 0 !important;
     }
 
     #compare-chart{
       width:100%;
-      height:650px !important;
-      min-height:650px;
+      height:585px !important;
+      min-height:585px;
       margin-bottom:0 !important;
     }
 
@@ -308,8 +309,8 @@
       }
 
       #compare-chart{
-        height:480px !important;
-        min-height:480px;
+        height:432px !important;
+        min-height:432px;
       }
     }
 
@@ -448,6 +449,7 @@
   };
 
   const histCache = new Map();
+  let compareChart = null;
   let lastCompared = [];
   let COMPARE_SINCE_YEAR = '2020';
 
@@ -781,106 +783,50 @@ applyFilter();
   }
 
   async function buildComparison(teams) {
-    lastCompared = teams.slice();
+  const wrap = document.getElementById('compare-wrap');
+  const chart = document.getElementById('compare-chart');
 
-    const wrap = document.getElementById('compare-wrap');
-    const chart = document.getElementById('compare-chart');
-    const modeSel = document.getElementById('compare-agg');
+  wrap.style.display = 'block';
+  chart.innerHTML = '';
 
-    wrap.style.display = 'block';
-    chart.innerHTML = 'Loading…';
+  lastCompared = [];
 
-    const mode = modeSel ? modeSel.value : 'weekly';
+  for (const t of teams) {
+    const hist = await fetchHistoryFor(t.id);
+    if (!hist || !hist.length) continue;
 
-    const traces = [];
-    let ymin = Infinity;
-    let ymax = -Infinity;
-
-    for (const t of teams) {
-      const hist = await fetchHistoryFor(t.id);
-      if (!hist || !hist.length) continue;
-
-      const raw = normalise(
-        hist.map(d => ({
-          x: d.date,
-          y: Number(d.rating),
-          tournament: d.tournament || ''
-        })),
-        true
-      );
-
-      const filtered = applySinceFilter(raw, COMPARE_SINCE_YEAR);
-      const data = aggregate(filtered, mode);
-
-      const xs = data.map(pt => pt.x);
-      const ysAll = data.map(pt => pt.y);
-      const ys = ysAll.filter(Number.isFinite);
-      const tournaments = data.map(pt => pt.tournament || '');
-
-      if (!xs.length || !ys.length) continue;
-
-      ymin = Math.min(ymin, ...ys);
-      ymax = Math.max(ymax, ...ys);
-
-      traces.push({
-        type: 'scatter',
-        name: t.name,
-        x: xs,
-        y: ysAll,
-        customdata: tournaments,
-        mode: 'lines',
-        line: { width: 4,
-          shape: 'linear',
-          color: getDisplayColour(t.name)
-        },
-        hovertemplate: `%{x}<br>%{y:.0f} Elo${mode === 'daily' ? '<br>%{customdata}' : ''}<extra>${t.name}</extra>`,
-        connectgaps: true,
-        showlegend: true
-      });
-    }
-
-    if (!traces.length) {
-      chart.innerHTML = 'No history found.';
-      return;
-    }
-
-    ymin = Math.floor(ymin / 100) * 100;
-    ymax = Math.ceil(ymax / 100) * 100;
-
-    const cs = getComputedStyle(document.body);
-
-    Plotly.newPlot(chart, traces, {
-      margin: { l: 60, r: 200, t: 10, b: 45 },
-      xaxis: {
-        type: 'date',
-        title: { text: '', font: { size: AXIS_TITLE_SIZE } },
-        tickfont: { size: AXIS_TICK_SIZE }
-      },
-      yaxis: {
-        title: 'Rating',
-        tickfont: { size: AXIS_TICK_SIZE }
-      },
-      legend: {
-        x: 1.02,
-        xanchor: 'left',
-        y: 1,
-        yanchor: 'top',
-        font: { size: LEGEND_FONT_SIZE },
-        tracegroupgap: LEGEND_ITEM_GAP,
-        itemsizing: 'constant',
-        bgcolor: 'rgba(0,0,0,0)',
-        borderwidth: 0
-      },
-      paper_bgcolor: cs.backgroundColor,
-      plot_bgcolor: cs.backgroundColor,
-      font: { color: cs.color, size: 14 },
-      shapes: majorGridShapes(ymin, ymax)
-    }, {
-      staticPlot: IS_TOUCH,
-      displayModeBar: false,
-      responsive: true
+    lastCompared.push({
+      name: t.name || t.id,
+      colour: getDisplayColour(t.name),
+      raw: hist.map(d => ({
+        x: d.date,
+        y: Number(d.rating),
+        tournament: d.tournament || d.event || ''
+      })),
+      customData: pt => pt.tournament || '',
+      hovertemplate:
+        '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' +
+        (t.name || t.id) +
+        '</extra>'
     });
   }
+
+  if (!lastCompared.length) {
+    chart.innerHTML = 'No history found.';
+    return;
+  }
+
+  await Promise.resolve(compareChart.render(lastCompared));
+
+  if (chart && Array.isArray(chart.data)) {
+    chart.data.forEach((trace, index) => {
+      const item = lastCompared.find(d => d.name === trace.name);
+      if (item && item.colour) {
+        Plotly.restyle(chart, { 'line.color': item.colour }, [index]);
+      }
+    });
+  }
+}
 
   function setupCompareButton() {
     const modal = document.getElementById('compare-modal');
@@ -921,10 +867,9 @@ applyFilter();
       const compareAgg = document.getElementById('compare-agg');
       if (compareAgg) compareAgg.value = 'weekly';
 
-      document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
-      const defaultBtn = document.querySelector('.range-btn[data-since="2000"]');
-      if (defaultBtn) defaultBtn.classList.add('is-active');
-      COMPARE_SINCE_YEAR = '2020';
+      document.querySelectorAll('#compare-wrap .seg[data-range]').forEach(b => b.classList.remove('active'));
+      const defaultBtn = document.querySelector('#compare-wrap .seg[data-range="2020"]');
+      if (defaultBtn) defaultBtn.classList.add('active');
 
       const chosen = state.filtered.filter(t => selectedIds.includes(String(t.id)));
       buildComparison(chosen);
@@ -981,25 +926,15 @@ applyFilter();
     }
   }
 
-  document.getElementById('compare-agg').addEventListener('change', () => {
-    if (lastCompared.length) buildComparison(lastCompared);
-  });
+  compareChart = JRGraph.createChart({
+  chartId: 'compare-chart',
+  aggId: 'compare-agg',
+  controlsEl: document.getElementById('compare-wrap'),
+  defaultRange: '2020',
+  getItems: () => lastCompared
+});
 
-  document.querySelectorAll('#compare-wrap .seg[data-range]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('#compare-wrap .seg[data-range]').forEach(b => {
-          b.classList.remove('active');
-          b.classList.remove('is-active');
-        });
-        btn.classList.add('active');
-
-        COMPARE_SINCE_YEAR = btn.getAttribute('data-range') || 'ALL';
-
-        if (lastCompared.length) buildComparison(lastCompared);
-      });
-    });
-
-  document.getElementById('era').addEventListener('change', rebuildRowsFromMode);
+document.getElementById('era').addEventListener('change', rebuildRowsFromMode);
   document.getElementById('q').addEventListener('input', applyFilter);
 
   setupCompareButton();
