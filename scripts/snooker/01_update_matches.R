@@ -1,13 +1,18 @@
 library(httr)
 library(jsonlite)
 library(data.table)
+library(tictoc)
+library(beepr)
 
 options(stringsAsFactors = FALSE)
+
+tic("Snooker pipeline")
 
 # ============================================================
 # 01_update_matches.R
 #
 # Purpose:
+#   - Load event lists refreshed by 00_refresh_lookups.R
 #   - Refresh recent snooker match data from snooker.org
 #   - Update combined season match CSVs directly
 #   - Avoid storing thousands of small per-event CSVs in Git
@@ -59,9 +64,15 @@ if (header_value == "") {
   )
 }
 
-# Allow a safety margin below the API limit of two requests per minute.
+# Hermund Årdalen confirmed the site-level IIS rate-limit window is two minutes.
+# Use a conservative 70-second gap between normal requests.
 REQUEST_PAUSE <- as.numeric(
-  Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "35")
+  Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "70")
+)
+
+# After a 403, wait substantially longer before retrying.
+FORBIDDEN_PAUSE <- as.numeric(
+  Sys.getenv("SNOOKER_FORBIDDEN_PAUSE", unset = "180")
 )
 
 MAX_RETRIES <- 3L
@@ -110,10 +121,16 @@ get_snooker <- function(query, pause = REQUEST_PAUSE, retries = MAX_RETRIES) {
     txt <- content(res, "text", encoding = "UTF-8")
     
     if (status == 403) {
-      stop(
-        "HTTP 403. Request refused by the API; ",
-        "this request will not be retried."
-      )
+      last_error <- "HTTP 403. Request refused by the API."
+      
+      if (attempt < retries) {
+        cat("HTTP 403 received. Waiting", FORBIDDEN_PAUSE,
+            "seconds before retrying...\n")
+        Sys.sleep(FORBIDDEN_PAUSE)
+        next
+      }
+      
+      stop(last_error)
     }
     
     if (status != 200) {
@@ -331,9 +348,11 @@ cat("Current inferred snooker season:", current_season, "\n")
 cat("Candidate seasons:", paste(candidate_seasons, collapse = ", "), "\n")
 cat("Completed-event refresh window:", COMPLETED_EVENT_REFRESH_DAYS, "days\n")
 # ============================================================
-# 1) Refresh/load event lists for candidate seasons
+# 1) Load event lists already refreshed by 00_refresh_lookups.R
 # ============================================================
 
+# 00_refresh_lookups.R runs before this script and writes events_YYYY.csv.
+# Reusing those files avoids repeating the same season-list API calls.
 events_list <- list()
 event_list_index <- 1L
 
@@ -342,33 +361,15 @@ for (season in candidate_seasons) {
   
   event_file <- file.path(EVENTS_DIR, paste0("events_", season, ".csv"))
   
-  events_api <- tryCatch(
-    get_snooker(paste0("?t=5&s=", season)),
-    error = function(e) {
-      cat("Failed to refresh event list for season", season, ":", conditionMessage(e), "\n")
-      NULL
-    }
-  )
-  
-  if (!is.null(events_api) && is.data.frame(events_api) && nrow(events_api) > 0L) {
-    events_api <- normalise_event_file(events_api, season)
-    fwrite(events_api, event_file)
-    
-    cat("Wrote event file:", event_file, "\n")
-    cat("Event rows:", nrow(events_api), "\n")
-    
-    events_dt <- copy(events_api)
-    
-  } else if (file.exists(event_file)) {
-    events_dt <- fread(event_file, encoding = "UTF-8")
-    
-    cat("Using existing event file:", event_file, "\n")
-    cat("Event rows:", nrow(events_dt), "\n")
-    
-  } else {
-    cat("No API event data and no existing event file for season", season, "\n")
+  if (!file.exists(event_file)) {
+    cat("No local event file for season", season, "- skipping.\n")
     next
   }
+  
+  events_dt <- fread(event_file, encoding = "UTF-8")
+  
+  cat("Using event file refreshed by 00_refresh_lookups.R:", event_file, "\n")
+  cat("Event rows:", nrow(events_dt), "\n")
   
   events_dt[, EventSeason := season]
   events_list[[event_list_index]] <- events_dt
@@ -376,7 +377,10 @@ for (season in candidate_seasons) {
 }
 
 if (length(events_list) == 0L) {
-  stop("No event data available.")
+  stop(
+    "No local event data available. ",
+    "Run 00_refresh_lookups.R before 01_update_matches.R."
+  )
 }
 
 events_all <- rbindlist(events_list, use.names = TRUE, fill = TRUE)
@@ -577,3 +581,6 @@ for (season_name in names(refresh_by_season)) {
 }
 
 cat("\nDone.\n")
+toc()
+beep()
+

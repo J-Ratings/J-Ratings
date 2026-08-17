@@ -1,8 +1,12 @@
 library(httr)
 library(jsonlite)
 library(data.table)
+library(tictoc)
+library(beepr)
 
 options(stringsAsFactors = FALSE)
+
+tic("Snooker pipeline")
 
 # ============================================================
 # 00_refresh_lookups.R
@@ -52,9 +56,15 @@ if (header_value == "") {
   stop("Missing SNOOKER_API_HEADER environment variable.")
 }
 
-# Allow a safety margin below the API limit of two requests per minute.
+# Hermund Årdalen confirmed the site-level IIS rate-limit window is two minutes.
+# Use a conservative 70-second gap between normal requests.
 REQUEST_PAUSE <- as.numeric(
-  Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "35")
+  Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "70")
+)
+
+# After a 403, wait substantially longer before retrying.
+FORBIDDEN_PAUSE <- as.numeric(
+  Sys.getenv("SNOOKER_FORBIDDEN_PAUSE", unset = "180")
 )
 
 MAX_RETRIES <- 3L
@@ -106,10 +116,16 @@ get_snooker <- function(query, pause = REQUEST_PAUSE, retries = MAX_RETRIES) {
     txt <- content(res, "text", encoding = "UTF-8")
     
     if (status == 403) {
-      stop(
-        "HTTP 403. Request refused by the API; ",
-        "this request will not be retried."
-      )
+      last_error <- "HTTP 403. Request refused by the API."
+      
+      if (attempt < retries) {
+        cat("HTTP 403 received. Waiting", FORBIDDEN_PAUSE,
+            "seconds before retrying...\n")
+        Sys.sleep(FORBIDDEN_PAUSE)
+        next
+      }
+      
+      stop(last_error)
     }
     
     if (status != 200) {
@@ -417,3 +433,6 @@ if (nrow(players_new) > 0L) {
 }
 
 cat("\nDone.\n")
+toc()
+beep()
+
