@@ -1,10 +1,30 @@
 library(httr)
 library(jsonlite)
 library(data.table)
-library(tictoc)
-library(beepr)
 
 options(stringsAsFactors = FALSE)
+
+.jr_timer_start <- Sys.time()
+
+tic <- function(label = NULL) {
+  .jr_timer_start <<- Sys.time()
+  if (!is.null(label) && nzchar(label)) {
+    cat(label, "started at", format(.jr_timer_start, "%H:%M:%S"), "\n")
+  }
+}
+
+toc <- function() {
+  elapsed <- as.numeric(difftime(Sys.time(), .jr_timer_start, units = "secs"))
+  cat(sprintf("Elapsed time: %.1f seconds\n", elapsed))
+  invisible(elapsed)
+}
+
+beep <- function() {
+  if (requireNamespace("beepr", quietly = TRUE) && interactive()) {
+    try(beepr::beep(), silent = TRUE)
+  }
+  invisible(NULL)
+}
 
 tic("Snooker pipeline")
 
