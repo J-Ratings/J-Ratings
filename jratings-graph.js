@@ -4,6 +4,19 @@
     lineWidth: 6
   };
 
+  const SERIES_COLOURS = [
+    '#1f77b4',
+    '#ff7f0e',
+    '#2ca02c',
+    '#d62728',
+    '#9467bd',
+    '#8c564b',
+    '#e377c2',
+    '#7f7f7f',
+    '#bcbd22',
+    '#17becf'
+  ];
+
   function iso(d) {
     return new Date(d).toISOString().slice(0, 10);
   }
@@ -236,8 +249,9 @@
     let dataMax = null;
     let initialRangeApplied = false;
 
-    function makeTrace(item) {
+    function makeTrace(item, index) {
       const series = item.series;
+      const colour = item.colour || SERIES_COLOURS[index % SERIES_COLOURS.length];
 
       return {
         type: 'scatter',
@@ -249,7 +263,7 @@
         line: {
           width: options.lineWidth || DEFAULTS.lineWidth,
           shape: 'linear',
-          ...(item.colour ? { color: item.colour } : {})
+          color: colour
         },
         hovertemplate: item.hovertemplate ||
           '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' + (item.name || '') + '</extra>',
@@ -290,11 +304,11 @@
     }
 
 
-    function renderMobileLegend(items, isMobile) {
-      const legendId = `${chartId}-mobile-legend`;
+    function renderHtmlLegend(items) {
+      const legendId = `${chartId}-html-legend`;
       let legendEl = document.getElementById(legendId);
 
-      if (!isMobile || items.length <= 1) {
+      if (items.length <= 1) {
         if (legendEl) legendEl.remove();
         return;
       }
@@ -309,15 +323,13 @@
       legendEl.style.flexWrap = 'wrap';
       legendEl.style.alignItems = 'center';
       legendEl.style.justifyContent = 'flex-start';
-      legendEl.style.gap = '8px 14px';
-      legendEl.style.padding = '10px 8px 4px';
-      legendEl.style.fontSize = '15px';
+      legendEl.style.gap = '10px 18px';
+      legendEl.style.padding = '12px 8px 4px';
+      legendEl.style.fontSize = window.matchMedia('(max-width: 700px)').matches ? '15px' : '16px';
       legendEl.style.lineHeight = '1.25';
       legendEl.style.color = getComputedStyle(document.body).color;
 
       legendEl.innerHTML = '';
-
-      const plotData = Array.isArray(chartEl.data) ? chartEl.data : [];
 
       items.forEach((item, index) => {
         const row = document.createElement('div');
@@ -332,13 +344,8 @@
         swatch.style.width = '28px';
         swatch.style.height = '4px';
         swatch.style.flex = '0 0 28px';
-
-        const traceColour =
-          item.colour ||
-          (plotData[index] && plotData[index].line && plotData[index].line.color) ||
-          '#9aa4b2';
-
-        swatch.style.background = traceColour;
+        swatch.style.background =
+          item.colour || SERIES_COLOURS[index % SERIES_COLOURS.length];
 
         const label = document.createElement('span');
         label.textContent = item.name || '';
@@ -389,13 +396,13 @@
       const yMax0 = allY.length ? Math.max(...allY) : 1;
       const bg = getComputedStyle(document.body).backgroundColor;
 
-      const traces = renderedSeries.map(makeTrace);
+      const traces = renderedSeries.map((item, index) => makeTrace(item, index));
       const isMobile = window.matchMedia('(max-width: 700px)').matches;
 
       const layout = {
-margin: isMobile
-  ? { l: 48, r: 18, t: 10, b: 44 }
-  : { l: 50, r: 320, t: 10, b: 40 },
+        margin: isMobile
+          ? { l: 48, r: 18, t: 10, b: 44 }
+          : { l: 50, r: 28, t: 10, b: 40 },
 
         xaxis: {
           type: 'date',
@@ -421,15 +428,7 @@ margin: isMobile
         paper_bgcolor: bg,
         plot_bgcolor: bg,
         font: { color: getComputedStyle(document.body).color },
-        showlegend: renderedSeries.length > 1 && !isMobile,
-        legend: {
-          orientation: 'v',
-          x: 1.01,
-          xanchor: 'left',
-          y: 0.5,
-          yanchor: 'middle',
-          traceorder: 'normal'
-        },
+        showlegend: false,
         shapes: makeYGridShapes(yMin0, yMax0, 100)
       };
 
@@ -445,7 +444,7 @@ margin: isMobile
         responsive: true
       });
 
-      renderMobileLegend(renderedSeries, isMobile);
+      renderHtmlLegend(renderedSeries);
 
       if (rememberedXRange) {
         const [x0, x1] = rememberedXRange;
