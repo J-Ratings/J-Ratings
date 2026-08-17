@@ -393,9 +393,9 @@
       const isMobile = window.matchMedia('(max-width: 700px)').matches;
 
       const layout = {
-        margin: isMobile
-          ? { l: 48, r: 18, t: 10, b: 44 }
-          : { l: 50, r: 220, t: 10, b: 40 },
+margin: isMobile
+  ? { l: 48, r: 18, t: 10, b: 44 }
+  : { l: 50, r: 320, t: 10, b: 40 },
 
         xaxis: {
           type: 'date',
@@ -424,7 +424,7 @@
         showlegend: renderedSeries.length > 1 && !isMobile,
         legend: {
           orientation: 'v',
-          x: 1.02,
+          x: 1.01,
           xanchor: 'left',
           y: 0.5,
           yanchor: 'middle',
