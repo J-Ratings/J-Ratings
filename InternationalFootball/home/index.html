@@ -314,6 +314,85 @@
       }
     }
 
+  
+    /* Keep comparison controls visually identical across sports. */
+    #compare-wrap .jr-chart-controls{
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:flex-start !important;
+      justify-content:flex-start !important;
+      gap:10px !important;
+      margin-bottom:10px !important;
+    }
+
+    #compare-wrap .jr-chart-controls > div:first-child{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    #compare-wrap .range-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    #compare-wrap .seg{
+      font-size:1.05rem;
+      padding:9px 12px;
+    }
+
+    #compare-wrap #compare-agg{
+      font-size:1.05rem;
+      padding:9px 12px;
+    }
+
+    #compare-wrap .jr-chart-controls label{
+      font-size:1.05rem;
+    }
+
+    /* Always show the selected time span clearly. */
+    #compare-wrap .seg.active,
+    #compare-wrap .seg.is-active,
+    #compare-wrap .seg[aria-pressed="true"]{
+      background:rgba(255,255,255,0.10) !important;
+      border-color:rgba(220,220,220,0.85) !important;
+      box-shadow:0 0 0 1px rgba(220,220,220,0.55) inset !important;
+    }
+
+    /* Larger Plotly text without enlarging the chart itself. */
+    #compare-chart .xtick text,
+    #compare-chart .ytick text{
+      font-size:22px !important;
+    }
+
+    #compare-chart .legendtext{
+      font-size:22px !important;
+    }
+
+    #compare-chart .xtitle,
+    #compare-chart .ytitle{
+      font-size:24px !important;
+    }
+
+    #compare-chart .hovertext text,
+    #compare-chart .hoverlayer text{
+      font-size:20px !important;
+    }
+
+    @media (max-width:768px){
+      #compare-chart .xtick text,
+      #compare-chart .ytick text,
+      #compare-chart .legendtext{
+        font-size:18px !important;
+      }
+
+      #compare-chart .hovertext text,
+      #compare-chart .hoverlayer text{
+        font-size:18px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -367,7 +446,7 @@
         <div class="range-buttons">
           <button type="button" class="seg" data-range="ALL">ALL</button>
           <button type="button" class="seg" data-range="2000">2000–Present</button>
-          <button type="button" class="seg active" data-range="2020">2020–Present</button>
+          <button type="button" class="seg active is-active" data-range="2020" aria-pressed="true">2020–Present</button>
           <button type="button" class="seg" data-range="LY">Last Year</button>
           <button type="button" class="seg" data-range="YTD">YTD</button>
         </div>
@@ -940,5 +1019,35 @@ document.getElementById('era').addEventListener('change', rebuildRowsFromMode);
   setupCompareButton();
   load();
 </script>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const rangeButtons = Array.from(
+    document.querySelectorAll('#compare-wrap .seg[data-range]')
+  );
+
+  const activateRangeButton = (button) => {
+    rangeButtons.forEach(btn => {
+      btn.classList.remove('active', 'is-active');
+      btn.setAttribute('aria-pressed', 'false');
+    });
+
+    if (button) {
+      button.classList.add('active', 'is-active');
+      button.setAttribute('aria-pressed', 'true');
+    }
+  };
+
+  const defaultButton =
+    document.querySelector('#compare-wrap .seg[data-range="2020"]');
+
+  activateRangeButton(defaultButton);
+
+  rangeButtons.forEach(btn => {
+    btn.addEventListener('click', () => activateRangeButton(btn));
+  });
+});
+</script>
+
 </body>
 </html>
