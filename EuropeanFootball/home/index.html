@@ -1665,5 +1665,37 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const chart = document.getElementById('compare-chart');
+  if (!chart || typeof Plotly === 'undefined') return;
+
+  let applyingLegendLayout = false;
+
+  const applyRightLegend = () => {
+    if (applyingLegendLayout || !chart.data || !chart.data.length) return;
+
+    applyingLegendLayout = true;
+
+    Promise.resolve(
+      Plotly.relayout(chart, {
+        'legend.orientation': 'v',
+        'legend.x': 1.02,
+        'legend.xanchor': 'left',
+        'legend.y': 0.5,
+        'legend.yanchor': 'middle',
+        'legend.traceorder': 'normal',
+        'margin.r': 220
+      })
+    ).finally(() => {
+      applyingLegendLayout = false;
+    });
+  };
+
+  chart.on('plotly_afterplot', applyRightLegend);
+});
+</script>
+
 </body>
 </html>
