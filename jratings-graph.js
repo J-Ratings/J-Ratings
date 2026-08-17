@@ -248,7 +248,8 @@
         mode: 'lines',
         line: {
           width: options.lineWidth || DEFAULTS.lineWidth,
-          shape: 'linear'
+          shape: 'linear',
+          ...(item.colour ? { color: item.colour } : {})
         },
         hovertemplate: item.hovertemplate ||
           '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' + (item.name || '') + '</extra>',
@@ -285,6 +286,68 @@
         'shapes': makeYGridShapes(y0, y1, step)
       }).then(() => {
         setTickLabelsEvery(chartId, y0, y1, step);
+      });
+    }
+
+
+    function renderMobileLegend(items, isMobile) {
+      const legendId = `${chartId}-mobile-legend`;
+      let legendEl = document.getElementById(legendId);
+
+      if (!isMobile || items.length <= 1) {
+        if (legendEl) legendEl.remove();
+        return;
+      }
+
+      if (!legendEl) {
+        legendEl = document.createElement('div');
+        legendEl.id = legendId;
+        chartEl.insertAdjacentElement('afterend', legendEl);
+      }
+
+      legendEl.style.display = 'flex';
+      legendEl.style.flexWrap = 'wrap';
+      legendEl.style.alignItems = 'center';
+      legendEl.style.justifyContent = 'flex-start';
+      legendEl.style.gap = '8px 14px';
+      legendEl.style.padding = '10px 8px 4px';
+      legendEl.style.fontSize = '15px';
+      legendEl.style.lineHeight = '1.25';
+      legendEl.style.color = getComputedStyle(document.body).color;
+
+      legendEl.innerHTML = '';
+
+      const plotData = Array.isArray(chartEl.data) ? chartEl.data : [];
+
+      items.forEach((item, index) => {
+        const row = document.createElement('div');
+        row.style.display = 'inline-flex';
+        row.style.alignItems = 'center';
+        row.style.gap = '7px';
+        row.style.minWidth = '0';
+        row.style.maxWidth = '100%';
+
+        const swatch = document.createElement('span');
+        swatch.style.display = 'inline-block';
+        swatch.style.width = '28px';
+        swatch.style.height = '4px';
+        swatch.style.flex = '0 0 28px';
+
+        const traceColour =
+          item.colour ||
+          (plotData[index] && plotData[index].line && plotData[index].line.color) ||
+          '#9aa4b2';
+
+        swatch.style.background = traceColour;
+
+        const label = document.createElement('span');
+        label.textContent = item.name || '';
+        label.style.whiteSpace = 'normal';
+        label.style.overflowWrap = 'anywhere';
+
+        row.appendChild(swatch);
+        row.appendChild(label);
+        legendEl.appendChild(row);
       });
     }
 
@@ -327,9 +390,12 @@
       const bg = getComputedStyle(document.body).backgroundColor;
 
       const traces = renderedSeries.map(makeTrace);
+      const isMobile = window.matchMedia('(max-width: 700px)').matches;
 
       const layout = {
-        margin: { l: 50, r: 220, t: 10, b: 40 },
+        margin: isMobile
+          ? { l: 48, r: 18, t: 10, b: 44 }
+          : { l: 50, r: 220, t: 10, b: 40 },
 
         xaxis: {
           type: 'date',
@@ -355,7 +421,7 @@
         paper_bgcolor: bg,
         plot_bgcolor: bg,
         font: { color: getComputedStyle(document.body).color },
-        showlegend: renderedSeries.length > 1,
+        showlegend: renderedSeries.length > 1 && !isMobile,
         legend: {
           orientation: 'v',
           x: 1.02,
@@ -378,6 +444,8 @@
         displayModeBar: false,
         responsive: true
       });
+
+      renderMobileLegend(renderedSeries, isMobile);
 
       if (rememberedXRange) {
         const [x0, x1] = rememberedXRange;
