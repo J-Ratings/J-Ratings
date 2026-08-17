@@ -1,58 +1,58 @@
 PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate,LastMatchDate,EntryRating,Method,KValue,BaselineStartRating,NewPlayerMatches,NewPlayerKMultiplier,ProvisionalFrameThreshold,MinOpponentWeight
-946,Zhao Xintong,China,2843.83,497,3368,2012-06-18 09:11:07,2026-07-09 18:05:29,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-2469,Wu Yize,China,2835.09,235,1729,2019-04-01 01:30:31,2026-05-03 12:01:29,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-97,Shaun Murphy,England,2831.07,1285,9638,2001-02-04 00:00:00,2026-05-03 12:01:29,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-17,Mark Selby,England,2830.31,1529,11072,1999-09-08 00:00:00,2026-04-26 08:59:54,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-12,Judd Trump,England,2829.14,1487,10459,2005-10-31 00:00:00,2026-04-25 13:24:53,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+17,Mark Selby,England,2858.77,1534,11119,1999-09-08 00:00:00,2026-08-16 06:04:57,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+946,Zhao Xintong,China,2836.7,498,3379,2012-06-18 09:11:07,2026-08-11 11:33:43,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+97,Shaun Murphy,England,2835.95,1288,9662,2001-02-04 00:00:00,2026-08-14 06:00:02,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 202,Mark Allen,Northern Ireland,2819.07,1063,7851,2005-07-20 00:00:00,2026-04-30 18:06:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-237,John Higgins,Scotland,2812.11,1565,12170,1992-10-12 00:00:00,2026-04-30 11:51:49,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-5,Ronnie O'Sullivan,England,2803.65,1093,9721,1992-06-20 00:00:00,2026-05-10 10:58:37,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-666,Hossein Vafaei,Iran,2803.19,399,2840,2011-09-05 06:37:39,2026-07-15 18:05:44,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-39,Kyren Wilson,England,2797.79,1087,7107,2010-08-01 10:00:00,2026-06-22 10:01:55,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-16,Barry Hawkins,England,2796.93,1209,8518,1997-01-03 00:00:00,2026-04-28 08:56:55,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-1981,Chang Bingyu,China,2792.03,154,964,2015-10-19 05:49:29,2026-07-13 17:29:46,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+12,Judd Trump,England,2815.72,1488,10468,2005-10-31 00:00:00,2026-08-09 05:54:13,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+2469,Wu Yize,China,2813.8,237,1748,2019-04-01 01:30:31,2026-08-12 06:01:17,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+237,John Higgins,Scotland,2801.35,1566,12180,1992-10-12 00:00:00,2026-08-11 05:59:58,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+5,Ronnie O'Sullivan,England,2800.24,1095,9739,1992-06-20 00:00:00,2026-08-12 11:36:22,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1260,Yan Bingtao,China,2792,344,2469,2013-06-12 13:01:51,2022-12-01 15:03:57,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-154,Neil Robertson,Australia,2785.53,1280,9435,1999-01-03 00:00:00,2026-04-28 13:24:25,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-81,Zhang Anda,China,2784.83,572,4048,2008-03-23 00:00:00,2026-07-15 18:05:44,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+154,Neil Robertson,Australia,2790.28,1283,9459,1999-01-03 00:00:00,2026-08-14 11:26:27,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+16,Barry Hawkins,England,2788.4,1210,8528,1997-01-03 00:00:00,2026-08-08 11:34:09,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+666,Hossein Vafaei,Iran,2787.48,401,2852,2011-09-05 06:37:39,2026-08-13 06:08:11,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+81,Zhang Anda,China,2784.54,575,4078,2008-03-23 00:00:00,2026-08-14 11:44:39,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+118,David Gilbert,England,2784.25,886,6102,2002-10-04 00:00:00,2026-08-14 06:00:02,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+1981,Chang Bingyu,China,2784.11,155,973,2015-10-19 05:49:29,2026-08-10 07:01:24,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+39,Kyren Wilson,England,2783.81,1089,7125,2010-08-01 10:00:00,2026-08-13 11:25:44,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 90,Jak Jones,Wales,2777.46,482,3104,2010-08-01 10:00:00,2026-07-15 16:49:15,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-1,Mark J Williams,Wales,2777.33,1446,10590,1993-02-22 00:00:00,2026-04-24 09:01:59,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-224,Ding Junhui,China,2770.27,972,7578,2002-02-24 00:00:00,2026-04-24 13:30:32,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-2640,Jiang Jun,China,2766.01,94,661,2019-10-24 17:08:11,2026-07-19 09:10:46,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+208,Noppon Saengkham,Thailand,2772.1,527,3649,2010-07-19 00:00:00,2026-08-16 06:04:57,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+906,Zhou Yuelong,China,2771.13,573,3810,2012-02-27 11:42:20,2026-08-15 05:59:43,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+1,Mark J Williams,Wales,2768.51,1447,10599,1993-02-22 00:00:00,2026-08-08 05:57:45,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+30,Stuart Bingham,England,2763.64,1268,8717,1997-01-03 00:00:00,2026-08-15 11:29:36,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 158,Ali Carter,England,2763.37,1224,8426,1997-01-03 00:00:00,2026-07-04 18:56:03,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-118,David Gilbert,England,2762.34,883,6076,2002-10-04 00:00:00,2026-07-15 16:44:14,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-24,Xiao Guodong,China,2760.93,812,5364,2005-03-26 00:00:00,2026-04-23 11:57:27,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+24,Xiao Guodong,China,2760.84,814,5381,2005-03-26 00:00:00,2026-08-12 11:36:22,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1417,Fan Zhengyi,China,2759.21,233,1591,2013-10-21 04:37:20,2026-06-29 17:47:50,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-906,Zhou Yuelong,China,2756.92,569,3769,2012-02-27 11:42:20,2026-07-11 17:42:46,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+224,Ding Junhui,China,2757.37,973,7585,2002-02-24 00:00:00,2026-08-08 05:57:45,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 546,Gary Wilson,England,2755.38,707,4674,2004-10-02 00:00:00,2026-07-11 17:07:10,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-1044,Chris Wakelin,England,2751.91,514,3459,2012-09-06 12:42:07,2026-07-01 18:21:23,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+1044,Chris Wakelin,England,2752.73,516,3479,2012-09-06 12:42:07,2026-08-13 11:25:44,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+2611,Liu Hongyu,China,2751.77,106,671,2019-10-24 17:04:02,2026-08-12 06:01:17,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 13,Stephen Lee,England,2750.27,440,3515,1993-02-22 00:00:00,2012-10-06 16:08:03,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 45,Liam Highfield,England,2749.95,497,3477,2010-08-01 10:00:00,2026-07-20 08:57:57,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-2611,Liu Hongyu,China,2747.55,104,651,2019-10-24 17:04:02,2026-07-10 17:46:53,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+2640,Jiang Jun,China,2749.38,95,667,2019-10-24 17:08:11,2026-08-10 07:01:24,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 200,Liang Wenbo,China,2746.96,679,4734,2005-03-26 00:00:00,2022-10-10 12:02:11,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-1257,Pang Junxu,China,2742.82,276,1779,2013-06-13 05:00:49,2026-07-10 17:47:04,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+1257,Pang Junxu,China,2740.87,277,1788,2013-06-13 05:00:49,2026-08-10 11:24:12,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2758,Stan Moody,England,2738.94,142,940,2020-08-04 08:00:46,2026-07-11 16:24:41,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-208,Noppon Saengkham,Thailand,2735.53,522,3593,2010-07-19 00:00:00,2026-07-15 16:44:14,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+1982,Si Jiahui,China,2737.5,301,1997,2015-10-20 12:58:33,2026-08-13 06:08:11,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 608,Elliot Slessor,England,2735.27,467,2977,2011-06-19 13:58:53,2026-07-15 18:04:01,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 217,Thepchaiya Un-Nooh,Thailand,2733.12,595,4247,2008-07-08 00:00:00,2026-06-27 17:57:06,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-2166,Jackson Page,Wales,2731.62,300,1869,2017-02-13 12:41:23,2026-06-24 18:28:12,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-22,Anthony McGill,Scotland,2730.79,720,5008,2010-08-01 10:00:00,2026-06-17 08:58:28,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-30,Stuart Bingham,England,2730.62,1264,8684,1997-01-03 00:00:00,2026-07-06 19:28:26,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-1982,Si Jiahui,China,2728.09,299,1983,2015-10-20 12:58:33,2026-07-07 18:03:23,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1038,Joe O'Connor,England,2727.91,414,2553,2012-09-05 14:16:08,2026-07-02 18:58:42,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 507,Cao Yupeng,China,2727.72,345,2410,2009-03-30 00:00:00,2024-02-12 14:58:49,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-8,Tom Ford,England,2726.51,874,5983,2001-02-20 00:00:00,2026-06-18 15:05:38,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+22,Anthony McGill,Scotland,2726.93,722,5023,2010-08-01 10:00:00,2026-08-09 05:54:13,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 4,Fu Marco,Hong Kong,2726.31,871,6414,1998-01-02 00:00:00,2026-07-20 08:57:57,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+2470,Aaron Hill,Ireland,2725.72,196,1228,2019-04-10 14:04:18,2026-08-10 11:24:12,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+2166,Jackson Page,Wales,2725.71,301,1877,2017-02-13 12:41:23,2026-08-09 11:35:33,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1383,He Guoqiang,China,2725.25,121,804,2013-09-24 07:12:06,2026-06-26 18:48:38,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-2470,Aaron Hill,Ireland,2722.34,195,1217,2019-04-10 14:04:18,2026-07-08 17:47:18,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+8,Tom Ford,England,2723.33,875,5993,2001-02-20 00:00:00,2026-08-11 11:33:43,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2,Stephen Maguire,Scotland,2721.93,1077,7818,1999-01-03 00:00:00,2026-07-11 17:07:10,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 295,Li Hang,China,2721.15,377,2681,2006-03-20 00:00:00,2022-11-26 19:01:07,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-47,Matthew Selt,England,2720.81,821,5303,2002-10-04 00:00:00,2026-07-09 17:55:26,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1407,Xu Si,China,2720.6,273,1831,2013-10-20 10:39:17,2026-06-22 18:06:18,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1108,Yuan Sijun,China,2715.24,338,2223,2012-09-24 07:23:55,2026-06-25 19:13:31,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 85,Jack Lisowski,England,2714.95,823,5524,2010-08-01 10:00:00,2026-07-14 17:22:16,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 101,Luca Brecel,Belgium,2713.45,680,4728,2010-08-01 10:00:00,2026-07-10 16:56:49,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 125,Michael Holt,England,2712.46,842,5951,1997-01-03 00:00:00,2026-06-22 18:06:18,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2320,Dylan Emery,Wales,2711.99,248,1447,2018-03-08 13:19:57,2026-07-19 17:57:38,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+47,Matthew Selt,England,2710.41,822,5309,2002-10-04 00:00:00,2026-08-09 11:35:33,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 93,Jimmy Robertson,England,2709.96,713,4811,2002-10-04 00:00:00,2026-07-14 16:28:46,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2498,Lei Peifan,China,2709.04,210,1355,2019-05-19 18:46:38,2026-07-15 18:04:01,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 32,Daniel Wells,Wales,2708.96,522,3517,2008-07-08 00:00:00,2026-07-02 18:13:25,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -65,6 +65,7 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 96,Robbie Williams,England,2701.2,505,3394,2010-08-01 10:00:00,2026-07-04 18:31:13,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1923,Ben Mertens,Belgium,2700.2,183,1077,2015-08-27 07:31:09,2026-07-19 13:30:46,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 89,Zak Surety,England,2699.6,335,1995,2010-08-01 10:00:00,2026-07-10 19:03:42,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+1160,Yao Pengcheng,China,2698.47,56,359,2012-11-05 11:33:05,2026-08-08 11:34:09,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 306,Mei Xiwen,China,2697.46,153,1063,2007-03-25 00:00:00,2020-03-13 14:29:26,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 106,Jamie Clarke,Wales,2697.26,390,2483,2010-08-01 10:00:00,2026-07-19 09:02:19,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 19,Ben Woollaston,England,2694.88,752,4979,2004-10-02 00:00:00,2026-06-29 18:19:42,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -77,7 +78,6 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 908,Lu Ning,China,2691.41,262,1616,2012-02-27 11:42:20,2022-11-23 19:06:13,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 3534,Artemijs Zizins,Latvia,2690.89,84,501,2023-10-21 10:26:38,2026-07-19 17:57:38,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 87,Ian Burns,England,2690.62,481,3160,2010-08-01 10:00:00,2026-07-10 16:56:49,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-1160,Yao Pengcheng,China,2690.12,55,348,2012-11-05 11:33:05,2026-07-19 13:30:46,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1045,Louis Heathcote,England,2687.64,266,1607,2012-09-06 14:49:44,2026-07-19 13:30:46,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1261,Long Zehuang,China,2686.08,122,801,2013-06-12 13:52:51,2026-06-24 18:28:12,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 9,Matthew Stevens,Wales,2685.37,903,6728,1995-10-16 00:00:00,2026-07-07 17:41:22,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -219,7 +219,6 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 3885,Kledio Kaci,Albania,2619.23,12,49,2024-01-29 08:40:25,2024-02-09 19:08:06,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 34,Michael Wasley,England,2619.07,195,1314,2010-08-01 10:00:00,2016-04-07 09:00:05,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2926,Poramin Danjirakul,Thailand,2619.06,8,46,2022-06-01 12:10:49,2023-03-07 04:00:42,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-4710,Liu Linhao,China,2619.01,9,52,2025-05-14 02:58:58,2025-05-23 05:28:53,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 741,Ryan Thomerson,Australia,2618.82,185,1027,2011-10-06 15:53:23,2026-06-12 08:27:15,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2172,Amee Kamani,India,2618.74,42,143,2017-03-13 07:53:19,2025-05-25 06:59:44,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 20,Jimmy White,England,2618.55,891,7478,1981-04-07 00:00:00,2026-06-15 18:03:10,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -375,6 +374,7 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 4969,Alvin Chan,Trinidad and Tobago,2603.68,3,16,2026-01-10 16:28:48,2026-01-11 16:32:34,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1122,Peter Devlin,England,2603.65,230,1118,2012-11-11 14:58:15,2026-05-27 09:00:56,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 4698,Charl Jonck,South Africa,2603.62,2,12,2025-05-08 12:53:08,2025-05-09 18:32:03,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+4710,Liu Linhao,China,2603.58,10,58,2025-05-14 02:58:58,2026-08-08 01:26:29,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1860,Chris Peplow,Malta,2603.57,22,101,2015-07-18 16:04:12,2026-03-12 09:01:01,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1426,Anthony Davies,Wales,2603.49,76,775,1992-10-12 00:00:00,2014-12-20 15:30:45,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 3472,Tony Wilson,Isle of Man,2603.49,12,151,1988-10-10 00:00:00,1992-06-20 00:00:00,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -3648,7 +3648,6 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 4621,David Boyes,England,2562,3,11,2025-02-07 12:51:17,2025-10-30 16:09:02,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 3514,Steve Campbell,England,2561.97,16,156,1988-10-10 00:00:00,1992-03-21 00:00:00,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 4138,Mo Tiantian,China,2561.89,8,27,2025-05-20 03:53:11,2026-05-14 01:28:54,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
-1705,Wu Shengguang,China,2561.88,9,44,2015-01-21 02:08:25,2018-05-30 11:40:32,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 725,Richard William King,Wales,2561.85,12,78,1997-01-03 00:00:00,2017-05-15 11:03:46,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2788,Mary Talbot,England,2561.84,85,241,2021-08-10 14:57:29,2024-09-07 20:44:57,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 708,Rafal Jewtuch,Poland,2561.74,7,35,2011-09-29 17:47:53,2016-02-25 15:05:39,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
@@ -4045,6 +4044,7 @@ PlayerID,PlayerName,Nationality,Rating,MatchesPlayed,FramesPlayed,FirstMatchDate
 3475,Jon Wright,England,2545.64,19,173,1986-10-18 00:00:00,1992-03-21 00:00:00,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 2360,John Pritchett,England,2545.62,22,111,2018-05-15 07:47:22,2026-05-28 14:55:38,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 4736,Chu Weijia,China,2545.48,6,19,2025-05-20 12:17:55,2026-05-15 04:35:13,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
+1705,Wu Shengguang,China,2545.42,10,50,2015-01-21 02:08:25,2026-08-08 01:26:29,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 4416,Rose Nicholson,England,2545.42,14,35,2024-09-06 16:54:06,2026-03-28 12:58:55,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 3250,Matt Wilson,England,2545.38,10,129,1995-01-04 00:00:00,2001-02-20 00:00:00,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
 1806,Chris Mason,Gibraltar,2545.25,7,25,2015-07-30 07:19:10,2020-08-06 12:01:08,2600,SinglePass_FixedStart_DoubleKFirst20,5,2600,20,2,200,0.1
