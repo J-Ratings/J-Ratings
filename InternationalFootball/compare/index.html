@@ -806,7 +806,7 @@ async function createChart() {
 
   comparedItems = state.loaded.map(item => ({
       name: item.name,
-      colour: getDisplayColour(name),
+      colour: getDisplayColour(item.name),
       raw: item.raw,
       customData: pt => pt.tournament || '',
       hovertemplate:
