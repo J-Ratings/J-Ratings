@@ -101,6 +101,32 @@
       padding:12px 20px 20px;
     }
 
+    /* Match the dedicated Compare page proportions while keeping
+       the shared JRGraph line styling used on the Home page. */
+    #compare-wrap{
+      width:min(92vw, 1400px);
+      margin:0 auto;
+      padding:16px 0 !important;
+    }
+
+    #compare-chart{
+      width:100%;
+      height:650px;
+      min-height:650px;
+    }
+
+    @media (max-width:768px){
+      #compare-wrap{
+        width:100%;
+        padding:12px 0 !important;
+      }
+
+      #compare-chart{
+        height:480px;
+        min-height:480px;
+      }
+    }
+
     /* Desktop player table */
 .table-wrap{
   width:min(86vw, 1100px);

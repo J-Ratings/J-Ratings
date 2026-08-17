@@ -1398,13 +1398,30 @@ players_tbl <- final %>%
       historical_flag
     ),
     
+    goratings_flag = if_else(
+      goratings_flag == "gf",
+      NA_character_,
+      goratings_flag
+    ),
+    
+    goratings_flag_by_name = if_else(
+      goratings_flag_by_name == "gf",
+      NA_character_,
+      goratings_flag_by_name
+    ),
+    
+    override_flag = if_else(
+      override_flag == "gf",
+      NA_character_,
+      override_flag
+    ),
+    
     flag = coalesce(
       goratings_flag,
       goratings_flag_by_name,
       override_flag,
       historical_flag
-    ),
-    
+    ),    
     gender = coalesce(
       goratings_gender,
       goratings_gender_by_name,
