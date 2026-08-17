@@ -16,6 +16,7 @@
 
   <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="../../jratings-graph.js"></script>
 
   <style>
 
@@ -209,6 +210,87 @@
       }
     }
 
+  
+    /* Compare graph: match the corresponding Home comparison graph exactly. */
+    #chart{
+      width:min(82.8vw, 1260px) !important;
+      height:585px !important;
+      min-height:585px !important;
+      margin:0 auto !important;
+    }
+
+    .jr-chart-controls{
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:flex-start !important;
+      justify-content:flex-start !important;
+      gap:10px !important;
+      padding-top:2px !important;
+    }
+
+    .jr-chart-controls > div:first-child{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .jr-chart-controls label{
+      font-size:1.05rem;
+    }
+
+    .jr-chart-controls select{
+      font-size:1.05rem;
+      padding:9px 12px;
+    }
+
+    .jr-chart-controls .range-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+      gap:8px;
+    }
+
+    .jr-chart-controls .seg{
+      font-size:1.05rem;
+      padding:9px 12px;
+    }
+
+    .jr-chart-controls .seg.active,
+    .jr-chart-controls .seg.is-active,
+    .jr-chart-controls .seg[aria-pressed="true"]{
+      background:rgba(255,255,255,0.10) !important;
+      border-color:rgba(220,220,220,0.85) !important;
+      box-shadow:0 0 0 1px rgba(220,220,220,0.55) inset !important;
+    }
+
+    #chart .xtick text,
+    #chart .ytick text{
+      font-size:16px !important;
+    }
+
+    #chart .hovertext text,
+    #chart .hoverlayer text{
+      font-size:18px !important;
+    }
+
+    @media (max-width:700px){
+      #chart{
+        width:100% !important;
+        height:432px !important;
+        min-height:432px !important;
+      }
+
+      #chart .xtick text,
+      #chart .ytick text{
+        font-size:15px !important;
+      }
+
+      #chart .hovertext text,
+      #chart .hoverlayer text{
+        font-size:16px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -247,23 +329,30 @@
         <button id="create" class="btn create-btn" type="button">Create</button>
       </div>
 
-      <div class="compare-view">
-        <label for="agg">View:</label>
-        <select id="agg">
-              <option value="daily">Daily</option>
-              <option value="monthly" selected>Monthly</option>
-              <option value="yearly">Yearly</option>
-            </select>
+      <div class="jr-chart-controls">
+        <div>
+          <label for="agg">View:</label>
+          <select id="agg">
+            <option value="daily">Daily</option>
+            <option value="weekly" selected>Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="quarterly">Quarterly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+        </div>
+
         <div class="range-buttons">
-            <button type="button" class="range-btn is-active" data-since="">All</button>
-            <button type="button" class="range-btn" data-since="2000">Since 2000</button>
-            <button type="button" class="range-btn" data-since="2020">Since 2020</button>
-          </div>
+          <button type="button" class="seg active is-active" data-range="ALL" aria-pressed="true">ALL</button>
+          <button type="button" class="seg" data-range="2000" aria-pressed="false">2000–Present</button>
+          <button type="button" class="seg" data-range="2020" aria-pressed="false">2020–Present</button>
+          <button type="button" class="seg" data-range="LY" aria-pressed="false">Last Year</button>
+          <button type="button" class="seg" data-range="YTD" aria-pressed="false">YTD</button>
+        </div>
       </div>
     </div>
 
     <div style="padding:24px 16px 28px">
-      <div id="chart">Select teams, then Create.</div>
+      <div id="chart" class="jr-chart">No selection yet.</div>
     </div>
   </section>
 </main>
@@ -840,52 +929,76 @@
     });
   }
 
-  async function createChart() {
-    const names = state.inputs.map(r => r.input.value.trim()).filter(Boolean);
-    const uniq = [...new Set(names)];
+  let compareChart = null;
+let comparedItems = [];
 
-    if (!uniq.length) {
-      alert('Please add at least one team');
-      return;
-    }
+async function createChart() {
+  const names = state.inputs
+    .map(r => r.input.value.trim())
+    .filter(Boolean);
 
-    const lookups = uniq.map(name => {
-      const team = state.teams.find(t => t.name === name);
-      if (!team) return null;
-      return { name, id: team.id };
-    }).filter(Boolean);
+  const uniq = [...new Set(names)];
 
-    if (!lookups.length) {
-      document.getElementById('chart').textContent = 'No valid teams.';
-      return;
-    }
-
-    document.getElementById('chart').textContent = 'Loading…';
-
-    const results = await Promise.all(lookups.map(async ({ name, id }) => {
-      try {
-        const res = await fetch(HIST_URL(id), { cache: 'no-cache' });
-        if (!res.ok) return null;
-
-        const hist = await res.json();
-
-        const daily = normalise(hist.map(d => ({
-          x: d.date,
-          y: Number(d.rating),
-          tier: Number(d.tier)
-        })), true);
-
-        if (!daily.length) return null;
-
-        return { name, daily };
-      } catch {
-        return null;
-      }
-    }));
-
-    state.loaded = results.filter(Boolean);
-    drawChart();
+  if (!uniq.length) {
+    alert('Please add at least one team');
+    return;
   }
+
+  const lookups = uniq.map(name => {
+    const team = state.teams.find(t => t.name === name || t.id === name);
+    if (!team) return null;
+    return { name: team.name || team.id, id: team.id };
+  }).filter(Boolean);
+
+  if (!lookups.length) {
+    document.getElementById('chart').textContent = 'No valid teams.';
+    return;
+  }
+
+  const chart = document.getElementById('chart');
+  chart.textContent = '';
+
+  const results = await Promise.all(lookups.map(async ({ name, id }) => {
+    try {
+      const res = await fetch(HIST_URL(id), { cache: 'no-cache' });
+      if (!res.ok) return null;
+
+      const hist = await res.json();
+
+      return {
+        name,
+        id,
+        raw: hist.map(d => ({
+          x: d.date,
+        y: Number(d.rating),
+        tier: d.tier || d.division || d.competition || ''
+        }))
+      };
+    } catch {
+      return null;
+    }
+  }));
+
+  state.loaded = results.filter(Boolean);
+
+  comparedItems = state.loaded.map(item => ({
+      name: item.name,
+      colour: getDisplayColour(name),
+      raw: item.raw,
+      customData: pt => pt.tier || '',
+      hovertemplate:
+        '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' +
+        item.name +
+        '</extra>'
+  }));
+
+  if (!comparedItems.length) {
+    chart.textContent = 'No history found.';
+    return;
+  }
+
+  await Promise.resolve(compareChart.render(comparedItems));
+}
 
   function setupRangeButtons() {
     document.querySelectorAll('.range-btn').forEach(btn => {
@@ -902,36 +1015,27 @@
   }
 
   window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('add').addEventListener('click', makeRow);
-    document.getElementById('clear').addEventListener('click', clearAll);
-    document.getElementById('create').addEventListener('click', createChart);
-
-    document.getElementById('agg').addEventListener('change', e => {
-      AGG_MODE = e.target.value;
-      drawChart();
-    });
-
-    setupRangeButtons();
-
-    Promise.all([
-      loadTeams(),
-      loadColours()
-    ])
-      .then(() => {
-        makeRow();
-        document.getElementById('chart').textContent = 'Select teams, then Create.';
-      })
-      .catch(e => {
-        console.error(e);
-
-        const note = document.querySelector('.muted-note');
-        if (note) {
-          note.textContent = 'Could not load team list. Check data path or run via a local server.';
-        }
-
-        makeRow();
-      });
+  compareChart = JRGraph.createChart({
+    chartId: 'chart',
+    aggId: 'agg',
+    controlsEl: document.querySelector('.panel'),
+    defaultRange: 'ALL',
+    getItems: () => comparedItems
   });
+
+  document.getElementById('agg').value = 'weekly';
+
+  document.getElementById('add').addEventListener('click', makeRow);
+  document.getElementById('clear').addEventListener('click', clearAll);
+  document.getElementById('create').addEventListener('click', createChart);
+
+  Promise.all([loadTeams(), loadColours()])
+    .then(() => makeRow())
+    .catch(e => {
+      console.error(e);
+      makeRow();
+    });
+});
 </script>
 </body>
 </html>

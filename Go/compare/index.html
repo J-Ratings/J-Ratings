@@ -245,6 +245,87 @@
       }
     }
 
+  
+    /* Compare graph: match the corresponding Home comparison graph exactly. */
+    #chart{
+      width:min(82.8vw, 1260px) !important;
+      height:585px !important;
+      min-height:585px !important;
+      margin:0 auto !important;
+    }
+
+    .jr-chart-controls{
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:flex-start !important;
+      justify-content:flex-start !important;
+      gap:10px !important;
+      padding-top:2px !important;
+    }
+
+    .jr-chart-controls > div:first-child{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .jr-chart-controls label{
+      font-size:1.05rem;
+    }
+
+    .jr-chart-controls select{
+      font-size:1.05rem;
+      padding:9px 12px;
+    }
+
+    .jr-chart-controls .range-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+      gap:8px;
+    }
+
+    .jr-chart-controls .seg{
+      font-size:1.05rem;
+      padding:9px 12px;
+    }
+
+    .jr-chart-controls .seg.active,
+    .jr-chart-controls .seg.is-active,
+    .jr-chart-controls .seg[aria-pressed="true"]{
+      background:rgba(255,255,255,0.10) !important;
+      border-color:rgba(220,220,220,0.85) !important;
+      box-shadow:0 0 0 1px rgba(220,220,220,0.55) inset !important;
+    }
+
+    #chart .xtick text,
+    #chart .ytick text{
+      font-size:16px !important;
+    }
+
+    #chart .hovertext text,
+    #chart .hoverlayer text{
+      font-size:18px !important;
+    }
+
+    @media (max-width:700px){
+      #chart{
+        width:100% !important;
+        height:432px !important;
+        min-height:432px !important;
+      }
+
+      #chart .xtick text,
+      #chart .ytick text{
+        font-size:15px !important;
+      }
+
+      #chart .hovertext text,
+      #chart .hoverlayer text{
+        font-size:16px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -296,18 +377,18 @@
         </div>
 
         <div class="range-buttons">
-          <button type="button" class="seg" data-range="ALL">ALL</button>
-          <button type="button" class="seg" data-range="2000">2000–Present</button>
-          <button type="button" class="seg" data-range="2020">2020–Present</button>
-          <button type="button" class="seg" data-range="LY">Last Year</button>
-          <button type="button" class="seg" data-range="YTD">YTD</button>
+          <button type="button" class="seg active is-active" data-range="ALL" aria-pressed="true">ALL</button>
+          <button type="button" class="seg" data-range="2000" aria-pressed="false">2000–Present</button>
+          <button type="button" class="seg" data-range="2020" aria-pressed="false">2020–Present</button>
+          <button type="button" class="seg" data-range="LY" aria-pressed="false">Last Year</button>
+          <button type="button" class="seg" data-range="YTD" aria-pressed="false">YTD</button>
         </div>
       </div>
 
     </div>
 
     <div style="padding:24px 16px 28px">
-      <div id="chart" class="jr-chart">No players selected.</div>
+      <div id="chart" class="jr-chart">No selection yet.</div>
     </div>
   </section>
 </main>
@@ -534,17 +615,10 @@ async function createChart() {
 
   const lookups = uniq.map(name => {
     const player = state.players.find(p =>
-      p.name === name ||
-      p.display_name === name ||
-      p.id === name
+      p.name === name || p.display_name === name || p.id === name
     );
-
     if (!player) return null;
-
-    return {
-      name: player.display_name || player.name || player.id,
-      id: player.id
-    };
+    return { name: player.display_name || player.name || player.id, id: player.id };
   }).filter(Boolean);
 
   if (!lookups.length) {
@@ -552,42 +626,48 @@ async function createChart() {
     return;
   }
 
-  document.getElementById('chart').textContent = 'Loading…';
+  const chart = document.getElementById('chart');
+  chart.textContent = '';
 
   const results = await Promise.all(lookups.map(async ({ name, id }) => {
-    const res = await fetch(HIST_URL(id), { cache: 'no-cache' });
+    try {
+      const res = await fetch(HIST_URL(id), { cache: 'no-cache' });
+      if (!res.ok) return null;
 
-    if (!res.ok) return null;
+      const hist = await res.json();
 
-    const hist = await res.json();
-
-    const daily = JRGraph.normalise(
-      hist.map(d => ({
-        x: d.date,
+      return {
+        name,
+        id,
+        raw: hist.map(d => ({
+          x: d.date,
         y: Number(d.rating),
         tournament: d.tournament || d.event || ''
-      })),
-      true
-    );
-
-    if (!daily.length) return null;
-
-    return { name, daily };
+        }))
+      };
+    } catch {
+      return null;
+    }
   }));
 
   state.loaded = results.filter(Boolean);
 
-  comparedPlayers = state.loaded.map(item => ({
-    name: item.name,
-    raw: item.daily,
-    customData: p => p.tournament || '',
-    hovertemplate:
-      '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' +
-      item.name +
-      '</extra>'
+  comparedItems = state.loaded.map(item => ({
+      name: item.name,
+      raw: item.raw,
+      customData: pt => pt.tournament || '',
+      hovertemplate:
+        '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' +
+        item.name +
+        '</extra>'
   }));
 
-  compareChart.render(comparedPlayers);
+  if (!comparedItems.length) {
+    chart.textContent = 'No history found.';
+    return;
+  }
+
+  await Promise.resolve(compareChart.render(comparedItems));
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -595,43 +675,20 @@ window.addEventListener('DOMContentLoaded', () => {
     chartId: 'chart',
     aggId: 'agg',
     controlsEl: document.querySelector('.panel'),
-    defaultRange: '2020',
-    getItems: () => comparedPlayers
+    defaultRange: 'ALL',
+    getItems: () => comparedItems
   });
 
-  const originalRender = compareChart.render.bind(compareChart);
-  compareChart.render = items => {
-    originalRender(items);
-    requestAnimationFrame(() => {
-      Plotly.relayout('chart', {
-        'legend.font.size': 18,
-        'legend.itemsizing': 'constant'
-      });
-
-      Plotly.restyle('chart', {
-        'line.width': 3
-      });
-    });
-  };
+  document.getElementById('agg').value = 'weekly';
 
   document.getElementById('add').addEventListener('click', makeRow);
   document.getElementById('clear').addEventListener('click', clearAll);
   document.getElementById('create').addEventListener('click', createChart);
 
   loadPlayers()
-    .then(() => {
-      makeRow();
-    })
+    .then(() => makeRow())
     .catch(e => {
       console.error(e);
-
-      const note = document.querySelector('.muted-note');
-
-      if (note) {
-        note.textContent =
-          'Could not load player list. Check data path or run via a local server.';
-      }
-
       makeRow();
     });
 });
