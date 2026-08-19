@@ -16,6 +16,7 @@
 
   <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="../../jratings-graph.js"></script>
 
   <style>
     :root{
@@ -86,6 +87,7 @@
 
     .range-btn:hover{ opacity: 0.92; }
 
+    .range-btn.active,
     .range-btn.is-active{
       background: rgba(255,255,255,0.10);
       border-color: rgba(200,200,200,0.55);
@@ -298,6 +300,29 @@
       content: none !important;
       display: none !important;
     }
+  
+    #chart .xtick text,
+    #chart .ytick text{
+      font-size:16px !important;
+    }
+
+    #chart .hovertext text,
+    #chart .hoverlayer text{
+      font-size:18px !important;
+    }
+
+    @media (max-width:700px){
+      #chart .xtick text,
+      #chart .ytick text{
+        font-size:15px !important;
+      }
+
+      #chart .hovertext text,
+      #chart .hoverlayer text{
+        font-size:16px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -325,7 +350,7 @@
 
     <div class="header-row">
       <div class="toolbar">
-        <div class="toolbar-stack">
+        <div class="toolbar-stack jr-chart-controls">
           <div class="toolbar-top">
             <label for="agg">View:</label>
             <select id="agg">
@@ -336,9 +361,9 @@
           </div>
 
           <div class="range-buttons" role="group" aria-label="Time range">
-            <button type="button" class="range-btn" data-since="">All</button>
-            <button type="button" class="range-btn is-active" data-since="2000">Since 2000</button>
-            <button type="button" class="range-btn" data-since="2020">Since 2020</button>
+            <button type="button" class="range-btn seg" data-range="ALL">All</button>
+            <button type="button" class="range-btn seg is-active active" data-range="2000">Since 2000</button>
+            <button type="button" class="range-btn seg" data-range="2020">Since 2020</button>
           </div>
         </div>
       </div>
@@ -387,6 +412,7 @@
   let CURRENT_TEAM = null;
   let SINCE_YEAR = 2000;
   let AGG_MODE = 'monthly';
+  let teamChart = null;
 
   function normalise(series, dedupeByDay = false) {
     const s = series
@@ -923,9 +949,25 @@ if (total === 99) {
     peakEl.textContent = peak ? String(Math.round(peak.y)) : '—';
   }
 
+
+  function makeTeamGraphItems() {
+    return [{
+      name: CURRENT_TEAM?.name || 'Team',
+      colour: getDisplayColour(CURRENT_TEAM?.name),
+      raw: RAW,
+      customData: p => p.tournament || '',
+      hovertemplate:
+        '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' +
+        (CURRENT_TEAM?.name || 'Team') +
+        '</extra>'
+    }];
+  }
+
 function refreshView() {
   renderTeamStats(RAW);
-  draw(AGG_MODE);
+  if (teamChart && RAW.length) {
+    teamChart.render(makeTeamGraphItems());
+  }
 }
 
   async function load() {
@@ -933,7 +975,8 @@ function refreshView() {
       const [teamsRes, histRes, gamesRes] = await Promise.all([
         fetch(TEAMS_URL, { cache: 'no-cache' }),
         fetch(HIST_URL(idRaw), { cache: 'no-cache' }),
-        fetch(GAMES_URL(idRaw), { cache: 'no-cache' })
+        fetch(GAMES_URL(idRaw), { cache: 'no-cache' }),
+        loadColours()
       ]);
 
       if (!teamsRes.ok) throw new Error('teams.json not found');
@@ -965,23 +1008,15 @@ function refreshView() {
         AGG_MODE = initialMode;
         document.getElementById('agg').value = initialMode;
 
+        teamChart = JRGraph.createChart({
+          chartId: 'chart',
+          aggId: 'agg',
+          controlsEl: document.querySelector('.jr-chart-controls'),
+          defaultRange: '2000',
+          getItems: makeTeamGraphItems
+        });
+
         refreshView();
-
-        document.getElementById('agg').addEventListener('change', e => {
-          draw(e.target.value);
-        });
-
-        document.querySelectorAll('.range-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
-            btn.classList.add('is-active');
-
-            const v = btn.getAttribute('data-since');
-            SINCE_YEAR = v ? Number(v) : null;
-
-            refreshView();
-          });
-        });
       }
 
       if (gamesRes.ok) {

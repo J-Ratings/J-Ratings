@@ -1,7 +1,7 @@
 (function () {
   const DEFAULTS = {
     defaultRange: '2020',
-    lineWidth: 6
+    lineWidth: 4
   };
 
   const SERIES_COLOURS = [
