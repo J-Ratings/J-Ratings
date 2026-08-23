@@ -240,6 +240,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 108,Chang Hsu,Cho U,1,2021-07-22,White,Win,Hane Naoki,1,1,1
 108,Chang Hsu,Cho U,1,2021-08-23,Black,Win,Suzuki Shinji,1,1,1
 108,Chang Hsu,Cho U,1,2021-09-02,Black,Loss,Iyama Yuta,1,1,1
+108,Chang Hsu,Cho U,1,2021-09-16,White,Win,Fujimura Yosuke,1,1,1
 108,Chang Hsu,Cho U,1,2021-09-23,Black,Loss,Yokotsuka Riki,1,1,1
 108,Chang Hsu,Cho U,1,2021-11-08,Black,Loss,Otake Yu,1,1,1
 108,Chang Hsu,Cho U,1,2021-12-09,White,Win,Cho Sonjin,1,1,1
@@ -324,6 +325,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 604,Chang Li Yu,Cho Riyu,1,2015-09-17,White,Loss,Ichiriki Ryo,1,1,1
 604,Chang Li Yu,Cho Riyu,1,2015-10-26,White,Win,Li Yixiu,1,1,1
 604,Chang Li Yu,Cho Riyu,1,2015-12-03,White,Win,Matsuoka Hideki,1,1,1
+604,Chang Li Yu,Cho Riyu,1,2015-12-03,White,Win,Yanaka Katsunori,1,1,1
 604,Chang Li Yu,Cho Riyu,1,2015-12-17,Black,Loss,Tsuruyama Atsushi,1,1,1
 604,Chang Li Yu,Cho Riyu,1,2016-01-07,White,Loss,Morita Michihiro,1,1,1
 604,Chang Li Yu,Cho Riyu,1,2016-02-18,White,Win,Cho Chikun,1,1,1
@@ -705,6 +707,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 98,Cho Chi Hun,Cho Chikun,1,2022-12-15,Black,Win,Nakamura Shinya,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2022-12-22,White,Loss,Ueno Asami,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2023-01-12,White,Win,Konishi Kazuko,1,1,1
+98,Cho Chi Hun,Cho Chikun,1,2023-01-19,White,Win,Yamada Takuji,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2023-02-02,White,Loss,Seki Kotaro,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2023-02-09,White,Win,Kataoka Satoshi,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2023-03-02,White,Win,Yamashiro Hiroshi,1,1,1
@@ -1188,6 +1191,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 960,Hsieh Yi Min,Xie Yimin,1,2019-10-30,Black,Loss,Rui Naiwei,1,1,1
 960,Hsieh Yi Min,Xie Yimin,1,2019-11-23,Black,Loss,Onishi Kenya,1,1,1
 960,Hsieh Yi Min,Xie Yimin,1,2020-01-30,Black,Win,Seki Kotaro,1,1,1
+960,Hsieh Yi Min,Xie Yimin,1,2020-02-15,White,Win,Tsukuda Akiko,1,1,1
 960,Hsieh Yi Min,Xie Yimin,1,2020-02-16,Black,Loss,Mukai Chiaki,1,1,1
 960,Hsieh Yi Min,Xie Yimin,1,2020-02-27,Black,Win,Uchida Shuhei,1,1,1
 960,Hsieh Yi Min,Xie Yimin,1,2020-03-26,White,Loss,Suzuki Shinji,1,1,1
@@ -1215,6 +1219,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 960,Hsieh Yi Min,Xie Yimin,1,2021-03-04,Black,Win,Suzuki Ayumi,1,1,1
 960,Hsieh Yi Min,Xie Yimin,1,2021-03-18,Black,Loss,Kudo Norio,1,1,1
 960,Hsieh Yi Min,Xie Yimin,1,2021-03-22,Black,Loss,Choi Jeong,1,1,1
+960,Hsieh Yi Min,Xie Yimin,1,2021-05-27,Black,Win,Tsukuda Akiko,1,1,1
 960,Hsieh Yi Min,Xie Yimin,1,2021-06-10,Black,Win,Kobayashi Satoru,1,1,1
 960,Hsieh Yi Min,Xie Yimin,1,2021-06-24,Black,Loss,Oh Meien,1,1,1
 960,Hsieh Yi Min,Xie Yimin,1,2021-07-01,White,Win,Kim Sujun,1,1,1
@@ -1336,6 +1341,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1451,Hsu Chia Yuan,Kyo Kagen,1,2015-06-25,White,Win,Ohashi Hirofumi,1,1,1
 1451,Hsu Chia Yuan,Kyo Kagen,1,2015-07-09,White,Win,Murakawa Daisuke,1,1,1
 1451,Hsu Chia Yuan,Kyo Kagen,1,2015-07-20,Black,Loss,Cho Chikun,1,1,1
+1451,Hsu Chia Yuan,Kyo Kagen,1,2015-07-27,White,Win,Fujimura Yosuke,1,1,1
 1451,Hsu Chia Yuan,Kyo Kagen,1,2015-07-30,Black,Win,Yu Zhengqi,1,1,1
 1451,Hsu Chia Yuan,Kyo Kagen,1,2015-08-03,White,Loss,Yuki Satoshi,1,1,1
 1451,Hsu Chia Yuan,Kyo Kagen,1,2015-08-10,Black,Win,Shuto Shun,1,1,1
@@ -2702,6 +2708,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 816,Lin Tzu Yuan,Rin Shien,1,2015-01-15,Black,Loss,Kono Rin,1,1,1
 816,Lin Tzu Yuan,Rin Shien,1,2015-02-05,Black,Loss,Cho Chikun,1,1,1
 816,Lin Tzu Yuan,Rin Shien,1,2015-05-07,White,Win,Son Makoto,1,1,1
+816,Lin Tzu Yuan,Rin Shien,1,2015-05-14,White,Win,Fujimura Yosuke,1,1,1
 816,Lin Tzu Yuan,Rin Shien,1,2015-07-02,Black,Loss,Kobayashi Satoru,1,1,1
 816,Lin Tzu Yuan,Rin Shien,1,2015-08-06,White,Loss,Cho Sonjin,1,1,1
 816,Lin Tzu Yuan,Rin Shien,1,2015-10-15,Black,Win,Kataoka Satoshi,1,1,1
@@ -2891,6 +2898,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 315,Paek Hongseok,Baek Hongseok,1,2025-03-22,Black,Loss,Lee Wonyoung,1,1,1
 116,Pan Shan Chi,Han Zenki,1,2015-07-23,White,Loss,Yoda Norimoto,1,1,1
 116,Pan Shan Chi,Han Zenki,1,2015-11-02,White,Win,Uchida Shuhei,1,1,1
+116,Pan Shan Chi,Han Zenki,1,2015-12-10,Black,Loss,Yamada Takuji,1,1,1
 116,Pan Shan Chi,Han Zenki,1,2016-04-18,White,Loss,Son Makoto,1,1,1
 116,Pan Shan Chi,Han Zenki,1,2016-07-28,Black,Win,Takemiya Masaki,1,1,1
 116,Pan Shan Chi,Han Zenki,1,2016-10-13,Black,Loss,Motoki Katsuya,1,1,1
@@ -3242,6 +3250,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1823,Seki Koutarou,Seki Kotaro,1,2024-07-08,Black,Loss,Yamashita Keigo,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2024-07-18,White,Loss,Kyo Kagen,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2024-07-22,White,Loss,Iyama Yuta,1,1,1
+1823,Seki Koutarou,Seki Kotaro,1,2024-10-10,White,Win,Yamada Takuji,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2024-11-21,White,Win,Sakai Yuki,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2024-12-02,White,Win,Anzai Nobuaki,1,1,1
 1823,Seki Koutarou,Seki Kotaro,1,2024-12-05,White,Loss,Hirose Yuichi,1,1,1
@@ -3273,6 +3282,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1500,Shintani Yousuke,Shintani Yosuke,1,2021-12-15,Black,Loss,Imamura Toshiya,1,1,1
 1500,Shintani Yousuke,Shintani Yosuke,1,2022-08-10,Black,Loss,Furuya Yutaka,1,1,1
 1500,Shintani Yousuke,Shintani Yosuke,1,2022-10-06,Black,Win,Okawa Takuya,1,1,1
+1500,Shintani Yousuke,Shintani Yosuke,1,2022-10-06,White,Win,Nakano Shoya,1,1,1
 1500,Shintani Yousuke,Shintani Yosuke,1,2023-02-08,White,Loss,Kubo Katsuaki,1,1,1
 1500,Shintani Yousuke,Shintani Yosuke,1,2023-11-02,White,Loss,Sada Atsushi,1,1,1
 1500,Shintani Yousuke,Shintani Yosuke,1,2024-01-17,White,Loss,U Boi,1,1,1
@@ -3397,6 +3407,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1262,Sun Zhe,Son Makoto,1,2015-04-23,White,Loss,Anzai Nobuaki,1,1,1
 1262,Sun Zhe,Son Makoto,1,2015-05-07,Black,Loss,Rin Shien,1,1,1
 1262,Sun Zhe,Son Makoto,1,2015-06-11,Black,Win,Hikosaka Naoto,1,1,1
+1262,Sun Zhe,Son Makoto,1,2015-06-29,White,Loss,Fujimura Yosuke,1,1,1
 1262,Sun Zhe,Son Makoto,1,2015-07-02,White,Win,Kono Rin,1,1,1
 1262,Sun Zhe,Son Makoto,1,2015-08-03,Black,Win,Ogata Masaki,1,1,1
 1262,Sun Zhe,Son Makoto,1,2015-08-10,White,Loss,Kazama Jun,1,1,1
@@ -3477,8 +3488,10 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1262,Sun Zhe,Son Makoto,1,2020-10-12,White,Loss,Motoki Katsuya,1,1,1
 1262,Sun Zhe,Son Makoto,1,2020-10-29,Black,Loss,Yu Zhengqi,1,1,1
 1262,Sun Zhe,Son Makoto,1,2020-11-12,Black,Loss,Cho Chikun,1,1,1
+1262,Sun Zhe,Son Makoto,1,2020-11-21,Black,Win,Nakano Shoya,1,1,1
 1262,Sun Zhe,Son Makoto,1,2020-11-21,White,Win,Onishi Kenya,1,1,1
 1262,Sun Zhe,Son Makoto,1,2020-11-22,Black,Loss,Fujisawa Rina,1,1,1
+1262,Sun Zhe,Son Makoto,1,2020-11-22,White,Win,Fujimura Yosuke,1,1,1
 1262,Sun Zhe,Son Makoto,1,2020-11-26,Black,Loss,Seto Taiki,1,1,1
 1262,Sun Zhe,Son Makoto,1,2021-02-25,Black,Win,Onishi Kenya,1,1,1
 1262,Sun Zhe,Son Makoto,1,2021-03-08,Black,Win,Nishi Takenobu,1,1,1
@@ -3867,6 +3880,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 70,Wang Ming Wan,Oh Meien,1,2015-11-30,White,Win,Michael Redmond,1,1,1
 70,Wang Ming Wan,Oh Meien,1,2015-12-24,White,Loss,Ogata Masaki,1,1,1
 70,Wang Ming Wan,Oh Meien,1,2016-02-04,White,Win,Morita Michihiro,1,1,1
+70,Wang Ming Wan,Oh Meien,1,2016-02-25,Black,Loss,Katsura Atsushi,1,1,1
 70,Wang Ming Wan,Oh Meien,1,2016-03-03,White,Win,Tsuruyama Atsushi,1,1,1
 70,Wang Ming Wan,Oh Meien,1,2016-03-17,White,Win,Kataoka Satoshi,1,1,1
 70,Wang Ming Wan,Oh Meien,1,2016-04-14,White,Win,Ogata Masaki,1,1,1
@@ -3895,6 +3909,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 70,Wang Ming Wan,Oh Meien,1,2017-04-13,White,Win,Sotoyanagi Sebun,1,1,1
 70,Wang Ming Wan,Oh Meien,1,2017-04-20,Black,Win,Koike Yoshihiro,1,1,1
 70,Wang Ming Wan,Oh Meien,1,2017-05-04,White,Win,Kobayashi Satoru,1,1,1
+70,Wang Ming Wan,Oh Meien,1,2017-05-11,White,Win,Yamada Takuji,1,1,1
 70,Wang Ming Wan,Oh Meien,1,2017-05-18,Black,Loss,Rin Kanketsu,1,1,1
 70,Wang Ming Wan,Oh Meien,1,2017-06-01,Black,Loss,Onishi Ryuhei,1,1,1
 70,Wang Ming Wan,Oh Meien,1,2017-06-08,Black,Loss,Han Zenki,1,1,1
@@ -4082,6 +4097,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1607,Watanabe Yuu,Watanabe Yu,1,2025-09-18,White,Win,Tanaka Kentaro,1,1,1
 1535,Wu Boyi,U Boi,1,2015-08-18,Black,Loss,Motoki Katsuya,1,1,1
 1535,Wu Boyi,U Boi,1,2015-08-20,White,Loss,Kono Rin,1,1,1
+1535,Wu Boyi,U Boi,1,2016-04-04,Black,Win,Fujimura Yosuke,1,1,1
 1535,Wu Boyi,U Boi,1,2016-04-13,Black,Loss,Yukawa Mitsuhisa,1,1,1
 1535,Wu Boyi,U Boi,1,2016-08-02,Black,Win,Kyo Kagen,1,1,1
 1535,Wu Boyi,U Boi,1,2016-08-02,White,Win,Onishi Kenya,1,1,1
@@ -4272,6 +4288,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1321,Yao Zhi Teng,Yao Zhiteng,1,2020-04-02,Black,Loss,Tanaka Koyu,1,1,1
 1321,Yao Zhi Teng,Yao Zhiteng,1,2020-09-24,Black,Loss,Cho Sonjin,1,1,1
 1321,Yao Zhi Teng,Yao Zhiteng,1,2021-01-28,Black,Win,Sakai Kentaro,1,1,1
+1321,Yao Zhi Teng,Yao Zhiteng,1,2022-02-07,White,Win,Nakano Shoya,1,1,1
 1321,Yao Zhi Teng,Yao Zhiteng,1,2022-04-25,Black,Loss,Otake Yu,1,1,1
 1321,Yao Zhi Teng,Yao Zhiteng,1,2022-12-26,White,Loss,Taniguchi Toru,1,1,1
 1321,Yao Zhi Teng,Yao Zhiteng,1,2023-01-23,White,Win,Kato Chie,1,1,1
@@ -4923,6 +4940,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1225,Yu Zhiying,Yoo Zhiying,1,2018-11-22,Black,Loss,Wang Shuang,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2018-11-27,White,Win,Rui Naiwei,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2018-12-14,White,Loss,Shi Yue,1,1,1
+1225,Yu Zhiying,Yoo Zhiying,1,2019-02-23,Black,Win,Tsukuda Akiko,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2019-02-24,Black,Win,Choi Jeong,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2019-04-11,Black,Win,Zhan Ying,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2019-04-28,Black,Loss,Oh Yujin,1,1,1
