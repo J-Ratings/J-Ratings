@@ -1,5 +1,5 @@
 options(stringsAsFactors = FALSE)
-
+library(beepr)
 # -----------------------------
 # Paths
 # -----------------------------
@@ -56,6 +56,41 @@ out_file <- file.path(
 # -----------------------------
 # Helpers
 # -----------------------------
+
+declared_match_count <- function(txt_path) {
+  lines <- readLines(
+    txt_path,
+    warn = FALSE,
+    encoding = "UTF-8"
+  )
+  
+  # OpenFootball files do not always expose a reliable declared
+  # match count in a consistent format. If none can be identified,
+  # skip this optional validation.
+  candidates <- grep(
+    "\\b[0-9]+\\s+matches\\b",
+    lines,
+    ignore.case = TRUE,
+    value = TRUE
+  )
+  
+  if (length(candidates) == 0L) {
+    return(NA_integer_)
+  }
+  
+  m <- regexpr(
+    "[0-9]+(?=\\s+matches\\b)",
+    candidates[1],
+    ignore.case = TRUE,
+    perl = TRUE
+  )
+  
+  if (m[1] == -1L) {
+    return(NA_integer_)
+  }
+  
+  as.integer(regmatches(candidates[1], m))
+}
 
 trim <- function(x) {
   gsub("^\\s+|\\s+$", "", x)
@@ -1335,7 +1370,8 @@ make_cached_league_jobs <- function(
     source_folder,
     country,
     competition,
-    league
+    league,
+    tier = 1L
 ) {
   seasons <- unique(as.character(seasons))
   season_labels <- vapply(
@@ -1351,7 +1387,9 @@ make_cached_league_jobs <- function(
     sep = "||"
   )
   
-  # Import missing historical seasons once; always reparse current season.
+  # Historical competition-seasons already present in the combined CSV are
+  # checkpoints: keep them as-is. Missing historical seasons are parsed once,
+  # while the current season is always reparsed so new results/fixtures flow in.
   needed <- !(keys %in% existing_keys) | seasons == season_folder
   
   data.frame(
@@ -1361,7 +1399,7 @@ make_cached_league_jobs <- function(
     competition = rep(competition, sum(needed)),
     competition_type = rep("league", sum(needed)),
     league = rep(league, sum(needed)),
-    tier = rep(1L, sum(needed)),
+    tier = rep(as.integer(tier), sum(needed)),
     source = rep("openfootball", sum(needed)),
     season_folder = seasons[needed],
     parser = rep("openfootball", sum(needed)),
@@ -1369,10 +1407,44 @@ make_cached_league_jobs <- function(
   )
 }
 
-# Established OpenFootball competitions: current season.
-english_jobs <- english_competition_files
-english_jobs$season_folder <- season_folder
-english_jobs$parser <- "openfootball"
+# Established OpenFootball competitions.
+#
+# The combined CSV is the historical checkpoint. For the major leagues we
+# backfill any missing recent seasons from cached OpenFootball files and always
+# reparse the current season. This prevents a season rollover from leaving a
+# club with current fixtures but no previous-season league history/rating.
+recent_seasons <- unique(c(
+  vapply(2018:current_start_year, season_folder_from_start_year, character(1)),
+  season_folder
+))
+
+english_jobs <- rbind(
+  make_cached_league_jobs(
+    recent_seasons,
+    "1-premierleague.txt", "england", "England",
+    "premier_league", "Premier League", 1L
+  ),
+  make_cached_league_jobs(
+    recent_seasons,
+    "2-championship.txt", "england", "England",
+    "championship", "Championship", 2L
+  ),
+  make_cached_league_jobs(
+    recent_seasons,
+    "3-league1.txt", "england", "England",
+    "league_1", "League 1", 3L
+  ),
+  make_cached_league_jobs(
+    recent_seasons,
+    "4-league2.txt", "england", "England",
+    "league_2", "League 2", 4L
+  ),
+  make_cached_league_jobs(
+    recent_seasons,
+    "5-nationalleague.txt", "england", "England",
+    "national_league", "National League", 5L
+  )
+)
 
 # One-time targeted Championship rebuilds.
 #
@@ -1396,40 +1468,66 @@ english_championship_repairs <- data.frame(
   stringsAsFactors = FALSE
 )
 
+# Avoid scheduling the same competition-season twice if it was already selected
+# above because it was missing from the combined CSV.
+repair_keys <- paste(
+  normalise_openfootball_season_label(english_championship_repairs$season_folder),
+  english_championship_repairs$country,
+  english_championship_repairs$competition,
+  sep = "||"
+)
+english_job_keys <- paste(
+  normalise_openfootball_season_label(english_jobs$season_folder),
+  english_jobs$country,
+  english_jobs$competition,
+  sep = "||"
+)
+english_championship_repairs <- english_championship_repairs[
+  !(repair_keys %in% english_job_keys),
+]
+
 english_jobs <- rbind(
   english_jobs,
   english_championship_repairs
 )
 
-la_liga_jobs <- make_current_job(
+la_liga_jobs <- make_cached_league_jobs(
+  recent_seasons,
   "1-liga.txt", "espana", "Spain",
   "la_liga", "La Liga", 1L
 )
-segunda_jobs <- make_current_job(
+segunda_jobs <- make_cached_league_jobs(
+  recent_seasons,
   "2-liga2.txt", "espana", "Spain",
   "segunda_division", "Segunda División", 2L
 )
-serie_a_jobs <- make_current_job(
+serie_a_jobs <- make_cached_league_jobs(
+  recent_seasons,
   "1-seriea.txt", "italy", "Italy",
   "serie_a", "Serie A", 1L
 )
-serie_b_jobs <- make_current_job(
+serie_b_jobs <- make_cached_league_jobs(
+  recent_seasons,
   "2-serieb.txt", "italy", "Italy",
   "serie_b", "Serie B", 2L
 )
-bundesliga_jobs <- make_current_job(
+bundesliga_jobs <- make_cached_league_jobs(
+  recent_seasons,
   "1-bundesliga.txt", "deutschland", "Germany",
   "bundesliga", "Bundesliga", 1L
 )
-bundesliga2_jobs <- make_current_job(
+bundesliga2_jobs <- make_cached_league_jobs(
+  recent_seasons,
   "2-bundesliga2.txt", "deutschland", "Germany",
   "bundesliga_2", "2. Bundesliga", 2L
 )
-ligue1_jobs <- make_current_job(
+ligue1_jobs <- make_cached_league_jobs(
+  recent_seasons,
   "1-ligue1.txt", "france", "France",
   "ligue_1", "Ligue 1", 1L
 )
-ligue2_jobs <- make_current_job(
+ligue2_jobs <- make_cached_league_jobs(
+  recent_seasons,
   "2-ligue2.txt", "france", "France",
   "ligue_2", "Ligue 2", 2L
 )
@@ -1953,39 +2051,159 @@ if (file.exists(out_file)) {
 }
 
 # -----------------------------
-# Duplicate protection
+# Duplicate protection / reconciliation
 # -----------------------------
+# Some OpenFootball files occasionally repeat an identical fixture line.
+# Exact/reconcilable repeats are harmless and should not block the pipeline.
+# However, genuinely conflicting duplicates (same fixture key but different
+# completed results or structural metadata) remain a hard failure.
 
-match_key <- paste(
-  all_df$Season,
-  all_df$Country,
-  all_df$Competition,
-  all_df$Date,
-  all_df$Home,
-  all_df$Away,
-  sep = "||"
-)
+make_match_key <- function(df) {
+  paste(
+    df$Season,
+    df$Country,
+    df$Competition,
+    df$Date,
+    df$Home,
+    df$Away,
+    sep = "||"
+  )
+}
+
+match_key <- make_match_key(all_df)
 
 if (anyDuplicated(match_key)) {
-  dup_rows <- all_df[
-    duplicated(match_key) | duplicated(match_key, fromLast = TRUE),
-  ]
+  dup_keys <- unique(match_key[duplicated(match_key)])
   
-  cat("\nDuplicate match keys detected:\n")
-  print(
-    dup_rows[
-      order(
-        dup_rows$Season,
-        dup_rows$Competition,
-        dup_rows$Date,
-        dup_rows$Home,
-        dup_rows$Away
-      ),
-    ]
+  conflict_messages <- character()
+  
+  for (k in dup_keys) {
+    z <- all_df[match_key == k, , drop = FALSE]
+    
+    result_vals <- unique(trimws(as.character(z$Result)))
+    result_vals <- result_vals[!is.na(result_vals) & result_vals != ""]
+    
+    if (length(result_vals) > 1L) {
+      conflict_messages <- c(
+        conflict_messages,
+        paste0(k, " | conflicting Result values: ", paste(result_vals, collapse = ", "))
+      )
+      next
+    }
+    
+    # Structural metadata for the same fixture must agree. Source is excluded
+    # because an otherwise identical fixture can legitimately be represented
+    # by more than one source.
+    for (col in c("CompetitionType", "Tier", "League")) {
+      vals <- unique(trimws(as.character(z[[col]])))
+      vals <- vals[!is.na(vals) & vals != ""]
+      if (length(vals) > 1L) {
+        conflict_messages <- c(
+          conflict_messages,
+          paste0(k, " | conflicting ", col, " values: ", paste(vals, collapse = ", "))
+        )
+      }
+    }
+  }
+  
+  if (length(conflict_messages) > 0L) {
+    cat("\nConflicting duplicate fixture records detected:\n")
+    cat(paste0("  ", conflict_messages, collapse = "\n"), "\n")
+    stop("Conflicting duplicate match records detected. Refusing to write combined CSV.")
+  }
+  
+  # Reconcile harmless duplicates. Prefer the row with a completed Result; if
+  # neither/both have one, prefer a populated Score; otherwise keep the first.
+  has_result <- !is.na(all_df$Result) & trimws(as.character(all_df$Result)) != ""
+  has_score <- !is.na(all_df$Score) & trimws(as.character(all_df$Score)) != ""
+  original_order <- seq_len(nrow(all_df))
+  
+  ord <- order(match_key, -as.integer(has_result), -as.integer(has_score), original_order)
+  all_df <- all_df[ord, , drop = FALSE]
+  match_key <- make_match_key(all_df)
+  
+  duplicate_drop <- duplicated(match_key)
+  n_removed <- sum(duplicate_drop)
+  
+  cat(
+    "\nReconciled harmless duplicate fixture rows:",
+    n_removed,
+    "across",
+    length(dup_keys),
+    "fixture keys.\n"
   )
   
-  stop("Duplicate match records detected. Refusing to write combined CSV.")
+  all_df <- all_df[!duplicate_drop, , drop = FALSE]
+  rownames(all_df) <- NULL
+  match_key <- make_match_key(all_df)
 }
+
+if (anyDuplicated(match_key)) {
+  stop("Duplicate match records remain after reconciliation. Refusing to write combined CSV.")
+}
+
+# -----------------------------
+# Major-league rollover QA
+# -----------------------------
+# The previous season must still exist before we publish a refreshed combined
+# CSV. This catches the exact failure mode where current fixtures are present
+# but last season's league history has disappeared.
+previous_start_year <- current_start_year - 1L
+previous_season <- normalise_openfootball_season_label(
+  season_folder_from_start_year(previous_start_year)
+)
+
+major_league_qa <- data.frame(
+  Country = c("England", "Spain", "Italy", "Germany", "France"),
+  Competition = c("premier_league", "la_liga", "serie_a", "bundesliga", "ligue_1"),
+  League = c("Premier League", "La Liga", "Serie A", "Bundesliga", "Ligue 1"),
+  stringsAsFactors = FALSE
+)
+
+major_league_qa$Rows <- vapply(
+  seq_len(nrow(major_league_qa)),
+  function(i) {
+    sum(
+      all_df$Season == previous_season &
+        all_df$Country == major_league_qa$Country[i] &
+        all_df$Competition == major_league_qa$Competition[i]
+    )
+  },
+  integer(1)
+)
+
+major_league_qa$Teams <- vapply(
+  seq_len(nrow(major_league_qa)),
+  function(i) {
+    z <- all_df[
+      all_df$Season == previous_season &
+        all_df$Country == major_league_qa$Country[i] &
+        all_df$Competition == major_league_qa$Competition[i],
+    ]
+    length(unique(c(z$Home, z$Away)))
+  },
+  integer(1)
+)
+
+major_league_qa$Status <- ifelse(
+  major_league_qa$Rows > 0L & major_league_qa$Teams >= 16L,
+  "PASS",
+  "FAIL"
+)
+
+cat("\nPrevious-season major-league QA (", previous_season, "):\n", sep = "")
+print(major_league_qa, row.names = FALSE)
+
+if (any(major_league_qa$Status == "FAIL")) {
+  failed <- major_league_qa[major_league_qa$Status == "FAIL", ]
+  stop(
+    "Previous-season league history is missing/incomplete for: ",
+    paste(failed$League, collapse = ", "),
+    ". Refusing to overwrite the combined CSV."
+  )
+}
+
+cat("Previous-season major-league QA: PASS\n")
 
 # -----------------------------
 # Write
@@ -2038,3 +2256,4 @@ print(
     order(competition_summary$Country, competition_summary$Competition),
   ]
 )
+beep()

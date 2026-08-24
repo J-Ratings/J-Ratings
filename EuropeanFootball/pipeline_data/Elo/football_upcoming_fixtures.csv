@@ -14,6 +14,7 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Racing
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Real Oviedo,Cádiz
 Turkey,super_lig,league,Süper Lig,1,openfootball,2025-06-01,Bodrum,Beşiktaş
 Turkey,super_lig,league,Süper Lig,1,openfootball,2025-06-01,Samsunspor,Kayserispor
+England,league_1,league,League 1,3,openfootball,2025-11-04,Rotherham United,Burton Albion
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-05,Real Sociedad B,Huesca
 France,ligue_2,league,Ligue 2,2,openfootball,2025-11-07,Bastia,Reims
 France,ligue_2,league,Ligue 2,2,openfootball,2025-11-07,Clermont,Amiens
@@ -66,6 +67,7 @@ Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-09,Fenerbahçe,Kayseri
 Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-09,Kocaelispor,Galatasaray
 Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-09,Samsunspor,Eyüpspor
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-10,Burgos,Castellón
+England,national_league,league,National League,5,openfootball,2025-11-11,York City,Rochdale
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-14,Real Valladolid,Las Palmas
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-15,Albacete,Andorra
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-15,Castellón,Real Sociedad B
@@ -77,6 +79,8 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-16,Mirand
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-16,Real Zaragoza,Huesca
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-16,Sporting Gijón,Eibar
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-17,Cultural Leonesa,Málaga
+England,national_league,league,National League,5,openfootball,2025-11-18,Morecambe,Brackley Town
+England,national_league,league,National League,5,openfootball,2025-11-18,Rochdale,Southend United
 France,ligue_2,league,Ligue 2,2,openfootball,2025-11-21,Annecy,Bastia
 France,ligue_2,league,Ligue 2,2,openfootball,2025-11-21,Boulogne,Grenoble
 France,ligue_2,league,Ligue 2,2,openfootball,2025-11-21,Laval,Troyes
@@ -128,6 +132,8 @@ Greece,super_league_greece,league,Super League Greece,1,openfootball,2025-11-24,
 Spain,segunda_division,league,Segunda División,2,openfootball,2025-11-24,Real Sociedad B,Real Valladolid
 Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-24,Istanbul Başakşehir,Trabzonspor
 Turkey,super_lig,league,Süper Lig,1,openfootball,2025-11-24,Konyaspor,Antalyaspor
+England,league_1,league,League 1,3,openfootball,2025-11-25,Luton Town,Huddersfield Town
+England,league_1,league,League 1,3,openfootball,2025-11-25,Peterborough United,Stevenage
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-11-25,Motherwell,Hibernian
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-28,Hannover 96,Karlsruher SC
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2025-11-28,Schalke 04,Paderborn
@@ -380,6 +386,18 @@ Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-30,Livingston,Dundee United
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-30,Motherwell,Celtic
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2025-12-30,Rangers,St. Mirren
+England,league_2,league,League 2,4,openfootball,2026-01-01,Barnet,Crawley Town
+England,league_2,league,League 2,4,openfootball,2026-01-01,Barrow,Salford City
+England,league_2,league,League 2,4,openfootball,2026-01-01,Bromley,Newport County
+England,league_2,league,League 2,4,openfootball,2026-01-01,Cambridge United,Walsall
+England,league_2,league,League 2,4,openfootball,2026-01-01,Colchester United,Milton Keynes Dons
+England,league_2,league,League 2,4,openfootball,2026-01-01,Crewe Alexandra,Cheltenham Town
+England,league_2,league,League 2,4,openfootball,2026-01-01,Fleetwood Town,Grimsby Town
+England,league_2,league,League 2,4,openfootball,2026-01-01,Harrogate Town,Tranmere Rovers
+England,league_2,league,League 2,4,openfootball,2026-01-01,Notts County,Accrington Stanley
+England,league_2,league,League 2,4,openfootball,2026-01-01,Oldham Athletic,Chesterfield
+England,league_2,league,League 2,4,openfootball,2026-01-01,Shrewsbury Town,Bristol Rovers
+England,league_2,league,League 2,4,openfootball,2026-01-01,Swindon Town,Gillingham
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Amiens,Nancy
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Bastia,Grenoble
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Clermont,Laval
@@ -389,12 +407,40 @@ France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Montpellier,Dunkerque
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Pau,Rodez
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Reims,Annecy
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-02,Troyes,Red Star
+England,national_league,league,National League,5,openfootball,2026-01-03,Aldershot Town,Solihull Moors
+England,national_league,league,National League,5,openfootball,2026-01-03,Altrincham,Morecambe
+England,national_league,league,National League,5,openfootball,2026-01-03,Boreham Wood,York City
+England,national_league,league,National League,5,openfootball,2026-01-03,Boston United,Eastleigh
+England,national_league,league,National League,5,openfootball,2026-01-03,Carlisle United,Wealdstone
+England,national_league,league,National League,5,openfootball,2026-01-03,Forest Green Rovers,Halifax Town
+England,national_league,league,National League,5,openfootball,2026-01-03,Rochdale,Brackley Town
+England,national_league,league,National League,5,openfootball,2026-01-03,Scunthorpe United,Sutton United
+England,national_league,league,National League,5,openfootball,2026-01-03,Southend United,Truro City
+England,national_league,league,National League,5,openfootball,2026-01-03,Tamworth,Gateshead
+England,national_league,league,National League,5,openfootball,2026-01-03,Woking,Hartlepool United
+England,national_league,league,National League,5,openfootball,2026-01-03,Yeovil Town,Braintree Town
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-03,Celtic,Rangers
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-03,Dundee United,Dundee
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-03,Falkirk,Aberdeen
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-03,Hearts,Livingston
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-03,Kilmarnock,Hibernian
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-03,Motherwell,St. Mirren
+England,league_1,league,League 1,3,openfootball,2026-01-04,Doncaster Rovers,Luton Town
+England,league_1,league,League 1,3,openfootball,2026-01-04,Port Vale,Barnsley
+England,league_1,league,League 1,3,openfootball,2026-01-04,Rotherham United,Mansfield Town
+England,league_1,league,League 1,3,openfootball,2026-01-04,Stevenage,Leyton Orient
+England,league_2,league,League 2,4,openfootball,2026-01-04,Barnet,Crewe Alexandra
+England,league_2,league,League 2,4,openfootball,2026-01-04,Barrow,Bristol Rovers
+England,league_2,league,League 2,4,openfootball,2026-01-04,Bromley,Oldham Athletic
+England,league_2,league,League 2,4,openfootball,2026-01-04,Cambridge United,Grimsby Town
+England,league_2,league,League 2,4,openfootball,2026-01-04,Cheltenham Town,Crawley Town
+England,league_2,league,League 2,4,openfootball,2026-01-04,Colchester United,Accrington Stanley
+England,league_2,league,League 2,4,openfootball,2026-01-04,Harrogate Town,Swindon Town
+England,league_2,league,League 2,4,openfootball,2026-01-04,Milton Keynes Dons,Chesterfield
+England,league_2,league,League 2,4,openfootball,2026-01-04,Newport County,Tranmere Rovers
+England,league_2,league,League 2,4,openfootball,2026-01-04,Notts County,Gillingham
+England,league_2,league,League 2,4,openfootball,2026-01-04,Salford City,Shrewsbury Town
+England,league_2,league,League 2,4,openfootball,2026-01-04,Walsall,Fleetwood Town
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-04,Albacete,Leganés
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-04,Almería,Granada
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-04,Castellón,Huesca
@@ -408,6 +454,25 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-04,Real Z
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-01-04,Sporting Gijón,Málaga
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-06,Livingston,St. Mirren
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-01-06,Rangers,Aberdeen
+England,league_1,league,League 1,3,openfootball,2026-01-10,Barnsley,Wycombe Wanderers
+England,league_1,league,League 1,3,openfootball,2026-01-10,Bradford City,Rotherham United
+England,league_1,league,League 1,3,openfootball,2026-01-10,Exeter City,Lincoln City
+England,league_1,league,League 1,3,openfootball,2026-01-10,Mansfield Town,Reading
+England,league_1,league,League 1,3,openfootball,2026-01-10,Northampton Town,Port Vale
+England,league_1,league,League 1,3,openfootball,2026-01-10,Wigan Athletic,Plymouth Argyle
+England,league_1,league,League 1,3,openfootball,2026-01-10,Wimbledon,Blackpool
+England,league_2,league,League 2,4,openfootball,2026-01-10,Accrington Stanley,Barnet
+England,league_2,league,League 2,4,openfootball,2026-01-10,Bristol Rovers,Walsall
+England,league_2,league,League 2,4,openfootball,2026-01-10,Chesterfield,Colchester United
+England,league_2,league,League 2,4,openfootball,2026-01-10,Crawley Town,Cambridge United
+England,league_2,league,League 2,4,openfootball,2026-01-10,Crewe Alexandra,Harrogate Town
+England,league_2,league,League 2,4,openfootball,2026-01-10,Fleetwood Town,Cheltenham Town
+England,league_2,league,League 2,4,openfootball,2026-01-10,Gillingham,Milton Keynes Dons
+England,league_2,league,League 2,4,openfootball,2026-01-10,Grimsby Town,Salford City
+England,league_2,league,League 2,4,openfootball,2026-01-10,Oldham Athletic,Notts County
+England,league_2,league,League 2,4,openfootball,2026-01-10,Shrewsbury Town,Barrow
+England,league_2,league,League 2,4,openfootball,2026-01-10,Swindon Town,Newport County
+England,league_2,league,League 2,4,openfootball,2026-01-10,Tranmere Rovers,Bromley
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-10,Aris Thessaloniki,AEK Athens
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-10,Atromitos,Olympiacos
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-10,Kifisia,Larissa
@@ -449,6 +514,30 @@ Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-17,S
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-17,Union Saint-Gilloise,Mechelen
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-17,Westerlo,Cercle Brugge
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-17,Zulte Waregem,Genk
+England,league_2,league,League 2,4,openfootball,2026-01-17,Accrington Stanley,Milton Keynes Dons
+England,league_2,league,League 2,4,openfootball,2026-01-17,Bristol Rovers,Colchester United
+England,league_2,league,League 2,4,openfootball,2026-01-17,Chesterfield,Bromley
+England,league_2,league,League 2,4,openfootball,2026-01-17,Crawley Town,Notts County
+England,league_2,league,League 2,4,openfootball,2026-01-17,Crewe Alexandra,Barrow
+England,league_2,league,League 2,4,openfootball,2026-01-17,Fleetwood Town,Cambridge United
+England,league_2,league,League 2,4,openfootball,2026-01-17,Gillingham,Newport County
+England,league_2,league,League 2,4,openfootball,2026-01-17,Grimsby Town,Barnet
+England,league_2,league,League 2,4,openfootball,2026-01-17,Oldham Athletic,Cheltenham Town
+England,league_2,league,League 2,4,openfootball,2026-01-17,Shrewsbury Town,Harrogate Town
+England,league_2,league,League 2,4,openfootball,2026-01-17,Swindon Town,Salford City
+England,league_2,league,League 2,4,openfootball,2026-01-17,Tranmere Rovers,Walsall
+England,national_league,league,National League,5,openfootball,2026-01-17,Brackley Town,Yeovil Town
+England,national_league,league,National League,5,openfootball,2026-01-17,Braintree Town,Boreham Wood
+England,national_league,league,National League,5,openfootball,2026-01-17,Eastleigh,Aldershot Town
+England,national_league,league,National League,5,openfootball,2026-01-17,Gateshead,Rochdale
+England,national_league,league,National League,5,openfootball,2026-01-17,Halifax Town,Boston United
+England,national_league,league,National League,5,openfootball,2026-01-17,Hartlepool United,Altrincham
+England,national_league,league,National League,5,openfootball,2026-01-17,Morecambe,Scunthorpe United
+England,national_league,league,National League,5,openfootball,2026-01-17,Solihull Moors,Carlisle United
+England,national_league,league,National League,5,openfootball,2026-01-17,Sutton United,Forest Green Rovers
+England,national_league,league,National League,5,openfootball,2026-01-17,Truro City,Tamworth
+England,national_league,league,National League,5,openfootball,2026-01-17,Wealdstone,Woking
+England,national_league,league,National League,5,openfootball,2026-01-17,York City,Southend United
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-17,Bochum,Darmstadt 98
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-17,Dynamo Dresden,Greuther Fürth
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-17,Eintracht Braunschweig,Magdeburg
@@ -485,6 +574,18 @@ Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,Istanbul Başakşeh
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,Kasımpaşa,Antalyaspor
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,Kocaelispor,Trabzonspor
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-18,Konyaspor,Eyüpspor
+England,national_league,league,National League,5,openfootball,2026-01-20,Braintree Town,Boston United
+England,national_league,league,National League,5,openfootball,2026-01-20,Hartlepool United,Gateshead
+England,national_league,league,National League,5,openfootball,2026-01-20,Southend United,Eastleigh
+England,national_league,league,National League,5,openfootball,2026-01-20,Sutton United,Woking
+England,national_league,league,National League,5,openfootball,2026-01-20,Truro City,Brackley Town
+England,national_league,league,National League,5,openfootball,2026-01-20,Yeovil Town,Aldershot Town
+England,national_league,league,National League,5,openfootball,2026-01-21,Boreham Wood,Scunthorpe United
+England,national_league,league,National League,5,openfootball,2026-01-21,Carlisle United,York City
+England,national_league,league,National League,5,openfootball,2026-01-21,Forest Green Rovers,Altrincham
+England,national_league,league,National League,5,openfootball,2026-01-21,Halifax Town,Morecambe
+England,national_league,league,National League,5,openfootball,2026-01-21,Solihull Moors,Rochdale
+England,national_league,league,National League,5,openfootball,2026-01-21,Wealdstone,Tamworth
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-23,Amiens,Laval
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-23,Annecy,Clermont
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-23,Bastia,Montpellier
@@ -511,6 +612,30 @@ Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-24,L
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-24,Mechelen,Westerlo
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-24,OH Leuven,Union Saint-Gilloise
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-24,Standard Liège,Gent
+England,league_2,league,League 2,4,openfootball,2026-01-24,Barnet,Oldham Athletic
+England,league_2,league,League 2,4,openfootball,2026-01-24,Barrow,Crawley Town
+England,league_2,league,League 2,4,openfootball,2026-01-24,Bromley,Swindon Town
+England,league_2,league,League 2,4,openfootball,2026-01-24,Cambridge United,Tranmere Rovers
+England,league_2,league,League 2,4,openfootball,2026-01-24,Cheltenham Town,Grimsby Town
+England,league_2,league,League 2,4,openfootball,2026-01-24,Colchester United,Fleetwood Town
+England,league_2,league,League 2,4,openfootball,2026-01-24,Harrogate Town,Gillingham
+England,league_2,league,League 2,4,openfootball,2026-01-24,Milton Keynes Dons,Shrewsbury Town
+England,league_2,league,League 2,4,openfootball,2026-01-24,Newport County,Chesterfield
+England,league_2,league,League 2,4,openfootball,2026-01-24,Notts County,Crewe Alexandra
+England,league_2,league,League 2,4,openfootball,2026-01-24,Salford City,Bristol Rovers
+England,league_2,league,League 2,4,openfootball,2026-01-24,Walsall,Accrington Stanley
+England,national_league,league,National League,5,openfootball,2026-01-24,Aldershot Town,Carlisle United
+England,national_league,league,National League,5,openfootball,2026-01-24,Altrincham,Boreham Wood
+England,national_league,league,National League,5,openfootball,2026-01-24,Boston United,Southend United
+England,national_league,league,National League,5,openfootball,2026-01-24,Brackley Town,Hartlepool United
+England,national_league,league,National League,5,openfootball,2026-01-24,Eastleigh,Halifax Town
+England,national_league,league,National League,5,openfootball,2026-01-24,Gateshead,Wealdstone
+England,national_league,league,National League,5,openfootball,2026-01-24,Morecambe,Solihull Moors
+England,national_league,league,National League,5,openfootball,2026-01-24,Rochdale,Truro City
+England,national_league,league,National League,5,openfootball,2026-01-24,Scunthorpe United,Forest Green Rovers
+England,national_league,league,National League,5,openfootball,2026-01-24,Tamworth,Sutton United
+England,national_league,league,National League,5,openfootball,2026-01-24,Woking,Yeovil Town
+England,national_league,league,National League,5,openfootball,2026-01-24,York City,Braintree Town
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-24,Aris Thessaloniki,Levadiakos
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-24,Asteras Tripolis,AEK Athens
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-01-24,Atromitos,Panathinaikos
@@ -544,6 +669,18 @@ Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Kayserispor,Istanbu
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Rizespor,Alanyaspor
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Samsunspor,Kocaelispor
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-01-25,Trabzonspor,Kasımpaşa
+England,league_2,league,League 2,4,openfootball,2026-01-27,Barnet,Tranmere Rovers
+England,league_2,league,League 2,4,openfootball,2026-01-27,Barrow,Oldham Athletic
+England,league_2,league,League 2,4,openfootball,2026-01-27,Bromley,Crewe Alexandra
+England,league_2,league,League 2,4,openfootball,2026-01-27,Cambridge United,Shrewsbury Town
+England,league_2,league,League 2,4,openfootball,2026-01-27,Cheltenham Town,Gillingham
+England,league_2,league,League 2,4,openfootball,2026-01-27,Colchester United,Grimsby Town
+England,league_2,league,League 2,4,openfootball,2026-01-27,Harrogate Town,Fleetwood Town
+England,league_2,league,League 2,4,openfootball,2026-01-27,Milton Keynes Dons,Bristol Rovers
+England,league_2,league,League 2,4,openfootball,2026-01-27,Newport County,Accrington Stanley
+England,league_2,league,League 2,4,openfootball,2026-01-27,Notts County,Swindon Town
+England,league_2,league,League 2,4,openfootball,2026-01-27,Salford City,Chesterfield
+England,league_2,league,League 2,4,openfootball,2026-01-27,Walsall,Crawley Town
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-30,Bastia,Nancy
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-30,Clermont,Reims
 France,ligue_2,league,Ligue 2,2,openfootball,2026-01-30,Dunkerque,Annecy
@@ -561,6 +698,30 @@ Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-31,S
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-31,Standard Liège,Anderlecht
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-31,Union Saint-Gilloise,Club Brugge
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-01-31,Zulte Waregem,Westerlo
+England,league_2,league,League 2,4,openfootball,2026-01-31,Accrington Stanley,Cheltenham Town
+England,league_2,league,League 2,4,openfootball,2026-01-31,Bristol Rovers,Newport County
+England,league_2,league,League 2,4,openfootball,2026-01-31,Chesterfield,Walsall
+England,league_2,league,League 2,4,openfootball,2026-01-31,Crawley Town,Harrogate Town
+England,league_2,league,League 2,4,openfootball,2026-01-31,Crewe Alexandra,Colchester United
+England,league_2,league,League 2,4,openfootball,2026-01-31,Fleetwood Town,Notts County
+England,league_2,league,League 2,4,openfootball,2026-01-31,Gillingham,Bromley
+England,league_2,league,League 2,4,openfootball,2026-01-31,Grimsby Town,Milton Keynes Dons
+England,league_2,league,League 2,4,openfootball,2026-01-31,Oldham Athletic,Cambridge United
+England,league_2,league,League 2,4,openfootball,2026-01-31,Shrewsbury Town,Barnet
+England,league_2,league,League 2,4,openfootball,2026-01-31,Swindon Town,Barrow
+England,league_2,league,League 2,4,openfootball,2026-01-31,Tranmere Rovers,Salford City
+England,national_league,league,National League,5,openfootball,2026-01-31,Boreham Wood,Boston United
+England,national_league,league,National League,5,openfootball,2026-01-31,Braintree Town,Eastleigh
+England,national_league,league,National League,5,openfootball,2026-01-31,Carlisle United,Altrincham
+England,national_league,league,National League,5,openfootball,2026-01-31,Forest Green Rovers,Woking
+England,national_league,league,National League,5,openfootball,2026-01-31,Halifax Town,Gateshead
+England,national_league,league,National League,5,openfootball,2026-01-31,Hartlepool United,Aldershot Town
+England,national_league,league,National League,5,openfootball,2026-01-31,Solihull Moors,York City
+England,national_league,league,National League,5,openfootball,2026-01-31,Southend United,Rochdale
+England,national_league,league,National League,5,openfootball,2026-01-31,Sutton United,Brackley Town
+England,national_league,league,National League,5,openfootball,2026-01-31,Truro City,Scunthorpe United
+England,national_league,league,National League,5,openfootball,2026-01-31,Wealdstone,Morecambe
+England,national_league,league,National League,5,openfootball,2026-01-31,Yeovil Town,Tamworth
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-31,Bochum,Schalke 04
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-31,Dynamo Dresden,Arminia Bielefeld
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-01-31,Eintracht Braunschweig,Karlsruher SC
@@ -635,6 +796,30 @@ Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-07,M
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-07,Union Saint-Gilloise,La Louvière
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-07,Westerlo,Sint-Truiden
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-07,Zulte Waregem,Dender
+England,league_2,league,League 2,4,openfootball,2026-02-07,Accrington Stanley,Salford City
+England,league_2,league,League 2,4,openfootball,2026-02-07,Bristol Rovers,Chesterfield
+England,league_2,league,League 2,4,openfootball,2026-02-07,Cheltenham Town,Milton Keynes Dons
+England,league_2,league,League 2,4,openfootball,2026-02-07,Colchester United,Shrewsbury Town
+England,league_2,league,League 2,4,openfootball,2026-02-07,Crawley Town,Crewe Alexandra
+England,league_2,league,League 2,4,openfootball,2026-02-07,Fleetwood Town,Bromley
+England,league_2,league,League 2,4,openfootball,2026-02-07,Gillingham,Tranmere Rovers
+England,league_2,league,League 2,4,openfootball,2026-02-07,Harrogate Town,Cambridge United
+England,league_2,league,League 2,4,openfootball,2026-02-07,Newport County,Grimsby Town
+England,league_2,league,League 2,4,openfootball,2026-02-07,Notts County,Barrow
+England,league_2,league,League 2,4,openfootball,2026-02-07,Swindon Town,Oldham Athletic
+England,league_2,league,League 2,4,openfootball,2026-02-07,Walsall,Barnet
+England,national_league,league,National League,5,openfootball,2026-02-07,Aldershot Town,Halifax Town
+England,national_league,league,National League,5,openfootball,2026-02-07,Altrincham,Yeovil Town
+England,national_league,league,National League,5,openfootball,2026-02-07,Boston United,Sutton United
+England,national_league,league,National League,5,openfootball,2026-02-07,Brackley Town,Solihull Moors
+England,national_league,league,National League,5,openfootball,2026-02-07,Eastleigh,Wealdstone
+England,national_league,league,National League,5,openfootball,2026-02-07,Gateshead,Braintree Town
+England,national_league,league,National League,5,openfootball,2026-02-07,Morecambe,Truro City
+England,national_league,league,National League,5,openfootball,2026-02-07,Rochdale,Carlisle United
+England,national_league,league,National League,5,openfootball,2026-02-07,Scunthorpe United,Southend United
+England,national_league,league,National League,5,openfootball,2026-02-07,Tamworth,Hartlepool United
+England,national_league,league,National League,5,openfootball,2026-02-07,Woking,Boreham Wood
+England,national_league,league,National League,5,openfootball,2026-02-07,York City,Forest Green Rovers
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-07,Aris Thessaloniki,PAOK
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-07,Asteras Tripolis,Volos
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-07,Kifisia,Atromitos
@@ -662,6 +847,18 @@ Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Kayserispor,Kocaeli
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Konyaspor,Göztepe
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Rizespor,Galatasaray
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-08,Samsunspor,Trabzonspor
+England,national_league,league,National League,5,openfootball,2026-02-10,Altrincham,Wealdstone
+England,national_league,league,National League,5,openfootball,2026-02-10,Boston United,Gateshead
+England,national_league,league,National League,5,openfootball,2026-02-10,Carlisle United,Scunthorpe United
+England,national_league,league,National League,5,openfootball,2026-02-10,Morecambe,Tamworth
+England,national_league,league,National League,5,openfootball,2026-02-10,Solihull Moors,Eastleigh
+England,national_league,league,National League,5,openfootball,2026-02-10,Truro City,Woking
+England,national_league,league,National League,5,openfootball,2026-02-11,Aldershot Town,Southend United
+England,national_league,league,National League,5,openfootball,2026-02-11,Boreham Wood,Yeovil Town
+England,national_league,league,National League,5,openfootball,2026-02-11,Brackley Town,Halifax Town
+England,national_league,league,National League,5,openfootball,2026-02-11,Rochdale,Forest Green Rovers
+England,national_league,league,National League,5,openfootball,2026-02-11,Sutton United,Braintree Town
+England,national_league,league,National League,5,openfootball,2026-02-11,York City,Hartlepool United
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-11,Celtic,Livingston
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-11,Dundee United,Aberdeen
 Scotland,scottish_premiership,league,Scottish Premiership,1,openfootball,2026-02-11,Falkirk,Dundee
@@ -685,6 +882,42 @@ Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-14,M
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-14,OH Leuven,Dender
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-14,Sint-Truiden,Zulte Waregem
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-14,Standard Liège,Union Saint-Gilloise
+England,league_1,league,League 1,3,openfootball,2026-02-14,Barnsley,Wimbledon
+England,league_1,league,League 1,3,openfootball,2026-02-14,Blackpool,Plymouth Argyle
+England,league_1,league,League 1,3,openfootball,2026-02-14,Bradford City,Peterborough United
+England,league_1,league,League 1,3,openfootball,2026-02-14,Burton Albion,Stockport County
+England,league_1,league,League 1,3,openfootball,2026-02-14,Cardiff City,Luton Town
+England,league_1,league,League 1,3,openfootball,2026-02-14,Doncaster Rovers,Port Vale
+England,league_1,league,League 1,3,openfootball,2026-02-14,Exeter City,Northampton Town
+England,league_1,league,League 1,3,openfootball,2026-02-14,Leyton Orient,Mansfield Town
+England,league_1,league,League 1,3,openfootball,2026-02-14,Lincoln City,Bolton Wanderers
+England,league_1,league,League 1,3,openfootball,2026-02-14,Reading,Wycombe Wanderers
+England,league_1,league,League 1,3,openfootball,2026-02-14,Stevenage,Huddersfield Town
+England,league_1,league,League 1,3,openfootball,2026-02-14,Wigan Athletic,Rotherham United
+England,league_2,league,League 2,4,openfootball,2026-02-14,Barnet,Cheltenham Town
+England,league_2,league,League 2,4,openfootball,2026-02-14,Barrow,Colchester United
+England,league_2,league,League 2,4,openfootball,2026-02-14,Bromley,Notts County
+England,league_2,league,League 2,4,openfootball,2026-02-14,Cambridge United,Bristol Rovers
+England,league_2,league,League 2,4,openfootball,2026-02-14,Chesterfield,Harrogate Town
+England,league_2,league,League 2,4,openfootball,2026-02-14,Crewe Alexandra,Gillingham
+England,league_2,league,League 2,4,openfootball,2026-02-14,Grimsby Town,Accrington Stanley
+England,league_2,league,League 2,4,openfootball,2026-02-14,Milton Keynes Dons,Newport County
+England,league_2,league,League 2,4,openfootball,2026-02-14,Oldham Athletic,Fleetwood Town
+England,league_2,league,League 2,4,openfootball,2026-02-14,Salford City,Walsall
+England,league_2,league,League 2,4,openfootball,2026-02-14,Shrewsbury Town,Swindon Town
+England,league_2,league,League 2,4,openfootball,2026-02-14,Tranmere Rovers,Crawley Town
+England,national_league,league,National League,5,openfootball,2026-02-14,Braintree Town,Solihull Moors
+England,national_league,league,National League,5,openfootball,2026-02-14,Eastleigh,Boreham Wood
+England,national_league,league,National League,5,openfootball,2026-02-14,Forest Green Rovers,Carlisle United
+England,national_league,league,National League,5,openfootball,2026-02-14,Gateshead,Brackley Town
+England,national_league,league,National League,5,openfootball,2026-02-14,Halifax Town,Truro City
+England,national_league,league,National League,5,openfootball,2026-02-14,Hartlepool United,Sutton United
+England,national_league,league,National League,5,openfootball,2026-02-14,Scunthorpe United,Boston United
+England,national_league,league,National League,5,openfootball,2026-02-14,Southend United,Morecambe
+England,national_league,league,National League,5,openfootball,2026-02-14,Tamworth,Aldershot Town
+England,national_league,league,National League,5,openfootball,2026-02-14,Wealdstone,York City
+England,national_league,league,National League,5,openfootball,2026-02-14,Woking,Altrincham
+England,national_league,league,National League,5,openfootball,2026-02-14,Yeovil Town,Rochdale
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-14,Bochum,Paderborn
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-14,Dynamo Dresden,Elversberg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-14,Eintracht Braunschweig,Darmstadt 98
@@ -727,6 +960,30 @@ Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,Istanbul Başakşeh
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,Kasımpaşa,Fatih Karagümrük
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,Kocaelispor,Gaziantep
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-15,Trabzonspor,Fenerbahçe
+England,league_1,league,League 1,3,openfootball,2026-02-17,Barnsley,Peterborough United
+England,league_1,league,League 1,3,openfootball,2026-02-17,Blackpool,Mansfield Town
+England,league_1,league,League 1,3,openfootball,2026-02-17,Bradford City,Stockport County
+England,league_1,league,League 1,3,openfootball,2026-02-17,Burton Albion,Rotherham United
+England,league_1,league,League 1,3,openfootball,2026-02-17,Cardiff City,Wimbledon
+England,league_1,league,League 1,3,openfootball,2026-02-17,Doncaster Rovers,Huddersfield Town
+England,league_1,league,League 1,3,openfootball,2026-02-17,Exeter City,Wycombe Wanderers
+England,league_1,league,League 1,3,openfootball,2026-02-17,Leyton Orient,Plymouth Argyle
+England,league_1,league,League 1,3,openfootball,2026-02-17,Lincoln City,Northampton Town
+England,league_1,league,League 1,3,openfootball,2026-02-17,Reading,Bolton Wanderers
+England,league_1,league,League 1,3,openfootball,2026-02-17,Stevenage,Port Vale
+England,league_1,league,League 1,3,openfootball,2026-02-17,Wigan Athletic,Luton Town
+England,league_2,league,League 2,4,openfootball,2026-02-17,Barnet,Swindon Town
+England,league_2,league,League 2,4,openfootball,2026-02-17,Barrow,Harrogate Town
+England,league_2,league,League 2,4,openfootball,2026-02-17,Bromley,Cheltenham Town
+England,league_2,league,League 2,4,openfootball,2026-02-17,Cambridge United,Colchester United
+England,league_2,league,League 2,4,openfootball,2026-02-17,Chesterfield,Gillingham
+England,league_2,league,League 2,4,openfootball,2026-02-17,Crewe Alexandra,Fleetwood Town
+England,league_2,league,League 2,4,openfootball,2026-02-17,Grimsby Town,Walsall
+England,league_2,league,League 2,4,openfootball,2026-02-17,Milton Keynes Dons,Crawley Town
+England,league_2,league,League 2,4,openfootball,2026-02-17,Oldham Athletic,Bristol Rovers
+England,league_2,league,League 2,4,openfootball,2026-02-17,Salford City,Newport County
+England,league_2,league,League 2,4,openfootball,2026-02-17,Shrewsbury Town,Notts County
+England,league_2,league,League 2,4,openfootball,2026-02-17,Tranmere Rovers,Accrington Stanley
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-20,Annecy,Red Star
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-20,Boulogne,Clermont
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-20,Dunkerque,Bastia
@@ -753,6 +1010,42 @@ Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-21,L
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-21,Union Saint-Gilloise,Antwerp
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-21,Westerlo,Charleroi
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-21,Zulte Waregem,Anderlecht
+England,league_1,league,League 1,3,openfootball,2026-02-21,Bolton Wanderers,Blackpool
+England,league_1,league,League 1,3,openfootball,2026-02-21,Huddersfield Town,Barnsley
+England,league_1,league,League 1,3,openfootball,2026-02-21,Luton Town,Burton Albion
+England,league_1,league,League 1,3,openfootball,2026-02-21,Mansfield Town,Lincoln City
+England,league_1,league,League 1,3,openfootball,2026-02-21,Northampton Town,Leyton Orient
+England,league_1,league,League 1,3,openfootball,2026-02-21,Peterborough United,Exeter City
+England,league_1,league,League 1,3,openfootball,2026-02-21,Plymouth Argyle,Cardiff City
+England,league_1,league,League 1,3,openfootball,2026-02-21,Port Vale,Reading
+England,league_1,league,League 1,3,openfootball,2026-02-21,Rotherham United,Doncaster Rovers
+England,league_1,league,League 1,3,openfootball,2026-02-21,Stockport County,Wigan Athletic
+England,league_1,league,League 1,3,openfootball,2026-02-21,Wimbledon,Bradford City
+England,league_1,league,League 1,3,openfootball,2026-02-21,Wycombe Wanderers,Stevenage
+England,league_2,league,League 2,4,openfootball,2026-02-21,Accrington Stanley,Shrewsbury Town
+England,league_2,league,League 2,4,openfootball,2026-02-21,Bristol Rovers,Grimsby Town
+England,league_2,league,League 2,4,openfootball,2026-02-21,Cheltenham Town,Salford City
+England,league_2,league,League 2,4,openfootball,2026-02-21,Colchester United,Barnet
+England,league_2,league,League 2,4,openfootball,2026-02-21,Crawley Town,Chesterfield
+England,league_2,league,League 2,4,openfootball,2026-02-21,Fleetwood Town,Barrow
+England,league_2,league,League 2,4,openfootball,2026-02-21,Gillingham,Oldham Athletic
+England,league_2,league,League 2,4,openfootball,2026-02-21,Harrogate Town,Bromley
+England,league_2,league,League 2,4,openfootball,2026-02-21,Newport County,Cambridge United
+England,league_2,league,League 2,4,openfootball,2026-02-21,Notts County,Tranmere Rovers
+England,league_2,league,League 2,4,openfootball,2026-02-21,Swindon Town,Crewe Alexandra
+England,league_2,league,League 2,4,openfootball,2026-02-21,Walsall,Milton Keynes Dons
+England,national_league,league,National League,5,openfootball,2026-02-21,Aldershot Town,Scunthorpe United
+England,national_league,league,National League,5,openfootball,2026-02-21,Altrincham,Braintree Town
+England,national_league,league,National League,5,openfootball,2026-02-21,Boreham Wood,Forest Green Rovers
+England,national_league,league,National League,5,openfootball,2026-02-21,Boston United,Tamworth
+England,national_league,league,National League,5,openfootball,2026-02-21,Brackley Town,Southend United
+England,national_league,league,National League,5,openfootball,2026-02-21,Carlisle United,Yeovil Town
+England,national_league,league,National League,5,openfootball,2026-02-21,Morecambe,Eastleigh
+England,national_league,league,National League,5,openfootball,2026-02-21,Rochdale,Woking
+England,national_league,league,National League,5,openfootball,2026-02-21,Solihull Moors,Hartlepool United
+England,national_league,league,National League,5,openfootball,2026-02-21,Sutton United,Wealdstone
+England,national_league,league,National League,5,openfootball,2026-02-21,Truro City,Gateshead
+England,national_league,league,National League,5,openfootball,2026-02-21,York City,Halifax Town
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-21,AEK Athens,Levadiakos
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-21,Aris Thessaloniki,Kifisia
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-02-21,Asteras Tripolis,Atromitos
@@ -786,6 +1079,18 @@ Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Gaziantep,Trabzonsp
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Kayserispor,Antalyaspor
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Konyaspor,Galatasaray
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-02-22,Rizespor,Kocaelispor
+England,national_league,league,National League,5,openfootball,2026-02-24,Forest Green Rovers,Boston United
+England,national_league,league,National League,5,openfootball,2026-02-24,Halifax Town,Rochdale
+England,national_league,league,National League,5,openfootball,2026-02-24,Scunthorpe United,York City
+England,national_league,league,National League,5,openfootball,2026-02-24,Southend United,Boreham Wood
+England,national_league,league,National League,5,openfootball,2026-02-24,Tamworth,Altrincham
+England,national_league,league,National League,5,openfootball,2026-02-24,Wealdstone,Brackley Town
+England,national_league,league,National League,5,openfootball,2026-02-25,Braintree Town,Aldershot Town
+England,national_league,league,National League,5,openfootball,2026-02-25,Eastleigh,Truro City
+England,national_league,league,National League,5,openfootball,2026-02-25,Gateshead,Morecambe
+England,national_league,league,National League,5,openfootball,2026-02-25,Hartlepool United,Carlisle United
+England,national_league,league,National League,5,openfootball,2026-02-25,Woking,Solihull Moors
+England,national_league,league,National League,5,openfootball,2026-02-25,Yeovil Town,Sutton United
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-27,Amiens,Troyes
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-27,Bastia,Annecy
 France,ligue_2,league,Ligue 2,2,openfootball,2026-02-27,Clermont,Dunkerque
@@ -803,6 +1108,42 @@ Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-28,G
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-28,Mechelen,Zulte Waregem
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-28,Standard Liège,La Louvière
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-02-28,Westerlo,Union Saint-Gilloise
+England,league_1,league,League 1,3,openfootball,2026-02-28,Doncaster Rovers,Cardiff City
+England,league_1,league,League 1,3,openfootball,2026-02-28,Exeter City,Bolton Wanderers
+England,league_1,league,League 1,3,openfootball,2026-02-28,Leyton Orient,Barnsley
+England,league_1,league,League 1,3,openfootball,2026-02-28,Lincoln City,Blackpool
+England,league_1,league,League 1,3,openfootball,2026-02-28,Mansfield Town,Wimbledon
+England,league_1,league,League 1,3,openfootball,2026-02-28,Northampton Town,Peterborough United
+England,league_1,league,League 1,3,openfootball,2026-02-28,Port Vale,Luton Town
+England,league_1,league,League 1,3,openfootball,2026-02-28,Reading,Bradford City
+England,league_1,league,League 1,3,openfootball,2026-02-28,Rotherham United,Plymouth Argyle
+England,league_1,league,League 1,3,openfootball,2026-02-28,Stevenage,Stockport County
+England,league_1,league,League 1,3,openfootball,2026-02-28,Wigan Athletic,Huddersfield Town
+England,league_1,league,League 1,3,openfootball,2026-02-28,Wycombe Wanderers,Burton Albion
+England,league_2,league,League 2,4,openfootball,2026-02-28,Barnet,Chesterfield
+England,league_2,league,League 2,4,openfootball,2026-02-28,Barrow,Gillingham
+England,league_2,league,League 2,4,openfootball,2026-02-28,Bromley,Accrington Stanley
+England,league_2,league,League 2,4,openfootball,2026-02-28,Cambridge United,Milton Keynes Dons
+England,league_2,league,League 2,4,openfootball,2026-02-28,Colchester United,Salford City
+England,league_2,league,League 2,4,openfootball,2026-02-28,Crewe Alexandra,Tranmere Rovers
+England,league_2,league,League 2,4,openfootball,2026-02-28,Fleetwood Town,Newport County
+England,league_2,league,League 2,4,openfootball,2026-02-28,Harrogate Town,Cheltenham Town
+England,league_2,league,League 2,4,openfootball,2026-02-28,Notts County,Grimsby Town
+England,league_2,league,League 2,4,openfootball,2026-02-28,Oldham Athletic,Crawley Town
+England,league_2,league,League 2,4,openfootball,2026-02-28,Shrewsbury Town,Walsall
+England,league_2,league,League 2,4,openfootball,2026-02-28,Swindon Town,Bristol Rovers
+England,national_league,league,National League,5,openfootball,2026-02-28,Aldershot Town,Rochdale
+England,national_league,league,National League,5,openfootball,2026-02-28,Boston United,Woking
+England,national_league,league,National League,5,openfootball,2026-02-28,Brackley Town,Altrincham
+England,national_league,league,National League,5,openfootball,2026-02-28,Eastleigh,Carlisle United
+England,national_league,league,National League,5,openfootball,2026-02-28,Gateshead,Forest Green Rovers
+England,national_league,league,National League,5,openfootball,2026-02-28,Halifax Town,Sutton United
+England,national_league,league,National League,5,openfootball,2026-02-28,Morecambe,York City
+England,national_league,league,National League,5,openfootball,2026-02-28,Scunthorpe United,Solihull Moors
+England,national_league,league,National League,5,openfootball,2026-02-28,Southend United,Yeovil Town
+England,national_league,league,National League,5,openfootball,2026-02-28,Tamworth,Boreham Wood
+England,national_league,league,National League,5,openfootball,2026-02-28,Truro City,Braintree Town
+England,national_league,league,National League,5,openfootball,2026-02-28,Wealdstone,Hartlepool United
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-28,Arminia Bielefeld,Hannover 96
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-28,Dynamo Dresden,Darmstadt 98
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-02-28,Eintracht Braunschweig,Preußen Münster
@@ -871,6 +1212,42 @@ Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-07,O
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-07,Sint-Truiden,Cercle Brugge
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-07,Union Saint-Gilloise,Genk
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-07,Zulte Waregem,Standard Liège
+England,league_1,league,League 1,3,openfootball,2026-03-07,Barnsley,Exeter City
+England,league_1,league,League 1,3,openfootball,2026-03-07,Blackpool,Wigan Athletic
+England,league_1,league,League 1,3,openfootball,2026-03-07,Bolton Wanderers,Wycombe Wanderers
+England,league_1,league,League 1,3,openfootball,2026-03-07,Bradford City,Leyton Orient
+England,league_1,league,League 1,3,openfootball,2026-03-07,Burton Albion,Stevenage
+England,league_1,league,League 1,3,openfootball,2026-03-07,Cardiff City,Lincoln City
+England,league_1,league,League 1,3,openfootball,2026-03-07,Huddersfield Town,Rotherham United
+England,league_1,league,League 1,3,openfootball,2026-03-07,Luton Town,Reading
+England,league_1,league,League 1,3,openfootball,2026-03-07,Peterborough United,Port Vale
+England,league_1,league,League 1,3,openfootball,2026-03-07,Plymouth Argyle,Doncaster Rovers
+England,league_1,league,League 1,3,openfootball,2026-03-07,Stockport County,Mansfield Town
+England,league_1,league,League 1,3,openfootball,2026-03-07,Wimbledon,Northampton Town
+England,league_2,league,League 2,4,openfootball,2026-03-07,Accrington Stanley,Cambridge United
+England,league_2,league,League 2,4,openfootball,2026-03-07,Bristol Rovers,Crewe Alexandra
+England,league_2,league,League 2,4,openfootball,2026-03-07,Cheltenham Town,Barrow
+England,league_2,league,League 2,4,openfootball,2026-03-07,Chesterfield,Shrewsbury Town
+England,league_2,league,League 2,4,openfootball,2026-03-07,Crawley Town,Swindon Town
+England,league_2,league,League 2,4,openfootball,2026-03-07,Gillingham,Fleetwood Town
+England,league_2,league,League 2,4,openfootball,2026-03-07,Grimsby Town,Bromley
+England,league_2,league,League 2,4,openfootball,2026-03-07,Milton Keynes Dons,Harrogate Town
+England,league_2,league,League 2,4,openfootball,2026-03-07,Newport County,Colchester United
+England,league_2,league,League 2,4,openfootball,2026-03-07,Salford City,Barnet
+England,league_2,league,League 2,4,openfootball,2026-03-07,Tranmere Rovers,Oldham Athletic
+England,league_2,league,League 2,4,openfootball,2026-03-07,Walsall,Notts County
+England,national_league,league,National League,5,openfootball,2026-03-07,Altrincham,Truro City
+England,national_league,league,National League,5,openfootball,2026-03-07,Boreham Wood,Brackley Town
+England,national_league,league,National League,5,openfootball,2026-03-07,Braintree Town,Wealdstone
+England,national_league,league,National League,5,openfootball,2026-03-07,Carlisle United,Southend United
+England,national_league,league,National League,5,openfootball,2026-03-07,Forest Green Rovers,Aldershot Town
+England,national_league,league,National League,5,openfootball,2026-03-07,Hartlepool United,Halifax Town
+England,national_league,league,National League,5,openfootball,2026-03-07,Rochdale,Boston United
+England,national_league,league,National League,5,openfootball,2026-03-07,Solihull Moors,Gateshead
+England,national_league,league,National League,5,openfootball,2026-03-07,Sutton United,Morecambe
+England,national_league,league,National League,5,openfootball,2026-03-07,Woking,Tamworth
+England,national_league,league,National League,5,openfootball,2026-03-07,Yeovil Town,Scunthorpe United
+England,national_league,league,National League,5,openfootball,2026-03-07,York City,Eastleigh
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-07,AEK Athens,Larissa
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-07,Aris Thessaloniki,Atromitos
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-07,Asteras Tripolis,Panserraikos
@@ -915,6 +1292,42 @@ Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-14,G
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-14,Mechelen,Anderlecht
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-14,Union Saint-Gilloise,Dender
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-14,Westerlo,Club Brugge
+England,league_1,league,League 1,3,openfootball,2026-03-14,Doncaster Rovers,Blackpool
+England,league_1,league,League 1,3,openfootball,2026-03-14,Exeter City,Cardiff City
+England,league_1,league,League 1,3,openfootball,2026-03-14,Leyton Orient,Peterborough United
+England,league_1,league,League 1,3,openfootball,2026-03-14,Lincoln City,Stockport County
+England,league_1,league,League 1,3,openfootball,2026-03-14,Mansfield Town,Barnsley
+England,league_1,league,League 1,3,openfootball,2026-03-14,Northampton Town,Burton Albion
+England,league_1,league,League 1,3,openfootball,2026-03-14,Port Vale,Huddersfield Town
+England,league_1,league,League 1,3,openfootball,2026-03-14,Reading,Plymouth Argyle
+England,league_1,league,League 1,3,openfootball,2026-03-14,Rotherham United,Bolton Wanderers
+England,league_1,league,League 1,3,openfootball,2026-03-14,Stevenage,Wimbledon
+England,league_1,league,League 1,3,openfootball,2026-03-14,Wigan Athletic,Bradford City
+England,league_1,league,League 1,3,openfootball,2026-03-14,Wycombe Wanderers,Luton Town
+England,league_2,league,League 2,4,openfootball,2026-03-14,Barnet,Newport County
+England,league_2,league,League 2,4,openfootball,2026-03-14,Barrow,Accrington Stanley
+England,league_2,league,League 2,4,openfootball,2026-03-14,Bromley,Bristol Rovers
+England,league_2,league,League 2,4,openfootball,2026-03-14,Cambridge United,Gillingham
+England,league_2,league,League 2,4,openfootball,2026-03-14,Colchester United,Crawley Town
+England,league_2,league,League 2,4,openfootball,2026-03-14,Crewe Alexandra,Walsall
+England,league_2,league,League 2,4,openfootball,2026-03-14,Fleetwood Town,Tranmere Rovers
+England,league_2,league,League 2,4,openfootball,2026-03-14,Harrogate Town,Salford City
+England,league_2,league,League 2,4,openfootball,2026-03-14,Notts County,Chesterfield
+England,league_2,league,League 2,4,openfootball,2026-03-14,Oldham Athletic,Grimsby Town
+England,league_2,league,League 2,4,openfootball,2026-03-14,Shrewsbury Town,Cheltenham Town
+England,league_2,league,League 2,4,openfootball,2026-03-14,Swindon Town,Milton Keynes Dons
+England,national_league,league,National League,5,openfootball,2026-03-14,Aldershot Town,York City
+England,national_league,league,National League,5,openfootball,2026-03-14,Boston United,Yeovil Town
+England,national_league,league,National League,5,openfootball,2026-03-14,Brackley Town,Woking
+England,national_league,league,National League,5,openfootball,2026-03-14,Eastleigh,Rochdale
+England,national_league,league,National League,5,openfootball,2026-03-14,Gateshead,Sutton United
+England,national_league,league,National League,5,openfootball,2026-03-14,Halifax Town,Boreham Wood
+England,national_league,league,National League,5,openfootball,2026-03-14,Morecambe,Braintree Town
+England,national_league,league,National League,5,openfootball,2026-03-14,Scunthorpe United,Altrincham
+England,national_league,league,National League,5,openfootball,2026-03-14,Southend United,Forest Green Rovers
+England,national_league,league,National League,5,openfootball,2026-03-14,Tamworth,Carlisle United
+England,national_league,league,National League,5,openfootball,2026-03-14,Truro City,Hartlepool United
+England,national_league,league,National League,5,openfootball,2026-03-14,Wealdstone,Solihull Moors
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-14,Arminia Bielefeld,Paderborn
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-14,Dynamo Dresden,Preußen Münster
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-03-14,Eintracht Braunschweig,Fortuna Düsseldorf
@@ -957,6 +1370,30 @@ Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Kasımpaşa,Eyüpsp
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Kocaelispor,Konyaspor
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Samsunspor,Kayserispor
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-15,Trabzonspor,Rizespor
+England,league_1,league,League 1,3,openfootball,2026-03-17,Barnsley,Wigan Athletic
+England,league_1,league,League 1,3,openfootball,2026-03-17,Blackpool,Port Vale
+England,league_1,league,League 1,3,openfootball,2026-03-17,Bolton Wanderers,Doncaster Rovers
+England,league_1,league,League 1,3,openfootball,2026-03-17,Bradford City,Mansfield Town
+England,league_1,league,League 1,3,openfootball,2026-03-17,Burton Albion,Reading
+England,league_1,league,League 1,3,openfootball,2026-03-17,Cardiff City,Wycombe Wanderers
+England,league_1,league,League 1,3,openfootball,2026-03-17,Huddersfield Town,Lincoln City
+England,league_1,league,League 1,3,openfootball,2026-03-17,Luton Town,Exeter City
+England,league_1,league,League 1,3,openfootball,2026-03-17,Peterborough United,Rotherham United
+England,league_1,league,League 1,3,openfootball,2026-03-17,Plymouth Argyle,Stevenage
+England,league_1,league,League 1,3,openfootball,2026-03-17,Stockport County,Northampton Town
+England,league_1,league,League 1,3,openfootball,2026-03-17,Wimbledon,Leyton Orient
+England,league_2,league,League 2,4,openfootball,2026-03-17,Accrington Stanley,Notts County
+England,league_2,league,League 2,4,openfootball,2026-03-17,Bristol Rovers,Shrewsbury Town
+England,league_2,league,League 2,4,openfootball,2026-03-17,Cheltenham Town,Crewe Alexandra
+England,league_2,league,League 2,4,openfootball,2026-03-17,Chesterfield,Oldham Athletic
+England,league_2,league,League 2,4,openfootball,2026-03-17,Crawley Town,Barnet
+England,league_2,league,League 2,4,openfootball,2026-03-17,Gillingham,Swindon Town
+England,league_2,league,League 2,4,openfootball,2026-03-17,Grimsby Town,Fleetwood Town
+England,league_2,league,League 2,4,openfootball,2026-03-17,Milton Keynes Dons,Colchester United
+England,league_2,league,League 2,4,openfootball,2026-03-17,Newport County,Bromley
+England,league_2,league,League 2,4,openfootball,2026-03-17,Salford City,Barrow
+England,league_2,league,League 2,4,openfootball,2026-03-17,Tranmere Rovers,Harrogate Town
+England,league_2,league,League 2,4,openfootball,2026-03-17,Walsall,Cambridge United
 Italy,serie_b,league,Serie B,2,openfootball,2026-03-17,Catanzaro,Modena
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-20,Amiens,Le Mans
 France,ligue_2,league,Ligue 2,2,openfootball,2026-03-20,Boulogne,Nancy
@@ -984,6 +1421,42 @@ Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-21,O
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-21,Sint-Truiden,Union Saint-Gilloise
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-21,Standard Liège,Westerlo
 Belgium,belgian_pro_league,league,Belgian Pro League,1,openfootball,2026-03-21,Zulte Waregem,Charleroi
+England,league_1,league,League 1,3,openfootball,2026-03-21,Barnsley,Doncaster Rovers
+England,league_1,league,League 1,3,openfootball,2026-03-21,Burton Albion,Bradford City
+England,league_1,league,League 1,3,openfootball,2026-03-21,Cardiff City,Blackpool
+England,league_1,league,League 1,3,openfootball,2026-03-21,Leyton Orient,Wycombe Wanderers
+England,league_1,league,League 1,3,openfootball,2026-03-21,Lincoln City,Rotherham United
+England,league_1,league,League 1,3,openfootball,2026-03-21,Luton Town,Stockport County
+England,league_1,league,League 1,3,openfootball,2026-03-21,Mansfield Town,Northampton Town
+England,league_1,league,League 1,3,openfootball,2026-03-21,Plymouth Argyle,Huddersfield Town
+England,league_1,league,League 1,3,openfootball,2026-03-21,Port Vale,Bolton Wanderers
+England,league_1,league,League 1,3,openfootball,2026-03-21,Stevenage,Reading
+England,league_1,league,League 1,3,openfootball,2026-03-21,Wigan Athletic,Exeter City
+England,league_1,league,League 1,3,openfootball,2026-03-21,Wimbledon,Peterborough United
+England,league_2,league,League 2,4,openfootball,2026-03-21,Accrington Stanley,Chesterfield
+England,league_2,league,League 2,4,openfootball,2026-03-21,Bromley,Colchester United
+England,league_2,league,League 2,4,openfootball,2026-03-21,Cambridge United,Salford City
+England,league_2,league,League 2,4,openfootball,2026-03-21,Fleetwood Town,Crawley Town
+England,league_2,league,League 2,4,openfootball,2026-03-21,Gillingham,Bristol Rovers
+England,league_2,league,League 2,4,openfootball,2026-03-21,Grimsby Town,Barrow
+England,league_2,league,League 2,4,openfootball,2026-03-21,Milton Keynes Dons,Barnet
+England,league_2,league,League 2,4,openfootball,2026-03-21,Notts County,Cheltenham Town
+England,league_2,league,League 2,4,openfootball,2026-03-21,Oldham Athletic,Harrogate Town
+England,league_2,league,League 2,4,openfootball,2026-03-21,Shrewsbury Town,Crewe Alexandra
+England,league_2,league,League 2,4,openfootball,2026-03-21,Tranmere Rovers,Swindon Town
+England,league_2,league,League 2,4,openfootball,2026-03-21,Walsall,Newport County
+England,national_league,league,National League,5,openfootball,2026-03-21,Altrincham,Southend United
+England,national_league,league,National League,5,openfootball,2026-03-21,Boreham Wood,Gateshead
+England,national_league,league,National League,5,openfootball,2026-03-21,Braintree Town,Scunthorpe United
+England,national_league,league,National League,5,openfootball,2026-03-21,Carlisle United,Boston United
+England,national_league,league,National League,5,openfootball,2026-03-21,Forest Green Rovers,Wealdstone
+England,national_league,league,National League,5,openfootball,2026-03-21,Hartlepool United,Eastleigh
+England,national_league,league,National League,5,openfootball,2026-03-21,Rochdale,Tamworth
+England,national_league,league,National League,5,openfootball,2026-03-21,Solihull Moors,Halifax Town
+England,national_league,league,National League,5,openfootball,2026-03-21,Sutton United,Truro City
+England,national_league,league,National League,5,openfootball,2026-03-21,Woking,Aldershot Town
+England,national_league,league,National League,5,openfootball,2026-03-21,Yeovil Town,Morecambe
+England,national_league,league,National League,5,openfootball,2026-03-21,York City,Brackley Town
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-21,AEK Athens,Kifisia
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-21,Aris Thessaloniki,OFI Crete
 Greece,super_league_greece,league,Super League Greece,1,openfootball,2026-03-21,Asteras Tripolis,Panathinaikos
@@ -1027,6 +1500,54 @@ Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,Istanbul Başakşeh
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,Kayserispor,Fatih Karagümrük
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,Konyaspor,Gençlerbirliği
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-03-22,Rizespor,Samsunspor
+England,national_league,league,National League,5,openfootball,2026-03-24,Aldershot Town,Boreham Wood
+England,national_league,league,National League,5,openfootball,2026-03-24,Boston United,Altrincham
+England,national_league,league,National League,5,openfootball,2026-03-24,Brackley Town,Braintree Town
+England,national_league,league,National League,5,openfootball,2026-03-24,Eastleigh,Sutton United
+England,national_league,league,National League,5,openfootball,2026-03-24,Gateshead,York City
+England,national_league,league,National League,5,openfootball,2026-03-24,Halifax Town,Carlisle United
+England,national_league,league,National League,5,openfootball,2026-03-24,Morecambe,Hartlepool United
+England,national_league,league,National League,5,openfootball,2026-03-24,Scunthorpe United,Rochdale
+England,national_league,league,National League,5,openfootball,2026-03-24,Southend United,Woking
+England,national_league,league,National League,5,openfootball,2026-03-24,Tamworth,Forest Green Rovers
+England,national_league,league,National League,5,openfootball,2026-03-24,Truro City,Solihull Moors
+England,national_league,league,National League,5,openfootball,2026-03-24,Wealdstone,Yeovil Town
+England,league_1,league,League 1,3,openfootball,2026-03-28,Blackpool,Burton Albion
+England,league_1,league,League 1,3,openfootball,2026-03-28,Bolton Wanderers,Stevenage
+England,league_1,league,League 1,3,openfootball,2026-03-28,Bradford City,Plymouth Argyle
+England,league_1,league,League 1,3,openfootball,2026-03-28,Doncaster Rovers,Lincoln City
+England,league_1,league,League 1,3,openfootball,2026-03-28,Exeter City,Leyton Orient
+England,league_1,league,League 1,3,openfootball,2026-03-28,Huddersfield Town,Cardiff City
+England,league_1,league,League 1,3,openfootball,2026-03-28,Northampton Town,Barnsley
+England,league_1,league,League 1,3,openfootball,2026-03-28,Peterborough United,Mansfield Town
+England,league_1,league,League 1,3,openfootball,2026-03-28,Reading,Wigan Athletic
+England,league_1,league,League 1,3,openfootball,2026-03-28,Rotherham United,Luton Town
+England,league_1,league,League 1,3,openfootball,2026-03-28,Stockport County,Wimbledon
+England,league_1,league,League 1,3,openfootball,2026-03-28,Wycombe Wanderers,Port Vale
+England,league_2,league,League 2,4,openfootball,2026-03-28,Barnet,Cambridge United
+England,league_2,league,League 2,4,openfootball,2026-03-28,Barrow,Bromley
+England,league_2,league,League 2,4,openfootball,2026-03-28,Bristol Rovers,Accrington Stanley
+England,league_2,league,League 2,4,openfootball,2026-03-28,Cheltenham Town,Tranmere Rovers
+England,league_2,league,League 2,4,openfootball,2026-03-28,Chesterfield,Grimsby Town
+England,league_2,league,League 2,4,openfootball,2026-03-28,Colchester United,Walsall
+England,league_2,league,League 2,4,openfootball,2026-03-28,Crawley Town,Gillingham
+England,league_2,league,League 2,4,openfootball,2026-03-28,Crewe Alexandra,Oldham Athletic
+England,league_2,league,League 2,4,openfootball,2026-03-28,Harrogate Town,Notts County
+England,league_2,league,League 2,4,openfootball,2026-03-28,Newport County,Shrewsbury Town
+England,league_2,league,League 2,4,openfootball,2026-03-28,Salford City,Milton Keynes Dons
+England,league_2,league,League 2,4,openfootball,2026-03-28,Swindon Town,Fleetwood Town
+England,national_league,league,National League,5,openfootball,2026-03-28,Brackley Town,Tamworth
+England,national_league,league,National League,5,openfootball,2026-03-28,Braintree Town,Carlisle United
+England,national_league,league,National League,5,openfootball,2026-03-28,Eastleigh,Forest Green Rovers
+England,national_league,league,National League,5,openfootball,2026-03-28,Gateshead,Yeovil Town
+England,national_league,league,National League,5,openfootball,2026-03-28,Halifax Town,Scunthorpe United
+England,national_league,league,National League,5,openfootball,2026-03-28,Hartlepool United,Southend United
+England,national_league,league,National League,5,openfootball,2026-03-28,Morecambe,Aldershot Town
+England,national_league,league,National League,5,openfootball,2026-03-28,Solihull Moors,Altrincham
+England,national_league,league,National League,5,openfootball,2026-03-28,Sutton United,Rochdale
+England,national_league,league,National League,5,openfootball,2026-03-28,Truro City,Boreham Wood
+England,national_league,league,National League,5,openfootball,2026-03-28,Wealdstone,Boston United
+England,national_league,league,National League,5,openfootball,2026-03-28,York City,Woking
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-29,Albacete,Castellón
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-29,Almería,Real Sociedad B
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-03-29,Ceuta,Cádiz
@@ -1049,6 +1570,42 @@ Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-01,Mirand
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-01,Racing Santander,Sporting Gijón
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-01,Real Sociedad B,Eibar
 Spain,segunda_division,league,Segunda División,2,openfootball,2026-04-01,Real Valladolid,Cádiz
+England,league_1,league,League 1,3,openfootball,2026-04-03,Blackpool,Exeter City
+England,league_1,league,League 1,3,openfootball,2026-04-03,Bradford City,Northampton Town
+England,league_1,league,League 1,3,openfootball,2026-04-03,Burton Albion,Barnsley
+England,league_1,league,League 1,3,openfootball,2026-04-03,Cardiff City,Port Vale
+England,league_1,league,League 1,3,openfootball,2026-04-03,Doncaster Rovers,Mansfield Town
+England,league_1,league,League 1,3,openfootball,2026-04-03,Huddersfield Town,Reading
+England,league_1,league,League 1,3,openfootball,2026-04-03,Lincoln City,Wimbledon
+England,league_1,league,League 1,3,openfootball,2026-04-03,Luton Town,Peterborough United
+England,league_1,league,League 1,3,openfootball,2026-04-03,Plymouth Argyle,Bolton Wanderers
+England,league_1,league,League 1,3,openfootball,2026-04-03,Rotherham United,Stevenage
+England,league_1,league,League 1,3,openfootball,2026-04-03,Stockport County,Wycombe Wanderers
+England,league_1,league,League 1,3,openfootball,2026-04-03,Wigan Athletic,Leyton Orient
+England,league_2,league,League 2,4,openfootball,2026-04-03,Accrington Stanley,Crewe Alexandra
+England,league_2,league,League 2,4,openfootball,2026-04-03,Barnet,Bromley
+England,league_2,league,League 2,4,openfootball,2026-04-03,Bristol Rovers,Fleetwood Town
+England,league_2,league,League 2,4,openfootball,2026-04-03,Cambridge United,Swindon Town
+England,league_2,league,League 2,4,openfootball,2026-04-03,Chesterfield,Cheltenham Town
+England,league_2,league,League 2,4,openfootball,2026-04-03,Colchester United,Oldham Athletic
+England,league_2,league,League 2,4,openfootball,2026-04-03,Grimsby Town,Harrogate Town
+England,league_2,league,League 2,4,openfootball,2026-04-03,Milton Keynes Dons,Barrow
+England,league_2,league,League 2,4,openfootball,2026-04-03,Newport County,Crawley Town
+England,league_2,league,League 2,4,openfootball,2026-04-03,Salford City,Notts County
+England,league_2,league,League 2,4,openfootball,2026-04-03,Shrewsbury Town,Tranmere Rovers
+England,league_2,league,League 2,4,openfootball,2026-04-03,Walsall,Gillingham
+England,national_league,league,National League,5,openfootball,2026-04-03,Aldershot Town,Sutton United
+England,national_league,league,National League,5,openfootball,2026-04-03,Altrincham,Halifax Town
+England,national_league,league,National League,5,openfootball,2026-04-03,Boreham Wood,Wealdstone
+England,national_league,league,National League,5,openfootball,2026-04-03,Boston United,York City
+England,national_league,league,National League,5,openfootball,2026-04-03,Carlisle United,Gateshead
+England,national_league,league,National League,5,openfootball,2026-04-03,Forest Green Rovers,Brackley Town
+England,national_league,league,National League,5,openfootball,2026-04-03,Rochdale,Morecambe
+England,national_league,league,National League,5,openfootball,2026-04-03,Scunthorpe United,Hartlepool United
+England,national_league,league,National League,5,openfootball,2026-04-03,Southend United,Braintree Town
+England,national_league,league,National League,5,openfootball,2026-04-03,Tamworth,Solihull Moors
+England,national_league,league,National League,5,openfootball,2026-04-03,Woking,Eastleigh
+England,national_league,league,National League,5,openfootball,2026-04-03,Yeovil Town,Truro City
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-03,Annecy,Guingamp
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-03,Bastia,Amiens
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-03,Dunkerque,Rodez
@@ -1093,6 +1650,42 @@ Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Kasımpaşa,Kayseri
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Kocaelispor,Istanbul Başakşehir
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Samsunspor,Konyaspor
 Turkey,super_lig,league,Süper Lig,1,openfootball,2026-04-05,Trabzonspor,Galatasaray
+England,league_1,league,League 1,3,openfootball,2026-04-06,Barnsley,Plymouth Argyle
+England,league_1,league,League 1,3,openfootball,2026-04-06,Bolton Wanderers,Stockport County
+England,league_1,league,League 1,3,openfootball,2026-04-06,Exeter City,Doncaster Rovers
+England,league_1,league,League 1,3,openfootball,2026-04-06,Leyton Orient,Huddersfield Town
+England,league_1,league,League 1,3,openfootball,2026-04-06,Mansfield Town,Burton Albion
+England,league_1,league,League 1,3,openfootball,2026-04-06,Northampton Town,Wigan Athletic
+England,league_1,league,League 1,3,openfootball,2026-04-06,Peterborough United,Cardiff City
+England,league_1,league,League 1,3,openfootball,2026-04-06,Port Vale,Rotherham United
+England,league_1,league,League 1,3,openfootball,2026-04-06,Reading,Lincoln City
+England,league_1,league,League 1,3,openfootball,2026-04-06,Stevenage,Blackpool
+England,league_1,league,League 1,3,openfootball,2026-04-06,Wimbledon,Luton Town
+England,league_1,league,League 1,3,openfootball,2026-04-06,Wycombe Wanderers,Bradford City
+England,league_2,league,League 2,4,openfootball,2026-04-06,Barrow,Chesterfield
+England,league_2,league,League 2,4,openfootball,2026-04-06,Bromley,Shrewsbury Town
+England,league_2,league,League 2,4,openfootball,2026-04-06,Cheltenham Town,Cambridge United
+England,league_2,league,League 2,4,openfootball,2026-04-06,Crawley Town,Grimsby Town
+England,league_2,league,League 2,4,openfootball,2026-04-06,Crewe Alexandra,Salford City
+England,league_2,league,League 2,4,openfootball,2026-04-06,Fleetwood Town,Barnet
+England,league_2,league,League 2,4,openfootball,2026-04-06,Gillingham,Accrington Stanley
+England,league_2,league,League 2,4,openfootball,2026-04-06,Harrogate Town,Bristol Rovers
+England,league_2,league,League 2,4,openfootball,2026-04-06,Notts County,Newport County
+England,league_2,league,League 2,4,openfootball,2026-04-06,Oldham Athletic,Milton Keynes Dons
+England,league_2,league,League 2,4,openfootball,2026-04-06,Swindon Town,Walsall
+England,league_2,league,League 2,4,openfootball,2026-04-06,Tranmere Rovers,Colchester United
+England,national_league,league,National League,5,openfootball,2026-04-06,Brackley Town,Boston United
+England,national_league,league,National League,5,openfootball,2026-04-06,Braintree Town,Woking
+England,national_league,league,National League,5,openfootball,2026-04-06,Eastleigh,Yeovil Town
+England,national_league,league,National League,5,openfootball,2026-04-06,Gateshead,Scunthorpe United
+England,national_league,league,National League,5,openfootball,2026-04-06,Halifax Town,Tamworth
+England,national_league,league,National League,5,openfootball,2026-04-06,Hartlepool United,Rochdale
+England,national_league,league,National League,5,openfootball,2026-04-06,Morecambe,Carlisle United
+England,national_league,league,National League,5,openfootball,2026-04-06,Solihull Moors,Boreham Wood
+England,national_league,league,National League,5,openfootball,2026-04-06,Sutton United,Southend United
+England,national_league,league,National League,5,openfootball,2026-04-06,Truro City,Forest Green Rovers
+England,national_league,league,National League,5,openfootball,2026-04-06,Wealdstone,Aldershot Town
+England,national_league,league,National League,5,openfootball,2026-04-06,York City,Altrincham
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-06,Bari,Modena
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-06,Carrarese,Spezia
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-06,Catanzaro,Monza
@@ -1121,6 +1714,42 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-10,Karlsruher S
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-10,Nürnberg,Dynamo Dresden
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-10,Paderborn,Magdeburg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-10,Preußen Münster,Greuther Fürth
+England,league_1,league,League 1,3,openfootball,2026-04-11,Blackpool,Peterborough United
+England,league_1,league,League 1,3,openfootball,2026-04-11,Bradford City,Stevenage
+England,league_1,league,League 1,3,openfootball,2026-04-11,Burton Albion,Wimbledon
+England,league_1,league,League 1,3,openfootball,2026-04-11,Cardiff City,Bolton Wanderers
+England,league_1,league,League 1,3,openfootball,2026-04-11,Doncaster Rovers,Reading
+England,league_1,league,League 1,3,openfootball,2026-04-11,Huddersfield Town,Wycombe Wanderers
+England,league_1,league,League 1,3,openfootball,2026-04-11,Lincoln City,Leyton Orient
+England,league_1,league,League 1,3,openfootball,2026-04-11,Luton Town,Northampton Town
+England,league_1,league,League 1,3,openfootball,2026-04-11,Plymouth Argyle,Exeter City
+England,league_1,league,League 1,3,openfootball,2026-04-11,Rotherham United,Barnsley
+England,league_1,league,League 1,3,openfootball,2026-04-11,Stockport County,Port Vale
+England,league_1,league,League 1,3,openfootball,2026-04-11,Wigan Athletic,Mansfield Town
+England,league_2,league,League 2,4,openfootball,2026-04-11,Accrington Stanley,Fleetwood Town
+England,league_2,league,League 2,4,openfootball,2026-04-11,Barnet,Barrow
+England,league_2,league,League 2,4,openfootball,2026-04-11,Bristol Rovers,Crawley Town
+England,league_2,league,League 2,4,openfootball,2026-04-11,Cambridge United,Notts County
+England,league_2,league,League 2,4,openfootball,2026-04-11,Chesterfield,Tranmere Rovers
+England,league_2,league,League 2,4,openfootball,2026-04-11,Colchester United,Swindon Town
+England,league_2,league,League 2,4,openfootball,2026-04-11,Grimsby Town,Crewe Alexandra
+England,league_2,league,League 2,4,openfootball,2026-04-11,Milton Keynes Dons,Bromley
+England,league_2,league,League 2,4,openfootball,2026-04-11,Newport County,Harrogate Town
+England,league_2,league,League 2,4,openfootball,2026-04-11,Salford City,Gillingham
+England,league_2,league,League 2,4,openfootball,2026-04-11,Shrewsbury Town,Oldham Athletic
+England,league_2,league,League 2,4,openfootball,2026-04-11,Walsall,Cheltenham Town
+England,national_league,league,National League,5,openfootball,2026-04-11,Aldershot Town,Gateshead
+England,national_league,league,National League,5,openfootball,2026-04-11,Altrincham,Eastleigh
+England,national_league,league,National League,5,openfootball,2026-04-11,Boreham Wood,Hartlepool United
+England,national_league,league,National League,5,openfootball,2026-04-11,Boston United,Truro City
+England,national_league,league,National League,5,openfootball,2026-04-11,Carlisle United,Sutton United
+England,national_league,league,National League,5,openfootball,2026-04-11,Forest Green Rovers,Braintree Town
+England,national_league,league,National League,5,openfootball,2026-04-11,Rochdale,Wealdstone
+England,national_league,league,National League,5,openfootball,2026-04-11,Scunthorpe United,Brackley Town
+England,national_league,league,National League,5,openfootball,2026-04-11,Southend United,Solihull Moors
+England,national_league,league,National League,5,openfootball,2026-04-11,Tamworth,York City
+England,national_league,league,National League,5,openfootball,2026-04-11,Woking,Morecambe
+England,national_league,league,National League,5,openfootball,2026-04-11,Yeovil Town,Halifax Town
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-11,Avellino,Catanzaro
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-11,Frosinone,Palermo
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-11,Juve Stabia,Cesena
@@ -1166,6 +1795,42 @@ France,ligue_2,league,Ligue 2,2,openfootball,2026-04-17,Pau,Guingamp
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-17,Reims,Red Star
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-17,Rodez,Amiens
 France,ligue_2,league,Ligue 2,2,openfootball,2026-04-17,Troyes,Boulogne
+England,league_1,league,League 1,3,openfootball,2026-04-18,Barnsley,Bradford City
+England,league_1,league,League 1,3,openfootball,2026-04-18,Bolton Wanderers,Huddersfield Town
+England,league_1,league,League 1,3,openfootball,2026-04-18,Exeter City,Stockport County
+England,league_1,league,League 1,3,openfootball,2026-04-18,Leyton Orient,Rotherham United
+England,league_1,league,League 1,3,openfootball,2026-04-18,Mansfield Town,Luton Town
+England,league_1,league,League 1,3,openfootball,2026-04-18,Northampton Town,Doncaster Rovers
+England,league_1,league,League 1,3,openfootball,2026-04-18,Peterborough United,Burton Albion
+England,league_1,league,League 1,3,openfootball,2026-04-18,Port Vale,Wigan Athletic
+England,league_1,league,League 1,3,openfootball,2026-04-18,Reading,Cardiff City
+England,league_1,league,League 1,3,openfootball,2026-04-18,Stevenage,Lincoln City
+England,league_1,league,League 1,3,openfootball,2026-04-18,Wimbledon,Plymouth Argyle
+England,league_1,league,League 1,3,openfootball,2026-04-18,Wycombe Wanderers,Blackpool
+England,league_2,league,League 2,4,openfootball,2026-04-18,Barrow,Walsall
+England,league_2,league,League 2,4,openfootball,2026-04-18,Bromley,Cambridge United
+England,league_2,league,League 2,4,openfootball,2026-04-18,Cheltenham Town,Newport County
+England,league_2,league,League 2,4,openfootball,2026-04-18,Crawley Town,Shrewsbury Town
+England,league_2,league,League 2,4,openfootball,2026-04-18,Crewe Alexandra,Milton Keynes Dons
+England,league_2,league,League 2,4,openfootball,2026-04-18,Fleetwood Town,Chesterfield
+England,league_2,league,League 2,4,openfootball,2026-04-18,Gillingham,Grimsby Town
+England,league_2,league,League 2,4,openfootball,2026-04-18,Harrogate Town,Colchester United
+England,league_2,league,League 2,4,openfootball,2026-04-18,Notts County,Barnet
+England,league_2,league,League 2,4,openfootball,2026-04-18,Oldham Athletic,Salford City
+England,league_2,league,League 2,4,openfootball,2026-04-18,Swindon Town,Accrington Stanley
+England,league_2,league,League 2,4,openfootball,2026-04-18,Tranmere Rovers,Bristol Rovers
+England,national_league,league,National League,5,openfootball,2026-04-18,Brackley Town,Aldershot Town
+England,national_league,league,National League,5,openfootball,2026-04-18,Braintree Town,Rochdale
+England,national_league,league,National League,5,openfootball,2026-04-18,Eastleigh,Tamworth
+England,national_league,league,National League,5,openfootball,2026-04-18,Gateshead,Woking
+England,national_league,league,National League,5,openfootball,2026-04-18,Halifax Town,Southend United
+England,national_league,league,National League,5,openfootball,2026-04-18,Hartlepool United,Forest Green Rovers
+England,national_league,league,National League,5,openfootball,2026-04-18,Morecambe,Boreham Wood
+England,national_league,league,National League,5,openfootball,2026-04-18,Solihull Moors,Boston United
+England,national_league,league,National League,5,openfootball,2026-04-18,Sutton United,Altrincham
+England,national_league,league,National League,5,openfootball,2026-04-18,Truro City,Carlisle United
+England,national_league,league,National League,5,openfootball,2026-04-18,Wealdstone,Scunthorpe United
+England,national_league,league,National League,5,openfootball,2026-04-18,York City,Yeovil Town
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-18,Arminia Bielefeld,Nürnberg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-18,Dynamo Dresden,Bochum
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-18,Eintracht Braunschweig,Hertha Berlin
@@ -1223,6 +1888,42 @@ Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-24,Karlsruher S
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-24,Nürnberg,Magdeburg
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-24,Paderborn,Schalke 04
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-04-24,Preußen Münster,Arminia Bielefeld
+England,league_1,league,League 1,3,openfootball,2026-04-25,Blackpool,Leyton Orient
+England,league_1,league,League 1,3,openfootball,2026-04-25,Bradford City,Bolton Wanderers
+England,league_1,league,League 1,3,openfootball,2026-04-25,Burton Albion,Exeter City
+England,league_1,league,League 1,3,openfootball,2026-04-25,Cardiff City,Northampton Town
+England,league_1,league,League 1,3,openfootball,2026-04-25,Doncaster Rovers,Stevenage
+England,league_1,league,League 1,3,openfootball,2026-04-25,Huddersfield Town,Mansfield Town
+England,league_1,league,League 1,3,openfootball,2026-04-25,Lincoln City,Wycombe Wanderers
+England,league_1,league,League 1,3,openfootball,2026-04-25,Luton Town,Barnsley
+England,league_1,league,League 1,3,openfootball,2026-04-25,Plymouth Argyle,Port Vale
+England,league_1,league,League 1,3,openfootball,2026-04-25,Rotherham United,Reading
+England,league_1,league,League 1,3,openfootball,2026-04-25,Stockport County,Peterborough United
+England,league_1,league,League 1,3,openfootball,2026-04-25,Wigan Athletic,Wimbledon
+England,league_2,league,League 2,4,openfootball,2026-04-25,Accrington Stanley,Crawley Town
+England,league_2,league,League 2,4,openfootball,2026-04-25,Barnet,Gillingham
+England,league_2,league,League 2,4,openfootball,2026-04-25,Bristol Rovers,Cheltenham Town
+England,league_2,league,League 2,4,openfootball,2026-04-25,Cambridge United,Barrow
+England,league_2,league,League 2,4,openfootball,2026-04-25,Chesterfield,Crewe Alexandra
+England,league_2,league,League 2,4,openfootball,2026-04-25,Colchester United,Notts County
+England,league_2,league,League 2,4,openfootball,2026-04-25,Grimsby Town,Swindon Town
+England,league_2,league,League 2,4,openfootball,2026-04-25,Milton Keynes Dons,Tranmere Rovers
+England,league_2,league,League 2,4,openfootball,2026-04-25,Newport County,Oldham Athletic
+England,league_2,league,League 2,4,openfootball,2026-04-25,Salford City,Bromley
+England,league_2,league,League 2,4,openfootball,2026-04-25,Shrewsbury Town,Fleetwood Town
+England,league_2,league,League 2,4,openfootball,2026-04-25,Walsall,Harrogate Town
+England,national_league,league,National League,5,openfootball,2026-04-25,Aldershot Town,Truro City
+England,national_league,league,National League,5,openfootball,2026-04-25,Altrincham,Gateshead
+England,national_league,league,National League,5,openfootball,2026-04-25,Boreham Wood,Sutton United
+England,national_league,league,National League,5,openfootball,2026-04-25,Boston United,Hartlepool United
+England,national_league,league,National League,5,openfootball,2026-04-25,Carlisle United,Brackley Town
+England,national_league,league,National League,5,openfootball,2026-04-25,Forest Green Rovers,Morecambe
+England,national_league,league,National League,5,openfootball,2026-04-25,Rochdale,York City
+England,national_league,league,National League,5,openfootball,2026-04-25,Scunthorpe United,Eastleigh
+England,national_league,league,National League,5,openfootball,2026-04-25,Southend United,Wealdstone
+England,national_league,league,National League,5,openfootball,2026-04-25,Tamworth,Braintree Town
+England,national_league,league,National League,5,openfootball,2026-04-25,Woking,Halifax Town
+England,national_league,league,National League,5,openfootball,2026-04-25,Yeovil Town,Solihull Moors
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-25,Avellino,Bari
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-25,Catanzaro,Spezia
 Italy,serie_b,league,Serie B,2,openfootball,2026-04-25,Cesena,Sampdoria
@@ -1272,6 +1973,30 @@ Italy,serie_b,league,Serie B,2,openfootball,2026-05-01,Padova,Pescara
 Italy,serie_b,league,Serie B,2,openfootball,2026-05-01,Palermo,Catanzaro
 Italy,serie_b,league,Serie B,2,openfootball,2026-05-01,Sampdoria,Südtirol
 Italy,serie_b,league,Serie B,2,openfootball,2026-05-01,Spezia,Venezia
+England,league_1,league,League 1,3,openfootball,2026-05-02,Barnsley,Stockport County
+England,league_1,league,League 1,3,openfootball,2026-05-02,Bolton Wanderers,Luton Town
+England,league_1,league,League 1,3,openfootball,2026-05-02,Exeter City,Bradford City
+England,league_1,league,League 1,3,openfootball,2026-05-02,Leyton Orient,Burton Albion
+England,league_1,league,League 1,3,openfootball,2026-05-02,Mansfield Town,Cardiff City
+England,league_1,league,League 1,3,openfootball,2026-05-02,Northampton Town,Plymouth Argyle
+England,league_1,league,League 1,3,openfootball,2026-05-02,Peterborough United,Doncaster Rovers
+England,league_1,league,League 1,3,openfootball,2026-05-02,Port Vale,Lincoln City
+England,league_1,league,League 1,3,openfootball,2026-05-02,Reading,Blackpool
+England,league_1,league,League 1,3,openfootball,2026-05-02,Stevenage,Wigan Athletic
+England,league_1,league,League 1,3,openfootball,2026-05-02,Wimbledon,Huddersfield Town
+England,league_1,league,League 1,3,openfootball,2026-05-02,Wycombe Wanderers,Rotherham United
+England,league_2,league,League 2,4,openfootball,2026-05-02,Barrow,Newport County
+England,league_2,league,League 2,4,openfootball,2026-05-02,Bromley,Walsall
+England,league_2,league,League 2,4,openfootball,2026-05-02,Cheltenham Town,Colchester United
+England,league_2,league,League 2,4,openfootball,2026-05-02,Crawley Town,Salford City
+England,league_2,league,League 2,4,openfootball,2026-05-02,Crewe Alexandra,Cambridge United
+England,league_2,league,League 2,4,openfootball,2026-05-02,Fleetwood Town,Milton Keynes Dons
+England,league_2,league,League 2,4,openfootball,2026-05-02,Gillingham,Shrewsbury Town
+England,league_2,league,League 2,4,openfootball,2026-05-02,Harrogate Town,Barnet
+England,league_2,league,League 2,4,openfootball,2026-05-02,Notts County,Bristol Rovers
+England,league_2,league,League 2,4,openfootball,2026-05-02,Oldham Athletic,Accrington Stanley
+England,league_2,league,League 2,4,openfootball,2026-05-02,Swindon Town,Chesterfield
+England,league_2,league,League 2,4,openfootball,2026-05-02,Tranmere Rovers,Grimsby Town
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-05-03,Arminia Bielefeld,Bochum
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-05-03,Dynamo Dresden,Kaiserslautern
 Germany,bundesliga_2,league,2. Bundesliga,2,openfootball,2026-05-03,Elversberg,Paderborn

@@ -5,6 +5,7 @@ library(readr)
 library(jsonlite)
 library(stringi)
 library(stringr)
+library(beepr)
 
 options(stringsAsFactors = FALSE)
 
@@ -203,34 +204,103 @@ write_json(
 cat("Wrote meta.json (asof =", meta$asof, ")\n")
 
 # -----------------------------
-# Current tier/division per team
+# Current league membership per team
 # -----------------------------
+#
+# IMPORTANT:
+# Current league membership must NOT depend only on completed matches.
+# At the start of a season, some clubs may not have played yet, but they are
+# still current members of their league and must remain in teams.json.
+#
+# Completed league matches provide the most recent played date. Upcoming league
+# fixtures provide current-season membership/division information before a club
+# has played its first match.
 
-team_last <- bind_rows(
+completed_league_appearances <- bind_rows(
   ghist %>% transmute(
-    team = Home, Date, Country, Competition, CompetitionType, Tier, League
+    team = Home,
+    status_date = Date,
+    Country, Competition, CompetitionType, Tier, League,
+    membership_source = "completed"
   ),
   ghist %>% transmute(
-    team = Away, Date, Country, Competition, CompetitionType, Tier, League
+    team = Away,
+    status_date = Date,
+    Country, Competition, CompetitionType, Tier, League,
+    membership_source = "completed"
   )
 ) %>%
   filter(
-    !is.na(Date),
+    !is.na(status_date),
     team != "",
     CompetitionType == "league"
+  )
+
+# Only treat genuinely current/future fixtures as evidence of current league
+# membership. This avoids an old historical blank-result row overriding a
+# club's modern division.
+current_league_fixtures <- fixtures %>%
+  filter(
+    CompetitionType == "league",
+    !is.na(Date),
+    Date >= asof_date
+  )
+
+fixture_league_appearances <- bind_rows(
+  current_league_fixtures %>% transmute(
+    team = Home,
+    status_date = Date,
+    Country, Competition, CompetitionType, Tier, League,
+    membership_source = "fixture"
+  ),
+  current_league_fixtures %>% transmute(
+    team = Away,
+    status_date = Date,
+    Country, Competition, CompetitionType, Tier, League,
+    membership_source = "fixture"
+  )
+) %>%
+  filter(team != "")
+
+# For current division metadata, prefer the latest available league evidence.
+# A future fixture will normally be later than the latest completed match and
+# therefore correctly identifies the club's current-season league before it
+# has played.
+team_membership <- bind_rows(
+  completed_league_appearances,
+  fixture_league_appearances
+) %>%
+  mutate(
+    source_priority = if_else(membership_source == "fixture", 1L, 0L)
   ) %>%
-  arrange(team, Date) %>%
+  arrange(team, status_date, source_priority) %>%
   group_by(team) %>%
   slice_tail(n = 1) %>%
   ungroup() %>%
   transmute(
     name = team,
-    last_played = as.Date(Date),
     country = as.character(Country),
     competition = as.character(Competition),
     tier = as.integer(Tier),
-    division = as.character(League)
+    division = as.character(League),
+    membership_source = as.character(membership_source)
   )
+
+# Last PLAYED league date is kept separately. It is useful for fallback
+# activity checks, but it no longer determines current league membership.
+team_last_played <- completed_league_appearances %>%
+  arrange(team, status_date) %>%
+  group_by(team) %>%
+  slice_tail(n = 1) %>%
+  ungroup() %>%
+  transmute(
+    name = team,
+    last_played = as.Date(status_date)
+  )
+
+fixture_members <- fixture_league_appearances %>%
+  distinct(team) %>%
+  transmute(name = team, has_current_fixture = TRUE)
 
 # -----------------------------
 # teams.json
@@ -242,11 +312,18 @@ teams_all <- final %>%
     rating = as.integer(round(Rating)),
     games = as.integer(Games)
   ) %>%
-  left_join(team_last, by = "name") %>%
+  left_join(team_membership, by = "name") %>%
+  left_join(team_last_played, by = "name") %>%
+  left_join(fixture_members, by = "name") %>%
   mutate(
+    has_current_fixture = coalesce(has_current_fixture, FALSE),
     id = slug(name)
   ) %>%
-  select(id, name, rating, games, last_played, country, competition, tier, division) %>%
+  select(
+    id, name, rating, games, last_played,
+    country, competition, tier, division,
+    membership_source, has_current_fixture
+  ) %>%
   arrange(desc(rating), name)
 
 if (anyDuplicated(teams_all$id)) {
@@ -262,10 +339,46 @@ if (anyDuplicated(teams_all$id)) {
 
 cutoff_date <- as.Date(asof_date) - 365L
 
+# A club is active if either:
+#   1) it appears in a current/future covered league fixture, OR
+#   2) it has played a covered league match in the last year.
+#
+# Condition (1) is the crucial early-season protection: clubs that have not
+# played yet remain visible with their existing Elo and profile.
 teams_tbl <- teams_all %>%
-  filter(!is.na(last_played) & last_played >= cutoff_date) %>%
+  filter(
+    has_current_fixture |
+      (!is.na(last_played) & last_played >= cutoff_date)
+  ) %>%
   select(id, name, rating, games, country, competition, tier, division) %>%
   arrange(desc(rating), name)
+
+# -----------------------------
+# Current-membership QA
+# -----------------------------
+# Every club appearing in a current/future league fixture must survive into
+# teams.json. Refuse to write if that invariant is broken.
+
+fixture_expected <- fixture_league_appearances %>%
+  distinct(
+    name = team,
+    country = Country,
+    competition = Competition,
+    tier = Tier,
+    division = League
+  )
+
+missing_fixture_teams <- setdiff(
+  fixture_expected$name,
+  teams_tbl$name
+)
+
+if (length(missing_fixture_teams) > 0L) {
+  stop(
+    "Current league members are missing from teams.json: ",
+    paste(sort(missing_fixture_teams), collapse = ", ")
+  )
+}
 
 write_json(
   teams_tbl,
@@ -277,10 +390,100 @@ write_json(
 cat(
   "Wrote teams.json (n =",
   nrow(teams_tbl),
-  ", cutoff =",
+  ", recent-play cutoff =",
   format(cutoff_date, "%Y-%m-%d"),
   ")\n"
 )
+
+cat("\nCurrent league membership check:\n")
+
+if (nrow(fixture_expected) > 0L) {
+  membership_summary <- fixture_expected %>%
+    count(country, competition, tier, division, name = "Teams") %>%
+    arrange(country, tier, competition, division)
+  print(membership_summary, n = Inf)
+} else {
+  cat("  No current/future league fixtures found; using recent-play fallback.\n")
+}
+
+pl_members <- fixture_expected %>%
+  filter(
+    country == "England",
+    competition == "premier_league"
+  ) %>%
+  distinct(name) %>%
+  arrange(name)
+
+if (nrow(pl_members) > 0L) {
+  pl_fixture_rows <- current_league_fixtures %>%
+    filter(
+      Country == "England",
+      Competition == "premier_league"
+    )
+  
+  pl_current_seasons <- unique(season_label(pl_fixture_rows$Date))
+  pl_current_season <- if (length(pl_current_seasons) > 0L) {
+    sort(pl_current_seasons, decreasing = TRUE)[1]
+  } else {
+    NA_character_
+  }
+  
+  pl_completed_matches <- ghist %>%
+    filter(
+      Country == "England",
+      Competition == "premier_league",
+      CompetitionType == "league",
+      if (!is.na(pl_current_season)) season_label(Date) == pl_current_season else FALSE
+    )
+  
+  pl_in_teams_json <- teams_tbl %>%
+    filter(
+      country == "England",
+      competition == "premier_league"
+    ) %>%
+    distinct(name)
+  
+  cat(
+    "\nPremier League QA",
+    if (!is.na(pl_current_season)) paste0(" (", pl_current_season, ")") else "",
+    ":\n",
+    "  Current members from fixtures: ", nrow(pl_members), "\n",
+    "  Members present in teams.json: ", nrow(pl_in_teams_json), "\n",
+    "  Completed matches: ", nrow(pl_completed_matches), "\n",
+    "  Upcoming fixtures: ", nrow(pl_fixture_rows), "\n",
+    "  Missing current members: ",
+    length(setdiff(pl_members$name, pl_in_teams_json$name)),
+    "\n",
+    sep = ""
+  )
+  
+  cat("  Clubs: ", paste(pl_members$name, collapse = ", "), "\n", sep = "")
+  
+  if (nrow(pl_members) != 20L) {
+    warning(
+      "Premier League fixture membership is ",
+      nrow(pl_members),
+      " teams, expected 20. Check the current OpenFootball fixture source."
+    )
+  }
+  
+  if (nrow(pl_in_teams_json) != nrow(pl_members)) {
+    stop(
+      "Premier League teams.json membership does not match the current fixture list."
+    )
+  }
+}
+
+cat(
+  "\nCurrent fixture teams missing from teams.json: ",
+  length(missing_fixture_teams),
+  "\n",
+  sep = ""
+)
+
+if (length(missing_fixture_teams) == 0L) {
+  cat("Current-membership QA: PASS\n")
+}
 
 name_to_id <- setNames(teams_all$id, teams_all$name)
 
@@ -868,3 +1071,4 @@ cat(
 cat("Wrote games files:", n_games_written, "\n")
 cat("Done.\n")
 
+beep()
