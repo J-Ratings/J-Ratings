@@ -839,6 +839,117 @@
       }
     }
 
+  
+    .signed-positive{
+      color:#14b85a !important;
+      font-weight:900 !important;
+    }
+
+    .signed-negative{
+      color:#e53935 !important;
+      font-weight:900 !important;
+    }
+
+    .signed-zero{
+      color:#f4c430 !important;
+      font-weight:900 !important;
+    }
+
+    .recent-block{
+      grid-template-columns:150px 1fr;
+    }
+
+    .record-row strong.record-stack{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:2px;
+      min-width:0;
+      max-width:62%;
+      line-height:1.2;
+    }
+
+    .record-main{
+      display:block;
+      overflow-wrap:anywhere;
+    }
+
+    .record-sub{
+      display:block;
+      font-size:.78rem;
+      font-weight:700;
+      opacity:.68;
+    }
+
+    .rivalry-decade-head{
+      display:grid;
+      grid-template-columns:90px 1fr;
+      gap:12px;
+      padding:0 0 8px;
+      font-size:.82rem;
+      font-weight:800;
+      opacity:.68;
+    }
+
+    .era-row{
+      grid-template-columns:90px minmax(0,1fr) !important;
+      gap:12px !important;
+    }
+
+    .decade-record-wrap{
+      display:grid;
+      grid-template-columns:minmax(120px,auto) minmax(0,1fr);
+      gap:12px;
+      align-items:center;
+    }
+
+    .decade-record-text{
+      display:flex;
+      gap:8px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .decade-w{ color:#14b85a; }
+    .decade-d{ color:#f4c430; }
+    .decade-l{ color:#e53935; }
+
+    .decade-wdl-bar{
+      display:flex;
+      height:14px;
+      overflow:hidden;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+    }
+
+    .decade-wdl-w{ background:#14b85a; }
+    .decade-wdl-d{ background:#f4c430; }
+    .decade-wdl-l{ background:#e53935; }
+
+    @media (max-width:700px){
+      .recent-block{
+        grid-template-columns:1fr;
+      }
+
+      .recent-block .analysis-note{
+        grid-column:1;
+      }
+
+      .record-row strong.record-stack{
+        max-width:58%;
+      }
+
+      .era-row,
+      .rivalry-decade-head{
+        grid-template-columns:64px 1fr !important;
+      }
+
+      .decade-record-wrap{
+        grid-template-columns:1fr;
+        gap:6px;
+      }
+    }
+
   </style>
 </head>
 
@@ -863,10 +974,7 @@
 <main class="wrap">
   <section class="panel compare-profiles">
     <h2>Compare Profiles</h2>
-    <p class="intro">
-      Choose two teams to compare their ratings, peaks, historical advantage and direct meetings.
-    </p>
-
+    
     <div class="picker">
       <div class="picker-grid">
         <div class="team-picker">
@@ -974,6 +1082,7 @@
                 <option value="monthly">Monthly</option>
                 <option value="quarterly">Quarterly</option>
                 <option value="yearly">Yearly</option>
+                <option value="decade">Decade</option>
               </select>
             </div>
             <div class="range-buttons">
@@ -1027,19 +1136,14 @@
           <div class="analysis-card">
             <div class="analysis-title">Recent Meetings</div>
             <div class="recent-block">
-              <div class="recent-label">Last 5</div>
-              <div id="form5" class="form-sequence"></div>
-              <div id="form5Text" class="analysis-note">—</div>
-            </div>
-            <div class="recent-block">
-              <div class="recent-label">Last 10</div>
+              <div class="recent-label">Last 10 vs opponent</div>
               <div id="form10" class="form-sequence"></div>
               <div id="form10Text" class="analysis-note">—</div>
             </div>
             <div class="recent-block">
-              <div class="recent-label">Last 20</div>
-              <div id="form20" class="form-sequence"></div>
-              <div id="form20Text" class="analysis-note">—</div>
+              <div class="recent-label">Last 10 overall</div>
+              <div id="overall10" class="form-sequence"></div>
+              <div id="overall10Text" class="analysis-note">—</div>
             </div>
           </div>
 
@@ -1097,12 +1201,13 @@
       </div>
 
       <div class="section">
-        <h3>Era Comparison</h3>
+        <h3>Rivalry by Decade</h3>
         <div class="era-card">
-          <div id="eraTable" class="era-table"></div>
-          <div class="analysis-note era-note">
-            Average Elo by decade across periods where each team has available history.
+          <div class="rivalry-decade-head">
+            <span>Decade</span>
+            <span>Chosen team record</span>
           </div>
+          <div id="eraTable" class="era-table"></div>
         </div>
       </div>
 
@@ -1116,7 +1221,6 @@
           <div id="domA" class="dominance-a"></div>
           <div id="domB" class="dominance-b"></div>
         </div>
-        <div id="domNote" class="dominance-note">—</div>
       </div>
 
       <div class="section">
@@ -1568,6 +1672,39 @@
     setText(textId, seq.length ? `${c.w} wins, ${c.d} draws, ${c.l} losses for ${aName}` : 'No meetings in this span.');
   }
 
+  function generalResultForTeam(g,teamName){
+    const score=scoreFromGame(g);
+    if (!score || (g.home !== teamName && g.away !== teamName)) return 'unknown';
+
+    const [hg,ag]=score;
+    if (hg === ag) return 'draw';
+    const winner=hg > ag ? g.home : g.away;
+    return winner === teamName ? 'a' : 'b';
+  }
+
+  function completedGamesForTeam(games,teamName){
+    return (Array.isArray(games) ? games : [])
+      .filter(g => g && g.upcoming !== true && (g.home === teamName || g.away === teamName) && scoreFromGame(g))
+      .sort((x,y) => new Date(y.date)-new Date(x.date));
+  }
+
+  function renderOverallForm(games,teamName,n,id,textId){
+    const rows=completedGamesForTeam(games,teamName).slice(0,n);
+    const seq=rows.map(g => generalResultForTeam(g,teamName));
+    const box=document.getElementById(id);
+    box.innerHTML='';
+
+    seq.forEach(r => {
+      const pill=document.createElement('span');
+      pill.className='form-pill ' + (r === 'a' ? 'win' : r === 'b' ? 'loss' : 'draw');
+      pill.textContent=r === 'a' ? 'W' : r === 'b' ? 'L' : 'D';
+      box.appendChild(pill);
+    });
+
+    const c=formCounts(seq);
+    setText(textId,seq.length ? `${c.w} wins, ${c.d} draws, ${c.l} losses` : 'No completed matches in this span.');
+  }
+
   function longestRuns(meetings,aName,bName){
     // meetings are newest-first; reverse for chronological run calculation.
     const seq = meetings.slice().reverse().map(g => resultForMeeting(g,aName,bName));
@@ -1687,30 +1824,34 @@
     };
   }
 
-  function renderEraComparison(histA,histB,aName,bName,colourA,colourB){
-    const aMap=new Map(decadeAverages(histA).map(x=>[x.decade,x]));
-    const bMap=new Map(decadeAverages(histB).map(x=>[x.decade,x]));
-    const decades=[...new Set([...aMap.keys(),...bMap.keys()])].sort((a,b)=>a-b);
+  function renderRivalryByDecade(meetings,aName,bName){
+    const buckets=new Map();
+
+    meetings.slice().reverse().forEach(g => {
+      const year=new Date(g.date).getFullYear();
+      if (!Number.isFinite(year)) return;
+      const decade=Math.floor(year/10)*10;
+      if (!buckets.has(decade)) buckets.set(decade,{w:0,d:0,l:0});
+      const row=buckets.get(decade);
+      const result=resultForMeeting(g,aName,bName);
+      if (result === 'a') row.w++;
+      else if (result === 'draw') row.d++;
+      else if (result === 'b') row.l++;
+    });
+
     const box=document.getElementById('eraTable');
     box.innerHTML='';
 
+    const decades=[...buckets.keys()].sort((a,b)=>a-b);
     if (!decades.length){
-      box.innerHTML='<div class="empty">No era data in this span.</div>';
+      box.innerHTML='<div class="empty">No direct meetings in this span.</div>';
       return;
     }
 
-    const values=[];
-    decades.forEach(d=>{
-      if (aMap.has(d)) values.push(aMap.get(d).avg);
-      if (bMap.has(d)) values.push(bMap.get(d).avg);
-    });
-    const lo=Math.min(...values);
-    const hi=Math.max(...values);
-    const span=Math.max(1,hi-lo);
+    decades.forEach(decade => {
+      const stats=buckets.get(decade);
+      const total=stats.w+stats.d+stats.l;
 
-    decades.forEach(decade=>{
-      const a=aMap.get(decade);
-      const b=bMap.get(decade);
       const row=document.createElement('div');
       row.className='era-row';
 
@@ -1718,36 +1859,30 @@
       decadeEl.className='era-decade';
       decadeEl.textContent=`${decade}s`;
 
-      const aVal=document.createElement('div');
-      aVal.className='era-value team-a';
-      aVal.textContent=a ? String(Math.round(a.avg)) : '—';
+      const wrap=document.createElement('div');
+      wrap.className='decade-record-wrap';
 
-      const aTrack=document.createElement('div');
-      aTrack.className='era-bar-track';
-      const aBar=document.createElement('div');
-      aBar.className='era-bar';
-      aBar.style.background=colourA;
-      aBar.style.width=a ? `${20+80*(a.avg-lo)/span}%` : '0%';
-      aTrack.appendChild(aBar);
+      const record=document.createElement('div');
+      record.className='decade-record-text';
+      record.innerHTML=`<span class="decade-w">W${stats.w}</span><span class="decade-d">D${stats.d}</span><span class="decade-l">L${stats.l}</span>`;
 
-      const bVal=document.createElement('div');
-      bVal.className='era-value team-b';
-      bVal.textContent=b ? String(Math.round(b.avg)) : '—';
+      const bar=document.createElement('div');
+      bar.className='decade-wdl-bar';
 
-      const bTrack=document.createElement('div');
-      bTrack.className='era-bar-track';
-      const bBar=document.createElement('div');
-      bBar.className='era-bar';
-      bBar.style.background=colourB;
-      bBar.style.width=b ? `${20+80*(b.avg-lo)/span}%` : '0%';
-      bTrack.appendChild(bBar);
+      [['w','decade-wdl-w'],['d','decade-wdl-d'],['l','decade-wdl-l']].forEach(([key,cls]) => {
+        if (!stats[key]) return;
+        const seg=document.createElement('div');
+        seg.className=cls;
+        // flex-grow uses the exact counts, so the bar always fills completely.
+        seg.style.flexGrow=String(stats[key]);
+        seg.style.flexBasis='0';
+        bar.appendChild(seg);
+      });
 
-      // Desktop: decade, A value/bar, B value/bar.
+      wrap.appendChild(record);
+      wrap.appendChild(bar);
       row.appendChild(decadeEl);
-      row.appendChild(aVal);
-      row.appendChild(aTrack);
-      row.appendChild(bVal);
-      row.appendChild(bTrack);
+      row.appendChild(wrap);
       box.appendChild(row);
     });
   }
@@ -1757,6 +1892,22 @@
     const score=scoreFromGame(g);
     const scoreText=score ? `${score[0]}-${score[1]}` : (g.score || '');
     return `${fmtDate(g.date)}${scoreText ? ` (${scoreText})` : ''}`;
+  }
+
+  function setSignedText(id, value, suffix = ''){
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    el.classList.remove('signed-positive','signed-negative','signed-zero');
+
+    if (!Number.isFinite(value)) {
+      el.textContent='—';
+      return;
+    }
+
+    const rounded=Math.round(value);
+    el.textContent=`${rounded > 0 ? '+' : ''}${rounded}${suffix}`;
+    el.classList.add(rounded > 0 ? 'signed-positive' : rounded < 0 ? 'signed-negative' : 'signed-zero');
   }
 
   function setText(id, value){
@@ -1880,7 +2031,8 @@
 
     if (comp && comp.periods){
       const leader = comp.aheadA >= comp.aheadB ? a.name : b.name;
-      const pct = 100 * Math.max(comp.aheadA,comp.aheadB) / comp.periods;
+      const decidedPeriods = comp.aheadA + comp.aheadB;
+      const pct = decidedPeriods ? 100 * Math.max(comp.aheadA,comp.aheadB) / decidedPeriods : 50;
       insights.push(`${leader} was rated higher in ${pct.toFixed(1)}% of comparable monthly snapshots.`);
       insights.push(`The rating lead changed hands ${comp.crossovers} time${comp.crossovers === 1 ? '' : 's'} across the shared history.`);
     }
@@ -1922,27 +2074,25 @@
     document.getElementById('compare').textContent = 'Loading…';
 
     try{
-      const [haRes,hbRes,gaRes,gbRes] = await Promise.all([
+      const [haRes,hbRes,gaRes] = await Promise.all([
         fetch(HIST_URL(a.id), {cache:'no-cache'}),
         fetch(HIST_URL(b.id), {cache:'no-cache'}),
-        fetch(GAMES_URL(a.id), {cache:'no-cache'}),
-        fetch(GAMES_URL(b.id), {cache:'no-cache'})
+        fetch(GAMES_URL(a.id), {cache:'no-cache'})
       ]);
 
       if (!haRes.ok || !hbRes.ok) throw new Error('History data could not be loaded.');
 
-      const [ha,hb,ga,gb] = await Promise.all([
+      const [ha,hb,ga] = await Promise.all([
         haRes.json(),
         hbRes.json(),
-        gaRes.ok ? gaRes.json() : [],
-        gbRes.ok ? gbRes.json() : []
+        gaRes.ok ? gaRes.json() : []
       ]);
 
       const fullHistA = normaliseHistory(ha);
       const fullHistB = normaliseHistory(hb);
-      const fullMeetings = dedupeMeetings(
-        directMeetings(ga,a.name,b.name).concat(directMeetings(gb,a.name,b.name))
-      );
+      // One team's games file already contains every direct meeting, so there is no need
+      // to download the comparison team's full games history as well.
+      const fullMeetings = dedupeMeetings(directMeetings(ga,a.name,b.name));
 
       const analysisWindow = selectedAnalysisWindow([fullHistA, fullHistB], fullMeetings);
       const histA = filterHistoryByWindow(fullHistA, analysisWindow);
@@ -1993,7 +2143,8 @@
 
       if (comp && comp.periods){
         const leader = comp.aheadA >= comp.aheadB ? a.name : b.name;
-        const pct = 100 * Math.max(comp.aheadA,comp.aheadB) / comp.periods;
+        const decidedPeriods = comp.aheadA + comp.aheadB;
+        const pct = decidedPeriods ? 100 * Math.max(comp.aheadA,comp.aheadB) / decidedPeriods : 50;
         setText('higherLeader',leader);
         setText('higherPct',`${pct.toFixed(1)}% of comparable months`);
       } else {
@@ -2016,14 +2167,15 @@
       setText('peakStatB',pb ? fmtRating(pb.y) : '—');
       setText('peakDateA',pa ? fmtDate(pa.x) : '—');
       setText('peakDateB',pb ? fmtDate(pb.x) : '—');
-      setText('oneYearA',fmtSigned(changeOverYears(histA,1)));
-      setText('oneYearB',fmtSigned(changeOverYears(histB,1)));
-      setText('fiveYearA',fmtSigned(changeOverYears(histA,5)));
-      setText('fiveYearB',fmtSigned(changeOverYears(histB,5)));
+      setSignedText('oneYearA',changeOverYears(histA,1));
+      setSignedText('oneYearB',changeOverYears(histB,1));
+      setSignedText('fiveYearA',changeOverYears(histA,5));
+      setSignedText('fiveYearB',changeOverYears(histB,5));
 
       if (comp){
-        const pctA = comp.periods ? 100*comp.aheadA/comp.periods : 0;
-        const pctB = comp.periods ? 100*comp.aheadB/comp.periods : 0;
+        const decidedPeriods = comp.aheadA + comp.aheadB;
+        const pctA = decidedPeriods ? 100*comp.aheadA/decidedPeriods : 50;
+        const pctB = decidedPeriods ? 100*comp.aheadB/decidedPeriods : 50;
 
         setText('daysAheadA',`${pctA.toFixed(1)}%`);
         setText('daysAheadB',`${pctB.toFixed(1)}%`);
@@ -2042,14 +2194,12 @@
         document.getElementById('domB').style.width = `${widthB}%`;
         setText('domLabelA',`${a.name} ${widthA.toFixed(1)}%`);
         setText('domLabelB',`${b.name} ${widthB.toFixed(1)}%`);
-        setText('domNote',`Based on ${comp.periods} monthly snapshots where both teams have rating history.`);
       } else {
         ['daysAheadA','daysAheadB','maxLeadA','maxLeadB','maxLeadDateA','maxLeadDateB','crossoversA','crossoversB','closestGapA','closestGapB'].forEach(id => setText(id,'—'));
         document.getElementById('domA').style.width='50%';
         document.getElementById('domB').style.width='50%';
         setText('domLabelA',a.name);
         setText('domLabelB',b.name);
-        setText('domNote','No overlapping rating history.');
       }
 
       setText('winsA',String(h2h.winsA));
@@ -2073,34 +2223,40 @@
       }
 
       // Rivalry form and records
-      renderRecentForm(allMeetings,a.name,b.name,5,'form5','form5Text');
       renderRecentForm(allMeetings,a.name,b.name,10,'form10','form10Text');
-      renderRecentForm(allMeetings,a.name,b.name,20,'form20','form20Text');
+      renderOverallForm(ga,a.name,10,'overall10','overall10Text');
 
       const runs=longestRuns(allMeetings,a.name,b.name);
       setText('winStreak',runs.bestWin ? `${runs.bestWin} by ${a.name}` : '—');
       setText('unbeatenStreak',runs.bestUnbeaten ? `${runs.bestUnbeaten} by ${a.name}` : '—');
 
       const highlights=rivalryHighlights(allMeetings,a.name,b.name);
+      const upsetEl=document.getElementById('biggestUpset');
+      upsetEl.classList.add('record-stack');
       if (highlights.biggestUpset){
         const winner=highlights.biggestUpset.result === 'a' ? a.name : b.name;
-        setText('biggestUpset',`${winner} by ${Math.round(highlights.biggestUpset.gap)} Elo · ${fmtDate(highlights.biggestUpset.g.date)}`);
+        upsetEl.innerHTML=`<span class="record-main">${winner} · ${Math.round(highlights.biggestUpset.gap)} Elo</span><span class="record-sub">${fmtDate(highlights.biggestUpset.g.date)}</span>`;
       } else {
-        setText('biggestUpset','No upset found');
+        upsetEl.innerHTML='<span class="record-main">No upset found</span>';
       }
 
+      const highestRatedEl=document.getElementById('highestRatedMeeting');
+      const highestScoringEl=document.getElementById('highestScoringMeeting');
+      highestRatedEl.classList.add('record-stack');
+      highestScoringEl.classList.add('record-stack');
+
       if (highlights.highestRated){
-        setText('highestRatedMeeting',
-          `${fmtDate(highlights.highestRated.g.date)} · ${Math.round(highlights.highestRated.elos.a)} vs ${Math.round(highlights.highestRated.elos.b)}`
-        );
+        highestRatedEl.innerHTML=`<span class="record-main">${Math.round(highlights.highestRated.elos.a)} vs ${Math.round(highlights.highestRated.elos.b)}</span><span class="record-sub">${fmtDate(highlights.highestRated.g.date)}</span>`;
       } else {
-        setText('highestRatedMeeting','—');
+        highestRatedEl.innerHTML='<span class="record-main">—</span>';
       }
 
       if (highlights.highestScoring){
-        setText('highestScoringMeeting',formatMeetingLabel(highlights.highestScoring.g));
+        const hs=highlights.highestScoring;
+        const score=scoreFromGame(hs.g);
+        highestScoringEl.innerHTML=`<span class="record-main">${score ? `${score[0]}-${score[1]}` : (hs.g.score || '—')}</span><span class="record-sub">${fmtDate(hs.g.date)}</span>`;
       } else {
-        setText('highestScoringMeeting','—');
+        highestScoringEl.innerHTML='<span class="record-main">—</span>';
       }
 
       // Rating extremes
@@ -2111,16 +2267,21 @@
 
       setText('extremeTitleA',a.name);
       setText('extremeTitleB',b.name);
-      setText('bestRiseA',rollA.best ? `${fmtSigned(rollA.best.change)} · ${fmtDate(rollA.best.date)}` : '—');
-      setText('bestRiseB',rollB.best ? `${fmtSigned(rollB.best.change)} · ${fmtDate(rollB.best.date)}` : '—');
-      setText('worstFallA',rollA.worst ? `${fmtSigned(rollA.worst.change)} · ${fmtDate(rollA.worst.date)}` : '—');
-      setText('worstFallB',rollB.worst ? `${fmtSigned(rollB.worst.change)} · ${fmtDate(rollB.worst.date)}` : '—');
+      const bestRiseAEl=document.getElementById('bestRiseA');
+      const bestRiseBEl=document.getElementById('bestRiseB');
+      const worstFallAEl=document.getElementById('worstFallA');
+      const worstFallBEl=document.getElementById('worstFallB');
+
+      bestRiseAEl.innerHTML=rollA.best ? `<span class="signed-positive">${fmtSigned(rollA.best.change)}</span> · ${fmtDate(rollA.best.date)}` : '—';
+      bestRiseBEl.innerHTML=rollB.best ? `<span class="signed-positive">${fmtSigned(rollB.best.change)}</span> · ${fmtDate(rollB.best.date)}` : '—';
+      worstFallAEl.innerHTML=rollA.worst ? `<span class="signed-negative">${fmtSigned(rollA.worst.change)}</span> · ${fmtDate(rollA.worst.date)}` : '—';
+      worstFallBEl.innerHTML=rollB.worst ? `<span class="signed-negative">${fmtSigned(rollB.worst.change)}</span> · ${fmtDate(rollB.worst.date)}` : '—';
       setText('bestDecadeA',decA.best ? `${decA.best.decade}s · ${Math.round(decA.best.avg)}` : '—');
       setText('bestDecadeB',decB.best ? `${decB.best.decade}s · ${Math.round(decB.best.avg)}` : '—');
       setText('worstDecadeA',decA.worst ? `${decA.worst.decade}s · ${Math.round(decA.worst.avg)}` : '—');
       setText('worstDecadeB',decB.worst ? `${decB.worst.decade}s · ${Math.round(decB.worst.avg)}` : '—');
 
-      renderEraComparison(histA,histB,a.name,b.name,displayColours.chosen,displayColours.compared);
+      renderRivalryByDecade(allMeetings,a.name,b.name);
 
       comparedItems = [
         {

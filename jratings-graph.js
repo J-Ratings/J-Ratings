@@ -72,6 +72,8 @@
       } else if (mode === 'quarterly') {
         const q = Math.floor(d.getMonth() / 3) + 1;
         key = `${d.getFullYear()}-Q${q}`;
+      } else if (mode === 'decade') {
+        key = `${Math.floor(d.getFullYear() / 10) * 10}-D`;
       } else {
         key = `${d.getFullYear()}`;
       }
@@ -98,6 +100,9 @@
       } else if (k.includes('Q')) {
         const [y, q] = k.split('-Q');
         x = iso(new Date(Date.UTC(+y, (+q - 1) * 3, 1)));
+      } else if (k.endsWith('-D')) {
+        const y = +k.slice(0, 4);
+        x = iso(new Date(Date.UTC(y, 0, 1)));
       } else if (k.length === 7) {
         const [y, m] = k.split('-');
         x = iso(new Date(Date.UTC(+y, +m - 1, 1)));
