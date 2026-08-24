@@ -669,6 +669,176 @@
       }
     }
 
+  
+    .analysis-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .analysis-card,
+    .era-card{
+      border:1px solid var(--border,#444);
+      border-radius:12px;
+      background:rgba(255,255,255,.025);
+      padding:16px;
+    }
+
+    .analysis-title{
+      text-align:center;
+      font-weight:900;
+      font-size:1.08rem;
+      margin-bottom:12px;
+    }
+
+    .recent-block{
+      display:grid;
+      grid-template-columns:62px 1fr;
+      column-gap:10px;
+      row-gap:5px;
+      align-items:center;
+      padding:10px 0;
+      border-top:1px solid rgba(128,128,128,.18);
+    }
+
+    .recent-block:first-of-type{
+      border-top:0;
+    }
+
+    .recent-label{
+      font-weight:900;
+      opacity:.78;
+    }
+
+    .form-sequence{
+      display:flex;
+      flex-wrap:wrap;
+      gap:5px;
+      min-height:25px;
+      align-items:center;
+    }
+
+    .form-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:25px;
+      height:25px;
+      border-radius:50%;
+      color:#111;
+      font-size:.78rem;
+      font-weight:900;
+    }
+
+    .form-pill.win{ background:#14b85a; }
+    .form-pill.draw{ background:#f4c430; }
+    .form-pill.loss{ background:#e53935; }
+
+    .analysis-note{
+      opacity:.72;
+      font-size:.84rem;
+      line-height:1.35;
+    }
+
+    .recent-block .analysis-note{
+      grid-column:2;
+    }
+
+    .record-list{
+      display:grid;
+    }
+
+    .record-row{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      padding:9px 0;
+      border-top:1px solid rgba(128,128,128,.18);
+      align-items:baseline;
+    }
+
+    .record-row:first-child{
+      border-top:0;
+    }
+
+    .record-label{
+      opacity:.76;
+    }
+
+    .record-row strong{
+      text-align:right;
+      font-weight:900;
+    }
+
+    .era-table{
+      display:grid;
+      gap:7px;
+    }
+
+    .era-row{
+      display:grid;
+      grid-template-columns:78px 62px minmax(0,1fr) 62px minmax(0,1fr);
+      gap:10px;
+      align-items:center;
+      padding:8px 0;
+      border-top:1px solid rgba(128,128,128,.16);
+    }
+
+    .era-row:first-child{
+      border-top:0;
+    }
+
+    .era-decade{
+      font-weight:900;
+    }
+
+    .era-value{
+      font-weight:900;
+      text-align:right;
+    }
+
+    .era-bar-track{
+      height:12px;
+      background:rgba(255,255,255,.05);
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .era-bar{
+      height:100%;
+      border-radius:999px;
+    }
+
+    .era-note{
+      margin-top:10px;
+      text-align:center;
+    }
+
+    @media (max-width:850px){
+      .analysis-grid{
+        grid-template-columns:1fr;
+      }
+
+      .era-row{
+        grid-template-columns:68px 56px minmax(0,1fr) 56px minmax(0,1fr);
+      }
+    }
+
+    @media (max-width:520px){
+      .record-row{
+        gap:10px;
+      }
+
+      .record-label{
+        max-width:52%;
+      }
+
+      .era-row{
+        grid-template-columns:58px 46px minmax(0,1fr) 46px minmax(0,1fr);
+        gap:6px;
+      }
+    }
+
   </style>
 </head>
 
@@ -846,6 +1016,92 @@
             <div class="stat-row"><span id="largestWinA" class="left team-a">—</span><span class="label">Biggest win</span><span id="largestWinB" class="right team-b">—</span></div>
             <div class="stat-row"><span id="latestMeetingA" class="left team-a">—</span><span class="label">Latest meeting</span><span id="latestMeetingB" class="right team-b">—</span></div>
             <div class="stat-row"><span id="drawsA" class="left team-a">—</span><span class="label">Draws</span><span id="drawsB" class="right team-b">—</span></div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="section">
+        <h3>Rivalry Form</h3>
+        <div class="analysis-grid">
+          <div class="analysis-card">
+            <div class="analysis-title">Recent Meetings</div>
+            <div class="recent-block">
+              <div class="recent-label">Last 5</div>
+              <div id="form5" class="form-sequence"></div>
+              <div id="form5Text" class="analysis-note">—</div>
+            </div>
+            <div class="recent-block">
+              <div class="recent-label">Last 10</div>
+              <div id="form10" class="form-sequence"></div>
+              <div id="form10Text" class="analysis-note">—</div>
+            </div>
+            <div class="recent-block">
+              <div class="recent-label">Last 20</div>
+              <div id="form20" class="form-sequence"></div>
+              <div id="form20Text" class="analysis-note">—</div>
+            </div>
+          </div>
+
+          <div class="analysis-card">
+            <div class="analysis-title">Rivalry Records</div>
+            <div class="record-list">
+              <div class="record-row">
+                <span class="record-label">Longest winning streak</span>
+                <strong id="winStreak">—</strong>
+              </div>
+              <div class="record-row">
+                <span class="record-label">Longest unbeaten run</span>
+                <strong id="unbeatenStreak">—</strong>
+              </div>
+              <div class="record-row">
+                <span class="record-label">Biggest upset win</span>
+                <strong id="biggestUpset">—</strong>
+              </div>
+              <div class="record-row">
+                <span class="record-label">Highest-rated meeting</span>
+                <strong id="highestRatedMeeting">—</strong>
+              </div>
+              <div class="record-row">
+                <span class="record-label">Highest-scoring meeting</span>
+                <strong id="highestScoringMeeting">—</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Rating Extremes</h3>
+        <div class="analysis-grid rating-extremes-grid">
+          <div class="analysis-card">
+            <div class="analysis-title" id="extremeTitleA">Chosen team</div>
+            <div class="record-list">
+              <div class="record-row"><span class="record-label">Best 12-month rise</span><strong id="bestRiseA">—</strong></div>
+              <div class="record-row"><span class="record-label">Worst 12-month fall</span><strong id="worstFallA">—</strong></div>
+              <div class="record-row"><span class="record-label">Best decade average</span><strong id="bestDecadeA">—</strong></div>
+              <div class="record-row"><span class="record-label">Lowest decade average</span><strong id="worstDecadeA">—</strong></div>
+            </div>
+          </div>
+
+          <div class="analysis-card">
+            <div class="analysis-title" id="extremeTitleB">Compared team</div>
+            <div class="record-list">
+              <div class="record-row"><span class="record-label">Best 12-month rise</span><strong id="bestRiseB">—</strong></div>
+              <div class="record-row"><span class="record-label">Worst 12-month fall</span><strong id="worstFallB">—</strong></div>
+              <div class="record-row"><span class="record-label">Best decade average</span><strong id="bestDecadeB">—</strong></div>
+              <div class="record-row"><span class="record-label">Lowest decade average</span><strong id="worstDecadeB">—</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Era Comparison</h3>
+        <div class="era-card">
+          <div id="eraTable" class="era-table"></div>
+          <div class="analysis-note era-note">
+            Average Elo by decade across periods where each team has available history.
           </div>
         </div>
       </div>
@@ -1283,6 +1539,226 @@
     return {aheadA,aheadB,equal,periods,maxA,maxB,closest,crossovers,start,end};
   }
 
+
+  function resultSequence(meetings, aName, bName, n){
+    return meetings.slice(0,n).map(g => resultForMeeting(g,aName,bName));
+  }
+
+  function formCounts(seq){
+    return {
+      w: seq.filter(x => x === 'a').length,
+      d: seq.filter(x => x === 'draw').length,
+      l: seq.filter(x => x === 'b').length
+    };
+  }
+
+  function renderRecentForm(meetings,aName,bName,n,id,textId){
+    const seq = resultSequence(meetings,aName,bName,n);
+    const box = document.getElementById(id);
+    box.innerHTML = '';
+
+    seq.forEach(r => {
+      const pill = document.createElement('span');
+      pill.className = 'form-pill ' + (r === 'a' ? 'win' : r === 'b' ? 'loss' : 'draw');
+      pill.textContent = r === 'a' ? 'W' : r === 'b' ? 'L' : 'D';
+      box.appendChild(pill);
+    });
+
+    const c = formCounts(seq);
+    setText(textId, seq.length ? `${c.w} wins, ${c.d} draws, ${c.l} losses for ${aName}` : 'No meetings in this span.');
+  }
+
+  function longestRuns(meetings,aName,bName){
+    // meetings are newest-first; reverse for chronological run calculation.
+    const seq = meetings.slice().reverse().map(g => resultForMeeting(g,aName,bName));
+    let win=0,bestWin=0,unbeaten=0,bestUnbeaten=0;
+
+    for (const r of seq){
+      if (r === 'a'){
+        win++;
+        unbeaten++;
+      } else if (r === 'draw'){
+        win=0;
+        unbeaten++;
+      } else if (r === 'b'){
+        win=0;
+        unbeaten=0;
+      } else {
+        win=0;
+        unbeaten=0;
+      }
+      bestWin=Math.max(bestWin,win);
+      bestUnbeaten=Math.max(bestUnbeaten,unbeaten);
+    }
+
+    return {bestWin,bestUnbeaten};
+  }
+
+  function gameTeamElos(g,aName,bName){
+    const homeElo=Number(g.homeElo);
+    const awayElo=Number(g.awayElo);
+    if (!Number.isFinite(homeElo) || !Number.isFinite(awayElo)) return null;
+
+    if (g.home === aName && g.away === bName) return {a:homeElo,b:awayElo};
+    if (g.home === bName && g.away === aName) return {a:awayElo,b:homeElo};
+    return null;
+  }
+
+  function rivalryHighlights(meetings,aName,bName){
+    let biggestUpset=null;
+    let highestRated=null;
+    let highestScoring=null;
+
+    for (const g of meetings){
+      const score=scoreFromGame(g);
+      const elos=gameTeamElos(g,aName,bName);
+      const result=resultForMeeting(g,aName,bName);
+
+      if (score){
+        const total=score[0]+score[1];
+        if (!highestScoring || total > highestScoring.total){
+          highestScoring={g,total,score};
+        }
+      }
+
+      if (elos){
+        const combined=elos.a+elos.b;
+        if (!highestRated || combined > highestRated.combined){
+          highestRated={g,combined,elos};
+        }
+
+        const winnerElo=result === 'a' ? elos.a : result === 'b' ? elos.b : NaN;
+        const loserElo=result === 'a' ? elos.b : result === 'b' ? elos.a : NaN;
+        if (Number.isFinite(winnerElo) && Number.isFinite(loserElo) && winnerElo < loserElo){
+          const upsetGap=loserElo-winnerElo;
+          if (!biggestUpset || upsetGap > biggestUpset.gap){
+            biggestUpset={g,gap:upsetGap,result};
+          }
+        }
+      }
+    }
+
+    return {biggestUpset,highestRated,highestScoring};
+  }
+
+  function rollingYearExtremes(hist){
+    if (hist.length < 2) return {best:null,worst:null};
+
+    let best=null,worst=null;
+    for (const p of hist){
+      const d=new Date(p.x);
+      const priorTarget=new Date(d);
+      priorTarget.setFullYear(priorTarget.getFullYear()-1);
+      const old=pointAtOrBefore(hist,priorTarget);
+      if (!old) continue;
+
+      const change=p.y-old.y;
+      if (!best || change > best.change) best={change,date:p.x};
+      if (!worst || change < worst.change) worst={change,date:p.x};
+    }
+    return {best,worst};
+  }
+
+  function decadeAverages(hist){
+    const buckets=new Map();
+    hist.forEach(p => {
+      const y=new Date(p.x).getFullYear();
+      if (!Number.isFinite(y)) return;
+      const decade=Math.floor(y/10)*10;
+      if (!buckets.has(decade)) buckets.set(decade,[]);
+      buckets.get(decade).push(p.y);
+    });
+
+    return [...buckets.entries()]
+      .map(([decade,vals]) => ({
+        decade,
+        avg: vals.reduce((a,b)=>a+b,0)/vals.length,
+        n: vals.length
+      }))
+      .sort((a,b)=>a.decade-b.decade);
+  }
+
+  function decadeExtremes(hist){
+    const rows=decadeAverages(hist);
+    if (!rows.length) return {best:null,worst:null};
+    return {
+      best: rows.reduce((a,b)=>!a || b.avg>a.avg ? b:a,null),
+      worst: rows.reduce((a,b)=>!a || b.avg<a.avg ? b:a,null)
+    };
+  }
+
+  function renderEraComparison(histA,histB,aName,bName,colourA,colourB){
+    const aMap=new Map(decadeAverages(histA).map(x=>[x.decade,x]));
+    const bMap=new Map(decadeAverages(histB).map(x=>[x.decade,x]));
+    const decades=[...new Set([...aMap.keys(),...bMap.keys()])].sort((a,b)=>a-b);
+    const box=document.getElementById('eraTable');
+    box.innerHTML='';
+
+    if (!decades.length){
+      box.innerHTML='<div class="empty">No era data in this span.</div>';
+      return;
+    }
+
+    const values=[];
+    decades.forEach(d=>{
+      if (aMap.has(d)) values.push(aMap.get(d).avg);
+      if (bMap.has(d)) values.push(bMap.get(d).avg);
+    });
+    const lo=Math.min(...values);
+    const hi=Math.max(...values);
+    const span=Math.max(1,hi-lo);
+
+    decades.forEach(decade=>{
+      const a=aMap.get(decade);
+      const b=bMap.get(decade);
+      const row=document.createElement('div');
+      row.className='era-row';
+
+      const decadeEl=document.createElement('div');
+      decadeEl.className='era-decade';
+      decadeEl.textContent=`${decade}s`;
+
+      const aVal=document.createElement('div');
+      aVal.className='era-value team-a';
+      aVal.textContent=a ? String(Math.round(a.avg)) : '—';
+
+      const aTrack=document.createElement('div');
+      aTrack.className='era-bar-track';
+      const aBar=document.createElement('div');
+      aBar.className='era-bar';
+      aBar.style.background=colourA;
+      aBar.style.width=a ? `${20+80*(a.avg-lo)/span}%` : '0%';
+      aTrack.appendChild(aBar);
+
+      const bVal=document.createElement('div');
+      bVal.className='era-value team-b';
+      bVal.textContent=b ? String(Math.round(b.avg)) : '—';
+
+      const bTrack=document.createElement('div');
+      bTrack.className='era-bar-track';
+      const bBar=document.createElement('div');
+      bBar.className='era-bar';
+      bBar.style.background=colourB;
+      bBar.style.width=b ? `${20+80*(b.avg-lo)/span}%` : '0%';
+      bTrack.appendChild(bBar);
+
+      // Desktop: decade, A value/bar, B value/bar.
+      row.appendChild(decadeEl);
+      row.appendChild(aVal);
+      row.appendChild(aTrack);
+      row.appendChild(bVal);
+      row.appendChild(bTrack);
+      box.appendChild(row);
+    });
+  }
+
+  function formatMeetingLabel(g){
+    if (!g) return '—';
+    const score=scoreFromGame(g);
+    const scoreText=score ? `${score[0]}-${score[1]}` : (g.score || '');
+    return `${fmtDate(g.date)}${scoreText ? ` (${scoreText})` : ''}`;
+  }
+
   function setText(id, value){
     const el = document.getElementById(id);
     if (el) el.textContent = value;
@@ -1595,6 +2071,56 @@
         setText('latestMeetingA','—');
         setText('latestMeetingB','—');
       }
+
+      // Rivalry form and records
+      renderRecentForm(allMeetings,a.name,b.name,5,'form5','form5Text');
+      renderRecentForm(allMeetings,a.name,b.name,10,'form10','form10Text');
+      renderRecentForm(allMeetings,a.name,b.name,20,'form20','form20Text');
+
+      const runs=longestRuns(allMeetings,a.name,b.name);
+      setText('winStreak',runs.bestWin ? `${runs.bestWin} by ${a.name}` : '—');
+      setText('unbeatenStreak',runs.bestUnbeaten ? `${runs.bestUnbeaten} by ${a.name}` : '—');
+
+      const highlights=rivalryHighlights(allMeetings,a.name,b.name);
+      if (highlights.biggestUpset){
+        const winner=highlights.biggestUpset.result === 'a' ? a.name : b.name;
+        setText('biggestUpset',`${winner} by ${Math.round(highlights.biggestUpset.gap)} Elo · ${fmtDate(highlights.biggestUpset.g.date)}`);
+      } else {
+        setText('biggestUpset','No upset found');
+      }
+
+      if (highlights.highestRated){
+        setText('highestRatedMeeting',
+          `${fmtDate(highlights.highestRated.g.date)} · ${Math.round(highlights.highestRated.elos.a)} vs ${Math.round(highlights.highestRated.elos.b)}`
+        );
+      } else {
+        setText('highestRatedMeeting','—');
+      }
+
+      if (highlights.highestScoring){
+        setText('highestScoringMeeting',formatMeetingLabel(highlights.highestScoring.g));
+      } else {
+        setText('highestScoringMeeting','—');
+      }
+
+      // Rating extremes
+      const rollA=rollingYearExtremes(histA);
+      const rollB=rollingYearExtremes(histB);
+      const decA=decadeExtremes(histA);
+      const decB=decadeExtremes(histB);
+
+      setText('extremeTitleA',a.name);
+      setText('extremeTitleB',b.name);
+      setText('bestRiseA',rollA.best ? `${fmtSigned(rollA.best.change)} · ${fmtDate(rollA.best.date)}` : '—');
+      setText('bestRiseB',rollB.best ? `${fmtSigned(rollB.best.change)} · ${fmtDate(rollB.best.date)}` : '—');
+      setText('worstFallA',rollA.worst ? `${fmtSigned(rollA.worst.change)} · ${fmtDate(rollA.worst.date)}` : '—');
+      setText('worstFallB',rollB.worst ? `${fmtSigned(rollB.worst.change)} · ${fmtDate(rollB.worst.date)}` : '—');
+      setText('bestDecadeA',decA.best ? `${decA.best.decade}s · ${Math.round(decA.best.avg)}` : '—');
+      setText('bestDecadeB',decB.best ? `${decB.best.decade}s · ${Math.round(decB.best.avg)}` : '—');
+      setText('worstDecadeA',decA.worst ? `${decA.worst.decade}s · ${Math.round(decA.worst.avg)}` : '—');
+      setText('worstDecadeB',decB.worst ? `${decB.worst.decade}s · ${Math.round(decB.worst.avg)}` : '—');
+
+      renderEraComparison(histA,histB,a.name,b.name,displayColours.chosen,displayColours.compared);
 
       comparedItems = [
         {
