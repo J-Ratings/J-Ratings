@@ -596,6 +596,32 @@
       box-sizing:border-box;
     }
 
+  
+    .custom-span-controls{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .custom-span-controls[hidden]{
+      display:none !important;
+    }
+
+    .custom-span-controls input{
+      padding:8px 10px;
+      border:1px solid var(--border, #444);
+      border-radius:8px;
+      background:#0f1623;
+      color:inherit;
+      font-size:.95rem;
+    }
+
+    .custom-span-controls label{
+      font-weight:700;
+      opacity:.85;
+    }
+
   </style>
 </head>
 
@@ -654,12 +680,20 @@
           <option value="10">Last 10 years</option>
           <option value="5">Last 5 years</option>
           <option value="1">Last year</option>
+          <option value="custom">Custom dates</option>
         </select>
+
+        <div id="customSpanControls" class="custom-span-controls" hidden>
+          <label for="customStart">From</label>
+          <input id="customStart" type="date">
+          <label for="customEnd">To</label>
+          <input id="customEnd" type="date">
+        </div>
       </div>
 
       <div class="actions">
         <button id="swap" class="swap-btn" type="button">Swap</button>
-        <button id="compare" class="compare-btn" type="button">Compare Profiles</button>
+        <button id="compare" class="compare-btn" type="button">Generate</button>
       </div>
     </div>
 
@@ -858,36 +892,68 @@
     return old ? current.y - old.y : NaN;
   }
 
-  function filterHistoryBySpan(hist, spanValue){
-    if (!hist.length || spanValue === 'all') return hist.slice();
+  function selectedAnalysisWindow(histories, meetings){
+    const spanValue = document.getElementById('analysisSpan').value;
+
+    const allDates = [];
+    histories.forEach(hist => {
+      (hist || []).forEach(p => {
+        const d = new Date(p.x);
+        if (Number.isFinite(+d)) allDates.push(d);
+      });
+    });
+    (meetings || []).forEach(g => {
+      const d = new Date(g.date);
+      if (Number.isFinite(+d)) allDates.push(d);
+    });
+
+    if (!allDates.length) return { start:null, end:null, spanValue };
+
+    const dataStart = new Date(Math.min(...allDates.map(d => +d)));
+    const dataEnd = new Date(Math.max(...allDates.map(d => +d)));
+
+    if (spanValue === 'custom'){
+      const startRaw = document.getElementById('customStart').value;
+      const endRaw = document.getElementById('customEnd').value;
+
+      const start = startRaw ? new Date(`${startRaw}T00:00:00`) : dataStart;
+      const end = endRaw ? new Date(`${endRaw}T23:59:59`) : dataEnd;
+
+      return {
+        start: +start <= +end ? start : end,
+        end: +start <= +end ? end : start,
+        spanValue
+      };
+    }
+
+    if (spanValue === 'all'){
+      return { start:dataStart, end:dataEnd, spanValue };
+    }
 
     const years = Number(spanValue);
-    if (!Number.isFinite(years) || years <= 0) return hist.slice();
-
-    const end = new Date(hist[hist.length - 1].x);
+    const end = dataEnd;
     const start = new Date(end);
     start.setFullYear(start.getFullYear() - years);
 
-    return hist.filter(p => new Date(p.x) >= start);
+    return { start, end, spanValue };
   }
 
-  function filterMeetingsBySpan(meetings, spanValue){
-    if (!meetings.length || spanValue === 'all') return meetings.slice();
+  function filterHistoryByWindow(hist, windowRange){
+    if (!hist.length || !windowRange?.start || !windowRange?.end) return hist.slice();
 
-    const years = Number(spanValue);
-    if (!Number.isFinite(years) || years <= 0) return meetings.slice();
+    return hist.filter(p => {
+      const d = new Date(p.x);
+      return d >= windowRange.start && d <= windowRange.end;
+    });
+  }
 
-    const latest = meetings.reduce((best,g) => {
+  function filterMeetingsByWindow(meetings, windowRange){
+    if (!meetings.length || !windowRange?.start || !windowRange?.end) return meetings.slice();
+
+    return meetings.filter(g => {
       const d = new Date(g.date);
-      return !best || d > best ? d : best;
-    }, null);
-
-    if (!latest) return meetings.slice();
-
-    const start = new Date(latest);
-    start.setFullYear(start.getFullYear() - years);
-
-    return meetings.filter(g => new Date(g.date) >= start);
+      return d >= windowRange.start && d <= windowRange.end;
+    });
   }
 
   function renderWdlSummary(h2h){
@@ -901,9 +967,9 @@
 
     const pct = total
       ? [
-          `<span class="wdl-w">W${(100*h2h.winsA/total).toFixed(1)}%</span>`,
-          `<span class="wdl-d">D${(100*h2h.draws/total).toFixed(1)}%</span>`,
-          `<span class="wdl-l">L${(100*h2h.winsB/total).toFixed(1)}%</span>`
+          `<span class="wdl-w">${(100*h2h.winsA/total).toFixed(1)}%</span>`,
+          `<span class="wdl-d">${(100*h2h.draws/total).toFixed(1)}%</span>`,
+          `<span class="wdl-l">${(100*h2h.winsB/total).toFixed(1)}%</span>`
         ].join('<span>–</span>')
       : '—';
 
@@ -1175,9 +1241,35 @@
     if (el) el.textContent = value;
   }
 
+
+  function colourDistance(hexA, hexB){
+    const a = hexToRgb(hexA);
+    const b = hexToRgb(hexB);
+    if (!a || !b) return Infinity;
+
+    return Math.sqrt(
+      Math.pow(a.r-b.r,2) +
+      Math.pow(a.g-b.g,2) +
+      Math.pow(a.b-b.b,2)
+    );
+  }
+
+  function comparisonColour(chosenColour, comparisonName){
+    const own = getDisplayColour(comparisonName);
+
+    // Keep the comparison team's own colour whenever it is visually distinct.
+    if (colourDistance(chosenColour, own) >= 115) return own;
+
+    // Otherwise use a stable contrasting J-Ratings colour.
+    const fallbacks = ['#17becf', '#ff7f0e', '#9467bd', '#2ca02c', '#bcbd22'];
+    return fallbacks
+      .map(c => ({ c, d: colourDistance(chosenColour, c) }))
+      .sort((x,y) => y.d-x.d)[0].c;
+  }
+
   function setColours(a,b){
     const ca = getDisplayColour(a);
-    const cb = getDisplayColour(b);
+    const cb = comparisonColour(ca, b);
 
     document.documentElement.style.setProperty('--team-a-colour', ca);
     document.documentElement.style.setProperty('--team-b-colour', cb);
@@ -1186,6 +1278,8 @@
 
     document.getElementById('domA').style.background = ca;
     document.getElementById('domB').style.background = cb;
+
+    return { chosen: ca, compared: cb };
   }
 
   function renderMeetingTable(meetings, aName, bName){
@@ -1327,10 +1421,10 @@
         directMeetings(ga,a.name,b.name).concat(directMeetings(gb,a.name,b.name))
       );
 
-      const spanValue = document.getElementById('analysisSpan').value;
-      const histA = filterHistoryBySpan(fullHistA, spanValue);
-      const histB = filterHistoryBySpan(fullHistB, spanValue);
-      const allMeetings = filterMeetingsBySpan(fullMeetings, spanValue);
+      const analysisWindow = selectedAnalysisWindow([fullHistA, fullHistB], fullMeetings);
+      const histA = filterHistoryByWindow(fullHistA, analysisWindow);
+      const histB = filterHistoryByWindow(fullHistB, analysisWindow);
+      const allMeetings = filterMeetingsByWindow(fullMeetings, analysisWindow);
 
       const h2h = analyseMeetings(allMeetings,a.name,b.name);
       const comp = monthlyComparison(histA,histB);
@@ -1339,7 +1433,7 @@
       const liveA = histA.length ? histA[histA.length-1].y : NaN;
       const liveB = histB.length ? histB[histB.length-1].y : NaN;
 
-      setColours(a.name,b.name);
+      const displayColours = setColours(a.name,b.name);
 
       setText('nameA',a.name);
       setText('nameB',b.name);
@@ -1438,14 +1532,14 @@
       comparedItems = [
         {
           name:a.name,
-          colour:getDisplayColour(a.name),
+          colour:displayColours.chosen,
           raw:histA,
           customData:p => p.tier || '',
           hovertemplate:`%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>${a.name}</extra>`
         },
         {
           name:b.name,
-          colour:getDisplayColour(b.name),
+          colour:displayColours.compared,
           raw:histB,
           customData:p => p.tier || '',
           hovertemplate:`%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>${b.name}</extra>`
@@ -1453,6 +1547,7 @@
       ];
 
       await compareChart.render(comparedItems);
+      compareChart.setRange('ALL');
       renderInsights(a,b,histA,histB,comp,h2h);
       renderMeetingTable(allMeetings,a.name,b.name);
 
@@ -1463,7 +1558,7 @@
       alert(e.message || 'Could not build comparison.');
     } finally {
       document.getElementById('compare').disabled = false;
-      document.getElementById('compare').textContent = 'Compare Profiles';
+      document.getElementById('compare').textContent = 'Generate';
     }
   }
 
@@ -1494,9 +1589,8 @@
     document.getElementById('compare').addEventListener('click',compareProfiles);
 
     document.getElementById('analysisSpan').addEventListener('change',() => {
-      const a = resolveTeam(document.getElementById('teamA'));
-      const b = resolveTeam(document.getElementById('teamB'));
-      if (a && b && String(a.id) !== String(b.id)) compareProfiles();
+      const isCustom = document.getElementById('analysisSpan').value === 'custom';
+      document.getElementById('customSpanControls').hidden = !isCustom;
     });
 
     document.getElementById('swap').addEventListener('click',() => {
