@@ -5,7 +5,12 @@ library(readr)
 library(jsonlite)
 library(stringi)
 library(stringr)
-library(beepr)
+
+# Local completion sound only. Kept inside interactive() so CI does not
+# require beepr to be installed.
+if (interactive()) {
+  library(beepr)
+}
 
 options(stringsAsFactors = FALSE)
 
@@ -631,6 +636,198 @@ for (tm in names(name_to_id)) {
 cat("Wrote rating history files:", n_hist_written, "\n")
 
 # -----------------------------
+# Historical country Top 5 snapshots
+# -----------------------------
+# Used by Compare > Top Teams. A snapshot is written only when that country's
+# Top 5 changes (membership, order or rating), keeping the JSON compact while
+# still allowing the browser to resolve the latest ranking on or before any
+# selected date. Rankings begin at 2000-01-01.
+
+TOP_TEAMS_START <- as.Date("2000-01-01")
+TOP_TEAMS_N <- 5L
+TOP_TEAMS_ACTIVE_DAYS <- 365L
+
+team_country_for_rankings <- bind_rows(
+  completed_league_appearances %>%
+    transmute(
+      team = as.character(team),
+      status_date = as.Date(status_date),
+      country = as.character(Country),
+      source_priority = 0L
+    ),
+  fixture_league_appearances %>%
+    transmute(
+      team = as.character(team),
+      status_date = as.Date(status_date),
+      country = as.character(Country),
+      source_priority = 1L
+    )
+) %>%
+  filter(
+    team != "",
+    !is.na(status_date),
+    !is.na(country),
+    country != "",
+    country != "Europe"
+  ) %>%
+  arrange(team, status_date, source_priority) %>%
+  group_by(team) %>%
+  slice_tail(n = 1) %>%
+  ungroup() %>%
+  transmute(team, country)
+
+ranking_events <- hist_long %>%
+  select(team, date, rating) %>%
+  inner_join(team_country_for_rankings, by = "team") %>%
+  filter(!is.na(date), !is.na(rating), date <= asof_date) %>%
+  arrange(date, team) %>%
+  group_by(team, date) %>%
+  slice_tail(n = 1) %>%
+  ungroup()
+
+country_lookup <- setNames(
+  team_country_for_rankings$country,
+  team_country_for_rankings$team
+)
+
+baseline_rows <- ranking_events %>%
+  filter(date < TOP_TEAMS_START) %>%
+  arrange(team, date) %>%
+  group_by(team) %>%
+  slice_tail(n = 1) %>%
+  ungroup()
+
+rating_state <- setNames(
+  as.numeric(baseline_rows$rating),
+  baseline_rows$team
+)
+
+last_seen_state <- setNames(
+  as.Date(baseline_rows$date),
+  baseline_rows$team
+)
+
+ranking_events_live <- ranking_events %>%
+  filter(date >= TOP_TEAMS_START) %>%
+  arrange(date, team)
+
+ranking_snapshots <- list()
+snapshot_i <- 0L
+last_signature <- new.env(parent = emptyenv())
+
+append_country_snapshot <- function(snapshot_date, country) {
+  country_teams <- names(country_lookup)[country_lookup == country]
+  country_teams <- intersect(country_teams, names(rating_state))
+  
+  if (length(country_teams) == 0L) return(invisible(NULL))
+  
+  ratings <- as.numeric(rating_state[country_teams])
+  last_seen <- as.Date(last_seen_state[country_teams], origin = "1970-01-01")
+  
+  eligible <-
+    is.finite(ratings) &
+    !is.na(last_seen) &
+    last_seen >= (as.Date(snapshot_date) - TOP_TEAMS_ACTIVE_DAYS)
+  
+  if (!any(eligible)) return(invisible(NULL))
+  
+  country_teams <- country_teams[eligible]
+  ratings <- ratings[eligible]
+  
+  ord <- order(-ratings, country_teams)
+  keep <- head(ord, TOP_TEAMS_N)
+  
+  top_names <- country_teams[keep]
+  top_ratings <- ratings[keep]
+  
+  sig <- paste(
+    paste(top_names, as.integer(round(top_ratings)), sep = "="),
+    collapse = "|"
+  )
+  
+  old_sig <- if (exists(country, envir = last_signature, inherits = FALSE)) {
+    get(country, envir = last_signature, inherits = FALSE)
+  } else {
+    NA_character_
+  }
+  
+  if (identical(sig, old_sig)) return(invisible(NULL))
+  
+  assign(country, sig, envir = last_signature)
+  
+  ids <- unname(name_to_id[top_names])
+  valid <- !is.na(ids) & ids != ""
+  
+  if (!any(valid)) return(invisible(NULL))
+  
+  snapshot_i <<- snapshot_i + 1L
+  ranking_snapshots[[snapshot_i]] <<- tibble(
+    date = format(as.Date(snapshot_date), "%Y-%m-%d"),
+    country = country,
+    rank = seq_along(top_names)[valid],
+    id = as.character(ids[valid]),
+    name = as.character(top_names[valid]),
+    rating = as.integer(round(top_ratings[valid]))
+  )
+  
+  invisible(NULL)
+}
+
+# Baseline snapshot at 2000-01-01 for every country with an active rated club.
+for (country in sort(unique(unname(country_lookup)))) {
+  append_country_snapshot(TOP_TEAMS_START, country)
+}
+
+if (nrow(ranking_events_live) > 0L) {
+  events_by_date <- split(
+    ranking_events_live,
+    format(ranking_events_live$date, "%Y-%m-%d")
+  )
+  
+  for (date_key in names(events_by_date)) {
+    snapshot_date <- as.Date(date_key)
+    day_rows <- events_by_date[[date_key]]
+    
+    for (j in seq_len(nrow(day_rows))) {
+      tm <- day_rows$team[[j]]
+      rating_state[tm] <- as.numeric(day_rows$rating[[j]])
+      last_seen_state[tm] <- as.Date(snapshot_date)
+    }
+    
+    affected_countries <- sort(unique(unname(country_lookup[day_rows$team])))
+    affected_countries <- affected_countries[
+      !is.na(affected_countries) & affected_countries != ""
+    ]
+    
+    for (country in affected_countries) {
+      append_country_snapshot(snapshot_date, country)
+    }
+  }
+}
+
+top_teams_tbl <- bind_rows(ranking_snapshots) %>%
+  arrange(date, country, rank)
+
+if (nrow(top_teams_tbl) == 0L) {
+  stop("No historical Top 5 ranking snapshots were generated.")
+}
+
+write_json(
+  top_teams_tbl,
+  file.path(base_data_dir, "top_teams.json"),
+  auto_unbox = TRUE,
+  pretty = FALSE
+)
+
+cat(
+  "Wrote top_teams.json (rows =",
+  nrow(top_teams_tbl),
+  "| countries =",
+  n_distinct(top_teams_tbl$country),
+  ")\n"
+)
+
+# -----------------------------
 # Per-team games JSON
 # -----------------------------
 
@@ -1071,4 +1268,5 @@ cat(
 cat("Wrote games files:", n_games_written, "\n")
 cat("Done.\n")
 
-beep()
+# Local completion sound.
+if (interactive()) beep()

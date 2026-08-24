@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
+
+  <meta charset="utf-8">
+  <title>J-Ratings: European Football Top Teams</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../../style.css">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="../../../jratings-graph.js"></script>
+
+  <style>
+    .top-teams-page{ padding:28px 22px 36px; }
+    .top-teams-page h2{ text-align:center; margin:0 0 8px; }
+    .intro{
+      text-align:center;
+      max-width:780px;
+      margin:0 auto 24px;
+      opacity:.85;
+      line-height:1.5;
+    }
+    .picker{
+      max-width:980px;
+      margin:0 auto 24px;
+      padding:20px;
+      border:1px solid var(--border, #444);
+      border-radius:14px;
+      background:rgba(255,255,255,.025);
+    }
+    .picker-grid{
+      display:grid;
+      grid-template-columns:minmax(180px, 1fr) minmax(180px, 1fr) auto;
+      gap:16px;
+      align-items:end;
+    }
+    .control label{
+      display:block;
+      font-weight:800;
+      margin-bottom:7px;
+    }
+    .control select,
+    .control input{
+      width:100%;
+      box-sizing:border-box;
+      padding:11px 12px;
+      border-radius:9px;
+      border:1px solid var(--border, #444);
+      background:#0f1623;
+      color:inherit;
+      font-size:1rem;
+    }
+    .show-btn{
+      border:1px solid var(--border, #444);
+      border-radius:9px;
+      background:#0f1623;
+      color:inherit;
+      padding:11px 18px;
+      cursor:pointer;
+      font-size:1.03rem;
+      font-weight:800;
+      min-width:140px;
+    }
+    .show-btn:hover{ background:rgba(255,255,255,.06); }
+    .snapshot-note{
+      text-align:center;
+      margin:14px 0 0;
+      opacity:.72;
+      font-size:.94rem;
+    }
+    .rank-grid{
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0,1fr));
+      gap:10px;
+      max-width:1100px;
+      margin:0 auto 22px;
+    }
+    .rank-card{
+      border:1px solid var(--border, #444);
+      border-radius:12px;
+      background:rgba(255,255,255,.025);
+      padding:14px;
+      min-width:0;
+    }
+    .rank-number{ opacity:.7; font-size:.84rem; margin-bottom:4px; }
+    .rank-name{
+      font-weight:900;
+      font-size:1.04rem;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+    .rank-name a{ color:inherit; text-decoration:none; }
+    .rank-name a:hover{ text-decoration:underline; }
+    .rank-rating{ margin-top:5px; opacity:.82; }
+    .chart-shell{
+      max-width:1260px;
+      margin:0 auto;
+      padding:18px 0 0;
+      border-top:1px solid var(--border, #444);
+    }
+    .chart-heading{
+      text-align:center;
+      font-size:1.25rem;
+      font-weight:900;
+      margin:0 0 14px;
+    }
+    .jr-chart-controls{
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:flex-start !important;
+      gap:10px !important;
+      max-width:1100px;
+      margin:0 auto 8px;
+    }
+    .jr-chart-controls > div:first-child{ display:flex; align-items:center; gap:8px; }
+    .jr-chart-controls label{ font-size:1.05rem; }
+    .jr-chart-controls select{ font-size:1.05rem; padding:9px 12px; }
+    .range-buttons{ display:flex; flex-wrap:wrap; gap:8px; }
+    .seg{
+      border:1px solid var(--border, #444);
+      background:#0f1623;
+      color:inherit;
+      border-radius:8px;
+      padding:9px 12px;
+      cursor:pointer;
+      font-size:1rem;
+    }
+    .seg.active,
+    .seg.is-active,
+    .seg[aria-pressed="true"]{ background:rgba(255,255,255,.10); font-weight:700; }
+    #chart{
+      width:min(82.8vw, 1260px);
+      height:585px;
+      min-height:585px;
+      margin:0 auto;
+    }
+    .error{ text-align:center; padding:30px 12px; opacity:.8; }
+    .back-row{ text-align:center; margin-top:22px; }
+    .back-row a{ color:inherit; opacity:.8; }
+
+    @media (max-width:900px){
+      .rank-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+      .picker-grid{ grid-template-columns:1fr 1fr; }
+      .show-btn{ grid-column:1 / -1; justify-self:center; }
+    }
+    @media (max-width:600px){
+      .top-teams-page{ padding:22px 14px 30px; }
+      .picker-grid{ grid-template-columns:1fr; }
+      .show-btn{ grid-column:auto; width:100%; }
+      .rank-grid{ grid-template-columns:1fr; }
+      #chart{ width:100%; height:470px; min-height:470px; }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a href="../../home/" class="brand-with-logo">
+        <span>J-Ratings <span class="title-football">European Football</span></span>
+      </a>
+    </h1>
+    <nav class="topnav" aria-label="Main">
+      <a href="/index.html">Sports</a>
+      <a href="../../home/">Home</a>
+      <a href="../" class="active-tab">Compare</a>
+      <a href="../../peak/">Peak</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel top-teams-page">
+    <h2>Top Teams</h2>
+    <p class="intro">
+      Select a country and date to see the five highest-rated active clubs at that point, then compare their Elo histories.
+    </p>
+
+    <div class="picker">
+      <div class="picker-grid">
+        <div class="control">
+          <label for="country">Country</label>
+          <select id="country"></select>
+        </div>
+
+        <div class="control">
+          <label for="asof">As of</label>
+          <input id="asof" type="date" min="2000-01-01">
+        </div>
+
+        <button id="show" class="show-btn" type="button">Show Top 5</button>
+      </div>
+      <div id="snapshot-note" class="snapshot-note"></div>
+    </div>
+
+    <div id="rank-grid" class="rank-grid"></div>
+
+    <div class="chart-shell">
+      <div id="chart-heading" class="chart-heading">Top 5 Elo history</div>
+
+      <div class="jr-chart-controls">
+        <div>
+          <label for="agg">View:</label>
+          <select id="agg">
+            <option value="daily">Daily</option>
+            <option value="weekly" selected>Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="quarterly">Quarterly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+        </div>
+
+        <div class="range-buttons" role="group" aria-label="Time range">
+          <button type="button" class="seg" data-range="ALL" aria-pressed="false">ALL</button>
+          <button type="button" class="seg active is-active" data-range="2000" aria-pressed="true">2000–Present</button>
+          <button type="button" class="seg" data-range="2020" aria-pressed="false">2020–Present</button>
+          <button type="button" class="seg" data-range="LY" aria-pressed="false">Last Year</button>
+          <button type="button" class="seg" data-range="YTD" aria-pressed="false">YTD</button>
+        </div>
+      </div>
+
+      <div id="chart" class="jr-chart">Loading…</div>
+    </div>
+
+    <div class="back-row"><a href="../">← Back to Compare</a></div>
+  </section>
+</main>
+
+<script>
+  const TOP_URL = '../../data/top_teams.json';
+  const HIST_URL = id => `../../data/history/${encodeURIComponent(id)}.json`;
+  const COLOURS_URL = '../../team-colours.json';
+
+  const COUNTRY_PRIORITY = [
+    'England','Spain','Italy','Germany','France','Portugal','Netherlands','Belgium',
+    'Austria','Scotland','Turkey','Switzerland','Greece','Czechia','Ukraine'
+  ];
+
+  let TOP_ROWS = [];
+  let TEAM_COLOURS = {};
+  let comparedItems = [];
+  let topChart = null;
+  let currentCutoff = null;
+
+  function escapeHtml(value){
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function displayDate(iso){
+    const d = new Date(`${iso}T12:00:00`);
+    if (Number.isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+  }
+
+  function colourFor(name){
+    const v = TEAM_COLOURS[name];
+    if (typeof v === 'string' && v.trim()) return v.trim();
+    if (v && typeof v === 'object') {
+      const c = v.colour || v.color || v.hex;
+      if (typeof c === 'string' && c.trim()) return c.trim();
+    }
+    return null;
+  }
+
+  function snapshotFor(country, requestedDate){
+    const rows = TOP_ROWS.filter(r => r.country === country && r.date <= requestedDate);
+    if (!rows.length) return null;
+    const snapshotDate = rows.reduce((m, r) => r.date > m ? r.date : m, rows[0].date);
+    const top = rows
+      .filter(r => r.date === snapshotDate)
+      .sort((a,b) => Number(a.rank) - Number(b.rank));
+    return { date:snapshotDate, rows:top };
+  }
+
+  function renderCards(snapshot){
+    const grid = document.getElementById('rank-grid');
+    grid.innerHTML = snapshot.rows.map(r => `
+      <div class="rank-card">
+        <div class="rank-number">#${Number(r.rank)}</div>
+        <div class="rank-name"><a href="../../player/?id=${encodeURIComponent(r.id)}">${escapeHtml(r.name)}</a></div>
+        <div class="rank-rating">${Math.round(Number(r.rating))} Elo</div>
+      </div>
+    `).join('');
+  }
+
+  async function loadHistory(row, cutoff){
+    const res = await fetch(HIST_URL(row.id), { cache:'no-cache' });
+    if (!res.ok) return null;
+    const json = await res.json();
+    const raw = (Array.isArray(json) ? json : [])
+      .filter(d => d && d.date && Number.isFinite(Number(d.rating)) && d.date <= cutoff)
+      .map(d => ({
+        x:d.date,
+        y:Number(d.rating),
+        tier:Number.isFinite(Number(d.tier)) ? Number(d.tier) : null
+      }))
+      .sort((a,b) => new Date(a.x) - new Date(b.x));
+
+    if (!raw.length) return null;
+    return {
+      name:row.name,
+      colour:colourFor(row.name),
+      raw,
+      customData:pt => pt.tier || '',
+      hovertemplate:'%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' + row.name + '</extra>'
+    };
+  }
+
+  async function drawSnapshot(){
+    const country = document.getElementById('country').value;
+    const requestedDate = document.getElementById('asof').value;
+    const chart = document.getElementById('chart');
+
+    if (!country || !requestedDate) return;
+
+    const snapshot = snapshotFor(country, requestedDate);
+    if (!snapshot) {
+      document.getElementById('rank-grid').innerHTML = '';
+      document.getElementById('snapshot-note').textContent = 'No ranking snapshot is available by that date.';
+      chart.innerHTML = '<div class="error">No ranking data available.</div>';
+      return;
+    }
+
+    currentCutoff = snapshot.date;
+    document.getElementById('snapshot-note').textContent =
+      `Ranking snapshot: ${displayDate(snapshot.date)}${snapshot.date !== requestedDate ? ' (latest available on or before selected date)' : ''}`;
+    document.getElementById('chart-heading').textContent = `Top 5 ${country} clubs as of ${displayDate(snapshot.date)}`;
+    renderCards(snapshot);
+
+    chart.textContent = 'Loading histories…';
+    const loaded = await Promise.all(snapshot.rows.map(r => loadHistory(r, snapshot.date)));
+    comparedItems = loaded.filter(Boolean);
+
+    if (!comparedItems.length) {
+      chart.innerHTML = '<div class="error">No history found for these teams.</div>';
+      return;
+    }
+
+    await Promise.resolve(topChart.render(comparedItems));
+  }
+
+  function buildCountrySelect(){
+    const countries = [...new Set(TOP_ROWS.map(r => r.country).filter(Boolean))];
+    countries.sort((a,b) => {
+      const ai = COUNTRY_PRIORITY.indexOf(a);
+      const bi = COUNTRY_PRIORITY.indexOf(b);
+      if (ai !== -1 || bi !== -1) {
+        if (ai === -1) return 1;
+        if (bi === -1) return -1;
+        return ai - bi;
+      }
+      return a.localeCompare(b);
+    });
+
+    const select = document.getElementById('country');
+    select.innerHTML = countries.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+    if (countries.includes('England')) select.value = 'England';
+  }
+
+  async function load(){
+    const [topRes, coloursRes] = await Promise.all([
+      fetch(TOP_URL, { cache:'no-cache' }),
+      fetch(COLOURS_URL, { cache:'no-cache' }).catch(() => null)
+    ]);
+
+    if (!topRes.ok) throw new Error('top_teams.json not found. Run the updated 03_write_json.R first.');
+    TOP_ROWS = await topRes.json();
+    if (!Array.isArray(TOP_ROWS) || !TOP_ROWS.length) throw new Error('top_teams.json is empty.');
+
+    if (coloursRes && coloursRes.ok) {
+      try { TEAM_COLOURS = await coloursRes.json(); } catch (_) { TEAM_COLOURS = {}; }
+    }
+
+    buildCountrySelect();
+
+    const maxDate = TOP_ROWS.reduce((m,r) => r.date > m ? r.date : m, TOP_ROWS[0].date);
+    const asof = document.getElementById('asof');
+    asof.max = maxDate;
+    asof.value = maxDate;
+
+    await drawSnapshot();
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    topChart = JRGraph.createChart({
+      chartId:'chart',
+      aggId:'agg',
+      controlsEl:document.querySelector('.chart-shell'),
+      defaultRange:'2000',
+      getItems:() => comparedItems
+    });
+
+    document.getElementById('agg').value = 'weekly';
+    document.getElementById('show').addEventListener('click', drawSnapshot);
+    document.getElementById('country').addEventListener('change', drawSnapshot);
+    document.getElementById('asof').addEventListener('change', drawSnapshot);
+
+    load().catch(err => {
+      console.error(err);
+      document.getElementById('chart').innerHTML = `<div class="error">Error: ${escapeHtml(err.message)}</div>`;
+    });
+  });
+</script>
+</body>
+</html>

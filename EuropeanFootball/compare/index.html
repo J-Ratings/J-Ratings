@@ -11,23 +11,14 @@
   </script>
 
   <meta charset="utf-8">
-  <title>J-Ratings: European Football</title>
+  <title>J-Ratings: European Football Compare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="../style.css">
 
-  
-
   <style>
-    .compare-landing{
-      padding:32px 24px 40px;
-    }
-
-    .compare-landing h2{
-      text-align:center;
-      margin-bottom:10px;
-    }
-
+    .compare-landing{ padding:32px 24px 40px; }
+    .compare-landing h2{ text-align:center; margin-bottom:10px; }
     .compare-intro{
       text-align:center;
       margin:0 auto 28px;
@@ -35,7 +26,6 @@
       opacity:.85;
       font-size:1.05rem;
     }
-
     .compare-mode-grid{
       display:grid;
       grid-template-columns:repeat(2, minmax(0, 1fr));
@@ -43,7 +33,6 @@
       max-width:980px;
       margin:0 auto;
     }
-
     .compare-mode-card{
       display:block;
       padding:28px 26px;
@@ -54,44 +43,20 @@
       text-decoration:none;
       transition:transform .15s ease, background .15s ease, border-color .15s ease;
     }
-
     .compare-mode-card:hover{
       transform:translateY(-2px);
       background:rgba(255,255,255,.06);
       border-color:rgba(220,220,220,.55);
     }
-
-    .compare-mode-title{
-      font-size:1.45rem;
-      font-weight:800;
-      margin-bottom:10px;
-    }
-
-    .compare-mode-copy{
-      font-size:1.02rem;
-      line-height:1.5;
-      opacity:.9;
-    }
-
+    .compare-mode-title{ font-size:1.45rem; font-weight:800; margin-bottom:10px; }
+    .compare-mode-copy{ font-size:1.02rem; line-height:1.5; opacity:.9; }
     @media (max-width:700px){
-      .compare-landing{
-        padding:24px 16px 30px;
-      }
-
-      .compare-mode-grid{
-        grid-template-columns:1fr;
-      }
-
-      .compare-mode-card{
-        padding:22px 20px;
-      }
-
-      .compare-mode-title{
-        font-size:1.3rem;
-      }
+      .compare-landing{ padding:24px 16px 30px; }
+      .compare-mode-grid{ grid-template-columns:1fr; }
+      .compare-mode-card{ padding:22px 20px; }
+      .compare-mode-title{ font-size:1.3rem; }
     }
   </style>
-
 </head>
 
 <body>
@@ -115,25 +80,24 @@
 <main class="wrap">
   <section class="panel compare-landing">
     <h2>Compare</h2>
-    <p class="compare-intro">Choose how you want to compare European football teams.</p>
+    <p class="compare-intro">Choose between your own team comparisons or explore the strongest clubs in each country.</p>
 
     <div class="compare-mode-grid">
-      <a class="compare-mode-card" href="./graphs/">
-        <div class="compare-mode-title">Compare Graphs</div>
+      <a class="compare-mode-card" href="./manual/">
+        <div class="compare-mode-title">Manual Compare</div>
         <div class="compare-mode-copy">
-          Plot several teams on the same Elo graph and compare how their ratings have changed over time.
+          Choose teams yourself to compare their Elo histories or view two club profiles side by side.
         </div>
       </a>
 
-      <a class="compare-mode-card" href="./profiles/">
-        <div class="compare-mode-title">Compare Profiles</div>
+      <a class="compare-mode-card" href="./top/">
+        <div class="compare-mode-title">Top Teams</div>
         <div class="compare-mode-copy">
-          Compare two teams in detail, including ratings, peaks, historical advantage, direct meetings and deeper analysis.
+          Select a country and explore the five highest-rated clubs at any point from 2000 onwards.
         </div>
       </a>
     </div>
   </section>
 </main>
-
 </body>
 </html>
