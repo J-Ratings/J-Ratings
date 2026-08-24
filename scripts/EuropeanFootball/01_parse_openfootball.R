@@ -57,6 +57,41 @@ out_file <- file.path(
 # Helpers
 # -----------------------------
 
+declared_match_count <- function(txt_path) {
+  lines <- readLines(
+    txt_path,
+    warn = FALSE,
+    encoding = "UTF-8"
+  )
+  
+  # OpenFootball files do not always expose a reliable declared
+  # match count in a consistent format. If none can be identified,
+  # skip this optional validation.
+  candidates <- grep(
+    "\\b[0-9]+\\s+matches\\b",
+    lines,
+    ignore.case = TRUE,
+    value = TRUE
+  )
+  
+  if (length(candidates) == 0L) {
+    return(NA_integer_)
+  }
+  
+  m <- regexpr(
+    "[0-9]+(?=\\s+matches\\b)",
+    candidates[1],
+    ignore.case = TRUE,
+    perl = TRUE
+  )
+  
+  if (m[1] == -1L) {
+    return(NA_integer_)
+  }
+  
+  as.integer(regmatches(candidates[1], m))
+}
+
 trim <- function(x) {
   gsub("^\\s+|\\s+$", "", x)
 }
@@ -1370,9 +1405,29 @@ make_cached_league_jobs <- function(
 }
 
 # Established OpenFootball competitions: current season.
-english_jobs <- english_competition_files
-english_jobs$season_folder <- season_folder
-english_jobs$parser <- "openfootball"
+# Established OpenFootball competitions: current season.
+english_jobs <- rbind(
+  make_current_job(
+    "1-premierleague.txt", "england", "England",
+    "premier_league", "Premier League", 1L
+  ),
+  make_current_job(
+    "2-championship.txt", "england", "England",
+    "championship", "Championship", 2L
+  ),
+  make_current_job(
+    "3-league1.txt", "england", "England",
+    "league_1", "League 1", 3L
+  ),
+  make_current_job(
+    "4-league2.txt", "england", "England",
+    "league_2", "League 2", 4L
+  ),
+  make_current_job(
+    "5-nationalleague.txt", "england", "England",
+    "national_league", "National League", 5L
+  )
+)
 
 # One-time targeted Championship rebuilds.
 #
