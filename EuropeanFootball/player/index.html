@@ -110,6 +110,24 @@
       min-width: 90px;
     }
 
+    .team-stats .stat-link{
+      display:block;
+      color:inherit;
+      text-decoration:none;
+      cursor:pointer;
+      transition:background .15s ease, border-color .15s ease;
+    }
+
+    .team-stats .stat-link:hover{
+      background:rgba(255,255,255,0.08);
+      border-color:rgba(200,200,200,0.55);
+    }
+
+    .team-stats .stat-link .stat-value{
+      font-size:1rem;
+      line-height:1.4;
+    }
+
     .team-stats .stat-label{
       font-size: 0.9rem;
       opacity: 0.8;
@@ -492,6 +510,11 @@
           <div class="stat-label">Peak</div>
           <div class="stat-value" id="peakVal">—</div>
         </div>
+
+        <a id="statsLink" class="stat stat-link" href="./stats/">
+          <div class="stat-label">Statistics</div>
+          <div class="stat-value">View</div>
+        </a>
       </div>
     </div>
 
@@ -512,6 +535,11 @@
 <script>
   const params = new URLSearchParams(location.search);
   const idRaw = params.get('id');
+
+  const statsLink = document.getElementById('statsLink');
+  if (statsLink && idRaw) {
+    statsLink.href = `./stats/?id=${encodeURIComponent(idRaw)}`;
+  }
 
   if (!idRaw) {
     document.getElementById('chart').textContent = 'Missing team id.';
