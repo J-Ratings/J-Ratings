@@ -1,8 +1,5 @@
-library(tictoc)
 options(stringsAsFactors = FALSE)
 
-
-tic()
 # -----------------------------
 # Paths
 # -----------------------------
@@ -2041,7 +2038,3 @@ print(
     order(competition_summary$Country, competition_summary$Competition),
   ]
 )
-
-toc()
-
-beep()

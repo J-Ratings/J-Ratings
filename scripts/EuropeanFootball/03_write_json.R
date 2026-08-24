@@ -5,12 +5,10 @@ library(readr)
 library(jsonlite)
 library(stringi)
 library(stringr)
-library(tictoc)
 
 options(stringsAsFactors = FALSE)
 
 
-tic()
 # -----------------------------
 # Paths
 # -----------------------------
@@ -870,10 +868,3 @@ cat(
 cat("Wrote games files:", n_games_written, "\n")
 cat("Done.\n")
 
-
-
-toc()
-
-
-
-beep()

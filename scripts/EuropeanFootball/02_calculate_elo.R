@@ -1,11 +1,9 @@
 
 library(data.table)
-library(tictoc)
 
 options(stringsAsFactors = FALSE)
 
 
-tic()
 # -----------------------------
 # Paths
 # -----------------------------
@@ -958,9 +956,3 @@ cat("Pass 1 game history:", OUTPUT_GAME_HISTORY_CSV_PASS1, "\n")
 cat("Pass 1 final ratings:", OUTPUT_FINAL_RATINGS_CSV_PASS1, "\n")
 cat("Pass 2 game history (final):", OUTPUT_GAME_HISTORY_CSV, "\n")
 cat("Pass 2 final ratings (final):", OUTPUT_FINAL_RATINGS_CSV, "\n")
-
-
-toc()
-
-
-beep()

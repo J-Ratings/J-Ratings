@@ -2,10 +2,7 @@
 
 options(stringsAsFactors = FALSE)
 
-tic()
 library(nanoparquet)
-library(beepr)
-library(tictoc)
 
 # -----------------------------
 # Paths
@@ -678,6 +675,3 @@ for (i in seq_len(nrow(wikipedia_jobs))) {
 cat("\nWikipedia download complete.\n")
 print(wikipedia_results)
 
-toc()
-
-beep()

@@ -3,12 +3,9 @@
 library(dplyr)
 library(readr)
 library(jsonlite)
-library(tictoc)
-library(beepr)
 
 options(stringsAsFactors = FALSE)
 
-tic()
 
 # -----------------------------
 # Test settings
@@ -463,5 +460,3 @@ print(
   n = Inf
 )
 
-toc()
-beep()
