@@ -1,0 +1,1181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
+
+  <meta charset="utf-8">
+  <title>J-Ratings: European Football Statistics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../../style.css">
+
+  <style>
+    :root{
+      --stat-win:#14b85a;
+      --stat-draw:#f4c430;
+      --stat-loss:#e53935;
+      --team-colour:#2F80ED;
+    }
+
+    .stats-page{
+      padding:28px 22px 40px;
+    }
+
+    .stats-header{
+      max-width:1100px;
+      margin:0 auto 20px;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:16px;
+    }
+
+    .stats-title-wrap{
+      text-align:center;
+      min-width:0;
+    }
+
+    #teamName{
+      margin:0;
+      font-size:2rem;
+      overflow-wrap:anywhere;
+    }
+
+    .stats-subtitle{
+      margin-top:4px;
+      opacity:.72;
+    }
+
+    .back-profile{
+      justify-self:start;
+      display:inline-block;
+      padding:9px 13px;
+      border:1px solid var(--border,#444);
+      border-radius:9px;
+      background:#0f1623;
+      color:inherit;
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .back-profile:hover{
+      background:rgba(255,255,255,.06);
+    }
+
+    .header-spacer{
+      justify-self:end;
+      width:110px;
+    }
+
+    .span-panel{
+      max-width:1100px;
+      margin:0 auto 22px;
+      padding:16px 18px;
+      border:1px solid var(--border,#444);
+      border-radius:12px;
+      background:rgba(255,255,255,.025);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .span-panel label{
+      font-weight:800;
+    }
+
+    .span-panel select,
+    .span-panel input{
+      padding:9px 10px;
+      border:1px solid var(--border,#444);
+      border-radius:8px;
+      background:#0f1623;
+      color:inherit;
+      font-size:.98rem;
+    }
+
+    .custom-dates{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .custom-dates[hidden]{
+      display:none !important;
+    }
+
+    .generate-btn{
+      padding:10px 17px;
+      border:1px solid var(--border,#444);
+      border-radius:9px;
+      background:#0f1623;
+      color:inherit;
+      cursor:pointer;
+      font-weight:900;
+      font-size:1rem;
+    }
+
+    .generate-btn:hover{
+      background:rgba(255,255,255,.06);
+    }
+
+    #loading{
+      text-align:center;
+      padding:24px;
+      opacity:.75;
+    }
+
+    #dashboard{
+      display:none;
+    }
+
+    .hero-grid{
+      max-width:1100px;
+      margin:0 auto 24px;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .hero-card,
+    .panel-card{
+      border:1px solid var(--border,#444);
+      border-radius:12px;
+      background:rgba(255,255,255,.025);
+    }
+
+    .hero-card{
+      padding:16px 12px;
+      text-align:center;
+      border-top:4px solid var(--team-colour);
+    }
+
+    .hero-label{
+      font-size:.86rem;
+      opacity:.7;
+      margin-bottom:6px;
+    }
+
+    .hero-value{
+      font-size:1.45rem;
+      font-weight:900;
+    }
+
+    .hero-detail{
+      margin-top:5px;
+      font-size:.84rem;
+      opacity:.72;
+      line-height:1.35;
+    }
+
+    .section{
+      max-width:1100px;
+      margin:30px auto 0;
+    }
+
+    .section h3{
+      text-align:center;
+      margin:0 0 14px;
+      font-size:1.5rem;
+    }
+
+    .three-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .two-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .panel-card{
+      padding:16px;
+      min-width:0;
+    }
+
+    .panel-title{
+      text-align:center;
+      font-weight:900;
+      font-size:1.08rem;
+      margin-bottom:10px;
+    }
+
+    .stat-list{
+      display:grid;
+    }
+
+    .stat-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:14px;
+      padding:8px 0;
+      border-top:1px solid rgba(128,128,128,.18);
+    }
+
+    .stat-row:first-child{
+      border-top:0;
+    }
+
+    .stat-label{
+      opacity:.72;
+      min-width:0;
+    }
+
+    .stat-value{
+      font-weight:900;
+      text-align:right;
+      overflow-wrap:anywhere;
+    }
+
+    .positive{
+      color:var(--stat-win) !important;
+      font-weight:900 !important;
+    }
+
+    .negative{
+      color:var(--stat-loss) !important;
+      font-weight:900 !important;
+    }
+
+    .neutral{
+      color:var(--stat-draw) !important;
+      font-weight:900 !important;
+    }
+
+    .wdl-line{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+      margin:8px 0 2px;
+      font-size:1.15rem;
+      font-weight:900;
+    }
+
+    .wdl-win{ color:var(--stat-win); }
+    .wdl-draw{ color:var(--stat-draw); }
+    .wdl-loss{ color:var(--stat-loss); }
+
+    .form-row{
+      display:flex;
+      gap:5px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin:12px 0 7px;
+    }
+
+    .form-pill{
+      width:27px;
+      height:27px;
+      border-radius:50%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      color:#111;
+      font-size:.78rem;
+      font-weight:900;
+    }
+
+    .form-pill.win{ background:var(--stat-win); }
+    .form-pill.draw{ background:var(--stat-draw); }
+    .form-pill.loss{ background:var(--stat-loss); }
+
+    .form-note{
+      text-align:center;
+      opacity:.7;
+      font-size:.85rem;
+    }
+
+    .year-chart{
+      display:grid;
+      gap:7px;
+    }
+
+    .year-row{
+      display:grid;
+      grid-template-columns:64px 60px minmax(0,1fr);
+      gap:9px;
+      align-items:center;
+      padding:6px 0;
+      border-top:1px solid rgba(128,128,128,.14);
+    }
+
+    .year-row:first-child{
+      border-top:0;
+    }
+
+    .year-label{
+      font-weight:900;
+    }
+
+    .year-value{
+      text-align:right;
+      font-weight:900;
+      color:var(--team-colour);
+    }
+
+    .year-track{
+      height:13px;
+      overflow:hidden;
+      border-radius:999px;
+      background:rgba(255,255,255,.055);
+    }
+
+    .year-fill{
+      height:100%;
+      background:var(--team-colour);
+      border-radius:999px;
+    }
+
+    .table-wrap{
+      overflow:auto;
+      max-height:560px;
+      border:1px solid var(--border,#444);
+      border-radius:10px;
+    }
+
+    table.stats-table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      font-size:.92rem;
+    }
+
+    table.stats-table th,
+    table.stats-table td{
+      padding:9px 10px;
+      text-align:center;
+      white-space:nowrap;
+      border-bottom:1px solid rgba(128,128,128,.18);
+      border-right:1px solid rgba(128,128,128,.15);
+    }
+
+    table.stats-table th:last-child,
+    table.stats-table td:last-child{
+      border-right:0;
+    }
+
+    table.stats-table th{
+      position:sticky;
+      top:0;
+      z-index:2;
+      background:var(--card,#1a1a1a);
+    }
+
+    .empty{
+      text-align:center;
+      padding:18px;
+      opacity:.72;
+    }
+
+    @media (max-width:900px){
+      .hero-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .three-grid,
+      .two-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:700px){
+      .stats-page{
+        padding:22px 14px 30px;
+      }
+
+      .stats-header{
+        grid-template-columns:1fr;
+        justify-items:center;
+      }
+
+      .back-profile{
+        justify-self:center;
+        order:2;
+      }
+
+      .stats-title-wrap{
+        order:1;
+      }
+
+      .header-spacer{
+        display:none;
+      }
+
+      #teamName{
+        font-size:1.55rem;
+      }
+
+      .span-panel{
+        justify-content:flex-start;
+      }
+
+      .hero-grid{
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+      }
+
+      .hero-card{
+        padding:13px 9px;
+      }
+
+      .hero-value{
+        font-size:1.2rem;
+      }
+
+      .year-row{
+        grid-template-columns:54px 54px minmax(0,1fr);
+        gap:6px;
+      }
+    }
+
+    @media (max-width:420px){
+      .hero-grid{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a href="../../home/" class="brand-with-logo">
+        <span>J-Ratings <span class="title-football">European Football</span></span>
+      </a>
+    </h1>
+
+    <nav class="topnav" aria-label="Main">
+      <a href="/index.html">Sports</a>
+      <a href="../../home/">Home</a>
+      <a href="../../compare/">Compare</a>
+      <a href="../../peak/">Peak</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel stats-page">
+    <div class="stats-header">
+      <a id="profileLink" class="back-profile" href="../">← Profile</a>
+
+      <div class="stats-title-wrap">
+        <h2 id="teamName">Team Statistics</h2>
+        <div id="statsSubtitle" class="stats-subtitle">Detailed profile statistics</div>
+      </div>
+
+      <div class="header-spacer"></div>
+    </div>
+
+    <div class="span-panel">
+      <label for="analysisSpan">Statistics span:</label>
+      <select id="analysisSpan">
+        <option value="all" selected>Entire history</option>
+        <option value="50">Last 50 years</option>
+        <option value="25">Last 25 years</option>
+        <option value="10">Last 10 years</option>
+        <option value="5">Last 5 years</option>
+        <option value="1">Last year</option>
+        <option value="custom">Custom dates</option>
+      </select>
+
+      <div id="customDates" class="custom-dates" hidden>
+        <label for="customStart">From</label>
+        <input id="customStart" type="date">
+        <label for="customEnd">To</label>
+        <input id="customEnd" type="date">
+      </div>
+
+      <button id="generate" class="generate-btn" type="button">Generate</button>
+    </div>
+
+    <div id="loading">Loading statistics…</div>
+
+    <div id="dashboard">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="hero-label">Live Elo</div>
+          <div id="liveElo" class="hero-value">—</div>
+          <div id="liveDate" class="hero-detail">—</div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-label">Peak Elo</div>
+          <div id="peakElo" class="hero-value">—</div>
+          <div id="peakDate" class="hero-detail">—</div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-label">Matches</div>
+          <div id="matchCount" class="hero-value">—</div>
+          <div id="matchSpan" class="hero-detail">—</div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-label">Win Rate</div>
+          <div id="winRate" class="hero-value">—</div>
+          <div id="pointsPerGame" class="hero-detail">—</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Match Record</h3>
+        <div class="three-grid">
+          <div class="panel-card">
+            <div class="panel-title">Results</div>
+            <div id="wdlLine" class="wdl-line"></div>
+            <div class="stat-list">
+              <div class="stat-row"><span class="stat-label">Goals scored</span><span id="goalsFor" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Goals conceded</span><span id="goalsAgainst" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Goal difference</span><span id="goalDifference" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Clean sheets</span><span id="cleanSheets" class="stat-value">—</span></div>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-title">Current Form</div>
+            <div id="recentForm" class="form-row"></div>
+            <div id="recentFormText" class="form-note">—</div>
+            <div class="stat-list" style="margin-top:10px">
+              <div class="stat-row"><span class="stat-label">Longest winning streak</span><span id="winningStreak" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Longest unbeaten run</span><span id="unbeatenRun" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Longest losing streak</span><span id="losingStreak" class="stat-value">—</span></div>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-title">Rating Movement</div>
+            <div class="stat-list">
+              <div class="stat-row"><span class="stat-label">1-year change</span><span id="change1y" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">5-year change</span><span id="change5y" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Best 12-month rise</span><span id="bestRise" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Worst 12-month fall</span><span id="worstFall" class="stat-value">—</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Match Extremes</h3>
+        <div class="two-grid">
+          <div class="panel-card">
+            <div class="panel-title">Best & Worst Results</div>
+            <div class="stat-list">
+              <div class="stat-row"><span class="stat-label">Best win by opponent Elo</span><span id="bestWin" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Worst loss by opponent Elo</span><span id="worstLoss" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Biggest win</span><span id="biggestWin" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Biggest defeat</span><span id="biggestLoss" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Highest-scoring match</span><span id="highestScoring" class="stat-value">—</span></div>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-title">Opponents</div>
+            <div class="stat-list">
+              <div class="stat-row"><span class="stat-label">Most-played opponent</span><span id="mostPlayed" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Most wins against</span><span id="mostWins" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Most losses against</span><span id="mostLosses" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Most goals against</span><span id="mostGoalsAgainst" class="stat-value">—</span></div>
+              <div class="stat-row"><span class="stat-label">Best win percentage*</span><span id="bestOpponentPct" class="stat-value">—</span></div>
+            </div>
+            <div class="form-note" style="margin-top:8px">*Minimum 10 meetings in the selected span.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Average Elo by Year</h3>
+        <div class="panel-card">
+          <div id="yearChart" class="year-chart"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Opponent Records</h3>
+        <div id="opponentTableWrap" class="table-wrap"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const idRaw = params.get('id');
+
+  if (!idRaw) {
+    document.getElementById('loading').textContent = 'Missing team id.';
+    throw new Error('Missing team id');
+  }
+
+  const TEAMS_URL = '../../data/teams.json';
+  const HIST_URL = id => `../../data/history/${encodeURIComponent(id)}.json`;
+  const GAMES_URL = id => `../../data/games/${encodeURIComponent(id)}.json`;
+  const COLOURS_URL = '../../team-colours.json';
+
+  let TEAM = null;
+  let HISTORY = [];
+  let GAMES = [];
+  let TEAM_COLOURS = {};
+
+  function fmtDate(value){
+    const d = new Date(value);
+    if (!Number.isFinite(+d)) return '—';
+    return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  }
+
+  function fmtRating(v){
+    return Number.isFinite(v) ? String(Math.round(v)) : '—';
+  }
+
+  function parseScore(g){
+    const hs = Number(g.home_score ?? g.homeScore ?? g.HomeScore);
+    const as = Number(g.away_score ?? g.awayScore ?? g.AwayScore);
+
+    if (Number.isFinite(hs) && Number.isFinite(as)) return [hs,as];
+
+    const raw = String(g.score ?? g.Score ?? '').trim();
+    const m = raw.match(/^(\d+)\s*[-–]\s*(\d+)/);
+    return m ? [Number(m[1]),Number(m[2])] : null;
+  }
+
+  function teamResult(g,name){
+    const score = parseScore(g);
+    if (!score) return null;
+    if (g.home !== name && g.away !== name) return null;
+
+    const [hg,ag] = score;
+    if (hg === ag) return 'draw';
+
+    const winner = hg > ag ? g.home : g.away;
+    return winner === name ? 'win' : 'loss';
+  }
+
+  function teamGoals(g,name){
+    const score = parseScore(g);
+    if (!score) return null;
+
+    if (g.home === name) return {for:score[0],against:score[1]};
+    if (g.away === name) return {for:score[1],against:score[0]};
+    return null;
+  }
+
+  function opponentName(g,name){
+    if (g.home === name) return g.away || '';
+    if (g.away === name) return g.home || '';
+    return '';
+  }
+
+  function opponentElo(g,name){
+    const home = Number(g.homeElo ?? g.home_elo ?? g.HomeElo ?? g.homeRating ?? g.HomeRating_Before);
+    const away = Number(g.awayElo ?? g.away_elo ?? g.AwayElo ?? g.awayRating ?? g.AwayRating_Before);
+
+    if (g.home === name && Number.isFinite(away)) return away;
+    if (g.away === name && Number.isFinite(home)) return home;
+    return NaN;
+  }
+
+  function normaliseHistory(hist){
+    return (Array.isArray(hist) ? hist : [])
+      .map(d => ({
+        x:d.date,
+        y:Number(d.rating)
+      }))
+      .filter(p => p.x && Number.isFinite(p.y))
+      .sort((a,b) => new Date(a.x)-new Date(b.x));
+  }
+
+  function completedGames(games,name){
+    return (Array.isArray(games) ? games : [])
+      .filter(g => g && g.upcoming !== true && (g.home === name || g.away === name) && parseScore(g))
+      .sort((a,b) => new Date(a.date)-new Date(b.date));
+  }
+
+  function selectedWindow(){
+    const span = document.getElementById('analysisSpan').value;
+    const allDates = HISTORY.map(p => new Date(p.x)).filter(d => Number.isFinite(+d));
+
+    if (!allDates.length) return {start:null,end:null};
+
+    const first = new Date(Math.min(...allDates.map(d => +d)));
+    const last = new Date(Math.max(...allDates.map(d => +d)));
+
+    if (span === 'all') return {start:first,end:last};
+
+    if (span === 'custom'){
+      const sr = document.getElementById('customStart').value;
+      const er = document.getElementById('customEnd').value;
+      let start = sr ? new Date(`${sr}T00:00:00`) : first;
+      let end = er ? new Date(`${er}T23:59:59`) : last;
+
+      if (+start > +end) [start,end] = [end,start];
+      return {start,end};
+    }
+
+    const years = Number(span);
+    const end = last;
+    const start = new Date(end);
+    start.setFullYear(start.getFullYear()-years);
+    return {start,end};
+  }
+
+  function inWindow(date,windowRange){
+    const d = new Date(date);
+    return (!windowRange.start || d >= windowRange.start) &&
+           (!windowRange.end || d <= windowRange.end);
+  }
+
+  function pointAtOrBefore(hist,target){
+    const t = +target;
+    let best = null;
+    for (const p of hist){
+      if (+new Date(p.x) <= t) best = p;
+      else break;
+    }
+    return best;
+  }
+
+  function changeYears(hist,years){
+    if (!hist.length) return NaN;
+    const current = hist[hist.length-1];
+    const target = new Date(current.x);
+    target.setFullYear(target.getFullYear()-years);
+    const old = pointAtOrBefore(hist,target);
+    return old ? current.y-old.y : NaN;
+  }
+
+  function setText(id,value){
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  }
+
+  function setSigned(id,value,detail=''){
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    el.classList.remove('positive','negative','neutral');
+
+    if (!Number.isFinite(value)){
+      el.textContent='—';
+      return;
+    }
+
+    const v = Math.round(value);
+    el.textContent = `${v > 0 ? '+' : ''}${v}${detail}`;
+    el.classList.add(v > 0 ? 'positive' : v < 0 ? 'negative' : 'neutral');
+  }
+
+  function yearAverages(hist){
+    const buckets = new Map();
+
+    hist.forEach(p => {
+      const y = new Date(p.x).getFullYear();
+      if (!Number.isFinite(y)) return;
+      if (!buckets.has(y)) buckets.set(y,[]);
+      buckets.get(y).push(p.y);
+    });
+
+    return [...buckets.entries()]
+      .map(([year,vals]) => ({
+        year,
+        avg:vals.reduce((a,b)=>a+b,0)/vals.length
+      }))
+      .sort((a,b)=>a.year-b.year);
+  }
+
+  function rollingYearExtremes(hist){
+    let best=null,worst=null;
+
+    for (const p of hist){
+      const d = new Date(p.x);
+      const prior = new Date(d);
+      prior.setFullYear(prior.getFullYear()-1);
+      const old = pointAtOrBefore(hist,prior);
+      if (!old) continue;
+
+      const change = p.y-old.y;
+      if (!best || change > best.change) best={change,date:p.x};
+      if (!worst || change < worst.change) worst={change,date:p.x};
+    }
+
+    return {best,worst};
+  }
+
+  function streaks(games,name){
+    let win=0,lose=0,unbeaten=0;
+    let bestWin=0,bestLose=0,bestUnbeaten=0;
+
+    games.forEach(g => {
+      const r = teamResult(g,name);
+
+      if (r === 'win'){
+        win++;
+        lose=0;
+        unbeaten++;
+      } else if (r === 'draw'){
+        win=0;
+        lose=0;
+        unbeaten++;
+      } else if (r === 'loss'){
+        win=0;
+        lose++;
+        unbeaten=0;
+      }
+
+      bestWin=Math.max(bestWin,win);
+      bestLose=Math.max(bestLose,lose);
+      bestUnbeaten=Math.max(bestUnbeaten,unbeaten);
+    });
+
+    return {bestWin,bestLose,bestUnbeaten};
+  }
+
+  function analyseGames(games,name){
+    let wins=0,draws=0,losses=0,gf=0,ga=0,clean=0;
+    let bestWin=null,worstLoss=null,biggestWin=null,biggestLoss=null,highestScoring=null;
+    const opponents = new Map();
+
+    games.forEach(g => {
+      const result = teamResult(g,name);
+      const goals = teamGoals(g,name);
+      const opp = opponentName(g,name);
+      const oppElo = opponentElo(g,name);
+
+      if (!result || !goals) return;
+
+      if (result === 'win') wins++;
+      else if (result === 'draw') draws++;
+      else losses++;
+
+      gf += goals.for;
+      ga += goals.against;
+      if (goals.against === 0) clean++;
+
+      const margin = goals.for-goals.against;
+      const totalGoals = goals.for+goals.against;
+
+      if (result === 'win' && (!biggestWin || margin > biggestWin.margin || (margin === biggestWin.margin && goals.for > biggestWin.for))){
+        biggestWin={g,margin,for:goals.for,against:goals.against,opp};
+      }
+
+      if (result === 'loss' && (!biggestLoss || -margin > biggestLoss.margin || (-margin === biggestLoss.margin && goals.against > biggestLoss.against))){
+        biggestLoss={g,margin:-margin,for:goals.for,against:goals.against,opp};
+      }
+
+      if (!highestScoring || totalGoals > highestScoring.total){
+        highestScoring={g,total:totalGoals,for:goals.for,against:goals.against,opp};
+      }
+
+      if (result === 'win' && Number.isFinite(oppElo) && (!bestWin || oppElo > bestWin.oppElo)){
+        bestWin={g,opp,oppElo,for:goals.for,against:goals.against};
+      }
+
+      if (result === 'loss' && Number.isFinite(oppElo) && (!worstLoss || oppElo < worstLoss.oppElo)){
+        worstLoss={g,opp,oppElo,for:goals.for,against:goals.against};
+      }
+
+      if (opp){
+        if (!opponents.has(opp)){
+          opponents.set(opp,{opponent:opp,played:0,wins:0,draws:0,losses:0,gf:0,ga:0});
+        }
+
+        const row=opponents.get(opp);
+        row.played++;
+        row.gf += goals.for;
+        row.ga += goals.against;
+
+        if (result === 'win') row.wins++;
+        else if (result === 'draw') row.draws++;
+        else row.losses++;
+      }
+    });
+
+    return {
+      wins,draws,losses,gf,ga,clean,
+      bestWin,worstLoss,biggestWin,biggestLoss,highestScoring,
+      opponents:[...opponents.values()]
+    };
+  }
+
+  function matchLabel(item){
+    if (!item) return '—';
+    return `${item.for}-${item.against} vs ${item.opp} · ${fmtDate(item.g.date)}`;
+  }
+
+  function renderRecentForm(games,name){
+    const latest = games.slice(-10).reverse();
+    const box = document.getElementById('recentForm');
+    box.innerHTML='';
+
+    latest.forEach(g => {
+      const r = teamResult(g,name);
+      const pill=document.createElement('span');
+      pill.className='form-pill ' + r;
+      pill.textContent=r === 'win' ? 'W' : r === 'draw' ? 'D' : 'L';
+      box.appendChild(pill);
+    });
+
+    const w=latest.filter(g=>teamResult(g,name)==='win').length;
+    const d=latest.filter(g=>teamResult(g,name)==='draw').length;
+    const l=latest.filter(g=>teamResult(g,name)==='loss').length;
+
+    setText('recentFormText',latest.length ? `${w} wins, ${d} draws, ${l} losses` : 'No matches in this span.');
+  }
+
+  function renderYearChart(rows){
+    const box=document.getElementById('yearChart');
+    box.innerHTML='';
+
+    if (!rows.length){
+      box.innerHTML='<div class="empty">No yearly rating data in this span.</div>';
+      return;
+    }
+
+    const values=rows.map(r=>r.avg);
+    const lo=Math.min(...values);
+    const hi=Math.max(...values);
+    const span=Math.max(1,hi-lo);
+
+    rows.forEach(r => {
+      const row=document.createElement('div');
+      row.className='year-row';
+
+      const year=document.createElement('div');
+      year.className='year-label';
+      year.textContent=r.year;
+
+      const value=document.createElement('div');
+      value.className='year-value';
+      value.textContent=Math.round(r.avg);
+
+      const track=document.createElement('div');
+      track.className='year-track';
+
+      const fill=document.createElement('div');
+      fill.className='year-fill';
+      fill.style.width=`${20+80*(r.avg-lo)/span}%`;
+
+      track.appendChild(fill);
+      row.appendChild(year);
+      row.appendChild(value);
+      row.appendChild(track);
+      box.appendChild(row);
+    });
+  }
+
+  function renderOpponentTable(rows){
+    const wrap=document.getElementById('opponentTableWrap');
+
+    if (!rows.length){
+      wrap.innerHTML='<div class="empty">No opponent data in this span.</div>';
+      return;
+    }
+
+    const sorted=rows.slice().sort((a,b)=>b.played-a.played || b.wins-a.wins);
+
+    const table=document.createElement('table');
+    table.className='stats-table';
+
+    const thead=document.createElement('thead');
+    const hr=document.createElement('tr');
+    ['Opponent','P','W','D','L','GF','GA','Win %'].forEach(h=>{
+      const th=document.createElement('th');
+      th.textContent=h;
+      hr.appendChild(th);
+    });
+    thead.appendChild(hr);
+    table.appendChild(thead);
+
+    const tbody=document.createElement('tbody');
+
+    sorted.forEach(r=>{
+      const tr=document.createElement('tr');
+      [
+        r.opponent,
+        r.played,
+        r.wins,
+        r.draws,
+        r.losses,
+        r.gf,
+        r.ga,
+        `${(100*r.wins/r.played).toFixed(1)}%`
+      ].forEach((v,i)=>{
+        const td=document.createElement('td');
+        td.textContent=v;
+        if (i === 2) td.className='positive';
+        if (i === 3) td.className='neutral';
+        if (i === 4) td.className='negative';
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    wrap.innerHTML='';
+    wrap.appendChild(table);
+  }
+
+  function renderDashboard(){
+    const windowRange=selectedWindow();
+
+    const hist=HISTORY.filter(p=>inWindow(p.x,windowRange));
+    const games=completedGames(GAMES,TEAM.name).filter(g=>inWindow(g.date,windowRange));
+
+    if (!hist.length){
+      alert('No rating history in the selected span.');
+      return;
+    }
+
+    const live=hist[hist.length-1];
+    const peak=hist.reduce((a,b)=>!a || b.y>a.y ? b:a,null);
+    const analysis=analyseGames(games,TEAM.name);
+    const total=analysis.wins+analysis.draws+analysis.losses;
+    const s=streaks(games,TEAM.name);
+    const rolling=rollingYearExtremes(hist);
+
+    setText('liveElo',fmtRating(live.y));
+    setText('liveDate',`As of ${fmtDate(live.x)}`);
+    setText('peakElo',fmtRating(peak.y));
+    setText('peakDate',fmtDate(peak.x));
+    setText('matchCount',String(total));
+
+    if (games.length){
+      setText('matchSpan',`${fmtDate(games[0].date)} – ${fmtDate(games[games.length-1].date)}`);
+    } else {
+      setText('matchSpan','No completed matches');
+    }
+
+    setText('winRate',total ? `${(100*analysis.wins/total).toFixed(1)}%` : '—');
+    setText('pointsPerGame',total ? `${((3*analysis.wins+analysis.draws)/total).toFixed(2)} points per game` : '—');
+
+    document.getElementById('wdlLine').innerHTML = total
+      ? `<span class="wdl-win">W${analysis.wins}</span><span class="wdl-draw">D${analysis.draws}</span><span class="wdl-loss">L${analysis.losses}</span>`
+      : '—';
+
+    setText('goalsFor',String(analysis.gf));
+    setText('goalsAgainst',String(analysis.ga));
+    setSigned('goalDifference',analysis.gf-analysis.ga);
+    setText('cleanSheets',String(analysis.clean));
+
+    renderRecentForm(games,TEAM.name);
+    setText('winningStreak',String(s.bestWin));
+    setText('unbeatenRun',String(s.bestUnbeaten));
+    setText('losingStreak',String(s.bestLose));
+
+    setSigned('change1y',changeYears(hist,1));
+    setSigned('change5y',changeYears(hist,5));
+
+    if (rolling.best){
+      const el=document.getElementById('bestRise');
+      el.innerHTML=`<span class="positive">+${Math.round(rolling.best.change)}</span> · ${fmtDate(rolling.best.date)}`;
+    } else {
+      setText('bestRise','—');
+    }
+
+    if (rolling.worst){
+      const el=document.getElementById('worstFall');
+      el.innerHTML=`<span class="negative">${Math.round(rolling.worst.change)}</span> · ${fmtDate(rolling.worst.date)}`;
+    } else {
+      setText('worstFall','—');
+    }
+
+    setText('bestWin',analysis.bestWin ? `${matchLabel(analysis.bestWin)} · Opp Elo ${Math.round(analysis.bestWin.oppElo)}` : '—');
+    setText('worstLoss',analysis.worstLoss ? `${matchLabel(analysis.worstLoss)} · Opp Elo ${Math.round(analysis.worstLoss.oppElo)}` : '—');
+    setText('biggestWin',matchLabel(analysis.biggestWin));
+    setText('biggestLoss',matchLabel(analysis.biggestLoss));
+    setText('highestScoring',matchLabel(analysis.highestScoring));
+
+    const oppRows=analysis.opponents;
+
+    const mostPlayed=oppRows.slice().sort((a,b)=>b.played-a.played)[0];
+    const mostWins=oppRows.slice().sort((a,b)=>b.wins-a.wins || b.played-a.played)[0];
+    const mostLosses=oppRows.slice().sort((a,b)=>b.losses-a.losses || b.played-a.played)[0];
+    const mostGoals=oppRows.slice().sort((a,b)=>b.gf-a.gf || b.played-a.played)[0];
+
+    const eligible=oppRows.filter(r=>r.played>=10);
+    const bestPct=eligible.slice().sort((a,b)=>(b.wins/b.played)-(a.wins/a.played) || b.played-a.played)[0];
+
+    setText('mostPlayed',mostPlayed ? `${mostPlayed.opponent} · ${mostPlayed.played}` : '—');
+    setText('mostWins',mostWins ? `${mostWins.opponent} · ${mostWins.wins}` : '—');
+    setText('mostLosses',mostLosses ? `${mostLosses.opponent} · ${mostLosses.losses}` : '—');
+    setText('mostGoalsAgainst',mostGoals ? `${mostGoals.opponent} · ${mostGoals.gf}` : '—');
+    setText('bestOpponentPct',bestPct ? `${bestPct.opponent} · ${(100*bestPct.wins/bestPct.played).toFixed(1)}%` : '—');
+
+    renderYearChart(yearAverages(hist));
+    renderOpponentTable(oppRows);
+
+    document.getElementById('dashboard').style.display='block';
+  }
+
+  function normaliseColour(hex){
+    return /^#[0-9a-f]{6}$/i.test(String(hex||'')) ? hex : '#2F80ED';
+  }
+
+  async function init(){
+    document.getElementById('profileLink').href=`../?id=${encodeURIComponent(idRaw)}`;
+
+    const [teamsRes,histRes,gamesRes,coloursRes] = await Promise.all([
+      fetch(TEAMS_URL,{cache:'no-cache'}),
+      fetch(HIST_URL(idRaw),{cache:'no-cache'}),
+      fetch(GAMES_URL(idRaw),{cache:'no-cache'}),
+      fetch(COLOURS_URL,{cache:'no-cache'}).catch(()=>null)
+    ]);
+
+    if (!teamsRes.ok) throw new Error('teams.json not found');
+    if (!histRes.ok) throw new Error('history not found');
+
+    const [teams,hist,games] = await Promise.all([
+      teamsRes.json(),
+      histRes.json(),
+      gamesRes.ok ? gamesRes.json() : []
+    ]);
+
+    TEAM = (Array.isArray(teams) ? teams : []).find(t=>String(t.id)===String(idRaw)) || null;
+
+    if (!TEAM){
+      throw new Error('Team not found');
+    }
+
+    if (coloursRes && coloursRes.ok){
+      TEAM_COLOURS=await coloursRes.json();
+    }
+
+    HISTORY=normaliseHistory(hist);
+    GAMES=Array.isArray(games) ? games : [];
+
+    document.documentElement.style.setProperty('--team-colour',normaliseColour(TEAM_COLOURS[TEAM.name]));
+    setText('teamName',TEAM.name);
+    document.title=`J-Ratings: ${TEAM.name} Statistics`;
+
+    document.getElementById('loading').style.display='none';
+    renderDashboard();
+  }
+
+  document.getElementById('analysisSpan').addEventListener('change',()=>{
+    document.getElementById('customDates').hidden =
+      document.getElementById('analysisSpan').value !== 'custom';
+  });
+
+  document.getElementById('generate').addEventListener('click',renderDashboard);
+
+  window.addEventListener('DOMContentLoaded',()=>{
+    init().catch(e=>{
+      console.error(e);
+      document.getElementById('loading').textContent=e.message || 'Could not load statistics.';
+    });
+  });
+</script>
+</body>
+</html>
