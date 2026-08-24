@@ -282,7 +282,8 @@
       align-items:flex-start;
       gap:9px;
       margin:0 auto 10px;
-      width:min(82.8vw, 1260px);
+      width:100%;
+      max-width:1100px;
     }
 
     .jr-chart-controls > div:first-child{
@@ -319,7 +320,8 @@
     }
 
     #chart{
-      width:min(82.8vw, 1260px);
+      width:100%;
+      max-width:1100px;
       height:585px;
       min-height:585px;
       margin:0 auto;
@@ -433,6 +435,19 @@
         display:none;
       }
 
+
+      .analysis-span-row{
+        justify-content:flex-start;
+      }
+
+      .rating-pair{
+        gap:8px;
+      }
+
+      .rating-number{
+        font-size:1.08rem;
+      }
+
       .headline{
         grid-template-columns:1fr;
         gap:10px;
@@ -474,6 +489,113 @@
         font-size:15px !important;
       }
     }
+  
+    .analysis-span-row{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      margin-top:16px;
+      flex-wrap:wrap;
+    }
+
+    .analysis-span-row label{
+      font-weight:800;
+    }
+
+    .analysis-span-row select{
+      padding:9px 11px;
+      border:1px solid var(--border, #444);
+      border-radius:8px;
+      background:#0f1623;
+      color:inherit;
+      font-size:1rem;
+    }
+
+    .rating-pair{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:14px;
+      margin-top:8px;
+    }
+
+    .rating-number{
+      font-size:1.22rem;
+      font-weight:900;
+    }
+
+    .rating-pair .team-a{
+      text-align:right;
+    }
+
+    .rating-pair .team-b{
+      text-align:left;
+    }
+
+    .versus-small{
+      font-size:.9rem;
+      opacity:.72;
+      font-weight:700;
+    }
+
+    .wdl-summary{
+      display:flex;
+      justify-content:center;
+      gap:6px;
+      flex-wrap:wrap;
+      margin-top:7px;
+      font-weight:900;
+      font-size:.96rem;
+    }
+
+    .wdl-summary-pct{
+      margin-top:4px;
+      font-size:.86rem;
+    }
+
+    .wdl-w{ color:#14b85a; }
+    .wdl-d{ color:#f4c430; }
+    .wdl-l{ color:#e53935; }
+
+    .dominance-labels{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:8px;
+      font-weight:900;
+      line-height:1.25;
+    }
+
+    .dominance-labels span{
+      min-width:0;
+      overflow-wrap:anywhere;
+    }
+
+    .dominance-labels span:last-child{
+      text-align:right;
+    }
+
+    .section.graph-section{
+      max-width:1100px;
+    }
+
+    .graph-shell{
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .jr-chart-controls{
+      width:100%;
+      max-width:1100px;
+    }
+
+    #chart{
+      width:100%;
+      max-width:1100px;
+      box-sizing:border-box;
+    }
+
   </style>
 </head>
 
@@ -505,9 +627,9 @@
     <div class="picker">
       <div class="picker-grid">
         <div class="team-picker">
-          <label for="teamA">Team 1</label>
+          <label for="teamA">Chosen team</label>
           <div class="suggest">
-            <input id="teamA" type="text" autocomplete="off" placeholder="Search team…">
+            <input id="teamA" type="text" autocomplete="off" placeholder="Choose team…">
             <div id="suggestA" class="suggest-list"></div>
           </div>
         </div>
@@ -515,12 +637,24 @@
         <div class="versus">VS</div>
 
         <div class="team-picker">
-          <label for="teamB">Team 2</label>
+          <label for="teamB">Compare with</label>
           <div class="suggest">
-            <input id="teamB" type="text" autocomplete="off" placeholder="Search team…">
+            <input id="teamB" type="text" autocomplete="off" placeholder="Compare with team…">
             <div id="suggestB" class="suggest-list"></div>
           </div>
         </div>
+      </div>
+
+      <div class="analysis-span-row">
+        <label for="analysisSpan">Analysis span:</label>
+        <select id="analysisSpan">
+          <option value="all" selected>Entire period</option>
+          <option value="50">Last 50 years</option>
+          <option value="25">Last 25 years</option>
+          <option value="10">Last 10 years</option>
+          <option value="5">Last 5 years</option>
+          <option value="1">Last year</option>
+        </select>
       </div>
 
       <div class="actions">
@@ -545,20 +679,20 @@
       <div class="summary-grid">
         <div class="summary-card">
           <div class="summary-label">Current Elo</div>
-          <div class="split">
-            <span id="currentA" class="team-a">—</span>
-            <span>vs</span>
-            <span id="currentB" class="team-b">—</span>
+          <div class="rating-pair">
+            <span id="currentA" class="team-a rating-number">—</span>
+            <span class="versus-small">vs</span>
+            <span id="currentB" class="team-b rating-number">—</span>
           </div>
           <div id="currentGap" class="summary-value">—</div>
         </div>
 
         <div class="summary-card">
           <div class="summary-label">Peak Elo</div>
-          <div class="split">
-            <span id="peakA" class="team-a">—</span>
-            <span>vs</span>
-            <span id="peakB" class="team-b">—</span>
+          <div class="rating-pair">
+            <span id="peakA" class="team-a rating-number">—</span>
+            <span class="versus-small">vs</span>
+            <span id="peakB" class="team-b rating-number">—</span>
           </div>
           <div id="peakGap" class="summary-value">—</div>
         </div>
@@ -572,11 +706,12 @@
         <div class="summary-card">
           <div class="summary-label">Direct Meetings</div>
           <div id="meetingCount" class="summary-value">—</div>
-          <div id="meetingSummary" class="summary-label">—</div>
+          <div id="meetingSummary" class="wdl-summary">—</div>
+          <div id="meetingPct" class="wdl-summary wdl-summary-pct">—</div>
         </div>
       </div>
 
-      <div class="section">
+      <div class="section graph-section">
         <h3>Rating Comparison</h3>
         <div class="graph-shell">
           <div class="jr-chart-controls">
@@ -598,7 +733,7 @@
               <button type="button" class="seg" data-range="YTD" aria-pressed="false">YTD</button>
             </div>
           </div>
-          <div id="chart">Choose two teams.</div>
+          <div id="chart"></div>
         </div>
       </div>
 
@@ -636,9 +771,13 @@
 
       <div class="section">
         <h3>Historical Dominance</h3>
-        <div class="dominance-bar">
-          <div id="domA" class="dominance-a">—</div>
-          <div id="domB" class="dominance-b">—</div>
+        <div class="dominance-labels">
+          <span id="domLabelA" class="team-a">—</span>
+          <span id="domLabelB" class="team-b">—</span>
+        </div>
+        <div class="dominance-bar" aria-label="Historical dominance">
+          <div id="domA" class="dominance-a"></div>
+          <div id="domB" class="dominance-b"></div>
         </div>
         <div id="domNote" class="dominance-note">—</div>
       </div>
@@ -717,6 +856,59 @@
     target.setFullYear(target.getFullYear() - years);
     const old = pointAtOrBefore(hist, target);
     return old ? current.y - old.y : NaN;
+  }
+
+  function filterHistoryBySpan(hist, spanValue){
+    if (!hist.length || spanValue === 'all') return hist.slice();
+
+    const years = Number(spanValue);
+    if (!Number.isFinite(years) || years <= 0) return hist.slice();
+
+    const end = new Date(hist[hist.length - 1].x);
+    const start = new Date(end);
+    start.setFullYear(start.getFullYear() - years);
+
+    return hist.filter(p => new Date(p.x) >= start);
+  }
+
+  function filterMeetingsBySpan(meetings, spanValue){
+    if (!meetings.length || spanValue === 'all') return meetings.slice();
+
+    const years = Number(spanValue);
+    if (!Number.isFinite(years) || years <= 0) return meetings.slice();
+
+    const latest = meetings.reduce((best,g) => {
+      const d = new Date(g.date);
+      return !best || d > best ? d : best;
+    }, null);
+
+    if (!latest) return meetings.slice();
+
+    const start = new Date(latest);
+    start.setFullYear(start.getFullYear() - years);
+
+    return meetings.filter(g => new Date(g.date) >= start);
+  }
+
+  function renderWdlSummary(h2h){
+    const total = h2h.winsA + h2h.draws + h2h.winsB;
+
+    const main = [
+      `<span class="wdl-w">W${h2h.winsA}</span>`,
+      `<span class="wdl-d">D${h2h.draws}</span>`,
+      `<span class="wdl-l">L${h2h.winsB}</span>`
+    ].join('<span>–</span>');
+
+    const pct = total
+      ? [
+          `<span class="wdl-w">W${(100*h2h.winsA/total).toFixed(1)}%</span>`,
+          `<span class="wdl-d">D${(100*h2h.draws/total).toFixed(1)}%</span>`,
+          `<span class="wdl-l">L${(100*h2h.winsB/total).toFixed(1)}%</span>`
+        ].join('<span>–</span>')
+      : '—';
+
+    document.getElementById('meetingSummary').innerHTML = main;
+    document.getElementById('meetingPct').innerHTML = pct;
   }
 
   function hexToRgb(hex){
@@ -1129,11 +1321,16 @@
         gbRes.ok ? gbRes.json() : []
       ]);
 
-      const histA = normaliseHistory(ha);
-      const histB = normaliseHistory(hb);
-      const allMeetings = dedupeMeetings(
+      const fullHistA = normaliseHistory(ha);
+      const fullHistB = normaliseHistory(hb);
+      const fullMeetings = dedupeMeetings(
         directMeetings(ga,a.name,b.name).concat(directMeetings(gb,a.name,b.name))
       );
+
+      const spanValue = document.getElementById('analysisSpan').value;
+      const histA = filterHistoryBySpan(fullHistA, spanValue);
+      const histB = filterHistoryBySpan(fullHistB, spanValue);
+      const allMeetings = filterMeetingsBySpan(fullMeetings, spanValue);
 
       const h2h = analyseMeetings(allMeetings,a.name,b.name);
       const comp = monthlyComparison(histA,histB);
@@ -1146,8 +1343,8 @@
 
       setText('nameA',a.name);
       setText('nameB',b.name);
-      setText('subA', histA.length ? `History from ${fmtDate(histA[0].x)}` : 'No history');
-      setText('subB', histB.length ? `History from ${fmtDate(histB[0].x)}` : 'No history');
+      setText('subA', histA.length ? `Analysed from ${fmtDate(histA[0].x)}` : 'No history');
+      setText('subB', histB.length ? `Analysed from ${fmtDate(histB[0].x)}` : 'No history');
 
       setText('currentA',fmtRating(liveA));
       setText('currentB',fmtRating(liveB));
@@ -1169,7 +1366,12 @@
 
       const meetingsTotal = h2h.winsA+h2h.winsB+h2h.draws;
       setText('meetingCount',String(meetingsTotal));
-      setText('meetingSummary', meetingsTotal ? `${h2h.winsA}-${h2h.draws}-${h2h.winsB} W-D-W` : 'No meetings found');
+      if (meetingsTotal) {
+        renderWdlSummary(h2h);
+      } else {
+        document.getElementById('meetingSummary').innerHTML = '—';
+        document.getElementById('meetingPct').innerHTML = '—';
+      }
 
       setText('liveStatA',fmtRating(liveA));
       setText('liveStatB',fmtRating(liveB));
@@ -1201,13 +1403,15 @@
         const widthB = comp.periods ? 100*comp.aheadB/comp.periods : 50;
         document.getElementById('domA').style.width = `${widthA}%`;
         document.getElementById('domB').style.width = `${widthB}%`;
-        document.getElementById('domA').textContent = widthA >= 12 ? `${a.name} ${widthA.toFixed(1)}%` : '';
-        document.getElementById('domB').textContent = widthB >= 12 ? `${b.name} ${widthB.toFixed(1)}%` : '';
+        setText('domLabelA',`${a.name} ${widthA.toFixed(1)}%`);
+        setText('domLabelB',`${b.name} ${widthB.toFixed(1)}%`);
         setText('domNote',`Based on ${comp.periods} monthly snapshots where both teams have rating history.`);
       } else {
         ['daysAheadA','daysAheadB','maxLeadA','maxLeadB','maxLeadDateA','maxLeadDateB','crossoversA','crossoversB','closestGapA','closestGapB'].forEach(id => setText(id,'—'));
         document.getElementById('domA').style.width='50%';
         document.getElementById('domB').style.width='50%';
+        setText('domLabelA',a.name);
+        setText('domLabelB',b.name);
         setText('domNote','No overlapping rating history.');
       }
 
@@ -1288,6 +1492,12 @@
     attachAutocomplete(document.getElementById('teamB'),document.getElementById('suggestB'));
 
     document.getElementById('compare').addEventListener('click',compareProfiles);
+
+    document.getElementById('analysisSpan').addEventListener('change',() => {
+      const a = resolveTeam(document.getElementById('teamA'));
+      const b = resolveTeam(document.getElementById('teamB'));
+      if (a && b && String(a.id) !== String(b.id)) compareProfiles();
+    });
 
     document.getElementById('swap').addEventListener('click',() => {
       const a=document.getElementById('teamA');
