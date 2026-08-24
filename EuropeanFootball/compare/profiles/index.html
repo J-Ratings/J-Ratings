@@ -622,6 +622,53 @@
       opacity:.85;
     }
 
+  
+    .wdl-summary{
+      min-width:0;
+      white-space:nowrap;
+    }
+
+    .wdl-summary span{
+      flex:0 0 auto;
+    }
+
+    .meetings-table-wrap table.meetings th,
+    .meetings-table-wrap table.meetings td{
+      border-right:1px solid rgba(128,128,128,.18);
+    }
+
+    .meetings-table-wrap table.meetings th:last-child,
+    .meetings-table-wrap table.meetings td:last-child{
+      border-right:0;
+    }
+
+    @media (max-width:700px){
+      .wdl-summary{
+        gap:3px;
+        font-size:.82rem;
+      }
+
+      .wdl-summary-pct{
+        gap:3px;
+        font-size:.72rem;
+        letter-spacing:-.01em;
+      }
+    }
+
+    @media (max-width:430px){
+      .summary-grid{
+        grid-template-columns:1fr;
+      }
+
+      .wdl-summary{
+        font-size:.9rem;
+      }
+
+      .wdl-summary-pct{
+        font-size:.8rem;
+      }
+    }
+
   </style>
 </head>
 
@@ -1442,11 +1489,31 @@
 
       setText('currentA',fmtRating(liveA));
       setText('currentB',fmtRating(liveB));
-      setText('currentGap', Number.isFinite(liveA) && Number.isFinite(liveB) ? `${Math.round(Math.abs(liveA-liveB))} point gap` : '—');
+      if (Number.isFinite(liveA) && Number.isFinite(liveB)) {
+        const gap = Math.round(Math.abs(liveA-liveB));
+        if (gap === 0) {
+          setText('currentGap', 'Level on Elo');
+        } else {
+          const leader = liveA > liveB ? a.name : b.name;
+          setText('currentGap', `${leader} higher by ${gap} Elo`);
+        }
+      } else {
+        setText('currentGap', '—');
+      }
 
       setText('peakA',pa ? fmtRating(pa.y) : '—');
       setText('peakB',pb ? fmtRating(pb.y) : '—');
-      setText('peakGap', pa && pb ? `${Math.round(Math.abs(pa.y-pb.y))} point gap` : '—');
+      if (pa && pb) {
+        const gap = Math.round(Math.abs(pa.y-pb.y));
+        if (gap === 0) {
+          setText('peakGap', 'Level on peak Elo');
+        } else {
+          const leader = pa.y > pb.y ? a.name : b.name;
+          setText('peakGap', `${leader} higher by ${gap} Elo`);
+        }
+      } else {
+        setText('peakGap', '—');
+      }
 
       if (comp && comp.periods){
         const leader = comp.aheadA >= comp.aheadB ? a.name : b.name;
