@@ -286,7 +286,6 @@
     <nav class="topnav" aria-label="Main">
       <a href="/index.html">Sports</a>
       <a href="../home/">Home</a>
-      <a href="../compare/">Compare</a>
       <a href="./" class="active-tab">Peak</a>
     </nav>
   </div>
@@ -297,32 +296,8 @@
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by team…">
       <span id="count" class="muted"></span>
+</div>
 
-      <button id="compare-btn" class="club-btn" type="button" style="margin-left:auto">Compare</button>
-    </div>
-
-    <div id="compare-wrap" style="display:none; padding:16px">
-      <div class="compare-chart-toolbar">
-        <div class="compare-toolbar-stack">
-          <div class="compare-toolbar-top">
-            <label for="compare-agg">View:</label>
-            <select id="compare-agg">
-              <option value="daily">Daily</option>
-              <option value="monthly" selected>Monthly</option>
-              <option value="yearly">Yearly</option>
-            </select>
-          </div>
-
-          <div class="range-buttons" role="group" aria-label="Comparison time range">
-            <button type="button" class="range-btn is-active" data-since="">All</button>
-            <button type="button" class="range-btn" data-since="2000">Since 2000</button>
-            <button type="button" class="range-btn" data-since="2020">Since 2020</button>
-          </div>
-        </div>
-      </div>
-
-      <div id="compare-chart"></div>
-    </div>
 
     <div class="table-wrap">
       <table id="teams">
@@ -340,23 +315,6 @@
   </section>
 </main>
 
-<div id="compare-modal">
-  <div>
-    <div class="compare-modal-header">
-      <div class="compare-modal-title-row">
-        <h3>Select teams to view:</h3>
-        <button id="compare-close" class="compare-close" type="button" aria-label="Close comparison">×</button>
-      </div>
-
-      <div class="compare-controls">
-        <button id="compare-show-top" type="button">Show Selected</button>
-      </div>
-    </div>
-
-    <div id="compare-list"></div>
-  </div>
-</div>
-</div>
 
 <script>
   const DATA_URL = '../data/teams.json';
@@ -954,11 +912,7 @@
   }
 
   document.getElementById('q').addEventListener('input', applyFilter);
-
-  setupCompareButton();
-  setupCompareChartControls();
-
-  loadColours()
+loadColours()
     .then(load)
     .catch(err => {
       console.error(err);

@@ -603,7 +603,6 @@
     <nav class="topnav" aria-label="Main">
       <a href="/index.html">Sports</a>
       <a href="./" class="active-tab">Home</a>
-      <a href="../compare/">Compare</a>
       <a href="../peak/">Peak</a>    
     </nav>
   </div>
@@ -645,34 +644,8 @@
       <select id="season">
         <option value="live" selected>Live</option>
       </select>
+</div>
 
-      <button id="compare-btn" class="club-btn" type="button">Compare</button>
-    </div>
-
-    <div id="compare-wrap" style="display:none; padding:16px">
-      <div class="jr-chart-controls">
-        <div>
-          <label for="compare-agg">View:</label>
-          <select id="compare-agg">
-            <option value="daily">Daily</option>
-            <option value="weekly" selected>Weekly</option>
-            <option value="monthly">Monthly</option>
-            <option value="quarterly">Quarterly</option>
-            <option value="yearly">Yearly</option>
-          </select>
-        </div>
-
-        <div class="range-buttons">
-          <button type="button" class="seg active is-active" data-range="ALL" aria-pressed="true">ALL</button>
-          <button type="button" class="seg" data-range="2000">2000–Present</button>
-          <button type="button" class="seg" data-range="2020" aria-pressed="false">2020–Present</button>
-          <button type="button" class="seg" data-range="LY">Last Year</button>
-          <button type="button" class="seg" data-range="YTD">YTD</button>
-        </div>
-      </div>
-
-      <div id="compare-chart" class="jr-chart">Loading…</div>
-    </div>
 
 
 
@@ -692,23 +665,6 @@
     </div>
   </section>
 
-  <!-- Compare Selection Modal -->
-  <div id="compare-modal">
-    <div>
-      <div class="compare-modal-header">
-        <div class="compare-modal-title-row">
-          <h3>Select teams to view:</h3>
-          <button id="compare-close" class="compare-close" type="button" aria-label="Close comparison">×</button>
-        </div>
-
-        <div class="compare-controls">
-          <button id="compare-show-top" type="button">Show Selected</button>
-        </div>
-      </div>
-
-      <div id="compare-list"></div>
-    </div>
-  </div>
 
 
 
@@ -1624,10 +1580,7 @@ document.getElementById('season').addEventListener('change', rebuildRowsFromMode
 
   document.getElementById('league').addEventListener('change', applyFilter);
   document.getElementById('q').addEventListener('input', applyFilter);
-
-  setupCompareButton();
-
-  loadColours()
+loadColours()
     .then(load)
     .catch(err => {
       console.error(err);

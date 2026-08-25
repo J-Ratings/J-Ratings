@@ -1,4 +1,5 @@
 from __future__ import annotations
+import re
 
 import json
 import shutil
@@ -72,6 +73,15 @@ Path("EuropeanFootball/premier_league_simulator_prototype.html"),
 ]
 
 
+PUBLIC_PRIVATE_DIRECTORIES = [
+    Path("EuropeanFootball/compare"),
+    Path("Go/compare"),
+    Path("InternationalFootball/compare"),
+    Path("RugbyUnion/compare"),
+    Path("Snooker/compare"),
+]
+
+
 def should_ignore_dir(path: Path) -> bool:
     return any(part in GENERIC_PRIVATE_DIR_NAMES for part in path.parts)
 
@@ -94,6 +104,17 @@ def copy_tree_filtered(src: Path, dst: Path) -> None:
 
 def remove_private_paths() -> None:
     for rel in EUROPEAN_FOOTBALL_PRIVATE_PATHS:
+        target = OUT_DIR / rel
+
+        if target.is_dir():
+            shutil.rmtree(target)
+            print(f"Removed private directory: {rel.as_posix()}")
+        elif target.is_file():
+            target.unlink()
+            print(f"Removed private file: {rel.as_posix()}")
+
+
+    for rel in PUBLIC_PRIVATE_DIRECTORIES:
         target = OUT_DIR / rel
 
         if target.is_dir():
@@ -165,39 +186,108 @@ def filter_season_starts(path: Path) -> int:
     return before - len(filtered)
 
 
-def filter_european_football_public_data() -> None:
-    ef_data = OUT_DIR / "EuropeanFootball" / "data"
 
-    history_dir = ef_data / "history"
-    games_dir = ef_data / "games"
+SPORT_PUBLIC_FILTERS = {
+    "EuropeanFootball": {
+        "dated_dirs": ["data/history", "data/games"],
+        "season_files": ["data/season_starts.json"],
+    },
+    "Go": {
+        "dated_dirs": ["data/history", "data/games"],
+        "season_files": ["data/era_starts.json"],
+    },
+    "InternationalFootball": {
+        "dated_dirs": ["data/history", "data/games"],
+        "season_files": ["data/era_starts.json"],
+    },
+    "RugbyUnion": {
+        "dated_dirs": ["data/history", "data/games"],
+        "season_files": ["data/era_starts.json"],
+    },
+    "Snooker": {
+        "dated_dirs": ["data/history", "data/games"],
+        "season_files": [],
+    },
+}
 
-    removed_history = 0
-    removed_games = 0
 
-    if history_dir.exists():
-        for path in history_dir.glob("*.json"):
-            removed_history += filter_rows_by_date(path)
+def filter_sport_public_data(sport: str, config: dict) -> None:
+    sport_dir = OUT_DIR / sport
 
-    if games_dir.exists():
-        for path in games_dir.glob("*.json"):
-            removed_games += filter_rows_by_date(path)
-
-    season_starts = ef_data / "season_starts.json"
+    removed_dated = 0
     removed_seasons = 0
 
-    if season_starts.exists():
-        removed_seasons = filter_season_starts(season_starts)
+    for rel_dir in config.get("dated_dirs", []):
+        folder = sport_dir / rel_dir
+        if not folder.exists():
+            continue
 
-    print(f"European Football history rows removed before 2010: {removed_history}")
-    print(f"European Football game rows removed before 2010: {removed_games}")
-    print(f"European Football season-start rows removed before 2010: {removed_seasons}")
+        for path in folder.glob("*.json"):
+            removed_dated += filter_rows_by_date(path)
+
+    for rel_file in config.get("season_files", []):
+        path = sport_dir / rel_file
+        if path.exists():
+            removed_seasons += filter_season_starts(path)
+
+    print(f"{sport} dated rows removed before 2010: {removed_dated}")
+    if config.get("season_files"):
+        print(f"{sport} season/era rows removed before 2010: {removed_seasons}")
 
 
-def assert_no_pre_2010_european_football_data() -> None:
-    ef_data = OUT_DIR / "EuropeanFootball" / "data"
+def filter_snooker_snapshots() -> int:
+    snapshots_dir = OUT_DIR / "Snooker" / "data" / "snapshots"
 
-    for folder_name in ("history", "games"):
-        folder = ef_data / folder_name
+    if not snapshots_dir.exists():
+        return 0
+
+    removed = 0
+
+    for path in snapshots_dir.glob("*.json"):
+        year_text = path.stem.strip()
+
+        # current.json is the live/current snapshot and must remain public.
+        if year_text.lower() == "current":
+            continue
+
+        # seasons.json is an index of available snapshot years.
+        if year_text.lower() == "seasons":
+            seasons = load_json(path)
+
+            if not isinstance(seasons, list):
+                raise RuntimeError(f"Expected a JSON list: {path}")
+
+            filtered = []
+            for value in seasons:
+                try:
+                    year = int(value)
+                except (TypeError, ValueError):
+                    continue
+
+                if year >= 2010:
+                    filtered.append(year)
+
+            save_json(path, filtered)
+            continue
+
+        if not year_text.isdigit():
+            raise RuntimeError(
+                f"Unexpected Snooker snapshot filename: {path.name}"
+            )
+
+        if int(year_text) < 2010:
+            path.unlink()
+            removed += 1
+
+    print(f"Snooker snapshot files removed before 2010: {removed}")
+    return removed
+
+
+def assert_no_pre_2010_sport_data(sport: str, config: dict) -> None:
+    sport_dir = OUT_DIR / sport
+
+    for rel_dir in config.get("dated_dirs", []):
+        folder = sport_dir / rel_dir
         if not folder.exists():
             continue
 
@@ -218,30 +308,341 @@ def assert_no_pre_2010_european_football_data() -> None:
                         f"SAFETY CHECK FAILED: pre-2010 row found in {path}: {date}"
                     )
 
-    season_starts = ef_data / "season_starts.json"
-    if season_starts.exists():
-        data = load_json(season_starts)
+    for rel_file in config.get("season_files", []):
+        path = sport_dir / rel_file
+        if not path.exists():
+            continue
 
-        if isinstance(data, list):
-            for row in data:
-                if not isinstance(row, dict):
+        data = load_json(path)
+
+        if not isinstance(data, list):
+            continue
+
+        for row in data:
+            if not isinstance(row, dict):
+                continue
+
+            year = season_start_year(row.get("season", ""))
+
+            if year is not None and year < 2010:
+                raise RuntimeError(
+                    "SAFETY CHECK FAILED: pre-2010 season/era found in "
+                    f"{path}: {row.get('season')}"
+                )
+
+    print(f"{sport} public-data safety checks: PASS")
+
+
+def assert_no_pre_2010_snooker_snapshots() -> None:
+    snapshots_dir = OUT_DIR / "Snooker" / "data" / "snapshots"
+
+    if not snapshots_dir.exists():
+        return
+
+    for path in snapshots_dir.glob("*.json"):
+        year_text = path.stem.strip()
+
+        if year_text.lower() == "current":
+            continue
+
+        if year_text.lower() == "seasons":
+            seasons = load_json(path)
+
+            if not isinstance(seasons, list):
+                raise RuntimeError(f"Expected a JSON list: {path}")
+
+            for value in seasons:
+                try:
+                    year = int(value)
+                except (TypeError, ValueError):
                     continue
 
-                year = season_start_year(row.get("season", ""))
-
-                if year is not None and year < 2010:
+                if year < 2010:
                     raise RuntimeError(
-                        "SAFETY CHECK FAILED: pre-2010 season found in "
-                        f"{season_starts}: {row.get('season')}"
+                        f"SAFETY CHECK FAILED: pre-2010 Snooker season found in {path}: {year}"
                     )
+            continue
 
+        if not year_text.isdigit():
+            raise RuntimeError(
+                f"SAFETY CHECK FAILED: unexpected Snooker snapshot filename: {path.name}"
+            )
+
+        if int(year_text) < 2010:
+            raise RuntimeError(
+                f"SAFETY CHECK FAILED: pre-2010 Snooker snapshot exists: {path}"
+            )
+
+    print("Snooker snapshot safety checks: PASS")
+
+
+def assert_european_football_private_paths_absent() -> None:
     for rel in EUROPEAN_FOOTBALL_PRIVATE_PATHS:
         if (OUT_DIR / rel).exists():
             raise RuntimeError(
                 f"SAFETY CHECK FAILED: private path exists in public build: {rel}"
             )
 
-    print("European Football public-data safety checks: PASS")
+    print("European Football private-path safety checks: PASS")
+
+
+
+def remove_html_block(text: str, start_marker: str, end_marker: str) -> str:
+    start = text.find(start_marker)
+    if start == -1:
+        return text
+
+    end = text.find(end_marker, start)
+    if end == -1:
+        raise RuntimeError(
+            f"Could not find end marker while cleaning public HTML: {end_marker}"
+        )
+
+    end += len(end_marker)
+    return text[:start] + text[end:]
+
+
+def clean_european_football_public_ui() -> None:
+    ef_dir = OUT_DIR / "EuropeanFootball"
+
+    # -----------------------------
+    # Home page
+    # -----------------------------
+    home = ef_dir / "home" / "index.html"
+    if home.exists():
+        s = home.read_text(encoding="utf-8")
+
+        s = s.replace('      <a href="../compare/">Compare</a>\n', '')
+
+        s = re.sub(
+            r'\n\s*<button id="compare-btn"[^>]*>Compare</button>\s*',
+            '\n',
+            s,
+            count=1,
+        )
+
+        # Remove the embedded comparison chart block, stopping immediately
+        # before the normal ratings table.
+        s, n = re.subn(
+            r'\n\s*<div id="compare-wrap"[\s\S]*?(?=\n\s*<div class="table-wrap">)',
+            '\n',
+            s,
+            count=1,
+        )
+        if n != 1:
+            raise RuntimeError("Could not remove European Football home comparison chart")
+
+        # Remove the comparison selection modal.
+        s, n = re.subn(
+            r'\n\s*<!-- Compare Selection Modal -->[\s\S]*?(?=\n\s*<footer class="site-footer">)',
+            '\n',
+            s,
+            count=1,
+        )
+        if n != 1:
+            raise RuntimeError("Could not remove European Football home comparison modal")
+
+        # Prevent dead comparison setup from running.
+        s = re.sub(r'\n\s*setupCompareButton\(\);\s*', '\n', s)
+        s = re.sub(r'\n\s*setupCompareChartControls\(\);\s*', '\n', s)
+
+        home.write_text(s, encoding="utf-8", newline="\n")
+        print("Cleaned public European Football home UI")
+
+    # -----------------------------
+    # Peak page
+    # -----------------------------
+    peak = ef_dir / "peak" / "index.html"
+    if peak.exists():
+        s = peak.read_text(encoding="utf-8")
+
+        s = s.replace('      <a href="../compare/">Compare</a>\n', '')
+
+        s = re.sub(
+            r'\n\s*<button id="compare-btn"[^>]*>Compare</button>\s*',
+            '\n',
+            s,
+            count=1,
+        )
+
+        s, n = re.subn(
+            r'\n\s*<div id="compare-wrap"[\s\S]*?(?=\n\s*<div class="table-wrap">)',
+            '\n',
+            s,
+            count=1,
+        )
+        if n != 1:
+            raise RuntimeError("Could not remove European Football peak comparison chart")
+
+        # Peak has no footer immediately after the modal, so stop at <script>.
+        s, n = re.subn(
+            r'\n\s*<div id="compare-modal">[\s\S]*?(?=\n\s*<script>)',
+            '\n',
+            s,
+            count=1,
+        )
+        if n != 1:
+            raise RuntimeError("Could not remove European Football peak comparison modal")
+
+        s = re.sub(r'\n\s*setupCompareButton\(\);\s*', '\n', s)
+        s = re.sub(r'\n\s*setupCompareChartControls\(\);\s*', '\n', s)
+
+        peak.write_text(s, encoding="utf-8", newline="\n")
+        print("Cleaned public European Football peak UI")
+
+    # -----------------------------
+    # Player page
+    # -----------------------------
+    player = ef_dir / "player" / "index.html"
+    if player.exists():
+        s = player.read_text(encoding="utf-8")
+
+        s = s.replace('      <a href="../compare/">Compare</a>\n', '')
+
+        # Remove the private Statistics card/link.
+        s, n = re.subn(
+            r'\n\s*<a id="statsLink" class="stat stat-link" href="\./stats/">[\s\S]*?</a>',
+            '',
+            s,
+            count=1,
+        )
+        if n != 1:
+            raise RuntimeError("Could not remove European Football player Statistics link")
+
+        # Remove JS that rewrites the Statistics link.
+        s, n = re.subn(
+            r'\n\s*const statsLink = document\.getElementById\(\'statsLink\'\);'
+            r'\s*if \(statsLink && idRaw\) \{\s*'
+            r'statsLink\.href = `\./stats/\?id=\$\{encodeURIComponent\(idRaw\)\}`;\s*\}',
+            '\n',
+            s,
+            count=1,
+        )
+        if n != 1:
+            raise RuntimeError("Could not remove European Football player Statistics JS")
+
+        # Public detailed history begins in 2010.
+        s = re.sub(
+            r'\s*<button type="button" class="range-btn seg" data-range="ALL">All</button>\s*',
+            '\n            ',
+            s,
+            count=1,
+        )
+        s = s.replace(
+            '<button type="button" class="range-btn seg is-active active" data-range="2000">Since 2000</button>',
+            '<button type="button" class="range-btn seg is-active active" data-range="2010">Since 2010</button>',
+            1,
+        )
+        s = s.replace("defaultRange: '2000'", "defaultRange: '2010'", 1)
+
+        player.write_text(s, encoding="utf-8", newline="\n")
+        print("Cleaned public European Football player UI")
+
+
+def assert_european_football_public_ui_clean() -> None:
+    checks = [
+        (OUT_DIR / "EuropeanFootball" / "home" / "index.html", '../compare/', 'home Compare link'),
+        (OUT_DIR / "EuropeanFootball" / "peak" / "index.html", '../compare/', 'peak Compare link'),
+        (OUT_DIR / "EuropeanFootball" / "player" / "index.html", '../compare/', 'player Compare link'),
+        (OUT_DIR / "EuropeanFootball" / "player" / "index.html", './stats/', 'player Statistics link'),
+    ]
+
+    for path, needle, label in checks:
+        if not path.exists():
+            continue
+        s = path.read_text(encoding="utf-8")
+        if needle in s:
+            raise RuntimeError(
+                f"SAFETY CHECK FAILED: public UI still contains {label}: {path}"
+            )
+
+    player = OUT_DIR / "EuropeanFootball" / "player" / "index.html"
+    if player.exists():
+        s = player.read_text(encoding="utf-8")
+        if 'data-range="2000"' in s or "defaultRange: '2000'" in s:
+            raise RuntimeError(
+                "SAFETY CHECK FAILED: public player page still advertises pre-2010 range"
+            )
+
+    print("European Football public-UI safety checks: PASS")
+
+
+
+PUBLIC_SPORTS = [
+    "EuropeanFootball",
+    "Go",
+    "InternationalFootball",
+    "RugbyUnion",
+    "Snooker",
+]
+
+
+def clean_generic_public_ui() -> None:
+    for sport in PUBLIC_SPORTS:
+        sport_dir = OUT_DIR / sport
+        if not sport_dir.exists():
+            continue
+
+        for html in sport_dir.rglob("*.html"):
+            s = html.read_text(encoding="utf-8")
+
+            # Remove links to the private Compare section.
+            s = re.sub(
+                r'\s*<a\b[^>]*href=["\'][^"\']*compare/[^"\']*["\'][^>]*>\s*Compare\s*</a>\s*',
+                '\n',
+                s,
+                flags=re.I,
+            )
+
+            # Public detailed history begins in 2010.
+            s = s.replace('data-range="2000"', 'data-range="2010"')
+            s = s.replace("data-range='2000'", "data-range='2010'")
+            s = s.replace('data-since="2000"', 'data-since="2010"')
+            s = s.replace("data-since='2000'", "data-since='2010'")
+            s = s.replace("Since 2000", "Since 2010")
+            s = s.replace("defaultRange: '2000'", "defaultRange: '2010'")
+            s = s.replace('defaultRange: "2000"', 'defaultRange: "2010"')
+
+            html.write_text(s, encoding="utf-8", newline="\n")
+
+    print("Generic public UI cleanup applied across all sports")
+
+
+def assert_generic_public_ui_clean() -> None:
+    failures = []
+
+    for sport in PUBLIC_SPORTS:
+        sport_dir = OUT_DIR / sport
+        if not sport_dir.exists():
+            continue
+
+        if (sport_dir / "compare").exists():
+            failures.append(f"{sport}: private compare directory still exists")
+
+        for html in sport_dir.rglob("*.html"):
+            s = html.read_text(encoding="utf-8")
+            rel = html.relative_to(OUT_DIR).as_posix()
+
+            if re.search(r'href=["\'][^"\']*compare/', s, flags=re.I):
+                failures.append(f"{rel}: link to private compare section")
+
+            if (
+                'data-range="2000"' in s
+                or "data-range='2000'" in s
+                or 'data-since="2000"' in s
+                or "data-since='2000'" in s
+                or "Since 2000" in s
+                or "defaultRange: '2000'" in s
+                or 'defaultRange: "2000"' in s
+            ):
+                failures.append(f"{rel}: pre-2010 UI range remains")
+
+    if failures:
+        raise RuntimeError(
+            "PUBLIC UI SAFETY CHECK FAILED:\n  " + "\n  ".join(failures)
+        )
+
+    print("Generic public-UI safety checks: PASS")
 
 
 def build_public_site() -> None:
@@ -266,13 +667,26 @@ def build_public_site() -> None:
         copy_tree_filtered(src, dst)
 
     remove_private_paths()
-    filter_european_football_public_data()
-    assert_no_pre_2010_european_football_data()
+    assert_european_football_private_paths_absent()
+    clean_european_football_public_ui()
+    assert_european_football_public_ui_clean()
+    clean_generic_public_ui()
+    assert_generic_public_ui_clean()
+
+    for sport, config in SPORT_PUBLIC_FILTERS.items():
+        filter_sport_public_data(sport, config)
+
+    filter_snooker_snapshots()
+
+    for sport, config in SPORT_PUBLIC_FILTERS.items():
+        assert_no_pre_2010_sport_data(sport, config)
+
+    assert_no_pre_2010_snooker_snapshots()
 
     print()
     print(f"Public-site build created at: {OUT_DIR}")
-    print("IMPORTANT: other sports have not yet had their historical JSON filtered.")
-    print("Do not deploy this build yet.")
+    print("All configured sports have had detailed historical data filtered to 2010+.")
+    print("Do not deploy yet: public UI links/features still need final review.")
 
 
 if __name__ == "__main__":

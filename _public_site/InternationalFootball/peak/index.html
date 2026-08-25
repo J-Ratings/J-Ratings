@@ -303,8 +303,7 @@
     <nav class="topnav" aria-label="Main">
       <a href="/index.html">Sports</a>
       <a href="../home/">Home</a>
-      <a href="../compare/">Compare</a>
-      <a href="./" class="active-tab">Peak</a>
+<a href="./" class="active-tab">Peak</a>
     </nav>
   </div>
 </header>
@@ -332,7 +331,7 @@
 
           <div class="range-buttons" role="group" aria-label="Time range">
             <button type="button" class="range-btn" data-since="">All</button>
-            <button type="button" class="range-btn is-active" data-since="2000">Since 2000</button>
+            <button type="button" class="range-btn is-active" data-since="2010">Since 2010</button>
             <button type="button" class="range-btn" data-since="2020">Since 2020</button>
           </div>
         </div>
@@ -759,7 +758,7 @@
       if (compareAgg) compareAgg.value = 'monthly';
 
       document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
-      const defaultBtn = document.querySelector('.range-btn[data-since="2000"]');
+      const defaultBtn = document.querySelector('.range-btn[data-since="2010"]');
       if (defaultBtn) defaultBtn.classList.add('is-active');
       COMPARE_SINCE_YEAR = 2000;
 
