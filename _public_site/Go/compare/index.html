@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
+
+  <meta charset="utf-8">
+  <title>J-Ratings: Go</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="../../jratings-graph.js"></script>
+
+  <style>
+    .controls{
+      width:min(900px, 92%);
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      padding:28px 24px 24px;
+      border-bottom:1px solid var(--border);
+    }
+
+    #rows{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      width:100%;
+    }
+
+    #rows .row{
+      max-width:760px;
+      margin:0 auto;
+    }
+
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      width:100%;
+    }
+
+    .row input[type="text"]{
+      flex:1;
+      min-width:220px;
+      padding:13px 14px;
+      border-radius:9px;
+      border:1px solid var(--border);
+      background:#0f1623;
+      color:var(--text);
+      font-size:1.05rem;
+    }
+
+    .btn{
+      background:#0f1623;
+      border:1px solid var(--border);
+      color:var(--text);
+      padding:11px 16px;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:1.05rem;
+    }
+
+    .btn:hover{
+      background:rgba(255,255,255,.05);
+    }
+
+    .compare-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .create-row{
+      display:flex;
+      justify-content:center;
+    }
+
+    .create-btn{
+      min-width:150px;
+      font-weight:700;
+    }
+
+    .jr-chart-controls{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      padding-top:2px;
+    }
+
+    .jr-chart-controls label{
+      font-size:1.05rem;
+    }
+
+    .jr-chart-controls select{
+      font-size:1.05rem;
+      padding:10px 12px;
+    }
+
+    .range-buttons{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .range-buttons .seg{
+      font-size:1rem;
+      padding:9px 12px;
+    }
+
+    #chart{
+      width:min(1100px, 92%);
+      margin:0 auto;
+    }
+
+    @media (max-width:700px){
+      .controls{
+        width:100%;
+        padding:18px 14px 20px;
+        gap:16px;
+      }
+
+      #rows .row{
+        max-width:none;
+        margin:0;
+      }
+
+      .row{
+        gap:8px;
+        align-items:stretch;
+      }
+
+      .row input[type="text"]{
+        min-width:0;
+        padding:10px 12px;
+        font-size:1rem;
+      }
+
+      .row .suggest{
+        min-width:0;
+      }
+
+      .row .btn{
+        flex:0 0 auto;
+      }
+
+      .btn{
+        padding:9px 12px;
+        font-size:1rem;
+      }
+
+      .compare-actions{
+        justify-content:center;
+      }
+
+      .create-row{
+        justify-content:center;
+      }
+
+      .create-btn{
+        min-width:140px;
+      }
+
+      .jr-chart-controls{
+        display:grid;
+        grid-template-columns:auto 1fr;
+        gap:12px 10px;
+        align-items:center;
+        justify-content:stretch;
+      }
+
+      .jr-chart-controls > div:first-child{
+        grid-column:1 / -1;
+        display:flex;
+        align-items:center;
+        gap:10px;
+      }
+
+      .range-buttons{
+        grid-column:1 / -1;
+        justify-content:flex-start;
+      }
+
+      .range-buttons .seg{
+        padding:8px 10px;
+        font-size:.95rem;
+      }
+
+      #chart{
+        width:100%;
+      }
+    }
+
+    .suggest{
+      position:relative;
+      flex:1;
+    }
+
+    .suggest-list{
+      position:absolute;
+      left:0;
+      right:0;
+      top:100%;
+      max-height:220px;
+      overflow:auto;
+      margin-top:4px;
+      border:1px solid var(--border);
+      background:#0f1623;
+      border-radius:6px;
+      display:none;
+      z-index:20;
+    }
+
+    .suggest-item{
+      padding:8px 10px;
+      cursor:pointer;
+    }
+
+    .suggest-item:hover,
+    .suggest-item.is-active{
+      background:rgba(255,255,255,.08);
+    }
+  
+    @media (min-width:701px){
+      #chart{
+        height:560px;
+      }
+    }
+
+    @media (max-width:700px){
+      #chart{
+        height:460px;
+      }
+    }
+
+  
+    /* Compare graph: match the corresponding Home comparison graph exactly. */
+    #chart{
+      width:min(82.8vw, 1260px) !important;
+      height:585px !important;
+      min-height:585px !important;
+      margin:0 auto !important;
+    }
+
+    .jr-chart-controls{
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:flex-start !important;
+      justify-content:flex-start !important;
+      gap:10px !important;
+      padding-top:2px !important;
+    }
+
+    .jr-chart-controls > div:first-child{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .jr-chart-controls label{
+      font-size:1.05rem;
+    }
+
+    .jr-chart-controls select{
+      font-size:1.05rem;
+      padding:9px 12px;
+    }
+
+    .jr-chart-controls .range-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+      gap:8px;
+    }
+
+    .jr-chart-controls .seg{
+      font-size:1.05rem;
+      padding:9px 12px;
+    }
+
+    .jr-chart-controls .seg.active,
+    .jr-chart-controls .seg.is-active,
+    .jr-chart-controls .seg[aria-pressed="true"]{
+      background:rgba(255,255,255,0.10) !important;
+      border-color:rgba(220,220,220,0.85) !important;
+      box-shadow:0 0 0 1px rgba(220,220,220,0.55) inset !important;
+    }
+
+    #chart .xtick text,
+    #chart .ytick text{
+      font-size:16px !important;
+    }
+
+    #chart .hovertext text,
+    #chart .hoverlayer text{
+      font-size:18px !important;
+    }
+
+    @media (max-width:700px){
+      #chart{
+        width:100% !important;
+        height:432px !important;
+        min-height:432px !important;
+      }
+
+      #chart .xtick text,
+      #chart .ytick text{
+        font-size:15px !important;
+      }
+
+      #chart .hovertext text,
+      #chart .hoverlayer text{
+        font-size:16px !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a id="home-link" href="../home/index.html" class="brand-with-logo">
+        <span>J-Ratings <span class="title-go">Go</span></span>
+      </a>
+    </h1>
+
+    <nav class="topnav" aria-label="Main">
+      <a href="../../index.html">Sports</a>
+      <a href="../home/">Home</a>
+      <a href="index.html" class="active-tab">Compare</a>
+      <a href="../peak/">Peak</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <h2>Compare</h2>
+
+    <div class="controls">
+      <div id="rows"></div>
+
+      <div class="compare-actions">
+        <button id="add" class="btn" type="button">Add player</button>
+        <button id="clear" class="btn" type="button">Clear</button>
+      </div>
+
+      <div class="create-row">
+        <button id="create" class="btn create-btn" type="button">Create</button>
+      </div>
+
+      <div class="jr-chart-controls">
+        <div>
+          <label for="agg">View:</label>
+          <select id="agg">
+            <option value="daily">Daily</option>
+            <option value="weekly" selected>Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="quarterly">Quarterly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+        </div>
+
+        <div class="range-buttons">
+          <button type="button" class="seg active is-active" data-range="ALL" aria-pressed="true">ALL</button>
+          <button type="button" class="seg" data-range="2000" aria-pressed="false">2000–Present</button>
+          <button type="button" class="seg" data-range="2020" aria-pressed="false">2020–Present</button>
+          <button type="button" class="seg" data-range="LY" aria-pressed="false">Last Year</button>
+          <button type="button" class="seg" data-range="YTD" aria-pressed="false">YTD</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="padding:24px 16px 28px">
+      <div id="chart" class="jr-chart">No selection yet.</div>
+    </div>
+  </section>
+</main>
+
+<script>
+const PLAYERS_URL = '../data/players.json';
+const HIST_URL    = id => `../data/history/${encodeURIComponent(id)}.json`;
+const MAX_PLAYERS = 15;
+
+const state = {
+  players: [],
+  inputs: [],
+  loaded: []
+};
+
+let compareChart = null;
+let comparedPlayers = [];
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function attachAutocomplete(input) {
+  const wrap = document.createElement('div');
+  wrap.className = 'suggest';
+
+  input.parentNode.insertBefore(wrap, input);
+  wrap.appendChild(input);
+
+  const list = document.createElement('div');
+  list.className = 'suggest-list';
+  wrap.appendChild(list);
+
+  let activeIndex = -1;
+
+  function getItems() {
+    return Array.from(list.querySelectorAll('.suggest-item'));
+  }
+
+  function setActive(index) {
+    const items = getItems();
+
+    if (!items.length) {
+      activeIndex = -1;
+      return;
+    }
+
+    activeIndex = Math.max(0, Math.min(index, items.length - 1));
+
+    items.forEach((item, i) => {
+      item.classList.toggle('is-active', i === activeIndex);
+    });
+
+    items[activeIndex].scrollIntoView({ block: 'nearest' });
+  }
+
+  function chooseItem(item) {
+    if (!item) return;
+
+    input.value = item.dataset.name;
+    list.style.display = 'none';
+    activeIndex = -1;
+  }
+
+  function render(items) {
+    activeIndex = -1;
+
+    if (!items.length) {
+      list.style.display = 'none';
+      list.innerHTML = '';
+      return;
+    }
+
+    list.innerHTML = items
+      .map(n => `<div class="suggest-item" data-name="${escapeHtml(n)}">${escapeHtml(n)}</div>`)
+      .join('');
+
+    list.style.display = 'block';
+  }
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+
+    if (!q) {
+      render([]);
+      return;
+    }
+
+    const names = state.players.map(p => p.name || p.display_name || p.id);
+
+    const starts = names.filter(n =>
+      n.toLowerCase().startsWith(q)
+    );
+
+    const contains = names.filter(n =>
+      !n.toLowerCase().startsWith(q) &&
+      n.toLowerCase().includes(q)
+    );
+
+    render(starts.concat(contains).slice(0, 12));
+  });
+
+  list.addEventListener('mousedown', e => {
+    const item = e.target.closest('.suggest-item');
+    if (!item) return;
+    chooseItem(item);
+  });
+
+  input.addEventListener('keydown', e => {
+    const items = getItems();
+    const listOpen = list.style.display !== 'none' && items.length > 0;
+
+    if (e.key === 'ArrowDown' && listOpen) {
+      e.preventDefault();
+      setActive(activeIndex < items.length - 1 ? activeIndex + 1 : 0);
+      return;
+    }
+
+    if (e.key === 'ArrowUp' && listOpen) {
+      e.preventDefault();
+      setActive(activeIndex > 0 ? activeIndex - 1 : items.length - 1);
+      return;
+    }
+
+    if (e.key === 'Enter') {
+      if (listOpen) {
+        e.preventDefault();
+        chooseItem(items[activeIndex >= 0 ? activeIndex : 0]);
+      } else if (input.value.trim()) {
+        createChart();
+      }
+      return;
+    }
+
+    if (e.key === 'Escape') {
+      list.style.display = 'none';
+      activeIndex = -1;
+    }
+  });
+
+  input.addEventListener('blur', () => {
+    setTimeout(() => {
+      list.style.display = 'none';
+      activeIndex = -1;
+    }, 120);
+  });
+}
+
+function makeRow() {
+  if (state.inputs.length >= MAX_PLAYERS) return;
+
+  const rows = document.getElementById('rows');
+
+  const wrap = document.createElement('div');
+  wrap.className = 'row';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'Search player…';
+
+  wrap.appendChild(input);
+  attachAutocomplete(input);
+
+  const remove = document.createElement('button');
+  remove.className = 'btn';
+  remove.type = 'button';
+  remove.textContent = 'Remove';
+
+  remove.addEventListener('click', () => {
+    rows.removeChild(wrap);
+
+    state.inputs = state.inputs.filter(r => r.el !== wrap);
+
+    document.getElementById('add').disabled =
+      state.inputs.length >= MAX_PLAYERS;
+  });
+
+  wrap.appendChild(remove);
+  rows.appendChild(wrap);
+
+  state.inputs.push({ el: wrap, input });
+
+  document.getElementById('add').disabled =
+    state.inputs.length >= MAX_PLAYERS;
+}
+
+function clearAll() {
+  document.getElementById('rows').innerHTML = '';
+
+  state.inputs = [];
+  state.loaded = [];
+  comparedPlayers = [];
+
+  document.getElementById('add').disabled = false;
+  document.getElementById('chart').innerHTML = 'Cleared.';
+
+  makeRow();
+}
+
+async function loadPlayers() {
+  const res = await fetch(PLAYERS_URL, { cache: 'no-cache' });
+
+  if (!res.ok) throw new Error('players.json not found');
+
+  state.players = await res.json();
+}
+
+async function createChart() {
+  const names = state.inputs
+    .map(r => r.input.value.trim())
+    .filter(Boolean);
+
+  const uniq = [...new Set(names)];
+
+  if (!uniq.length) {
+    alert('Please add at least one player');
+    return;
+  }
+
+  const lookups = uniq.map(name => {
+    const player = state.players.find(p =>
+      p.name === name || p.display_name === name || p.id === name
+    );
+    if (!player) return null;
+    return { name: player.display_name || player.name || player.id, id: player.id };
+  }).filter(Boolean);
+
+  if (!lookups.length) {
+    document.getElementById('chart').textContent = 'No valid players.';
+    return;
+  }
+
+  const chart = document.getElementById('chart');
+  chart.textContent = '';
+
+  const results = await Promise.all(lookups.map(async ({ name, id }) => {
+    try {
+      const res = await fetch(HIST_URL(id), { cache: 'no-cache' });
+      if (!res.ok) return null;
+
+      const hist = await res.json();
+
+      return {
+        name,
+        id,
+        raw: hist.map(d => ({
+          x: d.date,
+        y: Number(d.rating),
+        tournament: d.tournament || d.event || ''
+        }))
+      };
+    } catch {
+      return null;
+    }
+  }));
+
+  state.loaded = results.filter(Boolean);
+
+  comparedItems = state.loaded.map(item => ({
+      name: item.name,
+      raw: item.raw,
+      customData: pt => pt.tournament || '',
+      hovertemplate:
+        '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' +
+        item.name +
+        '</extra>'
+  }));
+
+  if (!comparedItems.length) {
+    chart.textContent = 'No history found.';
+    return;
+  }
+
+  await Promise.resolve(compareChart.render(comparedItems));
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  compareChart = JRGraph.createChart({
+    chartId: 'chart',
+    aggId: 'agg',
+    controlsEl: document.querySelector('.panel'),
+    defaultRange: 'ALL',
+    getItems: () => comparedItems
+  });
+
+  document.getElementById('agg').value = 'weekly';
+
+  document.getElementById('add').addEventListener('click', makeRow);
+  document.getElementById('clear').addEventListener('click', clearAll);
+  document.getElementById('create').addEventListener('click', createChart);
+
+  loadPlayers()
+    .then(() => makeRow())
+    .catch(e => {
+      console.error(e);
+      makeRow();
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1001 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
+
+  <meta charset="utf-8">
+  <title>J-Ratings: Rugby Union</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+  <style>
+    #compare-chart {
+      height: 520px;
+      margin-bottom: 20px;
+    }
+
+    .toolbar { margin-bottom: 10px; }
+
+    .flag-cell {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .flag-icon {
+      width: 39.93px;
+      height: 29.04px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
+    .compare-header-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 16px 8px 16px;
+    }
+
+    .compare-toolbar {
+      justify-self: start;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      padding: 0;
+    }
+
+    .compare-toolbar-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .compare-toolbar-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .compare-toolbar label {
+      margin-right: 6px;
+      font-size: 1.05rem;
+    }
+
+    .range-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .range-btn {
+      padding: 8px 10px;
+      border: 1px solid #2b2f36;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      color: inherit;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .range-btn:hover { opacity: 0.92; }
+
+    .range-btn.is-active {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(200,200,200,0.55);
+      font-weight: 700;
+    }
+
+    h2.compare-title {
+      justify-self: center;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-size: 3rem;
+    }
+
+    .compare-header-spacer {
+      justify-self: end;
+      min-width: 120px;
+      min-height: 1px;
+    }
+
+    #compare-wrap {
+      display: none;
+      margin-top: 8px;
+      margin-bottom: 28px;
+    }
+
+    #compare-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #compare-modal > div {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 560px;
+      width: 90%;
+      max-height: 80%;
+      overflow: auto;
+      color: #fff;
+      border: 1px solid #2b2f36;
+    }
+
+    .compare-controls {
+      margin: 10px 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .compare-controls button {
+      padding: 8px 12px;
+      border: 1px solid #2b2f36;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      color: inherit;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .compare-list-row {
+      margin: 8px 0;
+    }
+
+    .compare-list-row label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .table-wrap {
+      position: relative;
+      z-index: 1;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .compare-header-row {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+      }
+
+      .compare-toolbar {
+        justify-self: center;
+      }
+
+      .compare-header-spacer {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      #compare-chart { height: 420px; }
+      h2.compare-title { font-size: 1.7rem; }
+    }
+
+    @media (max-width: 520px) {
+      #teams {
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      #teams th,
+      #teams td {
+        min-width: 0 !important;
+        padding: 10px 8px;
+      }
+
+      #teams th:nth-child(1),
+      #teams td:nth-child(1) { width: 52px; }
+
+      #teams th:nth-child(2),
+      #teams td:nth-child(2) { width: 44px; }
+
+      #teams th:nth-child(4),
+      #teams td:nth-child(4) { width: 78px; }
+
+      #teams th:nth-child(5),
+      #teams td:nth-child(5) { width: 96px; }
+
+      #teams th:nth-child(3),
+      #teams td:nth-child(3) { width: auto; }
+
+      #teams td:nth-child(3) a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .compare-header-row,
+    .compare-header-row * {
+      border-bottom: none !important;
+      box-shadow: none !important;
+      background-image: none !important;
+      text-decoration: none !important;
+    }
+
+    .compare-header-row::before,
+    .compare-header-row::after,
+    .compare-title::before,
+    .compare-title::after,
+    .compare-toolbar::before,
+    .compare-toolbar::after,
+    .compare-toolbar label::before,
+    .compare-toolbar label::after,
+    .compare-toolbar select::before,
+    .compare-toolbar select::after {
+      content: none !important;
+      display: none !important;
+    }
+  
+
+    /* Home-style comparison modal */
+    #compare-modal > div{
+      padding:0 !important;
+      max-width:560px;
+      width:90%;
+      max-height:80%;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden !important;
+    }
+
+    .compare-modal-header{
+      position:sticky;
+      top:0;
+      z-index:2;
+      background:#1a1a1a;
+      padding:20px 20px 12px;
+      border-bottom:1px solid #2b2f36;
+    }
+
+    .compare-modal-title-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:12px;
+    }
+
+    .compare-modal-title-row h3{ margin:0; }
+
+    .compare-close{
+      border:0;
+      background:transparent;
+      color:inherit;
+      font-size:1.8rem;
+      line-height:1;
+      padding:0 4px;
+      cursor:pointer;
+    }
+
+    .compare-close:hover{ opacity:.8; }
+
+    .compare-controls{ margin:0 !important; }
+
+    #compare-list{
+      overflow-y:auto;
+      padding:12px 20px 20px;
+      margin:0 !important;
+    }
+
+    @media (min-width:769px){
+      #players-panel > .toolbar,
+      #teams-panel > .toolbar{
+        gap:12px;
+        padding:22px 20px 18px;
+        margin-bottom:0;
+      }
+
+      #players-panel > .toolbar input,
+      #players-panel > .toolbar select,
+      #players-panel > .toolbar button,
+      #teams-panel > .toolbar input,
+      #teams-panel > .toolbar select,
+      #teams-panel > .toolbar button{
+        font-size:1.05rem;
+        padding-top:12px;
+        padding-bottom:12px;
+      }
+
+      #players-panel > .toolbar label,
+      #teams-panel > .toolbar label{
+        font-size:1.05rem;
+      }
+    }
+
+    /* Home-style peak table */
+    .table-wrap{
+      width:min(86vw, 1100px);
+      margin:0 auto;
+    }
+
+    #players,
+    #teams{
+      width:100%;
+      table-layout:fixed;
+    }
+
+    #players th,
+    #players td,
+    #teams th,
+    #teams td{
+      border-right:1px solid rgba(128,128,128,0.18);
+    }
+
+    #players th:last-child,
+    #players td:last-child,
+    #teams th:last-child,
+    #teams td:last-child{
+      border-right:none;
+    }
+
+    #players tbody tr:nth-child(even),
+    #teams tbody tr:nth-child(even){
+      background:rgba(255,255,255,0.018);
+    }
+
+    @media (min-width:521px){
+      #players th,
+      #teams th{
+        font-size:1.55rem;
+      }
+
+      #players td,
+      #teams td{
+        font-size:1.45rem;
+      }
+
+      .flag-icon{
+        width:54px;
+        height:40px;
+      }
+    }
+
+    @media (min-width:521px){
+      #players th:nth-child(1), #players td:nth-child(1),
+      #teams th:nth-child(1), #teams td:nth-child(1){ width:10%; }
+
+      #players th:nth-child(2), #players td:nth-child(2),
+      #teams th:nth-child(2), #teams td:nth-child(2){ width:12%; }
+
+      #players th:nth-child(3), #players td:nth-child(3),
+      #teams th:nth-child(3), #teams td:nth-child(3){ width:38%; }
+
+      #players th:nth-child(4), #players td:nth-child(4),
+      #teams th:nth-child(4), #teams td:nth-child(4){ width:16%; }
+
+      #players th:nth-child(5), #players td:nth-child(5),
+      #teams th:nth-child(5), #teams td:nth-child(5){ width:24%; }
+    }
+
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a id="home-link" href="../home/" class="brand-with-logo">
+        <span>J-Ratings <span class="title-rugby">Rugby Union</span></span>
+      </a>
+    </h1>
+    <nav class="topnav" aria-label="Main">
+      <a href="/index.html">Sports</a>
+      <a href="../home/">Home</a>
+      <a href="../compare/">Compare</a>
+      <a href="./" class="active-tab">Peak</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel" id="teams-panel">
+    <div class="toolbar">
+      <input id="q" type="search" placeholder="Filter by team…">
+      <span id="count" class="muted"></span>
+
+      <button id="compare-btn" class="club-btn" type="button" style="margin-left:auto">Compare</button>
+    </div>
+
+    <div id="compare-wrap">
+      <div class="compare-header-row">
+        <div class="compare-toolbar">
+          <div class="compare-toolbar-stack">
+            <div class="compare-toolbar-top">
+              <label for="compare-agg">View:</label>
+              <select id="compare-agg">
+                <option value="daily">Daily</option>
+                <option value="monthly" selected>Monthly</option>
+                <option value="yearly">Yearly</option>
+              </select>
+            </div>
+
+            <div class="range-buttons" role="group" aria-label="Time range">
+              <button type="button" class="range-btn" data-since="">All</button>
+              <button type="button" class="range-btn is-active" data-since="2000">Since 2000</button>
+              <button type="button" class="range-btn" data-since="2020">Since 2020</button>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="compare-title">Compare</h2>
+
+        <div class="compare-header-spacer" aria-hidden="true"></div>
+      </div>
+
+      <div id="compare-chart">Loading…</div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="teams">
+        <thead>
+          <tr>
+            <th style="min-width:60px">Rank</th>
+            <th style="min-width:56px">Country</th>
+            <th style="min-width:240px">Team</th>
+            <th class="right" style="min-width:120px">Peak</th>
+            <th style="min-width:140px">Peak Date</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<div id="compare-modal">
+  <div>
+    <div class="compare-modal-header">
+      <div class="compare-modal-title-row">
+        <h3>Select teams to view:</h3>
+        <button id="compare-close" class="compare-close" type="button" aria-label="Close comparison">×</button>
+      </div>
+
+      <div class="compare-controls">
+        <button id="compare-show-top" type="button">Show Selected</button>
+      </div>
+    </div>
+
+    <div id="compare-list"></div>
+  </div>
+</div>
+</div>
+
+<script>
+const DATA_URL = '../data/teams.json';
+const FLAGS_BASE = '../../flags';
+const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
+
+const TEAM_COLOURS = {
+  "New Zealand":"#000000",
+  "South Africa":"#0B7A3B",
+  "Ireland":"#169B62",
+  "Australia":"#FFCD00",
+  "England":"#FFFFFF",
+  "France":"#002654",
+  "Wales":"#C8102E",
+  "Scotland":"#1E3A8A",
+  "Argentina":"#75AADB",
+  "Fiji":"#000000",
+  "Japan":"#BC002D",
+  "Samoa":"#1E3A8A",
+  "Italy":"#0066CC",
+  "Canada":"#D52B1E",
+  "Georgia":"#C8102E",
+  "Germany":"#000000",
+  "Romania":"#FFD700",
+  "Belgium":"#FFD100",
+  "Netherlands":"#FF7F00",
+  "Tonga":"#C8102E",
+  "Uruguay":"#7EC0EE",
+  "United States":"#1F3A93",
+  "Hong Kong":"#C8102E",
+  "Portugal":"#C8102E",
+  "Namibia":"#003DA5",
+  "Paraguay":"#D52B1E",
+  "Zimbabwe":"#FFD700",
+  "Brazil":"#FFDF00",
+  "Sri Lanka":"#8D153A",
+  "Spain":"#C60B1E",
+  "Kazakhstan":"#22D3EE",
+  "Malaysia":"#FFD700",
+  "India":"#FF9933",
+  "South Korea":"#E60026",
+  "Chile":"#D52B1E",
+  "United Arab Emirates":"#C8102E",
+  "Qatar":"#8A1538",
+  "Poland":"#E31E24",
+  "Kenya":"#C8102E",
+  "Algeria":"#00A86B",
+  "Switzerland":"#D52B1E",
+  "Uganda":"#FCDC04",
+  "Burkina Faso":"#EF2B2D",
+  "Colombia":"#FCD116"
+};
+
+const DARK_LINE_OVERRIDES = {
+  "New Zealand": "#BFBFBF",
+  "Fiji": "#D6D6D6",
+  "Germany": "#BFBFBF"
+};
+
+const state = { rows: [], filtered: [] };
+const histCache = new Map();
+let lastCompared = [];
+let COMPARE_SINCE_YEAR = 2000;
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function normaliseFlagCode(code) {
+  return String(code || '').trim().toLowerCase();
+}
+
+function resolveFlagCode(flagCode, teamName) {
+  const name = String(teamName || '').trim().toLowerCase();
+  if (name === 'ireland') return 'irfu';
+  return normaliseFlagCode(flagCode);
+}
+
+function flagImgHtml(flagCode, label) {
+  const code = resolveFlagCode(flagCode, label);
+  if (!code) return '';
+  const safeLabel = escapeHtml(label || '');
+  return `<img src="${FLAGS_BASE}/${encodeURIComponent(code)}.svg" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
+}
+
+function render() {
+  const tbody = document.querySelector('#teams tbody');
+  tbody.innerHTML = '';
+
+  state.filtered.forEach((r, i) => {
+    const tr = document.createElement('tr');
+
+    const tdRank = document.createElement('td');
+    tdRank.textContent = i + 1;
+    tr.appendChild(tdRank);
+
+    const tdFlag = document.createElement('td');
+    tdFlag.className = 'flag-cell';
+    tdFlag.innerHTML = flagImgHtml(r.flag, r.name);
+    tr.appendChild(tdFlag);
+
+    const tdName = document.createElement('td');
+    const a = document.createElement('a');
+    a.href = `../player/?id=${encodeURIComponent(r.id)}`;
+    a.textContent = r.name;
+    tdName.appendChild(a);
+    tr.appendChild(tdName);
+
+    const tdPeak = document.createElement('td');
+    tdPeak.className = 'right';
+    tdPeak.textContent = r.peak;
+    tr.appendChild(tdPeak);
+
+    const tdDate = document.createElement('td');
+    tdDate.textContent = r.peak_date || '';
+    tr.appendChild(tdDate);
+
+    tbody.appendChild(tr);
+  });
+
+  const count = document.getElementById('count');
+  if (count) count.textContent = `${state.filtered.length} teams`;
+}
+
+function hideCompare() {
+  const wrap = document.getElementById('compare-wrap');
+  const chart = document.getElementById('compare-chart');
+  if (wrap) wrap.style.display = 'none';
+  if (chart) chart.innerHTML = '';
+  lastCompared = [];
+}
+
+function applyFilter() {
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  state.filtered = q
+    ? state.rows.filter(r => r.name.toLowerCase().includes(q))
+    : state.rows.slice();
+
+  render();
+  hideCompare();
+}
+
+async function fetchHistoryFor(id) {
+  if (histCache.has(id)) return histCache.get(id);
+
+  try {
+    const res = await fetch(`../data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+    if (!res.ok) return null;
+    const rows = await res.json();
+    histCache.set(id, rows);
+    return rows;
+  } catch {
+    return null;
+  }
+}
+
+function normalise(series, dedupeByDay = false) {
+  const s = series
+    .filter(p => p && p.x && Number.isFinite(p.y))
+    .map(p => ({
+      x: p.x,
+      y: +p.y,
+      competition: p.competition || p.tournament || ''
+    }))
+    .sort((a, b) => new Date(a.x) - new Date(b.x));
+
+  if (!dedupeByDay) return s;
+
+  const out = [];
+  let lastKey = null;
+
+  for (const p of s) {
+    const d = new Date(p.x);
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+    if (key !== lastKey) out.push(p);
+    else out[out.length - 1] = p;
+
+    lastKey = key;
+  }
+
+  return out;
+}
+
+function aggregate(series, mode) {
+  if (mode === 'daily') return normalise(series, true);
+
+  const buckets = Object.create(null);
+
+  for (const p of series) {
+    const d = new Date(p.x);
+    const key = mode === 'monthly'
+      ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
+      : `${d.getFullYear()}`;
+
+    (buckets[key] ||= []).push(p);
+  }
+
+  const out = Object.keys(buckets).sort().map(k => {
+    const pts = buckets[k].filter(p => Number.isFinite(p.y));
+    const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
+    const lastCompetition = pts.length ? (pts[pts.length - 1].competition || '') : '';
+    const x = k.length === 7 ? `${k}-01` : `${k}-01-01`;
+
+    return { x, y: avg, competition: lastCompetition };
+  });
+
+  return normalise(out, false);
+}
+
+function applySinceFilter(series, sinceYear) {
+  if (!sinceYear) return series;
+  const start = new Date(`${sinceYear}-01-01T00:00:00Z`).getTime();
+  return series.filter(p => new Date(p.x).getTime() >= start);
+}
+
+function hexToRgb(hex) {
+  const clean = String(hex || '').trim();
+  const match = clean.match(/^#([0-9a-f]{6})$/i);
+  if (!match) return null;
+
+  const value = match[1];
+  return {
+    r: parseInt(value.slice(0, 2), 16),
+    g: parseInt(value.slice(2, 4), 16),
+    b: parseInt(value.slice(4, 6), 16)
+  };
+}
+
+function rgbToHex(r, g, b) {
+  return '#' + [r, g, b]
+    .map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0'))
+    .join('');
+}
+
+function relativeLuminance({ r, g, b }) {
+  const toLinear = c => {
+    const s = c / 255;
+    return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+  };
+
+  const R = toLinear(r);
+  const G = toLinear(g);
+  const B = toLinear(b);
+
+  return 0.2126 * R + 0.7152 * G + 0.0722 * B;
+}
+
+function mixWithWhite(rgb, amount) {
+  return {
+    r: rgb.r + (255 - rgb.r) * amount,
+    g: rgb.g + (255 - rgb.g) * amount,
+    b: rgb.b + (255 - rgb.b) * amount
+  };
+}
+
+function getDisplayColour(teamName) {
+  if (DARK_LINE_OVERRIDES[teamName]) return DARK_LINE_OVERRIDES[teamName];
+
+  const fallback = '#2F80ED';
+  const raw = TEAM_COLOURS[teamName] || fallback;
+  const rgb = hexToRgb(raw);
+
+  if (!rgb) return fallback;
+
+  const lum = relativeLuminance(rgb);
+  if (lum >= 0.05) return raw;
+
+  const lifted = mixWithWhite(rgb, 0.45);
+  return rgbToHex(lifted.r, lifted.g, lifted.b);
+}
+
+async function buildComparison(teams) {
+  lastCompared = teams.slice();
+
+  const wrap = document.getElementById('compare-wrap');
+  const chart = document.getElementById('compare-chart');
+  const modeSel = document.getElementById('compare-agg');
+
+  if (wrap) wrap.style.display = 'block';
+  if (chart) chart.innerHTML = 'Loading…';
+
+  const mode = modeSel ? modeSel.value : 'monthly';
+  const traces = [];
+  let ymin = Infinity;
+  let ymax = -Infinity;
+
+  for (const t of teams) {
+    const hist = await fetchHistoryFor(t.id);
+    if (!hist || !hist.length) continue;
+
+    const raw = normalise(
+      hist.map(d => ({
+        x: d.date,
+        y: Number(d.rating),
+        competition: d.competition || d.tournament || ''
+      })),
+      true
+    );
+
+    const filtered = applySinceFilter(raw, COMPARE_SINCE_YEAR);
+    const data = aggregate(filtered, mode);
+
+    const xs = data.map(pt => pt.x);
+    const ysAll = data.map(pt => pt.y);
+    const competitions = data.map(pt => pt.competition || '');
+    const finiteY = ysAll.filter(Number.isFinite);
+
+    if (!xs.length || !finiteY.length) continue;
+
+    ymin = Math.min(ymin, ...finiteY);
+    ymax = Math.max(ymax, ...finiteY);
+
+    traces.push({
+      type: 'scatter',
+      name: t.name,
+      x: xs,
+      y: ysAll,
+      customdata: competitions,
+      mode: 'lines',
+      line: {
+        width: 3,
+        shape: 'linear',
+        color: getDisplayColour(t.name)
+      },
+      hovertemplate: mode === 'daily'
+        ? '%{x}<br>%{y:.0f} Elo<br>%{customdata}<extra>' + t.name + '</extra>'
+        : '%{x}<br>%{y:.0f} Elo<extra>' + t.name + '</extra>',
+      connectgaps: true,
+      showlegend: true
+    });
+  }
+
+  if (!traces.length) {
+    if (chart) chart.innerHTML = 'No history found.';
+    return;
+  }
+
+  ymin = Math.floor(ymin / 100) * 100;
+  ymax = Math.ceil(ymax / 100) * 100;
+
+  const shapes = [];
+  for (let v = ymin; v <= ymax; v += 100) {
+    shapes.push({
+      type: 'line',
+      xref: 'paper',
+      x0: 0,
+      x1: 1,
+      y0: v,
+      y1: v,
+      line: { width: 1, color: 'rgba(128,128,128,0.35)' },
+      layer: 'below'
+    });
+  }
+
+  const cs = getComputedStyle(document.body);
+
+  Plotly.newPlot('compare-chart', traces, {
+    margin: { l: 60, r: 20, t: 50, b: 55 },
+    xaxis: { type: 'date' },
+    yaxis: { title: 'Rating' },
+    legend: {
+      orientation: 'h',
+      y: 1.12,
+      x: 0
+    },
+    paper_bgcolor: cs.backgroundColor,
+    plot_bgcolor: cs.backgroundColor,
+    font: { color: cs.color, size: 14 },
+    shapes
+  }, {
+    staticPlot: IS_TOUCH,
+    displayModeBar: false,
+    responsive: true
+  });
+}
+
+function setupCompareButton() {
+  const modal = document.getElementById('compare-modal');
+  const listDiv = document.getElementById('compare-list');
+
+  function openModal() {
+    listDiv.innerHTML = '';
+
+    state.filtered.forEach(t => {
+      const id = `chk-${t.id}`;
+      const row = document.createElement('div');
+      row.className = 'compare-list-row';
+      row.innerHTML = `
+        <label for="${id}">
+          <input type="checkbox" id="${id}" value="${t.id}">
+          ${escapeHtml(t.name)} (${t.peak})
+        </label>
+      `;
+      listDiv.appendChild(row);
+    });
+
+    modal.style.display = 'flex';
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+
+  function showSelected() {
+    const ids = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
+
+    if (!ids.length) {
+      alert('Please select at least one team.');
+      return;
+    }
+
+    closeModal();
+
+    const compareAgg = document.getElementById('compare-agg');
+    if (compareAgg) compareAgg.value = 'monthly';
+
+    document.querySelectorAll('.range-btn').forEach(btn => btn.classList.remove('is-active'));
+    const since2000Btn = document.querySelector('.range-btn[data-since="2000"]');
+    if (since2000Btn) since2000Btn.classList.add('is-active');
+    COMPARE_SINCE_YEAR = 2000;
+
+    const chosen = state.filtered.filter(t => ids.includes(t.id));
+    buildComparison(chosen);
+  }
+
+  document.getElementById('compare-btn').addEventListener('click', openModal);
+  document.getElementById('compare-show-top').addEventListener('click', showSelected);
+    document.getElementById('compare-close').addEventListener('click', closeModal);
+
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+  });
+}
+
+async function load() {
+  try {
+    const res = await fetch(DATA_URL, { cache: 'no-cache' });
+    if (!res.ok) throw new Error('Failed to load teams.json');
+
+    const teams = await res.json();
+
+    const baseRows = teams
+      .filter(d => d && d.id && (d.name || d.display_name))
+      .map(d => ({
+        id: d.id,
+        name: d.display_name || d.name,
+        flag: d.flag || ''
+      }));
+
+    const withPeaks = await Promise.all(baseRows.map(async (t) => {
+      const hist = await fetchHistoryFor(t.id);
+      if (!hist || !hist.length) return null;
+
+      let peak = -Infinity;
+      let peakDate = '';
+
+      for (const row of hist) {
+        const r = Number(row.rating);
+        if (!Number.isFinite(r)) continue;
+
+        if (r > peak) {
+          peak = r;
+          peakDate = row.date || '';
+        }
+      }
+
+      if (!Number.isFinite(peak)) return null;
+
+      return {
+        id: t.id,
+        name: t.name,
+        flag: t.flag,
+        peak: Math.round(peak),
+        peak_date: peakDate
+      };
+    }));
+
+    state.rows = withPeaks
+      .filter(Boolean)
+      .sort((a, b) => b.peak - a.peak || a.name.localeCompare(b.name));
+
+    state.filtered = state.rows.slice();
+    render();
+  } catch (err) {
+    document.querySelector('#teams tbody').innerHTML =
+      `<tr><td colspan="5">Error loading data: ${escapeHtml(err.message)}</td></tr>`;
+  }
+}
+
+document.getElementById('q').addEventListener('input', applyFilter);
+
+document.getElementById('compare-agg').addEventListener('change', () => {
+  if (lastCompared.length) buildComparison(lastCompared);
+});
+
+document.querySelectorAll('.range-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+
+    const v = btn.getAttribute('data-since');
+    COMPARE_SINCE_YEAR = v ? Number(v) : null;
+
+    if (lastCompared.length) buildComparison(lastCompared);
+  });
+});
+
+setupCompareButton();
+load();
+</script>
+</body>
+</html>

@@ -1,5 +1,8 @@
 options(stringsAsFactors = FALSE)
-library(beepr)
+# Local completion sound only; GitHub Actions does not need beepr.
+if (interactive()) {
+  library(beepr)
+}
 # -----------------------------
 # Paths
 # -----------------------------
@@ -135,6 +138,18 @@ current_openfootball_season <- function(today = Sys.Date()) {
   end_short <- sprintf("%02d", (start_year + 1L) %% 100L)
   
   paste0(start_year, "-", end_short)
+}
+
+season_folder_from_start_year <- function(start_year) {
+  paste0(
+    as.integer(start_year),
+    "-",
+    sprintf("%02d", (as.integer(start_year) + 1L) %% 100L)
+  )
+}
+
+season_start_year <- function(season_folder) {
+  as.integer(substr(season_folder, 1, 4))
 }
 
 result_code <- function(hg, ag) {
@@ -1409,51 +1424,70 @@ make_cached_league_jobs <- function(
 
 # Established OpenFootball competitions.
 #
-# The combined CSV is the historical checkpoint. For the major leagues we
-# backfill any missing recent seasons from cached OpenFootball files and always
-# reparse the current season. This prevents a season rollover from leaving a
-# club with current fixtures but no previous-season league history/rating.
-recent_seasons <- unique(c(
-  vapply(2018:current_start_year, season_folder_from_start_year, character(1)),
-  season_folder
-))
+# The combined CSV is a checkpoint, but the source cache is now reconstructible.
+# Top-flight coverage begins at the same cutover used by the Schochastics
+# historical backbone. Lower divisions retain the existing 2018/19+ policy.
+
+england_pl_seasons <- vapply(
+  1992:current_start_year,
+  season_folder_from_start_year,
+  character(1)
+)
+spain_top_seasons <- vapply(
+  2012:current_start_year,
+  season_folder_from_start_year,
+  character(1)
+)
+italy_top_seasons <- vapply(
+  2013:current_start_year,
+  season_folder_from_start_year,
+  character(1)
+)
+germany_top_seasons <- vapply(
+  2010:current_start_year,
+  season_folder_from_start_year,
+  character(1)
+)
+france_top_seasons <- vapply(
+  2014:current_start_year,
+  season_folder_from_start_year,
+  character(1)
+)
+recent_major_seasons <- vapply(
+  2018:current_start_year,
+  season_folder_from_start_year,
+  character(1)
+)
 
 english_jobs <- rbind(
   make_cached_league_jobs(
-    recent_seasons,
+    england_pl_seasons,
     "1-premierleague.txt", "england", "England",
     "premier_league", "Premier League", 1L
   ),
   make_cached_league_jobs(
-    recent_seasons,
+    recent_major_seasons,
     "2-championship.txt", "england", "England",
     "championship", "Championship", 2L
   ),
   make_cached_league_jobs(
-    recent_seasons,
+    recent_major_seasons,
     "3-league1.txt", "england", "England",
     "league_1", "League 1", 3L
   ),
   make_cached_league_jobs(
-    recent_seasons,
+    recent_major_seasons,
     "4-league2.txt", "england", "England",
     "league_2", "League 2", 4L
   ),
   make_cached_league_jobs(
-    recent_seasons,
+    recent_major_seasons,
     "5-nationalleague.txt", "england", "England",
     "national_league", "National League", 5L
   )
 )
 
 # One-time targeted Championship rebuilds.
-#
-# Older parser versions mishandled:
-#   - [awarded] appearing before the supplied score;
-#   - play-off aggregate/leg metadata around the score.
-#
-# Reparse the affected cached Championship seasons so their old malformed
-# rows are replaced by correctly parsed rows in the combined CSV.
 english_championship_repairs <- data.frame(
   file = rep("2-championship.txt", 3L),
   source_folder = rep("england", 3L),
@@ -1468,8 +1502,6 @@ english_championship_repairs <- data.frame(
   stringsAsFactors = FALSE
 )
 
-# Avoid scheduling the same competition-season twice if it was already selected
-# above because it was missing from the combined CSV.
 repair_keys <- paste(
   normalise_openfootball_season_label(english_championship_repairs$season_folder),
   english_championship_repairs$country,
@@ -1485,49 +1517,45 @@ english_job_keys <- paste(
 english_championship_repairs <- english_championship_repairs[
   !(repair_keys %in% english_job_keys),
 ]
-
-english_jobs <- rbind(
-  english_jobs,
-  english_championship_repairs
-)
+english_jobs <- rbind(english_jobs, english_championship_repairs)
 
 la_liga_jobs <- make_cached_league_jobs(
-  recent_seasons,
+  spain_top_seasons,
   "1-liga.txt", "espana", "Spain",
   "la_liga", "La Liga", 1L
 )
 segunda_jobs <- make_cached_league_jobs(
-  recent_seasons,
+  recent_major_seasons,
   "2-liga2.txt", "espana", "Spain",
   "segunda_division", "Segunda División", 2L
 )
 serie_a_jobs <- make_cached_league_jobs(
-  recent_seasons,
+  italy_top_seasons,
   "1-seriea.txt", "italy", "Italy",
   "serie_a", "Serie A", 1L
 )
 serie_b_jobs <- make_cached_league_jobs(
-  recent_seasons,
+  recent_major_seasons,
   "2-serieb.txt", "italy", "Italy",
   "serie_b", "Serie B", 2L
 )
 bundesliga_jobs <- make_cached_league_jobs(
-  recent_seasons,
+  germany_top_seasons,
   "1-bundesliga.txt", "deutschland", "Germany",
   "bundesliga", "Bundesliga", 1L
 )
 bundesliga2_jobs <- make_cached_league_jobs(
-  recent_seasons,
+  recent_major_seasons,
   "2-bundesliga2.txt", "deutschland", "Germany",
   "bundesliga_2", "2. Bundesliga", 2L
 )
 ligue1_jobs <- make_cached_league_jobs(
-  recent_seasons,
+  france_top_seasons,
   "1-ligue1.txt", "france", "France",
   "ligue_1", "Ligue 1", 1L
 )
 ligue2_jobs <- make_cached_league_jobs(
-  recent_seasons,
+  recent_major_seasons,
   "2-ligue2.txt", "france", "France",
   "ligue_2", "Ligue 2", 2L
 )
@@ -1837,6 +1865,23 @@ for (i in seq_len(nrow(parse_jobs))) {
   fpath <- file.path(season_dir, cfg$file)
   
   if (!file.exists(fpath)) {
+    protected_top_flights <- c(
+      "premier_league", "la_liga", "serie_a", "bundesliga", "ligue_1"
+    )
+    
+    if (
+      identical(parser_name, "openfootball") &&
+      cfg$competition %in% protected_top_flights
+    ) {
+      stop(
+        "Required top-flight source file is missing:\n",
+        fpath,
+        "\nRun 00_download_openfootball_current.R first. ",
+        "The parser will not silently publish a historical gap."
+      )
+    }
+    
+    message("Skipping unavailable optional source file: ", fpath)
     next
   }
   
@@ -2205,6 +2250,68 @@ if (any(major_league_qa$Status == "FAIL")) {
 
 cat("Previous-season major-league QA: PASS\n")
 
+
+# -----------------------------
+# Major top-flight continuity QA
+# -----------------------------
+# Refuse to publish if any post-cutover completed season has disappeared.
+# This protects against a damaged combined CSV or missing local source cache.
+
+continuity_cfg <- data.frame(
+  Country = c("England", "Spain", "Italy", "Germany", "France"),
+  Competition = c("premier_league", "la_liga", "serie_a", "bundesliga", "ligue_1"),
+  FirstStartYear = c(1992L, 2012L, 2013L, 2010L, 2014L),
+  stringsAsFactors = FALSE
+)
+
+continuity_failures <- character()
+
+for (i in seq_len(nrow(continuity_cfg))) {
+  c0 <- continuity_cfg[i, ]
+  
+  expected_starts <- c0$FirstStartYear:previous_start_year
+  expected_seasons <- vapply(
+    expected_starts,
+    function(y) normalise_openfootball_season_label(
+      season_folder_from_start_year(y)
+    ),
+    character(1)
+  )
+  
+  z <- all_df[
+    all_df$Country == c0$Country &
+      all_df$Competition == c0$Competition,
+    ,
+    drop = FALSE
+  ]
+  
+  season_counts <- table(z$Season)
+  
+  for (s in expected_seasons) {
+    n <- if (s %in% names(season_counts)) as.integer(season_counts[[s]]) else 0L
+    
+    # All five protected leagues have comfortably more than 250 matches in a
+    # completed season; this also catches accidentally partial imports.
+    if (n < 250L) {
+      continuity_failures <- c(
+        continuity_failures,
+        paste0(c0$Country, " | ", c0$Competition, " | ", s, " | rows=", n)
+      )
+    }
+  }
+}
+
+if (length(continuity_failures) > 0L) {
+  cat("\nMajor top-flight continuity failures:\n")
+  cat(paste0("  ", continuity_failures, collapse = "\n"), "\n")
+  stop(
+    "Historical top-flight continuity QA failed. ",
+    "Refusing to overwrite the combined CSV."
+  )
+}
+
+cat("Major top-flight continuity QA: PASS\n")
+
 # -----------------------------
 # Write
 # -----------------------------
@@ -2256,4 +2363,4 @@ print(
     order(competition_summary$Country, competition_summary$Competition),
   ]
 )
-beep()
+if (interactive()) beep()

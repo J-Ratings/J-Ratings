@@ -4,6 +4,11 @@ options(stringsAsFactors = FALSE)
 
 library(nanoparquet)
 
+# Local completion sound only; GitHub Actions does not need beepr.
+if (interactive()) {
+  library(beepr)
+}
+
 # -----------------------------
 # Paths
 # -----------------------------
@@ -309,78 +314,108 @@ season_folder <- Sys.getenv(
 # Download jobs
 # -----------------------------
 
-# Historical league files are already cached locally.
-# Normal runs now check/refresh the current season only.
+# Reconstructible source cache:
+#   - historical files are downloaded only when missing;
+#   - the current season is refreshed every run.
+#
+# Top-flight history begins at the same cutover used by 01_parse_openfootball.R.
+# Lower divisions are retained from 2018/19 onwards, matching the existing
+# J-Ratings backfill policy.
 
-england_jobs <- data.frame(
-  repo = rep("england", 5),
-  source_folder = rep("england", 5),
-  season = rep(season_folder, 5),
-  remote_file = c(
-    "1-premierleague.txt",
-    "2-championship.txt",
-    "3-league1.txt",
-    "4-league2.txt",
-    "5-nationalleague.txt"
+current_start_year <- season_start_year(season_folder)
+
+england_pl_seasons <- vapply(
+  1992:current_start_year,
+  season_folder_from_start_year,
+  character(1)
+)
+recent_major_seasons <- vapply(
+  2018:current_start_year,
+  season_folder_from_start_year,
+  character(1)
+)
+
+england_jobs <- rbind(
+  make_repo_league_jobs(
+    england_pl_seasons,
+    "england", "england",
+    "1-premierleague.txt", "1-premierleague.txt"
   ),
-  local_file = c(
-    "1-premierleague.txt",
-    "2-championship.txt",
-    "3-league1.txt",
-    "4-league2.txt",
-    "5-nationalleague.txt"
+  make_repo_league_jobs(
+    recent_major_seasons,
+    "england", "england",
+    "2-championship.txt", "2-championship.txt"
   ),
-  required = rep(FALSE, 5),
-  stringsAsFactors = FALSE
-)
-
-spain_jobs <- data.frame(
-  repo = rep("espana", 2),
-  source_folder = rep("espana", 2),
-  season = rep(season_folder, 2),
-  remote_file = c("1-liga.txt", "2-liga2.txt"),
-  local_file = c("1-liga.txt", "2-liga2.txt"),
-  required = rep(FALSE, 2),
-  stringsAsFactors = FALSE
-)
-
-italy_jobs <- data.frame(
-  repo = rep("italy", 2),
-  source_folder = rep("italy", 2),
-  season = rep(season_folder, 2),
-  remote_file = c("1-seriea.txt", "2-serieb.txt"),
-  local_file = c("1-seriea.txt", "2-serieb.txt"),
-  required = rep(FALSE, 2),
-  stringsAsFactors = FALSE
-)
-
-germany_jobs <- data.frame(
-  repo = rep("deutschland", 2),
-  source_folder = rep("deutschland", 2),
-  season = rep(season_folder, 2),
-  remote_file = c("1-bundesliga.txt", "2-bundesliga2.txt"),
-  local_file = c("1-bundesliga.txt", "2-bundesliga2.txt"),
-  required = rep(FALSE, 2),
-  stringsAsFactors = FALSE
-)
-
-# France is stored differently in the OpenFootball Europe repository:
-# remote files live under /france and include the season in the filename.
-france_jobs <- data.frame(
-  repo = rep("europe", 2),
-  source_folder = rep("france", 2),
-  season = rep(season_folder, 2),
-  remote_file = c(
-    paste0("france/", season_folder, "_fr1.txt"),
-    paste0("france/", season_folder, "_fr2.txt")
+  make_repo_league_jobs(
+    recent_major_seasons,
+    "england", "england",
+    "3-league1.txt", "3-league1.txt"
   ),
-  local_file = c("1-ligue1.txt", "2-ligue2.txt"),
-  required = rep(FALSE, 2),
-  stringsAsFactors = FALSE
+  make_repo_league_jobs(
+    recent_major_seasons,
+    "england", "england",
+    "4-league2.txt", "4-league2.txt"
+  ),
+  make_repo_league_jobs(
+    recent_major_seasons,
+    "england", "england",
+    "5-nationalleague.txt", "5-nationalleague.txt"
+  )
 )
 
-# UEFA Champions League:
-# Historical files are already cached. Only the current season is refreshed.
+spain_jobs <- rbind(
+  make_repo_league_jobs(
+    vapply(2012:current_start_year, season_folder_from_start_year, character(1)),
+    "espana", "espana",
+    "1-liga.txt", "1-liga.txt"
+  ),
+  make_repo_league_jobs(
+    recent_major_seasons,
+    "espana", "espana",
+    "2-liga2.txt", "2-liga2.txt"
+  )
+)
+
+italy_jobs <- rbind(
+  make_repo_league_jobs(
+    vapply(2013:current_start_year, season_folder_from_start_year, character(1)),
+    "italy", "italy",
+    "1-seriea.txt", "1-seriea.txt"
+  ),
+  make_repo_league_jobs(
+    recent_major_seasons,
+    "italy", "italy",
+    "2-serieb.txt", "2-serieb.txt"
+  )
+)
+
+germany_jobs <- rbind(
+  make_repo_league_jobs(
+    vapply(2010:current_start_year, season_folder_from_start_year, character(1)),
+    "deutschland", "deutschland",
+    "1-bundesliga.txt", "1-bundesliga.txt"
+  ),
+  make_repo_league_jobs(
+    recent_major_seasons,
+    "deutschland", "deutschland",
+    "2-bundesliga2.txt", "2-bundesliga2.txt"
+  )
+)
+
+# France is stored flat in the OpenFootball Europe repository, with the season
+# embedded in each filename.
+france_jobs <- rbind(
+  make_flat_europe_league_jobs(
+    vapply(2014:current_start_year, season_folder_from_start_year, character(1)),
+    "france", "fr1", "1-ligue1.txt"
+  ),
+  make_flat_europe_league_jobs(
+    recent_major_seasons,
+    "france", "fr2", "2-ligue2.txt"
+  )
+)
+
+# UEFA Champions League: historical files remain cached; current season refreshes.
 champions_league_jobs <- data.frame(
   repo = "champions-league",
   source_folder = "champions-league",
@@ -525,8 +560,11 @@ for (i in seq_len(nrow(download_jobs))) {
     job$local_file
   )
   
-  # Every configured job is now current-season only, so refresh it each run.
-  if (FALSE) {
+  # Historical files are immutable cache: download only when missing.
+  # Current-season files are refreshed every run so new fixtures/results flow in.
+  is_current_job <- identical(as.character(job$season), season_folder)
+  
+  if (file.exists(dest) && !is_current_job) {
     result <- "already_exists"
   } else {
     base_url <- paste0(
@@ -675,3 +713,4 @@ for (i in seq_len(nrow(wikipedia_jobs))) {
 cat("\nWikipedia download complete.\n")
 print(wikipedia_results)
 
+if (interactive()) beep()

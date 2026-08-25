@@ -1,0 +1,1669 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
+
+  <meta charset="utf-8">
+  <title>J-Ratings: European Football</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="../../jratings-graph.js"></script>
+
+  <style>
+    #compare-chart { height: 520px; }
+
+    .compare-chart-toolbar {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .compare-toolbar-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .compare-toolbar-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .compare-chart-toolbar label {
+      margin-right: 6px;
+      font-size: 1.05rem;
+    }
+
+    .range-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .range-btn {
+      padding: 8px 10px;
+      border: 1px solid #2b2f36;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      color: inherit;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .range-btn:hover { opacity: 0.92; }
+
+    .range-btn.is-active {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(200,200,200,0.55);
+      font-weight: 700;
+    }
+
+    /* Modal */
+    #compare-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #compare-modal > div {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80%;
+      overflow: auto;
+      color: #fff;
+    }
+
+    .compare-controls { margin: 10px 0; }
+    .compare-controls button { margin-right: 10px; }
+
+    .asof {
+      opacity: 0.8;
+      font-size: 0.95rem;
+      margin: 6px 0 12px 0;
+      white-space: nowrap;
+      padding-left: 12px;
+    }
+
+
+    .flag-cell {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .flag-icon {
+      width: 39.93px;
+      height: 29.04px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
+    /* Tier badges */
+    .tier-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1;
+      white-space: nowrap;
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.35);
+      min-width: 38px;
+      text-align: center;
+    }
+
+    @media (min-width: 521px) {
+  .tier-badge {
+    padding: 8px 15px;
+    font-size: 1.1rem;
+    min-width: 44px;
+  }
+}
+
+    /* Division colours + text colours */
+    .tier-premier-league {
+      background: #59127a;
+      color: #ffffff;
+    }
+
+    .tier-championship {
+      background: #081e9a;
+      color: #ffffff;
+    }
+
+    .tier-league-1 {
+      background: #8D8E8E;
+      color: #000000;
+    }
+
+    .tier-league-2 {
+      background: #BB1731;
+      color: #000000;
+    }
+
+    .tier-national-league {
+      background: #E6B84A;
+      color: #000000;
+    }
+
+    /* Spain */
+    .tier-la-liga {
+      background: #00A99D;
+      color: #000000;
+    }
+
+    .tier-segunda {
+      background: #FF6B00;
+      color: #000000;
+    }
+
+    /* Italy */
+    .tier-serie-a {
+      background: #1478D4;
+      color: #ffffff;
+    }
+
+    .tier-serie-b {
+      background: #1F4E79;
+      color: #ffffff;
+    }
+
+    /* Germany */
+    .tier-bundesliga {
+      background: #D20515;
+      color: #ffffff;
+    }
+
+    .tier-bundesliga-2 {
+      background: #8E111B;
+      color: #ffffff;
+    }
+
+    /* France */
+    .tier-ligue-1 {
+      background: #163A70;
+      color: #ffffff;
+    }
+
+    .tier-ligue-2 {
+      background: #00A6C8;
+      color: #000000;
+    }
+
+    /* Other European top divisions */
+    .tier-primeira-liga {
+      background: #0B6E4F;
+      color: #ffffff;
+    }
+
+    .tier-eredivisie {
+      background: #F58220;
+      color: #000000;
+    }
+
+    .tier-belgian-pro-league {
+      background: #F2C94C;
+      color: #000000;
+    }
+
+    .tier-austrian-bundesliga {
+      background: #C8102E;
+      color: #ffffff;
+    }
+
+    .tier-super-lig {
+      background: #D71920;
+      color: #ffffff;
+    }
+
+    .tier-scottish-premiership {
+      background: #1B4D89;
+      color: #ffffff;
+    }
+
+    .tier-swiss-super-league {
+      background: #D52B1E;
+      color: #ffffff;
+    }
+
+    .tier-super-league-greece {
+      background: #1769AA;
+      color: #ffffff;
+    }
+
+    .tier-czech-first-league {
+      background: #11457E;
+      color: #ffffff;
+    }
+
+    .tier-ukrainian-premier-league {
+      background: #FFD700;
+      color: #000000;
+    }
+
+    @media (max-width: 600px) {
+      #compare-chart { height: 420px; }
+    }
+
+@media (max-width: 520px) {
+  #teams {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  #teams th,
+  #teams td {
+    min-width: 0 !important;
+    padding: 10px 8px;
+  }
+
+  #teams th:nth-child(1),
+  #teams td:nth-child(1) {
+    width: 72px;
+    white-space: nowrap;
+  }
+
+  #teams th:nth-child(2),
+  #teams td:nth-child(2) {
+    display: none;
+  }
+
+  #teams th:nth-child(3),
+  #teams td:nth-child(3) {
+    width: auto;
+  }
+
+  #teams th:nth-child(4),
+  #teams td:nth-child(4) {
+    width: 72px;
+  }
+
+  #teams th:nth-child(5),
+  #teams td:nth-child(5) {
+    display: none;
+  }
+
+  #teams td:nth-child(3) a {
+    display: block;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}    
+
+@media (min-width: 521px) and (max-width: 800px) {
+  #teams th,
+  #teams td {
+    padding: 10px 8px;
+    font-size: 1rem;
+  }
+
+  #teams th {
+    font-size: 1.05rem;
+  }
+
+  #teams th:nth-child(1),
+  #teams td:nth-child(1) {
+    width: 9%;
+  }
+
+  #teams th:nth-child(2),
+  #teams td:nth-child(2) {
+    width: 11%;
+  }
+
+  #teams th:nth-child(3),
+  #teams td:nth-child(3) {
+    width: 32%;
+  }
+
+  #teams th:nth-child(4),
+  #teams td:nth-child(4) {
+    width: 16%;
+  }
+
+  #teams th:nth-child(5),
+  #teams td:nth-child(5) {
+    width: 32%;
+  }
+
+  .flag-icon {
+    width: 40px;
+    height: 30px;
+  }
+
+  .tier-badge {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}
+  
+
+    /* Home-page polish shared with the Go layout. */
+    #compare-modal > div {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .compare-modal-header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: #1a1a1a;
+      padding: 20px 20px 12px;
+      border-bottom: 1px solid #2b2f36;
+    }
+
+    .compare-modal-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .compare-modal-title-row h3 { margin: 0; }
+
+    .compare-close {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font-size: 1.8rem;
+      line-height: 1;
+      padding: 0 4px;
+      cursor: pointer;
+    }
+
+    .compare-close:hover { opacity: 0.8; }
+
+    .compare-controls { margin: 0; }
+
+    #compare-list {
+      overflow-y: auto;
+      padding: 12px 20px 20px;
+      margin: 0 !important;
+    }
+
+
+    .table-wrap {
+      width: min(86vw, 1200px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #teams {
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    #teams th,
+    #teams td {
+      border-right: 1px solid rgba(128,128,128,0.18);
+    }
+
+@media (min-width: 521px) {
+  #teams th:nth-child(1),
+  #teams td:nth-child(1) { width: 8%; }
+
+  #teams th:nth-child(2),
+  #teams td:nth-child(2) { width: 10%; }
+
+  #teams th:nth-child(3),
+  #teams td:nth-child(3) { width: 36%; }
+
+  #teams th:nth-child(4),
+  #teams td:nth-child(4) { width: 16%; }
+
+  #teams th:nth-child(5),
+  #teams td:nth-child(5) { width: 30%; }
+}
+
+    #teams th:last-child,
+    #teams td:last-child { border-right: none; }
+
+    #teams tbody tr:nth-child(even) {
+      background: rgba(255,255,255,0.018);
+    }
+
+    @media (min-width: 521px) {
+      .flag-icon {
+        width: 54px;
+        height: 40px;
+      }
+
+      #teams th { font-size: 1.55rem; }
+      #teams td { font-size: 1.45rem; }
+      #teams th,
+      #teams td { padding: 14px 18px; }
+    }
+
+    @media (min-width: 769px) {
+      #teams-panel > .asof {
+        text-align: center;
+        font-size: 1.15rem;
+        margin: 18px 0 22px;
+        padding-left: 0;
+      }
+
+      #teams-panel > .toolbar { gap: 12px; }
+
+      #teams-panel > .toolbar input,
+      #teams-panel > .toolbar select,
+      #teams-panel > .toolbar button {
+        font-size: 1.05rem;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+
+      #teams-panel > .toolbar label { font-size: 1.05rem; }
+    }
+
+  
+    /* Standardised J-Ratings home-page comparison graph: Go design, 10% smaller. */
+    #compare-wrap{
+      width:min(82.8vw, 1260px);
+      margin:0 auto;
+      padding:16px 0 !important;
+    }
+
+    #compare-chart{
+      width:100%;
+      height:585px !important;
+      min-height:585px;
+      margin-bottom:0 !important;
+    }
+
+    @media (max-width:768px){
+      #compare-wrap{
+        width:100%;
+        padding:12px 0 !important;
+      }
+
+      #compare-chart{
+        height:432px !important;
+        min-height:432px;
+      }
+    }
+
+  
+    /* Keep comparison controls visually identical across sports. */
+    #compare-wrap .jr-chart-controls{
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:flex-start !important;
+      justify-content:flex-start !important;
+      gap:10px !important;
+      margin-bottom:10px !important;
+    }
+
+    #compare-wrap .jr-chart-controls > div:first-child{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    #compare-wrap .range-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    #compare-wrap .seg{
+      font-size:1.05rem;
+      padding:9px 12px;
+    }
+
+    #compare-wrap #compare-agg{
+      font-size:1.05rem;
+      padding:9px 12px;
+    }
+
+    #compare-wrap .jr-chart-controls label{
+      font-size:1.05rem;
+    }
+
+    /* Always show the selected time span clearly. */
+    #compare-wrap .seg.active,
+    #compare-wrap .seg.is-active,
+    #compare-wrap .seg[aria-pressed="true"]{
+      background:rgba(255,255,255,0.10) !important;
+      border-color:rgba(220,220,220,0.85) !important;
+      box-shadow:0 0 0 1px rgba(220,220,220,0.55) inset !important;
+    }
+
+    /* Larger Plotly text without enlarging the chart itself. */
+    #compare-chart .xtick text,
+    #compare-chart .ytick text{
+      font-size:16px !important;
+    }
+
+    #compare-chart .legendtext{
+      font-size:16px !important;
+    }
+
+    #compare-chart .xtitle,
+    #compare-chart .ytitle{
+      font-size:22px !important;
+    }
+
+    #compare-chart .hovertext text,
+    #compare-chart .hoverlayer text{
+      font-size:18px !important;
+    }
+
+    @media (max-width:768px){
+      #compare-chart .xtick text,
+      #compare-chart .ytick text{
+        font-size:15px !important;
+      }
+
+      #compare-chart .legendtext{
+        font-size:15px !important;
+      }
+
+      #compare-chart .hovertext text,
+      #compare-chart .hoverlayer text{
+        font-size:16px !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a id="home-link" href="./" class="brand-with-logo">
+        <span>J-Ratings <span class="title-football">European Football</span></span>
+      </a>
+    </h1>
+
+    <nav class="topnav" aria-label="Main">
+      <a href="/index.html">Sports</a>
+      <a href="./" class="active-tab">Home</a>
+      <a href="../compare/">Compare</a>
+      <a href="../peak/">Peak</a>    
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel" id="teams-panel">
+<div id="asof" class="asof" aria-live="polite"></div>
+
+    <div class="toolbar">
+      <input id="q" type="search" placeholder="Filter by team…">
+
+      <label for="country" style="margin-left:auto">Country:</label>
+      <select id="country">
+        <option value="all" selected>All</option>
+        <option value="england">England</option>
+        <option value="spain">Spain</option>
+        <option value="italy">Italy</option>
+        <option value="germany">Germany</option>
+        <option value="france">France</option>
+        <option value="portugal">Portugal</option>
+        <option value="netherlands">Netherlands</option>
+        <option value="belgium">Belgium</option>
+        <option value="austria">Austria</option>
+        <option value="turkey">Turkey</option>
+        <option value="scotland">Scotland</option>
+        <option value="switzerland">Switzerland</option>
+        <option value="greece">Greece</option>
+        <option value="czechia">Czechia</option>
+        <option value="ukraine">Ukraine</option>
+      </select>
+
+      <label for="league">League:</label>
+      <select id="league">
+        <option value="all" selected>All</option>
+      </select>
+
+      <label for="season">Season:</label>
+      <select id="season">
+        <option value="live" selected>Live</option>
+      </select>
+
+      <button id="compare-btn" class="club-btn" type="button">Compare</button>
+    </div>
+
+    <div id="compare-wrap" style="display:none; padding:16px">
+      <div class="jr-chart-controls">
+        <div>
+          <label for="compare-agg">View:</label>
+          <select id="compare-agg">
+            <option value="daily">Daily</option>
+            <option value="weekly" selected>Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="quarterly">Quarterly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+        </div>
+
+        <div class="range-buttons">
+          <button type="button" class="seg active is-active" data-range="ALL" aria-pressed="true">ALL</button>
+          <button type="button" class="seg" data-range="2000">2000–Present</button>
+          <button type="button" class="seg" data-range="2020" aria-pressed="false">2020–Present</button>
+          <button type="button" class="seg" data-range="LY">Last Year</button>
+          <button type="button" class="seg" data-range="YTD">YTD</button>
+        </div>
+      </div>
+
+      <div id="compare-chart" class="jr-chart">Loading…</div>
+    </div>
+
+
+
+    <div class="table-wrap">
+      <table id="teams">
+        <thead>
+          <tr>
+            <th style="min-width:60px">Rank</th>
+            <th style="min-width:56px">Country</th>
+            <th style="min-width:240px">Team</th>
+            <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
+            <th style="min-width:150px">Competition</th>
+          </tr>
+        </thead>
+        <tbody><!-- filled by JS --></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Compare Selection Modal -->
+  <div id="compare-modal">
+    <div>
+      <div class="compare-modal-header">
+        <div class="compare-modal-title-row">
+          <h3>Select teams to view:</h3>
+          <button id="compare-close" class="compare-close" type="button" aria-label="Close comparison">×</button>
+        </div>
+
+        <div class="compare-controls">
+          <button id="compare-show-top" type="button">Show Selected</button>
+        </div>
+      </div>
+
+      <div id="compare-list"></div>
+    </div>
+  </div>
+
+
+
+  <footer class="site-footer">
+    <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
+
+    <div>
+      Primary Data Source:
+      <a href="https://github.com/openfootball/england/tree/master">
+        openfootball/england (GitHub)
+      </a>
+      ~ CC0 1.0 (Public Domain)
+    </div>
+
+    <div>
+      Secondary Data Source:
+      <a href="https://www.football-data.co.uk/englandm.php">
+        Football-Data.co.uk
+      </a>
+      ~ used only to fill National League / Conference gaps before 2015.
+    </div>
+  </footer>
+</main>
+
+<script>
+  const DATA_URL = '../data/teams.json';
+  const SEASON_STARTS_URL = '../data/season_starts.json';
+  const META_URL = '../data/meta.json';
+  const COLOURS_URL = '../team-colours.json';
+  const FLAGS_BASE = '../../flags';
+
+  const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
+
+  const state = {
+    mode: 'live',
+    meta: null,
+    liveRows: [],
+    seasonStarts: [],
+    rows: [],
+    filtered: []
+  };
+
+  const histCache = new Map();
+
+  let compareChart = null;
+  let lastCompared = [];
+  let TEAM_COLOURS = {};
+  let COMPARE_SINCE_YEAR = '2020';
+  let COMPARE_AGG_MODE = 'monthly';
+
+  let compareVisibleSeries = [];
+
+  function formatAsOf(iso) {
+    const [y, m, d] = String(iso).split('-').map(Number);
+    if (!y || !m || !d) return iso;
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${d} ${months[m - 1]} ${y}`;
+  }
+
+  function setAsOfText() {
+    const el = document.getElementById('asof');
+    if (!el) return;
+
+    if (state.mode === 'live' && state.meta && state.meta.asof) {
+      el.style.display = 'block';
+      el.textContent = `Updated to: ${formatAsOf(state.meta.asof)}`;
+    } else {
+      el.style.display = 'none';
+      el.textContent = '';
+    }
+  }
+
+  function tierLabel(row) {
+    const div = String(row.division || '').trim();
+
+    const labels = {
+      'Premier League': 'Premier League',
+      'Championship': 'Championship',
+      'League 1': 'League 1',
+      'League One': 'League 1',
+      'League 2': 'League 2',
+      'League Two': 'League 2',
+      'National League': 'National League',
+
+      'La Liga': 'La Liga',
+      'Segunda División': 'Segunda División',
+
+      'Serie A': 'Serie A',
+      'Serie B': 'Serie B',
+
+      'Bundesliga': 'Bundesliga',
+      '2. Bundesliga': '2. Bundesliga',
+
+      'Ligue 1': 'Ligue 1',
+      'Ligue 2': 'Ligue 2',
+
+      'Primeira Liga': 'Primeira Liga',
+      'Eredivisie': 'Eredivisie',
+      'Belgian Pro League': 'Belgian Pro League',
+      'Austrian Bundesliga': 'Austrian Bundesliga',
+      'Süper Lig': 'Süper Lig',
+      'Scottish Premiership': 'Scottish Premiership',
+      'Swiss Super League': 'Swiss Super League',
+      'Super League Greece': 'Super League Greece',
+      'Czech First League': 'Czech First League',
+      'Ukrainian Premier League': 'Ukrainian Premier League'
+    };
+
+    return labels[div] || div || '';
+  }
+
+  function tierClass(label) {
+    const s = String(label || '').trim().toLowerCase();
+
+    if (s === 'premier league') return 'tier-premier-league';
+    if (s === 'championship') return 'tier-championship';
+    if (s === 'league 1' || s === 'league one') return 'tier-league-1';
+    if (s === 'league 2' || s === 'league two') return 'tier-league-2';
+    if (s === 'national league') return 'tier-national-league';
+
+    if (s === 'la liga') return 'tier-la-liga';
+    if (s === 'segunda división' || s === 'segunda division') return 'tier-segunda';
+
+    if (s === 'serie a') return 'tier-serie-a';
+    if (s === 'serie b') return 'tier-serie-b';
+
+    if (s === 'bundesliga') return 'tier-bundesliga';
+    if (s === '2. bundesliga') return 'tier-bundesliga-2';
+
+    if (s === 'ligue 1') return 'tier-ligue-1';
+    if (s === 'ligue 2') return 'tier-ligue-2';
+
+    if (s === 'primeira liga') return 'tier-primeira-liga';
+    if (s === 'eredivisie') return 'tier-eredivisie';
+    if (s === 'belgian pro league') return 'tier-belgian-pro-league';
+    if (s === 'austrian bundesliga') return 'tier-austrian-bundesliga';
+    if (s === 'süper lig' || s === 'super lig') return 'tier-super-lig';
+    if (s === 'scottish premiership') return 'tier-scottish-premiership';
+    if (s === 'swiss super league') return 'tier-swiss-super-league';
+    if (s === 'super league greece') return 'tier-super-league-greece';
+    if (s === 'czech first league') return 'tier-czech-first-league';
+    if (s === 'ukrainian premier league') return 'tier-ukrainian-premier-league';
+
+    return '';
+  }
+
+
+  const COUNTRY_FLAG_CODES = {
+    england: 'gb-eng',
+    spain: 'es',
+    italy: 'it',
+    germany: 'de',
+    france: 'fr',
+    portugal: 'pt',
+    netherlands: 'nl',
+    belgium: 'be',
+    austria: 'at',
+    turkey: 'tr',
+    scotland: 'gb-sct',
+    switzerland: 'ch',
+    greece: 'gr',
+    czechia: 'cz',
+    ukraine: 'ua'
+  };
+
+  const COUNTRY_LABELS = {
+    england: 'England',
+    spain: 'Spain',
+    italy: 'Italy',
+    germany: 'Germany',
+    france: 'France',
+    portugal: 'Portugal',
+    netherlands: 'Netherlands',
+    belgium: 'Belgium',
+    austria: 'Austria',
+    turkey: 'Turkey',
+    scotland: 'Scotland',
+    switzerland: 'Switzerland',
+    greece: 'Greece',
+    czechia: 'Czechia',
+    ukraine: 'Ukraine'
+  };
+
+  function flagImgHtmlForTeam(row) {
+    const country = countryForTeam(row);
+    const code = COUNTRY_FLAG_CODES[country];
+    if (!code) return '';
+
+    const label = COUNTRY_LABELS[country] || country;
+    return `<img src="${FLAGS_BASE}/${code}.svg" alt="${label}" title="${label}" class="flag-icon" loading="lazy">`;
+  }
+
+  function updateRatingHeader() {
+    const h = document.getElementById('rating-col-head');
+    if (!h) return;
+    h.textContent = (state.mode === 'live') ? 'Rating' : 'Start Elo';
+  }
+
+  function render() {
+    const tbody = document.querySelector('#teams tbody');
+    tbody.innerHTML = '';
+
+    const q = document.getElementById('q').value.trim();
+    const country = document.getElementById('country').value;
+    const league = document.getElementById('league').value;
+    const hasActiveFilter = q !== '' || country !== 'all' || league !== 'all';
+
+    state.filtered.forEach((r, i) => {
+      const tr = document.createElement('tr');
+
+      const tdRank = document.createElement('td');
+      tdRank.textContent = hasActiveFilter
+        ? `${i + 1} (${r.rank})`
+        : String(r.rank);
+      tr.appendChild(tdRank);
+
+      const tdFlag = document.createElement('td');
+      tdFlag.className = 'flag-cell';
+      tdFlag.innerHTML = flagImgHtmlForTeam(r);
+      tr.appendChild(tdFlag);
+
+      const tdName = document.createElement('td');
+      const a = document.createElement('a');
+      a.href = `../player/?id=${encodeURIComponent(r.id)}`;
+      a.textContent = r.name;
+      tdName.appendChild(a);
+      tr.appendChild(tdName);
+
+      const tdRt = document.createElement('td');
+      tdRt.className = 'right';
+      tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
+      tr.appendChild(tdRt);
+
+      const tdTier = document.createElement('td');
+      const label = tierLabel(r);
+
+      if (label) {
+        const span = document.createElement('span');
+        span.className = `tier-badge ${tierClass(label)}`.trim();
+        span.textContent = label;
+        tdTier.appendChild(span);
+      } else {
+        tdTier.textContent = '';
+      }
+
+      tr.appendChild(tdTier);
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  function hideCompare() {
+    document.getElementById('compare-wrap').style.display = 'none';
+    document.getElementById('compare-chart').innerHTML = '';
+    lastCompared = [];
+    compareVisibleSeries = [];
+  }
+
+  function countryForTeam(row) {
+    const div = String(row.division || '').trim().toLowerCase();
+
+    if ([
+      'premier league',
+      'championship',
+      'league 1',
+      'league one',
+      'league 2',
+      'league two',
+      'national league'
+    ].includes(div)) {
+      return 'england';
+    }
+
+    if ([
+      'la liga',
+      'segunda división',
+      'segunda division'
+    ].includes(div)) {
+      return 'spain';
+    }
+
+    if ([
+      'serie a',
+      'serie b'
+    ].includes(div)) {
+      return 'italy';
+    }
+
+    if ([
+      'bundesliga',
+      '2. bundesliga'
+    ].includes(div)) {
+      return 'germany';
+    }
+
+    if ([
+      'ligue 1',
+      'ligue 2'
+    ].includes(div)) {
+      return 'france';
+    }
+
+    if (div === 'primeira liga') return 'portugal';
+    if (div === 'eredivisie') return 'netherlands';
+    if (div === 'belgian pro league') return 'belgium';
+    if (div === 'austrian bundesliga') return 'austria';
+    if (div === 'süper lig' || div === 'super lig') return 'turkey';
+    if (div === 'scottish premiership') return 'scotland';
+    if (div === 'swiss super league') return 'switzerland';
+    if (div === 'super league greece') return 'greece';
+    if (div === 'czech first league') return 'czechia';
+    if (div === 'ukrainian premier league') return 'ukraine';
+
+    return '';
+  }
+
+  function populateLeagueFilter() {
+    const country = document.getElementById('country').value;
+    const leagueSelect = document.getElementById('league');
+    const currentValue = leagueSelect.value;
+
+const leagueOrder = [
+  'Premier League',
+  'Championship',
+  'League 1',
+  'League 2',
+  'National League',
+
+  'Ligue 1',
+  'Ligue 2',
+
+  'Bundesliga',
+  '2. Bundesliga',
+
+  'Serie A',
+  'Serie B',
+
+  'La Liga',
+  'Segunda División',
+
+  'Primeira Liga',
+  'Eredivisie',
+  'Belgian Pro League',
+  'Austrian Bundesliga',
+  'Süper Lig',
+  'Scottish Premiership',
+  'Swiss Super League',
+  'Super League Greece',
+  'Czech First League',
+  'Ukrainian Premier League'
+];
+
+const leagues = Array.from(
+  new Set(
+    state.rows
+      .filter(r => country === 'all' || countryForTeam(r) === country)
+      .map(r => String(r.division || '').trim())
+      .filter(Boolean)
+  )
+).sort((a, b) => {
+  const ai = leagueOrder.indexOf(a);
+  const bi = leagueOrder.indexOf(b);
+
+  if (ai === -1 && bi === -1) return a.localeCompare(b);
+  if (ai === -1) return 1;
+  if (bi === -1) return -1;
+
+  return ai - bi;
+});
+
+    leagueSelect.innerHTML = '<option value="all">All</option>';
+
+    for (const league of leagues) {
+      const opt = document.createElement('option');
+      opt.value = league;
+      opt.textContent = league;
+      leagueSelect.appendChild(opt);
+    }
+
+    leagueSelect.value = leagues.includes(currentValue)
+      ? currentValue
+      : 'all';
+  }
+
+  function applyFilter() {
+    const q = document.getElementById('q').value.trim().toLowerCase();
+    const country = document.getElementById('country').value;
+    const league = document.getElementById('league').value;
+
+    state.filtered = state.rows.filter(r => {
+      const matchesTeam =
+        !q || r.name.toLowerCase().includes(q);
+
+      const matchesCountry =
+        country === 'all' || countryForTeam(r) === country;
+
+      const matchesLeague =
+        league === 'all' || String(r.division || '').trim() === league;
+
+      return matchesTeam && matchesCountry && matchesLeague;
+    });
+
+    updateRatingHeader();
+    render();
+    hideCompare();
+  }
+
+  function rebuildRowsFromMode() {
+    const mode = document.getElementById('season').value;
+    state.mode = mode;
+
+    if (mode === 'live') {
+      state.rows = state.liveRows
+        .slice()
+        .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
+    } else {
+      state.rows = state.seasonStarts
+        .filter(d => d.season === mode)
+        .map(d => ({
+          id: d.id,
+          name: d.name,
+          rating: +d.elo,
+          tier: Number.isFinite(+d.tier) ? +d.tier : null,
+          division: d.division || ''
+        }))
+        .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
+    }
+
+state.rows = state.rows.map((r, i) => ({
+  ...r,
+  rank: i + 1
+}));
+
+setAsOfText();
+populateLeagueFilter();
+applyFilter();
+  }
+
+  function populateSeasonSelect() {
+    const sel = document.getElementById('season');
+
+    const seasons = Array.from(new Set(
+      state.seasonStarts.map(d => d.season).filter(Boolean)
+    )).sort((a, b) => {
+      const ay = parseInt(String(a).slice(0, 4), 10);
+      const by = parseInt(String(b).slice(0, 4), 10);
+      return by - ay;
+    });
+
+    for (const s of seasons) {
+      const opt = document.createElement('option');
+      opt.value = s;
+      opt.textContent = s;
+      sel.appendChild(opt);
+    }
+  }
+
+  async function fetchHistoryFor(id) {
+    if (histCache.has(id)) return histCache.get(id);
+
+    try {
+      const res = await fetch(`../data/history/${encodeURIComponent(id)}.json`, { cache: 'no-cache' });
+      if (!res.ok) return null;
+      const rows = await res.json();
+      histCache.set(id, rows);
+      return rows;
+    } catch {
+      return null;
+    }
+  }
+
+  async function loadColours() {
+    try {
+      const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
+      if (!res.ok) {
+        TEAM_COLOURS = {};
+        return;
+      }
+
+      TEAM_COLOURS = await res.json();
+    } catch {
+      TEAM_COLOURS = {};
+    }
+  }
+
+  function hexToRgb(hex) {
+    const clean = String(hex || '').trim();
+    const match = clean.match(/^#([0-9a-f]{6})$/i);
+    if (!match) return null;
+
+    const value = match[1];
+    return {
+      r: parseInt(value.slice(0, 2), 16),
+      g: parseInt(value.slice(2, 4), 16),
+      b: parseInt(value.slice(4, 6), 16)
+    };
+  }
+
+  function rgbToHex(r, g, b) {
+    return '#' + [r, g, b]
+      .map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0'))
+      .join('');
+  }
+
+  function relativeLuminance({ r, g, b }) {
+    const toLinear = c => {
+      const s = c / 255;
+      return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+    };
+
+    const R = toLinear(r);
+    const G = toLinear(g);
+    const B = toLinear(b);
+
+    return 0.2126 * R + 0.7152 * G + 0.0722 * B;
+  }
+
+  function mixWithWhite(rgb, amount) {
+    return {
+      r: rgb.r + (255 - rgb.r) * amount,
+      g: rgb.g + (255 - rgb.g) * amount,
+      b: rgb.b + (255 - rgb.b) * amount
+    };
+  }
+
+  function getDisplayColour(teamName) {
+    const fallback = '#2F80ED';
+    const raw = TEAM_COLOURS[teamName] || fallback;
+    const rgb = hexToRgb(raw);
+
+    if (!rgb) return fallback;
+
+    const lum = relativeLuminance(rgb);
+
+    if (lum >= 0.05) return raw;
+
+    const lifted = mixWithWhite(rgb, 0.45);
+    return rgbToHex(lifted.r, lifted.g, lifted.b);
+  }
+
+  function normalise(series, dedupeByDay = false) {
+    const s = series
+      .filter(p => p && p.x && Number.isFinite(p.y))
+      .map(p => ({
+        x: p.x,
+        y: +p.y,
+        tier: Number.isFinite(+p.tier) ? +p.tier : null
+      }))
+      .sort((a, b) => new Date(a.x) - new Date(b.x));
+
+    if (!dedupeByDay) return s;
+
+    const out = [];
+    let lastKey = null;
+
+    for (const p of s) {
+      const d = new Date(p.x);
+      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+
+      if (key !== lastKey) out.push(p);
+      else out[out.length - 1] = p;
+
+      lastKey = key;
+    }
+
+    return out;
+  }
+
+  function aggregate(series, mode) {
+  if (mode === 'daily') return normalise(series, true);
+
+  const buckets = Object.create(null);
+
+  for (const p of series) {
+    const d = new Date(p.x);
+    if (Number.isNaN(d.getTime())) continue;
+
+    let key;
+    let x;
+
+    if (mode === 'weekly') {
+      const wd = d.getUTCDay();
+      const diff = (wd + 6) % 7;
+      const monday = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - diff));
+      key = monday.toISOString().slice(0, 10);
+      x = key;
+    } else if (mode === 'monthly') {
+      key = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`;
+      x = `${key}-01`;
+    } else if (mode === 'quarterly') {
+      const quarter = Math.floor(d.getUTCMonth() / 3) + 1;
+      key = `${d.getUTCFullYear()}-Q${quarter}`;
+      x = `${d.getUTCFullYear()}-${String((quarter - 1) * 3 + 1).padStart(2, '0')}-01`;
+    } else {
+      key = `${d.getUTCFullYear()}`;
+      x = `${key}-01-01`;
+    }
+
+    if (!buckets[key]) buckets[key] = { x, pts: [] };
+    buckets[key].pts.push(p);
+  }
+
+  const out = Object.keys(buckets).sort().map(key => {
+    const bucket = buckets[key];
+    const pts = bucket.pts.filter(p => Number.isFinite(p.y));
+    if (!pts.length) return null;
+    const avg = pts.reduce((sum, p) => sum + p.y, 0) / pts.length;
+    const x = bucket.x;
+    const lastMeta = pts.length ? (pts[pts.length - 1].tier ?? '') : '';
+    return { x, y: avg, tier: lastMeta };
+  }).filter(Boolean);
+
+  return normalise(out, false);
+}
+
+  function applySinceFilter(series, rangeValue) {
+  const range = String(rangeValue || 'ALL').toUpperCase();
+  if (range === 'ALL') return series;
+
+  const now = new Date();
+  let start;
+
+  if (range === 'LY') {
+    start = new Date(now);
+    start.setFullYear(start.getFullYear() - 1);
+  } else if (range === 'YTD') {
+    start = new Date(Date.UTC(now.getUTCFullYear(), 0, 1));
+  } else {
+    const year = Number(range);
+    if (!Number.isFinite(year)) return series;
+    start = new Date(Date.UTC(year, 0, 1));
+  }
+
+  const startMs = start.getTime();
+  return series.filter(p => new Date(p.x).getTime() >= startMs);
+}
+
+  function labelStepForRange(y0, y1) {
+    const span = Math.abs(y1 - y0);
+
+    if (span <= 150) return 25;
+    if (span <= 600) return 50;
+    return 100;
+  }
+
+  function setCompareTickLabelsEvery(yMin, yMax, step) {
+    const lo = Math.floor(yMin / step) * step;
+    const hi = Math.ceil(yMax / step) * step;
+
+    const vals = [];
+    const text = [];
+
+    for (let y = lo; y <= hi; y += step) {
+      vals.push(y);
+      text.push(String(y));
+    }
+
+    Plotly.relayout('compare-chart', {
+      'yaxis.tickmode': 'array',
+      'yaxis.tickvals': vals,
+      'yaxis.ticktext': text
+    });
+  }
+
+  function makeCompareYGridShapes(yMin, yMax, step) {
+    if (!Number.isFinite(yMin) || !Number.isFinite(yMax) || !step) return [];
+
+    const lo = Math.floor((yMin - 1) / step) * step;
+    const hi = Math.ceil((yMax + 1) / step) * step;
+    const shapes = [];
+
+    for (let y = lo; y <= hi; y += step) {
+      let width, color;
+
+      if (step === 100) {
+        width = 2.2;
+        color = 'rgba(255,255,255,0.28)';
+      } else if (step === 50) {
+        width = 1.4;
+        color = 'rgba(255,255,255,0.16)';
+      } else {
+        width = 1.0;
+        color = 'rgba(255,255,255,0.08)';
+      }
+
+      shapes.push({
+        type: 'line',
+        xref: 'paper',
+        x0: 0,
+        x1: 1,
+        yref: 'y',
+        y0: y,
+        y1: y,
+        line: { width, color },
+        layer: 'below'
+      });
+    }
+
+    return shapes;
+  }
+
+  function adjustCompareYToVisible(x0, x1) {
+    const lo = new Date(x0);
+    const hi = new Date(x1);
+    const values = [];
+
+    for (const series of compareVisibleSeries) {
+      for (const p of series) {
+        const d = new Date(p.x);
+
+        if (d >= lo && d <= hi && Number.isFinite(p.y)) {
+          values.push(p.y);
+        }
+      }
+    }
+
+    if (!values.length) return;
+
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    const pad = (max - min) * 0.12 || 10;
+
+    const y0 = min - pad;
+    const y1 = max + pad;
+    const step = labelStepForRange(y0, y1);
+
+    Plotly.relayout('compare-chart', {
+      'yaxis.range': [y0, y1],
+      'shapes': makeCompareYGridShapes(y0, y1, step)
+    }).then(() => {
+      setCompareTickLabelsEvery(y0, y1, step);
+    });
+  }
+
+  async function buildComparison(teams) {
+  const wrap = document.getElementById('compare-wrap');
+  const chart = document.getElementById('compare-chart');
+
+  wrap.style.display = 'block';
+  chart.innerHTML = '';
+
+  lastCompared = [];
+
+  for (const t of teams) {
+    const hist = await fetchHistoryFor(t.id);
+    if (!hist || !hist.length) continue;
+
+    lastCompared.push({
+      name: t.name || t.id,
+      colour: getDisplayColour(t.name),
+      raw: hist.map(d => ({
+        x: d.date,
+        y: Number(d.rating),
+        tier: d.tier || d.division || d.competition || ''
+      })),
+      customData: pt => pt.tier || '',
+      hovertemplate:
+        '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' +
+        (t.name || t.id) +
+        '</extra>'
+    });
+  }
+
+  if (!lastCompared.length) {
+    chart.innerHTML = 'No history found.';
+    return;
+  }
+
+  await Promise.resolve(compareChart.render(lastCompared));
+
+  if (chart && Array.isArray(chart.data)) {
+    chart.data.forEach((trace, index) => {
+      const item = lastCompared.find(d => d.name === trace.name);
+      if (item && item.colour) {
+        Plotly.restyle(chart, { 'line.color': item.colour }, [index]);
+      }
+    });
+  }
+}
+
+  function resetCompareControls() {
+    const compareAgg = document.getElementById('compare-agg');
+    if (compareAgg) compareAgg.value = 'weekly';
+
+    document.querySelectorAll('#compare-wrap .seg[data-range]').forEach(btn => {
+      btn.classList.remove('active');
+    });
+
+    const since2020Btn = document.querySelector('#compare-wrap .seg[data-range="2020"]');
+    if (since2020Btn) since2020Btn.classList.add('active');
+  }
+
+  function setupCompareButton() {
+
+    const modal = document.getElementById('compare-modal');
+    const listDiv = document.getElementById('compare-list');
+
+    function openModal() {
+      listDiv.innerHTML = '';
+
+      state.filtered.forEach(t => {
+        const id = `chk-${t.id}`;
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = `
+          <label>
+            <input type="checkbox" id="${id}" value="${t.id}" style="margin-right:6px">
+            ${t.name} (${Math.round(t.rating)})
+          </label>
+        `;
+        listDiv.appendChild(wrapper);
+      });
+
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    function showSelected() {
+      const selectedIds = Array.from(listDiv.querySelectorAll('input:checked')).map(cb => cb.value);
+      if (!selectedIds.length) {
+        alert('Please select at least one team.');
+        return;
+      }
+
+      closeModal();
+      resetCompareControls();
+
+      const chosen = state.filtered.filter(t => selectedIds.includes(t.id));
+      buildComparison(chosen);
+    }
+
+    document.getElementById('compare-btn').addEventListener('click', openModal);
+    document.getElementById('compare-show-top').addEventListener('click', showSelected);
+  document.getElementById('compare-close').addEventListener('click', closeModal);
+  }
+
+  function setupCompareChartControls() {
+
+    document.querySelectorAll('#compare-wrap .range-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#compare-wrap .seg[data-range]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('is-active');
+
+        const v = btn.getAttribute('data-since');
+        COMPARE_SINCE_YEAR = v ? Number(v) : null;
+
+        if (lastCompared.length) buildComparison(lastCompared);
+      });
+    });
+  }
+
+  async function load() {
+    try {
+      const [teamsRes, seasonRes, metaRes] = await Promise.all([
+        fetch(DATA_URL, { cache: 'no-cache' }),
+        fetch(SEASON_STARTS_URL, { cache: 'no-cache' }),
+        fetch(META_URL, { cache: 'no-cache' })
+      ]);
+
+      if (!teamsRes.ok) throw new Error('Failed to load teams.json');
+      if (!seasonRes.ok) throw new Error('Failed to load season_starts.json');
+
+      const teamsData = await teamsRes.json();
+      const seasonData = await seasonRes.json();
+
+      state.meta = metaRes.ok ? await metaRes.json() : null;
+
+      state.liveRows = (Array.isArray(teamsData) ? teamsData : [])
+        .filter(d => d && d.id && d.name && Number.isFinite(+d.rating))
+        .map(d => ({
+          id: d.id,
+          name: d.name,
+          rating: +d.rating,
+          tier: Number.isFinite(+d.tier) ? +d.tier : null,
+          division: d.division || ''
+        }))
+        .sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name));
+
+      state.seasonStarts = Array.isArray(seasonData)
+        ? seasonData.filter(d => d && d.id && d.name && d.season && Number.isFinite(+d.elo))
+        : [];
+
+      populateSeasonSelect();
+      rebuildRowsFromMode();
+    } catch (err) {
+      const asofEl = document.getElementById('asof');
+      if (asofEl) {
+        asofEl.style.display = 'none';
+        asofEl.textContent = '';
+      }
+
+      document.querySelector('#teams tbody').innerHTML =
+        `<tr><td colspan="5">Error loading data: ${err.message}</td></tr>`;
+    }
+  }
+
+  compareChart = JRGraph.createChart({
+  chartId: 'compare-chart',
+  aggId: 'compare-agg',
+  controlsEl: document.getElementById('compare-wrap'),
+  defaultRange: 'ALL',
+  getItems: () => lastCompared
+});
+
+document.getElementById('season').addEventListener('change', rebuildRowsFromMode);
+
+  document.getElementById('country').addEventListener('change', () => {
+    populateLeagueFilter();
+    applyFilter();
+  });
+
+  document.getElementById('league').addEventListener('change', applyFilter);
+  document.getElementById('q').addEventListener('input', applyFilter);
+
+  setupCompareButton();
+
+  loadColours()
+    .then(load)
+    .catch(err => {
+      console.error(err);
+      load();
+    });
+</script>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const rangeButtons = Array.from(
+    document.querySelectorAll('#compare-wrap .seg[data-range]')
+  );
+
+  const activateRangeButton = (button) => {
+    rangeButtons.forEach(btn => {
+      btn.classList.remove('active', 'is-active');
+      btn.setAttribute('aria-pressed', 'false');
+    });
+
+    if (button) {
+      button.classList.add('active', 'is-active');
+      button.setAttribute('aria-pressed', 'true');
+    }
+  };
+
+  const defaultButton =
+    document.querySelector('#compare-wrap .seg[data-range="ALL"]');
+
+  activateRangeButton(defaultButton);
+
+  rangeButtons.forEach(btn => {
+    btn.addEventListener('click', () => activateRangeButton(btn));
+  });
+});
+</script>
+
+
+</body>
+</html>
