@@ -1013,10 +1013,7 @@ state.rows = rows
 document.getElementById('q').addEventListener('input', applyFilter);
   document.getElementById('year').addEventListener('change', load);
   document.getElementById('load-more').addEventListener('click', loadMore);
-
-  setupCompareButton();
-
-  (async function boot() {
+(async function boot() {
     await loadYearsDropdown();
     await load();
   })();

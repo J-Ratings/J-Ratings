@@ -640,6 +640,14 @@ def clean_generic_public_ui() -> None:
                 flags=re.I,
             )
 
+            # Remove calls that initialise the now-hidden Compare button.
+            # Otherwise pages can fail before the normal ratings table loads.
+            s = re.sub(
+                r'\n\s*setupCompareButton\(\);\s*',
+                '\n',
+                s,
+            )
+
             # Public detailed history begins in 2010.
             s = s.replace('data-range="2000"', 'data-range="2010"')
             s = s.replace("data-range='2000'", "data-range='2010'")
@@ -674,6 +682,9 @@ def assert_generic_public_ui_clean() -> None:
 
             if re.search(r'id=["\']compare-btn["\']', s, flags=re.I):
                 failures.append(f"{rel}: visible Compare button remains")
+
+            if re.search(r'\bsetupCompareButton\(\);', s):
+                failures.append(f"{rel}: Compare-button initialiser remains")
 
             if (
                 'data-range="2000"' in s
