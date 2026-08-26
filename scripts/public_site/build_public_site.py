@@ -446,6 +446,30 @@ def clean_european_football_public_ui() -> None:
         s = re.sub(r'\n\s*setupCompareButton\(\);\s*', '\n', s)
         s = re.sub(r'\n\s*setupCompareChartControls\(\);\s*', '\n', s)
 
+        # The normal table/filter code still calls hideCompare(). Keep that
+        # helper, but make it safe now that the public comparison DOM is gone.
+        s = re.sub(
+            r'function hideCompare\(\) \{[\s\S]*?\n\s*\}',
+            """function hideCompare() {
+    const wrap = document.getElementById('compare-wrap');
+    const chart = document.getElementById('compare-chart');
+    if (wrap) wrap.style.display = 'none';
+    if (chart) chart.innerHTML = '';
+    lastCompared = [];
+    compareVisibleSeries = [];
+  }""",
+            s,
+            count=1,
+        )
+
+        # Remove chart initialisation that references deleted comparison DOM.
+        s = re.sub(
+            r'\n\s*compareChart\s*=\s*JRGraph\.createChart\(\{[\s\S]*?\}\);\s*',
+            '\n',
+            s,
+            count=1,
+        )
+
         home.write_text(s, encoding="utf-8", newline="\n")
         print("Cleaned public European Football home UI")
 
@@ -562,6 +586,18 @@ def assert_european_football_public_ui_clean() -> None:
         if 'data-range="2000"' in s or "defaultRange: '2000'" in s:
             raise RuntimeError(
                 "SAFETY CHECK FAILED: public player page still advertises pre-2010 range"
+            )
+
+    home = OUT_DIR / "EuropeanFootball" / "home" / "index.html"
+    if home.exists():
+        s = home.read_text(encoding="utf-8")
+        if "compareChart = JRGraph.createChart" in s:
+            raise RuntimeError(
+                "SAFETY CHECK FAILED: public European Football home still initialises compare chart"
+            )
+        if "document.getElementById('compare-wrap').style" in s:
+            raise RuntimeError(
+                "SAFETY CHECK FAILED: public European Football home has unsafe compare-wrap access"
             )
 
     print("European Football public-UI safety checks: PASS")

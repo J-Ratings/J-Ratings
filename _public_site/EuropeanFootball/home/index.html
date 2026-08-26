@@ -917,8 +917,10 @@
   }
 
   function hideCompare() {
-    document.getElementById('compare-wrap').style.display = 'none';
-    document.getElementById('compare-chart').innerHTML = '';
+    const wrap = document.getElementById('compare-wrap');
+    const chart = document.getElementById('compare-chart');
+    if (wrap) wrap.style.display = 'none';
+    if (chart) chart.innerHTML = '';
     lastCompared = [];
     compareVisibleSeries = [];
   }
@@ -1562,15 +1564,6 @@ applyFilter();
         `<tr><td colspan="5">Error loading data: ${err.message}</td></tr>`;
     }
   }
-
-  compareChart = JRGraph.createChart({
-  chartId: 'compare-chart',
-  aggId: 'compare-agg',
-  controlsEl: document.getElementById('compare-wrap'),
-  defaultRange: 'ALL',
-  getItems: () => lastCompared
-});
-
 document.getElementById('season').addEventListener('change', rebuildRowsFromMode);
 
   document.getElementById('country').addEventListener('change', () => {
