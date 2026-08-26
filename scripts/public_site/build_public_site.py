@@ -630,6 +630,16 @@ def clean_generic_public_ui() -> None:
                 flags=re.I,
             )
 
+            # No public comparison feature for now: remove the visible launch
+            # button from Home/Peak-style pages across every sport.
+            s = re.sub(
+                r'\s*<button\b[^>]*id=["\']compare-btn["\'][^>]*>[\s\S]*?</button>\s*',
+                '\n',
+                s,
+                count=1,
+                flags=re.I,
+            )
+
             # Public detailed history begins in 2010.
             s = s.replace('data-range="2000"', 'data-range="2010"')
             s = s.replace("data-range='2000'", "data-range='2010'")
@@ -661,6 +671,9 @@ def assert_generic_public_ui_clean() -> None:
 
             if re.search(r'href=["\'][^"\']*compare/', s, flags=re.I):
                 failures.append(f"{rel}: link to private compare section")
+
+            if re.search(r'id=["\']compare-btn["\']', s, flags=re.I):
+                failures.append(f"{rel}: visible Compare button remains")
 
             if (
                 'data-range="2000"' in s
@@ -722,7 +735,7 @@ def build_public_site() -> None:
     print()
     print(f"Public-site build created at: {OUT_DIR}")
     print("All configured sports have had detailed historical data filtered to 2010+.")
-    print("Do not deploy yet: public UI links/features still need final review.")
+    print("Public data and UI safety checks: PASS")
 
 
 if __name__ == "__main__":
