@@ -27,10 +27,11 @@ options(stringsAsFactors = FALSE)
 #     Snooker/data/snapshots/current.json
 #
 # Notes:
-#   - rating method comes from the single-pass calculation:
-#       * all players start at 2600
-#       * first 20 matches use double K
-#       * opponent-frame dampening is applied
+#   - rating method comes from the two-pass zero-sum calculation:
+#       * constant K = 5 for both players
+#       * no provisional double-K or opponent-frame dampening
+#       * Pass 1 starts everyone at 2600
+#       * eligible players receive retrospective 200-frame starts in Pass 2
 #   - history rating = post-match Elo on that date
 #   - history rank = world rank at end of that match timestamp
 #   - games rank = player world rank after that match timestamp
@@ -340,7 +341,7 @@ meta <- list(
   history_has_world_rank = TRUE,
   games_have_world_rank = TRUE,
   games_have_expected_wl = TRUE,
-  rating_method = "Single-pass Elo. Players start at 2600. First 20 matches use double K. Opponent-frame dampening is applied.",
+  rating_method = "Two-pass zero-sum Elo. Constant K=5. Pass 1 starts everyone at 2600; eligible players receive retrospective 200-frame starting ratings in Pass 2.",
   rank_method = paste0(
     "Ranked by latest known Elo at each match timestamp. ",
     "Players need at least ", MIN_LIST_FRAMES, " cumulative frames and must have played within ",
@@ -566,6 +567,43 @@ cat(
 )
 
 all_ids <- players_tbl$id
+
+# -----------------------------
+# Per-player history JSON
+# history = last post-match rating on each day
+# -----------------------------
+n_history_written <- 0L
+
+for (pid in all_ids) {
+  history_df <- hist_daily %>%
+    filter(PlayerID == pid) %>%
+    arrange(date, datetime, match_id) %>%
+    transmute(
+      date = format(as.Date(date), "%Y-%m-%d"),
+      season = ifelse(
+        is.na(season),
+        NA_character_,
+        as.character(season)
+      ),
+      event = as.character(event),
+      rating = as.integer(round(rating)),
+      rank = as.integer(rank)
+    )
+  
+  if (nrow(history_df) > 0L) {
+    write_json_compact(
+      history_df,
+      file.path(
+        HISTORY_OUT,
+        paste0(pid, ".json")
+      )
+    )
+    
+    n_history_written <- n_history_written + 1L
+  }
+}
+
+cat("Wrote history files:", n_history_written, "\n")
 
 # -----------------------------
 # Per-player games JSON

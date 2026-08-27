@@ -5,14 +5,19 @@ options(stringsAsFactors = FALSE)
 # ============================================================
 # 02_calculate_elo.R
 #
-# Snooker Elo - SINGLE PASS CHECKPOINT VERSION
+# Snooker Elo - TWO PASS ZERO-SUM RETROSPECTIVE START VERSION
 #
 # Method:
 #   - Single global Elo pool
-#   - Everyone starts at 2600
-#   - First 20 matches use double K
-#   - Opponent-frame dampening remains in place
-#   - Checkpoints are saved at end of completed EventSeason
+#   - Constant K = 5 for both players in every match
+#   - No provisional double-K and no opponent-frame dampening
+#   - Every match update is exactly zero-sum
+#   - Pass 1 starts everyone at 2600
+#   - Players with at least 200 early frames receive a retrospective
+#     frame-performance starting rating for Pass 2
+#   - Players without 200 frames keep the 2600 fallback start
+#   - Pass 2 is the final published history
+#   - Checkpoints and season snapshots are rebuilt from the final pass
 #   - Snapshots are season-end snapshots, not calendar-year snapshots
 #
 # Reads/writes only inside the Git repo:
@@ -62,20 +67,26 @@ dir.create(SEASON_SNAPSHOT_DIR, recursive = TRUE, showWarnings = FALSE)
 OUTPUT_MATCH_HISTORY_CSV <- file.path(OUT_DIR, "snooker_elo_match_history.csv")
 OUTPUT_FINAL_RATINGS_CSV <- file.path(OUT_DIR, "snooker_elo_final_ratings.csv")
 OUTPUT_UPCOMING_MATCHES_CSV <- file.path(OUT_DIR, "snooker_upcoming_matches.csv")
+OUTPUT_RETRO_STARTS_CSV <- file.path(OUT_DIR, "snooker_retro_start_ratings.csv")
 
 # -----------------------------
 # Elo settings
 # -----------------------------
 BASELINE_START_RATING <- 2600
 K_VALUE <- 5
-NEW_PLAYER_MATCHES <- 20L
-NEW_PLAYER_K_MULTIPLIER <- 2
+RETRO_FRAMES_N <- 200L
+RETRO_RATING_LOWER <- 1000
+RETRO_RATING_UPPER <- 4000
 
 MODERN_SEASON_START <- 2008L
 PLAUSIBLE_EVENT_WINDOW_DAYS <- 45L
 
-PROVISIONAL_FRAME_THRESHOLD <- 200L
-MIN_OPP_WEIGHT <- 0.1
+# Legacy metadata fields are retained in outputs so downstream code that
+# expects these columns does not break. They now describe the disabled rules.
+NEW_PLAYER_MATCHES <- 0L
+NEW_PLAYER_K_MULTIPLIER <- 1
+PROVISIONAL_FRAME_THRESHOLD <- 0L
+MIN_OPP_WEIGHT <- 1
 
 MIN_LIST_FRAMES <- 200L
 ACTIVE_YEARS <- 2L
@@ -179,20 +190,14 @@ coalesce_first_existing <- function(dt, candidates) {
   out
 }
 
-opponent_weight <- function(opponent_frames_before,
-                            threshold = PROVISIONAL_FRAME_THRESHOLD,
-                            min_weight = MIN_OPP_WEIGHT) {
-  if (is.na(opponent_frames_before) || opponent_frames_before <= 0) {
-    return(min_weight)
-  }
-  
-  w <- opponent_frames_before / threshold
-  w <- max(min_weight, min(1, w))
-  w
+# These helpers are retained only for output/schema compatibility.
+# The final Elo engine uses neither provisional K nor opponent dampening.
+opponent_weight <- function(...) {
+  1
 }
 
-player_k_multiplier <- function(matches_before) {
-  ifelse(matches_before < NEW_PLAYER_MATCHES, NEW_PLAYER_K_MULTIPLIER, 1)
+player_k_multiplier <- function(...) {
+  1
 }
 
 checkpoint_file_for_season <- function(season) {
@@ -873,24 +878,6 @@ empty_state <- function() {
   )
 }
 
-load_state_from_checkpoint <- function(path) {
-  if (!file.exists(path)) {
-    stop("Checkpoint not found: ", path)
-  }
-  
-  s <- fread(path, encoding = "UTF-8")
-  
-  s[, PlayerID := clean_id(PlayerID)]
-  s[, Rating := as.numeric(Rating)]
-  s[, MatchesPlayed := as.integer(MatchesPlayed)]
-  s[, FramesPlayed := as.integer(FramesPlayed)]
-  s[, FirstMatchDate := parse_dt_multi(FirstMatchDate)]
-  s[, LastMatchDate := parse_dt_multi(LastMatchDate)]
-  s[, EntryRating := as.numeric(EntryRating)]
-  
-  s[PlayerID != ""]
-}
-
 write_checkpoint <- function(state, season) {
   out <- copy(state)
   out[, Rating := round(Rating, 6)]
@@ -963,14 +950,20 @@ envs_to_state <- function(envs) {
 }
 
 # ============================================================
-# Elo runner for one segment/season
+# Elo runner
 # ============================================================
 
-run_elo_segment <- function(dt_input, state = empty_state(), label = "segment") {
+run_elo_segment <- function(dt_input,
+                            state = empty_state(),
+                            entry_mode = c("fixed", "retro"),
+                            retro_start_map = NULL,
+                            label = "segment") {
+  entry_mode <- match.arg(entry_mode)
   n <- nrow(dt_input)
   
   cat("\n", strrep("=", 60), "\n", sep = "")
   cat("Running Elo segment:", label, "\n")
+  cat("Entry mode:", entry_mode, "\n")
   cat("Matches:", n, "\n")
   
   if (n == 0L) {
@@ -982,7 +975,6 @@ run_elo_segment <- function(dt_input, state = empty_state(), label = "segment") 
   
   envs <- state_to_envs(state)
   
-  MatchIDVec <- dt_input$MatchID
   PlayerAVec <- dt_input$PlayerA_ID
   PlayerBVec <- dt_input$PlayerB_ID
   ScoreAVec <- dt_input$ScoreA
@@ -1033,6 +1025,19 @@ run_elo_segment <- function(dt_input, state = empty_state(), label = "segment") 
   AFramesAfter <- integer(n)
   BFramesAfter <- integer(n)
   
+  get_entry_rating <- function(player_id) {
+    if (
+      entry_mode == "retro" &&
+      !is.null(retro_start_map) &&
+      player_id %in% names(retro_start_map) &&
+      is.finite(as.numeric(retro_start_map[[player_id]]))
+    ) {
+      return(as.numeric(retro_start_map[[player_id]]))
+    }
+    
+    BASELINE_START_RATING
+  }
+  
   for (i in seq_len(n)) {
     a <- PlayerAVec[i]
     b <- PlayerBVec[i]
@@ -1047,21 +1052,23 @@ run_elo_segment <- function(dt_input, state = empty_state(), label = "segment") 
     b_first <- !b_exists
     
     if (a_first) {
-      assign(a, BASELINE_START_RATING, envir = envs$ratings)
+      a_start <- get_entry_rating(a)
+      assign(a, a_start, envir = envs$ratings)
       assign(a, 0L, envir = envs$matches)
       assign(a, 0L, envir = envs$frames)
       assign(a, match_date, envir = envs$first_date)
       assign(a, match_date, envir = envs$last_date)
-      assign(a, BASELINE_START_RATING, envir = envs$entry_rating)
+      assign(a, a_start, envir = envs$entry_rating)
     }
     
     if (b_first) {
-      assign(b, BASELINE_START_RATING, envir = envs$ratings)
+      b_start <- get_entry_rating(b)
+      assign(b, b_start, envir = envs$ratings)
       assign(b, 0L, envir = envs$matches)
       assign(b, 0L, envir = envs$frames)
       assign(b, match_date, envir = envs$first_date)
       assign(b, match_date, envir = envs$last_date)
-      assign(b, BASELINE_START_RATING, envir = envs$entry_rating)
+      assign(b, b_start, envir = envs$entry_rating)
     }
     
     Ra <- get(a, envir = envs$ratings, inherits = FALSE)
@@ -1084,20 +1091,17 @@ run_elo_segment <- function(dt_input, state = empty_state(), label = "segment") 
     Sa <- score_a / total_frames
     Sb <- score_b / total_frames
     
-    mult_a <- player_k_multiplier(Ga)
-    mult_b <- player_k_multiplier(Gb)
-    
     base_k_a <- K_VALUE
     base_k_b <- K_VALUE
+    mult_a <- 1
+    mult_b <- 1
+    effective_k_a <- K_VALUE
+    effective_k_b <- K_VALUE
+    weight_a <- 1
+    weight_b <- 1
     
-    effective_k_a <- base_k_a * mult_a
-    effective_k_b <- base_k_b * mult_b
-    
-    weight_a <- opponent_weight(Fb_before)
-    weight_b <- opponent_weight(Fa_before)
-    
-    delta_a <- effective_k_a * weight_a * (score_a - total_frames * Ea)
-    delta_b <- effective_k_b * weight_b * (score_b - total_frames * Eb)
+    delta_a <- K_VALUE * (score_a - total_frames * Ea)
+    delta_b <- K_VALUE * (score_b - total_frames * Eb)
     
     Ra_new <- Ra + delta_a
     Rb_new <- Rb + delta_b
@@ -1214,6 +1218,152 @@ run_elo_segment <- function(dt_input, state = empty_state(), label = "segment") 
 }
 
 # ============================================================
+# Build retrospective frame-performance starts from Pass 1
+# ============================================================
+
+solve_frame_performance <- function(opp_ratings,
+                                    frames_won,
+                                    total_frames,
+                                    lower = RETRO_RATING_LOWER,
+                                    upper = RETRO_RATING_UPPER) {
+  opp_ratings <- as.numeric(opp_ratings)
+  frames_won <- as.numeric(frames_won)
+  total_frames <- as.numeric(total_frames)
+  
+  ok <- is.finite(opp_ratings) &
+    is.finite(frames_won) &
+    is.finite(total_frames) &
+    total_frames > 0
+  
+  opp_ratings <- opp_ratings[ok]
+  frames_won <- frames_won[ok]
+  total_frames <- total_frames[ok]
+  
+  if (length(total_frames) == 0L) {
+    return(NA_real_)
+  }
+  
+  won <- sum(frames_won)
+  total <- sum(total_frames)
+  
+  if (won <= 0) {
+    return(max(lower, min(upper, min(opp_ratings) - 800)))
+  }
+  
+  if (won >= total) {
+    return(max(lower, min(upper, max(opp_ratings) + 800)))
+  }
+  
+  f <- function(R) {
+    sum(total_frames * expected_score(R, opp_ratings)) - won
+  }
+  
+  flo <- f(lower)
+  fhi <- f(upper)
+  
+  if (is.finite(flo) && is.finite(fhi) && flo * fhi <= 0) {
+    return(uniroot(f, lower = lower, upper = upper, tol = 1e-8)$root)
+  }
+  
+  p <- won / total
+  p <- min(0.999, max(0.001, p))
+  
+  weighted_opp <- weighted.mean(opp_ratings, w = total_frames)
+  estimate <- weighted_opp + 400 * log10(p / (1 - p))
+  
+  max(lower, min(upper, estimate))
+}
+
+build_retro_start_map <- function(pass1_history, n_frames = RETRO_FRAMES_N) {
+  player_games <- rbindlist(
+    list(
+      pass1_history[, .(
+        PlayerID = PlayerA_ID,
+        OppRating = BRating_Before,
+        FramesWon = FramesA,
+        TotalFrames = TotalFrames,
+        FramesBefore = AFramesBefore,
+        Date = Date,
+        MatchID = MatchID
+      )],
+      pass1_history[, .(
+        PlayerID = PlayerB_ID,
+        OppRating = ARating_Before,
+        FramesWon = FramesB,
+        TotalFrames = TotalFrames,
+        FramesBefore = BFramesBefore,
+        Date = Date,
+        MatchID = MatchID
+      )]
+    ),
+    use.names = TRUE
+  )
+  
+  player_games <- player_games[
+    PlayerID != "" &
+      is.finite(OppRating) &
+      is.finite(FramesWon) &
+      is.finite(TotalFrames) &
+      TotalFrames > 0
+  ]
+  
+  setorder(player_games, PlayerID, FramesBefore, Date, MatchID)
+  
+  # Include complete matches until the player crosses the evidence threshold.
+  # We never split a match, so FramesUsed may be slightly above n_frames.
+  early_games <- player_games[FramesBefore < n_frames]
+  
+  retro_dt <- early_games[, .(
+    GamesUsed = .N,
+    FramesUsed = sum(TotalFrames),
+    FramesWon = sum(FramesWon),
+    FrameRate = sum(FramesWon) / sum(TotalFrames),
+    RetroStart = solve_frame_performance(
+      OppRating,
+      FramesWon,
+      TotalFrames
+    )
+  ), by = PlayerID]
+  
+  retro_dt <- retro_dt[
+    FramesUsed >= n_frames &
+      is.finite(RetroStart)
+  ]
+  
+  retro_dt[, `:=`(
+    BaselineStart = BASELINE_START_RATING,
+    RetroAdjustment = RetroStart - BASELINE_START_RATING
+  )]
+  
+  retro_dt[player_lookup, on = .(PlayerID = ID), `:=`(
+    PlayerName = i.Name,
+    Nationality = i.Nationality
+  )]
+  
+  setcolorder(retro_dt, c(
+    "PlayerID",
+    "PlayerName",
+    "Nationality",
+    "GamesUsed",
+    "FramesUsed",
+    "FramesWon",
+    "FrameRate",
+    "BaselineStart",
+    "RetroStart",
+    "RetroAdjustment"
+  ))
+  
+  setorder(retro_dt, -RetroStart, PlayerID)
+  
+  retro_map <- setNames(retro_dt$RetroStart, retro_dt$PlayerID)
+  
+  list(
+    table = retro_dt,
+    map = retro_map
+  )
+}
+
+# ============================================================
 # Output helpers
 # ============================================================
 
@@ -1326,16 +1476,18 @@ format_final_for_write <- function(state) {
   out[, `:=`(
     Rating = round(Rating, 2),
     EntryRating = round(EntryRating, 2),
-    FirstMatchDate = format(FirstMatchDate, "%Y-%m-%d %H:%M:%S"),
-    LastMatchDate = format(LastMatchDate, "%Y-%m-%d %H:%M:%S"),
-    Method = "SinglePass_FixedStart_DoubleKFirst20",
+    Method = "TwoPass_Retro200Frames_ZeroSumK5",
     KValue = K_VALUE,
     BaselineStartRating = BASELINE_START_RATING,
+    RetroFramesN = RETRO_FRAMES_N,
     NewPlayerMatches = NEW_PLAYER_MATCHES,
     NewPlayerKMultiplier = NEW_PLAYER_K_MULTIPLIER,
     ProvisionalFrameThreshold = PROVISIONAL_FRAME_THRESHOLD,
     MinOpponentWeight = MIN_OPP_WEIGHT
   )]
+  
+  out[, FirstMatchDate := format(FirstMatchDate, "%Y-%m-%d %H:%M:%S")]
+  out[, LastMatchDate := format(LastMatchDate, "%Y-%m-%d %H:%M:%S")]
   
   setcolorder(out, c(
     "PlayerID",
@@ -1350,6 +1502,7 @@ format_final_for_write <- function(state) {
     "Method",
     "KValue",
     "BaselineStartRating",
+    "RetroFramesN",
     "NewPlayerMatches",
     "NewPlayerKMultiplier",
     "ProvisionalFrameThreshold",
@@ -1421,7 +1574,48 @@ write_season_snapshot <- function(state, season, season_end_date) {
 }
 
 # ============================================================
-# Decide checkpoint start point
+# Pass 1 - fixed 2600 starts, constant zero-sum K
+# ============================================================
+
+cat("\nStarting Pass 1 from a clean state.\n")
+cat("All players start at", BASELINE_START_RATING, "for calibration.\n")
+
+pass1 <- run_elo_segment(
+  dt_input = dt,
+  state = empty_state(),
+  entry_mode = "fixed",
+  retro_start_map = NULL,
+  label = "Pass 1 - fixed 2600 starts"
+)
+
+retro <- build_retro_start_map(
+  pass1_history = pass1$history,
+  n_frames = RETRO_FRAMES_N
+)
+
+fwrite(retro$table, OUTPUT_RETRO_STARTS_CSV)
+
+cat("\nBuilt retrospective starts for", length(retro$map), "players.\n")
+cat("Evidence threshold:", RETRO_FRAMES_N, "frames.\n")
+cat("Retro start file:", OUTPUT_RETRO_STARTS_CSV, "\n")
+
+if (nrow(retro$table) > 0L) {
+  cat(
+    "Retro start range:",
+    round(min(retro$table$RetroStart), 1),
+    "to",
+    round(max(retro$table$RetroStart), 1),
+    "\n"
+  )
+  cat(
+    "Mean retro adjustment:",
+    round(mean(retro$table$RetroAdjustment), 1),
+    "\n"
+  )
+}
+
+# ============================================================
+# Pass 2 - final published history
 # ============================================================
 
 all_seasons <- sort(unique(dt$EventSeason))
@@ -1437,73 +1631,43 @@ cat("\nAvailable seasons:", paste(all_seasons, collapse = ", "), "\n")
 cat("Current/live season:", max_season, "\n")
 cat("Completed seasons eligible for checkpoints:", paste(completed_seasons, collapse = ", "), "\n")
 
-checkpoint_files <- list.files(
+if (FORCE_FULL_REBUILD || !is.na(REBUILD_FROM_SEASON)) {
+  cat(
+    "\nNote: this two-pass method always rebuilds the full rating history. ",
+    "FORCE_FULL_REBUILD and REBUILD_FROM_SEASON no longer change the start point.\n",
+    sep = ""
+  )
+}
+
+# A retrospective start can change when a newer player reaches 200 frames,
+# so using an old rating checkpoint as the computational starting state would
+# make the historical pass internally inconsistent. Checkpoints are therefore
+# regenerated as outputs, not loaded as inputs.
+old_checkpoint_files <- list.files(
   CHECKPOINT_DIR,
   pattern = "^checkpoint_season_\\d{4}_end\\.csv$",
   full.names = TRUE
 )
-
-checkpoint_info <- data.table(
-  file = checkpoint_files,
-  season = extract_checkpoint_season(checkpoint_files)
+old_history_files <- list.files(
+  SEASON_HISTORY_DIR,
+  pattern = "^snooker_elo_match_history_season_\\d{4}\\.csv$",
+  full.names = TRUE
+)
+old_snapshot_files <- list.files(
+  SEASON_SNAPSHOT_DIR,
+  pattern = "^(snapshot_season_\\d{4}|snapshot_current)\\.csv$",
+  full.names = TRUE
 )
 
-checkpoint_info <- checkpoint_info[!is.na(season)]
+unlink(old_checkpoint_files)
+unlink(old_history_files)
+unlink(old_snapshot_files)
 
-if (FORCE_FULL_REBUILD) {
-  start_checkpoint_season <- NA_integer_
-  state <- empty_state()
-  seasons_to_process <- all_seasons
-  
-  cat("\nFORCE_FULL_REBUILD is TRUE. Rebuilding from the beginning.\n")
-  
-} else if (!is.na(REBUILD_FROM_SEASON)) {
-  start_checkpoint_candidates <- checkpoint_info[season < REBUILD_FROM_SEASON]
-  
-  if (nrow(start_checkpoint_candidates) > 0L) {
-    setorder(start_checkpoint_candidates, -season)
-    start_checkpoint_season <- start_checkpoint_candidates$season[1]
-    state <- load_state_from_checkpoint(start_checkpoint_candidates$file[1])
-    seasons_to_process <- all_seasons[all_seasons > start_checkpoint_season]
-    
-    cat("\nRebuilding from season", REBUILD_FROM_SEASON, "\n")
-    cat("Loaded checkpoint before rebuild season:", start_checkpoint_season, "\n")
-    
-  } else {
-    start_checkpoint_season <- NA_integer_
-    state <- empty_state()
-    seasons_to_process <- all_seasons[all_seasons >= REBUILD_FROM_SEASON]
-    
-    cat("\nNo earlier checkpoint found. Rebuilding from season", REBUILD_FROM_SEASON, "with empty state.\n")
-  }
-  
-} else if (nrow(checkpoint_info) > 0L) {
-  setorder(checkpoint_info, -season)
-  start_checkpoint_season <- checkpoint_info$season[1]
-  state <- load_state_from_checkpoint(checkpoint_info$file[1])
-  seasons_to_process <- all_seasons[all_seasons > start_checkpoint_season]
-  
-  cat("\nLoaded latest checkpoint:", start_checkpoint_season, "\n")
-  
-} else {
-  start_checkpoint_season <- NA_integer_
-  state <- empty_state()
-  seasons_to_process <- all_seasons
-  
-  cat("\nNo checkpoints found. Rebuilding from the beginning.\n")
-}
+state <- empty_state()
+final_history_list <- vector("list", length(all_seasons))
 
-if (length(seasons_to_process) == 0L) {
-  cat("\nNo seasons to process after latest checkpoint.\n")
-} else {
-  cat("Seasons to process:", paste(seasons_to_process, collapse = ", "), "\n")
-}
-
-# ============================================================
-# Process seasons
-# ============================================================
-
-for (season in seasons_to_process) {
+for (j in seq_along(all_seasons)) {
+  season <- all_seasons[j]
   season_dt <- dt[EventSeason == season]
   
   setorder(
@@ -1521,10 +1685,13 @@ for (season in seasons_to_process) {
   run <- run_elo_segment(
     dt_input = season_dt,
     state = state,
-    label = paste0("EventSeason ", season, " (", season, "/", season + 1, ")")
+    entry_mode = "retro",
+    retro_start_map = retro$map,
+    label = paste0("Pass 2 final - EventSeason ", season, " (", season, "/", season + 1L, ")")
   )
   
   state <- run$state
+  final_history_list[[j]] <- run$history
   
   season_history_out <- format_history_for_write(run$history)
   season_history_file <- season_history_file_for_season(season)
@@ -1553,35 +1720,42 @@ for (season in seasons_to_process) {
 }
 
 # ============================================================
-# Build combined match history output
+# Build combined final match history
 # ============================================================
 
-history_files_to_combine <- list.files(
-  SEASON_HISTORY_DIR,
-  pattern = "^snooker_elo_match_history_season_\\d{4}\\.csv$",
-  full.names = TRUE
+history_all_raw <- rbindlist(
+  final_history_list,
+  use.names = TRUE,
+  fill = TRUE
 )
 
-if (length(history_files_to_combine) > 0L) {
-  history_all <- rbindlist(
-    lapply(history_files_to_combine, fread, encoding = "UTF-8"),
-    use.names = TRUE,
-    fill = TRUE
-  )
-  
-  if ("MatchDate" %in% names(history_all)) {
-    history_all[, MatchDateSort := parse_dt_multi(MatchDate)]
-    setorder(history_all, MatchDateSort, EventSeason, EventID, MatchID)
-    history_all[, MatchDateSort := NULL]
-  }
-  
-  fwrite(history_all, OUTPUT_MATCH_HISTORY_CSV)
-  cat("\nWrote combined match history:", OUTPUT_MATCH_HISTORY_CSV, "\n")
-  cat("Combined match history rows:", nrow(history_all), "\n")
-  
-} else {
-  cat("\nNo season history files found to combine.\n")
+history_all <- format_history_for_write(history_all_raw)
+
+if ("MatchDate" %in% names(history_all)) {
+  history_all[, MatchDateSort := parse_dt_multi(MatchDate)]
+  setorder(history_all, MatchDateSort, EventSeason, EventID, MatchID)
+  history_all[, MatchDateSort := NULL]
 }
+
+fwrite(history_all, OUTPUT_MATCH_HISTORY_CSV)
+
+cat("\nWrote combined match history:", OUTPUT_MATCH_HISTORY_CSV, "\n")
+cat("Combined match history rows:", nrow(history_all), "\n")
+
+# ============================================================
+# Final zero-sum checks
+# ============================================================
+
+history_all[, MatchDrift :=
+              (ARating_After + BRating_After) -
+              (ARating_Before + BRating_Before)
+]
+
+cat("\nFinal Elo drift check:\n")
+cat("  Total match drift:", format(sum(history_all$MatchDrift), scientific = FALSE), "\n")
+cat("  Maximum absolute match drift:", format(max(abs(history_all$MatchDrift)), scientific = FALSE), "\n")
+
+history_all[, MatchDrift := NULL]
 
 # ============================================================
 # Write final ratings
@@ -1595,9 +1769,10 @@ cat("Final rating rows:", nrow(final_out), "\n")
 cat("Unmatched final rating names:", final_out[is.na(PlayerName), .N], "\n")
 
 cat("\nDone.\n")
-cat("Method: Single pass, fixed 2600 starts, double K for first 20 matches.\n")
+cat("Method: two pass, retrospective 200-frame starts, constant zero-sum K=", K_VALUE, ".\n", sep = "")
 cat("Current/live EventSeason:", max_season, "\n")
 cat("Final ratings:", OUTPUT_FINAL_RATINGS_CSV, "\n")
 cat("Match history:", OUTPUT_MATCH_HISTORY_CSV, "\n")
+cat("Retro starts:", OUTPUT_RETRO_STARTS_CSV, "\n")
 cat("Checkpoints:", CHECKPOINT_DIR, "\n")
 cat("Season snapshots:", SEASON_SNAPSHOT_DIR, "\n")
