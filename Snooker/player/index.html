@@ -433,12 +433,14 @@
               <option value="weekly" selected>Weekly</option>
               <option value="monthly">Monthly</option>
               <option value="yearly">Yearly</option>
+              <option value="decade">Decade</option>
             </select>
           </div>
 
           <div class="range-buttons" role="group" aria-label="Time range">
             <button type="button" class="range-btn seg" data-range="ALL">All</button>
             <button type="button" class="range-btn seg" data-range="2000">Since 2000</button>
+            <button type="button" class="range-btn seg" data-range="2010">Since 2010</button>
             <button type="button" class="range-btn seg is-active active" data-range="2020">Since 2020</button>
           </div>
         </div>
@@ -494,7 +496,9 @@
   let LOAD_TOKEN = 0;
   let playerChart = null;
 
-  function playersUrl() { return '../data/players.json'; }
+  
+  let ALL_TIME_PEAK = null;
+function playersUrl() { return '../data/players.json'; }
   function historyUrl(id) { return `../data/history/${encodeURIComponent(id)}.json`; }
   function gamesUrl(id) { return `../data/games/${encodeURIComponent(id)}.json`; }
 
@@ -1028,7 +1032,10 @@ const shapes = makeYGridShapes(bounds.lo, bounds.hi, step);
       }
     }
 
-    peakEl.textContent = Number.isFinite(peak.y) ? String(Math.round(peak.y)) : '—';
+    const displayPeak = Number.isFinite(ALL_TIME_PEAK) ? ALL_TIME_PEAK : peak.y;
+    peakEl.textContent = Number.isFinite(displayPeak)
+      ? String(Math.round(displayPeak))
+      : '—';
   }
 
 
@@ -1137,7 +1144,11 @@ const shapes = makeYGridShapes(bounds.lo, bounds.hi, step);
 
       if (!me) throw new Error('player id not in players.json');
 
-      document.getElementById('pname').textContent = me.display_name || me.name || 'Player';
+      
+      ALL_TIME_PEAK = Number(
+        me.peak_rating ?? me.all_time_peak_rating
+      );
+document.getElementById('pname').textContent = me.display_name || me.name || 'Player';
 
       const histJson = await histRes.json();
 

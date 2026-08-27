@@ -469,6 +469,7 @@
     <nav class="topnav" aria-label="Main">
       <a href="/index.html">Sports</a>
       <a href="../home/">Home</a>
+      <a href="../compare/">Compare</a>
       <a href="../peak/">Peak</a>
     </nav>
   </div>
@@ -484,15 +485,14 @@
             <label for="agg">View:</label>
             <select id="agg">
               <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
               <option value="monthly" selected>Monthly</option>
               <option value="yearly">Yearly</option>
-              <option value="decade">Decade</option>
             </select>
           </div>
 
           <div class="range-buttons" role="group" aria-label="Time range">
-<button type="button" class="range-btn seg is-active active" data-range="2010">Since 2010</button>
+            <button type="button" class="range-btn seg" data-range="ALL">All</button>
+            <button type="button" class="range-btn seg is-active active" data-range="2000">Since 2000</button>
             <button type="button" class="range-btn seg" data-range="2020">Since 2020</button>
           </div>
         </div>
@@ -510,6 +510,11 @@
           <div class="stat-label">Peak</div>
           <div class="stat-value" id="peakVal">—</div>
         </div>
+
+        <a id="statsLink" class="stat stat-link" href="./stats/">
+          <div class="stat-label">Statistics</div>
+          <div class="stat-value">View</div>
+        </a>
       </div>
     </div>
 
@@ -531,6 +536,10 @@
   const params = new URLSearchParams(location.search);
   const idRaw = params.get('id');
 
+  const statsLink = document.getElementById('statsLink');
+  if (statsLink && idRaw) {
+    statsLink.href = `./stats/?id=${encodeURIComponent(idRaw)}`;
+  }
 
   if (!idRaw) {
     document.getElementById('chart').textContent = 'Missing team id.';
@@ -546,13 +555,11 @@
   let TEAM_COLOURS = {};
   let RAW = [];
   let CURRENT_TEAM = null;
-  let SINCE_YEAR = 2010;
+  let SINCE_YEAR = 2000;
   let AGG_MODE = 'monthly';
   let teamChart = null;
 
-  
-  let ALL_TIME_PEAK = null;
-function normalise(series, dedupeByDay = false) {
+  function normalise(series, dedupeByDay = false) {
     const s = series
       .filter(p => p && p.x && Number.isFinite(p.y))
       .map(p => ({
@@ -1254,12 +1261,7 @@ if (total === 99) {
       if (!peak || p.y > peak.y) peak = p;
     }
 
-    const displayPeak = Number.isFinite(ALL_TIME_PEAK)
-      ? ALL_TIME_PEAK
-      : (peak ? peak.y : NaN);
-    peakEl.textContent = Number.isFinite(displayPeak)
-      ? String(Math.round(displayPeak))
-      : '—';
+    peakEl.textContent = peak ? String(Math.round(peak.y)) : '—';
   }
 
 
@@ -1295,11 +1297,7 @@ function refreshView() {
 
       if (!me) throw new Error('team id not in teams.json');
 
-      
-      ALL_TIME_PEAK = Number(
-        me.peak_rating ?? me.all_time_peak_rating
-      );
-CURRENT_TEAM = me;
+      CURRENT_TEAM = me;
       document.getElementById('pname').textContent = me.name;
 
       // Colours are optional and must never hold up the page.
@@ -1335,7 +1333,7 @@ CURRENT_TEAM = me;
                 chartId: 'chart',
                 aggId: 'agg',
                 controlsEl: document.querySelector('.jr-chart-controls'),
-                defaultRange: '2010',
+                defaultRange: '2000',
                 getItems: makeTeamGraphItems
               });
             }

@@ -1,6 +1,6 @@
 (function () {
   const DEFAULTS = {
-    defaultRange: '2020',
+    defaultRange: '2010',
     lineWidth: 4
   };
 
@@ -215,10 +215,8 @@
 
     if (key === 'ALL') {
       start = new Date(dataMin);
-    } else if (key === '2000') {
-      start = new Date('2000-01-01');
-    } else if (key === '2020') {
-      start = new Date('2020-01-01');
+    } else if (/^\d{4}$/.test(String(key))) {
+      start = new Date(`${key}-01-01`);
     } else if (key === 'LY') {
       start = new Date(dataMax);
       start.setFullYear(start.getFullYear() - 1);
@@ -233,11 +231,36 @@
     return [iso(start), iso(makePaddedEnd(start, dataMax))];
   }
 
+  function rangeFromYears(startYear, endYear, dataMin, dataMax) {
+    if (!dataMin || !dataMax) return null;
+
+    let y0 = Number(startYear);
+    let y1 = Number(endYear);
+
+    if (!Number.isFinite(y0) || !Number.isFinite(y1)) return null;
+    if (y0 > y1) [y0, y1] = [y1, y0];
+
+    const start = new Date(Math.max(
+      +new Date(`${Math.trunc(y0)}-01-01`),
+      +dataMin
+    ));
+
+    const endOfYear = new Date(Date.UTC(Math.trunc(y1) + 1, 0, 1));
+    endOfYear.setUTCDate(endOfYear.getUTCDate() - 1);
+
+    const endData = new Date(Math.min(+endOfYear, +dataMax));
+
+    return [iso(start), iso(makePaddedEnd(start, endData))];
+  }
+
   function updateActiveButtons(container, activeKey) {
     if (!container) return;
 
     container.querySelectorAll('.range-buttons .seg').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.range === activeKey);
+      const on = btn.dataset.range === activeKey;
+      btn.classList.toggle('active', on);
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
   }
 
@@ -253,6 +276,147 @@
     let dataMin = null;
     let dataMax = null;
     let initialRangeApplied = false;
+    let fromYearEl = null;
+    let toYearEl = null;
+    let yearControlsEl = null;
+
+    function styleYearSelect(select) {
+      select.style.padding = '8px 10px';
+      select.style.border = '1px solid #2b2f36';
+      select.style.borderRadius = '10px';
+      select.style.background = 'rgba(255,255,255,0.03)';
+      select.style.color = 'inherit';
+      select.style.fontSize = '0.95rem';
+    }
+
+    function ensureYearControls() {
+      if (!controlsEl || yearControlsEl) return;
+
+      const ranges = controlsEl.querySelector('.range-buttons');
+      if (!ranges) return;
+
+      yearControlsEl = document.createElement('div');
+      yearControlsEl.className = 'jr-year-range-controls';
+      yearControlsEl.style.display = 'flex';
+      yearControlsEl.style.alignItems = 'center';
+      yearControlsEl.style.gap = '8px';
+      yearControlsEl.style.flexWrap = 'wrap';
+
+      const fromLabel = document.createElement('label');
+      fromLabel.textContent = 'From:';
+      fromLabel.style.fontSize = '0.95rem';
+
+      fromYearEl = document.createElement('select');
+      fromYearEl.setAttribute('aria-label', 'Start year');
+      styleYearSelect(fromYearEl);
+
+      const toLabel = document.createElement('label');
+      toLabel.textContent = 'To:';
+      toLabel.style.fontSize = '0.95rem';
+
+      toYearEl = document.createElement('select');
+      toYearEl.setAttribute('aria-label', 'End year');
+      styleYearSelect(toYearEl);
+
+      fromLabel.appendChild(fromYearEl);
+      toLabel.appendChild(toYearEl);
+      yearControlsEl.appendChild(fromLabel);
+      yearControlsEl.appendChild(toLabel);
+
+      ranges.insertAdjacentElement('afterend', yearControlsEl);
+
+      const applyCustom = () => {
+        if (!dataMin || !dataMax || !fromYearEl || !toYearEl) return;
+
+        let y0 = Number(fromYearEl.value);
+        let y1 = Number(toYearEl.value);
+
+        if (y0 > y1) {
+          if (document.activeElement === fromYearEl) {
+            toYearEl.value = String(y0);
+            y1 = y0;
+          } else {
+            fromYearEl.value = String(y1);
+            y0 = y1;
+          }
+        }
+
+        const range = rangeFromYears(y0, y1, dataMin, dataMax);
+        if (!range) return;
+
+        activeRangeKey = 'CUSTOM';
+        rememberedXRange = range;
+        updateActiveButtons(controlsEl, activeRangeKey);
+
+        Plotly.relayout(chartId, { 'xaxis.range': range })
+          .then(() => adjustYToVisible(range[0], range[1]));
+      };
+
+      fromYearEl.addEventListener('change', applyCustom);
+      toYearEl.addEventListener('change', applyCustom);
+    }
+
+    function populateYearControls() {
+      if (!dataMin || !dataMax) return;
+
+      ensureYearControls();
+      if (!fromYearEl || !toYearEl) return;
+
+      const minYear = dataMin.getFullYear();
+      const maxYear = dataMax.getFullYear();
+
+      const oldFrom = Number(fromYearEl.value);
+      const oldTo = Number(toYearEl.value);
+
+      fromYearEl.innerHTML = '';
+      toYearEl.innerHTML = '';
+
+      for (let y = minYear; y <= maxYear; y += 1) {
+        const a = document.createElement('option');
+        a.value = String(y);
+        a.textContent = String(y);
+        fromYearEl.appendChild(a);
+
+        const b = document.createElement('option');
+        b.value = String(y);
+        b.textContent = String(y);
+        toYearEl.appendChild(b);
+      }
+
+      const presetYear = /^\d{4}$/.test(String(activeRangeKey))
+        ? Number(activeRangeKey)
+        : minYear;
+
+      const defaultFrom = Number.isFinite(oldFrom) && oldFrom >= minYear && oldFrom <= maxYear
+        ? oldFrom
+        : Math.max(minYear, Math.min(maxYear, presetYear));
+
+      const defaultTo = Number.isFinite(oldTo) && oldTo >= minYear && oldTo <= maxYear
+        ? oldTo
+        : maxYear;
+
+      fromYearEl.value = String(defaultFrom);
+      toYearEl.value = String(defaultTo);
+    }
+
+    function syncYearControlsToPreset(key) {
+      if (!fromYearEl || !toYearEl || !dataMin || !dataMax) return;
+
+      const minYear = dataMin.getFullYear();
+      const maxYear = dataMax.getFullYear();
+
+      let startYear = minYear;
+      if (/^\d{4}$/.test(String(key))) {
+        startYear = Math.max(minYear, Math.min(maxYear, Number(key)));
+      } else if (key === 'YTD') {
+        startYear = maxYear;
+      } else if (key === 'LY') {
+        startYear = Math.max(minYear, maxYear - 1);
+      }
+
+      fromYearEl.value = String(startYear);
+      toYearEl.value = String(maxYear);
+    }
 
     function makeTrace(item, index) {
       const series = item.series;
@@ -392,6 +556,7 @@
       const ext = extentFrom(renderedSeries.map(x => x.series));
       dataMin = ext.min;
       dataMax = ext.max;
+      populateYearControls();
 
       const allY = renderedSeries
         .flatMap(item => item.series.map(p => p.y))
@@ -482,6 +647,7 @@
       rememberedXRange = range;
 
       updateActiveButtons(controlsEl, activeRangeKey);
+      syncYearControlsToPreset(key);
 
       Plotly.relayout(chartId, { 'xaxis.range': range })
         .then(() => adjustYToVisible(range[0], range[1]));

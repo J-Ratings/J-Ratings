@@ -71,26 +71,6 @@
       gap:8px;
       flex-wrap:wrap;
     }
-    .range-btn{
-      padding:8px 10px;
-      border:1px solid #2b2f36;
-      border-radius:10px;
-      background:rgba(255,255,255,0.03);
-      color:inherit;
-      cursor:pointer;
-      font-size:.95rem;
-    }
-
-    .range-btn:hover{ opacity:.92; }
-
-    .range-btn.active,
-    .range-btn.is-active{
-      background:rgba(255,255,255,0.10);
-      border-color:rgba(200,200,200,0.55);
-      font-weight:700;
-    }
-
-
 
     .player-stats{
       justify-self:end;
@@ -393,15 +373,13 @@ table.games td:nth-child(8){
               <option value="weekly" selected>Weekly</option>
               <option value="monthly">Monthly</option>
               <option value="yearly">Yearly</option>
-              <option value="decade">Decade</option>
             </select>
           </div>
 
-          <div class="range-buttons" role="group" aria-label="Time range">
-            <button type="button" class="range-btn seg" data-range="ALL">All</button>
-            <button type="button" class="range-btn seg" data-range="2000">Since 2000</button>
-            <button type="button" class="range-btn seg" data-range="2010">Since 2010</button>
-            <button type="button" class="range-btn seg is-active active" data-range="2020">Since 2020</button>
+          <div class="range-buttons">
+            <button type="button" class="seg" data-range="ALL">All</button>
+            <button type="button" class="seg" data-range="2000">Since 2000</button>
+            <button type="button" class="seg" data-range="2020">Since 2020</button>
           </div>
         </div>
       </div>
@@ -447,8 +425,6 @@ let RAW = [];
 let LOAD_TOKEN = 0;
 let playerChart = null;
 
-
-  let ALL_TIME_PEAK = null;
 function makePlayerGraphItems() {
   return [{
     name: 'J-Ratings',
@@ -692,10 +668,9 @@ function renderPlayerStats(series) {
     }
   }
 
-  const displayPeak = Number.isFinite(ALL_TIME_PEAK) ? ALL_TIME_PEAK : peak.y;
-    peakEl.textContent = Number.isFinite(displayPeak)
-      ? String(Math.round(displayPeak))
-      : '—';
+  peakEl.textContent = Number.isFinite(peak.y)
+    ? String(Math.round(peak.y))
+    : '—';
 }
 
 async function load() {
@@ -722,11 +697,7 @@ async function load() {
 
     if (!me) throw new Error('player id not in players.json');
 
-    
-      ALL_TIME_PEAK = Number(
-        me.peak_rating ?? me.all_time_peak_rating
-      );
-document.getElementById('pname').textContent =
+    document.getElementById('pname').textContent =
       me.display_name || me.name || me.id;
 
     const histJson = await histRes.json();

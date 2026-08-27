@@ -430,8 +430,7 @@
 
             <div class="range-buttons" role="group" aria-label="Time range">
               <button type="button" class="range-btn" data-since="">All</button>
-              <button type="button" class="range-btn is-active" data-since="2010">Since 2010</button>
-              <button type="button" class="range-btn" data-since="2020">Since 2020</button>
+<button type="button" class="range-btn" data-since="2020">Since 2020</button>
             </div>
           </div>
         </div>
@@ -540,7 +539,7 @@ const DARK_LINE_OVERRIDES = {
 const state = { rows: [], filtered: [] };
 const histCache = new Map();
 let lastCompared = [];
-let COMPARE_SINCE_YEAR = 2000;
+let COMPARE_SINCE_YEAR = 2010;
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -901,9 +900,9 @@ function setupCompareButton() {
     if (compareAgg) compareAgg.value = 'monthly';
 
     document.querySelectorAll('.range-btn').forEach(btn => btn.classList.remove('is-active'));
-    const since2000Btn = document.querySelector('.range-btn[data-since="2010"]');
-    if (since2000Btn) since2000Btn.classList.add('is-active');
-    COMPARE_SINCE_YEAR = 2000;
+    const since2010Btn = document.querySelector('.range-btn[data-since="2010"]');
+    if (since2010Btn) since2010Btn.classList.add('is-active');
+    COMPARE_SINCE_YEAR = 2010;
 
     const chosen = state.filtered.filter(t => ids.includes(t.id));
     buildComparison(chosen);

@@ -355,14 +355,17 @@
             <label for="agg">View:</label>
             <select id="agg">
               <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
               <option value="monthly" selected>Monthly</option>
               <option value="yearly">Yearly</option>
+              <option value="decade">Decade</option>
             </select>
           </div>
 
           <div class="range-buttons" role="group" aria-label="Time range">
             <button type="button" class="range-btn seg" data-range="ALL">All</button>
-            <button type="button" class="range-btn seg is-active active" data-range="2000">Since 2000</button>
+            <button type="button" class="range-btn seg" data-range="2000">Since 2000</button>
+            <button type="button" class="range-btn seg is-active active" data-range="2010">Since 2010</button>
             <button type="button" class="range-btn seg" data-range="2020">Since 2020</button>
           </div>
         </div>
@@ -461,9 +464,11 @@
 
   let RAW = [];
   let CURRENT_TEAM = null;
-  let SINCE_YEAR = 2000;
+  let SINCE_YEAR = 2010;
   let teamChart = null;
-  let AGG_MODE = 'monthly';
+  
+  let ALL_TIME_PEAK = null;
+let AGG_MODE = 'monthly';
 
   function normalise(series, dedupeByDay = false) {
     const s = series
@@ -1004,7 +1009,12 @@ if (total === 99) {
       if (!peak || p.y > peak.y) peak = p;
     }
 
-    peakEl.textContent = peak ? String(Math.round(peak.y)) : '—';
+    const displayPeak = Number.isFinite(ALL_TIME_PEAK)
+      ? ALL_TIME_PEAK
+      : (peak ? peak.y : NaN);
+    peakEl.textContent = Number.isFinite(displayPeak)
+      ? String(Math.round(displayPeak))
+      : '—';
   }
 
 
@@ -1044,7 +1054,11 @@ if (total === 99) {
 
       if (!me) throw new Error('team id not in teams.json');
 
-      CURRENT_TEAM = me;
+      
+      ALL_TIME_PEAK = Number(
+        me.peak_rating ?? me.all_time_peak_rating
+      );
+CURRENT_TEAM = me;
       document.getElementById('pname').textContent = me.name;
 
       const histJson = await histRes.json();
@@ -1070,7 +1084,7 @@ if (total === 99) {
           chartId: 'chart',
           aggId: 'agg',
           controlsEl: document.querySelector('.jr-chart-controls'),
-          defaultRange: '2000',
+          defaultRange: '2010',
           getItems: makeTeamGraphItems
         });
 

@@ -329,8 +329,7 @@
 
           <div class="range-buttons" role="group" aria-label="Time range">
             <button type="button" class="range-btn" data-since="">All</button>
-            <button type="button" class="range-btn is-active" data-since="2010">Since 2010</button>
-            <button type="button" class="range-btn" data-since="2020">Since 2020</button>
+<button type="button" class="range-btn" data-since="2020">Since 2020</button>
           </div>
         </div>
       </div>
@@ -381,7 +380,7 @@
 
   let TEAM_COLOURS = {};
   let lastCompared = [];
-  let COMPARE_SINCE_YEAR = 2000;
+  let COMPARE_SINCE_YEAR = 2010;
 
   const LEGEND_FONT_SIZE = 16;
   const LEGEND_ITEM_GAP = 20;
@@ -758,7 +757,7 @@
       document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
       const defaultBtn = document.querySelector('.range-btn[data-since="2010"]');
       if (defaultBtn) defaultBtn.classList.add('is-active');
-      COMPARE_SINCE_YEAR = 2000;
+      COMPARE_SINCE_YEAR = 2010;
 
       const chosen = state.filtered.filter(t => ids.includes(String(t.id)));
       buildComparison(chosen);

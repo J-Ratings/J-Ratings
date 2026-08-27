@@ -648,51 +648,16 @@ def clean_generic_public_ui() -> None:
                 s,
             )
 
-            # Public detailed history begins in 2010. Keep each sport\'s
-            # intended default (2010 for ball sports, 2020 for Go/Snooker),
-            # but remove private historical presets.
-            s = re.sub(
-                r'\\s*<button\\b[^>]*data-range=["\\\'](?:ALL|2000)["\\\'][^>]*>[\\s\\S]*?</button>\\s*',
-                "\\n",
-                s,
-                flags=re.I,
-            )
+            # Public detailed history begins in 2010.
+            s = s.replace('data-range="2000"', 'data-range="2010"')
+            s = s.replace("data-range='2000'", "data-range='2010'")
+            s = s.replace('data-since="2000"', 'data-since="2010"')
+            s = s.replace("data-since='2000'", "data-since='2010'")
+            s = s.replace("Since 2000", "Since 2010")
+            s = s.replace("defaultRange: '2000'", "defaultRange: '2010'")
+            s = s.replace('defaultRange: "2000"', 'defaultRange: "2010"')
 
             html.write_text(s, encoding="utf-8", newline="\n")
-
-    # Final hard removal of private historical range buttons.
-    # Source/private pages may keep these, but they must never reach _public_site.
-    for html_path in OUT_DIR.rglob("*.html"):
-        s = html_path.read_text(encoding="utf-8")
-        s = re.sub(
-            r'\s*<button\b[^>]*data-range=["\'](?:ALL|2000)["\'][^>]*>[\s\S]*?</button>\s*',
-            "\n",
-            s,
-            flags=re.I,
-        )
-        html_path.write_text(s, encoding="utf-8")
-
-    # Final public cleanup of legacy peak-page pre-2010 controls.
-    # Private/source pages keep their older-history controls; public output does not.
-    for rel in (
-        Path("InternationalFootball/peak/index.html"),
-        Path("RugbyUnion/peak/index.html"),
-    ):
-        html_path = OUT_DIR / rel
-        if not html_path.exists():
-            continue
-        s = html_path.read_text(encoding="utf-8")
-        s = re.sub(
-            r'\s*<button\b[^>]*data-since=["\']2000["\'][^>]*>[\s\S]*?</button>\s*',
-            "\n",
-            s,
-            flags=re.I,
-        )
-        s = s.replace("let COMPARE_SINCE_YEAR = 2000;", "let COMPARE_SINCE_YEAR = 2010;")
-        s = s.replace("COMPARE_SINCE_YEAR = 2000;", "COMPARE_SINCE_YEAR = 2010;")
-        s = s.replace('.range-btn[data-since="2000"]', '.range-btn[data-since="2010"]')
-        s = s.replace("since2000Btn", "since2010Btn")
-        html_path.write_text(s, encoding="utf-8")
 
     print("Generic public UI cleanup applied across all sports")
 
@@ -721,17 +686,14 @@ def assert_generic_public_ui_clean() -> None:
             if re.search(r'\bsetupCompareButton\(\);', s):
                 failures.append(f"{rel}: Compare-button initialiser remains")
 
-            if re.search(
-                r'<button\\b[^>]*data-range=["\\\'](?:ALL|2000)["\\\']',
-                s,
-                flags=re.I,
-            ):
-                failures.append(f"{rel}: private historical preset remains")
-
             if (
-                'data-since="2000"' in s
+                'data-range="2000"' in s
+                or "data-range='2000'" in s
+                or 'data-since="2000"' in s
                 or "data-since='2000'" in s
                 or "Since 2000" in s
+                or "defaultRange: '2000'" in s
+                or 'defaultRange: "2000"' in s
             ):
                 failures.append(f"{rel}: pre-2010 UI range remains")
 
@@ -767,9 +729,10 @@ def build_public_site() -> None:
     remove_private_paths()
     assert_european_football_private_paths_absent()
     clean_european_football_public_ui()
-    clean_generic_public_ui()
     assert_european_football_public_ui_clean()
+    clean_generic_public_ui()
     assert_generic_public_ui_clean()
+
     for sport, config in SPORT_PUBLIC_FILTERS.items():
         filter_sport_public_data(sport, config)
 
