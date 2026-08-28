@@ -289,6 +289,30 @@
     }
 
   </style>
+
+  <style id="jr-public-teaser-styles">
+    .jr-public-disabled {
+      opacity: 0.42 !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+      user-select: none !important;
+      filter: saturate(0.55);
+    }
+
+    .jr-public-disabled[disabled] {
+      opacity: 0.42 !important;
+    }
+
+    .topnav .jr-public-nav-teaser {
+      white-space: nowrap;
+    }
+
+    .jr-public-stats-teaser .stat-value {
+      font-size: 0.78rem !important;
+      line-height: 1.15 !important;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -303,7 +327,8 @@
     <nav class="topnav" aria-label="Main">
       <a href="/index.html">Sports</a>
       <a href="../home/">Home</a>
-<a href="./" class="active-tab">Peak</a>
+      <a class="jr-public-disabled jr-public-nav-teaser" aria-disabled="true" tabindex="-1" title="Coming soon">Compare</a>
+      <a href="./" class="active-tab">Peak</a>
     </nav>
   </div>
 </header>
@@ -313,7 +338,9 @@
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by team…">
       <span id="count" class="muted"></span>
-</div>
+
+      <button class="club-btn jr-public-disabled jr-public-compare-teaser" type="button" style="margin-left:auto" disabled aria-disabled="true" title="Coming soon">Compare</button>
+    </div>
 
     <div id="compare-wrap" style="display:none; padding:16px">
       <div class="toolbar">
@@ -328,8 +355,9 @@
           </div>
 
           <div class="range-buttons" role="group" aria-label="Time range">
-            <button type="button" class="range-btn" data-since="">All</button>
-<button type="button" class="range-btn" data-since="2020">Since 2020</button>
+            <button type="button" class="range-btn jr-public-disabled jr-public-history-teaser"  data-public-range="ALL" disabled aria-disabled="true" title="Full history coming soon">All</button>
+            <button type="button" class="range-btn jr-public-disabled jr-public-history-teaser"  data-public-range="2000" disabled aria-disabled="true" title="Full history coming soon">Since 2000</button>
+            <button type="button" class="range-btn" data-since="2020">Since 2020</button>
           </div>
         </div>
       </div>
@@ -755,7 +783,7 @@
       if (compareAgg) compareAgg.value = 'monthly';
 
       document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
-      const defaultBtn = document.querySelector('.range-btn[data-since="2010"]');
+      const defaultBtn = document.querySelector('.range-btn[data-since="2000"]');
       if (defaultBtn) defaultBtn.classList.add('is-active');
       COMPARE_SINCE_YEAR = 2010;
 

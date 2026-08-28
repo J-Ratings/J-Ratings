@@ -1,0 +1,330 @@
+/* Global variables & base styles */
+:root {
+  --maxw: 1380px;
+  --accent: #1f6feb;
+  --bg: #0d1117;
+  --card: #161b22;
+  --text: #c9d1d9;
+  --muted: #8b949e;
+  --border: #30363d;
+
+  --wood: #E6EBE1; /* Go */
+}
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 19px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.site-title {
+  margin: 0;
+  font-size: 2.15rem;
+  line-height: 1.2;
+}
+
+.site-title a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-title a:visited {
+  color: var(--text);
+}
+
+.site-title .title-go {
+  color: var(--wood);
+}
+
+header {
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: auto;
+  padding: 22px;
+}
+
+/* Kept in case other pages use .title */
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* Navigation (Home / Compare / Peak) */
+.topnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.topnav a {
+  display: inline-block;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #0f1623;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.topnav a:hover {
+  border-color: var(--accent);
+}
+
+.topnav a.active-tab {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent);
+}
+
+/* Panels */
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-top: 22px;
+}
+
+.panel h2 {
+  margin: 0;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.table-wrap {
+  overflow: auto;
+}
+
+/* Players table */
+#players {
+  table-layout: auto;
+  width: auto;
+  margin: 0 auto;
+  font-size: 1.2rem;
+}
+
+#players th,
+#players td {
+  text-align: center;
+  padding: 0.65rem 1.2rem;
+}
+
+#players th {
+  font-weight: 600;
+}
+
+#players th,
+#players td {
+  border-bottom: 1px solid var(--border);
+}
+
+#players th {
+  position: sticky;
+  top: 0;
+  background: var(--card);
+}
+
+tr:hover td {
+  background: #0f1520;
+}
+
+/* Toolbar (filter + count) */
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 1rem;
+}
+
+.toolbar label {
+  font-size: 0.98rem;
+}
+
+input[type="search"],
+select,
+button {
+  font: inherit;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #0f1623;
+  color: var(--text);
+}
+
+/* Chrome/Edge consistent dropdown styling */
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 34px;
+  line-height: 1.2;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text) 50%),
+    linear-gradient(135deg, var(--text) 50%, transparent 50%);
+  background-position:
+    calc(100% - 16px) calc(50% - 2px),
+    calc(100% - 11px) calc(50% - 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+input[type="search"] {
+  flex: 1;
+  min-width: 260px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* Larger sizes */
+@media (min-width: 601px) {
+  .topnav a {
+    font-size: 1.1rem;
+    padding: 15px 19px;
+  }
+
+  .panel h2 {
+    font-size: 1.55rem;
+  }
+
+  .site-title {
+    font-size: 2.25rem;
+  }
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  html, body {
+    font-size: 17px;
+  }
+
+  .wrap {
+    padding: 16px;
+  }
+
+  .site-title {
+    font-size: 1.7rem;
+  }
+
+  .topnav a {
+    padding: 12px 14px;
+    font-size: 0.98rem;
+  }
+
+  #players {
+    font-size: 1rem;
+  }
+
+  #players th,
+  #players td {
+    padding: 0.5rem 0.8rem;
+  }
+
+  input[type="search"] {
+    min-width: 200px;
+  }
+}
+
+.brand-with-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  text-decoration: none;
+}
+
+.sport-logo {
+  height: 1.2em;
+  width: auto;
+  display: block;
+  transform: translateY(1px);
+}
+
+.title-go {
+  color: var(--wood);
+}
+
+/* Shared graph controls */
+.jr-chart {
+  height: 420px;
+  touch-action: pan-y;
+}
+
+.jr-chart-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: .5rem 0 .25rem 0;
+}
+
+.range-buttons {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: .5rem 0 .25rem 0;
+}
+
+.range-buttons .seg {
+  background: #0f1623;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: .9rem;
+}
+
+.range-buttons .seg:hover {
+  background: rgba(255,255,255,.05);
+}
+
+.range-buttons .seg.active {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.9);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);
+}
+
+.go-meta-summary {
+  text-align: center;
+  padding: 8px 16px 18px;
+}
+
+.go-source-summary {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+.go-meta-summary .asof {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.05rem;
+}

@@ -1,0 +1,1058 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
+
+  <meta charset="utf-8">
+  <title>J-Ratings: International Football</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="../../jratings-graph.js"></script>
+
+  <style>
+    :root{
+      --wdl-win: #14b85a;
+      --wdl-draw: #f4c430;
+      --wdl-loss: #e53935;
+    }
+
+    #chart { height: 520px; }
+
+    .header-row{
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    h2#pname{
+      justify-self: center;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-size: 3rem;
+    }
+
+    .toolbar{
+      justify-self: start;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      padding: 0;
+    }
+
+    .toolbar label{
+      margin-right: 6px;
+      font-size: 1.05rem;
+    }
+
+    .toolbar-stack{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toolbar-top{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .range-buttons{
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .range-btn{
+      padding: 8px 10px;
+      border: 1px solid #2b2f36;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      color: inherit;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .range-btn:hover{ opacity: 0.92; }
+
+    .range-btn.active,
+    .range-btn.is-active{
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(200,200,200,0.55);
+      font-weight: 700;
+    }
+
+    .team-stats{
+      justify-self: end;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .team-stats .stat{
+      padding: 10px 12px;
+      border: 1px solid #2b2f36;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      min-width: 90px;
+    }
+
+    .team-stats .stat-label{
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .team-stats .stat-value{
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    h3.section-title{
+      text-align: center;
+      font-size: 1.6rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    #gamesWrap{
+      max-height: 520px;
+      overflow: auto;
+      margin-top: 12px;
+    }
+
+    table.games{
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 1rem;
+    }
+
+    table.games th,
+    table.games td{
+      padding: 10px 12px;
+      border-bottom: 1px solid #2b2f36;
+      border-right: 1px solid rgba(128,128,128,0.45);
+      text-align: center;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    table.games th:first-child,
+    table.games td:first-child{
+      border-left: 1px solid rgba(128,128,128,0.45);
+    }
+
+    table.games th{
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background-color: var(--panel-bg, #1a1a1a);
+    }
+
+    .team-cell{
+      text-align: left;
+    }
+
+    .team-cell a{
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .team-cell a:hover{
+      opacity: 0.9;
+    }
+
+    .team-cell .profile-team,
+    .team-cell a.profile-team{
+      font-weight: 900;
+      text-decoration-thickness: 2px;
+    }
+
+    .result{
+      font-weight: 800;
+    }
+
+    .result.win{ color: var(--wdl-win); }
+    .result.loss{ color: var(--wdl-loss); }
+    .result.draw{ color: var(--wdl-draw); }
+
+    .result.scheduled{
+      color: inherit;
+      opacity: 0.8;
+    }
+
+    .score{
+      font-weight: 400;
+      color: inherit;
+    }
+
+    .score .score-strong{
+      font-weight: 800;
+    }
+
+    .delta{
+      font-weight: 800;
+    }
+
+    .delta.pos{ color: var(--wdl-win); }
+    .delta.neg{ color: var(--wdl-loss); }
+    .delta.zero{ color: var(--wdl-draw); }
+
+    .wdl-cell{
+      min-width: 178px;
+    }
+
+    .wdl-bar{
+      display: flex;
+      width: 170px;
+      height: 26px;
+      border-radius: 7px;
+      overflow: hidden;
+      border: 1px solid rgba(128,128,128,0.45);
+      background: rgba(255,255,255,0.04);
+      margin: 0 auto;
+    }
+
+.wdl-seg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 900;
+  color: #111;
+  overflow: hidden;
+}
+
+    .wdl-win{ background: var(--wdl-win); }
+    .wdl-draw{ background: var(--wdl-draw); }
+    .wdl-loss{ background: var(--wdl-loss); }
+
+    .wdl-seg span{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+
+    @media (max-width: 600px){
+      #chart{ height: 420px; }
+      h2#pname{ font-size: 1.6rem; }
+      h3.section-title{ font-size: 1.25rem; }
+      table.games{ font-size: 0.92rem; }
+      table.games th, table.games td{ padding: 8px 10px; }
+
+      .wdl-cell{
+        min-width: 148px;
+      }
+
+      .wdl-bar{
+        width: 140px;
+        height: 24px;
+      }
+
+      .wdl-seg{
+        font-size: 0.7rem;
+      }
+    }
+
+    @media (max-width: 700px){
+      .header-row{
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+      }
+      .toolbar{ justify-self: center; }
+      .team-stats{ justify-self: center; }
+    }
+
+    .header-row,
+    .header-row *{
+      border-bottom: none !important;
+      box-shadow: none !important;
+      background-image: none !important;
+      text-decoration: none !important;
+    }
+
+    .header-row::before,
+    .header-row::after,
+    #pname::before,
+    #pname::after,
+    .header-row .toolbar::before,
+    .header-row .toolbar::after,
+    .header-row .toolbar label::before,
+    .header-row .toolbar label::after,
+    .header-row .toolbar select::before,
+    .header-row .toolbar select::after{
+      content: none !important;
+      display: none !important;
+    }
+  
+    #chart .xtick text,
+    #chart .ytick text{
+      font-size:16px !important;
+    }
+
+    #chart .hovertext text,
+    #chart .hoverlayer text{
+      font-size:18px !important;
+    }
+
+    @media (max-width:700px){
+      #chart .xtick text,
+      #chart .ytick text{
+        font-size:15px !important;
+      }
+
+      #chart .hovertext text,
+      #chart .hoverlayer text{
+        font-size:16px !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a id="home-link" href="../home/" class="brand-with-logo">
+        <span>J-Ratings <span class="title-football">International Football</span></span>
+      </a>
+    </h1>
+
+    <nav class="topnav" aria-label="Main">
+      <a href="/index.html">Sports</a>
+      <a href="../home/">Home</a>
+<a href="../peak/">Peak</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+
+    <div class="header-row">
+      <div class="toolbar">
+        <div class="toolbar-stack jr-chart-controls">
+          <div class="toolbar-top">
+            <label for="agg">View:</label>
+            <select id="agg">
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly" selected>Monthly</option>
+              <option value="yearly">Yearly</option>
+              <option value="decade">Decade</option>
+            </select>
+          </div>
+
+          <div class="range-buttons" role="group" aria-label="Time range">
+
+<button type="button" class="range-btn seg is-active active" data-range="2010">Since 2010</button>
+            <button type="button" class="range-btn seg" data-range="2020">Since 2020</button>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="pname">Team</h2>
+
+      <div id="teamStats" class="team-stats" aria-label="Team rating stats">
+        <div class="stat">
+          <div class="stat-label">Live</div>
+          <div class="stat-value" id="liveVal">—</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Peak</div>
+          <div class="stat-value" id="peakVal">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="chart">Loading…</div>
+
+    <h3 class="section-title">Games</h3>
+    <div id="gamesWrap">
+      <table id="games" class="games"></table>
+    </div>
+  </section>
+</main>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const idRaw = params.get('id');
+
+  if (!idRaw) {
+    document.getElementById('chart').textContent = 'Missing team id.';
+    throw new Error('no id');
+  }
+
+  const TEAMS_URL = '../data/teams.json';
+  const HIST_URL = id => `../data/history/${encodeURIComponent(id)}.json`;
+  const GAMES_URL = id => `../data/games/${encodeURIComponent(id)}.json`;
+  const COLOURS_URL = '../team-colours.json';
+  const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
+
+  let TEAM_COLOURS = {};
+  let RAW = [];
+  let CURRENT_TEAM = null;
+  let SINCE_YEAR = 2010;
+  let AGG_MODE = 'monthly';
+  let teamChart = null;
+
+  
+  let ALL_TIME_PEAK = null;
+function normalise(series, dedupeByDay = false) {
+    const s = series
+      .filter(p => p && p.x && Number.isFinite(p.y))
+      .map(p => ({
+        x: p.x,
+        y: +p.y,
+        tournament: p.tournament || ''
+      }))
+      .sort((a, b) => new Date(a.x) - new Date(b.x));
+
+    if (!dedupeByDay) return s;
+
+    const out = [];
+    let lastKey = null;
+
+    for (const p of s) {
+      const d = new Date(p.x);
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+      if (key !== lastKey) out.push(p);
+      else out[out.length - 1] = p;
+
+      lastKey = key;
+    }
+
+    return out;
+  }
+
+  function aggregate(series, mode) {
+    if (mode === 'daily') return normalise(series, true);
+
+    const buckets = Object.create(null);
+
+    for (const p of series) {
+      const d = new Date(p.x);
+      const key = mode === 'monthly'
+        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
+        : `${d.getFullYear()}`;
+
+      (buckets[key] ||= []).push(p);
+    }
+
+    const out = Object.keys(buckets).sort().map(k => {
+      const pts = buckets[k].filter(p => Number.isFinite(p.y));
+      const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
+      const lastTournament = pts.length ? (pts[pts.length - 1].tournament || '') : '';
+      const x = k.length === 7 ? `${k}-01` : `${k}-01-01`;
+
+      return { x, y: avg, tournament: lastTournament };
+    });
+
+    return normalise(out, false);
+  }
+
+  function applySinceFilter(series, sinceYear) {
+    if (!sinceYear) return series;
+    const start = new Date(`${sinceYear}-01-01T00:00:00Z`).getTime();
+    return series.filter(p => new Date(p.x).getTime() >= start);
+  }
+
+  async function loadColours() {
+    const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
+    if (!res.ok) throw new Error('team-colours.json not found');
+    TEAM_COLOURS = await res.json();
+  }
+
+  function hexToRgb(hex) {
+    const clean = String(hex || '').trim();
+    const match = clean.match(/^#([0-9a-f]{6})$/i);
+    if (!match) return null;
+
+    const value = match[1];
+    return {
+      r: parseInt(value.slice(0, 2), 16),
+      g: parseInt(value.slice(2, 4), 16),
+      b: parseInt(value.slice(4, 6), 16)
+    };
+  }
+
+  function rgbToHex(r, g, b) {
+    return '#' + [r, g, b]
+      .map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0'))
+      .join('');
+  }
+
+  function relativeLuminance({ r, g, b }) {
+    const toLinear = c => {
+      const s = c / 255;
+      return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+    };
+
+    const R = toLinear(r);
+    const G = toLinear(g);
+    const B = toLinear(b);
+
+    return 0.2126 * R + 0.7152 * G + 0.0722 * B;
+  }
+
+  function mixWithWhite(rgb, amount) {
+    return {
+      r: rgb.r + (255 - rgb.r) * amount,
+      g: rgb.g + (255 - rgb.g) * amount,
+      b: rgb.b + (255 - rgb.b) * amount
+    };
+  }
+
+  function getDisplayColour(teamName) {
+    const fallback = '#2F80ED';
+    const raw = TEAM_COLOURS[teamName] || fallback;
+    const rgb = hexToRgb(raw);
+
+    if (!rgb) return fallback;
+
+    const lum = relativeLuminance(rgb);
+
+    if (lum >= 0.05) return raw;
+
+    const lifted = mixWithWhite(rgb, 0.45);
+    return rgbToHex(lifted.r, lifted.g, lifted.b);
+  }
+
+  function labelStepForRange(y0, y1) {
+  const span = Math.abs(y1 - y0);
+
+  if (span < 100) return 25;
+  if (span < 300) return 50;
+
+  return 100;
+}
+
+function makeYGridShapes(yMin, yMax, step) {
+  if (!Number.isFinite(yMin) || !Number.isFinite(yMax) || !step) {
+    return [];
+  }
+
+  const lo = Math.floor((yMin - 1) / step) * step;
+  const hi = Math.ceil((yMax + 1) / step) * step;
+  const shapes = [];
+
+  for (let y = lo; y <= hi; y += step) {
+    let width;
+    let color;
+
+    if (step === 100) {
+      width = 2.2;
+      color = 'rgba(255,255,255,0.28)';
+    } else if (step === 50) {
+      width = 1.4;
+      color = 'rgba(255,255,255,0.16)';
+    } else {
+      width = 1.0;
+      color = 'rgba(255,255,255,0.08)';
+    }
+
+    shapes.push({
+      type: 'line',
+      xref: 'paper',
+      x0: 0,
+      x1: 1,
+      yref: 'y',
+      y0: y,
+      y1: y,
+      line: { width, color }
+    });
+  }
+
+  return shapes;
+}
+
+  function draw(mode) {
+    AGG_MODE = mode;
+
+    const el = document.getElementById('chart');
+
+    if (el.textContent && el.textContent.includes('Loading')) {
+      el.textContent = '';
+    }
+
+    const filtered = applySinceFilter(RAW, SINCE_YEAR);
+    const data = aggregate(filtered, mode);
+
+    const xs = data.map(p => p.x);
+    const ysAll = data.map(p => p.y);
+    const ys = ysAll.filter(Number.isFinite);
+    const tournaments = data.map(p => p.tournament || '');
+
+    if (!xs.length || !ys.length) {
+      el.textContent = 'No games';
+      return;
+    }
+
+const yMin = Math.min(...ys);
+const yMax = Math.max(...ys);
+
+const pad = (yMax - yMin) * 0.12 || 10;
+const y0 = yMin - pad;
+const y1 = yMax + pad;
+
+const step = labelStepForRange(y0, y1);
+const shapes = makeYGridShapes(y0, y1, step);
+
+    const cs = getComputedStyle(document.body);
+    const teamColour = getDisplayColour(CURRENT_TEAM?.name);
+
+    const trace = {
+      type: 'scatter',
+      x: xs,
+      y: ysAll,
+      customdata: tournaments,
+      mode: 'lines',
+      line: {
+        width: 8,
+        shape: 'linear',
+        color: teamColour
+      },
+      hovertemplate: `%{x}<br>%{y:.0f} Elo${mode === 'daily' ? '<br>%{customdata}' : ''}<extra></extra>`,
+      connectgaps: true,
+      showlegend: false
+    };
+
+    Plotly.newPlot('chart', [trace], {
+      margin: { l: 60, r: 20, t: 10, b: 45 },
+      xaxis: { type: 'date' },
+yaxis: {
+  title: 'Rating',
+  range: [y0, y1],
+  tick0: 0,
+  dtick: step,
+  showgrid: false,
+  zeroline: false
+},
+      paper_bgcolor: cs.backgroundColor,
+      plot_bgcolor: cs.backgroundColor,
+      font: { color: cs.color, size: 14 },
+      shapes
+    }, {
+      staticPlot: IS_TOUCH,
+      displayModeBar: false,
+      responsive: true
+    });
+  }
+
+  function getResultClassAndText(g, myName) {
+    const isHome = g.home === myName;
+    const isAway = g.away === myName;
+    const raw = (g.result || '').trim();
+
+    if (g.status === 'scheduled') {
+      return { cls: 'scheduled', text: 'Scheduled' };
+    }
+
+    if (/^draw$/i.test(raw)) return { cls: 'draw', text: 'Draw' };
+    if (raw === myName) return { cls: 'win', text: 'Win' };
+
+    if ((isHome || isAway) && raw !== '' && raw !== myName) {
+      return { cls: 'loss', text: 'Loss' };
+    }
+
+    return { cls: 'draw', text: raw || 'Draw' };
+  }
+
+  function getScoreParts(g, myName) {
+    const score = String(g.score || '').trim();
+
+    if (!score) {
+      return {
+        left: '',
+        strong: '',
+        right: ''
+      };
+    }
+
+    const match = score.match(/^(\d+)-(\d+)(.*)$/);
+    if (!match) {
+      return {
+        left: '',
+        strong: score,
+        right: ''
+      };
+    }
+
+    const homeGoals = match[1];
+    const awayGoals = match[2];
+    const suffix = match[3] || '';
+
+    const isHome = g.home === myName;
+    const isAway = g.away === myName;
+
+    if (isHome) {
+      return {
+        left: '',
+        strong: homeGoals,
+        right: `-${awayGoals}${suffix}`
+      };
+    }
+
+    if (isAway) {
+      return {
+        left: `${homeGoals}-`,
+        strong: awayGoals,
+        right: suffix
+      };
+    }
+
+    return {
+      left: `${homeGoals}-`,
+      strong: awayGoals,
+      right: suffix
+    };
+  }
+
+  function renderTeamCell(teamName, teams, myName) {
+    const isProfileTeam = teamName === myName;
+    const team = teams.find(t => t.name === teamName);
+
+    if (team && team.id) {
+      const a = document.createElement('a');
+      a.href = `../player/?id=${encodeURIComponent(team.id)}`;
+      a.textContent = teamName || '';
+
+      if (isProfileTeam) {
+        a.className = 'profile-team';
+      }
+
+      return a;
+    }
+
+    const span = document.createElement('span');
+    span.textContent = teamName || '';
+
+    if (isProfileTeam) {
+      span.className = 'profile-team';
+    }
+
+    return span;
+  }
+
+  function renderWdlBar(g, myName) {
+    const isHome = g.home === myName;
+    const isAway = g.away === myName;
+
+    if (!isHome && !isAway) {
+      return document.createTextNode('');
+    }
+
+    const homeWin = Number(g.homeWinPct);
+    const draw = Number(g.drawPct);
+    const awayWin = Number(g.awayWinPct);
+
+    if (
+      !Number.isFinite(homeWin) ||
+      !Number.isFinite(draw) ||
+      !Number.isFinite(awayWin)
+    ) {
+      return document.createTextNode('');
+    }
+
+const win = isHome ? homeWin : awayWin;
+const loss = isHome ? awayWin : homeWin;
+
+let safeWin = Math.max(0, Math.round(win));
+let safeDraw = Math.max(0, Math.round(draw));
+let safeLoss = Math.max(0, Math.round(loss));
+
+const total = safeWin + safeDraw + safeLoss;
+
+if (total === 99) {
+  const max = Math.max(safeWin, safeDraw, safeLoss);
+
+  if (safeWin === max) safeWin += 1;
+  else if (safeDraw === max) safeDraw += 1;
+  else safeLoss += 1;
+}
+
+    const wrap = document.createElement('div');
+    wrap.className = 'wdl-bar';
+    wrap.title = `Win ${safeWin}% / Draw ${safeDraw}% / Loss ${safeLoss}%`;
+
+    const winSeg = document.createElement('div');
+    winSeg.className = 'wdl-seg wdl-win';
+    winSeg.style.width = `${safeWin}%`;
+    winSeg.innerHTML = `<span>${safeWin}%</span>`;
+
+    const drawSeg = document.createElement('div');
+    drawSeg.className = 'wdl-seg wdl-draw';
+    drawSeg.style.width = `${safeDraw}%`;
+    drawSeg.innerHTML = `<span>${safeDraw}%</span>`;
+
+    const lossSeg = document.createElement('div');
+    lossSeg.className = 'wdl-seg wdl-loss';
+    lossSeg.style.width = `${safeLoss}%`;
+    lossSeg.innerHTML = `<span>${safeLoss}%</span>`;
+
+    wrap.appendChild(winSeg);
+    wrap.appendChild(drawSeg);
+    wrap.appendChild(lossSeg);
+
+    return wrap;
+  }
+
+  function renderGamesTable(me, teams, games) {
+    const tbl = document.getElementById('games');
+    tbl.innerHTML = '';
+
+    const thead = document.createElement('thead');
+    const hr = document.createElement('tr');
+
+    for (const h of ['Date', 'Home', 'Elo', 'Away', 'Elo', 'Expected W/D/L', 'Score', 'Result', 'Δ']) {
+      const th = document.createElement('th');
+      th.textContent = h;
+      hr.appendChild(th);
+    }
+
+    thead.appendChild(hr);
+    tbl.appendChild(thead);
+
+    const panelBg = getComputedStyle(document.querySelector('.panel')).backgroundColor;
+    thead.style.backgroundColor = panelBg;
+
+    const tbody = document.createElement('tbody');
+    const rows = Array.isArray(games) ? [...games] : [];
+    rows.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const myName = me.name;
+
+    for (const g of rows) {
+      const isHome = g.home === myName;
+      const isAway = g.away === myName;
+      if (!isHome && !isAway) continue;
+
+      const homeElo = Number(g.homeElo);
+      const awayElo = Number(g.awayElo);
+      const numDelta = Number(g.delta);
+
+      const tr = document.createElement('tr');
+
+      const tdDate = document.createElement('td');
+      tdDate.textContent = g.date || '';
+
+      const tdHome = document.createElement('td');
+      tdHome.className = 'team-cell';
+      tdHome.appendChild(renderTeamCell(g.home, teams, myName));
+
+      const tdHomeElo = document.createElement('td');
+      tdHomeElo.textContent = Number.isFinite(homeElo) ? String(Math.round(homeElo)) : '';
+
+      const tdAway = document.createElement('td');
+      tdAway.className = 'team-cell';
+      tdAway.appendChild(renderTeamCell(g.away, teams, myName));
+
+      const tdAwayElo = document.createElement('td');
+      tdAwayElo.textContent = Number.isFinite(awayElo) ? String(Math.round(awayElo)) : '';
+
+      const tdWdl = document.createElement('td');
+      tdWdl.className = 'wdl-cell';
+      tdWdl.appendChild(renderWdlBar(g, myName));
+
+      const tdScore = document.createElement('td');
+      tdScore.className = 'score';
+
+      if (g.status === 'scheduled') {
+        tdScore.textContent = '—';
+      } else {
+        const scoreInfo = getScoreParts(g, myName);
+        const scoreStrong = document.createElement('span');
+        scoreStrong.className = 'score-strong';
+        scoreStrong.textContent = scoreInfo.strong;
+
+        tdScore.appendChild(document.createTextNode(scoreInfo.left));
+        tdScore.appendChild(scoreStrong);
+        tdScore.appendChild(document.createTextNode(scoreInfo.right));
+      }
+
+      const tdResult = document.createElement('td');
+      const r = getResultClassAndText(g, myName);
+      tdResult.textContent = r.text;
+      tdResult.className = 'result ' + r.cls;
+
+      const tdDelta = document.createElement('td');
+      if (g.status !== 'scheduled' && !Number.isNaN(numDelta)) {
+        tdDelta.textContent = g.delta;
+        tdDelta.className = 'delta ' + (numDelta > 0 ? 'pos' : (numDelta < 0 ? 'neg' : 'zero'));
+      } else {
+        tdDelta.textContent = '';
+      }
+
+      tr.appendChild(tdDate);
+      tr.appendChild(tdHome);
+      tr.appendChild(tdHomeElo);
+      tr.appendChild(tdAway);
+      tr.appendChild(tdAwayElo);
+      tr.appendChild(tdWdl);
+      tr.appendChild(tdScore);
+      tr.appendChild(tdResult);
+      tr.appendChild(tdDelta);
+
+      tbody.appendChild(tr);
+    }
+
+    if (!tbody.children.length) {
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+      td.colSpan = 9;
+      td.textContent = 'No games';
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+    }
+
+    tbl.appendChild(tbody);
+  }
+
+  function renderTeamStats(series) {
+    const liveEl = document.getElementById('liveVal');
+    const peakEl = document.getElementById('peakVal');
+
+    if (!liveEl || !peakEl) return;
+
+    if (!series || !series.length) {
+      liveEl.textContent = '—';
+      peakEl.textContent = '—';
+      return;
+    }
+
+    const live = series[series.length - 1];
+    liveEl.textContent = Number.isFinite(live.y) ? String(Math.round(live.y)) : '—';
+
+    let peak = null;
+    for (const p of series) {
+      if (!Number.isFinite(p.y)) continue;
+      if (!peak || p.y > peak.y) peak = p;
+    }
+
+    const displayPeak = Number.isFinite(ALL_TIME_PEAK)
+      ? ALL_TIME_PEAK
+      : (peak ? peak.y : NaN);
+    peakEl.textContent = Number.isFinite(displayPeak)
+      ? String(Math.round(displayPeak))
+      : '—';
+  }
+
+
+  function makeTeamGraphItems() {
+    return [{
+      name: CURRENT_TEAM?.name || 'Team',
+      colour: getDisplayColour(CURRENT_TEAM?.name),
+      raw: RAW,
+      customData: p => p.tournament || '',
+      hovertemplate:
+        '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' +
+        (CURRENT_TEAM?.name || 'Team') +
+        '</extra>'
+    }];
+  }
+
+function refreshView() {
+  renderTeamStats(RAW);
+  if (teamChart && RAW.length) {
+    teamChart.render(makeTeamGraphItems());
+  }
+}
+
+  async function load() {
+    try {
+      const [teamsRes, histRes, gamesRes] = await Promise.all([
+        fetch(TEAMS_URL, { cache: 'no-cache' }),
+        fetch(HIST_URL(idRaw), { cache: 'no-cache' }),
+        fetch(GAMES_URL(idRaw), { cache: 'no-cache' }),
+        loadColours()
+      ]);
+
+      if (!teamsRes.ok) throw new Error('teams.json not found');
+      if (!histRes.ok) throw new Error('history not found');
+
+      const teams = await teamsRes.json();
+      const me = teams.find(t => t.id === idRaw);
+
+      if (!me) throw new Error('team id not in teams.json');
+
+      
+      ALL_TIME_PEAK = Number(
+        me.peak_rating ?? me.all_time_peak_rating
+      );
+CURRENT_TEAM = me;
+      document.getElementById('pname').textContent = me.name;
+
+      const histJson = await histRes.json();
+      RAW = normalise(
+        (Array.isArray(histJson) ? histJson : []).map(d => ({
+          x: d.date,
+          y: Number(d.rating),
+          tournament: d.tournament || ''
+        })),
+        true
+      );
+
+      if (!RAW.length) {
+        document.getElementById('chart').textContent = 'No games';
+        renderTeamStats([]);
+      } else {
+        const initialMode = 'monthly';
+        AGG_MODE = initialMode;
+        document.getElementById('agg').value = initialMode;
+
+        teamChart = JRGraph.createChart({
+          chartId: 'chart',
+          aggId: 'agg',
+          controlsEl: document.querySelector('.jr-chart-controls'),
+          defaultRange: '2010',
+          getItems: makeTeamGraphItems
+        });
+
+        refreshView();
+      }
+
+      if (gamesRes.ok) {
+        const games = await gamesRes.json();
+        renderGamesTable(me, teams, Array.isArray(games) ? games : []);
+      } else {
+        const tbl = document.getElementById('games');
+        tbl.innerHTML = '<tbody><tr><td colspan="9">No games</td></tr></tbody>';
+      }
+    } catch (e) {
+      console.error(e);
+      document.getElementById('chart').textContent = 'Error: ' + e.message;
+      const tbl = document.getElementById('games');
+      tbl.innerHTML = '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
+    }
+  }
+
+  loadColours()
+    .then(load)
+    .catch(e => {
+      console.error(e);
+      document.getElementById('chart').textContent = 'Error: ' + e.message;
+      const tbl = document.getElementById('games');
+      tbl.innerHTML = '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
+    });
+</script>
+</body>
+</html>

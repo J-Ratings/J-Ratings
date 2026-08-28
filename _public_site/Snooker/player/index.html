@@ -401,6 +401,30 @@
     }
 
   </style>
+
+  <style id="jr-public-teaser-styles">
+    .jr-public-disabled {
+      opacity: 0.42 !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+      user-select: none !important;
+      filter: saturate(0.55);
+    }
+
+    .jr-public-disabled[disabled] {
+      opacity: 0.42 !important;
+    }
+
+    .topnav .jr-public-nav-teaser {
+      white-space: nowrap;
+    }
+
+    .jr-public-stats-teaser .stat-value {
+      font-size: 0.78rem !important;
+      line-height: 1.15 !important;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -414,7 +438,8 @@
 
     <nav class="topnav" aria-label="Main">
       <a href="../home/">Home</a>
-<a href="../peak/">Peak</a>
+      <a class="jr-public-disabled jr-public-nav-teaser" aria-disabled="true" tabindex="-1" title="Coming soon">Compare</a>
+      <a href="../peak/">Peak</a>
     </nav>
   </div>
 </header>
@@ -437,8 +462,9 @@
           </div>
 
           <div class="range-buttons" role="group" aria-label="Time range">
-
-<button type="button" class="range-btn seg" data-range="2010">Since 2010</button>
+            <button type="button" class="range-btn seg jr-public-disabled jr-public-history-teaser"  data-public-range="ALL" disabled aria-disabled="true" title="Full history coming soon">All</button>
+            <button type="button" class="range-btn seg jr-public-disabled jr-public-history-teaser"  data-public-range="2000" disabled aria-disabled="true" title="Full history coming soon">Since 2000</button>
+            <button type="button" class="range-btn seg" data-range="2010">Since 2010</button>
             <button type="button" class="range-btn seg is-active active" data-range="2020">Since 2020</button>
           </div>
         </div>

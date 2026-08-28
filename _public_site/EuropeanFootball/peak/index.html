@@ -272,6 +272,30 @@
     }
 
   </style>
+
+  <style id="jr-public-teaser-styles">
+    .jr-public-disabled {
+      opacity: 0.42 !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+      user-select: none !important;
+      filter: saturate(0.55);
+    }
+
+    .jr-public-disabled[disabled] {
+      opacity: 0.42 !important;
+    }
+
+    .topnav .jr-public-nav-teaser {
+      white-space: nowrap;
+    }
+
+    .jr-public-stats-teaser .stat-value {
+      font-size: 0.78rem !important;
+      line-height: 1.15 !important;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -286,6 +310,7 @@
     <nav class="topnav" aria-label="Main">
       <a href="/index.html">Sports</a>
       <a href="../home/">Home</a>
+      <a class="jr-public-disabled jr-public-nav-teaser" aria-disabled="true" tabindex="-1" title="Coming soon">Compare</a>
       <a href="./" class="active-tab">Peak</a>
     </nav>
   </div>
@@ -296,7 +321,9 @@
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by team…">
       <span id="count" class="muted"></span>
-</div>
+
+      <button class="club-btn jr-public-disabled jr-public-compare-teaser" type="button" style="margin-left:auto" disabled aria-disabled="true" title="Coming soon">Compare</button>
+    </div>
 
 
     <div class="table-wrap">
@@ -365,8 +392,10 @@
   }
 
   function hideCompare() {
-    document.getElementById('compare-wrap').style.display = 'none';
-    document.getElementById('compare-chart').innerHTML = '';
+    const wrap = document.getElementById('compare-wrap');
+    const chart = document.getElementById('compare-chart');
+    if (wrap) wrap.style.display = 'none';
+    if (chart) chart.innerHTML = '';
     lastCompared = [];
     compareVisibleSeries = [];
   }

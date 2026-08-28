@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
+
+  <meta charset="utf-8">
+  <title>J-Ratings: Go</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="../../jratings-graph.js"></script>
+
+  <style>
+    .flag-cell{
+      text-align:center;
+      vertical-align:middle;
+    }
+
+    .flag-icon{
+      width:39.93px;
+      height:29.04px;
+      display:block;
+      margin:0 auto;
+      object-fit:contain;
+    }
+
+    #compare-modal{
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.6);
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+    }
+
+    #compare-modal > div{
+      background:#1a1a1a;
+      border-radius:8px;
+      max-width:560px;
+      width:90%;
+      max-height:80%;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+      color:#fff;
+    }
+
+    .compare-modal-header{
+      position:sticky;
+      top:0;
+      z-index:2;
+      background:#1a1a1a;
+      padding:20px 20px 12px;
+      border-bottom:1px solid #2b2f36;
+    }
+
+    .compare-modal-title-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:12px;
+    }
+
+    .compare-modal-title-row h3{
+      margin:0;
+    }
+
+    .compare-close{
+      border:0;
+      background:transparent;
+      color:inherit;
+      font-size:1.8rem;
+      line-height:1;
+      padding:0 4px;
+      cursor:pointer;
+    }
+
+    .compare-close:hover{
+      opacity:0.8;
+    }
+
+    .compare-controls{
+      margin:0;
+    }
+
+    #compare-list{
+      overflow-y:auto;
+      padding:12px 20px 20px;
+    }
+
+    /* Match the dedicated Compare page proportions while keeping
+       the shared JRGraph line styling used on the Home page. */
+    #compare-wrap{
+      width:min(92vw, 1400px);
+      margin:0 auto;
+      padding:16px 0 !important;
+    }
+
+    #compare-chart{
+      width:100%;
+      height:650px;
+      min-height:650px;
+    }
+
+    @media (max-width:768px){
+      #compare-wrap{
+        width:100%;
+        padding:12px 0 !important;
+      }
+
+      #compare-chart{
+        height:480px;
+        min-height:480px;
+      }
+    }
+
+    /* Desktop player table */
+.table-wrap{
+  width:min(86vw, 1100px);
+  margin:0 auto;
+}
+
+#players{
+  width:100%;
+  table-layout:fixed;
+}
+
+@media (min-width:521px){
+  #players th{
+    font-size:1.55rem;
+  }
+
+  #players td{
+    font-size:1.45rem;
+  }
+
+  .flag-icon{
+    width:54px;
+    height:40px;
+  }
+}
+
+@media (min-width:769px){
+  #players-panel > .asof{
+    text-align:center;
+    font-size:1.15rem;
+    margin:18px 0 22px;
+    padding-left:0;
+  }
+
+  #players-panel > .toolbar{
+    gap:12px;
+  }
+
+  #players-panel > .toolbar input,
+  #players-panel > .toolbar select,
+  #players-panel > .toolbar button{
+    font-size:1.05rem;
+    padding-top:12px;
+    padding-bottom:12px;
+  }
+
+  #players-panel > .toolbar label{
+    font-size:1.05rem;
+  }
+}
+
+#players th,
+#players td{
+  padding:14px 18px;
+}
+
+#players th:nth-child(1),
+#players td:nth-child(1){
+  width:12%;
+}
+
+#players th:nth-child(2),
+#players td:nth-child(2){
+  width:16%;
+}
+
+#players th:nth-child(3),
+#players td:nth-child(3){
+  width:48%;
+}
+
+#players th:nth-child(4),
+#players td:nth-child(4){
+  width:24%;
+}
+
+
+#players th,
+#players td{
+  border-right:1px solid rgba(128,128,128,0.18);
+}
+
+#players th:last-child,
+#players td:last-child{
+  border-right:none;
+}
+
+#players tbody tr:nth-child(even){
+  background:rgba(255,255,255,0.018);
+}
+
+    @media (max-width:520px){
+      #players{
+        width:100%;
+        table-layout:fixed;
+      }
+
+      #players th,
+      #players td{
+        min-width:0 !important;
+        padding:10px 8px;
+      }
+
+      #players th:nth-child(1),
+      #players td:nth-child(1){ width:52px; }
+
+#players th:nth-child(2),
+#players td:nth-child(2){ width:68px; }
+
+#players th:nth-child(4),
+#players td:nth-child(4){ width:68px; }
+
+      #players th:nth-child(3),
+      #players td:nth-child(3){ width:auto; }
+
+      #players td:nth-child(3) a{
+        display:block;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+    }
+  
+    /* Standardised J-Ratings home-page comparison graph: Go design, 10% smaller. */
+    #compare-wrap{
+      width:min(82.8vw, 1260px);
+      margin:0 auto;
+      padding:16px 0 !important;
+    }
+
+    #compare-chart{
+      width:100%;
+      height:585px !important;
+      min-height:585px;
+      margin-bottom:0 !important;
+    }
+
+    @media (max-width:768px){
+      #compare-wrap{
+        width:100%;
+        padding:12px 0 !important;
+      }
+
+      #compare-chart{
+        height:432px !important;
+        min-height:432px;
+      }
+    }
+
+  
+    /* Keep comparison controls visually identical across sports. */
+    #compare-wrap .jr-chart-controls{
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:flex-start !important;
+      justify-content:flex-start !important;
+      gap:10px !important;
+      margin-bottom:10px !important;
+    }
+
+    #compare-wrap .jr-chart-controls > div:first-child{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    #compare-wrap .range-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    #compare-wrap .seg{
+      font-size:1.05rem;
+      padding:9px 12px;
+    }
+
+    #compare-wrap #compare-agg{
+      font-size:1.05rem;
+      padding:9px 12px;
+    }
+
+    #compare-wrap .jr-chart-controls label{
+      font-size:1.05rem;
+    }
+
+    /* Always show the selected time span clearly. */
+    #compare-wrap .seg.active,
+    #compare-wrap .seg.is-active,
+    #compare-wrap .seg[aria-pressed="true"]{
+      background:rgba(255,255,255,0.10) !important;
+      border-color:rgba(220,220,220,0.85) !important;
+      box-shadow:0 0 0 1px rgba(220,220,220,0.55) inset !important;
+    }
+
+    /* Larger Plotly text without enlarging the chart itself. */
+    #compare-chart .xtick text,
+    #compare-chart .ytick text{
+      font-size:16px !important;
+    }
+
+    #compare-chart .legendtext{
+      font-size:16px !important;
+    }
+
+    #compare-chart .xtitle,
+    #compare-chart .ytitle{
+      font-size:22px !important;
+    }
+
+    #compare-chart .hovertext text,
+    #compare-chart .hoverlayer text{
+      font-size:18px !important;
+    }
+
+    @media (max-width:768px){
+      #compare-chart .xtick text,
+      #compare-chart .ytick text{
+        font-size:15px !important;
+      }
+
+      #compare-chart .legendtext{
+        font-size:15px !important;
+      }
+
+      #compare-chart .hovertext text,
+      #compare-chart .hoverlayer text{
+        font-size:16px !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a id="home-link" href="index.html" class="brand-with-logo">
+        <span>J-Ratings <span class="title-go">Go</span></span>
+      </a>
+    </h1>
+
+    <nav class="topnav" aria-label="Main">
+      <a href="../../index.html">Sports</a>
+      <a href="index.html" class="active-tab">Home</a>
+<a href="../peak/">Peak</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel" id="players-panel">
+    <div id="asof" class="asof" aria-live="polite"></div>
+
+    <div class="toolbar">
+      <input id="q" type="search" placeholder="Filter by name…">
+
+      <label for="era" style="margin-left:auto">Year:</label>
+      <select id="era">
+        <option value="live" selected>Live</option>
+      </select>
+
+      <label for="country">Country:</label>
+      <select id="country">
+        <option value="all" selected>All</option>
+      </select>
+
+      <label for="gender">Gender:</label>
+      <select id="gender">
+        <option value="all" selected>All</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+</div>
+
+    <div id="compare-wrap" style="display:none; padding:16px">
+      <div class="jr-chart-controls">
+        <div>
+          <label for="compare-agg">View:</label>
+          <select id="compare-agg">
+            <option value="daily">Daily</option>
+            <option value="weekly" selected>Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="quarterly">Quarterly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+        </div>
+
+        <div class="range-buttons">
+
+<button type="button" class="seg" data-range="2020" aria-pressed="false">2020–Present</button>
+          <button type="button" class="seg" data-range="LY">Last Year</button>
+          <button type="button" class="seg" data-range="YTD">YTD</button>
+        </div>
+      </div>
+
+      <div id="compare-chart" class="jr-chart">Loading…</div>
+    </div>
+
+    <div class="table-wrap">
+
+
+      <table id="players">
+        <thead>
+          <tr>
+            <th style="min-width:60px">Rank</th>
+            <th style="min-width:56px">Country</th>
+            <th style="min-width:260px">Player</th>
+            <th class="right" style="min-width:120px" id="rating-col-head">Rating</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div style="padding:16px; text-align:center;">
+      <button id="show-more-btn" class="club-btn" type="button" style="display:none;">
+        Show More
+      </button>
+    </div>
+
+    <div class="go-meta-summary" style="padding:0 16px 20px; text-align:center;">
+      <div class="go-source-summary">
+        <div>
+          Historical games up to 2025:
+          <a
+            href="https://gogodonline.co.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="data-source-link"
+          >GoGoD</a>
+        </div>
+
+        <div>
+          Games from 2026 onwards:
+          <a
+            href="https://www.goratings.org/en"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="data-source-link"
+          >GoRatings</a>
+          by Rémi Coulom.
+        </div>
+
+        <div>
+          For game databases, SGF records and sources, please visit the links above.
+        </div>
+      </div>
+    </div>
+
+    <div id="compare-modal">
+      <div>
+        <div class="compare-modal-header">
+          <div class="compare-modal-title-row">
+            <h3>Select players to view:</h3>
+            <button id="compare-close" class="compare-close" type="button" aria-label="Close comparison">×</button>
+          </div>
+
+          <div class="compare-controls">
+            <button id="compare-show-top" type="button">Show Selected</button>
+          </div>
+        </div>
+
+        <div id="compare-list"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+<script>
+const DATA_URL = '../data/players.json';
+const ERA_STARTS_URL = '../data/era_starts.json';
+const META_URL = '../data/meta.json';
+const FLAGS_BASE = '../../flags';
+const PAGE_SIZE = 100;
+
+const COUNTRY_LABELS = {
+  ar: 'Argentina',
+  ca: 'Canada',
+  cn: 'China',
+  fr: 'France',
+  gb: 'United Kingdom',
+  hk: 'Hong Kong',
+  il: 'Israel',
+  jp: 'Japan',
+  kr: 'Korea',
+  my: 'Malaysia',
+  nl: 'Netherlands',
+  pl: 'Poland',
+  ro: 'Romania',
+  ru: 'Russia',
+  sg: 'Singapore',
+  sk: 'Slovakia',
+  tw: 'Taiwan',
+  ua: 'Ukraine',
+  us: 'United States'
+};
+
+const PRIORITY_COUNTRY_ORDER = ['cn', 'jp', 'kr', 'tw'];
+
+const state = {
+  mode: 'live',
+  meta: null,
+  liveRows: [],
+  eraStarts: [],
+  rows: [],
+  filtered: [],
+  visibleCount: PAGE_SIZE
+};
+
+const histCache = new Map();
+
+let compareChart = null;
+let lastCompared = [];
+
+function formatAsOf(iso) {
+  const [y, m, d] = String(iso).split('-').map(Number);
+
+  if (!y || !m || !d) return iso;
+
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  return `${d} ${months[m - 1]} ${y}`;
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function normaliseFlagCode(code) {
+  return String(code || '').trim().toLowerCase();
+}
+
+function normaliseGender(value) {
+  return String(value || '').trim().toLowerCase();
+}
+
+function getCountryLabel(flagCode) {
+  const code = normaliseFlagCode(flagCode);
+
+  if (!code) return '';
+
+  return COUNTRY_LABELS[code] || code.toUpperCase();
+}
+
+function flagImgHtml(flagCode, label) {
+  const code = normaliseFlagCode(flagCode);
+
+  if (!code) return '';
+
+  const safeLabel = escapeHtml(label || '');
+
+  return `<img src="${FLAGS_BASE}/${encodeURIComponent(code)}.svg" alt="${safeLabel}" title="${safeLabel}" class="flag-icon" loading="lazy">`;
+}
+
+function parseIsoDate(value) {
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
+function subtractYears(date, years) {
+  const d = new Date(date);
+  d.setFullYear(d.getFullYear() - years);
+  return d;
+}
+
+function setAsOfText() {
+  const el = document.getElementById('asof');
+
+  if (!el) return;
+
+  if (state.mode === 'live' && state.meta && state.meta.asof) {
+    el.style.display = 'block';
+    el.textContent = `Updated to: ${formatAsOf(state.meta.asof)}`;
+  } else {
+    el.style.display = 'none';
+    el.textContent = '';
+  }
+}
+
+function updateHeaders() {
+  const h = document.getElementById('rating-col-head');
+
+  if (!h) return;
+
+  h.textContent = state.mode === 'live' ? 'Rating' : 'Start Elo';
+}
+
+function render() {
+  const tbody = document.querySelector('#players tbody');
+  const showMoreBtn = document.getElementById('show-more-btn');
+
+  tbody.innerHTML = '';
+
+  const visibleRows = state.filtered.slice(0, state.visibleCount);
+
+  visibleRows.forEach((r, i) => {
+    const tr = document.createElement('tr');
+
+    const tdRank = document.createElement('td');
+
+const selectedCountry = document.getElementById('country').value;
+const selectedGender = document.getElementById('gender').value;
+
+const hasRankingFilter =
+  selectedCountry !== 'all' ||
+  selectedGender !== 'all';
+
+tdRank.textContent = hasRankingFilter
+  ? `${i + 1} (${r.rank})`
+  : r.rank;
+
+tr.appendChild(tdRank);
+
+    const tdFlag = document.createElement('td');
+    tdFlag.className = 'flag-cell';
+    tdFlag.innerHTML = flagImgHtml(r.flag, getCountryLabel(r.flag) || r.name || r.id);
+    tr.appendChild(tdFlag);
+
+    const tdName = document.createElement('td');
+    const a = document.createElement('a');
+    a.href = `../player/?id=${encodeURIComponent(r.id)}`;
+    a.textContent = r.name || r.id;
+    tdName.appendChild(a);
+    tr.appendChild(tdName);
+
+    const tdRt = document.createElement('td');
+    tdRt.className = 'right';
+    tdRt.textContent = Number.isFinite(+r.rating) ? Math.round(+r.rating) : '';
+    tr.appendChild(tdRt);
+
+    tbody.appendChild(tr);
+  });
+
+  if (showMoreBtn) {
+    showMoreBtn.style.display =
+      state.visibleCount < state.filtered.length ? 'inline-block' : 'none';
+  }
+}
+
+function hideCompare() {
+  document.getElementById('compare-wrap').style.display = 'none';
+  document.getElementById('compare-chart').innerHTML = '';
+  lastCompared = [];
+}
+
+function applyFilter() {
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const selectedCountry = document.getElementById('country').value;
+  const selectedGender = document.getElementById('gender').value;
+
+  state.filtered = state.rows.filter(r => {
+    const matchesName = !q || (r.name || '').toLowerCase().includes(q);
+
+    const matchesCountry =
+      selectedCountry === 'all' ||
+      normaliseFlagCode(r.flag) === selectedCountry;
+
+    const matchesGender =
+      selectedGender === 'all' ||
+      normaliseGender(r.gender) === selectedGender;
+
+    return matchesName && matchesCountry && matchesGender;
+  });
+
+  state.visibleCount = PAGE_SIZE;
+
+  updateHeaders();
+  render();
+  hideCompare();
+}
+
+function populateCountrySelect() {
+  const sel = document.getElementById('country');
+
+  if (!sel) return;
+
+  const previousValue = sel.value || 'all';
+
+  const countryCodes = Array.from(new Set(
+    state.rows
+      .map(r => normaliseFlagCode(r.flag))
+      .filter(Boolean)
+  ));
+
+  countryCodes.sort((a, b) => {
+    const ai = PRIORITY_COUNTRY_ORDER.indexOf(a);
+    const bi = PRIORITY_COUNTRY_ORDER.indexOf(b);
+
+    const aPriority = ai !== -1;
+    const bPriority = bi !== -1;
+
+    if (aPriority && bPriority) return ai - bi;
+    if (aPriority) return -1;
+    if (bPriority) return 1;
+
+    return getCountryLabel(a).localeCompare(getCountryLabel(b));
+  });
+
+  sel.innerHTML = '<option value="all">All</option>';
+
+  for (const code of countryCodes) {
+    const opt = document.createElement('option');
+    opt.value = code;
+    opt.textContent = getCountryLabel(code);
+    sel.appendChild(opt);
+  }
+
+  sel.value = countryCodes.includes(previousValue) ? previousValue : 'all';
+}
+
+function rebuildRowsFromMode() {
+  const mode = document.getElementById('era').value;
+  state.mode = mode;
+
+  if (mode === 'live') {
+    state.rows = state.liveRows
+      .slice()
+      .sort((a, b) =>
+        b.rating - a.rating ||
+        (a.name || '').localeCompare(b.name || '')
+      );
+  } else {
+    state.rows = state.eraStarts
+      .filter(d => String(d.era) === String(mode))
+      .map(d => ({
+        id: d.id,
+        name: d.name || d.id,
+        flag: d.flag || '',
+        gender: d.gender || '',
+        rating: +d.elo,
+        tournament: d.tournament || ''
+      }))
+      .sort((a, b) =>
+        b.rating - a.rating ||
+        (a.name || '').localeCompare(b.name || '')
+      );
+  }
+
+state.rows = state.rows.map((r, i) => ({
+  ...r,
+  rank: i + 1
+}));
+
+setAsOfText();
+populateCountrySelect();
+applyFilter();
+}
+
+function populateEraSelect() {
+  const sel = document.getElementById('era');
+
+  const eras = Array.from(new Set(
+    state.eraStarts.map(d => d.era).filter(Boolean)
+  )).sort((a, b) => {
+    const an = Number(a);
+    const bn = Number(b);
+
+    if (Number.isFinite(an) && Number.isFinite(bn)) return bn - an;
+
+    return String(b).localeCompare(String(a));
+  });
+
+  for (const e of eras) {
+    const opt = document.createElement('option');
+    opt.value = e;
+    opt.textContent = e;
+    sel.appendChild(opt);
+  }
+}
+
+async function fetchHistoryFor(id) {
+  if (histCache.has(id)) return histCache.get(id);
+
+  try {
+    const res = await fetch(`../data/history/${encodeURIComponent(id)}.json`, {
+      cache: 'no-cache'
+    });
+
+    if (!res.ok) return null;
+
+    const rows = await res.json();
+
+    histCache.set(id, rows);
+
+    return rows;
+  } catch {
+    return null;
+  }
+}
+
+async function buildComparison(players) {
+  const wrap = document.getElementById('compare-wrap');
+  const chart = document.getElementById('compare-chart');
+
+  wrap.style.display = 'block';
+  chart.innerHTML = 'Loading…';
+
+  lastCompared = [];
+
+  for (const p of players) {
+    const hist = await fetchHistoryFor(p.id);
+
+    if (!hist || !hist.length) continue;
+
+    lastCompared.push({
+      name: p.name || p.id,
+      raw: hist.map(d => ({
+        x: d.date,
+        y: Number(d.rating),
+        tournament: d.tournament || d.event || ''
+      })),
+      customData: pt => pt.tournament || '',
+      hovertemplate:
+        '%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>' +
+        (p.name || p.id) +
+        '</extra>'
+    });
+  }
+
+  if (!lastCompared.length) {
+    chart.innerHTML = 'No history found.';
+    return;
+  }
+
+  compareChart.render(lastCompared);
+}
+
+function setupCompareButton() {
+  const modal = document.getElementById('compare-modal');
+  const listDiv = document.getElementById('compare-list');
+
+  function openModal() {
+    listDiv.innerHTML = '';
+
+    state.filtered.forEach(p => {
+      const id = `chk-${p.id}`;
+      const label = `${p.name || p.id} (${Math.round(p.rating)})`;
+
+      const wrapper = document.createElement('div');
+
+      wrapper.innerHTML = `
+        <label>
+          <input type="checkbox" id="${id}" value="${p.id}" style="margin-right:6px">
+          ${escapeHtml(label)}
+        </label>
+      `;
+
+      listDiv.appendChild(wrapper);
+    });
+
+    modal.style.display = 'flex';
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+
+  function showSelected() {
+    const selectedIds = Array.from(listDiv.querySelectorAll('input:checked'))
+      .map(cb => cb.value);
+
+    if (!selectedIds.length) {
+      alert('Please select at least one player.');
+      return;
+    }
+
+    closeModal();
+
+    const chosen = state.filtered.filter(p =>
+      selectedIds.includes(String(p.id))
+    );
+
+    buildComparison(chosen);
+  }
+
+  document.getElementById('compare-btn').addEventListener('click', openModal);
+  document.getElementById('compare-show-top').addEventListener('click', showSelected);
+  document.getElementById('compare-close').addEventListener('click', closeModal);
+}
+
+async function load() {
+  try {
+    const [playersRes, eraRes, metaRes] = await Promise.all([
+      fetch(DATA_URL, { cache: 'no-cache' }),
+      fetch(ERA_STARTS_URL, { cache: 'no-cache' }),
+      fetch(META_URL, { cache: 'no-cache' })
+    ]);
+
+    if (!playersRes.ok) throw new Error('Failed to load players.json');
+    if (!eraRes.ok) throw new Error('Failed to load era_starts.json');
+
+    const playersData = await playersRes.json();
+    const eraData = await eraRes.json();
+
+    state.meta = metaRes.ok ? await metaRes.json() : null;
+
+    const asOfDate = state.meta && state.meta.asof
+      ? parseIsoDate(state.meta.asof)
+      : null;
+
+    const cutoffDate = asOfDate
+      ? subtractYears(asOfDate, 2)
+      : null;
+
+    const baseLiveRows = (Array.isArray(playersData) ? playersData : [])
+      .filter(d =>
+        d &&
+        d.id &&
+        (d.name || d.display_name) &&
+        Number.isFinite(+d.rating)
+      )
+      .map(d => ({
+        id: String(d.id),
+        name: d.display_name || d.name || d.id,
+        flag: d.flag || '',
+        gender: d.gender || '',
+        rating: +d.rating,
+        peak: Number.isFinite(+d.peak) ? +d.peak : null,
+        peak_date: d.peak_date || null,
+        last_date: d.last_date || null
+      }));
+
+    if (cutoffDate) {
+      state.liveRows = baseLiveRows
+        .filter(player => {
+          const lastPlayed = parseIsoDate(player.last_date);
+          return lastPlayed && lastPlayed >= cutoffDate;
+        })
+        .sort((a, b) =>
+          b.rating - a.rating ||
+          (a.name || '').localeCompare(b.name || '')
+        );
+    } else {
+      state.liveRows = baseLiveRows
+        .sort((a, b) =>
+          b.rating - a.rating ||
+          (a.name || '').localeCompare(b.name || '')
+        );
+    }
+
+    state.eraStarts = Array.isArray(eraData)
+      ? eraData.filter(d => d && d.id && d.era && Number.isFinite(+d.elo))
+      : [];
+
+    populateEraSelect();
+    rebuildRowsFromMode();
+  } catch (err) {
+    const asofEl = document.getElementById('asof');
+
+    if (asofEl) {
+      asofEl.style.display = 'none';
+      asofEl.textContent = '';
+    }
+
+    document.querySelector('#players tbody').innerHTML =
+      `<tr><td colspan="4">Error loading data: ${escapeHtml(err.message)}</td></tr>`;
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  compareChart = JRGraph.createChart({
+    chartId: 'compare-chart',
+    aggId: 'compare-agg',
+    controlsEl: document.getElementById('compare-wrap'),
+    defaultRange: 'ALL',
+    getItems: () => lastCompared
+  });
+
+  document.getElementById('era').addEventListener('change', rebuildRowsFromMode);
+  document.getElementById('country').addEventListener('change', applyFilter);
+  document.getElementById('gender').addEventListener('change', applyFilter);
+  document.getElementById('q').addEventListener('input', applyFilter);
+
+  document.getElementById('show-more-btn').addEventListener('click', () => {
+    state.visibleCount += PAGE_SIZE;
+    render();
+  });
+load();
+});
+</script>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const rangeButtons = Array.from(
+    document.querySelectorAll('#compare-wrap .seg[data-range]')
+  );
+
+  const activateRangeButton = (button) => {
+    rangeButtons.forEach(btn => {
+      btn.classList.remove('active', 'is-active');
+      btn.setAttribute('aria-pressed', 'false');
+    });
+
+    if (button) {
+      button.classList.add('active', 'is-active');
+      button.setAttribute('aria-pressed', 'true');
+    }
+  };
+
+  const defaultButton =
+    document.querySelector('#compare-wrap .seg[data-range="ALL"]');
+
+  activateRangeButton(defaultButton);
+
+  rangeButtons.forEach(btn => {
+    btn.addEventListener('click', () => activateRangeButton(btn));
+  });
+});
+</script>
+
+
+</body>
+</html>

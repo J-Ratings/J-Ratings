@@ -9,7 +9,14 @@ PUBLIC_START = "2010-01-01"
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_DIR = SCRIPT_DIR.parents[1]
-OUT_DIR = REPO_DIR / "_public_site"
+LIVE_OUT_DIR = REPO_DIR / "_public_site"
+TEMP_OUT_DIR = REPO_DIR / "_public_site_build"
+PREVIOUS_OUT_DIR = REPO_DIR / "_public_site_previous"
+
+# Build and validate in a temporary directory. Only swap it into place after
+# every public-data/UI safety check has passed. All helper functions below
+# deliberately operate on OUT_DIR, which points at the temporary build.
+OUT_DIR = TEMP_OUT_DIR
 
 # Top-level folders that are part of the website.
 PUBLIC_TOP_LEVEL_DIRS = [
@@ -402,8 +409,304 @@ def remove_html_block(text: str, start_marker: str, end_marker: str) -> str:
     return text[:start] + text[end:]
 
 
+PUBLIC_TEASER_STYLE = """
+  <style id="jr-public-teaser-styles">
+    .jr-public-disabled {
+      opacity: 0.42 !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+      user-select: none !important;
+      filter: saturate(0.55);
+    }
+
+    .jr-public-disabled[disabled] {
+      opacity: 0.42 !important;
+    }
+
+    .topnav .jr-public-nav-teaser {
+      white-space: nowrap;
+    }
+
+    .jr-public-stats-teaser .stat-value {
+      font-size: 0.78rem !important;
+      line-height: 1.15 !important;
+    }
+  </style>
+"""
+
+
+def add_classes_to_open_tag(tag: str, classes: str) -> str:
+    class_match = re.search(r'\bclass=(["\'])(.*?)\1', tag, flags=re.I | re.S)
+
+    if class_match:
+        existing = class_match.group(2).split()
+        for cls in classes.split():
+            if cls not in existing:
+                existing.append(cls)
+
+        replacement = f'class={class_match.group(1)}{" ".join(existing)}{class_match.group(1)}'
+        return tag[:class_match.start()] + replacement + tag[class_match.end():]
+
+    return re.sub(
+        r'^<([a-zA-Z0-9]+)\b',
+        rf'<\1 class="{classes}"',
+        tag,
+        count=1,
+    )
+
+
+def ensure_public_teaser_styles(s: str) -> str:
+    if 'id="jr-public-teaser-styles"' in s:
+        return s
+
+    if "</head>" in s:
+        return s.replace("</head>", PUBLIC_TEASER_STYLE + "\n</head>", 1)
+
+    return s
+
+
+def make_compare_teasers(s: str) -> str:
+    # Keep the Compare tab visible, but remove its destination completely.
+    def nav_repl(match: re.Match) -> str:
+        return (
+            '<a class="jr-public-disabled jr-public-nav-teaser" '
+            'aria-disabled="true" tabindex="-1" title="Coming soon">Compare</a>'
+        )
+
+    s = re.sub(
+        r'<a\b[^>]*href=["\'][^"\']*compare/[^"\']*["\'][^>]*>\s*Compare\s*</a>',
+        nav_repl,
+        s,
+        flags=re.I,
+    )
+
+    # Keep Home/Peak Compare launch buttons as non-functional previews.
+    def button_repl(match: re.Match) -> str:
+        opening = match.group(1)
+        inner = match.group(2)
+
+        opening = re.sub(
+            r'\s+id=["\']compare-btn["\']',
+            '',
+            opening,
+            count=1,
+            flags=re.I,
+        )
+        opening = add_classes_to_open_tag(
+            opening,
+            "jr-public-disabled jr-public-compare-teaser",
+        )
+
+        opening = re.sub(r'\s+disabled(?:=["\'][^"\']*["\'])?', '', opening, flags=re.I)
+        opening = re.sub(r'\s+aria-disabled=["\'][^"\']*["\']', '', opening, flags=re.I)
+        opening = re.sub(r'\s+title=["\'][^"\']*["\']', '', opening, flags=re.I)
+
+        opening = opening[:-1] + (
+            ' disabled aria-disabled="true" title="Coming soon">'
+        )
+
+        return opening + inner + "</button>"
+
+    s = re.sub(
+        r'(<button\b(?=[^>]*\bid=["\']compare-btn["\'])[^>]*>)([\s\S]*?)</button>',
+        button_repl,
+        s,
+        count=1,
+        flags=re.I,
+    )
+
+    return s
+
+
+def make_history_range_teasers(s: str) -> str:
+    # Historical controls may remain visible as previews, but they must not
+    # carry live data-range/data-since attributes that the JavaScript can use.
+    button_re = re.compile(
+        r'<button\b(?P<open>[^>]*)\bdata-(?P<kind>range|since)='
+        r'(?P<quote>["\'])(?P<value>.*?)(?P=quote)(?P<tail>[^>]*)>'
+        r'(?P<inner>[\s\S]*?)</button>',
+        flags=re.I,
+    )
+
+    def repl(match: re.Match) -> str:
+        kind = match.group("kind").lower()
+        value = match.group("value").strip()
+        value_upper = value.upper()
+
+        private = False
+
+        if kind == "range":
+            if value_upper == "ALL":
+                private = True
+            elif value.isdigit() and int(value) < 2010:
+                private = True
+        elif kind == "since":
+            if value == "":
+                private = True
+            elif value.isdigit() and int(value) < 2010:
+                private = True
+
+        if not private:
+            return match.group(0)
+
+        opening = "<button" + match.group("open") + match.group("tail") + ">"
+        opening = add_classes_to_open_tag(
+            opening,
+            "jr-public-disabled jr-public-history-teaser",
+        )
+
+        # A disabled preview must not look selected.
+        opening = re.sub(
+            r'\bclass=(["\'])(.*?)\1',
+            lambda m: (
+                f'class={m.group(1)}'
+                + " ".join(
+                    cls for cls in m.group(2).split()
+                    if cls not in {"active", "is-active"}
+                )
+                + m.group(1)
+            ),
+            opening,
+            count=1,
+            flags=re.I | re.S,
+        )
+
+        opening = re.sub(r'\s+disabled(?:=["\'][^"\']*["\'])?', '', opening, flags=re.I)
+        opening = re.sub(r'\s+aria-disabled=["\'][^"\']*["\']', '', opening, flags=re.I)
+        opening = re.sub(r'\s+title=["\'][^"\']*["\']', '', opening, flags=re.I)
+
+        public_attr = "data-public-range"
+        public_value = value if value else "ALL"
+
+        opening = opening[:-1] + (
+            f' {public_attr}="{public_value}"'
+            ' disabled aria-disabled="true"'
+            ' title="Full history coming soon">'
+        )
+
+        return opening + match.group("inner") + "</button>"
+
+    s = button_re.sub(repl, s)
+
+    # Any chart which previously defaulted to a private pre-2010 preset must
+    # start on the first public year instead.
+    s = re.sub(
+        r'defaultRange:\s*(["\'])2000\1',
+        "defaultRange: '2010'",
+        s,
+        flags=re.I,
+    )
+    s = re.sub(
+        r'\b(SINCE_YEAR|COMPARE_SINCE_YEAR)\s*=\s*(["\']?)2000\2\s*;',
+        lambda m: f"{m.group(1)} = {m.group(2)}2010{m.group(2)};",
+        s,
+        flags=re.I,
+    )
+
+    return s
+
+
+def ensure_profile_history_teasers(s: str) -> str:
+    # Convert any private/source controls first.
+    s = make_history_range_teasers(s)
+
+    if re.search(
+        r'data-public-range=["\'](?:ALL|2000)["\']',
+        s,
+        flags=re.I,
+    ):
+        return s
+
+    # Some profile templates may not currently contain the private controls.
+    # In that case, add the two standard preview buttons before the public ones.
+    pattern = re.compile(
+        r'(<div\b[^>]*class=["\'][^"\']*\brange-buttons\b[^"\']*["\'][^>]*>)',
+        flags=re.I,
+    )
+
+    match = pattern.search(s)
+    if not match:
+        return s
+
+    teaser_html = (
+        '\n            <button type="button" '
+        'class="range-btn seg jr-public-disabled jr-public-history-teaser" '
+        'data-public-range="ALL" disabled aria-disabled="true" '
+        'title="Full history coming soon">All</button>'
+        '\n            <button type="button" '
+        'class="range-btn seg jr-public-disabled jr-public-history-teaser" '
+        'data-public-range="2000" disabled aria-disabled="true" '
+        'title="Full history coming soon">Since 2000</button>'
+    )
+
+    return s[:match.end()] + teaser_html + s[match.end():]
+
+
+def ensure_profile_stats_teaser(s: str) -> str:
+    # Remove the functional private Statistics link, if this sport already has it.
+    s = re.sub(
+        r'<a\b[^>]*\bid=["\']statsLink["\'][^>]*>[\s\S]*?</a>',
+        (
+            '<div class="stat jr-public-disabled jr-public-stats-teaser" '
+            'aria-disabled="true" title="Advanced statistics coming soon">\n'
+            '          <div class="stat-label">Statistics</div>\n'
+            '          <div class="stat-value">Coming soon</div>\n'
+            '        </div>'
+        ),
+        s,
+        count=1,
+        flags=re.I,
+    )
+
+    # Remove JavaScript which rewrites the now-non-functional private link.
+    s = re.sub(
+        r'\n\s*const statsLink = document\.getElementById\([\'"]statsLink[\'"]\);'
+        r'\s*if \(statsLink && idRaw\) \{\s*'
+        r'statsLink\.href = `\./stats/\?id=\$\{encodeURIComponent\(idRaw\)\}`;\s*\}',
+        '\n',
+        s,
+        count=1,
+        flags=re.I,
+    )
+
+    if "jr-public-stats-teaser" in s:
+        return s
+
+    # Other sports do not yet have a private Statistics page. Give them the
+    # same public preview card immediately after Peak.
+    peak_stat_re = re.compile(
+        r'('
+        r'<div\b[^>]*class=["\'][^"\']*\bstat\b[^"\']*["\'][^>]*>\s*'
+        r'<div\b[^>]*class=["\'][^"\']*\bstat-label\b[^"\']*["\'][^>]*>\s*Peak\s*</div>\s*'
+        r'<div\b[^>]*class=["\'][^"\']*\bstat-value\b[^"\']*["\'][^>]*'
+        r'\bid=["\']peakVal["\'][^>]*>[\s\S]*?</div>\s*'
+        r'</div>'
+        r')',
+        flags=re.I,
+    )
+
+    match = peak_stat_re.search(s)
+    if not match:
+        return s
+
+    teaser = (
+        '\n\n        <div class="stat jr-public-disabled jr-public-stats-teaser" '
+        'aria-disabled="true" title="Advanced statistics coming soon">\n'
+        '          <div class="stat-label">Statistics</div>\n'
+        '          <div class="stat-value">Coming soon</div>\n'
+        '        </div>'
+    )
+
+    return s[:match.end()] + teaser + s[match.end():]
+
+
 def clean_european_football_public_ui() -> None:
     ef_dir = OUT_DIR / "EuropeanFootball"
+
+    # European Football already has working private comparison/statistics
+    # features. The public build removes the implementation/data routes but
+    # leaves non-functional preview controls which are added by the generic
+    # cleanup below.
 
     # -----------------------------
     # Home page
@@ -411,15 +714,6 @@ def clean_european_football_public_ui() -> None:
     home = ef_dir / "home" / "index.html"
     if home.exists():
         s = home.read_text(encoding="utf-8")
-
-        s = s.replace('      <a href="../compare/">Compare</a>\n', '')
-
-        s = re.sub(
-            r'\n\s*<button id="compare-btn"[^>]*>Compare</button>\s*',
-            '\n',
-            s,
-            count=1,
-        )
 
         # Remove the embedded comparison chart block, stopping immediately
         # before the normal ratings table.
@@ -442,7 +736,7 @@ def clean_european_football_public_ui() -> None:
         if n != 1:
             raise RuntimeError("Could not remove European Football home comparison modal")
 
-        # Prevent dead comparison setup from running.
+        # Prevent private comparison setup from running.
         s = re.sub(r'\n\s*setupCompareButton\(\);\s*', '\n', s)
         s = re.sub(r'\n\s*setupCompareChartControls\(\);\s*', '\n', s)
 
@@ -471,7 +765,7 @@ def clean_european_football_public_ui() -> None:
         )
 
         home.write_text(s, encoding="utf-8", newline="\n")
-        print("Cleaned public European Football home UI")
+        print("Cleaned public European Football home implementation")
 
     # -----------------------------
     # Peak page
@@ -479,15 +773,6 @@ def clean_european_football_public_ui() -> None:
     peak = ef_dir / "peak" / "index.html"
     if peak.exists():
         s = peak.read_text(encoding="utf-8")
-
-        s = s.replace('      <a href="../compare/">Compare</a>\n', '')
-
-        s = re.sub(
-            r'\n\s*<button id="compare-btn"[^>]*>Compare</button>\s*',
-            '\n',
-            s,
-            count=1,
-        )
 
         s, n = re.subn(
             r'\n\s*<div id="compare-wrap"[\s\S]*?(?=\n\s*<div class="table-wrap">)',
@@ -511,8 +796,24 @@ def clean_european_football_public_ui() -> None:
         s = re.sub(r'\n\s*setupCompareButton\(\);\s*', '\n', s)
         s = re.sub(r'\n\s*setupCompareChartControls\(\);\s*', '\n', s)
 
+        # Peak filtering code also calls hideCompare(); keep it safe after the
+        # comparison DOM has been removed.
+        s = re.sub(
+            r'function hideCompare\(\) \{[\s\S]*?\n\s*\}',
+            """function hideCompare() {
+    const wrap = document.getElementById('compare-wrap');
+    const chart = document.getElementById('compare-chart');
+    if (wrap) wrap.style.display = 'none';
+    if (chart) chart.innerHTML = '';
+    lastCompared = [];
+    compareVisibleSeries = [];
+  }""",
+            s,
+            count=1,
+        )
+
         peak.write_text(s, encoding="utf-8", newline="\n")
-        print("Cleaned public European Football peak UI")
+        print("Cleaned public European Football peak implementation")
 
     # -----------------------------
     # Player page
@@ -521,54 +822,31 @@ def clean_european_football_public_ui() -> None:
     if player.exists():
         s = player.read_text(encoding="utf-8")
 
-        s = s.replace('      <a href="../compare/">Compare</a>\n', '')
-
-        # Remove the private Statistics card/link.
-        s, n = re.subn(
-            r'\n\s*<a id="statsLink" class="stat stat-link" href="\./stats/">[\s\S]*?</a>',
-            '',
-            s,
-            count=1,
-        )
-        if n != 1:
-            raise RuntimeError("Could not remove European Football player Statistics link")
-
-        # Remove JS that rewrites the Statistics link.
-        s, n = re.subn(
-            r'\n\s*const statsLink = document\.getElementById\(\'statsLink\'\);'
+        # The source page contains JS that points Statistics at ./stats/.
+        # Remove only that functional wiring; the generic cleanup will turn
+        # the visible card into a disabled preview.
+        s = re.sub(
+            r'\n\s*const statsLink = document\.getElementById\([\'"]statsLink[\'"]\);'
             r'\s*if \(statsLink && idRaw\) \{\s*'
             r'statsLink\.href = `\./stats/\?id=\$\{encodeURIComponent\(idRaw\)\}`;\s*\}',
             '\n',
             s,
             count=1,
+            flags=re.I,
         )
-        if n != 1:
-            raise RuntimeError("Could not remove European Football player Statistics JS")
-
-        # Public detailed history begins in 2010.
-        s = re.sub(
-            r'\s*<button type="button" class="range-btn seg" data-range="ALL">All</button>\s*',
-            '\n            ',
-            s,
-            count=1,
-        )
-        s = s.replace(
-            '<button type="button" class="range-btn seg is-active active" data-range="2000">Since 2000</button>',
-            '<button type="button" class="range-btn seg is-active active" data-range="2010">Since 2010</button>',
-            1,
-        )
-        s = s.replace("defaultRange: '2000'", "defaultRange: '2010'", 1)
 
         player.write_text(s, encoding="utf-8", newline="\n")
-        print("Cleaned public European Football player UI")
+        print("Prepared public European Football player implementation")
 
 
 def assert_european_football_public_ui_clean() -> None:
+    # Private implementation paths must remain absent even though preview
+    # controls are now intentionally visible.
     checks = [
-        (OUT_DIR / "EuropeanFootball" / "home" / "index.html", '../compare/', 'home Compare link'),
-        (OUT_DIR / "EuropeanFootball" / "peak" / "index.html", '../compare/', 'peak Compare link'),
-        (OUT_DIR / "EuropeanFootball" / "player" / "index.html", '../compare/', 'player Compare link'),
-        (OUT_DIR / "EuropeanFootball" / "player" / "index.html", './stats/', 'player Statistics link'),
+        (OUT_DIR / "EuropeanFootball" / "home" / "index.html", 'href="../compare/', 'home Compare link'),
+        (OUT_DIR / "EuropeanFootball" / "peak" / "index.html", 'href="../compare/', 'peak Compare link'),
+        (OUT_DIR / "EuropeanFootball" / "player" / "index.html", 'href="../compare/', 'player Compare link'),
+        (OUT_DIR / "EuropeanFootball" / "player" / "index.html", 'href="./stats/', 'player Statistics link'),
     ]
 
     for path, needle, label in checks:
@@ -577,15 +855,7 @@ def assert_european_football_public_ui_clean() -> None:
         s = path.read_text(encoding="utf-8")
         if needle in s:
             raise RuntimeError(
-                f"SAFETY CHECK FAILED: public UI still contains {label}: {path}"
-            )
-
-    player = OUT_DIR / "EuropeanFootball" / "player" / "index.html"
-    if player.exists():
-        s = player.read_text(encoding="utf-8")
-        if 'data-range="2000"' in s or "defaultRange: '2000'" in s:
-            raise RuntimeError(
-                "SAFETY CHECK FAILED: public player page still advertises pre-2010 range"
+                f"SAFETY CHECK FAILED: public UI still contains functional {label}: {path}"
             )
 
     home = OUT_DIR / "EuropeanFootball" / "home" / "index.html"
@@ -601,7 +871,6 @@ def assert_european_football_public_ui_clean() -> None:
             )
 
     print("European Football public-UI safety checks: PASS")
-
 
 
 PUBLIC_SPORTS = [
@@ -622,79 +891,44 @@ def clean_generic_public_ui() -> None:
         for html in sport_dir.rglob("*.html"):
             s = html.read_text(encoding="utf-8")
 
-            # Remove links to the private Compare section.
-            s = re.sub(
-                r'\s*<a\b[^>]*href=["\'][^"\']*compare/[^"\']*["\'][^>]*>\s*Compare\s*</a>\s*',
-                '\n',
-                s,
-                flags=re.I,
-            )
+            # Public pages advertise the private feature set without linking to
+            # it. The actual compare directories were already removed earlier.
+            s = make_compare_teasers(s)
 
-            # No public comparison feature for now: remove the visible launch
-            # button from Home/Peak-style pages across every sport.
-            s = re.sub(
-                r'\s*<button\b[^>]*id=["\']compare-btn["\'][^>]*>[\s\S]*?</button>\s*',
-                '\n',
-                s,
-                count=1,
-                flags=re.I,
-            )
+            # Turn pre-2010 historical controls into disabled previews rather
+            # than deleting them from the page.
+            s = make_history_range_teasers(s)
 
-            # Remove calls that initialise the now-hidden Compare button.
-            # Otherwise pages can fail before the normal ratings table loads.
+            # Prevent any existing private Compare launch code from attaching
+            # to the disabled preview button.
             s = re.sub(
                 r'\n\s*setupCompareButton\(\);\s*',
                 '\n',
                 s,
             )
-
-            # Public detailed history begins in 2010. Keep each sport\'s
-            # intended default (2010 for ball sports, 2020 for Go/Snooker),
-            # but remove private historical presets.
             s = re.sub(
-                r'\\s*<button\\b[^>]*data-range=["\\\'](?:ALL|2000)["\\\'][^>]*>[\\s\\S]*?</button>\\s*',
-                "\\n",
+                r'\n\s*setupCompareChartControls\(\);\s*',
+                '\n',
                 s,
-                flags=re.I,
             )
+
+            if "jr-public-disabled" in s:
+                s = ensure_public_teaser_styles(s)
 
             html.write_text(s, encoding="utf-8", newline="\n")
 
-    # Final hard removal of private historical range buttons.
-    # Source/private pages may keep these, but they must never reach _public_site.
-    for html_path in OUT_DIR.rglob("*.html"):
-        s = html_path.read_text(encoding="utf-8")
-        s = re.sub(
-            r'\s*<button\b[^>]*data-range=["\'](?:ALL|2000)["\'][^>]*>[\s\S]*?</button>\s*',
-            "\n",
-            s,
-            flags=re.I,
-        )
-        html_path.write_text(s, encoding="utf-8")
+        # All five player profiles advertise the same future Statistics feature
+        # and the same locked full-history ranges, even where the private sport
+        # has not implemented those advanced pages yet.
+        player = sport_dir / "player" / "index.html"
+        if player.exists():
+            s = player.read_text(encoding="utf-8")
+            s = ensure_profile_history_teasers(s)
+            s = ensure_profile_stats_teaser(s)
+            s = ensure_public_teaser_styles(s)
+            player.write_text(s, encoding="utf-8", newline="\n")
 
-    # Final public cleanup of legacy peak-page pre-2010 controls.
-    # Private/source pages keep their older-history controls; public output does not.
-    for rel in (
-        Path("InternationalFootball/peak/index.html"),
-        Path("RugbyUnion/peak/index.html"),
-    ):
-        html_path = OUT_DIR / rel
-        if not html_path.exists():
-            continue
-        s = html_path.read_text(encoding="utf-8")
-        s = re.sub(
-            r'\s*<button\b[^>]*data-since=["\']2000["\'][^>]*>[\s\S]*?</button>\s*',
-            "\n",
-            s,
-            flags=re.I,
-        )
-        s = s.replace("let COMPARE_SINCE_YEAR = 2000;", "let COMPARE_SINCE_YEAR = 2010;")
-        s = s.replace("COMPARE_SINCE_YEAR = 2000;", "COMPARE_SINCE_YEAR = 2010;")
-        s = s.replace('.range-btn[data-since="2000"]', '.range-btn[data-since="2010"]')
-        s = s.replace("since2000Btn", "since2010Btn")
-        html_path.write_text(s, encoding="utf-8")
-
-    print("Generic public UI cleanup applied across all sports")
+    print("Generic public UI teaser cleanup applied across all sports")
 
 
 def assert_generic_public_ui_clean() -> None:
@@ -712,28 +946,71 @@ def assert_generic_public_ui_clean() -> None:
             s = html.read_text(encoding="utf-8")
             rel = html.relative_to(OUT_DIR).as_posix()
 
+            # Teaser controls may say Compare / Since 2000 / All, but there
+            # must be no functional route or live pre-2010 control behind them.
             if re.search(r'href=["\'][^"\']*compare/', s, flags=re.I):
-                failures.append(f"{rel}: link to private compare section")
+                failures.append(f"{rel}: functional link to private compare section")
+
+            if re.search(r'href=["\'][^"\']*(?:player/)?stats/', s, flags=re.I):
+                failures.append(f"{rel}: functional link to private statistics section")
 
             if re.search(r'id=["\']compare-btn["\']', s, flags=re.I):
-                failures.append(f"{rel}: visible Compare button remains")
+                failures.append(f"{rel}: functional Compare launch id remains")
 
             if re.search(r'\bsetupCompareButton\(\);', s):
                 failures.append(f"{rel}: Compare-button initialiser remains")
 
-            if re.search(
-                r'<button\\b[^>]*data-range=["\\\'](?:ALL|2000)["\\\']',
+            # Any pre-2010 value still carried by the live attributes would be
+            # actionable by the graph JavaScript and therefore is not allowed.
+            for match in re.finditer(
+                r"<button\b[^>]*data-(range|since)=[\"']([^\"']*)[\"']",
                 s,
                 flags=re.I,
             ):
-                failures.append(f"{rel}: private historical preset remains")
+                kind = match.group(1).lower()
+                value = match.group(2).strip()
+                private = (
+                    (kind == "range" and value.upper() == "ALL")
+                    or (kind == "since" and value == "")
+                    or (value.isdigit() and int(value) < 2010)
+                )
+                if private:
+                    failures.append(
+                        f"{rel}: active private historical control remains ({kind}={value or 'ALL'})"
+                    )
 
-            if (
-                'data-since="2000"' in s
-                or "data-since='2000'" in s
-                or "Since 2000" in s
+        player = sport_dir / "player" / "index.html"
+        if player.exists():
+            s = player.read_text(encoding="utf-8")
+            rel = player.relative_to(OUT_DIR).as_posix()
+
+            if "jr-public-stats-teaser" not in s:
+                failures.append(f"{rel}: Statistics coming-soon teaser missing")
+
+            if not re.search(
+                r'data-public-range=["\']ALL["\']',
+                s,
+                flags=re.I,
             ):
-                failures.append(f"{rel}: pre-2010 UI range remains")
+                failures.append(f"{rel}: All-history teaser missing")
+
+            if not re.search(
+                r'data-public-range=["\']2000["\']',
+                s,
+                flags=re.I,
+            ):
+                failures.append(f"{rel}: Since-2000 teaser missing")
+
+        # Main pages should visibly advertise Compare without linking to it.
+        for rel_page in ("home/index.html", "peak/index.html", "player/index.html"):
+            page = sport_dir / rel_page
+            if not page.exists():
+                continue
+            s = page.read_text(encoding="utf-8")
+            if "jr-public-nav-teaser" not in s:
+                failures.append(
+                    f"{page.relative_to(OUT_DIR).as_posix()}: disabled Compare tab missing"
+                )
 
     if failures:
         raise RuntimeError(
@@ -743,11 +1020,51 @@ def assert_generic_public_ui_clean() -> None:
     print("Generic public-UI safety checks: PASS")
 
 
-def build_public_site() -> None:
-    if OUT_DIR.exists():
-        shutil.rmtree(OUT_DIR)
+def _remove_tree(path: Path) -> None:
+    if path.exists():
+        shutil.rmtree(path)
 
-    OUT_DIR.mkdir(parents=True)
+
+def _publish_verified_build() -> None:
+    """Swap the verified temporary build into _public_site safely.
+
+    The existing public site is not touched until the temporary build has
+    passed every safety check. During the final swap it is renamed briefly to
+    _public_site_previous. If the new directory cannot be put in place, the
+    old public site is restored automatically.
+    """
+    if PREVIOUS_OUT_DIR.exists():
+        _remove_tree(PREVIOUS_OUT_DIR)
+
+    moved_live = False
+
+    try:
+        if LIVE_OUT_DIR.exists():
+            LIVE_OUT_DIR.rename(PREVIOUS_OUT_DIR)
+            moved_live = True
+
+        TEMP_OUT_DIR.rename(LIVE_OUT_DIR)
+
+    except Exception:
+        # If the old site was already moved aside, put it straight back.
+        if moved_live and PREVIOUS_OUT_DIR.exists() and not LIVE_OUT_DIR.exists():
+            PREVIOUS_OUT_DIR.rename(LIVE_OUT_DIR)
+        raise
+
+    # The new build is live. The previous copy is only a transient swap file,
+    # not a permanent backup. Failure to remove it is non-fatal.
+    if PREVIOUS_OUT_DIR.exists():
+        try:
+            _remove_tree(PREVIOUS_OUT_DIR)
+        except OSError as exc:
+            print(f"Warning: could not remove transient {PREVIOUS_OUT_DIR.name}: {exc}")
+
+
+def build_public_site() -> None:
+    # Never delete the current _public_site at the start of a build. Work in a
+    # separate directory so a failed build leaves the current public site intact.
+    _remove_tree(TEMP_OUT_DIR)
+    TEMP_OUT_DIR.mkdir(parents=True)
 
     for filename in PUBLIC_ROOT_FILES:
         src = REPO_DIR / filename
@@ -770,6 +1087,7 @@ def build_public_site() -> None:
     clean_generic_public_ui()
     assert_european_football_public_ui_clean()
     assert_generic_public_ui_clean()
+
     for sport, config in SPORT_PUBLIC_FILTERS.items():
         filter_sport_public_data(sport, config)
 
@@ -781,9 +1099,13 @@ def build_public_site() -> None:
     assert_no_pre_2010_snooker_snapshots()
 
     print()
-    print(f"Public-site build created at: {OUT_DIR}")
+    print(f"Verified temporary public build created at: {TEMP_OUT_DIR}")
     print("All configured sports have had detailed historical data filtered to 2010+.")
     print("Public data and UI safety checks: PASS")
+
+    _publish_verified_build()
+
+    print(f"Published verified build to: {LIVE_OUT_DIR}")
 
 
 if __name__ == "__main__":

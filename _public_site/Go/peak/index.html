@@ -297,6 +297,30 @@
     }
 
   </style>
+
+  <style id="jr-public-teaser-styles">
+    .jr-public-disabled {
+      opacity: 0.42 !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+      user-select: none !important;
+      filter: saturate(0.55);
+    }
+
+    .jr-public-disabled[disabled] {
+      opacity: 0.42 !important;
+    }
+
+    .topnav .jr-public-nav-teaser {
+      white-space: nowrap;
+    }
+
+    .jr-public-stats-teaser .stat-value {
+      font-size: 0.78rem !important;
+      line-height: 1.15 !important;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -311,7 +335,8 @@
     <nav class="topnav" aria-label="Main">
       <a href="../../index.html">Sports</a>
       <a href="../home/">Home</a>
-<a href="index.html" class="active-tab">Peak</a>
+      <a class="jr-public-disabled jr-public-nav-teaser" aria-disabled="true" tabindex="-1" title="Coming soon">Compare</a>
+      <a href="index.html" class="active-tab">Peak</a>
     </nav>
   </div>
 </header>
@@ -332,7 +357,9 @@
         <option value="male">Male</option>
         <option value="female">Female</option>
       </select>
-</div>
+
+      <button class="club-btn jr-public-disabled jr-public-compare-teaser" type="button" disabled aria-disabled="true" title="Coming soon">Compare</button>
+    </div>
 
     <div id="compare-wrap" style="display:none; padding:16px">
       <div class="jr-chart-controls">
@@ -348,8 +375,9 @@
         </div>
 
         <div class="range-buttons">
-
-<button type="button" class="seg" data-range="2020">2020–Present</button>
+          <button type="button" class="seg jr-public-disabled jr-public-history-teaser"  data-public-range="ALL" disabled aria-disabled="true" title="Full history coming soon">ALL</button>
+          <button type="button" class="seg jr-public-disabled jr-public-history-teaser"  data-public-range="2000" disabled aria-disabled="true" title="Full history coming soon">2000–Present</button>
+          <button type="button" class="seg" data-range="2020">2020–Present</button>
           <button type="button" class="seg" data-range="LY">Last Year</button>
           <button type="button" class="seg" data-range="YTD">YTD</button>
         </div>
