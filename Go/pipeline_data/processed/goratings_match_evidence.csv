@@ -108,6 +108,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 108,Chang Hsu,Cho U,1,2017-02-16,Black,Win,Yuki Satoshi,1,1,1
 108,Chang Hsu,Cho U,1,2017-02-20,White,Loss,Onishi Ryuhei,1,1,1
 108,Chang Hsu,Cho U,1,2017-02-23,White,Loss,Iguchi Toyohide,1,1,1
+108,Chang Hsu,Cho U,1,2017-03-02,Black,Win,Izumitani Hideo,1,1,1
 108,Chang Hsu,Cho U,1,2017-03-09,White,Loss,Motoki Katsuya,1,1,1
 108,Chang Hsu,Cho U,1,2017-03-13,White,Loss,Yu Zhengqi,1,1,1
 108,Chang Hsu,Cho U,1,2017-03-30,Black,Win,Yuki Satoshi,1,1,1
@@ -400,6 +401,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 604,Chang Li Yu,Cho Riyu,1,2023-08-24,Black,Loss,Seto Taiki,1,1,1
 604,Chang Li Yu,Cho Riyu,1,2024-07-22,Black,Win,Ueno Risa,1,1,1
 604,Chang Li Yu,Cho Riyu,1,2024-08-08,Black,Loss,Ueno Risa,1,1,1
+604,Chang Li Yu,Cho Riyu,1,2024-09-16,Black,Loss,Tajiri Yuto,1,1,1
 604,Chang Li Yu,Cho Riyu,1,2025-09-15,Black,Win,Fujisawa Kazunari,1,1,1
 604,Chang Li Yu,Cho Riyu,1,2025-09-15,White,Win,Imamura Yoshiaki,1,1,1
 604,Chang Li Yu,Cho Riyu,1,2025-11-01,Black,Loss,Suzuki Shinji,1,1,1
@@ -624,6 +626,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 98,Cho Chi Hun,Cho Chikun,1,2017-07-13,Black,Loss,Kyo Kagen,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2017-07-22,White,Loss,Kobayashi Satoru,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2017-07-27,White,Loss,Ichiriki Ryo,1,1,1
+98,Cho Chi Hun,Cho Chikun,1,2017-08-10,White,Win,Sakai Maki,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2017-08-17,White,Win,Rin Shien,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2017-08-24,White,Win,Yamashiro Hiroshi,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2017-08-31,White,Win,Numadate Sakiya,1,1,1
@@ -761,6 +764,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 95,Cho Sun Jin,Cho Sonjin,1,2015-08-06,Black,Win,Rin Shien,1,1,1
 95,Cho Sun Jin,Cho Sonjin,1,2015-08-13,Black,Win,Oba Junya,1,1,1
 95,Cho Sun Jin,Cho Sonjin,1,2015-09-03,Black,Win,Imamura Yoshiaki,1,1,1
+95,Cho Sun Jin,Cho Sonjin,1,2015-09-10,White,Win,Sakai Maki,1,1,1
 95,Cho Sun Jin,Cho Sonjin,1,2015-09-24,White,Loss,Kurahashi Masayuki,1,1,1
 95,Cho Sun Jin,Cho Sonjin,1,2015-10-01,Black,Loss,Yamada Shinji,1,1,1
 95,Cho Sun Jin,Cho Sonjin,1,2015-10-08,White,Win,Ko Reibun,1,1,1
@@ -801,6 +805,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 95,Cho Sun Jin,Cho Sonjin,1,2017-08-10,White,Loss,Kim Sujun,1,1,1
 95,Cho Sun Jin,Cho Sonjin,1,2017-09-07,Black,Loss,Ida Atsushi,1,1,1
 95,Cho Sun Jin,Cho Sonjin,1,2017-10-26,White,Loss,Tsuneishi Takashi,1,1,1
+95,Cho Sun Jin,Cho Sonjin,1,2017-11-16,White,Win,Izumitani Hideo,1,1,1
 95,Cho Sun Jin,Cho Sonjin,1,2017-12-21,Black,Win,Cho Chikun,1,1,1
 95,Cho Sun Jin,Cho Sonjin,1,2018-01-08,Black,Win,Nakano Hironari,1,1,1
 95,Cho Sun Jin,Cho Sonjin,1,2018-01-18,Black,Win,Obuchi Kotaro,1,1,1
@@ -897,6 +902,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1742,Choi Kyeongho,Choi Kwangho,1,2025-11-27,White,Win,Park Sangjin,1,1,1
 1742,Choi Kyeongho,Choi Kwangho,1,2025-12-04,White,Loss,Lee Jihyun  (m),1,1,1
 1742,Choi Kyeongho,Choi Kwangho,1,2025-12-12,White,Loss,Song Jihoon,1,1,1
+2518,Choi Seobi,Choi Seopi,1,2024-05-29,White,Win,Lee Yujin,1,1,1
 2518,Choi Seobi,Choi Seopi,1,2024-07-14,White,Loss,Park Soyul,1,1,1
 2518,Choi Seobi,Choi Seopi,1,2024-07-26,White,Loss,Cho Hyeyeon,1,1,1
 2518,Choi Seobi,Choi Seopi,1,2024-08-13,Black,Win,Kim Sujin,1,1,1
@@ -1956,6 +1962,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 2228,Jeong Yujin,Cheong Yujin,1,2023-04-12,White,Win,Kim Hyemin,1,1,1
 2228,Jeong Yujin,Cheong Yujin,1,2023-04-13,White,Win,Cho Seungah,1,1,1
 2228,Jeong Yujin,Cheong Yujin,1,2023-04-14,Black,Win,Kim Eunji,1,1,1
+2228,Jeong Yujin,Cheong Yujin,1,2023-05-03,White,Loss,Lee Yujin,1,1,1
 2228,Jeong Yujin,Cheong Yujin,1,2023-06-01,Black,Loss,Lee Nakyeong,1,1,1
 2228,Jeong Yujin,Cheong Yujin,1,2023-06-09,Black,Win,Li He,1,1,1
 2228,Jeong Yujin,Cheong Yujin,1,2023-06-10,Black,Loss,Yoo Zhiying,1,1,1
@@ -2276,6 +2283,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1410,Kim Sinyoung,Kim Sinyeong,1,2018-04-15,White,Loss,Park Chieun,1,1,1
 1410,Kim Sinyoung,Kim Sinyeong,1,2018-04-29,Black,Loss,Park Taehee,1,1,1
 1410,Kim Sinyoung,Kim Sinyeong,1,2018-06-01,Black,Win,Lee Minjin,1,1,1
+1410,Kim Sinyoung,Kim Sinyeong,1,2019-05-13,White,Loss,Lee Yujin,1,1,1
 1410,Kim Sinyoung,Kim Sinyeong,1,2022-10-17,White,Loss,Lee Nakyeong,1,1,1
 1410,Kim Sinyoung,Kim Sinyeong,1,2023-11-11,Black,Loss,Oh Yujin,1,1,1
 1410,Kim Sinyoung,Kim Sinyeong,1,2023-12-12,White,Loss,Ahn Kukhyun,1,1,1
@@ -2562,6 +2570,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 36,Lin Hai Fong,Rin Kaiho,1,2016-08-04,Black,Loss,Horimoto Mitsunari,1,1,1
 36,Lin Hai Fong,Rin Kaiho,1,2016-11-03,Black,Win,Takanashi Seiken,1,1,1
 36,Lin Hai Fong,Rin Kaiho,1,2017-03-02,Black,Win,Kudo Norio,1,1,1
+36,Lin Hai Fong,Rin Kaiho,1,2017-04-20,Black,Loss,Izumitani Hideo,1,1,1
 36,Lin Hai Fong,Rin Kaiho,1,2017-05-18,Black,Loss,Kobayashi Satoru,1,1,1
 36,Lin Hai Fong,Rin Kaiho,1,2017-08-31,White,Loss,Terayama Rei,1,1,1
 36,Lin Hai Fong,Rin Kaiho,1,2017-09-28,Black,Win,Kin En,1,1,1
@@ -2972,6 +2981,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 127,Park Shiun,Park Chieun,1,2015-10-19,White,Win,Li He,1,1,1
 127,Park Shiun,Park Chieun,1,2015-10-21,Black,Loss,Yoo Zhiying,1,1,1
 127,Park Shiun,Park Chieun,1,2016-01-04,Black,Loss,Cho Hunhyun,1,1,1
+127,Park Shiun,Park Chieun,1,2016-02-26,Black,Loss,Lee Yujin,1,1,1
 127,Park Shiun,Park Chieun,1,2016-03-28,Black,Loss,Oh Jeonga,1,1,1
 127,Park Shiun,Park Chieun,1,2016-08-01,Black,Loss,Seo Bongsoo,1,1,1
 127,Park Shiun,Park Chieun,1,2016-10-06,White,Win,Kim Hyemin,1,1,1
@@ -3019,6 +3029,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 41,Ryu Si Hoon,Ryu Shikun,1,2015-04-16,White,Loss,Rin Kanketsu,1,1,1
 41,Ryu Si Hoon,Ryu Shikun,1,2015-05-07,Black,Loss,Awaji Shuzo,1,1,1
 41,Ryu Si Hoon,Ryu Shikun,1,2015-05-28,White,Loss,Ko Iso,1,1,1
+41,Ryu Si Hoon,Ryu Shikun,1,2015-06-04,White,Win,Sakai Maki,1,1,1
 41,Ryu Si Hoon,Ryu Shikun,1,2015-06-11,Black,Win,Ha Yeongil,1,1,1
 41,Ryu Si Hoon,Ryu Shikun,1,2015-07-02,White,Win,Seto Taiki,1,1,1
 41,Ryu Si Hoon,Ryu Shikun,1,2015-07-16,White,Loss,Yuki Satoshi,1,1,1
@@ -3778,6 +3789,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 71,Wang Li Chen,Oh Rissei,1,2017-07-20,Black,Win,Kono Rin,1,1,1
 71,Wang Li Chen,Oh Rissei,1,2017-08-10,Black,Loss,Seto Taiki,1,1,1
 71,Wang Li Chen,Oh Rissei,1,2017-08-31,Black,Win,Yokotsuka Riki,1,1,1
+71,Wang Li Chen,Oh Rissei,1,2017-09-21,White,Loss,Tajiri Yuto,1,1,1
 71,Wang Li Chen,Oh Rissei,1,2017-10-26,Black,Loss,Yu Zhengqi,1,1,1
 71,Wang Li Chen,Oh Rissei,1,2017-11-09,Black,Loss,Kobayashi Satoru,1,1,1
 71,Wang Li Chen,Oh Rissei,1,2017-11-16,White,Win,Nakamura Hidehito,1,1,1
@@ -4796,6 +4808,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1225,Yu Zhiying,Yoo Zhiying,1,2015-01-24,White,Win,Lee Minjin,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2015-01-27,White,Win,Park Chieun,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2015-02-06,Black,Loss,Li Chengsen,1,1,1
+1225,Yu Zhiying,Yoo Zhiying,1,2015-02-22,White,Loss,Lee Yujin,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2015-03-19,Black,Loss,Park Taehee,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2015-04-10,White,Loss,Choi Jeong,1,1,1
 1225,Yu Zhiying,Yoo Zhiying,1,2015-05-01,White,Win,Lu Minquan,1,1,1
