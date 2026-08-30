@@ -16,8 +16,9 @@ on:
 permissions:
   contents: write
 
+# Prevent the sports updaters from racing each other when writing to main.
 concurrency:
-  group: update-go-ratings
+  group: jratings-data-update-main
   cancel-in-progress: false
 
 jobs:
@@ -97,7 +98,25 @@ jobs:
             echo "No scraped data changes to commit"
           else
             git commit -m "Update GoRatings scrape data"
-            git push
+
+            push_with_rebase() {
+              for attempt in 1 2 3; do
+                git fetch origin main
+                git rebase --autostash origin/main
+
+                if git push origin HEAD:main; then
+                  return 0
+                fi
+
+                echo "Push raced with another update. Retrying ($attempt/3)..."
+                sleep 5
+              done
+
+              echo "Failed to push after 3 attempts."
+              return 1
+            }
+
+            push_with_rebase
           fi
 
       - name: Build GoRatings games
@@ -149,4 +168,22 @@ jobs:
           fi
 
           git commit -m "Update Go ratings"
-          git push
+
+          push_with_rebase() {
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase --autostash origin/main
+
+              if git push origin HEAD:main; then
+                return 0
+              fi
+
+              echo "Push raced with another update. Retrying ($attempt/3)..."
+              sleep 5
+            done
+
+            echo "Failed to push after 3 attempts."
+            return 1
+          }
+
+          push_with_rebase

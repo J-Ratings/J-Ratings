@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: jratings-data-update-main
+  cancel-in-progress: false
+
 jobs:
   update-snooker:
     runs-on: ubuntu-latest
@@ -44,9 +48,35 @@ jobs:
           Rscript -e "source('scripts/snooker/03_write_json.R')"
 
       - name: Commit updated snooker data
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add Snooker/data Snooker/pipeline_data
-          git diff --cached --quiet || git commit -m "Update snooker ratings"
-          git push
+
+          if git diff --cached --quiet; then
+            echo "No Snooker data changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Update snooker ratings"
+
+          push_with_rebase() {
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase --autostash origin/main
+
+              if git push origin HEAD:main; then
+                return 0
+              fi
+
+              echo "Push raced with another update. Retrying ($attempt/3)..."
+              sleep 5
+            done
+
+            echo "Failed to push after 3 attempts."
+            return 1
+          }
+
+          push_with_rebase

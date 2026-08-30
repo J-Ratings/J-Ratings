@@ -3,12 +3,16 @@ name: Update European Football data
 on:
   workflow_dispatch:
   schedule:
-    # 06:30 UTC on the 1st of every month
     # Staggered to avoid clashing with other monthly sports workflows.
     - cron: "30 2 1 * *"
 
 permissions:
   contents: write
+
+# Only one data-writing workflow may update main at a time.
+concurrency:
+  group: jratings-data-update-main
+  cancel-in-progress: false
 
 jobs:
   update-european-football:
@@ -53,6 +57,7 @@ jobs:
           Rscript -e 'print(jsonlite::fromJSON("EuropeanFootball/data/meta.json"))'
 
       - name: Commit updated European Football data
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -64,7 +69,26 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "No European Football data changes to commit."
-          else
-            git commit -m "Update European Football data"
-            git push
+            exit 0
           fi
+
+          git commit -m "Update European Football data"
+
+          push_with_rebase() {
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase --autostash origin/main
+
+              if git push origin HEAD:main; then
+                return 0
+              fi
+
+              echo "Push raced with another update. Retrying ($attempt/3)..."
+              sleep 5
+            done
+
+            echo "Failed to push after 3 attempts."
+            return 1
+          }
+
+          push_with_rebase

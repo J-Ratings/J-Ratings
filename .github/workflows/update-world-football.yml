@@ -3,10 +3,14 @@ name: Update world football ratings
 on:
   workflow_dispatch:
   schedule:
-  - cron: "0 1 * * 2"
-    
+    - cron: "0 1 * * 2"
+
 permissions:
   contents: write
+
+concurrency:
+  group: jratings-data-update-main
+  cancel-in-progress: false
 
 jobs:
   update-world-football:
@@ -43,9 +47,35 @@ jobs:
           Rscript scripts/world_football/03_write_json.R
 
       - name: Commit updated world football data
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add scripts/world_football InternationalFootball/pipeline_data InternationalFootball/data
-          git commit -m "Update world football ratings" || echo "No changes to commit"
-          git push
+
+          if git diff --cached --quiet; then
+            echo "No world football data changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Update world football ratings"
+
+          push_with_rebase() {
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase --autostash origin/main
+
+              if git push origin HEAD:main; then
+                return 0
+              fi
+
+              echo "Push raced with another update. Retrying ($attempt/3)..."
+              sleep 5
+            done
+
+            echo "Failed to push after 3 attempts."
+            return 1
+          }
+
+          push_with_rebase

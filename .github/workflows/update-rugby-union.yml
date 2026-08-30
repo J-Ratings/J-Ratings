@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: jratings-data-update-main
+  cancel-in-progress: false
+
 jobs:
   update-rugby-union:
     runs-on: ubuntu-latest
@@ -48,9 +52,35 @@ jobs:
           source("scripts/world_rugby/02_write_json.R")
 
       - name: Commit updated Rugby Union data
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add RugbyUnion/pipeline_data RugbyUnion/data scripts/world_rugby
-          git diff --cached --quiet || git commit -m "Update Rugby Union ratings data"
-          git push
+
+          if git diff --cached --quiet; then
+            echo "No Rugby Union data changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Update Rugby Union ratings data"
+
+          push_with_rebase() {
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase --autostash origin/main
+
+              if git push origin HEAD:main; then
+                return 0
+              fi
+
+              echo "Push raced with another update. Retrying ($attempt/3)..."
+              sleep 5
+            done
+
+            echo "Failed to push after 3 attempts."
+            return 1
+          }
+
+          push_with_rebase
