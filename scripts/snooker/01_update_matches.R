@@ -1,4 +1,4 @@
-﻿library(httr)
+library(httr)
 library(jsonlite)
 library(data.table)
 

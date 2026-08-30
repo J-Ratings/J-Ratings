@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # Export Go ratings + history to JSON for website
 # Adds era snapshots, player activity dates, historical world ranks,
 # and Black/White expected win percentages for player game tables

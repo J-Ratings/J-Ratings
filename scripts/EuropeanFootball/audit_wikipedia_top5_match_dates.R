@@ -1,4 +1,4 @@
-﻿# audit_wikipedia_top5_match_dates.R
+# audit_wikipedia_top5_match_dates.R
 #
 # Purpose:
 #   Check Wikipedia season pages for the historical top-flight seasons that

@@ -1,4 +1,4 @@
-﻿# scripts/EuropeanFootball/03_write_json.R
+# scripts/EuropeanFootball/03_write_json.R
 
 library(dplyr)
 library(readr)

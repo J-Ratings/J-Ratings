@@ -1,4 +1,4 @@
-﻿options(stringsAsFactors = FALSE)
+options(stringsAsFactors = FALSE)
 # Local completion sound only; GitHub Actions does not need beepr.
 if (interactive()) {
   library(beepr)

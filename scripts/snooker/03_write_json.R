@@ -1,4 +1,4 @@
-﻿library(dplyr)
+library(dplyr)
 library(readr)
 library(jsonlite)
 library(stringr)

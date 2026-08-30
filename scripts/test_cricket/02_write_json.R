@@ -1,4 +1,4 @@
-﻿# install.packages(c("dplyr", "readr", "jsonlite", "stringi", "stringr", "tibble", "data.table"))
+# install.packages(c("dplyr", "readr", "jsonlite", "stringi", "stringr", "tibble", "data.table"))
 
 library(dplyr)
 library(readr)

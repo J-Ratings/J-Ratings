@@ -1,4 +1,4 @@
-﻿# scripts/EuropeanFootball/04_simulate_premier_league_test.R
+# scripts/EuropeanFootball/04_simulate_premier_league_test.R
 
 library(dplyr)
 library(readr)

@@ -1,4 +1,4 @@
-﻿# scripts/EuropeanFootball/00_download_openfootball_current.R
+# scripts/EuropeanFootball/00_download_openfootball_current.R
 
 options(stringsAsFactors = FALSE)
 

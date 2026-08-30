@@ -1,4 +1,4 @@
-﻿# audit_schochastics_all15_dates.R
+# audit_schochastics_all15_dates.R
 #
 # Structural audit of the Schochastics football-data historical top-flight
 # results for all 15 countries currently covered by J-Ratings.
