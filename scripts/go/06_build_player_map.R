@@ -1,6 +1,10 @@
 # ============================================================
 # Build GoRatings-to-GoGoD player map
 #
+# Identity handling:
+#   - GoRatings IDs sharing the same normalised display name are
+#     automatically treated as aliases of one canonical player.
+#
 # Matching stages:
 #   1. Unique exact normalised-name matches
 #   2. Iterative historical game-pattern matches
@@ -207,12 +211,22 @@ cat("Reading inputs...\n")
 
 games_2026 <- read_csv(
   games_2026_file,
-  show_col_types = FALSE
+  show_col_types = FALSE,
+  col_types = cols(
+    BlackID = col_character(),
+    WhiteID = col_character(),
+    .default = col_guess()
+  )
 )
 
 matching_history <- read_csv(
   matching_history_file,
-  show_col_types = FALSE
+  show_col_types = FALSE,
+  col_types = cols(
+    player_id = col_character(),
+    opponent_id = col_character(),
+    .default = col_guess()
+  )
 ) %>%
   mutate(
     date = as.Date(date)
@@ -313,8 +327,14 @@ check_columns(
 
 # -----------------------------
 # Build current GoRatings player universe
+#
+# GoRatings can occasionally expose the same player under more
+# than one ID.  Exact duplicate normalised display names are
+# treated as aliases of one canonical live player.  The ID seen
+# most often in the 2026 game file is retained as the canonical
+# ID, with lexical ID order as a deterministic tie-break.
 # -----------------------------
-goratings_players <- bind_rows(
+goratings_aliases <- bind_rows(
   games_2026 %>%
     transmute(
       goratings_id = as.character(BlackID),
@@ -349,10 +369,106 @@ goratings_players <- bind_rows(
     match_name = normalise_match_name(
       goratings_name
     )
+  ) %>%
+  filter(
+    !is.na(match_name),
+    match_name != ""
+  ) %>%
+  group_by(match_name) %>%
+  arrange(
+    desc(name_occurrences),
+    goratings_id,
+    .by_group = TRUE
+  ) %>%
+  mutate(
+    canonical_goratings_id =
+      first(goratings_id),
+    alias_count = n()
+  ) %>%
+  ungroup()
+
+duplicate_alias_groups <- goratings_aliases %>%
+  filter(alias_count > 1L) %>%
+  arrange(
+    match_name,
+    goratings_id
   )
 
+if (nrow(duplicate_alias_groups) > 0L) {
+  cat(
+    "Automatic GoRatings ID aliases detected:",
+    nrow(
+      duplicate_alias_groups %>%
+        distinct(match_name)
+    ),
+    "player(s) across",
+    nrow(duplicate_alias_groups),
+    "ID rows.\n"
+  )
+  
+  print(
+    duplicate_alias_groups %>%
+      select(
+        goratings_id,
+        goratings_name,
+        canonical_goratings_id,
+        alias_count
+      )
+  )
+}
+
+goratings_players <- goratings_aliases %>%
+  group_by(
+    canonical_goratings_id,
+    match_name
+  ) %>%
+  arrange(
+    desc(name_occurrences),
+    goratings_id,
+    .by_group = TRUE
+  ) %>%
+  summarise(
+    goratings_id =
+      first(canonical_goratings_id),
+    goratings_name =
+      first(goratings_name),
+    name_occurrences =
+      sum(name_occurrences),
+    alias_count =
+      max(alias_count),
+    .groups = "drop"
+  ) %>%
+  select(
+    goratings_id,
+    goratings_name,
+    name_occurrences,
+    match_name,
+    alias_count
+  )
+
+alias_id_map <- setNames(
+  goratings_aliases$canonical_goratings_id,
+  goratings_aliases$goratings_id
+)
+
+canonicalise_live_id <- function(x) {
+  x <- as.character(x)
+  mapped <- unname(alias_id_map[x])
+  ifelse(
+    !is.na(mapped) & mapped != "",
+    mapped,
+    x
+  )
+}
+
 cat(
-  "GoRatings players in 2026 games:",
+  "Raw GoRatings IDs in 2026 games:",
+  nrow(goratings_aliases),
+  "\n"
+)
+
+cat(
+  "Canonical GoRatings players in 2026 games:",
   nrow(goratings_players),
   "\n"
 )
@@ -452,7 +568,8 @@ cat(
 # -----------------------------
 goratings_observations <- matching_history %>%
   transmute(
-    goratings_id = as.character(player_id),
+    goratings_id =
+      canonicalise_live_id(player_id),
     date = as.Date(date),
     color = str_to_title(
       str_trim(
@@ -464,7 +581,8 @@ goratings_observations <- matching_history %>%
         as.character(result)
       )
     ),
-    opponent_id = as.character(opponent_id)
+    opponent_id =
+      canonicalise_live_id(opponent_id)
   ) %>%
   filter(
     goratings_id %in%
@@ -946,7 +1064,7 @@ remaining_players <- goratings_players %>%
     name_occurrences
   )
 
-player_map <- bind_rows(
+canonical_player_map <- bind_rows(
   accepted_matches,
   remaining_players
 ) %>%
@@ -954,6 +1072,53 @@ player_map <- bind_rows(
     match_status,
     match_iteration,
     goratings_name
+  )
+
+# Expand the canonical mapping back to every raw GoRatings ID.
+# Downstream Elo code uses canonical_goratings_id as the actual
+# rating identity, while retaining each source ID for traceability.
+player_map <- goratings_aliases %>%
+  select(
+    goratings_id,
+    source_goratings_name = goratings_name,
+    canonical_goratings_id,
+    alias_count
+  ) %>%
+  left_join(
+    canonical_player_map %>%
+      rename(
+        canonical_goratings_id =
+          goratings_id,
+        canonical_goratings_name =
+          goratings_name
+      ),
+    by = "canonical_goratings_id"
+  ) %>%
+  mutate(
+    goratings_name =
+      canonical_goratings_name
+  ) %>%
+  select(
+    goratings_id,
+    goratings_name,
+    source_goratings_name,
+    canonical_goratings_id,
+    alias_count,
+    historical_name,
+    match_status,
+    match_iteration,
+    match_game_count,
+    second_best_game_count,
+    checkpoint_rating,
+    checkpoint_games,
+    last_historical_game,
+    name_occurrences
+  ) %>%
+  arrange(
+    match_status,
+    match_iteration,
+    goratings_name,
+    goratings_id
   )
 
 unmatched_players <- player_map %>%
@@ -1100,9 +1265,9 @@ if (nrow(historical_game_matches) > 0) {
 # -----------------------------
 # Final validation
 # -----------------------------
-if (nrow(player_map) != nrow(goratings_players)) {
+if (nrow(player_map) != nrow(goratings_aliases)) {
   stop(
-    "Final player-map row count does not equal the GoRatings player count."
+    "Final player-map row count does not equal the raw GoRatings ID count."
   )
 }
 
@@ -1121,6 +1286,10 @@ matched_historical_names <- player_map %>%
     match_status !=
       "unmatched_or_new"
   ) %>%
+  distinct(
+    canonical_goratings_id,
+    historical_name
+  ) %>%
   pull(historical_name)
 
 if (
@@ -1129,7 +1298,7 @@ if (
   ) > 0
 ) {
   stop(
-    "Final player map contains duplicate historical assignments."
+    "Final player map contains conflicting historical assignments across canonical players."
   )
 }
 
@@ -1159,8 +1328,14 @@ write_csv(
 cat("\nDone.\n")
 
 cat(
-  "Total GoRatings players:",
+  "Total raw GoRatings IDs:",
   nrow(player_map),
+  "\n"
+)
+
+cat(
+  "Canonical GoRatings players:",
+  nrow(canonical_player_map),
   "\n"
 )
 

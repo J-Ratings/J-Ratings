@@ -10,6 +10,9 @@
 #   - Pass 2 uses a retrospective performance start where
 #     sufficient evidence exists
 #
+# Duplicate GoRatings IDs with the same normalised display name
+# are merged upstream and share one canonical live Elo identity.
+#
 # Historical GoGoD outputs are not overwritten.
 # ============================================================
 
@@ -172,7 +175,13 @@ historical_final <- read_csv(
 
 games <- read_csv(
   games_file,
-  show_col_types = FALSE
+  show_col_types = FALSE,
+  col_types = cols(
+    BlackID = col_character(),
+    WhiteID = col_character(),
+    WinnerID = col_character(),
+    .default = col_guess()
+  )
 ) %>%
   mutate(
     Date = as.Date(Date),
@@ -195,7 +204,13 @@ games <- read_csv(
 
 player_map <- read_csv(
   player_map_file,
-  show_col_types = FALSE
+  show_col_types = FALSE,
+  col_types = cols(
+    goratings_id = col_character(),
+    canonical_goratings_id =
+      col_character(),
+    .default = col_guess()
+  )
 ) %>%
   mutate(
     goratings_id = as.character(
@@ -250,6 +265,7 @@ check_columns(
   c(
     "goratings_id",
     "goratings_name",
+    "canonical_goratings_id",
     "historical_name",
     "match_status",
     "checkpoint_rating",
@@ -276,12 +292,40 @@ historical_metadata <- historical_final %>%
     .keep_all = TRUE
   )
 
+# Raw GoRatings IDs can be aliases of one canonical player.
+raw_to_canonical_id <- setNames(
+  as.character(
+    player_map$canonical_goratings_id
+  ),
+  as.character(
+    player_map$goratings_id
+  )
+)
+
+canonicalise_live_id <- function(x) {
+  x <- as.character(x)
+  mapped <- unname(
+    raw_to_canonical_id[x]
+  )
+  
+  ifelse(
+    !is.na(mapped) & mapped != "",
+    mapped,
+    x
+  )
+}
+
+# One starting-state row per canonical live player.
 player_state <- player_map %>%
   left_join(
     historical_metadata,
     by = "historical_name"
   ) %>%
   mutate(
+    canonical_goratings_id =
+      as.character(
+        canonical_goratings_id
+      ),
     canonical_name = if_else(
       match_status == "unmatched_or_new",
       goratings_name,
@@ -300,17 +344,37 @@ player_state <- player_map %>%
       as.integer(checkpoint_games)
     )
   ) %>%
-  select(
-    goratings_id,
-    goratings_name,
-    canonical_name,
-    historical_name,
-    match_status,
-    is_new_player,
-    checkpoint_rating,
-    checkpoint_games,
-    historical_first_date,
-    historical_entry_rating
+  arrange(
+    canonical_goratings_id,
+    desc(!is_new_player),
+    goratings_id
+  ) %>%
+  group_by(
+    canonical_goratings_id
+  ) %>%
+  summarise(
+    goratings_id =
+      first(canonical_goratings_id),
+    goratings_name =
+      first(goratings_name),
+    canonical_name =
+      first(canonical_name),
+    historical_name =
+      first(historical_name),
+    match_status =
+      first(match_status),
+    is_new_player =
+      first(is_new_player),
+    checkpoint_rating =
+      first(checkpoint_rating),
+    checkpoint_games =
+      first(checkpoint_games),
+    historical_first_date =
+      first(historical_first_date),
+    historical_entry_rating =
+      first(historical_entry_rating),
+    alias_count = n(),
+    .groups = "drop"
   )
 
 if (
@@ -319,9 +383,24 @@ if (
   ) > 0
 ) {
   stop(
-    "Player-state table contains duplicate GoRatings IDs."
+    "Player-state table contains duplicate canonical GoRatings IDs."
   )
 }
+
+# Convert every game to canonical IDs before Elo is calculated.
+# Keep the source IDs so the original feed remains auditable.
+games <- games %>%
+  mutate(
+    BlackSourceID = BlackID,
+    WhiteSourceID = WhiteID,
+    WinnerSourceID = WinnerID,
+    BlackID =
+      canonicalise_live_id(BlackID),
+    WhiteID =
+      canonicalise_live_id(WhiteID),
+    WinnerID =
+      canonicalise_live_id(WinnerID)
+  )
 
 missing_game_ids <- setdiff(
   unique(
@@ -335,11 +414,47 @@ missing_game_ids <- setdiff(
 
 if (length(missing_game_ids) > 0) {
   stop(
-    "Games contain player IDs absent from the player map: ",
+    "Games contain canonical player IDs absent from the player map: ",
     paste(
       missing_game_ids,
       collapse = ", "
     )
+  )
+}
+
+# If the same physical game arrived under two alias IDs, collapse
+# it after canonicalisation. SameSignatureSequence preserves
+# genuine repeated games with the same players/date/result.
+games_before_alias_dedupe <- nrow(games)
+
+games <- games %>%
+  distinct(
+    Date,
+    BlackID,
+    WhiteID,
+    ResultCode,
+    Event,
+    SameSignatureSequence,
+    .keep_all = TRUE
+  ) %>%
+  arrange(
+    Date,
+    BlackID,
+    WhiteID,
+    ResultCode,
+    SameSignatureSequence,
+    GameKey
+  )
+
+alias_game_duplicates_removed <-
+  games_before_alias_dedupe -
+  nrow(games)
+
+if (alias_game_duplicates_removed > 0L) {
+  cat(
+    "Alias duplicate game rows removed:",
+    alias_game_duplicates_removed,
+    "\n"
   )
 }
 
@@ -397,7 +512,13 @@ cat(
 )
 
 cat(
-  "GoRatings players:",
+  "Raw GoRatings IDs:",
+  nrow(player_map),
+  "\n"
+)
+
+cat(
+  "Canonical GoRatings players:",
   nrow(player_state),
   "\n"
 )
