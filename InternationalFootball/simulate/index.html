@@ -1,0 +1,1557 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>J-Ratings: International Football Simulator</title>
+
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    :root{
+      --sim-accent:#23395d;
+      --sim-muted:#7d8797;
+      --sim-line:rgba(128,128,128,.22);
+    }
+
+    main.wrap{
+      padding-top:24px;
+      padding-bottom:48px;
+    }
+
+    .sim-panel{
+      max-width:1180px;
+      margin:0 auto;
+      padding:24px;
+    }
+
+    .sim-title{
+      text-align:center;
+      margin:0 0 8px;
+      font-size:2rem;
+    }
+
+    .sim-subtitle{
+      text-align:center;
+      margin:0 0 24px;
+      opacity:.75;
+    }
+
+    .sim-controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:end;
+      justify-content:center;
+      padding:20px;
+      border:1px solid var(--sim-line);
+      border-radius:12px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .sim-field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width:190px;
+    }
+
+    .sim-field label{
+      font-weight:700;
+      font-size:1rem;
+    }
+
+    .sim-field input,
+    .sim-field select{
+      padding:11px 12px;
+      border:1px solid var(--border,#444);
+      border-radius:9px;
+      background:var(--panel-bg,#0f1623);
+      color:inherit;
+      font:inherit;
+    }
+
+    #simulate-btn,
+    #apply-force,
+    #clear-forces{
+      min-width:150px;
+      padding:12px 18px;
+      border-radius:9px;
+      border:1px solid var(--border,#444);
+      background:#0f1623;
+      color:inherit;
+      font:inherit;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    #simulate-btn:hover,
+    #apply-force:hover,
+    #clear-forces:hover{
+      background:rgba(255,255,255,.06);
+    }
+
+    #simulate-btn:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+    }
+
+    #apply-force,
+    #clear-forces{
+      padding:12px 18px;
+      border-radius:9px;
+      border:1px solid var(--border,#444);
+      background:#0f1623;
+      color:inherit;
+      font:inherit;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .forced-row{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      padding:9px 0;
+      border-bottom:1px solid rgba(128,128,128,.14);
+    }
+
+    .forced-row:last-child{border-bottom:0}
+
+    .tool-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .tool-card{
+      border:1px solid var(--sim-line);
+      border-radius:10px;
+      padding:14px;
+      background:rgba(255,255,255,.015);
+    }
+
+    .tool-card h3{
+      margin:0 0 12px;
+      font-size:1rem;
+    }
+
+    .tool-card .sim-field{
+      min-width:0;
+      width:100%;
+      margin-bottom:10px;
+    }
+
+    .tool-card button{
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid var(--border,#444);
+      background:#0f1623;
+      color:inherit;
+      font:inherit;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .tool-card button:hover{
+      background:rgba(255,255,255,.06);
+    }
+
+    .checkbox-row{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      margin:8px 0 10px;
+    }
+
+    .checkbox-row input{
+      width:18px;
+      height:18px;
+    }
+
+    .applied-list{
+      margin-top:10px;
+      font-size:.92rem;
+    }
+
+    .applied-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:7px 0;
+      border-bottom:1px solid rgba(128,128,128,.12);
+    }
+
+    .applied-item:last-child{
+      border-bottom:0;
+    }
+
+    .remove-small{
+      border:1px solid var(--border,#444);
+      background:#0f1623;
+      color:inherit;
+      border-radius:7px;
+      padding:5px 9px;
+      cursor:pointer;
+    }
+
+    .forced-result-label{
+      font-weight:800;
+    }
+
+    .remove-force{
+      border:1px solid var(--border,#444);
+      background:#0f1623;
+      color:inherit;
+      border-radius:7px;
+      padding:6px 10px;
+      cursor:pointer;
+    }
+
+    .sim-status{
+      min-height:26px;
+      text-align:center;
+      margin:16px auto 0;
+      opacity:.8;
+    }
+
+    .sim-status.error{
+      color:#e65b5b;
+      opacity:1;
+    }
+
+    .progress-wrap{
+      display:none;
+      max-width:760px;
+      height:10px;
+      margin:10px auto 0;
+      border-radius:999px;
+      overflow:hidden;
+      background:rgba(255,255,255,.08);
+    }
+
+    .progress-bar{
+      width:0%;
+      height:100%;
+      background:#5b7cba;
+      transition:width .08s linear;
+    }
+
+    .summary-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+      margin:22px 0;
+    }
+
+    .summary-card{
+      border:1px solid var(--sim-line);
+      border-radius:12px;
+      padding:14px;
+      text-align:center;
+      background:rgba(255,255,255,.02);
+    }
+
+    .summary-card .label{
+      font-size:.86rem;
+      opacity:.7;
+      margin-bottom:4px;
+    }
+
+    .summary-card .value{
+      font-size:1.35rem;
+      font-weight:800;
+    }
+
+    .results-card{
+      border:1px solid var(--sim-line);
+      border-radius:12px;
+      overflow:hidden;
+      background:rgba(255,255,255,.02);
+    }
+
+    .results-title{
+      padding:16px 18px;
+      border-bottom:1px solid var(--sim-line);
+      font-weight:800;
+      font-size:1.15rem;
+    }
+
+    .whatif-toggle{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:16px 18px;
+      border:0;
+      border-bottom:1px solid transparent;
+      background:transparent;
+      color:inherit;
+      font:inherit;
+      font-weight:800;
+      font-size:1.15rem;
+      cursor:pointer;
+      text-align:left;
+    }
+
+    .whatif-toggle[aria-expanded="true"]{
+      border-bottom-color:var(--sim-line);
+    }
+
+    .whatif-arrow{
+      font-size:1.4rem;
+      line-height:1;
+      transition:transform .15s ease;
+    }
+
+    .whatif-toggle[aria-expanded="true"] .whatif-arrow{
+      transform:rotate(180deg);
+    }
+
+    .whatif-body{
+      display:none;
+      padding:16px 18px;
+    }
+
+    .whatif-body.is-open{
+      display:block;
+    }
+
+    .table-wrap{
+      overflow-x:auto;
+    }
+
+    #results-table{
+      width:100%;
+      min-width:900px;
+      border-collapse:collapse;
+      table-layout:auto;
+    }
+
+    #results-table th,
+    #results-table td{
+      padding:11px 12px;
+      border-bottom:1px solid rgba(128,128,128,.15);
+      text-align:right;
+      white-space:nowrap;
+    }
+
+    #results-table th{
+      background:rgba(255,255,255,.03);
+      font-size:.95rem;
+    }
+
+    #results-table th:nth-child(2),
+    #results-table td:nth-child(2){
+      text-align:left;
+    }
+
+    #results-table tbody tr:nth-child(even){
+      background:rgba(255,255,255,.012);
+    }
+
+    .sim-note{
+      margin:16px 2px 0;
+      opacity:.7;
+      font-size:.92rem;
+      line-height:1.45;
+    }
+
+    @media (max-width:760px){
+      .sim-panel{
+        padding:16px 10px;
+      }
+
+      .sim-title{
+        font-size:1.6rem;
+      }
+
+      .sim-controls{
+        align-items:stretch;
+      }
+
+      .sim-field{
+        min-width:100%;
+      }
+
+      #simulate-btn{
+        width:100%;
+      }
+
+      .summary-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .tool-grid{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1 class="site-title">
+        <a href="../home/" class="brand-with-logo">
+          <span>J-Ratings <span class="title-football">International Football</span></span>
+        </a>
+      </h1>
+
+      <!-- Deliberately no simulator link is added to site navigation. -->
+      <nav class="topnav" aria-label="Main">
+        <a href="/index.html">Sports</a>
+        <a href="../home/">Home</a>
+        <a href="../compare/">Compare</a>
+        <a href="../peak/">Peak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel sim-panel">
+      <h2 class="sim-title">International Football Simulator</h2>
+      <p class="sim-subtitle">Choose a competition and season, then simulate from any date.</p>
+
+      <div class="sim-controls">
+        <div class="sim-field">
+          <label for="competition">Competition</label>
+          <select id="competition">
+            <option value="premier-league" selected>Premier League</option>
+          </select>
+        </div>
+
+        <div class="sim-field">
+          <label for="season">Season</label>
+          <select id="season"></select>
+        </div>
+
+        <div class="sim-field">
+          <label for="cutoff">Simulate from</label>
+          <input id="cutoff" type="date">
+        </div>
+
+        <div class="sim-field">
+          <label for="sim-count">Iterations</label>
+          <select id="sim-count">
+            <option value="500">500</option>
+            <option value="2000">2,000</option>
+            <option value="10000" selected>10,000</option>
+            <option value="100000">100,000</option>
+            <option value="1000000">1,000,000</option>
+          </select>
+        </div>
+
+        <button id="simulate-btn" type="button" disabled>Simulate</button>
+      </div>
+
+      <div id="status" class="sim-status">Loading tournament data…</div>
+
+      <div id="progress-wrap" class="progress-wrap">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+
+      <div class="results-card" style="margin-top:18px;">
+        <button id="whatif-toggle" type="button" class="whatif-toggle" aria-expanded="false">
+          <span>What-if controls</span>
+          <span id="whatif-arrow" class="whatif-arrow">⌄</span>
+        </button>
+
+        <div id="whatif-body" class="whatif-body">
+          <div class="tool-grid">
+
+            <div class="tool-card">
+              <h3>Force a result</h3>
+
+              <div class="sim-field">
+                <label for="force-team">Team</label>
+                <input id="force-team" type="search" list="team-options" placeholder="Type a team">
+              </div>
+
+              <div class="sim-field">
+                <label for="fixture-select">Remaining fixture</label>
+                <select id="fixture-select">
+                  <option value="">Select a team first</option>
+                </select>
+              </div>
+
+              <div class="sim-field">
+                <label for="forced-result">Force result</label>
+                <select id="forced-result">
+                  <option value="">No forced result</option>
+                  <option value="home">Home win</option>
+                  <option value="draw">Draw</option>
+                  <option value="away">Away win</option>
+                </select>
+              </div>
+
+              <button id="apply-force" type="button">Apply forced result</button>
+              <button id="clear-forces" type="button" style="margin-top:8px;">Clear forced results</button>
+
+              <div id="forced-list" class="applied-list"></div>
+            </div>
+
+            <div class="tool-card">
+              <h3>Override Elo</h3>
+
+              <div class="sim-field">
+                <label for="elo-team">Team</label>
+                <input id="elo-team" type="search" list="team-options" placeholder="Type a team">
+              </div>
+
+              <div class="sim-field">
+                <label for="elo-value">Override Elo</label>
+                <input id="elo-value" type="number" step="1" placeholder="e.g. 2900">
+              </div>
+
+              <button id="apply-elo" type="button">Apply Elo override</button>
+              <button id="clear-elos" type="button" style="margin-top:8px;">Clear Elo overrides</button>
+
+              <div id="elo-list" class="applied-list"></div>
+            </div>
+
+            <div class="tool-card">
+              <h3>Home advantage</h3>
+
+              <label class="checkbox-row">
+                <input id="home-adv-enabled" type="checkbox">
+                <span>Account for home advantage</span>
+              </label>
+
+              <div class="sim-field">
+                <label for="home-adv-elo">Home Elo bonus</label>
+                <input id="home-adv-elo" type="number" value="50" min="0" step="1">
+              </div>
+
+              <div style="opacity:.72;font-size:.9rem;line-height:1.4;">
+                The bonus affects match probability only. It is not permanently added to the team's Elo.
+              </div>
+            </div>
+
+          </div>
+
+          <datalist id="team-options"></datalist>
+        </div>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="label">Played</div>
+          <div id="played-count" class="value">—</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="label">Remaining</div>
+          <div id="remaining-count" class="value">—</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="label">Iterations</div>
+          <div id="iteration-count" class="value">—</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="label">Run time</div>
+          <div id="runtime" class="value">—</div>
+        </div>
+      </div>
+
+      <div class="results-card">
+        <div class="results-title">Simulation results</div>
+
+        <div class="table-wrap">
+          <table id="results-table">
+            <thead>
+              <tr>
+                <th>Current</th>
+                <th>Team</th>
+                <th>Pts</th>
+                <th>Elo</th>
+                <th>Title</th>
+                <th>Top 4</th>
+                <th>Relegation</th>
+                <th>Expected pts</th>
+              </tr>
+            </thead>
+            <tbody id="results-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="sim-note">
+        Actual competition results before the selected date are used. Each club's J-Ratings Elo at that date is loaded from its rating history unless the user overrides it. Remaining league fixtures are then simulated with Elo updating after every match. Forced results are applied exactly. If home advantage is enabled, the selected Elo bonus affects match probability only. Equal-points ties are currently broken randomly because exact future scorelines are not yet simulated.
+      </p>
+    </section>
+  </main>
+
+<script>
+(() => {
+  const SIMULATION_BASE_URL = '../data/simulations/';
+  const HISTORY_BASE_URL = '../data/history/';
+
+  const competitionEl = document.getElementById('competition');
+  const seasonEl = document.getElementById('season');
+  const cutoffEl = document.getElementById('cutoff');
+  const simCountEl = document.getElementById('sim-count');
+  const simulateBtn = document.getElementById('simulate-btn');
+
+  const statusEl = document.getElementById('status');
+  const progressWrap = document.getElementById('progress-wrap');
+  const progressBar = document.getElementById('progress-bar');
+
+  const playedCountEl = document.getElementById('played-count');
+  const remainingCountEl = document.getElementById('remaining-count');
+  const iterationCountEl = document.getElementById('iteration-count');
+  const runtimeEl = document.getElementById('runtime');
+
+  const resultsBody = document.getElementById('results-body');
+
+  const whatifToggleEl = document.getElementById('whatif-toggle');
+  const whatifBodyEl = document.getElementById('whatif-body');
+
+  const teamOptionsEl = document.getElementById('team-options');
+
+  const forceTeamEl = document.getElementById('force-team');
+  const fixtureSelectEl = document.getElementById('fixture-select');
+  const forcedResultEl = document.getElementById('forced-result');
+  const applyForceBtn = document.getElementById('apply-force');
+  const clearForcesBtn = document.getElementById('clear-forces');
+  const forcedListEl = document.getElementById('forced-list');
+
+  const eloTeamEl = document.getElementById('elo-team');
+  const eloValueEl = document.getElementById('elo-value');
+  const applyEloBtn = document.getElementById('apply-elo');
+  const clearElosBtn = document.getElementById('clear-elos');
+  const eloListEl = document.getElementById('elo-list');
+
+  const homeAdvEnabledEl = document.getElementById('home-adv-enabled');
+  const homeAdvEloEl = document.getElementById('home-adv-elo');
+
+  let tournament = null;
+  let teamHistories = new Map();
+  let worker = null;
+
+  const forcedResults = new Map();
+  const eloOverrides = new Map();
+
+  function fmtPct(x){
+    if (!Number.isFinite(x)) return '—';
+    return `${x.toFixed(x < 1 ? 2 : 1)}%`;
+  }
+
+  function actualTable(cutoff){
+    const teams = tournament.teams.map(t => t.name);
+    const ids = tournament.teams.map(t => t.id);
+    const idToIndex = new Map(ids.map((id, i) => [id, i]));
+
+    const stats = teams.map((team, i) => ({
+      i,
+      team,
+      played:0,
+      gf:0,
+      ga:0,
+      gd:0,
+      points:0
+    }));
+
+    let played = 0;
+
+    for (const m of tournament.matches){
+      if (m.date >= cutoff) continue;
+
+      const h = idToIndex.get(m.home);
+      const a = idToIndex.get(m.away);
+
+      if (h == null || a == null) continue;
+
+      const hg = Number(m.homeScore);
+      const ag = Number(m.awayScore);
+
+      if (!Number.isFinite(hg) || !Number.isFinite(ag)) continue;
+
+      played++;
+
+      stats[h].played++;
+      stats[a].played++;
+
+      stats[h].gf += hg;
+      stats[h].ga += ag;
+
+      stats[a].gf += ag;
+      stats[a].ga += hg;
+
+      if (hg > ag){
+        stats[h].points += 3;
+      } else if (hg < ag){
+        stats[a].points += 3;
+      } else {
+        stats[h].points += 1;
+        stats[a].points += 1;
+      }
+    }
+
+    for (const s of stats){
+      s.gd = s.gf - s.ga;
+    }
+
+    stats.sort((x, y) =>
+      y.points - x.points ||
+      y.gd - x.gd ||
+      y.gf - x.gf ||
+      x.team.localeCompare(y.team)
+    );
+
+    stats.forEach((s, idx) => {
+      s.position = idx + 1;
+    });
+
+    return {
+      stats,
+      played
+    };
+  }
+
+  function ratingAt(teamId, cutoff){
+    const hist = teamHistories.get(teamId) || [];
+    let best = null;
+
+    for (const row of hist){
+      if (row.date < cutoff && Number.isFinite(Number(row.rating))){
+        best = Number(row.rating);
+      } else if (row.date > cutoff){
+        break;
+      }
+    }
+
+    return best;
+  }
+
+  function buildSimulationInput(cutoff){
+    const teams = tournament.teams.map(t => t.name);
+    const ids = tournament.teams.map(t => t.id);
+    const idToIndex = new Map(ids.map((id, i) => [id, i]));
+
+    const table = actualTable(cutoff);
+
+    const basePoints = new Float64Array(teams.length);
+
+    for (const row of table.stats){
+      basePoints[row.i] = row.points;
+    }
+
+    const ratings = new Float64Array(teams.length);
+
+    ids.forEach((id, i) => {
+      const override = eloOverrides.get(id);
+      const r = Number.isFinite(override)
+        ? override
+        : ratingAt(id, cutoff);
+
+      if (!Number.isFinite(r)){
+        throw new Error(`No rating history available for ${teams[i]} on ${cutoff}.`);
+      }
+
+      ratings[i] = r;
+    });
+
+    const homeIdx = [];
+    const awayIdx = [];
+    const forced = [];
+
+    for (const m of tournament.matches){
+      if (m.date < cutoff) continue;
+
+      homeIdx.push(idToIndex.get(m.home));
+      awayIdx.push(idToIndex.get(m.away));
+
+      const key = `${m.date}|${m.home}|${m.away}`;
+      forced.push(forcedResults.get(key) || '');
+    }
+
+    return {
+      teams,
+      ratings:Array.from(ratings),
+      basePoints:Array.from(basePoints),
+      homeIdx,
+      awayIdx,
+      forced,
+      currentTable:table.stats,
+      played:table.played,
+      remaining:homeIdx.length
+    };
+  }
+
+  function fixtureKey(m){
+    return `${m.date}|${m.home}|${m.away}`;
+  }
+
+  function teamByTypedName(value){
+    const q = String(value || '').trim().toLowerCase();
+    if (!q) return null;
+
+    return tournament.teams.find(
+      t => t.name.toLowerCase() === q
+    ) || null;
+  }
+
+  function remainingFixturesForDate(cutoff){
+    return tournament.matches.filter(m => m.date >= cutoff);
+  }
+
+  function populateTeamOptions(){
+    teamOptionsEl.innerHTML = '';
+
+    for (const team of tournament.teams){
+      const opt = document.createElement('option');
+      opt.value = team.name;
+      teamOptionsEl.appendChild(opt);
+    }
+  }
+
+  function renderFixtureOptions(cutoff){
+    const selectedTeam = teamByTypedName(forceTeamEl.value);
+    fixtureSelectEl.innerHTML = '';
+
+    if (!selectedTeam){
+      const opt = document.createElement('option');
+      opt.value = '';
+      opt.textContent = 'Select a team first';
+      fixtureSelectEl.appendChild(opt);
+      return;
+    }
+
+    const remaining = remainingFixturesForDate(cutoff).filter(
+      m => m.home === selectedTeam.id || m.away === selectedTeam.id
+    );
+
+    if (!remaining.length){
+      const opt = document.createElement('option');
+      opt.value = '';
+      opt.textContent = 'No remaining fixtures for this team';
+      fixtureSelectEl.appendChild(opt);
+      return;
+    }
+
+    const teamNameById = new Map(
+      tournament.teams.map(t => [t.id, t.name])
+    );
+
+    for (const m of remaining){
+      const opt = document.createElement('option');
+      opt.value = fixtureKey(m);
+      opt.textContent =
+        `${m.date} — ${teamNameById.get(m.home)} v ${teamNameById.get(m.away)}`;
+      fixtureSelectEl.appendChild(opt);
+    }
+  }
+
+  function renderForcedList(){
+    forcedListEl.innerHTML = '';
+
+    if (!forcedResults.size){
+      forcedListEl.innerHTML =
+        '<span style="opacity:.7">No forced results.</span>';
+      return;
+    }
+
+    const teamNameById = new Map(
+      tournament.teams.map(t => [t.id, t.name])
+    );
+
+    for (const [key, result] of forcedResults.entries()){
+      const [date, homeId, awayId] = key.split('|');
+      const home = teamNameById.get(homeId) || homeId;
+      const away = teamNameById.get(awayId) || awayId;
+
+      const label =
+        result === 'home' ? `${home} win` :
+        result === 'draw' ? 'Draw' :
+        `${away} win`;
+
+      const row = document.createElement('div');
+      row.className = 'applied-item';
+      row.innerHTML = `
+        <div>
+          <div>${date} — ${home} v ${away}</div>
+          <div class="forced-result-label">${label}</div>
+        </div>
+        <button type="button" class="remove-small" data-key="${key}">Remove</button>
+      `;
+      forcedListEl.appendChild(row);
+    }
+
+    forcedListEl.querySelectorAll('.remove-small').forEach(btn => {
+      btn.addEventListener('click', () => {
+        forcedResults.delete(btn.dataset.key);
+        renderForcedList();
+      });
+    });
+  }
+
+  function renderEloList(){
+    eloListEl.innerHTML = '';
+
+    if (!eloOverrides.size){
+      eloListEl.innerHTML =
+        '<span style="opacity:.7">No Elo overrides.</span>';
+      return;
+    }
+
+    const nameById = new Map(
+      tournament.teams.map(t => [t.id, t.name])
+    );
+
+    for (const [id, value] of eloOverrides.entries()){
+      const row = document.createElement('div');
+      row.className = 'applied-item';
+      row.innerHTML = `
+        <div><strong>${nameById.get(id) || id}</strong>: ${Math.round(value)}</div>
+        <button type="button" class="remove-small" data-id="${id}">Remove</button>
+      `;
+      eloListEl.appendChild(row);
+    }
+
+    eloListEl.querySelectorAll('.remove-small').forEach(btn => {
+      btn.addEventListener('click', () => {
+        eloOverrides.delete(btn.dataset.id);
+        renderEloList();
+
+        const input = buildSimulationInput(cutoffEl.value);
+        renderCurrentState(input);
+      });
+    });
+  }
+
+  function renderCurrentState(input){
+    playedCountEl.textContent = input.played;
+    remainingCountEl.textContent = input.remaining;
+    iterationCountEl.textContent = '—';
+    runtimeEl.textContent = '—';
+
+    resultsBody.innerHTML = '';
+
+    for (const row of input.currentTable){
+      const tr = document.createElement('tr');
+      const elo = input.ratings[row.i];
+
+      const currentDisplay =
+        input.played === 0 ? '—' : row.position;
+
+      tr.innerHTML = `
+        <td>${currentDisplay}</td>
+        <td>${row.team}</td>
+        <td>${row.points}</td>
+        <td>${Math.round(elo)}</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      `;
+
+      resultsBody.appendChild(tr);
+    }
+  }
+
+  function renderResults(input, result){
+    const currentPos = new Map(
+      input.currentTable.map(r => [r.team, r.position])
+    );
+
+    const currentPts = new Map(
+      input.currentTable.map(r => [r.team, r.points])
+    );
+
+    const rows = result.rows.slice().sort((a, b) =>
+      b.titlePct - a.titlePct ||
+      b.top4Pct - a.top4Pct ||
+      b.expectedPoints - a.expectedPoints
+    );
+
+    resultsBody.innerHTML = '';
+
+    for (const row of rows){
+      const tr = document.createElement('tr');
+
+      const currentDisplay =
+        input.played === 0 ? '—' : currentPos.get(row.team);
+
+      tr.innerHTML = `
+        <td>${currentDisplay}</td>
+        <td>${row.team}</td>
+        <td>${currentPts.get(row.team)}</td>
+        <td>${Math.round(row.startingElo)}</td>
+        <td>${fmtPct(row.titlePct)}</td>
+        <td>${fmtPct(row.top4Pct)}</td>
+        <td>${fmtPct(row.relegationPct)}</td>
+        <td>${row.expectedPoints.toFixed(1)}</td>
+      `;
+
+      resultsBody.appendChild(tr);
+    }
+
+    iterationCountEl.textContent = result.simulations.toLocaleString();
+    runtimeEl.textContent = `${result.elapsedSeconds.toFixed(2)}s`;
+  }
+
+  function makeWorker(){
+    const workerSource = `
+      self.onmessage = (event) => {
+        const {
+          teams,
+          ratings:startingRatings,
+          basePoints,
+          homeIdx,
+          awayIdx,
+          forced,
+          simulations,
+          kFactor,
+          homeAdvEnabled,
+          homeAdvElo
+        } = event.data;
+
+        const nTeams = teams.length;
+        const nFixtures = homeIdx.length;
+
+        const finishCounts = Array.from(
+          {length:nTeams},
+          () => new Uint32Array(nTeams)
+        );
+
+        const finalPointsSum = new Float64Array(nTeams);
+
+        const start = performance.now();
+
+        const clamp = (x, lo, hi) =>
+          Math.max(lo, Math.min(hi, x));
+
+        for (let sim = 0; sim < simulations; sim++){
+          const ratings = Float64Array.from(startingRatings);
+          const points = Float64Array.from(basePoints);
+
+          for (let i = 0; i < nFixtures; i++){
+            const h = homeIdx[i];
+            const a = awayIdx[i];
+
+            const homeElo = ratings[h];
+            const awayElo = ratings[a];
+
+            const effectiveHomeElo =
+              homeElo + (homeAdvEnabled ? homeAdvElo : 0);
+
+            const expectedHome =
+              1 / (1 + Math.pow(10, (awayElo - effectiveHomeElo) / 400));
+
+            const absGap = Math.abs(effectiveHomeElo - awayElo);
+
+            const drawProb = clamp(
+              0.302 - 0.00048 * absGap,
+              0.13,
+              0.31
+            );
+
+            const homeWinProb = clamp(
+              expectedHome - drawProb / 2,
+              0,
+              1 - drawProb
+            );
+
+            const forcedResult = forced[i];
+            const u = Math.random();
+
+            let homeScore;
+            let awayScore;
+
+            if (forcedResult === 'home'){
+              homeScore = 1;
+              awayScore = 0;
+              points[h] += 3;
+
+            } else if (forcedResult === 'draw'){
+              homeScore = 0.5;
+              awayScore = 0.5;
+              points[h] += 1;
+              points[a] += 1;
+
+            } else if (forcedResult === 'away'){
+              homeScore = 0;
+              awayScore = 1;
+              points[a] += 3;
+
+            } else if (u < homeWinProb){
+              homeScore = 1;
+              awayScore = 0;
+              points[h] += 3;
+
+            } else if (u < homeWinProb + drawProb){
+              homeScore = 0.5;
+              awayScore = 0.5;
+              points[h] += 1;
+              points[a] += 1;
+
+            } else {
+              homeScore = 0;
+              awayScore = 1;
+              points[a] += 3;
+            }
+
+            ratings[h] =
+              homeElo +
+              kFactor * (homeScore - expectedHome);
+
+            ratings[a] =
+              awayElo +
+              kFactor * (awayScore - (1 - expectedHome));
+          }
+
+          const order = Array.from(
+            {length:nTeams},
+            (_, i) => i
+          );
+
+          order.sort((x, y) => {
+            const pointsDiff = points[y] - points[x];
+
+            if (pointsDiff !== 0){
+              return pointsDiff;
+            }
+
+            return Math.random() - 0.5;
+          });
+
+          for (let pos = 0; pos < nTeams; pos++){
+            finishCounts[order[pos]][pos]++;
+          }
+
+          for (let t = 0; t < nTeams; t++){
+            finalPointsSum[t] += points[t];
+          }
+
+          if (
+            (sim + 1) %
+              Math.max(50, Math.floor(simulations / 100)) === 0 ||
+            sim + 1 === simulations
+          ){
+            self.postMessage({
+              type:'progress',
+              done:sim + 1,
+              total:simulations
+            });
+          }
+        }
+
+        const rows = teams.map((team, t) => {
+          let top4 = 0;
+          let relegation = 0;
+
+          for (let p = 0; p < Math.min(4, nTeams); p++){
+            top4 += finishCounts[t][p];
+          }
+
+          for (let p = Math.max(0, nTeams - 3); p < nTeams; p++){
+            relegation += finishCounts[t][p];
+          }
+
+          return {
+            team,
+            startingElo:startingRatings[t],
+            titlePct:
+              100 * finishCounts[t][0] / simulations,
+            top4Pct:
+              100 * top4 / simulations,
+            relegationPct:
+              100 * relegation / simulations,
+            expectedPoints:
+              finalPointsSum[t] / simulations
+          };
+        });
+
+        self.postMessage({
+          type:'done',
+          rows,
+          simulations,
+          elapsedSeconds:
+            (performance.now() - start) / 1000
+        });
+      };
+    `;
+
+    const blob = new Blob(
+      [workerSource],
+      {type:'text/javascript'}
+    );
+
+    return new Worker(
+      URL.createObjectURL(blob)
+    );
+  }
+
+  async function loadSeasonManifest(){
+    const competition = competitionEl.value;
+    const url = `${SIMULATION_BASE_URL}${competition}/seasons.json`;
+
+    const response = await fetch(url);
+
+    if (!response.ok){
+      throw new Error(`Could not load ${url}`);
+    }
+
+    const seasons = await response.json();
+
+    seasonEl.innerHTML = '';
+
+    for (const season of seasons){
+      const opt = document.createElement('option');
+      opt.value = season.id;
+      opt.textContent = season.label || season.id;
+
+      if (season.id === '2024-25'){
+        opt.selected = true;
+      }
+
+      seasonEl.appendChild(opt);
+    }
+
+    if (!seasonEl.value && seasonEl.options.length){
+      seasonEl.selectedIndex = 0;
+    }
+  }
+
+  async function loadSelectedTournament(){
+    const competition = competitionEl.value;
+    const season = seasonEl.value;
+
+    if (!competition || !season){
+      throw new Error('Choose a competition and season.');
+    }
+
+    const url =
+      `${SIMULATION_BASE_URL}${competition}/${encodeURIComponent(season)}.json`;
+
+    const response = await fetch(url);
+
+    if (!response.ok){
+      throw new Error(`Could not load ${url}`);
+    }
+
+    tournament = await response.json();
+
+    tournament.matches.sort((a, b) =>
+      a.date.localeCompare(b.date) ||
+      a.home.localeCompare(b.home) ||
+      a.away.localeCompare(b.away)
+    );
+
+    teamHistories = new Map();
+
+    const historyJobs = tournament.teams.map(async team => {
+      const historyUrl =
+        `${HISTORY_BASE_URL}${encodeURIComponent(team.id)}.json`;
+
+      const r = await fetch(historyUrl);
+
+      if (!r.ok){
+        throw new Error(`Could not load ${historyUrl}`);
+      }
+
+      const hist = await r.json();
+
+      hist.sort((a, b) =>
+        a.date.localeCompare(b.date)
+      );
+
+      teamHistories.set(
+        team.id,
+        hist
+      );
+    });
+
+    await Promise.all(historyJobs);
+
+    forcedResults.clear();
+    eloOverrides.clear();
+
+    forceTeamEl.value = '';
+    eloTeamEl.value = '';
+    eloValueEl.value = '';
+
+    populateTeamOptions();
+    renderForcedList();
+    renderEloList();
+
+    const minDate =
+      tournament.summary?.firstDate ||
+      tournament.matches[0].date;
+
+    const maxDate =
+      tournament.summary?.lastDate ||
+      tournament.matches[
+        tournament.matches.length - 1
+      ].date;
+
+    cutoffEl.min = minDate;
+    cutoffEl.max = maxDate;
+    cutoffEl.value = minDate;
+
+    renderFixtureOptions(cutoffEl.value);
+
+    const input =
+      buildSimulationInput(cutoffEl.value);
+
+    renderCurrentState(input);
+
+    statusEl.textContent =
+      `${tournament.name} ${String(tournament.season).replace('-', '/')} ready.`;
+
+    statusEl.classList.remove('error');
+    simulateBtn.disabled = false;
+  }
+
+  async function loadData(){
+    try {
+      simulateBtn.disabled = true;
+      statusEl.textContent = 'Loading seasons…';
+
+      await loadSeasonManifest();
+      await loadSelectedTournament();
+
+    } catch (err){
+      console.error(err);
+
+      statusEl.textContent = err.message;
+      statusEl.classList.add('error');
+      simulateBtn.disabled = true;
+    }
+  }
+
+  competitionEl.addEventListener('change', async () => {
+    try {
+      simulateBtn.disabled = true;
+      statusEl.textContent = 'Loading seasons…';
+
+      await loadSeasonManifest();
+      await loadSelectedTournament();
+
+    } catch (err){
+      console.error(err);
+      statusEl.textContent = err.message;
+      statusEl.classList.add('error');
+    }
+  });
+
+  seasonEl.addEventListener('change', async () => {
+    try {
+      simulateBtn.disabled = true;
+      statusEl.textContent = 'Loading season…';
+
+      await loadSelectedTournament();
+
+    } catch (err){
+      console.error(err);
+      statusEl.textContent = err.message;
+      statusEl.classList.add('error');
+    }
+  });
+
+  cutoffEl.addEventListener('change', () => {
+    if (!tournament) return;
+
+    try {
+      forcedResults.clear();
+      renderFixtureOptions(cutoffEl.value);
+      renderForcedList();
+
+      const input =
+        buildSimulationInput(cutoffEl.value);
+
+      renderCurrentState(input);
+
+      statusEl.textContent = 'Ready.';
+      statusEl.classList.remove('error');
+
+    } catch (err){
+      statusEl.textContent = err.message;
+      statusEl.classList.add('error');
+    }
+  });
+
+  whatifToggleEl.addEventListener('click', () => {
+    const open = whatifToggleEl.getAttribute('aria-expanded') === 'true';
+
+    whatifToggleEl.setAttribute(
+      'aria-expanded',
+      open ? 'false' : 'true'
+    );
+
+    whatifBodyEl.classList.toggle(
+      'is-open',
+      !open
+    );
+  });
+
+  forceTeamEl.addEventListener('input', () => {
+    renderFixtureOptions(cutoffEl.value);
+  });
+
+  applyForceBtn.addEventListener('click', () => {
+    const key = fixtureSelectEl.value;
+    const result = forcedResultEl.value;
+
+    if (!key || !result){
+      statusEl.textContent =
+        'Choose a team, fixture and forced result first.';
+      return;
+    }
+
+    forcedResults.set(key, result);
+    renderForcedList();
+
+    const input = buildSimulationInput(cutoffEl.value);
+    renderCurrentState(input);
+
+    statusEl.textContent =
+      'What-if result applied. Ready to simulate.';
+  });
+
+  clearForcesBtn.addEventListener('click', () => {
+    forcedResults.clear();
+    renderForcedList();
+
+    const input = buildSimulationInput(cutoffEl.value);
+    renderCurrentState(input);
+
+    statusEl.textContent =
+      'Forced results cleared.';
+  });
+
+  applyEloBtn.addEventListener('click', () => {
+    const team = teamByTypedName(eloTeamEl.value);
+    const value = Number(eloValueEl.value);
+
+    if (!team || !Number.isFinite(value)){
+      statusEl.textContent =
+        'Choose a valid team and enter an Elo value.';
+      return;
+    }
+
+    eloOverrides.set(team.id, value);
+    renderEloList();
+
+    const input = buildSimulationInput(cutoffEl.value);
+    renderCurrentState(input);
+
+    statusEl.textContent =
+      `${team.name} Elo overridden to ${Math.round(value)}.`;
+  });
+
+  clearElosBtn.addEventListener('click', () => {
+    eloOverrides.clear();
+    renderEloList();
+
+    const input = buildSimulationInput(cutoffEl.value);
+    renderCurrentState(input);
+
+    statusEl.textContent =
+      'Elo overrides cleared.';
+  });
+
+  simulateBtn.addEventListener('click', () => {
+    if (!tournament) return;
+
+    try {
+      const input =
+        buildSimulationInput(cutoffEl.value);
+
+      renderCurrentState(input);
+
+      if (worker){
+        worker.terminate();
+      }
+
+      worker = makeWorker();
+
+      const simulations =
+        Number(simCountEl.value);
+
+      simulateBtn.disabled = true;
+
+      progressWrap.style.display = 'block';
+      progressBar.style.width = '0%';
+
+      statusEl.textContent =
+        `Simulating ${simulations.toLocaleString()} seasons…`;
+
+      statusEl.classList.remove('error');
+
+      worker.onmessage = e => {
+        const msg = e.data;
+
+        if (msg.type === 'progress'){
+          const pct =
+            100 * msg.done / msg.total;
+
+          progressBar.style.width =
+            `${pct}%`;
+
+          statusEl.textContent =
+            `Simulating… ${msg.done.toLocaleString()} / ${msg.total.toLocaleString()}`;
+        }
+
+        if (msg.type === 'done'){
+          renderResults(input, msg);
+
+          progressBar.style.width = '100%';
+
+          statusEl.textContent =
+            `Complete in ${msg.elapsedSeconds.toFixed(2)} seconds.`;
+
+          simulateBtn.disabled = false;
+
+          setTimeout(() => {
+            progressWrap.style.display = 'none';
+          }, 350);
+        }
+      };
+
+      worker.onerror = err => {
+        console.error(err);
+
+        statusEl.textContent =
+          'Simulation failed. Check the browser console.';
+
+        statusEl.classList.add('error');
+
+        simulateBtn.disabled = false;
+        progressWrap.style.display = 'none';
+      };
+
+      worker.postMessage({
+        teams:input.teams,
+        ratings:input.ratings,
+        basePoints:input.basePoints,
+        homeIdx:input.homeIdx,
+        awayIdx:input.awayIdx,
+        forced:input.forced,
+        simulations,
+        kFactor:20,
+        homeAdvEnabled:homeAdvEnabledEl.checked,
+        homeAdvElo:Number(homeAdvEloEl.value) || 0
+      });
+
+    } catch (err){
+      statusEl.textContent = err.message;
+      statusEl.classList.add('error');
+      simulateBtn.disabled = false;
+    }
+  });
+
+  loadData();
+})();
+</script>
+
+</body>
+</html>

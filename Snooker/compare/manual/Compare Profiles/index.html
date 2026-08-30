@@ -1,0 +1,2377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
+
+  <meta charset="utf-8">
+  <title>J-Ratings: Snooker Profile Comparison</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="../../../../jratings-graph.js"></script>
+
+  <style>
+    .compare-profiles{
+      padding:28px 22px 36px;
+    }
+
+    .compare-profiles h2{
+      text-align:center;
+      margin:0 0 8px;
+    }
+
+    .intro{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 24px;
+      opacity:.85;
+      line-height:1.5;
+    }
+
+    .picker{
+      max-width:980px;
+      margin:0 auto 28px;
+      padding:20px;
+      border:1px solid var(--border, #444);
+      border-radius:14px;
+      background:rgba(255,255,255,.025);
+    }
+
+    .picker-grid{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:16px;
+      align-items:end;
+    }
+
+    .team-picker label{
+      display:block;
+      font-weight:800;
+      margin-bottom:7px;
+    }
+
+    .suggest{
+      position:relative;
+    }
+
+    .suggest input{
+      width:100%;
+      box-sizing:border-box;
+      padding:13px 14px;
+      border-radius:9px;
+      border:1px solid var(--border, #444);
+      background:#0f1623;
+      color:inherit;
+      font-size:1.05rem;
+    }
+
+    .suggest-list{
+      position:absolute;
+      z-index:50;
+      left:0;
+      right:0;
+      top:100%;
+      margin-top:4px;
+      max-height:240px;
+      overflow:auto;
+      display:none;
+      border:1px solid var(--border, #444);
+      border-radius:8px;
+      background:#0f1623;
+      box-shadow:0 10px 25px rgba(0,0,0,.3);
+    }
+
+    .suggest-item{
+      padding:9px 11px;
+      cursor:pointer;
+    }
+
+    .suggest-item:hover,
+    .suggest-item.is-active{
+      background:rgba(255,255,255,.08);
+    }
+
+    .versus{
+      align-self:center;
+      padding-top:24px;
+      font-weight:900;
+      opacity:.7;
+    }
+
+    .actions{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .compare-btn,
+    .swap-btn{
+      border:1px solid var(--border, #444);
+      border-radius:9px;
+      background:#0f1623;
+      color:inherit;
+      padding:11px 18px;
+      cursor:pointer;
+      font-size:1.03rem;
+    }
+
+    .compare-btn{
+      min-width:170px;
+      font-weight:800;
+    }
+
+    .compare-btn:hover,
+    .swap-btn:hover{
+      background:rgba(255,255,255,.06);
+    }
+
+    #results{
+      display:none;
+    }
+
+    .headline{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:18px;
+      align-items:center;
+      max-width:1100px;
+      margin:0 auto 22px;
+    }
+
+    .team-head{
+      min-width:0;
+      padding:18px;
+      border:1px solid var(--border, #444);
+      border-radius:12px;
+      background:rgba(255,255,255,.025);
+      text-align:center;
+      border-top:5px solid var(--team-colour, #2F80ED);
+    }
+
+    .team-name{
+      font-size:1.65rem;
+      font-weight:900;
+      overflow-wrap:anywhere;
+    }
+
+    .team-sub{
+      margin-top:5px;
+      opacity:.75;
+    }
+
+    .headline-vs{
+      font-size:1.2rem;
+      font-weight:900;
+      opacity:.65;
+    }
+
+    .summary-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:12px;
+      max-width:1100px;
+      margin:0 auto 24px;
+    }
+
+    .summary-card,
+    .stat-card{
+      border:1px solid var(--border, #444);
+      border-radius:12px;
+      background:rgba(255,255,255,.025);
+    }
+
+    .summary-card{
+      padding:16px 14px;
+      text-align:center;
+    }
+
+    .summary-label{
+      font-size:.88rem;
+      opacity:.72;
+      margin-bottom:5px;
+    }
+
+    .summary-value{
+      font-size:1.35rem;
+      font-weight:900;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:9px;
+      font-size:.95rem;
+    }
+
+    .team-a{ color:var(--team-a-colour, #2F80ED); }
+    .team-b{ color:var(--team-b-colour, #E74C3C); }
+
+    .section{
+      max-width:1100px;
+      margin:28px auto 0;
+    }
+
+    .section h3{
+      text-align:center;
+      margin:0 0 14px;
+      font-size:1.45rem;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+    }
+
+    .stat-card{
+      padding:16px;
+    }
+
+    .stat-title{
+      font-weight:900;
+      margin-bottom:11px;
+      text-align:center;
+    }
+
+    .stat-row{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:8px;
+      align-items:center;
+      padding:7px 0;
+      border-top:1px solid rgba(128,128,128,.18);
+    }
+
+    .stat-row:first-of-type{
+      border-top:0;
+    }
+
+    .stat-row .left{
+      text-align:right;
+      font-weight:800;
+    }
+
+    .stat-row .right{
+      text-align:left;
+      font-weight:800;
+    }
+
+    .stat-row .label{
+      text-align:center;
+      opacity:.7;
+      font-size:.82rem;
+      white-space:nowrap;
+    }
+
+    .graph-shell{
+      padding:14px 0 0;
+    }
+
+    .jr-chart-controls{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:9px;
+      margin:0 auto 10px;
+      width:100%;
+      max-width:1100px;
+    }
+
+    .jr-chart-controls > div:first-child{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    .jr-chart-controls select{
+      padding:8px 10px;
+      font-size:1rem;
+    }
+
+    .range-buttons{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .seg{
+      padding:8px 11px;
+      border:1px solid var(--border, #444);
+      border-radius:8px;
+      background:#0f1623;
+      color:inherit;
+      cursor:pointer;
+    }
+
+    .seg.active,
+    .seg.is-active,
+    .seg[aria-pressed="true"]{
+      background:rgba(255,255,255,.10);
+      border-color:rgba(220,220,220,.8);
+    }
+
+    #chart{
+      width:100%;
+      max-width:1100px;
+      height:585px;
+      min-height:585px;
+      margin:0 auto;
+    }
+
+    #chart .xtick text,
+    #chart .ytick text{
+      font-size:16px !important;
+    }
+
+    .dominance-bar{
+      height:34px;
+      display:flex;
+      overflow:hidden;
+      border-radius:9px;
+      border:1px solid var(--border, #444);
+      background:rgba(255,255,255,.03);
+    }
+
+    .dominance-a,
+    .dominance-b{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-width:0;
+      font-weight:900;
+      color:#111;
+      overflow:hidden;
+      white-space:nowrap;
+    }
+
+    .dominance-note{
+      text-align:center;
+      margin-top:9px;
+      opacity:.75;
+      font-size:.92rem;
+    }
+
+    .meetings-table-wrap{
+      overflow:auto;
+      max-height:520px;
+      border:1px solid var(--border, #444);
+      border-radius:10px;
+    }
+
+    table.meetings{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      font-size:.94rem;
+    }
+
+    table.meetings th,
+    table.meetings td{
+      padding:9px 10px;
+      border-bottom:1px solid rgba(128,128,128,.22);
+      text-align:center;
+      white-space:nowrap;
+    }
+
+    table.meetings th{
+      position:sticky;
+      top:0;
+      z-index:2;
+      background:var(--card, #1a1a1a);
+    }
+
+    .winner-a{ color:var(--team-a-colour); font-weight:900; }
+    .winner-b{ color:var(--team-b-colour); font-weight:900; }
+    .winner-draw{ font-weight:900; opacity:.8; }
+
+    .empty{
+      text-align:center;
+      padding:18px;
+      opacity:.75;
+    }
+
+    .insights{
+      display:grid;
+      gap:9px;
+    }
+
+    .insight{
+      border-left:4px solid rgba(255,255,255,.25);
+      padding:10px 13px;
+      background:rgba(255,255,255,.025);
+      border-radius:0 8px 8px 0;
+      line-height:1.45;
+    }
+
+    @media (max-width:850px){
+      .summary-grid{
+        grid-template-columns:repeat(2, minmax(0,1fr));
+      }
+
+      .stats-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:700px){
+      .compare-profiles{
+        padding:22px 14px 30px;
+      }
+
+      .picker-grid{
+        grid-template-columns:1fr;
+      }
+
+      .versus{
+        display:none;
+      }
+
+
+      .analysis-span-row{
+        justify-content:flex-start;
+      }
+
+      .rating-pair{
+        gap:8px;
+      }
+
+      .rating-number{
+        font-size:1.08rem;
+      }
+
+      .headline{
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .headline-vs{
+        text-align:center;
+      }
+
+      .team-name{
+        font-size:1.35rem;
+      }
+
+      .summary-grid{
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+      }
+
+      .summary-card{
+        padding:13px 9px;
+      }
+
+      .summary-value{
+        font-size:1.15rem;
+      }
+
+      .jr-chart-controls{
+        width:100%;
+      }
+
+      #chart{
+        width:100%;
+        height:432px;
+        min-height:432px;
+      }
+
+      #chart .xtick text,
+      #chart .ytick text{
+        font-size:15px !important;
+      }
+    }
+  
+    .analysis-span-row{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      margin-top:16px;
+      flex-wrap:wrap;
+    }
+
+    .analysis-span-row label{
+      font-weight:800;
+    }
+
+    .analysis-span-row select{
+      padding:9px 11px;
+      border:1px solid var(--border, #444);
+      border-radius:8px;
+      background:#0f1623;
+      color:inherit;
+      font-size:1rem;
+    }
+
+    .rating-pair{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:14px;
+      margin-top:8px;
+    }
+
+    .rating-number{
+      font-size:1.22rem;
+      font-weight:900;
+    }
+
+    .rating-pair .team-a{
+      text-align:right;
+    }
+
+    .rating-pair .team-b{
+      text-align:left;
+    }
+
+    .versus-small{
+      font-size:.9rem;
+      opacity:.72;
+      font-weight:700;
+    }
+
+    .wdl-summary{
+      display:flex;
+      justify-content:center;
+      gap:6px;
+      flex-wrap:wrap;
+      margin-top:7px;
+      font-weight:900;
+      font-size:.96rem;
+    }
+
+    .wdl-summary-pct{
+      margin-top:4px;
+      font-size:.86rem;
+    }
+
+    .wdl-w{ color:#14b85a; }
+    .wdl-d{ color:#f4c430; }
+    .wdl-l{ color:#e53935; }
+
+    .dominance-labels{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:8px;
+      font-weight:900;
+      line-height:1.25;
+    }
+
+    .dominance-labels span{
+      min-width:0;
+      overflow-wrap:anywhere;
+    }
+
+    .dominance-labels span:last-child{
+      text-align:right;
+    }
+
+    .section.graph-section{
+      max-width:1100px;
+    }
+
+    .graph-shell{
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .jr-chart-controls{
+      width:100%;
+      max-width:1100px;
+    }
+
+    #chart{
+      width:100%;
+      max-width:1100px;
+      box-sizing:border-box;
+    }
+
+  
+    .custom-span-controls{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .custom-span-controls[hidden]{
+      display:none !important;
+    }
+
+    .custom-span-controls input{
+      padding:8px 10px;
+      border:1px solid var(--border, #444);
+      border-radius:8px;
+      background:#0f1623;
+      color:inherit;
+      font-size:.95rem;
+    }
+
+    .custom-span-controls label{
+      font-weight:700;
+      opacity:.85;
+    }
+
+  
+    .wdl-summary{
+      min-width:0;
+      white-space:nowrap;
+    }
+
+    .wdl-summary span{
+      flex:0 0 auto;
+    }
+
+    .meetings-table-wrap table.meetings th,
+    .meetings-table-wrap table.meetings td{
+      border-right:1px solid rgba(128,128,128,.18);
+    }
+
+    .meetings-table-wrap table.meetings th:last-child,
+    .meetings-table-wrap table.meetings td:last-child{
+      border-right:0;
+    }
+
+    @media (max-width:700px){
+      .wdl-summary{
+        gap:3px;
+        font-size:.82rem;
+      }
+
+      .wdl-summary-pct{
+        gap:3px;
+        font-size:.72rem;
+        letter-spacing:-.01em;
+      }
+    }
+
+    @media (max-width:430px){
+      .summary-grid{
+        grid-template-columns:1fr;
+      }
+
+      .wdl-summary{
+        font-size:.9rem;
+      }
+
+      .wdl-summary-pct{
+        font-size:.8rem;
+      }
+    }
+
+  
+    .analysis-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .analysis-card,
+    .era-card{
+      border:1px solid var(--border,#444);
+      border-radius:12px;
+      background:rgba(255,255,255,.025);
+      padding:16px;
+    }
+
+    .analysis-title{
+      text-align:center;
+      font-weight:900;
+      font-size:1.08rem;
+      margin-bottom:12px;
+    }
+
+    .recent-block{
+      display:grid;
+      grid-template-columns:62px 1fr;
+      column-gap:10px;
+      row-gap:5px;
+      align-items:center;
+      padding:10px 0;
+      border-top:1px solid rgba(128,128,128,.18);
+    }
+
+    .recent-block:first-of-type{
+      border-top:0;
+    }
+
+    .recent-label{
+      font-weight:900;
+      opacity:.78;
+    }
+
+    .form-sequence{
+      display:flex;
+      flex-wrap:wrap;
+      gap:5px;
+      min-height:25px;
+      align-items:center;
+    }
+
+    .form-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:25px;
+      height:25px;
+      border-radius:50%;
+      color:#111;
+      font-size:.78rem;
+      font-weight:900;
+    }
+
+    .form-pill.win{ background:#14b85a; }
+    .form-pill.draw{ background:#f4c430; }
+    .form-pill.loss{ background:#e53935; }
+
+    .analysis-note{
+      opacity:.72;
+      font-size:.84rem;
+      line-height:1.35;
+    }
+
+    .recent-block .analysis-note{
+      grid-column:2;
+    }
+
+    .record-list{
+      display:grid;
+    }
+
+    .record-row{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      padding:9px 0;
+      border-top:1px solid rgba(128,128,128,.18);
+      align-items:baseline;
+    }
+
+    .record-row:first-child{
+      border-top:0;
+    }
+
+    .record-label{
+      opacity:.76;
+    }
+
+    .record-row strong{
+      text-align:right;
+      font-weight:900;
+    }
+
+    .era-table{
+      display:grid;
+      gap:7px;
+    }
+
+    .era-row{
+      display:grid;
+      grid-template-columns:78px 62px minmax(0,1fr) 62px minmax(0,1fr);
+      gap:10px;
+      align-items:center;
+      padding:8px 0;
+      border-top:1px solid rgba(128,128,128,.16);
+    }
+
+    .era-row:first-child{
+      border-top:0;
+    }
+
+    .era-decade{
+      font-weight:900;
+    }
+
+    .era-value{
+      font-weight:900;
+      text-align:right;
+    }
+
+    .era-bar-track{
+      height:12px;
+      background:rgba(255,255,255,.05);
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .era-bar{
+      height:100%;
+      border-radius:999px;
+    }
+
+    .era-note{
+      margin-top:10px;
+      text-align:center;
+    }
+
+    @media (max-width:850px){
+      .analysis-grid{
+        grid-template-columns:1fr;
+      }
+
+      .era-row{
+        grid-template-columns:68px 56px minmax(0,1fr) 56px minmax(0,1fr);
+      }
+    }
+
+    @media (max-width:520px){
+      .record-row{
+        gap:10px;
+      }
+
+      .record-label{
+        max-width:52%;
+      }
+
+      .era-row{
+        grid-template-columns:58px 46px minmax(0,1fr) 46px minmax(0,1fr);
+        gap:6px;
+      }
+    }
+
+  
+    .signed-positive{
+      color:#14b85a !important;
+      font-weight:900 !important;
+    }
+
+    .signed-negative{
+      color:#e53935 !important;
+      font-weight:900 !important;
+    }
+
+    .signed-zero{
+      color:#f4c430 !important;
+      font-weight:900 !important;
+    }
+
+    .recent-block{
+      grid-template-columns:150px 1fr;
+    }
+
+    .record-row strong.record-stack{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:2px;
+      min-width:0;
+      max-width:62%;
+      line-height:1.2;
+    }
+
+    .record-main{
+      display:block;
+      overflow-wrap:anywhere;
+    }
+
+    .record-sub{
+      display:block;
+      font-size:.78rem;
+      font-weight:700;
+      opacity:.68;
+    }
+
+    .rivalry-decade-head{
+      display:grid;
+      grid-template-columns:90px 1fr;
+      gap:12px;
+      padding:0 0 8px;
+      font-size:.82rem;
+      font-weight:800;
+      opacity:.68;
+    }
+
+    .era-row{
+      grid-template-columns:90px minmax(0,1fr) !important;
+      gap:12px !important;
+    }
+
+    .decade-record-wrap{
+      display:grid;
+      grid-template-columns:minmax(120px,auto) minmax(0,1fr);
+      gap:12px;
+      align-items:center;
+    }
+
+    .decade-record-text{
+      display:flex;
+      gap:8px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .decade-w{ color:#14b85a; }
+    .decade-d{ color:#f4c430; }
+    .decade-l{ color:#e53935; }
+
+    .decade-wdl-bar{
+      display:flex;
+      height:14px;
+      overflow:hidden;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+    }
+
+    .decade-wdl-w{ background:#14b85a; }
+    .decade-wdl-d{ background:#f4c430; }
+    .decade-wdl-l{ background:#e53935; }
+
+    @media (max-width:700px){
+      .recent-block{
+        grid-template-columns:1fr;
+      }
+
+      .recent-block .analysis-note{
+        grid-column:1;
+      }
+
+      .record-row strong.record-stack{
+        max-width:58%;
+      }
+
+      .era-row,
+      .rivalry-decade-head{
+        grid-template-columns:64px 1fr !important;
+      }
+
+      .decade-record-wrap{
+        grid-template-columns:1fr;
+        gap:6px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a href="../../../home/" class="brand-with-logo">
+        <span>J-Ratings <span class="title-football">Snooker</span></span>
+      </a>
+    </h1>
+
+    <nav class="topnav" aria-label="Main">
+      <a href="/index.html">Sports</a>
+      <a href="../../../home/">Home</a>
+      <a href="../../" class="active-tab">Compare</a>
+      <a href="../../../peak/">Peak</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel compare-profiles">
+    <h2>Compare Profiles</h2>
+    
+    <div class="picker">
+      <div class="picker-grid">
+        <div class="team-picker">
+          <label for="teamA">Chosen team</label>
+          <div class="suggest">
+            <input id="teamA" type="text" autocomplete="off" placeholder="Choose team…">
+            <div id="suggestA" class="suggest-list"></div>
+          </div>
+        </div>
+
+        <div class="versus">VS</div>
+
+        <div class="team-picker">
+          <label for="teamB">Compare with</label>
+          <div class="suggest">
+            <input id="teamB" type="text" autocomplete="off" placeholder="Compare with team…">
+            <div id="suggestB" class="suggest-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="analysis-span-row">
+        <label for="analysisSpan">Analysis span:</label>
+        <select id="analysisSpan">
+          <option value="all" selected>Entire period</option>
+          <option value="50">Last 50 years</option>
+          <option value="25">Last 25 years</option>
+          <option value="10">Last 10 years</option>
+          <option value="5">Last 5 years</option>
+          <option value="1">Last year</option>
+          <option value="custom">Custom dates</option>
+        </select>
+
+        <div id="customSpanControls" class="custom-span-controls" hidden>
+          <label for="customStart">From</label>
+          <input id="customStart" type="date">
+          <label for="customEnd">To</label>
+          <input id="customEnd" type="date">
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="swap" class="swap-btn" type="button">Swap</button>
+        <button id="compare" class="compare-btn" type="button">Generate</button>
+      </div>
+    </div>
+
+    <div id="results">
+      <div class="headline">
+        <div id="headA" class="team-head">
+          <div id="nameA" class="team-name">Team 1</div>
+          <div id="subA" class="team-sub">—</div>
+        </div>
+        <div class="headline-vs">VS</div>
+        <div id="headB" class="team-head">
+          <div id="nameB" class="team-name">Team 2</div>
+          <div id="subB" class="team-sub">—</div>
+        </div>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="summary-label">Current Elo</div>
+          <div class="rating-pair">
+            <span id="currentA" class="team-a rating-number">—</span>
+            <span class="versus-small">vs</span>
+            <span id="currentB" class="team-b rating-number">—</span>
+          </div>
+          <div id="currentGap" class="summary-value">—</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-label">Peak Elo</div>
+          <div class="rating-pair">
+            <span id="peakA" class="team-a rating-number">—</span>
+            <span class="versus-small">vs</span>
+            <span id="peakB" class="team-b rating-number">—</span>
+          </div>
+          <div id="peakGap" class="summary-value">—</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-label">Rated Higher</div>
+          <div id="higherLeader" class="summary-value">—</div>
+          <div id="higherPct" class="summary-label">—</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-label">Direct Meetings</div>
+          <div id="meetingCount" class="summary-value">—</div>
+          <div id="meetingSummary" class="wdl-summary">—</div>
+          <div id="meetingPct" class="wdl-summary wdl-summary-pct">—</div>
+        </div>
+      </div>
+
+      <div class="section graph-section">
+        <h3>Rating Comparison</h3>
+        <div class="graph-shell">
+          <div class="jr-chart-controls">
+            <div>
+              <label for="agg">View:</label>
+              <select id="agg">
+                <option value="daily">Daily</option>
+                <option value="weekly" selected>Weekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="quarterly">Quarterly</option>
+                <option value="yearly">Yearly</option>
+                <option value="decade">Decade</option>
+              </select>
+            </div>
+            <div class="range-buttons">
+              <button type="button" class="seg active is-active" data-range="ALL" aria-pressed="true">ALL</button>
+              <button type="button" class="seg" data-range="2000" aria-pressed="false">2000–Present</button>
+              <button type="button" class="seg" data-range="2020" aria-pressed="false">2020–Present</button>
+              <button type="button" class="seg" data-range="LY" aria-pressed="false">Last Year</button>
+              <button type="button" class="seg" data-range="YTD" aria-pressed="false">YTD</button>
+            </div>
+          </div>
+          <div id="chart"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Profile Statistics</h3>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-title">Ratings</div>
+            <div class="stat-row"><span id="liveStatA" class="left team-a">—</span><span class="label">Current</span><span id="liveStatB" class="right team-b">—</span></div>
+            <div class="stat-row"><span id="peakStatA" class="left team-a">—</span><span class="label">Peak</span><span id="peakStatB" class="right team-b">—</span></div>
+            <div class="stat-row"><span id="peakDateA" class="left team-a">—</span><span class="label">Peak date</span><span id="peakDateB" class="right team-b">—</span></div>
+            <div class="stat-row"><span id="oneYearA" class="left team-a">—</span><span class="label">1-year change</span><span id="oneYearB" class="right team-b">—</span></div>
+            <div class="stat-row"><span id="fiveYearA" class="left team-a">—</span><span class="label">5-year change</span><span id="fiveYearB" class="right team-b">—</span></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-title">Historical Edge</div>
+            <div class="stat-row"><span id="daysAheadA" class="left team-a">—</span><span class="label">Periods ahead</span><span id="daysAheadB" class="right team-b">—</span></div>
+            <div class="stat-row"><span id="maxLeadA" class="left team-a">—</span><span class="label">Biggest Elo lead</span><span id="maxLeadB" class="right team-b">—</span></div>
+            <div class="stat-row"><span id="maxLeadDateA" class="left team-a">—</span><span class="label">Lead date</span><span id="maxLeadDateB" class="right team-b">—</span></div>
+            <div class="stat-row"><span id="crossoversA" class="left team-a">—</span><span class="label">Lead changes</span><span id="crossoversB" class="right team-b">—</span></div>
+            <div class="stat-row"><span id="closestGapA" class="left team-a">—</span><span class="label">Closest gap</span><span id="closestGapB" class="right team-b">—</span></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-title">Head-to-Head</div>
+            <div class="stat-row"><span id="winsA" class="left team-a">—</span><span class="label">Wins</span><span id="winsB" class="right team-b">—</span></div>
+            <div class="stat-row"><span id="goalsA" class="left team-a">—</span><span class="label">Goals</span><span id="goalsB" class="right team-b">—</span></div>
+            <div class="stat-row"><span id="largestWinA" class="left team-a">—</span><span class="label">Biggest win</span><span id="largestWinB" class="right team-b">—</span></div>
+            <div class="stat-row"><span id="latestMeetingA" class="left team-a">—</span><span class="label">Latest meeting</span><span id="latestMeetingB" class="right team-b">—</span></div>
+            <div class="stat-row"><span id="drawsA" class="left team-a">—</span><span class="label">Draws</span><span id="drawsB" class="right team-b">—</span></div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="section">
+        <h3>Rivalry Form</h3>
+        <div class="analysis-grid">
+          <div class="analysis-card">
+            <div class="analysis-title">Recent Meetings</div>
+            <div class="recent-block">
+              <div class="recent-label">Last 10 vs opponent</div>
+              <div id="form10" class="form-sequence"></div>
+              <div id="form10Text" class="analysis-note">—</div>
+            </div>
+            <div class="recent-block">
+              <div class="recent-label">Last 10 overall</div>
+              <div id="overall10" class="form-sequence"></div>
+              <div id="overall10Text" class="analysis-note">—</div>
+            </div>
+          </div>
+
+          <div class="analysis-card">
+            <div class="analysis-title">Rivalry Records</div>
+            <div class="record-list">
+              <div class="record-row">
+                <span class="record-label">Longest winning streak</span>
+                <strong id="winStreak">—</strong>
+              </div>
+              <div class="record-row">
+                <span class="record-label">Longest unbeaten run</span>
+                <strong id="unbeatenStreak">—</strong>
+              </div>
+              <div class="record-row">
+                <span class="record-label">Biggest upset win</span>
+                <strong id="biggestUpset">—</strong>
+              </div>
+              <div class="record-row">
+                <span class="record-label">Highest-rated meeting</span>
+                <strong id="highestRatedMeeting">—</strong>
+              </div>
+              <div class="record-row">
+                <span class="record-label">Highest-scoring meeting</span>
+                <strong id="highestScoringMeeting">—</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Rating Extremes</h3>
+        <div class="analysis-grid rating-extremes-grid">
+          <div class="analysis-card">
+            <div class="analysis-title" id="extremeTitleA">Chosen team</div>
+            <div class="record-list">
+              <div class="record-row"><span class="record-label">Best 12-month rise</span><strong id="bestRiseA">—</strong></div>
+              <div class="record-row"><span class="record-label">Worst 12-month fall</span><strong id="worstFallA">—</strong></div>
+              <div class="record-row"><span class="record-label">Best decade average</span><strong id="bestDecadeA">—</strong></div>
+              <div class="record-row"><span class="record-label">Lowest decade average</span><strong id="worstDecadeA">—</strong></div>
+            </div>
+          </div>
+
+          <div class="analysis-card">
+            <div class="analysis-title" id="extremeTitleB">Compared team</div>
+            <div class="record-list">
+              <div class="record-row"><span class="record-label">Best 12-month rise</span><strong id="bestRiseB">—</strong></div>
+              <div class="record-row"><span class="record-label">Worst 12-month fall</span><strong id="worstFallB">—</strong></div>
+              <div class="record-row"><span class="record-label">Best decade average</span><strong id="bestDecadeB">—</strong></div>
+              <div class="record-row"><span class="record-label">Lowest decade average</span><strong id="worstDecadeB">—</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Rivalry by Decade</h3>
+        <div class="era-card">
+          <div class="rivalry-decade-head">
+            <span>Decade</span>
+            <span>Chosen team record</span>
+          </div>
+          <div id="eraTable" class="era-table"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Historical Dominance</h3>
+        <div class="dominance-labels">
+          <span id="domLabelA" class="team-a">—</span>
+          <span id="domLabelB" class="team-b">—</span>
+        </div>
+        <div class="dominance-bar" aria-label="Historical dominance">
+          <div id="domA" class="dominance-a"></div>
+          <div id="domB" class="dominance-b"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Key Insights</h3>
+        <div id="insights" class="insights"></div>
+      </div>
+
+      <div class="section">
+        <h3>Direct Meetings</h3>
+        <div id="meetingsWrap" class="meetings-table-wrap"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const TEAMS_URL = '../../../data/players.json';
+  const HIST_URL = id => `../../../data/history/${encodeURIComponent(id)}.json`;
+  const GAMES_URL = id => `../../../data/games/${encodeURIComponent(id)}.json`;
+  const COLOURS_URL = '../../../team-colours.json';
+
+  let TEAMS = [];
+  let TEAM_COLOURS = {};
+  let compareChart = null;
+  let comparedItems = [];
+
+  function fmtRating(v){
+    return Number.isFinite(v) ? String(Math.round(v)) : '—';
+  }
+
+  function fmtSigned(v){
+    if (!Number.isFinite(v)) return '—';
+    const n = Math.round(v);
+    return n > 0 ? `+${n}` : String(n);
+  }
+
+  function fmtDate(value){
+    const d = new Date(value);
+    if (!Number.isFinite(+d)) return '—';
+    return d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+  }
+
+  function normaliseHistory(hist){
+    return (Array.isArray(hist) ? hist : [])
+      .map(d => ({
+        x: d.date,
+        y: Number(d.rating),
+        tier: d.tier || d.division || d.competition || ''
+      }))
+      .filter(p => p.x && Number.isFinite(p.y))
+      .sort((a,b) => new Date(a.x) - new Date(b.x));
+  }
+
+  function peakPoint(hist){
+    if (!hist.length) return null;
+    return hist.reduce((best,p) => !best || p.y > best.y ? p : best, null);
+  }
+
+  function pointAtOrBefore(hist, targetDate){
+    const t = +targetDate;
+    let best = null;
+    for (const p of hist){
+      const pt = +new Date(p.x);
+      if (pt <= t) best = p;
+      else break;
+    }
+    return best;
+  }
+
+  function changeOverYears(hist, years){
+    if (!hist.length) return NaN;
+    const current = hist[hist.length - 1];
+    const target = new Date(current.x);
+    target.setFullYear(target.getFullYear() - years);
+    const old = pointAtOrBefore(hist, target);
+    return old ? current.y - old.y : NaN;
+  }
+
+  function selectedAnalysisWindow(histories, meetings){
+    const spanValue = document.getElementById('analysisSpan').value;
+
+    const allDates = [];
+    histories.forEach(hist => {
+      (hist || []).forEach(p => {
+        const d = new Date(p.x);
+        if (Number.isFinite(+d)) allDates.push(d);
+      });
+    });
+    (meetings || []).forEach(g => {
+      const d = new Date(g.date);
+      if (Number.isFinite(+d)) allDates.push(d);
+    });
+
+    if (!allDates.length) return { start:null, end:null, spanValue };
+
+    const dataStart = new Date(Math.min(...allDates.map(d => +d)));
+    const dataEnd = new Date(Math.max(...allDates.map(d => +d)));
+
+    if (spanValue === 'custom'){
+      const startRaw = document.getElementById('customStart').value;
+      const endRaw = document.getElementById('customEnd').value;
+
+      const start = startRaw ? new Date(`${startRaw}T00:00:00`) : dataStart;
+      const end = endRaw ? new Date(`${endRaw}T23:59:59`) : dataEnd;
+
+      return {
+        start: +start <= +end ? start : end,
+        end: +start <= +end ? end : start,
+        spanValue
+      };
+    }
+
+    if (spanValue === 'all'){
+      return { start:dataStart, end:dataEnd, spanValue };
+    }
+
+    const years = Number(spanValue);
+    const end = dataEnd;
+    const start = new Date(end);
+    start.setFullYear(start.getFullYear() - years);
+
+    return { start, end, spanValue };
+  }
+
+  function filterHistoryByWindow(hist, windowRange){
+    if (!hist.length || !windowRange?.start || !windowRange?.end) return hist.slice();
+
+    return hist.filter(p => {
+      const d = new Date(p.x);
+      return d >= windowRange.start && d <= windowRange.end;
+    });
+  }
+
+  function filterMeetingsByWindow(meetings, windowRange){
+    if (!meetings.length || !windowRange?.start || !windowRange?.end) return meetings.slice();
+
+    return meetings.filter(g => {
+      const d = new Date(g.date);
+      return d >= windowRange.start && d <= windowRange.end;
+    });
+  }
+
+  function renderWdlSummary(h2h){
+    const total = h2h.winsA + h2h.draws + h2h.winsB;
+
+    const main = [
+      `<span class="wdl-w">W${h2h.winsA}</span>`,
+      `<span class="wdl-d">D${h2h.draws}</span>`,
+      `<span class="wdl-l">L${h2h.winsB}</span>`
+    ].join('<span>–</span>');
+
+    const pct = total
+      ? [
+          `<span class="wdl-w">${(100*h2h.winsA/total).toFixed(1)}%</span>`,
+          `<span class="wdl-d">${(100*h2h.draws/total).toFixed(1)}%</span>`,
+          `<span class="wdl-l">${(100*h2h.winsB/total).toFixed(1)}%</span>`
+        ].join('<span>–</span>')
+      : '—';
+
+    document.getElementById('meetingSummary').innerHTML = main;
+    document.getElementById('meetingPct').innerHTML = pct;
+  }
+
+  function hexToRgb(hex){
+    const m = String(hex || '').trim().match(/^#([0-9a-f]{6})$/i);
+    if (!m) return null;
+    const v = m[1];
+    return { r:parseInt(v.slice(0,2),16), g:parseInt(v.slice(2,4),16), b:parseInt(v.slice(4,6),16) };
+  }
+
+  function rgbToHex(r,g,b){
+    return '#' + [r,g,b].map(v => Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0')).join('');
+  }
+
+  function luminance(rgb){
+    const f = c => {
+      const s = c/255;
+      return s <= .04045 ? s/12.92 : Math.pow((s+.055)/1.055,2.4);
+    };
+    return .2126*f(rgb.r) + .7152*f(rgb.g) + .0722*f(rgb.b);
+  }
+
+  function getDisplayColour(name){
+    const fallback = '#2F80ED';
+    const raw = TEAM_COLOURS[name] || fallback;
+    const rgb = hexToRgb(raw);
+    if (!rgb) return fallback;
+    if (luminance(rgb) >= .05) return raw;
+    return rgbToHex(
+      rgb.r + (255-rgb.r)*.45,
+      rgb.g + (255-rgb.g)*.45,
+      rgb.b + (255-rgb.b)*.45
+    );
+  }
+
+  function attachAutocomplete(input, list){
+    let active = -1;
+
+    function items(){
+      return Array.from(list.querySelectorAll('.suggest-item'));
+    }
+
+    function choose(el){
+      if (!el) return;
+      input.value = el.dataset.name;
+      input.dataset.id = el.dataset.id;
+      list.style.display = 'none';
+      active = -1;
+    }
+
+    function render(rows){
+      active = -1;
+      list.innerHTML = '';
+      if (!rows.length){
+        list.style.display = 'none';
+        return;
+      }
+
+      rows.forEach(team => {
+        const div = document.createElement('div');
+        div.className = 'suggest-item';
+        div.textContent = team.name;
+        div.dataset.name = team.name;
+        div.dataset.id = team.id;
+        div.addEventListener('mousedown', e => {
+          e.preventDefault();
+          choose(div);
+        });
+        list.appendChild(div);
+      });
+
+      list.style.display = 'block';
+    }
+
+    input.addEventListener('input', () => {
+      delete input.dataset.id;
+      const q = input.value.trim().toLowerCase();
+      if (!q){
+        render([]);
+        return;
+      }
+
+      const starts = TEAMS.filter(t => String(t.name).toLowerCase().startsWith(q));
+      const contains = TEAMS.filter(t => !String(t.name).toLowerCase().startsWith(q) && String(t.name).toLowerCase().includes(q));
+      render(starts.concat(contains).slice(0,12));
+    });
+
+    input.addEventListener('keydown', e => {
+      const els = items();
+      if (!els.length) return;
+
+      if (e.key === 'ArrowDown'){
+        e.preventDefault();
+        active = active < els.length - 1 ? active + 1 : 0;
+      } else if (e.key === 'ArrowUp'){
+        e.preventDefault();
+        active = active > 0 ? active - 1 : els.length - 1;
+      } else if (e.key === 'Enter'){
+        e.preventDefault();
+        choose(els[active >= 0 ? active : 0]);
+        return;
+      } else if (e.key === 'Escape'){
+        list.style.display = 'none';
+        return;
+      } else {
+        return;
+      }
+
+      els.forEach((el,i) => el.classList.toggle('is-active', i === active));
+      els[active].scrollIntoView({block:'nearest'});
+    });
+
+    input.addEventListener('blur', () => {
+      setTimeout(() => { list.style.display = 'none'; }, 120);
+    });
+  }
+
+  function resolveTeam(input){
+    if (input.dataset.id){
+      return TEAMS.find(t => String(t.id) === String(input.dataset.id)) || null;
+    }
+
+    const value = input.value.trim().toLowerCase();
+    return TEAMS.find(t => String(t.name).toLowerCase() === value) || null;
+  }
+
+  function scoreFromGame(g){
+    if (Number.isFinite(Number(g.home_score)) && Number.isFinite(Number(g.away_score))){
+      return [Number(g.home_score), Number(g.away_score)];
+    }
+
+    const s = String(g.score || '').trim();
+    const m = s.match(/^(\d+)\s*-\s*(\d+)/);
+    return m ? [Number(m[1]), Number(m[2])] : null;
+  }
+
+  function resultForMeeting(g, teamA, teamB){
+    const score = scoreFromGame(g);
+    if (!score) return 'unknown';
+    const [hg, ag] = score;
+    if (hg === ag) return 'draw';
+    const winner = hg > ag ? g.home : g.away;
+    return winner === teamA ? 'a' : winner === teamB ? 'b' : 'unknown';
+  }
+
+  function directMeetings(games, aName, bName){
+    return (Array.isArray(games) ? games : [])
+      .filter(g => g && g.upcoming !== true)
+      .filter(g =>
+        (g.home === aName && g.away === bName) ||
+        (g.home === bName && g.away === aName)
+      )
+      .sort((a,b) => new Date(b.date) - new Date(a.date));
+  }
+
+  function dedupeMeetings(rows){
+    const seen = new Set();
+    const out = [];
+
+    for (const g of rows){
+      const key = [
+        g.date || '',
+        g.home || '',
+        g.away || '',
+        g.score || '',
+        g.league || g.competition || ''
+      ].join('|');
+
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push(g);
+    }
+    return out;
+  }
+
+  function analyseMeetings(meetings, aName, bName){
+    let winsA=0, winsB=0, draws=0, goalsA=0, goalsB=0;
+    let biggestA=null, biggestB=null;
+
+    for (const g of meetings){
+      const score = scoreFromGame(g);
+      if (!score) continue;
+      const [hg,ag] = score;
+      const aHome = g.home === aName;
+      const aGoals = aHome ? hg : ag;
+      const bGoals = aHome ? ag : hg;
+
+      goalsA += aGoals;
+      goalsB += bGoals;
+
+      if (aGoals > bGoals){
+        winsA++;
+        const margin = aGoals-bGoals;
+        if (!biggestA || margin > biggestA.margin || (margin === biggestA.margin && aGoals > biggestA.for)){
+          biggestA = {margin, for:aGoals, against:bGoals, date:g.date};
+        }
+      } else if (bGoals > aGoals){
+        winsB++;
+        const margin = bGoals-aGoals;
+        if (!biggestB || margin > biggestB.margin || (margin === biggestB.margin && bGoals > biggestB.for)){
+          biggestB = {margin, for:bGoals, against:aGoals, date:g.date};
+        }
+      } else {
+        draws++;
+      }
+    }
+
+    return {winsA,winsB,draws,goalsA,goalsB,biggestA,biggestB};
+  }
+
+  function monthlyComparison(histA, histB){
+    if (!histA.length || !histB.length) return null;
+
+    const start = new Date(Math.max(+new Date(histA[0].x), +new Date(histB[0].x)));
+    const end = new Date(Math.min(+new Date(histA[histA.length-1].x), +new Date(histB[histB.length-1].x)));
+    if (+start > +end) return null;
+
+    const cursor = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), 1));
+    const endMonth = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), 1));
+
+    let aheadA=0, aheadB=0, equal=0, maxA={gap:-Infinity}, maxB={gap:-Infinity};
+    let closest={gap:Infinity};
+    let lastLeader=null, crossovers=0, periods=0;
+
+    while (+cursor <= +endMonth){
+      const pa = pointAtOrBefore(histA, cursor);
+      const pb = pointAtOrBefore(histB, cursor);
+
+      if (pa && pb){
+        periods++;
+        const gap = pa.y-pb.y;
+        const abs = Math.abs(gap);
+
+        if (abs < closest.gap){
+          closest = {gap:abs, date:new Date(cursor), a:pa.y, b:pb.y};
+        }
+
+        let leader='equal';
+        if (gap > 0){
+          leader='a';
+          aheadA++;
+          if (gap > maxA.gap) maxA={gap,date:new Date(cursor)};
+        } else if (gap < 0){
+          leader='b';
+          aheadB++;
+          if (-gap > maxB.gap) maxB={gap:-gap,date:new Date(cursor)};
+        } else {
+          equal++;
+        }
+
+        if (leader !== 'equal'){
+          if (lastLeader && leader !== lastLeader) crossovers++;
+          lastLeader = leader;
+        }
+      }
+
+      cursor.setUTCMonth(cursor.getUTCMonth()+1);
+    }
+
+    return {aheadA,aheadB,equal,periods,maxA,maxB,closest,crossovers,start,end};
+  }
+
+
+  function resultSequence(meetings, aName, bName, n){
+    return meetings.slice(0,n).map(g => resultForMeeting(g,aName,bName));
+  }
+
+  function formCounts(seq){
+    return {
+      w: seq.filter(x => x === 'a').length,
+      d: seq.filter(x => x === 'draw').length,
+      l: seq.filter(x => x === 'b').length
+    };
+  }
+
+  function renderRecentForm(meetings,aName,bName,n,id,textId){
+    const seq = resultSequence(meetings,aName,bName,n);
+    const box = document.getElementById(id);
+    box.innerHTML = '';
+
+    seq.forEach(r => {
+      const pill = document.createElement('span');
+      pill.className = 'form-pill ' + (r === 'a' ? 'win' : r === 'b' ? 'loss' : 'draw');
+      pill.textContent = r === 'a' ? 'W' : r === 'b' ? 'L' : 'D';
+      box.appendChild(pill);
+    });
+
+    const c = formCounts(seq);
+    setText(textId, seq.length ? `${c.w} wins, ${c.d} draws, ${c.l} losses for ${aName}` : 'No meetings in this span.');
+  }
+
+  function generalResultForTeam(g,teamName){
+    const score=scoreFromGame(g);
+    if (!score || (g.home !== teamName && g.away !== teamName)) return 'unknown';
+
+    const [hg,ag]=score;
+    if (hg === ag) return 'draw';
+    const winner=hg > ag ? g.home : g.away;
+    return winner === teamName ? 'a' : 'b';
+  }
+
+  function completedGamesForTeam(games,teamName){
+    return (Array.isArray(games) ? games : [])
+      .filter(g => g && g.upcoming !== true && (g.home === teamName || g.away === teamName) && scoreFromGame(g))
+      .sort((x,y) => new Date(y.date)-new Date(x.date));
+  }
+
+  function renderOverallForm(games,teamName,n,id,textId){
+    const rows=completedGamesForTeam(games,teamName).slice(0,n);
+    const seq=rows.map(g => generalResultForTeam(g,teamName));
+    const box=document.getElementById(id);
+    box.innerHTML='';
+
+    seq.forEach(r => {
+      const pill=document.createElement('span');
+      pill.className='form-pill ' + (r === 'a' ? 'win' : r === 'b' ? 'loss' : 'draw');
+      pill.textContent=r === 'a' ? 'W' : r === 'b' ? 'L' : 'D';
+      box.appendChild(pill);
+    });
+
+    const c=formCounts(seq);
+    setText(textId,seq.length ? `${c.w} wins, ${c.d} draws, ${c.l} losses` : 'No completed matches in this span.');
+  }
+
+  function longestRuns(meetings,aName,bName){
+    // meetings are newest-first; reverse for chronological run calculation.
+    const seq = meetings.slice().reverse().map(g => resultForMeeting(g,aName,bName));
+    let win=0,bestWin=0,unbeaten=0,bestUnbeaten=0;
+
+    for (const r of seq){
+      if (r === 'a'){
+        win++;
+        unbeaten++;
+      } else if (r === 'draw'){
+        win=0;
+        unbeaten++;
+      } else if (r === 'b'){
+        win=0;
+        unbeaten=0;
+      } else {
+        win=0;
+        unbeaten=0;
+      }
+      bestWin=Math.max(bestWin,win);
+      bestUnbeaten=Math.max(bestUnbeaten,unbeaten);
+    }
+
+    return {bestWin,bestUnbeaten};
+  }
+
+  function gameTeamElos(g,aName,bName){
+    const homeElo=Number(g.homeElo);
+    const awayElo=Number(g.awayElo);
+    if (!Number.isFinite(homeElo) || !Number.isFinite(awayElo)) return null;
+
+    if (g.home === aName && g.away === bName) return {a:homeElo,b:awayElo};
+    if (g.home === bName && g.away === aName) return {a:awayElo,b:homeElo};
+    return null;
+  }
+
+  function rivalryHighlights(meetings,aName,bName){
+    let biggestUpset=null;
+    let highestRated=null;
+    let highestScoring=null;
+
+    for (const g of meetings){
+      const score=scoreFromGame(g);
+      const elos=gameTeamElos(g,aName,bName);
+      const result=resultForMeeting(g,aName,bName);
+
+      if (score){
+        const total=score[0]+score[1];
+        if (!highestScoring || total > highestScoring.total){
+          highestScoring={g,total,score};
+        }
+      }
+
+      if (elos){
+        const combined=elos.a+elos.b;
+        if (!highestRated || combined > highestRated.combined){
+          highestRated={g,combined,elos};
+        }
+
+        const winnerElo=result === 'a' ? elos.a : result === 'b' ? elos.b : NaN;
+        const loserElo=result === 'a' ? elos.b : result === 'b' ? elos.a : NaN;
+        if (Number.isFinite(winnerElo) && Number.isFinite(loserElo) && winnerElo < loserElo){
+          const upsetGap=loserElo-winnerElo;
+          if (!biggestUpset || upsetGap > biggestUpset.gap){
+            biggestUpset={g,gap:upsetGap,result};
+          }
+        }
+      }
+    }
+
+    return {biggestUpset,highestRated,highestScoring};
+  }
+
+  function rollingYearExtremes(hist){
+    if (hist.length < 2) return {best:null,worst:null};
+
+    let best=null,worst=null;
+    for (const p of hist){
+      const d=new Date(p.x);
+      const priorTarget=new Date(d);
+      priorTarget.setFullYear(priorTarget.getFullYear()-1);
+      const old=pointAtOrBefore(hist,priorTarget);
+      if (!old) continue;
+
+      const change=p.y-old.y;
+      if (!best || change > best.change) best={change,date:p.x};
+      if (!worst || change < worst.change) worst={change,date:p.x};
+    }
+    return {best,worst};
+  }
+
+  function decadeAverages(hist){
+    const buckets=new Map();
+    hist.forEach(p => {
+      const y=new Date(p.x).getFullYear();
+      if (!Number.isFinite(y)) return;
+      const decade=Math.floor(y/10)*10;
+      if (!buckets.has(decade)) buckets.set(decade,[]);
+      buckets.get(decade).push(p.y);
+    });
+
+    return [...buckets.entries()]
+      .map(([decade,vals]) => ({
+        decade,
+        avg: vals.reduce((a,b)=>a+b,0)/vals.length,
+        n: vals.length
+      }))
+      .sort((a,b)=>a.decade-b.decade);
+  }
+
+  function decadeExtremes(hist){
+    const rows=decadeAverages(hist);
+    if (!rows.length) return {best:null,worst:null};
+    return {
+      best: rows.reduce((a,b)=>!a || b.avg>a.avg ? b:a,null),
+      worst: rows.reduce((a,b)=>!a || b.avg<a.avg ? b:a,null)
+    };
+  }
+
+  function renderRivalryByDecade(meetings,aName,bName){
+    const buckets=new Map();
+
+    meetings.slice().reverse().forEach(g => {
+      const year=new Date(g.date).getFullYear();
+      if (!Number.isFinite(year)) return;
+      const decade=Math.floor(year/10)*10;
+      if (!buckets.has(decade)) buckets.set(decade,{w:0,d:0,l:0});
+      const row=buckets.get(decade);
+      const result=resultForMeeting(g,aName,bName);
+      if (result === 'a') row.w++;
+      else if (result === 'draw') row.d++;
+      else if (result === 'b') row.l++;
+    });
+
+    const box=document.getElementById('eraTable');
+    box.innerHTML='';
+
+    const decades=[...buckets.keys()].sort((a,b)=>a-b);
+    if (!decades.length){
+      box.innerHTML='<div class="empty">No direct meetings in this span.</div>';
+      return;
+    }
+
+    decades.forEach(decade => {
+      const stats=buckets.get(decade);
+      const total=stats.w+stats.d+stats.l;
+
+      const row=document.createElement('div');
+      row.className='era-row';
+
+      const decadeEl=document.createElement('div');
+      decadeEl.className='era-decade';
+      decadeEl.textContent=`${decade}s`;
+
+      const wrap=document.createElement('div');
+      wrap.className='decade-record-wrap';
+
+      const record=document.createElement('div');
+      record.className='decade-record-text';
+      record.innerHTML=`<span class="decade-w">W${stats.w}</span><span class="decade-d">D${stats.d}</span><span class="decade-l">L${stats.l}</span>`;
+
+      const bar=document.createElement('div');
+      bar.className='decade-wdl-bar';
+
+      [['w','decade-wdl-w'],['d','decade-wdl-d'],['l','decade-wdl-l']].forEach(([key,cls]) => {
+        if (!stats[key]) return;
+        const seg=document.createElement('div');
+        seg.className=cls;
+        // flex-grow uses the exact counts, so the bar always fills completely.
+        seg.style.flexGrow=String(stats[key]);
+        seg.style.flexBasis='0';
+        bar.appendChild(seg);
+      });
+
+      wrap.appendChild(record);
+      wrap.appendChild(bar);
+      row.appendChild(decadeEl);
+      row.appendChild(wrap);
+      box.appendChild(row);
+    });
+  }
+
+  function formatMeetingLabel(g){
+    if (!g) return '—';
+    const score=scoreFromGame(g);
+    const scoreText=score ? `${score[0]}-${score[1]}` : (g.score || '');
+    return `${fmtDate(g.date)}${scoreText ? ` (${scoreText})` : ''}`;
+  }
+
+  function setSignedText(id, value, suffix = ''){
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    el.classList.remove('signed-positive','signed-negative','signed-zero');
+
+    if (!Number.isFinite(value)) {
+      el.textContent='—';
+      return;
+    }
+
+    const rounded=Math.round(value);
+    el.textContent=`${rounded > 0 ? '+' : ''}${rounded}${suffix}`;
+    el.classList.add(rounded > 0 ? 'signed-positive' : rounded < 0 ? 'signed-negative' : 'signed-zero');
+  }
+
+  function setText(id, value){
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  }
+
+
+  function colourDistance(hexA, hexB){
+    const a = hexToRgb(hexA);
+    const b = hexToRgb(hexB);
+    if (!a || !b) return Infinity;
+
+    return Math.sqrt(
+      Math.pow(a.r-b.r,2) +
+      Math.pow(a.g-b.g,2) +
+      Math.pow(a.b-b.b,2)
+    );
+  }
+
+  function comparisonColour(chosenColour, comparisonName){
+    const own = getDisplayColour(comparisonName);
+
+    // Keep the comparison team's own colour whenever it is visually distinct.
+    if (colourDistance(chosenColour, own) >= 115) return own;
+
+    // Otherwise use a stable contrasting J-Ratings colour.
+    const fallbacks = ['#17becf', '#ff7f0e', '#9467bd', '#2ca02c', '#bcbd22'];
+    return fallbacks
+      .map(c => ({ c, d: colourDistance(chosenColour, c) }))
+      .sort((x,y) => y.d-x.d)[0].c;
+  }
+
+  function setColours(a,b){
+    const ca = getDisplayColour(a);
+    const cb = comparisonColour(ca, b);
+
+    document.documentElement.style.setProperty('--team-a-colour', ca);
+    document.documentElement.style.setProperty('--team-b-colour', cb);
+    document.getElementById('headA').style.setProperty('--team-colour', ca);
+    document.getElementById('headB').style.setProperty('--team-colour', cb);
+
+    document.getElementById('domA').style.background = ca;
+    document.getElementById('domB').style.background = cb;
+
+    return { chosen: ca, compared: cb };
+  }
+
+  function renderMeetingTable(meetings, aName, bName){
+    const wrap = document.getElementById('meetingsWrap');
+
+    if (!meetings.length){
+      wrap.innerHTML = '<div class="empty">No direct meetings found in the current J-Ratings match data.</div>';
+      return;
+    }
+
+    const table = document.createElement('table');
+    table.className = 'meetings';
+
+    const thead = document.createElement('thead');
+    const hr = document.createElement('tr');
+    ['Date','Competition','Home','Score','Away','Winner'].forEach(h => {
+      const th = document.createElement('th');
+      th.textContent = h;
+      hr.appendChild(th);
+    });
+    thead.appendChild(hr);
+    table.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+
+    meetings.forEach(g => {
+      const tr = document.createElement('tr');
+      const r = resultForMeeting(g,aName,bName);
+      const winner = r === 'a' ? aName : r === 'b' ? bName : r === 'draw' ? 'Draw' : '—';
+      const winnerClass = r === 'a' ? 'winner-a' : r === 'b' ? 'winner-b' : r === 'draw' ? 'winner-draw' : '';
+
+      const values = [
+        fmtDate(g.date),
+        g.league || g.competition || '',
+        g.home || '',
+        g.score || (scoreFromGame(g) ? scoreFromGame(g).join('-') : ''),
+        g.away || '',
+        winner
+      ];
+
+      values.forEach((v,i) => {
+        const td = document.createElement('td');
+        td.textContent = v;
+        if (i === 5) td.className = winnerClass;
+        tr.appendChild(td);
+      });
+
+      tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    wrap.innerHTML = '';
+    wrap.appendChild(table);
+  }
+
+  function renderInsights(a,b,histA,histB,comp,h2h){
+    const box = document.getElementById('insights');
+    box.innerHTML = '';
+
+    const liveA = histA.length ? histA[histA.length-1].y : NaN;
+    const liveB = histB.length ? histB[histB.length-1].y : NaN;
+    const peakA = peakPoint(histA);
+    const peakB = peakPoint(histB);
+    const insights = [];
+
+    if (Number.isFinite(liveA) && Number.isFinite(liveB)){
+      const leader = liveA >= liveB ? a.name : b.name;
+      insights.push(`${leader} currently leads the Elo comparison by ${Math.round(Math.abs(liveA-liveB))} points.`);
+    }
+
+    if (peakA && peakB){
+      const leader = peakA.y >= peakB.y ? a.name : b.name;
+      insights.push(`${leader} has the higher all-time peak in the available history: ${Math.round(Math.max(peakA.y,peakB.y))}.`);
+    }
+
+    if (comp && comp.periods){
+      const leader = comp.aheadA >= comp.aheadB ? a.name : b.name;
+      const decidedPeriods = comp.aheadA + comp.aheadB;
+      const pct = decidedPeriods ? 100 * Math.max(comp.aheadA,comp.aheadB) / decidedPeriods : 50;
+      insights.push(`${leader} was rated higher in ${pct.toFixed(1)}% of comparable monthly snapshots.`);
+      insights.push(`The rating lead changed hands ${comp.crossovers} time${comp.crossovers === 1 ? '' : 's'} across the shared history.`);
+    }
+
+    if (h2h.winsA + h2h.winsB + h2h.draws){
+      const leader = h2h.winsA === h2h.winsB ? null : (h2h.winsA > h2h.winsB ? a.name : b.name);
+      if (leader){
+        insights.push(`${leader} leads the direct-match record in the loaded data.`);
+      } else {
+        insights.push(`The teams are level on direct-match wins in the loaded data.`);
+      }
+    }
+
+    insights.slice(0,6).forEach(text => {
+      const div = document.createElement('div');
+      div.className = 'insight';
+      div.textContent = text;
+      box.appendChild(div);
+    });
+  }
+
+  async function compareProfiles(){
+    const inputA = document.getElementById('teamA');
+    const inputB = document.getElementById('teamB');
+    const a = resolveTeam(inputA);
+    const b = resolveTeam(inputB);
+
+    if (!a || !b){
+      alert('Please select two valid teams.');
+      return;
+    }
+
+    if (String(a.id) === String(b.id)){
+      alert('Please select two different teams.');
+      return;
+    }
+
+    document.getElementById('compare').disabled = true;
+    document.getElementById('compare').textContent = 'Loading…';
+
+    try{
+      const [haRes,hbRes,gaRes] = await Promise.all([
+        fetch(HIST_URL(a.id), {cache:'no-cache'}),
+        fetch(HIST_URL(b.id), {cache:'no-cache'}),
+        fetch(GAMES_URL(a.id), {cache:'no-cache'})
+      ]);
+
+      if (!haRes.ok || !hbRes.ok) throw new Error('History data could not be loaded.');
+
+      const [ha,hb,ga] = await Promise.all([
+        haRes.json(),
+        hbRes.json(),
+        gaRes.ok ? gaRes.json() : []
+      ]);
+
+      const fullHistA = normaliseHistory(ha);
+      const fullHistB = normaliseHistory(hb);
+      // One team's games file already contains every direct meeting, so there is no need
+      // to download the comparison team's full games history as well.
+      const fullMeetings = dedupeMeetings(directMeetings(ga,a.name,b.name));
+
+      const analysisWindow = selectedAnalysisWindow([fullHistA, fullHistB], fullMeetings);
+      const histA = filterHistoryByWindow(fullHistA, analysisWindow);
+      const histB = filterHistoryByWindow(fullHistB, analysisWindow);
+      const allMeetings = filterMeetingsByWindow(fullMeetings, analysisWindow);
+
+      const h2h = analyseMeetings(allMeetings,a.name,b.name);
+      const comp = monthlyComparison(histA,histB);
+      const pa = peakPoint(histA);
+      const pb = peakPoint(histB);
+      const liveA = histA.length ? histA[histA.length-1].y : NaN;
+      const liveB = histB.length ? histB[histB.length-1].y : NaN;
+
+      const displayColours = setColours(a.name,b.name);
+
+      setText('nameA',a.name);
+      setText('nameB',b.name);
+      setText('subA', histA.length ? `Analysed from ${fmtDate(histA[0].x)}` : 'No history');
+      setText('subB', histB.length ? `Analysed from ${fmtDate(histB[0].x)}` : 'No history');
+
+      setText('currentA',fmtRating(liveA));
+      setText('currentB',fmtRating(liveB));
+      if (Number.isFinite(liveA) && Number.isFinite(liveB)) {
+        const gap = Math.round(Math.abs(liveA-liveB));
+        if (gap === 0) {
+          setText('currentGap', 'Level on Elo');
+        } else {
+          const leader = liveA > liveB ? a.name : b.name;
+          setText('currentGap', `${leader} higher by ${gap} Elo`);
+        }
+      } else {
+        setText('currentGap', '—');
+      }
+
+      setText('peakA',pa ? fmtRating(pa.y) : '—');
+      setText('peakB',pb ? fmtRating(pb.y) : '—');
+      if (pa && pb) {
+        const gap = Math.round(Math.abs(pa.y-pb.y));
+        if (gap === 0) {
+          setText('peakGap', 'Level on peak Elo');
+        } else {
+          const leader = pa.y > pb.y ? a.name : b.name;
+          setText('peakGap', `${leader} higher by ${gap} Elo`);
+        }
+      } else {
+        setText('peakGap', '—');
+      }
+
+      if (comp && comp.periods){
+        const leader = comp.aheadA >= comp.aheadB ? a.name : b.name;
+        const decidedPeriods = comp.aheadA + comp.aheadB;
+        const pct = decidedPeriods ? 100 * Math.max(comp.aheadA,comp.aheadB) / decidedPeriods : 50;
+        setText('higherLeader',leader);
+        setText('higherPct',`${pct.toFixed(1)}% of comparable months`);
+      } else {
+        setText('higherLeader','—');
+        setText('higherPct','No overlapping history');
+      }
+
+      const meetingsTotal = h2h.winsA+h2h.winsB+h2h.draws;
+      setText('meetingCount',String(meetingsTotal));
+      if (meetingsTotal) {
+        renderWdlSummary(h2h);
+      } else {
+        document.getElementById('meetingSummary').innerHTML = '—';
+        document.getElementById('meetingPct').innerHTML = '—';
+      }
+
+      setText('liveStatA',fmtRating(liveA));
+      setText('liveStatB',fmtRating(liveB));
+      setText('peakStatA',pa ? fmtRating(pa.y) : '—');
+      setText('peakStatB',pb ? fmtRating(pb.y) : '—');
+      setText('peakDateA',pa ? fmtDate(pa.x) : '—');
+      setText('peakDateB',pb ? fmtDate(pb.x) : '—');
+      setSignedText('oneYearA',changeOverYears(histA,1));
+      setSignedText('oneYearB',changeOverYears(histB,1));
+      setSignedText('fiveYearA',changeOverYears(histA,5));
+      setSignedText('fiveYearB',changeOverYears(histB,5));
+
+      if (comp){
+        const decidedPeriods = comp.aheadA + comp.aheadB;
+        const pctA = decidedPeriods ? 100*comp.aheadA/decidedPeriods : 50;
+        const pctB = decidedPeriods ? 100*comp.aheadB/decidedPeriods : 50;
+
+        setText('daysAheadA',`${pctA.toFixed(1)}%`);
+        setText('daysAheadB',`${pctB.toFixed(1)}%`);
+        setText('maxLeadA',Number.isFinite(comp.maxA.gap) ? `${Math.round(comp.maxA.gap)}` : '—');
+        setText('maxLeadB',Number.isFinite(comp.maxB.gap) ? `${Math.round(comp.maxB.gap)}` : '—');
+        setText('maxLeadDateA',comp.maxA.date ? fmtDate(comp.maxA.date) : '—');
+        setText('maxLeadDateB',comp.maxB.date ? fmtDate(comp.maxB.date) : '—');
+        setText('crossoversA',String(comp.crossovers));
+        setText('crossoversB',String(comp.crossovers));
+        setText('closestGapA',Number.isFinite(comp.closest.gap) ? `${Math.round(comp.closest.gap)}` : '—');
+        setText('closestGapB',Number.isFinite(comp.closest.gap) ? `${Math.round(comp.closest.gap)}` : '—');
+
+        const widthA = comp.periods ? 100*comp.aheadA/comp.periods : 50;
+        const widthB = comp.periods ? 100*comp.aheadB/comp.periods : 50;
+        document.getElementById('domA').style.width = `${widthA}%`;
+        document.getElementById('domB').style.width = `${widthB}%`;
+        setText('domLabelA',`${a.name} ${widthA.toFixed(1)}%`);
+        setText('domLabelB',`${b.name} ${widthB.toFixed(1)}%`);
+      } else {
+        ['daysAheadA','daysAheadB','maxLeadA','maxLeadB','maxLeadDateA','maxLeadDateB','crossoversA','crossoversB','closestGapA','closestGapB'].forEach(id => setText(id,'—'));
+        document.getElementById('domA').style.width='50%';
+        document.getElementById('domB').style.width='50%';
+        setText('domLabelA',a.name);
+        setText('domLabelB',b.name);
+      }
+
+      setText('winsA',String(h2h.winsA));
+      setText('winsB',String(h2h.winsB));
+      setText('goalsA',String(h2h.goalsA));
+      setText('goalsB',String(h2h.goalsB));
+      setText('drawsA',String(h2h.draws));
+      setText('drawsB',String(h2h.draws));
+      setText('largestWinA',h2h.biggestA ? `${h2h.biggestA.for}-${h2h.biggestA.against}` : '—');
+      setText('largestWinB',h2h.biggestB ? `${h2h.biggestB.for}-${h2h.biggestB.against}` : '—');
+
+      if (allMeetings.length){
+        const latest = allMeetings[0];
+        const sc = scoreFromGame(latest);
+        const aHome = latest.home === a.name;
+        setText('latestMeetingA',sc ? `${aHome ? sc[0] : sc[1]}` : fmtDate(latest.date));
+        setText('latestMeetingB',sc ? `${aHome ? sc[1] : sc[0]}` : fmtDate(latest.date));
+      } else {
+        setText('latestMeetingA','—');
+        setText('latestMeetingB','—');
+      }
+
+      // Rivalry form and records
+      renderRecentForm(allMeetings,a.name,b.name,10,'form10','form10Text');
+      renderOverallForm(ga,a.name,10,'overall10','overall10Text');
+
+      const runs=longestRuns(allMeetings,a.name,b.name);
+      setText('winStreak',runs.bestWin ? `${runs.bestWin} by ${a.name}` : '—');
+      setText('unbeatenStreak',runs.bestUnbeaten ? `${runs.bestUnbeaten} by ${a.name}` : '—');
+
+      const highlights=rivalryHighlights(allMeetings,a.name,b.name);
+      const upsetEl=document.getElementById('biggestUpset');
+      upsetEl.classList.add('record-stack');
+      if (highlights.biggestUpset){
+        const winner=highlights.biggestUpset.result === 'a' ? a.name : b.name;
+        upsetEl.innerHTML=`<span class="record-main">${winner} · ${Math.round(highlights.biggestUpset.gap)} Elo</span><span class="record-sub">${fmtDate(highlights.biggestUpset.g.date)}</span>`;
+      } else {
+        upsetEl.innerHTML='<span class="record-main">No upset found</span>';
+      }
+
+      const highestRatedEl=document.getElementById('highestRatedMeeting');
+      const highestScoringEl=document.getElementById('highestScoringMeeting');
+      highestRatedEl.classList.add('record-stack');
+      highestScoringEl.classList.add('record-stack');
+
+      if (highlights.highestRated){
+        highestRatedEl.innerHTML=`<span class="record-main">${Math.round(highlights.highestRated.elos.a)} vs ${Math.round(highlights.highestRated.elos.b)}</span><span class="record-sub">${fmtDate(highlights.highestRated.g.date)}</span>`;
+      } else {
+        highestRatedEl.innerHTML='<span class="record-main">—</span>';
+      }
+
+      if (highlights.highestScoring){
+        const hs=highlights.highestScoring;
+        const score=scoreFromGame(hs.g);
+        highestScoringEl.innerHTML=`<span class="record-main">${score ? `${score[0]}-${score[1]}` : (hs.g.score || '—')}</span><span class="record-sub">${fmtDate(hs.g.date)}</span>`;
+      } else {
+        highestScoringEl.innerHTML='<span class="record-main">—</span>';
+      }
+
+      // Rating extremes
+      const rollA=rollingYearExtremes(histA);
+      const rollB=rollingYearExtremes(histB);
+      const decA=decadeExtremes(histA);
+      const decB=decadeExtremes(histB);
+
+      setText('extremeTitleA',a.name);
+      setText('extremeTitleB',b.name);
+      const bestRiseAEl=document.getElementById('bestRiseA');
+      const bestRiseBEl=document.getElementById('bestRiseB');
+      const worstFallAEl=document.getElementById('worstFallA');
+      const worstFallBEl=document.getElementById('worstFallB');
+
+      bestRiseAEl.innerHTML=rollA.best ? `<span class="signed-positive">${fmtSigned(rollA.best.change)}</span> · ${fmtDate(rollA.best.date)}` : '—';
+      bestRiseBEl.innerHTML=rollB.best ? `<span class="signed-positive">${fmtSigned(rollB.best.change)}</span> · ${fmtDate(rollB.best.date)}` : '—';
+      worstFallAEl.innerHTML=rollA.worst ? `<span class="signed-negative">${fmtSigned(rollA.worst.change)}</span> · ${fmtDate(rollA.worst.date)}` : '—';
+      worstFallBEl.innerHTML=rollB.worst ? `<span class="signed-negative">${fmtSigned(rollB.worst.change)}</span> · ${fmtDate(rollB.worst.date)}` : '—';
+      setText('bestDecadeA',decA.best ? `${decA.best.decade}s · ${Math.round(decA.best.avg)}` : '—');
+      setText('bestDecadeB',decB.best ? `${decB.best.decade}s · ${Math.round(decB.best.avg)}` : '—');
+      setText('worstDecadeA',decA.worst ? `${decA.worst.decade}s · ${Math.round(decA.worst.avg)}` : '—');
+      setText('worstDecadeB',decB.worst ? `${decB.worst.decade}s · ${Math.round(decB.worst.avg)}` : '—');
+
+      renderRivalryByDecade(allMeetings,a.name,b.name);
+
+      comparedItems = [
+        {
+          name:a.name,
+          colour:displayColours.chosen,
+          raw:histA,
+          customData:p => p.tier || '',
+          hovertemplate:`%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>${a.name}</extra>`
+        },
+        {
+          name:b.name,
+          colour:displayColours.compared,
+          raw:histB,
+          customData:p => p.tier || '',
+          hovertemplate:`%{x|%d %b %Y}<br>%{y:.0f} Rating<extra>${b.name}</extra>`
+        }
+      ];
+
+      await compareChart.render(comparedItems);
+      compareChart.setRange('ALL');
+      renderInsights(a,b,histA,histB,comp,h2h);
+      renderMeetingTable(allMeetings,a.name,b.name);
+
+      document.getElementById('results').style.display='block';
+      document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+    } catch(e){
+      console.error(e);
+      alert(e.message || 'Could not build comparison.');
+    } finally {
+      document.getElementById('compare').disabled = false;
+      document.getElementById('compare').textContent = 'Generate';
+    }
+  }
+
+  async function init(){
+    compareChart = JRGraph.createChart({
+      chartId:'chart',
+      aggId:'agg',
+      controlsEl:document.querySelector('.jr-chart-controls'),
+      defaultRange:'ALL',
+      getItems:() => comparedItems
+    });
+
+    const [teamsRes,coloursRes] = await Promise.all([
+      fetch(TEAMS_URL,{cache:'no-cache'}),
+      fetch(COLOURS_URL,{cache:'no-cache'}).catch(() => null)
+    ]);
+
+    if (!teamsRes.ok) throw new Error('players.json not found');
+    TEAMS = await teamsRes.json();
+
+    if (coloursRes && coloursRes.ok){
+      TEAM_COLOURS = await coloursRes.json();
+    }
+
+    attachAutocomplete(document.getElementById('teamA'),document.getElementById('suggestA'));
+    attachAutocomplete(document.getElementById('teamB'),document.getElementById('suggestB'));
+
+    document.getElementById('compare').addEventListener('click',compareProfiles);
+
+    document.getElementById('analysisSpan').addEventListener('change',() => {
+      const isCustom = document.getElementById('analysisSpan').value === 'custom';
+      document.getElementById('customSpanControls').hidden = !isCustom;
+    });
+
+    document.getElementById('swap').addEventListener('click',() => {
+      const a=document.getElementById('teamA');
+      const b=document.getElementById('teamB');
+      const av=a.value, aid=a.dataset.id;
+      a.value=b.value;
+      if (b.dataset.id) a.dataset.id=b.dataset.id; else delete a.dataset.id;
+      b.value=av;
+      if (aid) b.dataset.id=aid; else delete b.dataset.id;
+    });
+
+    [document.getElementById('teamA'),document.getElementById('teamB')].forEach(input => {
+      input.addEventListener('keydown',e => {
+        if (e.key === 'Enter' && document.getElementById('teamA').value && document.getElementById('teamB').value){
+          setTimeout(compareProfiles,0);
+        }
+      });
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded',() => {
+    init().catch(e => {
+      console.error(e);
+      alert('Could not load comparison data.');
+    });
+  });
+</script>
+</body>
+</html>

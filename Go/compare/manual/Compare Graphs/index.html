@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JXCC4EDPY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1JXCC4EDPY');
+  </script>
+
+  <meta charset="utf-8">
+  <title>J-Ratings: Go Compare Graphs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../../../style.css">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+  <style>
+
+    .controls{
+      width:min(900px, 92%);
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      padding:28px 24px 24px;
+      border-bottom:1px solid var(--border, #444);
+    }
+
+    #rows{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      width:100%;
+    }
+
+    #rows .row{
+      max-width:760px;
+      margin:0 auto;
+    }
+
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      width:100%;
+    }
+
+    .row input[type="text"]{
+      flex:1;
+      min-width:220px;
+      padding:13px 14px;
+      border-radius:9px;
+      border:1px solid var(--border, #444);
+      background:#0f1623;
+      color:var(--text, inherit);
+      font-size:1.05rem;
+    }
+
+    .btn{
+      background:#0f1623;
+      border:1px solid var(--border, #444);
+      color:var(--text, inherit);
+      padding:11px 16px;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:1.05rem;
+    }
+
+    .btn:hover{ background:rgba(255,255,255,.05); }
+
+    .compare-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .create-row{
+      display:flex;
+      justify-content:center;
+    }
+
+    .create-btn{
+      min-width:150px;
+      font-weight:700;
+    }
+
+    .compare-view{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      padding-top:2px;
+    }
+
+    .compare-view label{ font-size:1.05rem; }
+
+    .compare-view select{
+      font-size:1.05rem;
+      padding:10px 12px;
+    }
+
+    .range-buttons{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .range-buttons button{
+      font-size:1rem;
+      padding:9px 12px;
+    }
+
+    .suggest{
+      position:relative;
+      flex:1;
+    }
+
+    .suggest-list{
+      position:absolute;
+      left:0;
+      right:0;
+      top:100%;
+      max-height:220px;
+      overflow:auto;
+      margin-top:4px;
+      border:1px solid var(--border, #444);
+      background:#0f1623;
+      border-radius:6px;
+      display:none;
+      z-index:20;
+    }
+
+    .suggest-item{
+      padding:8px 10px;
+      cursor:pointer;
+    }
+
+    .suggest-item:hover,
+    .suggest-item.is-active{
+      background:rgba(255,255,255,.08);
+    }
+
+    #chart{
+      width:min(1100px, 92%);
+      margin:0 auto;
+      height:560px;
+    }
+
+    @media (max-width:700px){
+      .controls{
+        width:100%;
+        padding:18px 14px 20px;
+        gap:16px;
+      }
+
+      #rows .row{
+        max-width:none;
+        margin:0;
+      }
+
+      .row{
+        gap:8px;
+        align-items:stretch;
+      }
+
+      .row input[type="text"]{
+        min-width:0;
+        padding:10px 12px;
+        font-size:1rem;
+      }
+
+      .row .suggest{ min-width:0; }
+      .row .btn{ flex:0 0 auto; }
+
+      .btn{
+        padding:9px 12px;
+        font-size:1rem;
+      }
+
+      .compare-actions,
+      .create-row{
+        justify-content:center;
+      }
+
+      .create-btn{ min-width:140px; }
+
+      .compare-view{
+        justify-content:flex-start;
+      }
+
+      .range-buttons{
+        justify-content:flex-start;
+      }
+
+      .range-buttons button{
+        padding:8px 10px;
+        font-size:.95rem;
+      }
+
+      #chart{
+        width:100%;
+        height:460px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a id="home-link" href="../../../home/" class="brand-with-logo">
+        <span>J-Ratings <span class="title-football">Go</span></span>
+        <img src="/Go Banner Logo.png" alt="Football logo" class="sport-logo">
+      </a>
+    </h1>
+
+    <nav class="topnav" aria-label="Main">
+      <a href="/index.html">Sports</a>
+      <a href="../../../home/">Home</a>
+      <a href="../../" class="active-tab">Compare</a>
+      <a href="../../../peak/">Peak</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <h2>Compare Graphs</h2>
+
+    <div class="controls">
+      <div id="rows"></div>
+
+      <div class="compare-actions">
+        <button id="add" class="btn" type="button">Add team</button>
+        <button id="clear" class="btn" type="button">Clear</button>
+      </div>
+
+      <div class="create-row">
+        <button id="create" class="btn create-btn" type="button">Create</button>
+      </div>
+
+      <div class="compare-view">
+        <label for="agg">View:</label>
+        <select id="agg">
+              <option value="daily">Daily</option>
+              <option value="monthly" selected>Monthly</option>
+              <option value="yearly">Yearly</option>
+            </select>
+        <div class="range-buttons">
+            <button type="button" class="range-btn is-active" data-since="">All</button>
+            <button type="button" class="range-btn" data-since="2000">Since 2000</button>
+            <button type="button" class="range-btn" data-since="2020">Since 2020</button>
+          </div>
+      </div>
+    </div>
+
+    <div style="padding:24px 16px 28px">
+      <div id="chart">Select teams, then Create.</div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const TEAMS_URL = '../../../data/players.json';
+  const HIST_URL  = id => `../../../data/history/${encodeURIComponent(id)}.json`;
+  const COLOURS_URL = '../../../team-colours.json';
+  const MAX_TEAMS = 15;
+  const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
+
+  const state = {
+    teams: [],
+    inputs: [],
+    loaded: []
+  };
+
+  let TEAM_COLOURS = {};
+  let SINCE_YEAR = null;
+  let AGG_MODE = 'monthly';
+  let chartVisibleSeries = [];
+
+  function normalise(series, dedupeByDay = false) {
+    const s = series
+      .filter(p => p && p.x && Number.isFinite(p.y))
+      .map(p => ({
+        x: p.x,
+        y: +p.y,
+        tier: Number.isFinite(+p.tier) ? +p.tier : null
+      }))
+      .sort((a, b) => new Date(a.x) - new Date(b.x));
+
+    if (!dedupeByDay) return s;
+
+    const out = [];
+    let lastKey = null;
+
+    for (const p of s) {
+      const d = new Date(p.x);
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+      if (key !== lastKey) out.push(p);
+      else out[out.length - 1] = p;
+
+      lastKey = key;
+    }
+
+    return out;
+  }
+
+  function aggregate(series, mode) {
+    if (mode === 'daily') return normalise(series, true);
+
+    const buckets = Object.create(null);
+
+    for (const p of series) {
+      const d = new Date(p.x);
+      const key = (mode === 'monthly')
+        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
+        : `${d.getFullYear()}`;
+
+      (buckets[key] ||= []).push(p);
+    }
+
+    const out = Object.keys(buckets).sort().map(k => {
+      const pts = buckets[k].filter(p => Number.isFinite(p.y));
+      const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
+      const lastTier = pts.length ? (pts[pts.length - 1].tier ?? null) : null;
+      const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
+
+      return { x, y: avg, tier: lastTier };
+    });
+
+    return normalise(out, false);
+  }
+
+  function applySinceFilter(series, sinceYear) {
+    if (!sinceYear) return series;
+    const start = new Date(`${sinceYear}-01-01T00:00:00Z`).getTime();
+    return series.filter(p => new Date(p.x).getTime() >= start);
+  }
+
+  function labelStepForRange(y0, y1) {
+    const span = Math.abs(y1 - y0);
+
+    if (span <= 150) return 25;
+    if (span <= 600) return 50;
+    return 100;
+  }
+
+  function setChartTickLabelsEvery(yMin, yMax, step) {
+    const lo = Math.floor(yMin / step) * step;
+    const hi = Math.ceil(yMax / step) * step;
+
+    const vals = [];
+    const text = [];
+
+    for (let y = lo; y <= hi; y += step) {
+      vals.push(y);
+      text.push(String(y));
+    }
+
+    Plotly.relayout('chart', {
+      'yaxis.tickmode': 'array',
+      'yaxis.tickvals': vals,
+      'yaxis.ticktext': text
+    });
+  }
+
+  function makeChartYGridShapes(yMin, yMax, step) {
+    if (!Number.isFinite(yMin) || !Number.isFinite(yMax) || !step) return [];
+
+    const lo = Math.floor((yMin - 1) / step) * step;
+    const hi = Math.ceil((yMax + 1) / step) * step;
+    const shapes = [];
+
+    for (let y = lo; y <= hi; y += step) {
+      let width, color;
+
+      if (step === 100) {
+        width = 2.2;
+        color = 'rgba(255,255,255,0.28)';
+      } else if (step === 50) {
+        width = 1.4;
+        color = 'rgba(255,255,255,0.16)';
+      } else {
+        width = 1.0;
+        color = 'rgba(255,255,255,0.08)';
+      }
+
+      shapes.push({
+        type: 'line',
+        xref: 'paper',
+        x0: 0,
+        x1: 1,
+        yref: 'y',
+        y0: y,
+        y1: y,
+        line: { width, color },
+        layer: 'below'
+      });
+    }
+
+    return shapes;
+  }
+
+  function adjustChartYToVisible(x0, x1) {
+    const lo = new Date(x0);
+    const hi = new Date(x1);
+    const values = [];
+
+    for (const series of chartVisibleSeries) {
+      for (const p of series) {
+        const d = new Date(p.x);
+
+        if (d >= lo && d <= hi && Number.isFinite(p.y)) {
+          values.push(p.y);
+        }
+      }
+    }
+
+    if (!values.length) return;
+
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    const pad = (max - min) * 0.12 || 10;
+
+    const y0 = min - pad;
+    const y1 = max + pad;
+    const step = labelStepForRange(y0, y1);
+
+    Plotly.relayout('chart', {
+      'yaxis.range': [y0, y1],
+      'shapes': makeChartYGridShapes(y0, y1, step)
+    }).then(() => {
+      setChartTickLabelsEvery(y0, y1, step);
+    });
+  }
+
+  async function loadColours() {
+    try {
+      const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
+      if (!res.ok) {
+        TEAM_COLOURS = {};
+        return;
+      }
+
+      TEAM_COLOURS = await res.json();
+    } catch {
+      TEAM_COLOURS = {};
+    }
+  }
+
+  function hexToRgb(hex) {
+    const clean = String(hex || '').trim();
+    const match = clean.match(/^#([0-9a-f]{6})$/i);
+    if (!match) return null;
+
+    const value = match[1];
+
+    return {
+      r: parseInt(value.slice(0, 2), 16),
+      g: parseInt(value.slice(2, 4), 16),
+      b: parseInt(value.slice(4, 6), 16)
+    };
+  }
+
+  function rgbToHex(r, g, b) {
+    return '#' + [r, g, b]
+      .map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0'))
+      .join('');
+  }
+
+  function relativeLuminance({ r, g, b }) {
+    const toLinear = c => {
+      const s = c / 255;
+      return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+    };
+
+    const R = toLinear(r);
+    const G = toLinear(g);
+    const B = toLinear(b);
+
+    return 0.2126 * R + 0.7152 * G + 0.0722 * B;
+  }
+
+  function mixWithWhite(rgb, amount) {
+    return {
+      r: rgb.r + (255 - rgb.r) * amount,
+      g: rgb.g + (255 - rgb.g) * amount,
+      b: rgb.b + (255 - rgb.b) * amount
+    };
+  }
+
+  function getDisplayColour(teamName) {
+    const fallback = '#2F80ED';
+    const raw = TEAM_COLOURS[teamName] || fallback;
+    const rgb = hexToRgb(raw);
+
+    if (!rgb) return fallback;
+
+    const lum = relativeLuminance(rgb);
+
+    if (lum >= 0.05) return raw;
+
+    const lifted = mixWithWhite(rgb, 0.45);
+    return rgbToHex(lifted.r, lifted.g, lifted.b);
+  }
+
+  function attachAutocomplete(input) {
+  const wrap = document.createElement('div');
+  wrap.className = 'suggest';
+
+  input.parentNode.insertBefore(wrap, input);
+  wrap.appendChild(input);
+
+  const list = document.createElement('div');
+  list.className = 'suggest-list';
+  wrap.appendChild(list);
+
+  let activeIndex = -1;
+
+  function getItems() {
+    return Array.from(list.querySelectorAll('.suggest-item'));
+  }
+
+  function setActive(index) {
+    const items = getItems();
+
+    if (!items.length) {
+      activeIndex = -1;
+      return;
+    }
+
+    activeIndex = Math.max(0, Math.min(index, items.length - 1));
+
+    items.forEach((item, i) => {
+      item.classList.toggle('is-active', i === activeIndex);
+    });
+
+    items[activeIndex].scrollIntoView({ block: 'nearest' });
+  }
+
+  function chooseItem(item) {
+    if (!item) return;
+
+    input.value = item.dataset.name;
+    list.style.display = 'none';
+    activeIndex = -1;
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function render(items) {
+    activeIndex = -1;
+
+    if (!items.length) {
+      list.style.display = 'none';
+      list.innerHTML = '';
+      return;
+    }
+
+    list.innerHTML = items
+      .map(n => `<div class="suggest-item" data-name="${escapeHtml(n)}">${escapeHtml(n)}</div>`)
+      .join('');
+
+    list.style.display = 'block';
+  }
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+
+    if (!q) {
+      render([]);
+      return;
+    }
+
+    const names = state.teams.map(t => t.name);
+    const starts = names.filter(n => n.toLowerCase().startsWith(q));
+    const contains = names.filter(n => !n.toLowerCase().startsWith(q) && n.toLowerCase().includes(q));
+
+    render(starts.concat(contains).slice(0, 12));
+  });
+
+  list.addEventListener('mousedown', e => {
+    const item = e.target.closest('.suggest-item');
+    if (!item) return;
+    chooseItem(item);
+  });
+
+  input.addEventListener('keydown', e => {
+    const items = getItems();
+    const listOpen = list.style.display !== 'none' && items.length > 0;
+
+    if (e.key === 'ArrowDown' && listOpen) {
+      e.preventDefault();
+      setActive(activeIndex < items.length - 1 ? activeIndex + 1 : 0);
+      return;
+    }
+
+    if (e.key === 'ArrowUp' && listOpen) {
+      e.preventDefault();
+      setActive(activeIndex > 0 ? activeIndex - 1 : items.length - 1);
+      return;
+    }
+
+    if (e.key === 'Enter') {
+      if (listOpen) {
+        e.preventDefault();
+        chooseItem(items[activeIndex >= 0 ? activeIndex : 0]);
+      }
+      return;
+    }
+
+    if (e.key === 'Escape') {
+      list.style.display = 'none';
+      activeIndex = -1;
+    }
+  });
+
+  input.addEventListener('blur', () => {
+    setTimeout(() => {
+      list.style.display = 'none';
+      activeIndex = -1;
+    }, 120);
+  });
+}
+  function makeRow() {
+    if (state.inputs.length >= MAX_TEAMS) return;
+
+    const rows = document.getElementById('rows');
+    const wrap = document.createElement('div');
+    wrap.className = 'row';
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'Search team…';
+    wrap.appendChild(input);
+    attachAutocomplete(input);
+
+    const remove = document.createElement('button');
+    remove.className = 'btn';
+    remove.type = 'button';
+    remove.textContent = 'Remove';
+
+    remove.addEventListener('click', () => {
+      rows.removeChild(wrap);
+      state.inputs = state.inputs.filter(r => r.el !== wrap);
+      document.getElementById('add').disabled = state.inputs.length >= MAX_TEAMS;
+    });
+
+    wrap.appendChild(remove);
+    rows.appendChild(wrap);
+
+    state.inputs.push({ el: wrap, input });
+    document.getElementById('add').disabled = state.inputs.length >= MAX_TEAMS;
+  }
+
+  function clearAll() {
+    document.getElementById('rows').innerHTML = '';
+    state.inputs = [];
+    state.loaded = [];
+    chartVisibleSeries = [];
+
+    document.getElementById('add').disabled = false;
+    document.getElementById('chart').textContent = 'Cleared.';
+
+    SINCE_YEAR = null;
+    AGG_MODE = 'monthly';
+
+    const agg = document.getElementById('agg');
+    if (agg) agg.value = AGG_MODE;
+
+    document.querySelectorAll('.range-btn').forEach(btn => {
+      btn.classList.toggle('is-active', btn.getAttribute('data-since') === '');
+    });
+  }
+
+  async function loadTeams() {
+    const res = await fetch(TEAMS_URL, { cache: 'no-cache' });
+    if (!res.ok) throw new Error('players.json not found');
+    state.teams = await res.json();
+  }
+
+  function drawChart() {
+    const el = document.getElementById('chart');
+    el.innerHTML = '';
+
+    if (!state.loaded.length) {
+      el.textContent = 'No teams selected.';
+      return;
+    }
+
+    const mode = document.getElementById('agg').value;
+    AGG_MODE = mode;
+
+    const traceItems = [];
+    chartVisibleSeries = [];
+
+    let xmin = null;
+    let xmax = null;
+    let ymin = Infinity;
+    let ymax = -Infinity;
+
+    for (const s of state.loaded) {
+      const filtered = applySinceFilter(s.daily, SINCE_YEAR);
+      const data = aggregate(filtered, mode);
+
+      const xs = data.map(p => p.x);
+      const ysAll = data.map(p => p.y);
+      const ys = ysAll.filter(Number.isFinite);
+      const tiers = data.map(p => p.tier ?? '');
+
+      if (!xs.length || !ys.length) continue;
+
+      chartVisibleSeries.push(data);
+
+      let finalRating = -Infinity;
+
+      for (const p of data) {
+        if (!p.x || !Number.isFinite(p.y)) continue;
+
+        const d = new Date(p.x);
+
+        if (!xmin || d < xmin) xmin = d;
+        if (!xmax || d > xmax) xmax = d;
+
+        ymin = Math.min(ymin, p.y);
+        ymax = Math.max(ymax, p.y);
+        finalRating = p.y;
+      }
+
+      traceItems.push({
+        finalRating,
+        trace: {
+          type: 'scatter',
+          name: s.name,
+          x: xs,
+          y: ysAll,
+          customdata: tiers,
+          mode: 'lines',
+          line: {
+            width: 4,
+            shape: 'linear',
+            color: getDisplayColour(s.name)
+          },
+          hovertemplate: '%{x}<br>%{y:.0f} Elo<br>Tier %{customdata}<extra>' + s.name + '</extra>',
+          connectgaps: true
+        }
+      });
+    }
+
+    if (!traceItems.length) {
+      el.textContent = 'No games';
+      return;
+    }
+
+    traceItems.sort((a, b) => b.finalRating - a.finalRating);
+
+    const traces = traceItems.map(item => item.trace);
+
+    const pad = (ymax - ymin) * 0.12 || 10;
+    const y0 = ymin - pad;
+    const y1 = ymax + pad;
+    const step = labelStepForRange(y0, y1);
+
+    const cs = getComputedStyle(document.body);
+
+    const layout = {
+      margin: { l: 60, r: 20, t: 55, b: 45 },
+
+      xaxis: {
+        type: 'date',
+        showgrid: false
+      },
+
+      yaxis: {
+        title: 'Rating',
+        showgrid: false,
+        zeroline: false,
+        ticks: 'outside',
+        ticklen: 4,
+        tickmode: 'array',
+        tickvals: [],
+        ticktext: []
+      },
+
+      legend: {
+        orientation: 'h',
+        x: 0,
+        y: 1.12,
+        font: {
+          size: 18,
+          color: cs.color
+        },
+        traceorder: 'normal'
+      },
+
+      paper_bgcolor: cs.backgroundColor,
+      plot_bgcolor: cs.backgroundColor,
+      font: { color: cs.color, size: 14 },
+      shapes: makeChartYGridShapes(y0, y1, step)
+    };
+
+    Plotly.newPlot('chart', traces, layout, {
+      staticPlot: IS_TOUCH,
+      displayModeBar: false,
+      responsive: true
+    }).then(() => {
+      const gd = document.getElementById('chart');
+
+      if (xmin && xmax) {
+        adjustChartYToVisible(xmin.toISOString(), xmax.toISOString());
+      }
+
+      if (!gd._jrCompareHandlersAttached) {
+        gd.on('plotly_relayout', ev => {
+          const x0 = ev['xaxis.range[0]'] ?? (ev['xaxis.range'] && ev['xaxis.range'][0]);
+          const x1 = ev['xaxis.range[1]'] ?? (ev['xaxis.range'] && ev['xaxis.range'][1]);
+
+          if (x0 && x1) {
+            adjustChartYToVisible(x0, x1);
+          }
+        });
+
+        gd._jrCompareHandlersAttached = true;
+      }
+    });
+  }
+
+  async function createChart() {
+    const names = state.inputs.map(r => r.input.value.trim()).filter(Boolean);
+    const uniq = [...new Set(names)];
+
+    if (!uniq.length) {
+      alert('Please add at least one team');
+      return;
+    }
+
+    const lookups = uniq.map(name => {
+      const team = state.teams.find(t => t.name === name);
+      if (!team) return null;
+      return { name, id: team.id };
+    }).filter(Boolean);
+
+    if (!lookups.length) {
+      document.getElementById('chart').textContent = 'No valid teams.';
+      return;
+    }
+
+    document.getElementById('chart').textContent = 'Loading…';
+
+    const results = await Promise.all(lookups.map(async ({ name, id }) => {
+      try {
+        const res = await fetch(HIST_URL(id), { cache: 'no-cache' });
+        if (!res.ok) return null;
+
+        const hist = await res.json();
+
+        const daily = normalise(hist.map(d => ({
+          x: d.date,
+          y: Number(d.rating),
+          tier: Number(d.tier)
+        })), true);
+
+        if (!daily.length) return null;
+
+        return { name, daily };
+      } catch {
+        return null;
+      }
+    }));
+
+    state.loaded = results.filter(Boolean);
+    drawChart();
+  }
+
+  function setupRangeButtons() {
+    document.querySelectorAll('.range-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        const v = btn.getAttribute('data-since');
+        SINCE_YEAR = v ? Number(v) : null;
+
+        drawChart();
+      });
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('add').addEventListener('click', makeRow);
+    document.getElementById('clear').addEventListener('click', clearAll);
+    document.getElementById('create').addEventListener('click', createChart);
+
+    document.getElementById('agg').addEventListener('change', e => {
+      AGG_MODE = e.target.value;
+      drawChart();
+    });
+
+    setupRangeButtons();
+
+    Promise.all([
+      loadTeams(),
+      loadColours()
+    ])
+      .then(() => {
+        makeRow();
+        document.getElementById('chart').textContent = 'Select teams, then Create.';
+      })
+      .catch(e => {
+        console.error(e);
+
+        const note = document.querySelector('.muted-note');
+        if (note) {
+          note.textContent = 'Could not load team list. Check data path or run via a local server.';
+        }
+
+        makeRow();
+      });
+  });
+</script>
+</body>
+</html>
