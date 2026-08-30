@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # Staggered to avoid clashing with other monthly sports workflows.
-    - cron: "30 2 1 * *"
+    - cron: "5 3 * * 3"
 
 permissions:
   contents: write

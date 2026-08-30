@@ -10,7 +10,7 @@ on:
         default: false
 
   schedule:
-    - cron: "0 7 * * 0"
+    - cron: "5 1 * * 3"
       timezone: "Europe/London"
 
 permissions:

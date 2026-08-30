@@ -3,7 +3,7 @@ name: Update world football ratings
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 1 * * 2"
+    - cron: "5 2 * * 3"
 
 permissions:
   contents: write
