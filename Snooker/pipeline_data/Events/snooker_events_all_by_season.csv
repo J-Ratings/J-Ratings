@@ -2205,7 +2205,7 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2285,Q School 2,2025-05-27,2025-06-01,"",2024,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2285,Both,O,0,171,0,0,167,2024
 2863,British Open,2027-08-30,2027-09-05,"",2027,main,Ranking,0,The Centaur,Cheltenham,England,snooker,2863,Both,O,0,0,0,0,0,2027
 2759,China Open Qualifiers,2026-06-10,2026-06-14,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2755,Both,O,0,0,0,0,112,2026
-2758,Wuhan Open Qualifiers,2026-06-15,2026-06-18,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2757,Both,O,0,0,18,0,80,2026
+2758,Wuhan Open Qualifiers,2026-06-15,2026-06-18,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2757,Both,O,0,0,0,0,98,2026
 2760,Championship League,2026-06-22,2026-07-15,"",2026,main,Ranking,1,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,128,0,0,1,2026
 2802,Championship League Stage One Group 1,2026-06-22,2026-07-15,"",2026,main,Ranking,12,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,6,2026
 2803,Championship League Stage One Group 2,2026-06-22,2026-07-15,"",2026,main,Ranking,13,Mattioli Arena,Leicester,England,snooker,2760,Both,O,0,0,0,0,6,2026
@@ -2266,11 +2266,18 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2764,Shanghai Masters,2026-07-27,2026-08-02,"",2026,main,Invitational,0,Luwan Gymnasium,Shanghai,China,snooker,2764,Both,O,0,24,0,0,23,2026
 2645,Asia Pacific Q Tour: Fred Osbourne Snooker Classic,2026-07-31,2026-08-02,"",2026,q,Ranking,0,Commercial Club Albury,Albury,Australia,snooker,2645,Both,O,0,82,0,0,81,2026
 2755,China Open,2026-08-08,2026-08-16,SATUO Window Cleaning Robot,2026,main,Ranking,0,Sports Centre,Taiyuan,China,snooker,2755,Both,O,0,146,0,0,33,2026
-2757,Wuhan Open,2026-08-23,2026-08-29,"",2026,main,Ranking,0,"",Wuhan,China,snooker,2757,Both,O,0,126,0,0,0,2026
-2855,Q Tour 1,2026-08-27,2026-08-30,"",2026,q,Ranking,1,Northern Snooker Centre,Leeds,England,snooker,2855,Both,O,0,0,1,0,0,2026
+2757,Wuhan Open,2026-08-23,2026-08-29,Optics Valley of China,2026,main,Ranking,0,Optics Valley Gymnasium of HUST,Wuhan,China,snooker,2757,Both,O,0,130,0,0,31,2026
+2855,Q Tour 1,2026-08-27,2026-08-30,"",2026,q,Ranking,1,Northern Snooker Centre,Leeds,England,snooker,2855,Both,O,0,143,0,3,141,2026
 2547,British Open,2026-08-31,2026-09-06,Unibet,2026,main,Ranking,0,The Centaur,Cheltenham,England,snooker,2547,Both,O,0,128,16,0,0,2026
+2864,UK Women's Championship Group A,2026-09-04,2026-09-05,"",2026,women,Ranking,0,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,0,2026
+2865,UK Women's Championship Group B,2026-09-04,2026-09-05,"",2026,women,Ranking,2,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,0,2026
+2866,UK Women's Championship Group C,2026-09-04,2026-09-05,"",2026,women,Ranking,3,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,0,2026
+2867,UK Women's Championship Group D,2026-09-04,2026-09-05,"",2026,women,Ranking,4,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,0,2026
+2868,UK Women's Championship Group E,2026-09-04,2026-09-05,"",2026,women,Ranking,5,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,0,2026
+2869,UK Women's Championship Group F,2026-09-04,2026-09-05,"",2026,women,Ranking,6,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,0,2026
+2870,UK Women's Championship Group G,2026-09-04,2026-09-05,"",2026,women,Ranking,7,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,0,2026
 2862,UK Women's Championship,2026-09-04,2026-09-06,Taom,2026,women,Ranking,0,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,0,2026
-2546,English Open,2026-09-07,2026-09-13,BetVictor,2026,main,Ranking,0,Brentwood Leisure Centre,Brentwood,England,snooker,2546,Both,O,0,128,31,0,1,2026
+2546,English Open,2026-09-07,2026-09-13,BetVictor,2026,main,Ranking,0,Brentwood Leisure Centre,Brentwood,England,snooker,2546,Both,O,0,128,30,0,2,2026
 2770,Northern Ireland Open Qualifiers,2026-09-13,2026-09-16,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2548,Both,O,0,0,0,0,0,2026
 2771,International Championship Qualifiers,2026-09-17,2026-09-19,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2762,Both,O,0,0,0,0,0,2026
 2772,Scottish Open Qualifiers,2026-09-20,2026-09-23,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2756,Both,O,0,0,0,0,0,2026
