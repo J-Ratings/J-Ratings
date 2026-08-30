@@ -3,6 +3,7 @@ import re
 
 import json
 import shutil
+import sys
 from pathlib import Path
 
 PUBLIC_START = "2010-01-01"
@@ -882,8 +883,9 @@ PUBLIC_SPORTS = [
 ]
 
 
-def clean_generic_public_ui() -> None:
-    for sport in PUBLIC_SPORTS:
+def clean_generic_public_ui(sports: list[str] | None = None) -> None:
+    sports = PUBLIC_SPORTS if sports is None else sports
+    for sport in sports:
         sport_dir = OUT_DIR / sport
         if not sport_dir.exists():
             continue
@@ -931,10 +933,11 @@ def clean_generic_public_ui() -> None:
     print("Generic public UI teaser cleanup applied across all sports")
 
 
-def assert_generic_public_ui_clean() -> None:
+def assert_generic_public_ui_clean(sports: list[str] | None = None) -> None:
     failures = []
+    sports = PUBLIC_SPORTS if sports is None else sports
 
-    for sport in PUBLIC_SPORTS:
+    for sport in sports:
         sport_dir = OUT_DIR / sport
         if not sport_dir.exists():
             continue
@@ -1025,47 +1028,137 @@ def _remove_tree(path: Path) -> None:
         shutil.rmtree(path)
 
 
-def _publish_verified_build() -> None:
-    """Swap the verified temporary build into _public_site safely.
+def _choose_transient_previous(base: Path) -> Path:
+    """Return an available transient previous-build path.
 
-    The existing public site is not touched until the temporary build has
-    passed every safety check. During the final swap it is renamed briefly to
-    _public_site_previous. If the new directory cannot be put in place, the
-    old public site is restored automatically.
+    If OneDrive/Windows has locked an old transient directory, do not let that
+    block a new verified publish. The locked directory is left alone and a new
+    numbered transient path is used for this swap.
     """
-    if PREVIOUS_OUT_DIR.exists():
-        _remove_tree(PREVIOUS_OUT_DIR)
+    if not base.exists():
+        return base
 
+    try:
+        _remove_tree(base)
+        return base
+    except OSError as exc:
+        print(f"Warning: could not remove stale transient {base.name}: {exc}")
+
+    index = 2
+    while True:
+        candidate = base.with_name(f"{base.name}_{index}")
+        if not candidate.exists():
+            return candidate
+        index += 1
+
+
+def _publish_verified_build() -> None:
+    """Swap a fully verified temporary build into _public_site safely."""
+    previous_dir = _choose_transient_previous(PREVIOUS_OUT_DIR)
     moved_live = False
 
     try:
         if LIVE_OUT_DIR.exists():
-            LIVE_OUT_DIR.rename(PREVIOUS_OUT_DIR)
+            LIVE_OUT_DIR.rename(previous_dir)
             moved_live = True
 
         TEMP_OUT_DIR.rename(LIVE_OUT_DIR)
 
     except Exception:
-        # If the old site was already moved aside, put it straight back.
-        if moved_live and PREVIOUS_OUT_DIR.exists() and not LIVE_OUT_DIR.exists():
-            PREVIOUS_OUT_DIR.rename(LIVE_OUT_DIR)
+        if moved_live and previous_dir.exists() and not LIVE_OUT_DIR.exists():
+            previous_dir.rename(LIVE_OUT_DIR)
         raise
 
-    # The new build is live. The previous copy is only a transient swap file,
-    # not a permanent backup. Failure to remove it is non-fatal.
-    if PREVIOUS_OUT_DIR.exists():
+    if previous_dir.exists():
         try:
-            _remove_tree(PREVIOUS_OUT_DIR)
+            _remove_tree(previous_dir)
         except OSError as exc:
-            print(f"Warning: could not remove transient {PREVIOUS_OUT_DIR.name}: {exc}")
+            print(f"Warning: could not remove transient {previous_dir.name}: {exc}")
 
 
-def build_public_site() -> None:
-    # Never delete the current _public_site at the start of a build. Work in a
-    # separate directory so a failed build leaves the current public site intact.
-    _remove_tree(TEMP_OUT_DIR)
+def _publish_verified_sport(sport: str) -> None:
+    """Swap only one verified sport directory into the existing public site."""
+    temp_sport = TEMP_OUT_DIR / sport
+    live_sport = LIVE_OUT_DIR / sport
+    previous_base = REPO_DIR / f"_public_site_previous_{sport}"
+    previous_dir = _choose_transient_previous(previous_base)
+
+    if not temp_sport.exists():
+        raise RuntimeError(f"Verified temporary sport build is missing: {temp_sport}")
+
+    LIVE_OUT_DIR.mkdir(parents=True, exist_ok=True)
+    moved_live = False
+
+    try:
+        if live_sport.exists():
+            live_sport.rename(previous_dir)
+            moved_live = True
+
+        temp_sport.rename(live_sport)
+
+    except Exception:
+        if moved_live and previous_dir.exists() and not live_sport.exists():
+            previous_dir.rename(live_sport)
+        raise
+
+    if previous_dir.exists():
+        try:
+            _remove_tree(previous_dir)
+        except OSError as exc:
+            print(f"Warning: could not remove transient {previous_dir.name}: {exc}")
+
+    # The sport itself has been moved out of the temporary build. Remove the
+    # now-empty build directory when possible.
+    try:
+        _remove_tree(TEMP_OUT_DIR)
+    except OSError as exc:
+        print(f"Warning: could not remove temporary {TEMP_OUT_DIR.name}: {exc}")
+
+
+SPORT_ALIASES = {
+    "europeanfootball": "EuropeanFootball",
+    "european": "EuropeanFootball",
+    "football": "EuropeanFootball",
+    "go": "Go",
+    "internationalfootball": "InternationalFootball",
+    "international": "InternationalFootball",
+    "rugbyunion": "RugbyUnion",
+    "rugby": "RugbyUnion",
+    "snooker": "Snooker",
+}
+
+
+def normalise_requested_sport(value: str) -> str:
+    key = re.sub(r"[^a-z0-9]", "", str(value).lower())
+
+    if key == "all":
+        return "ALL"
+
+    sport = SPORT_ALIASES.get(key)
+    if sport:
+        return sport
+
+    valid = ", ".join(PUBLIC_SPORTS)
+    raise SystemExit(
+        f"Unknown sport: {value}\n"
+        f"Use one of: {valid}\n"
+        "Or run with no sport argument to rebuild everything."
+    )
+
+
+def _prepare_temp_dir() -> None:
+    try:
+        _remove_tree(TEMP_OUT_DIR)
+    except OSError as exc:
+        raise RuntimeError(
+            f"Could not clear temporary build directory {TEMP_OUT_DIR}: {exc}\n"
+            "Close any local process using _public_site_build and try again."
+        ) from exc
+
     TEMP_OUT_DIR.mkdir(parents=True)
 
+
+def _copy_full_public_source() -> None:
     for filename in PUBLIC_ROOT_FILES:
         src = REPO_DIR / filename
         if src.exists():
@@ -1081,32 +1174,91 @@ def build_public_site() -> None:
 
         copy_tree_filtered(src, dst)
 
-    remove_private_paths()
-    assert_european_football_private_paths_absent()
-    clean_european_football_public_ui()
-    clean_generic_public_ui()
-    assert_european_football_public_ui_clean()
-    assert_generic_public_ui_clean()
 
-    for sport, config in SPORT_PUBLIC_FILTERS.items():
+def _copy_one_sport_source(sport: str) -> None:
+    src = REPO_DIR / sport
+    dst = OUT_DIR / sport
+
+    if not src.exists():
+        raise RuntimeError(f"Sport source directory not found: {src}")
+
+    copy_tree_filtered(src, dst)
+
+
+def _clean_and_check_selected_sports(sports: list[str]) -> None:
+    remove_private_paths()
+
+    if "EuropeanFootball" in sports:
+        assert_european_football_private_paths_absent()
+        clean_european_football_public_ui()
+
+    clean_generic_public_ui(sports)
+
+    if "EuropeanFootball" in sports:
+        assert_european_football_public_ui_clean()
+
+    assert_generic_public_ui_clean(sports)
+
+    for sport in sports:
+        config = SPORT_PUBLIC_FILTERS[sport]
         filter_sport_public_data(sport, config)
 
-    filter_snooker_snapshots()
+    if "Snooker" in sports:
+        filter_snooker_snapshots()
 
-    for sport, config in SPORT_PUBLIC_FILTERS.items():
+    for sport in sports:
+        config = SPORT_PUBLIC_FILTERS[sport]
         assert_no_pre_2010_sport_data(sport, config)
 
-    assert_no_pre_2010_snooker_snapshots()
+    if "Snooker" in sports:
+        assert_no_pre_2010_snooker_snapshots()
+
+
+def build_public_site(selected_sport: str | None = None) -> None:
+    """Build the whole public site, or one sport when selected_sport is given."""
+    _prepare_temp_dir()
+
+    if selected_sport is None:
+        sports = list(PUBLIC_SPORTS)
+        _copy_full_public_source()
+    else:
+        sports = [selected_sport]
+        _copy_one_sport_source(selected_sport)
+
+    _clean_and_check_selected_sports(sports)
 
     print()
-    print(f"Verified temporary public build created at: {TEMP_OUT_DIR}")
-    print("All configured sports have had detailed historical data filtered to 2010+.")
+    if selected_sport is None:
+        print(f"Verified temporary public build created at: {TEMP_OUT_DIR}")
+        print("All configured sports have had detailed historical data filtered to 2010+.")
+    else:
+        print(f"Verified temporary {selected_sport} build created at: {TEMP_OUT_DIR / selected_sport}")
+        print(f"{selected_sport} detailed historical data has been filtered to 2010+.")
+
     print("Public data and UI safety checks: PASS")
 
-    _publish_verified_build()
-
-    print(f"Published verified build to: {LIVE_OUT_DIR}")
+    if selected_sport is None:
+        _publish_verified_build()
+        print(f"Published verified build to: {LIVE_OUT_DIR}")
+    else:
+        _publish_verified_sport(selected_sport)
+        print(f"Published verified sport build to: {LIVE_OUT_DIR / selected_sport}")
 
 
 if __name__ == "__main__":
-    build_public_site()
+    args = sys.argv[1:]
+
+    if len(args) > 1:
+        raise SystemExit(
+            "Usage:\n"
+            "  python scripts\\public_site\\build_public_site.py\n"
+            "  python scripts\\public_site\\build_public_site.py EuropeanFootball"
+        )
+
+    selected = None
+    if args:
+        selected = normalise_requested_sport(args[0])
+        if selected == "ALL":
+            selected = None
+
+    build_public_site(selected)
