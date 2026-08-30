@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # Export Go ratings + history to JSON for website
 # Adds era snapshots, player activity dates, historical world ranks,
 # and Black/White expected win percentages for player game tables
@@ -43,7 +43,7 @@ options(stringsAsFactors = FALSE)
 # -----------------------------
 # Paths
 # -----------------------------
-repo_dir <- "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"
+repo_dir <- "C:/Users/stjuk/Documents/GitHub/J-Ratings"
 
 MIN_GAMES_FOR_TABLE <- 20L
 RANK_INACTIVE_YEARS <- 4
@@ -241,8 +241,8 @@ name_country <- name_country_raw %>%
     name = apply_name_fixes(name, name_fixes),
     gender_symbol = str_trim(as.character(Gender)),
     gender = case_when(
-      gender_symbol == "♂" ~ "male",
-      gender_symbol == "♀" ~ "female",
+      gender_symbol == "â™‚" ~ "male",
+      gender_symbol == "â™€" ~ "female",
       TRUE ~ NA_character_
     ),
     flag = normalise_country_code(Country)
@@ -381,8 +381,8 @@ ghist <- ghist %>%
     result = case_when(
       startsWith(as.character(ResultCode), "B") ~ "1-0",
       startsWith(as.character(ResultCode), "W") ~ "0-1",
-      startsWith(as.character(ResultCode), "D") ~ "½-½",
-      startsWith(as.character(ResultCode), "J") ~ "½-½",
+      startsWith(as.character(ResultCode), "D") ~ "Â½-Â½",
+      startsWith(as.character(ResultCode), "J") ~ "Â½-Â½",
       TRUE ~ NA_character_
     ),
     era = era_label(Date),

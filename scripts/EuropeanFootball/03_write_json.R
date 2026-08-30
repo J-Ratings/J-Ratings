@@ -1,4 +1,4 @@
-# scripts/EuropeanFootball/03_write_json.R
+﻿# scripts/EuropeanFootball/03_write_json.R
 
 library(dplyr)
 library(readr)
@@ -20,7 +20,7 @@ options(stringsAsFactors = FALSE)
 # -----------------------------
 
 repo_dir <- normalizePath(
-  Sys.getenv("J_RATINGS_REPO", "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"),
+  Sys.getenv("J_RATINGS_REPO", "C:/Users/stjuk/Documents/GitHub/J-Ratings"),
   winslash = "/",
   mustWork = FALSE
 )

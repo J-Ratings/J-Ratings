@@ -1,4 +1,4 @@
-library(data.table)
+﻿library(data.table)
 
 options(stringsAsFactors = FALSE)
 
@@ -48,7 +48,7 @@ get_repo_dir <- function() {
     return(wd)
   }
   
-  local_repo <- "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"
+  local_repo <- "C:/Users/stjuk/Documents/GitHub/J-Ratings"
   
   if (dir.exists(local_repo)) {
     return(normalizePath(local_repo, winslash = "/", mustWork = TRUE))
@@ -109,7 +109,7 @@ PROVISIONAL_GAMES <- 20L
 PROVISIONAL_K <- 50
 
 # Time-varying entry rating settings for Pass 1.
-# Cricsheet men’s Test data starts from 2001, but these dates keep the
+# Cricsheet menâ€™s Test data starts from 2001, but these dates keep the
 # same long-run style as the rugby model.
 ENTRY_RATING_START <- 2600
 ENTRY_RATING_END   <- 2600

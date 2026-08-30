@@ -1,4 +1,4 @@
-# scripts/EuropeanFootball/04_simulate_premier_league_test.R
+﻿# scripts/EuropeanFootball/04_simulate_premier_league_test.R
 
 library(dplyr)
 library(readr)
@@ -21,7 +21,7 @@ K_FACTOR    <- 20
 # -----------------------------
 
 repo_dir <- normalizePath(
-  Sys.getenv("J_RATINGS_REPO", "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"),
+  Sys.getenv("J_RATINGS_REPO", "C:/Users/stjuk/Documents/GitHub/J-Ratings"),
   winslash = "/",
   mustWork = FALSE
 )

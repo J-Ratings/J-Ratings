@@ -1,4 +1,4 @@
-
+﻿
 library(data.table)
 
 options(stringsAsFactors = FALSE)
@@ -9,7 +9,7 @@ library(beepr)
 # Paths
 # -----------------------------
 repo_dir <- normalizePath(
-  Sys.getenv("J_RATINGS_REPO", "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"),
+  Sys.getenv("J_RATINGS_REPO", "C:/Users/stjuk/Documents/GitHub/J-Ratings"),
   winslash = "/",
   mustWork = FALSE
 )

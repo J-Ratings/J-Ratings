@@ -1,4 +1,4 @@
-library(data.table)
+﻿library(data.table)
 
 options(stringsAsFactors = FALSE)
 
@@ -42,7 +42,7 @@ options(stringsAsFactors = FALSE)
 # -----------------------------
 REPO_DIR <- Sys.getenv(
   "GITHUB_WORKSPACE",
-  unset = "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"
+  unset = "C:/Users/stjuk/Documents/GitHub/J-Ratings"
 )
 
 SNOOKER_DIR <- file.path(REPO_DIR, "Snooker")

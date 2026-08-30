@@ -1,4 +1,4 @@
-library(httr)
+﻿library(httr)
 library(jsonlite)
 library(data.table)
 
@@ -54,7 +54,7 @@ tic("Snooker pipeline")
 # -----------------------------
 REPO_DIR <- Sys.getenv(
   "GITHUB_WORKSPACE",
-  unset = "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"
+  unset = "C:/Users/stjuk/Documents/GitHub/J-Ratings"
 )
 
 SNOOKER_DIR <- file.path(REPO_DIR, "Snooker")
@@ -76,7 +76,7 @@ if (header_value == "") {
   stop("Missing SNOOKER_API_HEADER environment variable.")
 }
 
-# Hermund Årdalen confirmed the site-level IIS rate-limit window is two minutes.
+# Hermund Ã…rdalen confirmed the site-level IIS rate-limit window is two minutes.
 # Use a conservative 70-second gap between normal requests.
 REQUEST_PAUSE <- as.numeric(
   Sys.getenv("SNOOKER_REQUEST_PAUSE", unset = "70")

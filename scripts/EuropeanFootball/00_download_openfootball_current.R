@@ -1,4 +1,4 @@
-# scripts/EuropeanFootball/00_download_openfootball_current.R
+﻿# scripts/EuropeanFootball/00_download_openfootball_current.R
 
 options(stringsAsFactors = FALSE)
 
@@ -14,7 +14,7 @@ if (interactive()) {
 # -----------------------------
 
 repo_dir <- normalizePath(
-  Sys.getenv("J_RATINGS_REPO", "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"),
+  Sys.getenv("J_RATINGS_REPO", "C:/Users/stjuk/Documents/GitHub/J-Ratings"),
   winslash = "/",
   mustWork = FALSE
 )

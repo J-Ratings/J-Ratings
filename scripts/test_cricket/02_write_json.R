@@ -1,4 +1,4 @@
-# install.packages(c("dplyr", "readr", "jsonlite", "stringi", "stringr", "tibble", "data.table"))
+﻿# install.packages(c("dplyr", "readr", "jsonlite", "stringi", "stringr", "tibble", "data.table"))
 
 library(dplyr)
 library(readr)
@@ -46,7 +46,7 @@ get_repo_dir <- function() {
     return(wd)
   }
   
-  local_repo <- "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"
+  local_repo <- "C:/Users/stjuk/Documents/GitHub/J-Ratings"
   
   if (dir.exists(local_repo)) {
     return(normalizePath(local_repo, winslash = "/", mustWork = TRUE))

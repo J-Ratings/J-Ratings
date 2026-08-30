@@ -1,4 +1,4 @@
-# audit_wikipedia_top5_match_dates.R
+﻿# audit_wikipedia_top5_match_dates.R
 #
 # Purpose:
 #   Check Wikipedia season pages for the historical top-flight seasons that
@@ -27,7 +27,7 @@ if (!requireNamespace("xml2", quietly = TRUE)) {
 repo_dir <- normalizePath(
   Sys.getenv(
     "J_RATINGS_REPO",
-    "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"
+    "C:/Users/stjuk/Documents/GitHub/J-Ratings"
   ),
   winslash = "/",
   mustWork = FALSE

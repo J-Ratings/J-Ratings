@@ -1,4 +1,4 @@
-library(data.table)
+﻿library(data.table)
 library(tictoc)
 
 tic()
@@ -27,7 +27,7 @@ tic()
 repo_dir <- normalizePath(
   Sys.getenv(
     "J_RATINGS_REPO",
-    "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"
+    "C:/Users/stjuk/Documents/GitHub/J-Ratings"
   ),
   winslash = "/",
   mustWork = FALSE

@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # Pro Go Elo ratings - TWO PASS VERSION (full rebuild)
 #
 # Pass 1:
@@ -45,7 +45,7 @@ input_file <- "C:/Users/stjuk/OneDrive/Desktop/Baduk/Go-Go-Ratings/Go/Attempt 2/
 name_fixes_file <- "C:/Users/stjuk/OneDrive/Desktop/Baduk/Go-Go-Ratings/Go/Attempt 2/name_fixes.txt"
 
 # NEW repo structure: no /sports/ and renamed folder go -> Go
-repo_go_dir <- "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings/Go"
+repo_go_dir <- "C:/Users/stjuk/Documents/GitHub/J-Ratings/Go"
 out_dir <- file.path(repo_go_dir, "outputs")
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 

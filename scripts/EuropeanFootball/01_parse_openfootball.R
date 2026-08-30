@@ -1,4 +1,4 @@
-options(stringsAsFactors = FALSE)
+﻿options(stringsAsFactors = FALSE)
 # Local completion sound only; GitHub Actions does not need beepr.
 if (interactive()) {
   library(beepr)
@@ -8,7 +8,7 @@ if (interactive()) {
 # -----------------------------
 
 repo_dir <- normalizePath(
-  Sys.getenv("J_RATINGS_REPO", "C:/Users/stjuk/OneDrive/Documents/GitHub/J-Ratings"),
+  Sys.getenv("J_RATINGS_REPO", "C:/Users/stjuk/Documents/GitHub/J-Ratings"),
   winslash = "/",
   mustWork = FALSE
 )
@@ -906,7 +906,7 @@ parse_schoch_historical_top_flights <- function(path) {
     League = c(
       "Premier League", "La Liga", "Serie A", "Bundesliga", "Ligue 1",
       "Primeira Liga", "Eredivisie", "Belgian Pro League",
-      "Austrian Bundesliga", "Süper Lig", "Scottish Premiership",
+      "Austrian Bundesliga", "SÃ¼per Lig", "Scottish Premiership",
       "Swiss Super League", "Super League Greece",
       "Czech First League", "Ukrainian Premier League"
     ),
@@ -1527,7 +1527,7 @@ la_liga_jobs <- make_cached_league_jobs(
 segunda_jobs <- make_cached_league_jobs(
   recent_major_seasons,
   "2-liga2.txt", "espana", "Spain",
-  "segunda_division", "Segunda División", 2L
+  "segunda_division", "Segunda DivisiÃ³n", 2L
 )
 serie_a_jobs <- make_cached_league_jobs(
   italy_top_seasons,
@@ -1630,7 +1630,7 @@ turkey_jobs <- make_cached_league_jobs(
     "2023-24", "2024-25", "2025-26", season_folder
   )),
   "1-super-lig.txt", "turkey", "Turkey",
-  "super_lig", "Süper Lig"
+  "super_lig", "SÃ¼per Lig"
 )
 
 greece_jobs <- make_cached_league_jobs(
