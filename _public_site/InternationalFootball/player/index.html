@@ -177,6 +177,20 @@
       opacity: 0.9;
     }
 
+    .event-cell{
+      text-align: left;
+    }
+
+    .event-cell a{
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .event-cell a:hover{
+      opacity: 0.9;
+    }
+
     .team-cell .profile-team,
     .team-cell a.profile-team{
       font-weight: 900;
@@ -323,7 +337,70 @@
       }
     }
 
-  </style>
+  
+    .team-stats .stat-link,
+    .player-stats .stat-link{
+      display:block;
+      color:inherit;
+      text-decoration:none;
+      cursor:pointer;
+      transition:background .15s ease, border-color .15s ease;
+    }
+
+    .team-stats .stat-link:hover,
+    .player-stats .stat-link:hover{
+      background:rgba(255,255,255,0.08);
+      border-color:rgba(200,200,200,0.55);
+    }
+
+  
+/* J-Ratings dark scrollbars: start */
+html {
+  scrollbar-color: #596273 #151b26;
+  scrollbar-width: thin;
+}
+
+* {
+  scrollbar-color: #596273 #151b26;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #151b26;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #596273;
+  border: 2px solid #151b26;
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #737d90;
+}
+
+*::-webkit-scrollbar-corner {
+  background: #151b26;
+}
+
+/*
+  Reserve scrollbar space where supported so scrollbars are less likely
+  to sit over tables/content.
+*/
+html,
+body,
+[style*="overflow"],
+[style*="overflow-y"],
+[style*="overflow-x"] {
+  scrollbar-gutter: stable;
+}
+/* J-Ratings dark scrollbars: end */
+</style>
 
   <style id="jr-public-teaser-styles">
     .jr-public-disabled {
@@ -406,6 +483,11 @@
           <div class="stat-label">Peak</div>
           <div class="stat-value" id="peakVal">—</div>
         </div>
+
+        <div class="stat jr-public-disabled jr-public-stats-teaser" aria-disabled="true" title="Advanced statistics coming soon">
+          <div class="stat-label">Statistics</div>
+          <div class="stat-value">Coming soon</div>
+        </div>
       </div>
     </div>
 
@@ -422,7 +504,8 @@
   const params = new URLSearchParams(location.search);
   const idRaw = params.get('id');
 
-  if (!idRaw) {
+
+if (!idRaw) {
     document.getElementById('chart').textContent = 'Missing team id.';
     throw new Error('no id');
   }
@@ -779,6 +862,21 @@ yaxis: {
     return span;
   }
 
+  function renderEventCell(g) {
+    const label = String(g.event || g.tournament || '').trim();
+
+    if (g.tournamentId && g.editionId && g.event) {
+      const a = document.createElement('a');
+      a.href = `../tournaments/?tournament=${encodeURIComponent(g.tournamentId)}&edition=${encodeURIComponent(g.editionId)}`;
+      a.textContent = label;
+      return a;
+    }
+
+    const span = document.createElement('span');
+    span.textContent = label;
+    return span;
+  }
+
   function renderWdlBar(g, myName) {
     const isHome = g.home === myName;
     const isAway = g.away === myName;
@@ -849,7 +947,7 @@ if (total === 99) {
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
 
-    for (const h of ['Date', 'Home', 'Elo', 'Away', 'Elo', 'Expected W/D/L', 'Score', 'Result', 'Δ']) {
+    for (const h of ['Date', 'Event', 'Home', 'Elo', 'Away', 'Elo', 'Expected W/D/L', 'Score', 'Result', 'Δ']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -880,6 +978,10 @@ if (total === 99) {
 
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date || '';
+
+      const tdEvent = document.createElement('td');
+      tdEvent.className = 'event-cell';
+      tdEvent.appendChild(renderEventCell(g));
 
       const tdHome = document.createElement('td');
       tdHome.className = 'team-cell';
@@ -929,6 +1031,7 @@ if (total === 99) {
       }
 
       tr.appendChild(tdDate);
+      tr.appendChild(tdEvent);
       tr.appendChild(tdHome);
       tr.appendChild(tdHomeElo);
       tr.appendChild(tdAway);
@@ -944,7 +1047,7 @@ if (total === 99) {
     if (!tbody.children.length) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      td.colSpan = 9;
+      td.colSpan = 10;
       td.textContent = 'No games';
       tr.appendChild(td);
       tbody.appendChild(tr);
@@ -1061,13 +1164,13 @@ CURRENT_TEAM = me;
         renderGamesTable(me, teams, Array.isArray(games) ? games : []);
       } else {
         const tbl = document.getElementById('games');
-        tbl.innerHTML = '<tbody><tr><td colspan="9">No games</td></tr></tbody>';
+        tbl.innerHTML = '<tbody><tr><td colspan="10">No games</td></tr></tbody>';
       }
     } catch (e) {
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="10">Error loading games</td></tr></tbody>';
     }
   }
 
@@ -1077,7 +1180,7 @@ CURRENT_TEAM = me;
       console.error(e);
       document.getElementById('chart').textContent = 'Error: ' + e.message;
       const tbl = document.getElementById('games');
-      tbl.innerHTML = '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
+      tbl.innerHTML = '<tbody><tr><td colspan="10">Error loading games</td></tr></tbody>';
     });
 </script>
 </body>

@@ -360,7 +360,70 @@ table.games td:nth-child(8){
       }
     }
 
-  </style>
+  
+    .team-stats .stat-link,
+    .player-stats .stat-link{
+      display:block;
+      color:inherit;
+      text-decoration:none;
+      cursor:pointer;
+      transition:background .15s ease, border-color .15s ease;
+    }
+
+    .team-stats .stat-link:hover,
+    .player-stats .stat-link:hover{
+      background:rgba(255,255,255,0.08);
+      border-color:rgba(200,200,200,0.55);
+    }
+
+  
+/* J-Ratings dark scrollbars: start */
+html {
+  scrollbar-color: #596273 #151b26;
+  scrollbar-width: thin;
+}
+
+* {
+  scrollbar-color: #596273 #151b26;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #151b26;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #596273;
+  border: 2px solid #151b26;
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #737d90;
+}
+
+*::-webkit-scrollbar-corner {
+  background: #151b26;
+}
+
+/*
+  Reserve scrollbar space where supported so scrollbars are less likely
+  to sit over tables/content.
+*/
+html,
+body,
+[style*="overflow"],
+[style*="overflow-y"],
+[style*="overflow-x"] {
+  scrollbar-gutter: stable;
+}
+/* J-Ratings dark scrollbars: end */
+</style>
 
   <style id="jr-public-teaser-styles">
     .jr-public-disabled {
@@ -441,6 +504,11 @@ table.games td:nth-child(8){
           <div class="stat-label">Peak</div>
           <div class="stat-value" id="peakVal">—</div>
         </div>
+
+        <div class="stat jr-public-disabled jr-public-stats-teaser" aria-disabled="true" title="Advanced statistics coming soon">
+          <div class="stat-label">Statistics</div>
+          <div class="stat-value">Coming soon</div>
+        </div>
       </div>
     </div>
 
@@ -457,6 +525,7 @@ table.games td:nth-child(8){
 <script>
 const params = new URLSearchParams(location.search);
 const idRaw = params.get('id');
+
 
 if (!idRaw) {
   document.getElementById('chart').textContent = 'Missing player id.';

@@ -1029,12 +1029,7 @@ def _remove_tree(path: Path) -> None:
 
 
 def _choose_transient_previous(base: Path) -> Path:
-    """Return an available transient previous-build path.
-
-    If OneDrive/Windows has locked an old transient directory, do not let that
-    block a new verified publish. The locked directory is left alone and a new
-    numbered transient path is used for this swap.
-    """
+    """Return an available transient previous-build path."""
     if not base.exists():
         return base
 
@@ -1107,8 +1102,6 @@ def _publish_verified_sport(sport: str) -> None:
         except OSError as exc:
             print(f"Warning: could not remove transient {previous_dir.name}: {exc}")
 
-    # The sport itself has been moved out of the temporary build. Remove the
-    # now-empty build directory when possible.
     try:
         _remove_tree(TEMP_OUT_DIR)
     except OSError as exc:
@@ -1214,6 +1207,92 @@ def _clean_and_check_selected_sports(sports: list[str]) -> None:
         assert_no_pre_2010_snooker_snapshots()
 
 
+def _copy_existing_public_ui_from_source() -> int:
+    """Overlay only HTML files whose exact paths already exist publicly."""
+    if not LIVE_OUT_DIR.exists():
+        raise RuntimeError(
+            "UI-only build requires an existing _public_site. "
+            "Run one full verified build first."
+        )
+
+    count = 0
+
+    for filename in PUBLIC_ROOT_FILES:
+        if not filename.lower().endswith(".html"):
+            continue
+
+        src = REPO_DIR / filename
+        live = LIVE_OUT_DIR / filename
+        dst = OUT_DIR / filename
+
+        if src.exists() and live.exists():
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dst)
+            count += 1
+
+    for dirname in PUBLIC_TOP_LEVEL_DIRS:
+        src_root = REPO_DIR / dirname
+        live_root = LIVE_OUT_DIR / dirname
+
+        if not src_root.exists() or not live_root.exists():
+            continue
+
+        for src in src_root.rglob("*.html"):
+            rel = src.relative_to(REPO_DIR)
+
+            if should_ignore_dir(rel):
+                continue
+
+            live = LIVE_OUT_DIR / rel
+            if not live.exists():
+                continue
+
+            dst = OUT_DIR / rel
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dst)
+            count += 1
+
+    return count
+
+
+def build_public_ui_only() -> None:
+    """Fast verified rebuild for HTML/UI-only changes."""
+    _prepare_temp_dir()
+
+    if not LIVE_OUT_DIR.exists():
+        raise RuntimeError(
+            "Cannot run UI-only build because _public_site does not exist."
+        )
+
+    print("Copying existing verified public site...")
+    shutil.copytree(LIVE_OUT_DIR, TEMP_OUT_DIR, dirs_exist_ok=True)
+
+    updated = _copy_existing_public_ui_from_source()
+    print(f"Public HTML files refreshed from source: {updated}")
+
+    remove_private_paths()
+    assert_european_football_private_paths_absent()
+    clean_european_football_public_ui()
+    clean_generic_public_ui()
+    assert_european_football_public_ui_clean()
+    assert_generic_public_ui_clean()
+
+    # Data is inherited from the existing verified public site. Re-check it
+    # without rewriting/re-filtering all historical JSON.
+    for sport, config in SPORT_PUBLIC_FILTERS.items():
+        assert_no_pre_2010_sport_data(sport, config)
+
+    assert_no_pre_2010_snooker_snapshots()
+
+    print()
+    print(f"Verified temporary UI-only public build created at: {TEMP_OUT_DIR}")
+    print("Historical public data was not recopied or re-filtered.")
+    print("Public data and UI safety checks: PASS")
+
+    _publish_verified_build()
+    print(f"Published verified UI-only build to: {LIVE_OUT_DIR}")
+
+
 def build_public_site(selected_sport: str | None = None) -> None:
     """Build the whole public site, or one sport when selected_sport is given."""
     _prepare_temp_dir()
@@ -1248,17 +1327,21 @@ def build_public_site(selected_sport: str | None = None) -> None:
 if __name__ == "__main__":
     args = sys.argv[1:]
 
-    if len(args) > 1:
-        raise SystemExit(
-            "Usage:\n"
-            "  python scripts\\public_site\\build_public_site.py\n"
-            "  python scripts\\public_site\\build_public_site.py EuropeanFootball"
-        )
+    if args == ["--ui-only"]:
+        build_public_ui_only()
+    else:
+        if len(args) > 1:
+            raise SystemExit(
+                "Usage:\n"
+                "  python scripts\\public_site\\build_public_site.py\n"
+                "  python scripts\\public_site\\build_public_site.py EuropeanFootball\n"
+                "  python scripts\\public_site\\build_public_site.py --ui-only"
+            )
 
-    selected = None
-    if args:
-        selected = normalise_requested_sport(args[0])
-        if selected == "ALL":
-            selected = None
+        selected = None
+        if args:
+            selected = normalise_requested_sport(args[0])
+            if selected == "ALL":
+                selected = None
 
-    build_public_site(selected)
+        build_public_site(selected)
