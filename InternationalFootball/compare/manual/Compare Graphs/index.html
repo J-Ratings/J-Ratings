@@ -209,7 +209,54 @@
       }
     }
 
-  </style>
+  
+/* J-Ratings dark scrollbars: start */
+html {
+  scrollbar-color: #596273 #151b26;
+  scrollbar-width: thin;
+}
+
+* {
+  scrollbar-color: #596273 #151b26;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #151b26;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #596273;
+  border: 2px solid #151b26;
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #737d90;
+}
+
+*::-webkit-scrollbar-corner {
+  background: #151b26;
+}
+
+/*
+  Reserve scrollbar space where supported so scrollbars are less likely
+  to sit over tables/content.
+*/
+html,
+body,
+[style*="overflow"],
+[style*="overflow-y"],
+[style*="overflow-x"] {
+  scrollbar-gutter: stable;
+}
+/* J-Ratings dark scrollbars: end */
+</style>
 </head>
 
 <body>

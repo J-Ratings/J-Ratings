@@ -1,0 +1,32 @@
+source_tournament,tournament_id,display_name,edition_gap_days,enabled
+World Cup,world-cup,FIFA World Cup,180,TRUE
+European Championship,european-championship,UEFA European Championship,180,TRUE
+African Nations Cup,african-nations-cup,Africa Cup of Nations,180,TRUE
+Copa America,copa-america,Copa America,180,TRUE
+South American Champ,copa-america,Copa America,180,TRUE
+Asian Cup,asian-cup,AFC Asian Cup,180,TRUE
+Oceania Nations Cup,ofc-nations-cup,OFC Nations Cup,180,TRUE
+Olympic Games,olympic-games,Olympic Games,180,TRUE
+Confederations Cup,confederations-cup,FIFA Confederations Cup,180,TRUE
+CONCACAF Championship,concacaf-championship,CONCACAF Championship,180,TRUE
+Arab Cup,arab-cup,FIFA Arab Cup,180,TRUE
+European Nations League,european-nations-league,UEFA Nations League,240,TRUE
+European Nations League A,european-nations-league,UEFA Nations League,240,TRUE
+European Nations League B,european-nations-league,UEFA Nations League,240,TRUE
+European Nations League C,european-nations-league,UEFA Nations League,240,TRUE
+European Nations League D,european-nations-league,UEFA Nations League,240,TRUE
+European Nations League A/B,european-nations-league,UEFA Nations League,240,TRUE
+European Nations League B/C,european-nations-league,UEFA Nations League,240,TRUE
+European Nations League C/D,european-nations-league,UEFA Nations League,240,TRUE
+CONCACAF Nations League,concacaf-nations-league,CONCACAF Nations League,240,TRUE
+CONCACAF Nations League A,concacaf-nations-league,CONCACAF Nations League,240,TRUE
+CONCACAF Nations League B,concacaf-nations-league,CONCACAF Nations League,240,TRUE
+CONCACAF Nations League C,concacaf-nations-league,CONCACAF Nations League,240,TRUE
+East Asian Championship,east-asian-championship,EAFF E-1 Football Championship,180,TRUE
+West Asian Championship,west-asian-championship,WAFF Championship,180,TRUE
+South Asian Championship,south-asian-championship,SAFF Championship,180,TRUE
+Southeast Asian Champ,southeast-asian-championship,ASEAN Championship,180,TRUE
+COSAFA Cup,cosafa-cup,COSAFA Cup,180,TRUE
+CECAFA Cup,cecafa-cup,CECAFA Cup,180,TRUE
+Gulf Cup,gulf-cup,Arabian Gulf Cup,180,TRUE
+Baltic Cup,baltic-cup,Baltic Cup,180,TRUE

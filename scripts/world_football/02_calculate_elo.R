@@ -6,7 +6,10 @@ options(stringsAsFactors = FALSE)
 # Paths
 # -----------------------------
 repo_dir <- normalizePath(
-  getwd(),
+  Sys.getenv(
+    "J_RATINGS_REPO",
+    "C:/Users/stjuk/Documents/GitHub/J-Ratings"
+  ),
   winslash = "/",
   mustWork = TRUE
 )
@@ -137,7 +140,10 @@ required_cols <- c(
   "away_team",
   "result",
   "score",
-  "tournament"
+  "tournament",
+  "tournament_id",
+  "edition_id",
+  "event"
 )
 
 missing_cols <- setdiff(required_cols, names(dt))
@@ -152,6 +158,13 @@ dt[, away_team := normalise_team_name(away_team)]
 dt[, result := trimws(as.character(result))]
 dt[, score := trimws(as.character(score))]
 dt[, tournament := trimws(as.character(tournament))]
+dt[, tournament_id := trimws(as.character(tournament_id))]
+dt[, edition_id := trimws(as.character(edition_id))]
+dt[, event := trimws(as.character(event))]
+
+dt[tournament_id %in% c("", "NA", "NULL"), tournament_id := NA_character_]
+dt[edition_id %in% c("", "NA", "NULL"), edition_id := NA_character_]
+dt[event %in% c("", "NA", "NULL"), event := NA_character_]
 
 dt[, result := ifelse(tolower(result) == "draw", "Draw", normalise_team_name(result))]
 
@@ -522,6 +535,9 @@ write_pass_outputs <- function(pass_obj,
   game_history_out <- copy(pass_obj$dt[, .(
     date = format(Date, "%Y-%m-%d"),
     tournament,
+    tournament_id,
+    edition_id,
+    event,
     home_team,
     away_team,
     result,
@@ -553,6 +569,9 @@ write_pass_outputs <- function(pass_obj,
   setcolorder(game_history_out, c(
     "date",
     "tournament",
+    "tournament_id",
+    "edition_id",
+    "event",
     "home_team", "HomeFlag",
     "away_team", "AwayFlag",
     "result", "ResultFlag",

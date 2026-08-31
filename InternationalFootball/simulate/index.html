@@ -391,7 +391,541 @@
         grid-template-columns:1fr;
       }
     }
-  </style>
+
+    .sample-tournament{
+      display:none;
+      margin-top:22px;
+    }
+
+    .sample-tournament.is-visible{
+      display:block;
+    }
+
+    .sample-subtitle{
+      margin:0;
+      padding:0 18px 16px;
+      opacity:.72;
+      font-size:.92rem;
+      line-height:1.45;
+    }
+
+    .sample-groups{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:12px;
+      padding:0 18px 20px;
+    }
+
+    .sample-group{
+      border:1px solid var(--sim-line);
+      border-radius:10px;
+      overflow:hidden;
+      background:rgba(255,255,255,.015);
+    }
+
+    .sample-group h4{
+      margin:0;
+      padding:9px 11px;
+      border-bottom:1px solid var(--sim-line);
+      font-size:1rem;
+    }
+
+    .sample-group table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:.92rem;
+    }
+
+    .sample-group th,
+    .sample-group td{
+      padding:7px 8px;
+      border-bottom:1px solid rgba(128,128,128,.16);
+      text-align:right;
+      white-space:nowrap;
+    }
+
+    .sample-group th:first-child,
+    .sample-group td:first-child{
+      text-align:left;
+    }
+
+    .sample-group tr:last-child td{
+      border-bottom:0;
+    }
+
+    .sample-group .qualified td{
+      font-weight:800;
+    }
+
+    .sample-knockout-title{
+      padding:0 18px 8px;
+      margin:0;
+      font-size:1.1rem;
+    }
+
+    .sample-bracket-scroll{
+      overflow-x:auto;
+      padding:6px 18px 20px;
+    }
+
+    .sample-bracket-canvas{
+      position:relative;
+      display:block;
+      min-width:1120px;
+      width:100%;
+      height:900px;
+      min-height:900px;
+    }
+
+    .sample-bracket-svg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      overflow:visible;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .sample-bracket-connector{
+      fill:none;
+      stroke:rgba(150,150,150,.58);
+      stroke-width:1.5;
+      vector-effect:non-scaling-stroke;
+    }
+
+    .sample-bracket-grid{
+      position:absolute;
+      inset:0;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(220px,1fr));
+      column-gap:70px;
+      width:100%;
+      height:900px;
+      z-index:1;
+    }
+
+    .sample-round{
+      position:relative;
+      height:900px;
+    }
+
+    .sample-round h4{
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      margin:0;
+      text-align:center;
+      font-size:1rem;
+    }
+
+    .sample-match{
+      box-sizing:border-box;
+      position:absolute;
+      left:0;
+      right:0;
+      height:81px;
+      min-height:81px;
+      border:1px solid var(--sim-line);
+      border-radius:9px;
+      overflow:hidden;
+      background:rgba(255,255,255,.025);
+      transform:translateY(-50%);
+    }
+
+    .sample-team{
+      box-sizing:border-box;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      height:40px;
+      min-height:40px;
+      padding:6px 10px;
+      transition:background .14s ease, opacity .14s ease;
+    }
+
+    .sample-team + .sample-team{
+      border-top:1px solid var(--sim-line);
+    }
+
+    .sample-team.winner{
+      font-weight:800;
+    }
+
+    .sample-result{
+      font-weight:800;
+      flex:0 0 auto;
+    }
+
+    .sample-bracket-grid.journey-active .sample-team{
+      opacity:.28;
+    }
+
+    .sample-bracket-grid.journey-active .sample-team.journey-highlight{
+      opacity:1;
+      background:rgba(255,255,255,.11);
+      box-shadow:inset 3px 0 0 currentColor;
+    }
+
+    .sample-champion{
+      margin:0 18px 18px;
+      padding:12px 14px;
+      border:1px solid var(--sim-line);
+      border-radius:10px;
+      font-weight:800;
+      background:rgba(255,255,255,.025);
+    }
+
+
+    .wc-section{display:none;margin-top:18px;border:1px solid var(--sim-line);border-radius:12px;background:rgba(255,255,255,.02);overflow:hidden}.wc-section.is-visible{display:block}
+    .wc-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border-bottom:1px solid var(--sim-line)}.wc-section-head h3{margin:0;font-size:1.15rem}.wc-section-body{padding:16px 18px 18px}.wc-section-note{margin:0 0 14px;opacity:.72;line-height:1.45;font-size:.92rem}
+    .wc-start-wrap{overflow:auto;max-height:560px;border:1px solid var(--sim-line);border-radius:10px}#wc-start-table{width:100%;border-collapse:collapse;min-width:620px}#wc-start-table th,#wc-start-table td{padding:9px 11px;border-bottom:1px solid rgba(128,128,128,.14);text-align:left;white-space:nowrap}#wc-start-table th{position:sticky;top:0;z-index:1;background:var(--panel-bg,#0f1623)}#wc-start-table td:nth-child(3),#wc-start-table th:nth-child(3){text-align:right}#wc-start-table td:last-child,#wc-start-table th:last-child{text-align:right;width:86px}
+    .wc-edit-btn,.wc-reset-btn,.wc-run-btn{border:1px solid var(--border,#444);background:#0f1623;color:inherit;border-radius:8px;padding:7px 11px;font:inherit;font-weight:700;cursor:pointer}.wc-edit-btn:hover,.wc-reset-btn:hover,.wc-run-btn:hover{background:rgba(255,255,255,.06)}.wc-override{font-weight:800}
+    .wc-design-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px}.wc-design-chip{padding:11px 12px;border:1px solid var(--sim-line);border-radius:9px;background:rgba(255,255,255,.015);text-align:center}.wc-design-chip .k{opacity:.68;font-size:.82rem;margin-bottom:3px}.wc-design-chip .v{font-weight:800}.wc-design-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}.wc-design-group{border:1px solid var(--sim-line);border-radius:9px;overflow:hidden;background:rgba(255,255,255,.015)}.wc-design-group h4{margin:0;padding:8px 10px;border-bottom:1px solid var(--sim-line);font-size:.95rem}.wc-design-team{padding:7px 10px;border-bottom:1px solid rgba(128,128,128,.12);font-size:.92rem}.wc-design-team:last-child{border-bottom:0}.wc-routing{margin-top:16px;padding:12px 14px;border:1px solid var(--sim-line);border-radius:9px;background:rgba(255,255,255,.015);font-size:.92rem;line-height:1.55}
+    .wc-run-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:end}.wc-model-options{display:flex;flex-direction:column;gap:8px}.wc-model-option{display:flex;align-items:flex-start;gap:8px}.wc-model-option small{display:block;opacity:.67;margin-top:2px;line-height:1.35}.wc-model-option.disabled{opacity:.5}.wc-stale{opacity:.48;filter:saturate(.7)}.wc-stale-banner{display:none;margin:12px 0 0;padding:9px 11px;border:1px solid var(--sim-line);border-radius:8px;font-size:.9rem;font-weight:700;background:rgba(255,255,255,.025)}.wc-stale-banner.is-visible{display:block}
+    .wc-modal-backdrop{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.64);align-items:center;justify-content:center;padding:20px}.wc-modal-backdrop.is-open{display:flex}.wc-modal{position:relative;width:min(520px,100%);border:1px solid var(--border,#444);border-radius:12px;background:var(--panel-bg,#0f1623);box-shadow:0 20px 60px rgba(0,0,0,.4);padding:20px}.wc-modal h3{margin:0 36px 16px 0}.wc-modal-close{position:absolute;top:10px;right:12px;width:34px;height:34px;border:0;border-radius:7px;background:transparent;color:inherit;font-size:1.45rem;cursor:pointer}.wc-modal-close:hover{background:rgba(255,255,255,.06)}.wc-modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}.wc-modal-actions button{border:1px solid var(--border,#444);background:#0f1623;color:inherit;border-radius:8px;padding:9px 12px;font:inherit;font-weight:700;cursor:pointer}.wc-modal-actions button:hover{background:rgba(255,255,255,.06)}
+    @media (max-width:760px){.wc-design-summary,.wc-run-grid{grid-template-columns:1fr}}
+
+
+    /* J-Ratings simulator convention: all table text is centred. */
+    .sim-panel table th,
+    .sim-panel table td{
+      text-align:center !important;
+    }
+
+
+    .wc-advanced-fields{
+      display:none;
+      margin-top:16px;
+      padding-top:16px;
+      border-top:1px solid var(--sim-line);
+    }
+
+    .wc-advanced-fields.is-visible{
+      display:block;
+    }
+
+    .wc-model-readout{
+      margin:0 0 12px;
+      padding:10px 12px;
+      border:1px solid var(--sim-line);
+      border-radius:8px;
+      background:rgba(255,255,255,.02);
+      font-size:.9rem;
+      line-height:1.45;
+    }
+
+    .wc-model-readout strong{
+      font-weight:800;
+    }
+
+    .wc-inline-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .wc-model-badge{
+      display:inline-block;
+      margin-left:7px;
+      padding:2px 6px;
+      border:1px solid var(--sim-line);
+      border-radius:999px;
+      font-size:.72rem;
+      font-weight:800;
+      opacity:.75;
+      vertical-align:middle;
+    }
+
+    @media (max-width:600px){
+      .wc-inline-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+
+    .wc-calc-details{
+      margin-top:14px;
+      border:1px solid var(--sim-line);
+      border-radius:9px;
+      overflow:hidden;
+    }
+    .wc-calc-details summary{
+      cursor:pointer;
+      padding:10px 12px;
+      font-weight:800;
+      background:rgba(255,255,255,.02);
+    }
+    .wc-calc-body{padding:12px}
+    .wc-calc-summary-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:8px;
+      margin-bottom:12px;
+    }
+    .wc-calc-stat{
+      border:1px solid var(--sim-line);
+      border-radius:8px;
+      padding:9px;
+      text-align:center;
+    }
+    .wc-calc-stat .k{font-size:.78rem;opacity:.68;margin-bottom:3px}
+    .wc-calc-stat .v{font-weight:800}
+    .wc-audit-wrap{
+      max-height:330px;
+      overflow:auto;
+      border:1px solid var(--sim-line);
+      border-radius:8px;
+    }
+    #wc-audit-table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:850px;
+      font-size:.82rem;
+    }
+    #wc-audit-table th,#wc-audit-table td{
+      padding:7px 8px;
+      border-bottom:1px solid rgba(128,128,128,.14);
+      text-align:center !important;
+      white-space:nowrap;
+    }
+    #wc-audit-table th{
+      position:sticky;
+      top:0;
+      background:var(--panel-bg,#0f1623);
+      z-index:1;
+    }
+
+
+    .wc-advanced-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:12px;
+    }
+    .wc-advanced-grid .sim-field{min-width:0}
+    .wc-lock-row{
+      display:flex;
+      align-items:flex-start;
+      gap:9px;
+      margin:12px 0 4px;
+      padding:10px 12px;
+      border:1px solid var(--sim-line);
+      border-radius:8px;
+      background:rgba(255,255,255,.02);
+    }
+    .wc-lock-row input{width:18px;height:18px;margin-top:2px;flex:0 0 auto}
+    .wc-lock-row small{display:block;opacity:.68;margin-top:2px;line-height:1.35}
+    .wc-advanced-help{opacity:.68;font-size:.82rem;line-height:1.35;margin-top:4px}
+    @media(max-width:600px){.wc-advanced-grid{grid-template-columns:1fr}}
+
+
+    .wc-modal{
+      max-height:min(88vh,900px);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .wc-modal-scroll{
+      overflow-y:auto;
+      padding-right:4px;
+      min-height:0;
+    }
+
+    .wc-modal-actions{
+      flex:0 0 auto;
+      padding-top:14px;
+      margin-top:14px;
+      border-top:1px solid var(--sim-line);
+      background:var(--panel-bg,#0f1623);
+    }
+
+    .wc-model-topbar{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:end;
+      justify-content:space-between;
+      gap:12px;
+      margin:0 0 16px;
+      padding:12px 14px;
+      border:1px solid var(--sim-line);
+      border-radius:10px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .wc-model-topbar .wc-model-options{
+      flex-direction:row;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .wc-model-topbar .sim-field{
+      min-width:0;
+    }
+
+    .wc-run-actions{
+      display:flex;
+      gap:8px;
+      align-items:end;
+    }
+
+    .wc-stop-btn{
+      border:1px solid var(--border,#444);
+      background:#0f1623;
+      color:inherit;
+      border-radius:8px;
+      padding:10px 14px;
+      font:inherit;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .wc-stop-btn:disabled{
+      opacity:.45;
+      cursor:not-allowed;
+    }
+
+    .wc-stop-btn:not(:disabled):hover{
+      background:rgba(255,255,255,.06);
+    }
+
+    @media (max-width:760px){
+      .wc-model-topbar{
+        align-items:stretch;
+      }
+      .wc-model-topbar .wc-model-options{
+        flex-direction:column;
+      }
+      .wc-run-actions{
+        width:100%;
+      }
+      .wc-run-actions button{
+        flex:1;
+      }
+    }
+
+
+    /* Dark, non-overlay scrollbars for the team editor and 100-match audit. */
+    .wc-modal-scroll,
+    .wc-audit-wrap{
+      scrollbar-color:#596273 #151b26;
+      scrollbar-width:thin;
+      scrollbar-gutter:stable;
+    }
+
+    .wc-modal-scroll::-webkit-scrollbar,
+    .wc-audit-wrap::-webkit-scrollbar{
+      width:10px;
+      height:10px;
+    }
+
+    .wc-modal-scroll::-webkit-scrollbar-track,
+    .wc-audit-wrap::-webkit-scrollbar-track{
+      background:#151b26;
+      border-radius:8px;
+    }
+
+    .wc-modal-scroll::-webkit-scrollbar-thumb,
+    .wc-audit-wrap::-webkit-scrollbar-thumb{
+      background:#596273;
+      border:2px solid #151b26;
+      border-radius:8px;
+    }
+
+    .wc-modal-scroll::-webkit-scrollbar-thumb:hover,
+    .wc-audit-wrap::-webkit-scrollbar-thumb:hover{
+      background:#737d90;
+    }
+
+    .wc-modal-scroll::-webkit-scrollbar-corner,
+    .wc-audit-wrap::-webkit-scrollbar-corner{
+      background:#151b26;
+    }
+
+    /* Give Advanced mode enough width for the audit table on desktop. */
+    .wc-modal.is-advanced{
+      width:min(1120px,94vw);
+    }
+
+    .wc-modal.is-advanced .wc-audit-wrap{
+      overflow-y:auto;
+      overflow-x:auto;
+      padding-right:2px;
+      padding-bottom:2px;
+    }
+
+    .wc-modal.is-advanced #wc-audit-table{
+      min-width:980px;
+    }
+
+    @media (min-width:1000px){
+      .wc-modal.is-advanced .wc-audit-wrap{
+        overflow-x:hidden;
+      }
+
+      .wc-modal.is-advanced #wc-audit-table{
+        min-width:0;
+        table-layout:fixed;
+      }
+
+      .wc-modal.is-advanced #wc-audit-table th,
+      .wc-modal.is-advanced #wc-audit-table td{
+        padding:7px 5px;
+        font-size:.78rem;
+      }
+    }
+
+  
+/* J-Ratings dark scrollbars: start */
+html {
+  scrollbar-color: #596273 #151b26;
+  scrollbar-width: thin;
+}
+
+* {
+  scrollbar-color: #596273 #151b26;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #151b26;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #596273;
+  border: 2px solid #151b26;
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #737d90;
+}
+
+*::-webkit-scrollbar-corner {
+  background: #151b26;
+}
+
+/*
+  Reserve scrollbar space where supported so scrollbars are less likely
+  to sit over tables/content.
+*/
+html,
+body,
+[style*="overflow"],
+[style*="overflow-y"],
+[style*="overflow-x"] {
+  scrollbar-gutter: stable;
+}
+/* J-Ratings dark scrollbars: end */
+</style>
 </head>
 
 <body>
@@ -416,39 +950,56 @@
   <main class="wrap">
     <section class="panel sim-panel">
       <h2 class="sim-title">International Football Simulator</h2>
-      <p class="sim-subtitle">Choose a competition and season, then simulate from any date.</p>
+      <p id="sim-subtitle" class="sim-subtitle">Choose a competition and season, then simulate from any date.</p>
 
       <div class="sim-controls">
         <div class="sim-field">
           <label for="competition">Competition</label>
           <select id="competition">
             <option value="premier-league" selected>Premier League</option>
+            <option value="world-cup">FIFA World Cup</option>
           </select>
         </div>
 
         <div class="sim-field">
-          <label for="season">Season</label>
+          <label id="season-label" for="season">Season</label>
           <select id="season"></select>
         </div>
 
         <div class="sim-field">
-          <label for="cutoff">Simulate from</label>
+          <label id="cutoff-label" for="cutoff">Simulate from</label>
           <input id="cutoff" type="date">
         </div>
 
         <div class="sim-field">
           <label for="sim-count">Iterations</label>
-          <select id="sim-count">
-            <option value="500">500</option>
-            <option value="2000">2,000</option>
-            <option value="10000" selected>10,000</option>
-            <option value="100000">100,000</option>
-            <option value="1000000">1,000,000</option>
-          </select>
+          <input id="sim-count" type="number" min="1" step="1" value="10000" inputmode="numeric">
         </div>
 
         <button id="simulate-btn" type="button" disabled>Simulate</button>
       </div>
+
+      
+      <div id="wc-model-topbar" class="wc-model-topbar" style="display:none;">
+        <div class="sim-field">
+          <label>Simulation model</label>
+          <div class="wc-model-options">
+            <label class="wc-model-option">
+              <input id="wc-model-normal-top" type="radio" name="wc-model-top" value="normal" checked>
+              <span><strong>J-Ratings</strong><small>Simple simulation based on J-Ratings.</small></span>
+            </label>
+            <label id="wc-model-advanced-top-label" class="wc-model-option disabled">
+              <input id="wc-model-advanced-top" type="radio" name="wc-model-top" value="advanced" disabled>
+              <span><strong>Advanced football model</strong><small>Simulates scorelines and allows deeper team edits.</small></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+<section id="wc-start-section" class="wc-section"><div class="wc-section-head"><h3>1. Start situation</h3><button id="wc-reset-all" type="button" class="wc-reset-btn">Reset all team changes</button></div><div class="wc-section-body"><p class="wc-section-note">These are the starting J-Ratings Elo values used for the tournament. Edit a team to override its starting Elo for this scenario.</p><div class="wc-start-wrap"><table id="wc-start-table"><thead><tr><th>Group</th><th>Team</th><th>Starting Elo</th><th></th></tr></thead><tbody id="wc-start-body"></tbody></table></div></div></section>
+      <section id="wc-design-section" class="wc-section"><div class="wc-section-head"><h3>2. Tournament design</h3></div><div class="wc-section-body"><div id="wc-design-summary" class="wc-design-summary"></div><div id="wc-design-groups" class="wc-design-groups"></div><div id="wc-routing" class="wc-routing"></div></div></section>
+      <section id="wc-run-section" class="wc-section"><div class="wc-section-head"><h3>3. Run simulation</h3></div><div class="wc-section-body"><div class="wc-run-grid"><div class="sim-field"><label>Simulation model</label><div class="wc-model-options"><label class="wc-model-option"><input id="wc-model-normal" type="radio" name="wc-model" value="normal" checked><span><strong>J-Ratings</strong><small>Simple simulation based on J-Ratings.</small></span></label><label id="wc-model-advanced-label" class="wc-model-option disabled"><input id="wc-model-advanced" type="radio" name="wc-model" value="advanced" disabled><span><strong>Advanced football model</strong><small>Uses recent team history to simulate realistic scorelines.</small></span></label></div></div><div class="sim-field"><label for="wc-sim-count">Iterations</label><input id="wc-sim-count" type="number" min="1" step="1" value="10000" inputmode="numeric"></div><div class="wc-run-actions"><button id="wc-run-btn" type="button" class="wc-run-btn">Run whole tournament</button><button id="wc-stop-btn" type="button" class="wc-stop-btn" disabled>Stop</button></div></div><div id="wc-stale-banner" class="wc-stale-banner">Settings changed — run the simulation again to update the results.</div></div></section>
+
 
       <div id="status" class="sim-status">Loading tournament data…</div>
 
@@ -515,7 +1066,7 @@
               <div id="elo-list" class="applied-list"></div>
             </div>
 
-            <div class="tool-card">
+            <div class="tool-card" id="home-adv-card">
               <h3>Home advantage</h3>
 
               <label class="checkbox-row">
@@ -529,7 +1080,7 @@
               </div>
 
               <div style="opacity:.72;font-size:.9rem;line-height:1.4;">
-                The bonus affects match probability only. It is not permanently added to the team's Elo.
+                The bonus affects match probability only. It is not permanently added to the team’s Elo.
               </div>
             </div>
 
@@ -562,12 +1113,12 @@
       </div>
 
       <div class="results-card">
-        <div class="results-title">Simulation results</div>
+        <div id="results-title" class="results-title">4. Simulation results</div>
 
         <div class="table-wrap">
           <table id="results-table">
             <thead>
-              <tr>
+              <tr id="results-head-row">
                 <th>Current</th>
                 <th>Team</th>
                 <th>Pts</th>
@@ -583,973 +1134,1566 @@
         </div>
       </div>
 
-      <p class="sim-note">
+
+      <div id="sample-tournament" class="results-card sample-tournament">
+        <div class="results-title">5. Sample simulated tournament</div>
+        <p class="sample-subtitle">
+          One randomly sampled iteration from this Monte Carlo run. Group tables use the J-Ratings
+          scoreless tiebreak rules; knockout draws are shown as draws with the advancing team marked.
+        </p>
+
+        <div id="sample-groups" class="sample-groups"></div>
+
+        <h3 class="sample-knockout-title">Knockout stage</h3>
+        <div class="sample-bracket-scroll">
+          <div id="sample-bracket-canvas" class="sample-bracket-canvas">
+            <svg id="sample-bracket-svg" class="sample-bracket-svg" aria-hidden="true"></svg>
+            <div id="sample-bracket" class="sample-bracket-grid"></div>
+          </div>
+        </div>
+
+        <div id="sample-champion" class="sample-champion"></div>
+      </div>
+
+      <p id="sim-note" class="sim-note">
         Actual competition results before the selected date are used. Each club's J-Ratings Elo at that date is loaded from its rating history unless the user overrides it. Remaining league fixtures are then simulated with Elo updating after every match. Forced results are applied exactly. If home advantage is enabled, the selected Elo bonus affects match probability only. Equal-points ties are currently broken randomly because exact future scorelines are not yet simulated.
       </p>
     </section>
   </main>
 
+
+<div id="wc-edit-backdrop" class="wc-modal-backdrop" aria-hidden="true">
+  <div class="wc-modal" role="dialog" aria-modal="true" aria-labelledby="wc-edit-title">
+    <div class="wc-modal-scroll">
+    <button id="wc-edit-close" type="button" class="wc-modal-close" aria-label="Close">×</button>
+    <h3 id="wc-edit-title">Edit team</h3>
+
+    <div class="sim-field">
+      <label for="wc-edit-elo">Starting Elo</label>
+      <input id="wc-edit-elo" type="number" step="1">
+    </div>
+
+    <div id="wc-advanced-fields" class="wc-advanced-fields">
+      <div id="wc-model-readout" class="wc-model-readout"></div>
+
+      <label class="wc-lock-row">
+        <input id="wc-edit-elo-lock" type="checkbox" checked>
+        <span><strong>Keep overall strength tied to J-Ratings</strong><small>When on, advanced settings change the shape of scorelines while overall expected W/D/L strength is recalibrated back to Elo. When off, the custom football model may make the team effectively stronger or weaker in the simulation.</small></span>
+      </label>
+
+      <div class="wc-advanced-grid">
+        <div class="sim-field">
+          <label for="wc-edit-attack">Attack</label>
+          <input id="wc-edit-attack" type="number" min="0.25" max="3" step="0.01">
+          <div class="wc-advanced-help">Above 1.00 = scores more than expected from Elo/opponents.</div>
+        </div>
+
+        <div class="sim-field">
+          <label for="wc-edit-defence">Defence</label>
+          <input id="wc-edit-defence" type="number" min="0.25" max="3" step="0.01">
+          <div class="wc-advanced-help">Above 1.00 = concedes fewer than expected.</div>
+        </div>
+
+        <div class="sim-field">
+          <label for="wc-edit-volatility">Match unpredictability</label>
+          <input id="wc-edit-volatility" type="number" min="0.25" max="4" step="0.05">
+          <div class="wc-advanced-help">1.00 = score-like. Higher = wider/more extreme score spread; lower = tighter scores.</div>
+        </div>
+
+        <div class="sim-field">
+          <label for="wc-edit-recency">Recent form importance</label>
+          <input id="wc-edit-recency" type="number" min="5" max="200" step="1">
+          <div class="wc-advanced-help">Half-life in matches. Lower = recent matches count much more heavily. Changing this recalculates data-derived defaults.</div>
+        </div>
+
+        <div class="sim-field">
+          <label for="wc-edit-opponent-sensitivity">Performance vs stronger/weaker teams</label>
+          <input id="wc-edit-opponent-sensitivity" type="number" min="0" max="3" step="0.05">
+          <div class="wc-advanced-help">1.00 = normal. Higher = score profile reacts more strongly to Elo gaps.</div>
+        </div>
+
+        <div class="sim-field">
+          <label for="wc-edit-draw">Draw tendency</label>
+          <input id="wc-edit-draw" type="number" min="0.25" max="4" step="0.05">
+          <div class="wc-advanced-help">Above 1.00 = more draws than the score model normally expects.</div>
+        </div>
+
+        <div class="sim-field">
+          <label for="wc-edit-clean-sheet">Clean-sheet tendency</label>
+          <input id="wc-edit-clean-sheet" type="number" min="0.25" max="4" step="0.05">
+          <div class="wc-advanced-help">Above 1.00 = more opponent zero-goal outcomes than expected.</div>
+        </div>
+
+        <div class="sim-field">
+          <label for="wc-edit-high-scoring">High-scoring tendency</label>
+          <input id="wc-edit-high-scoring" type="number" min="0.25" max="4" step="0.05">
+          <div class="wc-advanced-help">Above 1.00 = more 3+ goal performances than expected.</div>
+        </div>
+      </div>
+
+      <details id="wc-calc-details" class="wc-calc-details">
+        <summary>How were these numbers calculated?</summary>
+        <div class="wc-calc-body">
+          <p id="wc-calc-explanation" style="margin:0 0 10px;opacity:.76;font-size:.86rem;line-height:1.45;"></p>
+          <div id="wc-calc-summary-grid" class="wc-calc-summary-grid"></div>
+          <div class="wc-audit-wrap">
+            <table id="wc-audit-table">
+              <thead>
+                <tr>
+                  <th>#</th><th>Date</th><th>Opponent</th><th>Venue</th>
+                  <th>Elo</th><th>Opp Elo</th><th>GF</th><th>Expected GF</th>
+                  <th>GA</th><th>Expected GA</th><th>Weight</th>
+                </tr>
+              </thead>
+              <tbody id="wc-audit-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    </div>
+
+    <div class="wc-modal-actions">
+      <button id="wc-edit-reset" type="button">Reset team</button>
+      <button id="wc-edit-save" type="button">Save changes</button>
+    </div>
+  </div>
+</div>
+
 <script>
 (() => {
   const SIMULATION_BASE_URL = '../data/simulations/';
+  const TOURNAMENT_BASE_URL = '../data/tournaments/';
+  const STRUCTURE_BASE_URL = '../data/tournament-structure/';
   const HISTORY_BASE_URL = '../data/history/';
+  const FORECAST_BASE_URL = '../data/forecast/tournaments/';
 
-  const competitionEl = document.getElementById('competition');
-  const seasonEl = document.getElementById('season');
-  const cutoffEl = document.getElementById('cutoff');
-  const simCountEl = document.getElementById('sim-count');
-  const simulateBtn = document.getElementById('simulate-btn');
+  const $ = id => document.getElementById(id);
+  const competitionEl=$('competition'), seasonEl=$('season'), cutoffEl=$('cutoff'), simCountEl=$('sim-count'), simulateBtn=$('simulate-btn');
+  const wcModelTopbarEl=$('wc-model-topbar'),wcModelNormalTopEl=$('wc-model-normal-top'),wcModelAdvancedTopEl=$('wc-model-advanced-top'),wcModelAdvancedTopLabelEl=$('wc-model-advanced-top-label'),wcStopBtnEl=$('wc-stop-btn');
+  const statusEl=$('status'), progressWrap=$('progress-wrap'), progressBar=$('progress-bar');
+  const playedCountEl=$('played-count'), remainingCountEl=$('remaining-count'), iterationCountEl=$('iteration-count'), runtimeEl=$('runtime');
+  const resultsBody=$('results-body'), resultsHeadRowEl=$('results-head-row'), resultsTitleEl=$('results-title');
+  const sampleTournamentEl=$('sample-tournament'), sampleGroupsEl=$('sample-groups');
+  const sampleBracketCanvasEl=$('sample-bracket-canvas'), sampleBracketSvgEl=$('sample-bracket-svg'), sampleBracketEl=$('sample-bracket');
+  const sampleChampionEl=$('sample-champion');
+  const wcStartSectionEl=$('wc-start-section'),wcDesignSectionEl=$('wc-design-section'),wcRunSectionEl=$('wc-run-section'),wcStartBodyEl=$('wc-start-body'),wcResetAllEl=$('wc-reset-all'),wcDesignSummaryEl=$('wc-design-summary'),wcDesignGroupsEl=$('wc-design-groups'),wcRoutingEl=$('wc-routing'),wcSimCountEl=$('wc-sim-count'),wcRunBtnEl=$('wc-run-btn'),wcStaleBannerEl=$('wc-stale-banner'),wcEditBackdropEl=$('wc-edit-backdrop'),wcEditCloseEl=$('wc-edit-close'),wcEditTitleEl=$('wc-edit-title'),wcEditEloEl=$('wc-edit-elo'),wcEditResetEl=$('wc-edit-reset'),wcEditSaveEl=$('wc-edit-save'),wcModelNormalEl=$('wc-model-normal'),wcModelAdvancedEl=$('wc-model-advanced'),wcModelAdvancedLabelEl=$('wc-model-advanced-label'),wcAdvancedFieldsEl=$('wc-advanced-fields'),wcModelReadoutEl=$('wc-model-readout'),wcEditAttackEl=$('wc-edit-attack'),wcEditDefenceEl=$('wc-edit-defence'),wcEditEloLockEl=$('wc-edit-elo-lock'),wcEditVolatilityEl=$('wc-edit-volatility'),wcEditRecencyEl=$('wc-edit-recency'),wcEditOpponentSensitivityEl=$('wc-edit-opponent-sensitivity'),wcEditDrawEl=$('wc-edit-draw'),wcEditCleanSheetEl=$('wc-edit-clean-sheet'),wcEditHighScoringEl=$('wc-edit-high-scoring'),wcCalcDetailsEl=$('wc-calc-details'),wcCalcExplanationEl=$('wc-calc-explanation'),wcCalcSummaryGridEl=$('wc-calc-summary-grid'),wcAuditBodyEl=$('wc-audit-body');
+  const subtitleEl=$('sim-subtitle'), seasonLabelEl=$('season-label'), cutoffLabelEl=$('cutoff-label'), simNoteEl=$('sim-note');
+  const whatifToggleEl=$('whatif-toggle'), whatifBodyEl=$('whatif-body'), teamOptionsEl=$('team-options');
+  const forceTeamEl=$('force-team'), fixtureSelectEl=$('fixture-select'), forcedResultEl=$('forced-result'), applyForceBtn=$('apply-force'), clearForcesBtn=$('clear-forces'), forcedListEl=$('forced-list');
+  const eloTeamEl=$('elo-team'), eloValueEl=$('elo-value'), applyEloBtn=$('apply-elo'), clearElosBtn=$('clear-elos'), eloListEl=$('elo-list');
+  const homeAdvEnabledEl=$('home-adv-enabled'), homeAdvEloEl=$('home-adv-elo'), homeAdvCardEl=$('home-adv-card');
 
-  const statusEl = document.getElementById('status');
-  const progressWrap = document.getElementById('progress-wrap');
-  const progressBar = document.getElementById('progress-bar');
+  let mode='league', tournament=null, structure=null, histories=new Map(), worker=null;
+  let forecastModel=null,wcEditingTeamId=null,wcHasRun=false;
+  const forcedResults=new Map(), eloOverrides=new Map(), advancedOverrides=new Map();
 
-  const playedCountEl = document.getElementById('played-count');
-  const remainingCountEl = document.getElementById('remaining-count');
-  const iterationCountEl = document.getElementById('iteration-count');
-  const runtimeEl = document.getElementById('runtime');
+  const fmtPct=x=>Number.isFinite(x)?`${x.toFixed(x<1?2:1)}%`:'—';
+  const fixtureKey=m=>`${m.date}|${m.home}|${m.away}`;
 
-  const resultsBody = document.getElementById('results-body');
 
-  const whatifToggleEl = document.getElementById('whatif-toggle');
-  const whatifBodyEl = document.getElementById('whatif-body');
-
-  const teamOptionsEl = document.getElementById('team-options');
-
-  const forceTeamEl = document.getElementById('force-team');
-  const fixtureSelectEl = document.getElementById('fixture-select');
-  const forcedResultEl = document.getElementById('forced-result');
-  const applyForceBtn = document.getElementById('apply-force');
-  const clearForcesBtn = document.getElementById('clear-forces');
-  const forcedListEl = document.getElementById('forced-list');
-
-  const eloTeamEl = document.getElementById('elo-team');
-  const eloValueEl = document.getElementById('elo-value');
-  const applyEloBtn = document.getElementById('apply-elo');
-  const clearElosBtn = document.getElementById('clear-elos');
-  const eloListEl = document.getElementById('elo-list');
-
-  const homeAdvEnabledEl = document.getElementById('home-adv-enabled');
-  const homeAdvEloEl = document.getElementById('home-adv-elo');
-
-  let tournament = null;
-  let teamHistories = new Map();
-  let worker = null;
-
-  const forcedResults = new Map();
-  const eloOverrides = new Map();
-
-  function fmtPct(x){
-    if (!Number.isFinite(x)) return '—';
-    return `${x.toFixed(x < 1 ? 2 : 1)}%`;
+  function currentWorldCupModel(){
+    return wcModelAdvancedEl?.checked ? 'advanced' : 'normal';
   }
 
-  function actualTable(cutoff){
-    const teams = tournament.teams.map(t => t.name);
-    const ids = tournament.teams.map(t => t.id);
-    const idToIndex = new Map(ids.map((id, i) => [id, i]));
 
-    const stats = teams.map((team, i) => ({
-      i,
-      team,
-      played:0,
-      gf:0,
-      ga:0,
-      gd:0,
-      points:0
-    }));
+  function setWorldCupModel(model,source='sync'){
+    const advanced=model==='advanced';
+    wcModelNormalEl.checked=!advanced;
+    wcModelAdvancedEl.checked=advanced;
+    wcModelNormalTopEl.checked=!advanced;
+    wcModelAdvancedTopEl.checked=advanced;
 
-    let played = 0;
+    const defaultIterations=advanced?1000:10000;
+    const current=Number(wcSimCountEl.value);
 
-    for (const m of tournament.matches){
-      if (m.date >= cutoff) continue;
-
-      const h = idToIndex.get(m.home);
-      const a = idToIndex.get(m.away);
-
-      if (h == null || a == null) continue;
-
-      const hg = Number(m.homeScore);
-      const ag = Number(m.awayScore);
-
-      if (!Number.isFinite(hg) || !Number.isFinite(ag)) continue;
-
-      played++;
-
-      stats[h].played++;
-      stats[a].played++;
-
-      stats[h].gf += hg;
-      stats[h].ga += ag;
-
-      stats[a].gf += ag;
-      stats[a].ga += hg;
-
-      if (hg > ag){
-        stats[h].points += 3;
-      } else if (hg < ag){
-        stats[a].points += 3;
-      } else {
-        stats[h].points += 1;
-        stats[a].points += 1;
-      }
+    // Only auto-swap the default when the field still holds the other model's default
+    // or is blank/invalid. User-entered values are preserved.
+    if(!Number.isFinite(current) || current<1 || current===1000 || current===10000){
+      wcSimCountEl.value=defaultIterations;
+      simCountEl.value=defaultIterations;
     }
 
-    for (const s of stats){
-      s.gd = s.gf - s.ga;
+    updateWorldCupModelCopy();
+    renderWorldCupStartSituation();
+    markWorldCupResultsStale();
+
+    if(source!=='sync'){
+      statusEl.textContent=advanced
+        ? `Advanced model selected — default iterations ${defaultIterations.toLocaleString()}.`
+        : `J-Ratings model selected — default iterations ${defaultIterations.toLocaleString()}.`;
+      statusEl.classList.remove('error');
+    }
+  }
+
+  function forecastTeam(id){
+    return forecastModel?.teams?.find(t=>t.id===id) || null;
+  }
+
+  function poissonDrawProbability(lambdaA,lambdaB){
+    let pa=Math.exp(-lambdaA),pb=Math.exp(-lambdaB),sum=pa*pb;
+    let ka=pa,kb=pb;
+    for(let k=1;k<80;k++){
+      ka*=lambdaA/k;
+      kb*=lambdaB/k;
+      const add=ka*kb;
+      sum+=add;
+      if(add<1e-12 && k>Math.max(lambdaA,lambdaB)+10)break;
+    }
+    return Math.max(0,Math.min(1,sum));
+  }
+
+  function derivedAdvancedDefaults(base,halfLife=35){
+    const matches=base?.matches||[];
+    const h=Math.max(5,Number(halfLife)||35);
+    if(!matches.length){
+      return{attack:Number(base?.attackMultiplier||1),defence:Number(base?.defenceStrength||1),volatility:1,recency:h,opponentSensitivity:1,drawTendency:1,cleanSheetTendency:1,highScoringTendency:1,eloLock:true};
     }
 
-    stats.sort((x, y) =>
-      y.points - x.points ||
-      y.gd - x.gd ||
-      y.gf - x.gf ||
-      x.team.localeCompare(y.team)
-    );
+    let sw=0,obsF=0,expF=0,obsA=0,expA=0,resid=0,expVar=0;
+    let obsDraw=0,expDraw=0,obsCS=0,expCS=0,obsHigh=0,expHigh=0;
 
-    stats.forEach((s, idx) => {
-      s.position = idx + 1;
+    matches.forEach((m,i)=>{
+      const w=Math.pow(.5,i/h);
+      const gf=Number(m.goalsFor),ga=Number(m.goalsAgainst),ef=Math.max(1e-9,Number(m.expectedGoalsFor)),ea=Math.max(1e-9,Number(m.expectedGoalsAgainst));
+      sw+=w;obsF+=w*gf;expF+=w*ef;obsA+=w*ga;expA+=w*ea;
+      resid+=w*((gf-ef)*(gf-ef)+(ga-ea)*(ga-ea));
+      expVar+=w*(ef+ea);
+      obsDraw+=w*(gf===ga?1:0);expDraw+=w*poissonDrawProbability(ef,ea);
+      obsCS+=w*(ga===0?1:0);expCS+=w*Math.exp(-ea);
+      obsHigh+=w*(gf>=3?1:0);expHigh+=w*(1-Math.exp(-ef)*(1+ef+ef*ef/2));
     });
 
-    return {
-      stats,
-      played
+    const shrinkGames=20;
+    const meanEF=expF/sw,meanEA=expA/sw;
+    const attack=(obsF+shrinkGames*meanEF)/(expF+shrinkGames*meanEF);
+    const leak=(obsA+shrinkGames*meanEA)/(expA+shrinkGames*meanEA);
+    const shrinkRatio=(raw)=>1+(raw-1)*(sw/(sw+shrinkGames));
+
+    return{
+      attack:Math.max(.25,Math.min(3,attack)),
+      defence:Math.max(.25,Math.min(3,1/Math.max(.05,leak))),
+      volatility:Math.max(.25,Math.min(4,shrinkRatio(resid/Math.max(1e-9,expVar)))),
+      recency:h,
+      opponentSensitivity:1,
+      drawTendency:Math.max(.25,Math.min(4,shrinkRatio(obsDraw/Math.max(1e-9,expDraw)))),
+      cleanSheetTendency:Math.max(.25,Math.min(4,shrinkRatio(obsCS/Math.max(1e-9,expCS)))),
+      highScoringTendency:Math.max(.25,Math.min(4,shrinkRatio(obsHigh/Math.max(1e-9,expHigh)))),
+      eloLock:true
     };
   }
 
-  function ratingAt(teamId, cutoff){
-    const hist = teamHistories.get(teamId) || [];
-    let best = null;
-
-    for (const row of hist){
-      if (row.date < cutoff && Number.isFinite(Number(row.rating))){
-        best = Number(row.rating);
-      } else if (row.date > cutoff){
-        break;
-      }
-    }
-
-    return best;
-  }
-
-  function buildSimulationInput(cutoff){
-    const teams = tournament.teams.map(t => t.name);
-    const ids = tournament.teams.map(t => t.id);
-    const idToIndex = new Map(ids.map((id, i) => [id, i]));
-
-    const table = actualTable(cutoff);
-
-    const basePoints = new Float64Array(teams.length);
-
-    for (const row of table.stats){
-      basePoints[row.i] = row.points;
-    }
-
-    const ratings = new Float64Array(teams.length);
-
-    ids.forEach((id, i) => {
-      const override = eloOverrides.get(id);
-      const r = Number.isFinite(override)
-        ? override
-        : ratingAt(id, cutoff);
-
-      if (!Number.isFinite(r)){
-        throw new Error(`No rating history available for ${teams[i]} on ${cutoff}.`);
-      }
-
-      ratings[i] = r;
-    });
-
-    const homeIdx = [];
-    const awayIdx = [];
-    const forced = [];
-
-    for (const m of tournament.matches){
-      if (m.date < cutoff) continue;
-
-      homeIdx.push(idToIndex.get(m.home));
-      awayIdx.push(idToIndex.get(m.away));
-
-      const key = `${m.date}|${m.home}|${m.away}`;
-      forced.push(forcedResults.get(key) || '');
-    }
-
-    return {
-      teams,
-      ratings:Array.from(ratings),
-      basePoints:Array.from(basePoints),
-      homeIdx,
-      awayIdx,
-      forced,
-      currentTable:table.stats,
-      played:table.played,
-      remaining:homeIdx.length
+  function advancedProfile(id){
+    const base=forecastTeam(id);
+    const over=advancedOverrides.get(id)||{};
+    const recency=Number.isFinite(Number(over.recency))?Number(over.recency):35;
+    const derived=derivedAdvancedDefaults(base,recency);
+    const num=(key,def)=>Number.isFinite(Number(over[key]))?Number(over[key]):def;
+    return{
+      attack:num('attack',derived.attack),
+      defence:num('defence',derived.defence),
+      volatility:num('volatility',derived.volatility),
+      recency,
+      opponentSensitivity:num('opponentSensitivity',derived.opponentSensitivity),
+      drawTendency:num('drawTendency',derived.drawTendency),
+      cleanSheetTendency:num('cleanSheetTendency',derived.cleanSheetTendency),
+      highScoringTendency:num('highScoringTendency',derived.highScoringTendency),
+      eloLock:typeof over.eloLock==='boolean'?over.eloLock:true
     };
   }
 
-  function fixtureKey(m){
-    return `${m.date}|${m.home}|${m.away}`;
+  function refreshAdvancedAvailability(){
+    const ready=!!forecastModel?.teams?.length;
+    wcModelAdvancedEl.disabled=!ready;
+    wcModelAdvancedTopEl.disabled=!ready;
+    wcModelAdvancedLabelEl.classList.toggle('disabled',!ready);
+    wcModelAdvancedTopLabelEl.classList.toggle('disabled',!ready);
+
+    if(!ready && (wcModelAdvancedEl.checked||wcModelAdvancedTopEl.checked)){
+      setWorldCupModel('normal','sync');
+    }
+  }
+
+  function updateWorldCupModelCopy(){
+    if(mode!=='world-cup') return;
+
+    if(currentWorldCupModel()==='advanced'){
+      wcRoutingEl.innerHTML=`
+        <strong>Group tiebreaks:</strong> Points → goal difference → goals scored → head-to-head points → head-to-head goal difference → head-to-head goals scored → random draw.<br>
+        <strong>Round of 16 routing:</strong> ${(structure.simulation?.roundOf16Slots||[]).map(s=>`${s.home.group}${s.home.position} vs ${s.away.group}${s.away.position}`).join(' · ')}.<br>
+        <strong>Scores:</strong> Simulated from the Advanced v1 goal model. Overall expected match strength is anchored to J-Ratings Elo.
+      `;
+      simNoteEl.textContent='Advanced mode simulates scorelines using each team’s recent history. More recent matches matter more, and opponent strength is taken into account. Team settings affect how matches tend to play out, while overall strength stays tied to J-Ratings by default.';
+    }else{
+      wcRoutingEl.innerHTML=`
+        <strong>Group tiebreaks:</strong> Points → head-to-head points → Sonneborn–Berger → random draw.<br>
+        <strong>Round of 16 routing:</strong> ${(structure.simulation?.roundOf16Slots||[]).map(s=>`${s.home.group}${s.home.position} vs ${s.away.group}${s.away.position}`).join(' · ')}.<br>
+        <strong>Knockout draws:</strong> Draw remains a draw for Elo; advancement is decided 50/50.
+      `;
+      simNoteEl.textContent='Standard J-Ratings mode uses Elo-based W/D/L probabilities and does not simulate scorelines. Group ties are broken by points, head-to-head points, Sonneborn–Berger, then a random draw. Knockout draws remain draws for Elo and are split 50/50 for advancement.';
+    }
   }
 
   function teamByTypedName(value){
-    const q = String(value || '').trim().toLowerCase();
-    if (!q) return null;
-
-    return tournament.teams.find(
-      t => t.name.toLowerCase() === q
-    ) || null;
+    const q=String(value||'').trim().toLowerCase();
+    return !q||!tournament ? null : tournament.teams.find(t=>t.name.toLowerCase()===q)||null;
   }
 
-  function remainingFixturesForDate(cutoff){
-    return tournament.matches.filter(m => m.date >= cutoff);
+  async function loadHistories(){
+    histories=new Map();
+    await Promise.all(tournament.teams.map(async t=>{
+      const u=`${HISTORY_BASE_URL}${encodeURIComponent(t.id)}.json`;
+      const r=await fetch(u); if(!r.ok) throw new Error(`Could not load ${u}`);
+      const h=await r.json(); h.sort((a,b)=>a.date.localeCompare(b.date)); histories.set(t.id,h);
+    }));
+  }
+
+  function ratingAt(id,date){
+    let best=null;
+    for(const r of histories.get(id)||[]){
+      if(r.date<date && Number.isFinite(Number(r.rating))) best=Number(r.rating); else if(r.date>=date) break;
+    }
+    return best;
+  }
+
+  function ratingsAt(date){
+    return tournament.teams.map(t=>{
+      const over=eloOverrides.get(t.id); if(Number.isFinite(over)) return over;
+      const r=ratingAt(t.id,date); if(!Number.isFinite(r)) throw new Error(`No rating history available for ${t.name} on ${date}.`); return r;
+    });
   }
 
   function populateTeamOptions(){
-    teamOptionsEl.innerHTML = '';
-
-    for (const team of tournament.teams){
-      const opt = document.createElement('option');
-      opt.value = team.name;
-      teamOptionsEl.appendChild(opt);
-    }
-  }
-
-  function renderFixtureOptions(cutoff){
-    const selectedTeam = teamByTypedName(forceTeamEl.value);
-    fixtureSelectEl.innerHTML = '';
-
-    if (!selectedTeam){
-      const opt = document.createElement('option');
-      opt.value = '';
-      opt.textContent = 'Select a team first';
-      fixtureSelectEl.appendChild(opt);
-      return;
-    }
-
-    const remaining = remainingFixturesForDate(cutoff).filter(
-      m => m.home === selectedTeam.id || m.away === selectedTeam.id
-    );
-
-    if (!remaining.length){
-      const opt = document.createElement('option');
-      opt.value = '';
-      opt.textContent = 'No remaining fixtures for this team';
-      fixtureSelectEl.appendChild(opt);
-      return;
-    }
-
-    const teamNameById = new Map(
-      tournament.teams.map(t => [t.id, t.name])
-    );
-
-    for (const m of remaining){
-      const opt = document.createElement('option');
-      opt.value = fixtureKey(m);
-      opt.textContent =
-        `${m.date} — ${teamNameById.get(m.home)} v ${teamNameById.get(m.away)}`;
-      fixtureSelectEl.appendChild(opt);
-    }
+    teamOptionsEl.innerHTML='';
+    for(const t of tournament?.teams||[]){ const o=document.createElement('option'); o.value=t.name; teamOptionsEl.appendChild(o); }
   }
 
   function renderForcedList(){
-    forcedListEl.innerHTML = '';
-
-    if (!forcedResults.size){
-      forcedListEl.innerHTML =
-        '<span style="opacity:.7">No forced results.</span>';
-      return;
-    }
-
-    const teamNameById = new Map(
-      tournament.teams.map(t => [t.id, t.name])
-    );
-
-    for (const [key, result] of forcedResults.entries()){
-      const [date, homeId, awayId] = key.split('|');
-      const home = teamNameById.get(homeId) || homeId;
-      const away = teamNameById.get(awayId) || awayId;
-
-      const label =
-        result === 'home' ? `${home} win` :
-        result === 'draw' ? 'Draw' :
-        `${away} win`;
-
-      const row = document.createElement('div');
-      row.className = 'applied-item';
-      row.innerHTML = `
-        <div>
-          <div>${date} — ${home} v ${away}</div>
-          <div class="forced-result-label">${label}</div>
-        </div>
-        <button type="button" class="remove-small" data-key="${key}">Remove</button>
-      `;
+    forcedListEl.innerHTML='';
+    if(!forcedResults.size){ forcedListEl.innerHTML='<span style="opacity:.7">No forced results.</span>'; return; }
+    const names=new Map(tournament.teams.map(t=>[t.id,t.name]));
+    for(const [key,result] of forcedResults){
+      const [date,h,a]=key.split('|');
+      const label=result==='home'?`${names.get(h)} win`:result==='draw'?'Draw':`${names.get(a)} win`;
+      const row=document.createElement('div'); row.className='applied-item';
+      row.innerHTML=`<div><div>${date} — ${names.get(h)} v ${names.get(a)}</div><div class="forced-result-label">${label}</div></div><button type="button" class="remove-small" data-key="${key}">Remove</button>`;
       forcedListEl.appendChild(row);
     }
-
-    forcedListEl.querySelectorAll('.remove-small').forEach(btn => {
-      btn.addEventListener('click', () => {
-        forcedResults.delete(btn.dataset.key);
-        renderForcedList();
-      });
-    });
+    forcedListEl.querySelectorAll('.remove-small').forEach(b=>b.onclick=()=>{forcedResults.delete(b.dataset.key);renderForcedList();renderCurrent();});
   }
 
   function renderEloList(){
-    eloListEl.innerHTML = '';
+    eloListEl.innerHTML='';
+    if(!eloOverrides.size){ eloListEl.innerHTML='<span style="opacity:.7">No Elo overrides.</span>'; return; }
+    const names=new Map(tournament.teams.map(t=>[t.id,t.name]));
+    for(const [id,v] of eloOverrides){
+      const row=document.createElement('div'); row.className='applied-item';
+      row.innerHTML=`<div><strong>${names.get(id)||id}</strong>: ${Math.round(v)}</div><button type="button" class="remove-small" data-id="${id}">Remove</button>`;
+      eloListEl.appendChild(row);
+    }
+    eloListEl.querySelectorAll('.remove-small').forEach(b=>b.onclick=()=>{eloOverrides.delete(b.dataset.id);renderEloList();renderCurrent();});
+  }
 
-    if (!eloOverrides.size){
-      eloListEl.innerHTML =
-        '<span style="opacity:.7">No Elo overrides.</span>';
+  function groupMatches(){
+    const gs=structure.groupStage, gByTeam=new Map();
+    Object.entries(structure.groups||{}).forEach(([g,ids])=>ids.forEach(id=>gByTeam.set(id,g)));
+    return tournament.matches.filter(m=>m.date>=gs.startDate&&m.date<=gs.endDate&&gByTeam.get(m.home)&&gByTeam.get(m.home)===gByTeam.get(m.away));
+  }
+
+  function availableFixtures(){ return mode==='world-cup'?groupMatches():tournament.matches.filter(m=>m.date>=cutoffEl.value); }
+
+  function renderFixtureOptions(){
+    const team=teamByTypedName(forceTeamEl.value); fixtureSelectEl.innerHTML='';
+    if(!team){ fixtureSelectEl.innerHTML='<option value="">Select a team first</option>'; return; }
+    const names=new Map(tournament.teams.map(t=>[t.id,t.name]));
+    const ms=availableFixtures().filter(m=>m.home===team.id||m.away===team.id);
+    if(!ms.length){ fixtureSelectEl.innerHTML='<option value="">No available fixtures for this team</option>'; return; }
+    for(const m of ms){ const o=document.createElement('option'); o.value=fixtureKey(m); o.textContent=`${m.date} — ${names.get(m.home)} v ${names.get(m.away)}`; fixtureSelectEl.appendChild(o); }
+  }
+
+
+  function markWorldCupResultsStale(){if(mode!=='world-cup'||!wcHasRun)return;wcStaleBannerEl.classList.add('is-visible');resultsBody.closest('.results-card')?.classList.add('wc-stale');sampleTournamentEl.classList.add('wc-stale');}
+  function clearWorldCupStale(){wcStaleBannerEl.classList.remove('is-visible');resultsBody.closest('.results-card')?.classList.remove('wc-stale');sampleTournamentEl.classList.remove('wc-stale');}
+  function groupForTeam(id){for(const [g,ids] of Object.entries(structure?.groups||{})){if(ids.includes(id))return g;}return '';}
+  function worldCupBaseRating(id){return ratingAt(id,structure.groupStage.startDate);}
+  function renderWorldCupStartSituation(){
+    if(mode!=='world-cup')return;
+    wcStartBodyEl.innerHTML='';
+
+    const rows=tournament.teams.map(team=>({
+      team,
+      group:groupForTeam(team.id),
+      base:worldCupBaseRating(team.id),
+      value:eloOverrides.has(team.id)?eloOverrides.get(team.id):worldCupBaseRating(team.id)
+    })).sort((a,b)=>a.group.localeCompare(b.group)||a.team.name.localeCompare(b.team.name));
+
+    for(const row of rows){
+      const tr=document.createElement('tr');
+      const eloChanged=eloOverrides.has(row.team.id);
+      const advancedChanged=advancedOverrides.has(row.team.id);
+
+      tr.innerHTML=`
+        <td>Group ${row.group}</td>
+        <td>${row.team.name}${advancedChanged?'<span class="wc-model-badge">Advanced edited</span>':''}</td>
+        <td class="${eloChanged?'wc-override':''}">
+          ${Math.round(row.value)}
+          ${eloChanged?` <span style="opacity:.6;font-weight:400;">(J-Ratings ${Math.round(row.base)})</span>`:''}
+        </td>
+        <td><button type="button" class="wc-edit-btn" data-team-id="${row.team.id}">Edit</button></td>
+      `;
+      wcStartBodyEl.appendChild(tr);
+    }
+
+    wcStartBodyEl.querySelectorAll('.wc-edit-btn').forEach(
+      b=>b.onclick=()=>openWorldCupTeamEditor(b.dataset.teamId)
+    );
+  }
+
+  function renderWorldCupDesign(){
+    if(mode!=='world-cup')return;
+
+    const chips=[
+      ['Teams','32'],
+      ['Groups','8 × 4'],
+      ['Qualify','Top 2'],
+      ['Knockout','R16 → QF → SF → Final']
+    ];
+
+    wcDesignSummaryEl.innerHTML=chips.map(([k,v])=>
+      `<div class="wc-design-chip"><div class="k">${k}</div><div class="v">${v}</div></div>`
+    ).join('');
+
+    const names=new Map(tournament.teams.map(t=>[t.id,t.name]));
+    wcDesignGroupsEl.innerHTML='';
+
+    for(const [g,ids] of Object.entries(structure.groups||{})){
+      const card=document.createElement('div');
+      card.className='wc-design-group';
+      card.innerHTML=`<h4>Group ${g}</h4>`+
+        ids.map(id=>`<div class="wc-design-team">${names.get(id)||id}</div>`).join('');
+      wcDesignGroupsEl.appendChild(card);
+    }
+
+    updateWorldCupModelCopy();
+  }
+
+  function renderWorldCupCalculationAudit(id,halfLife=35){
+    const base=forecastTeam(id);
+
+    wcCalcSummaryGridEl.innerHTML='';
+    wcAuditBodyEl.innerHTML='';
+
+    if(!base){
+      wcCalcExplanationEl.textContent='No calculation audit is available for this team.';
       return;
     }
 
-    const nameById = new Map(
-      tournament.teams.map(t => [t.id, t.name])
-    );
+    const calc=base.calculation||{};
+    wcCalcExplanationEl.textContent=
+      calc.explanation ||
+      'These settings come from the team’s last 100 matches before the tournament. Recent matches count more, and stronger opponents are taken into account.';
 
-    for (const [id, value] of eloOverrides.entries()){
-      const row = document.createElement('div');
-      row.className = 'applied-item';
-      row.innerHTML = `
-        <div><strong>${nameById.get(id) || id}</strong>: ${Math.round(value)}</div>
-        <button type="button" class="remove-small" data-id="${id}">Remove</button>
+    const cards=[
+      ['Goals scored (weighted)', Number(calc.weightedActualGoalsFor).toFixed(1)],
+      ['Expected goals scored', Number(calc.weightedExpectedGoalsFor).toFixed(1)],
+      ['Before adjustment', Number(calc.rawAttackRatio).toFixed(3)],
+      ['Attack setting', Number(base.attackMultiplier).toFixed(3)],
+      ['Goals conceded (weighted)', Number(calc.weightedActualGoalsAgainst).toFixed(1)],
+      ['Expected goals conceded', Number(calc.weightedExpectedGoalsAgainst).toFixed(1)],
+      ['Before adjustment', Number(calc.rawDefenceStrength).toFixed(3)],
+      ['Defence setting', Number(base.defenceStrength).toFixed(3)]
+    ];
+
+    wcCalcSummaryGridEl.innerHTML=cards.map(([k,v])=>
+      `<div class="wc-calc-stat"><div class="k">${k}</div><div class="v">${v}</div></div>`
+    ).join('');
+
+    (base.matches||[]).forEach((m,i)=>{
+      const tr=document.createElement('tr');
+      tr.innerHTML=`
+        <td>${i+1}</td>
+        <td>${m.date}</td>
+        <td>${m.opponent}</td>
+        <td>${m.venue}</td>
+        <td>${m.teamElo}</td>
+        <td>${m.opponentElo}</td>
+        <td>${m.goalsFor}</td>
+        <td>${Number(m.expectedGoalsFor).toFixed(2)}</td>
+        <td>${m.goalsAgainst}</td>
+        <td>${Number(m.expectedGoalsAgainst).toFixed(2)}</td>
+        <td>${Math.pow(.5,i/Math.max(5,Number(halfLife)||35)).toFixed(3)}</td>
       `;
-      eloListEl.appendChild(row);
-    }
-
-    eloListEl.querySelectorAll('.remove-small').forEach(btn => {
-      btn.addEventListener('click', () => {
-        eloOverrides.delete(btn.dataset.id);
-        renderEloList();
-
-        const input = buildSimulationInput(cutoffEl.value);
-        renderCurrentState(input);
-      });
+      wcAuditBodyEl.appendChild(tr);
     });
   }
 
-  function renderCurrentState(input){
-    playedCountEl.textContent = input.played;
-    remainingCountEl.textContent = input.remaining;
-    iterationCountEl.textContent = '—';
-    runtimeEl.textContent = '—';
+  function openWorldCupTeamEditor(id){
+    const team=tournament.teams.find(t=>t.id===id);
+    if(!team)return;
 
-    resultsBody.innerHTML = '';
+    wcEditingTeamId=id;
+    wcEditTitleEl.textContent=`Edit ${team.name}`;
+    wcEditEloEl.value=Math.round(
+      eloOverrides.has(id)?eloOverrides.get(id):worldCupBaseRating(id)
+    );
 
-    for (const row of input.currentTable){
-      const tr = document.createElement('tr');
-      const elo = input.ratings[row.i];
+    const advanced=currentWorldCupModel()==='advanced';
+    wcAdvancedFieldsEl.classList.toggle('is-visible',advanced);
+    wcEditBackdropEl.querySelector('.wc-modal')?.classList.toggle('is-advanced',advanced);
 
-      const currentDisplay =
-        input.played === 0 ? '—' : row.position;
+    if(advanced){
+      const base=forecastTeam(id);
+      const profile=advancedProfile(id);
 
-      tr.innerHTML = `
-        <td>${currentDisplay}</td>
-        <td>${row.team}</td>
-        <td>${row.points}</td>
-        <td>${Math.round(elo)}</td>
-        <td>—</td>
-        <td>—</td>
-        <td>—</td>
-        <td>—</td>
-      `;
+      wcEditAttackEl.value=profile.attack.toFixed(2);
+      wcEditDefenceEl.value=profile.defence.toFixed(2);
+      wcEditVolatilityEl.value=profile.volatility.toFixed(2);
+      wcEditRecencyEl.value=Math.round(profile.recency);
+      wcEditOpponentSensitivityEl.value=profile.opponentSensitivity.toFixed(2);
+      wcEditDrawEl.value=profile.drawTendency.toFixed(2);
+      wcEditCleanSheetEl.value=profile.cleanSheetTendency.toFixed(2);
+      wcEditHighScoringEl.value=profile.highScoringTendency.toFixed(2);
+      wcEditEloLockEl.checked=profile.eloLock;
 
-      resultsBody.appendChild(tr);
+      wcModelReadoutEl.innerHTML=base
+        ? `<strong>Model baseline:</strong> ${base.gamesUsed} matches, ${base.oldestMatch} to ${base.newestMatch}.<br>
+           All data-derived controls use those same last 100 pre-tournament matches.`
+        : 'No advanced profile is available for this team.';
+
+      renderWorldCupCalculationAudit(id,profile.recency);
+      wcCalcDetailsEl.open=false;
+    }
+
+    wcEditBackdropEl.classList.add('is-open');
+    wcEditBackdropEl.setAttribute('aria-hidden','false');
+    setTimeout(()=>wcEditEloEl.focus(),0);
+  }
+
+  function refreshEditorForRecency(){
+    if(!wcEditingTeamId)return;
+    const base=forecastTeam(wcEditingTeamId);
+    const recency=Math.max(5,Number(wcEditRecencyEl.value)||35);
+    const d=derivedAdvancedDefaults(base,recency);
+    wcEditAttackEl.value=d.attack.toFixed(2);
+    wcEditDefenceEl.value=d.defence.toFixed(2);
+    wcEditVolatilityEl.value=d.volatility.toFixed(2);
+    wcEditDrawEl.value=d.drawTendency.toFixed(2);
+    wcEditCleanSheetEl.value=d.cleanSheetTendency.toFixed(2);
+    wcEditHighScoringEl.value=d.highScoringTendency.toFixed(2);
+    renderWorldCupCalculationAudit(wcEditingTeamId,recency);
+  }
+
+  function closeWorldCupTeamEditor(){
+    wcEditingTeamId=null;
+    wcEditBackdropEl.classList.remove('is-open');
+    wcEditBackdropEl.setAttribute('aria-hidden','true');
+    wcEditBackdropEl.querySelector('.wc-modal')?.classList.remove('is-advanced');
+  }
+
+  function saveWorldCupTeamEditor(){
+    if(!wcEditingTeamId)return;
+
+    const v=Number(wcEditEloEl.value);
+    if(!Number.isFinite(v)){
+      statusEl.textContent='Enter a valid Elo value.';
+      statusEl.classList.add('error');if(mode==='world-cup'){wcRunBtnEl.disabled=false;wcStopBtnEl.disabled=true;}
+      return;
+    }
+
+    const baseElo=worldCupBaseRating(wcEditingTeamId);
+    if(Math.round(v)===Math.round(baseElo)) eloOverrides.delete(wcEditingTeamId);
+    else eloOverrides.set(wcEditingTeamId,v);
+
+    if(currentWorldCupModel()==='advanced'){
+      const values={
+        attack:Number(wcEditAttackEl.value),
+        defence:Number(wcEditDefenceEl.value),
+        volatility:Number(wcEditVolatilityEl.value),
+        recency:Number(wcEditRecencyEl.value),
+        opponentSensitivity:Number(wcEditOpponentSensitivityEl.value),
+        drawTendency:Number(wcEditDrawEl.value),
+        cleanSheetTendency:Number(wcEditCleanSheetEl.value),
+        highScoringTendency:Number(wcEditHighScoringEl.value),
+        eloLock:wcEditEloLockEl.checked
+      };
+
+      const numericKeys=['attack','defence','volatility','recency','opponentSensitivity','drawTendency','cleanSheetTendency','highScoringTendency'];
+      if(numericKeys.some(k=>!Number.isFinite(values[k])||values[k]<=0)){
+        statusEl.textContent='Enter valid positive advanced-model values.';
+        statusEl.classList.add('error');
+        return;
+      }
+      advancedOverrides.set(wcEditingTeamId,values);
+    }
+
+    renderEloList();
+    renderWorldCupStartSituation();
+    renderCurrent();
+    markWorldCupResultsStale();
+
+    statusEl.textContent='Team settings updated.';
+    statusEl.classList.remove('error');
+    closeWorldCupTeamEditor();
+  }
+
+  function resetWorldCupTeamEditor(){
+    if(!wcEditingTeamId)return;
+
+    eloOverrides.delete(wcEditingTeamId);
+    advancedOverrides.delete(wcEditingTeamId);
+
+    renderEloList();
+    renderWorldCupStartSituation();
+    renderCurrent();
+    markWorldCupResultsStale();
+    closeWorldCupTeamEditor();
+
+    statusEl.textContent='Team reset to model defaults.';
+    statusEl.classList.remove('error');
+  }
+
+  function leagueTable(cutoff){
+    const ids=tournament.teams.map(t=>t.id), names=tournament.teams.map(t=>t.name), ix=new Map(ids.map((id,i)=>[id,i]));
+    const s=names.map((team,i)=>({i,team,played:0,gf:0,ga:0,gd:0,points:0})); let played=0;
+    for(const m of tournament.matches){
+      if(m.date>=cutoff) continue; const h=ix.get(m.home),a=ix.get(m.away),hg=Number(m.homeScore),ag=Number(m.awayScore); if(h==null||a==null||!Number.isFinite(hg)||!Number.isFinite(ag)) continue;
+      played++;s[h].played++;s[a].played++;s[h].gf+=hg;s[h].ga+=ag;s[a].gf+=ag;s[a].ga+=hg;
+      if(hg>ag)s[h].points+=3;else if(hg<ag)s[a].points+=3;else{s[h].points++;s[a].points++;}
+    }
+    s.forEach(x=>x.gd=x.gf-x.ga);s.sort((a,b)=>b.points-a.points||b.gd-a.gd||b.gf-a.gf||a.team.localeCompare(b.team));s.forEach((x,i)=>x.position=i+1);return{stats:s,played};
+  }
+
+  function leagueInput(){
+    const cutoff=cutoffEl.value, ids=tournament.teams.map(t=>t.id), teams=tournament.teams.map(t=>t.name), ix=new Map(ids.map((id,i)=>[id,i])), table=leagueTable(cutoff), ratings=ratingsAt(cutoff);
+    const basePoints=new Array(teams.length).fill(0); table.stats.forEach(r=>basePoints[r.i]=r.points);
+    const homeIdx=[],awayIdx=[],forced=[];
+    for(const m of tournament.matches){if(m.date<cutoff)continue;homeIdx.push(ix.get(m.home));awayIdx.push(ix.get(m.away));forced.push(forcedResults.get(fixtureKey(m))||'');}
+    return{teams,ratings,basePoints,homeIdx,awayIdx,forced,currentTable:table.stats,played:table.played,remaining:homeIdx.length};
+  }
+
+  function worldCupInput(){
+    const date=structure.groupStage.startDate;
+    const ids=tournament.teams.map(t=>t.id);
+    const teams=tournament.teams.map(t=>t.name);
+    const ix=new Map(ids.map((id,i)=>[id,i]));
+    const ratings=ratingsAt(date);
+
+    const groups={};
+    Object.entries(structure.groups||{}).forEach(
+      ([g,arr])=>groups[g]=arr.map(id=>ix.get(id))
+    );
+
+    const ms=groupMatches().map(m=>({
+      home:ix.get(m.home),
+      away:ix.get(m.away),
+      forced:forcedResults.get(fixtureKey(m))||''
+    }));
+
+    const profiles=ids.map(id=>advancedProfile(id));
+
+    return{
+      teams,
+      ids,
+      ratings,
+      groups,
+      groupMatches:ms,
+      roundOf16Slots:structure.simulation.roundOf16Slots,
+      knockoutRounds:structure.knockoutRounds,
+      simulationModel:currentWorldCupModel(),
+      attack:profiles.map(x=>x.attack),
+      defence:profiles.map(x=>x.defence),
+      volatility:profiles.map(x=>x.volatility),
+      opponentSensitivity:profiles.map(x=>x.opponentSensitivity),
+      drawTendency:profiles.map(x=>x.drawTendency),
+      cleanSheetTendency:profiles.map(x=>x.cleanSheetTendency),
+      highScoringTendency:profiles.map(x=>x.highScoringTendency),
+      eloLock:profiles.map(x=>x.eloLock),
+      eloGoalSlope:Number(forecastModel?.baseline?.eloGoalSlope||0),
+      neutralBaseGoals:Number(forecastModel?.baseline?.neutralBaseGoalsPerTeam||1.35)
+    };
+  }
+
+  function renderCurrent(){
+    iterationCountEl.textContent='—';runtimeEl.textContent='—';resultsBody.innerHTML='';
+    if(mode==='world-cup'){
+      sampleTournamentEl.classList.remove('is-visible');
+      const input=worldCupInput();playedCountEl.textContent='0';remainingCountEl.textContent='64';
+      tournament.teams.map((t,i)=>({t,r:input.ratings[i]})).sort((a,b)=>b.r-a.r).forEach(x=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${x.t.name}</td><td>${Math.round(x.r)}</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>`;resultsBody.appendChild(tr);});
+    }else{
+      const input=leagueInput();playedCountEl.textContent=input.played;remainingCountEl.textContent=input.remaining;
+      input.currentTable.forEach(r=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${input.played? r.position:'—'}</td><td>${r.team}</td><td>${r.points}</td><td>${Math.round(input.ratings[r.i])}</td><td>—</td><td>—</td><td>—</td><td>—</td>`;resultsBody.appendChild(tr);});
     }
   }
 
-  function renderResults(input, result){
-    const currentPos = new Map(
-      input.currentTable.map(r => [r.team, r.position])
-    );
-
-    const currentPts = new Map(
-      input.currentTable.map(r => [r.team, r.points])
-    );
-
-    const rows = result.rows.slice().sort((a, b) =>
-      b.titlePct - a.titlePct ||
-      b.top4Pct - a.top4Pct ||
-      b.expectedPoints - a.expectedPoints
-    );
-
-    resultsBody.innerHTML = '';
-
-    for (const row of rows){
-      const tr = document.createElement('tr');
-
-      const currentDisplay =
-        input.played === 0 ? '—' : currentPos.get(row.team);
-
-      tr.innerHTML = `
-        <td>${currentDisplay}</td>
-        <td>${row.team}</td>
-        <td>${currentPts.get(row.team)}</td>
-        <td>${Math.round(row.startingElo)}</td>
-        <td>${fmtPct(row.titlePct)}</td>
-        <td>${fmtPct(row.top4Pct)}</td>
-        <td>${fmtPct(row.relegationPct)}</td>
-        <td>${row.expectedPoints.toFixed(1)}</td>
-      `;
-
-      resultsBody.appendChild(tr);
-    }
-
-    iterationCountEl.textContent = result.simulations.toLocaleString();
-    runtimeEl.textContent = `${result.elapsedSeconds.toFixed(2)}s`;
+  function renderLeagueResults(input,msg){
+    const pos=new Map(input.currentTable.map(r=>[r.team,r.position])),pts=new Map(input.currentTable.map(r=>[r.team,r.points]));resultsBody.innerHTML='';
+    msg.rows.slice().sort((a,b)=>b.titlePct-a.titlePct||b.top4Pct-a.top4Pct||b.expectedPoints-a.expectedPoints).forEach(r=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${input.played?pos.get(r.team):'—'}</td><td>${r.team}</td><td>${pts.get(r.team)}</td><td>${Math.round(r.startingElo)}</td><td>${fmtPct(r.titlePct)}</td><td>${fmtPct(r.top4Pct)}</td><td>${fmtPct(r.relegationPct)}</td><td>${r.expectedPoints.toFixed(1)}</td>`;resultsBody.appendChild(tr);});
   }
 
-  function makeWorker(){
-    const workerSource = `
-      self.onmessage = (event) => {
-        const {
-          teams,
-          ratings:startingRatings,
-          basePoints,
-          homeIdx,
-          awayIdx,
-          forced,
-          simulations,
-          kFactor,
-          homeAdvEnabled,
-          homeAdvElo
-        } = event.data;
+  function renderWorldCupResults(msg){
+    resultsBody.innerHTML='';
+    msg.rows.slice().sort((a,b)=>b.championPct-a.championPct||b.finalPct-a.finalPct||b.semiFinalPct-a.semiFinalPct).forEach(r=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${r.team}</td><td>${Math.round(r.startingElo)}</td><td>${fmtPct(r.round16Pct)}</td><td>${fmtPct(r.quarterFinalPct)}</td><td>${fmtPct(r.semiFinalPct)}</td><td>${fmtPct(r.finalPct)}</td><td>${fmtPct(r.championPct)}</td><td>${r.expectedGroupPoints.toFixed(2)}</td>`;resultsBody.appendChild(tr);});
+  }
 
-        const nTeams = teams.length;
-        const nFixtures = homeIdx.length;
+  function clearSampleJourney(){
+    sampleBracketEl.classList.remove('journey-active');
+    sampleBracketEl.querySelectorAll('.journey-highlight').forEach(el=>el.classList.remove('journey-highlight'));
+  }
 
-        const finishCounts = Array.from(
-          {length:nTeams},
-          () => new Uint32Array(nTeams)
-        );
+  function highlightSampleJourney(teamIndex){
+    clearSampleJourney();
+    sampleBracketEl.classList.add('journey-active');
+    sampleBracketEl.querySelectorAll(`[data-team-index="${teamIndex}"]`).forEach(el=>el.classList.add('journey-highlight'));
+  }
 
-        const finalPointsSum = new Float64Array(nTeams);
+  function positionSampleBracket(sample){
+    const rounds=sample.rounds||[];
+    const centres=new Map();
+    const matchById=new Map();
 
-        const start = performance.now();
+    for(const round of rounds){
+      for(const m of round.matches||[]) matchById.set(m.id,m);
+    }
 
-        const clamp = (x, lo, hi) =>
-          Math.max(lo, Math.min(hi, x));
+    const first=rounds[0]?.matches||[];
+    const topPad=82,bottomPad=42,canvasHeight=900,usable=canvasHeight-topPad-bottomPad;
 
-        for (let sim = 0; sim < simulations; sim++){
-          const ratings = Float64Array.from(startingRatings);
-          const points = Float64Array.from(basePoints);
+    first.forEach((m,i)=>{
+      centres.set(m.id,topPad+usable*((i+.5)/first.length));
+    });
 
-          for (let i = 0; i < nFixtures; i++){
-            const h = homeIdx[i];
-            const a = awayIdx[i];
+    for(let r=1;r<rounds.length;r++){
+      for(const target of rounds[r].matches||[]){
+        const feederYs=[];
+        for(const source of matchById.values()){
+          if(source.feedsInto===target.id && centres.has(source.id)) feederYs.push(centres.get(source.id));
+        }
+        if(feederYs.length) centres.set(target.id,feederYs.reduce((a,b)=>a+b,0)/feederYs.length);
+      }
+    }
 
-            const homeElo = ratings[h];
-            const awayElo = ratings[a];
+    for(const [id,y] of centres){
+      const el=sampleBracketEl.querySelector(`[data-match-id="${CSS.escape(id)}"]`);
+      if(el) el.style.top=`${y}px`;
+    }
+  }
 
-            const effectiveHomeElo =
-              homeElo + (homeAdvEnabled ? homeAdvElo : 0);
+  function drawSampleConnectors(sample){
+    sampleBracketSvgEl.innerHTML='';
+    sampleBracketSvgEl.setAttribute('viewBox',`0 0 ${sampleBracketCanvasEl.clientWidth} 900`);
+    sampleBracketSvgEl.setAttribute('preserveAspectRatio','none');
 
-            const expectedHome =
-              1 / (1 + Math.pow(10, (awayElo - effectiveHomeElo) / 400));
+    const canvasRect=sampleBracketCanvasEl.getBoundingClientRect();
+    const els=new Map(
+      [...sampleBracketEl.querySelectorAll('.sample-match')].map(el=>[el.dataset.matchId,el])
+    );
 
-            const absGap = Math.abs(effectiveHomeElo - awayElo);
+    for(const round of sample.rounds||[]){
+      for(const m of round.matches||[]){
+        if(!m.feedsInto) continue;
+        const from=els.get(m.id),to=els.get(m.feedsInto);
+        if(!from||!to) continue;
 
-            const drawProb = clamp(
-              0.302 - 0.00048 * absGap,
-              0.13,
-              0.31
-            );
+        const a=from.getBoundingClientRect(),b=to.getBoundingClientRect();
+        const x1=a.right-canvasRect.left,y1=a.top+a.height/2-canvasRect.top;
+        const x2=b.left-canvasRect.left,y2=b.top+b.height/2-canvasRect.top;
+        const xm=x1+(x2-x1)/2;
 
-            const homeWinProb = clamp(
-              expectedHome - drawProb / 2,
-              0,
-              1 - drawProb
-            );
+        const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+        path.setAttribute('class','sample-bracket-connector');
+        path.setAttribute('d',`M ${x1} ${y1} H ${xm} V ${y2} H ${x2}`);
+        sampleBracketSvgEl.appendChild(path);
+      }
+    }
+  }
 
-            const forcedResult = forced[i];
-            const u = Math.random();
+  function renderSampleTournament(sample){
+    if(!sample){
+      sampleTournamentEl.classList.remove('is-visible');
+      return;
+    }
 
-            let homeScore;
-            let awayScore;
+    sampleTournamentEl.classList.add('is-visible');
+    sampleGroupsEl.innerHTML='';
+    sampleBracketEl.innerHTML='';
+    sampleBracketSvgEl.innerHTML='';
 
-            if (forcedResult === 'home'){
-              homeScore = 1;
-              awayScore = 0;
-              points[h] += 3;
+    for(const [group,rows] of Object.entries(sample.groups||{})){
+      const card=document.createElement('div');
+      card.className='sample-group';
 
-            } else if (forcedResult === 'draw'){
-              homeScore = 0.5;
-              awayScore = 0.5;
-              points[h] += 1;
-              points[a] += 1;
+      const h=document.createElement('h4');
+      h.textContent=`Group ${group}`;
+      card.appendChild(h);
 
-            } else if (forcedResult === 'away'){
-              homeScore = 0;
-              awayScore = 1;
-              points[a] += 3;
+      const table=document.createElement('table');
+      table.innerHTML=sample.advanced?'<thead><tr><th>Team</th><th>P</th><th>Pts</th><th>GD</th><th>GF</th></tr></thead>':'<thead><tr><th>Team</th><th>P</th><th>Pts</th><th>SB</th></tr></thead>';
+      const tbody=document.createElement('tbody');
 
-            } else if (u < homeWinProb){
-              homeScore = 1;
-              awayScore = 0;
-              points[h] += 3;
+      rows.forEach((row,i)=>{
+        const tr=document.createElement('tr');
+        if(i<2) tr.className='qualified';
+        tr.innerHTML=sample.advanced?`<td>${row.team}</td><td>3</td><td>${row.points}</td><td>${row.gd}</td><td>${row.gf}</td>`:`<td>${row.team}</td><td>3</td><td>${row.points}</td><td>${row.sb.toFixed(1)}</td>`;
+        tbody.appendChild(tr);
+      });
 
-            } else if (u < homeWinProb + drawProb){
-              homeScore = 0.5;
-              awayScore = 0.5;
-              points[h] += 1;
-              points[a] += 1;
+      table.appendChild(tbody);
+      card.appendChild(table);
+      sampleGroupsEl.appendChild(card);
+    }
 
-            } else {
-              homeScore = 0;
-              awayScore = 1;
-              points[a] += 3;
-            }
+    for(const round of sample.rounds||[]){
+      const col=document.createElement('div');
+      col.className='sample-round';
 
-            ratings[h] =
-              homeElo +
-              kFactor * (homeScore - expectedHome);
+      const h=document.createElement('h4');
+      h.textContent=round.label;
+      col.appendChild(h);
 
-            ratings[a] =
-              awayElo +
-              kFactor * (awayScore - (1 - expectedHome));
+      for(const m of round.matches||[]){
+        const box=document.createElement('div');
+        box.className='sample-match';
+        box.dataset.matchId=m.id;
+
+        for(const side of ['home','away']){
+          const teamIndex=m[side];
+          const row=document.createElement('div');
+          row.className='sample-team'+(m.winner===teamIndex?' winner':'');
+          row.dataset.teamIndex=String(teamIndex);
+
+          const name=document.createElement('span');
+          name.textContent=m[`${side}Name`];
+
+          const result=document.createElement('span');
+          result.className='sample-result';
+
+          if(sample.advanced){
+            const goals=side==='home'?m.homeGoals:m.awayGoals;
+            result.textContent=String(goals)+(m.outcome==='draw'&&m.winner===teamIndex?' →':'');
+          }else if(m.outcome==='draw'){
+            result.textContent=m.winner===teamIndex?'D →':'D';
+          }else{
+            result.textContent=m.winner===teamIndex?'W':'L';
           }
 
-          const order = Array.from(
-            {length:nTeams},
-            (_, i) => i
+          row.appendChild(name);
+          row.appendChild(result);
+          row.addEventListener('mouseenter',()=>highlightSampleJourney(teamIndex));
+          row.addEventListener('mouseleave',clearSampleJourney);
+          box.appendChild(row);
+        }
+
+        col.appendChild(box);
+      }
+
+      sampleBracketEl.appendChild(col);
+    }
+
+    sampleChampionEl.textContent=`Champion: ${sample.championName}`;
+
+    positionSampleBracket(sample);
+    requestAnimationFrame(()=>drawSampleConnectors(sample));
+    setTimeout(()=>drawSampleConnectors(sample),50);
+  }
+
+  function makeLeagueWorker(){
+    const s=`self.onmessage=e=>{const{teams,ratings:sr,basePoints,homeIdx,awayIdx,forced,simulations,kFactor,homeAdvEnabled,homeAdvElo}=e.data,n=teams.length,nf=homeIdx.length,fc=Array.from({length:n},()=>new Uint32Array(n)),sum=new Float64Array(n),st=performance.now(),cl=(x,l,h)=>Math.max(l,Math.min(h,x));for(let sim=0;sim<simulations;sim++){const r=Float64Array.from(sr),p=Float64Array.from(basePoints);for(let i=0;i<nf;i++){const h=homeIdx[i],a=awayIdx[i],he=r[h],ae=r[a],eh=he+(homeAdvEnabled?homeAdvElo:0),ex=1/(1+Math.pow(10,(ae-eh)/400)),gap=Math.abs(eh-ae),dp=cl(.302-.00048*gap,.13,.31),hp=cl(ex-dp/2,0,1-dp),u=Math.random(),f=forced[i];let hs;if(f==='home')hs=1;else if(f==='draw')hs=.5;else if(f==='away')hs=0;else if(u<hp)hs=1;else if(u<hp+dp)hs=.5;else hs=0;if(hs===1)p[h]+=3;else if(hs===.5){p[h]++;p[a]++;}else p[a]+=3;r[h]=he+kFactor*(hs-ex);r[a]=ae+kFactor*((1-hs)-(1-ex));}const o=Array.from({length:n},(_,i)=>i),rnd=Array.from({length:n},()=>Math.random());o.sort((x,y)=>p[y]-p[x]||rnd[x]-rnd[y]);o.forEach((t,pos)=>fc[t][pos]++);for(let t=0;t<n;t++)sum[t]+=p[t];if((sim+1)%Math.max(50,Math.floor(simulations/100))===0||sim+1===simulations)postMessage({type:'progress',done:sim+1,total:simulations});}const rows=teams.map((team,t)=>{let top4=0,rel=0;for(let p=0;p<Math.min(4,n);p++)top4+=fc[t][p];for(let p=Math.max(0,n-3);p<n;p++)rel+=fc[t][p];return{team,startingElo:sr[t],titlePct:100*fc[t][0]/simulations,top4Pct:100*top4/simulations,relegationPct:100*rel/simulations,expectedPoints:sum[t]/simulations};});postMessage({type:'done',rows,simulations,elapsedSeconds:(performance.now()-st)/1000});};`;
+    return new Worker(URL.createObjectURL(new Blob([s],{type:'text/javascript'})));
+  }
+
+  function makeWorldCupWorker(){
+    const s=`
+      self.onmessage=e=>{
+        const {
+          teams,ids,ratings:startingRatings,groups,groupMatches,
+          roundOf16Slots,knockoutRounds,simulationModel,
+          attack,defence,volatility,opponentSensitivity,drawTendency,
+          cleanSheetTendency,highScoringTendency,eloLock,eloGoalSlope,
+          neutralBaseGoals,simulations,kFactor
+        }=e.data;
+
+        const advanced=simulationModel==='advanced';
+        const n=teams.length;
+        const started=performance.now();
+
+        const r16=new Uint32Array(n),qf=new Uint32Array(n),sf=new Uint32Array(n),
+              fin=new Uint32Array(n),champ=new Uint32Array(n),
+              groupPointsSum=new Float64Array(n);
+
+        const clamp=(x,l,h)=>Math.max(l,Math.min(h,x));
+
+        function eloExpected(homeElo,awayElo){
+          return 1/(1+Math.pow(10,(awayElo-homeElo)/400));
+        }
+
+        function standardProbabilities(homeElo,awayElo){
+          const expectedHome=eloExpected(homeElo,awayElo);
+          const gap=Math.abs(homeElo-awayElo);
+          const drawProb=clamp(.302-.00048*gap,.13,.31);
+          const homeWinProb=clamp(expectedHome-drawProb/2,0,1-drawProb);
+          return {expectedHome,drawProb,homeWinProb};
+        }
+
+        function poissonDistribution(lambda,tolerance=1e-12){
+          const probs=[];
+          let k=0,p=Math.exp(-lambda),total=p;
+          probs.push(p);
+          while(1-total>tolerance){
+            k++;p*=lambda/k;probs.push(p);total+=p;
+            if(!Number.isFinite(p)||k>10000)break;
+          }
+          return probs;
+        }
+
+        function goalDistribution(lambda,varianceFactor,tolerance=1e-12){
+          lambda=Math.max(lambda,1e-9);
+          const v=Math.max(.05,varianceFactor||1);
+
+          if(Math.abs(v-1)<.015)return poissonDistribution(lambda,tolerance);
+
+          if(v<1){
+            let n=Math.ceil(lambda/Math.max(1e-6,1-v));
+            n=Math.max(n,Math.ceil(lambda));
+            if(n>5000)return poissonDistribution(lambda,tolerance);
+            const p=lambda/n;
+            const probs=new Array(n+1).fill(0);
+            if(p>=1){probs[n]=1;return probs;}
+            probs[0]=Math.pow(1-p,n);
+            let total=probs[0];
+            for(let k=0;k<n;k++){
+              probs[k+1]=probs[k]*((n-k)/(k+1))*(p/(1-p));
+              total+=probs[k+1];
+            }
+            if(total>0)for(let k=0;k<probs.length;k++)probs[k]/=total;
+            return probs;
+          }
+
+          const r=lambda/(v-1),p=r/(r+lambda),q=1-p;
+          const probs=[];
+          let pk=Math.pow(p,r),total=pk,k=0;
+          probs.push(pk);
+          while(1-total>tolerance){
+            pk*=((k+r)/(k+1))*q;
+            k++;probs.push(pk);total+=pk;
+            if(!Number.isFinite(pk)||k>10000)break;
+          }
+          if(total>0)for(let i=0;i<probs.length;i++)probs[i]/=total;
+          return probs;
+        }
+
+        function adjustedGoalDistribution(lambda,varianceFactor,cleanSheetFactor,highFactor){
+          const probs=goalDistribution(lambda,varianceFactor);
+          let total=0;
+          for(let k=0;k<probs.length;k++){
+            let mult=1;
+            if(k===0)mult*=Math.max(.01,cleanSheetFactor||1);
+            if(k>=3)mult*=Math.max(.01,highFactor||1);
+            probs[k]*=mult;total+=probs[k];
+          }
+          if(total>0)for(let k=0;k<probs.length;k++)probs[k]/=total;
+          return probs;
+        }
+
+        function jointExpected(lambdaH,lambdaA,home,away){
+          const hp=adjustedGoalDistribution(lambdaH,volatility[home]||1,cleanSheetTendency[away]||1,highScoringTendency[home]||1);
+          const ap=adjustedGoalDistribution(lambdaA,volatility[away]||1,cleanSheetTendency[home]||1,highScoringTendency[away]||1);
+          const drawFactor=Math.sqrt(Math.max(.01,drawTendency[home]||1)*Math.max(.01,drawTendency[away]||1));
+          let hw=0,dr=0,total=0;
+          for(let h=0;h<hp.length;h++)for(let a=0;a<ap.length;a++){
+            let p=hp[h]*ap[a];
+            if(h===a)p*=drawFactor;
+            total+=p;if(h>a)hw+=p;else if(h===a)dr+=p;
+          }
+          return total>0?(hw+.5*dr)/total:.5;
+        }
+
+        function anchoredRates(home,away,ratings){
+          const target=eloExpected(ratings[home],ratings[away]);
+          const eloDiff=(ratings[home]-ratings[away])/400;
+          const sensH=opponentSensitivity[home]||1,sensA=opponentSensitivity[away]||1;
+          let rawH=neutralBaseGoals*(attack[home]||1)/(defence[away]||1)*Math.exp(eloGoalSlope*eloDiff*sensH);
+          let rawA=neutralBaseGoals*(attack[away]||1)/(defence[home]||1)*Math.exp(-eloGoalSlope*eloDiff*sensA);
+          rawH=Math.max(rawH,1e-9);rawA=Math.max(rawA,1e-9);
+
+          const locked=(eloLock[home]!==false)&&(eloLock[away]!==false);
+          if(!locked){
+            return{home:rawH,away:rawA,expectedHome:target,modelExpectedHome:jointExpected(rawH,rawA,home,away)};
+          }
+
+          let lo=-4,hi=4;
+          for(let i=0;i<18;i++){
+            const mid=(lo+hi)/2,eh=rawH*Math.exp(mid),ea=rawA*Math.exp(-mid);
+            const modelExpected=jointExpected(eh,ea,home,away);
+            if(modelExpected<target)lo=mid;else hi=mid;
+          }
+          const d=(lo+hi)/2;
+          return{home:Math.max(rawH*Math.exp(d),1e-9),away:Math.max(rawA*Math.exp(-d),1e-9),expectedHome:target,modelExpectedHome:target};
+        }
+
+        function sampleFromDistribution(probs){
+          let u=Math.random(),cum=0;
+          for(let k=0;k<probs.length;k++){cum+=probs[k];if(u<=cum)return k;}
+          return probs.length-1;
+        }
+
+        function sampleAdvancedScore(home,away,rates){
+          const hp=adjustedGoalDistribution(rates.home,volatility[home]||1,cleanSheetTendency[away]||1,highScoringTendency[home]||1);
+          const ap=adjustedGoalDistribution(rates.away,volatility[away]||1,cleanSheetTendency[home]||1,highScoringTendency[away]||1);
+          const drawFactor=Math.sqrt(Math.max(.01,drawTendency[home]||1)*Math.max(.01,drawTendency[away]||1));
+          const maxAccept=Math.max(1,drawFactor);
+          for(let tries=0;tries<1000;tries++){
+            const hg=sampleFromDistribution(hp),ag=sampleFromDistribution(ap);
+            const weight=hg===ag?drawFactor:1;
+            if(Math.random()<=weight/maxAccept)return{hg,ag};
+          }
+          return{hg:sampleFromDistribution(hp),ag:sampleFromDistribution(ap)};
+        }
+
+        function playStandardGroup(home,away,forced,ratings,points){
+          const he=ratings[home],ae=ratings[away],p=standardProbabilities(he,ae);
+          const u=Math.random();
+          let result;
+
+          if(forced==='home') result=1;
+          else if(forced==='draw') result=.5;
+          else if(forced==='away') result=0;
+          else if(u<p.homeWinProb) result=1;
+          else if(u<p.homeWinProb+p.drawProb) result=.5;
+          else result=0;
+
+          if(result===1) points[home]+=3;
+          else if(result===.5){points[home]++;points[away]++;}
+          else points[away]+=3;
+
+          ratings[home]=he+kFactor*(result-p.expectedHome);
+          ratings[away]=ae+kFactor*((1-result)-(1-p.expectedHome));
+
+          return{home,away,result};
+        }
+
+        function playAdvancedGroup(home,away,forced,ratings,stats){
+          const he=ratings[home],ae=ratings[away];
+          const rates=anchoredRates(home,away,ratings);
+
+          let hg,ag;
+
+          if(forced==='home'){
+            hg=1;ag=0;
+          }else if(forced==='draw'){
+            hg=1;ag=1;
+          }else if(forced==='away'){
+            hg=0;ag=1;
+          }else{
+            const sampled=sampleAdvancedScore(home,away,rates);
+            hg=sampled.hg;ag=sampled.ag;
+          }
+
+          let result;
+          if(hg>ag) result=1;
+          else if(hg<ag) result=0;
+          else result=.5;
+
+          stats[home].gf+=hg;stats[home].ga+=ag;
+          stats[away].gf+=ag;stats[away].ga+=hg;
+
+          if(result===1) stats[home].points+=3;
+          else if(result===0) stats[away].points+=3;
+          else{stats[home].points++;stats[away].points++;}
+
+          ratings[home]=he+kFactor*(result-rates.expectedHome);
+          ratings[away]=ae+kFactor*((1-result)-(1-rates.expectedHome));
+
+          return{home,away,result,hg,ag};
+        }
+
+        function calcSB(results,points){
+          const sb=new Float64Array(n);
+
+          for(const x of results){
+            if(x.result===1) sb[x.home]+=points[x.away];
+            else if(x.result===0) sb[x.away]+=points[x.home];
+            else{
+              sb[x.home]+=.5*points[x.away];
+              sb[x.away]+=.5*points[x.home];
+            }
+          }
+
+          return sb;
+        }
+
+        function rankStandardGroup(members,points,results){
+          const sb=calcSB(results,points);
+          const byPoints=new Map();
+
+          for(const t of members){
+            const p=points[t];
+            if(!byPoints.has(p))byPoints.set(p,[]);
+            byPoints.get(p).push(t);
+          }
+
+          const order=[];
+
+          for(const p of [...byPoints.keys()].sort((a,b)=>b-a)){
+            const tied=byPoints.get(p);
+
+            if(tied.length===1){
+              order.push(tied[0]);
+              continue;
+            }
+
+            const tiedSet=new Set(tied);
+            const h2h=new Float64Array(n);
+
+            for(const x of results){
+              if(!tiedSet.has(x.home)||!tiedSet.has(x.away))continue;
+              if(x.result===1)h2h[x.home]+=3;
+              else if(x.result===0)h2h[x.away]+=3;
+              else{h2h[x.home]++;h2h[x.away]++;}
+            }
+
+            const rnd=new Map(tied.map(t=>[t,Math.random()]));
+
+            tied.sort((a,b)=>
+              h2h[b]-h2h[a]||
+              sb[b]-sb[a]||
+              rnd.get(a)-rnd.get(b)
+            );
+
+            order.push(...tied);
+          }
+
+          return{order,sb};
+        }
+
+        function rankAdvancedGroup(members,stats,results){
+          const byPrimary=new Map();
+
+          for(const t of members){
+            const s=stats[t];
+            s.gd=s.gf-s.ga;
+            const key=s.points+'|'+s.gd+'|'+s.gf;
+            if(!byPrimary.has(key))byPrimary.set(key,[]);
+            byPrimary.get(key).push(t);
+          }
+
+          const firstPass=members.slice().sort((a,b)=>
+            stats[b].points-stats[a].points||
+            stats[b].gd-stats[a].gd||
+            stats[b].gf-stats[a].gf
           );
 
-          order.sort((x, y) => {
-            const pointsDiff = points[y] - points[x];
+          const output=[];
+          let i=0;
 
-            if (pointsDiff !== 0){
-              return pointsDiff;
+          while(i<firstPass.length){
+            const anchor=firstPass[i];
+            const tied=[anchor];
+            let j=i+1;
+
+            while(
+              j<firstPass.length &&
+              stats[firstPass[j]].points===stats[anchor].points &&
+              stats[firstPass[j]].gd===stats[anchor].gd &&
+              stats[firstPass[j]].gf===stats[anchor].gf
+            ){
+              tied.push(firstPass[j]);
+              j++;
             }
 
-            return Math.random() - 0.5;
-          });
+            if(tied.length===1){
+              output.push(anchor);
+            }else{
+              const tiedSet=new Set(tied);
+              const h2h=new Map(tied.map(t=>[t,{points:0,gf:0,ga:0,gd:0,rnd:Math.random()}]));
 
-          for (let pos = 0; pos < nTeams; pos++){
-            finishCounts[order[pos]][pos]++;
+              for(const x of results){
+                if(!tiedSet.has(x.home)||!tiedSet.has(x.away))continue;
+
+                const hs=h2h.get(x.home),as=h2h.get(x.away);
+                hs.gf+=x.hg;hs.ga+=x.ag;
+                as.gf+=x.ag;as.ga+=x.hg;
+
+                if(x.hg>x.ag)hs.points+=3;
+                else if(x.hg<x.ag)as.points+=3;
+                else{hs.points++;as.points++;}
+              }
+
+              for(const t of tied){
+                const s=h2h.get(t);
+                s.gd=s.gf-s.ga;
+              }
+
+              tied.sort((a,b)=>{
+                const x=h2h.get(a),y=h2h.get(b);
+                return y.points-x.points||
+                       y.gd-x.gd||
+                       y.gf-x.gf||
+                       x.rnd-y.rnd;
+              });
+
+              output.push(...tied);
+            }
+
+            i=j;
           }
 
-          for (let t = 0; t < nTeams; t++){
-            finalPointsSum[t] += points[t];
+          return output;
+        }
+
+        function playStandardKnockout(home,away,ratings){
+          const he=ratings[home],ae=ratings[away],p=standardProbabilities(he,ae),u=Math.random();
+          let result,winner,outcome;
+
+          if(u<p.homeWinProb){
+            result=1;winner=home;outcome='decisive';
+          }else if(u<p.homeWinProb+p.drawProb){
+            result=.5;winner=Math.random()<.5?home:away;outcome='draw';
+          }else{
+            result=0;winner=away;outcome='decisive';
           }
 
-          if (
-            (sim + 1) %
-              Math.max(50, Math.floor(simulations / 100)) === 0 ||
-            sim + 1 === simulations
-          ){
-            self.postMessage({
-              type:'progress',
-              done:sim + 1,
-              total:simulations
-            });
+          ratings[home]=he+kFactor*(result-p.expectedHome);
+          ratings[away]=ae+kFactor*((1-result)-(1-p.expectedHome));
+
+          return{winner,outcome};
+        }
+
+        function playAdvancedKnockout(home,away,ratings){
+          const he=ratings[home],ae=ratings[away],rates=anchoredRates(home,away,ratings);
+          const sampled=sampleAdvancedScore(home,away,rates),hg=sampled.hg,ag=sampled.ag;
+
+          let result,winner,outcome;
+
+          if(hg>ag){
+            result=1;winner=home;outcome='decisive';
+          }else if(hg<ag){
+            result=0;winner=away;outcome='decisive';
+          }else{
+            result=.5;winner=Math.random()<.5?home:away;outcome='draw';
+          }
+
+          ratings[home]=he+kFactor*(result-rates.expectedHome);
+          ratings[away]=ae+kFactor*((1-result)-(1-rates.expectedHome));
+
+          return{winner,outcome,homeGoals:hg,awayGoals:ag};
+        }
+
+        const mainRounds=knockoutRounds.filter(r=>
+          ['round-of-16','quarter-finals','semi-finals','final'].includes(r.id)
+        );
+
+        const matchById=new Map();
+        const feeders=new Map();
+
+        for(const round of mainRounds){
+          for(const m of round.matches||[]){
+            matchById.set(m.id,m);
+            if(m.feedsInto){
+              if(!feeders.has(m.feedsInto))feeders.set(m.feedsInto,[]);
+              feeders.get(m.feedsInto).push(m.id);
+            }
           }
         }
 
-        const rows = teams.map((team, t) => {
-          let top4 = 0;
-          let relegation = 0;
+        let sample=null;
 
-          for (let p = 0; p < Math.min(4, nTeams); p++){
-            top4 += finishCounts[t][p];
+        for(let sim=0;sim<simulations;sim++){
+          const capture=sim===simulations-1;
+          const ratings=Float64Array.from(startingRatings);
+          const points=new Float64Array(n);
+          const stats=Array.from({length:n},()=>({points:0,gf:0,ga:0,gd:0}));
+          const resultsByGroup={};
+          const groupOf=new Map();
+
+          for(const [g,members] of Object.entries(groups)){
+            resultsByGroup[g]=[];
+            for(const t of members)groupOf.set(t,g);
           }
 
-          for (let p = Math.max(0, nTeams - 3); p < nTeams; p++){
-            relegation += finishCounts[t][p];
+          for(const m of groupMatches){
+            const g=groupOf.get(m.home);
+
+            if(advanced){
+              const x=playAdvancedGroup(m.home,m.away,m.forced,ratings,stats);
+              resultsByGroup[g].push(x);
+            }else{
+              const x=playStandardGroup(m.home,m.away,m.forced,ratings,points);
+              resultsByGroup[g].push(x);
+            }
           }
 
-          return {
-            team,
-            startingElo:startingRatings[t],
-            titlePct:
-              100 * finishCounts[t][0] / simulations,
-            top4Pct:
-              100 * top4 / simulations,
-            relegationPct:
-              100 * relegation / simulations,
-            expectedPoints:
-              finalPointsSum[t] / simulations
-          };
-        });
+          const standings={};
+          const sampleGroups={};
 
-        self.postMessage({
+          for(const [g,members] of Object.entries(groups)){
+            if(advanced){
+              const order=rankAdvancedGroup(members.slice(),stats,resultsByGroup[g]);
+              standings[g]=order;
+              r16[order[0]]++;r16[order[1]]++;
+
+              if(capture){
+                sampleGroups[g]=order.map(t=>({
+                  team:teams[t],
+                  teamIndex:t,
+                  points:stats[t].points,
+                  gf:stats[t].gf,
+                  ga:stats[t].ga,
+                  gd:stats[t].gf-stats[t].ga
+                }));
+              }
+            }else{
+              const ranked=rankStandardGroup(members.slice(),points,resultsByGroup[g]);
+              standings[g]=ranked.order;
+              r16[ranked.order[0]]++;r16[ranked.order[1]]++;
+
+              if(capture){
+                sampleGroups[g]=ranked.order.map(t=>({
+                  team:teams[t],
+                  teamIndex:t,
+                  points:points[t],
+                  sb:ranked.sb[t]
+                }));
+              }
+            }
+          }
+
+          for(let t=0;t<n;t++){
+            groupPointsSum[t]+=advanced?stats[t].points:points[t];
+          }
+
+          const winners=new Map();
+          const sampleMatchById=new Map();
+
+          function playKO(home,away){
+            return advanced
+              ? playAdvancedKnockout(home,away,ratings)
+              : playStandardKnockout(home,away,ratings);
+          }
+
+          function captureKO(id,struct,home,away,played){
+            if(!capture)return;
+
+            sampleMatchById.set(id,{
+              id,
+              feedsInto:struct?.feedsInto||null,
+              home,away,
+              homeName:teams[home],
+              awayName:teams[away],
+              winner:played.winner,
+              outcome:played.outcome,
+              homeGoals:played.homeGoals,
+              awayGoals:played.awayGoals
+            });
+          }
+
+          for(const slot of roundOf16Slots){
+            const home=standings[slot.home.group][slot.home.position-1];
+            const away=standings[slot.away.group][slot.away.position-1];
+            const played=playKO(home,away);
+
+            winners.set(slot.matchId,played.winner);
+            qf[played.winner]++;
+            captureKO(slot.matchId,matchById.get(slot.matchId),home,away,played);
+          }
+
+          const qfRound=mainRounds.find(r=>r.id==='quarter-finals');
+          for(const m of qfRound?.matches||[]){
+            const f=feeders.get(m.id)||[];
+            if(f.length!==2)continue;
+
+            const home=winners.get(f[0]),away=winners.get(f[1]),played=playKO(home,away);
+            winners.set(m.id,played.winner);
+            sf[played.winner]++;
+            captureKO(m.id,m,home,away,played);
+          }
+
+          const sfRound=mainRounds.find(r=>r.id==='semi-finals');
+          for(const m of sfRound?.matches||[]){
+            const f=feeders.get(m.id)||[];
+            if(f.length!==2)continue;
+
+            const home=winners.get(f[0]),away=winners.get(f[1]),played=playKO(home,away);
+            winners.set(m.id,played.winner);
+            fin[played.winner]++;
+            captureKO(m.id,m,home,away,played);
+          }
+
+          const finalRound=mainRounds.find(r=>r.id==='final');
+          const finalMatch=finalRound?.matches?.[0];
+
+          if(finalMatch){
+            const f=feeders.get(finalMatch.id)||[];
+
+            if(f.length===2){
+              const home=winners.get(f[0]),away=winners.get(f[1]),played=playKO(home,away);
+              winners.set(finalMatch.id,played.winner);
+              champ[played.winner]++;
+              captureKO(finalMatch.id,finalMatch,home,away,played);
+
+              if(capture){
+                sample={
+                  advanced,
+                  groups:sampleGroups,
+                  rounds:mainRounds.map(round=>({
+                    id:round.id,
+                    label:round.label,
+                    matches:(round.matches||[])
+                      .map(m=>sampleMatchById.get(m.id))
+                      .filter(Boolean)
+                  })),
+                  champion:played.winner,
+                  championName:teams[played.winner]
+                };
+              }
+            }
+          }
+
+          if(
+            (sim+1)%Math.max(50,Math.floor(simulations/100))===0 ||
+            sim+1===simulations
+          ){
+            postMessage({type:'progress',done:sim+1,total:simulations});
+          }
+        }
+
+        const rows=teams.map((team,t)=>({
+          team,
+          startingElo:startingRatings[t],
+          round16Pct:100*r16[t]/simulations,
+          quarterFinalPct:100*qf[t]/simulations,
+          semiFinalPct:100*sf[t]/simulations,
+          finalPct:100*fin[t]/simulations,
+          championPct:100*champ[t]/simulations,
+          expectedGroupPoints:groupPointsSum[t]/simulations
+        }));
+
+        postMessage({
           type:'done',
           rows,
+          sample,
           simulations,
-          elapsedSeconds:
-            (performance.now() - start) / 1000
+          elapsedSeconds:(performance.now()-started)/1000
         });
       };
     `;
 
-    const blob = new Blob(
-      [workerSource],
-      {type:'text/javascript'}
-    );
-
-    return new Worker(
-      URL.createObjectURL(blob)
-    );
+    return new Worker(URL.createObjectURL(new Blob([s],{type:'text/javascript'})));
   }
 
-  async function loadSeasonManifest(){
-    const competition = competitionEl.value;
-    const url = `${SIMULATION_BASE_URL}${competition}/seasons.json`;
-
-    const response = await fetch(url);
-
-    if (!response.ok){
-      throw new Error(`Could not load ${url}`);
+  function setModeUI(){
+    if(mode==='world-cup'){
+      subtitleEl.textContent='Build a scenario, review the tournament design, then simulate the whole World Cup.';document.querySelector('.sim-controls').style.display='';simulateBtn.textContent='Run simulation';document.getElementById('whatif-toggle')?.closest('.results-card')?.style.setProperty('display','none');document.querySelector('.summary-grid').style.display='none';wcModelTopbarEl.style.display='flex';wcStartSectionEl.classList.add('is-visible');wcDesignSectionEl.classList.add('is-visible');wcRunSectionEl.classList.add('is-visible');seasonLabelEl.textContent='Edition';cutoffLabelEl.textContent='Simulation start';cutoffEl.disabled=true;homeAdvCardEl.style.display='none';resultsTitleEl.textContent='4. Simulation results';
+      resultsHeadRowEl.innerHTML='<th>Team</th><th>Elo</th><th>Round of 16</th><th>Quarter-final</th><th>Semi-final</th><th>Final</th><th>Champion</th><th>Expected group pts</th>';
+      updateWorldCupModelCopy();
+    }else{
+      subtitleEl.textContent='Choose a competition and season, then simulate from any date.';document.querySelector('.sim-controls').style.display='';simulateBtn.textContent='Simulate';document.getElementById('whatif-toggle')?.closest('.results-card')?.style.setProperty('display','');document.querySelector('.summary-grid').style.display='';wcModelTopbarEl.style.display='none';wcStartSectionEl.classList.remove('is-visible');wcDesignSectionEl.classList.remove('is-visible');wcRunSectionEl.classList.remove('is-visible');seasonLabelEl.textContent='Season';cutoffLabelEl.textContent='Simulate from';cutoffEl.disabled=false;homeAdvCardEl.style.display='';resultsTitleEl.textContent='Simulation results';
+      resultsHeadRowEl.innerHTML='<th>Current</th><th>Team</th><th>Pts</th><th>Elo</th><th>Title</th><th>Top 4</th><th>Relegation</th><th>Expected pts</th>';
+      simNoteEl.textContent="Actual competition results before the selected date are used. Each club's J-Ratings Elo at that date is loaded from its rating history unless the user overrides it. Remaining league fixtures are then simulated with Elo updating after every match. Forced results are applied exactly. If home advantage is enabled, the selected Elo bonus affects match probability only. Equal-points ties are currently broken randomly because exact future scorelines are not yet simulated.";
     }
+  }
 
-    const seasons = await response.json();
+  async function loadManifest(){
+    seasonEl.innerHTML='';
+    if(competitionEl.value==='world-cup'){const o=document.createElement('option');o.value='2022';o.textContent='FIFA World Cup 2022';seasonEl.appendChild(o);return;}
+    const u=`${SIMULATION_BASE_URL}${competitionEl.value}/seasons.json`,r=await fetch(u);if(!r.ok)throw new Error(`Could not load ${u}`);for(const x of await r.json()){const o=document.createElement('option');o.value=x.id;o.textContent=x.label||x.id;if(x.id==='2024-25')o.selected=true;seasonEl.appendChild(o);}
+  }
 
-    seasonEl.innerHTML = '';
+  async function loadSelected(){
+    sampleTournamentEl.classList.remove('is-visible');
+    forcedResults.clear();eloOverrides.clear();advancedOverrides.clear();forceTeamEl.value='';eloTeamEl.value='';eloValueEl.value='';simulateBtn.disabled=true;if(mode==='world-cup'){wcRunBtnEl.disabled=true;wcStopBtnEl.disabled=false;}
+    if(competitionEl.value==='world-cup'){
+      mode='world-cup';
+      const ed=seasonEl.value||'2022';
+      const tu=`${TOURNAMENT_BASE_URL}world-cup/${ed}.json`;
+      const su=`${STRUCTURE_BASE_URL}world-cup/${ed}.json`;
+      const fu=`${FORECAST_BASE_URL}world-cup/${ed}.json`;
 
-    for (const season of seasons){
-      const opt = document.createElement('option');
-      opt.value = season.id;
-      opt.textContent = season.label || season.id;
+      const [tr,sr,fr]=await Promise.all([fetch(tu),fetch(su),fetch(fu)]);
 
-      if (season.id === '2024-25'){
-        opt.selected = true;
+      if(!tr.ok)throw new Error(`Could not load ${tu}`);
+      if(!sr.ok)throw new Error(`Could not load ${su}`);
+
+      tournament=await tr.json();
+      structure=await sr.json();
+      forecastModel=fr.ok?await fr.json():null;
+
+      if(!structure.simulation?.roundOf16Slots?.length){
+        throw new Error('The World Cup structure file does not yet contain simulation rules.');
       }
 
-      seasonEl.appendChild(opt);
-    }
+      tournament.matches.sort((a,b)=>a.date.localeCompare(b.date));
+      await loadHistories();
 
-    if (!seasonEl.value && seasonEl.options.length){
-      seasonEl.selectedIndex = 0;
+      cutoffEl.min=structure.groupStage.startDate;
+      cutoffEl.max=structure.groupStage.startDate;
+      cutoffEl.value=structure.groupStage.startDate;
+      refreshAdvancedAvailability();setWorldCupModel('normal','sync');wcSimCountEl.value=10000;simCountEl.value=10000;
+    }else{
+      mode='league';structure=null;forecastModel=null;advancedOverrides.clear();const u=`${SIMULATION_BASE_URL}${competitionEl.value}/${encodeURIComponent(seasonEl.value)}.json`,r=await fetch(u);if(!r.ok)throw new Error(`Could not load ${u}`);tournament=await r.json();tournament.matches.sort((a,b)=>a.date.localeCompare(b.date));await loadHistories();cutoffEl.min=tournament.summary?.firstDate||tournament.matches[0].date;cutoffEl.max=tournament.summary?.lastDate||tournament.matches.at(-1).date;cutoffEl.value=cutoffEl.min;
     }
+    populateTeamOptions();renderForcedList();renderEloList();renderFixtureOptions();setModeUI();renderCurrent();if(mode==='world-cup'){wcHasRun=false;clearWorldCupStale();renderWorldCupStartSituation();renderWorldCupDesign();}statusEl.textContent=mode==='world-cup'?'FIFA World Cup 2022 ready.':`${tournament.name} ${String(tournament.season).replace('-','/')} ready.`;statusEl.classList.remove('error');simulateBtn.disabled=false;if(mode==='world-cup'){wcRunBtnEl.disabled=false;wcStopBtnEl.disabled=true;}
   }
 
-  async function loadSelectedTournament(){
-    const competition = competitionEl.value;
-    const season = seasonEl.value;
+  async function reload(){try{statusEl.textContent='Loading competition data…';await loadManifest();await loadSelected();}catch(err){console.error(err);statusEl.textContent=err.message;statusEl.classList.add('error');simulateBtn.disabled=true;}}
 
-    if (!competition || !season){
-      throw new Error('Choose a competition and season.');
-    }
+  competitionEl.onchange=reload;seasonEl.onchange=()=>loadSelected().catch(err=>{statusEl.textContent=err.message;statusEl.classList.add('error')});
+  cutoffEl.onchange=()=>{if(mode==='league'){forcedResults.clear();renderFixtureOptions();renderForcedList();renderCurrent();}};
+  whatifToggleEl.onclick=()=>{const open=whatifToggleEl.getAttribute('aria-expanded')==='true';whatifToggleEl.setAttribute('aria-expanded',open?'false':'true');whatifBodyEl.classList.toggle('is-open',!open)};
+  forceTeamEl.oninput=renderFixtureOptions;
+  applyForceBtn.onclick=()=>{const k=fixtureSelectEl.value,r=forcedResultEl.value;if(!k||!r){statusEl.textContent='Choose a team, fixture and forced result first.';return;}forcedResults.set(k,r);renderForcedList();renderCurrent();statusEl.textContent='What-if result applied. Ready to simulate.'};
+  clearForcesBtn.onclick=()=>{forcedResults.clear();renderForcedList();renderCurrent();statusEl.textContent='Forced results cleared.'};
+  applyEloBtn.onclick=()=>{const t=teamByTypedName(eloTeamEl.value),v=Number(eloValueEl.value);if(!t||!Number.isFinite(v)){statusEl.textContent='Choose a valid team and enter an Elo value.';return;}eloOverrides.set(t.id,v);renderEloList();renderCurrent();statusEl.textContent=`${t.name} Elo overridden to ${Math.round(v)}.`};
+  clearElosBtn.onclick=()=>{eloOverrides.clear();renderEloList();renderCurrent();statusEl.textContent='Elo overrides cleared.'};
 
-    const url =
-      `${SIMULATION_BASE_URL}${competition}/${encodeURIComponent(season)}.json`;
+  wcEditRecencyEl.onchange=refreshEditorForRecency;
 
-    const response = await fetch(url);
+  wcModelNormalEl.onchange=()=>{if(wcModelNormalEl.checked)setWorldCupModel('normal','bottom');};
+  wcModelAdvancedEl.onchange=()=>{if(wcModelAdvancedEl.checked)setWorldCupModel('advanced','bottom');};
+  wcModelNormalTopEl.onchange=()=>{if(wcModelNormalTopEl.checked)setWorldCupModel('normal','top');};
+  wcModelAdvancedTopEl.onchange=()=>{if(wcModelAdvancedTopEl.checked)setWorldCupModel('advanced','top');};
 
-    if (!response.ok){
-      throw new Error(`Could not load ${url}`);
-    }
 
-    tournament = await response.json();
+  wcSimCountEl.addEventListener('input',()=>{simCountEl.value=wcSimCountEl.value;});
+  simCountEl.addEventListener('input',()=>{if(mode==='world-cup')wcSimCountEl.value=simCountEl.value;});
 
-    tournament.matches.sort((a, b) =>
-      a.date.localeCompare(b.date) ||
-      a.home.localeCompare(b.home) ||
-      a.away.localeCompare(b.away)
-    );
-
-    teamHistories = new Map();
-
-    const historyJobs = tournament.teams.map(async team => {
-      const historyUrl =
-        `${HISTORY_BASE_URL}${encodeURIComponent(team.id)}.json`;
-
-      const r = await fetch(historyUrl);
-
-      if (!r.ok){
-        throw new Error(`Could not load ${historyUrl}`);
-      }
-
-      const hist = await r.json();
-
-      hist.sort((a, b) =>
-        a.date.localeCompare(b.date)
-      );
-
-      teamHistories.set(
-        team.id,
-        hist
-      );
-    });
-
-    await Promise.all(historyJobs);
-
-    forcedResults.clear();
-    eloOverrides.clear();
-
-    forceTeamEl.value = '';
-    eloTeamEl.value = '';
-    eloValueEl.value = '';
-
-    populateTeamOptions();
-    renderForcedList();
-    renderEloList();
-
-    const minDate =
-      tournament.summary?.firstDate ||
-      tournament.matches[0].date;
-
-    const maxDate =
-      tournament.summary?.lastDate ||
-      tournament.matches[
-        tournament.matches.length - 1
-      ].date;
-
-    cutoffEl.min = minDate;
-    cutoffEl.max = maxDate;
-    cutoffEl.value = minDate;
-
-    renderFixtureOptions(cutoffEl.value);
-
-    const input =
-      buildSimulationInput(cutoffEl.value);
-
-    renderCurrentState(input);
-
-    statusEl.textContent =
-      `${tournament.name} ${String(tournament.season).replace('-', '/')} ready.`;
-
-    statusEl.classList.remove('error');
-    simulateBtn.disabled = false;
-  }
-
-  async function loadData(){
-    try {
-      simulateBtn.disabled = true;
-      statusEl.textContent = 'Loading seasons…';
-
-      await loadSeasonManifest();
-      await loadSelectedTournament();
-
-    } catch (err){
-      console.error(err);
-
-      statusEl.textContent = err.message;
+  wcRunBtnEl.onclick=()=>{
+    const n=Math.floor(Number(wcSimCountEl.value));
+    if(!Number.isFinite(n)||n<1){
+      statusEl.textContent='Enter a valid number of iterations.';
       statusEl.classList.add('error');
-      simulateBtn.disabled = true;
-    }
-  }
-
-  competitionEl.addEventListener('change', async () => {
-    try {
-      simulateBtn.disabled = true;
-      statusEl.textContent = 'Loading seasons…';
-
-      await loadSeasonManifest();
-      await loadSelectedTournament();
-
-    } catch (err){
-      console.error(err);
-      statusEl.textContent = err.message;
-      statusEl.classList.add('error');
-    }
-  });
-
-  seasonEl.addEventListener('change', async () => {
-    try {
-      simulateBtn.disabled = true;
-      statusEl.textContent = 'Loading season…';
-
-      await loadSelectedTournament();
-
-    } catch (err){
-      console.error(err);
-      statusEl.textContent = err.message;
-      statusEl.classList.add('error');
-    }
-  });
-
-  cutoffEl.addEventListener('change', () => {
-    if (!tournament) return;
-
-    try {
-      forcedResults.clear();
-      renderFixtureOptions(cutoffEl.value);
-      renderForcedList();
-
-      const input =
-        buildSimulationInput(cutoffEl.value);
-
-      renderCurrentState(input);
-
-      statusEl.textContent = 'Ready.';
-      statusEl.classList.remove('error');
-
-    } catch (err){
-      statusEl.textContent = err.message;
-      statusEl.classList.add('error');
-    }
-  });
-
-  whatifToggleEl.addEventListener('click', () => {
-    const open = whatifToggleEl.getAttribute('aria-expanded') === 'true';
-
-    whatifToggleEl.setAttribute(
-      'aria-expanded',
-      open ? 'false' : 'true'
-    );
-
-    whatifBodyEl.classList.toggle(
-      'is-open',
-      !open
-    );
-  });
-
-  forceTeamEl.addEventListener('input', () => {
-    renderFixtureOptions(cutoffEl.value);
-  });
-
-  applyForceBtn.addEventListener('click', () => {
-    const key = fixtureSelectEl.value;
-    const result = forcedResultEl.value;
-
-    if (!key || !result){
-      statusEl.textContent =
-        'Choose a team, fixture and forced result first.';
       return;
     }
+    wcSimCountEl.value=n;
+    simCountEl.value=n;
+    simulateBtn.click();
+  };
 
-    forcedResults.set(key, result);
-    renderForcedList();
-
-    const input = buildSimulationInput(cutoffEl.value);
-    renderCurrentState(input);
-
-    statusEl.textContent =
-      'What-if result applied. Ready to simulate.';
-  });
-
-  clearForcesBtn.addEventListener('click', () => {
-    forcedResults.clear();
-    renderForcedList();
-
-    const input = buildSimulationInput(cutoffEl.value);
-    renderCurrentState(input);
-
-    statusEl.textContent =
-      'Forced results cleared.';
-  });
-
-  applyEloBtn.addEventListener('click', () => {
-    const team = teamByTypedName(eloTeamEl.value);
-    const value = Number(eloValueEl.value);
-
-    if (!team || !Number.isFinite(value)){
-      statusEl.textContent =
-        'Choose a valid team and enter an Elo value.';
-      return;
-    }
-
-    eloOverrides.set(team.id, value);
-    renderEloList();
-
-    const input = buildSimulationInput(cutoffEl.value);
-    renderCurrentState(input);
-
-    statusEl.textContent =
-      `${team.name} Elo overridden to ${Math.round(value)}.`;
-  });
-
-  clearElosBtn.addEventListener('click', () => {
-    eloOverrides.clear();
-    renderEloList();
-
-    const input = buildSimulationInput(cutoffEl.value);
-    renderCurrentState(input);
-
-    statusEl.textContent =
-      'Elo overrides cleared.';
-  });
-
-  simulateBtn.addEventListener('click', () => {
-    if (!tournament) return;
-
-    try {
-      const input =
-        buildSimulationInput(cutoffEl.value);
-
-      renderCurrentState(input);
-
-      if (worker){
-        worker.terminate();
-      }
-
-      worker = makeWorker();
-
-      const simulations =
-        Number(simCountEl.value);
-
-      simulateBtn.disabled = true;
-
-      progressWrap.style.display = 'block';
-      progressBar.style.width = '0%';
-
-      statusEl.textContent =
-        `Simulating ${simulations.toLocaleString()} seasons…`;
-
+  wcStopBtnEl.onclick=()=>{
+    if(worker){
+      worker.terminate();
+      worker=null;
+      simulateBtn.disabled=false;
+      wcRunBtnEl.disabled=false;
+      wcStopBtnEl.disabled=true;
+      progressWrap.style.display='none';
+      statusEl.textContent='Simulation stopped.';
       statusEl.classList.remove('error');
-
-      worker.onmessage = e => {
-        const msg = e.data;
-
-        if (msg.type === 'progress'){
-          const pct =
-            100 * msg.done / msg.total;
-
-          progressBar.style.width =
-            `${pct}%`;
-
-          statusEl.textContent =
-            `Simulating… ${msg.done.toLocaleString()} / ${msg.total.toLocaleString()}`;
-        }
-
-        if (msg.type === 'done'){
-          renderResults(input, msg);
-
-          progressBar.style.width = '100%';
-
-          statusEl.textContent =
-            `Complete in ${msg.elapsedSeconds.toFixed(2)} seconds.`;
-
-          simulateBtn.disabled = false;
-
-          setTimeout(() => {
-            progressWrap.style.display = 'none';
-          }, 350);
-        }
-      };
-
-      worker.onerror = err => {
-        console.error(err);
-
-        statusEl.textContent =
-          'Simulation failed. Check the browser console.';
-
-        statusEl.classList.add('error');
-
-        simulateBtn.disabled = false;
-        progressWrap.style.display = 'none';
-      };
-
-      worker.postMessage({
-        teams:input.teams,
-        ratings:input.ratings,
-        basePoints:input.basePoints,
-        homeIdx:input.homeIdx,
-        awayIdx:input.awayIdx,
-        forced:input.forced,
-        simulations,
-        kFactor:20,
-        homeAdvEnabled:homeAdvEnabledEl.checked,
-        homeAdvElo:Number(homeAdvEloEl.value) || 0
-      });
-
-    } catch (err){
-      statusEl.textContent = err.message;
-      statusEl.classList.add('error');
-      simulateBtn.disabled = false;
     }
-  });
+  };
+  wcResetAllEl.onclick=()=>{eloOverrides.clear();advancedOverrides.clear();renderEloList();renderWorldCupStartSituation();renderCurrent();markWorldCupResultsStale();statusEl.textContent='All team changes reset.';statusEl.classList.remove('error');};
+  wcEditCloseEl.onclick=closeWorldCupTeamEditor;wcEditBackdropEl.onclick=e=>{if(e.target===wcEditBackdropEl)closeWorldCupTeamEditor();};wcEditSaveEl.onclick=saveWorldCupTeamEditor;wcEditResetEl.onclick=resetWorldCupTeamEditor;document.addEventListener('keydown',e=>{if(e.key==='Escape'&&wcEditBackdropEl.classList.contains('is-open'))closeWorldCupTeamEditor();});
 
-  loadData();
+  simulateBtn.onclick=()=>{
+    try{
+      if(worker)worker.terminate();const simulations=Number(simCountEl.value),input=mode==='world-cup'?worldCupInput():leagueInput();worker=mode==='world-cup'?makeWorldCupWorker():makeLeagueWorker();simulateBtn.disabled=true;progressWrap.style.display='block';progressBar.style.width='0%';statusEl.textContent=`Simulating ${simulations.toLocaleString()} ${mode==='world-cup'?'tournaments':'seasons'}…`;
+      worker.onmessage=e=>{const m=e.data;if(m.type==='progress'){progressBar.style.width=`${100*m.done/m.total}%`;statusEl.textContent=`Simulating… ${m.done.toLocaleString()} / ${m.total.toLocaleString()}`;}else if(m.type==='done'){if(mode==='world-cup'){renderWorldCupResults(m);renderSampleTournament(m.sample);wcHasRun=true;clearWorldCupStale();}else{renderLeagueResults(input,m);}iterationCountEl.textContent=m.simulations.toLocaleString();runtimeEl.textContent=`${m.elapsedSeconds.toFixed(2)}s`;progressBar.style.width='100%';statusEl.textContent=`Complete in ${m.elapsedSeconds.toFixed(2)} seconds.`;simulateBtn.disabled=false;setTimeout(()=>progressWrap.style.display='none',350);}};
+      worker.onerror=err=>{console.error(err);statusEl.textContent='Simulation failed. Check the browser console.';statusEl.classList.add('error');simulateBtn.disabled=false;progressWrap.style.display='none'};
+      if(mode==='world-cup')worker.postMessage({...input,simulations,kFactor:20});else worker.postMessage({teams:input.teams,ratings:input.ratings,basePoints:input.basePoints,homeIdx:input.homeIdx,awayIdx:input.awayIdx,forced:input.forced,simulations,kFactor:20,homeAdvEnabled:homeAdvEnabledEl.checked,homeAdvElo:Number(homeAdvEloEl.value)||0});
+    }catch(err){console.error(err);statusEl.textContent=err.message;statusEl.classList.add('error');simulateBtn.disabled=false;}
+  };
+
+  const params=new URLSearchParams(location.search);if(params.get('type')==='tournament'||params.get('tournament')==='world-cup')competitionEl.value='world-cup';reload();
 })();
 </script>
 
