@@ -81,12 +81,37 @@ Path("EuropeanFootball/premier_league_simulator_prototype.html"),
 ]
 
 
+# Advanced/private areas that must never appear in the deployed public site.
+# Apply the common private routes to every sport, even where a route does not
+# yet exist. That way adding a new simulator/playback/stats page later cannot
+# accidentally make it public.
+COMMON_PRIVATE_SPORT_PATHS = [
+    "compare",
+    "simulate",
+    "playback",
+    "player/stats",
+    "data/playback",
+    "data/simulations",
+]
+
 PUBLIC_PRIVATE_DIRECTORIES = [
-    Path("EuropeanFootball/compare"),
-    Path("Go/compare"),
-    Path("InternationalFootball/compare"),
-    Path("RugbyUnion/compare"),
-    Path("Snooker/compare"),
+    Path(sport) / rel
+    for sport in [
+        "EuropeanFootball",
+        "Go",
+        "InternationalFootball",
+        "RugbyUnion",
+        "Snooker",
+    ]
+    for rel in COMMON_PRIVATE_SPORT_PATHS
+]
+
+# International Football tournament/simulation work is also private for now.
+PUBLIC_PRIVATE_DIRECTORIES += [
+    Path("InternationalFootball/tournaments"),
+    Path("InternationalFootball/data/tournaments"),
+    Path("InternationalFootball/data/tournament-structure"),
+    Path("InternationalFootball/data/forecast"),
 ]
 
 
@@ -131,6 +156,22 @@ def remove_private_paths() -> None:
         elif target.is_file():
             target.unlink()
             print(f"Removed private file: {rel.as_posix()}")
+
+
+def assert_public_private_paths_absent() -> None:
+    failures = [
+        rel.as_posix()
+        for rel in PUBLIC_PRIVATE_DIRECTORIES
+        if (OUT_DIR / rel).exists()
+    ]
+
+    if failures:
+        raise RuntimeError(
+            "SAFETY CHECK FAILED: private paths exist in public build:\n  "
+            + "\n  ".join(failures)
+        )
+
+    print("Generic private-path safety checks: PASS")
 
 
 def load_json(path: Path):
@@ -1180,6 +1221,7 @@ def _copy_one_sport_source(sport: str) -> None:
 
 def _clean_and_check_selected_sports(sports: list[str]) -> None:
     remove_private_paths()
+    assert_public_private_paths_absent()
 
     if "EuropeanFootball" in sports:
         assert_european_football_private_paths_absent()
@@ -1271,6 +1313,7 @@ def build_public_ui_only() -> None:
     print(f"Public HTML files refreshed from source: {updated}")
 
     remove_private_paths()
+    assert_public_private_paths_absent()
     assert_european_football_private_paths_absent()
     clean_european_football_public_ui()
     clean_generic_public_ui()
