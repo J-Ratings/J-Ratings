@@ -1,154 +1,157 @@
 Team,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRating,IsSeed,Pass,EntryMode,BaseK,NewK,NewGames,SeedModel,RetroGamesN
-Manchester City,2932,4048,First Division,1,1899-09-02,2570.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Barcelona,2922,3177,La Liga,1,1929-02-12,2592.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Arsenal,2891,4589,First Division,1,1904-09-03,2519.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bayern Munich,2883,2100,Bundesliga,1,1965-08-14,2559.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Real Madrid,2868,3154,La Liga,1,1929-02-10,2534.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Inter Milan,2865,3144,Serie A,1,1929-10-06,2517.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Paris Saint-Germain,2813,482,Ligue 1,1,2014-08-08,2719.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Aston Villa,2808,4493,First Division,1,1888-09-08,2514.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Manchester United,2788,4251,First Division,1,1892-09-03,2417,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Liverpool,2786,4561,First Division,1,1894-09-01,2553.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Manchester City,2936,4049,First Division,1,1899-09-02,2570.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Barcelona,2929,3179,La Liga,1,1929-02-12,2592.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Arsenal,2899,4590,First Division,1,1904-09-03,2519.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bayern Munich,2887,2101,Bundesliga,1,1965-08-14,2559.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Real Madrid,2874,3156,La Liga,1,1929-02-10,2534.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Inter Milan,2868,3145,Serie A,1,1929-10-06,2517.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Paris Saint-Germain,2809,483,Ligue 1,1,2014-08-08,2719.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Aston Villa,2800,4494,First Division,1,1888-09-08,2514.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Manchester United,2793,4252,First Division,1,1892-09-03,2417,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Liverpool,2783,4562,First Division,1,1894-09-01,2553.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Atlético Madrid,2782,3030,La Liga,1,1929-02-10,2518.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 PSG,2778,1386,Division 1,1,1971-08-11,2470.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Napoli,2777,2705,Serie A,1,1929-10-06,2551.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Atlético Madrid,2776,3029,La Liga,1,1929-02-10,2518.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Borussia Dortmund,2758,2040,Bundesliga,1,1963-08-24,2498.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bournemouth,2758,484,Premier League,1,2015-08-08,2563.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Juventus,2757,3150,Serie A,1,1929-10-06,2609.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Villarreal,2750,1072,La Liga,1,1998-08-31,2536.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Brighton & Hove Albion,2748,594,First Division,1,1979-08-18,2574,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Chelsea,2748,3860,First Division,1,1907-09-07,2555.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Roma,2747,3191,Serie A,1,1929-10-06,2546.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bayer Leverkusen,2735,1659,Bundesliga,1,1979-08-11,2512.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Atalanta,2733,2289,Serie A,1,1937-09-12,2457.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-AC Milan,2731,3128,Serie A,1,1929-10-06,2449.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Newcastle United,2731,3846,First Division,1,1898-09-03,2547.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Brentford,2731,605,First Division,1,1935-08-31,2635.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sporting Lisbon,2731,2617,Primeira Liga,1,1935-01-20,2460.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lens,2727,1752,Division 1,1,1947-08-24,2561.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-PSV,2724,2225,Eredivisie,1,1957-08-25,2367.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Galatasaray,2719,2188,Süper Lig,1,1959-02-21,2438.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Como,2719,630,Serie A,1,1949-09-11,2539.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Benfica,2715,2610,Primeira Liga,1,1935-01-20,2514.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-RB Leipzig,2711,387,Bundesliga,1,2016-08-28,2631.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Leeds United,2706,2475,First Division,1,1924-08-30,2557.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Porto,2705,2613,Primeira Liga,1,1935-01-20,2462.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Crystal Palace,2703,1124,First Division,1,1969-08-09,2556.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Real Betis,2703,2144,La Liga,1,1932-11-27,2621.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lyon,2702,2049,Division 1,1,1964-08-29,2534.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Everton,2700,4899,First Division,1,1888-09-08,2643.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Marseille,2690,1957,Division 1,1,1947-08-24,2590.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lazio,2688,2890,Serie A,1,1929-10-06,2481,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Nottingham Forest,2686,2600,First Division,1,1892-09-03,2579.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Fulham,2685,1424,First Division,1,1949-08-20,2542.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Napoli,2765,2706,Serie A,1,1929-10-06,2551.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Borussia Dortmund,2762,2041,Bundesliga,1,1963-08-24,2498.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Juventus,2762,3151,Serie A,1,1929-10-06,2609.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Chelsea,2758,3861,First Division,1,1907-09-07,2555.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bournemouth,2756,485,Premier League,1,2015-08-08,2563.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Roma,2751,3192,Serie A,1,1929-10-06,2546.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Atalanta,2742,2290,Serie A,1,1937-09-12,2457.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Newcastle United,2739,3847,First Division,1,1898-09-03,2547.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Brighton & Hove Albion,2738,595,First Division,1,1979-08-18,2574,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Villarreal,2737,1073,La Liga,1,1998-08-31,2536.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+AC Milan,2737,3129,Serie A,1,1929-10-06,2449.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sporting Lisbon,2733,2618,Primeira Liga,1,1935-01-20,2460.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Como,2731,631,Serie A,1,1949-09-11,2539.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Brentford,2730,606,First Division,1,1935-08-31,2635.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+PSV,2727,2226,Eredivisie,1,1957-08-25,2367.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Galatasaray,2719,2188,SÃ¼per Lig,1,1959-02-21,2438.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bayer Leverkusen,2719,1660,Bundesliga,1,1979-08-11,2512.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Benfica,2717,2611,Primeira Liga,1,1935-01-20,2514.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+RB Leipzig,2717,388,Bundesliga,1,2016-08-28,2631.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lens,2714,1753,Division 1,1,1947-08-24,2561.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Porto,2707,2614,Primeira Liga,1,1935-01-20,2462.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Leeds United,2707,2476,First Division,1,1924-08-30,2557.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Everton,2701,4900,First Division,1,1888-09-08,2643.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Crystal Palace,2699,1125,First Division,1,1969-08-09,2556.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Real Betis,2699,2146,La Liga,1,1932-11-27,2621.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lyon,2698,2050,Division 1,1,1964-08-29,2534.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lazio,2696,2891,Serie A,1,1929-10-06,2481,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Nottingham Forest,2689,2601,First Division,1,1892-09-03,2579.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Monaco,2686,2009,Division 1,1,1953-08-23,2483.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lille,2681,2013,Division 1,1,1947-08-24,2568.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Union Saint-Gilloise,2680,967,Belgian Pro League,1,1904-10-02,2553.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Celta Vigo,2678,591,La Liga,1,2012-08-18,2511.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bologna,2678,2690,Serie A,1,1929-10-06,2532.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lille,2677,2012,Division 1,1,1947-08-24,2568.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-VfB Stuttgart,2676,2075,Bundesliga,1,1963-08-24,2475,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Monaco,2675,2008,Division 1,1,1953-08-23,2483.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Valencia,2675,3086,La Liga,1,1931-11-22,2531.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Fenerbahçe,2671,2226,Süper Lig,1,1959-02-21,2469.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Marseille,2680,1958,Division 1,1,1947-08-24,2590.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Fulham,2673,1425,First Division,1,1949-08-20,2542.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+VfB Stuttgart,2671,2076,Bundesliga,1,1963-08-24,2475,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Fenerbahçe,2671,2226,SÃ¼per Lig,1,1959-02-21,2469.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bologna,2670,2691,Serie A,1,1929-10-06,2532.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Freiburg,2661,941,Bundesliga,1,1993-08-07,2562,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Olympiacos,2659,1178,Super League Greece,1,1987-09-06,2333.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Freiburg,2654,940,Bundesliga,1,1993-08-07,2562,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Rayo Vallecano,2653,995,La Liga,1,1977-09-04,2536.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-West Ham United,2652,2857,First Division,1,1923-08-25,2596.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Rennes,2650,1828,Division 1,1,1947-08-24,2533.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Celta Vigo,2656,593,La Liga,1,2012-08-18,2511.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Rennes,2653,1829,Division 1,1,1947-08-24,2533.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Alavés,2653,756,La Liga,1,1930-12-07,2454.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Valencia,2652,3088,La Liga,1,1931-11-22,2531.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Rayo Vallecano,2650,996,La Liga,1,1977-09-04,2536.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+West Ham United,2646,2858,First Division,1,1923-08-25,2596.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Club Brugge,2645,2603,Belgian Pro League,1,1900-10-21,2410.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Tottenham Hotspur,2640,3837,First Division,1,1909-09-01,2544.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Alavés,2640,755,La Liga,1,1930-12-07,2454.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Real Sociedad,2636,2723,La Liga,1,1929-02-10,2551.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Hoffenheim,2636,627,Bundesliga,1,2008-08-16,2576.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Athletic Club,2634,3152,La Liga,1,1929-02-10,2661.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Getafe,2627,833,La Liga,1,2004-08-29,2595.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sunderland,2627,3779,First Division,1,1890-09-13,2692.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Strasbourg,2626,1564,Division 1,1,1947-08-24,2468.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Fiorentina,2626,3022,Serie A,1,1931-09-20,2512.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Athletic Club,2642,3154,La Liga,1,1929-02-10,2661.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Real Sociedad,2641,2725,La Liga,1,1929-02-10,2551.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Strasbourg,2639,1565,Division 1,1,1947-08-24,2468.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sunderland,2639,3780,First Division,1,1890-09-13,2692.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Osasuna,2636,1657,La Liga,1,1935-11-10,2546.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Tottenham Hotspur,2632,3838,First Division,1,1909-09-01,2544.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Celtic,2624,4104,Scottish Premiership,1,1890-08-23,2411.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sevilla,2621,2855,La Liga,1,1934-12-02,2541.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Mainz 05,2619,704,Bundesliga,1,2004-08-08,2499.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Eintracht Frankfurt,2615,2006,Bundesliga,1,1963-08-24,2535.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Osasuna,2615,1655,La Liga,1,1935-11-10,2546.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Hoffenheim,2622,628,Bundesliga,1,2008-08-16,2576.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Getafe,2617,834,La Liga,1,2004-08-29,2595.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Udinese,2617,1912,Serie A,1,1950-09-10,2476.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Mainz 05,2616,705,Bundesliga,1,2004-08-08,2499.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sevilla,2616,2856,La Liga,1,1934-12-02,2541.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Girona,2614,374,La Liga,1,2017-08-19,2595,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Udinese,2609,1911,Serie A,1,1950-09-10,2476.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Espanyol,2607,3016,La Liga,1,1929-02-10,2541.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Eintracht Frankfurt,2613,2007,Bundesliga,1,1963-08-24,2535.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Fiorentina,2613,3023,Serie A,1,1931-09-20,2512.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Levante,2610,793,La Liga,1,1963-09-15,2551.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Braga,2607,2181,Primeira Liga,1,1947-11-16,2338.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Mallorca,2606,1320,La Liga,1,1960-09-11,2572.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Torino,2603,2733,Serie A,1,1929-10-06,2498.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Braga,2601,2180,Primeira Liga,1,1947-11-16,2338.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Levante,2596,792,La Liga,1,1963-09-15,2551.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Elche,2594,1019,La Liga,1,1959-09-13,2500.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Paris FC,2592,412,Division 1,1,1972-08-09,2517.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Feyenoord,2591,2240,Eredivisie,1,1957-08-25,2394.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sassuolo,2589,526,Serie A,1,2013-08-25,2477.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Wolverhampton Wanderers,2589,2820,First Division,1,1888-09-08,2613.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Paris FC,2601,413,Division 1,1,1972-08-09,2517.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sassuolo,2600,527,Serie A,1,2013-08-25,2477.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Espanyol,2598,3017,La Liga,1,1929-02-10,2541.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Wolverhampton Wanderers,2594,2821,First Division,1,1888-09-08,2613.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Torino,2593,2734,Serie A,1,1929-10-06,2498.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Southampton,2591,2088,First Division,1,1966-08-20,2569.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Salzburg,2589,1098,Austrian Bundesliga,1,1974-08-09,2359.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lorient,2589,788,Division 1,1,1998-08-07,2471.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Cagliari,2588,1594,Serie A,1,1964-09-13,2552.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Genoa,2587,2040,Serie A,1,1929-10-06,2563.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Toulouse,2587,1540,Division 1,1,1947-08-24,2450.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Toulouse,2586,1541,Division 1,1,1947-08-24,2450.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Slavia Prague,2586,933,Czech First League,1,1993-08-14,2356.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Parma,2584,1155,Serie A,1,1990-09-09,2545.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Augsburg,2585,528,Bundesliga,1,2011-08-06,2472.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Cagliari,2585,1595,Serie A,1,1964-09-13,2552.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Genk,2584,1485,Belgian Pro League,1,1913-09-07,2353.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Southampton,2582,2087,First Division,1,1966-08-20,2569.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Feyenoord,2584,2241,Eredivisie,1,1957-08-25,2394.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Elche,2583,1020,La Liga,1,1959-09-13,2500.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Rapid,2581,1727,Austrian Bundesliga,1,1952-08-24,2453.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Ipswich Town,2580,1498,First Division,1,1961-08-19,2646,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Augsburg,2579,527,Bundesliga,1,2011-08-06,2472.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Genoa,2580,2041,Serie A,1,1929-10-06,2563.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Parma,2579,1156,Serie A,1,1990-09-09,2545.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Viktoria Plzeň,2578,814,Czech First League,1,1993-08-14,2228.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Coventry City,2576,1822,First Division,1,1967-08-19,2545.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Brest,2573,716,Division 1,1,1979-07-26,2465.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Borussia Mönchengladbach,2571,2011,Bundesliga,1,1965-08-14,2494.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Ipswich Town,2576,1499,First Division,1,1961-08-19,2646,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lorient,2576,789,Division 1,1,1998-08-07,2471.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Racing Santander,2575,1624,La Liga,1,1929-02-12,2523.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Brest,2574,717,Division 1,1,1979-07-26,2465.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 PAOK,2570,1224,Super League Greece,1,1987-09-06,2324.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Ajax,2570,2248,Eredivisie,1,1957-08-25,2416.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Celta de Vigo,2568,1508,La Liga,1,1939-12-03,2554.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Borussia Mönchengladbach,2565,2012,Bundesliga,1,1965-08-14,2494.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Shakhtar Donetsk,2565,1005,Ukrainian Premier League,1,1992-03-07,2335.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Racing Santander,2565,1623,La Liga,1,1929-02-12,2523.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Ajax,2564,2247,Eredivisie,1,1957-08-25,2416.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Venezia,2562,722,Serie A,1,1939-09-17,2482.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Union Berlin,2557,299,2. Bundesliga,2,2018-08-05,2470.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Coventry City,2564,1823,First Division,1,1967-08-19,2545.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+AZ,2561,1561,Eredivisie,1,1968-08-18,2336.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Union Berlin,2558,300,2. Bundesliga,2,2018-08-05,2470.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Venezia,2557,723,Serie A,1,1939-09-17,2482.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Compostela,2554,163,La Liga,1,1994-09-04,2598.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-AZ,2554,1560,Eredivisie,1,1968-08-18,2336.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Nice,2551,1808,Division 1,1,1948-08-22,2527,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Hamburg,2551,2154,Bundesliga,1,1963-08-24,2506.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Millwall,2549,514,First Division,1,1988-08-27,2587.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Anderlecht,2547,2323,Belgian Pro League,1,1921-09-04,2259.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Auxerre,2547,1386,Division 1,1,1980-07-24,2503.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lecce,2547,853,Serie A,1,1985-09-08,2441.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Twente,2544,1893,Eredivisie,1,1965-08-22,2329.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Twente,2547,1894,Eredivisie,1,1965-08-22,2329.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Hamburg,2546,2155,Bundesliga,1,1963-08-24,2506.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Leganés,2543,390,La Liga,1,2016-08-22,2563,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Nice,2543,1809,Division 1,1,1948-08-22,2527,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lecce,2542,854,Serie A,1,1985-09-08,2441.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Real Oviedo,2540,1523,La Liga,1,1933-11-05,2598.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Millwall,2540,515,First Division,1,1988-08-27,2587.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Matra Racing,2539,38,Division 1,1,1987-07-18,2524.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Almería,2539,554,La Liga,1,2007-08-26,2587.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 LASK,2539,1567,Austrian Bundesliga,1,1952-08-24,2281.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 AEK Athens,2538,1122,Super League Greece,1,1987-09-06,2352,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Werder Bremen,2535,2122,Bundesliga,1,1963-08-24,2521.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Burnley,2533,2534,First Division,1,1888-09-08,2486.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Frosinone,2536,357,Serie A,1,2015-08-23,2419.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Auxerre,2536,1387,Division 1,1,1980-07-24,2503.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Deportivo La Coruña,2535,1726,La Liga,1,1941-09-28,2575.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Panathinaikos,2532,1202,Super League Greece,1,1987-09-06,2305.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sturm Graz,2532,2076,Austrian Bundesliga,1,1952-08-24,2251.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Köln,2530,1889,Bundesliga,1,1963-08-24,2589.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Merida Ad,2529,80,La Liga,1,1995-09-03,2498.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Werder Bremen,2528,2123,Bundesliga,1,1963-08-24,2521.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Las Palmas,2526,1461,La Liga,1,1951-09-09,2542.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Monza,2525,240,Serie B,2,2020-09-25,2399.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Le Havre,2525,808,Division 1,1,1953-08-23,2441,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lleida Esportiu,2524,50,La Liga,1,1993-09-05,2524,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cádiz,2523,760,La Liga,1,1977-09-04,2497.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Frosinone,2523,356,Serie A,1,2015-08-23,2419.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Albacete,2522,548,La Liga,1,1991-09-01,2568.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Deportivo La Coruña,2521,1725,La Liga,1,1941-09-28,2575.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Le Havre,2520,807,Division 1,1,1953-08-23,2441,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Burnley,2521,2535,First Division,1,1888-09-08,2486.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Angers,2521,910,Division 1,1,1964-08-30,2489.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Paderborn,2519,298,Bundesliga,1,2014-08-24,2456.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Pontevedra,2519,189,La Liga,1,1963-09-15,2575.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Hull City,2518,621,Premier League,1,2008-08-16,2489.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Dynamo Kyiv,2518,1019,Ukrainian Premier League,1,1992-03-07,2429.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Köln,2517,1888,Bundesliga,1,1963-08-24,2589.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Paderborn,2516,297,Bundesliga,1,2014-08-24,2456.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Monza,2517,241,Serie B,2,2020-09-25,2399.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wolfsburg,2515,1017,Bundesliga,1,1997-08-02,2534.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Trabzonspor,2514,1677,Süper Lig,1,1974-09-08,2392.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Trabzonspor,2514,1677,SÃ¼per Lig,1,1974-09-08,2392.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 CD Condal,2514,30,La Liga,1,1956-09-09,2519.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Rangers,2513,3967,Scottish Premiership,1,1890-08-16,2342.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Elversberg,2511,84,2. Bundesliga,2,2023-08-05,2383.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Zorya,2511,612,Ukrainian Premier League,1,1992-03-07,2252.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Alcoyano,2510,117,La Liga,1,1945-09-23,2531.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Angers,2510,909,Division 1,1,1964-08-30,2489.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Stade Laval,2506,342,Division 1,1,1976-08-06,2483.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Hull City,2506,620,Premier League,1,2008-08-16,2489.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Recreativo Huelva,2506,186,La Liga,1,1978-09-03,2458.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Burgos,2506,503,La Liga,1,1971-09-05,2520.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Real Jaén,2505,95,La Liga,1,1953-09-13,2548.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Xerez,2505,40,La Liga,1,2009-08-30,2510.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+NEC,2505,1413,Eredivisie,1,1967-08-13,2373.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Middlesbrough,2505,2903,First Division,1,1902-09-01,2569.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cremonese,2504,533,Serie A,1,1929-10-06,2352.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Unterhaching,2504,70,Bundesliga,1,1999-08-14,2519.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Reims,2503,834,Division 1,1,1947-08-24,2573.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -157,49 +160,46 @@ Ua Sedan Torcy,2502,72,Division 1,1,1964-08-29,2509.1,TRUE,Pass2_RetroStart,Retr
 Rouen,2501,266,Division 1,1,1964-08-30,2468.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Stade Red Star,2500,34,Division 1,1,1948-08-22,2494.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Servette,2499,1861,Swiss Super League,1,1924-09-23,2360.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-NEC,2498,1412,Eredivisie,1,1967-08-13,2373.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Middlesbrough,2496,2902,First Division,1,1902-09-01,2569.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Birmingham City,2497,2765,First Division,1,1894-09-01,2485.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 AD Almeria,2496,68,La Liga,1,1979-09-08,2533.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Red Bull Salzburg,2496,593,Austrian Bundesliga,1,2010-08-01,2386.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Elversberg,2495,83,2. Bundesliga,2,2023-08-05,2383.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Palermo,2495,1202,Serie A,1,1932-09-18,2462.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Norwich City,2494,1447,First Division,1,1972-08-12,2519.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Eibar,2492,465,La Liga,1,2014-08-24,2541.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Troyes,2491,761,Division 1,1,1973-08-07,2512.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Granada,2490,1054,La Liga,1,1941-09-28,2557.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Young Boys,2489,2023,Swiss Super League,1,1924-09-30,2382.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Birmingham City,2487,2764,First Division,1,1894-09-01,2485.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sporting Gijón,2486,1788,La Liga,1,1944-09-24,2571.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Nantes,2486,1919,Division 1,1,1964-08-29,2614.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Cardiff City,2484,1082,First Division,1,1921-08-27,2612.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Beşiktaş,2484,2203,Süper Lig,1,1959-02-21,2489.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Swansea City,2485,798,First Division,1,1981-08-29,2612.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Beşiktaş,2484,2203,SÃ¼per Lig,1,1959-02-21,2489.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Karlsruher SC,2484,1040,Bundesliga,1,1963-08-24,2448.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Stuttgarter Kickers,2483,74,Bundesliga,1,1988-07-23,2477.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 St. Pauli,2482,555,Bundesliga,1,1977-08-06,2467.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Heidenheim,2482,287,2. Bundesliga,2,2018-08-05,2407.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Wrexham,2481,380,National League,5,2018-08-04,1884.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Atletico Tetuan,2481,30,La Liga,1,1951-09-09,2495.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Córdoba,2481,398,La Liga,1,1962-09-16,2551.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Catanzaro,2480,334,Serie A,1,1971-10-03,2446.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Gueugnon,2478,40,Division 1,1,1995-07-19,2476.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Troyes,2478,760,Division 1,1,1973-08-07,2512.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bradford Park Avenue,2478,122,First Division,1,1914-09-05,2582.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Huesca,2477,303,La Liga,1,2018-08-19,2533.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kaiserslautern,2476,1620,Bundesliga,1,1963-08-24,2437.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Swansea City,2476,797,First Division,1,1981-08-29,2612.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Accrington FC,2475,122,First Division,1,1888-09-08,2523.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Samsunspor,2475,1075,Süper Lig,1,1969-09-21,2360.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Heerenveen,2475,1172,Eredivisie,1,1990-08-25,2382,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Utrecht,2474,1801,Eredivisie,1,1970-08-19,2439.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Samsunspor,2475,1075,SÃ¼per Lig,1,1969-09-21,2360.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Cardiff City,2474,1084,First Division,1,1921-08-27,2612.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Holstein Kiel,2474,263,2. Bundesliga,2,2018-08-03,2371.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Basel,2473,2050,Swiss Super League,1,1924-09-30,2354.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 CS Sedan,2473,364,Division 1,1,1966-08-20,2567.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Austria Vienna,2472,2295,Austrian Bundesliga,1,1952-08-24,2462.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sheffield United,2472,2784,First Division,1,1893-09-02,2537.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Norwich City,2472,1445,First Division,1,1972-08-12,2519.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sheffield United,2472,2785,First Division,1,1893-09-02,2537.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Wrexham,2472,381,National League,5,2018-08-04,1884.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Saint-Étienne,2471,1948,Division 1,1,1947-08-24,2533.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sparta Prague,2471,930,Czech First League,1,1993-08-14,2353.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hannover 96,2471,1254,Bundesliga,1,1964-08-22,2479,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Piacenza Calcio,2470,272,Serie A,1,1993-08-29,2492.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sabadell,2470,475,La Liga,1,1943-09-26,2513.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Utrecht,2470,1802,Eredivisie,1,1970-08-19,2439.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Heerenveen,2470,1173,Eredivisie,1,1990-08-25,2382,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hellas Verona,2469,1200,Serie A,1,1957-09-08,2479.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Real Valladolid,2469,1753,La Liga,1,1948-09-12,2560.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SR Colmar,2468,34,Division 1,1,1948-08-22,2471.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -211,10 +211,10 @@ Mirandés,2464,272,Segunda División,2,2019-08-17,2472.4,TRUE,Pass2_RetroStart,R
 Sg Wattenscheid 09,2461,140,Bundesliga,1,1990-08-11,2495.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Real Unión,2460,75,La Liga,1,1929-02-10,2476.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Gent,2459,2278,Belgian Pro League,1,1908-10-04,2245.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Famalicão,2459,417,Primeira Liga,1,1946-11-24,2325.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cannes,2458,452,Division 1,1,1947-08-24,2426,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Évian,2458,153,Ligue 1,1,2011-08-06,2515,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Gimnàstic,2458,130,La Liga,1,1947-09-21,2560.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Famalicão,2458,418,Primeira Liga,1,1946-11-24,2325.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lb Chateauroux,2457,34,Division 1,1,1997-08-02,2463.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Catania,2455,612,Serie A,1,1954-09-19,2544.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Mulhouse,2455,77,Division 1,1,1982-08-10,2479.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -223,7 +223,6 @@ Lugano,2454,1414,Swiss Super League,1,1924-08-10,2391.3,TRUE,Pass2_RetroStart,Re
 Real Murcia,2454,586,La Liga,1,1940-09-29,2485.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hertha Berlin,2453,1450,Bundesliga,1,1963-08-24,2435.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Montpellier,2453,1279,Division 1,1,1947-08-24,2452.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-West Bromwich Albion,2453,3537,First Division,1,1888-09-08,2558.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ponferradina,2453,174,Segunda División,2,2019-08-18,2416.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hearts,2453,3892,Scottish Premiership,1,1890-08-16,2268,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sint-Truiden,2452,1310,Belgian Pro League,1,1957-09-01,2334.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -239,67 +238,64 @@ Waldhof Mannheim,2446,244,Bundesliga,1,1983-08-13,2521.5,TRUE,Pass2_RetroStart,R
 Stockport County,2446,317,National League,5,2019-08-03,1887,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sporting Toulon Var,2446,300,Division 1,1,1964-08-30,2435.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Darmstadt 98,2446,399,Bundesliga,1,1978-08-12,2436.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Málaga,2446,1576,La Liga,1,1949-09-04,2572.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Fortuna Düsseldorf,2445,1052,Bundesliga,1,1966-08-20,2425.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Arminia Bielefeld,2445,774,Bundesliga,1,1970-08-15,2443.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Málaga,2444,1577,La Liga,1,1949-09-04,2572.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+West Bromwich Albion,2444,3538,First Division,1,1888-09-08,2558.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sampierdarenese,2444,60,Serie A,1,1935-09-22,2438.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Go Ahead Eagles,2444,1086,Eredivisie,1,1963-08-25,2352.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SC Enschede Alt,2443,260,Eredivisie,1,1957-08-25,2468.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Castellón,2443,436,La Liga,1,1941-09-28,2620,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Europa,2443,58,La Liga,1,1929-02-10,2446.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Red Star Olympique,2442,224,Division 1,1,1965-08-22,2460.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 08 Homburg,2441,106,Bundesliga,1,1986-08-08,2446.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Derby County,2440,2917,First Division,1,1888-09-08,2490.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Oleksandriya,2440,351,Ukrainian Premier League,1,2001-07-07,2262.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Fortuna Koln,2440,34,Bundesliga,1,1973-08-11,2455.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Novara,2440,452,Serie A,1,1936-09-13,2456.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Stade Francais,2439,178,Division 1,1,1947-08-24,2476.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Göztepe,2439,959,Süper Lig,1,1959-02-28,2268.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Göztepe,2439,959,SÃ¼per Lig,1,1959-02-28,2268.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Germinal Ekeren,2439,340,Belgian Pro League,1,1989-08-16,2354.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Eldense,2438,88,Segunda División,2,2023-08-13,2421.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Dnipro Dnipropetrovsk,2438,791,Ukrainian Premier League,1,1992-03-07,2398.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Istanbul Başakşehir,2438,558,Süper Lig,1,2007-08-10,2333.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Istanbul Başakşehir,2438,558,SÃ¼per Lig,1,2007-08-10,2333.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Dunkerque,2438,168,Ligue 2,2,2020-08-22,2324.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ac Liguria,2438,150,Serie A,1,1937-09-12,2550.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Unione Triestina,2437,840,Serie A,1,1929-10-06,2439.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Go Ahead Eagles,2437,1087,Eredivisie,1,1963-08-25,2352.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Charleroi,2437,1754,Belgian Pro League,1,1937-09-26,2345.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Blackburn Rovers,2434,3194,First Division,1,1888-09-15,2598.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Thun,2434,500,Swiss Super League,1,1955-12-12,2359.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Arouca,2434,306,Primeira Liga,1,2013-08-18,2334,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Guingamp,2434,732,Division 1,1,1995-07-19,2539.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Metz,2433,1742,Division 1,1,1947-08-24,2438.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Pro Vercelli,2433,177,Serie A,1,1929-10-06,2463.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Istres,2433,41,Ligue 1,1,2004-08-07,2443.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Schalke 04,2433,1981,Bundesliga,1,1963-08-24,2443.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bristol City,2433,796,First Division,1,1906-09-01,2629.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Derby County,2431,2918,First Division,1,1888-09-08,2490.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Queens Park Rangers,2431,1362,First Division,1,1968-08-10,2464.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Xerxes Dzb,2431,68,Eredivisie,1,1966-08-14,2373.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Charlton Athletic,2430,1489,First Division,1,1936-08-29,2673.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ceuta,2430,12,Segunda División,2,2025-08-15,2393.3,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Pisa,2429,510,Serie A,1,1968-09-29,2460.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Antwerp,2429,2000,Belgian Pro League,1,1904-10-09,2285.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 KFC Uerdingen 05,2428,477,Bundesliga,1,1975-08-09,2462.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Chievo Verona,2428,714,Serie A,1,2001-08-26,2608.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cultural Leonesa,2428,14,Segunda División,2,2025-08-15,2392.6,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Schalke 04,2427,1982,Bundesliga,1,1963-08-24,2443.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Avellino,2427,342,Serie A,1,1978-10-01,2536.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Baník Ostrava,2426,860,Czech First League,1,1993-08-14,2261.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Andorra,2426,99,Segunda División,2,2022-08-15,2445.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Arouca,2426,305,Primeira Liga,1,2013-08-18,2334,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Portsmouth,2426,1774,First Division,1,1927-08-27,2572.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Zulte Waregem,2425,588,Belgian Pro League,1,2005-08-06,2360.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Blackburn Rovers,2424,3195,First Division,1,1888-09-15,2598.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Leicester City,2424,2491,First Division,1,1908-09-01,2487.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lleida,2424,30,La Liga,1,1950-09-10,2456.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Dnipro-1,2423,109,Ukrainian Premier League,1,2019-07-31,2318.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Groningen,2423,1755,Eredivisie,1,1957-08-25,2426.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bristol City,2423,795,First Division,1,1906-09-01,2629.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Gil Vicente,2421,825,Primeira Liga,1,1990-08-19,2361.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 St. Gallen,2421,1566,Swiss Super League,1,1924-09-14,2284.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Rapid Vienna,2421,588,Austrian Bundesliga,1,2010-08-01,2382.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Queens Park Rangers,2421,1361,First Division,1,1968-08-10,2464.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Charlton Athletic,2421,1488,First Division,1,1936-08-29,2673.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Numancia,2420,250,La Liga,1,1999-08-22,2538.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Gil Vicente,2420,824,Primeira Liga,1,1990-08-19,2361.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hartberg,2420,262,Austrian Bundesliga,1,2018-08-05,2343.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bordeaux,2420,2042,Division 1,1,1953-08-23,2560.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Vitória Guimarães,2420,2409,Primeira Liga,1,1942-01-18,2269.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Alemannia Aachen,2419,138,Bundesliga,1,1967-08-19,2499.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Modena,2418,594,Serie A,1,1929-10-06,2484.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sparta Rotterdam,2418,1851,Eredivisie,1,1957-08-25,2431.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Glossop North End,2418,34,First Division,1,1899-09-02,2458.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Aris Thessaloniki,2418,179,Super League Greece,1,2018-08-27,2368.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Oostende,2418,519,Belgian Pro League,1,1969-09-07,2261.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -307,12 +303,15 @@ Pau,2417,203,Ligue 2,2,2020-08-22,2378,TRUE,Pass2_RetroStart,RetroFromPass1First
 Gaziantep,2417,158,Süper Lig,1,2019-08-19,2447.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Sete,2417,102,Division 1,1,1947-08-24,2461.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Luton Town,2416,1065,First Division,1,1955-08-20,2609.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Alanyaspor,2416,260,Süper Lig,1,2016-08-20,2333.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Alanyaspor,2416,260,SÃ¼per Lig,1,2016-08-20,2333.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Portsmouth,2416,1775,First Division,1,1927-08-27,2572.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Vitória Guimarães,2415,2410,Primeira Liga,1,1942-01-18,2269.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lausanne-Sport,2415,1753,Swiss Super League,1,1924-09-30,2301.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Villarreal B,2414,84,Segunda División,2,2022-08-14,2389.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Alcorcón,2414,217,Segunda División,2,2018-08-18,2402.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Tenerife,2412,804,La Liga,1,1961-09-03,2486.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Zurich,2412,1969,Swiss Super League,1,1924-10-05,2295.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Groningen,2412,1756,Eredivisie,1,1957-08-25,2426.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 CD Leonesa,2412,30,La Liga,1,1955-09-11,2450.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hibernian,2411,3731,Scottish Premiership,1,1895-08-17,2356.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Empoli,2411,746,Serie A,1,1986-09-14,2486.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -321,23 +320,24 @@ Südtirol,2411,152,Serie B,2,2022-08-14,2415,TRUE,Pass2_RetroStart,RetroFromPass
 Rayo Majadahonda,2411,47,Segunda División,2,2018-08-19,2393.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Angoulême CFC,2410,40,Division 1,1,1971-08-11,2425.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Vorskla,2410,752,Ukrainian Premier League,1,1996-07-20,2395.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Santa Clara,2410,343,Primeira Liga,1,1999-08-21,2383.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Red Star,2410,92,Ligue 2,2,2018-07-27,2302.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kickers Offenbach,2410,241,Bundesliga,1,1968-08-17,2451.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Juve Stabia,2409,114,Serie B,2,2019-08-25,2324.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Logroñés,2409,402,La Liga,1,1987-08-29,2578.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Santa Clara,2409,344,Primeira Liga,1,1999-08-21,2383.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Watford,2408,861,First Division,1,1982-08-28,2611.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Annecy,2408,128,Ligue 2,2,2022-07-30,2352,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Jablonec,2407,865,Czech First League,1,1994-08-07,2281.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Rot-Weiß Oberhausen,2407,137,Bundesliga,1,1969-08-16,2446.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sparta Rotterdam,2407,1852,Eredivisie,1,1957-08-25,2431.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Arenas Getxo,2407,131,La Liga,1,1929-02-10,2558.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Foggia,2407,368,Serie A,1,1964-09-13,2489.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sochaux,2406,1729,Division 1,1,1947-08-24,2501.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Darwen,2406,56,First Division,1,1891-09-05,2437.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bolton Wanderers,2406,3222,First Division,1,1888-09-08,2540.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Standard Liège,2404,2998,Belgian Pro League,1,1909-09-26,2282,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Avignon Foot 84,2403,38,Division 1,1,1975-08-08,2422.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Fortuna Sittard,2403,1238,Eredivisie,1,1957-08-25,2428.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Nürnberg,2403,1347,Bundesliga,1,1963-08-24,2529.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Watford,2402,860,First Division,1,1982-08-28,2611.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Reggina,2401,446,Serie A,1,1999-08-29,2471.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Spezia,2400,319,Serie B,2,2018-08-25,2336.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Grenoble,2399,354,Ligue 1,1,2008-08-09,2422.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -347,13 +347,12 @@ Wolfsberger,2398,487,Austrian Bundesliga,1,2012-08-04,2335.1,TRUE,Pass2_RetroSta
 Laval,2398,128,Ligue 2,2,2022-07-30,2400.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Brescia,2397,995,Serie A,1,1929-10-06,2472,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Mantova,2397,304,Serie A,1,1961-08-27,2480.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Rizespor,2396,773,Süper Lig,1,1979-08-26,2337.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Rizespor,2396,773,SÃ¼per Lig,1,1979-08-26,2337.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Preußen Münster,2396,80,Bundesliga,1,1963-08-24,2404,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Kasımpaşa,2395,689,Süper Lig,1,1959-08-30,2269.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Preston North End,2395,2158,First Division,1,1888-09-08,2721.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Kasımpaşa,2395,689,SÃ¼per Lig,1,1959-08-30,2269.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bolton Wanderers,2395,3223,First Division,1,1888-09-08,2540.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ibiza,2394,85,Segunda División,2,2021-08-13,2408.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Salernitana,2394,352,Serie A,1,1947-09-21,2456.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Le Mans,2394,278,Ligue 1,1,2003-08-02,2523.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Polissya Zhytomyr,2393,60,Ukrainian Premier League,1,2023-07-28,2366.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Legnano,2393,106,Serie A,1,1930-09-28,2350.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sion,2393,1407,Swiss Super League,1,1962-08-26,2310.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -361,22 +360,23 @@ Westerlo,2393,705,Belgian Pro League,1,1997-08-09,2376,TRUE,Pass2_RetroStart,Ret
 Arles-Avignon,2393,38,Ligue 1,1,2010-08-07,2420.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Luzern,2393,1625,Swiss Super League,1,1924-09-23,2324.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Vse St Poelten,2392,166,Austrian Bundesliga,1,1988-07-22,2336.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Fortuna Sittard,2392,1237,Eredivisie,1,1957-08-25,2428.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bvv Den Bosch,2391,68,Eredivisie,1,1988-08-21,2396.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Trapani,2390,39,Serie B,2,2019-08-24,2353.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Le Mans,2390,279,Ligue 1,1,2003-08-02,2523.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lommel United,2389,102,Belgian Pro League,1,1992-08-07,2366.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Amsterdam Old,2388,136,Eredivisie,1,1972-08-13,2434.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Varese,2388,222,Serie A,1,1964-09-13,2414,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cesena,2388,514,Serie A,1,1973-10-07,2503.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kryvbas Kryvyi Rih,2388,60,Ukrainian Premier League,1,2023-08-06,2372.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wycombe Wanderers,2387,376,League 1,3,2018-08-04,2196.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-PEC Zwolle,2386,781,Eredivisie,1,1978-08-27,2375,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Moreirense,2387,509,Primeira Liga,1,2002-08-25,2380,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Real Zaragoza,2386,2292,La Liga,1,1939-12-03,2473.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Konyaspor,2386,771,Süper Lig,1,1988-08-28,2344.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Konyaspor,2386,771,SÃ¼per Lig,1,1988-08-28,2344.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Preston North End,2386,2159,First Division,1,1888-09-08,2721.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Messina,2386,184,Serie A,1,1963-09-15,2466.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ascoli,2385,710,Serie A,1,1974-09-30,2469.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Boulogne,2385,58,Ligue 1,1,2009-08-08,2416.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Kayserispor,2385,862,Süper Lig,1,1973-09-09,2303.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Kayserispor,2385,862,SÃ¼per Lig,1,1973-09-09,2303.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Austria Salzburg,2385,296,Austrian Bundesliga,1,1953-08-23,2290.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Magdeburg,2385,157,2. Bundesliga,2,2018-08-05,2279.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Fuenlabrada,2384,129,Segunda División,2,2019-08-07,2475.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -384,19 +384,20 @@ Amiens,2384,315,Ligue 1,1,2017-08-05,2474.9,TRUE,Pass2_RetroStart,RetroFromPass1
 Clermont,2383,267,Ligue 2,2,2018-07-27,2370.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lugo,2383,218,Segunda División,2,2018-08-18,2417.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ad Fafe,2382,38,Primeira Liga,1,1988-09-11,2375.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Excelsior,2382,751,Eredivisie,1,1970-08-23,2313.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ajaccio,2381,675,Division 1,1,1967-08-18,2533.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SV Schwechat,2381,156,Austrian Bundesliga,1,1960-08-21,2302.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Lincoln City,2381,377,League 2,4,2018-08-04,2177.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Perugia,2381,587,Serie A,1,1975-10-05,2551.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Stoke City,2380,2833,First Division,1,1888-09-08,2427,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Moreirense,2378,508,Primeira Liga,1,2002-08-25,2380,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+PEC Zwolle,2379,782,Eredivisie,1,1978-08-27,2375,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Tebe Berlin,2378,68,Bundesliga,1,1974-08-24,2395.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SK Admira Vienna,2378,394,Austrian Bundesliga,1,1952-08-24,2355.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Carrarese,2378,71,Serie B,2,2024-08-18,2362,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Excelsior Mouscron,2377,440,Belgian Pro League,1,1996-08-03,2375.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Telstar,2377,436,Eredivisie,1,1964-08-23,2370.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Superfund,2376,36,Austrian Bundesliga,1,2002-07-10,2355.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Desna Chernihiv,2376,108,Ukrainian Premier League,1,2018-07-25,2358.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 WSG Wattens,2376,30,Austrian Bundesliga,1,1970-08-15,2352.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Stoke City,2376,2834,First Division,1,1888-09-08,2427,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cercle Brugge,2375,2066,Belgian Pro League,1,1900-10-21,2246.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Oxford United,2375,547,First Division,1,1985-08-17,2569.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Gazélec Ajaccio,2374,81,Ligue 1,1,2015-08-08,2456.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -406,40 +407,39 @@ Vfb Leipzig,2373,34,Bundesliga,1,1993-08-07,2407.9,TRUE,Pass2_RetroStart,RetroFr
 Benevento,2373,238,Serie A,1,2017-08-20,2421.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Pistoiese,2373,30,Serie A,1,1980-09-14,2404.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SPAL,2373,785,Serie A,1,1951-09-09,2460.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sivasspor,2373,601,Süper Lig,1,2005-08-06,2373,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Malatyaspor,2372,384,Süper Lig,1,1984-08-26,2350.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sivasspor,2373,601,SÃ¼per Lig,1,2005-08-06,2373,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Telstar,2372,437,Eredivisie,1,1964-08-23,2370.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Malatyaspor,2372,384,SÃ¼per Lig,1,1984-08-26,2350.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Skoda Xanthi,2372,884,Super League Greece,1,1989-09-17,2228.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Antalyaspor,2371,943,Süper Lig,1,1982-08-29,2283.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Excelsior,2370,750,Eredivisie,1,1970-08-23,2313.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Lincoln City,2370,376,League 2,4,2018-08-04,2177.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Antalyaspor,2371,943,SÃ¼per Lig,1,1982-08-29,2283.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Martigues,2370,149,Division 1,1,1993-07-24,2493.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Metalist Kharkov,2370,573,Ukrainian Premier League,1,1992-03-07,2312.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Estoril,2368,935,Primeira Liga,1,1944-11-26,2460.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Vicenza,2367,1073,Serie A,1,1942-10-04,2459.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Borussia Neunkirchen,2366,98,Bundesliga,1,1964-08-22,2415.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Estoril,2365,936,Primeira Liga,1,1944-11-26,2460.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bari,2365,1141,Serie A,1,1931-09-20,2402.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Treviso,2365,38,Serie A,1,2005-08-28,2395.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bursaspor,2364,1644,Süper Lig,1,1967-09-10,2346.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bursaspor,2364,1644,SÃ¼per Lig,1,1967-09-10,2346.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bastia,2364,1289,Division 1,1,1968-09-03,2509,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sampdoria,2364,2377,Serie A,1,1946-09-22,2436,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Quevilly-Rouen,2363,117,Ligue 2,2,2021-07-24,2311.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Rio Ave,2362,1015,Primeira Liga,1,1979-08-26,2393.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Metalurh Donetsk,2361,354,Ukrainian Premier League,1,2003-07-12,2385.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Boluspor,2361,638,Süper Lig,1,1970-09-20,2309.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Boluspor,2361,638,SÃ¼per Lig,1,1970-09-20,2309.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 MSV Duisburg,2361,987,Bundesliga,1,1963-08-24,2529,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Carpi,2361,84,Serie A,1,2015-08-23,2449.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ternana,2361,188,Serie A,1,1972-09-24,2443.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Rio Ave,2360,1016,Primeira Liga,1,1979-08-26,2393.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 La Louvière,2360,15,Belgian Pro League,1,2025-08-02,2339.9,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Etoile La Chaux-de-Fonds,2360,71,Swiss Super League,1,1924-09-30,2308.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Greuther Fürth,2360,291,Bundesliga,1,2012-08-25,2424.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Alverca,2360,208,Primeira Liga,1,1998-08-23,2366.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Gimnàstic Tarragona,2360,42,Segunda División,2,2018-08-20,2354.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Dijon,2359,305,Ligue 1,1,2011-08-07,2486.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Neuchâtel Xamax,2359,1349,Swiss Super League,1,1924-09-23,2224.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ulm,2359,76,Bundesliga,1,1999-08-15,2405.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Alessandria,2359,456,Serie A,1,1929-10-06,2454.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Alverca,2358,207,Primeira Liga,1,1998-08-23,2366.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 CUF de Lisboa,2357,54,Primeira Liga,1,1940-12-29,2335.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Yeni Malatyaspor,2354,142,Süper Lig,1,2017-08-13,2413.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Yeni Malatyaspor,2354,142,SÃ¼per Lig,1,2017-08-13,2413.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Mouscron,2354,225,Belgian Pro League,1,2014-07-27,2324.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Barnsley,2353,450,Premier League,1,1997-08-09,2488,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Aixoise,2353,39,Division 1,1,1967-08-18,2382.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -454,7 +454,7 @@ Bodrum,2351,35,Süper Lig,1,2024-08-12,2330.3,TRUE,Pass2_RetroStart,RetroFromPas
 Reggiana,2351,255,Serie A,1,1993-08-29,2486.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Racing Ferrol,2350,88,Segunda División,2,2023-08-12,2404,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Grödig,2350,108,Austrian Bundesliga,1,2013-08-03,2381,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Aydinspor,2350,90,Süper Lig,1,1990-08-26,2372.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Aydinspor,2350,90,SÃ¼per Lig,1,1990-08-26,2372.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wuppertaler SV,2350,103,Bundesliga,1,1972-09-16,2527,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Tirsense,2350,256,Primeira Liga,1,1967-09-10,2346.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ried,2349,851,Austrian Bundesliga,1,1995-08-02,2377.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -468,11 +468,11 @@ Sportclub,2347,443,Austrian Bundesliga,1,1953-08-23,2430.2,TRUE,Pass2_RetroStart
 Vitória Setúbal,2346,2008,Primeira Liga,1,1935-01-20,2315.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Huddersfield Town,2346,1701,First Division,1,1920-08-28,2566.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Rheindorf Altach,2346,108,Austrian Bundesliga,1,2006-07-19,2327.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Elazigspor,2345,136,Süper Lig,1,2002-08-11,2283.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Elazigspor,2345,136,SÃ¼per Lig,1,2002-08-11,2283.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Béziers,2345,38,Ligue 2,2,2018-07-27,2325.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Osmanlispor FK,2345,306,Süper Lig,1,2004-08-08,2366.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Osmanlispor FK,2345,306,SÃ¼per Lig,1,2004-08-08,2366.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kortrijk,2344,1172,Belgian Pro League,1,1906-10-07,2216.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Eskisehirspor,2344,978,Süper Lig,1,1966-09-10,2344.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Eskisehirspor,2344,978,SÃ¼per Lig,1,1966-09-10,2344.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Kaernten,2344,372,Austrian Bundesliga,1,1974-08-10,2301.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Dundee United,2344,2219,Scottish Premiership,1,1925-08-15,2155,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 St. Mirren,2343,3176,Scottish Premiership,1,1890-08-30,2236.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -483,30 +483,30 @@ Yverdon,2342,248,Swiss Super League,1,1992-03-01,2344.4,TRUE,Pass2_RetroStart,Re
 Plymouth Argyle,2342,382,League 1,3,2018-08-04,2209.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Grasshoppers,2342,2101,Swiss Super League,1,1924-09-28,2463.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Montijo,2341,90,Primeira Liga,1,1972-09-10,2317.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Marítimo,2340,1403,Primeira Liga,1,1977-09-04,2336.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Roda JC Kerkrade,2340,1542,Eredivisie,1,1957-08-25,2385.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Rukh Lviv,2339,60,Ukrainian Premier League,1,2023-08-06,2326.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Canakkale Dardanelspor,2339,102,Süper Lig,1,1996-08-11,2342.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Canakkale Dardanelspor,2339,102,SÃ¼per Lig,1,1996-08-11,2342.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Belenenses,2339,2222,Primeira Liga,1,1935-01-20,2461.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Padova,2339,637,Serie A,1,1929-10-06,2473.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 O Elvas,2338,194,Primeira Liga,1,1945-12-09,2335.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Winterthur,2338,476,Swiss Super League,1,1924-09-14,2215.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Levadiakos,2338,574,Super League Greece,1,1987-09-06,2205.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wiener Sportklub,2337,476,Austrian Bundesliga,1,1977-08-10,2352.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Casa Pia,2337,153,Primeira Liga,1,1939-01-08,2330.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Lommel,2336,204,Belgian Pro League,1,1995-08-05,2419.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Estrela da Amadora,2336,625,Primeira Liga,1,1988-08-21,2406.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cartagena,2336,219,Segunda División,2,2020-09-13,2422.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Emmen,2336,128,Eredivisie,1,2018-08-12,2375.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Motherwell,2335,3670,Scottish Premiership,1,1903-08-15,2133.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Naval 1 De Maio,2335,184,Primeira Liga,1,2005-08-21,2412.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Ankaragücü,2335,1738,Süper Lig,1,1959-02-21,2265.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bakirkoeyspor,2334,90,Süper Lig,1,1990-08-26,2359.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Ankaragücü,2335,1738,SÃ¼per Lig,1,1959-02-21,2265.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bakirkoeyspor,2334,90,SÃ¼per Lig,1,1990-08-26,2359.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 KFC Diest,2334,210,Belgian Pro League,1,1961-09-03,2299.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 WSG Tirol,2334,227,Austrian Bundesliga,1,2019-08-03,2306.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Dender,2334,123,Belgian Pro League,1,2007-08-04,2308.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Slovan Liberec,2334,903,Czech First League,1,1993-08-14,2286.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SC Salgueiros,2333,694,Primeira Liga,1,1943-11-28,2179.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cosenza,2333,274,Serie B,2,2018-08-26,2350.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Marítimo,2332,1404,Primeira Liga,1,1977-09-04,2336.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Orléans,2332,74,Ligue 2,2,2018-07-27,2342.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Mattersburg,2332,533,Austrian Bundesliga,1,2003-07-23,2318,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wigan Athletic,2332,727,Premier League,1,2005-08-14,2577.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -514,29 +514,28 @@ Ancona Calcio,2332,68,Serie A,1,1992-09-06,2369.8,TRUE,Pass2_RetroStart,RetroFro
 Pescara,2332,193,Serie A,1,2016-08-21,2426.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Varzim SC,2332,618,Primeira Liga,1,1963-10-20,2347.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Peterborough United,2331,379,League 1,3,2018-08-04,2263.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Erzurumspor,2331,176,Süper Lig,1,1998-08-09,2340.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Erzurumspor,2331,176,SÃ¼per Lig,1,1998-08-09,2340.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Nîmes,2331,824,Division 1,1,1953-08-23,2497.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 RCS la Forestoise,2330,9,Belgian Pro League,1,1943-03-28,2325.5,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Altay Izmir,2330,1326,Süper Lig,1,1959-02-21,2263,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Altay Izmir,2330,1326,SÃ¼per Lig,1,1959-02-21,2263,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SC Olhanense,2330,516,Primeira Liga,1,1942-01-18,2382.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 KSC Winterslag,2329,272,Belgian Pro League,1,1976-09-11,2389.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Portimonense,2328,678,Primeira Liga,1,1976-09-05,2355.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Nacional,2327,727,Primeira Liga,1,1988-08-21,2354.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Casa Pia,2328,154,Primeira Liga,1,1939-01-08,2330.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FK Krivbas,2327,634,Ukrainian Premier League,1,1992-08-16,2276,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SC Veendam,2327,68,Eredivisie,1,1986-08-20,2361.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Estrela da Amadora,2326,624,Primeira Liga,1,1988-08-21,2406.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Beerschot,2326,667,Belgian Pro League,1,1900-10-21,2273.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Halkidona FC,2326,60,Super League Greece,1,2003-08-24,2324.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Etimesgut Sekerspor,2325,320,Süper Lig,1,1959-09-12,2286.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Etimesgut Sekerspor,2325,320,SÃ¼per Lig,1,1959-09-12,2286.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Holland Sport,2325,136,Eredivisie,1,1958-08-24,2296.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Yozgatspor,2324,68,Süper Lig,1,2000-08-12,2350.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Yozgatspor,2324,68,SÃ¼per Lig,1,2000-08-12,2350.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Barreirense,2324,548,Primeira Liga,1,1938-01-16,2339.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Erciyesspor,2324,196,Süper Lig,1,1992-08-23,2345.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Erciyesspor,2324,196,SÃ¼per Lig,1,1992-08-23,2345.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Dynamo Dresden,2323,262,Bundesliga,1,1991-08-03,2505.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Karpaty Lviv,2323,822,Ukrainian Premier League,1,1992-03-06,2278.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 KVK Tienen,2323,2,Belgian Pro League,1,1937-09-19,2319.5,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Virtus Entella,2323,113,Serie B,2,2019-08-24,2305.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Akhisarspor,2323,242,Süper Lig,1,2012-08-17,2388.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Akhisarspor,2323,242,SÃ¼per Lig,1,2012-08-17,2388.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Blauw Wit,2322,196,Eredivisie,1,1957-08-25,2367.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Leixoes SC,2321,652,Primeira Liga,1,1937-01-17,2272.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Raec Mons,2321,309,Belgian Pro League,1,2002-08-10,2329,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -557,9 +556,10 @@ Fabril Do Barreiro,2319,584,Primeira Liga,1,1943-01-10,2371.6,TRUE,Pass2_RetroSt
 Wvv Wageningen,2319,34,Eredivisie,1,1974-09-01,2339.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SC Veltheim,2318,14,Swiss Super League,1,1924-10-12,2306.3,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Uniao Tomar,2318,172,Primeira Liga,1,1968-09-08,2314.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Manisaspor,2317,204,Süper Lig,1,2005-08-07,2374.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Manisaspor,2317,204,SÃ¼per Lig,1,2005-08-07,2374.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Red Star Olympique Audonien,2317,34,Division 1,1,1947-08-24,2367,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Crotone,2317,234,Serie A,1,2016-08-21,2486.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Nacional,2317,728,Primeira Liga,1,1988-08-21,2354.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 US Bienne-Boujean,2317,2,Swiss Super League,1,1933-01-08,2308.6,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Wil 1900,2317,114,Swiss Super League,1,1993-02-28,2316.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Nancy,2317,1248,Division 1,1,1947-08-24,2448.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -586,19 +586,19 @@ Blau-Weiß Linz,2312,746,Austrian Bundesliga,1,1970-08-16,2442.9,TRUE,Pass2_Retr
 Gvav Rapiditas,2312,166,Eredivisie,1,1965-08-22,2411.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Vizela,2312,132,Primeira Liga,1,1984-08-26,2333,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lierse SK,2312,1696,Belgian Pro League,1,1927-09-11,2343.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Fatih Karagümrük,2312,271,Süper Lig,1,1959-02-25,2341.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Kecioerenguecue,2312,252,Süper Lig,1,1959-02-21,2208.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Fatih Karagümrük,2312,271,SÃ¼per Lig,1,1959-02-25,2341.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Kecioerenguecue,2312,252,SÃ¼per Lig,1,1959-02-21,2208.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 NAC Breda,2312,1597,Eredivisie,1,1957-08-25,2345.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Rukh Vynnyky,2312,43,Ukrainian Premier League,1,2020-08-23,2298.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Tondela,2311,272,Primeira Liga,1,2015-08-14,2311.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sittardia,2311,132,Eredivisie,1,1959-08-23,2246.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 CD Trofense,2311,30,Primeira Liga,1,2008-08-23,2323.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Reading,2311,526,Premier League,1,2006-08-19,2596.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Gençlerbirliği,2310,1621,Süper Lig,1,1959-02-21,2267.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Gençlerbirliği,2310,1621,SÃ¼per Lig,1,1959-02-21,2267.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Almere City,2309,68,Eredivisie,1,2023-08-13,2316.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Erzgebirge Aue,2309,142,2. Bundesliga,2,2018-08-05,2349.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wehen Wiesbaden,2309,75,2. Bundesliga,2,2019-08-04,2345.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Orduspor,2308,352,Süper Lig,1,1975-09-07,2344.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Orduspor,2308,352,SÃ¼per Lig,1,1975-09-07,2344.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wiener AC,2308,234,Austrian Bundesliga,1,1953-08-22,2283.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ask Olympiakos,2308,100,Super League Greece,1,1988-09-11,2195.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Austria Klagenfurt,2308,264,Austrian Bundesliga,1,1962-08-26,2351.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -626,7 +626,7 @@ Schwarz Weiss Bregenz,2303,324,Austrian Bundesliga,1,1954-08-29,2298.5,TRUE,Pass
 Feralpisalò,2303,38,Serie B,2,2023-08-20,2290.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 ÖMV Olympia,2303,26,Austrian Bundesliga,1,1957-08-25,2303.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Molenbeek,2303,1034,Belgian Pro League,1,1924-09-07,2303,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sariyer SK,2302,436,Süper Lig,1,1982-08-29,2308.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sariyer SK,2302,436,SÃ¼per Lig,1,1982-08-29,2308.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Krc Zuid West Vlaanderen,2302,204,Belgian Pro League,1,1995-08-05,2387.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Bern,2302,257,Swiss Super League,1,1924-09-30,2296.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Uniao Torreense,2302,138,Primeira Liga,1,1955-09-18,2372.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -638,14 +638,15 @@ Caen,2300,874,Division 1,1,1989-07-22,2521.8,TRUE,Pass2_RetroStart,RetroFromPass
 Rotherham United,2299,366,Championship,2,2018-08-04,2386.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SC Kriens,2299,84,Swiss Super League,1,1993-02-28,2323.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SV Chemie Linz,2299,104,Austrian Bundesliga,1,1960-08-21,2353.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+ADO Den Haag,2298,1448,Eredivisie,1,1957-08-25,2344.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bradford City,2298,873,First Division,1,1908-09-02,2598.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Kocaelispor,2298,685,Süper Lig,1,1980-08-24,2346,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Kocaelispor,2298,685,SÃ¼per Lig,1,1980-08-24,2346,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Inverness Caledonian Thistle FC,2298,456,Scottish Premiership,1,2004-08-07,2289.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Eupen,2298,223,Belgian Pro League,1,2010-07-31,2312.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Wettingen,2298,148,Swiss Super League,1,1974-06-25,2284.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 K Beringen FC,2298,472,Belgian Pro League,1,1950-09-03,2301.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wacker Innsbruck,2297,1404,Austrian Bundesliga,1,1964-08-22,2355.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Balikesirspor,2297,64,Süper Lig,1,1975-09-07,2274.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Balikesirspor,2297,64,SÃ¼per Lig,1,1975-09-07,2274.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Volos,2297,144,Super League Greece,1,2019-08-25,2263.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 KSC Verbroedering Geel,2297,34,Belgian Pro League,1,1999-08-06,2296.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Agueda Rd,2296,30,Primeira Liga,1,1983-08-28,2318.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -660,14 +661,14 @@ Lusitano GC,2293,338,Primeira Liga,1,1952-09-28,2364.6,TRUE,Pass2_RetroStart,Ret
 Falkirk,2292,2265,Scottish Premiership,1,1905-08-19,2283,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Zorya Luhansk,2292,62,Ukrainian Premier League,1,2023-08-06,2279.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Uniao Leiria,2292,584,Primeira Liga,1,1979-08-26,2306.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-ADO Den Haag,2291,1447,Eredivisie,1,1957-08-25,2344.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ayr United,2291,1098,Scottish Premiership,1,1913-08-16,2267.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 AVS,2291,68,Primeira Liga,1,2024-08-10,2262.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Arsenal Kiev,2290,568,Ukrainian Premier League,1,1995-07-25,2313.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Boavista,2290,1888,Primeira Liga,1,1936-01-12,2256.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sheffield Wednesday,2290,3039,First Division,1,1892-09-03,2490.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Willem II,2290,1483,Eredivisie,1,1958-08-24,2373.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lecco,2290,140,Serie A,1,1960-09-25,2457.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Gaziantepspor,2290,1028,Süper Lig,1,1979-08-26,2345.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Gaziantepspor,2290,1028,SÃ¼per Lig,1,1979-08-26,2345.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ingolstadt,2290,143,Bundesliga,1,2015-08-15,2475.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kremser SC,2289,143,Austrian Bundesliga,1,1956-08-26,2307.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Afc Dws,2289,464,Eredivisie,1,1957-08-25,2382.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -678,15 +679,14 @@ Svv Schiedam,2287,68,Eredivisie,1,1969-08-10,2320.2,TRUE,Pass2_RetroStart,RetroF
 PFC Sevastopol,2286,58,Ukrainian Premier League,1,2010-07-09,2262.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Atletico CP,2286,632,Primeira Liga,1,1943-11-28,2393.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Lviv,2285,138,Ukrainian Premier League,1,2008-07-20,2310.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Willem II,2285,1482,Eredivisie,1,1958-08-24,2373.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Panetolikos,2285,174,Super League Greece,1,2018-08-25,2227.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Mansfield Town,2285,375,League 2,4,2018-08-04,2124.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 RRC Tournaisien,2285,4,Belgian Pro League,1,1958-09-21,2299.9,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Châteauroux,2285,110,Ligue 2,2,2018-07-27,2335.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Koninklijke Beringen Heusden Zolder,2284,34,Belgian Pro League,1,2003-08-10,2288.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Akcaabat Sebatspor,2284,68,Süper Lig,1,2003-08-10,2313.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Akcaabat Sebatspor,2284,68,SÃ¼per Lig,1,2003-08-10,2313.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Austria Lustenau,2284,175,Austrian Bundesliga,1,1997-07-09,2306,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Beykozspor,2283,264,Süper Lig,1,1959-02-21,2250.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Beykozspor,2283,264,SÃ¼per Lig,1,1959-02-21,2250.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Racing Jet Wavre,2283,102,Belgian Pro League,1,1984-08-22,2300.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SV Seebach,2283,2,Swiss Super League,1,1933-01-08,2290.6,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Panaitolikos,2282,188,Super League Greece,1,2011-09-10,2271.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -700,28 +700,28 @@ Kapfenberg,2279,377,Austrian Bundesliga,1,1954-08-29,2270.2,TRUE,Pass2_RetroStar
 Racing White Brussels,2278,136,Belgian Pro League,1,2004-08-07,2352.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Beerschot AC,2278,1290,Belgian Pro League,1,1960-09-04,2343.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Moutier,2277,1,Swiss Super League,1,1967-11-27,2288.3,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Bucaspor,2277,34,Süper Lig,1,2010-08-14,2282,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Bucaspor,2277,34,SÃ¼per Lig,1,2010-08-14,2282,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Uniao de Lisboa,2277,14,Primeira Liga,1,1935-01-20,2301.2,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Panionios,2277,956,Super League Greece,1,1987-09-06,2229.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Mladá Boleslav,2277,562,Czech First League,1,2004-08-09,2270.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Niort,2276,223,Division 1,1,1987-07-18,2457.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Feirense,2276,222,Primeira Liga,1,1962-10-21,2243,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Mersin Idmanyurdu,2274,472,Süper Lig,1,1967-09-10,2335.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Mersin Idmanyurdu,2274,472,SÃ¼per Lig,1,1967-09-10,2335.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Afc Tubize,2274,34,Belgian Pro League,1,2008-08-16,2280.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Uniao Coimbra,2274,30,Primeira Liga,1,1972-09-10,2303,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Zonguldak Koemuerspor,2273,454,Süper Lig,1,1974-09-08,2312.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Zonguldak Koemuerspor,2273,454,SÃ¼per Lig,1,1974-09-08,2312.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Exeter City,2273,377,League 2,4,2018-08-04,2106.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Skill Bruxelles,2273,16,Belgian Pro League,1,1900-10-21,2292.5,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Würzburger Kickers,2273,36,2. Bundesliga,2,2020-09-19,2269.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Helmond Sport,2271,68,Eredivisie,1,1982-08-22,2292.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Inhulets',2270,43,Ukrainian Premier League,1,2020-08-23,2266.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Airdrieonians FC Old,2270,1930,Scottish Premiership,1,1903-08-15,2228.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Hacettepe,2270,68,Süper Lig,1,2007-08-12,2284.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Hacettepe,2270,68,SÃ¼per Lig,1,2007-08-12,2284.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Teplice,2270,795,Czech First League,1,1996-08-11,2194.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 RFC De Liege,2270,1207,Belgian Pro League,1,1900-10-21,2294.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Borysfen Boryspil,2270,60,Ukrainian Premier League,1,2003-07-12,2284.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 LNZ Cherkasy,2269,60,Ukrainian Premier League,1,2023-08-05,2273.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Diyarbakirspor,2269,362,Süper Lig,1,1977-08-28,2354.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Diyarbakirspor,2269,362,SÃ¼per Lig,1,1977-08-28,2354.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Blackpool,2268,1577,First Division,1,1930-08-30,2525.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bohemians 1905,2268,618,Czech First League,1,1993-08-15,2157.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 KV Turnhout,2268,58,Belgian Pro League,1,1931-09-06,2274.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -736,7 +736,7 @@ Gc Alcobaca,2266,30,Primeira Liga,1,1982-08-22,2297.8,TRUE,Pass2_RetroStart,Retr
 Favoritner AC,2266,110,Austrian Bundesliga,1,1952-08-23,2188.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Sr Delemont,2266,98,Swiss Super League,1,1993-02-28,2267.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Partick Thistle,2266,2721,Scottish Premiership,1,1897-09-04,2150.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Denizlispor,2265,728,Süper Lig,1,1983-08-21,2297,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Denizlispor,2265,728,SÃ¼per Lig,1,1983-08-21,2297,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Dundee,2265,3158,Scottish Premiership,1,1893-08-12,2229.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Fortuna 54,2264,34,Eredivisie,1,1968-08-18,2302,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Stevenage,2264,372,League 2,4,2018-08-04,2083,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -746,41 +746,41 @@ Dsv Leoben,2264,110,Austrian Bundesliga,1,1984-08-25,2295,TRUE,Pass2_RetroStart,
 KSV Waregem,2264,832,Belgian Pro League,1,1968-09-08,2345.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SC Zug,2263,14,Swiss Super League,1,1952-06-15,2277.2,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Penafiel,2263,434,Primeira Liga,1,1980-08-24,2387.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Sakaryaspor,2263,380,Süper Lig,1,1981-09-05,2354.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Académico de Viseu,2263,131,Primeira Liga,1,1978-08-27,2307.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Ferikoey,2262,292,Süper Lig,1,1959-08-29,2265.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Adanaspor,2262,704,Süper Lig,1,1971-08-22,2319.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Siirtspor,2262,34,Süper Lig,1,2000-08-13,2271.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Sakaryaspor,2263,380,SÃ¼per Lig,1,1981-09-05,2354.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Ferikoey,2262,292,SÃ¼per Lig,1,1959-08-29,2265.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Adanaspor,2262,704,SÃ¼per Lig,1,1971-08-22,2319.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Siirtspor,2262,34,SÃ¼per Lig,1,2000-08-13,2271.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Pordenone,2261,118,Serie B,2,2019-08-09,2386.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Académico de Viseu,2261,132,Primeira Liga,1,1978-08-27,2307.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Karviná,2261,256,Czech First League,1,1996-08-11,2156.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Racing Lausanne,2261,11,Swiss Super League,1,1931-01-18,2275.6,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Ankara Demirspor,2260,418,Süper Lig,1,1959-02-21,2370.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Ankara Demirspor,2260,418,SÃ¼per Lig,1,1959-02-21,2370.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Olimpik Donetsk,2260,204,Ukrainian Premier League,1,2014-07-26,2256.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 St. Pölten,2259,204,Austrian Bundesliga,1,1993-07-31,2314.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 CS Chenois,2258,192,Swiss Super League,1,1973-03-03,2319.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Cambuslang FC,2258,18,Scottish Premiership,1,1890-08-16,2243.5,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 OFI Crete,2257,172,Super League Greece,1,2018-08-26,2288.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Karsiyaka SK,2256,528,Süper Lig,1,1959-02-28,2297,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Karsiyaka SK,2256,528,SÃ¼per Lig,1,1959-02-28,2297,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Zirka Kirovograd,2256,248,Ukrainian Premier League,1,1995-07-25,2310.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Obolon Kyiv,2256,240,Ukrainian Premier League,1,2002-07-07,2300.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Carcavelinhos FC,2256,64,Primeira Liga,1,1936-01-12,2267.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Slovácko,2256,503,Czech First League,1,2004-08-07,2241.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Pofisi,2256,34,Süper Lig,1,1994-08-14,2268.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Pofisi,2256,34,SÃ¼per Lig,1,1994-08-14,2268.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Walsall,2256,367,League 1,3,2018-08-04,2167.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kallithea,2255,36,Super League Greece,1,2024-08-18,2251.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Giresunspor,2255,180,Süper Lig,1,1971-08-22,2347.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Giresunspor,2255,180,SÃ¼per Lig,1,1971-08-22,2347.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Nordstern Basel,2254,300,Swiss Super League,1,1924-09-23,2329.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kifisia,2252,42,Super League Greece,1,2023-08-20,2249.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Solothurn,2252,28,Swiss Super League,1,1930-09-01,2264.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ao Aigaleo,2252,176,Super League Greece,1,2001-09-23,2274,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Mke Kirikkalespor,2251,30,Süper Lig,1,1978-08-27,2266.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Mke Kirikkalespor,2251,30,SÃ¼per Lig,1,1978-08-27,2266.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Lausanne-Ouchy,2251,38,Swiss Super League,1,2023-08-05,2263.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Aves,2250,196,Primeira Liga,1,1985-08-25,2311.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 K Sint-Niklase SKE,2250,38,Belgian Pro League,1,1945-10-21,2267.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Spartak Ivano Frankivsk,2249,206,Ukrainian Premier League,1,1992-03-07,2230.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bvv,2249,34,Eredivisie,1,1957-08-25,2278.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Tasmania 1900 Berlin,2249,34,Bundesliga,1,1965-08-14,2322.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Beyogluspor,2248,54,Süper Lig,1,1962-09-15,2251.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Beyogluspor,2248,54,SÃ¼per Lig,1,1962-09-15,2251.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Koninklijke Lyra TSV,2247,136,Belgian Pro League,1,1932-09-18,2271.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Malley,2247,14,Swiss Super League,1,1992-03-01,2267.1,FALSE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 De Volewijckers,2246,64,Eredivisie,1,1961-08-20,2297.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -789,20 +789,20 @@ FK Illichivets,2245,635,Ukrainian Premier League,1,1997-07-09,2332.8,TRUE,Pass2_
 Doncaster Rovers,2245,378,League 1,3,2018-08-04,2299.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Port Vale,2245,377,League 2,4,2018-08-04,2021.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ad Sanjoanense,2245,104,Primeira Liga,1,1946-12-01,2285.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Vefa Istanbul,2244,422,Süper Lig,1,1959-02-25,2294.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Vefa Istanbul,2244,422,SÃ¼per Lig,1,1959-02-25,2294.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Apollon Kalamarias,2242,248,Super League Greece,1,1987-09-06,2162.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ross County,2241,367,Scottish Premiership,1,2012-08-04,2295.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hamilton Academical,2241,1576,Scottish Premiership,1,1906-08-15,2154.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Cambuur,2241,309,Eredivisie,1,1992-08-15,2291.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Larissa,2241,449,Super League Greece,1,1987-09-06,2320.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Etoile Carouge FC,2241,117,Swiss Super League,1,1924-09-23,2352,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Eendracht Aalst,2241,379,Belgian Pro League,1,1941-10-05,2327.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Noad Tilburg,2240,102,Eredivisie,1,1957-08-25,2295.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Izmirspor,2240,326,Süper Lig,1,1959-02-21,2370.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Izmirspor,2240,326,SÃ¼per Lig,1,1959-02-21,2370.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ergotelis,2240,278,Super League Greece,1,2004-09-18,2235.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Urania Genf,2239,242,Swiss Super League,1,1924-09-30,2410.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Altinordu Fsg,2239,322,Süper Lig,1,1959-08-30,2219,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Altinordu Fsg,2239,322,SÃ¼per Lig,1,1959-08-30,2219,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Livorno,2238,675,Serie A,1,1929-10-06,2389.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Cambuur,2238,310,Eredivisie,1,1992-08-15,2291.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Wimbledon,2238,953,First Division,1,1986-08-23,2653.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Apollon Larisas,2237,166,Super League Greece,1,1988-09-11,2275,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Vevey-Sports,2237,130,Swiss Super League,1,1974-03-15,2261.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -812,7 +812,7 @@ WSG Radenthein,2235,88,Austrian Bundesliga,1,1967-08-20,2197.9,TRUE,Pass2_RetroS
 RCS Vervietois,2234,306,Belgian Pro League,1,1900-10-28,2293.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 SC Wacker Wien,2234,314,Austrian Bundesliga,1,1952-08-23,2420.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 East Fife FC,2233,452,Scottish Premiership,1,1930-08-09,2255.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Tuerk Telekom,2233,374,Süper Lig,1,1960-08-28,2267,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Tuerk Telekom,2233,374,SÃ¼per Lig,1,1960-08-28,2267,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Raith Rovers,2232,1126,Scottish Premiership,1,1910-08-17,2213.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 ESV Austria Graz,2232,26,Austrian Bundesliga,1,1955-08-28,2256.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 CS Bienne,2232,717,Swiss Super League,1,1924-09-23,2412.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -820,13 +820,13 @@ FC Fribourg,2231,170,Swiss Super League,1,1924-09-30,2273.7,TRUE,Pass2_RetroStar
 RBC Roosendaal,2231,170,Eredivisie,1,2000-08-20,2297,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Patro Eisden Maasmechelen,2231,30,Belgian Pro League,1,1960-09-04,2259.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FK Kremin,2230,180,Ukrainian Premier League,1,1992-03-07,2253.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Istanbulspor,2230,794,Süper Lig,1,1959-02-21,2318,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Istanbulspor,2230,794,SÃ¼per Lig,1,1959-02-21,2318,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 KVV Crossing Elewijt,2229,120,Belgian Pro League,1,1969-09-07,2322.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 K Boom FC,2228,108,Belgian Pro League,1,1938-09-04,2271.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Livingston,2226,335,Scottish Premiership,1,2001-07-28,2313.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Ao Kerkyra,2226,243,Super League Greece,1,2004-09-19,2231.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Karabuekspor,2226,336,Süper Lig,1,1993-08-29,2344.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Belediye Vanspor,2225,170,Süper Lig,1,1994-08-14,2282.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Karabuekspor,2226,336,SÃ¼per Lig,1,1993-08-29,2344.4,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Belediye Vanspor,2225,170,SÃ¼per Lig,1,1994-08-14,2282.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Stal Alchevsk,2224,86,Ukrainian Premier League,1,2000-07-12,2245.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Vysocina Jihlava,2224,210,Czech First League,1,2005-08-05,2242.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 UD Oliveirense,2224,22,Primeira Liga,1,1945-12-09,2272.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -840,7 +840,7 @@ Athens Kallithea,2221,120,Super League Greece,1,2002-08-25,2209.1,TRUE,Pass2_Ret
 Panserraikos,2221,270,Super League Greece,1,1987-09-06,2181.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Naftovik Ukrnafta,2220,48,Ukrainian Premier League,1,1992-03-07,2225.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Academico do Porto,2219,64,Primeira Liga,1,1935-01-20,2239.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Kahramanmarasspor,2219,36,Süper Lig,1,1988-08-21,2241.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Kahramanmarasspor,2219,36,SÃ¼per Lig,1,1988-08-21,2241.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Aris,2218,768,Super League Greece,1,1987-09-06,2254.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Locarno,2218,250,Swiss Super League,1,1930-07-06,2313.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Milton Keynes Dons,2218,362,League 2,4,2018-08-04,2136.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -862,12 +862,12 @@ Mynai,2207,74,Ukrainian Premier League,1,2020-09-13,2194.6,TRUE,Pass2_RetroStart
 Chornomorets Odesa,2206,797,Ukrainian Premier League,1,1992-03-06,2372.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Bristol Rovers,2206,368,League 1,3,2018-08-04,2229.9,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Veria FC,2206,319,Super League Greece,1,1987-09-06,2242.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Yesildirek SK,2205,58,Süper Lig,1,1961-09-02,2251.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Yesildirek SK,2205,58,SÃ¼per Lig,1,1961-09-02,2251.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Dukla Prague,2204,370,Czech First League,1,1997-08-03,2216.6,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Adalet Istanbul,2203,52,Süper Lig,1,1959-02-21,2231,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Adalet Istanbul,2203,52,SÃ¼per Lig,1,1959-02-21,2231,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Livyi Bereh,2203,30,Ukrainian Premier League,1,2024-08-04,2221.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Apollon Smyrnis,2203,327,Super League Greece,1,1988-09-11,2196.8,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Adana Demirspor,2203,623,Süper Lig,1,1960-09-03,2237.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Adana Demirspor,2203,623,SÃ¼per Lig,1,1960-09-03,2237.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Hvzda Cheb,2203,90,Czech First League,1,1993-08-15,2230.1,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Kalamata,2202,166,Super League Greece,1,1995-08-26,2273,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Wien,2201,129,Austrian Bundesliga,1,1952-08-23,2266.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
@@ -891,7 +891,7 @@ Gretna FC,2192,38,Scottish Premiership,1,2007-08-04,2202.8,TRUE,Pass2_RetroStart
 Northampton Town,2191,428,First Division,1,1965-08-21,2535.2,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Paniliakos FC,2191,230,Super League Greece,1,1995-08-27,2271.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 St Bernards FC,2190,126,Scottish Premiership,1,1893-08-23,2251.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
-Zeytinburnuspor,2189,162,Süper Lig,1,1989-09-03,2333,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
+Zeytinburnuspor,2189,162,SÃ¼per Lig,1,1989-09-03,2333,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Burton Albion,2189,376,League 1,3,2018-08-04,2305.7,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 Swindon Town,2189,420,Premier League,1,1993-08-14,2483.5,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
 FC Kharkiv,2189,120,Ukrainian Premier League,1,2005-07-12,2274.3,TRUE,Pass2_RetroStart,RetroFromPass1FirstN,20,20,100,CountrySpecific_Tier1AndTier2,50
