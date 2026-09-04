@@ -1,0 +1,41 @@
+{
+  "id": "copa-1959-double-championship",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 8,
+    "matches": 31
+  },
+  "groupStages": [
+    {
+      "label": "Argentina championship",
+      "matchCount": 21,
+      "groupLabels": [
+        "Argentina"
+      ],
+      "groupSizes": [
+        7
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    },
+    {
+      "label": "Ecuador championship",
+      "matchCount": 10,
+      "groupLabels": [
+        "Ecuador"
+      ],
+      "groupSizes": [
+        5
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": []
+}

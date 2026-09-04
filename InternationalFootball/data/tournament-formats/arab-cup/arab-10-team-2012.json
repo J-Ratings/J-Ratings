@@ -1,0 +1,46 @@
+{
+  "id": "arab-10-team-2012",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 10,
+    "matches": 16
+  },
+  "groupStages": [
+    {
+      "label": "Group stage",
+      "matchCount": 12,
+      "groupLabels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "groupSizes": [
+        4,
+        3,
+        3
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "semi-finals",
+      "label": "Semi-finals",
+      "rawMatchCount": 2
+    },
+    {
+      "id": "third-place",
+      "label": "Third place",
+      "rawMatchCount": 1
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 1
+    }
+  ]
+}

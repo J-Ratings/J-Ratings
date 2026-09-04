@@ -1,0 +1,21 @@
+{
+  "editionId": "2012",
+  "groupAnchors": {
+    "group-stage": {
+      "A": "czechia",
+      "B": "germany",
+      "C": "spain",
+      "D": "england"
+    }
+  },
+  "finalOrderOverrides": {
+    "group-stage": {
+      "A": [
+        "czechia",
+        "greece",
+        "russia",
+        "poland"
+      ]
+    }
+  }
+}

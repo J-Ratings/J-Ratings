@@ -1,0 +1,26 @@
+{
+  "id": "euro-4-team",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 4,
+    "matches": 4
+  },
+  "groupStages": [],
+  "knockoutRounds": [
+    {
+      "id": "semi-finals",
+      "label": "Semi-finals",
+      "rawMatchCount": 2
+    },
+    {
+      "id": "third-place",
+      "label": "Third place",
+      "rawMatchCount": 1
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 1
+    }
+  ]
+}

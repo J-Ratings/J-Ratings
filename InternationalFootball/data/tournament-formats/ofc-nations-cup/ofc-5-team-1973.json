@@ -1,0 +1,37 @@
+{
+  "id": "ofc-5-team-1973",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 5,
+    "matches": 12
+  },
+  "groupStages": [
+    {
+      "label": "Group stage",
+      "matchCount": 10,
+      "groupLabels": [
+        "A"
+      ],
+      "groupSizes": [
+        5
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "third-place",
+      "label": "Third place",
+      "rawMatchCount": 1
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 1
+    }
+  ]
+}

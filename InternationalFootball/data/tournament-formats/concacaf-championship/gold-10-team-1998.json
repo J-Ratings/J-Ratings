@@ -1,0 +1,41 @@
+{
+  "id": "gold-10-team-1998",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 10,
+    "matches": 13
+  },
+  "groupStages": [
+    {
+      "label": "Group stage",
+      "matchCount": 11,
+      "groupLabels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "groupSizes": [
+        4,
+        3,
+        3
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "semi-finals",
+      "label": "Semi-finals",
+      "rawMatchCount": 1
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 1
+    }
+  ]
+}

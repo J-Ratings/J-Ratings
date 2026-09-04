@@ -1,0 +1,26 @@
+{
+  "id": "copa-league-5-9",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 5,
+    "matches": 9
+  },
+  "groupStages": [
+    {
+      "label": "Championship",
+      "matchCount": 9,
+      "groupLabels": [
+        "Championship"
+      ],
+      "groupSizes": [
+        5
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": []
+}

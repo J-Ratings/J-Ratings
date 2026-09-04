@@ -1,0 +1,21 @@
+{
+  "id": "afcon-4-team-knockout",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 4,
+    "matches": 3
+  },
+  "groupStages": [],
+  "knockoutRounds": [
+    {
+      "id": "semi-finals",
+      "label": "Semi-finals",
+      "rawMatchCount": 2
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 1
+    }
+  ]
+}

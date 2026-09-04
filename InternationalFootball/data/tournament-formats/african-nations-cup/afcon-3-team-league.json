@@ -1,0 +1,26 @@
+{
+  "id": "afcon-3-team-league",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 3,
+    "matches": 3
+  },
+  "groupStages": [
+    {
+      "label": "Final group",
+      "matchCount": 3,
+      "groupLabels": [
+        "Final"
+      ],
+      "groupSizes": [
+        3
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": []
+}

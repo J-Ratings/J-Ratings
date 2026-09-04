@@ -1,0 +1,16 @@
+{
+  "id": "ofc-2-team-two-leg",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 2,
+    "matches": 2
+  },
+  "groupStages": [],
+  "knockoutRounds": [
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 2
+    }
+  ]
+}

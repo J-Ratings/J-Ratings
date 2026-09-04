@@ -1,0 +1,29 @@
+{
+  "editionId": "1994",
+  "groupAnchors": {
+    "group-stage": {
+      "A": "united-states",
+      "B": "brazil",
+      "C": "germany",
+      "D": "argentina",
+      "E": "italy",
+      "F": "belgium"
+    }
+  },
+  "finalOrderOverrides": {
+    "group-stage": {
+      "D": [
+        "nigeria",
+        "bulgaria",
+        "argentina",
+        "greece"
+      ],
+      "E": [
+        "mexico",
+        "republic-of-ireland",
+        "italy",
+        "norway"
+      ]
+    }
+  }
+}

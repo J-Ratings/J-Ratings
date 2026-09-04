@@ -1,0 +1,32 @@
+{
+  "id": "copa-league-7-title-playoff",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 7,
+    "matches": 22
+  },
+  "groupStages": [
+    {
+      "label": "Championship",
+      "matchCount": 21,
+      "groupLabels": [
+        "Championship"
+      ],
+      "groupSizes": [
+        7
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "final",
+      "label": "Title play-off",
+      "rawMatchCount": 1
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "copa-league-4-4",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 4,
+    "matches": 4
+  },
+  "groupStages": [
+    {
+      "label": "Championship",
+      "matchCount": 4,
+      "groupLabels": [
+        "Championship"
+      ],
+      "groupSizes": [
+        4
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": []
+}

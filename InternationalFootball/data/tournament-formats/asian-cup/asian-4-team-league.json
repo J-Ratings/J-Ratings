@@ -1,0 +1,26 @@
+{
+  "id": "asian-4-team-league",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 4,
+    "matches": 6
+  },
+  "groupStages": [
+    {
+      "label": "Final group",
+      "matchCount": 6,
+      "groupLabels": [
+        "Final"
+      ],
+      "groupSizes": [
+        4
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": []
+}

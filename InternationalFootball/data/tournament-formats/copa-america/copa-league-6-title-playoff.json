@@ -1,0 +1,32 @@
+{
+  "id": "copa-league-6-title-playoff",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 6,
+    "matches": 16
+  },
+  "groupStages": [
+    {
+      "label": "Championship",
+      "matchCount": 15,
+      "groupLabels": [
+        "Championship"
+      ],
+      "groupSizes": [
+        6
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "final",
+      "label": "Title play-off",
+      "rawMatchCount": 1
+    }
+  ]
+}

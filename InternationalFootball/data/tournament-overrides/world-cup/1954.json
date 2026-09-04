@@ -1,0 +1,27 @@
+{
+  "editionId": "1954",
+  "groupAnchors": {
+    "group-stage": {
+      "1": "brazil",
+      "2": "hungary",
+      "3": "uruguay",
+      "4": "england"
+    }
+  },
+  "finalOrderOverrides": {
+    "group-stage": {
+      "2": [
+        "hungary",
+        "west-germany",
+        "turkey",
+        "south-korea"
+      ],
+      "4": [
+        "england",
+        "switzerland",
+        "italy",
+        "belgium"
+      ]
+    }
+  }
+}

@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>J-Ratings: Rugby Union Tournament</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/RugbyUnion/style.css">
+  <style>
+    .tournament-head{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:18px;
+      margin-bottom:20px;
+    }
+    .tournament-head h2{margin:0;text-align:center;font-size:2.2rem}
+    .selectors{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .selectors label{font-weight:700}
+    .selectors select{
+      padding:8px 10px;
+      border-radius:8px;
+      border:1px solid #394252;
+      background:#151b26;
+      color:inherit;
+    }
+    .event-name{justify-self:end;opacity:.82;text-align:right}
+    .stage-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(430px,1fr));
+      gap:18px;
+      margin-top:16px;
+    }
+    .table-card,.matches-card{
+      border:1px solid #2b2f36;
+      border-radius:12px;
+      background:rgba(255,255,255,.025);
+      overflow:hidden;
+    }
+    .table-card h3,.matches-card h3{
+      margin:0;
+      padding:14px 16px;
+      text-align:center;
+      border-bottom:1px solid #2b2f36;
+      font-size:1.35rem;
+    }
+    .scroll{overflow:auto}
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:1rem;
+    }
+    th,td{
+      padding:9px 11px;
+      text-align:center;
+      border-bottom:1px solid #2b2f36;
+      white-space:nowrap;
+    }
+    th{position:sticky;top:0;background:#1a1a1a;z-index:1}
+    td.team,th.team{text-align:left}
+    td.team a{color:inherit;text-decoration:underline;text-underline-offset:2px;font-weight:700}
+    tr:first-child td{font-weight:800}
+    .pos{width:42px}
+    .note{
+      text-align:center;
+      opacity:.75;
+      margin:14px auto 0;
+      max-width:900px;
+      line-height:1.45;
+    }
+    .matches-card{margin-top:22px}
+    .score{font-weight:800}
+    .status{opacity:.72;text-align:center;padding:30px}
+    .section-title{text-align:center;margin:28px 0 10px;font-size:1.55rem}
+    @media(max-width:800px){
+      .tournament-head{grid-template-columns:1fr;justify-items:center}
+      .event-name{justify-self:center;text-align:center}
+      .stage-grid{grid-template-columns:1fr}
+      .tournament-head h2{font-size:1.65rem}
+    }
+    html,*{scrollbar-color:#596273 #151b26;scrollbar-width:thin}
+    *::-webkit-scrollbar{width:10px;height:10px}
+    *::-webkit-scrollbar-track{background:#151b26}
+    *::-webkit-scrollbar-thumb{background:#596273;border:2px solid #151b26;border-radius:8px}
+    *::-webkit-scrollbar-thumb:hover{background:#737d90}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a href="/RugbyUnion/home/" class="brand-with-logo">
+        <span>J-Ratings <span class="title-rugby">Rugby Union</span></span>
+      </a>
+    </h1>
+    <nav class="topnav" aria-label="Main">
+      <a href="/index.html">Sports</a>
+      <a href="/RugbyUnion/home/">Home</a>
+      <a href="/RugbyUnion/compare/">Compare</a>
+      <a href="/RugbyUnion/peak/">Peak</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <div class="tournament-head">
+      <div class="selectors">
+        <label for="familySelect">Tournament</label>
+        <select id="familySelect"></select>
+        <label for="editionSelect">Edition</label>
+        <select id="editionSelect"></select>
+      </div>
+      <h2 id="title">Tournament</h2>
+      <div id="eventName" class="event-name"></div>
+    </div>
+
+    <div id="status" class="status">Loading tournament…</div>
+
+    <div id="content" hidden>
+      <div id="tables" class="stage-grid"></div>
+
+      <p class="note">
+        Table order is generated from the match record. PF/PA are calculated from canonical scores.
+        Rugby bonus points and historical competition-specific tiebreak rules are not reconstructed
+        where the source data does not contain the required detail.
+      </p>
+
+      <div class="matches-card">
+        <h3>Matches</h3>
+        <div class="scroll">
+          <table id="matchesTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th class="team">Home</th>
+                <th>Score</th>
+                <th class="team">Away</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const familySelect = document.getElementById('familySelect');
+  const editionSelect = document.getElementById('editionSelect');
+  const titleEl = document.getElementById('title');
+  const eventNameEl = document.getElementById('eventName');
+  const statusEl = document.getElementById('status');
+  const contentEl = document.getElementById('content');
+  const tablesEl = document.getElementById('tables');
+  const matchesBody = document.querySelector('#matchesTable tbody');
+
+  const INDEX_URL = '/RugbyUnion/data/tournaments/index.json';
+  const EDITIONS_URL = id =>
+    `/RugbyUnion/data/tournaments/${encodeURIComponent(id)}/editions.json`;
+  const DATA_URL = (id, edition) =>
+    `/RugbyUnion/data/tournaments/${encodeURIComponent(id)}/${encodeURIComponent(edition)}.json`;
+  const STRUCTURE_URL = (id, edition) =>
+    `/RugbyUnion/data/tournament-structure/${encodeURIComponent(id)}/${encodeURIComponent(edition)}.json`;
+
+  async function json(url){
+    const res = await fetch(url,{cache:'no-cache'});
+    if(!res.ok) throw new Error(`Could not load ${url}`);
+    return res.json();
+  }
+
+  function teamMap(data){
+    return new Map((data.teams || []).map(t => [t.id, t.name || t.id]));
+  }
+
+  function teamLink(id, names){
+    const a = document.createElement('a');
+    a.href = `/RugbyUnion/player/?id=${encodeURIComponent(id)}`;
+    a.textContent = names.get(id) || id;
+    return a;
+  }
+
+  function groupStats(data, ids){
+    const set = new Set(ids);
+    const rows = Object.fromEntries(ids.map(id => [id,{
+      id,p:0,w:0,d:0,l:0,pf:0,pa:0,diff:0
+    }]));
+
+    for(const m of (data.matches || [])){
+      if(!set.has(m.home) || !set.has(m.away)) continue;
+      const hs = Number(m.homeScore);
+      const as = Number(m.awayScore);
+      if(!Number.isFinite(hs) || !Number.isFinite(as)) continue;
+
+      const h = rows[m.home], a = rows[m.away];
+      h.p++; a.p++;
+      h.pf += hs; h.pa += as;
+      a.pf += as; a.pa += hs;
+
+      if(hs > as){ h.w++; a.l++; }
+      else if(as > hs){ a.w++; h.l++; }
+      else { h.d++; a.d++; }
+    }
+
+    for(const r of Object.values(rows)) r.diff = r.pf - r.pa;
+    return rows;
+  }
+
+  function renderTables(data, structure){
+    tablesEl.innerHTML = '';
+    const names = teamMap(data);
+    const stages = Array.isArray(structure.groupStages) ? structure.groupStages : [];
+
+    for(const stage of stages){
+      const groups = stage.groups || {};
+      const finalOrder = stage.finalOrder || {};
+
+      for(const [groupName, idsRaw] of Object.entries(groups)){
+        const ids = Array.isArray(finalOrder[groupName]) && finalOrder[groupName].length
+          ? finalOrder[groupName]
+          : idsRaw;
+        const stats = groupStats(data, idsRaw);
+
+        const card = document.createElement('div');
+        card.className = 'table-card';
+
+        const h = document.createElement('h3');
+        const multi = Object.keys(groups).length > 1;
+        h.textContent = multi ? groupName : 'Table';
+        card.appendChild(h);
+
+        const scroll = document.createElement('div');
+        scroll.className = 'scroll';
+
+        const table = document.createElement('table');
+        table.innerHTML =
+          '<thead><tr>' +
+          '<th class="pos">#</th><th class="team">Team</th>' +
+          '<th>P</th><th>W</th><th>D</th><th>L</th>' +
+          '<th>PF</th><th>PA</th><th>+/-</th>' +
+          '</tr></thead>';
+
+        const tbody = document.createElement('tbody');
+
+        ids.forEach((id, idx) => {
+          const r = stats[id] || {p:0,w:0,d:0,l:0,pf:0,pa:0,diff:0};
+          const tr = document.createElement('tr');
+
+          const pos = document.createElement('td');
+          pos.textContent = String(idx + 1);
+          tr.appendChild(pos);
+
+          const team = document.createElement('td');
+          team.className = 'team';
+          team.appendChild(teamLink(id, names));
+          tr.appendChild(team);
+
+          for(const value of [r.p,r.w,r.d,r.l,r.pf,r.pa,(r.diff > 0 ? '+' : '') + r.diff]){
+            const td = document.createElement('td');
+            td.textContent = String(value);
+            tr.appendChild(td);
+          }
+
+          tbody.appendChild(tr);
+        });
+
+        table.appendChild(tbody);
+        scroll.appendChild(table);
+        card.appendChild(scroll);
+        tablesEl.appendChild(card);
+      }
+    }
+  }
+
+  function renderMatches(data){
+    matchesBody.innerHTML = '';
+    const names = teamMap(data);
+    const rows = [...(data.matches || [])].sort((a,b) =>
+      new Date(a.date) - new Date(b.date)
+    );
+
+    for(const m of rows){
+      const tr = document.createElement('tr');
+
+      const date = document.createElement('td');
+      date.textContent = m.date || '';
+      tr.appendChild(date);
+
+      const home = document.createElement('td');
+      home.className = 'team';
+      home.appendChild(teamLink(m.home,names));
+      tr.appendChild(home);
+
+      const score = document.createElement('td');
+      score.className = 'score';
+      const hs = Number(m.homeScore), as = Number(m.awayScore);
+      score.textContent = Number.isFinite(hs) && Number.isFinite(as) ? `${hs}–${as}` : '—';
+      tr.appendChild(score);
+
+      const away = document.createElement('td');
+      away.className = 'team';
+      away.appendChild(teamLink(m.away,names));
+      tr.appendChild(away);
+
+      matchesBody.appendChild(tr);
+    }
+  }
+
+  async function loadFamilyOptions(selected){
+    const families = await json(INDEX_URL);
+    familySelect.innerHTML = '';
+
+    for(const f of families){
+      const opt = document.createElement('option');
+      opt.value = f.id;
+      opt.textContent = f.name;
+      familySelect.appendChild(opt);
+    }
+
+    const fallback = families.find(f => f.renderer === 'league') || families[0];
+    familySelect.value = families.some(f => f.id === selected) ? selected : fallback.id;
+  }
+
+  async function loadEditionOptions(familyId, selected){
+    const editions = await json(EDITIONS_URL(familyId));
+    editionSelect.innerHTML = '';
+
+    for(const e of editions){
+      const opt = document.createElement('option');
+      opt.value = e.id;
+      opt.textContent = e.label || e.id;
+      editionSelect.appendChild(opt);
+    }
+
+    editionSelect.value = editions.some(e => String(e.id) === String(selected))
+      ? String(selected)
+      : String(editions[0].id);
+  }
+
+  function navigate(){
+    const next = new URL('/RugbyUnion/tournaments/', location.origin);
+    next.searchParams.set('tournament', familySelect.value);
+    next.searchParams.set('edition', editionSelect.value);
+    location.href = next.href;
+  }
+
+  async function init(){
+    try{
+      const requestedFamily = params.get('tournament');
+      const requestedEdition = params.get('edition');
+
+      await loadFamilyOptions(requestedFamily);
+      await loadEditionOptions(familySelect.value, requestedEdition);
+
+      familySelect.addEventListener('change', async () => {
+        await loadEditionOptions(familySelect.value, null);
+        navigate();
+      });
+      editionSelect.addEventListener('change', navigate);
+
+      const familyId = familySelect.value;
+      const editionId = editionSelect.value;
+
+      const [data,structure] = await Promise.all([
+        json(DATA_URL(familyId,editionId)),
+        json(STRUCTURE_URL(familyId,editionId))
+      ]);
+
+      titleEl.textContent = data.name || familySelect.options[familySelect.selectedIndex].textContent;
+      eventNameEl.textContent = data.event || `${titleEl.textContent} ${editionId}`;
+
+      renderTables(data,structure);
+      renderMatches(data);
+
+      statusEl.hidden = true;
+      contentEl.hidden = false;
+    }catch(err){
+      console.error(err);
+      statusEl.textContent = err.message || 'Could not load tournament';
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>

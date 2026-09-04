@@ -1,0 +1,26 @@
+{
+  "id": "copa-league-8-28",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 8,
+    "matches": 28
+  },
+  "groupStages": [
+    {
+      "label": "Championship",
+      "matchCount": 28,
+      "groupLabels": [
+        "Championship"
+      ],
+      "groupSizes": [
+        8
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": []
+}

@@ -1,0 +1,60 @@
+{
+  "id": "world-cup-two-group-stages-16",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 16,
+    "matches": 38
+  },
+  "groupStages": [
+    {
+      "label": "First group stage",
+      "matchCount": 24,
+      "groupLabels": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "groupSizes": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    },
+    {
+      "label": "Second group stage",
+      "matchCount": 12,
+      "groupLabels": [
+        "A",
+        "B"
+      ],
+      "groupSizes": [
+        4,
+        4
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "third-place",
+      "label": "Third place",
+      "rawMatchCount": 1
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 1
+    }
+  ]
+}

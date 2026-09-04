@@ -1,0 +1,23 @@
+{
+  "editionId": "2016",
+  "groupAnchors": {
+    "group-stage": {
+      "A": "france",
+      "B": "wales",
+      "C": "germany",
+      "D": "croatia",
+      "E": "italy",
+      "F": "hungary"
+    }
+  },
+  "finalOrderOverrides": {
+    "group-stage": {
+      "E": [
+        "italy",
+        "belgium",
+        "republic-of-ireland",
+        "sweden"
+      ]
+    }
+  }
+}

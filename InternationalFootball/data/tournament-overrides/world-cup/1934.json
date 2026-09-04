@@ -1,0 +1,21 @@
+{
+  "editionId": "1934",
+  "addKnockoutMatches": [
+    {
+      "roundId": "semi-finals",
+      "match": {
+        "id": "semi-finals-missing-2",
+        "teams": [
+          "italy",
+          "austria"
+        ],
+        "date": "1934-06-03",
+        "played": true,
+        "homeScore": 1,
+        "awayScore": 0,
+        "sourceDataMissing": true,
+        "feedsInto": "final-1"
+      }
+    }
+  ]
+}

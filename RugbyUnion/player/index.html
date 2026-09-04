@@ -177,6 +177,21 @@
       opacity: 0.9;
     }
 
+
+    .tournament-cell{
+      text-align: left;
+    }
+
+    .tournament-cell a{
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .tournament-cell a:hover{
+      opacity: 0.9;
+    }
+
     .team-cell .profile-team,
     .team-cell a.profile-team{
       font-weight: 900;
@@ -890,6 +905,73 @@ const shapes = makeYGridShapes(y0, y1, step);
     return span;
   }
 
+
+  function renderTournamentCell(g) {
+    const label = String(g.tournament || g.competition || '').trim();
+    const span = document.createElement('span');
+
+    if (!label) {
+      span.textContent = '';
+      return span;
+    }
+
+    const dateText = String(g.date || '');
+    let year = Number(dateText.slice(0, 4));
+    const month = Number(dateText.slice(5, 7));
+
+    let tournamentId = null;
+
+    if (label === 'Rugby World Cup') {
+      const rwcFinalYears = new Set([
+        1987,1991,1995,1999,2003,
+        2007,2011,2015,2019,2023
+      ]);
+      if (rwcFinalYears.has(year)) tournamentId = 'rugby-world-cup';
+    }
+
+    if ([
+      'Home Nations Championship',
+      'Five Nations Championship',
+      'Six Nations Championship'
+    ].includes(label)) {
+      tournamentId = 'six-nations';
+      if (month === 12) year += 1;
+    }
+
+    if ([
+      'Tri Nations',
+      'The Rugby Championship',
+      'Rugby Championship'
+    ].includes(label)) {
+      tournamentId = 'rugby-championship';
+    }
+
+    if ([
+      'IRB Pacific 5 Nations',
+      'IRB Pacific Nations Cup',
+      'World Rugby Pacific Nations Cup',
+      'Pacific Nations Cup'
+    ].includes(label)) {
+      tournamentId = 'pacific-nations-cup';
+    }
+
+    if (label === 'Rugby Europe Championship') {
+      tournamentId = 'rugby-europe-championship';
+    }
+
+    if (tournamentId && Number.isFinite(year)) {
+      const a = document.createElement('a');
+      a.href =
+        `/RugbyUnion/tournaments/?tournament=${encodeURIComponent(tournamentId)}` +
+        `&edition=${encodeURIComponent(String(year))}`;
+      a.textContent = label;
+      return a;
+    }
+
+    span.textContent = label;
+    return span;
+  }
+
   function renderWdlBar(g, myName) {
     const isHome = g.home === myName;
     const isAway = g.away === myName;
@@ -960,7 +1042,7 @@ if (total === 99) {
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
 
-    for (const h of ['Date', 'Home', 'Elo', 'Away', 'Elo', 'Expected W/D/L', 'Score', 'Result', 'Δ']) {
+    for (const h of ['Date', 'Tournament', 'Home', 'Elo', 'Away', 'Elo', 'Expected W/D/L', 'Score', 'Result', 'Δ']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -991,6 +1073,10 @@ if (total === 99) {
 
       const tdDate = document.createElement('td');
       tdDate.textContent = g.date || '';
+
+      const tdTournament = document.createElement('td');
+      tdTournament.className = 'tournament-cell';
+      tdTournament.appendChild(renderTournamentCell(g));
 
       const tdHome = document.createElement('td');
       tdHome.className = 'team-cell';
@@ -1040,6 +1126,7 @@ if (total === 99) {
       }
 
       tr.appendChild(tdDate);
+      tr.appendChild(tdTournament);
       tr.appendChild(tdHome);
       tr.appendChild(tdHomeElo);
       tr.appendChild(tdAway);
@@ -1055,7 +1142,7 @@ if (total === 99) {
     if (!tbody.children.length) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      td.colSpan = 9;
+      td.colSpan = 10;
       td.textContent = 'No games';
       tr.appendChild(td);
       tbody.appendChild(tr);

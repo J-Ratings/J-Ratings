@@ -1,0 +1,26 @@
+{
+  "id": "asian-5-team-league",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 5,
+    "matches": 10
+  },
+  "groupStages": [
+    {
+      "label": "Final group",
+      "matchCount": 10,
+      "groupLabels": [
+        "Final"
+      ],
+      "groupSizes": [
+        5
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": []
+}

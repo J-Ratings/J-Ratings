@@ -1,0 +1,23 @@
+{
+  "editionId": "2024",
+  "groupAnchors": {
+    "group-stage": {
+      "A": "germany",
+      "B": "spain",
+      "C": "england",
+      "D": "austria",
+      "E": "romania",
+      "F": "portugal"
+    }
+  },
+  "finalOrderOverrides": {
+    "group-stage": {
+      "C": [
+        "england",
+        "denmark",
+        "slovenia",
+        "serbia"
+      ]
+    }
+  }
+}

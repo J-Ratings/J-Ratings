@@ -1,0 +1,43 @@
+{
+  "id": "world-cup-1930",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 13,
+    "matches": 18
+  },
+  "groupStages": [
+    {
+      "label": "Group stage",
+      "matchCount": 15,
+      "groupLabels": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "groupSizes": [
+        4,
+        3,
+        3,
+        3
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "semi-finals",
+      "label": "Semi-finals",
+      "rawMatchCount": 2
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 1
+    }
+  ]
+}

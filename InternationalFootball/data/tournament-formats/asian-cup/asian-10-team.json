@@ -1,0 +1,44 @@
+{
+  "id": "asian-10-team",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 10,
+    "matches": 24
+  },
+  "groupStages": [
+    {
+      "label": "Group stage",
+      "matchCount": 20,
+      "groupLabels": [
+        "A",
+        "B"
+      ],
+      "groupSizes": [
+        5,
+        5
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "semi-finals",
+      "label": "Semi-finals",
+      "rawMatchCount": 2
+    },
+    {
+      "id": "third-place",
+      "label": "Third place",
+      "rawMatchCount": 1
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 1
+    }
+  ]
+}

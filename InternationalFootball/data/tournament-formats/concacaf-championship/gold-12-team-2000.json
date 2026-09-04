@@ -1,0 +1,48 @@
+{
+  "id": "gold-12-team-2000",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 12,
+    "matches": 18
+  },
+  "groupStages": [
+    {
+      "label": "Group stage",
+      "matchCount": 11,
+      "groupLabels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "groupSizes": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "quarter-finals",
+      "label": "Quarter-finals",
+      "rawMatchCount": 4
+    },
+    {
+      "id": "semi-finals",
+      "label": "Semi-finals",
+      "rawMatchCount": 2
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 1
+    }
+  ]
+}

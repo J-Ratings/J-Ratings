@@ -1,0 +1,89 @@
+{
+  "id": "world-cup-two-group-stages-24",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 24,
+    "matches": 52
+  },
+  "detect": {
+    "afterMatch": 36,
+    "probeMatchCount": 12,
+    "componentSizes": [
+      3,
+      3,
+      3,
+      3
+    ]
+  },
+  "groupStages": [
+    {
+      "label": "First group stage",
+      "matchCount": 36,
+      "groupLabels": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "groupSizes": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    },
+    {
+      "label": "Second group stage",
+      "matchCount": 12,
+      "groupLabels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "groupSizes": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      },
+      "componentOrderAnchors": [
+        "poland",
+        "west-germany",
+        "italy",
+        "france"
+      ]
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "semi-finals",
+      "label": "Semi-finals",
+      "rawMatchCount": 2
+    },
+    {
+      "id": "third-place",
+      "label": "Third place",
+      "rawMatchCount": 1
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 1
+    }
+  ]
+}

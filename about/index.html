@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About J-Ratings</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .about-page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 30px 20px 56px;
+    }
+    .about-page h1 { margin-bottom: 10px; }
+    .about-intro {
+      font-size: 1.08rem;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .about-card {
+      margin-top: 24px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 12px;
+    }
+    .about-card h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+    .about-card p,
+    .about-card li { line-height: 1.6; }
+    .about-list {
+      margin: 10px 0 0;
+      padding-left: 22px;
+    }
+    .elo-formula {
+      margin: 18px 0;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 10px;
+      text-align: center;
+      overflow-x: auto;
+    }
+    .elo-table-wrap {
+      max-height: 520px;
+      overflow: auto;
+      margin-top: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+    }
+    .elo-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .elo-table th,
+    .elo-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      text-align: center;
+    }
+    .elo-table thead th {
+      position: sticky;
+      top: 0;
+      background: inherit;
+      backdrop-filter: blur(8px);
+      z-index: 1;
+    }
+    .small-note {
+      margin-top: 12px;
+      font-size: 0.94rem;
+      opacity: 0.82;
+    }
+  </style>
+</head>
+<body>
+  <main class="about-page">
+    <h1>About J-Ratings</h1>
+
+    <p class="about-intro">
+      J-Ratings is a sports ratings site built around Elo. It shows how strong teams
+      and players are, how that strength changes over time, and the results behind the ratings.
+    </p>
+
+    <section class="about-card">
+      <h2>How Elo works</h2>
+
+      <p>
+        Elo moves rating points between competitors after each result. Beat someone stronger
+        and you gain more. Lose to someone weaker and you lose more. Expected results cause
+        smaller changes.
+      </p>
+
+      <p>The rating gap also gives an expected score:</p>
+
+      <div class="elo-formula">
+        Expected score = 1 / (1 + 10<sup>((Opponent rating − Your rating) / 400)</sup>)
+      </div>
+
+      <p>
+        A rating difference of 0 means an even contest. Positive numbers mean the first
+        competitor is rated higher; negative numbers mean they are rated lower.
+      </p>
+
+      <div class="elo-table-wrap">
+        <table class="elo-table">
+          <thead>
+            <tr>
+              <th>Rating difference</th>
+              <th>Expected score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>-1000</td><td>0.3%</td></tr>
+            <tr><td>-950</td><td>0.4%</td></tr>
+            <tr><td>-900</td><td>0.6%</td></tr>
+            <tr><td>-850</td><td>0.7%</td></tr>
+            <tr><td>-800</td><td>1.0%</td></tr>
+            <tr><td>-750</td><td>1.3%</td></tr>
+            <tr><td>-700</td><td>1.7%</td></tr>
+            <tr><td>-650</td><td>2.3%</td></tr>
+            <tr><td>-600</td><td>3.1%</td></tr>
+            <tr><td>-550</td><td>4.0%</td></tr>
+            <tr><td>-500</td><td>5.3%</td></tr>
+            <tr><td>-450</td><td>7.0%</td></tr>
+            <tr><td>-400</td><td>9.1%</td></tr>
+            <tr><td>-350</td><td>11.8%</td></tr>
+            <tr><td>-300</td><td>15.1%</td></tr>
+            <tr><td>-250</td><td>19.2%</td></tr>
+            <tr><td>-200</td><td>24.0%</td></tr>
+            <tr><td>-150</td><td>29.7%</td></tr>
+            <tr><td>-100</td><td>36.0%</td></tr>
+            <tr><td>-50</td><td>42.9%</td></tr>
+            <tr><td>+0</td><td>50.0%</td></tr>
+            <tr><td>+50</td><td>57.1%</td></tr>
+            <tr><td>+100</td><td>64.0%</td></tr>
+            <tr><td>+150</td><td>70.3%</td></tr>
+            <tr><td>+200</td><td>76.0%</td></tr>
+            <tr><td>+250</td><td>80.8%</td></tr>
+            <tr><td>+300</td><td>84.9%</td></tr>
+            <tr><td>+350</td><td>88.2%</td></tr>
+            <tr><td>+400</td><td>90.9%</td></tr>
+            <tr><td>+450</td><td>93.0%</td></tr>
+            <tr><td>+500</td><td>94.7%</td></tr>
+            <tr><td>+550</td><td>96.0%</td></tr>
+            <tr><td>+600</td><td>96.9%</td></tr>
+            <tr><td>+650</td><td>97.7%</td></tr>
+            <tr><td>+700</td><td>98.3%</td></tr>
+            <tr><td>+750</td><td>98.7%</td></tr>
+            <tr><td>+800</td><td>99.0%</td></tr>
+            <tr><td>+850</td><td>99.3%</td></tr>
+            <tr><td>+900</td><td>99.4%</td></tr>
+            <tr><td>+950</td><td>99.6%</td></tr>
+            <tr><td>+1000</td><td>99.7%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="small-note">
+        In sports where draws are possible, expected score is not exactly the same as
+        win probability. A win counts as 1, a draw as 0.5 and a loss as 0.
+      </p>
+    </section>
+
+    <section class="about-card">
+      <h2>What can you do here?</h2>
+      <ul class="about-list">
+        <li>See current ratings and rankings.</li>
+        <li>Look back through rating history.</li>
+        <li>View past games and results.</li>
+        <li>Compare peaks and different eras.</li>
+        <li>Explore several sports using the same rating-based approach.</li>
+        <li>Use tournament and simulation tools as they are added.</li>
+      </ul>
+    </section>
+
+    <section class="about-card">
+      <h2>Why J-Ratings?</h2>
+      <p>
+        Ratings are more useful when you can see the story behind them. J-Ratings combines
+        the number itself with the games, history and context that produced it.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

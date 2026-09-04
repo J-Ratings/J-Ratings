@@ -1,0 +1,32 @@
+{
+  "id": "copa-league-4-title-playoff",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 4,
+    "matches": 7
+  },
+  "groupStages": [
+    {
+      "label": "Championship",
+      "matchCount": 6,
+      "groupLabels": [
+        "Championship"
+      ],
+      "groupSizes": [
+        4
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "final",
+      "label": "Title play-off",
+      "rawMatchCount": 1
+    }
+  ]
+}

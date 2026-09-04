@@ -1,0 +1,26 @@
+{
+  "id": "copa-league-7-21",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 7,
+    "matches": 21
+  },
+  "groupStages": [
+    {
+      "label": "Championship",
+      "matchCount": 21,
+      "groupLabels": [
+        "Championship"
+      ],
+      "groupSizes": [
+        7
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": []
+}

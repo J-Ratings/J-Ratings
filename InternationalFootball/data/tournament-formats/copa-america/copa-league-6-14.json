@@ -1,0 +1,26 @@
+{
+  "id": "copa-league-6-14",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 6,
+    "matches": 14
+  },
+  "groupStages": [
+    {
+      "label": "Championship",
+      "matchCount": 14,
+      "groupLabels": [
+        "Championship"
+      ],
+      "groupSizes": [
+        6
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": []
+}

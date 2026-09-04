@@ -1,0 +1,23 @@
+{
+  "editionId": "1990",
+  "finalOrderOverrides": {
+    "group-stage": {
+      "F": [
+        "england",
+        "republic-of-ireland",
+        "netherlands",
+        "egypt"
+      ]
+    }
+  },
+  "groupAnchors": {
+    "group-stage": {
+      "A": "italy",
+      "B": "argentina",
+      "C": "brazil",
+      "D": "west-germany",
+      "E": "spain",
+      "F": "england"
+    }
+  }
+}

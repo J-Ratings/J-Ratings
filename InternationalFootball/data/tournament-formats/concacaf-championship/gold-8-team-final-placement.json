@@ -1,0 +1,39 @@
+{
+  "id": "gold-8-team-final-placement",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 8,
+    "matches": 14
+  },
+  "groupStages": [
+    {
+      "label": "Group stage",
+      "matchCount": 11,
+      "groupLabels": [
+        "A",
+        "B"
+      ],
+      "groupSizes": [
+        4,
+        4
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "semi-finals",
+      "label": "Semi-finals",
+      "rawMatchCount": 2
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 1
+    }
+  ]
+}

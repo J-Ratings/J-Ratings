@@ -1,0 +1,41 @@
+{
+  "id": "copa-1975-three-groups-home-away",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 10,
+    "matches": 25
+  },
+  "groupStages": [
+    {
+      "label": "Group stage",
+      "matchCount": 18,
+      "groupLabels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "groupSizes": [
+        3,
+        3,
+        3
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "semi-finals",
+      "label": "Semi-finals",
+      "rawMatchCount": 4
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 3
+    }
+  ]
+}

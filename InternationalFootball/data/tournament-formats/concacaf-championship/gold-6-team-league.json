@@ -1,0 +1,26 @@
+{
+  "id": "gold-6-team-league",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 6,
+    "matches": 15
+  },
+  "groupStages": [
+    {
+      "label": "Final group",
+      "matchCount": 15,
+      "groupLabels": [
+        "Final"
+      ],
+      "groupSizes": [
+        6
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": []
+}

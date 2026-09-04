@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>J-Ratings: Rugby Union Tournaments</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/RugbyUnion/style.css">
+  <style>
+    .router-panel{max-width:720px;margin:40px auto;text-align:center}
+    .router-status{margin-top:14px;opacity:.78}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a href="/RugbyUnion/home/" class="brand-with-logo">
+        <span>J-Ratings <span class="title-rugby">Rugby Union</span></span>
+      </a>
+    </h1>
+    <nav class="topnav" aria-label="Main">
+      <a href="/index.html">Sports</a>
+      <a href="/RugbyUnion/home/">Home</a>
+      <a href="/RugbyUnion/compare/">Compare</a>
+      <a href="/RugbyUnion/peak/">Peak</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <section class="panel router-panel">
+    <h2>Tournament</h2>
+    <div id="status" class="router-status">Loading tournament…</div>
+  </section>
+</main>
+<script>
+  const params = new URLSearchParams(location.search);
+  const statusEl = document.getElementById('status');
+  const INDEX_URL = '/RugbyUnion/data/tournaments/index.json';
+  const EDITIONS_URL = id =>
+    `/RugbyUnion/data/tournaments/${encodeURIComponent(id)}/editions.json`;
+  const STRUCTURE_URL = (id, edition) =>
+    `/RugbyUnion/data/tournament-structure/${encodeURIComponent(id)}/${encodeURIComponent(edition)}.json`;
+
+  async function json(url){
+    const res = await fetch(url,{cache:'no-cache'});
+    if(!res.ok) throw new Error(`Could not load ${url}`);
+    return res.json();
+  }
+
+  async function init(){
+    try{
+      let tournamentId = params.get('tournament');
+      let editionId = params.get('edition');
+
+      if(!tournamentId){
+        const families = await json(INDEX_URL);
+        if(!Array.isArray(families) || !families.length) throw new Error('No tournaments available');
+        tournamentId = families[0].id;
+      }
+
+      if(!editionId){
+        const editions = await json(EDITIONS_URL(tournamentId));
+        if(!Array.isArray(editions) || !editions.length) throw new Error('No editions available');
+        editionId = editions[0].id;
+      }
+
+      const structure = await json(STRUCTURE_URL(tournamentId, editionId));
+      const renderer = String(structure.renderer || 'group_knockout').replaceAll('-', '_');
+
+      const supported = new Set(['group_knockout','league']);
+      if(!supported.has(renderer)) throw new Error(`Unsupported renderer: ${renderer}`);
+
+      const next = new URL(`/RugbyUnion/tournaments/${renderer}/`, location.origin);
+      next.searchParams.set('tournament', tournamentId);
+      next.searchParams.set('edition', editionId);
+      location.replace(next.href);
+    }catch(err){
+      console.error(err);
+      statusEl.textContent = err.message || 'Could not open tournament';
+    }
+  }
+  init();
+</script>
+</body>
+</html>

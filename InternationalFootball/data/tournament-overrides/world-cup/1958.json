@@ -1,0 +1,27 @@
+{
+  "editionId": "1958",
+  "groupAnchors": {
+    "group-stage": {
+      "1": "west-germany",
+      "2": "france",
+      "3": "sweden",
+      "4": "brazil"
+    }
+  },
+  "finalOrderOverrides": {
+    "group-stage": {
+      "1": [
+        "west-germany",
+        "northern-ireland",
+        "czechoslovakia",
+        "argentina"
+      ],
+      "3": [
+        "sweden",
+        "wales",
+        "hungary",
+        "mexico"
+      ]
+    }
+  }
+}

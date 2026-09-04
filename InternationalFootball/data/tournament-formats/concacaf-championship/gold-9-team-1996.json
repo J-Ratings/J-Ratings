@@ -1,0 +1,46 @@
+{
+  "id": "gold-9-team-1996",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 9,
+    "matches": 12
+  },
+  "groupStages": [
+    {
+      "label": "Group stage",
+      "matchCount": 8,
+      "groupLabels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "groupSizes": [
+        3,
+        3,
+        3
+      ],
+      "points": {
+        "win": 3,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "semi-finals",
+      "label": "Semi-finals",
+      "rawMatchCount": 2
+    },
+    {
+      "id": "third-place",
+      "label": "Third place",
+      "rawMatchCount": 1
+    },
+    {
+      "id": "final",
+      "label": "Final",
+      "rawMatchCount": 1
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "editionId": "2020",
+  "groupAnchors": {
+    "group-stage": {
+      "A": "italy",
+      "B": "belgium",
+      "C": "netherlands",
+      "D": "england",
+      "E": "sweden",
+      "F": "france"
+    }
+  },
+  "finalOrderOverrides": {
+    "group-stage": {
+      "F": [
+        "france",
+        "germany",
+        "portugal",
+        "hungary"
+      ]
+    }
+  }
+}

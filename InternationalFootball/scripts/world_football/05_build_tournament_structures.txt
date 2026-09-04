@@ -1,0 +1,695 @@
+from __future__ import annotations
+
+import argparse
+import json
+from collections import defaultdict
+from pathlib import Path
+
+
+def repo_root() -> Path:
+    # scripts/world_football/05_build_tournament_structures.py
+    return Path(__file__).resolve().parents[2]
+
+
+def load_json(path: Path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def save_json(path: Path, obj):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(obj, ensure_ascii=False, separators=(",", ":")) + "\n",
+        encoding="utf-8"
+    )
+
+
+def component_sets(matches):
+    adj = defaultdict(set)
+    first_seen = {}
+
+    for idx, m in enumerate(matches):
+        a, b = m["home"], m["away"]
+        adj[a].add(b)
+        adj[b].add(a)
+        first_seen.setdefault(a, idx)
+        first_seen.setdefault(b, idx)
+
+    seen = set()
+    components = []
+
+    for team in adj:
+        if team in seen:
+            continue
+
+        stack = [team]
+        comp = set()
+
+        while stack:
+            x = stack.pop()
+            if x in seen:
+                continue
+            seen.add(x)
+            comp.add(x)
+            stack.extend(adj[x] - seen)
+
+        components.append(comp)
+
+    components.sort(key=lambda comp: min(first_seen[t] for t in comp))
+    return components, first_seen
+
+
+def component_sizes(matches):
+    comps, _ = component_sets(matches)
+    return sorted(len(c) for c in comps)
+
+
+def template_matches(template, data):
+    sig = template["signature"]
+
+    if len(data.get("teams", [])) != sig["teams"]:
+        return False
+    if len(data.get("matches", [])) != sig["matches"]:
+        return False
+
+    detect = template.get("detect")
+    if not detect:
+        return True
+
+    start = int(detect["afterMatch"])
+    count = int(detect["probeMatchCount"])
+    probe = data["matches"][start:start + count]
+
+    return component_sizes(probe) == sorted(detect["componentSizes"])
+
+
+def choose_template(templates, data):
+    matches = [t for t in templates if template_matches(t, data)]
+
+    if len(matches) != 1:
+        ids = [t["id"] for t in matches]
+        raise RuntimeError(
+            f"{data.get('editionId')}: expected exactly one format template; "
+            f"matched {ids or 'none'}"
+        )
+
+    return matches[0]
+
+
+def actual_points(stage, edition_id):
+    raw = stage.get("points", {"win": 3, "draw": 1, "loss": 0})
+    win = raw.get("win", 3)
+
+    # World Cup switched to three points for a win from 1994.
+    if win == "edition":
+        win = 3 if int(edition_id) >= 1994 else 2
+
+    return {
+        "win": int(win),
+        "draw": int(raw.get("draw", 1)),
+        "loss": int(raw.get("loss", 0)),
+    }
+
+
+def order_components(stage, comps, first_seen):
+    anchors = stage.get("componentOrderAnchors")
+
+    if anchors:
+        ordered = []
+        unused = list(comps)
+
+        for anchor in anchors:
+            found = next((c for c in unused if anchor in c), None)
+            if found is None:
+                raise RuntimeError(
+                    f"Could not find component containing anchor {anchor!r}"
+                )
+            ordered.append(found)
+            unused.remove(found)
+
+        ordered.extend(
+            sorted(unused, key=lambda c: min(first_seen[t] for t in c))
+        )
+        return ordered
+
+    return sorted(comps, key=lambda c: min(first_seen[t] for t in c))
+
+
+def stage_groups(stage, raw_matches, label_anchors=None):
+    comps, first_seen = component_sets(raw_matches)
+
+    if label_anchors:
+        by_label = {}
+        unused = list(comps)
+
+        for label in stage["groupLabels"]:
+            anchor = label_anchors.get(label)
+            if anchor is None:
+                raise RuntimeError(
+                    f"{stage['label']}: no anchor supplied for group {label}"
+                )
+
+            found = next((c for c in unused if anchor in c), None)
+            if found is None:
+                raise RuntimeError(
+                    f"{stage['label']}: anchor {anchor!r} not found in any group"
+                )
+
+            by_label[label] = found
+            unused.remove(found)
+
+        comps = [by_label[label] for label in stage["groupLabels"]]
+    else:
+        comps = order_components(stage, comps, first_seen)
+
+    expected_sizes = sorted(stage["groupSizes"])
+    got_sizes = sorted(len(c) for c in comps)
+
+    if got_sizes != expected_sizes:
+        raise RuntimeError(
+            f"{stage['label']}: expected group sizes {expected_sizes}, "
+            f"detected {got_sizes}"
+        )
+
+    labels = stage["groupLabels"]
+
+    if len(labels) != len(comps):
+        raise RuntimeError(
+            f"{stage['label']}: {len(labels)} labels for {len(comps)} groups"
+        )
+
+    groups = {}
+
+    for label, comp in zip(labels, comps):
+        groups[label] = sorted(comp, key=lambda t: first_seen[t])
+
+    return groups
+
+
+def standings(rows_matches, team_ids, points):
+    team_ids = list(team_ids)
+    rows = {
+        t: {"id": t, "p": 0, "w": 0, "d": 0, "l": 0,
+            "gf": 0, "ga": 0, "gd": 0, "pts": 0}
+        for t in team_ids
+    }
+    team_set = set(team_ids)
+
+    for m in rows_matches:
+        if m["home"] not in team_set or m["away"] not in team_set:
+            continue
+
+        h = rows[m["home"]]
+        a = rows[m["away"]]
+        hs = int(m["homeScore"])
+        av = int(m["awayScore"])
+
+        h["p"] += 1
+        a["p"] += 1
+        h["gf"] += hs
+        h["ga"] += av
+        a["gf"] += av
+        a["ga"] += hs
+
+        if hs > av:
+            h["w"] += 1
+            a["l"] += 1
+            h["pts"] += points["win"]
+            a["pts"] += points["loss"]
+        elif av > hs:
+            a["w"] += 1
+            h["l"] += 1
+            a["pts"] += points["win"]
+            h["pts"] += points["loss"]
+        else:
+            h["d"] += 1
+            a["d"] += 1
+            h["pts"] += points["draw"]
+            a["pts"] += points["draw"]
+
+    for r in rows.values():
+        r["gd"] = r["gf"] - r["ga"]
+
+    return rows
+
+
+def exact_group_order(stage, raw_matches, groups, qualifier_ids, edition_id):
+    standings_count = int(stage.get("standingsMatchCount", len(raw_matches)))
+    standings_matches = raw_matches[:standings_count]
+    points = actual_points(stage, edition_id)
+    qualifier_ids = set(qualifier_ids or [])
+    result = {}
+
+    for label, team_ids in groups.items():
+        rows = standings(standings_matches, team_ids, points)
+
+        # Qualifier priority is applied only after points/GD/GF are tied.
+        # This preserves historical playoff/fair-play style outcomes without
+        # changing ordinary standings.
+        result[label] = sorted(
+            team_ids,
+            key=lambda t: (
+                -rows[t]["pts"],
+                -rows[t]["gd"],
+                -rows[t]["gf"],
+                0 if t in qualifier_ids else 1,
+                t,
+            ),
+        )
+
+    return result
+
+
+def dedupe_last(matches):
+    last = {}
+    order = []
+
+    for m in matches:
+        key = frozenset((m["home"], m["away"]))
+        if key not in last:
+            order.append(key)
+        last[key] = m
+
+    return [last[key] for key in order]
+
+
+def build_knockout_rounds(data, template, start_index):
+    raw_matches = data["matches"]
+    rounds = []
+    cursor = start_index
+
+    for round_def in template.get("knockoutRounds", []):
+        count = int(round_def["rawMatchCount"])
+        raw = raw_matches[cursor:cursor + count]
+        cursor += count
+
+        selected = dedupe_last(raw) if round_def.get("dedupeReplay") == "last" else raw
+
+        matches = []
+
+        for idx, m in enumerate(selected, start=1):
+            matches.append({
+                "id": f"{round_def['id']}-{idx}",
+                "teams": [m["home"], m["away"]],
+                "date": m["date"],
+            })
+
+        rounds.append({
+            "id": round_def["id"],
+            "label": round_def["label"],
+            "matches": matches,
+        })
+
+    # Add byes for old knockout formats where a team entered the next round
+    # without appearing in the preceding round.
+    for idx, round_def in enumerate(template.get("knockoutRounds", [])):
+        if not round_def.get("addByeFromNextRound"):
+            continue
+        if idx + 1 >= len(rounds):
+            continue
+
+        current_teams = {
+            t
+            for m in rounds[idx]["matches"]
+            for t in m["teams"]
+            if t
+        }
+        next_teams = {
+            t
+            for m in rounds[idx + 1]["matches"]
+            for t in m["teams"]
+            if t
+        }
+
+        bye_teams = sorted(next_teams - current_teams)
+
+        for team in bye_teams:
+            rounds[idx]["matches"].append({
+                "id": f"{rounds[idx]['id']}-bye-{len(rounds[idx]['matches']) + 1}",
+                "teams": [team, None],
+                "label": "Bye",
+            })
+
+    # Feed main-round matches into the next main round.
+    main = [r for r in rounds if r["id"] != "third-place"]
+
+    for i in range(len(main) - 1):
+        current = main[i]
+        nxt = main[i + 1]
+
+        for sm in current["matches"]:
+            source_teams = {t for t in sm["teams"] if t}
+            candidates = [
+                nm for nm in nxt["matches"]
+                if source_teams.intersection(t for t in nm["teams"] if t)
+            ]
+
+            if len(candidates) == 1:
+                sm["feedsInto"] = candidates[0]["id"]
+
+    return rounds, cursor
+
+
+def teams_from_round(round_obj):
+    return {
+        t
+        for m in round_obj.get("matches", [])
+        for t in m.get("teams", [])
+        if t
+    }
+
+
+def build_structure(data, template, override=None):
+    matches = data["matches"]
+    cursor = 0
+    stage_work = []
+
+    for idx, stage_def in enumerate(template.get("groupStages", [])):
+        count = int(stage_def["matchCount"])
+        raw = matches[cursor:cursor + count]
+
+        if len(raw) != count:
+            raise RuntimeError(
+                f"{data['editionId']}: {stage_def['label']} expected "
+                f"{count} matches, found {len(raw)}"
+            )
+
+        stage_id = (
+            "group-stage"
+            if len(template.get("groupStages", [])) == 1
+            else f"group-stage-{idx + 1}"
+        )
+        label_anchors = (
+            (override or {}).get("groupAnchors", {}).get(stage_id)
+        )
+
+        groups = stage_groups(stage_def, raw, label_anchors)
+        stage_work.append({
+            "id": stage_id,
+            "definition": stage_def,
+            "rawMatches": raw,
+            "groups": groups,
+        })
+        cursor += count
+
+    knockout_rounds, cursor = build_knockout_rounds(data, template, cursor)
+
+    if cursor != len(matches):
+        raise RuntimeError(
+            f"{data['editionId']}: template consumed {cursor} of "
+            f"{len(matches)} matches"
+        )
+
+    knockout_qualifier_ids = {
+        t
+        for rnd in knockout_rounds
+        for m in rnd.get("matches", [])
+        for t in m.get("teams", [])
+        if t
+    }
+
+    output_stages = []
+
+    for idx, work in enumerate(stage_work):
+        stage_def = work["definition"]
+        raw = work["rawMatches"]
+        groups = work["groups"]
+
+        if idx + 1 < len(stage_work):
+            qualifier_ids = {
+                t
+                for group in stage_work[idx + 1]["groups"].values()
+                for t in group
+            }
+        elif knockout_qualifier_ids:
+            qualifier_ids = knockout_qualifier_ids
+        else:
+            # Final group-stage tournament (e.g. 1950).
+            qualifier_ids = set()
+
+        final_order = exact_group_order(
+            stage_def, raw, groups, qualifier_ids, data["editionId"]
+        )
+
+        stage_obj = {
+            "id": work["id"],
+            "label": stage_def["label"],
+            "startDate": raw[0]["date"],
+            "endDate": raw[-1]["date"],
+            "points": actual_points(stage_def, data["editionId"]),
+            "tiebreakers": ["points", "goalDifference", "goalsFor"],
+            "groups": groups,
+            "finalOrder": final_order,
+            "qualifierIds": sorted(qualifier_ids),
+        }
+
+        standings_count = stage_def.get("standingsMatchCount")
+        if standings_count and int(standings_count) < len(raw):
+            stage_obj["standingsEndDate"] = raw[int(standings_count) - 1]["date"]
+
+        output_stages.append(stage_obj)
+
+    return {
+        "tournamentId": data["tournamentId"],
+        "editionId": data["editionId"],
+        "renderer": template.get("renderer", "group_knockout"),
+        "formatTemplate": template["id"],
+        "groupStages": output_stages,
+        "knockoutRounds": knockout_rounds,
+    }
+
+
+
+def apply_override(structure, override):
+    if not override:
+        return structure
+
+    round_map = {
+        r["id"]: r
+        for r in structure.get("knockoutRounds", [])
+    }
+
+    for item in override.get("addKnockoutMatches", []):
+        round_id = item["roundId"]
+        if round_id not in round_map:
+            raise RuntimeError(f"Override refers to unknown round {round_id!r}")
+        round_map[round_id]["matches"].append(item["match"])
+
+    stage_map = {
+        s["id"]: s
+        for s in structure.get("groupStages", [])
+    }
+
+    for stage_id, group_orders in override.get("finalOrderOverrides", {}).items():
+        if stage_id not in stage_map:
+            raise RuntimeError(f"Override refers to unknown stage {stage_id!r}")
+
+        stage = stage_map[stage_id]
+
+        for group_name, order in group_orders.items():
+            teams = stage.get("groups", {}).get(group_name)
+            if teams is None:
+                raise RuntimeError(
+                    f"Override refers to unknown group {stage_id}/{group_name}"
+                )
+            if set(order) != set(teams):
+                raise RuntimeError(
+                    f"Override order does not match teams in {stage_id}/{group_name}"
+                )
+            stage["finalOrder"][group_name] = order
+
+    return structure
+
+def validate_structure(data, structure):
+    team_ids = {t["id"] for t in data.get("teams", [])}
+    errors = []
+
+    for stage in structure.get("groupStages", []):
+        for label, teams in stage.get("groups", {}).items():
+            missing = set(teams) - team_ids
+            if missing:
+                errors.append(
+                    f"{stage['label']} Group {label}: unknown teams {sorted(missing)}"
+                )
+
+            final_order = stage.get("finalOrder", {}).get(label, [])
+            if set(final_order) != set(teams):
+                errors.append(
+                    f"{stage['label']} Group {label}: finalOrder mismatch"
+                )
+
+    data_fixtures = {
+        (m["date"], frozenset((m["home"], m["away"])))
+        for m in data.get("matches", [])
+    }
+
+    for rnd in structure.get("knockoutRounds", []):
+        for sm in rnd.get("matches", []):
+            if sm.get("sourceDataMissing"):
+                continue
+
+            teams = [t for t in sm.get("teams", []) if t]
+            if len(teams) < 2:
+                continue
+
+            key = (sm.get("date"), frozenset(teams))
+
+            if key not in data_fixtures:
+                errors.append(
+                    f"{rnd['label']}: fixture not found in tournament data: {sm}"
+                )
+
+    return errors
+
+
+def available_tournaments(root):
+    format_root = root / "InternationalFootball" / "data" / "tournament-formats"
+    if not format_root.exists():
+        return []
+
+    return sorted(
+        p.name
+        for p in format_root.iterdir()
+        if p.is_dir() and any(p.glob("*.json"))
+    )
+
+
+def process_tournament(root, tournament_id, edition=None, check_only=False):
+    data_dir = (
+        root / "InternationalFootball" / "data" / "tournaments" / tournament_id
+    )
+    format_dir = (
+        root / "InternationalFootball" / "data" / "tournament-formats" / tournament_id
+    )
+    out_dir = (
+        root / "InternationalFootball" / "data" / "tournament-structure" / tournament_id
+    )
+    override_dir = (
+        root / "InternationalFootball" / "data" / "tournament-overrides" / tournament_id
+    )
+
+    if not data_dir.exists():
+        raise RuntimeError(f"{tournament_id}: tournament data folder not found.")
+    if not format_dir.exists():
+        raise RuntimeError(f"{tournament_id}: format-template folder not found.")
+
+    templates = [
+        load_json(path)
+        for path in sorted(format_dir.glob("*.json"))
+    ]
+
+    if not templates:
+        raise RuntimeError(f"{tournament_id}: no format templates found.")
+
+    edition_paths = sorted(
+        p for p in data_dir.glob("*.json")
+        if p.stem.isdigit()
+    )
+
+    if edition:
+        edition_paths = [p for p in edition_paths if p.stem == edition]
+        if not edition_paths:
+            raise RuntimeError(
+                f"{tournament_id}: edition {edition} not found."
+            )
+
+    failures = 0
+
+    for path in edition_paths:
+        data = load_json(path)
+
+        try:
+            template = choose_template(templates, data)
+
+            override_path = override_dir / f"{data['editionId']}.json"
+            override = (
+                load_json(override_path)
+                if override_path.exists()
+                else None
+            )
+
+            structure = build_structure(data, template, override)
+            structure = apply_override(structure, override)
+
+            errors = validate_structure(data, structure)
+
+            if errors:
+                failures += 1
+                print(f"{tournament_id} {data['editionId']}: FAILED")
+                for error in errors:
+                    print(f"  - {error}")
+                continue
+
+            if not check_only:
+                save_json(out_dir / f"{data['editionId']}.json", structure)
+
+            print(
+                f"{tournament_id} {data['editionId']}: {template['id']} "
+                f"-> {'checked' if check_only else 'written'}"
+            )
+
+        except Exception as exc:
+            failures += 1
+            print(f"{tournament_id} {path.stem}: FAILED - {exc}")
+
+    return failures
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Generate International Football tournament structure JSON."
+    )
+    parser.add_argument(
+        "--tournament",
+        help=(
+            "Generate one tournament family, e.g. world-cup or "
+            "european-championship. Omit to process every family that has "
+            "format templates."
+        )
+    )
+    parser.add_argument(
+        "--edition",
+        help="Generate one edition. Use together with --tournament."
+    )
+    parser.add_argument(
+        "--check-only",
+        action="store_true",
+        help="Validate generation without writing files."
+    )
+    args = parser.parse_args()
+
+    if args.edition and not args.tournament:
+        raise SystemExit("--edition requires --tournament.")
+
+    root = repo_root()
+
+    tournament_ids = (
+        [args.tournament]
+        if args.tournament
+        else available_tournaments(root)
+    )
+
+    if not tournament_ids:
+        raise SystemExit("No tournament format-template folders found.")
+
+    failures = 0
+
+    for tournament_id in tournament_ids:
+        try:
+            failures += process_tournament(
+                root,
+                tournament_id,
+                edition=args.edition,
+                check_only=args.check_only
+            )
+        except Exception as exc:
+            failures += 1
+            print(f"{tournament_id}: FAILED - {exc}")
+
+    if failures:
+        raise SystemExit(f"{failures} edition/tournament failure(s).")
+
+    print("All requested tournament structures generated successfully.")
+
+
+if __name__ == "__main__":
+    main()

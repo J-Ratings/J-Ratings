@@ -1,0 +1,32 @@
+{
+  "id": "copa-league-8-title-playoff",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 8,
+    "matches": 29
+  },
+  "groupStages": [
+    {
+      "label": "Championship",
+      "matchCount": 28,
+      "groupLabels": [
+        "Championship"
+      ],
+      "groupSizes": [
+        8
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": [
+    {
+      "id": "final",
+      "label": "Title play-off",
+      "rawMatchCount": 1
+    }
+  ]
+}

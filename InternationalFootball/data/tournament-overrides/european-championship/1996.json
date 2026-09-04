@@ -1,0 +1,21 @@
+{
+  "editionId": "1996",
+  "groupAnchors": {
+    "group-stage": {
+      "A": "england",
+      "B": "france",
+      "C": "germany",
+      "D": "portugal"
+    }
+  },
+  "finalOrderOverrides": {
+    "group-stage": {
+      "C": [
+        "germany",
+        "czechia",
+        "italy",
+        "russia"
+      ]
+    }
+  }
+}

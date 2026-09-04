@@ -57,6 +57,12 @@ INPUT_CSV <- file.path(
   "rugby_union_results_master.csv"
 )
 
+TEAM_ALIASES_TSV <- file.path(
+  repo_dir,
+  "RugbyUnion", "config",
+  "international_teams.tsv"
+)
+
 OUT_DIR <- file.path(
   repo_dir,
   "RugbyUnion", "pipeline_data", "Elo"
@@ -78,8 +84,13 @@ if (!file.exists(INPUT_CSV)) {
   stop("Missing input CSV: ", INPUT_CSV)
 }
 
+if (!file.exists(TEAM_ALIASES_TSV)) {
+  stop("Missing international-team allow-list: ", TEAM_ALIASES_TSV)
+}
+
 cat("Repo dir: ", repo_dir, "\n", sep = "")
 cat("Input CSV: ", INPUT_CSV, "\n", sep = "")
+cat("International team aliases: ", TEAM_ALIASES_TSV, "\n", sep = "")
 cat("Output dir: ", OUT_DIR, "\n", sep = "")
 
 # -----------------------------
@@ -108,67 +119,63 @@ expected_score <- function(Ra, Rb) {
   1 / (1 + 10 ^ ((Rb - Ra) / 400))
 }
 
-normalise_team_name <- function(x) {
-  x0 <- trimws(as.character(x))
-  x0 <- sub(" Rugby$", "", x0)
-  
-  team_map <- c(
-    "All Blacks" = "New Zealand",
-    "Western Samoa" = "Samoa",
-    "West Germany" = "Germany",
-    "USA" = "United States",
-    "UAE" = "United Arab Emirates",
-    "Korea" = "South Korea"
-  )
-  
-  ifelse(
-    x0 %in% names(team_map),
-    unname(team_map[x0]),
-    x0
+normalise_alias_key <- function(x) {
+  x <- as.character(x)
+  x[is.na(x)] <- ""
+  x <- trimws(x)
+  x <- gsub("[[:space:]]+", " ", x)
+  x <- sub("[[:space:]]+Rugby$", "", x, ignore.case = TRUE)
+  tolower(x)
+}
+
+team_aliases <- fread(
+  TEAM_ALIASES_TSV,
+  sep = "\t",
+  encoding = "UTF-8",
+  colClasses = "character",
+  na.strings = c("", "NA")
+)
+
+required_alias_cols <- c("alias", "canonical")
+missing_alias_cols <- setdiff(required_alias_cols, names(team_aliases))
+
+if (length(missing_alias_cols) > 0) {
+  stop(
+    "international_teams.tsv is missing columns: ",
+    paste(missing_alias_cols, collapse = ", ")
   )
 }
 
-excluded_teams <- c(
-  "All Blacks XV",
-  "Junior All Blacks",
-  "New Zealand Maori",
-  "New Zealand Māori",
-  "Māori All Blacks",
-  "MÄori All Blacks",
-  "New Zealand Cavaliers",
-  "NZEF Kiwis",
-  
-  "Australia A",
-  "Argentina XV",
-  "England A",
-  "Scotland XV",
-  "Ireland XV",
-  "France XV",
-  "Italy A",
-  
-  "British Lions",
-  "British and Irish Lions",
-  "British and Irish Lions XV",
-  
-  "Barbarians",
-  "World XV",
-  "Pacific Islanders",
-  "South America",
-  "British Army",
-  "British Empire Services",
-  "Great Britain",
-  "Arabian Gulf",
-  
-  "MRU. New Nation Pumas",
-  "Western Force",
-  "Queensland Reds",
-  "New South Wales Waratahs",
-  "New South Wales",
-  "Brumbies",
-  "Cheetahs",
-  "AUNZ Invitational XV",
-  "First Nations and Pasifika XV"
-)
+team_aliases <- team_aliases[
+  !is.na(alias) & !is.na(canonical) &
+    trimws(alias) != "" & trimws(canonical) != ""
+]
+
+team_aliases[, alias := trimws(alias)]
+team_aliases[, canonical := trimws(canonical)]
+team_aliases[, alias_key := normalise_alias_key(alias)]
+
+alias_conflicts <- team_aliases[
+  ,
+  .(canonical_count = uniqueN(canonical), canonical_values = paste(sort(unique(canonical)), collapse = " | ")),
+  by = alias_key
+][canonical_count > 1]
+
+if (nrow(alias_conflicts) > 0) {
+  cat("\nConflicting international-team aliases:\n")
+  print(alias_conflicts, nrows = 500)
+  stop("Stopped because some aliases map to more than one canonical team.")
+}
+
+team_aliases <- unique(team_aliases[, .(alias_key, canonical)], by = "alias_key")
+alias_map <- setNames(team_aliases$canonical, team_aliases$alias_key)
+
+canonicalise_team_name <- function(x) {
+  keys <- normalise_alias_key(x)
+  out <- unname(alias_map[keys])
+  out[is.na(out)] <- NA_character_
+  out
+}
 
 entry_rating_for_date <- function(d) {
   if (is.na(d)) return(BASELINE_START_RATING)
@@ -196,22 +203,52 @@ if (length(missing_cols) > 0) {
   stop("Missing required columns: ", paste(missing_cols, collapse = ", "))
 }
 
-dt[, date_raw    := trimws(as.character(date))]
-dt[, home_team   := normalise_team_name(home_team)]
-dt[, away_team   := normalise_team_name(away_team)]
-dt[, home_score  := suppressWarnings(as.integer(home_score))]
-dt[, away_score  := suppressWarnings(as.integer(away_score))]
-dt[, result      := trimws(as.character(result))]
-dt[, competition := trimws(as.character(competition))]
+dt[, date_raw       := trimws(as.character(date))]
+dt[, home_team_raw  := trimws(as.character(home_team))]
+dt[, away_team_raw  := trimws(as.character(away_team))]
+dt[, result_raw     := trimws(as.character(result))]
+dt[, home_score     := suppressWarnings(as.integer(home_score))]
+dt[, away_score     := suppressWarnings(as.integer(away_score))]
+dt[, competition    := trimws(as.character(competition))]
 
-# Keep Draw as Draw; normalise all other result values
-dt[, result := ifelse(tolower(result) == "draw", "Draw", normalise_team_name(result))]
+# Canonicalise through the external international-team allow-list.
+# Any side not present in international_teams.tsv is excluded from Elo.
+dt[, home_team := canonicalise_team_name(home_team_raw)]
+dt[, away_team := canonicalise_team_name(away_team_raw)]
 
-# Remove matches involving excluded sides
-dt <- dt[!(home_team %in% excluded_teams | away_team %in% excluded_teams)]
+unknown_home <- dt[is.na(home_team) & home_team_raw != "", .N, by = .(team = home_team_raw)]
+unknown_away <- dt[is.na(away_team) & away_team_raw != "", .N, by = .(team = away_team_raw)]
 
-# Also remove rows where result names an excluded side
-dt <- dt[result == "Draw" | !(result %in% excluded_teams)]
+unknown_teams <- rbindlist(
+  list(unknown_home, unknown_away),
+  use.names = TRUE,
+  fill = TRUE
+)[
+  ,
+  .(appearances = sum(N)),
+  by = team
+][order(-appearances, team)]
+
+excluded_match_count <- dt[is.na(home_team) | is.na(away_team), .N]
+
+if (nrow(unknown_teams) > 0) {
+  cat("\nUnknown/non-international teams excluded by international_teams.tsv:\n")
+  print(unknown_teams, nrows = 500)
+  cat("Matches excluded because at least one side is not approved: ",
+      excluded_match_count, "\n", sep = "")
+} else {
+  cat("\nNo unknown/non-international teams found.\n")
+}
+
+# Keep only approved international-v-international matches.
+dt <- dt[!is.na(home_team) & !is.na(away_team)]
+
+# Keep Draw as Draw; canonicalise winner labels through the same alias file.
+dt[, result := fifelse(
+  tolower(result_raw) == "draw",
+  "Draw",
+  canonicalise_team_name(result_raw)
+)]
 
 # Parse date. Master is expected to be ISO: YYYY-MM-DD
 dt[, Date := as.Date(date_raw, format = "%Y-%m-%d")]
@@ -253,7 +290,7 @@ dt[, ResultType := fcase(
 bad_labels <- dt[is.na(ResultType), .N, by = .(result)][order(-N, result)]
 
 if (nrow(bad_labels) > 0) {
-  cat("\nUnmatched result labels. Add these to normalise_team_name():\n")
+  cat("\nUnmatched result labels. Check international_teams.tsv aliases:\n")
   print(bad_labels, nrows = 500)
   
   cat("\nExample rows:\n")

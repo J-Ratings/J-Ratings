@@ -1,0 +1,1395 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>J-Ratings: International Football Group + Knockout Tournaments</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .tournament-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+    .tournament-head h2{
+      margin:0;
+      font-size:2rem;
+    }
+    .selectors{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .selectors label{
+      font-weight:700;
+    }
+    .selectors select{
+      padding:8px 10px;
+      border-radius:8px;
+    }
+    .meta{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin:12px 0 18px;
+    }
+    .meta .stat{
+      padding:10px 12px;
+      border:1px solid #2b2f36;
+      border-radius:10px;
+      background:rgba(255,255,255,0.03);
+      min-width:110px;
+      text-align:center;
+    }
+    .meta .label{
+      font-size:.85rem;
+      opacity:.75;
+    }
+    .meta .value{
+      font-size:1.2rem;
+      font-weight:800;
+    }
+    #matchesWrap{
+      overflow:auto;
+      max-height:650px;
+    }
+    table.matches{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+    }
+    table.matches th,
+    table.matches td{
+      padding:10px 12px;
+      border-bottom:1px solid #2b2f36;
+      border-right:1px solid rgba(128,128,128,.45);
+      text-align:center;
+      white-space:nowrap;
+    }
+    table.matches th:first-child,
+    table.matches td:first-child{
+      border-left:1px solid rgba(128,128,128,.45);
+    }
+    table.matches th{
+      position:sticky;
+      top:0;
+      z-index:2;
+      background-color:var(--panel-bg,#1a1a1a);
+    }
+    .team{
+      text-align:left;
+    }
+    .team a{
+      color:inherit;
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+    .score{
+      font-weight:800;
+    }
+    .note{
+      margin-top:12px;
+      opacity:.75;
+      font-size:.9rem;
+    }
+
+    .structure-section{margin-top:24px}
+    .structure-title{margin:0 0 12px;font-size:1.35rem}
+    .group-stages{display:block}.group-stage-block{margin-bottom:28px}.group-stage-label{margin:0 0 12px;font-size:1.05rem}.groups-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .group-card{border:1px solid #2b2f36;border-radius:10px;overflow:hidden;background:rgba(255,255,255,.025)}
+    .group-card > h4{margin:0;padding:9px 11px;border-bottom:1px solid #2b2f36;font-size:1rem}
+    .group-table{width:100%;border-collapse:collapse;font-size:.92rem}
+    .group-table th,.group-table td{padding:7px 8px;border-bottom:1px solid rgba(128,128,128,.25);text-align:right}
+    .group-table th:first-child,.group-table td:first-child{text-align:left}
+    .group-table tr:last-child td{border-bottom:0}
+    .group-table .qualifier td{font-weight:800}
+    .group-team a,.bracket-team a{color:inherit;text-decoration:none}
+    .group-team a:hover,.bracket-team a:hover{text-decoration:underline}
+
+    .group-card-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      padding:9px 11px;
+      border-bottom:1px solid #2b2f36;
+    }
+    .group-card-head h4{
+      margin:0;
+      padding:0;
+      border:0;
+      font-size:1rem;
+    }
+    .group-expand{
+      appearance:none;
+      border:1px solid #3a414c;
+      background:rgba(255,255,255,.045);
+      color:inherit;
+      width:28px;
+      height:28px;
+      border-radius:7px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:1rem;
+      line-height:1;
+      flex:0 0 auto;
+    }
+    .group-expand:hover{
+      background:rgba(255,255,255,.09);
+      border-color:#596273;
+    }
+
+    .group-modal-backdrop{
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(0,0,0,.68);
+      backdrop-filter:blur(3px);
+    }
+    .group-modal-backdrop[hidden]{display:none}
+    .group-modal{
+      position:relative;
+      width:min(760px,100%);
+      max-height:min(84vh,850px);
+      overflow:auto;
+      border:1px solid #343a44;
+      border-radius:14px;
+      background:var(--panel-bg,#171b22);
+      box-shadow:0 24px 80px rgba(0,0,0,.55);
+      padding:22px;
+    }
+    .group-modal-close{
+      position:absolute;
+      top:12px;
+      right:12px;
+      appearance:none;
+      border:1px solid #3a414c;
+      background:rgba(255,255,255,.04);
+      color:inherit;
+      width:34px;
+      height:34px;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:1.35rem;
+      line-height:1;
+    }
+    .group-modal-close:hover{
+      background:rgba(255,255,255,.09);
+    }
+    .group-modal h3{
+      margin:0 46px 16px 0;
+      font-size:1.35rem;
+    }
+    .group-modal .group-table{
+      margin-bottom:22px;
+      border:1px solid #2b2f36;
+      border-radius:10px;
+      overflow:hidden;
+    }
+    .group-modal-matches-title{
+      margin:4px 0 10px;
+      font-size:1.05rem;
+    }
+    .group-modal-matches{
+      display:grid;
+      gap:8px;
+    }
+    .group-result{
+      display:grid;
+      grid-template-columns:minmax(100px,auto) 1fr auto 1fr;
+      gap:10px;
+      align-items:center;
+      padding:10px 12px;
+      border:1px solid #2b2f36;
+      border-radius:9px;
+      background:rgba(255,255,255,.025);
+    }
+    .group-result-date{
+      opacity:.72;
+      white-space:nowrap;
+      font-size:.9rem;
+    }
+    .group-result-home{
+      text-align:right;
+    }
+    .group-result-away{
+      text-align:left;
+    }
+    .group-result-score{
+      min-width:52px;
+      text-align:center;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .group-result a{
+      color:inherit;
+      text-decoration:none;
+    }
+    .group-result a:hover{
+      text-decoration:underline;
+    }
+    body.group-modal-open{
+      overflow:hidden;
+    }
+    @media (max-width:620px){
+      .group-modal-backdrop{padding:12px}
+      .group-modal{padding:18px 14px}
+      .group-result{
+        grid-template-columns:1fr auto 1fr;
+      }
+      .group-result-date{
+        grid-column:1 / -1;
+        text-align:center;
+      }
+    }
+    .bracket-scroll{
+      overflow-x:auto;
+      padding:6px 0 14px;
+    }
+    .bracket-canvas{
+      position:relative !important;
+      display:block !important;
+      min-width:1120px;
+      width:100%;
+      height:900px;
+      min-height:520px;
+      max-height:none !important;
+      overflow:visible !important;
+    }
+    .bracket-svg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      overflow:visible;
+      pointer-events:none;
+      z-index:0;
+    }
+    .bracket-connector{
+      fill:none;
+      stroke:rgba(150,150,150,.58);
+      stroke-width:1.5;
+      vector-effect:non-scaling-stroke;
+    }
+    .bracket-grid{
+      position:absolute !important;
+      inset:0 !important;
+      display:grid !important;
+      grid-template-rows:1fr !important;
+      column-gap:70px !important;
+      width:100% !important;
+      height:100% !important;
+      min-height:520px !important;
+      z-index:1;
+    }
+    .bracket-round{
+      position:relative !important;
+      display:block !important;
+      height:100% !important;
+      min-height:520px !important;
+      align-self:stretch !important;
+    }
+    .bracket-round h4{
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      margin:0;
+      text-align:center;
+      font-size:1rem;
+    }
+    .bracket-match{
+      box-sizing:border-box;
+      position:absolute;
+      left:0;
+      right:0;
+      height:81px;
+      min-height:81px;
+      border:1px solid #2b2f36;
+      border-radius:9px;
+      overflow:hidden;
+      background:rgba(255,255,255,.035);
+      transform:translateY(-50%);
+      transition:opacity .14s ease, border-color .14s ease, box-shadow .14s ease;
+    }
+    .bracket-team{
+      box-sizing:border-box;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      height:40px;
+      min-height:40px;
+      padding:6px 10px;
+      transition:background .14s ease, opacity .14s ease, box-shadow .14s ease;
+    }
+    .bracket-team + .bracket-team{
+      border-top:1px solid #2b2f36;
+    }
+    .bracket-team.winner{
+      font-weight:800;
+    }
+    .bracket-team a{
+      color:inherit;
+      text-decoration:none;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+    .bracket-team a:hover{
+      text-decoration:underline;
+    }
+    .bracket-score{
+      font-weight:800;
+      flex:0 0 auto;
+    }
+    .bracket-grid.journey-active .bracket-team{
+      opacity:.28;
+    }
+    .bracket-grid.journey-active .bracket-team.journey-highlight{
+      opacity:1;
+      background:rgba(255,255,255,.11);
+      box-shadow:inset 3px 0 0 currentColor;
+    }
+    .bracket-grid.journey-active .bracket-match:has(.journey-highlight){
+      border-color:rgba(210,210,210,.65);
+      box-shadow:0 0 0 1px rgba(210,210,210,.08);
+    }
+    .third-place{
+      margin-top:18px;
+      max-width:300px;
+    }
+
+  
+/* J-Ratings dark scrollbars: start */
+html {
+  scrollbar-color: #596273 #151b26;
+  scrollbar-width: thin;
+}
+
+* {
+  scrollbar-color: #596273 #151b26;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #151b26;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #596273;
+  border: 2px solid #151b26;
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #737d90;
+}
+
+*::-webkit-scrollbar-corner {
+  background: #151b26;
+}
+
+/*
+  Reserve scrollbar space where supported so scrollbars are less likely
+  to sit over tables/content.
+*/
+html,
+body,
+[style*="overflow"],
+[style*="overflow-y"],
+[style*="overflow-x"] {
+  scrollbar-gutter: stable;
+}
+/* J-Ratings dark scrollbars: end */
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a href="/InternationalFootball/home/" class="brand-with-logo">
+        <span>J-Ratings <span class="title-football">International Football</span></span>
+      </a>
+    </h1>
+    <nav class="topnav" aria-label="Main">
+      <a href="/index.html">Sports</a>
+      <a href="/InternationalFootball/home/">Home</a>
+      <a href="/InternationalFootball/compare/">Compare</a>
+      <a href="/InternationalFootball/peak/">Peak</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <div class="tournament-head">
+      <h2 id="title">Tournament</h2>
+      <div class="selectors">
+        <label for="familySelect">Tournament</label>
+        <select id="familySelect"></select>
+        <label for="editionSelect">Edition</label>
+        <select id="editionSelect"></select>
+      </div>
+    </div>
+
+    <div id="meta" class="meta"></div>
+
+
+    <div id="structure" class="structure-section" hidden>
+      <h3 id="groupsTitle" class="structure-title">Groups</h3>
+      <div id="groups" class="group-stages"></div>
+
+      <h3 id="knockoutTitle" class="structure-title">Knockout stage</h3>
+      <div class="bracket-scroll">
+        <div id="bracketCanvas" class="bracket-canvas">
+          <svg id="bracketSvg" class="bracket-svg" aria-hidden="true"></svg>
+          <div id="bracket" class="bracket-grid"></div>
+        </div>
+      </div>
+
+      <div id="thirdPlace" class="third-place"></div>
+    </div>
+
+    <div id="matchesWrap">
+      <table id="matches" class="matches"></table>
+    </div>
+
+    <div class="note">
+      Tournament layout is generated from J-Ratings results and structure data.
+    </div>
+  </section>
+</main>
+
+<div id="groupModalBackdrop" class="group-modal-backdrop" hidden>
+  <section id="groupModal" class="group-modal" role="dialog" aria-modal="true" aria-labelledby="groupModalTitle">
+    <button id="groupModalClose" class="group-modal-close" type="button" aria-label="Close group details">×</button>
+    <h3 id="groupModalTitle">Group</h3>
+    <div id="groupModalTable"></div>
+    <h4 class="group-modal-matches-title">Matches</h4>
+    <div id="groupModalMatches" class="group-modal-matches"></div>
+  </section>
+</div>
+
+<script>
+  const params = new URLSearchParams(location.search);
+
+  const INDEX_URL = '/InternationalFootball/data/tournaments/index.json';
+  const EDITIONS_URL = id => `/InternationalFootball/data/tournaments/${encodeURIComponent(id)}/editions.json`;
+  const EDITION_URL = (id, edition) =>
+    `/InternationalFootball/data/tournaments/${encodeURIComponent(id)}/${encodeURIComponent(edition)}.json`;
+  const STRUCTURE_URL = (id, edition) =>
+    `/InternationalFootball/data/tournament-structure/${encodeURIComponent(id)}/${encodeURIComponent(edition)}.json`;
+
+  const familySelect = document.getElementById('familySelect');
+  const editionSelect = document.getElementById('editionSelect');
+  const titleEl = document.getElementById('title');
+  const metaEl = document.getElementById('meta');
+  const matchesEl = document.getElementById('matches');
+  const structureEl = document.getElementById('structure');
+  const groupsEl = document.getElementById('groups');
+  const groupsTitleEl = document.getElementById('groupsTitle');
+  const knockoutTitleEl = document.getElementById('knockoutTitle');
+  const bracketEl = document.getElementById('bracket');
+  const bracketCanvasEl = document.getElementById('bracketCanvas');
+  const bracketSvgEl = document.getElementById('bracketSvg');
+  const thirdPlaceEl = document.getElementById('thirdPlace');
+  const groupModalBackdropEl = document.getElementById('groupModalBackdrop');
+  const groupModalEl = document.getElementById('groupModal');
+  const groupModalCloseEl = document.getElementById('groupModalClose');
+  const groupModalTitleEl = document.getElementById('groupModalTitle');
+  const groupModalTableEl = document.getElementById('groupModalTable');
+  const groupModalMatchesEl = document.getElementById('groupModalMatches');
+
+  let families = [];
+  let activeGroupTrigger = null;
+
+  function setQuery(tournamentId, editionId){
+    const next = new URL('/InternationalFootball/tournaments/', location.origin);
+    next.searchParams.set('tournament', tournamentId);
+    next.searchParams.set('edition', editionId);
+    history.replaceState(null, '', next);
+  }
+
+  function teamNameMap(data){
+    const map = new Map();
+    for (const t of (data.teams || [])) map.set(t.id, t.name);
+    return map;
+  }
+
+
+  function teamNameMap(data){
+    const map = new Map();
+    for (const t of (data.teams || [])) map.set(t.id, t.name);
+    return map;
+  }
+
+  function matchWinnerId(m){
+    if (!m || !m.played) return null;
+    if (Number(m.homeScore) > Number(m.awayScore)) return m.home;
+    if (Number(m.awayScore) > Number(m.homeScore)) return m.away;
+    return null;
+  }
+
+  function normaliseGroupStages(structure){
+    if (Array.isArray(structure.groupStages)){
+      return structure.groupStages;
+    }
+
+    if (structure.groups && Object.keys(structure.groups).length){
+      return [{
+        id:'group-stage',
+        label:'Group stage',
+        startDate:structure.groupStage?.startDate || '',
+        endDate:structure.groupStage?.endDate || '9999-12-31',
+        standingsStartDate:structure.groupStage?.standingsStartDate,
+        standingsEndDate:structure.groupStage?.standingsEndDate,
+        points:structure.groupStage?.points || {win:3,draw:1,loss:0},
+        tiebreakers:structure.displayTiebreakers ||
+                    structure.groupStage?.tiebreakers ||
+                    ['points','goalDifference','goalsFor'],
+        finalOrder:structure.groupStage?.finalOrder || {},
+        groups:structure.groups,
+        qualifierIds:null
+      }];
+    }
+
+    return [];
+  }
+
+  function groupStandings(data, teamIds, stage, structure, groupName){
+    const rows = new Map(teamIds.map(id => [id, {id,p:0,w:0,d:0,l:0,gf:0,ga:0,gd:0,pts:0}]));
+    const set = new Set(teamIds);
+
+    const startDate = stage?.standingsStartDate || stage?.startDate || '';
+    const endDate = stage?.standingsEndDate || stage?.endDate || '9999-12-31';
+
+    const pointRules = stage?.points || structure?.groupStage?.points || {win:3,draw:1,loss:0};
+    const winPoints = Number(pointRules.win ?? 3);
+    const drawPoints = Number(pointRules.draw ?? 1);
+    const lossPoints = Number(pointRules.loss ?? 0);
+
+    for (const m of (data.matches || [])){
+      if (
+        !m.played ||
+        m.date < startDate ||
+        m.date > endDate ||
+        !set.has(m.home) ||
+        !set.has(m.away)
+      ) continue;
+
+      const h = rows.get(m.home), a = rows.get(m.away);
+      const hs = Number(m.homeScore), as = Number(m.awayScore);
+
+      h.p++; a.p++;
+      h.gf += hs; h.ga += as;
+      a.gf += as; a.ga += hs;
+
+      if (hs > as){
+        h.w++; a.l++;
+        h.pts += winPoints;
+        a.pts += lossPoints;
+      } else if (as > hs){
+        a.w++; h.l++;
+        a.pts += winPoints;
+        h.pts += lossPoints;
+      } else {
+        h.d++; a.d++;
+        h.pts += drawPoints;
+        a.pts += drawPoints;
+      }
+    }
+
+    for (const r of rows.values()) r.gd = r.gf - r.ga;
+
+    const rules = stage?.tiebreakers ||
+                  structure?.displayTiebreakers ||
+                  structure?.groupStage?.tiebreakers ||
+                  ['points','goalDifference','goalsFor'];
+
+    const valueFor = (row, rule) => {
+      switch (String(rule || '').toLowerCase()){
+        case 'points': return row.pts;
+        case 'goaldifference':
+        case 'goal_difference':
+        case 'gd': return row.gd;
+        case 'goalsfor':
+        case 'goals_scored':
+        case 'goalsscored':
+        case 'gf': return row.gf;
+        case 'wins': return row.w;
+        default: return null;
+      }
+    };
+
+    const finalOrder = stage?.finalOrder?.[groupName] ||
+                       structure?.groupStage?.finalOrder?.[groupName];
+    const finalRank = new Map(
+      Array.isArray(finalOrder) ? finalOrder.map((id, idx) => [id, idx]) : []
+    );
+
+    return [...rows.values()].sort((a,b) => {
+      if (finalRank.size){
+        const ar = finalRank.has(a.id) ? finalRank.get(a.id) : Number.MAX_SAFE_INTEGER;
+        const br = finalRank.has(b.id) ? finalRank.get(b.id) : Number.MAX_SAFE_INTEGER;
+        if (ar !== br) return ar - br;
+      }
+
+      for (const rule of rules){
+        const av = valueFor(a, rule);
+        const bv = valueFor(b, rule);
+        if (av !== null && bv !== null && av !== bv) return bv - av;
+      }
+      return a.id.localeCompare(b.id);
+    });
+  }
+
+  function stageQualifiedIds(structure, stage){
+    if (Array.isArray(stage?.qualifierIds)){
+      return new Set(stage.qualifierIds);
+    }
+
+    const stages = normaliseGroupStages(structure);
+    if (stages.length === 1){
+      const firstKnockoutRound = (structure.knockoutRounds || [])
+        .find(r => r.id !== 'third-place');
+      return new Set(
+        (firstKnockoutRound?.matches || []).flatMap(m => m.teams || []).filter(Boolean)
+      );
+    }
+
+    return new Set();
+  }
+
+  function buildGroupTable(data, structure, stage, teamIds, groupName){
+    const names = teamNameMap(data);
+    const table = document.createElement('table');
+    table.className = 'group-table';
+    table.innerHTML = '<thead><tr><th>Team</th><th>P</th><th>GD</th><th>Pts</th></tr></thead>';
+
+    const tbody = document.createElement('tbody');
+    const qualifiedIds = stageQualifiedIds(structure, stage);
+
+    groupStandings(data, teamIds, stage, structure, groupName).forEach(r => {
+      const tr = document.createElement('tr');
+      if (qualifiedIds.has(r.id)) tr.className = 'qualifier';
+
+      const tdTeam = document.createElement('td');
+      tdTeam.className = 'group-team';
+
+      const a = document.createElement('a');
+      a.href = `/InternationalFootball/player/?id=${encodeURIComponent(r.id)}`;
+      a.textContent = names.get(r.id) || r.id;
+
+      tdTeam.appendChild(a);
+      tr.appendChild(tdTeam);
+
+      for (const value of [r.p, (r.gd > 0 ? '+' : '') + r.gd, r.pts]){
+        const td = document.createElement('td');
+        td.textContent = value;
+        tr.appendChild(td);
+      }
+
+      tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    return table;
+  }
+
+  function groupMatches(data, stage, teamIds){
+    const set = new Set(teamIds);
+    const startDate = stage?.startDate || '';
+    const endDate = stage?.endDate || '9999-12-31';
+
+    return (data.matches || [])
+      .filter(m =>
+        m.date >= startDate &&
+        m.date <= endDate &&
+        set.has(m.home) &&
+        set.has(m.away)
+      )
+      .sort((a,b) => String(a.date || '').localeCompare(String(b.date || '')));
+  }
+
+  function closeGroupModal(){
+    if (groupModalBackdropEl.hidden) return;
+    groupModalBackdropEl.hidden = true;
+    document.body.classList.remove('group-modal-open');
+    if (activeGroupTrigger){
+      activeGroupTrigger.focus();
+      activeGroupTrigger = null;
+    }
+  }
+
+  function openGroupModal(data, structure, stage, groupName, teamIds, trigger){
+    const names = teamNameMap(data);
+    activeGroupTrigger = trigger || null;
+
+    const stagePrefix = normaliseGroupStages(structure).length > 1
+      ? `${stage.label || 'Group stage'} — `
+      : '';
+    groupModalTitleEl.textContent = `${stagePrefix}Group ${groupName}`;
+    groupModalTableEl.innerHTML = '';
+    groupModalTableEl.appendChild(buildGroupTable(data, structure, stage, teamIds, groupName));
+
+    groupModalMatchesEl.innerHTML = '';
+    const matches = groupMatches(data, stage, teamIds);
+
+    for (const m of matches){
+      const row = document.createElement('div');
+      row.className = 'group-result';
+
+      const date = document.createElement('div');
+      date.className = 'group-result-date';
+      date.textContent = m.date || '';
+
+      const home = document.createElement('div');
+      home.className = 'group-result-home';
+      const homeLink = document.createElement('a');
+      homeLink.href = `/InternationalFootball/player/?id=${encodeURIComponent(m.home || '')}`;
+      homeLink.textContent = names.get(m.home) || m.home || '';
+      home.appendChild(homeLink);
+
+      const score = document.createElement('div');
+      score.className = 'group-result-score';
+      score.textContent = m.played ? `${m.homeScore}–${m.awayScore}` : '—';
+
+      const away = document.createElement('div');
+      away.className = 'group-result-away';
+      const awayLink = document.createElement('a');
+      awayLink.href = `/InternationalFootball/player/?id=${encodeURIComponent(m.away || '')}`;
+      awayLink.textContent = names.get(m.away) || m.away || '';
+      away.appendChild(awayLink);
+
+      row.appendChild(date);
+      row.appendChild(home);
+      row.appendChild(score);
+      row.appendChild(away);
+      groupModalMatchesEl.appendChild(row);
+    }
+
+    if (!matches.length){
+      const empty = document.createElement('div');
+      empty.className = 'note';
+      empty.textContent = 'No group matches found.';
+      groupModalMatchesEl.appendChild(empty);
+    }
+
+    groupModalBackdropEl.hidden = false;
+    document.body.classList.add('group-modal-open');
+    groupModalCloseEl.focus();
+  }
+
+  groupModalCloseEl.addEventListener('click', closeGroupModal);
+
+  groupModalBackdropEl.addEventListener('click', e => {
+    if (e.target === groupModalBackdropEl) closeGroupModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !groupModalBackdropEl.hidden){
+      closeGroupModal();
+    }
+  });
+
+  function renderGroups(data, structure){
+    groupsEl.innerHTML = '';
+
+    const stages = normaliseGroupStages(structure);
+    if (!stages.length) return false;
+
+    for (const stage of stages){
+      const block = document.createElement('section');
+      block.className = 'group-stage-block';
+
+      if (stages.length > 1){
+        const stageTitle = document.createElement('h4');
+        stageTitle.className = 'group-stage-label';
+        stageTitle.textContent = stage.label || 'Group stage';
+        block.appendChild(stageTitle);
+      }
+
+      const grid = document.createElement('div');
+      grid.className = 'groups-grid';
+
+      for (const [groupName, teamIds] of Object.entries(stage.groups || {})){
+        const card = document.createElement('div');
+        card.className = 'group-card';
+
+        const head = document.createElement('div');
+        head.className = 'group-card-head';
+
+        const h = document.createElement('h4');
+        h.textContent = groupName === 'Final' ? 'Final round' : `Group ${groupName}`;
+
+        const expand = document.createElement('button');
+        expand.className = 'group-expand';
+        expand.type = 'button';
+        expand.textContent = '↗';
+        expand.title = `View ${h.textContent} details`;
+        expand.setAttribute('aria-label', `View ${h.textContent} details`);
+        expand.addEventListener('click', () => {
+          openGroupModal(data, structure, stage, groupName, teamIds, expand);
+        });
+
+        head.appendChild(h);
+        head.appendChild(expand);
+        card.appendChild(head);
+        card.appendChild(buildGroupTable(data, structure, stage, teamIds, groupName));
+
+        grid.appendChild(card);
+      }
+
+      block.appendChild(grid);
+      groupsEl.appendChild(block);
+    }
+
+    return true;
+  }
+
+  function sameFixture(m, pair){
+    if (!m || !pair || pair.length !== 2) return false;
+    const [a,b] = pair;
+    return (m.home === a && m.away === b) || (m.home === b && m.away === a);
+  }
+
+  function findStructuredMatch(data, structMatchOrPair){
+    const structMatch = Array.isArray(structMatchOrPair)
+      ? {teams:structMatchOrPair}
+      : (structMatchOrPair || {});
+    const pair = structMatch.teams || [];
+
+    const candidates = (data.matches || []).filter(m => sameFixture(m, pair));
+    if (structMatch.date){
+      return candidates.find(m => m.date === structMatch.date) || null;
+    }
+    return candidates[0] || null;
+  }
+
+  function inferredWinner(m, nextRoundTeamIds){
+    if (!m) return null;
+
+    if (Number(m.homeScore) > Number(m.awayScore)) return m.home;
+    if (Number(m.awayScore) > Number(m.homeScore)) return m.away;
+
+    if (nextRoundTeamIds?.has(m.home) && !nextRoundTeamIds?.has(m.away)) return m.home;
+    if (nextRoundTeamIds?.has(m.away) && !nextRoundTeamIds?.has(m.home)) return m.away;
+
+    return null;
+  }
+
+  function clearJourney(){
+    bracketEl.classList.remove('journey-active');
+    bracketEl.querySelectorAll('.journey-highlight').forEach(el => {
+      el.classList.remove('journey-highlight');
+    });
+  }
+
+  function highlightJourney(teamId){
+    if (!teamId) return;
+    clearJourney();
+    bracketEl.classList.add('journey-active');
+    bracketEl.querySelectorAll(`.bracket-team[data-team-id="${CSS.escape(teamId)}"]`).forEach(el => {
+      el.classList.add('journey-highlight');
+    });
+  }
+
+  function renderBracketMatch(m, names, winnerId, structMatch){
+    const box = document.createElement('div');
+    box.className = 'bracket-match';
+    box.dataset.matchId = structMatch.id;
+
+    if (!m){
+      const fallbackPlayed = Boolean(structMatch.played);
+      const fallbackWinner = fallbackPlayed
+        ? (Number(structMatch.homeScore) > Number(structMatch.awayScore)
+            ? structMatch.teams?.[0]
+            : Number(structMatch.awayScore) > Number(structMatch.homeScore)
+              ? structMatch.teams?.[1]
+              : null)
+        : null;
+
+      (structMatch.teams || [null,null]).forEach((teamId, idx) => {
+        const row = document.createElement('div');
+        row.className = 'bracket-team' + (fallbackWinner === teamId ? ' winner' : '');
+        if (teamId) row.dataset.teamId = teamId;
+
+        const a = document.createElement('a');
+        a.href = teamId ? `/InternationalFootball/player/?id=${encodeURIComponent(teamId)}` : '#';
+        a.textContent = names.get(teamId) || teamId || (structMatch.label === 'Bye' ? 'Bye' : 'TBD');
+
+        const score = document.createElement('span');
+        score.className = 'bracket-score';
+        if (fallbackPlayed){
+          score.textContent = String(idx === 0 ? structMatch.homeScore : structMatch.awayScore);
+        } else {
+          score.textContent = '—';
+        }
+
+        row.appendChild(a);
+        row.appendChild(score);
+
+        if (teamId){
+          row.addEventListener('mouseenter', () => highlightJourney(teamId));
+          row.addEventListener('mouseleave', clearJourney);
+        }
+
+        box.appendChild(row);
+      });
+      return box;
+    }
+
+    for (const side of ['home','away']){
+      const teamId = m[side];
+      const row = document.createElement('div');
+      row.className = 'bracket-team' + (winnerId === teamId ? ' winner' : '');
+      row.dataset.teamId = teamId;
+
+      const a = document.createElement('a');
+      a.href = `/InternationalFootball/player/?id=${encodeURIComponent(teamId || '')}`;
+      a.textContent = names.get(teamId) || teamId || 'TBD';
+
+      const score = document.createElement('span');
+      score.className = 'bracket-score';
+      score.textContent = m.played ? String(side === 'home' ? m.homeScore : m.awayScore) : '—';
+
+      row.appendChild(a);
+      row.appendChild(score);
+
+      row.addEventListener('mouseenter', () => highlightJourney(teamId));
+      row.addEventListener('mouseleave', clearJourney);
+
+      box.appendChild(row);
+    }
+
+    return box;
+  }
+
+  function mainKnockoutRounds(structure){
+    return (structure.knockoutRounds || []).filter(r => r.id !== 'third-place');
+  }
+
+  function bracketHeightFor(structure){
+    const firstCount = mainKnockoutRounds(structure)[0]?.matches?.length || 1;
+    return Math.max(520, 110 + firstCount * 100);
+  }
+
+  function configureBracketCanvas(structure){
+    const rounds = mainKnockoutRounds(structure);
+    const height = bracketHeightFor(structure);
+    const minWidth = Math.max(760, rounds.length * 250 + Math.max(0, rounds.length - 1) * 70);
+
+    bracketCanvasEl.style.height = `${height}px`;
+    bracketCanvasEl.style.minHeight = `${height}px`;
+    bracketCanvasEl.style.minWidth = `${minWidth}px`;
+
+    bracketEl.style.height = `${height}px`;
+    bracketEl.style.minHeight = `${height}px`;
+    bracketEl.style.gridTemplateColumns = `repeat(${Math.max(1, rounds.length)}, minmax(220px,1fr))`;
+  }
+
+  function positionBracketMatches(structure){
+    const rounds = mainKnockoutRounds(structure);
+    const matchById = new Map();
+
+    for (const round of rounds){
+      for (const m of (round.matches || [])) matchById.set(m.id, m);
+    }
+
+    const canvasHeight = bracketHeightFor(structure);
+    const topPad = 82;
+    const bottomPad = 42;
+
+    const firstMatches = rounds[0]?.matches || [];
+    const centres = new Map();
+
+    if (firstMatches.length){
+      const usable = canvasHeight - topPad - bottomPad;
+      firstMatches.forEach((m, i) => {
+        const y = topPad + usable * ((i + 0.5) / firstMatches.length);
+        centres.set(m.id, y);
+      });
+    }
+
+    // Later matches inherit their position from feeder matches. This means the
+    // renderer works for R32, R16, quarter-final starts, byes and other bracket
+    // sizes without hardcoding particular round names.
+    for (let r = 1; r < rounds.length; r++){
+      for (const target of (rounds[r].matches || [])){
+        const feeders = [];
+
+        for (const source of matchById.values()){
+          if (source.feedsInto === target.id && centres.has(source.id)){
+            feeders.push(centres.get(source.id));
+          }
+        }
+
+        if (feeders.length){
+          centres.set(
+            target.id,
+            feeders.reduce((a,b) => a + b, 0) / feeders.length
+          );
+        }
+      }
+    }
+
+    // If an edition omits feeder metadata, give any unpositioned match a
+    // sensible evenly-spaced fallback within its own round.
+    for (const round of rounds){
+      const missing = (round.matches || []).filter(m => !centres.has(m.id));
+      if (!missing.length) continue;
+
+      const usable = canvasHeight - topPad - bottomPad;
+      missing.forEach((m, i) => {
+        centres.set(m.id, topPad + usable * ((i + 0.5) / missing.length));
+      });
+    }
+
+    for (const [matchId, y] of centres){
+      const el = bracketEl.querySelector(
+        `.bracket-match[data-match-id="${CSS.escape(matchId)}"]`
+      );
+      if (el) el.style.top = `${y}px`;
+    }
+  }
+
+  function drawBracketConnectors(structure){
+    bracketSvgEl.innerHTML = '';
+    bracketSvgEl.setAttribute('viewBox', `0 0 ${bracketCanvasEl.clientWidth} ${bracketHeightFor(structure)}`);
+    bracketSvgEl.setAttribute('preserveAspectRatio', 'none');
+
+    const svgRect = bracketCanvasEl.getBoundingClientRect();
+    const matchEls = new Map(
+      [...bracketEl.querySelectorAll('.bracket-match')].map(el => [el.dataset.matchId, el])
+    );
+
+    const allMatches = (structure.knockoutRounds || []).flatMap(r => r.matches || []);
+
+    for (const sm of allMatches){
+      if (!sm.feedsInto) continue;
+
+      const from = matchEls.get(sm.id);
+      const to = matchEls.get(sm.feedsInto);
+      if (!from || !to) continue;
+
+      const a = from.getBoundingClientRect();
+      const b = to.getBoundingClientRect();
+
+      const x1 = a.right - svgRect.left;
+      const y1 = a.top + a.height / 2 - svgRect.top;
+      const x2 = b.left - svgRect.left;
+      const y2 = b.top + b.height / 2 - svgRect.top;
+      const xm = x1 + (x2 - x1) / 2;
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('class', 'bracket-connector');
+      path.setAttribute('d', `M ${x1} ${y1} H ${xm} V ${y2} H ${x2}`);
+      bracketSvgEl.appendChild(path);
+    }
+  }
+
+  function renderBracket(data, structure){
+    const names = teamNameMap(data);
+    bracketEl.innerHTML = '';
+    bracketSvgEl.innerHTML = '';
+    thirdPlaceEl.innerHTML = '';
+
+    const rounds = structure.knockoutRounds || [];
+    const mainRounds = mainKnockoutRounds(structure);
+
+    configureBracketCanvas(structure);
+
+    mainRounds.forEach((round, roundIndex) => {
+      const col = document.createElement('div');
+      col.className = 'bracket-round';
+      col.dataset.roundId = round.id;
+
+      const h = document.createElement('h4');
+      h.textContent = round.label || round.id;
+      col.appendChild(h);
+
+      const nextRound = mainRounds[roundIndex + 1];
+      const nextTeamIds = new Set(
+        (nextRound?.matches || []).flatMap(m => m.teams || [])
+      );
+
+      for (const structMatch of (round.matches || [])){
+        const m = findStructuredMatch(data, structMatch);
+        const winnerId = inferredWinner(m, nextTeamIds);
+        col.appendChild(renderBracketMatch(m, names, winnerId, structMatch));
+      }
+
+      bracketEl.appendChild(col);
+    });
+
+    positionBracketMatches(structure);
+    requestAnimationFrame(() => drawBracketConnectors(structure));
+
+    const third = rounds.find(r => r.id === 'third-place');
+    if (third?.matches?.length){
+      const h = document.createElement('h4');
+      h.textContent = third.label || 'Third place';
+      thirdPlaceEl.appendChild(h);
+
+      const structMatch = third.matches[0];
+      const m = findStructuredMatch(data, structMatch);
+      const winnerId = inferredWinner(m, new Set());
+      const box = renderBracketMatch(m, names, winnerId, structMatch);
+      box.style.position = 'relative';
+      box.style.top = 'auto';
+      box.style.transform = 'none';
+      box.style.minHeight = '82px';
+      thirdPlaceEl.appendChild(box);
+    }
+
+    window.setTimeout(() => drawBracketConnectors(structure), 50);
+  }
+
+  async function renderStructure(data){
+    structureEl.hidden = true;
+    groupsEl.innerHTML = '';
+    bracketEl.innerHTML = '';
+    bracketSvgEl.innerHTML = '';
+    thirdPlaceEl.innerHTML = '';
+
+    try{
+      const res = await fetch(STRUCTURE_URL(data.tournamentId, data.editionId), {cache:'no-cache'});
+      if (!res.ok) return;
+      const structure = await res.json();
+      const hasGroups = renderGroups(data, structure);
+      const hasKnockout = (structure.knockoutRounds || []).some(r => (r.matches || []).length);
+
+      groupsTitleEl.hidden = !hasGroups;
+      groupsEl.hidden = !hasGroups;
+      knockoutTitleEl.hidden = !hasKnockout;
+      bracketCanvasEl.parentElement.hidden = !hasKnockout;
+      thirdPlaceEl.hidden = !hasKnockout;
+
+      if (hasKnockout) renderBracket(data, structure);
+      structureEl.hidden = !(hasGroups || hasKnockout);
+    } catch (_) {
+      structureEl.hidden = true;
+    }
+  }
+
+
+  function renderMeta(data){
+    const s = data.summary || {};
+    const items = [
+      ['Status', data.status || ''],
+      ['Teams', s.teams ?? (data.teams || []).length],
+      ['Matches', s.matches ?? (data.matches || []).length],
+      ['First match', s.firstDate || ''],
+      ['Last match', s.lastDate || '']
+    ];
+
+    metaEl.innerHTML = '';
+    for (const [label, value] of items){
+      const box = document.createElement('div');
+      box.className = 'stat';
+
+      const l = document.createElement('div');
+      l.className = 'label';
+      l.textContent = label;
+
+      const v = document.createElement('div');
+      v.className = 'value';
+      v.textContent = String(value ?? '');
+
+      box.appendChild(l);
+      box.appendChild(v);
+      metaEl.appendChild(box);
+    }
+  }
+
+  function renderMatches(data){
+    const names = teamNameMap(data);
+    matchesEl.innerHTML = '';
+
+    const thead = document.createElement('thead');
+    const hr = document.createElement('tr');
+
+    for (const h of ['Date', 'Home', 'Elo', 'Away', 'Elo', 'Score']){
+      const th = document.createElement('th');
+      th.textContent = h;
+      hr.appendChild(th);
+    }
+
+    thead.appendChild(hr);
+    matchesEl.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+
+    for (const m of (data.matches || [])){
+      const tr = document.createElement('tr');
+
+      const homeName = names.get(m.home) || m.home || '';
+      const awayName = names.get(m.away) || m.away || '';
+
+      const tdDate = document.createElement('td');
+      tdDate.textContent = m.date || '';
+
+      const tdHome = document.createElement('td');
+      tdHome.className = 'team';
+      const homeLink = document.createElement('a');
+      homeLink.href = `/InternationalFootball/player/?id=${encodeURIComponent(m.home || '')}`;
+      homeLink.textContent = homeName;
+      tdHome.appendChild(homeLink);
+
+      const tdHomeElo = document.createElement('td');
+      tdHomeElo.textContent = Number.isFinite(Number(m.homeElo))
+        ? String(Math.round(Number(m.homeElo)))
+        : '';
+
+      const tdAway = document.createElement('td');
+      tdAway.className = 'team';
+      const awayLink = document.createElement('a');
+      awayLink.href = `/InternationalFootball/player/?id=${encodeURIComponent(m.away || '')}`;
+      awayLink.textContent = awayName;
+      tdAway.appendChild(awayLink);
+
+      const tdAwayElo = document.createElement('td');
+      tdAwayElo.textContent = Number.isFinite(Number(m.awayElo))
+        ? String(Math.round(Number(m.awayElo)))
+        : '';
+
+      const tdScore = document.createElement('td');
+      tdScore.className = 'score';
+      if (m.played){
+        tdScore.textContent = `${m.homeScore}-${m.awayScore}`;
+      } else {
+        tdScore.textContent = '—';
+      }
+
+      for (const td of [tdDate, tdHome, tdHomeElo, tdAway, tdAwayElo, tdScore]){
+        tr.appendChild(td);
+      }
+
+      tbody.appendChild(tr);
+    }
+
+    if (!tbody.children.length){
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+      td.colSpan = 6;
+      td.textContent = 'No matches';
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+    }
+
+    matchesEl.appendChild(tbody);
+  }
+
+  async function loadEdition(tournamentId, editionId){
+    const res = await fetch(EDITION_URL(tournamentId, editionId), { cache: 'no-cache' });
+    if (!res.ok) throw new Error('Tournament edition not found');
+
+    const data = await res.json();
+    titleEl.textContent = data.event || `${data.name || tournamentId} ${editionId}`;
+    renderMeta(data);
+    await renderStructure(data);
+    renderMatches(data);
+    setQuery(tournamentId, editionId);
+  }
+
+  async function loadEditions(tournamentId, preferredEdition){
+    const res = await fetch(EDITIONS_URL(tournamentId), { cache: 'no-cache' });
+    if (!res.ok) throw new Error('Tournament editions not found');
+
+    const editions = await res.json();
+    editionSelect.innerHTML = '';
+
+    for (const e of editions){
+      const opt = document.createElement('option');
+      opt.value = e.id;
+      opt.textContent = e.label || e.id;
+      editionSelect.appendChild(opt);
+    }
+
+    const chosen = editions.some(e => e.id === preferredEdition)
+      ? preferredEdition
+      : (editions[0]?.id || '');
+
+    if (!chosen){
+      throw new Error('No tournament editions available');
+    }
+
+    editionSelect.value = chosen;
+    await loadEdition(tournamentId, chosen);
+  }
+
+  async function init(){
+    try{
+      const res = await fetch(INDEX_URL, { cache: 'no-cache' });
+      if (!res.ok) throw new Error('Tournament index not found');
+
+      families = await res.json();
+      familySelect.innerHTML = '';
+
+      for (const f of families){
+        const opt = document.createElement('option');
+        opt.value = f.id;
+        opt.textContent = f.name;
+        familySelect.appendChild(opt);
+      }
+
+      const requestedTournament = params.get('tournament');
+      const requestedEdition = params.get('edition');
+
+      const chosenTournament = families.some(f => f.id === requestedTournament)
+        ? requestedTournament
+        : (families.find(f => f.id === 'world-cup')?.id || families[0]?.id);
+
+      if (!chosenTournament) throw new Error('No tournament families available');
+
+      familySelect.value = chosenTournament;
+      await loadEditions(chosenTournament, requestedEdition);
+
+      familySelect.addEventListener('change', async () => {
+        await loadEditions(familySelect.value, null);
+      });
+
+      editionSelect.addEventListener('change', async () => {
+        await loadEdition(familySelect.value, editionSelect.value);
+      });
+    } catch (e){
+      console.error(e);
+      titleEl.textContent = 'Error';
+      matchesEl.innerHTML = `<tbody><tr><td>${e.message}</td></tr></tbody>`;
+    }
+  }
+
+  window.addEventListener('resize', () => {
+    if (!structureEl.hidden && bracketEl.children.length){
+      // Connector lines depend on rendered element positions.
+      const tournamentId = familySelect.value;
+      const editionId = editionSelect.value;
+      fetch(STRUCTURE_URL(tournamentId, editionId), {cache:'no-cache'})
+        .then(r => r.ok ? r.json() : null)
+        .then(structure => {
+          if (structure) drawBracketConnectors(structure);
+        })
+        .catch(() => {});
+    }
+  });
+
+  init();
+</script>
+</body>
+</html>

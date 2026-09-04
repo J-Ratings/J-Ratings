@@ -1,0 +1,43 @@
+{
+  "id": "copa-10-team-final-group",
+  "renderer": "group_knockout",
+  "signature": {
+    "teams": 10,
+    "matches": 26
+  },
+  "groupStages": [
+    {
+      "label": "First group stage",
+      "matchCount": 20,
+      "groupLabels": [
+        "A",
+        "B"
+      ],
+      "groupSizes": [
+        5,
+        5
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    },
+    {
+      "label": "Final round",
+      "matchCount": 6,
+      "groupLabels": [
+        "Final"
+      ],
+      "groupSizes": [
+        4
+      ],
+      "points": {
+        "win": 2,
+        "draw": 1,
+        "loss": 0
+      }
+    }
+  ],
+  "knockoutRounds": []
+}
