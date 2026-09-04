@@ -14850,7 +14850,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 123,Lee Andy,Andy,"",Lee,Hong Kong,1980-11-27,"",M,1,2008,2023,2026,a
 143,Jeff Cundy,Jeff,"",Cundy,England,1969-03-01,"",M,1,1991,2006,2026,a
 147,James Silverwood,James,"",Silverwood,England,1991-04-30,"",M,1,0,0,2026,a
-163,Farakh Ajaib,Farakh,"",Ajaib,Pakistan,1991-02-03,"",M,1,2020,2025,2026,a
+163,Farakh Ajaib,Farakh,"",Ajaib,England,1991-02-03,"",M,1,2020,2025,2026,a
 206,Neal Jones,Neal,"",Jones,England,1976-05-20,"",M,1,1994,1997,2026,a
 235,Ryan Causton,Ryan,"",Causton,England,1990-08-28,"",M,1,0,0,2026,a
 329,Robert Drahn,Robert,"",Drahn,Germany,"","",M,1,0,0,2026,a
@@ -14889,7 +14889,9 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 1502,Anthony Massey,Anthony,"",Massey,England,"","",M,1,0,0,2026,a
 1572,Corina Maracine,Corina,"",Maracine,Romania,1991-12-28,"",F,1,0,0,2026,a
 1705,Wu Shengguang,Shengguang,"",Wu,China,1998-12-25,"",M,1,0,0,2026,a
+1799,Anna Prisjaznuka,Anna,"",Prisjaznuka,Latvia,"","",F,1,0,0,2026,a
 1812,Patrick Whelan,Patrick,"",Whelan,England,1998-01-12,"",M,1,0,0,2026,a
+1829,Mink Nutcharut,Mink,"",Nutcharut,Thailand,1999-11-07,"",F,1,2022,2025,2026,a
 1859,Amir Nardeia,Amir,"",Nardeia,Israel,"","",M,1,0,0,2026,a
 1930,Hassan Kerde,Hassan,"",Kerde,Australia,"","",M,1,0,0,2026,a
 2010,Daniel Womersley,Daniel,"",Womersley,England,1992-01-26,"",M,1,0,0,2026,a
@@ -14904,7 +14906,10 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2080,Thomas Lancastle,Thomas,"",Lancastle,England,1996-09-12,"",M,1,0,0,2026,a
 2081,Luke Pinches,Luke,"",Pinches,England,2001-08-07,"",M,1,0,0,2026,a
 2083,Robert Read,Robert,"",Read,England,1971-05-13,"",M,1,0,0,2026,a
+2121,Rebecca Kenna,Rebecca,"",Kenna,England,1989-01-11,"",F,1,2022,2023,2026,a
+2125,So Man Yan,Man Yan,"",So,Hong Kong,1981-11-24,"",F,1,0,0,2026,a
 2132,Jessica Woods,Jessica,"",Woods,Australia,"","",F,1,0,0,2026,a
+2146,Elizabeth Black,Elizabeth,"",Black,England,"","",F,1,0,0,2026,a
 2156,Sean McAllister,Sean,"",McAllister,England,2000-06-21,"",M,1,0,0,2026,a
 2157,Ian Martin,Ian,"",Martin,England,1982-04-14,"",M,1,0,0,2026,a
 2243,Daniel Williams,Daniel,"",Williams,Wales,1999-09-06,"",M,1,0,0,2026,a
@@ -14914,18 +14919,25 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2275,Halim Hussain,Halim,"",Hussain,England,2002-03-23,"",M,1,0,0,2026,a
 2277,Curtis Daher,Curtis,"",Daher,England,1995-06-09,"",M,1,0,0,2026,a
 2286,WILDCARD,WILDCARD,"", ,"","","","",1,0,0,2026,a
+2325,Connie Stephens,Connie,"",Stephens,England,"","",F,1,0,0,2026,a
 2340,Sean Maddocks,Sean,"",Maddocks,England,2002-04-10,"",M,1,2020,2021,2026,a
 2345,Alex Millington,Alex,"",Millington,England,1995-05-25,"",M,1,0,0,2026,a
 2363,Lewis Ullah,Lewis,"",Ullah,England,2002-05-10,"",M,1,0,0,2026,a
+2369,Cheung Yee Ting,Yee Ting,"",Cheung,Hong Kong,"","",F,1,0,0,2026,a
 2378,Ryan Davies,Ryan,"",Davies,England,2002-04-29,"",M,1,0,0,2026,a
 2392,Callum Beresford,Callum,"",Beresford,England,2001-01-01,"",M,1,0,0,2026,a
+2437,Zoe Killington,Zoe,"",Killington,England,"","",F,1,0,0,2026,a
 2480,Elliott Weston,Elliott,"",Weston,England,2000-03-09,"",M,1,0,0,2026,a
 2490,Garry Coulson,Garry,"",Coulson,England,1976-07-03,"",M,1,0,0,2026,a
 2499,Dean Young,Dean,"",Young,Scotland,2002-01-07,"",M,1,2021,2024,2026,a
 2507,Robbie McGuigan,Robbie,"",McGuigan,Northern Ireland,2004-07-07,"",M,1,2024,2025,2026,a
+2537,Zeinab Shahi,Zeinab,"",Shahi,Iran,"","",F,1,0,0,2026,a
 2540,Theresa Whitten,Theresa,"",Whitten,Australia,"","",F,1,0,0,2026,a
+2591,Emma Brown,Emma,"",Brown,England,"","",F,1,0,0,2026,a
 2595,Mark Lloyd,Mark,"",Lloyd,England,1999-10-31,"",M,1,0,0,2026,a
 2655,Bulcsu Revesz,Bulcsu,"",Revesz,Hungary,2007-01-01,"",M,1,2024,2025,2026,a
+2667,Deborah Fladgate,Deborah,"",Fladgate,Scotland,"","",F,1,0,0,2026,a
+2680,Laura Killington,Laura,"",Killington,England,"","",F,1,0,0,2026,a
 2722,Alex Clenshaw,Alex,"",Clenshaw,England,2001-06-20,"",M,1,0,0,2026,a
 2748,Bradley Cowdroy,Bradley,"",Cowdroy,England,2002-04-05,"",M,1,0,0,2026,a
 2749,Paul Deaville,Paul,"",Deaville,England,2004-10-25,"",M,1,0,0,2026,a
@@ -14938,8 +14950,12 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2777,Dylan Smith,Dylan,"",Smith,England,2007-10-23,"",M,1,0,0,2026,a
 2785,Mark Bell,Mark,"",Bell,England,1980-07-27,"",M,1,0,0,2026,a
 2798,Amaan Iqbal,Amaan,"",Iqbal,Scotland,2006-02-17,"",M,1,0,0,2026,a
+2799,Sophie Nix,Sophie,"",Nix,Scotland,"","",F,1,0,0,2026,a
 2803,Alfie Davies,Alfie,"",Davies,Wales,2000-10-09,"",M,1,0,0,2026,a
 2807,Vladislav Gradinari,Vladislav,"",Gradinari,Moldova,2008-10-15,"",M,1,0,0,2026,a
+2818,Sarah Dunn,Sarah,"",Dunn,England,"","",F,1,0,0,2026,a
+2824,Tessa Davidson,Tessa,"",Davidson,England,1969-04-22,"",F,1,0,0,2026,a
+2826,Shi Lynn,Lynn,"",Shi,China,1998-07-07,"",F,1,0,0,2026,a
 2828,Philip Blackburn,Philip,"",Blackburn,England,1972-04-29,"",M,1,0,0,2026,a
 2865,Daniel Boyes,Daniel,"",Boyes,England,2007-12-03,"",M,1,0,0,2026,a
 2866,Jason Lawrence,Jason,"",Lawrence,Jamaica,"","",M,1,0,0,2026,a
@@ -14958,9 +14974,11 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2995,Edward Jones,Edward,"",Jones,England,2008-11-18,"",M,1,0,0,2026,a
 2996,Aristos Pampouris,Aristos,"",Pampouris,England,2000-07-15,"",M,1,0,0,2026,a
 3005,Jacob Boyle,Jacob,"",Boyle,Wales,2003-03-30,"",M,1,0,0,2026,a
+3017,Mhairi Mackay,Mhairi,"",Mackay,Scotland,"","",F,1,0,0,2026,a
 3059,Jake Robinson,Jake,"",Robinson,England,1998-02-18,"",M,1,0,0,2026,a
 3062,Riley Powell,Riley,"",Powell,Wales,2008-08-27,"",M,1,0,0,2026,a
 3063,Oliver Briffett-Payne,Oliver,"",Briffett-Payne,Wales,2005-07-26,"",M,1,0,0,2026,a
+3085,Anupama Ramachandran,Anupama,"",Ramachandran,India,2002-05-19,"",F,1,0,0,2026,a
 3110,Daniel Webb,Daniel,"",Webb,England,1992-01-29,"",M,1,0,0,2026,a
 3112,Thomas Peasland,Thomas,"",Peasland,England,1991-07-06,"",M,1,0,0,2026,a
 3181,Brandon Nguyen,Brandon,"",Nguyen,England,2005-06-27,"",M,1,0,0,2026,a
@@ -14968,7 +14986,9 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 3196,Sebastian Milewski,Sebastian,"",Milewski,Poland,2006-11-08,"",M,1,0,0,2026,a
 3199,Liu Shaun,Shaun,"",Liu,Hong Kong,2010-07-02,"",M,1,0,0,2026,a
 3200,Craig Butler,Craig,"",Butler,England,1974-04-30,"",M,1,2000,2004,2026,a
+3228,Selina Dean,Selina,"",Dean,England,"","",F,1,0,0,2026,a
 3462,Wang Xinzhong,Xinzhong,"",Wang,China,2010-12-17,"",M,1,0,0,2026,a
+3518,Lau Yuk Fan,Yuk Fan,"",Lau,Hong Kong,"","",F,1,0,0,2026,a
 3551,George Neradilek,George,"",Neradilek,Australia,"","",M,1,0,0,2026,a
 3568,Billy Shum,Billy,"",Shum,Australia,"","",M,1,0,0,2026,a
 3569,Rahul Joshi,Rahul,"",Joshi,Australia,"","",M,1,0,0,2026,a
@@ -15022,6 +15042,9 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 4003,Chris Hart,Chris,"",Hart,England,"","",M,1,0,0,2026,a
 4113,Nicolas Le Clercq,Nicolas,"",Le Clercq,Hungary,"","",M,1,0,0,2026,a
 4122,Jenson Schmid,Jenson,"",Schmid,Switzerland,"","",M,1,0,0,2026,a
+4137,Liu Ziling,Ziling,"",Liu,China,"","",F,1,0,0,2026,a
+4139,Narucha Phoemphul,Narucha,"",Phoemphul,Thailand,2005-12-27,"",F,1,0,0,2026,a
+4142,Shiu Wing Man,Wing Man,"",Shiu,Hong Kong,"","",F,1,0,0,2026,a
 4156,Arsenii Korolev,Arsenii,"",Korolev,Bulgaria,2006-07-17,"",M,1,0,0,2026,a
 4271,Keith Carr,Keith,"",Carr,Australia,"","",M,1,0,0,2026,a
 4272,Naqi Alizada,Naqi,"",Alizada,Australia,"","",M,1,0,0,2026,a
@@ -15053,6 +15076,8 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 4385,John Walmsley,John,"",Walmsley,Australia,"","",M,1,0,0,2026,a
 4389,Philip Vassallo,Philip,"",Vassallo,Australia,"","",M,1,0,0,2026,a
 4391,Amol Abdagiri,Amol,"",Abdagiri,Australia,"","",M,1,0,0,2026,a
+4402,Kara Cox,Kara,"",Cox,United States,"","",F,1,0,0,2026,a
+4416,Rose Nicholson,Rose,"",Nicholson,England,"","",F,1,0,0,2026,a
 4418,Caiden Casha,Caiden,"",Casha,Malta,"","",M,1,0,0,2026,a
 4420,Baljeet Singh,Baljeet,"",Singh,New Zealand,"","",M,1,0,0,2026,a
 4424,Fathey Refai,Fathey,"",Refai,New Zealand,"","",M,1,0,0,2026,a
@@ -15098,10 +15123,13 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 5001,Noah Gartell,Noah,"",Gartell,England,"","",M,1,0,0,2026,a
 5002,Ryan Spratt,Ryan,"",Spratt,England,"","",M,1,0,0,2026,a
 5017,William Thomson (ENG),William,"",Thomson (ENG),England,"","",M,1,0,0,2026,a
+5049,Tallulah Cousins,Tallulah,"",Cousins,England,"","",F,1,0,0,2026,a
 5059,Rio Chung,Rio,"",Chung,Wales,"","",M,1,0,0,2026,a
 5071,Mateo Ochoiski,Mateo,"",Ochoiski,France,"","",M,1,0,0,2026,a
 5127,Abhishek Sharma,Abhishek,"",Sharma,India,"","",M,1,0,0,2026,a
 5131,George Dennaoui,George,"",Dennaoui,Australia,"","",M,1,0,0,2026,a
+5137,Kellie Barker,Kellie,"",Barker,England,1980-11-28,"",F,1,0,0,2026,a
+5139,Chris Sharpe,Chris,"",Sharpe,England,"","",F,1,0,0,2026,a
 5147,Anurag Saboo,Anurag,"",Saboo,India,"","",M,1,0,0,2026,a
 5181,Peter Brown,Peter,"",Brown,Australia,"","",M,1,0,0,2026,a
 5182,Alan Wood,Alan,"",Wood,Australia,"","",M,1,0,0,2026,a
@@ -15195,7 +15223,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 146,Oliver Brown,Oliver,"",Brown,England,1994-08-18,"",M,1,2022,0,2025,p
 154,Neil Robertson,Neil,"",Robertson,Australia,1982-02-11,"",M,1,1998,0,2025,p
 158,Ali Carter,Ali,"",Carter,England,1979-07-25,"",M,1,1996,0,2025,p
-163,Farakh Ajaib,Farakh,"",Ajaib,Pakistan,1991-02-03,"",M,1,2020,2025,2025,p
+163,Farakh Ajaib,Farakh,"",Ajaib,England,1991-02-03,"",M,1,2020,2025,2025,p
 170,Ken Doherty,Ken,"",Doherty,Ireland,1969-09-17,"",M,1,1990,2025,2025,p
 175,Reanne Evans,Reanne,"",Evans,England,1985-10-25,"",F,1,2010,0,2025,p
 202,Mark Allen,Mark,"",Allen,Northern Ireland,1986-02-22,"",M,1,2005,0,2025,p
