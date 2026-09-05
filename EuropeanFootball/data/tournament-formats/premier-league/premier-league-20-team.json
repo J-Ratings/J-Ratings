@@ -1,0 +1,1 @@
+{"id":"premier-league-20-team","renderer":"league","signature":{"teams":20,"matches":380,"allowIncompleteMatches":true},"groupStages":[{"label":"Premier League","matchCount":380,"groupSizes":[20],"groupLabels":["Table"],"points":{"win":3,"draw":1,"loss":0},"tiebreakers":["points","goalDifference","goalsFor"],"allowIncomplete":true}]}

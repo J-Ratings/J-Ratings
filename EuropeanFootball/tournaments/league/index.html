@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>J-Ratings: Premier League</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/EuropeanFootball/style.css">
+  <style>
+    .tournament-head{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:18px;
+      margin-bottom:18px;
+    }
+    .tournament-head h2{margin:0;text-align:center;font-size:2.2rem}
+    .selectors{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .selectors label{font-weight:700}
+    .selectors select{
+      padding:8px 10px;border-radius:8px;border:1px solid #394252;
+      background:#151b26;color:inherit;
+    }
+    .event-name{justify-self:end;opacity:.82;text-align:right}
+    .summary{
+      display:flex;justify-content:center;gap:10px;flex-wrap:wrap;
+      margin:0 0 18px;
+    }
+    .summary-pill{
+      padding:6px 10px;border:1px solid #394252;border-radius:9999px;
+      background:rgba(255,255,255,.03);font-weight:700;font-size:.9rem;
+    }
+    .layout{
+      display:grid;grid-template-columns:minmax(560px,.9fr) minmax(520px,1.1fr);
+      gap:18px;align-items:start;
+    }
+    .card{
+      border:1px solid #2b2f36;border-radius:12px;
+      background:rgba(255,255,255,.025);overflow:hidden;
+    }
+    .card h3{
+      margin:0;padding:14px 16px;text-align:center;
+      border-bottom:1px solid #2b2f36;font-size:1.35rem;
+    }
+    .scroll{overflow:auto;max-height:720px}
+    table{width:100%;border-collapse:collapse;font-size:.96rem}
+    th,td{
+      padding:9px 10px;text-align:center;border-bottom:1px solid #2b2f36;
+      white-space:nowrap;
+    }
+    th{position:sticky;top:0;background:#1a1a1a;z-index:1}
+    td.team,th.team{text-align:left}
+    td.team a{color:inherit;text-decoration:underline;text-underline-offset:2px;font-weight:700}
+    .pos{width:42px}
+    .pts{font-weight:900}
+    .champion td{font-weight:800}
+    .relegation{background:rgba(229,57,53,.09)}
+    .score{font-weight:800}
+    .upcoming{opacity:.72}
+    .status{opacity:.72;text-align:center;padding:30px}
+    .adjustment-note{
+      margin:14px 0 0;text-align:center;opacity:.75;line-height:1.45;font-size:.9rem
+    }
+    @media(max-width:1050px){.layout{grid-template-columns:1fr}}
+    @media(max-width:800px){
+      .tournament-head{grid-template-columns:1fr;justify-items:center}
+      .event-name{justify-self:center;text-align:center}
+      .tournament-head h2{font-size:1.65rem}
+    }
+    html,*{scrollbar-color:#596273 #151b26;scrollbar-width:thin}
+    *::-webkit-scrollbar{width:10px;height:10px}
+    *::-webkit-scrollbar-track{background:#151b26}
+    *::-webkit-scrollbar-thumb{background:#596273;border:2px solid #151b26;border-radius:8px}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1 class="site-title">
+      <a href="/EuropeanFootball/home/" class="brand-with-logo">
+        <span>J-Ratings <span class="title-football">European Football</span></span>
+      </a>
+    </h1>
+    <nav class="topnav" aria-label="Main">
+      <a href="/index.html">Sports</a>
+      <a href="/EuropeanFootball/home/">Home</a>
+      <a href="/EuropeanFootball/compare/">Compare</a>
+      <a href="/EuropeanFootball/peak/">Peak</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel">
+    <div class="tournament-head">
+      <div class="selectors">
+        <label for="familySelect">Tournament</label>
+        <select id="familySelect"></select>
+        <label for="editionSelect">Season</label>
+        <select id="editionSelect"></select>
+      </div>
+      <h2 id="title">Premier League</h2>
+      <div id="eventName" class="event-name"></div>
+    </div>
+
+    <div id="status" class="status">Loading tournament…</div>
+
+    <div id="content" hidden>
+      <div id="summary" class="summary"></div>
+
+      <div class="layout">
+        <div class="card">
+          <h3>Table</h3>
+          <div class="scroll">
+            <table id="standings">
+              <thead>
+                <tr>
+                  <th class="pos">#</th>
+                  <th class="team">Team</th>
+                  <th>P</th><th>W</th><th>D</th><th>L</th>
+                  <th>GF</th><th>GA</th><th>GD</th><th>Pts</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Matches</h3>
+          <div class="scroll">
+            <table id="matches">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th class="team">Home</th>
+                  <th>Score</th>
+                  <th class="team">Away</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="adjustmentNote" class="adjustment-note"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const familySelect = document.getElementById('familySelect');
+  const editionSelect = document.getElementById('editionSelect');
+  const titleEl = document.getElementById('title');
+  const eventNameEl = document.getElementById('eventName');
+  const statusEl = document.getElementById('status');
+  const contentEl = document.getElementById('content');
+  const summaryEl = document.getElementById('summary');
+  const standingsBody = document.querySelector('#standings tbody');
+  const matchesBody = document.querySelector('#matches tbody');
+  const adjustmentNote = document.getElementById('adjustmentNote');
+
+  const INDEX_URL = '/EuropeanFootball/data/tournaments/index.json';
+  const EDITIONS_URL = id =>
+    `/EuropeanFootball/data/tournaments/${encodeURIComponent(id)}/editions.json`;
+  const DATA_URL = (id, edition) =>
+    `/EuropeanFootball/data/tournaments/${encodeURIComponent(id)}/${encodeURIComponent(edition)}.json`;
+  const STRUCTURE_URL = (id, edition) =>
+    `/EuropeanFootball/data/tournament-structure/${encodeURIComponent(id)}/${encodeURIComponent(edition)}.json`;
+
+  async function json(url){
+    const res = await fetch(url,{cache:'no-cache'});
+    if(!res.ok) throw new Error(`Could not load ${url}`);
+    return res.json();
+  }
+
+  function teamMap(data){
+    return new Map((data.teams || []).map(t => [t.id, t]));
+  }
+
+  function teamLink(id, teams){
+    const t = teams.get(id);
+    const a = document.createElement('a');
+    a.href = `/EuropeanFootball/player/?id=${encodeURIComponent(id)}`;
+    a.textContent = t?.name || id;
+    return a;
+  }
+
+  function calculateTable(data){
+    const teams = teamMap(data);
+    const rows = new Map();
+
+    for(const [id,t] of teams){
+      rows.set(id,{
+        id,p:0,w:0,d:0,l:0,gf:0,ga:0,gd:0,
+        basePts:0,
+        adjustment:Number(t.pointsAdjustment || 0),
+        pts:0
+      });
+    }
+
+    for(const m of (data.matches || [])){
+      if(m.played === false) continue;
+      const hs = Number(m.homeScore);
+      const as = Number(m.awayScore);
+      if(!Number.isFinite(hs) || !Number.isFinite(as)) continue;
+      if(!rows.has(m.home) || !rows.has(m.away)) continue;
+
+      const h = rows.get(m.home), a = rows.get(m.away);
+      h.p++; a.p++;
+      h.gf += hs; h.ga += as;
+      a.gf += as; a.ga += hs;
+
+      if(hs > as){h.w++;a.l++;h.basePts += 3;}
+      else if(as > hs){a.w++;h.l++;a.basePts += 3;}
+      else{h.d++;a.d++;h.basePts++;a.basePts++;}
+    }
+
+    for(const r of rows.values()){
+      r.gd = r.gf - r.ga;
+      r.pts = r.basePts + r.adjustment;
+    }
+
+    return [...rows.values()].sort((a,b) =>
+      b.pts - a.pts ||
+      b.gd - a.gd ||
+      b.gf - a.gf ||
+      (teams.get(a.id)?.name || a.id).localeCompare(teams.get(b.id)?.name || b.id)
+    );
+  }
+
+  function renderStandings(data){
+    standingsBody.innerHTML = '';
+    const teams = teamMap(data);
+    const rows = calculateTable(data);
+    const relegationPlaces = Number(data.rules?.relegationPlaces || 3);
+
+    rows.forEach((r,idx) => {
+      const tr = document.createElement('tr');
+      if(idx === 0) tr.classList.add('champion');
+      if(idx >= rows.length - relegationPlaces) tr.classList.add('relegation');
+
+      const values = [
+        String(idx + 1),
+        null,
+        r.p,r.w,r.d,r.l,r.gf,r.ga,(r.gd > 0 ? '+' : '') + r.gd,r.pts
+      ];
+
+      values.forEach((value,col) => {
+        const td = document.createElement('td');
+        if(col === 0) td.className = 'pos';
+        if(col === 1){
+          td.className = 'team';
+          td.appendChild(teamLink(r.id,teams));
+        }else{
+          td.textContent = String(value);
+          if(col === 9) td.className = 'pts';
+        }
+        tr.appendChild(td);
+      });
+
+      standingsBody.appendChild(tr);
+    });
+
+    const adjusted = rows.filter(r => r.adjustment !== 0);
+    adjustmentNote.textContent = adjusted.length
+      ? 'Administrative points adjustments applied: ' +
+        adjusted.map(r => `${teams.get(r.id)?.name || r.id} ${r.adjustment > 0 ? '+' : ''}${r.adjustment}`).join(', ') + '.'
+      : '';
+  }
+
+  function renderMatches(data){
+    matchesBody.innerHTML = '';
+    const teams = teamMap(data);
+    const rows = [...(data.matches || [])].sort((a,b) =>
+      new Date(a.date) - new Date(b.date)
+    );
+
+    for(const m of rows){
+      const tr = document.createElement('tr');
+      const played = m.played !== false &&
+        Number.isFinite(Number(m.homeScore)) &&
+        Number.isFinite(Number(m.awayScore));
+
+      if(!played) tr.classList.add('upcoming');
+
+      const date = document.createElement('td');
+      date.textContent = m.date || '';
+
+      const home = document.createElement('td');
+      home.className = 'team';
+      home.appendChild(teamLink(m.home,teams));
+
+      const score = document.createElement('td');
+      score.className = 'score';
+      score.textContent = played ? `${m.homeScore}–${m.awayScore}` : 'Upcoming';
+
+      const away = document.createElement('td');
+      away.className = 'team';
+      away.appendChild(teamLink(m.away,teams));
+
+      tr.append(date,home,score,away);
+      matchesBody.appendChild(tr);
+    }
+  }
+
+  function renderSummary(data){
+    summaryEl.innerHTML = '';
+    const items = [
+      `${data.summary?.teams ?? 0} teams`,
+      `${data.summary?.playedMatches ?? 0} / ${data.summary?.matches ?? 0} matches played`
+    ];
+    if(Number(data.summary?.remainingMatches || 0) > 0){
+      items.push(`${data.summary.remainingMatches} remaining`);
+    }
+    items.push(data.status === 'completed' ? 'Completed' : 'In progress');
+
+    for(const text of items){
+      const span = document.createElement('span');
+      span.className = 'summary-pill';
+      span.textContent = text;
+      summaryEl.appendChild(span);
+    }
+  }
+
+  async function loadFamilyOptions(selected){
+    const families = await json(INDEX_URL);
+    familySelect.innerHTML = '';
+    for(const f of families){
+      const opt = document.createElement('option');
+      opt.value = f.id;
+      opt.textContent = f.name;
+      familySelect.appendChild(opt);
+    }
+    const fallback = families[0];
+    familySelect.value = families.some(f => f.id === selected) ? selected : fallback.id;
+  }
+
+  async function loadEditionOptions(familyId, selected){
+    const editions = await json(EDITIONS_URL(familyId));
+    editionSelect.innerHTML = '';
+    for(const e of editions){
+      const opt = document.createElement('option');
+      opt.value = e.id;
+      opt.textContent = e.label || e.id;
+      if(e.status === 'in_progress') opt.textContent += ' • live';
+      editionSelect.appendChild(opt);
+    }
+    editionSelect.value = editions.some(e => String(e.id) === String(selected))
+      ? String(selected)
+      : String(editions[0].id);
+  }
+
+  function navigate(){
+    const next = new URL('/EuropeanFootball/tournaments/', location.origin);
+    next.searchParams.set('tournament', familySelect.value);
+    next.searchParams.set('edition', editionSelect.value);
+    location.href = next.href;
+  }
+
+  async function init(){
+    try{
+      const requestedFamily = params.get('tournament');
+      const requestedEdition = params.get('edition');
+
+      await loadFamilyOptions(requestedFamily);
+      await loadEditionOptions(familySelect.value, requestedEdition);
+
+      familySelect.addEventListener('change', async () => {
+        await loadEditionOptions(familySelect.value, null);
+        navigate();
+      });
+      editionSelect.addEventListener('change', navigate);
+
+      const familyId = familySelect.value;
+      const editionId = editionSelect.value;
+
+      const [data,structure] = await Promise.all([
+        json(DATA_URL(familyId,editionId)),
+        json(STRUCTURE_URL(familyId,editionId))
+      ]);
+
+      if(String(structure.renderer) !== 'league'){
+        throw new Error(`Wrong renderer for this tournament: ${structure.renderer}`);
+      }
+
+      titleEl.textContent = data.name || 'Premier League';
+      eventNameEl.textContent = data.event || data.season || '';
+      renderSummary(data);
+      renderStandings(data);
+      renderMatches(data);
+
+      statusEl.hidden = true;
+      contentEl.hidden = false;
+      document.title = `J-Ratings: ${data.event || data.name || 'Premier League'}`;
+    }catch(err){
+      console.error(err);
+      statusEl.textContent = err.message || 'Could not load tournament';
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>

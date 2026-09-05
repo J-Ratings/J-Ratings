@@ -310,6 +310,17 @@
       vertical-align: middle;
     }
 
+    a.competition-badge{
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    a.competition-badge:hover{
+      opacity: 0.9;
+      text-decoration: none;
+    }
+
     .tier-premier-league { background:#59127a; color:#fff; }
     .tier-championship { background:#081e9a; color:#fff; }
     .tier-league-1 { background:#8D8E8E; color:#000; }
@@ -1085,11 +1096,23 @@ if (total === 99) {
   }
 
   function renderCompetitionBadge(g) {
-    const span = document.createElement('span');
-    span.className = `competition-badge ${competitionBadgeClass(g)}`.trim();
-    span.textContent = competitionLabel(g);
-    span.title = span.textContent;
-    return span;
+    const competition = String(g.competition || '').trim().toLowerCase();
+    const season = String(g.season || '').trim();
+
+    const el = competition === 'premier_league' && season
+      ? document.createElement('a')
+      : document.createElement('span');
+
+    el.className = `competition-badge ${competitionBadgeClass(g)}`.trim();
+    el.textContent = competitionLabel(g);
+    el.title = el.textContent;
+
+    if (el.tagName === 'A') {
+      const edition = season.replace('/', '-');
+      el.href = `../tournaments/?tournament=premier-league&edition=${encodeURIComponent(edition)}`;
+    }
+
+    return el;
   }
 
   function renderUpcomingTable(me, teams, games) {

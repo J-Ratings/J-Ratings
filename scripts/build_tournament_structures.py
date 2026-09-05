@@ -97,8 +97,18 @@ def template_matches(template: dict[str, Any], data: dict[str, Any]) -> bool:
     if expected_teams is not None and len(data.get("teams", [])) != int(expected_teams):
         return False
 
-    if expected_matches is not None and len(data.get("matches", [])) != int(expected_matches):
-        return False
+    if expected_matches is not None:
+        actual_matches = len(data.get("matches", []))
+        expected_matches = int(expected_matches)
+
+        # A format may explicitly allow a partially published fixture list.
+        # This is useful for live league seasons. Historical completeness is
+        # still validated by the sport's data writer before structures are built.
+        if signature.get("allowIncompleteMatches", False):
+            if actual_matches > expected_matches:
+                return False
+        elif actual_matches != expected_matches:
+            return False
 
     detect = template.get("detect")
     if not detect:
@@ -413,6 +423,15 @@ def standings(
         if match["home"] not in team_set or match["away"] not in team_set:
             continue
 
+        # Future/incomplete tournament editions may legitimately contain
+        # scheduled fixtures with no score yet. They belong to the tournament
+        # structure, but must not count in the live standings.
+        if match.get("played") is False:
+            continue
+
+        if match.get("homeScore") in (None, "") or match.get("awayScore") in (None, ""):
+            continue
+
         home = rows[match["home"]]
         away = rows[match["away"]]
 
@@ -661,10 +680,13 @@ def build_structure(
         raw = matches[cursor:cursor + count]
 
         if len(raw) != count:
-            raise RuntimeError(
-                f"{data['editionId']}: {stage_def['label']} expected "
-                f"{count} matches, found {len(raw)}"
-            )
+            allow_incomplete = bool(stage_def.get("allowIncomplete", False))
+
+            if not (allow_incomplete and len(raw) < count):
+                raise RuntimeError(
+                    f"{data['editionId']}: {stage_def['label']} expected "
+                    f"{count} matches, found {len(raw)}"
+                )
 
         stage_id = (
             "group-stage"
@@ -691,7 +713,7 @@ def build_structure(
             "groups": groups,
         })
 
-        cursor += count
+        cursor += len(raw)
 
     knockout_rounds, cursor = build_knockout_rounds(
         data,
@@ -1054,7 +1076,7 @@ def process_tournament(
     edition_paths = sorted(
         path
         for path in data_dir.glob("*.json")
-        if path.stem.isdigit()
+        if path.stem not in {"editions", "index"}
     )
 
     if edition:

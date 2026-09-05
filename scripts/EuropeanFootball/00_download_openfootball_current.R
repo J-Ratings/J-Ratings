@@ -252,6 +252,27 @@ wikipedia_domestic_cup_title <- function(start_year, competition) {
   stop("Unknown Wikipedia domestic cup: ", competition)
 }
 
+wikipedia_premier_league_title <- function(start_year) {
+  start_year <- as.integer(start_year)
+  end_short <- sprintf("%02d", (start_year + 1L) %% 100L)
+  paste0(start_year, "\u2013", end_short, " Premier League")
+}
+
+make_wikipedia_premier_league_job <- function(start_year) {
+  season <- season_folder_from_start_year(start_year)
+
+  data.frame(
+    competition = "premier_league",
+    season = season,
+    stage = "results matrix",
+    page_title = wikipedia_premier_league_title(start_year),
+    local_file = "page.html",
+    refresh_current = TRUE,
+    stringsAsFactors = FALSE
+  )
+}
+
+
 make_wikipedia_domestic_cup_jobs <- function(first_start_year, current_start_year, competition) {
   start_years <- first_start_year:current_start_year
   seasons <- vapply(start_years, season_folder_from_start_year, character(1))
@@ -627,6 +648,7 @@ print(download_results)
 current_start_year <- season_start_year(season_folder)
 
 wikipedia_jobs <- rbind(
+  make_wikipedia_premier_league_job(current_start_year),
   make_wikipedia_jobs(current_start_year, current_start_year, "europa_league"),
   make_wikipedia_jobs(current_start_year, current_start_year, "conference_league"),
   make_wikipedia_domestic_cup_jobs(current_start_year, current_start_year, "fa_cup"),

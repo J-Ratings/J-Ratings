@@ -580,6 +580,290 @@ parse_wikipedia_date <- function(x) {
   as.Date(regmatches(x, m), format = "%d %B %Y")
 }
 
+normalise_wikipedia_club_key <- function(x) {
+  x <- clean_wikipedia_text(x)
+  x <- iconv(x, from = "", to = "ASCII//TRANSLIT")
+  x[is.na(x)] <- ""
+  x <- tolower(x)
+  x <- gsub("&", " and ", x, fixed = TRUE)
+  x <- gsub("[^a-z0-9]+", " ", x)
+  x <- gsub("\\b(a\\.?f\\.?c\\.?|f\\.?c\\.?)\\b", " ", x, perl = TRUE)
+  x <- gsub("\\bfootball club\\b", " ", x, perl = TRUE)
+  x <- gsub("\\s+", " ", x)
+  trim(x)
+}
+
+parse_wikipedia_premier_league_results_matrix <- function(
+    html_path,
+    season_folder
+) {
+  if (!requireNamespace("xml2", quietly = TRUE)) {
+    stop("Package 'xml2' is required. Install it once with install.packages('xml2').")
+  }
+
+  doc <- xml2::read_html(html_path, encoding = "UTF-8")
+  season_str <- normalise_openfootball_season_label(season_folder)
+
+  tables <- xml2::xml_find_all(doc, "//table")
+  result_table <- NULL
+
+  for (tbl in tables) {
+    first_row <- xml2::xml_find_first(tbl, ".//tr[1]")
+    if (inherits(first_row, "xml_missing")) next
+
+    first_text <- clean_wikipedia_text(xml2::xml_text(first_row))
+
+    if (
+      grepl("Home", first_text, ignore.case = TRUE) &&
+      grepl("Away", first_text, ignore.case = TRUE)
+    ) {
+      result_table <- tbl
+      break
+    }
+  }
+
+  if (is.null(result_table)) {
+    stop(
+      "Could not find the Premier League Wikipedia Home/Away results matrix in: ",
+      html_path
+    )
+  }
+
+  header_cells <- xml2::xml_find_all(
+    xml2::xml_find_first(result_table, ".//tr[1]"),
+    "./th|./td"
+  )
+
+  if (length(header_cells) < 21L) {
+    stop(
+      "Premier League Wikipedia results matrix has too few columns: ",
+      length(header_cells)
+    )
+  }
+
+  away_names <- character(length(header_cells) - 1L)
+
+  for (j in 2:length(header_cells)) {
+    cell <- header_cells[[j]]
+    link <- xml2::xml_find_first(cell, ".//a")
+
+    label <- if (!inherits(link, "xml_missing")) {
+      title <- xml2::xml_attr(link, "title")
+      if (!is.na(title) && nzchar(title)) title else xml2::xml_text(link)
+    } else {
+      xml2::xml_text(cell)
+    }
+
+    away_names[j - 1L] <- clean_wikipedia_text(label)
+  }
+
+  rows <- list()
+  k <- 1L
+  score_pat <- "^\\s*([0-9]+)\\s*[\\-\u2013\u2014]\\s*([0-9]+)\\s*$"
+
+  trs <- xml2::xml_find_all(result_table, ".//tr[position()>1]")
+
+  for (tr in trs) {
+    cells <- xml2::xml_find_all(tr, "./th|./td")
+    if (length(cells) < 21L) next
+
+    home_cell <- cells[[1]]
+    home_link <- xml2::xml_find_first(home_cell, ".//a")
+
+    home_name <- if (!inherits(home_link, "xml_missing")) {
+      title <- xml2::xml_attr(home_link, "title")
+      if (!is.na(title) && nzchar(title)) title else xml2::xml_text(home_link)
+    } else {
+      xml2::xml_text(home_cell)
+    }
+
+    home_name <- clean_wikipedia_text(home_name)
+    if (!nzchar(home_name)) next
+
+    max_away <- min(length(away_names), length(cells) - 1L)
+
+    for (j in seq_len(max_away)) {
+      score_text <- clean_wikipedia_text(xml2::xml_text(cells[[j + 1L]]))
+
+      if (!grepl(score_pat, score_text, perl = TRUE)) next
+
+      hg <- as.integer(sub(score_pat, "\\1", score_text, perl = TRUE))
+      ag <- as.integer(sub(score_pat, "\\2", score_text, perl = TRUE))
+
+      rows[[k]] <- data.frame(
+        Season = season_str,
+        HomeWiki = home_name,
+        AwayWiki = away_names[j],
+        HomeKey = normalise_wikipedia_club_key(home_name),
+        AwayKey = normalise_wikipedia_club_key(away_names[j]),
+        Result = result_code(hg, ag),
+        Score = sprintf("%d-%d", hg, ag),
+        stringsAsFactors = FALSE
+      )
+
+      k <- k + 1L
+    }
+  }
+
+  if (length(rows) == 0L) {
+    return(data.frame(
+      Season = character(),
+      HomeWiki = character(),
+      AwayWiki = character(),
+      HomeKey = character(),
+      AwayKey = character(),
+      Result = character(),
+      Score = character(),
+      stringsAsFactors = FALSE
+    ))
+  }
+
+  out <- do.call(rbind, rows)
+
+  key <- paste(out$Season, out$HomeKey, out$AwayKey, sep = "||")
+
+  if (anyDuplicated(key)) {
+    dup <- out[duplicated(key) | duplicated(key, fromLast = TRUE), , drop = FALSE]
+    cat("\\nDuplicate Premier League Wikipedia matrix results:\\n")
+    print(dup)
+    stop("Duplicate Premier League Wikipedia results detected.")
+  }
+
+  out
+}
+
+apply_current_premier_league_wikipedia_results <- function(
+    parsed_df,
+    wikipedia_source_root_dir,
+    season_folder
+) {
+  wiki_file <- file.path(
+    wikipedia_source_root_dir,
+    "premier_league",
+    season_folder,
+    "page.html"
+  )
+
+  if (!file.exists(wiki_file)) {
+    stop(
+      "Current Premier League Wikipedia source is missing:\\n",
+      wiki_file,
+      "\\nRun 00_download_openfootball_current.R first."
+    )
+  }
+
+  wiki <- parse_wikipedia_premier_league_results_matrix(
+    wiki_file,
+    season_folder
+  )
+
+  season_label <- normalise_openfootball_season_label(season_folder)
+
+  pl_idx <- which(
+    parsed_df$Season == season_label &
+      parsed_df$Country == "England" &
+      parsed_df$Competition == "premier_league"
+  )
+
+  if (length(pl_idx) == 0L) {
+    stop(
+      "No current Premier League OpenFootball fixture rows were parsed for ",
+      season_label,
+      "."
+    )
+  }
+
+  pl <- parsed_df[pl_idx, , drop = FALSE]
+  pl_home_key <- normalise_wikipedia_club_key(pl$Home)
+  pl_away_key <- normalise_wikipedia_club_key(pl$Away)
+  pl_pair_key <- paste(pl_home_key, pl_away_key, sep = "||")
+
+  if (anyDuplicated(pl_pair_key)) {
+    dup <- pl[duplicated(pl_pair_key) | duplicated(pl_pair_key, fromLast = TRUE), , drop = FALSE]
+    cat("\\nDuplicate current Premier League home/away fixture pairs:\\n")
+    print(dup)
+    stop("Current Premier League fixture list contains duplicate home/away pairs.")
+  }
+
+  if (nrow(wiki) == 0L) {
+    cat(
+      "\\nPremier League Wikipedia overlay: no completed results found yet.\\n"
+    )
+    return(parsed_df)
+  }
+
+  wiki_pair_key <- paste(wiki$HomeKey, wiki$AwayKey, sep = "||")
+  pos <- match(wiki_pair_key, pl_pair_key)
+
+  if (any(is.na(pos))) {
+    unmatched <- wiki[is.na(pos), , drop = FALSE]
+    cat("\\nWikipedia Premier League results not found in OpenFootball fixture list:\\n")
+    print(unmatched[, c("HomeWiki", "AwayWiki", "Score"), drop = FALSE])
+    stop(
+      "Wikipedia has a completed Premier League result that cannot be matched ",
+      "to the current OpenFootball fixture list. Refusing to alter canonical Elo input."
+    )
+  }
+
+  target_idx <- pl_idx[pos]
+
+  existing_result <- trimws(as.character(parsed_df$Result[target_idx]))
+  existing_result[is.na(existing_result)] <- ""
+  existing_score <- trimws(as.character(parsed_df$Score[target_idx]))
+  existing_score[is.na(existing_score)] <- ""
+
+  conflict <- (
+    (existing_result != "" & existing_result != wiki$Result) |
+    (existing_score != "" & existing_score != wiki$Score)
+  )
+
+  if (any(conflict)) {
+    conflict_rows <- data.frame(
+      Date = parsed_df$Date[target_idx[conflict]],
+      Home = parsed_df$Home[target_idx[conflict]],
+      Away = parsed_df$Away[target_idx[conflict]],
+      OpenFootballResult = existing_result[conflict],
+      OpenFootballScore = existing_score[conflict],
+      WikipediaResult = wiki$Result[conflict],
+      WikipediaScore = wiki$Score[conflict],
+      stringsAsFactors = FALSE
+    )
+
+    cat("\\nConflicting Premier League results between OpenFootball and Wikipedia:\\n")
+    print(conflict_rows)
+    stop(
+      "Premier League source conflict detected. Refusing to alter canonical Elo input."
+    )
+  }
+
+  n_already_scored <- sum(existing_result != "" | existing_score != "")
+  n_wikipedia_added <- sum(existing_result == "" & existing_score == "")
+
+  parsed_df$Result[target_idx] <- wiki$Result
+  parsed_df$Score[target_idx] <- wiki$Score
+
+  # The fixture/date originated in OpenFootball, while the current completed
+  # score was verified from Wikipedia.
+  parsed_df$Source[target_idx] <- ifelse(
+    existing_result != "" | existing_score != "",
+    "openfootball+wikipedia",
+    "wikipedia"
+  )
+
+  cat(
+    "\\nPremier League Wikipedia current-season overlay:\\n",
+    "  Wikipedia completed results: ", nrow(wiki), "\\n",
+    "  Matched to OpenFootball fixtures: ", length(target_idx), "\\n",
+    "  Newly completed from Wikipedia: ", n_wikipedia_added, "\\n",
+    "  Already completed in OpenFootball and verified: ", n_already_scored, "\\n",
+    "  Unmatched Wikipedia results: 0\\n",
+    sep = ""
+  )
+
+  parsed_df
+}
+
+
 parse_wikipedia_competition_page <- function(
     html_path,
     season_folder,
@@ -1996,6 +2280,18 @@ parsed_df <- do.call(rbind, all_df_list)
 # cut off immediately before each competition's existing J-Ratings source begins.
 schoch_df <- parse_schoch_historical_top_flights(schoch_results_file)
 parsed_df <- rbind(parsed_df, schoch_df)
+
+# Overlay current Premier League Wikipedia results onto the current
+# OpenFootball fixture rows before publishing the combined match file.
+#
+# This deliberately does not touch Elo settings. It changes only the match
+# input: OpenFootball supplies fixture identity/date, Wikipedia supplies a
+# completed current score when OpenFootball is lagging.
+parsed_df <- apply_current_premier_league_wikipedia_results(
+  parsed_df,
+  wikipedia_source_root_dir,
+  season_folder
+)
 
 required_cols <- c(
   "Season",
