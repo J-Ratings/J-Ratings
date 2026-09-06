@@ -1,0 +1,38 @@
+Country,Competition,League,Season,Rows,Scored,BlankScore,Teams,EarliestDate,LatestDate,DuplicateFixtureKeys,ConflictingFixtureKeys,Status
+Austria,austrian_bundesliga,Austrian Bundesliga,2024/25,195,194,1,12,2024-08-02,2025-06-01,0,0,PARTIAL
+Belgium,belgian_pro_league,Belgian Pro League,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+Belgium,belgian_pro_league,Belgian Pro League,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+Belgium,belgian_pro_league,Belgian Pro League,2025/26,240,121,119,16,2025-07-25,2026-07-27,0,0,PARTIAL
+Czechia,czech_first_league,Czech First League,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+Czechia,czech_first_league,Czech First League,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+Czechia,czech_first_league,Czech First League,2025/26,0,0,0,0,NA,NA,0,0,MISSING
+England,league_one,League One,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+England,league_one,League One,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+England,league_one,League One,2023/24,0,0,0,0,NA,NA,0,0,MISSING
+England,league_one,League One,2024/25,0,0,0,0,NA,NA,0,0,MISSING
+England,league_one,League One,2025/26,0,0,0,0,NA,NA,0,0,MISSING
+England,league_two,League Two,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+England,league_two,League Two,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+England,league_two,League Two,2023/24,0,0,0,0,NA,NA,0,0,MISSING
+England,league_two,League Two,2024/25,0,0,0,0,NA,NA,0,0,MISSING
+England,league_two,League Two,2025/26,0,0,0,0,NA,NA,0,0,MISSING
+England,national_league,National League,2025/26,551,296,255,24,2025-08-09,2026-04-25,0,0,PARTIAL
+France,ligue_2,Ligue 2,2025/26,305,116,189,18,2025-08-09,2026-05-08,0,0,PARTIAL
+Germany,bundesliga_2,2. Bundesliga,2025/26,306,99,207,18,2025-08-01,2026-05-17,0,0,PARTIAL
+Greece,super_league_greece,Super League Greece,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+Greece,super_league_greece,Super League Greece,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+Greece,super_league_greece,Super League Greece,2025/26,181,62,119,14,2025-08-23,2026-03-21,0,0,PARTIAL
+Italy,serie_b,Serie B,2024/25,388,387,1,20,2024-08-16,2025-06-01,0,0,PARTIAL
+Italy,serie_b,Serie B,2025/26,380,309,71,20,2025-08-22,2026-05-09,0,0,PARTIAL
+Scotland,scottish_premiership,Scottish Premiership,2025/26,198,63,135,12,2025-08-02,2026-04-11,0,0,PARTIAL
+Spain,segunda_division,Segunda Division,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+Spain,segunda_division,Segunda Division,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+Spain,segunda_division,Segunda Division,2023/24,0,0,0,0,NA,NA,0,0,MISSING
+Spain,segunda_division,Segunda Division,2024/25,0,0,0,0,NA,NA,0,0,MISSING
+Spain,segunda_division,Segunda Division,2025/26,0,0,0,0,NA,NA,0,0,MISSING
+Turkey,super_lig,Süper Lig,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+Turkey,super_lig,Süper Lig,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+Turkey,super_lig,Süper Lig,2024/25,342,338,4,19,2024-08-09,2025-06-01,0,0,PARTIAL
+Turkey,super_lig,Süper Lig,2025/26,306,99,207,18,2025-08-08,2026-05-17,0,0,PARTIAL
+Ukraine,ukrainian_premier_league,Ukrainian Premier League,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+Ukraine,ukrainian_premier_league,Ukrainian Premier League,2025/26,0,0,0,0,NA,NA,0,0,MISSING

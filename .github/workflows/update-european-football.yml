@@ -2,14 +2,10 @@ name: Update European Football data
 
 on:
   workflow_dispatch:
-  schedule:
-    # Staggered to avoid clashing with other monthly sports workflows.
-    - cron: "5 3 * * 3"
 
 permissions:
   contents: write
 
-# Only one data-writing workflow may update main at a time.
 concurrency:
   group: jratings-data-update-main
   cancel-in-progress: false

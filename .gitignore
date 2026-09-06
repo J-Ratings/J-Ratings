@@ -34,4 +34,7 @@ Go/data/players_missing_flags_peak_3200_plus.csv
 EuropeanFootball/pipeline_data/Elo/football_elo_game_history.csv
 EuropeanFootball/pipeline_data/Elo/football_elo_game_history_pass1.csv
 
+# European Football manual backups
+EuropeanFootball/pipeline_data/Matches_Clean_Combined/*Backup*.csv
+
 _public_site/

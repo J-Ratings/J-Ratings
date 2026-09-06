@@ -1,0 +1,17 @@
+"Competition","Season","WikipediaRows","ImportedRows","WikipediaCache","RSSSFCache","Status","Message","ElapsedSeconds"
+"swiss_super_league","2022/23",179,179,"cached","cached","PASS","",275.7
+"swiss_super_league","2025/26",NA,NA,"","","FAIL","Only 226 of 228 Wikipedia results could be given dates from RSSSF.",3.4
+"belgian_pro_league","2021/22",NA,NA,"","","FAIL","Only 302 of 303 Wikipedia results could be given dates from RSSSF.",2.6
+"belgian_pro_league","2022/23",NA,NA,"","","FAIL","Only 302 of 303 Wikipedia results could be given dates from RSSSF.",2.6
+"scottish_premiership","2021/22",228,228,"cached","cached","PASS","",287.6
+"scottish_premiership","2022/23",228,228,"cached","cached","PASS","",284.1
+"super_lig","2021/22",NA,NA,"","","FAIL","Only 305 of 380 Wikipedia results could be given dates from RSSSF.",2.9
+"super_lig","2022/23",NA,NA,"","","FAIL","Only 246 of 313 Wikipedia results could be given dates from RSSSF.",2.3
+"super_league_greece","2021/22",NA,NA,"","","FAIL","Only 90 of 182 Wikipedia results could be given dates from RSSSF.",2
+"super_league_greece","2022/23",NA,NA,"","","FAIL","Only 117 of 239 Wikipedia results could be given dates from RSSSF.",2.3
+"czech_first_league","2019/20",NA,NA,"","","FAIL","Only 110 of 240 Wikipedia results could be given dates from RSSSF.",2.3
+"czech_first_league","2021/22",NA,NA,"","","FAIL","Only 110 of 240 Wikipedia results could be given dates from RSSSF.",2.2
+"czech_first_league","2022/23",NA,NA,"","","FAIL","Only 132 of 240 Wikipedia results could be given dates from RSSSF.",2.2
+"czech_first_league","2025/26",NA,NA,"","","FAIL","No RSSSF dated results survived Wikipedia roster/score filtering.",1
+"ukrainian_premier_league","2022/23",NA,NA,"","","FAIL","Only 207 of 238 Wikipedia results could be given dates from RSSSF.",3.7
+"ukrainian_premier_league","2025/26",NA,NA,"","","FAIL","Only 56 of 236 Wikipedia results could be given dates from RSSSF.",5.3

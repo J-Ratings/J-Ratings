@@ -1,0 +1,162 @@
+Country,Competition,League,Season,Rows,Scored,BlankScore,Teams,EarliestDate,LatestDate,DuplicateFixtureKeys,ConflictingFixtureKeys,Status
+Austria,austrian_bundesliga,Austrian Bundesliga,2019/20,195,195,0,12,2019-08-03,2020-07-28,0,0,PRESENT
+Austria,austrian_bundesliga,Austrian Bundesliga,2020/21,195,195,0,12,2020-09-11,2021-05-30,0,0,PRESENT
+Austria,austrian_bundesliga,Austrian Bundesliga,2021/22,195,195,0,12,2021-08-01,2022-07-31,0,0,PRESENT
+Austria,austrian_bundesliga,Austrian Bundesliga,2022/23,195,195,0,12,2022-08-06,2023-07-31,0,0,PRESENT
+Austria,austrian_bundesliga,Austrian Bundesliga,2023/24,195,195,0,12,2023-08-05,2024-07-30,0,0,PRESENT
+Austria,austrian_bundesliga,Austrian Bundesliga,2024/25,195,194,1,12,2024-08-02,2025-06-01,0,0,PARTIAL
+Austria,austrian_bundesliga,Austrian Bundesliga,2025/26,195,195,0,12,2025-08-01,2026-05-25,0,0,PRESENT
+Belgium,belgian_pro_league,Belgian Pro League,2019/20,232,232,0,16,2019-07-26,2020-07-28,0,0,PRESENT
+Belgium,belgian_pro_league,Belgian Pro League,2020/21,330,330,0,18,2020-08-08,2021-05-23,0,0,PRESENT
+Belgium,belgian_pro_league,Belgian Pro League,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+Belgium,belgian_pro_league,Belgian Pro League,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+Belgium,belgian_pro_league,Belgian Pro League,2023/24,313,313,0,16,2023-07-28,2024-07-30,0,0,PRESENT
+Belgium,belgian_pro_league,Belgian Pro League,2024/25,313,313,0,16,2024-07-26,2025-07-28,0,0,PRESENT
+Belgium,belgian_pro_league,Belgian Pro League,2025/26,240,121,119,16,2025-07-25,2026-07-27,0,0,PARTIAL
+Czechia,czech_first_league,Czech First League,2019/20,0,0,0,0,NA,NA,0,0,MISSING
+Czechia,czech_first_league,Czech First League,2020/21,306,306,0,18,2020-08-21,2021-05-29,0,0,PRESENT
+Czechia,czech_first_league,Czech First League,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+Czechia,czech_first_league,Czech First League,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+Czechia,czech_first_league,Czech First League,2023/24,277,277,0,16,2023-07-22,2024-07-30,0,0,PRESENT
+Czechia,czech_first_league,Czech First League,2024/25,276,276,0,16,2024-07-19,2025-07-28,0,0,PRESENT
+Czechia,czech_first_league,Czech First League,2025/26,0,0,0,0,NA,NA,0,0,MISSING
+England,championship,Championship,2019/20,552,552,0,24,2019-08-02,2020-07-22,0,0,PRESENT
+England,championship,Championship,2020/21,552,552,0,24,2020-09-11,2021-05-08,0,0,PRESENT
+England,championship,Championship,2021/22,557,557,0,24,2021-08-06,2022-05-29,0,0,PRESENT
+England,championship,Championship,2022/23,557,557,0,24,2022-08-01,2023-07-31,0,0,PRESENT
+England,championship,Championship,2023/24,557,557,0,24,2023-08-04,2024-05-26,0,0,PRESENT
+England,championship,Championship,2024/25,557,557,0,24,2024-08-09,2025-05-24,0,0,PRESENT
+England,championship,Championship,2025/26,557,557,0,24,2025-08-08,2026-05-23,0,0,PRESENT
+England,league_one,League One,2019/20,0,0,0,0,NA,NA,0,0,MISSING
+England,league_one,League One,2020/21,0,0,0,0,NA,NA,0,0,MISSING
+England,league_one,League One,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+England,league_one,League One,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+England,league_one,League One,2023/24,0,0,0,0,NA,NA,0,0,MISSING
+England,league_one,League One,2024/25,0,0,0,0,NA,NA,0,0,MISSING
+England,league_one,League One,2025/26,0,0,0,0,NA,NA,0,0,MISSING
+England,league_two,League Two,2019/20,0,0,0,0,NA,NA,0,0,MISSING
+England,league_two,League Two,2020/21,0,0,0,0,NA,NA,0,0,MISSING
+England,league_two,League Two,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+England,league_two,League Two,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+England,league_two,League Two,2023/24,0,0,0,0,NA,NA,0,0,MISSING
+England,league_two,League Two,2024/25,0,0,0,0,NA,NA,0,0,MISSING
+England,league_two,League Two,2025/26,0,0,0,0,NA,NA,0,0,MISSING
+England,national_league,National League,2019/20,451,451,0,24,2019-08-03,2020-03-14,0,0,PRESENT
+England,national_league,National League,2020/21,462,462,0,22,2020-10-03,2021-05-29,0,0,PRESENT
+England,national_league,National League,2021/22,506,506,0,23,2021-08-21,2022-05-15,0,0,PRESENT
+England,national_league,National League,2022/23,552,552,0,24,2022-08-06,2023-04-29,0,0,PRESENT
+England,national_league,National League,2023/24,552,552,0,24,2023-08-05,2024-04-20,0,0,PRESENT
+England,national_league,National League,2024/25,552,552,0,24,2024-08-10,2025-05-05,0,0,PRESENT
+England,national_league,National League,2025/26,551,296,255,24,2025-08-09,2026-04-25,0,0,PARTIAL
+England,premier_league,Premier League,2019/20,380,380,0,20,2019-08-09,2020-07-26,0,0,PRESENT
+England,premier_league,Premier League,2020/21,380,380,0,20,2020-09-12,2021-05-23,0,0,PRESENT
+England,premier_league,Premier League,2021/22,380,380,0,20,2021-08-13,2022-05-22,0,0,PRESENT
+England,premier_league,Premier League,2022/23,380,380,0,20,2022-08-05,2023-05-28,0,0,PRESENT
+England,premier_league,Premier League,2023/24,380,380,0,20,2023-08-11,2024-05-19,0,0,PRESENT
+England,premier_league,Premier League,2024/25,380,380,0,20,2024-08-16,2025-05-25,0,0,PRESENT
+England,premier_league,Premier League,2025/26,380,380,0,20,2025-08-15,2026-05-24,0,0,PRESENT
+France,ligue_1,Ligue 1,2019/20,279,279,0,20,2019-08-09,2020-03-08,0,0,PRESENT
+France,ligue_1,Ligue 1,2020/21,380,380,0,20,2020-08-21,2021-05-23,0,0,PRESENT
+France,ligue_1,Ligue 1,2021/22,380,380,0,20,2021-08-06,2022-05-21,0,0,PRESENT
+France,ligue_1,Ligue 1,2022/23,380,380,0,20,2022-08-05,2023-06-03,0,0,PRESENT
+France,ligue_1,Ligue 1,2023/24,306,306,0,18,2023-08-11,2024-05-19,0,0,PRESENT
+France,ligue_1,Ligue 1,2024/25,306,306,0,18,2024-08-16,2025-05-17,0,0,PRESENT
+France,ligue_1,Ligue 1,2025/26,306,306,0,18,2025-08-15,2026-05-17,0,0,PRESENT
+France,ligue_2,Ligue 2,2019/20,280,280,0,20,2019-07-26,2020-07-29,0,0,PRESENT
+France,ligue_2,Ligue 2,2020/21,380,380,0,20,2020-08-22,2021-05-15,0,0,PRESENT
+France,ligue_2,Ligue 2,2021/22,380,380,0,20,2021-07-24,2022-07-31,0,0,PRESENT
+France,ligue_2,Ligue 2,2022/23,380,380,0,20,2022-07-30,2023-06-02,0,0,PRESENT
+France,ligue_2,Ligue 2,2023/24,380,380,0,20,2023-08-05,2024-05-17,0,0,PRESENT
+France,ligue_2,Ligue 2,2024/25,306,306,0,18,2024-08-16,2025-05-10,0,0,PRESENT
+France,ligue_2,Ligue 2,2025/26,305,116,189,18,2025-08-09,2026-05-08,0,0,PARTIAL
+Germany,bundesliga,Bundesliga,2019/20,306,306,0,18,2019-08-16,2020-06-27,0,0,PRESENT
+Germany,bundesliga,Bundesliga,2020/21,306,306,0,18,2020-09-18,2021-05-22,0,0,PRESENT
+Germany,bundesliga,Bundesliga,2021/22,306,306,0,18,2021-08-13,2022-05-14,0,0,PRESENT
+Germany,bundesliga,Bundesliga,2022/23,306,306,0,18,2022-08-05,2023-05-27,0,0,PRESENT
+Germany,bundesliga,Bundesliga,2023/24,306,306,0,18,2023-08-18,2024-05-18,0,0,PRESENT
+Germany,bundesliga,Bundesliga,2024/25,306,306,0,18,2024-08-23,2025-05-17,0,0,PRESENT
+Germany,bundesliga,Bundesliga,2025/26,306,306,0,18,2025-08-22,2026-05-16,0,0,PRESENT
+Germany,bundesliga_2,2. Bundesliga,2019/20,306,306,0,18,2019-07-26,2020-07-29,0,0,PRESENT
+Germany,bundesliga_2,2. Bundesliga,2020/21,306,306,0,18,2020-09-18,2021-05-23,0,0,PRESENT
+Germany,bundesliga_2,2. Bundesliga,2021/22,306,306,0,18,2021-08-01,2022-07-31,0,0,PRESENT
+Germany,bundesliga_2,2. Bundesliga,2022/23,306,306,0,18,2022-08-05,2023-07-24,0,0,PRESENT
+Germany,bundesliga_2,2. Bundesliga,2023/24,306,306,0,18,2023-08-04,2024-07-30,0,0,PRESENT
+Germany,bundesliga_2,2. Bundesliga,2024/25,306,306,0,18,2024-08-02,2025-05-18,0,0,PRESENT
+Germany,bundesliga_2,2. Bundesliga,2025/26,306,99,207,18,2025-08-01,2026-05-17,0,0,PARTIAL
+Greece,super_league_greece,Super League Greece,2019/20,240,240,0,14,2019-08-24,2020-07-19,0,0,PRESENT
+Greece,super_league_greece,Super League Greece,2020/21,240,240,0,14,2020-09-11,2021-05-19,0,0,PRESENT
+Greece,super_league_greece,Super League Greece,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+Greece,super_league_greece,Super League Greece,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+Greece,super_league_greece,Super League Greece,2023/24,240,240,0,14,2023-08-18,2024-05-19,0,0,PRESENT
+Greece,super_league_greece,Super League Greece,2024/25,236,236,0,14,2024-08-17,2025-05-22,0,0,PRESENT
+Greece,super_league_greece,Super League Greece,2025/26,181,62,119,14,2025-08-23,2026-03-21,0,0,PARTIAL
+Italy,serie_a,Serie A,2019/20,380,380,0,20,2019-08-01,2020-07-29,0,0,PRESENT
+Italy,serie_a,Serie A,2020/21,380,380,0,20,2020-09-19,2021-05-23,0,0,PRESENT
+Italy,serie_a,Serie A,2021/22,380,380,0,20,2021-08-21,2022-05-22,0,0,PRESENT
+Italy,serie_a,Serie A,2022/23,380,380,0,20,2022-08-13,2023-06-04,0,0,PRESENT
+Italy,serie_a,Serie A,2023/24,380,380,0,20,2023-08-19,2024-06-02,0,0,PRESENT
+Italy,serie_a,Serie A,2024/25,380,380,0,20,2024-08-17,2025-05-25,0,0,PRESENT
+Italy,serie_a,Serie A,2025/26,380,380,0,20,2025-08-23,2026-05-24,0,0,PRESENT
+Italy,serie_b,Serie B,2019/20,390,390,0,20,2019-08-04,2020-07-31,0,0,PRESENT
+Italy,serie_b,Serie B,2020/21,388,388,0,20,2020-09-25,2021-05-27,0,0,PRESENT
+Italy,serie_b,Serie B,2021/22,390,390,0,20,2021-08-20,2022-05-29,0,0,PRESENT
+Italy,serie_b,Serie B,2022/23,390,390,0,20,2022-08-12,2023-06-11,0,0,PRESENT
+Italy,serie_b,Serie B,2023/24,390,390,0,20,2023-08-18,2024-06-02,0,0,PRESENT
+Italy,serie_b,Serie B,2024/25,388,387,1,20,2024-08-16,2025-06-01,0,0,PARTIAL
+Italy,serie_b,Serie B,2025/26,380,309,71,20,2025-08-22,2026-05-09,0,0,PARTIAL
+Netherlands,eredivisie,Eredivisie,2019/20,232,232,0,18,2019-08-02,2020-03-08,0,0,PRESENT
+Netherlands,eredivisie,Eredivisie,2020/21,306,306,0,18,2020-09-12,2021-05-16,0,0,PRESENT
+Netherlands,eredivisie,Eredivisie,2021/22,306,306,0,18,2021-08-13,2022-05-15,0,0,PRESENT
+Netherlands,eredivisie,Eredivisie,2022/23,306,306,0,18,2022-08-05,2023-05-28,0,0,PRESENT
+Netherlands,eredivisie,Eredivisie,2023/24,306,306,0,18,2023-08-11,2024-05-19,0,0,PRESENT
+Netherlands,eredivisie,Eredivisie,2024/25,306,306,0,18,2024-08-09,2025-05-18,0,0,PRESENT
+Netherlands,eredivisie,Eredivisie,2025/26,305,305,0,18,2025-08-08,2026-05-17,0,0,PRESENT
+Portugal,primeira_liga,Primeira Liga,2019/20,306,306,0,18,2019-08-09,2020-07-26,0,0,PRESENT
+Portugal,primeira_liga,Primeira Liga,2020/21,306,306,0,18,2020-09-18,2021-05-19,0,0,PRESENT
+Portugal,primeira_liga,Primeira Liga,2021/22,306,306,0,18,2021-08-06,2022-05-15,0,0,PRESENT
+Portugal,primeira_liga,Primeira Liga,2022/23,306,306,0,18,2022-08-05,2023-05-27,0,0,PRESENT
+Portugal,primeira_liga,Primeira Liga,2023/24,306,306,0,18,2023-08-11,2024-05-18,0,0,PRESENT
+Portugal,primeira_liga,Primeira Liga,2024/25,306,306,0,18,2024-08-09,2025-05-17,0,0,PRESENT
+Portugal,primeira_liga,Primeira Liga,2025/26,306,306,0,18,2025-08-08,2026-05-16,0,0,PRESENT
+Scotland,scottish_premiership,Scottish Premiership,2019/20,179,179,0,12,2019-08-03,2020-03-11,0,0,PRESENT
+Scotland,scottish_premiership,Scottish Premiership,2020/21,198,198,0,12,2020-08-01,2021-03-21,0,0,PRESENT
+Scotland,scottish_premiership,Scottish Premiership,2021/22,228,228,0,12,2021-07-31,2022-05-15,0,0,PRESENT
+Scotland,scottish_premiership,Scottish Premiership,2022/23,228,228,0,12,2022-07-30,2023-05-28,0,0,PRESENT
+Scotland,scottish_premiership,Scottish Premiership,2023/24,228,228,0,12,2023-08-05,2024-05-19,0,0,PRESENT
+Scotland,scottish_premiership,Scottish Premiership,2024/25,228,228,0,12,2024-08-03,2025-05-18,0,0,PRESENT
+Scotland,scottish_premiership,Scottish Premiership,2025/26,198,63,135,12,2025-08-02,2026-04-11,0,0,PARTIAL
+Spain,la_liga,La Liga,2019/20,380,380,0,20,2019-08-16,2020-07-19,0,0,PRESENT
+Spain,la_liga,La Liga,2020/21,380,380,0,20,2020-09-12,2021-05-23,0,0,PRESENT
+Spain,la_liga,La Liga,2021/22,380,380,0,20,2021-08-13,2022-05-22,0,0,PRESENT
+Spain,la_liga,La Liga,2022/23,380,380,0,20,2022-08-12,2023-06-04,0,0,PRESENT
+Spain,la_liga,La Liga,2023/24,380,380,0,20,2023-08-11,2024-05-26,0,0,PRESENT
+Spain,la_liga,La Liga,2024/25,380,380,0,20,2024-08-15,2025-05-25,0,0,PRESENT
+Spain,la_liga,La Liga,2025/26,380,380,0,20,2025-08-15,2026-05-24,0,0,PRESENT
+Spain,segunda_division,Segunda Division,2019/20,0,0,0,0,NA,NA,0,0,MISSING
+Spain,segunda_division,Segunda Division,2020/21,0,0,0,0,NA,NA,0,0,MISSING
+Spain,segunda_division,Segunda Division,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+Spain,segunda_division,Segunda Division,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+Spain,segunda_division,Segunda Division,2023/24,0,0,0,0,NA,NA,0,0,MISSING
+Spain,segunda_division,Segunda Division,2024/25,0,0,0,0,NA,NA,0,0,MISSING
+Spain,segunda_division,Segunda Division,2025/26,0,0,0,0,NA,NA,0,0,MISSING
+Switzerland,swiss_super_league,Swiss Super League,2019/20,180,180,0,10,2019-07-19,2020-07-31,0,0,PRESENT
+Switzerland,swiss_super_league,Swiss Super League,2020/21,180,180,0,10,2020-09-19,2021-05-21,0,0,PRESENT
+Switzerland,swiss_super_league,Swiss Super League,2021/22,180,180,0,10,2021-07-24,2022-05-22,0,0,PRESENT
+Switzerland,swiss_super_league,Swiss Super League,2022/23,179,179,0,10,2022-07-16,2023-05-29,0,0,PRESENT
+Switzerland,swiss_super_league,Swiss Super League,2023/24,228,228,0,12,2023-07-22,2024-07-30,0,0,PRESENT
+Switzerland,swiss_super_league,Swiss Super League,2024/25,228,228,0,12,2024-07-20,2025-07-28,0,0,PRESENT
+Switzerland,swiss_super_league,Swiss Super League,2025/26,228,228,0,12,2025-07-25,2026-05-17,0,0,PRESENT
+Turkey,super_lig,Süper Lig,2019/20,306,306,0,19,2019-08-16,2020-07-26,0,0,PRESENT
+Turkey,super_lig,Süper Lig,2020/21,420,420,0,21,2020-09-11,2021-05-15,0,0,PRESENT
+Turkey,super_lig,Süper Lig,2021/22,0,0,0,0,NA,NA,0,0,MISSING
+Turkey,super_lig,Süper Lig,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+Turkey,super_lig,Süper Lig,2023/24,380,380,0,20,2023-08-11,2024-05-26,0,0,PRESENT
+Turkey,super_lig,Süper Lig,2024/25,342,338,4,19,2024-08-09,2025-06-01,0,0,PARTIAL
+Turkey,super_lig,Süper Lig,2025/26,306,99,207,18,2025-08-08,2026-05-17,0,0,PARTIAL
+Ukraine,ukrainian_premier_league,Ukrainian Premier League,2019/20,164,164,0,12,2019-07-28,2020-06-28,0,0,PRESENT
+Ukraine,ukrainian_premier_league,Ukrainian Premier League,2020/21,205,205,0,14,2020-07-03,2021-05-09,0,0,PRESENT
+Ukraine,ukrainian_premier_league,Ukrainian Premier League,2021/22,143,143,0,16,2021-07-23,2021-12-12,0,0,PRESENT
+Ukraine,ukrainian_premier_league,Ukrainian Premier League,2022/23,0,0,0,0,NA,NA,0,0,MISSING
+Ukraine,ukrainian_premier_league,Ukrainian Premier League,2023/24,240,240,0,16,2023-07-28,2024-07-30,0,0,PRESENT
+Ukraine,ukrainian_premier_league,Ukrainian Premier League,2024/25,240,240,0,16,2024-08-03,2025-05-25,0,0,PRESENT
+Ukraine,ukrainian_premier_league,Ukrainian Premier League,2025/26,0,0,0,0,NA,NA,0,0,MISSING

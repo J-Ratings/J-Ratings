@@ -1,0 +1,15 @@
+Country,Competition,Season,Rows,Scored,BlankScore,Teams,EarliestDate,LatestDate,PrevRows,NextRows,RowRatio,Status
+Belgium,belgian_pro_league,2021/22,0,0,0,0,NA,NA,330,0,0,MISSING
+Belgium,belgian_pro_league,2022/23,0,0,0,0,NA,NA,0,313,0,MISSING
+Czechia,czech_first_league,2019/20,0,0,0,0,NA,NA,277,306,0,MISSING
+Czechia,czech_first_league,2021/22,0,0,0,0,NA,NA,306,0,0,MISSING
+Czechia,czech_first_league,2022/23,0,0,0,0,NA,NA,0,277,0,MISSING
+Czechia,czech_first_league,2025/26,0,0,0,0,NA,NA,276,NA,0,MISSING
+Greece,super_league_greece,2021/22,0,0,0,0,NA,NA,240,0,0,MISSING
+Greece,super_league_greece,2022/23,0,0,0,0,NA,NA,0,240,0,MISSING
+Switzerland,swiss_super_league,2015/16,0,0,0,0,NA,NA,180,0,0,MISSING
+Switzerland,swiss_super_league,2016/17,0,0,0,0,NA,NA,0,0,NA,MISSING
+Switzerland,swiss_super_league,2017/18,0,0,0,0,NA,NA,0,180,0,MISSING
+Turkey,super_lig,2021/22,0,0,0,0,NA,NA,420,0,0,MISSING
+Turkey,super_lig,2022/23,0,0,0,0,NA,NA,0,380,0,MISSING
+Ukraine,ukrainian_premier_league,2025/26,0,0,0,0,NA,NA,240,NA,0,MISSING
