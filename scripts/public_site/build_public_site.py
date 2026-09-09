@@ -6,7 +6,8 @@ import shutil
 import sys
 from pathlib import Path
 
-PUBLIC_START = "2010-01-01"
+PUBLIC_START_YEAR = 2020
+PUBLIC_START = f"{PUBLIC_START_YEAR}-01-01"
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_DIR = SCRIPT_DIR.parents[1]
