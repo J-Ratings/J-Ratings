@@ -200,7 +200,7 @@ def filter_rows_by_date(path: Path) -> int:
 
         date = str(row.get("date", "")).strip()
 
-        # Keep future/upcoming rows and all rows from 2010 onwards.
+        # Keep future/upcoming rows and all rows from the public start year onwards.
         if date and date >= PUBLIC_START:
             filtered.append(row)
 
@@ -229,7 +229,7 @@ def filter_season_starts(path: Path) -> int:
             continue
 
         year = season_start_year(row.get("season", ""))
-        if year is not None and year >= 2010:
+        if year is not None and year >= PUBLIC_START_YEAR:
             filtered.append(row)
 
     save_json(path, filtered)
@@ -280,9 +280,9 @@ def filter_sport_public_data(sport: str, config: dict) -> None:
         if path.exists():
             removed_seasons += filter_season_starts(path)
 
-    print(f"{sport} dated rows removed before 2010: {removed_dated}")
+    print(f"{sport} dated rows removed before {PUBLIC_START_YEAR}: {removed_dated}")
     if config.get("season_files"):
-        print(f"{sport} season/era rows removed before 2010: {removed_seasons}")
+        print(f"{sport} season/era rows removed before {PUBLIC_START_YEAR}: {removed_seasons}")
 
 
 def filter_snooker_snapshots() -> int:
@@ -314,7 +314,7 @@ def filter_snooker_snapshots() -> int:
                 except (TypeError, ValueError):
                     continue
 
-                if year >= 2010:
+                if year >= PUBLIC_START_YEAR:
                     filtered.append(year)
 
             save_json(path, filtered)
@@ -325,15 +325,15 @@ def filter_snooker_snapshots() -> int:
                 f"Unexpected Snooker snapshot filename: {path.name}"
             )
 
-        if int(year_text) < 2010:
+        if int(year_text) < PUBLIC_START_YEAR:
             path.unlink()
             removed += 1
 
-    print(f"Snooker snapshot files removed before 2010: {removed}")
+    print(f"Snooker snapshot files removed before {PUBLIC_START_YEAR}: {removed}")
     return removed
 
 
-def assert_no_pre_2010_sport_data(sport: str, config: dict) -> None:
+def assert_no_pre_public_start_sport_data(sport: str, config: dict) -> None:
     sport_dir = OUT_DIR / sport
 
     for rel_dir in config.get("dated_dirs", []):
@@ -355,7 +355,7 @@ def assert_no_pre_2010_sport_data(sport: str, config: dict) -> None:
 
                 if date and date < PUBLIC_START:
                     raise RuntimeError(
-                        f"SAFETY CHECK FAILED: pre-2010 row found in {path}: {date}"
+                        f"SAFETY CHECK FAILED: pre-{PUBLIC_START_YEAR} row found in {path}: {date}"
                     )
 
     for rel_file in config.get("season_files", []):
@@ -374,16 +374,16 @@ def assert_no_pre_2010_sport_data(sport: str, config: dict) -> None:
 
             year = season_start_year(row.get("season", ""))
 
-            if year is not None and year < 2010:
+            if year is not None and year < PUBLIC_START_YEAR:
                 raise RuntimeError(
-                    "SAFETY CHECK FAILED: pre-2010 season/era found in "
+                    f"SAFETY CHECK FAILED: pre-{PUBLIC_START_YEAR} season/era found in "
                     f"{path}: {row.get('season')}"
                 )
 
     print(f"{sport} public-data safety checks: PASS")
 
 
-def assert_no_pre_2010_snooker_snapshots() -> None:
+def assert_no_pre_public_start_snooker_snapshots() -> None:
     snapshots_dir = OUT_DIR / "Snooker" / "data" / "snapshots"
 
     if not snapshots_dir.exists():
@@ -407,9 +407,9 @@ def assert_no_pre_2010_snooker_snapshots() -> None:
                 except (TypeError, ValueError):
                     continue
 
-                if year < 2010:
+                if year < PUBLIC_START_YEAR:
                     raise RuntimeError(
-                        f"SAFETY CHECK FAILED: pre-2010 Snooker season found in {path}: {year}"
+                        f"SAFETY CHECK FAILED: pre-{PUBLIC_START_YEAR} Snooker season found in {path}: {year}"
                     )
             continue
 
@@ -418,9 +418,9 @@ def assert_no_pre_2010_snooker_snapshots() -> None:
                 f"SAFETY CHECK FAILED: unexpected Snooker snapshot filename: {path.name}"
             )
 
-        if int(year_text) < 2010:
+        if int(year_text) < PUBLIC_START_YEAR:
             raise RuntimeError(
-                f"SAFETY CHECK FAILED: pre-2010 Snooker snapshot exists: {path}"
+                f"SAFETY CHECK FAILED: pre-{PUBLIC_START_YEAR} Snooker snapshot exists: {path}"
             )
 
     print("Snooker snapshot safety checks: PASS")
@@ -581,12 +581,12 @@ def make_history_range_teasers(s: str) -> str:
         if kind == "range":
             if value_upper == "ALL":
                 private = True
-            elif value.isdigit() and int(value) < 2010:
+            elif value.isdigit() and int(value) < PUBLIC_START_YEAR:
                 private = True
         elif kind == "since":
             if value == "":
                 private = True
-            elif value.isdigit() and int(value) < 2010:
+            elif value.isdigit() and int(value) < PUBLIC_START_YEAR:
                 private = True
 
         if not private:
@@ -631,17 +631,17 @@ def make_history_range_teasers(s: str) -> str:
 
     s = button_re.sub(repl, s)
 
-    # Any chart which previously defaulted to a private pre-2010 preset must
+    # Any chart which previously defaulted to a private pre-public-start preset must
     # start on the first public year instead.
     s = re.sub(
         r'defaultRange:\s*(["\'])2000\1',
-        "defaultRange: '2010'",
+        f"defaultRange: '{PUBLIC_START_YEAR}'",
         s,
         flags=re.I,
     )
     s = re.sub(
         r'\b(SINCE_YEAR|COMPARE_SINCE_YEAR)\s*=\s*(["\']?)2000\2\s*;',
-        lambda m: f"{m.group(1)} = {m.group(2)}2010{m.group(2)};",
+        lambda m: f"{m.group(1)} = {m.group(2)}{PUBLIC_START_YEAR}{m.group(2)};",
         s,
         flags=re.I,
     )
@@ -939,7 +939,7 @@ def clean_generic_public_ui(sports: list[str] | None = None) -> None:
             # it. The actual compare directories were already removed earlier.
             s = make_compare_teasers(s)
 
-            # Turn pre-2010 historical controls into disabled previews rather
+            # Turn pre-public-start historical controls into disabled previews rather
             # than deleting them from the page.
             s = make_history_range_teasers(s)
 
@@ -992,7 +992,7 @@ def assert_generic_public_ui_clean(sports: list[str] | None = None) -> None:
             rel = html.relative_to(OUT_DIR).as_posix()
 
             # Teaser controls may say Compare / Since 2000 / All, but there
-            # must be no functional route or live pre-2010 control behind them.
+            # must be no functional route or live pre-public-start control behind them.
             if re.search(r'href=["\'][^"\']*compare/', s, flags=re.I):
                 failures.append(f"{rel}: functional link to private compare section")
 
@@ -1005,7 +1005,7 @@ def assert_generic_public_ui_clean(sports: list[str] | None = None) -> None:
             if re.search(r'\bsetupCompareButton\(\);', s):
                 failures.append(f"{rel}: Compare-button initialiser remains")
 
-            # Any pre-2010 value still carried by the live attributes would be
+            # Any pre-public-start value still carried by the live attributes would be
             # actionable by the graph JavaScript and therefore is not allowed.
             for match in re.finditer(
                 r"<button\b[^>]*data-(range|since)=[\"']([^\"']*)[\"']",
@@ -1017,7 +1017,7 @@ def assert_generic_public_ui_clean(sports: list[str] | None = None) -> None:
                 private = (
                     (kind == "range" and value.upper() == "ALL")
                     or (kind == "since" and value == "")
-                    or (value.isdigit() and int(value) < 2010)
+                    or (value.isdigit() and int(value) < PUBLIC_START_YEAR)
                 )
                 if private:
                     failures.append(
@@ -1244,10 +1244,10 @@ def _clean_and_check_selected_sports(sports: list[str]) -> None:
 
     for sport in sports:
         config = SPORT_PUBLIC_FILTERS[sport]
-        assert_no_pre_2010_sport_data(sport, config)
+        assert_no_pre_public_start_sport_data(sport, config)
 
     if "Snooker" in sports:
-        assert_no_pre_2010_snooker_snapshots()
+        assert_no_pre_public_start_snooker_snapshots()
 
 
 def _copy_existing_public_ui_from_source() -> int:
@@ -1324,9 +1324,9 @@ def build_public_ui_only() -> None:
     # Data is inherited from the existing verified public site. Re-check it
     # without rewriting/re-filtering all historical JSON.
     for sport, config in SPORT_PUBLIC_FILTERS.items():
-        assert_no_pre_2010_sport_data(sport, config)
+        assert_no_pre_public_start_sport_data(sport, config)
 
-    assert_no_pre_2010_snooker_snapshots()
+    assert_no_pre_public_start_snooker_snapshots()
 
     print()
     print(f"Verified temporary UI-only public build created at: {TEMP_OUT_DIR}")
@@ -1353,10 +1353,10 @@ def build_public_site(selected_sport: str | None = None) -> None:
     print()
     if selected_sport is None:
         print(f"Verified temporary public build created at: {TEMP_OUT_DIR}")
-        print("All configured sports have had detailed historical data filtered to 2010+.")
+        print(f"All configured sports have had detailed historical data filtered to {PUBLIC_START_YEAR}+.")
     else:
         print(f"Verified temporary {selected_sport} build created at: {TEMP_OUT_DIR / selected_sport}")
-        print(f"{selected_sport} detailed historical data has been filtered to 2010+.")
+        print(f"{selected_sport} detailed historical data has been filtered to {PUBLIC_START_YEAR}+.")
 
     print("Public data and UI safety checks: PASS")
 

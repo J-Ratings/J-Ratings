@@ -1,23 +1,4 @@
 Country,Competition,CompetitionType,League,Tier,Source,Date,Home,Away
-Spain,segunda_division,league,Segunda División,2,openfootball,2025-05-31,Málaga,Burgos
-Austria,austrian_bundesliga,league,Austrian Bundesliga,1,openfootball,2025-06-01,Rapid Vienna,LASK
-Italy,serie_b,league,Serie B,2,openfootball,2025-06-01,Spezia,Cremonese
-Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Almería,Tenerife
-Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Cartagena,Mirandés
-Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Córdoba,Albacete
-Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Deportivo La Coruña,Elche
-Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Huesca,Eldense
-Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Levante,Eibar
-Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Racing Santander,Granada
-Spain,segunda_division,league,Segunda División,2,openfootball,2025-06-01,Real Oviedo,Cádiz
-Germany,dfb_pokal,domestic_cup,DFB-Pokal,,openfootball,2025-12-02,Bochum,VfB Stuttgart
-Germany,dfb_pokal,domestic_cup,DFB-Pokal,,openfootball,2025-12-02,Borussia Dortmund,Bayer Leverkusen
-Germany,dfb_pokal,domestic_cup,DFB-Pokal,,openfootball,2025-12-02,Borussia Mönchengladbach,St. Pauli
-Germany,dfb_pokal,domestic_cup,DFB-Pokal,,openfootball,2025-12-02,Freiburg,Darmstadt 98
-Germany,dfb_pokal,domestic_cup,DFB-Pokal,,openfootball,2025-12-02,Hamburg,Holstein Kiel
-Germany,dfb_pokal,domestic_cup,DFB-Pokal,,openfootball,2025-12-02,Hertha Berlin,Kaiserslautern
-Germany,dfb_pokal,domestic_cup,DFB-Pokal,,openfootball,2025-12-02,RB Leipzig,Magdeburg
-Germany,dfb_pokal,domestic_cup,DFB-Pokal,,openfootball,2025-12-02,Union Berlin,Bayern Munich
 England,championship,league,Championship,2,openfootball,2026-09-01,Birmingham City,Southampton
 England,championship,league,Championship,2,openfootball,2026-09-01,Lincoln City,Blackburn Rovers
 England,championship,league,Championship,2,openfootball,2026-09-01,Portsmouth,Derby County
@@ -387,7 +368,9 @@ England,championship,league,Championship,2,openfootball,2026-10-14,Lincoln City,
 England,championship,league,Championship,2,openfootball,2026-10-14,Norwich City,Southampton
 England,championship,league,Championship,2,openfootball,2026-10-14,Portsmouth,Sheffield United
 England,championship,league,Championship,2,openfootball,2026-10-14,Queens Park Rangers,Derby County
+Europe,conference_league,continental,Conference League,,wikipedia,2026-10-15,Copenhagen,Braga
 Europe,conference_league,continental,Conference League,,wikipedia,2026-10-15,Freiburg,Jablonec
+Europe,conference_league,continental,Conference League,,wikipedia,2026-10-15,Hearts,Nordsjælland
 Europe,conference_league,continental,Conference League,,wikipedia,2026-10-15,Twente,Thun
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-15,Benfica,Celtic
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-15,Bournemouth,Sturm Graz
@@ -470,6 +453,7 @@ Europe,conference_league,continental,Conference League,,wikipedia,2026-10-22,Aja
 Europe,conference_league,continental,Conference League,,wikipedia,2026-10-22,Braga,Gent
 Europe,conference_league,continental,Conference League,,wikipedia,2026-10-22,Getafe,Lugano
 Europe,conference_league,continental,Conference League,,wikipedia,2026-10-22,Jablonec,Brighton & Hove Albion
+Europe,conference_league,continental,Conference League,,wikipedia,2026-10-22,Midtjylland,Sint-Truiden
 Europe,conference_league,continental,Conference League,,wikipedia,2026-10-22,Monaco,Freiburg
 Europe,conference_league,continental,Conference League,,wikipedia,2026-10-22,Trabzonspor,Hearts
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-22,Beşiktaş,Crystal Palace
@@ -658,6 +642,8 @@ England,championship,league,Championship,2,openfootball,2026-11-04,Bristol City,
 England,championship,league,Championship,2,openfootball,2026-11-04,Cardiff City,West Ham United
 England,championship,league,Championship,2,openfootball,2026-11-04,Wrexham,Middlesbrough
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-05,Getafe,Brighton & Hove Albion
+Europe,conference_league,continental,Conference League,,wikipedia,2026-11-05,Midtjylland,Ajax
+Europe,conference_league,continental,Conference League,,wikipedia,2026-11-05,Monaco,Nordsjælland
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-05,Thun,Hearts
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-05,Trabzonspor,Freiburg
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-05,AZ,Juventus
@@ -831,6 +817,7 @@ Europe,conference_league,continental,Conference League,,wikipedia,2026-11-26,Aja
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-26,Freiburg,Twente
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-26,Hearts,Monaco
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-26,Jablonec,Lugano
+Europe,conference_league,continental,Conference League,,wikipedia,2026-11-26,Nordsjælland,Panathinaikos
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,Celta Vigo,Bournemouth
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,Crystal Palace,Real Sociedad
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,NEC,Rennes
@@ -1017,6 +1004,7 @@ England,championship,league,Championship,2,openfootball,2026-12-09,Lincoln City,
 England,championship,league,Championship,2,openfootball,2026-12-09,Preston North End,Portsmouth
 England,championship,league,Championship,2,openfootball,2026-12-09,Southampton,Burnley
 Europe,conference_league,continental,Conference League,,wikipedia,2026-12-10,Brighton & Hove Albion,Monaco
+Europe,conference_league,continental,Conference League,,wikipedia,2026-12-10,Copenhagen,Lugano
 Europe,conference_league,continental,Conference League,,wikipedia,2026-12-10,Freiburg,Panathinaikos
 Europe,conference_league,continental,Conference League,,wikipedia,2026-12-10,Sint-Truiden,Ajax
 Europe,conference_league,continental,Conference League,,wikipedia,2026-12-10,Thun,Gent

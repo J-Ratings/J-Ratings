@@ -1,0 +1,961 @@
+﻿Source,Country,Competition,CompetitionType,Tier,League,Season,Date,HomeRaw,AwayRaw,HomeGoals,AwayGoals,Score,Result,SourceURL,SourceLine,SourceText
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-17,Moskva,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,25,Moskva    1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-17,Torpedo,Tom,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,27,Torpedo   1-2 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-18,Spartak M,Luch-Ener,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,30,Spartak M 1-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-18,Dinamo,Shinnik,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,32,Dinamo    1-1 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-18,Spartak N,CSKA,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,34,Spartak N 0-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-19,Lokomotiv,Krylya S,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,37,Lokomotiv 0-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-19,Rubin,Rostov,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,39,Rubin     2-1 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-19,Zenit,Saturn,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,41,Zenit     1-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-26,CSKA,Shinnik,5,1,5-1,1-0,https://www.rsssf.org/tablesr/rus06.html,46,CSKA      5-1 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-26,Tom,Dinamo,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,48,Tom       1-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-26,Saturn,Torpedo,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,50,Saturn    0-0 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-26,Amkar,Zenit,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus06.html,52,Amkar     1-3 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-26,Rostov,Moskva,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus06.html,54,Rostov    4-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-26,Luch-Ener,Lokomotiv,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,56,Luch-Ener 1-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-26,Spartak N,Spartak M,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,58,Spartak N 2-2 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-27,Krylya S,Rubin,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,61,Krylya S  0-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-31,Torpedo,Amkar,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,66,Torpedo   0-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-03-31,Dinamo,Saturn,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,68,Dinamo    1-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-01,Shinnik,Tom,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,71,Shinnik   0-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-01,Spartak M,CSKA,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,73,Spartak M 1-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-02,Rubin,Luch-Ener,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,76,Rubin     1-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-02,Moskva,Krylya S,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,78,Moskva    1-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-02,Lokomotiv,Spartak N,2,3,2-3,0-1,https://www.rsssf.org/tablesr/rus06.html,80,Lokomotiv 2-3 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-02,Zenit,Rostov,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,83,Zenit     1-1 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-08,CSKA,Tom,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,88,CSKA      2-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-08,Moskva,Luch-Ener,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,90,Moskva    2-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-08,Saturn,Shinnik,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus06.html,92,Saturn    3-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-08,Rostov,Torpedo,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,94,Rostov    1-1 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-09,Spartak M,Lokomotiv,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,97,Spartak M 2-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-09,Amkar,Dinamo,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus06.html,99,Amkar     3-2 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-09,Krylya S,Zenit,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus06.html,102,Krylya S  3-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-09,Spartak N,Rubin,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus06.html,105,Spartak N 3-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-15,Zenit,Luch-Ener,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus06.html,111,Zenit     3-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-16,Lokomotiv,CSKA,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus06.html,115,Lokomotiv 3-2 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-16,Rubin,Spartak M,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,118,Rubin     2-0 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-16,Moskva,Spartak N,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,120,Moskva    1-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-16,Torpedo,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,122,Torpedo   1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-16,Shinnik,Amkar,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,124,Shinnik   0-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-16,Tom,Saturn,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,126,Tom       0-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-17,Dinamo,Rostov,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,129,Dinamo    0-1 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-22,CSKA,Saturn,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,134,CSKA      1-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-22,Amkar,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,136,Amkar     0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-22,Luch-Ener,Torpedo,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,138,Luch-Ener 2-0 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-23,Spartak M,Moskva,3,3,3-3,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,141,Spartak M 3-3 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-23,Lokomotiv,Rubin,4,4,4-4,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,144,Lokomotiv 4-4 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-23,Rostov,Shinnik,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,147,Rostov    0-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-23,Krylya S,Dinamo,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,149,Krylya S  1-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-23,Spartak N,Zenit,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,151,Spartak N 1-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-29,Rubin,CSKA,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,156,Rubin     1-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-29,Torpedo,Spartak N,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,158,Torpedo   2-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-29,Dinamo,Luch-Ener,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,160,Dinamo    2-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Moskva,Lokomotiv,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,163,Moskva    0-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Zenit,Spartak M,1,4,1-4,0-1,https://www.rsssf.org/tablesr/rus06.html,165,Zenit     1-4 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Shinnik,Krylya S,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,168,Shinnik   1-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Tom,Rostov,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus06.html,170,Tom       3-1 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Saturn,Amkar,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,172,Saturn    0-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,CSKA,Amkar,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,177,CSKA      2-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Lokomotiv,Zenit,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus06.html,179,Lokomotiv 3-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Rostov,Saturn,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus06.html,182,Rostov    0-2 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Krylya S,Tom,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,184,Krylya S  2-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Spartak M,Torpedo,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,188,Spartak M 2-0 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Rubin,Moskva,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,190,Rubin     2-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Luch-Ener,Shinnik,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,192,Luch-Ener 1-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Spartak N,Dinamo,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,194,Spartak N 1-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Shinnik,Spartak N,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,199,Shinnik   0-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Tom,Luch-Ener,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,201,Tom       2-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Amkar,Rostov,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,203,Amkar     1-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Moskva,CSKA,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,206,Moskva    0-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Zenit,Rubin,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,208,Zenit     1-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Torpedo,Lokomotiv,1,4,1-4,0-1,https://www.rsssf.org/tablesr/rus06.html,210,Torpedo   1-4 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Saturn,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,213,Saturn    1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-04-30,Dinamo,Spartak M,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,216,Dinamo    0-0 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-05,Moskva,Shinnik,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus06.html,221,Moskva    4-1 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-06,CSKA,Torpedo,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,224,CSKA      2-0 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-06,Lokomotiv,Saturn,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,226,Lokomotiv 0-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-06,Zenit,Dinamo,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,228,Zenit     0-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-06,Luch-Ener,Krylya S,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus06.html,230,Luch-Ener 3-2 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-06,Spartak N,Rostov,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus06.html,232,Spartak N 3-1 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-07,Spartak M,Amkar,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus06.html,235,Spartak M 4-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-07,Rubin,Tom,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,237,Rubin     2-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-10,CSKA,Rostov,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,242,CSKA      1-2 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-11,Lokomotiv,Dinamo,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,245,Lokomotiv 2-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-12,Moskva,Zenit,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,248,Moskva    0-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-12,Spartak M,Shinnik,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus06.html,250,Spartak M 3-1 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-12,Rubin,Torpedo,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,253,Rubin     1-1 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-12,Krylya S,Amkar,6,1,6-1,1-0,https://www.rsssf.org/tablesr/rus06.html,255,Krylya S  6-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-12,Luch-Ener,Saturn,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,258,Luch-Ener 2-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-12,Spartak N,Tom,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,260,Spartak N 1-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-16,Shinnik,Lokomotiv,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus06.html,265,Shinnik   1-3 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-16,Tom,Spartak M,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,267,Tom       2-2 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-16,Saturn,Spartak N,1,4,1-4,0-1,https://www.rsssf.org/tablesr/rus06.html,270,Saturn    1-4 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-16,Amkar,Luch-Ener,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,273,Amkar     0-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-16,Rostov,Krylya S,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,275,Rostov    2-2 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-19,Moskva,Torpedo,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,279,Moskva    1-1 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-19,Zenit,CSKA,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,281,Zenit     0-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-19,Dinamo,Rubin,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,283,Dinamo    2-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-21,Spartak M,Saturn,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,289,Spartak M 1-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-22,Lokomotiv,Tom,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,292,Lokomotiv 1-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-23,Zenit,Torpedo,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,295,Zenit     2-1 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-23,CSKA,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,298,CSKA      1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-23,Luch-Ener,Rostov,4,2,4-2,1-0,https://www.rsssf.org/tablesr/rus06.html,300,Luch-Ener 4-2 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-23,Spartak N,Amkar,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,304,Spartak N 2-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-25,Moskva,Dinamo,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,307,Moskva    1-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-26,Rubin,Shinnik,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,310,Rubin     0-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-29,Torpedo,CSKA,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,315,Torpedo   2-2 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-29,Amkar,Spartak M,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus06.html,318,Amkar     1-3 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-30,Dinamo,Zenit,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,322,Dinamo    2-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-30,Tom,Rubin,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus06.html,325,Tom       4-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-30,Saturn,Lokomotiv,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,327,Saturn    1-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-30,Shinnik,Moskva,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,329,Shinnik   1-2 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-30,Krylya S,Luch-Ener,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,331,Krylya S  2-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-07-31,Rostov,Spartak N,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,334,Rostov    2-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-03,CSKA,Luch-Ener,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,339,CSKA      2-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-04,Torpedo,Dinamo,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus06.html,343,Torpedo   3-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-05,Spartak M,Rostov,5,2,5-2,1-0,https://www.rsssf.org/tablesr/rus06.html,346,Spartak M 5-2 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-05,Rubin,Saturn,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus06.html,349,Rubin     0-3 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-06,Lokomotiv,Amkar,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,352,Lokomotiv 0-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-06,Moskva,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,354,Moskva    0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-06,Zenit,Shinnik,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,356,Zenit     1-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-06,Spartak N,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,358,Spartak N 1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-12,Tom,Zenit,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,363,Tom       2-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-12,Saturn,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,366,Saturn    1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-13,Spartak M,Krylya S,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus06.html,369,Spartak M 3-2 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-13,Dinamo,CSKA,2,3,2-3,0-1,https://www.rsssf.org/tablesr/rus06.html,372,Dinamo    2-3 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-13,Shinnik,Torpedo,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,374,Shinnik   1-1 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-13,Amkar,Rubin,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,376,Amkar     0-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-13,Rostov,Lokomotiv,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,378,Rostov    1-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-13,Luch-Ener,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,380,Luch-Ener 1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-19,CSKA,Spartak N,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,385,CSKA      2-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-19,Luch-Ener,Spartak M,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,387,Luch-Ener 1-0 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-19,Shinnik,Dinamo,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,389,Shinnik   1-2 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-19,Krylya S,Lokomotiv,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,391,Krylya S  1-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-20,Saturn,Zenit,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,394,Saturn    0-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-20,Tom,Torpedo,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,396,Tom       0-0 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-20,Amkar,Moskva,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,398,Amkar     2-2 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-20,Rostov,Rubin,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,400,Rostov    2-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-26,Torpedo,Saturn,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus06.html,405,Torpedo   0-3 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-26,Lokomotiv,Luch-Ener,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus06.html,407,Lokomotiv 3-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-27,Moskva,Rostov,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus06.html,410,Moskva    4-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-27,Spartak M,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,413,Spartak M 1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-27,Dinamo,Tom,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,415,Dinamo    2-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-27,Shinnik,CSKA,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,417,Shinnik   0-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-28,Rubin,Krylya S,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,420,Rubin     2-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-08-28,Zenit,Amkar,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,422,Zenit     2-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-09,CSKA,Spartak M,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,427,CSKA      2-2 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-09,Amkar,Torpedo,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,430,Amkar     1-0 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-09,Krylya S,Moskva,0,4,0-4,0-1,https://www.rsssf.org/tablesr/rus06.html,432,Krylya S  0-4 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-10,Rostov,Zenit,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus06.html,435,Rostov    1-3 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-10,Spartak N,Lokomotiv,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,438,Spartak N 0-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-10,Saturn,Dinamo,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus06.html,440,Saturn    3-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-10,Tom,Shinnik,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus06.html,442,Tom       3-1 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-12,Luch-Ener,Rubin,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,446,Luch-Ener 2-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-16,Torpedo,Rostov,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus06.html,451,Torpedo   0-2 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-16,Shinnik,Saturn,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,453,Shinnik   0-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-16,Luch-Ener,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,455,Luch-Ener 1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-17,Lokomotiv,Spartak M,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,458,Lokomotiv 0-0 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-17,Rubin,Spartak N,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,460,Rubin     0-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-17,Zenit,Krylya S,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,462,Zenit     1-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-17,Dinamo,Amkar,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,464,Dinamo    0-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-17,Tom,CSKA,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,466,Tom       0-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-23,CSKA,Lokomotiv,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,471,CSKA      1-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-23,Spartak M,Rubin,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus06.html,473,Spartak M 3-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-23,Rostov,Dinamo,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,475,Rostov    2-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-24,Saturn,Tom,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,478,Saturn    2-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-24,Amkar,Shinnik,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,480,Amkar     1-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-24,Krylya S,Torpedo,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,482,Krylya S  2-0 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-24,Luch-Ener,Zenit,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus06.html,484,Luch-Ener 0-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-24,Spartak N,Moskva,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,486,Spartak N 2-2 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-30,Shinnik,Rostov,1,6,1-6,0-1,https://www.rsssf.org/tablesr/rus06.html,492,Shinnik   1-6 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-09-30,Tom,Amkar,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus06.html,495,Tom       1-3 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-01,Moskva,Spartak M,3,3,3-3,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,499,Moskva    3-3 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-01,Zenit,Spartak N,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus06.html,502,Zenit     4-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-01,Dinamo,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,505,Dinamo    1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-01,Saturn,CSKA,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,507,Saturn    2-2 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-02,Rubin,Lokomotiv,2,4,2-4,0-1,https://www.rsssf.org/tablesr/rus06.html,511,Rubin     2-4 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-02,Torpedo,Luch-Ener,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,514,Torpedo   2-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-14,CSKA,Rubin,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,519,CSKA      2-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-14,Spartak M,Zenit,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,521,Spartak M 1-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-14,Lokomotiv,Moskva,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,523,Lokomotiv 0-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-14,Amkar,Saturn,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,525,Amkar     1-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-14,Luch-Ener,Dinamo,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus06.html,527,Luch-Ener 3-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-14,Spartak N,Torpedo,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,530,Spartak N 0-0 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-15,Rostov,Tom,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,533,Rostov    2-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-15,Krylya S,Shinnik,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,535,Krylya S  2-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-20,Dinamo,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,540,Dinamo    1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-20,Shinnik,Luch-Ener,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus06.html,542,Shinnik   1-3 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-21,Saturn,Rostov,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,546,Saturn    0-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-21,Amkar,CSKA,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,548,Amkar     0-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-22,Torpedo,Spartak M,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,551,Torpedo   1-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-22,Moskva,Rubin,0,5,0-5,0-1,https://www.rsssf.org/tablesr/rus06.html,553,Moskva    0-5 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-22,Zenit,Lokomotiv,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus06.html,555,Zenit     4-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-22,Tom,Krylya S,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,558,Tom       2-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-24,Spartak N,Shinnik,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,563,Spartak N 2-1 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-25,Luch-Ener,Tom,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,566,Luch-Ener 2-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-25,Rostov,Amkar,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,568,Rostov    1-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-25,Krylya S,Saturn,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,570,Krylya S  0-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-25,CSKA,Moskva,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,572,CSKA      2-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-25,Rubin,Zenit,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus06.html,574,Rubin     3-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-25,Spartak M,Dinamo,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus06.html,576,Spartak M 3-2 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-25,Lokomotiv,Torpedo,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,579,Lokomotiv 0-0 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-28,Shinnik,Spartak M,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,584,Shinnik   1-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-28,Rostov,CSKA,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,586,Rostov    1-2 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-29,Zenit,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,590,Zenit     1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-29,Torpedo,Rubin,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,592,Torpedo   1-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-29,Dinamo,Lokomotiv,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,594,Dinamo    2-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-29,Saturn,Luch-Ener,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,597,Saturn    1-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-29,Amkar,Krylya S,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,599,Amkar     1-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-10-29,Tom,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,601,Tom       1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-04,Torpedo,Moskva,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus06.html,606,Torpedo   0-2 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-04,Krylya S,Rostov,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,609,Krylya S  1-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-04,Luch-Ener,Amkar,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus06.html,611,Luch-Ener 3-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-04,Spartak M,Tom,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus06.html,613,Spartak M 3-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-05,CSKA,Zenit,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,617,CSKA      1-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-05,Lokomotiv,Shinnik,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,619,Lokomotiv 1-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-05,Rubin,Dinamo,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,621,Rubin     0-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-05,Spartak N,Saturn,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,623,Spartak N 2-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-08,Rostov,Luch-Ener,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,627,Rostov    1-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-08,Tom,Lokomotiv,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus06.html,629,Tom       3-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-08,Amkar,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,631,Amkar     1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-08,Krylya S,CSKA,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus06.html,633,Krylya S  2-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-08,Shinnik,Rubin,1,5,1-5,0-1,https://www.rsssf.org/tablesr/rus06.html,635,Shinnik   1-5 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-08,Torpedo,Zenit,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,639,Torpedo   1-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-08,Dinamo,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,641,Dinamo    1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-08,Saturn,Spartak M,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,643,Saturn    1-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-18,Dinamo,Torpedo,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,648,Dinamo    2-1 Torpedo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-18,Shinnik,Zenit,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,650,Shinnik   1-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-18,Tom,Moskva,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,652,Tom       1-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-18,Saturn,Rubin,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,654,Saturn    1-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-18,Amkar,Lokomotiv,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus06.html,656,Amkar     1-3 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-18,Rostov,Spartak M,3,4,3-4,0-1,https://www.rsssf.org/tablesr/rus06.html,659,Rostov    3-4 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-18,Krylya S,Spartak N,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,662,Krylya S  1-2 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-18,Luch-Ener,CSKA,0,4,0-4,0-1,https://www.rsssf.org/tablesr/rus06.html,664,Luch-Ener 0-4 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-25,Torpedo,Shinnik,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,669,Torpedo   1-1 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-26,CSKA,Dinamo,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus06.html,672,CSKA      1-2 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-26,Lokomotiv,Rostov,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,674,Lokomotiv 1-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-26,Rubin,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus06.html,676,Rubin     1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-26,Moskva,Saturn,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus06.html,678,Moskva    2-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-26,Zenit,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,681,Zenit     0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-26,Krylya S,Spartak M,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus06.html,683,Krylya S  0-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2006,2006-11-26,Spartak N,Luch-Ener,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus06.html,685,Spartak N 0-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-10,Luch-Ener,Moskva,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,28,Luch-Ener 0-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-10,Tom,Spartak N,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,30,Tom       2-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-10,Krylya S,Khimki,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,32,Krylya S  1-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-11,Dinamo,Spartak M,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,35,Dinamo    0-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-11,Amkar,Rostov,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,37,Amkar     3-1 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-11,Zenit,Saturn,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,39,Zenit     1-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-11,Kuban,Lokomotiv,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,41,Kuban     0-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-11,CSKA,Rubin,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,43,CSKA      3-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-17,Moskva,Tom,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,48,Moskva    2-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-17,Spartak N,Krylya S,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,50,Spartak N 0-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-17,Khimki,Kuban,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,52,Khimki    1-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-17,Lokomotiv,Rubin,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,54,Lokomotiv 2-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-18,Dinamo,CSKA,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,57,Dinamo    1-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-18,Spartak M,Amkar,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,59,Spartak M 0-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-18,Rostov,Zenit,2,3,2-3,0-1,https://www.rsssf.org/tablesr/rus07.html,61,Rostov    2-3 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-18,Saturn,Luch-Ener,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,64,Saturn    0-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-31,Amkar,Dinamo,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,69,Amkar     1-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-31,Zenit,Spartak M,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus07.html,71,Zenit     1-3 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-31,Tom,Saturn,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,74,Tom       1-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-31,Krylya S,Moskva,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,76,Krylya S  0-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-31,Rubin,Khimki,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,78,Rubin     2-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-03-31,CSKA,Lokomotiv,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,80,CSKA      2-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-01,Luch-Ener,Rostov,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,83,Luch-Ener 1-1 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-01,Kuban,Spartak N,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,85,Kuban     2-2 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-07,Dinamo,Lokomotiv,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,90,Dinamo    2-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-07,Saturn,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,92,Saturn    1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-07,Moskva,Kuban,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,94,Moskva    1-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-08,Amkar,Zenit,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,97,Amkar     1-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-08,Spartak M,Luch-Ener,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,99,Spartak M 2-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-08,Rostov,Tom,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,101,Rostov    2-2 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-08,Spartak N,Rubin,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,104,Spartak N 1-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-08,Khimki,CSKA,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,106,Khimki    1-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-13,Kuban,Saturn,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,111,Kuban     2-2 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-14,Zenit,Dinamo,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus07.html,114,Zenit     3-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-14,Luch-Ener,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,116,Luch-Ener 1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-14,Krylya S,Rostov,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,118,Krylya S  0-1 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-14,Rubin,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,120,Rubin     1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-14,Lokomotiv,Khimki,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,122,Lokomotiv 1-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-15,Tom,Spartak M,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,125,Tom       1-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-15,CSKA,Spartak N,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,127,CSKA      2-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-21,Amkar,Tom,3,3,3-3,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,132,Amkar     3-3 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-21,Dinamo,Khimki,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,135,Dinamo    2-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-21,Rostov,Kuban,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,137,Rostov    0-1 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-21,Saturn,Rubin,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,139,Saturn    1-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-22,Moskva,CSKA,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,142,Moskva    2-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-22,Luch-Ener,Zenit,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,144,Luch-Ener 0-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-22,Spartak M,Krylya S,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,146,Spartak M 1-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-22,Spartak N,Lokomotiv,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,148,Spartak N 0-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-28,Lokomotiv,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,153,Lokomotiv 1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-28,Luch-Ener,Dinamo,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,155,Luch-Ener 0-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-28,Tom,Zenit,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,157,Tom       0-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-28,Khimki,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,159,Khimki    1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,CSKA,Saturn,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,162,CSKA      3-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Kuban,Spartak M,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,164,Kuban     0-0 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Krylya S,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,166,Krylya S  1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Rubin,Rostov,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,168,Rubin     0-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Moskva,Khimki,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus07.html,173,Moskva    0-2 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Dinamo,Spartak N,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,175,Dinamo    2-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Saturn,Lokomotiv,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,177,Saturn    1-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Luch-Ener,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,179,Luch-Ener 0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Amkar,Kuban,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,181,Amkar     0-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Zenit,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,184,Zenit     1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Spartak M,Rubin,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,187,Spartak M 2-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Rostov,CSKA,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,189,Rostov    1-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,CSKA,Spartak M,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,194,CSKA      1-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Tom,Dinamo,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,196,Tom       1-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Krylya S,Luch-Ener,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus07.html,198,Krylya S  3-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Spartak N,Moskva,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,200,Spartak N 1-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Kuban,Zenit,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,203,Kuban     1-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Khimki,Saturn,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,205,Khimki    0-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Lokomotiv,Rostov,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,207,Lokomotiv 2-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Rubin,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,209,Rubin     1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Spartak M,Lokomotiv,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus07.html,214,Spartak M 1-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Saturn,Spartak N,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,216,Saturn    1-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Rostov,Khimki,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,218,Rostov    1-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Kuban,Luch-Ener,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,220,Kuban     1-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Dinamo,Moskva,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,223,Dinamo    0-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Tom,Krylya S,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus07.html,225,Tom       1-2 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Zenit,Rubin,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,228,Zenit     2-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Amkar,CSKA,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,230,Amkar     1-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Khimki,Spartak M,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus07.html,235,Khimki    3-0 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,CSKA,Zenit,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,238,CSKA      2-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Krylya S,Dinamo,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus07.html,240,Krylya S  3-2 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Kuban,Tom,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,243,Kuban     2-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Spartak N,Rostov,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,245,Spartak N 0-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-04-29,Rubin,Luch-Ener,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus07.html,247,Rubin     3-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-20,Lokomotiv,Amkar,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,251,Lokomotiv 0-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-25,Moskva,Saturn,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus07.html,254,Moskva    3-2 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-09,Krylya S,Kuban,2,3,2-3,0-1,https://www.rsssf.org/tablesr/rus07.html,260,Krylya S  2-3 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-09,Tom,Rubin,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,262,Tom       2-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-09,Amkar,Khimki,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,264,Amkar     3-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-10,Luch-Ener,CSKA,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus07.html,267,Luch-Ener 4-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-10,Spartak M,Spartak N,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,269,Spartak M 2-2 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-10,Dinamo,Saturn,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,271,Dinamo    1-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-10,Rostov,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,273,Rostov    1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-11,Zenit,Lokomotiv,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,276,Zenit     1-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-16,CSKA,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,281,CSKA      0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-16,Khimki,Zenit,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,283,Khimki    2-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-16,Luch-Ener,Lokomotiv,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus07.html,286,Luch-Ener 3-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-16,Rubin,Krylya S,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,288,Rubin     1-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-16,Spartak N,Amkar,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,290,Spartak N 0-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-16,Saturn,Rostov,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,292,Saturn    1-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-17,Moskva,Spartak M,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,295,Moskva    2-0 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-17,Kuban,Dinamo,0,4,0-4,0-1,https://www.rsssf.org/tablesr/rus07.html,297,Kuban     0-4 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-22,Spartak M,Saturn,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,302,Spartak M 2-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-23,Luch-Ener,Khimki,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,306,Luch-Ener 1-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-23,Dinamo,Rostov,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus07.html,308,Dinamo    3-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-23,Kuban,Rubin,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,310,Kuban     0-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-24,Krylya S,CSKA,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,313,Krylya S  1-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-24,Amkar,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,315,Amkar     1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-24,Zenit,Spartak N,4,3,4-3,1-0,https://www.rsssf.org/tablesr/rus07.html,317,Zenit     4-3 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-24,Tom,Lokomotiv,4,2,4-2,1-0,https://www.rsssf.org/tablesr/rus07.html,321,Tom       4-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-30,Lokomotiv,Krylya S,5,2,5-2,1-0,https://www.rsssf.org/tablesr/rus07.html,327,Lokomotiv 5-2 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-30,Saturn,Amkar,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,331,Saturn    2-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-06-30,Spartak N,Luch-Ener,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,333,Spartak N 2-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-01,"NB: On August 15, FK Moskva was awarded","defeat for fielding the player, Roman Hubnik,",0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus07.html,338,"   NB: On August 15, FK Moskva was awarded 0-3 defeat for fielding the player, Roman Hubnik,"
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-01,Rubin,Dinamo,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,343,Rubin     2-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-01,Rostov,Spartak M,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus07.html,345,Rostov    1-3 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-01,Khimki,Tom,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,348,Khimki    1-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-01,CSKA,Kuban,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,350,CSKA      0-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-14,CSKA,Dinamo,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,355,CSKA      0-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-14,Amkar,Spartak M,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,357,Amkar     0-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-14,Kuban,Khimki,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,359,Kuban     1-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-14,Luch-Ener,Saturn,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,361,Luch-Ener 2-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-15,Tom,Moskva,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus07.html,365,Tom       1-2 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-15,Zenit,Rostov,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,367,Zenit     2-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-15,Krylya S,Spartak N,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus07.html,370,Krylya S  1-2 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-25,Rubin,Lokomotiv,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus07.html,373,Rubin     3-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-20,Dinamo,Amkar,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,378,Dinamo    0-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-21,Spartak M,Zenit,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,381,Spartak M 3-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-21,Moskva,Krylya S,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,383,Moskva    3-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-21,Rostov,Luch-Ener,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,385,Rostov    1-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-21,Saturn,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,387,Saturn    0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-22,Lokomotiv,CSKA,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus07.html,390,Lokomotiv 1-2 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-22,Spartak N,Kuban,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,392,Spartak N 1-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-01,Khimki,Rubin,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,395,Khimki    0-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-28,Luch-Ener,Spartak M,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,400,Luch-Ener 1-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-28,Lokomotiv,Dinamo,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,402,Lokomotiv 2-2 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-28,Zenit,Amkar,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,404,Zenit     0-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-29,Kuban,Moskva,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus07.html,407,Kuban     4-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-29,CSKA,Khimki,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,410,CSKA      0-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-29,Krylya S,Saturn,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,412,Krylya S  0-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-29,Tom,Rostov,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,414,Tom       1-1 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-26,Rubin,Spartak N,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,417,Rubin     2-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-07-18,Khimki,Lokomotiv,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus07.html,422,Khimki    1-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-03,Saturn,Kuban,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,425,Saturn    2-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-04,Dinamo,Zenit,4,2,4-2,1-0,https://www.rsssf.org/tablesr/rus07.html,430,Dinamo    4-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-04,Amkar,Luch-Ener,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,433,Amkar     1-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-04,Rostov,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,435,Rostov    1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-05,Moskva,Rubin,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,438,Moskva    2-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-05,Spartak M,Tom,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus07.html,440,Spartak M 3-2 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-05,Spartak N,CSKA,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,443,Spartak N 1-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-11,Krylya S,Spartak M,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus07.html,448,Krylya S  0-2 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-11,Zenit,Luch-Ener,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,450,Zenit     3-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-11,Khimki,Dinamo,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,452,Khimki    1-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-11,Lokomotiv,Spartak N,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,454,Lokomotiv 3-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-12,CSKA,Moskva,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,457,CSKA      2-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-12,Rubin,Saturn,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,459,Rubin     0-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-12,Tom,Amkar,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,461,Tom       0-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-12,Kuban,Rostov,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,463,Kuban     1-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-18,Saturn,CSKA,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,468,Saturn    2-2 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-18,Dinamo,Luch-Ener,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,470,Dinamo    1-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-18,Amkar,Krylya S,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus07.html,472,Amkar     4-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-18,Spartak N,Khimki,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,475,Spartak N 1-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-19,Moskva,Lokomotiv,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus07.html,478,Moskva    1-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-19,Spartak M,Kuban,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus07.html,480,Spartak M 4-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-19,Zenit,Tom,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,482,Zenit     2-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-19,Rostov,Rubin,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,484,Rostov    1-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-25,Rubin,Spartak M,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,489,Rubin     3-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-25,Krylya S,Zenit,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus07.html,492,Krylya S  1-3 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-25,Lokomotiv,Saturn,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus07.html,495,Lokomotiv 0-2 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-25,Tom,Luch-Ener,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,497,Tom       3-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-26,Khimki,Moskva,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus07.html,501,Khimki    1-3 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-26,Spartak N,Dinamo,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus07.html,503,Spartak N 4-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-26,Kuban,Amkar,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,506,Kuban     1-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-26,CSKA,Rostov,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus07.html,508,CSKA      4-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-31,Moskva,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,513,Moskva    1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-08-31,Dinamo,Tom,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,515,Dinamo    3-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-01,Amkar,Rubin,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,518,Amkar     2-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-01,Saturn,Khimki,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,520,Saturn    1-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-01,Luch-Ener,Krylya S,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,522,Luch-Ener 0-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-02,Spartak M,CSKA,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,525,Spartak M 1-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-02,Zenit,Kuban,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,527,Zenit     1-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-02,Rostov,Lokomotiv,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus07.html,529,Rostov    0-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-21,Khimki,Rostov,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,534,Khimki    1-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-22,Moskva,Dinamo,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus07.html,537,Moskva    4-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-22,Spartak N,Saturn,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus07.html,540,Spartak N 1-3 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-22,Luch-Ener,Kuban,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,543,Luch-Ener 1-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-23,Lokomotiv,Spartak M,4,3,4-3,1-0,https://www.rsssf.org/tablesr/rus07.html,546,Lokomotiv 4-3 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-23,Rubin,Zenit,1,4,1-4,0-1,https://www.rsssf.org/tablesr/rus07.html,549,Rubin     1-4 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-23,CSKA,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,552,CSKA      1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-23,Krylya S,Tom,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,554,Krylya S  1-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-29,Zenit,CSKA,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,559,Zenit     2-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-29,Spartak M,Khimki,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,561,Spartak M 2-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-29,Amkar,Lokomotiv,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,563,Amkar     1-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-29,Luch-Ener,Rubin,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,565,Luch-Ener 2-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-30,Saturn,Moskva,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,568,Saturn    0-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-30,Dinamo,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,570,Dinamo    1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-30,Rostov,Spartak N,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,572,Rostov    0-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-09-30,Tom,Kuban,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,574,Tom       2-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-06,Saturn,Dinamo,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,579,Saturn    2-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-06,Moskva,Rostov,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,581,Moskva    1-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-06,Khimki,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,583,Khimki    1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-06,Kuban,Krylya S,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus07.html,585,Kuban     3-2 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-07,Lokomotiv,Zenit,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,589,Lokomotiv 1-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-07,CSKA,Luch-Ener,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus07.html,591,CSKA      4-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-07,Rubin,Tom,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus07.html,593,Rubin     1-3 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-08,Spartak N,Spartak M,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus07.html,596,Spartak N 1-2 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-20,Spartak M,Moskva,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,601,Spartak M 3-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-20,Tom,CSKA,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,603,Tom       0-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-20,Lokomotiv,Luch-Ener,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,605,Lokomotiv 1-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-21,Zenit,Khimki,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus07.html,608,Zenit     4-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-21,Amkar,Spartak N,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,611,Amkar     1-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-21,Rostov,Saturn,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus07.html,613,Rostov    1-3 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-21,Dinamo,Kuban,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,615,Dinamo    1-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-21,Krylya S,Rubin,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus07.html,617,Krylya S  3-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-27,Moskva,Amkar,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,622,Moskva    3-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-27,Rostov,Dinamo,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,624,Rostov    0-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-27,Rubin,Kuban,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,626,Rubin     2-2 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-27,Khimki,Luch-Ener,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus07.html,629,Khimki    3-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-28,Saturn,Spartak M,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,632,Saturn    0-0 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-28,Spartak N,Zenit,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus07.html,634,Spartak N 0-3 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-28,CSKA,Krylya S,4,2,4-2,1-0,https://www.rsssf.org/tablesr/rus07.html,636,CSKA      4-2 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-10-28,Lokomotiv,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus07.html,639,Lokomotiv 0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-03,Zenit,Moskva,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,643,Zenit     1-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-03,Spartak M,Rostov,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus07.html,645,Spartak M 3-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-03,Kuban,CSKA,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,647,Kuban     0-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-03,Amkar,Saturn,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,649,Amkar     3-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-03,Dinamo,Rubin,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,652,Dinamo    0-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-03,Krylya S,Lokomotiv,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,654,Krylya S  3-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-03,Tom,Khimki,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,657,Tom       3-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-03,Luch-Ener,Spartak N,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,659,Luch-Ener 2-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-11,Saturn,Zenit,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,663,Saturn    0-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-11,Spartak M,Dinamo,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus07.html,665,Spartak M 2-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-11,Rubin,CSKA,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus07.html,667,Rubin     0-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-11,Moskva,Luch-Ener,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus07.html,669,Moskva    3-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-11,Lokomotiv,Kuban,2,3,2-3,0-1,https://www.rsssf.org/tablesr/rus07.html,671,Lokomotiv 2-3 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-11,Khimki,Krylya S,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus07.html,674,Khimki    4-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-11,Spartak N,Tom,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus07.html,677,Spartak N 1-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2007,2007-11-11,Rostov,Amkar,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus07.html,679,Rostov    2-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-14,Terek,Krylya S,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus08.html,37,Terek     0-3 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-15,Spartak N,Saturn,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,41,Spartak N 2-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-15,Khimki,Amkar,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus08.html,44,Khimki    0-3 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-15,CSKA,Shinnik,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,46,CSKA      1-1 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-16,Zenit,Spartak M,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,49,Zenit     0-0 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-16,Tom,Dinamo,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,51,Tom       0-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-16,Lokomotiv,Rubin,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,53,Lokomotiv 0-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-16,Luch-Ener,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,55,Luch-Ener 1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-22,Krylya S,CSKA,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus08.html,60,Krylya S  0-2 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-22,Spartak M,Tom,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,62,Spartak M 1-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-22,Shinnik,Lokomotiv,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,64,Shinnik   1-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-22,Saturn,Terek,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus08.html,66,Saturn    3-1 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-23,Spartak N,Amkar,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,69,Spartak N 0-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-23,Rubin,Luch-Ener,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,71,Rubin     1-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-23,Moskva,Zenit,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus08.html,73,Moskva    0-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-23,Dinamo,Khimki,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,75,Dinamo    2-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-29,Khimki,Spartak M,3,3,3-3,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,80,Khimki    3-3 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-29,Luch-Ener,Shinnik,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,83,Luch-Ener 1-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-29,Terek,Spartak N,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,85,Terek     2-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-29,Tom,Moskva,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,87,Tom       2-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-30,Amkar,Dinamo,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,90,Amkar     1-2 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-30,Zenit,Rubin,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus08.html,92,Zenit     1-3 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-30,CSKA,Saturn,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,94,CSKA      1-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-03-30,Lokomotiv,Krylya S,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,96,Lokomotiv 2-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-04,Moskva,Khimki,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,101,Moskva    2-2 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-05,Rubin,Tom,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,105,Rubin     2-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-05,Terek,CSKA,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,107,Terek     1-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-05,Saturn,Lokomotiv,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,109,Saturn    1-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-06,Spartak M,Amkar,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,112,Spartak M 1-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-06,Spartak N,Dinamo,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus08.html,114,Spartak N 0-2 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-06,Krylya S,Luch-Ener,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,116,Krylya S  2-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-06,Shinnik,Zenit,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,118,Shinnik   2-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-12,Khimki,Rubin,0,4,0-4,0-1,https://www.rsssf.org/tablesr/rus08.html,124,Khimki    0-4 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-12,CSKA,Spartak N,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,127,CSKA      0-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-12,Amkar,Moskva,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,129,Amkar     2-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-12,Tom,Shinnik,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,131,Tom       2-1 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-13,Dinamo,Spartak M,4,3,4-3,1-0,https://www.rsssf.org/tablesr/rus08.html,134,Dinamo    4-3 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-13,Lokomotiv,Terek,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,137,Lokomotiv 2-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-13,Zenit,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,139,Zenit     1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-13,Luch-Ener,Saturn,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,141,Luch-Ener 0-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-18,Shinnik,Khimki,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus08.html,146,Shinnik   3-2 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-19,Krylya S,Tom,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus08.html,150,Krylya S  3-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-19,Moskva,Dinamo,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,152,Moskva    1-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-19,Spartak N,Spartak M,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,154,Spartak N 1-2 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-19,Saturn,Zenit,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,156,Saturn    1-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-20,Rubin,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,159,Rubin     1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-20,CSKA,Lokomotiv,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,161,CSKA      0-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-20,Terek,Luch-Ener,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,163,Terek     2-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-25,Dinamo,Rubin,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus08.html,168,Dinamo    0-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-26,Amkar,Shinnik,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,171,Amkar     2-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-26,Khimki,Krylya S,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,174,Khimki    1-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-26,Luch-Ener,CSKA,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus08.html,176,Luch-Ener 1-3 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-27,Lokomotiv,Spartak N,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,180,Lokomotiv 0-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-27,Tom,Saturn,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,182,Tom       0-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-04-27,Spartak M,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,184,Spartak M 1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-13,Zenit,Terek,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus08.html,187,Zenit     3-1 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-13,Rubin,Spartak M,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus08.html,193,Rubin     0-3 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-13,Krylya S,Amkar,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,195,Krylya S  2-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-13,Shinnik,Dinamo,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,197,Shinnik   2-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-13,Spartak N,Moskva,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus08.html,199,Spartak N 0-3 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-13,Lokomotiv,Luch-Ener,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,202,Lokomotiv 2-2 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-13,Terek,Tom,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus08.html,205,Terek     1-3 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-13,Saturn,Khimki,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,208,Saturn    2-2 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-30,CSKA,Zenit,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,211,CSKA      0-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-30,Moskva,Rubin,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,216,Moskva    1-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-30,Spartak M,Shinnik,4,2,4-2,1-0,https://www.rsssf.org/tablesr/rus08.html,218,Spartak M 4-2 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-30,Dinamo,Krylya S,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,222,Dinamo    2-2 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-30,Amkar,Saturn,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,225,Amkar     1-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-30,Tom,CSKA,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,227,Tom       0-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-30,Khimki,Terek,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,229,Khimki    0-1 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-30,Luch-Ener,Spartak N,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus08.html,231,Luch-Ener 0-2 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-23,Zenit,Lokomotiv,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,234,Zenit     1-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-23,Spartak N,Rubin,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,239,Spartak N 2-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-23,Lokomotiv,Tom,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,242,Lokomotiv 2-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-23,Shinnik,Moskva,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,244,Shinnik   0-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-23,Terek,Amkar,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,247,Terek     0-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-23,Krylya S,Spartak M,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,249,Krylya S  1-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-23,Saturn,Dinamo,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,251,Saturn    2-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-23,CSKA,Khimki,4,3,4-3,1-0,https://www.rsssf.org/tablesr/rus08.html,253,CSKA      4-3 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-16,Luch-Ener,Zenit,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,257,Luch-Ener 0-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-16,Rubin,Shinnik,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,262,Rubin     1-1 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-16,Spartak M,Saturn,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,264,Spartak M 1-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-16,Moskva,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,266,Moskva    1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-16,Tom,Luch-Ener,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,268,Tom       1-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-16,Dinamo,Terek,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,271,Dinamo    2-1 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-16,Khimki,Lokomotiv,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,273,Khimki    2-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-09,Zenit,Spartak N,3,4,3-4,0-1,https://www.rsssf.org/tablesr/rus08.html,277,Zenit     3-4 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-16,Amkar,CSKA,3,3,3-3,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,282,Amkar     3-3 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-05,Krylya S,Rubin,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,288,Krylya S  2-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-05,Spartak N,Shinnik,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,290,Spartak N 2-1 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-05,Luch-Ener,Khimki,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,293,Luch-Ener 1-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-06,Lokomotiv,Amkar,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,296,Lokomotiv 0-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-06,Terek,Spartak M,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus08.html,298,Terek     3-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-06,CSKA,Dinamo,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus08.html,301,CSKA      0-2 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-06,Zenit,Tom,5,1,5-1,1-0,https://www.rsssf.org/tablesr/rus08.html,303,Zenit     5-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-09,Saturn,Moskva,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,307,Saturn    0-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-12,Spartak M,CSKA,1,5,1-5,0-1,https://www.rsssf.org/tablesr/rus08.html,312,Spartak M 1-5 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-12,Amkar,Luch-Ener,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,315,Amkar     2-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-12,Shinnik,Krylya S,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,317,Shinnik   0-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-13,Dinamo,Lokomotiv,4,2,4-2,1-0,https://www.rsssf.org/tablesr/rus08.html,320,Dinamo    4-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-13,Tom,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,323,Tom       1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-13,Moskva,Terek,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,325,Moskva    0-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-13,Khimki,Zenit,1,4,1-4,0-1,https://www.rsssf.org/tablesr/rus08.html,327,Khimki    1-4 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-16,Rubin,Saturn,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,331,Rubin     0-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-19,Lokomotiv,Spartak M,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,336,Lokomotiv 2-2 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-19,Zenit,Amkar,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,339,Zenit     2-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-19,Spartak N,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,341,Spartak N 1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-19,Tom,Khimki,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus08.html,343,Tom       3-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-20,Terek,Rubin,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,347,Terek     0-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-20,Luch-Ener,Dinamo,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,349,Luch-Ener 1-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-20,CSKA,Moskva,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus08.html,351,CSKA      0-2 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-23,Saturn,Shinnik,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus08.html,354,Saturn    4-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-25,Khimki,Spartak N,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,359,Khimki    2-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-26,Rubin,CSKA,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,362,Rubin     0-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-26,Amkar,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,364,Amkar     0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-26,Dinamo,Zenit,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,366,Dinamo    1-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-27,Moskva,Lokomotiv,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus08.html,369,Moskva    0-3 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-27,Spartak M,Luch-Ener,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus08.html,371,Spartak M 3-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-27,Shinnik,Terek,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,374,Shinnik   1-1 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-07-30,Krylya S,Saturn,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus08.html,377,Krylya S  4-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-02,Tom,Spartak M,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,383,Tom       0-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-02,Khimki,Dinamo,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,385,Khimki    1-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-02,Zenit,Moskva,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,387,Zenit     2-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-03,Amkar,Spartak N,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,390,Amkar     0-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-03,CSKA,Krylya S,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,392,CSKA      0-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-03,Luch-Ener,Rubin,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,394,Luch-Ener 1-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-03,Terek,Saturn,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,396,Terek     1-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-29,Lokomotiv,Shinnik,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus08.html,399,Lokomotiv 3-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-09,Krylya S,Lokomotiv,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,404,Krylya S  2-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-09,Spartak M,Khimki,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,406,Spartak M 1-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-09,Moskva,Tom,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,408,Moskva    2-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-09,Shinnik,Luch-Ener,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,410,Shinnik   1-2 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-10,Dinamo,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,414,Dinamo    1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-10,Rubin,Zenit,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus08.html,416,Rubin     4-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-10,Spartak N,Terek,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,419,Spartak N 2-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-10,Saturn,CSKA,0,4,0-4,0-1,https://www.rsssf.org/tablesr/rus08.html,421,Saturn    0-4 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-15,Tom,Rubin,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,426,Tom       1-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-16,Dinamo,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,429,Dinamo    1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-16,Luch-Ener,Krylya S,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,431,Luch-Ener 0-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-16,Lokomotiv,Saturn,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,433,Lokomotiv 0-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-17,Amkar,Spartak M,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,436,Amkar     1-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-17,CSKA,Terek,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,438,CSKA      2-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-17,Zenit,Shinnik,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus08.html,440,Zenit     1-3 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-17,Khimki,Moskva,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus08.html,443,Khimki    0-2 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-23,Spartak M,Dinamo,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,448,Spartak M 1-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-23,Rubin,Khimki,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,450,Rubin     2-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-23,Terek,Lokomotiv,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,452,Terek     2-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-23,Shinnik,Tom,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,454,Shinnik   0-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-24,Moskva,Amkar,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,457,Moskva    0-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-24,Spartak N,CSKA,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,459,Spartak N 0-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-24,Krylya S,Zenit,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus08.html,461,Krylya S  0-3 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-24,Saturn,Luch-Ener,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,463,Saturn    2-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-29,Khimki,Shinnik,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,468,Khimki    0-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-30,Lokomotiv,CSKA,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus08.html,471,Lokomotiv 0-2 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-31,Amkar,Rubin,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,474,Amkar     1-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-31,Spartak M,Spartak N,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,476,Spartak M 2-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-31,Dinamo,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,478,Dinamo    1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-31,Tom,Krylya S,0,4,0-4,0-1,https://www.rsssf.org/tablesr/rus08.html,480,Tom       0-4 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-08-31,Luch-Ener,Terek,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,482,Luch-Ener 1-1 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-29,Zenit,Saturn,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,485,Zenit     2-2 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-13,Moskva,Spartak M,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,490,Moskva    2-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-13,Terek,Zenit,1,4,1-4,0-1,https://www.rsssf.org/tablesr/rus08.html,493,Terek     1-4 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-13,Saturn,Tom,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,496,Saturn    2-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-14,Rubin,Dinamo,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,499,Rubin     1-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-14,Shinnik,Amkar,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,501,Shinnik   1-2 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-14,CSKA,Luch-Ener,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus08.html,503,CSKA      4-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-14,Krylya S,Khimki,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus08.html,506,Krylya S  3-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-14,Spartak N,Lokomotiv,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,508,Spartak N 0-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-20,Dinamo,Shinnik,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,513,Dinamo    2-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-20,Amkar,Krylya S,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,515,Amkar     1-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-20,Luch-Ener,Lokomotiv,2,3,2-3,0-1,https://www.rsssf.org/tablesr/rus08.html,517,Luch-Ener 2-3 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-20,Khimki,Saturn,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,520,Khimki    2-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-21,Spartak M,Rubin,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,523,Spartak M 0-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-21,Zenit,CSKA,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus08.html,525,Zenit     1-3 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-21,Moskva,Spartak N,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus08.html,527,Moskva    1-3 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-21,Tom,Terek,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,530,Tom       2-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-27,Krylya S,Dinamo,3,3,3-3,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,535,Krylya S  3-3 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-27,CSKA,Tom,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,538,CSKA      2-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-27,Shinnik,Spartak M,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,540,Shinnik   1-2 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-27,Lokomotiv,Zenit,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus08.html,542,Lokomotiv 0-3 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-27,Spartak N,Luch-Ener,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,544,Spartak N 2-2 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-28,Rubin,Moskva,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,548,Rubin     0-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-28,Saturn,Amkar,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,550,Saturn    0-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-09-28,Terek,Khimki,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,552,Terek     1-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-04,Rubin,Spartak N,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus08.html,557,Rubin     3-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-04,Dinamo,Saturn,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,559,Dinamo    2-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-04,Tom,Lokomotiv,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,562,Tom       0-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-05,Khimki,CSKA,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,565,Khimki    1-2 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-05,Amkar,Terek,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,568,Amkar     0-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-05,Spartak M,Krylya S,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,570,Spartak M 0-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-05,Zenit,Luch-Ener,8,1,8-1,1-0,https://www.rsssf.org/tablesr/rus08.html,572,Zenit     8-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-05,Moskva,Shinnik,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,576,Moskva    2-1 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-18,Shinnik,Rubin,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus08.html,581,Shinnik   0-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-18,Spartak N,Zenit,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,583,Spartak N 2-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-18,Saturn,Spartak M,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,586,Saturn    0-0 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-18,Luch-Ener,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,588,Luch-Ener 0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-19,CSKA,Amkar,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus08.html,591,CSKA      4-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-19,Terek,Dinamo,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,594,Terek     0-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-19,Krylya S,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,596,Krylya S  1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-19,Lokomotiv,Khimki,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus08.html,598,Lokomotiv 0-2 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-25,Rubin,Krylya S,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus08.html,603,Rubin     3-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-25,Spartak M,Terek,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus08.html,605,Spartak M 3-1 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-25,Shinnik,Spartak N,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus08.html,608,Shinnik   2-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-25,Khimki,Luch-Ener,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus08.html,610,Khimki    3-1 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-26,Amkar,Lokomotiv,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,614,Amkar     0-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-26,Tom,Zenit,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,616,Tom       1-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-26,Moskva,Saturn,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,618,Moskva    0-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-10-27,Dinamo,CSKA,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus08.html,621,Dinamo    1-3 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-01,CSKA,Spartak M,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,627,CSKA      0-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-01,Zenit,Khimki,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,629,Zenit     1-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-02,Saturn,Rubin,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,632,Saturn    1-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-02,Luch-Ener,Amkar,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,634,Luch-Ener 0-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-02,Terek,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,636,Terek     1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-02,Spartak N,Tom,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,638,Spartak N 1-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-03,Lokomotiv,Dinamo,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,641,Lokomotiv 0-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-03,Krylya S,Shinnik,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus08.html,643,Krylya S  4-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-07,Khimki,Tom,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,648,Khimki    1-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-08,Krylya S,Spartak N,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,651,Krylya S  2-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-08,Shinnik,Saturn,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,653,Shinnik   0-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-09,Rubin,Terek,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus08.html,656,Rubin     1-3 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-09,Dinamo,Luch-Ener,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,658,Dinamo    2-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-09,Amkar,Zenit,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,660,Amkar     1-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-09,Spartak M,Lokomotiv,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,662,Spartak M 0-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-10,Moskva,CSKA,1,4,1-4,0-1,https://www.rsssf.org/tablesr/rus08.html,665,Moskva    1-4 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-16,CSKA,Rubin,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus08.html,669,CSKA      4-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-16,Zenit,Dinamo,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,671,Zenit     1-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-16,Tom,Amkar,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus08.html,673,Tom       0-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-16,Saturn,Krylya S,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,675,Saturn    0-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-16,Luch-Ener,Spartak M,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,677,Luch-Ener 2-2 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-16,Lokomotiv,Moskva,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus08.html,680,Lokomotiv 3-2 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-16,Terek,Shinnik,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,683,Terek     0-0 Shinnik
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-16,Spartak N,Khimki,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,685,Spartak N 1-2 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-22,Rubin,Lokomotiv,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus08.html,689,Rubin     1-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-22,Shinnik,CSKA,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus08.html,691,Shinnik   1-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-22,Dinamo,Tom,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus08.html,693,Dinamo    2-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-22,Amkar,Khimki,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus08.html,695,Amkar     3-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-22,Spartak M,Zenit,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus08.html,698,Spartak M 1-3 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-22,Krylya S,Terek,4,3,4-3,1-0,https://www.rsssf.org/tablesr/rus08.html,700,Krylya S  4-3 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-22,Moskva,Luch-Ener,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus08.html,703,Moskva    3-0 Luch-Ener
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2008,2008-11-22,Saturn,Spartak N,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus08.html,705,Saturn    1-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-14,Rubin,Kuban,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus09.html,34,Rubin     3-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-14,Dinamo,Moskva,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,36,Dinamo    1-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-14,Amkar,Rostov,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,38,Amkar     0-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-14,Lokomotiv,Khimki,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,40,Lokomotiv 1-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-15,Saturn,CSKA,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus09.html,43,Saturn    0-3 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-15,Spartak M,Zenit,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,45,Spartak M 1-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-15,Tom,Krylya S,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,47,Tom       0-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-15,Terek,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,49,Terek     1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-21,Dinamo,Khimki,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus09.html,55,Dinamo    3-2 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-21,Krylya S,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,58,Krylya S  1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-21,Moskva,Terek,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,60,Moskva    0-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-21,Kuban,Spartak M,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,62,Kuban     1-0 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-22,Spartak N,Rubin,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,66,Spartak N 0-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-22,Zenit,Saturn,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,68,Zenit     2-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-22,Rostov,Lokomotiv,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,71,Rostov    1-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-03-23,CSKA,Tom,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,74,CSKA      0-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-03,Khimki,Rostov,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,79,Khimki    0-1 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-04,Terek,Dinamo,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,82,Terek     1-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-04,Rubin,Moskva,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,84,Rubin     0-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-04,Saturn,Kuban,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,86,Saturn    2-1 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-05,Lokomotiv,Krylya S,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,89,Lokomotiv 2-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-05,Tom,Zenit,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus09.html,91,Tom       0-3 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-05,Amkar,CSKA,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,93,Amkar     0-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-05,Spartak M,Spartak N,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,95,Spartak M 2-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-10,Krylya S,Khimki,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus09.html,100,Krylya S  3-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-11,Terek,Rubin,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,103,Terek     1-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-11,Dinamo,Rostov,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,105,Dinamo    1-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-11,Moskva,Spartak M,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus09.html,107,Moskva    3-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-11,Kuban,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,110,Kuban     0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-12,Zenit,Amkar,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,113,Zenit     0-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-12,CSKA,Lokomotiv,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus09.html,115,CSKA      4-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-12,Spartak N,Saturn,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,117,Spartak N 1-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-18,Rostov,Krylya S,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,122,Rostov    0-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-18,Spartak M,Terek,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,124,Spartak M 2-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-18,Saturn,Moskva,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,126,Saturn    0-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-18,Tom,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,128,Tom       1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-19,Rubin,Dinamo,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus09.html,131,Rubin     3-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-19,Lokomotiv,Zenit,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,133,Lokomotiv 1-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-19,Khimki,CSKA,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus09.html,135,Khimki    0-3 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-19,Amkar,Kuban,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,137,Amkar     1-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-25,Rubin,Spartak M,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,142,Rubin     0-2 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-25,Dinamo,Krylya S,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,144,Dinamo    0-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-25,Zenit,Khimki,4,2,4-2,1-0,https://www.rsssf.org/tablesr/rus09.html,146,Zenit     4-2 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-25,Terek,Saturn,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,149,Terek     1-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,CSKA,Rostov,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,152,CSKA      1-2 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Moskva,Tom,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,155,Moskva    2-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Spartak N,Amkar,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus09.html,157,Spartak N 4-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Kuban,Lokomotiv,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,160,Kuban     1-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Saturn,Rubin,0,5,0-5,0-1,https://www.rsssf.org/tablesr/rus09.html,165,Saturn    0-5 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Amkar,Moskva,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,167,Amkar     0-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Spartak M,Dinamo,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,169,Spartak M 0-2 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Tom,Terek,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,171,Tom       2-1 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Krylya S,CSKA,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus09.html,174,Krylya S  1-3 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Rostov,Zenit,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,177,Rostov    2-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Khimki,Kuban,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,179,Khimki    2-2 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Lokomotiv,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,182,Lokomotiv 1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Moskva,Lokomotiv,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,187,Moskva    0-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Dinamo,CSKA,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,189,Dinamo    1-2 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Zenit,Krylya S,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,191,Zenit     2-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Terek,Amkar,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,193,Terek     2-2 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Rubin,Tom,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus09.html,196,Rubin     4-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Kuban,Rostov,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,198,Kuban     0-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Spartak M,Saturn,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus09.html,200,Spartak M 4-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Spartak N,Khimki,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,202,Spartak N 0-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Amkar,Rubin,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,207,Amkar     2-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Khimki,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,209,Khimki    1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Rostov,Spartak N,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,212,Rostov    1-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Lokomotiv,Terek,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus09.html,214,Lokomotiv 4-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,CSKA,Zenit,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,217,CSKA      2-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Tom,Spartak M,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,219,Tom       1-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Krylya S,Kuban,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,221,Krylya S  1-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Saturn,Dinamo,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,223,Saturn    0-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Rubin,Lokomotiv,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,228,Rubin     2-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Spartak M,Amkar,5,1,5-1,1-0,https://www.rsssf.org/tablesr/rus09.html,230,Spartak M 5-1 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Saturn,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,233,Saturn    0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Terek,Khimki,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,235,Terek     2-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Kuban,CSKA,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,238,Kuban     1-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Spartak N,Krylya S,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,240,Spartak N 0-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Moskva,Rostov,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,242,Moskva    2-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Dinamo,Zenit,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,244,Dinamo    1-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Amkar,Saturn,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,249,Amkar     0-2 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Krylya S,Moskva,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,252,Krylya S  1-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Lokomotiv,Spartak M,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,254,Lokomotiv 2-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Tom,Dinamo,2,3,2-3,0-1,https://www.rsssf.org/tablesr/rus09.html,256,Tom       2-3 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Zenit,Kuban,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,259,Zenit     2-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-04-26,Rostov,Terek,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,261,Rostov    1-1 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-06,Khimki,Rubin,2,3,2-3,0-1,https://www.rsssf.org/tablesr/rus09.html,264,Khimki    2-3 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-22,CSKA,Spartak N,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,267,CSKA      0-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-06-13,Rubin,Rostov,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,272,Rubin     0-2 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-06-13,Terek,Krylya S,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus09.html,274,Terek     3-2 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-06-13,Dinamo,Kuban,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,276,Dinamo    1-1 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-06-13,Spartak M,Khimki,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,278,Spartak M 1-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-06-14,Moskva,CSKA,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,281,Moskva    2-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-06-14,Spartak N,Zenit,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,283,Spartak N 2-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-06-14,Saturn,Lokomotiv,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,285,Saturn    2-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-06-14,Tom,Amkar,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,287,Tom       1-2 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-10,Khimki,Saturn,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,292,Khimki    1-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-11,Krylya S,Rubin,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,295,Krylya S  1-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-11,Rostov,Spartak M,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,297,Rostov    0-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-11,Amkar,Dinamo,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus09.html,299,Amkar     3-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-11,Terek,CSKA,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,302,Terek     1-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-12,Zenit,Moskva,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,305,Zenit     1-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-12,Lokomotiv,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,307,Lokomotiv 0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-12,Kuban,Spartak N,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,309,Kuban     2-2 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-18,Rubin,CSKA,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,315,Rubin     1-2 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-18,Dinamo,Spartak N,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,317,Dinamo    2-1 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-18,Saturn,Rostov,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus09.html,319,Saturn    4-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-19,Spartak M,Krylya S,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,323,Spartak M 1-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-19,Moskva,Kuban,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus09.html,325,Moskva    4-1 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-19,Terek,Zenit,3,2,3-2,1-0,https://www.rsssf.org/tablesr/rus09.html,328,Terek     3-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-19,Amkar,Lokomotiv,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,331,Amkar     1-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-19,Tom,Khimki,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus09.html,333,Tom       4-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-24,Khimki,Amkar,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,339,Khimki    2-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-25,Zenit,Rubin,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,342,Zenit     0-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-25,Lokomotiv,Dinamo,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,344,Lokomotiv 1-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-25,Krylya S,Saturn,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,346,Krylya S  0-2 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-25,Rostov,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,348,Rostov    0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-26,Spartak N,Moskva,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,351,Spartak N 0-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-26,CSKA,Spartak M,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,353,CSKA      1-2 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-26,Kuban,Terek,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,355,Kuban     1-1 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-07-31,Rubin,Spartak N,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,360,Rubin     2-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-01,Spartak M,Kuban,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus09.html,363,Spartak M 4-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-01,Terek,Moskva,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,365,Terek     1-2 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-01,Tom,CSKA,2,3,2-3,0-1,https://www.rsssf.org/tablesr/rus09.html,367,Tom       2-3 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-02,Khimki,Dinamo,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,371,Khimki    0-2 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-02,Saturn,Zenit,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,373,Saturn    2-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-02,Amkar,Krylya S,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,376,Amkar     2-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-02,Lokomotiv,Rostov,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,378,Lokomotiv 2-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-08,Moskva,Rubin,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus09.html,383,Moskva    1-3 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-08,Spartak N,Spartak M,2,4,2-4,0-1,https://www.rsssf.org/tablesr/rus09.html,386,Spartak N 2-4 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-08,Kuban,Saturn,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,389,Kuban     0-2 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-09,CSKA,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,392,CSKA      1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-09,Dinamo,Terek,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,394,Dinamo    0-1 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-09,Zenit,Tom,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,396,Zenit     0-2 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-09,Krylya S,Lokomotiv,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus09.html,398,Krylya S  1-3 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-09,Rostov,Khimki,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,401,Rostov    2-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-16,Rubin,Terek,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus09.html,405,Rubin     4-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-16,Spartak M,Moskva,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,407,Spartak M 2-1 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-16,Lokomotiv,CSKA,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,409,Lokomotiv 2-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-16,Rostov,Dinamo,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,411,Rostov    0-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-16,Amkar,Zenit,2,4,2-4,0-1,https://www.rsssf.org/tablesr/rus09.html,413,Amkar     2-4 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-16,Saturn,Spartak N,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,416,Saturn    1-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-16,Khimki,Krylya S,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus09.html,418,Khimki    1-3 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-16,Tom,Kuban,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,420,Tom       1-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-22,CSKA,Khimki,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,425,CSKA      2-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-22,Moskva,Saturn,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus09.html,427,Moskva    3-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-22,Krylya S,Rostov,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,430,Krylya S  2-2 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-22,Spartak N,Tom,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus09.html,432,Spartak N 3-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-23,Dinamo,Rubin,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus09.html,435,Dinamo    0-3 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-23,Terek,Spartak M,2,3,2-3,0-1,https://www.rsssf.org/tablesr/rus09.html,437,Terek     2-3 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-23,Zenit,Lokomotiv,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,440,Zenit     1-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-23,Kuban,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,442,Kuban     1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-29,Lokomotiv,Kuban,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus09.html,447,Lokomotiv 4-1 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-29,Tom,Moskva,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,450,Tom       0-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-29,Saturn,Terek,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus09.html,452,Saturn    3-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-30,Spartak M,Rubin,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus09.html,455,Spartak M 0-3 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-30,Khimki,Zenit,0,4,0-4,0-1,https://www.rsssf.org/tablesr/rus09.html,457,Khimki    0-4 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-30,Rostov,CSKA,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,460,Rostov    1-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-30,Krylya S,Dinamo,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus09.html,462,Krylya S  3-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-08-31,Amkar,Spartak N,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,465,Amkar     1-2 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-12,Rubin,Saturn,5,1,5-1,1-0,https://www.rsssf.org/tablesr/rus09.html,470,Rubin     5-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-12,CSKA,Krylya S,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus09.html,473,CSKA      3-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-12,Moskva,Amkar,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,475,Moskva    0-2 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-12,Kuban,Khimki,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,478,Kuban     2-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-13,Dinamo,Spartak M,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,481,Dinamo    1-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-13,Zenit,Rostov,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,483,Zenit     2-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-13,Spartak N,Lokomotiv,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,485,Spartak N 0-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-13,Terek,Tom,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus09.html,487,Terek     4-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-18,Khimki,Spartak N,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,492,Khimki    0-2 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-19,Saturn,Spartak M,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,495,Saturn    2-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-19,Lokomotiv,Moskva,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,497,Lokomotiv 1-0 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-19,Rostov,Kuban,3,3,3-3,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,499,Rostov    3-3 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-20,Tom,Rubin,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,503,Tom       0-0 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-20,Krylya S,Zenit,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,505,Krylya S  0-1 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-20,CSKA,Dinamo,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus09.html,507,CSKA      3-0 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-20,Amkar,Terek,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,509,Amkar     1-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-25,Rubin,Amkar,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,514,Rubin     1-2 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-26,Zenit,CSKA,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,517,Zenit     2-0 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-26,Moskva,Khimki,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus09.html,519,Moskva    3-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-26,Dinamo,Saturn,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,521,Dinamo    1-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-27,Spartak M,Tom,5,0,5-0,1-0,https://www.rsssf.org/tablesr/rus09.html,524,Spartak M 5-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-27,Terek,Lokomotiv,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,527,Terek     2-1 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-27,Kuban,Krylya S,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,529,Kuban     0-0 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-09-27,Spartak N,Rostov,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,531,Spartak N 1-0 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-03,Rostov,Moskva,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,536,Rostov    2-2 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-03,Tom,Saturn,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus09.html,538,Tom       3-1 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-03,Krylya S,Spartak N,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,540,Krylya S  0-0 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-03,Khimki,Terek,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,542,Khimki    1-2 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-04,Lokomotiv,Rubin,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,545,Lokomotiv 2-1 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-04,Amkar,Spartak M,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,547,Amkar     1-2 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-04,Zenit,Dinamo,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,549,Zenit     2-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-04,CSKA,Kuban,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus09.html,551,CSKA      4-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-17,Rubin,Khimki,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,556,Rubin     2-1 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-17,Spartak N,CSKA,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,558,Spartak N 1-1 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-17,Saturn,Amkar,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,560,Saturn    2-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-17,Dinamo,Tom,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,562,Dinamo    0-1 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-18,Spartak M,Lokomotiv,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus09.html,565,Spartak M 3-0 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-18,Kuban,Zenit,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,567,Kuban     0-2 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-18,Moskva,Krylya S,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,569,Moskva    2-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-18,Terek,Rostov,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus09.html,572,Terek     1-3 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-24,Khimki,Spartak M,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus09.html,578,Khimki    0-3 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-24,Lokomotiv,Saturn,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,580,Lokomotiv 2-2 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-24,Krylya S,Terek,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,583,Krylya S  2-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-25,Rostov,Rubin,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,586,Rostov    1-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-25,Zenit,Spartak N,2,2,2-2,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,588,Zenit     2-2 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-25,CSKA,Moskva,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus09.html,591,CSKA      1-3 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-25,Kuban,Dinamo,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,594,Kuban     1-1 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-25,Amkar,Tom,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,596,Amkar     0-0 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-30,Rubin,Krylya S,4,1,4-1,1-0,https://www.rsssf.org/tablesr/rus09.html,601,Rubin     4-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-30,CSKA,Terek,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,604,CSKA      1-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-30,Saturn,Khimki,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,606,Saturn    1-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-31,Moskva,Zenit,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,609,Moskva    1-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-10-31,Dinamo,Amkar,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,611,Dinamo    0-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-01,Spartak M,Rostov,5,1,5-1,1-0,https://www.rsssf.org/tablesr/rus09.html,614,Spartak M 5-1 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-01,Tom,Lokomotiv,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus09.html,617,Tom       1-3 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-01,Spartak N,Kuban,4,0,4-0,1-0,https://www.rsssf.org/tablesr/rus09.html,619,Spartak N 4-0 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-07,Krylya S,Spartak M,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,625,Krylya S  2-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-07,Kuban,Moskva,3,3,3-3,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,627,Kuban     3-3 Moskva
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-07,Rostov,Saturn,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,630,Rostov    1-2 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-07,Khimki,Tom,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus09.html,632,Khimki    1-3 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-08,CSKA,Rubin,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,636,CSKA      0-2 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-08,Zenit,Terek,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,638,Zenit     2-0 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-08,Lokomotiv,Amkar,1,0,1-0,1-0,https://www.rsssf.org/tablesr/rus09.html,640,Lokomotiv 1-0 Amkar
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-08,Spartak N,Dinamo,2,4,2-4,0-1,https://www.rsssf.org/tablesr/rus09.html,642,Spartak N 2-4 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-21,Rubin,Zenit,0,0,0-0,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,647,Rubin     0-0 Zenit
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-21,Spartak M,CSKA,2,3,2-3,0-1,https://www.rsssf.org/tablesr/rus09.html,649,Spartak M 2-3 CSKA
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-21,Dinamo,Lokomotiv,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,652,Dinamo    0-2 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-21,Moskva,Spartak N,0,2,0-2,0-1,https://www.rsssf.org/tablesr/rus09.html,654,Moskva    0-2 Spartak N
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-21,Saturn,Krylya S,3,1,3-1,1-0,https://www.rsssf.org/tablesr/rus09.html,656,Saturn    3-1 Krylya S
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-21,Tom,Rostov,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,659,Tom       2-1 Rostov
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-21,Terek,Kuban,0,1,0-1,0-1,https://www.rsssf.org/tablesr/rus09.html,661,Terek     0-1 Kuban
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-21,Amkar,Khimki,2,0,2-0,1-0,https://www.rsssf.org/tablesr/rus09.html,663,Amkar     2-0 Khimki
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-29,Kuban,Rubin,0,3,0-3,0-1,https://www.rsssf.org/tablesr/rus09.html,667,Kuban     0-3 Rubin
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-29,Zenit,Spartak M,2,1,2-1,1-0,https://www.rsssf.org/tablesr/rus09.html,669,Zenit     2-1 Spartak M
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-29,Khimki,Lokomotiv,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus09.html,671,Khimki    1-3 Lokomotiv
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-29,CSKA,Saturn,3,0,3-0,1-0,https://www.rsssf.org/tablesr/rus09.html,673,CSKA      3-0 Saturn
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-29,Moskva,Dinamo,1,2,1-2,0-1,https://www.rsssf.org/tablesr/rus09.html,675,Moskva    1-2 Dinamo
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-29,Krylya S,Tom,1,3,1-3,0-1,https://www.rsssf.org/tablesr/rus09.html,677,Krylya S  1-3 Tom
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-29,Spartak N,Terek,4,2,4-2,1-0,https://www.rsssf.org/tablesr/rus09.html,680,Spartak N 4-2 Terek
+rsssf,Russia,russian_premier_league,league,1,Russian Premier League,2009,2009-11-29,Rostov,Amkar,1,1,1-1,0.5-0.5,https://www.rsssf.org/tablesr/rus09.html,683,Rostov    1-1 Amkar

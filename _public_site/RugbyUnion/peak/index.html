@@ -614,7 +614,7 @@ const DARK_LINE_OVERRIDES = {
 const state = { rows: [], filtered: [] };
 const histCache = new Map();
 let lastCompared = [];
-let COMPARE_SINCE_YEAR = 2010;
+let COMPARE_SINCE_YEAR = 2020;
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -977,7 +977,7 @@ function setupCompareButton() {
     document.querySelectorAll('.range-btn').forEach(btn => btn.classList.remove('is-active'));
     const since2000Btn = document.querySelector('.range-btn[data-since="2000"]');
     if (since2000Btn) since2000Btn.classList.add('is-active');
-    COMPARE_SINCE_YEAR = 2010;
+    COMPARE_SINCE_YEAR = 2020;
 
     const chosen = state.filtered.filter(t => ids.includes(t.id));
     buildComparison(chosen);

@@ -86,7 +86,9 @@ COUNTRY_TIER_SEEDS <- data.table(
     "Switzerland",
     "Greece",
     "Czechia",
-    "Ukraine"
+    "Ukraine",
+    "Denmark",
+    "Russia"
   ),
   Tier = c(
     1L, 2L, 3L, 4L, 5L,
@@ -94,6 +96,8 @@ COUNTRY_TIER_SEEDS <- data.table(
     1L, 2L,
     1L, 2L,
     1L, 2L,
+    1L,
+    1L,
     1L,
     1L,
     1L,
@@ -120,10 +124,11 @@ COUNTRY_TIER_SEEDS <- data.table(
     2300,  # Switzerland
     2250,  # Greece
     2230,  # Czechia
-    2275   # Ukraine
+    2275,  # Ukraine
+    2335,  # Denmark
+    2400   # Russia
   )
 )
-
 COUNTRY_TIER_SEED_KEY <- paste(
   COUNTRY_TIER_SEEDS$Country,
   COUNTRY_TIER_SEEDS$Tier,

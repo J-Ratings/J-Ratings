@@ -455,7 +455,7 @@ body,
 
   let TEAM_COLOURS = {};
   let lastCompared = [];
-  let COMPARE_SINCE_YEAR = 2010;
+  let COMPARE_SINCE_YEAR = 2020;
 
   const LEGEND_FONT_SIZE = 16;
   const LEGEND_ITEM_GAP = 20;
@@ -832,7 +832,7 @@ body,
       document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
       const defaultBtn = document.querySelector('.range-btn[data-since="2000"]');
       if (defaultBtn) defaultBtn.classList.add('is-active');
-      COMPARE_SINCE_YEAR = 2010;
+      COMPARE_SINCE_YEAR = 2020;
 
       const chosen = state.filtered.filter(t => ids.includes(String(t.id)));
       buildComparison(chosen);

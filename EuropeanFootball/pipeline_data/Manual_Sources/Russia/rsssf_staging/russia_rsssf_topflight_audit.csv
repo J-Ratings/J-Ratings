@@ -1,0 +1,35 @@
+﻿Season,URL,ExpectedMatches,ApparentMatchLines,ParsedMatches,DatedMatches,UniqueRawTeams,RawLines,TopFlightBlockLines,Status,Error
+1992,https://www.rsssf.org/tablesr/rus92.html,368,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+1993,https://www.rsssf.org/tablesr/rus93.html,306,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+1994,https://www.rsssf.org/tablesr/rus94.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+1995,https://www.rsssf.org/tablesr/rus95.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+1996,https://www.rsssf.org/tablesr/rus96.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+1997,https://www.rsssf.org/tablesr/rus97.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+1998,https://www.rsssf.org/tablesr/rus98.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+1999,https://www.rsssf.org/tablesr/rus99.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2000,https://www.rsssf.org/tablesr/rus00.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2001,https://www.rsssf.org/tablesr/rus01.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2002,https://www.rsssf.org/tablesr/rus02.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2003,https://www.rsssf.org/tablesr/rus03.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2004,https://www.rsssf.org/tablesr/rus04.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2005,https://www.rsssf.org/tablesr/rus05.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2006,https://www.rsssf.org/tablesr/rus06.html,240,240,240,240,16,1009,966,OK,
+2007,https://www.rsssf.org/tablesr/rus07.html,240,240,240,240,18,1010,970,OK,
+2008,https://www.rsssf.org/tablesr/rus08.html,240,240,240,240,16,1033,1024,OK,
+2009,https://www.rsssf.org/tablesr/rus09.html,240,240,240,240,16,1001,992,OK,
+2010,https://www.rsssf.org/tablesr/rus2010.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2011/12,https://www.rsssf.org/tablesr/rus2012.html,352,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2012/13,https://www.rsssf.org/tablesr/rus2013.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2013/14,https://www.rsssf.org/tablesr/rus2014.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2014/15,https://www.rsssf.org/tablesr/rus2015.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2015/16,https://www.rsssf.org/tablesr/rus2016.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2016/17,https://www.rsssf.org/tablesr/rus2017.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2017/18,https://www.rsssf.org/tablesr/rus2018.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2018/19,https://www.rsssf.org/tablesr/rus2019.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2019/20,https://www.rsssf.org/tablesr/rus2020.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2020/21,https://www.rsssf.org/tablesr/rus2021.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2021/22,https://www.rsssf.org/tablesr/rus2022.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2022/23,https://www.rsssf.org/tablesr/rus2023.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2023/24,https://www.rsssf.org/tablesr/rus2024.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2024/25,https://www.rsssf.org/tablesr/rus2025.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
+2025/26,https://www.rsssf.org/tablesr/rus2026.html,240,0,0,0,0,,,ERROR,RSSSF returned an empty page.
