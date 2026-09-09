@@ -63,32 +63,34 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2755,China Open,2026-08-08,2026-08-16,SATUO Window Cleaning Robot,2026,main,Ranking,0,Sports Centre,Taiyuan,China,snooker,2755,Both,O,0,146,0,0,33,2026
 2757,Wuhan Open,2026-08-23,2026-08-29,Optics Valley of China,2026,main,Ranking,0,Optics Valley Gymnasium of HUST,Wuhan,China,snooker,2757,Both,O,0,130,0,0,31,2026
 2855,Q Tour 1,2026-08-27,2026-08-30,"",2026,q,Ranking,1,Northern Snooker Centre,Leeds,England,snooker,2855,Both,O,0,143,0,0,142,2026
-2547,British Open,2026-08-31,2026-09-06,Unibet,2026,main,Ranking,0,The Centaur,Cheltenham,England,snooker,2547,Both,O,0,128,28,0,20,2026
-2864,UK Women's Championship Group A,2026-09-04,2026-09-05,"",2026,women,Ranking,1,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,6,0,0,2026
-2865,UK Women's Championship Group B,2026-09-04,2026-09-05,"",2026,women,Ranking,2,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,6,0,0,2026
-2866,UK Women's Championship Group C,2026-09-04,2026-09-05,"",2026,women,Ranking,3,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,6,0,0,2026
-2867,UK Women's Championship Group D,2026-09-04,2026-09-05,"",2026,women,Ranking,4,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,6,0,0,2026
-2868,UK Women's Championship Group E,2026-09-04,2026-09-05,"",2026,women,Ranking,5,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,6,0,0,2026
-2869,UK Women's Championship Group F,2026-09-04,2026-09-05,"",2026,women,Ranking,6,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,6,0,0,2026
-2870,UK Women's Championship Group G,2026-09-04,2026-09-05,"",2026,women,Ranking,7,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,6,0,0,2026
-2871,UK Women's Championship Group H,2026-09-04,2026-09-05,"",2026,women,Ranking,8,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,6,0,0,2026
-2862,UK Women's Championship,2026-09-04,2026-09-06,Taom,2026,women,Ranking,0,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,32,3,0,0,2026
-2546,English Open,2026-09-07,2026-09-13,BetVictor,2026,main,Ranking,0,Brentwood Leisure Centre,Brentwood,England,snooker,2546,Both,O,0,128,61,0,2,2026
-2770,Northern Ireland Open Qualifiers,2026-09-13,2026-09-16,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2548,Both,O,0,0,0,0,0,2026
-2771,International Championship Qualifiers,2026-09-17,2026-09-19,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2762,Both,O,0,0,0,0,0,2026
+2547,British Open,2026-08-31,2026-09-06,Unibet,2026,main,Ranking,0,The Centaur,Cheltenham,England,snooker,2547,Both,O,0,128,0,0,63,2026
+2864,UK Women's Championship Group A,2026-09-04,2026-09-05,"",2026,women,Ranking,1,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,6,2026
+2865,UK Women's Championship Group B,2026-09-04,2026-09-05,"",2026,women,Ranking,2,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,6,2026
+2866,UK Women's Championship Group C,2026-09-04,2026-09-05,"",2026,women,Ranking,3,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,6,2026
+2867,UK Women's Championship Group D,2026-09-04,2026-09-05,"",2026,women,Ranking,4,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,6,2026
+2868,UK Women's Championship Group E,2026-09-04,2026-09-05,"",2026,women,Ranking,5,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,6,2026
+2869,UK Women's Championship Group F,2026-09-04,2026-09-05,"",2026,women,Ranking,6,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,6,2026
+2870,UK Women's Championship Group G,2026-09-04,2026-09-05,"",2026,women,Ranking,7,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,6,2026
+2871,UK Women's Championship Group H,2026-09-04,2026-09-05,"",2026,women,Ranking,8,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,6,2026
+2862,UK Women's Championship,2026-09-04,2026-09-06,Taom,2026,women,Ranking,0,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,32,0,0,15,2026
+2546,English Open,2026-09-07,2026-09-13,BetVictor,2026,main,Ranking,0,Brentwood Leisure Centre,Brentwood,England,snooker,2546,Both,O,0,128,31,0,32,2026
+2770,Northern Ireland Open Qualifiers,2026-09-13,2026-09-16,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2548,Both,O,0,0,64,0,0,2026
+2771,International Championship Qualifiers,2026-09-17,2026-09-19,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2762,Both,O,0,0,57,0,0,2026
 2772,Scottish Open Qualifiers,2026-09-20,2026-09-23,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2756,Both,O,0,0,0,0,0,2026
-2856,Q Tour 2,2026-09-21,2026-09-24,"",2026,q,Ranking,1,Princess Hotel,Sofia,Bulgaria,snooker,2856,Both,O,0,0,0,0,0,2026
+2856,Q Tour 2,2026-09-21,2026-09-24,"",2026,q,Ranking,1,Princess Hotel,Sofia,Bulgaria,snooker,2856,Both,O,0,109,108,0,0,2026
 2761,Shenzhen Open,2026-09-28,2026-10-04,"",2026,main,Ranking,0,Unknown,Shenzhen,China,snooker,2761,Both,O,0,126,0,0,0,2026
 2646,Asia Pacific Q Tour: Bob Hawke AC Australian Open,2026-10-08,2026-10-11,"",2026,q,Ranking,0,Mounties,Sydney,Australia,snooker,2646,Both,O,0,0,0,0,0,2026
 2642,Australian Women's Open,2026-10-17,2026-10-20,"",2026,women,Ranking,0,Mounties,Sydney,Australia,snooker,2642,Women,O,0,0,0,0,0,2026
-2548,Northern Ireland Open,2026-10-18,2026-10-25,BetVictor,2026,main,Ranking,0,Waterfront Hall,Belfast,Northern Ireland,snooker,2548,Both,O,0,0,1,0,0,2026
+2548,Northern Ireland Open,2026-10-18,2026-10-25,BetVictor,2026,main,Ranking,0,Waterfront Hall,Belfast,Northern Ireland,snooker,2548,Both,O,0,128,33,0,0,2026
 2857,Q Tour 3,2026-10-22,2026-10-25,"",2026,q,Ranking,1,Snooker Arena Germany,Oberhausen,Germany,snooker,2857,Both,O,0,0,0,0,0,2026
-2762,International Championship,2026-10-31,2026-11-07,"",2026,main,Ranking,0,Unknown,Nanjing,China,snooker,2762,Both,O,0,0,0,0,0,2026
+2496,Women's Snooker Open,2026-10-24,2026-10-27,Niche Cues,2026,women,Ranking,0,Niche Premium Snooker,Kuala Lumpur,"",snooker,2496,Women,O,0,35,0,0,15,2026
+2762,International Championship,2026-10-31,2026-11-07,"",2026,main,Ranking,0,Unknown,Nanjing,China,snooker,2762,Both,O,0,127,1,0,0,2026
 2635,Pan American Open,2026-11-04,2026-11-08,"",2026,other,Other,0,Mampituba Country Club,Criciuma,Brazil,snooker,2635,Both,O,0,0,0,0,0,2026
 2723,Champion of Champions,2026-11-09,2026-11-15,"",2026,main,Invitational,0,Mattioli Arena,Leicester,England,snooker,2723,Both,O,0,0,0,0,0,2026
 2858,Q Tour 4,2026-11-12,2026-11-15,"",2026,q,Ranking,1,Austrian Snooker Academy,Vienna,Austria,snooker,2858,Both,O,0,0,0,0,0,2026
 2773,German Masters Qualifiers,2026-11-16,2026-11-19,"",2026,main,Qualifying,0,Robin Park,Wigan,England,snooker,2763,Both,O,0,0,0,0,0,2026
 2774,UK Championship Qualifiers,2026-11-21,2026-11-26,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2561,Both,O,0,0,0,0,0,2026
+2872,Irish Women's Open,2026-11-27,2026-11-29,"",2026,women,Ranking,0,Snooker & Billiards Ireland HQ,Carlow,Ireland,snooker,2872,Women,O,0,0,0,0,0,2026
 2561,UK Championship,2026-11-28,2026-12-06,"",2026,main,Ranking,0,Barbican Centre,York,England,snooker,2561,Both,O,0,0,0,0,0,2026
 2859,Q Tour 5,2026-12-03,2026-12-06,"",2026,q,Ranking,1,Landywood Snooker Club,Walsall,England,snooker,2859,Both,O,0,0,0,0,0,2026
 2574,Shoot Out,2026-12-09,2026-12-12,TAOM,2026,main,Ranking,0,Tower Circus,Blackpool,England,snooker,2574,Both,O,0,0,0,0,0,2026
