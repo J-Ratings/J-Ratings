@@ -1,0 +1,15 @@
+Country,League,Season,Wikipedia,FootballData,Matched,UnmatchedWiki,ExtraFD,Status,Note
+Romania,SuperLiga,2012/13,306,307,306,0,1,PASS,1 extra Football-Data rows ignored.
+Romania,SuperLiga,2013/14,306,306,303,3,3,FAIL,3 Wikipedia fixtures lack Football-Data dates.
+Romania,SuperLiga,2014/15,306,306,306,0,0,PASS,""
+Romania,SuperLiga,2015/16,268,272,0,0,0,FAIL,Unresolved teams: CS U Craiova
+Romania,SuperLiga,2016/17,268,270,0,0,0,FAIL,Unresolved teams: CS U Craiova
+Romania,SuperLiga,2017/18,268,270,0,0,0,FAIL,Unresolved teams: Juventus București
+Romania,SuperLiga,2018/19,268,270,268,0,2,PASS,2 extra Football-Data rows ignored.
+Romania,SuperLiga,2019/20,261,262,260,1,2,FAIL,1 Wikipedia fixtures lack Football-Data dates.
+Romania,SuperLiga,2020/21,240,321,232,8,89,FAIL,8 Wikipedia fixtures lack Football-Data dates.
+Romania,SuperLiga,2021/22,240,320,210,30,110,FAIL,30 Wikipedia fixtures lack Football-Data dates.
+Romania,SuperLiga,2022/23,240,321,0,0,0,FAIL,Multiple Wikipedia teams mapped to the same Football-Data team: U. Cluj
+Romania,SuperLiga,2023/24,240,321,0,0,0,FAIL,Multiple Wikipedia teams mapped to the same Football-Data team: U. Cluj
+Romania,SuperLiga,2024/25,240,315,0,0,0,FAIL,Multiple Wikipedia teams mapped to the same Football-Data team: U. Cluj
+Romania,SuperLiga,2025/26,240,321,0,0,0,FAIL,Multiple Wikipedia teams mapped to the same Football-Data team: U. Cluj

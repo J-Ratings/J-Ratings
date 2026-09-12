@@ -869,21 +869,64 @@ yaxis: {
     });
   }
 
-  function getResultClassAndText(g, myName) {
-    const isHome = g.home === myName;
-    const isAway = g.away === myName;
-    const raw = (g.result || '').trim();
+function getResultClassAndText(g, myName) {
+  const isHome = g.home === myName;
+  const isAway = g.away === myName;
+  const raw = String(g.result || '').trim().toUpperCase();
 
-    if (raw === '1-0') {
-      return isHome ? { cls: 'win', text: 'Win' } : { cls: 'loss', text: 'Loss' };
-    }
+  // New format: H / A / D
+  if (raw === 'H') {
+    return isHome
+      ? { cls: 'win', text: 'Win' }
+      : { cls: 'loss', text: 'Loss' };
+  }
 
-    if (raw === '0-1') {
-      return isAway ? { cls: 'win', text: 'Win' } : { cls: 'loss', text: 'Loss' };
-    }
+  if (raw === 'A') {
+    return isAway
+      ? { cls: 'win', text: 'Win' }
+      : { cls: 'loss', text: 'Loss' };
+  }
 
+  if (raw === 'D') {
     return { cls: 'draw', text: 'Draw' };
   }
+
+  // Existing domestic format: 1-0 / 0-1
+  if (raw === '1-0') {
+    return isHome
+      ? { cls: 'win', text: 'Win' }
+      : { cls: 'loss', text: 'Loss' };
+  }
+
+  if (raw === '0-1') {
+    return isAway
+      ? { cls: 'win', text: 'Win' }
+      : { cls: 'loss', text: 'Loss' };
+  }
+
+  // Fallback: derive it from the actual score
+  const score = String(g.score || '').trim();
+  const match = score.match(/^(\d+)-(\d+)/);
+
+  if (match) {
+    const homeGoals = Number(match[1]);
+    const awayGoals = Number(match[2]);
+
+    if (homeGoals === awayGoals) {
+      return { cls: 'draw', text: 'Draw' };
+    }
+
+    const homeWon = homeGoals > awayGoals;
+
+    if ((homeWon && isHome) || (!homeWon && isAway)) {
+      return { cls: 'win', text: 'Win' };
+    }
+
+    return { cls: 'loss', text: 'Loss' };
+  }
+
+  return { cls: '', text: '' };
+}
 
   function getScoreParts(g, myName) {
     const score = String(g.score || '').trim();

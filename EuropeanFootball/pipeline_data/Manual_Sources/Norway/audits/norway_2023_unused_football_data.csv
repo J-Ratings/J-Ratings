@@ -1,0 +1,24 @@
+Country,League,Season,Date,Time,Home,Away,HG,AG,Res,PSCH,PSCD,PSCA,MaxCH,MaxCD,MaxCA,AvgCH,AvgCD,AvgCA,BFECH,BFECD,BFECA,B365CH,B365CD,B365CA,ParsedDate,MatchKey,Occurrence,FDID
+Norway,Eliteserien,2023,10/04/2023,16:00,Ham-Kam,Sandefjord,2,0,H,1.93,3.69,4.19,1.95,3.75,4.2,1.89,3.57,4,,,,,,,2023-04-10,Ham-Kam|||Sandefjord|||2|||0,1,3
+Norway,Eliteserien,2023,16/04/2023,16:00,Haugesund,Ham-Kam,3,2,H,2.09,3.37,3.95,2.1,3.6,3.95,2.03,3.36,3.69,,,,,,,2023-04-16,Haugesund|||Ham-Kam|||3|||2,1,10
+Norway,Eliteserien,2023,23/04/2023,16:00,Ham-Kam,Stromsgodset,2,0,H,2.24,3.56,3.33,2.24,3.75,3.76,2.05,3.5,3.47,,,,,,,2023-04-23,Ham-Kam|||Stromsgodset|||2|||0,1,19
+Norway,Eliteserien,2023,30/04/2023,16:00,Viking,Ham-Kam,7,3,H,1.68,4.08,5.3,1.68,4.1,5.5,1.64,3.91,5.06,,,,,,,2023-04-30,Viking|||Ham-Kam|||7|||3,1,30
+Norway,Eliteserien,2023,07/05/2023,16:00,Ham-Kam,Molde,0,4,A,5.25,4.15,1.67,5.4,4.2,1.7,4.91,3.98,1.64,,,,,,,2023-05-07,Ham-Kam|||Molde|||0|||4,1,38
+Norway,Eliteserien,2023,13/05/2023,16:00,Ham-Kam,Tromso,1,2,A,2.01,3.36,4.25,2.07,3.46,4.26,1.99,3.26,3.94,,,,,,,2023-05-13,Ham-Kam|||Tromso|||1|||2,1,46
+Norway,Eliteserien,2023,16/05/2023,17:00,Aalesund,Molde,3,1,H,5.3,3.82,1.72,6.5,4.4,1.72,5.17,3.79,1.66,,,,,,,2023-05-16,Aalesund|||Molde|||3|||1,1,52
+Norway,Eliteserien,2023,16/05/2023,17:00,Valerenga,Ham-Kam,3,0,H,1.72,4.07,4.88,1.78,4.07,5.5,1.72,3.84,4.51,,,,,,,2023-05-16,Valerenga|||Ham-Kam|||3|||0,1,58
+Norway,Eliteserien,2023,29/05/2023,18:15,Ham-Kam,Lillestrom,0,0,D,3.72,3.55,2.09,3.78,3.65,2.1,3.54,3.48,2.03,,,,,,,2023-05-29,Ham-Kam|||Lillestrom|||0|||0,1,67
+Norway,Eliteserien,2023,04/06/2023,16:00,Rosenborg,Ham-Kam,4,0,H,1.67,3.99,5.53,1.71,4,5.7,1.66,3.77,5.11,,,,,,,2023-06-04,Rosenborg|||Ham-Kam|||4|||0,1,70
+Norway,Eliteserien,2023,11/06/2023,16:00,Bodo/Glimt,Ham-Kam,3,0,H,1.16,9.01,16.88,1.18,9.01,17,1.15,8.02,14.72,,,,,,,2023-06-11,Bodo/Glimt|||Ham-Kam|||3|||0,1,77
+Norway,Eliteserien,2023,25/06/2023,16:00,Ham-Kam,Odd,0,1,A,2.52,3.42,2.96,2.52,3.44,3.07,2.39,3.31,2.9,,,,,,,2023-06-25,Ham-Kam|||Odd|||0|||1,1,85
+Norway,Eliteserien,2023,02/07/2023,16:00,Brann,Ham-Kam,2,1,H,1.34,6.05,8.33,1.37,6.5,11,1.31,5.66,8.16,,,,,,,2023-07-02,Brann|||Ham-Kam|||2|||1,1,92
+Norway,Eliteserien,2023,07/07/2023,18:00,Ham-Kam,Aalesund,2,1,H,1.89,3.71,4.3,1.91,4.08,4.3,1.86,3.66,3.98,,,,,,,2023-07-07,Ham-Kam|||Aalesund|||2|||1,1,98
+Norway,Eliteserien,2023,16/07/2023,16:00,Sarpsborg 08,Ham-Kam,2,3,A,1.37,5.64,7.92,1.46,5.7,8.5,1.35,5.3,7.5,,,,,,,2023-07-16,Sarpsborg 08|||Ham-Kam|||2|||3,1,111
+Norway,Eliteserien,2023,23/07/2023,16:00,Ham-Kam,Stabaek,3,2,H,2.41,3.42,3.12,2.45,3.47,3.26,2.34,3.3,3.01,,,,,,,2023-07-23,Ham-Kam|||Stabaek|||3|||2,1,116
+Norway,Eliteserien,2023,30/07/2023,16:00,Lillestrom,Ham-Kam,3,1,H,1.5,4.82,6.34,1.52,4.9,7.2,1.47,4.51,6.19,,,,,,,2023-07-30,Lillestrom|||Ham-Kam|||3|||1,1,127
+Norway,Eliteserien,2023,06/08/2023,16:00,Ham-Kam,Brann,0,2,A,3.73,4.05,1.94,3.9,4.05,1.94,3.68,3.86,1.87,,,,,,,2023-08-06,Ham-Kam|||Brann|||0|||2,1,132
+Norway,Eliteserien,2023,13/08/2023,16:00,Aalesund,Ham-Kam,0,2,A,2.17,3.88,3.22,2.21,3.88,3.3,2.1,3.69,3.12,,,,,,,2023-08-13,Aalesund|||Ham-Kam|||0|||2,1,140
+Norway,Eliteserien,2023,20/08/2023,16:00,Ham-Kam,Rosenborg,3,0,H,2.67,3.63,2.63,2.8,3.7,2.65,2.63,3.51,2.52,,,,,,,2023-08-20,Ham-Kam|||Rosenborg|||3|||0,1,146
+Norway,Eliteserien,2023,03/09/2023,18:15,Ham-Kam,Bodo/Glimt,4,4,D,5.26,4.78,1.58,6,4.8,1.6,5.22,4.55,1.54,,,,,,,2023-09-03,Ham-Kam|||Bodo/Glimt|||4|||4,1,162
+Norway,Eliteserien,2023,06/12/2023,18:00,Kristiansund,Valerenga,0,2,A,4.02,3.58,1.97,4.02,3.71,2.03,3.73,3.48,1.95,,,,,,,2023-12-06,Kristiansund|||Valerenga|||0|||2,1,241
+Norway,Eliteserien,2023,10/12/2023,16:00,Valerenga,Kristiansund,0,2,A,1.53,4.64,5.95,1.54,5.02,7.73,1.5,4.33,5.83,,,,,,,2023-12-10,Valerenga|||Kristiansund|||0|||2,1,242

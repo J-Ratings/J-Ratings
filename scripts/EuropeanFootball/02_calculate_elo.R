@@ -88,7 +88,11 @@ COUNTRY_TIER_SEEDS <- data.table(
     "Czechia",
     "Ukraine",
     "Denmark",
-    "Russia"
+    "Russia",
+    "Poland",
+    "Norway",
+    "Sweden",
+    "Romania"
   ),
   Tier = c(
     1L, 2L, 3L, 4L, 5L,
@@ -96,6 +100,10 @@ COUNTRY_TIER_SEEDS <- data.table(
     1L, 2L,
     1L, 2L,
     1L, 2L,
+    1L,
+    1L,
+    1L,
+    1L,
     1L,
     1L,
     1L,
@@ -126,9 +134,14 @@ COUNTRY_TIER_SEEDS <- data.table(
     2230,  # Czechia
     2275,  # Ukraine
     2335,  # Denmark
-    2400   # Russia
+    2400,  # Russia
+    2285,  # Poland
+    2275,  # Norway
+    2265,  # Sweden
+    2255   # Romania
   )
 )
+
 COUNTRY_TIER_SEED_KEY <- paste(
   COUNTRY_TIER_SEEDS$Country,
   COUNTRY_TIER_SEEDS$Tier,
@@ -339,7 +352,7 @@ if (length(missing_cols) > 0) {
 
 dt[, Country := trimws(as.character(Country))]
 dt[, Competition := trimws(as.character(Competition))]
-dt[, CompetitionType := trimws(as.character(CompetitionType))]
+dt[, CompetitionType := tolower(trimws(as.character(CompetitionType)))]
 dt[, Tier := as.integer(Tier)]
 dt[, League  := trimws(as.character(League))]
 dt[, Source := if ("Source" %in% names(dt)) trimws(as.character(Source)) else NA_character_]
@@ -585,11 +598,40 @@ dt <- dt[
     Result != ""
 ]
 
-scores <- t(vapply(dt$Result, result_to_scores, numeric(2)))
+# Use Score where available; fall back to Result for older source formats.
+dt[, EloResult := fifelse(
+  !is.na(Score) & trimws(Score) != "",
+  trimws(Score),
+  trimws(Result)
+)]
+
+scores <- t(vapply(dt$EloResult, result_to_scores, numeric(2)))
+
 dt[, HomeScore := scores[, 1]]
 dt[, AwayScore := scores[, 2]]
-dt <- dt[!is.na(HomeScore) & !is.na(AwayScore)]
 
+bad_result_rows <- dt[
+  is.na(HomeScore) | is.na(AwayScore)
+]
+
+if (nrow(bad_result_rows) > 0L) {
+  cat(
+    "\nRows dropped because neither Score nor Result could be parsed:",
+    nrow(bad_result_rows),
+    "\n"
+  )
+}
+
+dt <- dt[
+  !is.na(HomeScore) &
+    !is.na(AwayScore)
+]
+
+cat(
+  "\nCompleted matches entering Elo after score parsing:",
+  nrow(dt),
+  "\n"
+)
 setorder(dt, Date, Country, Tier, Competition, League, Home, Away, Result)
 
 # -----------------------------
@@ -845,6 +887,14 @@ build_retro_start_map <- function(pass1_dt, n_games = 100L) {
 # -----------------------------
 # Pass 1
 # -----------------------------
+
+cat(
+  "\nUEFA 1st Division matches entering Elo:",
+  nrow(dt[Competition == "UEFA 1st Division"]),
+  "\n"
+)
+
+
 pass1 <- run_elo(
   dt_input = dt,
   entry_mode = "seed",

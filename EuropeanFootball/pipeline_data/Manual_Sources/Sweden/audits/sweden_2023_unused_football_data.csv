@@ -1,0 +1,235 @@
+Country,League,Season,Date,Time,Home,Away,HG,AG,Res,PSCH,PSCD,PSCA,MaxCH,MaxCD,MaxCA,AvgCH,AvgCD,AvgCA,BFECH,BFECD,BFECA,B365CH,B365CD,B365CA,ParsedDate,HomeKey,AwayKey,MatchKey,Occurrence,FDID
+Sweden,Allsvenskan,2023,01/04/2023,14:00,Malmo FF,Kalmar,1,0,H,1.63,4.11,5.76,1.68,4.33,5.8,1.62,3.97,5.28,,,,,,,2023-04-01,malmo ff,kalmar,malmo ff|||kalmar|||1|||0,1,1
+Sweden,Allsvenskan,2023,01/04/2023,16:30,Djurgarden,Brommapojkarna,3,1,H,1.32,5.91,9.28,1.32,6.4,11,1.28,5.7,9.78,,,,,,,2023-04-01,djurgarden,brommapojkarna,djurgarden|||brommapojkarna|||3|||1,1,2
+Sweden,Allsvenskan,2023,02/04/2023,14:00,Hammarby,Degerfors,3,1,H,1.31,6.01,9.69,1.32,6.25,11,1.29,5.66,9.75,,,,,,,2023-04-02,hammarby,degerfors,hammarby|||degerfors|||3|||1,1,3
+Sweden,Allsvenskan,2023,02/04/2023,14:00,Norrkoping,Sirius,1,1,D,1.93,3.71,4.14,1.95,4.02,4.2,1.88,3.65,3.94,,,,,,,2023-04-02,norrkoping,sirius,norrkoping|||sirius|||1|||1,1,4
+Sweden,Allsvenskan,2023,02/04/2023,16:30,Goteborg,Varnamo,0,1,A,2.04,3.61,3.82,2.06,3.7,3.95,1.98,3.53,3.7,,,,,,,2023-04-02,goteborg,varnamo,goteborg|||varnamo|||0|||1,1,5
+Sweden,Allsvenskan,2023,02/04/2023,16:30,Halmstad,AIK,2,1,H,3.26,3.19,2.46,3.69,3.4,2.46,3.27,3.16,2.29,,,,,,,2023-04-02,halmstad,aik,halmstad|||aik|||2|||1,1,6
+Sweden,Allsvenskan,2023,03/04/2023,18:00,Mjallby,Varberg,2,2,D,1.68,3.67,6.04,1.9,3.68,6.04,1.69,3.51,5.46,,,,,,,2023-04-03,mjallby,varberg,mjallby|||varberg|||2|||2,1,7
+Sweden,Allsvenskan,2023,03/04/2023,18:10,Elfsborg,Hacken,0,2,A,2.43,3.8,2.83,2.6,3.88,2.85,2.39,3.66,2.72,,,,,,,2023-04-03,elfsborg,hacken,elfsborg|||hacken|||0|||2,1,8
+Sweden,Allsvenskan,2023,08/04/2023,14:00,Brommapojkarna,Malmo FF,1,2,A,7.44,4.79,1.47,7.7,4.9,1.47,6.75,4.63,1.44,,,,,,,2023-04-08,brommapojkarna,malmo ff,brommapojkarna|||malmo ff|||1|||2,1,9
+Sweden,Allsvenskan,2023,08/04/2023,14:00,Degerfors,Halmstad,3,1,H,2.59,3.53,2.83,2.59,3.55,3,2.44,3.34,2.85,,,,,,,2023-04-08,degerfors,halmstad,degerfors|||halmstad|||3|||1,1,10
+Sweden,Allsvenskan,2023,09/04/2023,14:00,Hacken,Hammarby,3,1,H,2.02,3.79,3.68,2.06,3.83,3.68,2,3.67,3.5,,,,,,,2023-04-09,hacken,hammarby,hacken|||hammarby|||3|||1,1,11
+Sweden,Allsvenskan,2023,09/04/2023,16:30,Kalmar,Goteborg,2,0,H,2.05,3.38,4.03,2.08,3.53,4.3,1.99,3.32,3.93,,,,,,,2023-04-09,kalmar,goteborg,kalmar|||goteborg|||2|||0,1,12
+Sweden,Allsvenskan,2023,09/04/2023,16:30,Sirius,Djurgarden,0,0,D,3.73,3.62,2.05,3.83,3.67,2.07,3.66,3.5,2,,,,,,,2023-04-09,sirius,djurgarden,sirius|||djurgarden|||0|||0,1,13
+Sweden,Allsvenskan,2023,10/04/2023,12:00,Varnamo,Mjallby,0,1,A,2.94,3.25,2.63,2.96,3.31,2.65,2.83,3.18,2.54,,,,,,,2023-04-10,varnamo,mjallby,varnamo|||mjallby|||0|||1,1,14
+Sweden,Allsvenskan,2023,10/04/2023,14:00,AIK,Norrkoping,0,3,A,1.72,3.81,5.11,1.75,4,5.4,1.7,3.76,4.9,,,,,,,2023-04-10,aik,norrkoping,aik|||norrkoping|||0|||3,1,15
+Sweden,Allsvenskan,2023,10/04/2023,14:00,Varberg,Elfsborg,0,0,D,4.96,3.86,1.72,5.15,4.05,1.78,4.76,3.82,1.7,,,,,,,2023-04-10,varberg,elfsborg,varberg|||elfsborg|||0|||0,1,16
+Sweden,Allsvenskan,2023,15/04/2023,14:00,Elfsborg,Brommapojkarna,5,0,H,1.38,5.62,7.77,1.4,6,8.8,1.35,5.37,7.77,,,,,,,2023-04-15,elfsborg,brommapojkarna,elfsborg|||brommapojkarna|||5|||0,1,17
+Sweden,Allsvenskan,2023,15/04/2023,16:30,Hacken,Kalmar,1,3,A,1.67,4.15,5.3,1.68,4.33,5.3,1.64,4.05,4.98,,,,,,,2023-04-15,hacken,kalmar,hacken|||kalmar|||1|||3,1,18
+Sweden,Allsvenskan,2023,16/04/2023,14:00,Norrkoping,Varnamo,2,1,H,1.72,3.96,5.04,1.74,4,5.1,1.7,3.82,4.8,,,,,,,2023-04-16,norrkoping,varnamo,norrkoping|||varnamo|||2|||1,1,20
+Sweden,Allsvenskan,2023,16/04/2023,16:30,Halmstad,Djurgarden,2,0,H,3.79,3.4,2.13,3.89,3.55,2.16,3.6,3.37,2.07,,,,,,,2023-04-16,halmstad,djurgarden,halmstad|||djurgarden|||2|||0,1,21
+Sweden,Allsvenskan,2023,16/04/2023,16:30,Mjallby,Degerfors,2,0,H,1.83,3.73,4.65,1.88,3.75,4.65,1.82,3.57,4.31,,,,,,,2023-04-16,mjallby,degerfors,mjallby|||degerfors|||2|||0,1,22
+Sweden,Allsvenskan,2023,17/04/2023,18:00,Varberg,Sirius,1,1,D,3.58,3.37,2.21,3.73,3.37,2.23,3.53,3.23,2.14,,,,,,,2023-04-17,varberg,sirius,varberg|||sirius|||1|||1,1,23
+Sweden,Allsvenskan,2023,17/04/2023,18:10,Goteborg,Malmo FF,0,1,A,4.67,3.94,1.78,5.15,3.94,1.8,4.61,3.74,1.74,,,,,,,2023-04-17,goteborg,malmo ff,goteborg|||malmo ff|||0|||1,1,24
+Sweden,Allsvenskan,2023,22/04/2023,14:00,Hammarby,Varberg,2,0,H,1.3,5.87,10.94,1.33,6,12,1.28,5.5,10.44,,,,,,,2023-04-22,hammarby,varberg,hammarby|||varberg|||2|||0,1,25
+Sweden,Allsvenskan,2023,22/04/2023,16:30,Degerfors,Elfsborg,1,2,A,3.68,3.76,2.04,3.72,3.95,2.08,3.51,3.67,2,,,,,,,2023-04-22,degerfors,elfsborg,degerfors|||elfsborg|||1|||2,1,26
+Sweden,Allsvenskan,2023,23/04/2023,14:00,Djurgarden,Goteborg,1,0,H,1.53,4.4,6.6,1.55,4.6,7.5,1.5,4.3,6.41,,,,,,,2023-04-23,djurgarden,goteborg,djurgarden|||goteborg|||1|||0,1,27
+Sweden,Allsvenskan,2023,23/04/2023,14:00,Kalmar,Halmstad,2,0,H,1.79,3.48,5.42,1.9,3.62,5.42,1.75,3.48,4.98,,,,,,,2023-04-23,kalmar,halmstad,kalmar|||halmstad|||2|||0,1,28
+Sweden,Allsvenskan,2023,23/04/2023,16:30,Sirius,Hacken,1,4,A,3.74,3.86,1.99,3.75,3.86,2.12,3.46,3.67,2.01,,,,,,,2023-04-23,sirius,hacken,sirius|||hacken|||1|||4,1,29
+Sweden,Allsvenskan,2023,24/04/2023,18:00,Brommapojkarna,Mjallby,2,0,H,3.16,3.34,2.43,3.2,3.37,2.54,3.03,3.24,2.38,,,,,,,2023-04-24,brommapojkarna,mjallby,brommapojkarna|||mjallby|||2|||0,1,30
+Sweden,Allsvenskan,2023,24/04/2023,18:00,Varnamo,AIK,1,0,H,4.16,3.37,2.03,4.33,3.47,2.05,4.09,3.3,1.96,,,,,,,2023-04-24,varnamo,aik,varnamo|||aik|||1|||0,1,31
+Sweden,Allsvenskan,2023,24/04/2023,18:10,Malmo FF,Norrkoping,3,0,H,1.47,4.71,7.11,1.49,4.75,7.2,1.45,4.49,6.83,,,,,,,2023-04-24,malmo ff,norrkoping,malmo ff|||norrkoping|||3|||0,1,32
+Sweden,Allsvenskan,2023,29/04/2023,14:00,AIK,Sirius,0,0,D,1.99,3.57,4.04,2.01,4,4.75,1.91,3.54,3.99,,,,,,,2023-04-29,aik,sirius,aik|||sirius|||0|||0,1,33
+Sweden,Allsvenskan,2023,29/04/2023,14:00,Mjallby,Elfsborg,0,1,A,3.51,3.45,2.21,3.6,3.48,2.43,3.25,3.3,2.22,,,,,,,2023-04-29,mjallby,elfsborg,mjallby|||elfsborg|||0|||1,1,34
+Sweden,Allsvenskan,2023,29/04/2023,16:30,Hacken,Varnamo,3,1,H,1.3,5.71,10.38,1.33,6.05,11.5,1.28,5.68,9.85,,,,,,,2023-04-29,hacken,varnamo,hacken|||varnamo|||3|||1,1,35
+Sweden,Allsvenskan,2023,29/04/2023,16:30,Halmstad,Brommapojkarna,0,2,A,2.15,3.5,3.6,2.16,3.91,4.5,2.03,3.46,3.63,,,,,,,2023-04-29,halmstad,brommapojkarna,halmstad|||brommapojkarna|||0|||2,1,36
+Sweden,Allsvenskan,2023,30/04/2023,14:00,Varberg,Kalmar,0,0,D,3.81,3.27,2.18,3.95,3.36,2.24,3.66,3.2,2.12,,,,,,,2023-04-30,varberg,kalmar,varberg|||kalmar|||0|||0,1,38
+Sweden,Allsvenskan,2023,30/04/2023,16:30,Degerfors,Djurgarden,2,1,H,3.88,3.74,1.99,4.1,3.85,2,3.82,3.62,1.93,,,,,,,2023-04-30,degerfors,djurgarden,degerfors|||djurgarden|||2|||1,1,39
+Sweden,Allsvenskan,2023,01/05/2023,14:00,Goteborg,Norrkoping,1,1,D,2.37,3.43,3.18,2.55,3.52,3.29,2.31,3.32,3.07,,,,,,,2023-05-01,goteborg,norrkoping,goteborg|||norrkoping|||1|||1,1,40
+Sweden,Allsvenskan,2023,03/05/2023,18:00,Elfsborg,Halmstad,6,1,H,1.45,4.74,7.7,1.49,4.8,8.2,1.44,4.48,7.16,,,,,,,2023-05-03,elfsborg,halmstad,elfsborg|||halmstad|||6|||1,1,41
+Sweden,Allsvenskan,2023,03/05/2023,18:00,Hacken,Djurgarden,4,1,H,1.88,3.96,4.09,1.91,4,4.4,1.84,3.81,3.99,,,,,,,2023-05-03,hacken,djurgarden,hacken|||djurgarden|||4|||1,1,42
+Sweden,Allsvenskan,2023,03/05/2023,18:00,Kalmar,Sirius,2,2,D,2.01,3.41,4.21,2.02,3.53,4.59,1.95,3.35,4.03,,,,,,,2023-05-03,kalmar,sirius,kalmar|||sirius|||2|||2,1,43
+Sweden,Allsvenskan,2023,03/05/2023,18:00,Mjallby,AIK,0,0,D,2.98,3.04,2.79,2.98,3.12,2.87,2.76,2.99,2.77,,,,,,,2023-05-03,mjallby,aik,mjallby|||aik|||0|||0,1,44
+Sweden,Allsvenskan,2023,04/05/2023,18:00,Goteborg,Degerfors,6,0,H,1.79,3.96,4.56,1.92,4,4.7,1.76,3.82,4.39,,,,,,,2023-05-04,goteborg,degerfors,goteborg|||degerfors|||6|||0,1,45
+Sweden,Allsvenskan,2023,04/05/2023,18:00,Norrkoping,Hammarby,2,0,H,3.2,3.42,2.37,3.28,3.49,2.38,3.14,3.3,2.29,,,,,,,2023-05-04,norrkoping,hammarby,norrkoping|||hammarby|||2|||0,1,46
+Sweden,Allsvenskan,2023,04/05/2023,18:00,Varberg,Malmo FF,0,6,A,8,4.47,1.47,8,4.79,1.49,7.29,4.39,1.44,,,,,,,2023-05-04,varberg,malmo ff,varberg|||malmo ff|||0|||6,1,47
+Sweden,Allsvenskan,2023,04/05/2023,18:00,Varnamo,Brommapojkarna,0,1,A,1.99,3.51,4.15,2.04,3.62,4.15,1.97,3.43,3.87,,,,,,,2023-05-04,varnamo,brommapojkarna,varnamo|||brommapojkarna|||0|||1,1,48
+Sweden,Allsvenskan,2023,07/05/2023,16:30,Halmstad,Hacken,1,0,H,6.4,4.79,1.5,7,4.79,1.58,6.1,4.52,1.49,,,,,,,2023-05-07,halmstad,hacken,halmstad|||hacken|||1|||0,1,50
+Sweden,Allsvenskan,2023,08/05/2023,18:00,Brommapojkarna,Goteborg,0,0,D,2.87,3.66,2.47,2.92,3.67,2.55,2.8,3.46,2.42,,,,,,,2023-05-08,brommapojkarna,goteborg,brommapojkarna|||goteborg|||0|||0,1,51
+Sweden,Allsvenskan,2023,08/05/2023,18:00,Degerfors,Norrkoping,0,2,A,2.87,3.47,2.56,2.87,3.5,2.6,2.74,3.39,2.5,,,,,,,2023-05-08,degerfors,norrkoping,degerfors|||norrkoping|||0|||2,1,52
+Sweden,Allsvenskan,2023,08/05/2023,18:00,Sirius,Elfsborg,3,4,A,3.36,3.77,2.15,3.69,3.78,2.25,3.21,3.6,2.14,,,,,,,2023-05-08,sirius,elfsborg,sirius|||elfsborg|||3|||4,1,53
+Sweden,Allsvenskan,2023,08/05/2023,18:10,Djurgarden,Kalmar,3,1,H,1.8,3.69,4.9,1.85,3.9,5.2,1.76,3.6,4.83,,,,,,,2023-05-08,djurgarden,kalmar,djurgarden|||kalmar|||3|||1,1,54
+Sweden,Allsvenskan,2023,09/05/2023,18:00,Hammarby,Mjallby,0,0,D,1.69,3.85,5.54,1.74,3.97,5.75,1.67,3.74,5.26,,,,,,,2023-05-09,hammarby,mjallby,hammarby|||mjallby|||0|||0,1,55
+Sweden,Allsvenskan,2023,09/05/2023,18:00,Varnamo,Varberg,3,1,H,1.79,3.53,5.33,1.84,3.61,5.5,1.76,3.41,5.06,,,,,,,2023-05-09,varnamo,varberg,varnamo|||varberg|||3|||1,1,56
+Sweden,Allsvenskan,2023,13/05/2023,14:00,Hacken,Degerfors,6,1,H,1.21,7.72,11.99,1.24,7.95,13,1.2,7.22,11.45,,,,,,,2023-05-13,hacken,degerfors,hacken|||degerfors|||6|||1,1,57
+Sweden,Allsvenskan,2023,13/05/2023,16:30,Varberg,Norrkoping,1,3,A,3.18,3.31,2.43,3.25,3.49,2.47,3.08,3.19,2.37,,,,,,,2023-05-13,varberg,norrkoping,varberg|||norrkoping|||1|||3,1,58
+Sweden,Allsvenskan,2023,14/05/2023,14:00,Elfsborg,Varnamo,2,0,H,1.51,4.58,6.34,1.54,4.7,6.5,1.5,4.43,5.98,,,,,,,2023-05-14,elfsborg,varnamo,elfsborg|||varnamo|||2|||0,1,59
+Sweden,Allsvenskan,2023,14/05/2023,14:00,Hammarby,Djurgarden,4,3,H,2.48,3.4,3.02,2.6,3.5,3.02,2.43,3.35,2.86,,,,,,,2023-05-14,hammarby,djurgarden,hammarby|||djurgarden|||4|||3,1,60
+Sweden,Allsvenskan,2023,14/05/2023,14:00,Mjallby,Sirius,3,0,H,2.59,3.13,3.11,2.6,3.26,3.26,2.49,3.09,3,,,,,,,2023-05-14,mjallby,sirius,mjallby|||sirius|||3|||0,1,61
+Sweden,Allsvenskan,2023,14/05/2023,16:30,Halmstad,Malmo FF,0,1,A,7.71,4.58,1.46,7.71,4.76,1.49,7.03,4.41,1.45,,,,,,,2023-05-14,halmstad,malmo ff,halmstad|||malmo ff|||0|||1,1,62
+Sweden,Allsvenskan,2023,14/05/2023,16:30,Kalmar,Brommapojkarna,1,3,A,1.74,3.73,5.38,1.79,3.86,5.38,1.72,3.62,4.95,,,,,,,2023-05-14,kalmar,brommapojkarna,kalmar|||brommapojkarna|||1|||3,1,63
+Sweden,Allsvenskan,2023,15/05/2023,18:10,AIK,Goteborg,2,2,D,1.72,3.73,5.55,1.88,3.75,5.55,1.72,3.57,5.16,,,,,,,2023-05-15,aik,goteborg,aik|||goteborg|||2|||2,1,64
+Sweden,Allsvenskan,2023,20/05/2023,14:00,Degerfors,AIK,2,1,H,3.86,3.67,2.01,3.86,3.67,2.11,3.6,3.49,2.03,,,,,,,2023-05-20,degerfors,aik,degerfors|||aik|||2|||1,1,65
+Sweden,Allsvenskan,2023,21/05/2023,14:00,Brommapojkarna,Varberg,2,1,H,1.97,3.61,4.08,2.01,3.68,4.1,1.95,3.49,3.85,,,,,,,2023-05-21,brommapojkarna,varberg,brommapojkarna|||varberg|||2|||1,1,66
+Sweden,Allsvenskan,2023,21/05/2023,14:00,Djurgarden,Mjallby,2,0,H,1.6,4.02,6.31,1.61,4.15,6.75,1.56,3.93,6.09,,,,,,,2023-05-21,djurgarden,mjallby,djurgarden|||mjallby|||2|||0,1,67
+Sweden,Allsvenskan,2023,21/05/2023,14:00,Malmo FF,Hacken,2,2,D,1.75,4.33,4.38,1.78,4.4,4.62,1.72,4.08,4.3,,,,,,,2023-05-21,malmo ff,hacken,malmo ff|||hacken|||2|||2,1,68
+Sweden,Allsvenskan,2023,21/05/2023,16:30,Goteborg,Hammarby,1,1,D,3.01,3.39,2.5,3.05,3.55,2.56,2.91,3.3,2.42,,,,,,,2023-05-21,goteborg,hammarby,goteborg|||hammarby|||1|||1,1,69
+Sweden,Allsvenskan,2023,21/05/2023,16:30,Sirius,Halmstad,1,2,A,1.95,3.69,4.06,1.96,3.83,4.2,1.87,3.61,4.02,,,,,,,2023-05-21,sirius,halmstad,sirius|||halmstad|||1|||2,1,70
+Sweden,Allsvenskan,2023,22/05/2023,18:00,Varnamo,Kalmar,0,1,A,2.83,3.21,2.76,2.9,3.28,2.8,2.74,3.09,2.69,,,,,,,2023-05-22,varnamo,kalmar,varnamo|||kalmar|||0|||1,1,71
+Sweden,Allsvenskan,2023,22/05/2023,18:10,Norrkoping,Elfsborg,1,2,A,3.22,3.66,2.25,3.22,3.7,2.29,3.07,3.55,2.2,,,,,,,2023-05-22,norrkoping,elfsborg,norrkoping|||elfsborg|||1|||2,1,72
+Sweden,Allsvenskan,2023,24/05/2023,18:00,Djurgarden,Hacken,1,0,H,2.7,3.7,2.59,2.75,3.87,2.65,2.59,3.61,2.52,,,,,,,2023-05-24,djurgarden,hacken,djurgarden|||hacken|||1|||0,1,73
+Sweden,Allsvenskan,2023,25/05/2023,18:00,Degerfors,Hammarby,2,2,D,3.18,3.47,2.35,3.59,3.74,2.4,3.16,3.42,2.23,,,,,,,2023-05-25,degerfors,hammarby,degerfors|||hammarby|||2|||2,1,74
+Sweden,Allsvenskan,2023,27/05/2023,14:00,Mjallby,Halmstad,0,2,A,2,3.3,4.42,2.05,3.48,4.5,1.96,3.29,4.09,,,,,,,2023-05-27,mjallby,halmstad,mjallby|||halmstad|||0|||2,1,75
+Sweden,Allsvenskan,2023,27/05/2023,16:30,Brommapojkarna,Sirius,1,2,A,2.54,3.57,2.83,2.66,3.68,2.83,2.49,3.45,2.71,,,,,,,2023-05-27,brommapojkarna,sirius,brommapojkarna|||sirius|||1|||2,1,76
+Sweden,Allsvenskan,2023,28/05/2023,14:00,Djurgarden,AIK,1,0,H,1.88,3.57,4.57,1.95,3.69,4.8,1.83,3.5,4.4,,,,,,,2023-05-28,djurgarden,aik,djurgarden|||aik|||1|||0,1,77
+Sweden,Allsvenskan,2023,28/05/2023,14:00,Kalmar,Norrkoping,2,1,H,2.27,3.33,3.48,2.28,3.38,3.5,2.22,3.22,3.35,,,,,,,2023-05-28,kalmar,norrkoping,kalmar|||norrkoping|||2|||1,1,78
+Sweden,Allsvenskan,2023,28/05/2023,16:30,Elfsborg,Malmo FF,3,0,H,2.65,3.7,2.63,2.69,3.72,2.66,2.61,3.54,2.54,,,,,,,2023-05-28,elfsborg,malmo ff,elfsborg|||malmo ff|||3|||0,1,79
+Sweden,Allsvenskan,2023,29/05/2023,18:00,Degerfors,Varberg,1,1,D,1.63,4.27,5.15,1.9,4.41,5.5,1.64,4.09,4.98,,,,,,,2023-05-29,degerfors,varberg,degerfors|||varberg|||1|||1,1,80
+Sweden,Allsvenskan,2023,29/05/2023,18:00,Hammarby,Varnamo,0,2,A,1.73,4.06,4.86,1.74,4.2,5.43,1.68,3.92,4.77,,,,,,,2023-05-29,hammarby,varnamo,hammarby|||varnamo|||0|||2,1,81
+Sweden,Allsvenskan,2023,29/05/2023,18:10,Hacken,Goteborg,4,1,H,1.42,5.34,7.12,1.47,5.34,7.2,1.41,4.97,6.65,,,,,,,2023-05-29,hacken,goteborg,hacken|||goteborg|||4|||1,1,82
+Sweden,Allsvenskan,2023,03/06/2023,14:00,Goteborg,Mjallby,0,1,A,2.03,3.4,4.15,2.07,3.5,4.21,2,3.34,3.88,,,,,,,2023-06-03,goteborg,mjallby,goteborg|||mjallby|||0|||1,1,83
+Sweden,Allsvenskan,2023,03/06/2023,16:30,Norrkoping,Brommapojkarna,0,2,A,1.96,3.81,3.88,2.01,4.06,3.91,1.93,3.69,3.73,,,,,,,2023-06-03,norrkoping,brommapojkarna,norrkoping|||brommapojkarna|||0|||2,1,84
+Sweden,Allsvenskan,2023,04/06/2023,14:00,AIK,Kalmar,1,1,D,2.23,3.13,3.85,2.24,3.23,4.02,2.18,3.06,3.65,,,,,,,2023-06-04,aik,kalmar,aik|||kalmar|||1|||1,1,85
+Sweden,Allsvenskan,2023,04/06/2023,14:00,Halmstad,Hammarby,0,0,D,3.19,3.38,2.39,3.23,3.41,2.41,3.08,3.28,2.33,,,,,,,2023-06-04,halmstad,hammarby,halmstad|||hammarby|||0|||0,1,86
+Sweden,Allsvenskan,2023,04/06/2023,16:30,Elfsborg,Djurgarden,1,1,D,1.84,3.82,4.46,2.1,3.85,4.46,1.88,3.64,3.96,,,,,,,2023-06-04,elfsborg,djurgarden,elfsborg|||djurgarden|||1|||1,1,87
+Sweden,Allsvenskan,2023,04/06/2023,16:30,Sirius,Varnamo,2,0,H,1.92,3.8,4.09,1.98,3.85,4.12,1.91,3.64,3.83,,,,,,,2023-06-04,sirius,varnamo,sirius|||varnamo|||2|||0,1,88
+Sweden,Allsvenskan,2023,05/06/2023,18:00,Varberg,Hacken,0,2,A,6.86,4.97,1.46,8.04,5.12,1.48,6.44,4.79,1.44,,,,,,,2023-06-05,varberg,hacken,varberg|||hacken|||0|||2,1,89
+Sweden,Allsvenskan,2023,05/06/2023,18:10,Malmo FF,Degerfors,5,0,H,1.25,6.98,10.59,1.27,7.2,13.6,1.24,6.39,10.94,,,,,,,2023-06-05,malmo ff,degerfors,malmo ff|||degerfors|||5|||0,1,90
+Sweden,Allsvenskan,2023,09/06/2023,18:00,Hammarby,Brommapojkarna,2,1,H,1.6,4.29,5.74,1.67,4.33,6.57,1.6,4.08,5.29,,,,,,,2023-06-09,hammarby,brommapojkarna,hammarby|||brommapojkarna|||2|||1,1,91
+Sweden,Allsvenskan,2023,10/06/2023,14:00,Kalmar,Degerfors,2,1,H,1.65,4.11,5.48,1.7,4.11,5.48,1.65,3.91,5.09,,,,,,,2023-06-10,kalmar,degerfors,kalmar|||degerfors|||2|||1,1,92
+Sweden,Allsvenskan,2023,10/06/2023,14:00,Varnamo,Malmo FF,1,3,A,5.47,3.91,1.69,6.09,4.29,1.7,5.28,3.88,1.64,,,,,,,2023-06-10,varnamo,malmo ff,varnamo|||malmo ff|||1|||3,1,93
+Sweden,Allsvenskan,2023,10/06/2023,16:30,Varberg,Halmstad,1,2,A,2.88,3.08,2.83,2.88,3.26,2.83,2.76,3.04,2.71,,,,,,,2023-06-10,varberg,halmstad,varberg|||halmstad|||1|||2,1,94
+Sweden,Allsvenskan,2023,11/06/2023,14:00,AIK,Elfsborg,1,2,A,4.16,3.65,1.94,4.35,3.74,2.02,3.88,3.53,1.93,,,,,,,2023-06-11,aik,elfsborg,aik|||elfsborg|||1|||2,1,95
+Sweden,Allsvenskan,2023,11/06/2023,14:00,Sirius,Goteborg,2,0,H,2.17,3.75,3.34,2.19,3.78,3.61,2.11,3.57,3.28,,,,,,,2023-06-11,sirius,goteborg,sirius|||goteborg|||2|||0,1,96
+Sweden,Allsvenskan,2023,11/06/2023,16:30,Djurgarden,Norrkoping,2,2,D,1.55,4.33,6.4,1.57,4.5,6.75,1.52,4.2,6.2,,,,,,,2023-06-11,djurgarden,norrkoping,djurgarden|||norrkoping|||2|||2,1,97
+Sweden,Allsvenskan,2023,11/06/2023,16:30,Hacken,Mjallby,3,0,H,1.4,5.3,7.63,1.43,5.3,7.63,1.39,4.96,7.15,,,,,,,2023-06-11,hacken,mjallby,hacken|||mjallby|||3|||0,1,98
+Sweden,Allsvenskan,2023,01/07/2023,14:00,Brommapojkarna,AIK,0,2,A,3.26,3.45,2.32,3.3,3.51,2.38,3.17,3.36,2.24,,,,,,,2023-07-01,brommapojkarna,aik,brommapojkarna|||aik|||0|||2,1,99
+Sweden,Allsvenskan,2023,01/07/2023,14:00,Degerfors,Varnamo,0,2,A,2.71,3.45,2.71,2.71,3.53,3.09,2.54,3.36,2.71,,,,,,,2023-07-01,degerfors,varnamo,degerfors|||varnamo|||0|||2,1,100
+Sweden,Allsvenskan,2023,01/07/2023,16:30,Malmo FF,Sirius,3,0,H,1.31,5.97,9.96,1.35,6.2,11,1.3,5.63,9.04,,,,,,,2023-07-01,malmo ff,sirius,malmo ff|||sirius|||3|||0,1,101
+Sweden,Allsvenskan,2023,02/07/2023,14:00,Halmstad,Goteborg,0,0,D,2.35,3.32,3.33,2.41,3.38,3.5,2.33,3.23,3.14,,,,,,,2023-07-02,halmstad,goteborg,halmstad|||goteborg|||0|||0,1,102
+Sweden,Allsvenskan,2023,02/07/2023,14:00,Norrkoping,Hacken,2,2,D,5.14,4.69,1.6,5.15,4.7,1.71,4.82,4.4,1.6,,,,,,,2023-07-02,norrkoping,hacken,norrkoping|||hacken|||2|||2,1,103
+Sweden,Allsvenskan,2023,02/07/2023,16:30,Djurgarden,Varberg,2,0,H,1.23,6.7,14.01,1.27,7,17,1.23,6.18,12.67,,,,,,,2023-07-02,djurgarden,varberg,djurgarden|||varberg|||2|||0,1,104
+Sweden,Allsvenskan,2023,03/07/2023,18:00,Elfsborg,Hammarby,2,0,H,1.56,4.49,5.93,1.65,4.6,6.47,1.54,4.31,5.63,,,,,,,2023-07-03,elfsborg,hammarby,elfsborg|||hammarby|||2|||0,1,105
+Sweden,Allsvenskan,2023,03/07/2023,18:00,Mjallby,Kalmar,1,1,D,2.87,2.96,2.94,2.88,3.05,2.97,2.73,2.93,2.83,,,,,,,2023-07-03,mjallby,kalmar,mjallby|||kalmar|||1|||1,1,106
+Sweden,Allsvenskan,2023,08/07/2023,14:00,AIK,Hacken,1,2,A,3.13,3.52,2.35,3.25,3.75,2.37,3.03,3.49,2.26,,,,,,,2023-07-08,aik,hacken,aik|||hacken|||1|||2,1,107
+Sweden,Allsvenskan,2023,08/07/2023,14:00,Varnamo,Djurgarden,1,2,A,3.49,3.38,2.24,3.56,3.47,2.25,3.33,3.32,2.19,,,,,,,2023-07-08,varnamo,djurgarden,varnamo|||djurgarden|||1|||2,1,108
+Sweden,Allsvenskan,2023,08/07/2023,16:30,Brommapojkarna,Degerfors,1,2,A,1.66,4.28,5.13,1.7,4.33,5.24,1.65,4.09,4.78,,,,,,,2023-07-08,brommapojkarna,degerfors,brommapojkarna|||degerfors|||1|||2,1,109
+Sweden,Allsvenskan,2023,09/07/2023,14:00,Malmo FF,Mjallby,1,2,A,1.35,5.33,9.82,1.37,5.6,10.3,1.33,5,9.32,,,,,,,2023-07-09,malmo ff,mjallby,malmo ff|||mjallby|||1|||2,1,110
+Sweden,Allsvenskan,2023,09/07/2023,14:00,Sirius,Hammarby,1,2,A,2.92,3.59,2.46,3.13,3.65,2.48,2.86,3.48,2.38,,,,,,,2023-07-09,sirius,hammarby,sirius|||hammarby|||1|||2,1,111
+Sweden,Allsvenskan,2023,09/07/2023,16:30,Kalmar,Elfsborg,0,4,A,3.83,3.6,2.04,3.89,3.75,2.15,3.53,3.5,2.04,,,,,,,2023-07-09,kalmar,elfsborg,kalmar|||elfsborg|||0|||4,1,112
+Sweden,Allsvenskan,2023,10/07/2023,18:00,Goteborg,Varberg,1,2,A,1.72,3.76,5.4,1.8,4.11,5.75,1.68,3.73,5.12,,,,,,,2023-07-10,goteborg,varberg,goteborg|||varberg|||1|||2,1,113
+Sweden,Allsvenskan,2023,10/07/2023,18:00,Norrkoping,Halmstad,1,2,A,2.09,3.48,3.9,2.11,3.69,3.9,2.04,3.42,3.63,,,,,,,2023-07-10,norrkoping,halmstad,norrkoping|||halmstad|||1|||2,1,114
+Sweden,Allsvenskan,2023,15/07/2023,14:00,Halmstad,Varnamo,2,2,D,2.65,3.03,2.92,2.73,3.28,3.05,2.54,3.12,2.89,,,,,,,2023-07-15,halmstad,varnamo,halmstad|||varnamo|||2|||2,1,115
+Sweden,Allsvenskan,2023,15/07/2023,16:30,Degerfors,Sirius,0,3,A,2.74,3.59,2.61,2.86,3.7,2.62,2.65,3.52,2.52,,,,,,,2023-07-15,degerfors,sirius,degerfors|||sirius|||0|||3,1,116
+Sweden,Allsvenskan,2023,15/07/2023,16:30,Hacken,Brommapojkarna,4,2,H,1.34,6,8.41,1.37,6,8.5,1.33,5.57,7.76,,,,,,,2023-07-15,hacken,brommapojkarna,hacken|||brommapojkarna|||4|||2,1,117
+Sweden,Allsvenskan,2023,16/07/2023,14:00,Elfsborg,Goteborg,1,1,D,1.37,5.44,8.41,1.39,5.6,8.82,1.35,5.11,8.09,,,,,,,2023-07-16,elfsborg,goteborg,elfsborg|||goteborg|||1|||1,1,118
+Sweden,Allsvenskan,2023,16/07/2023,14:00,Hammarby,Kalmar,3,1,H,1.69,4.08,5.17,1.72,4.2,5.3,1.67,3.91,4.89,,,,,,,2023-07-16,hammarby,kalmar,hammarby|||kalmar|||3|||1,1,119
+Sweden,Allsvenskan,2023,16/07/2023,16:30,Mjallby,Norrkoping,1,2,A,2.23,3.3,3.61,2.26,3.35,3.76,2.18,3.22,3.45,,,,,,,2023-07-16,mjallby,norrkoping,mjallby|||norrkoping|||1|||2,1,120
+Sweden,Allsvenskan,2023,17/07/2023,18:00,Djurgarden,Malmo FF,2,0,H,2.58,3.39,2.9,2.61,3.52,2.91,2.48,3.35,2.78,,,,,,,2023-07-17,djurgarden,malmo ff,djurgarden|||malmo ff|||2|||0,1,121
+Sweden,Allsvenskan,2023,17/07/2023,18:00,Varberg,AIK,1,2,A,4.02,3.47,2.03,4.24,3.51,2.06,3.95,3.37,1.98,,,,,,,2023-07-17,varberg,aik,varberg|||aik|||1|||2,1,122
+Sweden,Allsvenskan,2023,21/07/2023,18:00,Brommapojkarna,Hammarby,1,0,H,3.09,3.58,2.36,3.12,3.69,2.45,2.96,3.52,2.29,,,,,,,2023-07-21,brommapojkarna,hammarby,brommapojkarna|||hammarby|||1|||0,1,123
+Sweden,Allsvenskan,2023,22/07/2023,14:00,Djurgarden,Elfsborg,0,4,A,2.24,3.58,3.3,2.3,3.6,3.3,2.23,3.46,3.12,,,,,,,2023-07-22,djurgarden,elfsborg,djurgarden|||elfsborg|||0|||4,1,124
+Sweden,Allsvenskan,2023,22/07/2023,16:30,Varnamo,Hacken,1,0,H,4.83,4.41,1.68,4.83,4.41,1.76,4.47,4.19,1.68,,,,,,,2023-07-22,varnamo,hacken,varnamo|||hacken|||1|||0,1,125
+Sweden,Allsvenskan,2023,23/07/2023,14:00,Norrkoping,Degerfors,1,0,H,1.75,4.2,4.57,1.76,4.4,5.01,1.7,4.06,4.5,,,,,,,2023-07-23,norrkoping,degerfors,norrkoping|||degerfors|||1|||0,1,127
+Sweden,Allsvenskan,2023,23/07/2023,16:30,Goteborg,Halmstad,0,0,D,2.06,3.42,3.99,2.23,3.5,3.99,2.06,3.34,3.68,,,,,,,2023-07-23,goteborg,halmstad,goteborg|||halmstad|||0|||0,1,128
+Sweden,Allsvenskan,2023,23/07/2023,16:30,Kalmar,Varberg,1,0,H,1.88,3.57,4.59,1.92,3.7,4.8,1.86,3.46,4.33,,,,,,,2023-07-23,kalmar,varberg,kalmar|||varberg|||1|||0,1,129
+Sweden,Allsvenskan,2023,24/07/2023,18:00,Sirius,Mjallby,2,3,A,2.35,3.35,3.3,2.35,3.53,3.3,2.25,3.3,3.21,,,,,,,2023-07-24,sirius,mjallby,sirius|||mjallby|||2|||3,1,130
+Sweden,Allsvenskan,2023,29/07/2023,14:00,Hacken,Elfsborg,3,1,H,2.29,4.04,2.91,2.4,4.1,2.95,2.27,3.84,2.78,,,,,,,2023-07-29,hacken,elfsborg,hacken|||elfsborg|||3|||1,1,131
+Sweden,Allsvenskan,2023,29/07/2023,16:30,Degerfors,Brommapojkarna,2,0,H,2.94,3.68,2.4,3.05,3.83,2.41,2.87,3.59,2.31,,,,,,,2023-07-29,degerfors,brommapojkarna,degerfors|||brommapojkarna|||2|||0,1,132
+Sweden,Allsvenskan,2023,29/07/2023,19:00,Halmstad,Varberg,0,5,A,2.03,3.37,4.16,2.1,3.52,4.16,2.02,3.34,3.75,,,,,,,2023-07-29,halmstad,varberg,halmstad|||varberg|||0|||5,1,133
+Sweden,Allsvenskan,2023,30/07/2023,14:00,Hammarby,Norrkoping,2,1,H,2.01,3.7,3.84,2.06,3.91,4,1.99,3.56,3.61,,,,,,,2023-07-30,hammarby,norrkoping,hammarby|||norrkoping|||2|||1,1,134
+Sweden,Allsvenskan,2023,30/07/2023,14:00,Mjallby,Djurgarden,0,1,A,3.56,3.2,2.3,3.56,3.36,2.4,3.31,3.17,2.26,,,,,,,2023-07-30,mjallby,djurgarden,mjallby|||djurgarden|||0|||1,1,135
+Sweden,Allsvenskan,2023,30/07/2023,16:30,Goteborg,Kalmar,2,0,H,2.3,3.2,3.56,2.34,3.37,3.6,2.22,3.19,3.36,,,,,,,2023-07-30,goteborg,kalmar,goteborg|||kalmar|||2|||0,1,136
+Sweden,Allsvenskan,2023,31/07/2023,18:00,Malmo FF,Varnamo,3,1,H,1.33,5.65,9.94,1.35,6,10.3,1.31,5.32,9.28,,,,,,,2023-07-31,malmo ff,varnamo,malmo ff|||varnamo|||3|||1,1,137
+Sweden,Allsvenskan,2023,31/07/2023,18:00,Sirius,AIK,0,1,A,3.51,3.59,2.15,3.53,3.7,2.35,3.23,3.48,2.16,,,,,,,2023-07-31,sirius,aik,sirius|||aik|||0|||1,1,138
+Sweden,Allsvenskan,2023,05/08/2023,14:00,Brommapojkarna,Varnamo,0,2,A,2.28,3.56,3.25,2.29,3.65,3.29,2.21,3.49,3.12,,,,,,,2023-08-05,brommapojkarna,varnamo,brommapojkarna|||varnamo|||0|||2,1,139
+Sweden,Allsvenskan,2023,06/08/2023,14:00,Elfsborg,Sirius,1,0,H,1.31,6.08,9.46,1.37,6.08,9.5,1.32,5.54,8.39,,,,,,,2023-08-06,elfsborg,sirius,elfsborg|||sirius|||1|||0,1,140
+Sweden,Allsvenskan,2023,06/08/2023,14:00,Kalmar,AIK,1,1,D,3.41,3.09,2.44,3.41,3.3,2.47,3.18,3.11,2.35,,,,,,,2023-08-06,kalmar,aik,kalmar|||aik|||1|||1,1,141
+Sweden,Allsvenskan,2023,07/08/2023,18:00,Malmo FF,Halmstad,3,0,H,1.32,5.71,9.78,1.35,5.9,11,1.31,5.38,9.26,,,,,,,2023-08-07,malmo ff,halmstad,malmo ff|||halmstad|||3|||0,1,142
+Sweden,Allsvenskan,2023,07/08/2023,18:00,Norrkoping,Goteborg,3,0,H,2.3,3.37,3.37,2.34,3.48,3.57,2.22,3.31,3.26,,,,,,,2023-08-07,norrkoping,goteborg,norrkoping|||goteborg|||3|||0,1,143
+Sweden,Allsvenskan,2023,07/08/2023,18:00,Varberg,Mjallby,0,3,A,3.06,3.07,2.66,3.06,3.45,2.69,2.88,3.08,2.58,,,,,,,2023-08-07,varberg,mjallby,varberg|||mjallby|||0|||3,1,144
+Sweden,Allsvenskan,2023,12/08/2023,14:00,AIK,Brommapojkarna,2,2,D,1.68,4.26,5.01,1.74,4.26,5.25,1.68,3.94,4.76,,,,,,,2023-08-12,aik,brommapojkarna,aik|||brommapojkarna|||2|||2,1,145
+Sweden,Allsvenskan,2023,13/08/2023,14:00,Goteborg,Djurgarden,2,1,H,3.66,3.27,2.22,3.75,3.43,2.25,3.49,3.23,2.16,,,,,,,2023-08-13,goteborg,djurgarden,goteborg|||djurgarden|||2|||1,1,146
+Sweden,Allsvenskan,2023,13/08/2023,14:00,Sirius,Kalmar,3,0,H,2.08,3.66,3.64,2.14,3.7,3.64,2.05,3.53,3.45,,,,,,,2023-08-13,sirius,kalmar,sirius|||kalmar|||3|||0,1,147
+Sweden,Allsvenskan,2023,13/08/2023,16:30,Hacken,Varberg,2,0,H,1.32,6.37,8.36,1.35,6.6,8.75,1.31,5.85,8,,,,,,,2023-08-13,hacken,varberg,hacken|||varberg|||2|||0,1,148
+Sweden,Allsvenskan,2023,13/08/2023,16:30,Halmstad,Norrkoping,1,3,A,2.54,3.33,2.97,2.6,3.4,3.06,2.46,3.24,2.89,,,,,,,2023-08-13,halmstad,norrkoping,halmstad|||norrkoping|||1|||3,1,149
+Sweden,Allsvenskan,2023,13/08/2023,16:30,Hammarby,Elfsborg,1,0,H,3.26,3.48,2.3,3.35,3.64,2.31,3.15,3.44,2.22,,,,,,,2023-08-13,hammarby,elfsborg,hammarby|||elfsborg|||1|||0,1,150
+Sweden,Allsvenskan,2023,14/08/2023,18:00,Mjallby,Malmo FF,1,0,H,4.71,3.71,1.83,4.8,3.81,1.85,4.47,3.59,1.79,,,,,,,2023-08-14,mjallby,malmo ff,mjallby|||malmo ff|||1|||0,1,151
+Sweden,Allsvenskan,2023,14/08/2023,18:00,Varnamo,Degerfors,0,1,A,1.86,3.94,4.22,1.87,4.1,4.75,1.77,3.83,4.29,,,,,,,2023-08-14,varnamo,degerfors,varnamo|||degerfors|||0|||1,1,152
+Sweden,Allsvenskan,2023,19/08/2023,14:00,Brommapojkarna,Halmstad,3,1,H,2.01,3.67,3.86,2.03,3.77,3.94,1.97,3.56,3.71,,,,,,,2023-08-19,brommapojkarna,halmstad,brommapojkarna|||halmstad|||3|||1,1,153
+Sweden,Allsvenskan,2023,19/08/2023,14:00,Degerfors,Goteborg,1,2,A,3.07,3.47,2.41,3.1,3.6,2.47,2.91,3.41,2.36,,,,,,,2023-08-19,degerfors,goteborg,degerfors|||goteborg|||1|||2,1,154
+Sweden,Allsvenskan,2023,19/08/2023,16:30,Varberg,Varnamo,0,3,A,3.17,3.37,2.41,3.23,3.4,2.45,3.03,3.27,2.36,,,,,,,2023-08-19,varberg,varnamo,varberg|||varnamo|||0|||3,1,155
+Sweden,Allsvenskan,2023,20/08/2023,14:00,Hacken,Sirius,3,2,H,1.53,5.16,5.49,1.53,5.2,5.83,1.5,4.87,5.38,,,,,,,2023-08-20,hacken,sirius,hacken|||sirius|||3|||2,1,156
+Sweden,Allsvenskan,2023,20/08/2023,14:00,Malmo FF,Djurgarden,0,0,D,1.59,4.23,6.07,1.6,4.33,6.2,1.56,4.12,5.68,,,,,,,2023-08-20,malmo ff,djurgarden,malmo ff|||djurgarden|||0|||0,1,157
+Sweden,Allsvenskan,2023,20/08/2023,16:30,Elfsborg,Mjallby,2,0,H,1.49,4.51,7.11,1.52,4.6,7.6,1.48,4.32,6.68,,,,,,,2023-08-20,elfsborg,mjallby,elfsborg|||mjallby|||2|||0,1,158
+Sweden,Allsvenskan,2023,20/08/2023,16:30,Kalmar,Hammarby,0,0,D,2.81,3.3,2.71,2.95,3.36,2.74,2.8,3.22,2.56,,,,,,,2023-08-20,kalmar,hammarby,kalmar|||hammarby|||0|||0,1,159
+Sweden,Allsvenskan,2023,21/08/2023,18:10,Norrkoping,AIK,3,1,H,2.5,3.4,2.99,2.6,3.52,3.1,2.47,3.37,2.8,,,,,,,2023-08-21,norrkoping,aik,norrkoping|||aik|||3|||1,1,160
+Sweden,Allsvenskan,2023,27/08/2023,14:00,Brommapojkarna,Kalmar,2,3,A,2.19,3.47,3.54,2.2,3.55,3.58,2.13,3.43,3.4,,,,,,,2023-08-27,brommapojkarna,kalmar,brommapojkarna|||kalmar|||2|||3,1,161
+Sweden,Allsvenskan,2023,27/08/2023,14:00,Mjallby,Hammarby,0,3,A,3.09,3.03,2.68,3.1,3.23,2.71,2.96,3.02,2.58,,,,,,,2023-08-27,mjallby,hammarby,mjallby|||hammarby|||0|||3,1,162
+Sweden,Allsvenskan,2023,27/08/2023,14:00,Varnamo,Halmstad,0,0,D,1.96,3.64,4.1,1.96,3.7,4.32,1.91,3.53,4.02,,,,,,,2023-08-27,varnamo,halmstad,varnamo|||halmstad|||0|||0,1,163
+Sweden,Allsvenskan,2023,27/08/2023,16:30,Djurgarden,Degerfors,4,1,H,1.32,5.85,9.45,1.36,5.9,11,1.31,5.47,9.37,,,,,,,2023-08-27,djurgarden,degerfors,djurgarden|||degerfors|||4|||1,1,164
+Sweden,Allsvenskan,2023,27/08/2023,16:30,Goteborg,Hacken,4,2,H,3.41,3.84,2.11,3.55,3.93,2.11,3.38,3.72,2.04,,,,,,,2023-08-27,goteborg,hacken,goteborg|||hacken|||4|||2,1,165
+Sweden,Allsvenskan,2023,28/08/2023,18:00,AIK,Varberg,3,0,H,1.34,5.52,9.48,1.37,5.52,11.1,1.34,5.13,9.06,,,,,,,2023-08-28,aik,varberg,aik|||varberg|||3|||0,1,166
+Sweden,Allsvenskan,2023,28/08/2023,18:00,Elfsborg,Norrkoping,3,2,H,1.58,4.46,5.8,1.6,4.6,6,1.55,4.32,5.61,,,,,,,2023-08-28,elfsborg,norrkoping,elfsborg|||norrkoping|||3|||2,1,167
+Sweden,Allsvenskan,2023,28/08/2023,18:10,Sirius,Malmo FF,1,3,A,5.21,4.32,1.65,5.21,4.33,1.71,4.74,4.17,1.65,,,,,,,2023-08-28,sirius,malmo ff,sirius|||malmo ff|||1|||3,1,168
+Sweden,Allsvenskan,2023,02/09/2023,14:00,Halmstad,Sirius,2,1,H,3.1,3.47,2.4,3.25,3.6,2.44,3.01,3.42,2.31,,,,,,,2023-09-02,halmstad,sirius,halmstad|||sirius|||2|||1,1,169
+Sweden,Allsvenskan,2023,02/09/2023,16:30,Varnamo,Elfsborg,1,0,H,3.41,3.63,2.18,3.41,3.75,2.24,3.25,3.52,2.15,,,,,,,2023-09-02,varnamo,elfsborg,varnamo|||elfsborg|||1|||0,1,170
+Sweden,Allsvenskan,2023,03/09/2023,14:00,Degerfors,Hacken,1,0,H,3.81,4.23,1.88,4.19,4.4,1.89,3.81,4.1,1.82,,,,,,,2023-09-03,degerfors,hacken,degerfors|||hacken|||1|||0,1,171
+Sweden,Allsvenskan,2023,03/09/2023,14:00,Kalmar,Mjallby,0,2,A,2.48,3.1,3.32,2.48,3.25,3.34,2.39,3.09,3.18,,,,,,,2023-09-03,kalmar,mjallby,kalmar|||mjallby|||0|||2,1,173
+Sweden,Allsvenskan,2023,03/09/2023,16:30,Malmo FF,Goteborg,2,2,D,1.41,5.09,7.85,1.43,5.61,8.8,1.38,4.99,7.5,,,,,,,2023-09-03,malmo ff,goteborg,malmo ff|||goteborg|||2|||2,1,174
+Sweden,Allsvenskan,2023,03/09/2023,16:30,Norrkoping,Djurgarden,0,2,A,3.06,3.43,2.44,3.06,3.43,2.6,2.9,3.3,2.44,,,,,,,2023-09-03,norrkoping,djurgarden,norrkoping|||djurgarden|||0|||2,1,175
+Sweden,Allsvenskan,2023,03/09/2023,16:30,Varberg,Brommapojkarna,4,3,H,3.86,3.85,1.96,4.06,3.85,2.2,3.67,3.65,1.96,,,,,,,2023-09-03,varberg,brommapojkarna,varberg|||brommapojkarna|||4|||3,1,176
+Sweden,Allsvenskan,2023,16/09/2023,14:00,Goteborg,Brommapojkarna,1,0,H,1.83,3.8,4.56,1.9,4,4.56,1.83,3.79,4.1,,,,,,,2023-09-16,goteborg,brommapojkarna,goteborg|||brommapojkarna|||1|||0,1,177
+Sweden,Allsvenskan,2023,16/09/2023,14:00,Sirius,Varberg,7,0,H,1.38,5.54,7.87,1.4,5.7,8.1,1.36,5.28,7.48,,,,,,,2023-09-16,sirius,varberg,sirius|||varberg|||7|||0,1,178
+Sweden,Allsvenskan,2023,16/09/2023,16:30,Djurgarden,Varnamo,1,2,A,1.68,4.02,5.29,1.7,4.1,5.5,1.66,3.91,5.11,,,,,,,2023-09-16,djurgarden,varnamo,djurgarden|||varnamo|||1|||2,1,179
+Sweden,Allsvenskan,2023,17/09/2023,16:30,Elfsborg,Kalmar,0,3,A,1.49,4.74,6.69,1.51,4.8,7.5,1.47,4.52,6.5,,,,,,,2023-09-17,elfsborg,kalmar,elfsborg|||kalmar|||0|||3,1,181
+Sweden,Allsvenskan,2023,17/09/2023,16:30,Hacken,Halmstad,3,2,H,1.33,6.18,8.5,1.36,6.2,9.05,1.33,5.65,8.1,,,,,,,2023-09-17,hacken,halmstad,hacken|||halmstad|||3|||2,1,182
+Sweden,Allsvenskan,2023,18/09/2023,18:00,Norrkoping,Mjallby,0,2,A,1.99,3.59,4.03,2.02,3.64,4.1,1.97,3.48,3.84,,,,,,,2023-09-18,norrkoping,mjallby,norrkoping|||mjallby|||0|||2,1,183
+Sweden,Allsvenskan,2023,18/09/2023,18:10,AIK,Degerfors,2,0,H,1.52,4.77,6.19,1.56,4.8,6.5,1.5,4.53,5.94,,,,,,,2023-09-18,aik,degerfors,aik|||degerfors|||2|||0,1,184
+Sweden,Allsvenskan,2023,23/09/2023,14:00,Degerfors,Malmo FF,1,2,A,7.86,5.27,1.4,8.5,5.5,1.41,7.66,5.12,1.37,,,,,,,2023-09-23,degerfors,malmo ff,degerfors|||malmo ff|||1|||2,1,185
+Sweden,Allsvenskan,2023,23/09/2023,16:30,Brommapojkarna,Norrkoping,2,2,D,1.98,3.85,3.78,2.1,3.85,3.8,2.01,3.68,3.47,,,,,,,2023-09-23,brommapojkarna,norrkoping,brommapojkarna|||norrkoping|||2|||2,1,186
+Sweden,Allsvenskan,2023,24/09/2023,14:00,AIK,Djurgarden,2,0,H,2.54,3.37,2.96,2.65,3.44,2.98,2.53,3.31,2.78,,,,,,,2023-09-24,aik,djurgarden,aik|||djurgarden|||2|||0,1,187
+Sweden,Allsvenskan,2023,24/09/2023,14:00,Mjallby,Goteborg,0,1,A,2.97,3.24,2.62,2.99,3.25,2.75,2.81,3.14,2.61,,,,,,,2023-09-24,mjallby,goteborg,mjallby|||goteborg|||0|||1,1,188
+Sweden,Allsvenskan,2023,24/09/2023,16:30,Kalmar,Hacken,1,0,H,3.63,4.02,1.98,3.86,4.1,2.02,3.55,3.81,1.95,,,,,,,2023-09-24,kalmar,hacken,kalmar|||hacken|||1|||0,1,189
+Sweden,Allsvenskan,2023,24/09/2023,16:30,Varberg,Hammarby,0,1,A,6.74,4.87,1.47,7.1,5,1.49,6.61,4.6,1.45,,,,,,,2023-09-24,varberg,hammarby,varberg|||hammarby|||0|||1,1,190
+Sweden,Allsvenskan,2023,25/09/2023,18:00,Halmstad,Elfsborg,0,1,A,4.22,3.81,1.88,4.75,4,1.88,4.23,3.79,1.81,,,,,,,2023-09-25,halmstad,elfsborg,halmstad|||elfsborg|||0|||1,1,191
+Sweden,Allsvenskan,2023,25/09/2023,18:00,Varnamo,Sirius,0,1,A,2.53,3.71,2.76,2.53,3.75,2.9,2.46,3.6,2.69,,,,,,,2023-09-25,varnamo,sirius,varnamo|||sirius|||0|||1,1,192
+Sweden,Allsvenskan,2023,30/09/2023,14:00,Djurgarden,Halmstad,1,0,H,1.5,4.52,6.97,1.52,4.57,7.01,1.49,4.34,6.5,,,,,,,2023-09-30,djurgarden,halmstad,djurgarden|||halmstad|||1|||0,1,193
+Sweden,Allsvenskan,2023,30/09/2023,16:30,Norrkoping,Kalmar,1,0,H,2.09,3.54,3.73,2.15,3.62,3.75,2.07,3.48,3.52,,,,,,,2023-09-30,norrkoping,kalmar,norrkoping|||kalmar|||1|||0,1,194
+Sweden,Allsvenskan,2023,01/10/2023,14:00,Hacken,AIK,2,0,H,1.92,4.07,3.82,1.94,4.1,4.08,1.89,3.87,3.7,,,,,,,2023-10-01,hacken,aik,hacken|||aik|||2|||0,1,195
+Sweden,Allsvenskan,2023,01/10/2023,14:00,Sirius,Degerfors,3,2,H,1.62,4.31,5.5,1.64,4.4,5.61,1.6,4.21,5.17,,,,,,,2023-10-01,sirius,degerfors,sirius|||degerfors|||3|||2,1,196
+Sweden,Allsvenskan,2023,01/10/2023,16:30,Hammarby,Goteborg,1,1,D,1.91,3.61,4.39,1.96,3.77,4.4,1.88,3.56,4.1,,,,,,,2023-10-01,hammarby,goteborg,hammarby|||goteborg|||1|||1,1,197
+Sweden,Allsvenskan,2023,01/10/2023,16:30,Mjallby,Varnamo,2,3,A,2.52,3.17,3.18,2.57,3.3,3.2,2.46,3.16,2.99,,,,,,,2023-10-01,mjallby,varnamo,mjallby|||varnamo|||2|||3,1,198
+Sweden,Allsvenskan,2023,02/10/2023,18:00,Elfsborg,Varberg,2,1,H,1.21,7.67,12.69,1.22,8.4,15.5,1.19,7.31,12.68,,,,,,,2023-10-02,elfsborg,varberg,elfsborg|||varberg|||2|||1,1,199
+Sweden,Allsvenskan,2023,02/10/2023,18:10,Malmo FF,Brommapojkarna,2,1,H,1.34,6.02,8.26,1.37,6.2,9,1.33,5.61,7.95,,,,,,,2023-10-02,malmo ff,brommapojkarna,malmo ff|||brommapojkarna|||2|||1,1,200
+Sweden,Allsvenskan,2023,07/10/2023,14:00,AIK,Mjallby,1,0,H,1.81,3.66,4.95,1.84,3.73,5.06,1.76,3.56,4.78,,,,,,,2023-10-07,aik,mjallby,aik|||mjallby|||1|||0,1,201
+Sweden,Allsvenskan,2023,07/10/2023,14:00,Halmstad,Degerfors,0,0,D,1.92,3.59,4.34,2.02,3.78,4.34,1.92,3.5,4,,,,,,,2023-10-07,halmstad,degerfors,halmstad|||degerfors|||0|||0,1,202
+Sweden,Allsvenskan,2023,07/10/2023,16:30,Goteborg,Sirius,0,1,A,2,3.59,4.01,2.05,3.65,4.01,2,3.5,3.7,,,,,,,2023-10-07,goteborg,sirius,goteborg|||sirius|||0|||1,1,203
+Sweden,Allsvenskan,2023,08/10/2023,14:00,Brommapojkarna,Elfsborg,0,3,A,3.4,3.99,2.06,3.6,4,2.1,3.37,3.81,2.01,,,,,,,2023-10-08,brommapojkarna,elfsborg,brommapojkarna|||elfsborg|||0|||3,1,204
+Sweden,Allsvenskan,2023,08/10/2023,14:00,Kalmar,Malmo FF,1,0,H,4.8,3.84,1.78,4.8,3.91,1.81,4.49,3.76,1.76,,,,,,,2023-10-08,kalmar,malmo ff,kalmar|||malmo ff|||1|||0,1,205
+Sweden,Allsvenskan,2023,08/10/2023,14:00,Varnamo,Norrkoping,2,1,H,2.05,3.69,3.71,2.15,3.75,3.81,2.01,3.55,3.59,,,,,,,2023-10-08,varnamo,norrkoping,varnamo|||norrkoping|||2|||1,1,206
+Sweden,Allsvenskan,2023,08/10/2023,16:30,Hammarby,Hacken,2,2,D,2.62,3.74,2.64,2.63,3.82,2.65,2.54,3.65,2.55,,,,,,,2023-10-08,hammarby,hacken,hammarby|||hacken|||2|||2,1,207
+Sweden,Allsvenskan,2023,08/10/2023,16:30,Varberg,Djurgarden,0,1,A,6.87,4.51,1.51,7.2,4.7,1.52,6.59,4.41,1.47,,,,,,,2023-10-08,varberg,djurgarden,varberg|||djurgarden|||0|||1,1,208
+Sweden,Allsvenskan,2023,21/10/2023,14:00,Degerfors,Kalmar,1,3,A,3,3.3,2.55,3,3.4,2.63,2.85,3.29,2.48,,,,,,,2023-10-21,degerfors,kalmar,degerfors|||kalmar|||1|||3,1,209
+Sweden,Allsvenskan,2023,21/10/2023,16:30,Sirius,Brommapojkarna,3,2,H,2.32,3.76,3.02,2.32,3.96,3.56,2.18,3.72,3.06,,,,,,,2023-10-21,sirius,brommapojkarna,sirius|||brommapojkarna|||3|||2,1,210
+Sweden,Allsvenskan,2023,22/10/2023,14:00,Djurgarden,Hammarby,0,0,D,2.26,3.37,3.47,2.26,3.51,3.53,2.17,3.38,3.36,,,,,,,2023-10-22,djurgarden,hammarby,djurgarden|||hammarby|||0|||0,1,211
+Sweden,Allsvenskan,2023,22/10/2023,14:00,Halmstad,Mjallby,1,1,D,2.36,3.13,3.51,2.41,3.34,3.51,2.31,3.15,3.28,,,,,,,2023-10-22,halmstad,mjallby,halmstad|||mjallby|||1|||1,1,212
+Sweden,Allsvenskan,2023,22/10/2023,16:30,Hacken,Norrkoping,4,1,H,1.38,5.71,7.41,1.41,5.9,7.63,1.37,5.43,7.19,,,,,,,2023-10-22,hacken,norrkoping,hacken|||norrkoping|||4|||1,1,213
+Sweden,Allsvenskan,2023,22/10/2023,16:30,Malmo FF,Varberg,5,0,H,1.08,13.45,26.94,1.1,14,35,1.08,11.38,24.18,,,,,,,2023-10-22,malmo ff,varberg,malmo ff|||varberg|||5|||0,1,214
+Sweden,Allsvenskan,2023,23/10/2023,18:00,Varnamo,Goteborg,3,1,H,3.36,3.36,2.32,3.38,3.43,2.4,3.15,3.31,2.3,,,,,,,2023-10-23,varnamo,goteborg,varnamo|||goteborg|||3|||1,1,215
+Sweden,Allsvenskan,2023,23/10/2023,18:10,Elfsborg,AIK,3,0,H,1.86,3.69,4.5,1.89,3.86,4.75,1.83,3.63,4.28,,,,,,,2023-10-23,elfsborg,aik,elfsborg|||aik|||3|||0,1,216
+Sweden,Allsvenskan,2023,28/10/2023,14:00,Brommapojkarna,Djurgarden,1,2,A,3.32,3.77,2.16,3.41,3.8,2.21,3.25,3.6,2.12,,,,,,,2023-10-28,brommapojkarna,djurgarden,brommapojkarna|||djurgarden|||1|||2,1,217
+Sweden,Allsvenskan,2023,28/10/2023,16:30,Varberg,Degerfors,1,1,D,3.37,3.85,2.12,3.65,3.9,2.14,3.37,3.69,2.05,,,,,,,2023-10-28,varberg,degerfors,varberg|||degerfors|||1|||1,1,218
+Sweden,Allsvenskan,2023,29/10/2023,14:00,Kalmar,Varnamo,1,3,A,2.2,3.5,3.46,2.3,3.6,3.53,2.15,3.46,3.29,,,,,,,2023-10-29,kalmar,varnamo,kalmar|||varnamo|||1|||3,1,219
+Sweden,Allsvenskan,2023,29/10/2023,14:00,Mjallby,Hacken,2,1,H,4.35,4.21,1.78,4.79,4.3,1.79,4.24,3.97,1.76,,,,,,,2023-10-29,mjallby,hacken,mjallby|||hacken|||2|||1,1,220
+Sweden,Allsvenskan,2023,29/10/2023,14:00,Norrkoping,Malmo FF,0,1,A,7.1,5,1.45,7.1,5,1.52,6.32,4.69,1.46,,,,,,,2023-10-29,norrkoping,malmo ff,norrkoping|||malmo ff|||0|||1,1,221
+Sweden,Allsvenskan,2023,29/10/2023,16:30,AIK,Halmstad,1,1,D,1.66,3.8,6.04,1.81,3.85,6.04,1.68,3.68,5.31,,,,,,,2023-10-29,aik,halmstad,aik|||halmstad|||1|||1,1,222
+Sweden,Allsvenskan,2023,30/10/2023,18:00,Hammarby,Sirius,2,2,D,2.02,3.89,3.61,2.09,3.95,3.75,2.01,3.8,3.39,,,,,,,2023-10-30,hammarby,sirius,hammarby|||sirius|||2|||2,1,223
+Sweden,Allsvenskan,2023,30/10/2023,18:10,Goteborg,Elfsborg,1,2,A,3.22,3.39,2.37,3.35,3.54,2.39,3.11,3.33,2.3,,,,,,,2023-10-30,goteborg,elfsborg,goteborg|||elfsborg|||1|||2,1,224
+Sweden,Allsvenskan,2023,04/11/2023,14:00,Varnamo,Hammarby,0,0,D,2.4,3.66,2.96,2.4,3.7,3.05,2.3,3.56,2.91,,,,,,,2023-11-04,varnamo,hammarby,varnamo|||hammarby|||0|||0,1,225
+Sweden,Allsvenskan,2023,04/11/2023,16:30,Djurgarden,Sirius,2,4,A,1.6,4.71,5.17,1.62,4.71,6,1.56,4.49,5.22,,,,,,,2023-11-04,djurgarden,sirius,djurgarden|||sirius|||2|||4,1,226
+Sweden,Allsvenskan,2023,05/11/2023,14:00,Hacken,Malmo FF,4,2,H,3.3,4.17,2.06,3.4,4.17,2.1,3.24,3.94,2.01,,,,,,,2023-11-05,hacken,malmo ff,hacken|||malmo ff|||4|||2,1,227
+Sweden,Allsvenskan,2023,05/11/2023,14:00,Halmstad,Kalmar,3,0,H,2.53,3.33,3.01,2.54,3.4,3.63,2.42,3.27,2.96,,,,,,,2023-11-05,halmstad,kalmar,halmstad|||kalmar|||3|||0,1,228
+Sweden,Allsvenskan,2023,05/11/2023,16:30,Elfsborg,Degerfors,2,2,D,1.26,6.61,11.05,1.32,6.75,11.05,1.26,6.06,9.9,,,,,,,2023-11-05,elfsborg,degerfors,elfsborg|||degerfors|||2|||2,1,229
+Sweden,Allsvenskan,2023,05/11/2023,16:30,Mjallby,Brommapojkarna,1,2,A,2.51,3.62,2.84,2.6,3.65,2.88,2.49,3.51,2.69,,,,,,,2023-11-05,mjallby,brommapojkarna,mjallby|||brommapojkarna|||1|||2,1,230
+Sweden,Allsvenskan,2023,06/11/2023,18:00,Norrkoping,Varberg,4,3,H,1.44,5.21,6.94,1.46,5.25,7.05,1.42,4.95,6.53,,,,,,,2023-11-06,norrkoping,varberg,norrkoping|||varberg|||4|||3,1,231
+Sweden,Allsvenskan,2023,06/11/2023,18:10,Goteborg,AIK,1,1,D,2.4,3.13,3.44,2.42,3.2,3.55,2.33,3.07,3.28,,,,,,,2023-11-06,goteborg,aik,goteborg|||aik|||1|||1,1,232
+Sweden,Allsvenskan,2023,12/11/2023,14:00,AIK,Varnamo,3,1,H,1.72,4.25,4.67,1.95,4.25,5.09,1.72,3.98,4.53,,,,,,,2023-11-12,aik,varnamo,aik|||varnamo|||3|||1,1,233
+Sweden,Allsvenskan,2023,12/11/2023,14:00,Brommapojkarna,Hacken,2,1,H,2.23,4.38,2.72,2.28,4.5,2.85,2.2,4.23,2.73,,,,,,,2023-11-12,brommapojkarna,hacken,brommapojkarna|||hacken|||2|||1,1,234
+Sweden,Allsvenskan,2023,12/11/2023,14:00,Degerfors,Mjallby,1,2,A,3.25,3.62,2.17,3.4,3.73,2.41,3.14,3.52,2.2,,,,,,,2023-11-12,degerfors,mjallby,degerfors|||mjallby|||1|||2,1,235
+Sweden,Allsvenskan,2023,12/11/2023,14:00,Hammarby,Halmstad,2,2,D,1.51,4.61,5.88,1.56,4.8,6.4,1.5,4.5,5.88,,,,,,,2023-11-12,hammarby,halmstad,hammarby|||halmstad|||2|||2,1,236
+Sweden,Allsvenskan,2023,12/11/2023,14:00,Kalmar,Djurgarden,2,1,H,3.32,3.56,2.16,3.39,3.71,2.19,3.25,3.57,2.12,,,,,,,2023-11-12,kalmar,djurgarden,kalmar|||djurgarden|||2|||1,1,237
+Sweden,Allsvenskan,2023,12/11/2023,14:00,Malmo FF,Elfsborg,1,0,H,1.74,4,4.9,1.76,4.42,4.9,1.71,3.99,4.54,,,,,,,2023-11-12,malmo ff,elfsborg,malmo ff|||elfsborg|||1|||0,1,238
+Sweden,Allsvenskan,2023,12/11/2023,14:00,Sirius,Norrkoping,2,0,H,1.64,4.79,4.33,1.71,4.9,4.82,1.63,4.51,4.52,,,,,,,2023-11-12,sirius,norrkoping,sirius|||norrkoping|||2|||0,1,239
+Sweden,Allsvenskan,2023,12/11/2023,14:00,Varberg,Goteborg,1,2,A,7.11,5.07,1.4,7.66,5.4,1.43,7.2,4.95,1.39,,,,,,,2023-11-12,varberg,goteborg,varberg|||goteborg|||1|||2,1,240

@@ -1,0 +1,15 @@
+Country,League,Season,Wikipedia,FootballData,Matched,UnmatchedWiki,ExtraFD,Status,Note
+Norway,Eliteserien,2012,240,242,239,1,3,FAIL,1 Wikipedia fixtures lack Football-Data dates.
+Norway,Eliteserien,2013,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2014,240,242,239,1,3,FAIL,1 Wikipedia fixtures lack Football-Data dates.
+Norway,Eliteserien,2015,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2016,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2017,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2018,240,241,240,0,1,PASS,1 extra Football-Data rows ignored.
+Norway,Eliteserien,2019,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2020,240,240,238,2,2,FAIL,2 Wikipedia fixtures lack Football-Data dates.
+Norway,Eliteserien,2021,240,241,240,0,1,PASS,1 extra Football-Data rows ignored.
+Norway,Eliteserien,2022,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2023,240,242,219,21,23,FAIL,21 Wikipedia fixtures lack Football-Data dates.
+Norway,Eliteserien,2024,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2025,240,240,239,1,1,FAIL,1 Wikipedia fixtures lack Football-Data dates.

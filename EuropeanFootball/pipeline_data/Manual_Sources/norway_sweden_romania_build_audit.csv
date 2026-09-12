@@ -1,0 +1,43 @@
+Country,League,Season,Wikipedia,FootballData,Matched,UnmatchedWiki,ExtraFD,Status,Note
+Norway,Eliteserien,2012,240,242,240,0,2,PASS,""
+Norway,Eliteserien,2013,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2014,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2015,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2016,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2017,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2018,240,241,240,0,1,PASS,1 extra Football-Data rows ignored.
+Norway,Eliteserien,2019,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2020,240,240,240,0,0,PASS,""
+Norway,Eliteserien,2021,240,241,240,0,1,PASS,1 extra Football-Data rows ignored.
+Norway,Eliteserien,2022,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2023,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2024,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Norway,Eliteserien,2025,240,240,240,0,0,PASS,0 extra FD rows ignored; 1 dates matched by fixture fallback.
+Sweden,Allsvenskan,2012,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2013,240,242,240,0,2,PASS,""
+Sweden,Allsvenskan,2014,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2015,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2016,240,242,240,0,2,PASS,""
+Sweden,Allsvenskan,2017,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2018,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2019,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2020,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2021,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2022,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2023,240,240,240,0,0,PASS,""
+Sweden,Allsvenskan,2024,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2025,240,240,240,0,0,PASS,""
+Romania,SuperLiga,2012/13,306,307,306,0,1,PASS,1 extra Football-Data rows ignored.
+Romania,SuperLiga,2013/14,306,306,306,0,0,PASS,3 fixture-only/residual date matches.
+Romania,SuperLiga,2014/15,306,306,306,0,0,PASS,""
+Romania,SuperLiga,2015/16,268,272,268,0,4,PASS,""
+Romania,SuperLiga,2016/17,268,270,268,0,2,PASS,""
+Romania,SuperLiga,2017/18,268,270,268,0,2,PASS,""
+Romania,SuperLiga,2018/19,268,270,268,0,2,PASS,2 extra Football-Data rows ignored.
+Romania,SuperLiga,2019/20,261,262,261,0,2,PASS,""
+Romania,SuperLiga,2020/21,240,321,240,0,81,PASS,81 extra FD rows ignored; 0 dates matched by fixture fallback.
+Romania,SuperLiga,2021/22,240,320,240,0,80,PASS,80 extra FD rows ignored; 0 dates matched by fixture fallback.
+Romania,SuperLiga,2022/23,240,321,240,0,81,PASS,81 extra FD rows ignored; 0 dates matched by fixture fallback.
+Romania,SuperLiga,2023/24,240,321,240,0,81,PASS,81 extra FD rows ignored; 1 dates matched by fixture fallback.
+Romania,SuperLiga,2024/25,240,315,240,0,75,PASS,75 extra FD rows ignored; 0 dates matched by fixture fallback.
+Romania,SuperLiga,2025/26,240,321,238,2,83,PASS,2 Wikipedia fixtures excluded because no reliable Football-Data date was found.

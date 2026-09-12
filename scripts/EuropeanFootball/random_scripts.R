@@ -1,907 +1,874 @@
-suppressPackageStartupMessages({
-  library(data.table)
-  library(tictoc)
-  library(beepr)
-})
+library(data.table)
+library(rvest)
+library(stringr)
+library(stringi)
+library(tictoc)
+library(beepr)
 
-options(
-  error = function() {
-    try(beepr::beep(), silent = TRUE)
-  }
-)
+tic("Ukraine 2025/26 update")
 
-tic()
-
-root <- "C:/Users/stjuk/Documents/GitHub/J-Ratings"
+ROOT <- "C:/Users/stjuk/Documents/GitHub/J-Ratings"
 
 master_path <- file.path(
-  root,
+  ROOT,
   "EuropeanFootball",
   "pipeline_data",
   "Matches_Clean_Combined",
   "european_football_all_matches.csv"
 )
 
-staging_path <- file.path(
-  root,
+out_dir <- file.path(
+  ROOT,
   "EuropeanFootball",
   "pipeline_data",
   "Manual_Sources",
-  "Russia",
-  "betexplorer_staging",
-  "russia_topflight_combined_staging.csv"
+  "Ukraine"
 )
 
-alias_path <- file.path(
-  root,
+audit_dir <- file.path(
+  out_dir,
+  "audits"
+)
+
+backup_dir <- file.path(
+  ROOT,
   "EuropeanFootball",
   "pipeline_data",
-  "Reference",
-  "team_aliases.csv"
+  "Matches_Clean_Combined",
+  "backups"
 )
 
-backup_dir <- "C:/Users/stjuk/Documents/GitHub/Miscellaneous J-Ratings Backup"
-
-dir.create(
-  backup_dir,
-  recursive = TRUE,
-  showWarnings = FALSE
+candidate_path <- file.path(
+  out_dir,
+  "ukraine_premier_league_2025_26_candidate.csv"
 )
 
-# ------------------------------------------------------------
-# Read
-# ------------------------------------------------------------
-
-master <- fread(
-  master_path,
-  encoding = "UTF-8"
+audit_path <- file.path(
+  audit_dir,
+  "ukraine_premier_league_2025_26_audit.csv"
 )
 
-rus <- fread(
-  staging_path,
-  encoding = "UTF-8"
-)
+wiki_url <- "https://en.wikipedia.org/wiki/2025%E2%80%9326_Ukrainian_Premier_League"
+rsssf_url <- "https://www.rsssf.org/tableso/oekr2026.html"
 
-aliases <- fread(
-  alias_path,
-  encoding = "UTF-8"
-)
+dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(audit_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(backup_dir, recursive = TRUE, showWarnings = FALSE)
 
-master_rows_before <- nrow(master)
-import_rows_supplied <- nrow(rus)
+success <- FALSE
+error_message <- NULL
+backup_path <- NA_character_
+wiki_n <- NA_integer_
+rsssf_n <- NA_integer_
+matched_n <- NA_integer_
+master_before <- NA_integer_
+master_after <- NA_integer_
 
-# ------------------------------------------------------------
-# Basic staging checks
-# ------------------------------------------------------------
+clean_text <- function(x) {
+  x <- as.character(x)
+  x <- gsub("\u00a0", " ", x, fixed = TRUE)
+  x <- gsub("[–—−]", "-", x)
+  x <- gsub("\\[[^]]*\\]", "", x)
+  x <- trimws(gsub("\\s+", " ", x))
+  x
+}
 
-if (import_rows_supplied != 8503L) {
-  stop(
-    paste0(
-      "Expected 8,503 Russia staging rows but found ",
-      import_rows_supplied,
-      "."
+canon <- function(x) {
+  x <- clean_text(x)
+  x <- stringi::stri_trans_general(x, "Latin-ASCII")
+  x <- tolower(x)
+  x <- trimws(gsub("\\s+", " ", gsub("[^a-z0-9]+", " ", x)))
+  
+  out <- x
+  
+  out[grepl("^dynamo", x)] <- "dynamo_kyiv"
+  out[grepl("^epicenter|^epitsentr", x)] <- "epicenter"
+  out[grepl("^karpaty", x)] <- "karpaty_lviv"
+  out[grepl("^kolos", x)] <- "kolos_kovalivka"
+  out[grepl("^kryvbas", x)] <- "kryvbas_kryvyi_rih"
+  out[grepl("^kudrivka", x)] <- "kudrivka"
+  out[grepl("^lnz", x)] <- "lnz_cherkasy"
+  out[grepl("metalist.*1925|metalist.?25", x)] <- "metalist_1925"
+  out[grepl("^obolon", x)] <- "obolon_kyiv"
+  out[grepl("^oleksandriya|^olexandrija|^olexandri", x)] <- "oleksandriya"
+  out[grepl("^polissya|^polissja", x)] <- "polissya_zhytomyr"
+  out[grepl("^poltava$|^sc poltava", x)] <- "sc_poltava"
+  out[grepl("^rukh|^ruch", x)] <- "rukh_lviv"
+  out[grepl("^shakhtar|^sachtar", x)] <- "shakhtar_donetsk"
+  out[grepl("^veres", x)] <- "veres_rivne"
+  out[grepl("^zorya|^zorja", x)] <- "zorya_luhansk"
+  
+  out
+}
+
+parse_score <- function(x) {
+  x <- clean_text(x)
+  
+  m <- str_match(
+    x,
+    "(\\d+)\\s*-\\s*(\\d+)"
+  )
+  
+  ifelse(
+    is.na(m[, 1]),
+    NA_character_,
+    paste0(m[, 2], "-", m[, 3])
+  )
+}
+
+score_result <- function(score) {
+  m <- str_match(
+    score,
+    "^(\\d+)-(\\d+)$"
+  )
+  
+  hg <- as.integer(m[, 2])
+  ag <- as.integer(m[, 3])
+  
+  fifelse(
+    hg > ag,
+    "H",
+    fifelse(
+      hg < ag,
+      "A",
+      "D"
     )
   )
 }
 
-required_staging <- c(
-  "Source",
-  "Country",
-  "Competition",
-  "CompetitionType",
-  "Tier",
-  "League",
-  "Season",
-  "Date",
-  "HomeRaw",
-  "AwayRaw",
-  "Score",
-  "Result"
-)
-
-missing_staging <- setdiff(
-  required_staging,
-  names(rus)
-)
-
-if (length(missing_staging) > 0L) {
-  stop(
-    paste(
-      "Russia staging missing required columns:",
-      paste(
-        missing_staging,
-        collapse = ", "
+tryCatch({
+  
+  # --------------------------------------------------
+  # Wikipedia: fixture identity + results
+  # --------------------------------------------------
+  
+  wiki_doc <- read_html(wiki_url)
+  
+  wiki_tables <- html_table(
+    wiki_doc,
+    fill = TRUE
+  )
+  
+  matrix_candidates <- Filter(
+    function(x) {
+      nrow(x) == 16L &&
+        ncol(x) == 17L &&
+        grepl(
+          "Home",
+          names(x)[1],
+          ignore.case = TRUE
+        )
+    },
+    wiki_tables
+  )
+  
+  if (length(matrix_candidates) != 1L) {
+    stop(
+      paste0(
+        "Could not uniquely identify Wikipedia results matrix. Candidates found: ",
+        length(matrix_candidates)
       )
     )
-  )
-}
-
-rus[
-  ,
-  Date := as.IDate(Date)
-]
-
-if (rus[is.na(Date), .N] > 0L) {
-  stop(
-    "Russia staging contains invalid or missing dates."
-  )
-}
-
-if (
-  rus[
-    is.na(HomeRaw) |
-    trimws(HomeRaw) == "" |
-    is.na(AwayRaw) |
-    trimws(AwayRaw) == "",
-    .N
-  ] > 0L
-) {
-  stop(
-    "Russia staging contains blank team names."
-  )
-}
-
-if (
-  rus[
-    is.na(Score) |
-    trimws(Score) == "",
-    .N
-  ] > 0L
-) {
-  stop(
-    "Russia staging contains blank Score values."
-  )
-}
-
-if (
-  rus[
-    is.na(Result) |
-    trimws(Result) == "",
-    .N
-  ] > 0L
-) {
-  stop(
-    "Russia staging contains blank Result values."
-  )
-}
-
-if (
-  rus[
-    CompetitionType != "league",
-    .N
-  ] > 0L
-) {
-  stop(
-    "Russia staging contains non-league CompetitionType rows."
-  )
-}
-
-if (
-  rus[
-    Tier != 1L,
-    .N
-  ] > 0L
-) {
-  stop(
-    "Russia staging contains rows that are not Tier 1."
-  )
-}
-
-if (
-  rus[
-    Country != "Russia",
-    .N
-  ] > 0L
-) {
-  stop(
-    "Russia staging contains non-Russia rows."
-  )
-}
-
-# ------------------------------------------------------------
-# Detect alias columns
-# ------------------------------------------------------------
-
-alias_names_lower <- tolower(
-  names(aliases)
-)
-
-find_alias_col <- function(candidates) {
-  
-  idx <- which(
-    alias_names_lower %in%
-      tolower(candidates)
-  )
-  
-  if (length(idx) == 0L) {
-    return(NA_character_)
   }
   
-  names(aliases)[idx[1L]]
-}
-
-alias_col <- find_alias_col(
-  c(
-    "Alias",
-    "TeamAlias",
-    "Raw",
-    "RawName",
-    "SourceName",
-    "TeamRaw"
+  mat <- as.data.table(
+    matrix_candidates[[1]]
   )
-)
-
-canonical_col <- find_alias_col(
-  c(
-    "Canonical",
-    "CanonicalName",
-    "Team",
-    "TeamCanonical",
-    "StandardName"
-  )
-)
-
-if (is.na(alias_col)) {
-  stop(
-    "Could not identify alias column in team_aliases.csv."
-  )
-}
-
-if (is.na(canonical_col)) {
-  stop(
-    "Could not identify canonical column in team_aliases.csv."
-  )
-}
-
-# ------------------------------------------------------------
-# Build alias lookup
-# ------------------------------------------------------------
-
-lookup <- aliases[
-  ,
-  .(
-    Alias = trimws(
-      as.character(
-        get(alias_col)
-      )
-    ),
-    Canonical = trimws(
-      as.character(
-        get(canonical_col)
-      )
-    )
-  )
-]
-
-lookup <- lookup[
-  !is.na(Alias) &
-    nzchar(Alias) &
-    !is.na(Canonical) &
-    nzchar(Canonical)
-]
-
-lookup_check <- lookup[
-  ,
-  .(
-    CanonicalCount = uniqueN(Canonical),
-    Canonical = paste(
-      sort(
-        unique(Canonical)
-      ),
-      collapse = " | "
-    )
-  ),
-  by = Alias
-]
-
-raw_names <- sort(
-  unique(
-    c(
-      trimws(rus$HomeRaw),
-      trimws(rus$AwayRaw)
-    )
-  )
-)
-
-russia_lookup <- lookup_check[
-  Alias %chin% raw_names
-]
-
-unresolved <- setdiff(
-  raw_names,
-  russia_lookup$Alias
-)
-
-if (length(unresolved) > 0L) {
-  stop(
-    paste(
-      "Unresolved Russia aliases:",
-      paste(
-        unresolved,
-        collapse = ", "
-      )
-    )
-  )
-}
-
-ambiguous <- russia_lookup[
-  CanonicalCount != 1L
-]
-
-if (nrow(ambiguous) > 0L) {
-  stop(
-    paste(
-      "Ambiguous Russia aliases:",
-      paste(
-        ambiguous$Alias,
-        collapse = ", "
-      )
-    )
-  )
-}
-
-alias_map <- setNames(
-  russia_lookup$Canonical,
-  russia_lookup$Alias
-)
-
-# ------------------------------------------------------------
-# Canonicalise teams
-# ------------------------------------------------------------
-
-rus[
-  ,
-  Home := unname(
-    alias_map[
-      trimws(HomeRaw)
-    ]
-  )
-]
-
-rus[
-  ,
-  Away := unname(
-    alias_map[
-      trimws(AwayRaw)
-    ]
-  )
-]
-
-if (
-  rus[
-    is.na(Home) |
-    is.na(Away),
-    .N
-  ] > 0L
-) {
-  stop(
-    "Canonicalisation produced missing Home/Away names."
-  )
-}
-
-# ------------------------------------------------------------
-# Required master fields
-# ------------------------------------------------------------
-
-required_master <- c(
-  "Source",
-  "Country",
-  "Competition",
-  "CompetitionType",
-  "Tier",
-  "League",
-  "Season",
-  "Date",
-  "Home",
-  "Away",
-  "Score",
-  "Result"
-)
-
-missing_master <- setdiff(
-  required_master,
-  names(master)
-)
-
-if (length(missing_master) > 0L) {
-  stop(
-    paste(
-      "Master missing required columns:",
-      paste(
-        missing_master,
-        collapse = ", "
-      )
-    )
-  )
-}
-
-master[
-  ,
-  Date := as.IDate(Date)
-]
-
-# ------------------------------------------------------------
-# Build import table using master schema
-# ------------------------------------------------------------
-
-import <- copy(rus)
-
-# Raw source names are not master fields.
-drop_from_import <- intersect(
-  c(
-    "HomeRaw",
-    "AwayRaw",
-    "HomeGoals",
-    "AwayGoals",
-    "Stage",
-    "SourceURL",
-    "DateRaw",
-    "ScoreRaw"
-  ),
-  names(import)
-)
-
-if (length(drop_from_import) > 0L) {
-  import[
-    ,
-    (drop_from_import) := NULL
-  ]
-}
-
-# Add any master columns absent from staging.
-for (col in setdiff(
-  names(master),
-  names(import)
-)) {
-  import[
-    ,
-    (col) := NA
-  ]
-}
-
-# Discard staging-only columns that are not part of the master.
-extra_import_cols <- setdiff(
-  names(import),
-  names(master)
-)
-
-if (length(extra_import_cols) > 0L) {
-  import[
-    ,
-    (extra_import_cols) := NULL
-  ]
-}
-
-setcolorder(
-  import,
-  names(master)
-)
-
-# ------------------------------------------------------------
-# Fixture key
-# ------------------------------------------------------------
-
-key_cols <- c(
-  "Country",
-  "Competition",
-  "Season",
-  "Date",
-  "Home",
-  "Away"
-)
-
-make_fixture_key <- function(dt) {
   
-  do.call(
-    paste,
-    c(
-      dt[
+  row_team <- clean_text(
+    mat[[1]]
+  )
+  
+  away_team <- c(
+    "Dynamo Kyiv",
+    "Epitsentr Kamianets-Podilskyi",
+    "Karpaty Lviv",
+    "Kolos Kovalivka",
+    "Kryvbas Kryvyi Rih",
+    "Kudrivka",
+    "LNZ Cherkasy",
+    "Metalist 1925 Kharkiv",
+    "Obolon Kyiv",
+    "Oleksandriya",
+    "Polissya Zhytomyr",
+    "SC Poltava",
+    "Rukh Lviv",
+    "Shakhtar Donetsk",
+    "Veres Rivne",
+    "Zorya Luhansk"
+  )
+  
+  wiki_matches <- rbindlist(
+    lapply(
+      seq_len(nrow(mat)),
+      function(i) {
+        vals <- unlist(
+          mat[
+            i,
+            2:17,
+            with = FALSE
+          ],
+          use.names = FALSE
+        )
+        
+        data.table(
+          Home = row_team[i],
+          Away = away_team,
+          RawScore = vals
+        )
+      }
+    )
+  )
+  
+  wiki_matches[
+    ,
+    Score := parse_score(RawScore)
+  ]
+  
+  wiki_matches <- wiki_matches[
+    !is.na(Score)
+  ]
+  
+  wiki_matches[
+    ,
+    `:=`(
+      HomeCanon = canon(Home),
+      AwayCanon = canon(Away),
+      Result = score_result(Score)
+    )
+  ]
+  
+  wiki_n <- nrow(wiki_matches)
+  
+  if (wiki_n != 240L) {
+    stop(
+      paste0(
+        "Wikipedia produced ",
+        wiki_n,
+        " played matches; expected 240."
+      )
+    )
+  }
+  
+  if (
+    anyDuplicated(
+      wiki_matches[
         ,
-        ..key_cols
-      ],
-      sep = "|"
+        paste(
+          HomeCanon,
+          AwayCanon,
+          sep = "|||"
+        )
+      ]
+    )
+  ) {
+    stop(
+      "Wikipedia contains duplicate canonical home/away fixtures."
+    )
+  }
+  
+  # --------------------------------------------------
+  # RSSSF: dates only
+  # --------------------------------------------------
+  
+  rsssf_doc <- read_html(
+    rsssf_url
+  )
+  
+  rsssf_text <- html_text2(
+    html_element(
+      rsssf_doc,
+      "body"
     )
   )
-}
-
-master[
-  ,
-  fixture_key := make_fixture_key(master)
-]
-
-import[
-  ,
-  fixture_key := make_fixture_key(import)
-]
-
-# ------------------------------------------------------------
-# Internal Russia duplicate audit
-# ------------------------------------------------------------
-
-internal_dupes <- import[
-  ,
-  .N,
-  by = fixture_key
-][
-  N > 1L
-]
-
-if (nrow(internal_dupes) > 0L) {
   
-  duplicate_rows <- import[
-    fixture_key %chin%
-      internal_dupes$fixture_key
-  ]
+  rsssf_lines <- str_split(
+    rsssf_text,
+    "\n"
+  )[[1]]
   
-  cat(
-    "\nDUPLICATE FIXTURES INSIDE RUSSIA IMPORT\n"
+  rsssf_lines <- trimws(
+    rsssf_lines
   )
   
-  print(
-    duplicate_rows[
+  rsssf_lines <- rsssf_lines[
+    rsssf_lines != ""
+  ]
+  
+  section_start <- grep(
+    "^VBet Premier League 2025/26$",
+    rsssf_lines,
+    ignore.case = TRUE
+  )[1]
+  
+  section_end <- grep(
+    "^Vbet Ukrainian Cup 2025/26$",
+    rsssf_lines,
+    ignore.case = TRUE
+  )
+  
+  section_end <- section_end[
+    section_end > section_start
+  ]
+  
+  if (
+    is.na(section_start) ||
+    length(section_end) == 0L
+  ) {
+    stop(
+      "Could not isolate rendered RSSSF Premier League section."
+    )
+  }
+  
+  section <- rsssf_lines[
+    section_start:(section_end[1] - 1L)
+  ]
+  
+  round1 <- grep(
+    "^Round 1\\b",
+    section,
+    ignore.case = TRUE
+  )[1]
+  
+  if (is.na(round1)) {
+    stop(
+      "Could not find RSSSF Round 1."
+    )
+  }
+  
+  section <- section[
+    round1:length(section)
+  ]
+  
+  month_lookup <- c(
+    Jan = 1L,
+    Feb = 2L,
+    Mar = 3L,
+    Apr = 4L,
+    May = 5L,
+    Jun = 6L,
+    Jul = 7L,
+    Aug = 8L,
+    Sep = 9L,
+    Oct = 10L,
+    Nov = 11L,
+    Dec = 12L
+  )
+  
+  current_year <- 2025L
+  previous_month <- NA_integer_
+  current_date <- as.IDate(NA)
+  
+  rsssf_rows <- list()
+  rsssf_i <- 0L
+  
+  for (line in section) {
+    
+    date_match <- str_match(
+      line,
+      "^\\[([A-Z][a-z]{2})\\s+(\\d{1,2})\\]$"
+    )
+    
+    if (!is.na(date_match[1, 1])) {
+      
+      month_name <- date_match[1, 2]
+      month_num <- unname(
+        month_lookup[
+          month_name
+        ]
+      )
+      
+      day_num <- as.integer(
+        date_match[1, 3]
+      )
+      
+      if (
+        !is.na(previous_month) &&
+        previous_month >= 11L &&
+        month_num <= 3L
+      ) {
+        current_year <- current_year + 1L
+      }
+      
+      current_date <- as.IDate(
+        sprintf(
+          "%04d-%02d-%02d",
+          current_year,
+          month_num,
+          day_num
+        )
+      )
+      
+      previous_month <- month_num
+      
+      next
+    }
+    
+    match_line <- str_match(
+      line,
+      "^(.+?)\\s{2,}(\\d+)\\s*-\\s*(\\d+)\\s{2,}(.+?)$"
+    )
+    
+    if (
+      is.na(match_line[1, 1]) ||
+      is.na(current_date)
+    ) {
+      next
+    }
+    
+    home <- clean_text(
+      match_line[1, 2]
+    )
+    
+    away <- clean_text(
+      match_line[1, 5]
+    )
+    
+    score <- paste0(
+      match_line[1, 3],
+      "-",
+      match_line[1, 4]
+    )
+    
+    rsssf_i <- rsssf_i + 1L
+    
+    rsssf_rows[[rsssf_i]] <- data.table(
+      Date = current_date,
+      RSSSFHome = home,
+      RSSSFAway = away,
+      RSSSFScore = score
+    )
+  }
+  
+  if (length(rsssf_rows) == 0L) {
+    stop(
+      "No RSSSF match rows parsed."
+    )
+  }
+  
+  rsssf <- rbindlist(
+    rsssf_rows,
+    fill = TRUE
+  )
+  
+  rsssf[
+    ,
+    `:=`(
+      HomeCanon = canon(RSSSFHome),
+      AwayCanon = canon(RSSSFAway)
+    )
+  ]
+  
+  valid_clubs <- unique(
+    c(
+      wiki_matches$HomeCanon,
+      wiki_matches$AwayCanon
+    )
+  )
+  
+  # Restrict RSSSF rows to clubs participating in the
+  # 2025/26 Ukrainian Premier League according to Wikipedia.
+  # Newly promoted clubs are therefore included automatically.
+  rsssf <- rsssf[
+    HomeCanon %chin% valid_clubs &
+      AwayCanon %chin% valid_clubs
+  ]
+  
+  rsssf[
+    ,
+    MatchKey := paste(
+      HomeCanon,
+      AwayCanon,
+      RSSSFScore,
+      sep = "|||"
+    )
+  ]
+  
+  wiki_matches[
+    ,
+    MatchKey := paste(
+      HomeCanon,
+      AwayCanon,
+      Score,
+      sep = "|||"
+    )
+  ]
+  
+  rsssf_n <- nrow(rsssf)
+  
+  if (rsssf_n != 240L) {
+    fwrite(
+      rsssf,
+      audit_path
+    )
+    
+    stop(
+      paste0(
+        "RSSSF produced ",
+        rsssf_n,
+        " Premier League match rows; expected 240. Audit written."
+      )
+    )
+  }
+  
+  if (anyDuplicated(rsssf$MatchKey)) {
+    stop(
+      "RSSSF contains duplicate canonical home/away/score keys."
+    )
+  }
+  
+  # --------------------------------------------------
+  # Match Wikipedia results to RSSSF dates
+  # --------------------------------------------------
+  
+  candidate <- merge(
+    wiki_matches,
+    rsssf[
       ,
       .(
-        Country,
-        Competition,
-        Season,
+        MatchKey,
         Date,
-        Home,
-        Away,
-        Score,
-        Result
+        RSSSFHome,
+        RSSSFAway
       )
     ],
-    nrows = Inf
+    by = "MatchKey",
+    all.x = TRUE
   )
   
-  stop(
-    paste0(
-      "Russia import contains ",
-      nrow(internal_dupes),
-      " duplicate fixture keys."
+  unmatched <- candidate[
+    is.na(Date)
+  ]
+  
+  matched_n <- sum(
+    !is.na(candidate$Date)
+  )
+  
+  if (nrow(unmatched) > 0L) {
+    fwrite(
+      unmatched,
+      audit_path
     )
-  )
-}
-
-# ------------------------------------------------------------
-# Existing master matches
-# ------------------------------------------------------------
-
-already_present <- import[
-  fixture_key %chin%
-    master$fixture_key
-]
-
-# ------------------------------------------------------------
-# Conflict check
-# ------------------------------------------------------------
-
-conflicts <- data.table()
-
-if (nrow(already_present) > 0L) {
+    
+    stop(
+      paste0(
+        nrow(unmatched),
+        " Wikipedia matches lacked an RSSSF date. Audit written."
+      )
+    )
+  }
   
-  master_overlap <- master[
-    fixture_key %chin%
-      already_present$fixture_key,
-    .(
-      fixture_key,
-      MasterScore = Score,
-      MasterResult = Result
+  candidate[
+    ,
+    `:=`(
+      Season = "2025/26",
+      Country = "Ukraine",
+      Competition = "ukrainian_premier_league",
+      CompetitionType = "league",
+      Tier = 1L,
+      League = "Ukrainian Premier League",
+      FixtureSource = "wikipedia",
+      ResultSource = "wikipedia",
+      DateSource = "rsssf"
     )
   ]
   
-  import_overlap <- already_present[
+  candidate <- candidate[
     ,
     .(
-      fixture_key,
-      ImportScore = Score,
-      ImportResult = Result
+      Season,
+      Country,
+      Competition,
+      CompetitionType,
+      Tier,
+      League,
+      Date,
+      Home,
+      Away,
+      Result,
+      Score,
+      FixtureSource,
+      ResultSource,
+      DateSource
     )
   ]
   
-  overlap_compare <- merge(
-    import_overlap,
-    master_overlap,
-    by = "fixture_key",
-    allow.cartesian = TRUE
+  setorder(
+    candidate,
+    Date,
+    Home,
+    Away
   )
   
-  conflicts <- overlap_compare[
-    ImportScore != MasterScore |
-      ImportResult != MasterResult
+  if (nrow(candidate) != 240L) {
+    stop(
+      "Final candidate does not contain exactly 240 rows."
+    )
+  }
+  
+  fwrite(
+    candidate,
+    candidate_path
+  )
+  
+  # --------------------------------------------------
+  # Import
+  # --------------------------------------------------
+  
+  master <- fread(
+    master_path,
+    encoding = "UTF-8"
+  )
+  
+  master[
+    ,
+    Date := as.IDate(Date)
   ]
-}
-
-if (nrow(conflicts) > 0L) {
   
-  cat(
-    "\nCONFLICTING EXISTING FIXTURES\n"
+  existing <- master[
+    Country == "Ukraine" &
+      Competition == "ukrainian_premier_league" &
+      Season == "2025/26"
+  ]
+  
+  if (nrow(existing) > 0L) {
+    stop(
+      paste0(
+        "Master already contains ",
+        nrow(existing),
+        " Ukraine 2025/26 rows."
+      )
+    )
+  }
+  
+  candidate_master <- candidate[
+    ,
+    .(
+      Season,
+      Country,
+      Competition,
+      CompetitionType,
+      Tier,
+      League,
+      Date,
+      Home,
+      Away,
+      Result,
+      Score,
+      Source = "Wikipedia + RSSSF",
+      SourcePage = NA,
+      Stage = NA,
+      DateApprox = FALSE,
+      SourceFile = NA
+    )
+  ]
+  
+  candidate_keys <- candidate_master[
+    ,
+    paste(
+      Date,
+      Home,
+      Away,
+      sep = "|||"
+    )
+  ]
+  
+  existing_keys <- master[
+    ,
+    paste(
+      Date,
+      Home,
+      Away,
+      sep = "|||"
+    )
+  ]
+  
+  overlap_n <- sum(
+    candidate_keys %chin% existing_keys
   )
   
-  print(
-    conflicts,
-    nrows = Inf
-  )
+  if (overlap_n > 0L) {
+    stop(
+      paste0(
+        "Candidate unexpectedly overlaps ",
+        overlap_n,
+        " existing master rows."
+      )
+    )
+  }
   
-  stop(
+  backup_path <- file.path(
+    backup_dir,
     paste0(
-      nrow(conflicts),
-      " Russia fixture conflicts found. Master was NOT modified."
+      "european_football_all_matches_before_ukraine_2025_26_import_",
+      format(
+        Sys.time(),
+        "%Y%m%d_%H%M%S"
+      ),
+      ".csv"
     )
   )
-}
-
-# ------------------------------------------------------------
-# Rows genuinely to add
-# ------------------------------------------------------------
-
-to_add <- import[
-  !fixture_key %chin%
-    master$fixture_key
-]
-
-already_present_n <- nrow(already_present)
-rows_to_add <- nrow(to_add)
-
-# ------------------------------------------------------------
-# Sanity checks
-# ------------------------------------------------------------
-
-if (
-  already_present_n +
-  rows_to_add !=
-  import_rows_supplied
-) {
-  stop(
-    "Import accounting does not balance."
-  )
-}
-
-# ------------------------------------------------------------
-# Backup master outside repo
-# ------------------------------------------------------------
-
-timestamp <- format(
-  Sys.time(),
-  "%Y%m%d_%H%M%S"
-)
-
-backup_path <- file.path(
-  backup_dir,
-  paste0(
-    "european_football_all_matches_before_Russia_",
-    timestamp,
-    ".csv"
-  )
-)
-
-master_for_backup <- copy(master)
-
-master_for_backup[
-  ,
-  fixture_key := NULL
-]
-
-fwrite(
-  master_for_backup,
-  backup_path,
-  bom = TRUE
-)
-
-if (!file.exists(backup_path)) {
-  stop(
-    "Master backup was not created."
-  )
-}
-
-# ------------------------------------------------------------
-# Append
-# ------------------------------------------------------------
-
-master[
-  ,
-  fixture_key := NULL
-]
-
-to_add[
-  ,
-  fixture_key := NULL
-]
-
-combined <- rbindlist(
-  list(
-    master,
-    to_add
-  ),
-  use.names = TRUE,
-  fill = TRUE
-)
-
-expected_after <- master_rows_before +
-  rows_to_add
-
-if (nrow(combined) != expected_after) {
-  stop(
-    "Unexpected master row count after append."
-  )
-}
-
-# ------------------------------------------------------------
-# Final duplicate audit
-# ------------------------------------------------------------
-
-combined[
-  ,
-  fixture_key := make_fixture_key(combined)
-]
-
-final_dupes <- combined[
-  ,
-  .N,
-  by = fixture_key
-][
-  N > 1L
-]
-
-# Only stop if the import introduced duplicate keys involving Russia.
-russia_keys <- to_add[
-  ,
-  make_fixture_key(to_add)
-]
-
-new_duplicate_keys <- final_dupes[
-  fixture_key %chin%
-    russia_keys
-]
-
-if (nrow(new_duplicate_keys) > 0L) {
-  stop(
-    paste0(
-      "Russia import would create ",
-      nrow(new_duplicate_keys),
-      " duplicate fixture keys. Master was NOT written."
-    )
-  )
-}
-
-combined[
-  ,
-  fixture_key := NULL
-]
-
-# ------------------------------------------------------------
-# Write master
-# ------------------------------------------------------------
-
-fwrite(
-  combined,
-  master_path,
-  bom = TRUE
-)
-
-# ------------------------------------------------------------
-# Read-back verification
-# ------------------------------------------------------------
-
-verify <- fread(
-  master_path,
-  encoding = "UTF-8"
-)
-
-if (nrow(verify) != expected_after) {
-  stop(
-    paste0(
-      "Read-back verification failed. Expected ",
-      expected_after,
-      " rows but found ",
-      nrow(verify),
-      "."
-    )
-  )
-}
-
-# ------------------------------------------------------------
-# Russia verification
-# ------------------------------------------------------------
-
-russia_master_rows <- verify[
-  Country == "Russia" &
-    Competition == "russian_premier_league"
-]
-
-if (nrow(russia_master_rows) != import_rows_supplied) {
   
-  stop(
-    paste0(
-      "Expected ",
-      import_rows_supplied,
-      " Russia league rows in master after import but found ",
-      nrow(russia_master_rows),
-      "."
+  if (
+    !file.copy(
+      master_path,
+      backup_path,
+      overwrite = FALSE
+    )
+  ) {
+    stop(
+      "Could not create master backup."
+    )
+  }
+  
+  master_before <- nrow(master)
+  
+  combined <- rbindlist(
+    list(
+      master,
+      candidate_master
+    ),
+    use.names = TRUE,
+    fill = TRUE
+  )
+  
+  setorder(
+    combined,
+    Date,
+    Country,
+    Competition,
+    Home,
+    Away
+  )
+  
+  master_after <- nrow(combined)
+  
+  if (master_after != master_before + 240L) {
+    stop(
+      "Unexpected master row count after append."
+    )
+  }
+  
+  fwrite(
+    combined,
+    master_path
+  )
+  
+  verify <- fread(
+    master_path,
+    encoding = "UTF-8"
+  )
+  
+  verify_ukraine <- verify[
+    Country == "Ukraine" &
+      Competition == "ukrainian_premier_league" &
+      Season == "2025/26"
+  ]
+  
+  if (nrow(verify_ukraine) != 240L) {
+    stop(
+      "Post-write Ukraine verification failed."
+    )
+  }
+  
+  # --------------------------------------------------
+  # Rebuild Elo + JSON quietly
+  # --------------------------------------------------
+  
+  invisible(
+    capture.output(
+      source(
+        file.path(
+          ROOT,
+          "scripts",
+          "EuropeanFootball",
+          "02_calculate_elo.R"
+        )
+      )
     )
   )
-}
+  
+  invisible(
+    capture.output(
+      source(
+        file.path(
+          ROOT,
+          "scripts",
+          "EuropeanFootball",
+          "03_write_json.R"
+        )
+      )
+    )
+  )
+  
+  success <- TRUE
+  
+}, error = function(e) {
+  error_message <<- conditionMessage(e)
+})
 
-# ------------------------------------------------------------
-# Final output
-# ------------------------------------------------------------
-
-toc_result <- toc(
+elapsed <- toc(
   quiet = TRUE
 )
 
-seconds <- round(
-  as.numeric(
-    toc_result$toc -
-      toc_result$tic
-  ),
-  2
-)
+if (success) {
+  
+  beep(1)
+  
+  final_output <- paste0(
+    "Ukraine 2025/26 update PASS\n\n",
+    "Wikipedia results:   ", wiki_n, "\n",
+    "RSSSF dated matches:  ", rsssf_n, "\n",
+    "Matched:              ", matched_n, "\n",
+    "Master before:        ", master_before, "\n",
+    "Master after:         ", master_after, "\n",
+    "Rows added:           240\n\n",
+    "Candidate:\n",
+    candidate_path,
+    "\n\nBackup:\n",
+    backup_path,
+    "\n\nElo and JSON rebuilt.\n\n",
+    "Elapsed: ",
+    round(
+      elapsed$toc - elapsed$tic,
+      2
+    ),
+    " seconds"
+  )
+  
+} else {
+  
+  beep(2)
+  
+  final_output <- paste0(
+    "Ukraine 2025/26 update FAILED\n\n",
+    "Error: ",
+    error_message,
+    "\n\n",
+    "Wikipedia rows: ",
+    ifelse(is.na(wiki_n), "not reached", wiki_n),
+    "\n",
+    "RSSSF rows: ",
+    ifelse(is.na(rsssf_n), "not reached", rsssf_n),
+    "\n",
+    "Matched rows: ",
+    ifelse(is.na(matched_n), "not reached", matched_n),
+    "\n\n",
+    "Audit if created:\n",
+    audit_path,
+    "\n\nBackup: ",
+    ifelse(
+      is.na(backup_path),
+      "not created",
+      backup_path
+    ),
+    "\n\nElapsed: ",
+    round(
+      elapsed$toc - elapsed$tic,
+      2
+    ),
+    " seconds"
+  )
+}
 
-final_output <- paste(
-  "RUSSIA MASTER IMPORT COMPLETE",
-  "",
-  paste0(
-    "Master rows before: ",
-    master_rows_before
-  ),
-  paste0(
-    "Import rows supplied: ",
-    import_rows_supplied
-  ),
-  paste0(
-    "Already present: ",
-    already_present_n
-  ),
-  paste0(
-    "Rows added: ",
-    rows_to_add
-  ),
-  paste0(
-    "Master rows after: ",
-    nrow(verify)
-  ),
-  "",
-  paste0(
-    "Russia league rows now in master: ",
-    nrow(russia_master_rows)
-  ),
-  paste0(
-    "Russian raw names resolved: ",
-    length(raw_names),
-    "/",
-    length(raw_names)
-  ),
-  paste0(
-    "Import fixture conflicts: ",
-    nrow(conflicts)
-  ),
-  paste0(
-    "Import duplicate fixture keys: ",
-    nrow(internal_dupes)
-  ),
-  "",
-  paste0(
-    "Backup: ",
-    backup_path
-  ),
-  paste0(
-    "Updated master: ",
-    master_path
-  ),
-  "",
-  "Russia has been imported into the master.",
-  "Elo has NOT been recalculated by this script.",
-  paste0(
-    "Seconds: ",
-    seconds
-  ),
-  sep = "\n"
-)
-
-cat(
-  final_output,
-  "\n"
-)
-
-beep()
+cat(final_output, "\n")

@@ -1,0 +1,243 @@
+MatchKey,Occurrence,Away,Home,TableNumber,HG,AG,FDHome,FDAway,WikiID,FDID,Date
+AIK|||Djurgarden|||0|||1,1,Djurgårdens IF,AIK,10,0,1,AIK,Djurgarden,31,84,2020-07-26
+AIK|||Elfsborg|||1|||2,1,IF Elfsborg,AIK,10,1,2,AIK,Elfsborg,91,100,2020-08-06
+AIK|||Falkenbergs|||1|||1,1,Falkenbergs FF,AIK,10,1,1,AIK,Falkenbergs,46,41,2020-07-05
+AIK|||Goteborg|||2|||0,1,IFK Göteborg,AIK,10,2,0,AIK,Goteborg,106,187,2020-10-18
+AIK|||Hacken|||0|||1,1,BK Häcken,AIK,10,0,1,AIK,Hacken,16,139,2020-08-30
+AIK|||Hammarby|||3|||0,1,Hammarby,AIK,10,3,0,AIK,Hammarby,61,159,2020-09-20
+AIK|||Helsingborg|||2|||0,1,Helsingborgs IF,AIK,10,2,0,AIK,Helsingborg,76,133,2020-08-23
+AIK|||Kalmar|||0|||1,1,Kalmar FF,AIK,10,0,1,AIK,Kalmar,151,231,2020-11-30
+AIK|||Malmo FF|||2|||2,1,Malmö FF,AIK,10,2,2,AIK,Malmo FF,166,29,2020-06-28
+AIK|||Mjallby|||1|||0,1,Mjällby AIF,AIK,10,1,0,AIK,Mjallby,181,173,2020-09-28
+AIK|||Norrkoping|||1|||4,1,IFK Norrköping,AIK,10,1,4,AIK,Norrkoping,121,9,2020-06-17
+AIK|||Orebro|||0|||2,1,Örebro SK,AIK,10,0,2,AIK,Orebro,211,217,2020-11-22
+AIK|||Ostersunds|||0|||1,1,Östersunds FK,AIK,10,0,1,AIK,Ostersunds,226,115,2020-08-13
+AIK|||Sirius|||1|||0,1,IK Sirius,AIK,10,1,0,AIK,Sirius,136,57,2020-07-15
+AIK|||Varberg|||1|||0,1,Varbergs BoIS,AIK,10,1,0,AIK,Varberg,196,207,2020-11-02
+Djurgarden|||AIK|||0|||1,1,AIK,Djurgårdens IF,10,0,1,Djurgarden,AIK,2,212,2020-11-08
+Djurgarden|||Elfsborg|||1|||1,1,IF Elfsborg,Djurgårdens IF,10,1,1,Djurgarden,Elfsborg,93,149,2020-09-12
+Djurgarden|||Falkenbergs|||1|||0,1,Falkenbergs FF,Djurgårdens IF,10,1,0,Djurgarden,Falkenbergs,48,58,2020-07-15
+Djurgarden|||Goteborg|||2|||2,1,IFK Göteborg,Djurgårdens IF,10,2,2,Djurgarden,Goteborg,108,129,2020-08-22
+Djurgarden|||Hacken|||3|||1,1,BK Häcken,Djurgårdens IF,10,3,1,Djurgarden,Hacken,17,89,2020-08-01
+Djurgarden|||Hammarby|||1|||2,1,Hammarby,Djurgårdens IF,10,1,2,Djurgarden,Hammarby,63,108,2020-08-09
+Djurgarden|||Helsingborg|||2|||2,1,Helsingborgs IF,Djurgårdens IF,10,2,2,Djurgarden,Helsingborg,78,45,2020-07-06
+Djurgarden|||Kalmar|||5|||0,1,Kalmar FF,Djurgårdens IF,10,5,0,Djurgarden,Kalmar,153,26,2020-06-28
+Djurgarden|||Malmo FF|||3|||2,1,Malmö FF,Djurgårdens IF,10,3,2,Djurgarden,Malmo FF,168,189,2020-10-19
+Djurgarden|||Mjallby|||2|||1,1,Mjällby AIF,Djurgårdens IF,10,2,1,Djurgarden,Mjallby,183,113,2020-08-12
+Djurgarden|||Norrkoping|||1|||2,1,IFK Norrköping,Djurgårdens IF,10,1,2,Djurgarden,Norrkoping,123,171,2020-09-27
+Djurgarden|||Orebro|||1|||2,1,Örebro SK,Djurgårdens IF,10,1,2,Djurgarden,Orebro,213,10,2020-06-17
+Djurgarden|||Ostersunds|||0|||0,1,Östersunds FK,Djurgårdens IF,10,0,0,Djurgarden,Ostersunds,228,73,2020-07-22
+Djurgarden|||Sirius|||4|||0,1,IK Sirius,Djurgårdens IF,10,4,0,Djurgarden,Sirius,138,191,2020-10-24
+Djurgarden|||Varberg|||1|||0,1,Varbergs BoIS,Djurgårdens IF,10,1,0,Djurgarden,Varberg,198,233,2020-12-06
+Elfsborg|||AIK|||2|||2,1,AIK,IF Elfsborg,10,2,2,Elfsborg,AIK,6,234,2020-12-06
+Elfsborg|||Djurgarden|||1|||0,1,Djurgårdens IF,IF Elfsborg,10,1,0,Elfsborg,Djurgarden,36,68,2020-07-19
+Elfsborg|||Falkenbergs|||4|||2,1,Falkenbergs FF,IF Elfsborg,10,4,2,Elfsborg,Falkenbergs,51,116,2020-08-13
+Elfsborg|||Goteborg|||0|||0,1,IFK Göteborg,IF Elfsborg,10,0,0,Elfsborg,Goteborg,112,172,2020-09-27
+Elfsborg|||Hacken|||1|||1,1,BK Häcken,IF Elfsborg,10,1,1,Elfsborg,Hacken,21,163,2020-09-21
+Elfsborg|||Hammarby|||2|||2,1,Hammarby,IF Elfsborg,10,2,2,Elfsborg,Hammarby,66,11,2020-06-17
+Elfsborg|||Helsingborg|||2|||1,1,Helsingborgs IF,IF Elfsborg,10,2,1,Elfsborg,Helsingborg,81,218,2020-11-22
+Elfsborg|||Kalmar|||3|||1,1,Kalmar FF,IF Elfsborg,10,3,1,Elfsborg,Kalmar,157,184,2020-10-18
+Elfsborg|||Malmo FF|||1|||0,1,Malmö FF,IF Elfsborg,10,1,0,Elfsborg,Malmo FF,172,42,2020-07-05
+Elfsborg|||Mjallby|||2|||2,1,Mjällby AIF,IF Elfsborg,10,2,2,Elfsborg,Mjallby,187,157,2020-09-17
+Elfsborg|||Norrkoping|||2|||1,1,IFK Norrköping,IF Elfsborg,10,2,1,Elfsborg,Norrkoping,127,201,2020-11-01
+Elfsborg|||Orebro|||1|||1,1,Örebro SK,IF Elfsborg,10,1,1,Elfsborg,Orebro,217,30,2020-06-28
+Elfsborg|||Ostersunds|||0|||1,1,Östersunds FK,IF Elfsborg,10,0,1,Elfsborg,Ostersunds,232,131,2020-08-23
+Elfsborg|||Sirius|||3|||3,1,IK Sirius,IF Elfsborg,10,3,3,Elfsborg,Sirius,142,95,2020-08-03
+Elfsborg|||Varberg|||3|||3,1,Varbergs BoIS,IF Elfsborg,10,3,3,Elfsborg,Varberg,202,81,2020-07-26
+Falkenbergs|||AIK|||1|||1,1,AIK,Falkenbergs FF,10,1,1,Falkenbergs,AIK,3,122,2020-08-16
+Falkenbergs|||Djurgarden|||3|||2,1,Djurgårdens IF,Falkenbergs FF,10,3,2,Falkenbergs,Djurgarden,33,204,2020-11-01
+Falkenbergs|||Elfsborg|||1|||3,1,IF Elfsborg,Falkenbergs FF,10,1,3,Falkenbergs,Elfsborg,94,209,2020-11-07
+Falkenbergs|||Goteborg|||0|||3,1,IFK Göteborg,Falkenbergs FF,10,0,3,Falkenbergs,Goteborg,109,150,2020-09-13
+Falkenbergs|||Hacken|||1|||1,1,BK Häcken,Falkenbergs FF,10,1,1,Falkenbergs,Hacken,18,6,2020-06-15
+Falkenbergs|||Hammarby|||1|||3,1,Hammarby,Falkenbergs FF,10,1,3,Falkenbergs,Hammarby,64,168,2020-09-27
+Falkenbergs|||Helsingborg|||2|||2,1,Helsingborgs IF,Falkenbergs FF,10,2,2,Falkenbergs,Helsingborg,79,69,2020-07-19
+Falkenbergs|||Kalmar|||0|||2,1,Kalmar FF,Falkenbergs FF,10,0,2,Falkenbergs,Kalmar,154,17,2020-06-21
+Falkenbergs|||Malmo FF|||0|||1,1,Malmö FF,Falkenbergs FF,10,0,1,Falkenbergs,Malmo FF,169,105,2020-08-09
+Falkenbergs|||Mjallby|||2|||3,1,Mjällby AIF,Falkenbergs FF,10,2,3,Falkenbergs,Mjallby,184,235,2020-12-06
+Falkenbergs|||Norrkoping|||3|||3,1,IFK Norrköping,Falkenbergs FF,10,3,3,Falkenbergs,Norrkoping,124,82,2020-07-26
+Falkenbergs|||Orebro|||2|||1,1,Örebro SK,Falkenbergs FF,10,2,1,Falkenbergs,Orebro,214,183,2020-10-17
+Falkenbergs|||Ostersunds|||0|||1,1,Östersunds FK,Falkenbergs FF,10,0,1,Falkenbergs,Ostersunds,229,49,2020-07-11
+Falkenbergs|||Sirius|||1|||2,1,IK Sirius,Falkenbergs FF,10,1,2,Falkenbergs,Sirius,139,36,2020-07-02
+Falkenbergs|||Varberg|||2|||0,1,Varbergs BoIS,Falkenbergs FF,10,2,0,Falkenbergs,Varberg,199,158,2020-09-17
+Goteborg|||AIK|||1|||0,1,AIK,IFK Göteborg,10,1,0,Goteborg,AIK,7,37,2020-07-02
+Goteborg|||Djurgarden|||1|||2,1,Djurgårdens IF,IFK Göteborg,10,1,2,Goteborg,Djurgarden,37,53,2020-07-12
+Goteborg|||Elfsborg|||0|||1,1,IF Elfsborg,IFK Göteborg,10,0,1,Goteborg,Elfsborg,97,2,2020-06-14
+Goteborg|||Falkenbergs|||2|||2,1,Falkenbergs FF,IFK Göteborg,10,2,2,Goteborg,Falkenbergs,52,76,2020-07-23
+Goteborg|||Hacken|||1|||1,1,BK Häcken,IFK Göteborg,10,1,1,Goteborg,Hacken,22,222,2020-11-23
+Goteborg|||Hammarby|||0|||4,1,Hammarby,IFK Göteborg,10,0,4,Goteborg,Hammarby,67,146,2020-09-10
+Goteborg|||Helsingborg|||1|||1,1,Helsingborgs IF,IFK Göteborg,10,1,1,Goteborg,Helsingborg,82,59,2020-07-15
+Goteborg|||Kalmar|||1|||2,1,Kalmar FF,IFK Göteborg,10,1,2,Goteborg,Kalmar,158,161,2020-09-20
+Goteborg|||Malmo FF|||0|||3,1,Malmö FF,IFK Göteborg,10,0,3,Goteborg,Malmo FF,173,92,2020-08-02
+Goteborg|||Mjallby|||2|||2,1,Mjällby AIF,IFK Göteborg,10,2,2,Goteborg,Mjallby,188,22,2020-06-22
+Goteborg|||Norrkoping|||1|||3,1,IFK Norrköping,IFK Göteborg,10,1,3,Goteborg,Norrkoping,128,125,2020-08-17
+Goteborg|||Orebro|||0|||1,1,Örebro SK,IFK Göteborg,10,0,1,Goteborg,Orebro,218,205,2020-11-01
+Goteborg|||Ostersunds|||2|||2,1,Östersunds FK,IFK Göteborg,10,2,2,Goteborg,Ostersunds,233,101,2020-08-06
+Goteborg|||Sirius|||2|||0,1,IK Sirius,IFK Göteborg,10,2,0,Goteborg,Sirius,143,236,2020-12-06
+Goteborg|||Varberg|||1|||0,1,Varbergs BoIS,IFK Göteborg,10,1,0,Goteborg,Varberg,203,180,2020-10-04
+Hacken|||AIK|||4|||0,1,AIK,BK Häcken,10,4,0,Hacken,AIK,1,74,2020-07-22
+Hacken|||Djurgarden|||0|||2,1,Djurgårdens IF,BK Häcken,10,0,2,Hacken,Djurgarden,32,199,2020-10-28
+Hacken|||Elfsborg|||6|||0,1,IF Elfsborg,BK Häcken,10,6,0,Hacken,Elfsborg,92,60,2020-07-16
+Hacken|||Falkenbergs|||3|||0,1,Falkenbergs FF,BK Häcken,10,3,0,Hacken,Falkenbergs,47,175,2020-10-03
+Hacken|||Goteborg|||0|||0,1,IFK Göteborg,BK Häcken,10,0,0,Hacken,Goteborg,107,83,2020-07-26
+Hacken|||Hammarby|||3|||0,1,Hammarby,BK Häcken,10,3,0,Hacken,Hammarby,62,43,2020-07-05
+Hacken|||Helsingborg|||1|||0,1,Helsingborgs IF,BK Häcken,10,1,0,Hacken,Helsingborg,77,31,2020-06-29
+Hacken|||Kalmar|||0|||2,1,Kalmar FF,BK Häcken,10,0,2,Hacken,Kalmar,152,106,2020-08-09
+Hacken|||Malmo FF|||1|||1,1,Malmö FF,BK Häcken,10,1,1,Hacken,Malmo FF,167,12,2020-06-18
+Hacken|||Mjallby|||2|||2,1,Mjällby AIF,BK Häcken,10,2,2,Hacken,Mjallby,182,192,2020-10-24
+Hacken|||Norrkoping|||2|||1,1,IFK Norrköping,BK Häcken,10,2,1,Hacken,Norrkoping,122,102,2020-08-06
+Hacken|||Orebro|||3|||0,1,Örebro SK,BK Häcken,10,3,0,Hacken,Orebro,212,228,2020-11-29
+Hacken|||Ostersunds|||2|||1,1,Östersunds FK,BK Häcken,10,2,1,Hacken,Ostersunds,227,210,2020-11-07
+Hacken|||Sirius|||1|||1,1,IK Sirius,BK Häcken,10,1,1,Hacken,Sirius,137,154,2020-09-14
+Hacken|||Varberg|||2|||1,1,Varbergs BoIS,BK Häcken,10,2,1,Hacken,Varberg,197,126,2020-08-17
+Hammarby|||AIK|||0|||2,1,AIK,Hammarby,10,0,2,Hammarby,AIK,4,20,2020-06-21
+Hammarby|||Djurgarden|||1|||1,1,Djurgårdens IF,Hammarby,10,1,1,Hammarby,Djurgarden,34,177,2020-10-04
+Hammarby|||Elfsborg|||2|||2,1,IF Elfsborg,Hammarby,10,2,2,Hammarby,Elfsborg,95,123,2020-08-16
+Hammarby|||Falkenbergs|||1|||1,1,Falkenbergs FF,Hammarby,10,1,1,Hammarby,Falkenbergs,49,97,2020-08-05
+Hammarby|||Goteborg|||1|||1,1,IFK Göteborg,Hammarby,10,1,1,Hammarby,Goteborg,110,71,2020-07-20
+Hammarby|||Hacken|||1|||1,1,BK Häcken,Hammarby,10,1,1,Hammarby,Hacken,19,206,2020-11-01
+Hammarby|||Helsingborg|||2|||2,1,Helsingborgs IF,Hammarby,10,2,2,Hammarby,Helsingborg,80,151,2020-09-13
+Hammarby|||Kalmar|||3|||3,1,Kalmar FF,Hammarby,10,3,3,Hammarby,Kalmar,155,142,2020-08-30
+Hammarby|||Malmo FF|||2|||2,1,Malmö FF,Hammarby,10,2,2,Hammarby,Malmo FF,170,220,2020-11-22
+Hammarby|||Mjallby|||4|||2,1,Mjällby AIF,Hammarby,10,4,2,Hammarby,Mjallby,185,185,2020-10-18
+Hammarby|||Norrkoping|||0|||1,1,IFK Norrköping,Hammarby,10,0,1,Hammarby,Norrkoping,125,232,2020-11-30
+Hammarby|||Orebro|||3|||0,1,Örebro SK,Hammarby,10,3,0,Hammarby,Orebro,215,86,2020-07-27
+Hammarby|||Ostersunds|||2|||0,1,Östersunds FK,Hammarby,10,2,0,Hammarby,Ostersunds,230,4,2020-06-14
+Hammarby|||Sirius|||0|||0,1,IK Sirius,Hammarby,10,0,0,Hammarby,Sirius,140,50,2020-07-11
+Hammarby|||Varberg|||1|||0,1,Varbergs BoIS,Hammarby,10,1,0,Hammarby,Varberg,200,38,2020-07-02
+Helsingborg|||AIK|||2|||0,1,AIK,Helsingborgs IF,10,2,0,Helsingborg,AIK,5,51,2020-07-12
+Helsingborg|||Djurgarden|||3|||1,1,Djurgårdens IF,Helsingborgs IF,10,3,1,Helsingborg,Djurgarden,35,140,2020-08-30
+Helsingborg|||Elfsborg|||0|||0,1,IF Elfsborg,Helsingborgs IF,10,0,0,Helsingborg,Elfsborg,96,23,2020-06-22
+Helsingborg|||Falkenbergs|||0|||0,1,Falkenbergs FF,Helsingborgs IF,10,0,0,Helsingborg,Falkenbergs,50,225,2020-11-29
+Helsingborg|||Goteborg|||0|||1,1,IFK Göteborg,Helsingborgs IF,10,0,1,Helsingborg,Goteborg,111,215,2020-11-08
+Helsingborg|||Hacken|||0|||0,1,BK Häcken,Helsingborgs IF,10,0,0,Helsingborg,Hacken,20,190,2020-10-19
+Helsingborg|||Hammarby|||1|||1,1,Hammarby,Helsingborgs IF,10,1,1,Helsingborg,Hammarby,65,91,2020-08-02
+Helsingborg|||Kalmar|||1|||1,1,Kalmar FF,Helsingborgs IF,10,1,1,Helsingborg,Kalmar,156,145,2020-09-09
+Helsingborg|||Malmo FF|||0|||1,1,Malmö FF,Helsingborgs IF,10,0,1,Helsingborg,Malmo FF,171,208,2020-11-02
+Helsingborg|||Mjallby|||0|||1,1,Mjällby AIF,Helsingborgs IF,10,0,1,Helsingborg,Mjallby,186,39,2020-07-02
+Helsingborg|||Norrkoping|||3|||2,1,IFK Norrköping,Helsingborgs IF,10,3,2,Helsingborg,Norrkoping,126,111,2020-08-10
+Helsingborg|||Orebro|||1|||1,1,Örebro SK,Helsingborgs IF,10,1,1,Helsingborg,Orebro,216,77,2020-07-23
+Helsingborg|||Ostersunds|||0|||1,1,Östersunds FK,Helsingborgs IF,10,0,1,Helsingborg,Ostersunds,231,169,2020-09-27
+Helsingborg|||Sirius|||1|||2,1,IK Sirius,Helsingborgs IF,10,1,2,Helsingborg,Sirius,141,127,2020-08-17
+Helsingborg|||Varberg|||0|||3,1,Varbergs BoIS,Helsingborgs IF,10,0,3,Helsingborg,Varberg,201,7,2020-06-15
+Jonkopings|||Kalmar|||1|||3,1,,,,,,,,,241,2020-12-09
+Kalmar|||AIK|||0|||0,1,AIK,Kalmar FF,10,0,0,Kalmar,AIK,10,94,2020-08-02
+Kalmar|||Djurgarden|||0|||3,1,Djurgårdens IF,Kalmar FF,10,0,3,Kalmar,Djurgarden,40,219,2020-11-22
+Kalmar|||Elfsborg|||1|||2,1,IF Elfsborg,Kalmar FF,10,1,2,Kalmar,Elfsborg,100,55,2020-07-13
+Kalmar|||Falkenbergs|||0|||0,1,Falkenbergs FF,Kalmar FF,10,0,0,Kalmar,Falkenbergs,55,193,2020-10-25
+Kalmar|||Goteborg|||1|||1,1,IFK Göteborg,Kalmar FF,10,1,1,Kalmar,Goteborg,115,117,2020-08-13
+Kalmar|||Hacken|||0|||0,1,BK Häcken,Kalmar FF,10,0,0,Kalmar,Hacken,25,237,2020-12-06
+Kalmar|||Hammarby|||1|||2,1,Hammarby,Kalmar FF,10,1,2,Kalmar,Hammarby,70,61,2020-07-16
+Kalmar|||Helsingborg|||4|||0,1,Helsingborgs IF,Kalmar FF,10,4,0,Kalmar,Helsingborg,85,13,2020-06-18
+Kalmar|||Jonkopings|||1|||0,1,,,,,,,,,242,2020-12-13
+Kalmar|||Malmo FF|||0|||4,1,Malmö FF,Kalmar FF,10,0,4,Kalmar,Malmo FF,176,181,2020-10-04
+Kalmar|||Mjallby|||1|||4,1,Mjällby AIF,Kalmar FF,10,1,4,Kalmar,Mjallby,191,135,2020-08-24
+Kalmar|||Norrkoping|||0|||2,1,IFK Norrköping,Kalmar FF,10,0,2,Kalmar,Norrkoping,130,155,2020-09-14
+Kalmar|||Orebro|||0|||3,1,Örebro SK,Kalmar FF,10,0,3,Kalmar,Orebro,221,103,2020-08-06
+Kalmar|||Ostersunds|||1|||2,1,Östersunds FK,Kalmar FF,10,1,2,Kalmar,Ostersunds,236,33,2020-07-01
+Kalmar|||Sirius|||1|||1,1,IK Sirius,Kalmar FF,10,1,1,Kalmar,Sirius,145,78,2020-07-23
+Kalmar|||Varberg|||1|||1,1,Varbergs BoIS,Kalmar FF,10,1,1,Kalmar,Varberg,206,174,2020-09-28
+Malmo FF|||AIK|||0|||0,1,AIK,Malmö FF,10,0,0,Malmo FF,AIK,11,152,2020-09-13
+Malmo FF|||Djurgarden|||1|||0,1,Djurgårdens IF,Malmö FF,10,1,0,Malmo FF,Djurgarden,41,34,2020-07-01
+Malmo FF|||Elfsborg|||1|||1,1,IF Elfsborg,Malmö FF,10,1,1,Malmo FF,Elfsborg,101,143,2020-08-30
+Malmo FF|||Falkenbergs|||2|||1,1,Falkenbergs FF,Malmö FF,10,2,1,Malmo FF,Falkenbergs,56,132,2020-08-23
+Malmo FF|||Goteborg|||3|||1,1,IFK Göteborg,Malmö FF,10,3,1,Malmo FF,Goteborg,116,195,2020-10-25
+Malmo FF|||Hacken|||3|||0,1,BK Häcken,Malmö FF,10,3,0,Malmo FF,Hacken,26,170,2020-09-27
+Malmo FF|||Hammarby|||3|||0,1,Hammarby,Malmö FF,10,3,0,Malmo FF,Hammarby,71,79,2020-07-23
+Malmo FF|||Helsingborg|||4|||1,1,Helsingborgs IF,Malmö FF,10,4,1,Malmo FF,Helsingborg,86,98,2020-08-05
+Malmo FF|||Kalmar|||2|||1,1,Kalmar FF,Malmö FF,10,2,1,Malmo FF,Kalmar,161,65,2020-07-19
+Malmo FF|||Mjallby|||2|||0,1,Mjällby AIF,Malmö FF,10,2,0,Malmo FF,Mjallby,192,8,2020-06-15
+Malmo FF|||Norrkoping|||1|||1,1,IFK Norrköping,Malmö FF,10,1,1,Malmo FF,Norrkoping,131,56,2020-07-13
+Malmo FF|||Orebro|||2|||1,1,Örebro SK,Malmö FF,10,2,1,Malmo FF,Orebro,222,114,2020-08-12
+Malmo FF|||Ostersunds|||4|||0,1,Östersunds FK,Malmö FF,10,4,0,Malmo FF,Ostersunds,237,238,2020-12-06
+Malmo FF|||Sirius|||4|||0,1,IK Sirius,Malmö FF,10,4,0,Malmo FF,Sirius,146,216,2020-11-08
+Malmo FF|||Varberg|||2|||2,1,Varbergs BoIS,Malmö FF,10,2,2,Malmo FF,Varberg,207,18,2020-06-21
+Mjallby|||AIK|||3|||1,1,AIK,Mjällby AIF,10,3,1,Mjallby,AIK,12,109,2020-08-09
+Mjallby|||Djurgarden|||2|||1,1,Djurgårdens IF,Mjällby AIF,10,2,1,Mjallby,Djurgarden,42,229,2020-11-29
+Mjallby|||Elfsborg|||0|||5,1,IF Elfsborg,Mjällby AIF,10,0,5,Mjallby,Elfsborg,102,80,2020-07-23
+Mjallby|||Falkenbergs|||0|||1,1,Falkenbergs FF,Mjällby AIF,10,0,1,Mjallby,Falkenbergs,57,14,2020-06-18
+Mjallby|||Goteborg|||1|||1,1,IFK Göteborg,Mjällby AIF,10,1,1,Mjallby,Goteborg,117,141,2020-08-30
+Mjallby|||Hacken|||3|||1,1,BK Häcken,Mjällby AIF,10,3,1,Mjallby,Hacken,27,54,2020-07-12
+Mjallby|||Hammarby|||2|||1,1,Hammarby,Mjällby AIF,10,2,1,Mjallby,Hammarby,72,27,2020-06-28
+Mjallby|||Helsingborg|||3|||2,1,Helsingborgs IF,Mjällby AIF,10,3,2,Mjallby,Helsingborg,87,178,2020-10-04
+Mjallby|||Kalmar|||2|||2,1,Kalmar FF,Mjällby AIF,10,2,2,Mjallby,Kalmar,162,87,2020-07-27
+Mjallby|||Malmo FF|||2|||2,1,Malmö FF,Mjällby AIF,10,2,2,Mjallby,Malmo FF,177,124,2020-08-16
+Mjallby|||Norrkoping|||2|||0,1,IFK Norrköping,Mjällby AIF,10,2,0,Mjallby,Norrkoping,132,211,2020-11-07
+Mjallby|||Orebro|||1|||0,1,Örebro SK,Mjällby AIF,10,1,0,Mjallby,Orebro,223,164,2020-09-21
+Mjallby|||Ostersunds|||3|||0,1,Östersunds FK,Mjällby AIF,10,3,0,Mjallby,Ostersunds,238,202,2020-11-01
+Mjallby|||Sirius|||1|||1,1,IK Sirius,Mjällby AIF,10,1,1,Mjallby,Sirius,147,104,2020-08-06
+Mjallby|||Varberg|||2|||3,1,Varbergs BoIS,Mjällby AIF,10,2,3,Mjallby,Varberg,208,153,2020-09-13
+Norrkoping|||AIK|||2|||2,1,AIK,IFK Norrköping,10,2,2,Norrkoping,AIK,8,197,2020-10-26
+Norrkoping|||Djurgarden|||3|||0,1,Djurgårdens IF,IFK Norrköping,10,3,0,Norrkoping,Djurgarden,38,19,2020-06-21
+Norrkoping|||Elfsborg|||1|||1,1,IF Elfsborg,IFK Norrköping,10,1,1,Norrkoping,Elfsborg,98,35,2020-07-01
+Norrkoping|||Falkenbergs|||4|||1,1,Falkenbergs FF,IFK Norrköping,10,4,1,Norrkoping,Falkenbergs,53,223,2020-11-23
+Norrkoping|||Goteborg|||3|||1,1,IFK Göteborg,IFK Norrköping,10,3,1,Norrkoping,Goteborg,113,46,2020-07-06
+Norrkoping|||Hacken|||0|||1,1,BK Häcken,IFK Norrköping,10,0,1,Norrkoping,Hacken,23,136,2020-08-24
+Norrkoping|||Hammarby|||1|||2,1,Hammarby,IFK Norrköping,10,1,2,Norrkoping,Hammarby,68,118,2020-08-13
+Norrkoping|||Helsingborg|||3|||4,1,Helsingborgs IF,IFK Norrköping,10,3,4,Norrkoping,Helsingborg,83,239,2020-12-06
+Norrkoping|||Kalmar|||2|||1,1,Kalmar FF,IFK Norrköping,10,2,1,Norrkoping,Kalmar,159,3,2020-06-14
+Norrkoping|||Malmo FF|||1|||1,1,Malmö FF,IFK Norrköping,10,1,1,Norrkoping,Malmo FF,174,162,2020-09-20
+Norrkoping|||Mjallby|||1|||1,1,Mjällby AIF,IFK Norrköping,10,1,1,Norrkoping,Mjallby,189,96,2020-08-03
+Norrkoping|||Orebro|||2|||0,1,Örebro SK,IFK Norrköping,10,2,0,Norrkoping,Orebro,219,62,2020-07-16
+Norrkoping|||Ostersunds|||2|||2,1,Östersunds FK,IFK Norrköping,10,2,2,Norrkoping,Ostersunds,234,147,2020-09-10
+Norrkoping|||Sirius|||1|||2,1,IK Sirius,IFK Norrköping,10,1,2,Norrkoping,Sirius,144,182,2020-10-04
+Norrkoping|||Varberg|||2|||0,1,Varbergs BoIS,IFK Norrköping,10,2,0,Norrkoping,Varberg,204,75,2020-07-22
+Orebro|||AIK|||0|||2,1,AIK,Örebro SK,10,0,2,Orebro,AIK,14,5,2020-06-14
+Orebro|||Djurgarden|||0|||3,1,Djurgårdens IF,Örebro SK,10,0,3,Orebro,Djurgarden,44,121,2020-08-15
+Orebro|||Elfsborg|||3|||2,1,IF Elfsborg,Örebro SK,10,3,2,Orebro,Elfsborg,104,176,2020-10-03
+Orebro|||Falkenbergs|||1|||2,1,Falkenbergs FF,Örebro SK,10,1,2,Orebro,Falkenbergs,59,90,2020-08-01
+Orebro|||Goteborg|||1|||1,1,IFK Göteborg,Örebro SK,10,1,1,Orebro,Goteborg,119,107,2020-08-09
+Orebro|||Hacken|||0|||0,1,BK Häcken,Örebro SK,10,0,0,Orebro,Hacken,29,40,2020-07-02
+Orebro|||Hammarby|||2|||1,1,Hammarby,Örebro SK,10,2,1,Orebro,Hammarby,74,240,2020-12-06
+Orebro|||Helsingborg|||3|||2,1,Helsingborgs IF,Örebro SK,10,3,2,Orebro,Helsingborg,89,196,2020-10-25
+Orebro|||Kalmar|||0|||1,1,Kalmar FF,Örebro SK,10,0,1,Orebro,Kalmar,164,213,2020-11-08
+Orebro|||Malmo FF|||3|||2,1,Malmö FF,Örebro SK,10,3,2,Orebro,Malmo FF,179,148,2020-09-10
+Orebro|||Mjallby|||3|||1,1,Mjällby AIF,Örebro SK,10,3,1,Orebro,Mjallby,194,72,2020-07-20
+Orebro|||Norrkoping|||4|||3,1,IFK Norrköping,Örebro SK,10,4,3,Orebro,Norrkoping,134,144,2020-08-30
+Orebro|||Ostersunds|||0|||0,1,Östersunds FK,Örebro SK,10,0,0,Orebro,Ostersunds,240,21,2020-06-21
+Orebro|||Sirius|||2|||1,1,IK Sirius,Örebro SK,10,2,1,Orebro,Sirius,149,167,2020-09-26
+Orebro|||Varberg|||1|||0,1,Varbergs BoIS,Örebro SK,10,1,0,Orebro,Varberg,209,52,2020-07-12
+Ostersunds|||AIK|||1|||2,1,AIK,Östersunds FK,10,1,2,Ostersunds,AIK,15,179,2020-10-04
+Ostersunds|||Djurgarden|||1|||1,1,Djurgårdens IF,Östersunds FK,10,1,1,Ostersunds,Djurgarden,45,160,2020-09-20
+Ostersunds|||Elfsborg|||0|||1,1,IF Elfsborg,Östersunds FK,10,0,1,Ostersunds,Elfsborg,105,110,2020-08-09
+Ostersunds|||Falkenbergs|||2|||1,1,Falkenbergs FF,Östersunds FK,10,2,1,Ostersunds,Falkenbergs,60,137,2020-08-29
+Ostersunds|||Goteborg|||0|||4,1,IFK Göteborg,Östersunds FK,10,0,4,Ostersunds,Goteborg,120,226,2020-11-29
+Ostersunds|||Hacken|||2|||2,1,BK Häcken,Östersunds FK,10,2,2,Ostersunds,Hacken,30,70,2020-07-19
+Ostersunds|||Hammarby|||1|||3,1,Hammarby,Östersunds FK,10,1,3,Ostersunds,Hammarby,75,194,2020-10-25
+Ostersunds|||Helsingborg|||0|||0,1,Helsingborgs IF,Östersunds FK,10,0,0,Ostersunds,Helsingborg,90,88,2020-07-27
+Ostersunds|||Kalmar|||2|||0,1,Kalmar FF,Östersunds FK,10,2,0,Ostersunds,Kalmar,165,128,2020-08-17
+Ostersunds|||Malmo FF|||1|||2,1,Malmö FF,Östersunds FK,10,1,2,Ostersunds,Malmo FF,180,63,2020-07-16
+Ostersunds|||Mjallby|||0|||1,1,Mjällby AIF,Östersunds FK,10,0,1,Ostersunds,Mjallby,195,47,2020-07-06
+Ostersunds|||Norrkoping|||2|||4,1,IFK Norrköping,Östersunds FK,10,2,4,Ostersunds,Norrkoping,135,25,2020-06-27
+Ostersunds|||Orebro|||0|||0,1,Örebro SK,Östersunds FK,10,0,0,Ostersunds,Orebro,225,156,2020-09-14
+Ostersunds|||Sirius|||0|||2,1,IK Sirius,Östersunds FK,10,0,2,Ostersunds,Sirius,150,15,2020-06-18
+Ostersunds|||Varberg|||0|||4,1,Varbergs BoIS,Östersunds FK,10,0,4,Ostersunds,Varberg,210,221,2020-11-22
+Sirius|||AIK|||0|||0,1,AIK,IK Sirius,10,0,0,Sirius,AIK,9,200,2020-10-29
+Sirius|||Djurgarden|||0|||2,1,Djurgårdens IF,IK Sirius,10,0,2,Sirius,Djurgarden,39,1,2020-06-14
+Sirius|||Elfsborg|||1|||1,1,IF Elfsborg,IK Sirius,10,1,1,Sirius,Elfsborg,99,230,2020-11-29
+Sirius|||Falkenbergs|||2|||1,1,Falkenbergs FF,IK Sirius,10,2,1,Sirius,Falkenbergs,54,165,2020-09-21
+Sirius|||Goteborg|||2|||2,1,IFK Göteborg,IK Sirius,10,2,2,Sirius,Goteborg,114,28,2020-06-28
+Sirius|||Hacken|||2|||2,1,BK Häcken,IK Sirius,10,2,2,Sirius,Hacken,24,24,2020-06-22
+Sirius|||Hammarby|||3|||1,1,Hammarby,IK Sirius,10,3,1,Sirius,Hammarby,69,130,2020-08-22
+Sirius|||Helsingborg|||3|||1,1,Helsingborgs IF,IK Sirius,10,3,1,Sirius,Helsingborg,84,119,2020-08-13
+Sirius|||Kalmar|||2|||2,1,Kalmar FF,IK Sirius,10,2,2,Sirius,Kalmar,160,203,2020-11-01
+Sirius|||Malmo FF|||2|||5,1,Malmö FF,IK Sirius,10,2,5,Sirius,Malmo FF,175,85,2020-07-26
+Sirius|||Mjallby|||0|||1,1,Mjällby AIF,IK Sirius,10,0,1,Sirius,Mjallby,190,224,2020-11-23
+Sirius|||Norrkoping|||4|||2,1,IFK Norrköping,IK Sirius,10,4,2,Sirius,Norrkoping,129,66,2020-07-19
+Sirius|||Orebro|||2|||1,1,Örebro SK,IK Sirius,10,2,1,Sirius,Orebro,220,44,2020-07-05
+Sirius|||Ostersunds|||2|||3,1,Östersunds FK,IK Sirius,10,2,3,Sirius,Ostersunds,235,186,2020-10-18
+Sirius|||Varberg|||3|||3,1,Varbergs BoIS,IK Sirius,10,3,3,Sirius,Varberg,205,112,2020-08-10
+Varberg|||AIK|||2|||2,1,AIK,Varbergs BoIS,10,2,2,Varberg,AIK,13,67,2020-07-19
+Varberg|||Djurgarden|||1|||2,1,Djurgårdens IF,Varbergs BoIS,10,1,2,Varberg,Djurgarden,43,99,2020-08-05
+Varberg|||Elfsborg|||0|||0,1,IF Elfsborg,Varbergs BoIS,10,0,0,Varberg,Elfsborg,103,198,2020-10-26
+Varberg|||Falkenbergs|||3|||1,1,Falkenbergs FF,Varbergs BoIS,10,3,1,Varberg,Falkenbergs,58,32,2020-06-29
+Varberg|||Goteborg|||1|||2,1,IFK Göteborg,Varbergs BoIS,10,1,2,Varberg,Goteborg,118,16,2020-06-18
+Varberg|||Hacken|||1|||3,1,BK Häcken,Varbergs BoIS,10,1,3,Varberg,Hacken,28,120,2020-08-13
+Varberg|||Hammarby|||5|||2,1,Hammarby,Varbergs BoIS,10,5,2,Varberg,Hammarby,73,214,2020-11-08
+Varberg|||Helsingborg|||1|||3,1,Helsingborgs IF,Varbergs BoIS,10,1,3,Varberg,Helsingborg,88,166,2020-09-21
+Varberg|||Kalmar|||1|||0,1,Kalmar FF,Varbergs BoIS,10,1,0,Varberg,Kalmar,163,48,2020-07-06
+Varberg|||Malmo FF|||3|||2,1,Malmö FF,Varbergs BoIS,10,3,2,Varberg,Malmo FF,178,227,2020-11-29
+Varberg|||Mjallby|||1|||0,1,Mjällby AIF,Varbergs BoIS,10,1,0,Varberg,Mjallby,193,64,2020-07-16
+Varberg|||Norrkoping|||1|||3,1,IFK Norrköping,Varbergs BoIS,10,1,3,Varberg,Norrkoping,133,188,2020-10-18
+Varberg|||Orebro|||2|||1,1,Örebro SK,Varbergs BoIS,10,2,1,Varberg,Orebro,224,134,2020-08-23
+Varberg|||Ostersunds|||1|||1,1,Östersunds FK,Varbergs BoIS,10,1,1,Varberg,Ostersunds,239,93,2020-08-02
+Varberg|||Sirius|||2|||0,1,IK Sirius,Varbergs BoIS,10,2,0,Varberg,Sirius,148,138,2020-08-29

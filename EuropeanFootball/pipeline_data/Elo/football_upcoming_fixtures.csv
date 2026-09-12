@@ -188,6 +188,7 @@ Spain,la_liga,league,La Liga,1,openfootball,2026-09-15,Elche,Real Madrid
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-15,Rayo Vallecano,Espanyol
 Europe,europa_league,continental,Europa League,,wikipedia,2026-09-16,AC Milan,Benfica
 Europe,europa_league,continental,Europa League,,wikipedia,2026-09-16,Anderlecht,Lyon
+Europe,europa_league,continental,Europa League,,wikipedia,2026-09-16,Olympiacos,Jagiellonia Białystok
 Europe,europa_league,continental,Europa League,,wikipedia,2026-09-16,Sturm Graz,Rennes
 Europe,europa_league,continental,Europa League,,wikipedia,2026-09-16,Sunderland,AZ
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-16,Atlético Madrid,Osasuna
@@ -195,6 +196,7 @@ Spain,la_liga,league,La Liga,1,openfootball,2026-09-16,Barcelona,Racing Santande
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-16,Deportivo La Coruña,Sevilla
 Spain,la_liga,league,La Liga,1,openfootball,2026-09-16,Levante,Athletic Club
 Europe,europa_league,continental,Europa League,,wikipedia,2026-09-17,Beşiktaş,Marseille
+Europe,europa_league,continental,Europa League,,wikipedia,2026-09-17,Crystal Palace,Lech Poznań
 Europe,europa_league,continental,Europa League,,wikipedia,2026-09-17,Juventus,NEC
 Europe,europa_league,continental,Europa League,,wikipedia,2026-09-17,Real Sociedad,Bournemouth
 Europe,europa_league,continental,Europa League,,wikipedia,2026-09-17,Viktoria Plzeň,Union Saint-Gilloise
@@ -372,13 +374,16 @@ Europe,conference_league,continental,Conference League,,wikipedia,2026-10-15,Cop
 Europe,conference_league,continental,Conference League,,wikipedia,2026-10-15,Freiburg,Jablonec
 Europe,conference_league,continental,Conference League,,wikipedia,2026-10-15,Hearts,Nordsjælland
 Europe,conference_league,continental,Conference League,,wikipedia,2026-10-15,Twente,Thun
+Europe,conference_league,continental,Conference League,,wikipedia,2026-10-15,Universitatea Craiova,Getafe
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-15,Benfica,Celtic
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-15,Bournemouth,Sturm Graz
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-15,Celta Vigo,Juventus
+Europe,europa_league,continental,Europa League,,wikipedia,2026-10-15,Lech Poznań,Bayer Leverkusen
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-15,Lyon,Crystal Palace
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-15,Marseille,Olympiacos
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-15,Red Bull Salzburg,AC Milan
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-15,Rennes,OFI
+Europe,europa_league,continental,Europa League,,wikipedia,2026-10-15,Sparta Prague,Lillestrøm
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-15,Union Saint-Gilloise,Real Sociedad
 England,championship,league,Championship,2,openfootball,2026-10-16,Burnley,Wolverhampton Wanderers
 Netherlands,eredivisie,league,Eredivisie,1,openfootball,2026-10-16,Heerenveen,Excelsior
@@ -459,7 +464,10 @@ Europe,conference_league,continental,Conference League,,wikipedia,2026-10-22,Tra
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-22,Beşiktaş,Crystal Palace
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-22,Bournemouth,AC Milan
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-22,Celtic,Celta Vigo
+Europe,europa_league,continental,Europa League,,wikipedia,2026-10-22,Jagiellonia Białystok,Anderlecht
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-22,Juventus,Rennes
+Europe,europa_league,continental,Europa League,,wikipedia,2026-10-22,Lech Poznań,Sunderland
+Europe,europa_league,continental,Europa League,,wikipedia,2026-10-22,Lillestrøm,Real Sociedad
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-22,OFI,Bayer Leverkusen
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-22,Olympiacos,Sparta Prague
 Europe,europa_league,continental,Europa League,,wikipedia,2026-10-22,Sturm Graz,Marseille
@@ -644,13 +652,16 @@ England,championship,league,Championship,2,openfootball,2026-11-04,Wrexham,Middl
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-05,Getafe,Brighton & Hove Albion
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-05,Midtjylland,Ajax
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-05,Monaco,Nordsjælland
+Europe,conference_league,continental,Conference League,,wikipedia,2026-11-05,Sint-Truiden,Brann
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-05,Thun,Hearts
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-05,Trabzonspor,Freiburg
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-05,AZ,Juventus
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-05,Anderlecht,Red Bull Salzburg
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-05,Bayer Leverkusen,Marseille
+Europe,europa_league,continental,Europa League,,wikipedia,2026-11-05,Benfica,Lech Poznań
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-05,Celta Vigo,Union Saint-Gilloise
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-05,Celtic,Beşiktaş
+Europe,europa_league,continental,Europa League,,wikipedia,2026-11-05,Lillestrøm,Viktoria Plzeň
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-05,Real Sociedad,Lyon
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-05,Rennes,Olympiacos
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-05,Sparta Prague,Bournemouth
@@ -814,16 +825,20 @@ England,championship,league,Championship,2,openfootball,2026-11-25,Burnley,Birmi
 England,championship,league,Championship,2,openfootball,2026-11-25,Stoke City,Millwall
 England,championship,league,Championship,2,openfootball,2026-11-25,Watford,Blackburn Rovers
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-26,Ajax,Thun
+Europe,conference_league,continental,Conference League,,wikipedia,2026-11-26,Brighton & Hove Albion,Universitatea Craiova
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-26,Freiburg,Twente
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-26,Hearts,Monaco
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-26,Jablonec,Lugano
 Europe,conference_league,continental,Conference League,,wikipedia,2026-11-26,Nordsjælland,Panathinaikos
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,Celta Vigo,Bournemouth
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,Crystal Palace,Real Sociedad
+Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,Lyon,Lillestrøm
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,NEC,Rennes
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,OFI,Anderlecht
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,Olympiacos,AC Milan
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,Sparta Prague,AZ
+Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,Sunderland,Jagiellonia Białystok
+Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,Union Saint-Gilloise,Lech Poznań
 Europe,europa_league,continental,Europa League,,wikipedia,2026-11-26,Viktoria Plzeň,Benfica
 England,championship,league,Championship,2,openfootball,2026-11-27,Southampton,Middlesbrough
 England,premier_league,league,Premier League,1,openfootball,2026-11-28,Arsenal,Manchester City
@@ -1003,6 +1018,7 @@ England,championship,league,Championship,2,openfootball,2026-12-09,Derby County,
 England,championship,league,Championship,2,openfootball,2026-12-09,Lincoln City,Stoke City
 England,championship,league,Championship,2,openfootball,2026-12-09,Preston North End,Portsmouth
 England,championship,league,Championship,2,openfootball,2026-12-09,Southampton,Burnley
+Europe,conference_league,continental,Conference League,,wikipedia,2026-12-10,Brann,Braga
 Europe,conference_league,continental,Conference League,,wikipedia,2026-12-10,Brighton & Hove Albion,Monaco
 Europe,conference_league,continental,Conference League,,wikipedia,2026-12-10,Copenhagen,Lugano
 Europe,conference_league,continental,Conference League,,wikipedia,2026-12-10,Freiburg,Panathinaikos
@@ -1014,6 +1030,7 @@ Europe,europa_league,continental,Europa League,,wikipedia,2026-12-10,AZ,Sturm Gr
 Europe,europa_league,continental,Europa League,,wikipedia,2026-12-10,Bayer Leverkusen,Beşiktaş
 Europe,europa_league,continental,Europa League,,wikipedia,2026-12-10,Benfica,OFI
 Europe,europa_league,continental,Europa League,,wikipedia,2026-12-10,Bournemouth,Viktoria Plzeň
+Europe,europa_league,continental,Europa League,,wikipedia,2026-12-10,Jagiellonia Białystok,Crystal Palace
 Europe,europa_league,continental,Europa League,,wikipedia,2026-12-10,Lyon,Union Saint-Gilloise
 Europe,europa_league,continental,Europa League,,wikipedia,2026-12-10,Marseille,Celta Vigo
 Europe,europa_league,continental,Europa League,,wikipedia,2026-12-10,Red Bull Salzburg,Sparta Prague
@@ -1096,8 +1113,11 @@ Spain,la_liga,league,La Liga,1,openfootball,2026-12-13,Real Madrid,Osasuna
 Spain,la_liga,league,La Liga,1,openfootball,2026-12-13,Real Sociedad,Getafe
 Spain,la_liga,league,La Liga,1,openfootball,2026-12-13,Villarreal,Rayo Vallecano
 Europe,conference_league,continental,Conference League,,wikipedia,2026-12-17,Ajax,Getafe
+Europe,conference_league,continental,Conference League,,wikipedia,2026-12-17,Atalanta,Mjällby AIF
+Europe,conference_league,continental,Conference League,,wikipedia,2026-12-17,Gent,Brann
 Europe,conference_league,continental,Conference League,,wikipedia,2026-12-17,Lugano,Sint-Truiden
 Europe,conference_league,continental,Conference League,,wikipedia,2026-12-17,Panathinaikos,Brighton & Hove Albion
+Europe,conference_league,continental,Conference League,,wikipedia,2026-12-17,Universitatea Craiova,Copenhagen
 England,championship,league,Championship,2,openfootball,2026-12-18,West Bromwich Albion,Sheffield United
 England,premier_league,league,Premier League,1,openfootball,2026-12-19,Arsenal,Manchester United
 England,premier_league,league,Premier League,1,openfootball,2026-12-19,Bournemouth,Coventry City
@@ -1430,6 +1450,8 @@ Europe,europa_league,continental,Europa League,,wikipedia,2027-01-21,Bayer Lever
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-21,Beşiktaş,Union Saint-Gilloise
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-21,Celtic,Marseille
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-21,Crystal Palace,Sparta Prague
+Europe,europa_league,continental,Europa League,,wikipedia,2027-01-21,Jagiellonia Białystok,Lyon
+Europe,europa_league,continental,Europa League,,wikipedia,2027-01-21,Lillestrøm,Bournemouth
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-21,NEC,Benfica
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-21,Real Sociedad,Viktoria Plzeň
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-21,Sturm Graz,OFI
@@ -1524,12 +1546,15 @@ England,championship,league,Championship,2,openfootball,2027-01-27,Swansea City,
 England,championship,league,Championship,2,openfootball,2027-01-27,West Ham United,Cardiff City
 England,championship,league,Championship,2,openfootball,2027-01-27,Wolverhampton Wanderers,Bristol City
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-28,Benfica,AZ
+Europe,europa_league,continental,Europa League,,wikipedia,2027-01-28,Celta Vigo,Lillestrøm
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-28,Juventus,Real Sociedad
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-28,Lyon,Bayer Leverkusen
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-28,Marseille,Anderlecht
+Europe,europa_league,continental,Europa League,,wikipedia,2027-01-28,OFI,Lech Poznań
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-28,Red Bull Salzburg,Crystal Palace
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-28,Sparta Prague,Rennes
 Europe,europa_league,continental,Europa League,,wikipedia,2027-01-28,Union Saint-Gilloise,Celtic
+Europe,europa_league,continental,Europa League,,wikipedia,2027-01-28,Viktoria Plzeň,Jagiellonia Białystok
 England,premier_league,league,Premier League,1,openfootball,2027-01-30,Aston Villa,Ipswich Town
 England,premier_league,league,Premier League,1,openfootball,2027-01-30,Bournemouth,Fulham
 England,premier_league,league,Premier League,1,openfootball,2027-01-30,Brentford,Manchester United

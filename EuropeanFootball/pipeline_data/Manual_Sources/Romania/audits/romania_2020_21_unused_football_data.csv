@@ -1,0 +1,90 @@
+Country,League,Season,Date,Time,Home,Away,HG,AG,Res,PSCH,PSCD,PSCA,MaxCH,MaxCD,MaxCA,AvgCH,AvgCD,AvgCA,BFECH,BFECD,BFECA,B365CH,B365CD,B365CA,ParsedDate,MatchKey,Occurrence,FDID
+Romania,Superliga,2020/2021,14/02/2021,12:30,Academica Clinceni,Univ. Craiova,0,0,D,5.43,3.65,1.73,5.45,3.75,1.87,4.87,3.51,1.7,,,,,,,2021-02-14,Academica Clinceni|||Univ. Craiova|||0|||0,1,180
+Romania,Superliga,2020/2021,19/02/2021,18:30,Univ. Craiova,FC Hermannstadt,1,0,H,1.45,4.3,8.51,1.47,4.3,8.51,1.43,4.03,7.47,,,,,,,2021-02-19,Univ. Craiova|||FC Hermannstadt|||1|||0,1,186
+Romania,Superliga,2020/2021,27/02/2021,18:00,Chindia Targoviste,Univ. Craiova,1,0,H,4.63,3.13,2,4.67,3.4,2.01,4.15,3.1,1.94,,,,,,,2021-02-27,Chindia Targoviste|||Univ. Craiova|||1|||0,1,195
+Romania,Superliga,2020/2021,06/03/2021,12:30,Univ. Craiova,FC Botosani,1,0,H,2.05,3.23,4.22,2.07,3.28,4.23,2.01,3.12,3.85,,,,,,,2021-03-06,Univ. Craiova|||FC Botosani|||1|||0,1,202
+Romania,Superliga,2020/2021,12/03/2021,18:30,Gaz Metan Medias,Univ. Craiova,0,2,A,5.89,3.69,1.68,6.02,3.69,1.9,5.21,3.48,1.67,,,,,,,2021-03-12,Gaz Metan Medias|||Univ. Craiova|||0|||2,1,208
+Romania,Superliga,2020/2021,16/03/2021,17:00,Univ. Craiova,UTA Arad,2,0,H,1.51,4,8.07,1.52,4.04,8.07,1.48,3.77,7.23,,,,,,,2021-03-16,Univ. Craiova|||UTA Arad|||2|||0,1,216
+Romania,Superliga,2020/2021,04/04/2021,18:30,FCSB,Univ. Craiova,0,0,D,2.21,3.12,3.84,2.25,3.21,3.84,2.15,3.03,3.54,,,,,,,2021-04-04,FCSB|||Univ. Craiova|||0|||0,1,229
+Romania,Superliga,2020/2021,11/04/2021,19:30,Univ. Craiova,CFR Cluj,0,0,D,2.79,2.88,3.06,2.83,2.92,3.09,2.68,2.78,2.91,,,,,,,2021-04-11,Univ. Craiova|||CFR Cluj|||0|||0,1,238
+Romania,Superliga,2020/2021,16/04/2021,15:30,UTA Arad,Viitorul Constanta,1,0,H,2.53,3.27,3.01,2.79,3.27,3.04,2.52,3.09,2.8,,,,,,,2021-04-16,UTA Arad|||Viitorul Constanta|||1|||0,1,241
+Romania,Superliga,2020/2021,16/04/2021,18:30,Astra,Din. Bucuresti,0,0,D,2.67,2.87,3.22,2.73,3.01,3.22,2.54,2.82,3.03,,,,,,,2021-04-16,Astra|||Din. Bucuresti|||0|||0,1,242
+Romania,Superliga,2020/2021,17/04/2021,13:00,Chindia Targoviste,FC Hermannstadt,2,0,H,2.45,2.98,3.45,2.48,3.1,3.5,2.36,2.86,3.29,,,,,,,2021-04-17,Chindia Targoviste|||FC Hermannstadt|||2|||0,1,243
+Romania,Superliga,2020/2021,17/04/2021,15:30,Gaz Metan Medias,FC Voluntari,1,1,D,2.61,2.98,3.18,2.64,3.05,3.2,2.49,2.89,3.03,,,,,,,2021-04-17,Gaz Metan Medias|||FC Voluntari|||1|||1,1,244
+Romania,Superliga,2020/2021,17/04/2021,18:30,Univ. Craiova,Sepsi Sf. Gheorghe,0,0,D,1.81,3.22,5.74,1.88,3.3,5.74,1.8,3.09,5.11,,,,,,,2021-04-17,Univ. Craiova|||Sepsi Sf. Gheorghe|||0|||0,1,245
+Romania,Superliga,2020/2021,18/04/2021,11:30,FC Arges,Poli Iasi,0,0,D,1.83,3.59,4.75,2.03,3.59,4.83,1.86,3.31,4.23,,,,,,,2021-04-18,FC Arges|||Poli Iasi|||0|||0,1,246
+Romania,Superliga,2020/2021,18/04/2021,16:30,CFR Cluj,Academica Clinceni,3,0,H,1.38,4.54,10.38,1.44,4.54,10.67,1.36,4.23,9.11,,,,,,,2021-04-18,CFR Cluj|||Academica Clinceni|||3|||0,1,247
+Romania,Superliga,2020/2021,18/04/2021,19:00,FCSB,FC Botosani,2,1,H,1.76,3.64,5.15,1.79,3.8,5.51,1.7,3.58,4.83,,,,,,,2021-04-18,FCSB|||FC Botosani|||2|||1,1,248
+Romania,Superliga,2020/2021,20/04/2021,14:45,FC Hermannstadt,Astra,1,3,A,2.51,2.91,3.43,2.67,3,3.44,2.5,2.81,3.11,,,,,,,2021-04-20,FC Hermannstadt|||Astra|||1|||3,1,249
+Romania,Superliga,2020/2021,20/04/2021,17:00,Viitorul Constanta,Gaz Metan Medias,1,0,H,1.94,3.28,4.62,2,3.4,4.77,1.9,3.2,4.16,,,,,,,2021-04-20,Viitorul Constanta|||Gaz Metan Medias|||1|||0,1,250
+Romania,Superliga,2020/2021,20/04/2021,19:30,Din. Bucuresti,UTA Arad,0,1,A,2.45,3.05,3.37,2.47,3.07,3.37,2.34,2.93,3.21,,,,,,,2021-04-20,Din. Bucuresti|||UTA Arad|||0|||1,2,251
+Romania,Superliga,2020/2021,21/04/2021,14:45,FC Arges,Chindia Targoviste,0,1,A,2.65,2.73,3.45,2.65,2.76,3.5,2.55,2.64,3.23,,,,,,,2021-04-21,FC Arges|||Chindia Targoviste|||0|||1,1,252
+Romania,Superliga,2020/2021,21/04/2021,17:00,FC Botosani,Univ. Craiova,1,1,D,3.92,3.06,2.21,4.02,3.06,2.23,3.66,2.92,2.17,,,,,,,2021-04-21,FC Botosani|||Univ. Craiova|||1|||1,1,253
+Romania,Superliga,2020/2021,21/04/2021,19:30,Sepsi Sf. Gheorghe,CFR Cluj,0,1,A,4.72,3.36,1.9,4.95,3.36,1.98,4.45,3.22,1.85,,,,,,,2021-04-21,Sepsi Sf. Gheorghe|||CFR Cluj|||0|||1,2,254
+Romania,Superliga,2020/2021,22/04/2021,15:30,Poli Iasi,FC Voluntari,0,1,A,3.3,3.19,2.4,3.37,3.19,2.52,3.09,3,2.37,,,,,,,2021-04-22,Poli Iasi|||FC Voluntari|||0|||1,1,255
+Romania,Superliga,2020/2021,22/04/2021,18:15,Academica Clinceni,FCSB,0,2,A,7.32,3.9,1.55,7.45,4,1.58,6.39,3.79,1.52,,,,,,,2021-04-22,Academica Clinceni|||FCSB|||0|||2,2,256
+Romania,Superliga,2020/2021,23/04/2021,15:30,UTA Arad,FC Hermannstadt,0,1,A,2.52,3.06,3.24,2.55,3.2,3.46,2.39,2.97,3.12,,,,,,,2021-04-23,UTA Arad|||FC Hermannstadt|||0|||1,1,257
+Romania,Superliga,2020/2021,23/04/2021,18:30,Gaz Metan Medias,Din. Bucuresti,4,1,H,3.01,2.93,2.78,3.02,2.96,2.8,2.83,2.82,2.69,,,,,,,2021-04-23,Gaz Metan Medias|||Din. Bucuresti|||4|||1,1,258
+Romania,Superliga,2020/2021,24/04/2021,15:30,Astra,FC Arges,0,1,A,2.92,2.91,2.88,2.92,2.95,3.37,2.71,2.82,2.85,,,,,,,2021-04-24,Astra|||FC Arges|||0|||1,1,259
+Romania,Superliga,2020/2021,24/04/2021,18:30,CFR Cluj,Univ. Craiova,1,2,A,2,3.07,4.78,2,3.3,4.78,1.94,2.99,4.39,,,,,,,2021-04-24,CFR Cluj|||Univ. Craiova|||1|||2,1,260
+Romania,Superliga,2020/2021,25/04/2021,13:00,Chindia Targoviste,Poli Iasi,2,0,H,1.75,3.35,6.04,1.76,3.58,6.25,1.71,3.23,5.47,,,,,,,2021-04-25,Chindia Targoviste|||Poli Iasi|||2|||0,1,261
+Romania,Superliga,2020/2021,25/04/2021,17:15,FC Botosani,Academica Clinceni,2,1,H,1.95,3.24,4.66,2.1,3.25,5.21,1.89,3.15,4.35,,,,,,,2021-04-25,FC Botosani|||Academica Clinceni|||2|||1,1,262
+Romania,Superliga,2020/2021,25/04/2021,19:30,FCSB,Sepsi Sf. Gheorghe,1,2,A,2.03,3.05,4.69,2.07,3.32,4.69,1.97,3.04,4.16,,,,,,,2021-04-25,FCSB|||Sepsi Sf. Gheorghe|||1|||2,1,263
+Romania,Superliga,2020/2021,26/04/2021,18:30,FC Voluntari,Viitorul Constanta,1,0,H,3.22,2.97,2.6,3.22,3,2.7,2.95,2.83,2.59,,,,,,,2021-04-26,FC Voluntari|||Viitorul Constanta|||1|||0,1,264
+Romania,Superliga,2020/2021,27/04/2021,14:30,FC Hermannstadt,Gaz Metan Medias,1,2,A,2.69,2.82,3.26,2.75,2.85,3.32,2.58,2.69,3.13,,,,,,,2021-04-27,FC Hermannstadt|||Gaz Metan Medias|||1|||2,1,265
+Romania,Superliga,2020/2021,27/04/2021,17:00,FC Arges,UTA Arad,4,1,H,2.3,3.05,3.68,2.3,3.08,3.8,2.2,2.96,3.48,,,,,,,2021-04-27,FC Arges|||UTA Arad|||4|||1,1,266
+Romania,Superliga,2020/2021,28/04/2021,12:00,Chindia Targoviste,Astra,0,0,D,2.64,2.68,3.55,2.64,2.7,3.6,2.52,2.59,3.38,,,,,,,2021-04-28,Chindia Targoviste|||Astra|||0|||0,1,267
+Romania,Superliga,2020/2021,28/04/2021,14:30,Sepsi Sf. Gheorghe,Academica Clinceni,1,0,H,1.68,3.65,5.89,1.75,3.65,6.3,1.68,3.37,5.38,,,,,,,2021-04-28,Sepsi Sf. Gheorghe|||Academica Clinceni|||1|||0,1,268
+Romania,Superliga,2020/2021,28/04/2021,17:00,CFR Cluj,FC Botosani,2,0,H,1.48,4.18,8.02,1.51,4.18,8.02,1.47,3.91,7.07,,,,,,,2021-04-28,CFR Cluj|||FC Botosani|||2|||0,1,269
+Romania,Superliga,2020/2021,29/04/2021,12:30,Poli Iasi,Viitorul Constanta,0,3,A,4.32,3.45,1.94,4.52,3.45,1.95,4.06,3.33,1.88,,,,,,,2021-04-29,Poli Iasi|||Viitorul Constanta|||0|||3,2,270
+Romania,Superliga,2020/2021,29/04/2021,15:00,Din. Bucuresti,FC Voluntari,2,0,H,2.42,3.08,3.4,2.42,3.27,3.49,2.33,2.99,3.18,,,,,,,2021-04-29,Din. Bucuresti|||FC Voluntari|||2|||0,1,271
+Romania,Superliga,2020/2021,29/04/2021,17:45,Univ. Craiova,FCSB,2,0,H,2.54,3.2,3.06,2.56,3.26,3.06,2.45,3.08,2.9,,,,,,,2021-04-29,Univ. Craiova|||FCSB|||2|||0,1,272
+Romania,Superliga,2020/2021,30/04/2021,15:30,Gaz Metan Medias,FC Arges,1,1,D,3.05,2.89,2.78,3.07,2.89,2.78,2.9,2.8,2.66,,,,,,,2021-04-30,Gaz Metan Medias|||FC Arges|||1|||1,1,273
+Romania,Superliga,2020/2021,01/05/2021,13:00,UTA Arad,Chindia Targoviste,0,1,A,2.43,2.87,3.65,2.55,3.12,3.65,2.36,2.84,3.29,,,,,,,2021-05-01,UTA Arad|||Chindia Targoviste|||0|||1,1,274
+Romania,Superliga,2020/2021,01/05/2021,15:30,FC Botosani,Sepsi Sf. Gheorghe,2,1,H,3.28,2.93,2.59,3.28,2.96,2.6,3.05,2.85,2.49,,,,,,,2021-05-01,FC Botosani|||Sepsi Sf. Gheorghe|||2|||1,1,275
+Romania,Superliga,2020/2021,02/05/2021,11:30,Astra,Poli Iasi,1,2,A,1.64,3.8,6.11,1.66,3.9,6.2,1.6,3.63,5.68,,,,,,,2021-05-02,Astra|||Poli Iasi|||1|||2,1,276
+Romania,Superliga,2020/2021,02/05/2021,14:00,FC Voluntari,FC Hermannstadt,0,1,A,2.72,3.07,2.94,2.8,3.1,2.94,2.64,2.94,2.76,,,,,,,2021-05-02,FC Voluntari|||FC Hermannstadt|||0|||1,1,277
+Romania,Superliga,2020/2021,02/05/2021,16:30,Viitorul Constanta,Din. Bucuresti,1,2,A,1.98,3.4,4.24,2.28,3.45,4.3,1.94,3.29,3.89,,,,,,,2021-05-02,Viitorul Constanta|||Din. Bucuresti|||1|||2,1,278
+Romania,Superliga,2020/2021,02/05/2021,19:00,Academica Clinceni,Univ. Craiova,1,0,H,7.34,3.52,1.62,7.72,3.7,1.63,6.6,3.45,1.57,,,,,,,2021-05-02,Academica Clinceni|||Univ. Craiova|||1|||0,1,279
+Romania,Superliga,2020/2021,03/05/2021,18:30,FCSB,CFR Cluj,1,1,D,3.03,3.03,2.69,3.04,3.13,2.69,2.88,2.94,2.55,,,,,,,2021-05-03,FCSB|||CFR Cluj|||1|||1,1,280
+Romania,Superliga,2020/2021,04/05/2021,17:00,Chindia Targoviste,Gaz Metan Medias,1,1,D,2.45,2.77,3.79,2.45,2.9,3.79,2.35,2.69,3.54,,,,,,,2021-05-04,Chindia Targoviste|||Gaz Metan Medias|||1|||1,1,281
+Romania,Superliga,2020/2021,05/05/2021,10:00,Astra,UTA Arad,1,2,A,2.69,2.92,3.13,2.69,3.17,3.14,2.5,2.99,2.9,,,,,,,2021-05-05,Astra|||UTA Arad|||1|||2,1,282
+Romania,Superliga,2020/2021,05/05/2021,12:15,FC Hermannstadt,Viitorul Constanta,0,0,D,2.92,2.93,2.86,2.95,3.11,2.86,2.78,2.88,2.7,,,,,,,2021-05-05,FC Hermannstadt|||Viitorul Constanta|||0|||0,2,283
+Romania,Superliga,2020/2021,05/05/2021,14:30,Poli Iasi,Din. Bucuresti,1,2,A,5.32,3.8,1.71,5.32,3.8,1.74,4.92,3.55,1.68,,,,,,,2021-05-05,Poli Iasi|||Din. Bucuresti|||1|||2,1,284
+Romania,Superliga,2020/2021,05/05/2021,17:00,Sepsi Sf. Gheorghe,Univ. Craiova,2,0,H,2.93,2.99,2.79,3.15,3.04,2.79,2.9,2.86,2.6,,,,,,,2021-05-05,Sepsi Sf. Gheorghe|||Univ. Craiova|||2|||0,1,285
+Romania,Superliga,2020/2021,06/05/2021,12:30,FC Arges,FC Voluntari,3,0,H,2.3,2.97,3.81,2.33,3.18,3.81,2.21,2.92,3.51,,,,,,,2021-05-06,FC Arges|||FC Voluntari|||3|||0,1,286
+Romania,Superliga,2020/2021,06/05/2021,15:00,Academica Clinceni,CFR Cluj,0,1,A,11.04,4.96,1.34,11.5,5.2,1.36,9.78,4.72,1.31,,,,,,,2021-05-06,Academica Clinceni|||CFR Cluj|||0|||1,1,287
+Romania,Superliga,2020/2021,06/05/2021,17:45,FC Botosani,FCSB,1,3,A,4.87,3.36,1.88,5.22,3.41,1.93,4.34,3.26,1.85,,,,,,,2021-05-06,FC Botosani|||FCSB|||1|||3,1,288
+Romania,Superliga,2020/2021,08/05/2021,11:30,Gaz Metan Medias,Astra,2,1,H,2.74,2.99,2.99,2.77,3.07,3.33,2.58,2.86,2.94,,,,,,,2021-05-08,Gaz Metan Medias|||Astra|||2|||1,1,289
+Romania,Superliga,2020/2021,08/05/2021,19:15,Din. Bucuresti,FC Hermannstadt,2,0,H,2.15,3.3,3.76,2.16,3.34,3.94,2.08,3.19,3.55,,,,,,,2021-05-08,Din. Bucuresti|||FC Hermannstadt|||2|||0,1,290
+Romania,Superliga,2020/2021,09/05/2021,12:00,UTA Arad,Poli Iasi,1,2,A,1.51,4.13,7.55,1.51,4.28,8,1.46,3.98,6.96,,,,,,,2021-05-09,UTA Arad|||Poli Iasi|||1|||2,1,291
+Romania,Superliga,2020/2021,09/05/2021,14:30,Viitorul Constanta,FC Arges,1,0,H,2.13,3.21,3.95,2.15,3.3,4.11,2.08,3.1,3.63,,,,,,,2021-05-09,Viitorul Constanta|||FC Arges|||1|||0,1,292
+Romania,Superliga,2020/2021,09/05/2021,17:00,Univ. Craiova,FC Botosani,2,3,A,1.74,3.64,5.38,1.8,3.64,5.61,1.72,3.42,4.91,,,,,,,2021-05-09,Univ. Craiova|||FC Botosani|||2|||3,1,293
+Romania,Superliga,2020/2021,10/05/2021,14:45,FC Voluntari,Chindia Targoviste,0,0,D,2.79,2.77,3.19,2.79,2.84,3.25,2.67,2.68,3.02,,,,,,,2021-05-10,FC Voluntari|||Chindia Targoviste|||0|||0,1,294
+Romania,Superliga,2020/2021,10/05/2021,17:00,CFR Cluj,Sepsi Sf. Gheorghe,0,1,A,1.65,3.52,6.85,1.65,3.7,7,1.6,3.45,6.14,,,,,,,2021-05-10,CFR Cluj|||Sepsi Sf. Gheorghe|||0|||1,1,295
+Romania,Superliga,2020/2021,10/05/2021,19:30,FCSB,Academica Clinceni,2,2,D,1.22,6.18,16.93,1.27,6.25,17,1.22,5.59,12.84,,,,,,,2021-05-10,FCSB|||Academica Clinceni|||2|||2,1,296
+Romania,Superliga,2020/2021,14/05/2021,15:30,Academica Clinceni,FC Botosani,4,3,H,3.97,3.39,2.01,4.18,3.41,2.04,3.86,3.21,1.98,,,,,,,2021-05-14,Academica Clinceni|||FC Botosani|||4|||3,1,297
+Romania,Superliga,2020/2021,14/05/2021,18:30,Chindia Targoviste,Viitorul Constanta,0,2,A,4.48,3.14,1.99,4.5,3.15,2.08,4.2,2.97,1.99,,,,,,,2021-05-14,Chindia Targoviste|||Viitorul Constanta|||0|||2,1,298
+Romania,Superliga,2020/2021,15/05/2021,12:00,Poli Iasi,FC Hermannstadt,0,1,A,3.73,3.27,2.13,3.89,3.5,2.13,3.6,3.24,2.04,,,,,,,2021-05-15,Poli Iasi|||FC Hermannstadt|||0|||1,1,299
+Romania,Superliga,2020/2021,15/05/2021,14:30,Astra,FC Voluntari,0,3,A,2.37,3.12,3.32,2.37,3.23,3.38,2.28,3.08,3.19,,,,,,,2021-05-15,Astra|||FC Voluntari|||0|||3,1,300
+Romania,Superliga,2020/2021,15/05/2021,19:30,Univ. Craiova,CFR Cluj,1,3,A,3.53,2.91,2.4,3.75,3.1,2.51,3.38,2.88,2.31,,,,,,,2021-05-15,Univ. Craiova|||CFR Cluj|||1|||3,1,301
+Romania,Superliga,2020/2021,16/05/2021,12:00,UTA Arad,Gaz Metan Medias,1,0,H,2.03,3.37,3.93,2.1,3.41,4,2.04,3.17,3.69,,,,,,,2021-05-16,UTA Arad|||Gaz Metan Medias|||1|||0,1,302
+Romania,Superliga,2020/2021,16/05/2021,14:30,FC Arges,Din. Bucuresti,1,2,A,2.99,2.79,2.85,3.35,3,2.85,3.06,2.78,2.57,,,,,,,2021-05-16,FC Arges|||Din. Bucuresti|||1|||2,1,303
+Romania,Superliga,2020/2021,16/05/2021,20:00,Sepsi Sf. Gheorghe,FCSB,2,2,D,3.15,3.09,2.48,3.15,3.19,2.54,3.01,3.05,2.4,,,,,,,2021-05-16,Sepsi Sf. Gheorghe|||FCSB|||2|||2,1,304
+Romania,Superliga,2020/2021,18/05/2021,18:30,FC Botosani,CFR Cluj,0,1,A,6.59,4.2,1.53,7,4.34,1.58,6.16,3.99,1.51,,,,,,,2021-05-18,FC Botosani|||CFR Cluj|||0|||1,1,305
+Romania,Superliga,2020/2021,19/05/2021,16:30,Din. Bucuresti,Chindia Targoviste,0,0,D,1.79,3.47,5.12,1.81,3.6,5.28,1.75,3.39,4.78,,,,,,,2021-05-19,Din. Bucuresti|||Chindia Targoviste|||0|||0,1,306
+Romania,Superliga,2020/2021,19/05/2021,16:30,FC Hermannstadt,FC Arges,1,0,H,2.29,3.18,3.41,2.38,3.21,3.54,2.25,3.05,3.28,,,,,,,2021-05-19,FC Hermannstadt|||FC Arges|||1|||0,1,307
+Romania,Superliga,2020/2021,19/05/2021,16:30,FC Voluntari,UTA Arad,0,0,D,2.05,3.56,3.63,2.2,3.66,3.85,2.07,3.41,3.34,,,,,,,2021-05-19,FC Voluntari|||UTA Arad|||0|||0,1,308
+Romania,Superliga,2020/2021,19/05/2021,16:30,Gaz Metan Medias,Poli Iasi,4,2,H,1.23,5.92,15.14,1.29,6.12,15.14,1.23,5.47,12.65,,,,,,,2021-05-19,Gaz Metan Medias|||Poli Iasi|||4|||2,1,309
+Romania,Superliga,2020/2021,19/05/2021,16:30,Viitorul Constanta,Astra,1,0,H,1.95,3.43,4.19,2.16,3.5,4.48,2.01,3.29,3.64,,,,,,,2021-05-19,Viitorul Constanta|||Astra|||1|||0,1,310
+Romania,Superliga,2020/2021,19/05/2021,19:30,FCSB,Univ. Craiova,0,1,A,4.91,3.56,1.79,6.3,3.9,2.4,4.99,3.6,1.7,,,,,,,2021-05-19,FCSB|||Univ. Craiova|||0|||1,1,311
+Romania,Superliga,2020/2021,20/05/2021,18:30,Academica Clinceni,Sepsi Sf. Gheorghe,2,1,H,7.37,4.18,1.5,7.37,4.5,1.56,6.32,4.11,1.48,,,,,,,2021-05-20,Academica Clinceni|||Sepsi Sf. Gheorghe|||2|||1,1,312
+Romania,Superliga,2020/2021,25/05/2021,18:30,CFR Cluj,FCSB,2,0,H,1.3,5.77,10.38,1.32,5.77,10.4,1.28,5.34,9.26,,,,,,,2021-05-25,CFR Cluj|||FCSB|||2|||0,2,313
+Romania,Superliga,2020/2021,26/05/2021,16:30,Univ. Craiova,Academica Clinceni,0,0,D,1.66,4.05,5.29,1.73,4.05,5.68,1.65,3.78,4.89,,,,,,,2021-05-26,Univ. Craiova|||Academica Clinceni|||0|||0,1,314
+Romania,Superliga,2020/2021,27/05/2021,15:30,Sepsi Sf. Gheorghe,FC Botosani,1,0,H,2.05,3.67,3.65,2.15,3.77,3.73,2,3.51,3.4,,,,,,,2021-05-27,Sepsi Sf. Gheorghe|||FC Botosani|||1|||0,1,315
+Romania,Superliga,2020/2021,27/05/2021,18:30,Chindia Targoviste,Viitorul Constanta,2,3,A,3.18,2.82,2.76,3.71,3.17,2.76,3.12,2.74,2.57,,,,,,,2021-05-27,Chindia Targoviste|||Viitorul Constanta|||2|||3,1,316
+Romania,Superliga,2020/2021,29/05/2021,13:30,Mioveni,FC Hermannstadt,0,0,D,3.1,3.04,2.62,3.55,3.11,2.7,2.9,2.92,2.54,,,,,,,2021-05-29,Mioveni|||FC Hermannstadt|||0|||0,1,317
+Romania,Superliga,2020/2021,29/05/2021,16:00,Calarasi,FC Voluntari,1,2,A,4.32,3.4,1.96,4.5,3.5,1.98,4,3.27,1.89,,,,,,,2021-05-29,Calarasi|||FC Voluntari|||1|||2,1,318
+Romania,Superliga,2020/2021,30/05/2021,18:30,Sepsi Sf. Gheorghe,Viitorul Constanta,1,0,H,1.77,3.51,5.36,1.78,3.55,5.58,1.74,3.34,4.96,,,,,,,2021-05-30,Sepsi Sf. Gheorghe|||Viitorul Constanta|||1|||0,1,319
+Romania,Superliga,2020/2021,02/06/2021,17:00,FC Hermannstadt,Mioveni,1,2,A,1.63,3.79,6.27,1.66,4.15,6.7,1.56,3.76,5.8,,,,,,,2021-06-02,FC Hermannstadt|||Mioveni|||1|||2,1,320
+Romania,Superliga,2020/2021,03/06/2021,18:30,FC Voluntari,Calarasi,4,0,H,1.26,5.99,12.14,1.3,6.3,19,1.24,5.48,11.42,,,,,,,2021-06-03,FC Voluntari|||Calarasi|||4|||0,1,321

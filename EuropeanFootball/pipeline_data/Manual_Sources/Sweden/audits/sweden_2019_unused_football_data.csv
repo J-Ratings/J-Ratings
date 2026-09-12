@@ -1,0 +1,3 @@
+Country,League,Season,Date,Time,Home,Away,HG,AG,Res,PSCH,PSCD,PSCA,MaxCH,MaxCD,MaxCA,AvgCH,AvgCD,AvgCA,BFECH,BFECD,BFECA,B365CH,B365CD,B365CA,ParsedDate,MatchKey,Occurrence,FDID
+Sweden,Allsvenskan,2019,06/11/2019,18:00,Brage,Kalmar,0,2,A,3.07,3.25,2.49,3.23,3.38,2.55,2.97,3.13,2.43,,,,,,,2019-11-06,Brage|||Kalmar|||0|||2,1,241
+Sweden,Allsvenskan,2019,10/11/2019,13:45,Kalmar,Brage,2,2,D,1.75,3.39,5.79,1.8,3.72,5.8,1.72,3.49,5.14,,,,,,,2019-11-10,Kalmar|||Brage|||2|||2,1,242

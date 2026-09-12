@@ -1,0 +1,245 @@
+Country,League,Season,Date,Time,Home,Away,HG,AG,Res,PSCH,PSCD,PSCA,MaxCH,MaxCD,MaxCA,AvgCH,AvgCD,AvgCA,BFECH,BFECD,BFECA,B365CH,B365CD,B365CA,ParsedDate,HomeKey,AwayKey,MatchKey,Occurrence,FDID
+Romania,Superliga,2015/2016,10/07/2015,16:30,FC Voluntari,Poli Iasi,1,1,D,2.48,3.19,3.18,2.48,3.25,3.36,2.31,3.09,3.03,,,,,,,2015-07-10,fc voluntari,politehnica_iasi,fc voluntari|||politehnica_iasi|||1|||1,1,1
+Romania,Superliga,2015/2016,10/07/2015,19:00,Astra,Concordia,2,2,D,1.49,4.24,8.12,1.65,4.5,8.32,1.47,3.97,6.61,,,,,,,2015-07-10,astra,concordia,astra|||concordia|||2|||2,1,2
+Romania,Superliga,2015/2016,11/07/2015,19:00,FCSB,Petrolul,0,0,D,1.42,4.49,9.56,1.42,4.75,9.8,1.37,4.32,8.22,,,,,,,2015-07-11,fcsb,petrolul,fcsb|||petrolul|||0|||0,1,4
+Romania,Superliga,2015/2016,12/07/2015,16:30,U Craiova,FC Botosani,0,0,D,2.12,3.28,3.94,2.19,3.52,4,2.03,3.18,3.55,,,,,,,2015-07-12,universitatea_craiova,fc botosani,universitatea_craiova|||fc botosani|||0|||0,1,5
+Romania,Superliga,2015/2016,12/07/2015,19:00,Targu Mures,Din. Bucuresti,0,0,D,2.13,3.29,3.87,2.3,3.52,4.1,2.1,3.18,3.35,,,,,,,2015-07-12,targu mures,din bucuresti,targu mures|||din bucuresti|||0|||0,1,6
+Romania,Superliga,2015/2016,13/07/2015,19:00,Poli Timisoara,Pandurii,0,1,A,2.9,2.97,2.87,2.96,3.1,2.87,2.76,2.95,2.61,,,,,,,2015-07-13,poli timisoara,pandurii,poli timisoara|||pandurii|||0|||1,1,7
+Romania,Superliga,2015/2016,17/07/2015,16:30,Concordia,Poli Iasi,0,1,A,2.42,3.15,3.35,2.5,3.3,3.37,2.35,3.06,2.99,,,,,,,2015-07-17,concordia,politehnica_iasi,concordia|||politehnica_iasi|||0|||1,1,8
+Romania,Superliga,2015/2016,17/07/2015,19:00,Din. Bucuresti,U Craiova,1,0,H,2.94,3.15,2.69,2.94,3.25,3.3,2.55,3.04,2.75,,,,,,,2015-07-17,din bucuresti,universitatea_craiova,din bucuresti|||universitatea_craiova|||1|||0,1,9
+Romania,Superliga,2015/2016,18/07/2015,16:30,Petrolul,FC Voluntari,1,1,D,1.81,3.58,5.1,1.81,3.8,5.1,1.76,3.42,4.43,,,,,,,2015-07-18,petrolul,fc voluntari,petrolul|||fc voluntari|||1|||1,1,10
+Romania,Superliga,2015/2016,18/07/2015,19:00,Pandurii,FCSB,0,3,A,3.08,3.21,2.53,3.32,3.3,2.63,2.87,3.08,2.43,,,,,,,2015-07-18,pandurii,fcsb,pandurii|||fcsb|||0|||3,1,11
+Romania,Superliga,2015/2016,19/07/2015,16:30,CFR Cluj,Poli Timisoara,1,0,H,2.1,3.33,4.01,2.19,3.5,4.55,2.02,3.15,3.62,,,,,,,2015-07-19,cfr cluj,poli timisoara,cfr cluj|||poli timisoara|||1|||0,1,12
+Romania,Superliga,2015/2016,19/07/2015,19:00,Astra,Targu Mures,1,5,A,2.02,3.29,4.34,2.15,3.4,4.34,1.97,3.2,3.81,,,,,,,2015-07-19,astra,targu mures,astra|||targu mures|||1|||5,1,13
+Romania,Superliga,2015/2016,20/07/2015,19:00,FC Botosani,Viitorul Constanta,2,2,D,1.97,3.64,4.03,2.15,3.64,4.4,1.92,3.32,3.75,,,,,,,2015-07-20,fc botosani,viitorul constanta,fc botosani|||viitorul constanta|||2|||2,1,14
+Romania,Superliga,2015/2016,24/07/2015,16:30,FC Voluntari,Pandurii,0,0,D,3.65,3.29,2.21,3.95,3.4,2.3,3.4,3.09,2.13,,,,,,,2015-07-24,fc voluntari,pandurii,fc voluntari|||pandurii|||0|||0,1,15
+Romania,Superliga,2015/2016,24/07/2015,19:00,Targu Mures,Concordia,1,0,H,1.51,4.02,8.5,1.58,4.5,8.56,1.47,3.9,6.89,,,,,,,2015-07-24,targu mures,concordia,targu mures|||concordia|||1|||0,1,16
+Romania,Superliga,2015/2016,25/07/2015,16:30,Viitorul Constanta,Din. Bucuresti,1,1,D,2.64,3.3,2.87,2.7,3.5,3,2.45,3.19,2.74,,,,,,,2015-07-25,viitorul constanta,din bucuresti,viitorul constanta|||din bucuresti|||1|||1,1,17
+Romania,Superliga,2015/2016,26/07/2015,16:30,U Craiova,Astra,1,2,A,2.52,3.09,3.23,2.52,3.4,3.9,2.19,3.05,3.36,,,,,,,2015-07-26,universitatea_craiova,astra,universitatea_craiova|||astra|||1|||2,1,19
+Romania,Superliga,2015/2016,26/07/2015,19:00,Poli Iasi,Petrolul,1,0,H,2.35,2.94,3.78,2.4,3.25,3.78,2.27,3,3.2,,,,,,,2015-07-26,politehnica_iasi,petrolul,politehnica_iasi|||petrolul|||1|||0,1,20
+Romania,Superliga,2015/2016,27/07/2015,19:00,Poli Timisoara,FC Botosani,1,0,H,2.31,3.37,3.33,2.42,3.4,3.5,2.24,3.13,3.12,,,,,,,2015-07-27,poli timisoara,fc botosani,poli timisoara|||fc botosani|||1|||0,1,21
+Romania,Superliga,2015/2016,31/07/2015,16:30,CFR Cluj,FC Voluntari,2,0,H,1.65,3.84,6.15,1.75,3.9,6.15,1.68,3.5,4.91,,,,,,,2015-07-31,cfr cluj,fc voluntari,cfr cluj|||fc voluntari|||2|||0,1,22
+Romania,Superliga,2015/2016,31/07/2015,19:00,Concordia,Petrolul,2,2,D,3.04,3,2.72,3.04,3.1,2.92,2.79,2.9,2.59,,,,,,,2015-07-31,concordia,petrolul,concordia|||petrolul|||2|||2,1,23
+Romania,Superliga,2015/2016,01/08/2015,16:30,Pandurii,Poli Iasi,3,0,H,1.83,3.3,5.52,1.85,3.6,5.9,1.76,3.27,4.67,,,,,,,2015-08-01,pandurii,politehnica_iasi,pandurii|||politehnica_iasi|||3|||0,1,24
+Romania,Superliga,2015/2016,01/08/2015,19:00,FC Botosani,FCSB,0,1,A,3.08,3.23,2.53,3.42,3.3,2.6,2.84,3.09,2.42,,,,,,,2015-08-01,fc botosani,fcsb,fc botosani|||fcsb|||0|||1,1,25
+Romania,Superliga,2015/2016,02/08/2015,16:30,Astra,Viitorul Constanta,2,2,D,2.08,3.33,4,2.2,3.4,4.25,2.04,3.2,3.47,,,,,,,2015-08-02,astra,viitorul constanta,astra|||viitorul constanta|||2|||2,1,26
+Romania,Superliga,2015/2016,02/08/2015,19:00,Targu Mures,U Craiova,0,0,D,2.3,3.14,3.61,2.45,3.3,3.66,2.25,3.01,3.23,,,,,,,2015-08-02,targu mures,universitatea_craiova,targu mures|||universitatea_craiova|||0|||0,1,27
+Romania,Superliga,2015/2016,03/08/2015,19:00,Din. Bucuresti,Poli Timisoara,2,1,H,2.01,3.22,4.49,2.2,3.35,4.49,2.03,3.09,3.71,,,,,,,2015-08-03,din bucuresti,poli timisoara,din bucuresti|||poli timisoara|||2|||1,1,28
+Romania,Superliga,2015/2016,07/08/2015,16:30,FC Voluntari,FC Botosani,1,1,D,3.72,3.03,2.32,3.72,3.24,2.4,3.24,2.99,2.25,,,,,,,2015-08-07,fc voluntari,fc botosani,fc voluntari|||fc botosani|||1|||1,1,29
+Romania,Superliga,2015/2016,08/08/2015,16:30,U Craiova,Concordia,2,0,H,1.78,3.55,5.34,1.8,3.64,6.04,1.68,3.4,5.06,,,,,,,2015-08-08,universitatea_craiova,concordia,universitatea_craiova|||concordia|||2|||0,1,31
+Romania,Superliga,2015/2016,08/08/2015,19:00,Petrolul,Pandurii,1,1,D,3.14,3,2.64,3.15,3.2,2.71,2.88,2.98,2.47,,,,,,,2015-08-08,petrolul,pandurii,petrolul|||pandurii|||1|||1,1,32
+Romania,Superliga,2015/2016,09/08/2015,16:30,Poli Timisoara,Astra,1,3,A,2.18,3.01,4.15,2.65,3.25,4.15,2.18,3.08,3.31,,,,,,,2015-08-09,poli timisoara,astra,poli timisoara|||astra|||1|||3,1,34
+Romania,Superliga,2015/2016,09/08/2015,19:00,FCSB,Din. Bucuresti,0,0,D,1.86,3.66,4.54,1.9,3.8,5.1,1.77,3.51,4.32,,,,,,,2015-08-09,fcsb,din bucuresti,fcsb|||din bucuresti|||0|||0,1,35
+Romania,Superliga,2015/2016,11/08/2015,15:30,FC Botosani,Poli Iasi,1,0,H,2.58,3.03,3.19,2.58,3.2,3.8,2.24,2.98,3.26,,,,,,,2015-08-11,fc botosani,politehnica_iasi,fc botosani|||politehnica_iasi|||1|||0,1,36
+Romania,Superliga,2015/2016,11/08/2015,17:30,CFR Cluj,Petrolul,1,0,H,2.1,3.26,4.06,2.14,3.45,4.25,2.01,3.12,3.7,,,,,,,2015-08-11,cfr cluj,petrolul,cfr cluj|||petrolul|||1|||0,1,37
+Romania,Superliga,2015/2016,12/08/2015,15:30,U Craiova,Viitorul Constanta,1,2,A,1.88,3.31,5.05,2,3.45,5.05,1.89,3.19,4.08,,,,,,,2015-08-12,universitatea_craiova,viitorul constanta,universitatea_craiova|||viitorul constanta|||1|||2,1,38
+Romania,Superliga,2015/2016,12/08/2015,17:30,Targu Mures,Poli Timisoara,0,0,D,1.81,3.3,5.75,1.85,3.7,5.75,1.74,3.25,4.87,,,,,,,2015-08-12,targu mures,poli timisoara,targu mures|||poli timisoara|||0|||0,1,39
+Romania,Superliga,2015/2016,12/08/2015,19:45,Astra,FCSB,2,0,H,2.93,3.19,2.59,3.14,3.2,2.61,2.85,3.06,2.42,,,,,,,2015-08-12,astra,fcsb,astra|||fcsb|||2|||0,1,40
+Romania,Superliga,2015/2016,13/08/2015,16:30,Concordia,Pandurii,3,0,H,3.6,3.13,2.31,3.75,3.3,2.44,3.28,3.08,2.19,,,,,,,2015-08-13,concordia,pandurii,concordia|||pandurii|||3|||0,1,41
+Romania,Superliga,2015/2016,13/08/2015,19:00,Din. Bucuresti,FC Voluntari,3,0,H,1.76,3.67,5.29,1.81,3.85,6.5,1.64,3.48,5.31,,,,,,,2015-08-13,din bucuresti,fc voluntari,din bucuresti|||fc voluntari|||3|||0,1,42
+Romania,Superliga,2015/2016,14/08/2015,19:00,Petrolul,FC Botosani,2,1,H,2.17,3.11,4.01,2.22,3.3,4.01,2.08,3.1,3.52,,,,,,,2015-08-14,petrolul,fc botosani,petrolul|||fc botosani|||2|||1,1,43
+Romania,Superliga,2015/2016,15/08/2015,16:30,Poli Timisoara,U Craiova,1,1,D,3.08,2.85,2.82,3.08,3.25,2.9,2.77,2.87,2.64,,,,,,,2015-08-15,poli timisoara,universitatea_craiova,poli timisoara|||universitatea_craiova|||1|||1,1,44
+Romania,Superliga,2015/2016,16/08/2015,16:30,FC Voluntari,Astra,1,2,A,4.4,3.36,1.98,4.4,3.5,2.05,3.89,3.24,1.91,,,,,,,2015-08-16,fc voluntari,astra,fc voluntari|||astra|||1|||2,1,46
+Romania,Superliga,2015/2016,16/08/2015,19:00,Poli Iasi,Din. Bucuresti,0,0,D,2.54,3.22,3.07,2.7,3.25,3.12,2.44,3.01,2.87,,,,,,,2015-08-16,politehnica_iasi,din bucuresti,politehnica_iasi|||din bucuresti|||0|||0,1,47
+Romania,Superliga,2015/2016,17/08/2015,16:30,Viitorul Constanta,Concordia,3,1,H,1.97,3.4,4.47,2.2,3.4,4.47,1.97,3.19,3.75,,,,,,,2015-08-17,viitorul constanta,concordia,viitorul constanta|||concordia|||3|||1,1,48
+Romania,Superliga,2015/2016,17/08/2015,19:00,Pandurii,CFR Cluj,1,1,D,2.34,3.06,3.62,2.34,3.13,3.85,2.21,3.02,3.32,,,,,,,2015-08-17,pandurii,cfr cluj,pandurii|||cfr cluj|||1|||1,1,49
+Romania,Superliga,2015/2016,21/08/2015,16:30,Targu Mures,FC Voluntari,2,1,H,1.53,3.81,8.72,1.6,4.1,8.72,1.5,3.7,6.67,,,,,,,2015-08-21,targu mures,fc voluntari,targu mures|||fc voluntari|||2|||1,1,50
+Romania,Superliga,2015/2016,21/08/2015,19:00,Viitorul Constanta,Poli Timisoara,4,0,H,2.51,3.15,3.18,2.56,3.3,3.22,2.41,3.04,2.91,,,,,,,2015-08-21,viitorul constanta,poli timisoara,viitorul constanta|||poli timisoara|||4|||0,1,51
+Romania,Superliga,2015/2016,22/08/2015,16:30,FC Botosani,Pandurii,0,2,A,2.34,3.17,3.49,2.35,3.25,3.63,2.22,3.06,3.21,,,,,,,2015-08-22,fc botosani,pandurii,fc botosani|||pandurii|||0|||2,1,52
+Romania,Superliga,2015/2016,22/08/2015,19:00,Din. Bucuresti,Petrolul,2,0,H,2.28,3.24,3.53,2.41,3.3,3.53,2.3,3.09,3.04,,,,,,,2015-08-22,din bucuresti,petrolul,din bucuresti|||petrolul|||2|||0,1,53
+Romania,Superliga,2015/2016,23/08/2015,16:00,U Craiova,FCSB,1,2,A,3.32,2.91,2.6,3.35,3.1,2.6,3.02,2.95,2.38,,,,,,,2015-08-23,universitatea_craiova,fcsb,universitatea_craiova|||fcsb|||1|||2,1,54
+Romania,Superliga,2015/2016,23/08/2015,19:00,Astra,Poli Iasi,4,1,H,2.02,3.29,4.32,2.3,3.29,4.6,2.08,3.09,3.55,,,,,,,2015-08-23,astra,politehnica_iasi,astra|||politehnica_iasi|||4|||1,1,55
+Romania,Superliga,2015/2016,24/08/2015,19:00,Concordia,CFR Cluj,2,1,H,3.3,2.92,2.6,3.3,3.1,2.7,2.96,2.93,2.43,,,,,,,2015-08-24,concordia,cfr cluj,concordia|||cfr cluj|||2|||1,1,56
+Romania,Superliga,2015/2016,28/08/2015,16:30,FC Voluntari,U Craiova,1,2,A,3.05,3.02,2.7,3.16,3.1,2.72,2.82,2.97,2.52,,,,,,,2015-08-28,fc voluntari,universitatea_craiova,fc voluntari|||universitatea_craiova|||1|||2,1,57
+Romania,Superliga,2015/2016,29/08/2015,16:30,Poli Timisoara,Concordia,1,0,H,2.1,3.24,4.04,2.22,3.3,4.1,2.06,3.09,3.59,,,,,,,2015-08-29,poli timisoara,concordia,poli timisoara|||concordia|||1|||0,1,59
+Romania,Superliga,2015/2016,29/08/2015,19:00,Pandurii,Din. Bucuresti,2,2,D,2.37,3.05,3.56,2.44,3.25,3.62,2.2,3.02,3.31,,,,,,,2015-08-29,pandurii,din bucuresti,pandurii|||din bucuresti|||2|||2,1,60
+Romania,Superliga,2015/2016,30/08/2015,16:30,Petrolul,Astra,0,1,A,3.06,3.14,2.59,3.3,3.3,2.59,2.84,3.08,2.43,,,,,,,2015-08-30,petrolul,astra,petrolul|||astra|||0|||1,1,61
+Romania,Superliga,2015/2016,31/08/2015,19:00,CFR Cluj,FC Botosani,3,1,H,1.97,3.28,4.57,2.01,3.3,4.75,1.9,3.16,4.1,,,,,,,2015-08-31,cfr cluj,fc botosani,cfr cluj|||fc botosani|||3|||1,1,63
+Romania,Superliga,2015/2016,12/09/2015,16:30,Concordia,FC Botosani,0,0,D,2.07,3.23,4.22,2.07,3.45,4.95,1.89,3.2,4.08,,,,,,,2015-09-12,concordia,fc botosani,concordia|||fc botosani|||0|||0,1,64
+Romania,Superliga,2015/2016,12/09/2015,19:00,Targu Mures,Petrolul,1,1,D,2.01,3.28,4.42,2.12,3.4,4.84,1.93,3.08,4.11,,,,,,,2015-09-12,targu mures,petrolul,targu mures|||petrolul|||1|||1,1,65
+Romania,Superliga,2015/2016,13/09/2015,14:00,U Craiova,Poli Iasi,2,0,H,2.04,3.17,4.46,2.04,3.45,4.51,1.94,3.15,3.94,,,,,,,2015-09-13,universitatea_craiova,politehnica_iasi,universitatea_craiova|||politehnica_iasi|||2|||0,1,66
+Romania,Superliga,2015/2016,13/09/2015,16:30,Astra,Pandurii,1,2,A,1.92,3.52,4.44,1.93,3.7,5.4,1.79,3.41,4.23,,,,,,,2015-09-13,astra,pandurii,astra|||pandurii|||1|||2,1,67
+Romania,Superliga,2015/2016,13/09/2015,19:00,Poli Timisoara,FCSB,1,0,H,5.92,3.53,1.73,5.92,3.65,1.78,4.96,3.32,1.72,,,,,,,2015-09-13,poli timisoara,fcsb,poli timisoara|||fcsb|||1|||0,1,68
+Romania,Superliga,2015/2016,14/09/2015,16:30,Viitorul Constanta,FC Voluntari,3,0,H,1.61,3.91,6.49,1.63,4.1,6.7,1.58,3.66,5.59,,,,,,,2015-09-14,viitorul constanta,fc voluntari,viitorul constanta|||fc voluntari|||3|||0,1,69
+Romania,Superliga,2015/2016,14/09/2015,19:00,Din. Bucuresti,CFR Cluj,0,2,A,2.46,2.92,3.57,2.46,3.24,3.57,2.33,3,3.09,,,,,,,2015-09-14,din bucuresti,cfr cluj,din bucuresti|||cfr cluj|||0|||2,1,70
+Romania,Superliga,2015/2016,18/09/2015,16:30,FC Voluntari,Poli Timisoara,0,0,D,2.68,2.94,3.16,2.82,3.05,3.16,2.55,2.9,2.85,,,,,,,2015-09-18,fc voluntari,poli timisoara,fc voluntari|||poli timisoara|||0|||0,1,71
+Romania,Superliga,2015/2016,18/09/2015,19:00,Pandurii,Targu Mures,2,0,H,2.75,2.97,3.03,2.75,3.15,3.08,2.48,3,2.84,,,,,,,2015-09-18,pandurii,targu mures,pandurii|||targu mures|||2|||0,1,72
+Romania,Superliga,2015/2016,19/09/2015,19:00,CFR Cluj,Astra,1,1,D,2.28,3.28,3.47,2.35,3.4,3.6,2.2,3.11,3.19,,,,,,,2015-09-19,cfr cluj,astra,cfr cluj|||astra|||1|||1,1,74
+Romania,Superliga,2015/2016,20/09/2015,16:30,Petrolul,U Craiova,0,1,A,2.63,3.13,3.04,2.63,3.13,3.17,2.45,2.99,2.89,,,,,,,2015-09-20,petrolul,universitatea_craiova,petrolul|||universitatea_craiova|||0|||1,1,75
+Romania,Superliga,2015/2016,20/09/2015,19:00,FC Botosani,Din. Bucuresti,1,1,D,2.52,3.01,3.31,2.6,3.15,3.31,2.38,2.97,3.01,,,,,,,2015-09-20,fc botosani,din bucuresti,fc botosani|||din bucuresti|||1|||1,1,76
+Romania,Superliga,2015/2016,21/09/2015,19:00,FCSB,Concordia,3,1,H,1.4,5.19,8.19,1.4,5.6,12,1.33,4.72,8.07,,,,,,,2015-09-21,fcsb,concordia,fcsb|||concordia|||3|||1,1,77
+Romania,Superliga,2015/2016,25/09/2015,16:30,Poli Timisoara,Poli Iasi,2,2,D,2.2,3.07,4.04,2.27,3.1,4.04,2.17,2.94,3.52,,,,,,,2015-09-25,poli timisoara,politehnica_iasi,poli timisoara|||politehnica_iasi|||2|||2,1,78
+Romania,Superliga,2015/2016,26/09/2015,15:00,U Craiova,Pandurii,0,0,D,2.13,3.21,4.04,2.19,3.3,4.1,2.07,3.12,3.55,,,,,,,2015-09-26,universitatea_craiova,pandurii,universitatea_craiova|||pandurii|||0|||0,1,80
+Romania,Superliga,2015/2016,26/09/2015,18:00,Viitorul Constanta,Petrolul,1,0,H,2.36,3.27,3.33,2.43,3.3,3.45,2.25,3.11,3.11,,,,,,,2015-09-26,viitorul constanta,petrolul,viitorul constanta|||petrolul|||1|||0,1,81
+Romania,Superliga,2015/2016,27/09/2015,16:30,Astra,FC Botosani,1,0,H,1.81,3.62,4.94,1.9,3.8,5.6,1.74,3.47,4.48,,,,,,,2015-09-27,astra,fc botosani,astra|||fc botosani|||1|||0,1,82
+Romania,Superliga,2015/2016,27/09/2015,19:00,FCSB,FC Voluntari,3,1,H,1.22,6.66,16.27,1.25,6.8,18.57,1.2,5.67,12.96,,,,,,,2015-09-27,fcsb,fc voluntari,fcsb|||fc voluntari|||3|||1,1,83
+Romania,Superliga,2015/2016,28/09/2015,19:00,Concordia,Din. Bucuresti,1,3,A,3.64,3.04,2.32,3.84,3.13,2.55,3.14,2.99,2.3,,,,,,,2015-09-28,concordia,din bucuresti,concordia|||din bucuresti|||1|||3,1,84
+Romania,Superliga,2015/2016,02/10/2015,16:30,FC Voluntari,Concordia,1,1,D,2.3,3.08,3.7,2.45,3.25,3.7,2.25,3.04,3.21,,,,,,,2015-10-02,fc voluntari,concordia,fc voluntari|||concordia|||1|||1,1,85
+Romania,Superliga,2015/2016,02/10/2015,19:00,Pandurii,Viitorul Constanta,1,0,H,2.15,3.26,3.87,2.31,3.3,3.87,2.18,3.11,3.25,,,,,,,2015-10-02,pandurii,viitorul constanta,pandurii|||viitorul constanta|||1|||0,1,86
+Romania,Superliga,2015/2016,03/10/2015,16:30,Din. Bucuresti,Astra,0,1,A,2.65,3.11,3.01,2.65,3.2,3.22,2.43,3.04,2.87,,,,,,,2015-10-03,din bucuresti,astra,din bucuresti|||astra|||0|||1,1,87
+Romania,Superliga,2015/2016,04/10/2015,16:30,FC Botosani,Targu Mures,1,1,D,3.44,2.88,2.52,3.44,2.9,2.72,3.09,2.82,2.44,,,,,,,2015-10-04,fc botosani,targu mures,fc botosani|||targu mures|||1|||1,1,89
+Romania,Superliga,2015/2016,04/10/2015,19:00,CFR Cluj,U Craiova,1,2,A,2.29,3.03,3.73,2.34,3.2,3.81,2.15,3.03,3.41,,,,,,,2015-10-04,cfr cluj,universitatea_craiova,cfr cluj|||universitatea_craiova|||1|||2,1,90
+Romania,Superliga,2015/2016,05/10/2015,19:00,Petrolul,Poli Timisoara,1,1,D,2.56,3.03,3.23,2.56,3.1,3.45,2.43,2.95,2.98,,,,,,,2015-10-05,petrolul,poli timisoara,petrolul|||poli timisoara|||1|||1,1,91
+Romania,Superliga,2015/2016,16/10/2015,18:30,FC Botosani,U Craiova,3,2,H,2.83,2.83,3.04,2.83,3.1,3.08,2.62,2.87,2.8,,,,,,,2015-10-16,fc botosani,universitatea_craiova,fc botosani|||universitatea_craiova|||3|||2,1,92
+Romania,Superliga,2015/2016,17/10/2015,16:00,Poli Iasi,FC Voluntari,2,1,H,1.92,3.38,4.69,1.94,3.4,4.75,1.85,3.23,4.26,,,,,,,2015-10-17,politehnica_iasi,fc voluntari,politehnica_iasi|||fc voluntari|||2|||1,1,93
+Romania,Superliga,2015/2016,17/10/2015,18:30,Din. Bucuresti,Targu Mures,2,1,H,2.77,3.03,2.99,2.77,3.1,3.06,2.55,2.95,2.81,,,,,,,2015-10-17,din bucuresti,targu mures,din bucuresti|||targu mures|||2|||1,1,94
+Romania,Superliga,2015/2016,18/10/2015,16:00,Concordia,Astra,0,2,A,3.61,3.42,2.17,3.66,3.42,2.25,3.34,3.23,2.09,,,,,,,2015-10-18,concordia,astra,concordia|||astra|||0|||2,1,95
+Romania,Superliga,2015/2016,18/10/2015,18:30,Petrolul,FCSB,0,0,D,4.55,3.37,1.94,4.84,3.5,2,4.2,3.23,1.86,,,,,,,2015-10-18,petrolul,fcsb,petrolul|||fcsb|||0|||0,1,96
+Romania,Superliga,2015/2016,19/10/2015,16:00,Pandurii,Poli Timisoara,3,1,H,2.43,2.93,3.61,2.43,3.1,3.9,2.24,2.94,3.34,,,,,,,2015-10-19,pandurii,poli timisoara,pandurii|||poli timisoara|||3|||1,1,97
+Romania,Superliga,2015/2016,23/10/2015,16:00,Poli Iasi,Concordia,0,1,A,2.08,3.12,4.37,2.11,3.2,4.5,2.02,3.04,3.8,,,,,,,2015-10-23,politehnica_iasi,concordia,politehnica_iasi|||concordia|||0|||1,1,99
+Romania,Superliga,2015/2016,23/10/2015,18:30,Poli Timisoara,CFR Cluj,1,2,A,3.02,2.94,2.79,3.3,3,2.79,2.94,2.84,2.52,,,,,,,2015-10-23,poli timisoara,cfr cluj,poli timisoara|||cfr cluj|||1|||2,1,100
+Romania,Superliga,2015/2016,24/10/2015,16:00,FC Voluntari,Petrolul,1,0,H,2.85,3.08,2.87,2.9,3.2,2.93,2.7,2.94,2.65,,,,,,,2015-10-24,fc voluntari,petrolul,fc voluntari|||petrolul|||1|||0,1,101
+Romania,Superliga,2015/2016,24/10/2015,18:30,Targu Mures,Astra,3,1,H,2.32,3.15,3.54,2.63,3.15,3.6,2.33,2.95,3.11,,,,,,,2015-10-24,targu mures,astra,targu mures|||astra|||3|||1,1,102
+Romania,Superliga,2015/2016,25/10/2015,13:00,U Craiova,Din. Bucuresti,3,0,H,2.36,3.02,3.63,2.42,3.04,3.76,2.24,2.91,3.35,,,,,,,2015-10-25,universitatea_craiova,din bucuresti,universitatea_craiova|||din bucuresti|||3|||0,1,103
+Romania,Superliga,2015/2016,25/10/2015,18:00,FCSB,Pandurii,1,1,D,1.62,3.84,6.5,1.66,3.84,7.15,1.57,3.51,6.1,,,,,,,2015-10-25,fcsb,pandurii,fcsb|||pandurii|||1|||1,1,104
+Romania,Superliga,2015/2016,26/10/2015,18:30,Viitorul Constanta,FC Botosani,3,1,H,2.01,3.23,4.56,2.1,3.4,4.56,1.98,3.12,3.82,,,,,,,2015-10-26,viitorul constanta,fc botosani,viitorul constanta|||fc botosani|||3|||1,1,105
+Romania,Superliga,2015/2016,30/10/2015,18:30,Astra,U Craiova,1,0,H,2.22,3.13,3.83,2.22,3.25,4.25,2.1,2.99,3.63,,,,,,,2015-10-30,astra,universitatea_craiova,astra|||universitatea_craiova|||1|||0,1,106
+Romania,Superliga,2015/2016,31/10/2015,14:00,Concordia,Targu Mures,1,2,A,3.77,2.97,2.34,3.77,3.15,2.45,3.21,2.95,2.28,,,,,,,2015-10-31,concordia,targu mures,concordia|||targu mures|||1|||2,1,107
+Romania,Superliga,2015/2016,31/10/2015,18:30,Petrolul,Poli Iasi,1,2,A,2.47,3,3.43,2.51,3.2,3.51,2.38,2.92,3.08,,,,,,,2015-10-31,petrolul,politehnica_iasi,petrolul|||politehnica_iasi|||1|||2,1,108
+Romania,Superliga,2015/2016,01/11/2015,16:00,Pandurii,FC Voluntari,2,1,H,1.7,3.93,5.36,1.73,3.93,6,1.65,3.58,4.99,,,,,,,2015-11-01,pandurii,fc voluntari,pandurii|||fc voluntari|||2|||1,1,109
+Romania,Superliga,2015/2016,02/11/2015,16:00,FC Botosani,Poli Timisoara,1,1,D,2.18,3.17,3.9,2.25,3.17,4.15,2.13,2.99,3.55,,,,,,,2015-11-02,fc botosani,poli timisoara,fc botosani|||poli timisoara|||1|||1,1,111
+Romania,Superliga,2015/2016,02/11/2015,18:30,Din. Bucuresti,Viitorul Constanta,1,5,A,2.22,3.26,3.68,2.3,3.3,3.72,2.18,3.1,3.28,,,,,,,2015-11-02,din bucuresti,viitorul constanta,din bucuresti|||viitorul constanta|||1|||5,1,112
+Romania,Superliga,2015/2016,06/11/2015,16:00,Poli Iasi,Pandurii,1,0,H,2.34,3.06,3.56,2.92,3.06,3.58,2.43,2.9,3,,,,,,,2015-11-06,politehnica_iasi,pandurii,politehnica_iasi|||pandurii|||1|||0,1,113
+Romania,Superliga,2015/2016,06/11/2015,18:30,Viitorul Constanta,Astra,1,2,A,2.75,3.25,2.78,2.81,3.32,2.88,2.54,3.14,2.66,,,,,,,2015-11-06,viitorul constanta,astra,viitorul constanta|||astra|||1|||2,1,114
+Romania,Superliga,2015/2016,07/11/2015,16:00,FC Voluntari,CFR Cluj,2,2,D,3.92,3.26,2.14,3.92,3.3,2.32,3.4,3.08,2.13,,,,,,,2015-11-07,fc voluntari,cfr cluj,fc voluntari|||cfr cluj|||2|||2,1,115
+Romania,Superliga,2015/2016,07/11/2015,18:30,Poli Timisoara,Din. Bucuresti,0,1,A,2.72,2.94,3.1,2.8,3,3.1,2.55,2.9,2.85,,,,,,,2015-11-07,poli timisoara,din bucuresti,poli timisoara|||din bucuresti|||0|||1,1,116
+Romania,Superliga,2015/2016,08/11/2015,12:00,U Craiova,Targu Mures,1,1,D,2.76,2.99,3.01,2.86,3.1,3.15,2.61,2.9,2.78,,,,,,,2015-11-08,universitatea_craiova,targu mures,universitatea_craiova|||targu mures|||1|||1,1,117
+Romania,Superliga,2015/2016,08/11/2015,18:30,FCSB,FC Botosani,5,3,H,1.51,4.15,7.86,1.55,4.15,7.86,1.51,3.81,6.23,,,,,,,2015-11-08,fcsb,fc botosani,fcsb|||fc botosani|||5|||3,1,118
+Romania,Superliga,2015/2016,09/11/2015,18:30,Petrolul,Concordia,1,1,D,2.15,3.05,4.2,2.25,3.05,4.4,2.13,2.94,3.62,,,,,,,2015-11-09,petrolul,concordia,petrolul|||concordia|||1|||1,1,119
+Romania,Superliga,2015/2016,20/11/2015,18:30,Concordia,U Craiova,0,2,A,3.49,3.13,2.36,3.8,3.13,2.65,3.26,3.01,2.23,,,,,,,2015-11-20,concordia,universitatea_craiova,concordia|||universitatea_craiova|||0|||2,1,120
+Romania,Superliga,2015/2016,21/11/2015,19:15,Astra,Poli Timisoara,2,2,D,1.7,3.85,5.48,1.7,3.9,6.2,1.61,3.61,5.34,,,,,,,2015-11-21,astra,poli timisoara,astra|||poli timisoara|||2|||2,1,122
+Romania,Superliga,2015/2016,22/11/2015,18:30,Din. Bucuresti,FCSB,3,1,H,3.58,3.09,2.34,3.9,3.24,2.34,3.34,3,2.19,,,,,,,2015-11-22,din bucuresti,fcsb,din bucuresti|||fcsb|||3|||1,1,124
+Romania,Superliga,2015/2016,23/11/2015,16:00,FC Botosani,FC Voluntari,2,2,D,2.04,3.39,4.08,2.08,3.4,4.6,1.97,3.22,3.75,,,,,,,2015-11-23,fc botosani,fc voluntari,fc botosani|||fc voluntari|||2|||2,1,125
+Romania,Superliga,2015/2016,23/11/2015,18:30,Pandurii,Petrolul,3,2,H,2.15,3.29,3.9,2.2,3.31,4.79,1.96,3.14,3.93,,,,,,,2015-11-23,pandurii,petrolul,pandurii|||petrolul|||3|||2,1,126
+Romania,Superliga,2015/2016,27/11/2015,16:00,Pandurii,Concordia,2,0,H,1.81,3.69,4.87,1.92,3.7,5.3,1.77,3.43,4.35,,,,,,,2015-11-27,pandurii,concordia,pandurii|||concordia|||2|||0,1,127
+Romania,Superliga,2015/2016,27/11/2015,18:30,Petrolul,CFR Cluj,1,0,H,2.82,3.09,2.85,2.9,3.1,2.88,2.61,2.97,2.72,,,,,,,2015-11-27,petrolul,cfr cluj,petrolul|||cfr cluj|||1|||0,1,128
+Romania,Superliga,2015/2016,28/11/2015,16:00,Poli Timisoara,Targu Mures,2,0,H,2.68,3.08,3.01,2.68,3.2,3.14,2.53,2.96,2.82,,,,,,,2015-11-28,poli timisoara,targu mures,poli timisoara|||targu mures|||2|||0,1,129
+Romania,Superliga,2015/2016,28/11/2015,18:30,Viitorul Constanta,U Craiova,4,0,H,2.59,3.31,2.92,2.59,3.31,3.44,2.37,3.12,2.91,,,,,,,2015-11-28,viitorul constanta,universitatea_craiova,viitorul constanta|||universitatea_craiova|||4|||0,1,130
+Romania,Superliga,2015/2016,29/11/2015,16:00,Poli Iasi,FC Botosani,1,0,H,2.04,3.3,4.24,2.14,3.3,4.24,1.99,3.17,3.72,,,,,,,2015-11-29,politehnica_iasi,fc botosani,politehnica_iasi|||fc botosani|||1|||0,1,131
+Romania,Superliga,2015/2016,29/11/2015,18:30,FCSB,Astra,0,1,A,2.31,3.32,3.38,2.38,3.32,3.5,2.16,3.15,3.27,,,,,,,2015-11-29,fcsb,astra,fcsb|||astra|||0|||1,1,132
+Romania,Superliga,2015/2016,30/11/2015,18:30,FC Voluntari,Din. Bucuresti,1,3,A,4.47,3.66,1.88,4.5,3.72,1.97,3.9,3.38,1.87,,,,,,,2015-11-30,fc voluntari,din bucuresti,fc voluntari|||din bucuresti|||1|||3,1,133
+Romania,Superliga,2015/2016,01/12/2015,12:00,U Craiova,Poli Timisoara,1,1,D,1.97,3.17,4.85,1.99,3.4,4.85,1.91,3.16,4.11,,,,,,,2015-12-01,universitatea_craiova,poli timisoara,universitatea_craiova|||poli timisoara|||1|||1,1,134
+Romania,Superliga,2015/2016,01/12/2015,16:00,Concordia,Viitorul Constanta,2,2,D,3.57,3.35,2.22,4.25,3.5,2.25,3.39,3.31,2.05,,,,,,,2015-12-01,concordia,viitorul constanta,concordia|||viitorul constanta|||2|||2,1,135
+Romania,Superliga,2015/2016,01/12/2015,18:30,CFR Cluj,Pandurii,1,2,A,2.46,3.02,3.43,2.46,3.25,3.75,2.23,3.02,3.27,,,,,,,2015-12-01,cfr cluj,pandurii,cfr cluj|||pandurii|||1|||2,1,136
+Romania,Superliga,2015/2016,02/12/2015,16:00,FC Botosani,Petrolul,2,1,H,2.47,3.09,3.31,2.47,3.25,3.55,2.29,3.02,3.14,,,,,,,2015-12-02,fc botosani,petrolul,fc botosani|||petrolul|||2|||1,1,137
+Romania,Superliga,2015/2016,03/12/2015,16:00,Astra,FC Voluntari,1,1,D,1.56,4.18,6.61,1.58,4.6,9.1,1.48,4.06,6.22,,,,,,,2015-12-03,astra,fc voluntari,astra|||fc voluntari|||1|||1,1,139
+Romania,Superliga,2015/2016,03/12/2015,18:30,Din. Bucuresti,Poli Iasi,0,0,D,2.11,3.37,3.86,2.26,3.6,5,1.98,3.2,3.78,,,,,,,2015-12-03,din bucuresti,politehnica_iasi,din bucuresti|||politehnica_iasi|||0|||0,1,140
+Romania,Superliga,2015/2016,04/12/2015,18:30,CFR Cluj,Concordia,0,0,D,1.7,3.79,5.56,1.8,3.79,5.7,1.69,3.52,4.81,,,,,,,2015-12-04,cfr cluj,concordia,cfr cluj|||concordia|||0|||0,1,141
+Romania,Superliga,2015/2016,05/12/2015,16:00,Pandurii,FC Botosani,0,3,A,1.74,3.75,5.37,1.74,3.94,6.5,1.61,3.61,5.37,,,,,,,2015-12-05,pandurii,fc botosani,pandurii|||fc botosani|||0|||3,1,142
+Romania,Superliga,2015/2016,05/12/2015,18:30,Poli Timisoara,Viitorul Constanta,1,2,A,2.49,3.16,3.21,2.62,3.25,3.21,2.39,3.09,2.91,,,,,,,2015-12-05,poli timisoara,viitorul constanta,poli timisoara|||viitorul constanta|||1|||2,1,143
+Romania,Superliga,2015/2016,06/12/2015,16:00,Poli Iasi,Astra,1,1,D,3.22,3.09,2.53,3.25,3.2,2.53,2.94,3.04,2.39,,,,,,,2015-12-06,politehnica_iasi,astra,politehnica_iasi|||astra|||1|||1,1,144
+Romania,Superliga,2015/2016,06/12/2015,18:30,FCSB,U Craiova,2,0,H,1.9,3.4,4.76,1.91,3.5,5.25,1.81,3.26,4.4,,,,,,,2015-12-06,fcsb,universitatea_craiova,fcsb|||universitatea_craiova|||2|||0,1,145
+Romania,Superliga,2015/2016,07/12/2015,16:00,FC Voluntari,Targu Mures,0,2,A,2.8,3.21,2.77,2.8,3.22,2.94,2.52,3.08,2.73,,,,,,,2015-12-07,fc voluntari,targu mures,fc voluntari|||targu mures|||0|||2,1,146
+Romania,Superliga,2015/2016,07/12/2015,18:30,Petrolul,Din. Bucuresti,1,2,A,2.76,3.19,2.79,3.25,3.2,2.9,2.66,3.05,2.62,,,,,,,2015-12-07,petrolul,din bucuresti,petrolul|||din bucuresti|||1|||2,1,147
+Romania,Superliga,2015/2016,11/12/2015,15:45,Concordia,Poli Timisoara,2,2,D,2.82,3.16,2.78,2.82,3.16,3.25,2.49,3.01,2.85,,,,,,,2015-12-11,concordia,poli timisoara,concordia|||poli timisoara|||2|||2,1,148
+Romania,Superliga,2015/2016,12/12/2015,16:00,Astra,Petrolul,3,1,H,1.65,4,5.78,1.65,4.3,6.7,1.55,3.86,5.58,,,,,,,2015-12-12,astra,petrolul,astra|||petrolul|||3|||1,1,150
+Romania,Superliga,2015/2016,12/12/2015,18:30,Din. Bucuresti,Pandurii,2,1,H,2.26,3.33,3.47,2.6,3.33,3.6,2.26,3.16,3.08,,,,,,,2015-12-12,din bucuresti,pandurii,din bucuresti|||pandurii|||2|||1,1,151
+Romania,Superliga,2015/2016,13/12/2015,12:00,U Craiova,FC Voluntari,1,2,A,1.77,3.68,5.18,1.89,3.7,5.62,1.74,3.43,4.55,,,,,,,2015-12-13,universitatea_craiova,fc voluntari,universitatea_craiova|||fc voluntari|||1|||2,1,152
+Romania,Superliga,2015/2016,13/12/2015,18:30,FC Botosani,CFR Cluj,2,1,H,2.96,3.05,2.75,3.16,3.25,2.75,2.79,3.01,2.52,,,,,,,2015-12-13,fc botosani,cfr cluj,fc botosani|||cfr cluj|||2|||1,1,153
+Romania,Superliga,2015/2016,18/12/2015,18:30,FC Botosani,Concordia,5,1,H,1.84,3.38,5.09,2.15,3.5,5.09,1.85,3.28,4.16,,,,,,,2015-12-18,fc botosani,concordia,fc botosani|||concordia|||5|||1,1,155
+Romania,Superliga,2015/2016,19/12/2015,16:00,Poli Iasi,U Craiova,1,0,H,2.52,3.1,3.26,2.58,3.25,3.26,2.4,2.99,2.98,,,,,,,2015-12-19,politehnica_iasi,universitatea_craiova,politehnica_iasi|||universitatea_craiova|||1|||0,1,156
+Romania,Superliga,2015/2016,19/12/2015,18:30,Pandurii,Astra,1,1,D,2.81,3.28,2.73,2.92,3.28,2.92,2.66,3.08,2.59,,,,,,,2015-12-19,pandurii,astra,pandurii|||astra|||1|||1,1,157
+Romania,Superliga,2015/2016,20/12/2015,16:00,Petrolul,Targu Mures,0,1,A,4.05,3.34,2.05,4.1,3.34,2.4,3.54,3.17,2.04,,,,,,,2015-12-20,petrolul,targu mures,petrolul|||targu mures|||0|||1,1,158
+Romania,Superliga,2015/2016,20/12/2015,18:30,CFR Cluj,Din. Bucuresti,1,1,D,2.16,3.21,3.88,2.5,3.21,4,2.19,3.06,3.29,,,,,,,2015-12-20,cfr cluj,din bucuresti,cfr cluj|||din bucuresti|||1|||1,1,159
+Romania,Superliga,2015/2016,21/12/2015,16:00,FC Voluntari,Viitorul Constanta,2,3,A,3.52,3.58,2.14,3.92,3.58,2.25,3.26,3.32,2.08,,,,,,,2015-12-21,fc voluntari,viitorul constanta,fc voluntari|||viitorul constanta|||2|||3,1,160
+Romania,Superliga,2015/2016,21/12/2015,18:30,FCSB,Poli Timisoara,3,1,H,1.46,4.36,8.79,1.5,4.55,9.5,1.41,4.13,7.33,,,,,,,2015-12-21,fcsb,poli timisoara,fcsb|||poli timisoara|||3|||1,1,161
+Romania,Superliga,2015/2016,12/02/2016,18:30,Targu Mures,Pandurii,0,1,A,2.56,2.97,3.25,2.56,3.1,3.45,2.39,2.96,3.02,,,,,,,2016-02-12,targu mures,pandurii,targu mures|||pandurii|||0|||1,1,162
+Romania,Superliga,2015/2016,13/02/2016,18:30,Astra,CFR Cluj,2,2,D,2.02,3.35,4.24,2.07,3.4,4.69,1.93,3.2,3.98,,,,,,,2016-02-13,astra,cfr cluj,astra|||cfr cluj|||2|||2,1,164
+Romania,Superliga,2015/2016,14/02/2016,12:00,U Craiova,Petrolul,2,0,H,2.11,3.26,4,2.22,3.3,4.25,2.04,3.1,3.67,,,,,,,2016-02-14,universitatea_craiova,petrolul,universitatea_craiova|||petrolul|||2|||0,1,165
+Romania,Superliga,2015/2016,14/02/2016,14:30,Poli Timisoara,FC Voluntari,1,2,A,2.28,2.91,4.06,2.28,3.25,4.14,2.11,3.03,3.55,,,,,,,2016-02-14,poli timisoara,fc voluntari,poli timisoara|||fc voluntari|||1|||2,1,166
+Romania,Superliga,2015/2016,14/02/2016,17:00,Din. Bucuresti,FC Botosani,1,0,H,2.5,3.05,3.3,2.54,3.2,3.35,2.37,3.03,2.99,,,,,,,2016-02-14,din bucuresti,fc botosani,din bucuresti|||fc botosani|||1|||0,1,167
+Romania,Superliga,2015/2016,15/02/2016,18:30,Concordia,FCSB,0,2,A,6.11,4.04,1.62,7,4.1,1.64,5.6,3.77,1.56,,,,,,,2016-02-15,concordia,fcsb,concordia|||fcsb|||0|||2,1,168
+Romania,Superliga,2015/2016,19/02/2016,18:30,FC Botosani,Astra,0,1,A,2.7,3.1,2.97,3.02,3.15,3,2.58,3.02,2.7,,,,,,,2016-02-19,fc botosani,astra,fc botosani|||astra|||0|||1,1,169
+Romania,Superliga,2015/2016,20/02/2016,16:00,Poli Iasi,Poli Timisoara,1,1,D,1.61,3.7,7.15,1.73,3.8,7.15,1.57,3.57,5.98,,,,,,,2016-02-20,politehnica_iasi,poli timisoara,politehnica_iasi|||poli timisoara|||1|||1,1,170
+Romania,Superliga,2015/2016,20/02/2016,18:30,Din. Bucuresti,Concordia,4,0,H,1.54,4.17,7.04,1.7,4.17,7.04,1.6,3.75,5.19,,,,,,,2016-02-20,din bucuresti,concordia,din bucuresti|||concordia|||4|||0,1,171
+Romania,Superliga,2015/2016,21/02/2016,16:00,Petrolul,Viitorul Constanta,1,2,A,3.16,3.27,2.45,3.45,3.27,2.49,3.03,3.1,2.31,,,,,,,2016-02-21,petrolul,viitorul constanta,petrolul|||viitorul constanta|||1|||2,1,172
+Romania,Superliga,2015/2016,22/02/2016,16:00,Pandurii,U Craiova,1,1,D,2.74,3.11,2.9,2.8,3.18,2.9,2.59,3,2.71,,,,,,,2016-02-22,pandurii,universitatea_craiova,pandurii|||universitatea_craiova|||1|||1,1,174
+Romania,Superliga,2015/2016,22/02/2016,18:30,FC Voluntari,FCSB,3,1,H,10.63,4.83,1.37,11.5,4.83,1.57,7.66,4.17,1.4,,,,,,,2016-02-22,fc voluntari,fcsb,fc voluntari|||fcsb|||3|||1,1,175
+Romania,Superliga,2015/2016,26/02/2016,18:30,Poli Timisoara,Petrolul,1,0,H,2.11,3.25,4,2.21,3.4,4.6,1.97,3.19,3.81,,,,,,,2016-02-26,poli timisoara,petrolul,poli timisoara|||petrolul|||1|||0,1,176
+Romania,Superliga,2015/2016,27/02/2016,12:00,U Craiova,CFR Cluj,0,1,A,2.43,3.14,3.34,2.46,3.14,3.5,2.3,2.97,3.16,,,,,,,2016-02-27,universitatea_craiova,cfr cluj,universitatea_craiova|||cfr cluj|||0|||1,1,177
+Romania,Superliga,2015/2016,27/02/2016,18:30,Targu Mures,FC Botosani,1,0,H,1.75,3.57,5.61,1.78,3.75,5.62,1.7,3.44,4.82,,,,,,,2016-02-27,targu mures,fc botosani,targu mures|||fc botosani|||1|||0,1,179
+Romania,Superliga,2015/2016,28/02/2016,16:00,Concordia,FC Voluntari,1,2,A,3.01,3.41,2.47,3.2,3.41,2.65,2.88,3.17,2.36,,,,,,,2016-02-28,concordia,fc voluntari,concordia|||fc voluntari|||1|||2,1,180
+Romania,Superliga,2015/2016,28/02/2016,18:30,Astra,Din. Bucuresti,1,1,D,2.34,3.36,3.27,2.4,3.36,3.3,2.25,3.18,3.05,,,,,,,2016-02-28,astra,din bucuresti,astra|||din bucuresti|||1|||1,1,181
+Romania,Superliga,2015/2016,29/02/2016,18:30,Viitorul Constanta,Pandurii,1,3,A,2.01,3.46,4.12,2.16,3.46,4.45,1.98,3.24,3.67,,,,,,,2016-02-29,viitorul constanta,pandurii,viitorul constanta|||pandurii|||1|||3,1,182
+Romania,Superliga,2015/2016,04/03/2016,18:30,FC Botosani,Petrolul,1,0,H,1.68,3.7,6.04,1.75,3.8,6.7,1.63,3.47,5.3,,,,,,,2016-03-04,fc botosani,petrolul,fc botosani|||petrolul|||1|||0,1,183
+Romania,Superliga,2015/2016,05/03/2016,18:30,Astra,Viitorul Constanta,2,0,H,1.99,3.52,4.08,2.25,3.52,4.15,2.02,3.27,3.5,,,,,,,2016-03-05,astra,viitorul constanta,astra|||viitorul constanta|||2|||0,1,185
+Romania,Superliga,2015/2016,06/03/2016,12:00,U Craiova,FC Voluntari,3,0,H,1.99,3.4,4.29,2.13,3.4,4.5,1.96,3.2,3.76,,,,,,,2016-03-06,universitatea_craiova,fc voluntari,universitatea_craiova|||fc voluntari|||3|||0,1,186
+Romania,Superliga,2015/2016,06/03/2016,18:30,Din. Bucuresti,FCSB,1,1,D,4.34,3.41,1.95,4.5,3.6,2.4,3.79,3.24,1.96,,,,,,,2016-03-06,din bucuresti,fcsb,din bucuresti|||fcsb|||1|||1,1,187
+Romania,Superliga,2015/2016,07/03/2016,16:00,Concordia,Poli Timisoara,0,0,D,3.11,3.16,2.55,3.11,3.2,2.78,2.81,2.96,2.53,,,,,,,2016-03-07,concordia,poli timisoara,concordia|||poli timisoara|||0|||0,1,188
+Romania,Superliga,2015/2016,07/03/2016,18:30,Targu Mures,Pandurii,0,2,A,2.32,3.22,3.46,2.5,3.22,3.46,2.32,3.04,3.01,,,,,,,2016-03-07,targu mures,pandurii,targu mures|||pandurii|||0|||2,1,189
+Romania,Superliga,2015/2016,11/03/2016,18:30,Petrolul,Poli Iasi,1,2,A,3.3,3.03,2.51,3.3,3.1,2.6,2.95,2.96,2.44,,,,,,,2016-03-11,petrolul,politehnica_iasi,petrolul|||politehnica_iasi|||1|||2,2,190
+Romania,Superliga,2015/2016,12/03/2016,16:00,FC Voluntari,FC Botosani,1,1,D,2.71,3.07,3,2.71,3.2,3.14,2.49,3.03,2.81,,,,,,,2016-03-12,fc voluntari,fc botosani,fc voluntari|||fc botosani|||1|||1,2,191
+Romania,Superliga,2015/2016,12/03/2016,18:30,Pandurii,Viitorul Constanta,1,1,D,2.21,3.27,3.68,2.21,3.4,3.88,2.07,3.22,3.4,,,,,,,2016-03-12,pandurii,viitorul constanta,pandurii|||viitorul constanta|||1|||1,1,192
+Romania,Superliga,2015/2016,13/03/2016,16:00,Poli Timisoara,CFR Cluj,2,2,D,3.15,2.92,2.7,3.15,3.1,2.83,2.84,2.91,2.54,,,,,,,2016-03-13,poli timisoara,cfr cluj,poli timisoara|||cfr cluj|||2|||2,1,193
+Romania,Superliga,2015/2016,13/03/2016,18:30,FCSB,Astra,2,0,H,1.86,3.48,4.96,1.95,3.52,5.16,1.8,3.3,4.38,,,,,,,2016-03-13,fcsb,astra,fcsb|||astra|||2|||0,1,194
+Romania,Superliga,2015/2016,14/03/2016,16:00,Concordia,U Craiova,1,0,H,3.29,3.08,2.49,3.55,3.2,2.51,3.08,3,2.34,,,,,,,2016-03-14,concordia,universitatea_craiova,concordia|||universitatea_craiova|||1|||0,1,195
+Romania,Superliga,2015/2016,14/03/2016,18:30,Targu Mures,Din. Bucuresti,0,0,D,3.47,3.27,2.29,4.95,3.6,2.29,3.5,3.16,2.09,,,,,,,2016-03-14,targu mures,din bucuresti,targu mures|||din bucuresti|||0|||0,2,196
+Romania,Superliga,2015/2016,18/03/2016,16:00,Poli Iasi,FC Voluntari,0,1,A,1.76,3.62,5.4,1.85,3.65,5.41,1.76,3.4,4.53,,,,,,,2016-03-18,politehnica_iasi,fc voluntari,politehnica_iasi|||fc voluntari|||0|||1,1,197
+Romania,Superliga,2015/2016,18/03/2016,18:30,Astra,Targu Mures,1,0,H,1.59,3.92,6.85,1.7,3.92,6.85,1.6,3.62,5.43,,,,,,,2016-03-18,astra,targu mures,astra|||targu mures|||1|||0,1,198
+Romania,Superliga,2015/2016,19/03/2016,16:00,FC Botosani,Concordia,0,3,A,1.85,3.52,4.81,1.91,3.6,5,1.78,3.38,4.43,,,,,,,2016-03-19,fc botosani,concordia,fc botosani|||concordia|||0|||3,1,199
+Romania,Superliga,2015/2016,20/03/2016,13:00,U Craiova,Poli Timisoara,1,0,H,2.03,3.23,4.38,2.03,3.3,5.25,1.9,3.12,4.19,,,,,,,2016-03-20,universitatea_craiova,poli timisoara,universitatea_craiova|||poli timisoara|||1|||0,1,201
+Romania,Superliga,2015/2016,20/03/2016,18:30,Din. Bucuresti,Pandurii,1,1,D,2.21,3.26,3.68,2.35,3.26,3.68,2.18,3.08,3.29,,,,,,,2016-03-20,din bucuresti,pandurii,din bucuresti|||pandurii|||1|||1,1,202
+Romania,Superliga,2015/2016,21/03/2016,18:30,CFR Cluj,Petrolul,0,0,D,1.43,4.63,8.67,1.57,4.63,9.6,1.42,4.13,7.45,,,,,,,2016-03-21,cfr cluj,petrolul,cfr cluj|||petrolul|||0|||0,1,203
+Romania,Superliga,2015/2016,29/03/2016,18:30,Poli Timisoara,Petrolul,0,1,A,1.77,3.46,5.68,1.83,3.6,5.8,1.73,3.27,4.93,,,,,,,2016-03-29,poli timisoara,petrolul,poli timisoara|||petrolul|||0|||1,1,204
+Romania,Superliga,2015/2016,30/03/2016,14:00,FC Voluntari,CFR Cluj,1,0,H,3.23,3.01,2.58,3.23,3.14,2.61,2.94,2.96,2.44,,,,,,,2016-03-30,fc voluntari,cfr cluj,fc voluntari|||cfr cluj|||1|||0,1,205
+Romania,Superliga,2015/2016,30/03/2016,16:30,Concordia,Poli Iasi,1,1,D,3.03,3.03,2.7,3.03,3.03,3.25,2.67,2.89,2.74,,,,,,,2016-03-30,concordia,politehnica_iasi,concordia|||politehnica_iasi|||1|||1,1,206
+Romania,Superliga,2015/2016,30/03/2016,19:00,Pandurii,FCSB,0,1,A,5.14,3.59,1.79,6,3.82,1.79,4.75,3.43,1.72,,,,,,,2016-03-30,pandurii,fcsb,pandurii|||fcsb|||0|||1,1,207
+Romania,Superliga,2015/2016,31/03/2016,14:00,U Craiova,FC Botosani,2,1,H,2.05,3.28,4.22,2.1,3.35,4.4,1.99,3.16,3.74,,,,,,,2016-03-31,universitatea_craiova,fc botosani,universitatea_craiova|||fc botosani|||2|||1,1,208
+Romania,Superliga,2015/2016,01/04/2016,18:30,Din. Bucuresti,Astra,1,4,A,2.95,2.99,2.77,2.95,3.15,3.1,2.6,2.99,2.69,,,,,,,2016-04-01,din bucuresti,astra,din bucuresti|||astra|||1|||4,1,210
+Romania,Superliga,2015/2016,02/04/2016,14:30,Petrolul,FC Voluntari,1,2,A,2.66,3.05,3.06,2.69,3.13,3.18,2.46,2.99,2.88,,,,,,,2016-04-02,petrolul,fc voluntari,petrolul|||fc voluntari|||1|||2,1,211
+Romania,Superliga,2015/2016,02/04/2016,17:00,CFR Cluj,Concordia,2,0,H,1.69,3.74,5.88,1.75,3.75,5.89,1.64,3.58,5.09,,,,,,,2016-04-02,cfr cluj,concordia,cfr cluj|||concordia|||2|||0,1,212
+Romania,Superliga,2015/2016,03/04/2016,16:00,Poli Iasi,U Craiova,3,0,H,2.51,2.88,3.5,2.6,3.1,3.5,2.39,2.87,3.12,,,,,,,2016-04-03,politehnica_iasi,universitatea_craiova,politehnica_iasi|||universitatea_craiova|||3|||0,1,213
+Romania,Superliga,2015/2016,04/04/2016,16:00,FC Botosani,Poli Timisoara,6,1,H,2.07,3.07,4.49,2.1,3.2,4.9,2,3.08,3.85,,,,,,,2016-04-04,fc botosani,poli timisoara,fc botosani|||poli timisoara|||6|||1,1,215
+Romania,Superliga,2015/2016,04/04/2016,18:30,Viitorul Constanta,Din. Bucuresti,1,2,A,2.22,3.19,3.81,2.25,3.3,3.81,2.11,3.14,3.37,,,,,,,2016-04-04,viitorul constanta,din bucuresti,viitorul constanta|||din bucuresti|||1|||2,1,216
+Romania,Superliga,2015/2016,05/04/2016,16:30,Astra,Pandurii,0,0,D,1.84,3.42,5.14,1.85,3.6,5.4,1.77,3.35,4.52,,,,,,,2016-04-05,astra,pandurii,astra|||pandurii|||0|||0,1,217
+Romania,Superliga,2015/2016,08/04/2016,18:30,Concordia,Petrolul,1,1,D,1.95,3.25,4.74,1.98,3.34,5.1,1.89,3.1,4.28,,,,,,,2016-04-08,concordia,petrolul,concordia|||petrolul|||1|||1,1,218
+Romania,Superliga,2015/2016,09/04/2016,13:00,U Craiova,CFR Cluj,1,1,D,2.37,3.11,3.49,2.47,3.15,3.5,2.31,3.01,3.11,,,,,,,2016-04-09,universitatea_craiova,cfr cluj,universitatea_craiova|||cfr cluj|||1|||1,1,219
+Romania,Superliga,2015/2016,09/04/2016,18:30,Viitorul Constanta,Astra,1,3,A,3.06,3.2,2.56,3.24,3.25,2.7,2.82,3.09,2.43,,,,,,,2016-04-09,viitorul constanta,astra,viitorul constanta|||astra|||1|||3,1,220
+Romania,Superliga,2015/2016,10/04/2016,15:30,Poli Timisoara,FC Voluntari,2,1,H,2.49,3.12,3.25,2.61,3.2,3.25,2.41,3,2.94,,,,,,,2016-04-10,poli timisoara,fc voluntari,poli timisoara|||fc voluntari|||2|||1,1,221
+Romania,Superliga,2015/2016,10/04/2016,18:30,FCSB,Din. Bucuresti,1,1,D,1.6,4.04,6.42,1.6,4.1,8.1,1.54,3.75,6.02,,,,,,,2016-04-10,fcsb,din bucuresti,fcsb|||din bucuresti|||1|||1,1,222
+Romania,Superliga,2015/2016,11/04/2016,16:00,FC Botosani,Poli Iasi,0,0,D,2.3,3.12,3.65,2.37,3.2,3.75,2.19,3.03,3.35,,,,,,,2016-04-11,fc botosani,politehnica_iasi,fc botosani|||politehnica_iasi|||0|||0,1,223
+Romania,Superliga,2015/2016,11/04/2016,18:30,Pandurii,Targu Mures,3,3,D,1.64,3.68,6.57,1.67,3.8,6.57,1.6,3.53,5.65,,,,,,,2016-04-11,pandurii,targu mures,pandurii|||targu mures|||3|||3,1,224
+Romania,Superliga,2015/2016,15/04/2016,18:30,Petrolul,U Craiova,1,0,H,4.72,3.25,1.96,4.72,3.29,2.05,3.95,3.13,1.94,,,,,,,2016-04-15,petrolul,universitatea_craiova,petrolul|||universitatea_craiova|||1|||0,1,225
+Romania,Superliga,2015/2016,16/04/2016,16:00,CFR Cluj,FC Botosani,6,0,H,2.28,3.17,3.62,2.32,3.25,3.78,2.16,3.07,3.32,,,,,,,2016-04-16,cfr cluj,fc botosani,cfr cluj|||fc botosani|||6|||0,1,226
+Romania,Superliga,2015/2016,16/04/2016,18:30,Astra,FCSB,2,0,H,3.79,3.36,2.13,4.15,3.4,2.15,3.53,3.19,2.04,,,,,,,2016-04-16,astra,fcsb,astra|||fcsb|||2|||0,2,227
+Romania,Superliga,2015/2016,17/04/2016,16:00,FC Voluntari,Concordia,1,2,A,2.01,3.38,4.23,2.1,3.4,4.5,1.97,3.24,3.69,,,,,,,2016-04-17,fc voluntari,concordia,fc voluntari|||concordia|||1|||2,1,228
+Romania,Superliga,2015/2016,17/04/2016,18:30,Din. Bucuresti,Targu Mures,1,0,H,2.01,3.31,4.35,2.04,3.4,4.35,1.91,3.26,3.91,,,,,,,2016-04-17,din bucuresti,targu mures,din bucuresti|||targu mures|||1|||0,1,229
+Romania,Superliga,2015/2016,18/04/2016,16:00,Poli Iasi,Poli Timisoara,0,0,D,1.74,3.69,5.41,1.8,3.69,5.6,1.72,3.37,4.77,,,,,,,2016-04-18,politehnica_iasi,poli timisoara,politehnica_iasi|||poli timisoara|||0|||0,1,230
+Romania,Superliga,2015/2016,18/04/2016,18:30,Viitorul Constanta,Pandurii,0,2,A,2.74,3.13,2.9,2.77,3.3,2.94,2.52,3.09,2.72,,,,,,,2016-04-18,viitorul constanta,pandurii,viitorul constanta|||pandurii|||0|||2,1,231
+Romania,Superliga,2015/2016,22/04/2016,18:30,Petrolul,FC Botosani,0,4,A,3.07,3.06,2.65,3.2,3.15,2.65,2.9,3.04,2.43,,,,,,,2016-04-22,petrolul,fc botosani,petrolul|||fc botosani|||0|||4,1,232
+Romania,Superliga,2015/2016,23/04/2016,16:00,Poli Timisoara,Concordia,1,3,A,2.13,3.25,3.94,2.45,3.35,3.94,2.12,3.11,3.4,,,,,,,2016-04-23,poli timisoara,concordia,poli timisoara|||concordia|||1|||3,1,233
+Romania,Superliga,2015/2016,24/04/2016,18:30,Pandurii,Din. Bucuresti,0,0,D,2.05,3.3,4.19,2.11,3.4,4.19,2.03,3.17,3.61,,,,,,,2016-04-24,pandurii,din bucuresti,pandurii|||din bucuresti|||0|||0,1,236
+Romania,Superliga,2015/2016,25/04/2016,15:30,FC Voluntari,U Craiova,0,2,A,2.28,3.24,3.53,2.4,3.24,3.75,2.15,3.1,3.35,,,,,,,2016-04-25,fc voluntari,universitatea_craiova,fc voluntari|||universitatea_craiova|||0|||2,1,237
+Romania,Superliga,2015/2016,25/04/2016,18:30,Targu Mures,Astra,1,4,A,7.25,4.9,1.45,8,5.1,1.65,6.53,4.35,1.43,,,,,,,2016-04-25,targu mures,astra,targu mures|||astra|||1|||4,1,238
+Romania,Superliga,2015/2016,29/04/2016,18:00,FC Botosani,FC Voluntari,4,2,H,1.7,3.77,5.61,1.83,3.78,5.75,1.67,3.5,4.91,,,,,,,2016-04-29,fc botosani,fc voluntari,fc botosani|||fc voluntari|||4|||2,1,239
+Romania,Superliga,2015/2016,30/04/2016,15:00,Poli Iasi,Petrolul,1,0,H,1.51,4.13,8.1,1.55,4.2,8.5,1.48,3.84,6.58,,,,,,,2016-04-30,politehnica_iasi,petrolul,politehnica_iasi|||petrolul|||1|||0,2,240
+Romania,Superliga,2015/2016,30/04/2016,17:30,CFR Cluj,Poli Timisoara,5,1,H,1.7,3.87,5.48,1.79,3.87,5.75,1.69,3.53,4.79,,,,,,,2016-04-30,cfr cluj,poli timisoara,cfr cluj|||poli timisoara|||5|||1,1,241
+Romania,Superliga,2015/2016,01/05/2016,16:00,U Craiova,Concordia,2,0,H,2.11,3.43,3.77,2.17,3.43,4.32,1.99,3.24,3.66,,,,,,,2016-05-01,universitatea_craiova,concordia,universitatea_craiova|||concordia|||2|||0,2,242
+Romania,Superliga,2015/2016,01/05/2016,18:30,FCSB,Pandurii,1,1,D,1.72,3.68,5.65,1.72,3.85,6.66,1.62,3.57,5.45,,,,,,,2016-05-01,fcsb,pandurii,fcsb|||pandurii|||1|||1,2,243
+Romania,Superliga,2015/2016,02/05/2016,18:30,Astra,Din. Bucuresti,4,2,H,3.56,3.6,2.12,3.75,3.6,2.35,3.28,3.26,2.11,,,,,,,2016-05-02,astra,din bucuresti,astra|||din bucuresti|||4|||2,1,245
+Romania,Superliga,2015/2016,06/05/2016,16:00,Petrolul,CFR Cluj,1,0,H,5.02,3.66,1.79,5.02,3.66,2,4.24,3.39,1.8,,,,,,,2016-05-06,petrolul,cfr cluj,petrolul|||cfr cluj|||1|||0,2,246
+Romania,Superliga,2015/2016,06/05/2016,18:30,Din. Bucuresti,Viitorul Constanta,3,3,D,2.43,3.48,3.01,2.43,3.48,3.1,2.32,3.29,2.83,,,,,,,2016-05-06,din bucuresti,viitorul constanta,din bucuresti|||viitorul constanta|||3|||3,1,247
+Romania,Superliga,2015/2016,09/05/2016,16:00,FC Voluntari,Poli Iasi,1,2,A,3.02,3.13,2.63,3.2,3.5,2.85,2.82,3.04,2.45,,,,,,,2016-05-09,fc voluntari,politehnica_iasi,fc voluntari|||politehnica_iasi|||1|||2,1,248
+Romania,Superliga,2015/2016,09/05/2016,18:30,Pandurii,Astra,2,0,H,1.78,3.98,4.61,1.83,4,4.61,1.76,3.72,3.98,,,,,,,2016-05-09,pandurii,astra,pandurii|||astra|||2|||0,1,249
+Romania,Superliga,2015/2016,10/05/2016,16:00,Concordia,FC Botosani,1,1,D,2.46,3.41,3.02,2.91,3.25,3.02,2.65,3.03,2.61,,,,,,,2016-05-10,concordia,fc botosani,concordia|||fc botosani|||1|||1,1,250
+Romania,Superliga,2015/2016,11/05/2016,18:30,Poli Timisoara,U Craiova,2,2,D,,,,4,3.55,2.1,3.44,3.26,2.04,,,,,,,2016-05-11,poli timisoara,universitatea_craiova,poli timisoara|||universitatea_craiova|||2|||2,1,252
+Romania,Superliga,2015/2016,13/05/2016,18:30,CFR Cluj,FC Voluntari,2,1,H,1.54,4.37,6.62,1.55,4.47,7.6,1.5,4.07,5.85,,,,,,,2016-05-13,cfr cluj,fc voluntari,cfr cluj|||fc voluntari|||2|||1,1,253
+Romania,Superliga,2015/2016,15/05/2016,16:00,Poli Iasi,Concordia,2,3,A,1.75,3.63,5.43,1.83,3.66,5.5,1.72,3.44,4.74,,,,,,,2016-05-15,politehnica_iasi,concordia,politehnica_iasi|||concordia|||2|||3,1,254
+Romania,Superliga,2015/2016,16/05/2016,16:00,Petrolul,Poli Timisoara,3,2,H,1.79,3.65,5.02,1.85,3.75,5.2,1.75,3.49,4.35,,,,,,,2016-05-16,petrolul,poli timisoara,petrolul|||poli timisoara|||3|||2,1,255
+Romania,Superliga,2015/2016,16/05/2016,18:30,FC Botosani,U Craiova,2,1,H,2.02,3.62,3.86,2.08,3.62,4.25,1.96,3.39,3.57,,,,,,,2016-05-16,fc botosani,universitatea_craiova,fc botosani|||universitatea_craiova|||2|||1,1,256
+Romania,Superliga,2015/2016,21/05/2016,15:00,FC Voluntari,Petrolul,2,0,H,2.52,3.12,3.2,2.52,3.2,3.38,2.36,3.05,2.97,,,,,,,2016-05-21,fc voluntari,petrolul,fc voluntari|||petrolul|||2|||0,1,257
+Romania,Superliga,2015/2016,21/05/2016,17:30,Concordia,CFR Cluj,2,1,H,2.77,3.02,2.94,2.84,3.2,3.2,2.56,2.98,2.77,,,,,,,2016-05-21,concordia,cfr cluj,concordia|||cfr cluj|||2|||1,2,258
+Romania,Superliga,2015/2016,22/05/2016,15:00,U Craiova,Poli Iasi,3,2,H,2.45,3.15,3.34,2.6,3.2,3.6,2.34,3,3.06,,,,,,,2016-05-22,universitatea_craiova,politehnica_iasi,universitatea_craiova|||politehnica_iasi|||3|||2,1,259
+Romania,Superliga,2015/2016,22/05/2016,17:30,Poli Timisoara,FC Botosani,1,4,A,3.28,3.37,2.34,3.66,3.41,2.4,3.04,3.21,2.23,,,,,,,2016-05-22,poli timisoara,fc botosani,poli timisoara|||fc botosani|||1|||4,1,260
+Romania,Superliga,2015/2016,24/05/2016,18:30,Petrolul,Concordia,0,1,A,4.16,3.45,2,4.3,3.65,2.01,3.72,3.32,1.93,,,,,,,2016-05-24,petrolul,concordia,petrolul|||concordia|||0|||1,1,261
+Romania,Superliga,2015/2016,25/05/2016,16:00,FC Voluntari,Poli Timisoara,5,0,H,1.58,3.94,5.17,1.67,4,6.6,1.57,3.74,5.45,,,,,,,2016-05-25,fc voluntari,poli timisoara,fc voluntari|||poli timisoara|||5|||0,1,262
+Romania,Superliga,2015/2016,26/05/2016,16:00,Poli Iasi,FC Botosani,1,1,D,2.42,3.27,3.22,2.51,3.31,3.3,2.29,3.13,3.02,,,,,,,2016-05-26,politehnica_iasi,fc botosani,politehnica_iasi|||fc botosani|||1|||1,1,263
+Romania,Superliga,2015/2016,26/05/2016,18:30,CFR Cluj,U Craiova,4,0,H,2.34,3.45,3.2,2.41,3.5,3.53,2.24,3.26,2.99,,,,,,,2016-05-26,cfr cluj,universitatea_craiova,cfr cluj|||universitatea_craiova|||4|||0,1,264
+Romania,Superliga,2015/2016,29/05/2016,15:00,Concordia,FC Voluntari,1,1,D,1.64,4.28,5.22,1.69,4.33,5.22,1.64,3.88,4.5,,,,,,,2016-05-29,concordia,fc voluntari,concordia|||fc voluntari|||1|||1,1,265
+Romania,Superliga,2015/2016,29/05/2016,15:00,U Craiova,Petrolul,2,0,H,,,,1.2,7.48,17.18,1.17,6.44,12.1,,,,,,,2016-05-29,universitatea_craiova,petrolul,universitatea_craiova|||petrolul|||2|||0,2,266
+Romania,Superliga,2015/2016,29/05/2016,15:00,FC Botosani,CFR Cluj,4,0,H,2.02,3.82,3.66,2.02,3.82,3.85,1.92,3.59,3.42,,,,,,,2016-05-29,fc botosani,cfr cluj,fc botosani|||cfr cluj|||4|||0,1,267
+Romania,Superliga,2015/2016,29/05/2016,15:00,Poli Timisoara,Poli Iasi,2,3,A,,,,15,6.5,1.27,10.96,5.77,1.2,,,,,,,2016-05-29,poli timisoara,politehnica_iasi,poli timisoara|||politehnica_iasi|||2|||3,1,268
+Romania,Superliga,2015/2016,01/06/2016,16:00,Calarasi,UTA Arad,3,1,H,,,,2.14,3.52,3.63,2.01,3.2,3.39,,,,,,,2016-06-01,calarasi,uta arad,calarasi|||uta arad|||3|||1,1,269
+Romania,Superliga,2015/2016,04/06/2016,16:00,UTA Arad,Calarasi,3,1,H,,,,2.4,3.7,3,2.27,3.45,2.67,,,,,,,2016-06-04,uta arad,calarasi,uta arad|||calarasi|||3|||1,1,270
+Romania,Superliga,2015/2016,08/06/2016,16:30,FC Voluntari,UTA Arad,3,0,H,,,,1.44,5.41,11,1.29,4.91,8.63,,,,,,,2016-06-08,fc voluntari,uta arad,fc voluntari|||uta arad|||3|||0,1,271
+Romania,Superliga,2015/2016,12/06/2016,11:00,UTA Arad,FC Voluntari,1,0,H,3.86,3.95,1.94,4.33,3.95,2.25,3.55,3.59,1.89,,,,,,,2016-06-12,uta arad,fc voluntari,uta arad|||fc voluntari|||1|||0,1,272

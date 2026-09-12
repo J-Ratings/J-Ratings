@@ -1,0 +1,5 @@
+Country,League,Season,Date,Time,Home,Away,HG,AG,Res,PSCH,PSCD,PSCA,MaxCH,MaxCD,MaxCA,AvgCH,AvgCD,AvgCA,BFECH,BFECD,BFECA,B365CH,B365CD,B365CA,ParsedDate,MatchKey,Occurrence,FDID
+Sweden,Allsvenskan,2016,23/05/2016,18:00,Goteborg,Hammarby,2,1,H,1.68,4.07,5.39,1.7,4.33,5.6,1.64,3.93,4.89,,,,,,,2016-05-23,Goteborg|||Hammarby|||2|||1,1,87
+Sweden,Allsvenskan,2016,28/08/2016,16:30,Goteborg,Helsingborg,2,0,H,1.62,4.37,5.63,1.66,4.4,5.95,1.57,4.05,5.51,,,,,,,2016-08-28,Goteborg|||Helsingborg|||2|||0,1,158
+Sweden,Allsvenskan,2016,17/11/2016,17:30,Halmstad,Helsingborg,1,1,D,3.16,3.36,2.43,3.26,3.42,2.47,2.97,3.22,2.36,,,,,,,2016-11-17,Halmstad|||Helsingborg|||1|||1,1,241
+Sweden,Allsvenskan,2016,20/11/2016,12:30,Helsingborg,Halmstad,1,2,A,1.67,3.94,5.84,1.74,3.94,5.84,1.66,3.7,5.12,,,,,,,2016-11-20,Helsingborg|||Halmstad|||1|||2,1,242

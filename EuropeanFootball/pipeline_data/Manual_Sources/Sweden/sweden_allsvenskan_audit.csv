@@ -1,0 +1,15 @@
+Country,League,Season,Wikipedia,FootballData,Matched,UnmatchedWiki,ExtraFD,Status,Note
+Sweden,Allsvenskan,2012,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2013,240,242,239,1,3,FAIL,1 Wikipedia fixtures lack Football-Data dates.
+Sweden,Allsvenskan,2014,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2015,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2016,240,242,238,2,4,FAIL,2 Wikipedia fixtures lack Football-Data dates.
+Sweden,Allsvenskan,2017,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2018,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2019,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2020,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2021,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2022,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2023,240,240,240,0,0,PASS,""
+Sweden,Allsvenskan,2024,240,242,240,0,2,PASS,2 extra Football-Data rows ignored.
+Sweden,Allsvenskan,2025,240,240,240,0,0,PASS,""

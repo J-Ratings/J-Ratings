@@ -1,0 +1,4 @@
+Country,League,Season,Date,Time,Home,Away,HG,AG,Res,PSCH,PSCD,PSCA,MaxCH,MaxCD,MaxCA,AvgCH,AvgCD,AvgCA,BFECH,BFECD,BFECA,B365CH,B365CD,B365CA,ParsedDate,MatchKey,Occurrence,FDID
+Norway,Eliteserien,2012,29/07/2012,17:00,Viking,Sandnes,3,0,H,1.57,4.33,6.62,1.6,4.33,6.62,1.54,3.95,5.83,,,,,,,2012-07-29,Viking|||Sandnes|||3|||0,1,133
+Norway,Eliteserien,2012,21/11/2012,18:00,Ull/Kisa,Sandnes,0,4,A,3.51,4.04,2,3.9,4.04,2.04,3.55,3.58,1.93,,,,,,,2012-11-21,Ull/Kisa|||Sandnes|||0|||4,1,241
+Norway,Eliteserien,2012,24/11/2012,18:00,Sandnes,Ull/Kisa,3,1,H,1.29,6.2,11,1.29,6.2,11,1.25,5.64,9.79,,,,,,,2012-11-24,Sandnes|||Ull/Kisa|||3|||1,1,242

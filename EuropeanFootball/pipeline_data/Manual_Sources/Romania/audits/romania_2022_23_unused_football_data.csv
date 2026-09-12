@@ -1,0 +1,266 @@
+Country,League,Season,Date,Time,Home,Away,HG,AG,Res,PSCH,PSCD,PSCA,MaxCH,MaxCD,MaxCA,AvgCH,AvgCD,AvgCA,BFECH,BFECD,BFECA,B365CH,B365CD,B365CA,ParsedDate,HomeKey,AwayKey,MatchKey,Occurrence,FDID
+Romania,Superliga,2022/2023,15/07/2022,16:30,FC Hermannstadt,Mioveni,3,0,H,2.02,2.99,4.59,2.02,3.15,4.6,1.96,2.96,4.28,,,,,,,2022-07-15,fc hermannstadt,mioveni,fc hermannstadt|||mioveni|||3|||0,1,1
+Romania,Superliga,2022/2023,15/07/2022,19:30,Univ. Craiova,Sepsi Sf. Gheorghe,2,2,D,2.12,3.23,3.78,2.27,3.4,3.78,2.1,3.16,3.46,,,,,,,2022-07-15,univ craiova,sepsi,univ craiova|||sepsi|||2|||2,1,2
+Romania,Superliga,2022/2023,16/07/2022,16:30,FC Arges,UTA Arad,2,0,H,3.26,2.88,2.57,3.4,3.04,2.65,3.15,2.86,2.41,,,,,,,2022-07-16,fc arges,uta arad,fc arges|||uta arad|||2|||0,1,3
+Romania,Superliga,2022/2023,16/07/2022,19:30,CFR Cluj,FC Rapid Bucuresti,1,0,H,1.74,3.54,5.29,1.83,3.6,5.29,1.75,3.34,4.76,,,,,,,2022-07-16,cfr cluj,fc rapid bucuresti,cfr cluj|||fc rapid bucuresti|||1|||0,1,4
+Romania,Superliga,2022/2023,17/07/2022,19:30,FCSB,U. Cluj,1,1,D,1.21,6.18,15.21,1.23,6.8,17,1.2,5.8,13.4,,,,,,,2022-07-17,fcsb,u cluj,fcsb|||u cluj|||1|||1,1,6
+Romania,Superliga,2022/2023,18/07/2022,16:30,FC Botosani,Chindia Targoviste,3,2,H,2.27,2.95,3.78,2.34,3.05,3.78,2.23,2.87,3.52,,,,,,,2022-07-18,fc botosani,chindia targoviste,fc botosani|||chindia targoviste|||3|||2,1,7
+Romania,Superliga,2022/2023,18/07/2022,19:30,Petrolul,FC Voluntari,0,1,A,2.53,2.96,3.23,2.65,3.08,3.23,2.45,2.91,3.01,,,,,,,2022-07-18,petrolul,fc voluntari,petrolul|||fc voluntari|||0|||1,1,8
+Romania,Superliga,2022/2023,23/07/2022,18:30,FC Voluntari,FC Botosani,0,1,A,2.3,3.07,3.52,2.35,3.14,3.52,2.27,2.94,3.31,,,,,,,2022-07-23,fc voluntari,fc botosani,fc voluntari|||fc botosani|||0|||1,1,10
+Romania,Superliga,2022/2023,24/07/2022,10:00,Sepsi Sf. Gheorghe,FC Arges,4,0,H,1.65,3.5,6.43,1.65,3.77,6.8,1.58,3.56,5.92,,,,,,,2022-07-24,sepsi,fc arges,sepsi|||fc arges|||4|||0,1,11
+Romania,Superliga,2022/2023,24/07/2022,16:30,U. Cluj,Univ. Craiova,1,1,D,4.58,3.48,1.85,4.75,3.65,1.87,4.3,3.43,1.8,,,,,,,2022-07-24,u cluj,univ craiova,u cluj|||univ craiova|||1|||1,1,13
+Romania,Superliga,2022/2023,24/07/2022,19:30,FC Rapid Bucuresti,FCSB,2,0,H,3.15,3.26,2.38,3.2,3.3,2.45,3.06,3.13,2.29,,,,,,,2022-07-24,fc rapid bucuresti,fcsb,fc rapid bucuresti|||fcsb|||2|||0,1,14
+Romania,Superliga,2022/2023,25/07/2022,16:30,Chindia Targoviste,FC Hermannstadt,1,1,D,2.8,2.71,3.17,2.8,2.85,3.25,2.65,2.73,2.96,,,,,,,2022-07-25,chindia targoviste,fc hermannstadt,chindia targoviste|||fc hermannstadt|||1|||1,1,15
+Romania,Superliga,2022/2023,25/07/2022,19:30,UTA Arad,Petrolul,2,0,H,1.9,3.15,4.92,1.99,3.35,4.92,1.87,3.13,4.43,,,,,,,2022-07-25,uta arad,petrolul,uta arad|||petrolul|||2|||0,1,16
+Romania,Superliga,2022/2023,29/07/2022,16:30,FC Arges,U. Cluj,3,1,H,2.9,2.93,2.79,2.95,3.04,3.15,2.78,2.87,2.69,,,,,,,2022-07-29,fc arges,u cluj,fc arges|||u cluj|||3|||1,1,17
+Romania,Superliga,2022/2023,30/07/2022,16:30,FC Voluntari,UTA Arad,3,0,H,3.35,2.84,2.54,3.37,3,2.7,3.15,2.85,2.43,,,,,,,2022-07-30,fc voluntari,uta arad,fc voluntari|||uta arad|||3|||0,1,19
+Romania,Superliga,2022/2023,31/07/2022,16:00,Petrolul,Sepsi Sf. Gheorghe,1,1,D,4.39,3.17,1.99,4.39,3.4,2.02,4.02,3.16,1.94,,,,,,,2022-07-31,petrolul,sepsi,petrolul|||sepsi|||1|||1,1,21
+Romania,Superliga,2022/2023,31/07/2022,18:15,Univ. Craiova,FC Rapid Bucuresti,0,1,A,1.98,3.26,4.26,2.07,3.5,4.26,1.95,3.24,3.88,,,,,,,2022-07-31,univ craiova,fc rapid bucuresti,univ craiova|||fc rapid bucuresti|||0|||1,1,22
+Romania,Superliga,2022/2023,01/08/2022,18:30,FC Hermannstadt,FC Botosani,1,1,D,2.06,3.12,4.18,2.12,3.25,4.18,2.04,3.07,3.76,,,,,,,2022-08-01,fc hermannstadt,fc botosani,fc hermannstadt|||fc botosani|||1|||1,1,24
+Romania,Superliga,2022/2023,05/08/2022,17:00,U. Cluj,Petrolul,0,1,A,2.22,3.08,3.71,2.3,3.25,3.76,2.19,3.02,3.43,,,,,,,2022-08-05,u cluj,petrolul,u cluj|||petrolul|||0|||1,1,25
+Romania,Superliga,2022/2023,06/08/2022,19:45,FC Rapid Bucuresti,FC Arges,2,1,H,1.82,3.3,5.11,1.83,3.45,5.2,1.78,3.29,4.65,,,,,,,2022-08-06,fc rapid bucuresti,fc arges,fc rapid bucuresti|||fc arges|||2|||1,1,27
+Romania,Superliga,2022/2023,07/08/2022,19:30,U Craiova 1948,Univ. Craiova,1,2,A,3.9,3.54,1.97,4,3.7,2.07,3.68,3.48,1.92,,,,,,,2022-08-07,fcu_1948_craiova,univ craiova,fcu_1948_craiova|||univ craiova|||1|||2,1,30
+Romania,Superliga,2022/2023,08/08/2022,16:00,FC Hermannstadt,FC Voluntari,2,1,H,2.42,2.88,3.53,2.65,2.95,3.55,2.41,2.83,3.19,,,,,,,2022-08-08,fc hermannstadt,fc voluntari,fc hermannstadt|||fc voluntari|||2|||1,1,31
+Romania,Superliga,2022/2023,08/08/2022,19:00,FC Botosani,Farul Constanta,1,1,D,3.15,2.96,2.58,3.15,3.18,2.59,2.97,2.96,2.45,,,,,,,2022-08-08,fc botosani,farul constanta,fc botosani|||farul constanta|||1|||1,1,32
+Romania,Superliga,2022/2023,12/08/2022,19:30,FC Arges,U Craiova 1948,0,2,A,3.02,3.23,2.48,3.02,3.25,2.75,2.84,3.08,2.47,,,,,,,2022-08-12,fc arges,fcu_1948_craiova,fc arges|||fcu_1948_craiova|||0|||2,1,33
+Romania,Superliga,2022/2023,13/08/2022,17:00,UTA Arad,U. Cluj,2,1,H,2.37,3,3.46,2.64,3.09,3.55,2.31,2.95,3.26,,,,,,,2022-08-13,uta arad,u cluj,uta arad|||u cluj|||2|||1,1,34
+Romania,Superliga,2022/2023,13/08/2022,19:45,Petrolul,FC Rapid Bucuresti,1,0,H,3.1,3.03,2.56,3.1,3.05,2.6,2.93,2.93,2.51,,,,,,,2022-08-13,petrolul,fc rapid bucuresti,petrolul|||fc rapid bucuresti|||1|||0,1,35
+Romania,Superliga,2022/2023,14/08/2022,14:00,Univ. Craiova,Mioveni,1,0,H,1.43,4.38,7.95,1.51,4.6,8,1.43,4.22,7.08,,,,,,,2022-08-14,univ craiova,mioveni,univ craiova|||mioveni|||1|||0,1,36
+Romania,Superliga,2022/2023,14/08/2022,16:30,CFR Cluj,FC Botosani,0,1,A,1.62,3.61,6.4,1.71,3.8,7,1.6,3.59,5.67,,,,,,,2022-08-14,cfr cluj,fc botosani,cfr cluj|||fc botosani|||0|||1,1,37
+Romania,Superliga,2022/2023,15/08/2022,15:00,FC Voluntari,Sepsi Sf. Gheorghe,0,0,D,3.9,2.93,2.23,3.9,3.1,2.3,3.51,2.95,2.19,,,,,,,2022-08-15,fc voluntari,sepsi,fc voluntari|||sepsi|||0|||0,1,39
+Romania,Superliga,2022/2023,15/08/2022,17:30,Farul Constanta,FC Hermannstadt,0,0,D,1.69,3.46,5.89,1.8,3.46,5.89,1.71,3.26,5.25,,,,,,,2022-08-15,farul constanta,fc hermannstadt,farul constanta|||fc hermannstadt|||0|||0,1,40
+Romania,Superliga,2022/2023,19/08/2022,16:00,Mioveni,FC Arges,0,1,A,3.15,2.74,2.77,3.21,2.93,2.77,2.99,2.76,2.62,,,,,,,2022-08-19,mioveni,fc arges,mioveni|||fc arges|||0|||1,1,41
+Romania,Superliga,2022/2023,19/08/2022,19:00,U Craiova 1948,Petrolul,0,1,A,1.96,3.22,4.45,1.98,3.5,4.75,1.89,3.17,4.23,,,,,,,2022-08-19,fcu_1948_craiova,petrolul,fcu_1948_craiova|||petrolul|||0|||1,1,42
+Romania,Superliga,2022/2023,20/08/2022,19:30,FC Rapid Bucuresti,UTA Arad,1,0,H,2.16,3.04,3.94,2.2,3.13,3.94,2.14,2.96,3.62,,,,,,,2022-08-20,fc rapid bucuresti,uta arad,fc rapid bucuresti|||uta arad|||1|||0,1,43
+Romania,Superliga,2022/2023,22/08/2022,15:00,U. Cluj,Sepsi Sf. Gheorghe,0,1,A,3.6,3.01,2.3,3.63,3.2,2.3,3.39,3,2.22,,,,,,,2022-08-22,u cluj,sepsi,u cluj|||sepsi|||0|||1,1,44
+Romania,Superliga,2022/2023,22/08/2022,17:30,Farul Constanta,FC Voluntari,2,1,H,1.79,3.32,5.36,1.83,3.45,5.4,1.77,3.26,4.88,,,,,,,2022-08-22,farul constanta,fc voluntari,farul constanta|||fc voluntari|||2|||1,1,45
+Romania,Superliga,2022/2023,26/08/2022,16:45,FC Voluntari,U. Cluj,0,0,D,2.64,2.9,3.12,2.7,3,3.12,2.55,2.87,2.94,,,,,,,2022-08-26,fc voluntari,u cluj,fc voluntari|||u cluj|||0|||0,1,46
+Romania,Superliga,2022/2023,27/08/2022,17:00,Petrolul,Mioveni,0,0,D,2.22,2.92,3.96,2.22,3.18,4.2,2.09,3.02,3.72,,,,,,,2022-08-27,petrolul,mioveni,petrolul|||mioveni|||0|||0,1,48
+Romania,Superliga,2022/2023,27/08/2022,19:45,Sepsi Sf. Gheorghe,FC Rapid Bucuresti,1,2,A,1.99,3.14,4.43,2.1,3.25,4.43,2.01,3.06,3.94,,,,,,,2022-08-27,sepsi,fc rapid bucuresti,sepsi|||fc rapid bucuresti|||1|||2,1,49
+Romania,Superliga,2022/2023,28/08/2022,11:30,FC Arges,Chindia Targoviste,2,1,H,2.35,2.83,3.77,2.45,3,3.77,2.31,2.82,3.43,,,,,,,2022-08-28,fc arges,chindia targoviste,fc arges|||chindia targoviste|||2|||1,1,50
+Romania,Superliga,2022/2023,28/08/2022,19:30,FCSB,FC Hermannstadt,2,2,D,1.49,4.14,7.3,1.53,4.15,7.3,1.5,3.93,6.39,,,,,,,2022-08-28,fcsb,fc hermannstadt,fcsb|||fc hermannstadt|||2|||2,1,52
+Romania,Superliga,2022/2023,29/08/2022,19:00,Univ. Craiova,FC Botosani,1,0,H,1.4,4.53,8.69,1.47,4.75,8.7,1.4,4.3,7.55,,,,,,,2022-08-29,univ craiova,fc botosani,univ craiova|||fc botosani|||1|||0,1,53
+Romania,Superliga,2022/2023,30/08/2022,20:00,FC Rapid Bucuresti,U. Cluj,1,0,H,2.44,2.88,3.48,2.49,3.02,3.55,2.33,2.9,3.25,,,,,,,2022-08-30,fc rapid bucuresti,u cluj,fc rapid bucuresti|||u cluj|||1|||0,1,56
+Romania,Superliga,2022/2023,31/08/2022,14:30,Chindia Targoviste,Petrolul,2,3,A,3.15,2.79,2.71,3.15,2.9,3.24,2.88,2.74,2.73,,,,,,,2022-08-31,chindia targoviste,petrolul,chindia targoviste|||petrolul|||2|||3,1,57
+Romania,Superliga,2022/2023,31/08/2022,17:15,CFR Cluj,FC Voluntari,4,0,H,1.49,3.76,8.92,1.53,4.15,9.3,1.48,3.73,7.57,,,,,,,2022-08-31,cfr cluj,fc voluntari,cfr cluj|||fc voluntari|||4|||0,1,58
+Romania,Superliga,2022/2023,01/09/2022,16:00,FC Botosani,FC Arges,0,0,D,2.66,2.93,3.06,2.66,3.05,3.09,2.57,2.89,2.9,,,,,,,2022-09-01,fc botosani,fc arges,fc botosani|||fc arges|||0|||0,1,60
+Romania,Superliga,2022/2023,01/09/2022,19:00,FC Hermannstadt,Univ. Craiova,1,0,H,5.29,3.29,1.8,5.4,3.45,1.85,4.68,3.24,1.79,,,,,,,2022-09-01,fc hermannstadt,univ craiova,fc hermannstadt|||univ craiova|||1|||0,1,61
+Romania,Superliga,2022/2023,02/09/2022,19:30,U. Cluj,U Craiova 1948,1,1,D,2.56,2.98,3.15,2.56,3.13,3.39,2.39,2.95,3.1,,,,,,,2022-09-02,u cluj,fcu_1948_craiova,u cluj|||fcu_1948_craiova|||1|||1,1,63
+Romania,Superliga,2022/2023,03/09/2022,19:45,FC Voluntari,FC Rapid Bucuresti,0,1,A,3.55,2.89,2.4,3.56,3,2.45,3.34,2.85,2.33,,,,,,,2022-09-03,fc voluntari,fc rapid bucuresti,fc voluntari|||fc rapid bucuresti|||0|||1,1,65
+Romania,Superliga,2022/2023,04/09/2022,19:30,Petrolul,FC Botosani,2,1,H,2.34,3.08,3.43,2.38,3.1,3.43,2.29,2.98,3.24,,,,,,,2022-09-04,petrolul,fc botosani,petrolul|||fc botosani|||2|||1,1,66
+Romania,Superliga,2022/2023,05/09/2022,16:45,FC Arges,FC Hermannstadt,0,1,A,2.67,2.87,3.12,2.67,3.02,3.25,2.51,2.85,3.02,,,,,,,2022-09-05,fc arges,fc hermannstadt,fc arges|||fc hermannstadt|||0|||1,1,67
+Romania,Superliga,2022/2023,05/09/2022,19:30,Univ. Craiova,Farul Constanta,4,3,H,2.05,3.22,4.05,2.1,3.4,4.05,2.03,3.2,3.68,,,,,,,2022-09-05,univ craiova,farul constanta,univ craiova|||farul constanta|||4|||3,1,68
+Romania,Superliga,2022/2023,09/09/2022,16:45,FC Botosani,UTA Arad,1,2,A,2.7,2.97,2.97,2.8,2.97,2.97,2.67,2.85,2.81,,,,,,,2022-09-09,fc botosani,uta arad,fc botosani|||uta arad|||1|||2,1,69
+Romania,Superliga,2022/2023,10/09/2022,13:00,FC Hermannstadt,Petrolul,2,1,H,2.32,2.88,3.76,2.38,3.04,3.76,2.25,2.87,3.49,,,,,,,2022-09-10,fc hermannstadt,petrolul,fc hermannstadt|||petrolul|||2|||1,1,71
+Romania,Superliga,2022/2023,10/09/2022,19:30,U Craiova 1948,FC Rapid Bucuresti,1,0,H,2.71,3.01,2.93,2.71,3.05,2.95,2.56,2.93,2.86,,,,,,,2022-09-10,fcu_1948_craiova,fc rapid bucuresti,fcu_1948_craiova|||fc rapid bucuresti|||1|||0,1,72
+Romania,Superliga,2022/2023,11/09/2022,16:30,Farul Constanta,FC Arges,3,0,H,1.64,3.58,6.24,1.73,3.75,6.3,1.62,3.5,5.66,,,,,,,2022-09-11,farul constanta,fc arges,farul constanta|||fc arges|||3|||0,1,73
+Romania,Superliga,2022/2023,11/09/2022,19:30,CFR Cluj,Univ. Craiova,2,0,H,2.44,2.86,3.51,2.45,3.03,3.55,2.34,2.89,3.25,,,,,,,2022-09-11,cfr cluj,univ craiova,cfr cluj|||univ craiova|||2|||0,1,74
+Romania,Superliga,2022/2023,12/09/2022,16:00,Mioveni,U. Cluj,0,1,A,3.15,2.65,2.86,3.15,2.88,2.86,2.97,2.7,2.68,,,,,,,2022-09-12,mioveni,u cluj,mioveni|||u cluj|||0|||1,1,75
+Romania,Superliga,2022/2023,12/09/2022,19:00,FCSB,FC Voluntari,1,1,D,1.43,4.28,8.59,1.5,4.4,8.6,1.43,4.11,7.37,,,,,,,2022-09-12,fcsb,fc voluntari,fcsb|||fc voluntari|||1|||1,1,76
+Romania,Superliga,2022/2023,16/09/2022,16:00,FC Voluntari,U Craiova 1948,1,0,H,3.04,2.91,2.65,3.1,3.06,2.65,2.97,2.93,2.5,,,,,,,2022-09-16,fc voluntari,fcu_1948_craiova,fc voluntari|||fcu_1948_craiova|||1|||0,1,77
+Romania,Superliga,2022/2023,16/09/2022,19:00,Petrolul,Farul Constanta,1,3,A,4.18,3.12,2.06,4.3,3.25,2.14,3.9,3.04,2.02,,,,,,,2022-09-16,petrolul,farul constanta,petrolul|||farul constanta|||1|||3,1,78
+Romania,Superliga,2022/2023,17/09/2022,14:45,UTA Arad,FC Hermannstadt,1,2,A,2.3,2.87,3.83,2.33,2.94,3.9,2.24,2.83,3.6,,,,,,,2022-09-17,uta arad,fc hermannstadt,uta arad|||fc hermannstadt|||1|||2,1,79
+Romania,Superliga,2022/2023,17/09/2022,17:00,Sepsi Sf. Gheorghe,FC Botosani,7,0,H,1.48,4.4,6.79,1.57,4.4,7,1.48,4.1,6.27,,,,,,,2022-09-17,sepsi,fc botosani,sepsi|||fc botosani|||7|||0,1,80
+Romania,Superliga,2022/2023,17/09/2022,19:30,FC Rapid Bucuresti,Mioveni,2,1,H,1.81,3.21,5.4,1.9,3.21,5.4,1.85,3.07,4.71,,,,,,,2022-09-17,fc rapid bucuresti,mioveni,fc rapid bucuresti|||mioveni|||2|||1,1,81
+Romania,Superliga,2022/2023,18/09/2022,16:30,U. Cluj,Chindia Targoviste,1,0,H,2.12,2.98,4.18,2.12,3.13,4.4,2.05,2.94,4.01,,,,,,,2022-09-18,u cluj,chindia targoviste,u cluj|||chindia targoviste|||1|||0,1,82
+Romania,Superliga,2022/2023,18/09/2022,19:30,Univ. Craiova,FCSB,2,1,H,2.36,3.11,3.35,2.4,3.21,3.35,2.26,3.07,3.19,,,,,,,2022-09-18,univ craiova,fcsb,univ craiova|||fcsb|||2|||1,1,83
+Romania,Superliga,2022/2023,19/09/2022,18:30,FC Arges,CFR Cluj,0,1,A,4.82,3.34,1.85,5.3,3.5,1.88,4.71,3.27,1.78,,,,,,,2022-09-19,fc arges,cfr cluj,fc arges|||cfr cluj|||0|||1,1,84
+Romania,Superliga,2022/2023,30/09/2022,19:00,Univ. Craiova,FC Voluntari,1,1,D,1.49,4.08,7.48,1.52,4.1,7.5,1.48,3.89,6.72,,,,,,,2022-09-30,univ craiova,fc voluntari,univ craiova|||fc voluntari|||1|||1,1,85
+Romania,Superliga,2022/2023,01/10/2022,19:30,CFR Cluj,Petrolul,1,0,H,1.55,3.78,6.73,1.55,3.9,7.5,1.52,3.72,6.41,,,,,,,2022-10-01,cfr cluj,petrolul,cfr cluj|||petrolul|||1|||0,1,87
+Romania,Superliga,2022/2023,02/10/2022,11:00,FC Hermannstadt,Sepsi Sf. Gheorghe,1,2,A,3.76,3.04,2.22,3.76,3.1,2.25,3.47,2.97,2.19,,,,,,,2022-10-02,fc hermannstadt,sepsi,fc hermannstadt|||sepsi|||1|||2,1,88
+Romania,Superliga,2022/2023,02/10/2022,19:30,FCSB,FC Arges,3,2,H,1.42,4.37,8.52,1.47,4.66,9,1.4,4.3,7.63,,,,,,,2022-10-02,fcsb,fc arges,fcsb|||fc arges|||3|||2,1,90
+Romania,Superliga,2022/2023,03/10/2022,16:00,FC Botosani,U. Cluj,1,1,D,3,2.89,2.74,3,3.1,2.74,2.83,2.91,2.6,,,,,,,2022-10-03,fc botosani,u cluj,fc botosani|||u cluj|||1|||1,1,91
+Romania,Superliga,2022/2023,03/10/2022,19:00,Chindia Targoviste,FC Rapid Bucuresti,2,1,H,3.27,2.95,2.51,3.3,3,2.52,3.12,2.89,2.42,,,,,,,2022-10-03,chindia targoviste,fc rapid bucuresti,chindia targoviste|||fc rapid bucuresti|||2|||1,1,92
+Romania,Superliga,2022/2023,07/10/2022,16:00,FC Voluntari,Mioveni,3,1,H,2.33,2.92,3.66,2.33,3.05,3.73,2.25,2.91,3.44,,,,,,,2022-10-07,fc voluntari,mioveni,fc voluntari|||mioveni|||3|||1,1,93
+Romania,Superliga,2022/2023,07/10/2022,19:00,FC Arges,Univ. Craiova,1,0,H,5.6,3.67,1.67,5.6,3.7,1.74,5.01,3.52,1.68,,,,,,,2022-10-07,fc arges,univ craiova,fc arges|||univ craiova|||1|||0,1,94
+Romania,Superliga,2022/2023,08/10/2022,13:00,U. Cluj,FC Hermannstadt,1,0,H,2.32,2.82,3.85,2.35,2.9,3.85,2.27,2.79,3.57,,,,,,,2022-10-08,u cluj,fc hermannstadt,u cluj|||fc hermannstadt|||1|||0,1,95
+Romania,Superliga,2022/2023,08/10/2022,19:30,FC Rapid Bucuresti,FC Botosani,1,1,D,1.66,3.61,5.86,1.7,3.66,5.9,1.66,3.5,5.27,,,,,,,2022-10-08,fc rapid bucuresti,fc botosani,fc rapid bucuresti|||fc botosani|||1|||1,1,96
+Romania,Superliga,2022/2023,09/10/2022,19:30,Petrolul,FCSB,0,2,A,5.15,3.97,1.66,5.3,4,1.71,4.73,3.74,1.67,,,,,,,2022-10-09,petrolul,fcsb,petrolul|||fcsb|||0|||2,1,98
+Romania,Superliga,2022/2023,14/10/2022,16:15,FC Arges,FC Voluntari,0,0,D,2.45,3.04,3.27,2.5,3.1,3.37,2.36,2.98,3.11,,,,,,,2022-10-14,fc arges,fc voluntari,fc arges|||fc voluntari|||0|||0,1,101
+Romania,Superliga,2022/2023,14/10/2022,19:00,FC Hermannstadt,FC Rapid Bucuresti,0,2,A,3.12,2.62,2.93,3.2,2.71,2.95,3.02,2.56,2.8,,,,,,,2022-10-14,fc hermannstadt,fc rapid bucuresti,fc hermannstadt|||fc rapid bucuresti|||0|||2,1,102
+Romania,Superliga,2022/2023,15/10/2022,13:30,FC Botosani,U Craiova 1948,1,0,H,3.17,3.12,2.45,3.17,3.21,2.47,3,3.08,2.37,,,,,,,2022-10-15,fc botosani,fcu_1948_craiova,fc botosani|||fcu_1948_craiova|||1|||0,1,103
+Romania,Superliga,2022/2023,15/10/2022,16:00,Farul Constanta,U. Cluj,2,0,H,1.74,3.34,5.76,1.82,3.34,5.76,1.77,3.13,5.17,,,,,,,2022-10-15,farul constanta,u cluj,farul constanta|||u cluj|||2|||0,1,104
+Romania,Superliga,2022/2023,15/10/2022,19:00,Univ. Craiova,Petrolul,2,1,H,1.35,4.69,10.11,1.37,5.01,10.11,1.34,4.55,8.77,,,,,,,2022-10-15,univ craiova,petrolul,univ craiova|||petrolul|||2|||1,1,105
+Romania,Superliga,2022/2023,21/10/2022,18:30,FC Rapid Bucuresti,Farul Constanta,1,1,D,2.48,3.01,3.24,2.52,3.01,3.24,2.44,2.92,3.04,,,,,,,2022-10-21,fc rapid bucuresti,farul constanta,fc rapid bucuresti|||farul constanta|||1|||1,1,109
+Romania,Superliga,2022/2023,22/10/2022,15:00,FC Voluntari,Chindia Targoviste,0,3,A,2.6,2.87,3.21,2.63,3.01,3.21,2.52,2.85,3.02,,,,,,,2022-10-22,fc voluntari,chindia targoviste,fc voluntari|||chindia targoviste|||0|||3,1,110
+Romania,Superliga,2022/2023,22/10/2022,19:45,U Craiova 1948,FC Hermannstadt,1,1,D,2.27,2.99,3.71,2.36,3.1,3.85,2.22,2.93,3.47,,,,,,,2022-10-22,fcu_1948_craiova,fc hermannstadt,fcu_1948_craiova|||fc hermannstadt|||1|||1,1,111
+Romania,Superliga,2022/2023,23/10/2022,11:30,Mioveni,FC Botosani,0,0,D,2.43,3.01,3.33,2.5,3.16,3.33,2.36,2.98,3.12,,,,,,,2022-10-23,mioveni,fc botosani,mioveni|||fc botosani|||0|||0,1,112
+Romania,Superliga,2022/2023,23/10/2022,16:15,UTA Arad,Univ. Craiova,1,2,A,3.69,3.11,2.21,4,3.19,2.23,3.48,3.05,2.15,,,,,,,2022-10-23,uta arad,univ craiova,uta arad|||univ craiova|||1|||2,1,113
+Romania,Superliga,2022/2023,23/10/2022,19:00,U. Cluj,CFR Cluj,1,2,A,4.35,3.04,2.05,4.4,3.07,2.1,4.01,2.95,2.03,,,,,,,2022-10-23,u cluj,cfr cluj,u cluj|||cfr cluj|||1|||2,1,114
+Romania,Superliga,2022/2023,24/10/2022,16:15,Petrolul,FC Arges,2,0,H,2.18,3.11,3.79,2.44,3.15,3.79,2.14,3.06,3.49,,,,,,,2022-10-24,petrolul,fc arges,petrolul|||fc arges|||2|||0,1,115
+Romania,Superliga,2022/2023,28/10/2022,16:00,Chindia Targoviste,FC Botosani,2,2,D,1.85,3.35,4.85,1.9,3.5,5,1.8,3.28,4.57,,,,,,,2022-10-28,chindia targoviste,fc botosani,chindia targoviste|||fc botosani|||2|||2,1,117
+Romania,Superliga,2022/2023,29/10/2022,17:00,FC Voluntari,Petrolul,0,1,A,2.47,3.04,3.23,2.48,3.12,3.27,2.38,2.97,3.12,,,,,,,2022-10-29,fc voluntari,petrolul,fc voluntari|||petrolul|||0|||1,1,119
+Romania,Superliga,2022/2023,29/10/2022,19:30,Sepsi Sf. Gheorghe,Univ. Craiova,0,1,A,2.43,3.12,3.2,2.43,3.21,3.36,2.33,3.08,3.07,,,,,,,2022-10-29,sepsi,univ craiova,sepsi|||univ craiova|||0|||1,1,120
+Romania,Superliga,2022/2023,30/10/2022,16:15,UTA Arad,FC Arges,0,1,A,2.33,3.13,3.39,2.33,3.3,4.58,2.22,3.07,3.35,,,,,,,2022-10-30,uta arad,fc arges,uta arad|||fc arges|||0|||1,1,121
+Romania,Superliga,2022/2023,30/10/2022,19:00,FC Rapid Bucuresti,CFR Cluj,2,1,H,2.62,2.95,3.09,2.65,2.95,3.15,2.53,2.85,3,,,,,,,2022-10-30,fc rapid bucuresti,cfr cluj,fc rapid bucuresti|||cfr cluj|||2|||1,1,122
+Romania,Superliga,2022/2023,31/10/2022,16:00,Mioveni,FC Hermannstadt,0,2,A,2.94,2.78,2.9,3.01,2.89,2.9,2.83,2.73,2.78,,,,,,,2022-10-31,mioveni,fc hermannstadt,mioveni|||fc hermannstadt|||0|||2,1,123
+Romania,Superliga,2022/2023,31/10/2022,19:00,U. Cluj,FCSB,2,1,H,4.03,3.19,2.07,4.2,3.28,2.07,3.85,3.1,2.02,,,,,,,2022-10-31,u cluj,fcsb,u cluj|||fcsb|||2|||1,1,124
+Romania,Superliga,2022/2023,04/11/2022,16:00,FC Botosani,FC Voluntari,0,1,A,2.92,3.02,2.7,2.92,3.11,2.98,2.74,2.95,2.65,,,,,,,2022-11-04,fc botosani,fc voluntari,fc botosani|||fc voluntari|||0|||1,1,125
+Romania,Superliga,2022/2023,05/11/2022,13:00,FC Arges,Sepsi Sf. Gheorghe,0,5,A,5.36,3.57,1.72,5.5,3.65,1.89,4.91,3.38,1.72,,,,,,,2022-11-05,fc arges,sepsi,fc arges|||sepsi|||0|||5,1,127
+Romania,Superliga,2022/2023,05/11/2022,16:00,Petrolul,UTA Arad,2,1,H,2.53,3,3.17,2.65,3.21,3.17,2.52,2.96,2.9,,,,,,,2022-11-05,petrolul,uta arad,petrolul|||uta arad|||2|||1,1,128
+Romania,Superliga,2022/2023,05/11/2022,19:00,Univ. Craiova,U. Cluj,1,0,H,1.71,3.46,5.7,1.74,3.6,5.7,1.7,3.38,5.11,,,,,,,2022-11-05,univ craiova,u cluj,univ craiova|||u cluj|||1|||0,1,129
+Romania,Superliga,2022/2023,06/11/2022,14:15,FC Hermannstadt,Chindia Targoviste,0,1,A,2.54,2.75,3.48,2.56,2.97,3.48,2.42,2.78,3.27,,,,,,,2022-11-06,fc hermannstadt,chindia targoviste,fc hermannstadt|||chindia targoviste|||0|||1,1,130
+Romania,Superliga,2022/2023,06/11/2022,19:00,FCSB,FC Rapid Bucuresti,3,1,H,2.22,3.16,3.6,2.28,3.35,3.6,2.17,3.14,3.32,,,,,,,2022-11-06,fcsb,fc rapid bucuresti,fcsb|||fc rapid bucuresti|||3|||1,1,131
+Romania,Superliga,2022/2023,11/11/2022,19:00,Sepsi Sf. Gheorghe,Petrolul,2,0,H,1.54,3.98,6.7,1.6,4,6.7,1.54,3.8,5.87,,,,,,,2022-11-11,sepsi,petrolul,sepsi|||petrolul|||2|||0,1,133
+Romania,Superliga,2022/2023,12/11/2022,18:30,FC Rapid Bucuresti,Univ. Craiova,2,2,D,3.08,2.97,2.61,3.15,3.18,2.61,2.96,3,2.44,,,,,,,2022-11-12,fc rapid bucuresti,univ craiova,fc rapid bucuresti|||univ craiova|||2|||2,1,135
+Romania,Superliga,2022/2023,13/11/2022,13:45,UTA Arad,FC Voluntari,1,1,D,2.61,2.91,3.15,2.61,3.05,3.35,2.39,2.93,3.11,,,,,,,2022-11-13,uta arad,fc voluntari,uta arad|||fc voluntari|||1|||1,1,136
+Romania,Superliga,2022/2023,14/11/2022,16:00,U. Cluj,FC Arges,1,1,D,1.96,3.22,4.42,2,3.3,4.42,1.94,3.13,4.04,,,,,,,2022-11-14,u cluj,fc arges,u cluj|||fc arges|||1|||1,1,139
+Romania,Superliga,2022/2023,14/11/2022,19:00,FC Botosani,FC Hermannstadt,0,0,D,3.2,2.78,2.69,3.2,2.91,3.14,2.9,2.77,2.67,,,,,,,2022-11-14,fc botosani,fc hermannstadt,fc botosani|||fc hermannstadt|||0|||0,1,140
+Romania,Superliga,2022/2023,29/11/2022,17:00,Chindia Targoviste,Univ. Craiova,1,1,D,4.38,2.86,2.14,4.38,3.15,2.14,3.89,2.94,2.07,,,,,,,2022-11-29,chindia targoviste,univ craiova,chindia targoviste|||univ craiova|||1|||1,1,141
+Romania,Superliga,2022/2023,30/11/2022,17:00,FC Hermannstadt,CFR Cluj,2,3,A,4.9,2.93,1.99,5,3.08,2.04,4.45,2.91,1.96,,,,,,,2022-11-30,fc hermannstadt,cfr cluj,fc hermannstadt|||cfr cluj|||2|||3,1,142
+Romania,Superliga,2022/2023,01/12/2022,17:00,FC Botosani,FCSB,2,3,A,5.74,3.83,1.63,6,3.9,1.68,5.34,3.66,1.61,,,,,,,2022-12-01,fc botosani,fcsb,fc botosani|||fcsb|||2|||3,1,143
+Romania,Superliga,2022/2023,02/12/2022,17:00,Petrolul,U. Cluj,2,0,H,2.91,2.75,2.97,2.94,2.96,2.98,2.76,2.73,2.84,,,,,,,2022-12-02,petrolul,u cluj,petrolul|||u cluj|||2|||0,1,145
+Romania,Superliga,2022/2023,03/12/2022,13:30,FC Voluntari,FC Hermannstadt,3,0,H,2.5,2.68,3.7,2.55,3,3.7,2.39,2.78,3.32,,,,,,,2022-12-03,fc voluntari,fc hermannstadt,fc voluntari|||fc hermannstadt|||3|||0,1,146
+Romania,Superliga,2022/2023,03/12/2022,17:00,Univ. Craiova,U Craiova 1948,0,2,A,1.6,3.85,6.06,1.67,4,6.4,1.57,3.77,5.58,,,,,,,2022-12-03,univ craiova,fcu_1948_craiova,univ craiova|||fcu_1948_craiova|||0|||2,1,147
+Romania,Superliga,2022/2023,04/12/2022,11:15,Farul Constanta,FC Botosani,8,0,H,1.48,4.12,7.52,1.57,4.3,7.52,1.48,3.99,6.54,,,,,,,2022-12-04,farul constanta,fc botosani,farul constanta|||fc botosani|||8|||0,1,148
+Romania,Superliga,2022/2023,04/12/2022,17:00,FC Arges,FC Rapid Bucuresti,1,1,D,4.36,3.3,1.94,4.36,3.45,2.06,3.9,3.2,1.96,,,,,,,2022-12-04,fc arges,fc rapid bucuresti,fc arges|||fc rapid bucuresti|||1|||1,1,150
+Romania,Superliga,2022/2023,09/12/2022,17:00,Sepsi Sf. Gheorghe,FC Voluntari,1,1,D,1.5,4.07,7.34,1.52,4.2,7.6,1.47,3.97,6.81,,,,,,,2022-12-09,sepsi,fc voluntari,sepsi|||fc voluntari|||1|||1,1,152
+Romania,Superliga,2022/2023,10/12/2022,17:00,FC Hermannstadt,Farul Constanta,4,0,H,3.6,2.94,2.35,3.6,3.1,2.36,3.39,2.9,2.27,,,,,,,2022-12-10,fc hermannstadt,farul constanta,fc hermannstadt|||farul constanta|||4|||0,1,153
+Romania,Superliga,2022/2023,11/12/2022,12:30,U. Cluj,UTA Arad,0,0,D,2.42,2.93,3.45,2.46,3.13,3.45,2.34,2.88,3.26,,,,,,,2022-12-11,u cluj,uta arad,u cluj|||uta arad|||0|||0,1,154
+Romania,Superliga,2022/2023,11/12/2022,15:30,FC Botosani,CFR Cluj,1,1,D,5.71,3.65,1.67,7,3.75,1.71,5.57,3.57,1.62,,,,,,,2022-12-11,fc botosani,cfr cluj,fc botosani|||cfr cluj|||1|||1,1,155
+Romania,Superliga,2022/2023,12/12/2022,15:30,U Craiova 1948,FC Arges,1,0,H,1.75,3.49,5.25,1.85,3.6,5.69,1.75,3.38,4.75,,,,,,,2022-12-12,fcu_1948_craiova,fc arges,fcu_1948_craiova|||fc arges|||1|||0,1,157
+Romania,Superliga,2022/2023,12/12/2022,18:30,Mioveni,Univ. Craiova,0,1,A,6.84,3.73,1.57,7.5,4,1.64,6.33,3.63,1.54,,,,,,,2022-12-12,mioveni,univ craiova,mioveni|||univ craiova|||0|||1,1,158
+Romania,Superliga,2022/2023,14/12/2022,17:00,FC Rapid Bucuresti,Petrolul,3,1,H,1.9,3.18,4.87,1.95,3.25,5.2,1.85,3.1,4.64,,,,,,,2022-12-14,fc rapid bucuresti,petrolul,fc rapid bucuresti|||petrolul|||3|||1,1,159
+Romania,Superliga,2022/2023,16/12/2022,18:00,FC Voluntari,Farul Constanta,1,1,D,3.43,3.04,2.35,3.75,3.1,2.38,3.26,2.97,2.29,,,,,,,2022-12-16,fc voluntari,farul constanta,fc voluntari|||farul constanta|||1|||1,1,161
+Romania,Superliga,2022/2023,17/12/2022,13:00,Sepsi Sf. Gheorghe,U. Cluj,2,1,H,1.52,3.91,7.34,1.59,4,7.34,1.53,3.77,6.33,,,,,,,2022-12-17,sepsi,u cluj,sepsi|||u cluj|||2|||1,1,162
+Romania,Superliga,2022/2023,17/12/2022,18:30,Univ. Craiova,Chindia Targoviste,3,0,H,1.51,3.86,7.76,1.52,3.98,8.8,1.48,3.73,7.39,,,,,,,2022-12-17,univ craiova,chindia targoviste,univ craiova|||chindia targoviste|||3|||0,1,163
+Romania,Superliga,2022/2023,18/12/2022,10:00,FC Arges,Mioveni,2,2,D,2.48,2.85,3.45,2.55,2.88,3.58,2.43,2.78,3.22,,,,,,,2022-12-18,fc arges,mioveni,fc arges|||mioveni|||2|||2,1,164
+Romania,Superliga,2022/2023,18/12/2022,12:30,Petrolul,U Craiova 1948,1,1,D,2.96,2.94,2.73,2.98,3,2.86,2.83,2.88,2.63,,,,,,,2022-12-18,petrolul,fcu_1948_craiova,petrolul|||fcu_1948_craiova|||1|||1,1,165
+Romania,Superliga,2022/2023,18/12/2022,18:30,UTA Arad,FC Rapid Bucuresti,1,1,D,3.18,2.91,2.59,3.18,3.1,2.63,2.99,2.9,2.49,,,,,,,2022-12-18,uta arad,fc rapid bucuresti,uta arad|||fc rapid bucuresti|||1|||1,1,166
+Romania,Superliga,2022/2023,19/12/2022,18:00,FCSB,FC Botosani,1,0,H,1.37,4.89,8.46,1.4,5.1,8.8,1.35,4.73,7.77,,,,,,,2022-12-19,fcsb,fc botosani,fcsb|||fc botosani|||1|||0,1,167
+Romania,Superliga,2022/2023,20/12/2022,18:00,CFR Cluj,FC Hermannstadt,0,1,A,1.6,3.62,6.64,1.65,3.7,6.8,1.6,3.44,6.12,,,,,,,2022-12-20,cfr cluj,fc hermannstadt,cfr cluj|||fc hermannstadt|||0|||1,1,168
+Romania,Superliga,2022/2023,20/01/2023,14:30,U. Cluj,FC Voluntari,2,1,H,2.33,2.77,3.92,2.33,3.01,4.2,2.17,2.83,3.79,,,,,,,2023-01-20,u cluj,fc voluntari,u cluj|||fc voluntari|||2|||1,1,169
+Romania,Superliga,2022/2023,20/01/2023,18:00,FC Rapid Bucuresti,Sepsi Sf. Gheorghe,3,0,H,3.07,3.01,2.59,3.09,3.05,2.64,2.92,2.93,2.54,,,,,,,2023-01-20,fc rapid bucuresti,sepsi,fc rapid bucuresti|||sepsi|||3|||0,1,170
+Romania,Superliga,2022/2023,21/01/2023,15:00,Mioveni,Petrolul,1,0,H,2.85,2.9,2.87,3.43,3.02,2.87,2.85,2.84,2.67,,,,,,,2023-01-21,mioveni,petrolul,mioveni|||petrolul|||1|||0,1,171
+Romania,Superliga,2022/2023,21/01/2023,18:00,FC Botosani,Univ. Craiova,1,0,H,4.8,3.65,1.77,5,3.69,1.86,4.63,3.5,1.74,,,,,,,2023-01-21,fc botosani,univ craiova,fc botosani|||univ craiova|||1|||0,1,172
+Romania,Superliga,2022/2023,22/01/2023,18:45,FC Hermannstadt,FCSB,0,1,A,4.22,3.29,1.98,4.22,3.34,2.1,3.83,3.19,1.99,,,,,,,2023-01-22,fc hermannstadt,fcsb,fc hermannstadt|||fcsb|||0|||1,1,174
+Romania,Superliga,2022/2023,23/01/2023,15:00,Chindia Targoviste,FC Arges,1,1,D,2.08,2.88,4.59,2.11,3.08,4.87,2.04,2.88,4.19,,,,,,,2023-01-23,chindia targoviste,fc arges,chindia targoviste|||fc arges|||1|||1,1,175
+Romania,Superliga,2022/2023,27/01/2023,18:00,U. Cluj,FC Rapid Bucuresti,0,0,D,2.7,2.85,3.1,2.7,2.94,3.23,2.61,2.78,2.99,,,,,,,2023-01-27,u cluj,fc rapid bucuresti,u cluj|||fc rapid bucuresti|||0|||0,1,177
+Romania,Superliga,2022/2023,28/01/2023,15:00,Petrolul,Chindia Targoviste,1,2,A,2.83,2.76,3.05,2.83,2.92,3.45,2.63,2.77,2.98,,,,,,,2023-01-28,petrolul,chindia targoviste,petrolul|||chindia targoviste|||1|||2,1,179
+Romania,Superliga,2022/2023,28/01/2023,18:00,Univ. Craiova,FC Hermannstadt,2,0,H,1.7,3.52,5.69,1.82,3.6,5.9,1.69,3.39,5.3,,,,,,,2023-01-28,univ craiova,fc hermannstadt,univ craiova|||fc hermannstadt|||2|||0,1,180
+Romania,Superliga,2022/2023,29/01/2023,11:30,FC Arges,FC Botosani,0,2,A,2.83,2.88,2.92,2.86,3.07,3.07,2.65,2.88,2.82,,,,,,,2023-01-29,fc arges,fc botosani,fc arges|||fc botosani|||0|||2,1,181
+Romania,Superliga,2022/2023,30/01/2023,18:00,FC Voluntari,CFR Cluj,0,1,A,4.37,3.06,2.04,4.75,3.13,2.16,4.05,2.96,2.03,,,,,,,2023-01-30,fc voluntari,cfr cluj,fc voluntari|||cfr cluj|||0|||1,1,183
+Romania,Superliga,2022/2023,03/02/2023,18:00,U Craiova 1948,U. Cluj,5,0,H,2.36,3.08,3.41,2.36,3.19,3.55,2.29,2.97,3.3,,,,,,,2023-02-03,fcu_1948_craiova,u cluj,fcu_1948_craiova|||u cluj|||5|||0,1,185
+Romania,Superliga,2022/2023,04/02/2023,12:30,FC Hermannstadt,FC Arges,1,1,D,1.93,3.05,4.93,1.95,3.18,5.04,1.88,3.04,4.61,,,,,,,2023-02-04,fc hermannstadt,fc arges,fc hermannstadt|||fc arges|||1|||1,1,186
+Romania,Superliga,2022/2023,04/02/2023,18:00,FC Rapid Bucuresti,FC Voluntari,4,1,H,1.99,3.09,4.57,1.99,3.24,4.6,1.95,3.05,4.24,,,,,,,2023-02-04,fc rapid bucuresti,fc voluntari,fc rapid bucuresti|||fc voluntari|||4|||1,1,187
+Romania,Superliga,2022/2023,06/02/2023,15:00,FC Botosani,Petrolul,5,0,H,2.28,3.02,3.64,2.29,3.15,3.75,2.21,3.01,3.43,,,,,,,2023-02-06,fc botosani,petrolul,fc botosani|||petrolul|||5|||0,1,190
+Romania,Superliga,2022/2023,06/02/2023,18:00,Farul Constanta,Univ. Craiova,2,1,H,3.15,2.87,2.65,3.21,3,2.68,3.02,2.84,2.53,,,,,,,2023-02-06,farul constanta,univ craiova,farul constanta|||univ craiova|||2|||1,1,191
+Romania,Superliga,2022/2023,10/02/2023,15:00,U. Cluj,Mioveni,2,2,D,2.03,3.07,4.38,2.04,3.23,4.4,1.97,3.05,4.14,,,,,,,2023-02-10,u cluj,mioveni,u cluj|||mioveni|||2|||2,1,192
+Romania,Superliga,2022/2023,10/02/2023,18:00,FC Rapid Bucuresti,U Craiova 1948,1,2,A,2.27,3.14,3.57,2.27,3.24,4.15,2.17,3.09,3.44,,,,,,,2023-02-10,fc rapid bucuresti,fcu_1948_craiova,fc rapid bucuresti|||fcu_1948_craiova|||1|||2,1,193
+Romania,Superliga,2022/2023,11/02/2023,12:30,UTA Arad,FC Botosani,3,1,H,2.14,3.25,3.69,2.18,3.32,3.85,2.09,3.19,3.53,,,,,,,2023-02-11,uta arad,fc botosani,uta arad|||fc botosani|||3|||1,1,194
+Romania,Superliga,2022/2023,11/02/2023,18:00,Univ. Craiova,CFR Cluj,2,0,H,2.72,2.97,2.94,2.8,2.99,3,2.63,2.89,2.84,,,,,,,2023-02-11,univ craiova,cfr cluj,univ craiova|||cfr cluj|||2|||0,1,195
+Romania,Superliga,2022/2023,12/02/2023,15:00,FC Arges,Farul Constanta,0,0,D,5.05,3.43,1.79,5.1,3.5,1.85,4.7,3.34,1.77,,,,,,,2023-02-12,fc arges,farul constanta,fc arges|||farul constanta|||0|||0,1,196
+Romania,Superliga,2022/2023,12/02/2023,18:00,FC Voluntari,FCSB,1,2,A,5.05,3.63,1.74,5.3,3.75,1.79,4.71,3.52,1.73,,,,,,,2023-02-12,fc voluntari,fcsb,fc voluntari|||fcsb|||1|||2,1,197
+Romania,Superliga,2022/2023,13/02/2023,18:00,Petrolul,FC Hermannstadt,2,0,H,2.57,2.95,3.17,2.57,2.98,3.22,2.48,2.89,3.04,,,,,,,2023-02-13,petrolul,fc hermannstadt,petrolul|||fc hermannstadt|||2|||0,1,199
+Romania,Superliga,2022/2023,17/02/2023,15:00,Chindia Targoviste,U. Cluj,2,2,D,2.52,2.87,3.35,2.58,3,3.4,2.46,2.83,3.17,,,,,,,2023-02-17,chindia targoviste,u cluj,chindia targoviste|||u cluj|||2|||2,1,200
+Romania,Superliga,2022/2023,17/02/2023,18:00,Mioveni,FC Rapid Bucuresti,0,0,D,4.79,3.24,1.89,4.9,3.36,1.99,4.28,3.18,1.9,,,,,,,2023-02-17,mioveni,fc rapid bucuresti,mioveni|||fc rapid bucuresti|||0|||0,1,201
+Romania,Superliga,2022/2023,18/02/2023,12:30,FC Hermannstadt,UTA Arad,0,0,D,2.49,3.07,3.16,2.6,3.23,3.34,2.4,3,3.06,,,,,,,2023-02-18,fc hermannstadt,uta arad,fc hermannstadt|||uta arad|||0|||0,1,202
+Romania,Superliga,2022/2023,18/02/2023,18:00,Farul Constanta,Petrolul,2,0,H,1.63,3.74,5.99,1.64,4,6.5,1.59,3.69,5.7,,,,,,,2023-02-18,farul constanta,petrolul,farul constanta|||petrolul|||2|||0,1,203
+Romania,Superliga,2022/2023,19/02/2023,15:00,CFR Cluj,FC Arges,3,1,H,1.41,4.3,9.06,1.48,4.64,9.6,1.42,4.15,7.77,,,,,,,2023-02-19,cfr cluj,fc arges,cfr cluj|||fc arges|||3|||1,1,204
+Romania,Superliga,2022/2023,19/02/2023,18:00,FCSB,Univ. Craiova,1,1,D,2.05,3.46,3.71,2.12,3.52,3.75,2.04,3.35,3.47,,,,,,,2023-02-19,fcsb,univ craiova,fcsb|||univ craiova|||1|||1,1,205
+Romania,Superliga,2022/2023,20/02/2023,15:00,FC Botosani,Sepsi Sf. Gheorghe,1,1,D,3.82,3.27,2.09,3.88,3.36,2.12,3.6,3.22,2.05,,,,,,,2023-02-20,fc botosani,sepsi,fc botosani|||sepsi|||1|||1,1,206
+Romania,Superliga,2022/2023,20/02/2023,18:00,U Craiova 1948,FC Voluntari,2,1,H,1.79,3.46,4.99,1.85,3.6,5,1.8,3.38,4.49,,,,,,,2023-02-20,fcu_1948_craiova,fc voluntari,fcu_1948_craiova|||fc voluntari|||2|||1,1,207
+Romania,Superliga,2022/2023,25/02/2023,12:30,Sepsi Sf. Gheorghe,FC Hermannstadt,2,1,H,1.69,3.53,5.79,1.71,3.7,5.9,1.66,3.42,5.46,,,,,,,2023-02-25,sepsi,fc hermannstadt,sepsi|||fc hermannstadt|||2|||1,1,210
+Romania,Superliga,2022/2023,25/02/2023,15:00,U. Cluj,FC Botosani,2,0,H,2.08,3.19,3.99,2.13,3.3,4,2.06,3.14,3.7,,,,,,,2023-02-25,u cluj,fc botosani,u cluj|||fc botosani|||2|||0,1,211
+Romania,Superliga,2022/2023,25/02/2023,18:00,FC Rapid Bucuresti,Chindia Targoviste,2,0,H,1.9,3.3,4.62,1.94,3.43,4.62,1.88,3.21,4.29,,,,,,,2023-02-25,fc rapid bucuresti,chindia targoviste,fc rapid bucuresti|||chindia targoviste|||2|||0,1,212
+Romania,Superliga,2022/2023,26/02/2023,15:45,FC Voluntari,Univ. Craiova,1,0,H,3.12,3.12,2.48,3.6,3.21,2.58,3.02,3.04,2.4,,,,,,,2023-02-26,fc voluntari,univ craiova,fc voluntari|||univ craiova|||1|||0,1,213
+Romania,Superliga,2022/2023,26/02/2023,18:30,FC Arges,FCSB,1,2,A,6.92,4.17,1.5,7.8,4.4,1.52,6.9,4.13,1.45,,,,,,,2023-02-26,fc arges,fcsb,fc arges|||fcsb|||1|||2,1,214
+Romania,Superliga,2022/2023,27/02/2023,18:00,Petrolul,CFR Cluj,2,5,A,6.24,3.49,1.66,6.24,3.65,1.73,5.48,3.37,1.68,,,,,,,2023-02-27,petrolul,cfr cluj,petrolul|||cfr cluj|||2|||5,1,215
+Romania,Superliga,2022/2023,28/02/2023,14:00,FC Hermannstadt,U. Cluj,0,1,A,2.59,2.83,3.29,2.68,3.05,3.31,2.53,2.81,3.08,,,,,,,2023-02-28,fc hermannstadt,u cluj,fc hermannstadt|||u cluj|||0|||1,1,216
+Romania,Superliga,2022/2023,01/03/2023,14:00,Mioveni,FC Voluntari,0,3,A,2.92,2.95,2.76,2.93,3.1,2.79,2.81,2.94,2.63,,,,,,,2023-03-01,mioveni,fc voluntari,mioveni|||fc voluntari|||0|||3,1,219
+Romania,Superliga,2022/2023,01/03/2023,16:00,Univ. Craiova,FC Arges,1,0,H,1.43,4.33,8.21,1.45,4.53,11,1.4,4.25,7.91,,,,,,,2023-03-01,univ craiova,fc arges,univ craiova|||fc arges|||1|||0,1,220
+Romania,Superliga,2022/2023,01/03/2023,18:30,FC Botosani,FC Rapid Bucuresti,1,2,A,3.31,3.12,2.37,3.31,3.2,2.38,3.15,3.09,2.3,,,,,,,2023-03-01,fc botosani,fc rapid bucuresti,fc botosani|||fc rapid bucuresti|||1|||2,1,221
+Romania,Superliga,2022/2023,02/03/2023,18:00,FCSB,Petrolul,4,1,H,1.28,5.84,10.18,1.32,6,11,1.29,5.38,8.94,,,,,,,2023-03-02,fcsb,petrolul,fcsb|||petrolul|||4|||1,1,223
+Romania,Superliga,2022/2023,03/03/2023,18:00,U. Cluj,Farul Constanta,2,0,H,3.52,3.09,2.29,3.7,3.14,2.36,3.4,3.01,2.22,,,,,,,2023-03-03,u cluj,farul constanta,u cluj|||farul constanta|||2|||0,1,224
+Romania,Superliga,2022/2023,04/03/2023,15:00,U Craiova 1948,FC Botosani,1,0,H,1.91,3.24,4.66,1.95,3.5,4.8,1.87,3.27,4.24,,,,,,,2023-03-04,fcu_1948_craiova,fc botosani,fcu_1948_craiova|||fc botosani|||1|||0,1,225
+Romania,Superliga,2022/2023,04/03/2023,18:00,FC Rapid Bucuresti,FC Hermannstadt,0,1,A,2.05,3.05,4.36,2.07,3.55,5.05,1.98,3,4.18,,,,,,,2023-03-04,fc rapid bucuresti,fc hermannstadt,fc rapid bucuresti|||fc hermannstadt|||0|||1,1,226
+Romania,Superliga,2022/2023,05/03/2023,13:30,Petrolul,Univ. Craiova,0,1,A,4.49,4.02,1.74,5.2,4.02,1.8,4.35,3.73,1.73,,,,,,,2023-03-05,petrolul,univ craiova,petrolul|||univ craiova|||0|||1,1,228
+Romania,Superliga,2022/2023,06/03/2023,16:00,FC Voluntari,FC Arges,0,0,D,1.72,3.55,5.42,1.77,3.7,5.42,1.72,3.4,4.93,,,,,,,2023-03-06,fc voluntari,fc arges,fc voluntari|||fc arges|||0|||0,1,230
+Romania,Superliga,2022/2023,10/03/2023,15:30,FC Botosani,Mioveni,1,1,D,1.87,3.39,4.61,2,3.5,4.61,1.89,3.25,4.15,,,,,,,2023-03-10,fc botosani,mioveni,fc botosani|||mioveni|||1|||1,1,232
+Romania,Superliga,2022/2023,10/03/2023,18:30,Univ. Craiova,UTA Arad,2,1,H,1.78,3.51,4.96,1.78,3.65,5.2,1.72,3.46,4.8,,,,,,,2023-03-10,univ craiova,uta arad,univ craiova|||uta arad|||2|||1,1,233
+Romania,Superliga,2022/2023,11/03/2023,15:30,FC Arges,Petrolul,0,1,A,2.37,3.21,3.22,2.43,3.26,3.22,2.31,3.12,3.05,,,,,,,2023-03-11,fc arges,petrolul,fc arges|||petrolul|||0|||1,1,234
+Romania,Superliga,2022/2023,11/03/2023,18:30,Farul Constanta,FC Rapid Bucuresti,2,1,H,1.94,3.37,4.28,2.05,3.4,4.59,1.93,3.23,3.99,,,,,,,2023-03-11,farul constanta,fc rapid bucuresti,farul constanta|||fc rapid bucuresti|||2|||1,1,235
+Romania,Superliga,2022/2023,12/03/2023,19:00,FC Hermannstadt,U Craiova 1948,1,0,H,3.07,3.05,2.56,3.07,3.05,2.72,2.9,2.92,2.54,,,,,,,2023-03-12,fc hermannstadt,fcu_1948_craiova,fc hermannstadt|||fcu_1948_craiova|||1|||0,1,236
+Romania,Superliga,2022/2023,13/03/2023,15:30,Chindia Targoviste,FC Voluntari,1,1,D,2.64,2.92,3.1,2.64,2.95,3.2,2.52,2.85,3.02,,,,,,,2023-03-13,chindia targoviste,fc voluntari,chindia targoviste|||fc voluntari|||1|||1,1,238
+Romania,Superliga,2022/2023,13/03/2023,18:30,CFR Cluj,U. Cluj,4,0,H,1.65,3.57,6.2,1.65,3.98,6.9,1.58,3.55,6.15,,,,,,,2023-03-13,cfr cluj,u cluj,cfr cluj|||u cluj|||4|||0,1,239
+Romania,Superliga,2022/2023,17/03/2023,15:30,FC Voluntari,FC Hermannstadt,1,1,D,2.24,2.94,3.86,2.35,3.05,3.9,2.21,2.86,3.57,,,,,,,2023-03-17,fc voluntari,fc hermannstadt,fc voluntari|||fc hermannstadt|||1|||1,1,241
+Romania,Superliga,2022/2023,17/03/2023,18:30,Petrolul,UTA Arad,1,0,H,3.31,2.96,2.48,3.31,3.13,2.7,3.05,2.92,2.43,,,,,,,2023-03-17,petrolul,uta arad,petrolul|||uta arad|||1|||0,1,242
+Romania,Superliga,2022/2023,18/03/2023,12:30,FC Botosani,Chindia Targoviste,1,0,H,2.36,3.04,3.44,2.36,3.13,3.7,2.25,2.96,3.34,,,,,,,2023-03-18,fc botosani,chindia targoviste,fc botosani|||chindia targoviste|||1|||0,1,243
+Romania,Superliga,2022/2023,18/03/2023,18:00,FCSB,Univ. Craiova,1,1,D,1.64,3.89,5.48,1.88,4,5.8,1.62,3.74,5.06,,,,,,,2023-03-18,fcsb,univ craiova,fcsb|||univ craiova|||1|||1,2,244
+Romania,Superliga,2022/2023,19/03/2023,14:30,Farul Constanta,Sepsi Sf. Gheorghe,2,1,H,1.88,3.32,4.66,1.95,3.5,4.8,1.86,3.21,4.32,,,,,,,2023-03-19,farul constanta,sepsi,farul constanta|||sepsi|||2|||1,1,245
+Romania,Superliga,2022/2023,19/03/2023,17:00,CFR Cluj,FC Rapid Bucuresti,2,2,D,1.73,3.32,5.88,1.95,3.65,6,1.71,3.3,5.14,,,,,,,2023-03-19,cfr cluj,fc rapid bucuresti,cfr cluj|||fc rapid bucuresti|||2|||2,1,246
+Romania,Superliga,2022/2023,20/03/2023,16:00,U Craiova 1948,Mioveni,3,0,H,1.77,3.45,5.18,1.8,3.6,5.5,1.73,3.37,4.86,,,,,,,2023-03-20,fcu_1948_craiova,mioveni,fcu_1948_craiova|||mioveni|||3|||0,1,247
+Romania,Superliga,2022/2023,20/03/2023,19:00,U. Cluj,FC Arges,2,0,H,1.57,3.9,6.37,1.69,3.95,6.5,1.59,3.64,5.78,,,,,,,2023-03-20,u cluj,fc arges,u cluj|||fc arges|||2|||0,1,248
+Romania,Superliga,2022/2023,31/03/2023,19:00,U Craiova 1948,Petrolul,0,1,A,1.78,3.55,4.94,1.9,3.9,5,1.75,3.51,4.5,,,,,,,2023-03-31,fcu_1948_craiova,petrolul,fcu_1948_craiova|||petrolul|||0|||1,2,249
+Romania,Superliga,2022/2023,01/04/2023,10:00,UTA Arad,U. Cluj,2,0,H,2.03,3.26,4.08,2.4,3.3,4.09,2.13,3.08,3.52,,,,,,,2023-04-01,uta arad,u cluj,uta arad|||u cluj|||2|||0,1,250
+Romania,Superliga,2022/2023,01/04/2023,15:00,FC Hermannstadt,FC Botosani,1,1,D,2.38,2.88,3.6,2.4,3.15,3.6,2.29,2.94,3.3,,,,,,,2023-04-01,fc hermannstadt,fc botosani,fc hermannstadt|||fc botosani|||1|||1,2,251
+Romania,Superliga,2022/2023,01/04/2023,19:45,FC Rapid Bucuresti,Farul Constanta,1,1,D,2.34,3.16,3.33,2.55,3.25,3.35,2.28,3.08,3.16,,,,,,,2023-04-01,fc rapid bucuresti,farul constanta,fc rapid bucuresti|||farul constanta|||1|||1,2,252
+Romania,Superliga,2022/2023,02/04/2023,11:30,FC Arges,FC Voluntari,0,2,A,3.89,3.16,2.12,4.3,3.38,2.45,3.62,3.06,2.1,,,,,,,2023-04-02,fc arges,fc voluntari,fc arges|||fc voluntari|||0|||2,1,253
+Romania,Superliga,2022/2023,02/04/2023,19:00,Univ. Craiova,CFR Cluj,1,1,D,2.61,3.13,2.93,2.65,3.2,2.95,2.53,3.02,2.82,,,,,,,2023-04-02,univ craiova,cfr cluj,univ craiova|||cfr cluj|||1|||1,1,254
+Romania,Superliga,2022/2023,03/04/2023,15:30,Mioveni,Chindia Targoviste,0,1,A,3.39,2.9,2.48,3.41,3.1,2.5,3.13,2.89,2.42,,,,,,,2023-04-03,mioveni,chindia targoviste,mioveni|||chindia targoviste|||0|||1,1,255
+Romania,Superliga,2022/2023,03/04/2023,18:30,Sepsi Sf. Gheorghe,FCSB,1,2,A,3.11,3.39,2.33,3.4,3.6,2.4,3,3.31,2.26,,,,,,,2023-04-03,sepsi,fcsb,sepsi|||fcsb|||1|||2,1,256
+Romania,Superliga,2022/2023,08/04/2023,13:00,FC Voluntari,UTA Arad,1,1,D,2.27,3.11,3.54,2.34,3.25,3.55,2.21,3.03,3.36,,,,,,,2023-04-08,fc voluntari,uta arad,fc voluntari|||uta arad|||1|||1,1,257
+Romania,Superliga,2022/2023,08/04/2023,15:30,U. Cluj,U Craiova 1948,1,3,A,2.25,3.24,3.43,2.29,3.4,3.55,2.16,3.16,3.33,,,,,,,2023-04-08,u cluj,fcu_1948_craiova,u cluj|||fcu_1948_craiova|||1|||3,1,258
+Romania,Superliga,2022/2023,08/04/2023,18:30,Farul Constanta,Univ. Craiova,3,2,H,2.23,3.19,3.53,2.26,3.45,3.6,2.17,3.16,3.33,,,,,,,2023-04-08,farul constanta,univ craiova,farul constanta|||univ craiova|||3|||2,1,259
+Romania,Superliga,2022/2023,09/04/2023,11:00,Chindia Targoviste,FC Hermannstadt,1,2,A,2.48,2.65,3.81,2.48,2.95,3.9,2.35,2.71,3.52,,,,,,,2023-04-09,chindia targoviste,fc hermannstadt,chindia targoviste|||fc hermannstadt|||1|||2,1,260
+Romania,Superliga,2022/2023,09/04/2023,13:30,FC Botosani,FC Arges,1,0,H,1.72,3.52,5.43,1.77,3.65,5.9,1.71,3.39,5,,,,,,,2023-04-09,fc botosani,fc arges,fc botosani|||fc arges|||1|||0,1,261
+Romania,Superliga,2022/2023,09/04/2023,19:00,CFR Cluj,FCSB,1,1,D,2.52,3.17,3.01,2.54,3.49,3.25,2.35,3.15,2.99,,,,,,,2023-04-09,cfr cluj,fcsb,cfr cluj|||fcsb|||1|||1,1,262
+Romania,Superliga,2022/2023,10/04/2023,15:30,Petrolul,Mioveni,2,0,H,1.81,3.39,5.02,2.02,3.6,5.1,1.81,3.27,4.58,,,,,,,2023-04-10,petrolul,mioveni,petrolul|||mioveni|||2|||0,1,263
+Romania,Superliga,2022/2023,10/04/2023,18:30,Sepsi Sf. Gheorghe,FC Rapid Bucuresti,2,0,H,2.2,3.24,3.56,2.43,3.45,3.56,2.19,3.23,3.22,,,,,,,2023-04-10,sepsi,fc rapid bucuresti,sepsi|||fc rapid bucuresti|||2|||0,1,264
+Romania,Superliga,2022/2023,14/04/2023,16:00,U Craiova 1948,FC Voluntari,3,3,D,2.17,3.28,3.58,2.17,3.45,3.58,2.12,3.22,3.36,,,,,,,2023-04-14,fcu_1948_craiova,fc voluntari,fcu_1948_craiova|||fc voluntari|||3|||3,1,265
+Romania,Superliga,2022/2023,14/04/2023,19:00,UTA Arad,FC Botosani,0,2,A,2.01,3.2,4.2,2.02,3.35,4.33,1.97,3.15,3.93,,,,,,,2023-04-14,uta arad,fc botosani,uta arad|||fc botosani|||0|||2,1,266
+Romania,Superliga,2022/2023,15/04/2023,10:00,Mioveni,FC Hermannstadt,0,2,A,3.72,2.98,2.27,3.72,3.2,2.41,3.38,2.94,2.26,,,,,,,2023-04-15,mioveni,fc hermannstadt,mioveni|||fc hermannstadt|||0|||2,2,267
+Romania,Superliga,2022/2023,15/04/2023,17:00,CFR Cluj,Sepsi Sf. Gheorghe,2,1,H,1.81,3.45,4.83,1.94,3.5,4.83,1.85,3.29,4.29,,,,,,,2023-04-15,cfr cluj,sepsi,cfr cluj|||sepsi|||2|||1,2,268
+Romania,Superliga,2022/2023,16/04/2023,16:15,Petrolul,U. Cluj,0,2,A,2.96,3.06,2.64,3,3.21,2.64,2.84,2.99,2.54,,,,,,,2023-04-16,petrolul,u cluj,petrolul|||u cluj|||0|||2,1,269
+Romania,Superliga,2022/2023,16/04/2023,19:00,Univ. Craiova,FC Rapid Bucuresti,3,1,H,1.87,3.45,4.5,1.9,3.65,4.5,1.84,3.39,4.15,,,,,,,2023-04-16,univ craiova,fc rapid bucuresti,univ craiova|||fc rapid bucuresti|||3|||1,1,270
+Romania,Superliga,2022/2023,17/04/2023,15:30,FC Arges,Chindia Targoviste,1,0,H,3.83,2.94,2.26,3.86,3.1,2.4,3.57,2.9,2.21,,,,,,,2023-04-17,fc arges,chindia targoviste,fc arges|||chindia targoviste|||1|||0,1,271
+Romania,Superliga,2022/2023,17/04/2023,18:30,FCSB,Farul Constanta,2,1,H,1.88,3.64,4.18,1.99,3.7,4.18,1.9,3.49,3.78,,,,,,,2023-04-17,fcsb,farul constanta,fcsb|||farul constanta|||2|||1,1,272
+Romania,Superliga,2022/2023,21/04/2023,18:30,Sepsi Sf. Gheorghe,Univ. Craiova,1,2,A,2.85,3.26,2.59,2.88,3.4,2.7,2.75,3.18,2.5,,,,,,,2023-04-21,sepsi,univ craiova,sepsi|||univ craiova|||1|||2,1,273
+Romania,Superliga,2022/2023,22/04/2023,13:00,FC Hermannstadt,FC Arges,2,1,H,1.8,3.31,5.24,1.87,3.5,5.3,1.8,3.24,4.66,,,,,,,2023-04-22,fc hermannstadt,fc arges,fc hermannstadt|||fc arges|||2|||1,1,274
+Romania,Superliga,2022/2023,22/04/2023,15:30,FC Botosani,U Craiova 1948,0,0,D,2.55,3.13,3.01,2.56,3.35,3.15,2.41,3.1,2.94,,,,,,,2023-04-22,fc botosani,fcu_1948_craiova,fc botosani|||fcu_1948_craiova|||0|||0,1,275
+Romania,Superliga,2022/2023,22/04/2023,18:30,Farul Constanta,CFR Cluj,1,0,H,2.37,3.13,3.31,2.55,3.35,3.31,2.38,3.07,3.01,,,,,,,2023-04-22,farul constanta,cfr cluj,farul constanta|||cfr cluj|||1|||0,1,276
+Romania,Superliga,2022/2023,23/04/2023,12:00,Chindia Targoviste,UTA Arad,2,1,H,2.64,2.9,3.13,2.64,3.15,3.14,2.53,2.93,2.94,,,,,,,2023-04-23,chindia targoviste,uta arad,chindia targoviste|||uta arad|||2|||1,2,277
+Romania,Superliga,2022/2023,23/04/2023,18:30,FC Rapid Bucuresti,FCSB,1,0,H,3.95,3.75,1.9,4.3,3.91,2.1,3.89,3.65,1.83,,,,,,,2023-04-23,fc rapid bucuresti,fcsb,fc rapid bucuresti|||fcsb|||1|||0,1,278
+Romania,Superliga,2022/2023,24/04/2023,15:30,U. Cluj,Mioveni,1,0,H,1.42,4.29,8.81,1.45,4.4,9.8,1.41,4.09,7.99,,,,,,,2023-04-24,u cluj,mioveni,u cluj|||mioveni|||1|||0,1,279
+Romania,Superliga,2022/2023,24/04/2023,18:30,FC Voluntari,Petrolul,2,2,D,1.95,3.52,4.01,2,3.68,4.1,1.9,3.43,3.84,,,,,,,2023-04-24,fc voluntari,petrolul,fc voluntari|||petrolul|||2|||2,1,280
+Romania,Superliga,2022/2023,28/04/2023,18:30,U Craiova 1948,Chindia Targoviste,1,0,H,1.9,3.38,4.46,1.95,3.55,4.6,1.86,3.32,4.21,,,,,,,2023-04-28,fcu_1948_craiova,chindia targoviste,fcu_1948_craiova|||chindia targoviste|||1|||0,1,281
+Romania,Superliga,2022/2023,29/04/2023,12:30,Mioveni,FC Arges,0,2,A,4.74,3.07,1.62,7.2,4.1,1.81,5.63,3.36,1.67,,,,,,,2023-04-29,mioveni,fc arges,mioveni|||fc arges|||0|||2,1,282
+Romania,Superliga,2022/2023,29/04/2023,15:00,Petrolul,FC Botosani,1,0,H,2.63,2.9,3.14,2.8,3.22,3.14,2.59,2.92,2.85,,,,,,,2023-04-29,petrolul,fc botosani,petrolul|||fc botosani|||1|||0,1,283
+Romania,Superliga,2022/2023,29/04/2023,19:45,Sepsi Sf. Gheorghe,Farul Constanta,1,1,D,3.31,3.35,2.25,3.4,3.45,2.45,3.08,3.28,2.24,,,,,,,2023-04-29,sepsi,farul constanta,sepsi|||farul constanta|||1|||1,1,284
+Romania,Superliga,2022/2023,30/04/2023,19:00,Univ. Craiova,FCSB,1,2,A,2.68,3.25,2.75,2.69,3.4,2.78,2.57,3.2,2.66,,,,,,,2023-04-30,univ craiova,fcsb,univ craiova|||fcsb|||1|||2,1,285
+Romania,Superliga,2022/2023,01/05/2023,13:00,U. Cluj,FC Voluntari,2,3,A,2.13,3.16,3.86,2.25,3.22,3.88,2.12,3.07,3.55,,,,,,,2023-05-01,u cluj,fc voluntari,u cluj|||fc voluntari|||2|||3,1,286
+Romania,Superliga,2022/2023,01/05/2023,18:30,FC Rapid Bucuresti,CFR Cluj,3,1,H,3.43,3.29,2.23,3.65,3.35,2.27,3.27,3.18,2.18,,,,,,,2023-05-01,fc rapid bucuresti,cfr cluj,fc rapid bucuresti|||cfr cluj|||3|||1,1,287
+Romania,Superliga,2022/2023,02/05/2023,18:00,UTA Arad,FC Hermannstadt,1,0,H,2.1,3.05,4.15,2.2,3.18,4.5,2.05,2.97,3.97,,,,,,,2023-05-02,uta arad,fc hermannstadt,uta arad|||fc hermannstadt|||1|||0,1,288
+Romania,Superliga,2022/2023,05/05/2023,15:30,FC Voluntari,Mioveni,1,0,H,1.22,6.07,13.83,1.25,6.75,17,1.2,6.03,13.54,,,,,,,2023-05-05,fc voluntari,mioveni,fc voluntari|||mioveni|||1|||0,1,289
+Romania,Superliga,2022/2023,05/05/2023,18:30,Chindia Targoviste,Petrolul,1,2,A,2.33,2.99,3.57,2.35,3.25,3.8,2.25,2.95,3.42,,,,,,,2023-05-05,chindia targoviste,petrolul,chindia targoviste|||petrolul|||1|||2,1,290
+Romania,Superliga,2022/2023,06/05/2023,10:30,FC Botosani,U. Cluj,0,0,D,2.83,2.84,2.95,2.83,3.05,3,2.62,2.87,2.87,,,,,,,2023-05-06,fc botosani,u cluj,fc botosani|||u cluj|||0|||0,1,291
+Romania,Superliga,2022/2023,06/05/2023,19:30,Farul Constanta,FC Rapid Bucuresti,7,2,H,1.52,4.3,6.24,1.55,4.35,6.24,1.52,4.11,5.7,,,,,,,2023-05-06,farul constanta,fc rapid bucuresti,farul constanta|||fc rapid bucuresti|||7|||2,1,292
+Romania,Superliga,2022/2023,07/05/2023,19:00,CFR Cluj,Univ. Craiova,1,1,D,1.93,3.32,4.36,2.01,3.5,4.36,1.93,3.26,3.95,,,,,,,2023-05-07,cfr cluj,univ craiova,cfr cluj|||univ craiova|||1|||1,1,293
+Romania,Superliga,2022/2023,08/05/2023,14:30,FC Hermannstadt,U Craiova 1948,0,0,D,2.5,3.05,3.17,2.57,3.09,3.25,2.41,2.94,3.06,,,,,,,2023-05-08,fc hermannstadt,fcu_1948_craiova,fc hermannstadt|||fcu_1948_craiova|||0|||0,1,294
+Romania,Superliga,2022/2023,08/05/2023,16:30,FC Arges,UTA Arad,2,2,D,3.27,3.08,2.42,3.35,3.19,2.66,3.02,3,2.42,,,,,,,2023-05-08,fc arges,uta arad,fc arges|||uta arad|||2|||2,1,295
+Romania,Superliga,2022/2023,08/05/2023,19:00,FCSB,Sepsi Sf. Gheorghe,3,1,H,1.51,4.26,6.62,1.53,4.4,7,1.49,4.19,6.09,,,,,,,2023-05-08,fcsb,sepsi,fcsb|||sepsi|||3|||1,1,296
+Romania,Superliga,2022/2023,12/05/2023,15:30,FC Voluntari,FC Botosani,2,0,H,2.08,3.15,4.03,2.15,3.28,4.1,2.08,3.07,3.71,,,,,,,2023-05-12,fc voluntari,fc botosani,fc voluntari|||fc botosani|||2|||0,1,297
+Romania,Superliga,2022/2023,12/05/2023,18:30,FC Rapid Bucuresti,Sepsi Sf. Gheorghe,0,0,D,2.22,3.38,3.36,2.26,3.4,3.45,2.18,3.28,3.18,,,,,,,2023-05-12,fc rapid bucuresti,sepsi,fc rapid bucuresti|||sepsi|||0|||0,1,298
+Romania,Superliga,2022/2023,13/05/2023,12:30,Petrolul,FC Hermannstadt,0,1,A,3.04,3.02,2.61,3.14,3.1,2.87,2.96,2.96,2.48,,,,,,,2023-05-13,petrolul,fc hermannstadt,petrolul|||fc hermannstadt|||0|||1,1,299
+Romania,Superliga,2022/2023,13/05/2023,17:00,U. Cluj,Chindia Targoviste,2,0,H,1.98,3.23,4.33,2.07,3.4,4.33,1.99,3.13,3.89,,,,,,,2023-05-13,u cluj,chindia targoviste,u cluj|||chindia targoviste|||2|||0,1,300
+Romania,Superliga,2022/2023,13/05/2023,19:30,Univ. Craiova,Farul Constanta,1,1,D,2.3,3.29,3.27,2.31,3.3,3.32,2.24,3.2,3.13,,,,,,,2023-05-13,univ craiova,farul constanta,univ craiova|||farul constanta|||1|||1,1,301
+Romania,Superliga,2022/2023,14/05/2023,11:30,Mioveni,UTA Arad,0,2,A,8.2,4.74,1.39,10,5.03,1.4,8.11,4.6,1.36,,,,,,,2023-05-14,mioveni,uta arad,mioveni|||uta arad|||0|||2,1,302
+Romania,Superliga,2022/2023,14/05/2023,16:15,U Craiova 1948,FC Arges,2,1,H,1.81,3.54,4.68,1.89,3.58,5.1,1.8,3.4,4.38,,,,,,,2023-05-14,fcu_1948_craiova,fc arges,fcu_1948_craiova|||fc arges|||2|||1,1,303
+Romania,Superliga,2022/2023,14/05/2023,19:00,FCSB,CFR Cluj,1,0,H,1.88,3.47,4.43,2.02,3.55,4.43,1.91,3.33,3.97,,,,,,,2023-05-14,fcsb,cfr cluj,fcsb|||cfr cluj|||1|||0,1,304
+Romania,Superliga,2022/2023,19/05/2023,15:30,FC Hermannstadt,U. Cluj,1,2,A,2.39,3.09,3.32,2.39,3.4,5.2,2.17,3,3.65,,,,,,,2023-05-19,fc hermannstadt,u cluj,fc hermannstadt|||u cluj|||1|||2,1,305
+Romania,Superliga,2022/2023,19/05/2023,18:00,Chindia Targoviste,FC Voluntari,2,2,D,1.75,3.47,5.29,2.12,3.66,5.85,1.71,3.45,5.06,,,,,,,2023-05-19,chindia targoviste,fc voluntari,chindia targoviste|||fc voluntari|||2|||2,1,306
+Romania,Superliga,2022/2023,19/05/2023,18:00,FC Arges,Petrolul,3,0,H,1.86,3.42,4.6,2.3,3.61,4.6,1.87,3.35,4.12,,,,,,,2023-05-19,fc arges,petrolul,fc arges|||petrolul|||3|||0,1,307
+Romania,Superliga,2022/2023,19/05/2023,18:00,UTA Arad,U Craiova 1948,1,1,D,1.97,3.23,4.38,2.18,3.45,4.5,1.95,3.13,4.08,,,,,,,2023-05-19,uta arad,fcu_1948_craiova,uta arad|||fcu_1948_craiova|||1|||1,1,308
+Romania,Superliga,2022/2023,20/05/2023,12:45,FC Botosani,Mioveni,5,1,H,1.25,5.45,12.43,1.4,6,15.5,1.24,5.43,11.72,,,,,,,2023-05-20,fc botosani,mioveni,fc botosani|||mioveni|||5|||1,1,309
+Romania,Superliga,2022/2023,20/05/2023,18:30,Sepsi Sf. Gheorghe,CFR Cluj,1,2,A,3.59,3.4,2,4.5,3.58,2.19,3.49,3.28,2.06,,,,,,,2023-05-20,sepsi,cfr cluj,sepsi|||cfr cluj|||1|||2,1,310
+Romania,Superliga,2022/2023,21/05/2023,19:00,Farul Constanta,FCSB,3,2,H,2.5,3.43,2.83,3.16,3.53,2.86,2.49,3.33,2.66,,,,,,,2023-05-21,farul constanta,fcsb,farul constanta|||fcsb|||3|||2,1,311
+Romania,Superliga,2022/2023,22/05/2023,18:30,FC Rapid Bucuresti,Univ. Craiova,2,3,A,3.53,3.53,2.09,3.63,3.63,2.23,3.3,3.37,2.09,,,,,,,2023-05-22,fc rapid bucuresti,univ craiova,fc rapid bucuresti|||univ craiova|||2|||3,1,312
+Romania,Superliga,2022/2023,26/05/2023,18:00,U Craiova 1948,FC Voluntari,4,3,H,2.66,3.1,2.9,2.66,3.43,3.76,2.47,3.11,2.83,,,,,,,2023-05-26,fcu_1948_craiova,fc voluntari,fcu_1948_craiova|||fc voluntari|||4|||3,1,313
+Romania,Superliga,2022/2023,27/05/2023,18:30,FCSB,FC Rapid Bucuresti,1,5,A,1.49,4.8,5.89,1.62,4.9,6.5,1.47,4.5,5.69,,,,,,,2023-05-27,fcsb,fc rapid bucuresti,fcsb|||fc rapid bucuresti|||1|||5,1,314
+Romania,Superliga,2022/2023,28/05/2023,12:00,Gloria Buzau,UTA Arad,0,0,D,,,,4.75,3.55,2.05,4.1,3.27,1.86,,,,,,,2023-05-28,gloria buzau,uta arad,gloria buzau|||uta arad|||0|||0,1,315
+Romania,Superliga,2022/2023,28/05/2023,19:00,CFR Cluj,Farul Constanta,1,2,A,1.37,4.8,8.95,1.52,5.25,9,1.35,4.74,7.91,,,,,,,2023-05-28,cfr cluj,farul constanta,cfr cluj|||farul constanta|||1|||2,1,316
+Romania,Superliga,2022/2023,28/05/2023,19:00,Univ. Craiova,Sepsi Sf. Gheorghe,0,1,A,1.39,4.76,8.12,1.54,5.25,9.4,1.37,4.58,7.62,,,,,,,2023-05-28,univ craiova,sepsi,univ craiova|||sepsi|||0|||1,1,317
+Romania,Superliga,2022/2023,29/05/2023,18:00,Din. Bucuresti,FC Arges,6,1,H,4.75,3.31,1.87,4.75,3.45,1.98,4.26,3.21,1.87,,,,,,,2023-05-29,din bucuresti,fc arges,din bucuresti|||fc arges|||6|||1,1,318
+Romania,Superliga,2022/2023,01/06/2023,18:30,CFR Cluj,U Craiova 1948,1,0,H,1.55,4.03,6.37,1.55,4.34,7,1.51,3.99,6.06,,,,,,,2023-06-01,cfr cluj,fcu_1948_craiova,cfr cluj|||fcu_1948_craiova|||1|||0,1,319
+Romania,Superliga,2022/2023,03/06/2023,19:00,FC Arges,Din. Bucuresti,4,2,H,1.99,3.65,3.57,2.08,3.71,3.76,1.98,3.52,3.37,,,,,,,2023-06-03,fc arges,din bucuresti,fc arges|||din bucuresti|||4|||2,1,320
+Romania,Superliga,2022/2023,04/06/2023,19:00,UTA Arad,Gloria Buzau,5,1,H,1.21,6.12,14.98,1.27,6.8,19,1.19,6.04,14.09,,,,,,,2023-06-04,uta arad,gloria buzau,uta arad|||gloria buzau|||5|||1,1,321

@@ -1,0 +1,4 @@
+Country,League,Season,Date,Time,Home,Away,HG,AG,Res,PSCH,PSCD,PSCA,MaxCH,MaxCD,MaxCA,AvgCH,AvgCD,AvgCA,BFECH,BFECD,BFECA,B365CH,B365CD,B365CA,ParsedDate,MatchKey,Occurrence,FDID
+Sweden,Allsvenskan,2013,03/08/2013,15:00,Osters,Brommapojkarna,0,0,D,1.83,3.82,4.55,1.86,3.85,4.75,1.79,3.61,4.37,,,,,,,2013-08-03,Osters|||Brommapojkarna|||0|||0,1,137
+Sweden,Allsvenskan,2013,06/11/2013,17:30,Sundsvall,Halmstad,1,1,D,2.52,3.44,2.98,2.65,3.44,3.1,2.39,3.23,2.89,,,,,,,2013-11-06,Sundsvall|||Halmstad|||1|||1,1,241
+Sweden,Allsvenskan,2013,10/11/2013,14:30,Halmstad,Sundsvall,2,1,H,1.68,3.98,5.62,1.7,4,6.04,1.62,3.76,5.26,,,,,,,2013-11-10,Halmstad|||Sundsvall|||2|||1,1,242
