@@ -920,6 +920,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 1742,Choi Kyeongho,Choi Kwangho,1,2025-12-12,White,Loss,Song Jihoon,1,1,1
 2518,Choi Seobi,Choi Seopi,1,2024-05-29,White,Win,Lee Yujin,1,1,1
 2518,Choi Seobi,Choi Seopi,1,2024-07-14,White,Loss,Park Soyul,1,1,1
+2518,Choi Seobi,Choi Seopi,1,2024-07-18,White,Win,Ko Miso,1,1,1
 2518,Choi Seobi,Choi Seopi,1,2024-07-26,White,Loss,Cho Hyeyeon,1,1,1
 2518,Choi Seobi,Choi Seopi,1,2024-08-13,Black,Win,Kim Sujin,1,1,1
 2518,Choi Seobi,Choi Seopi,1,2024-08-17,White,Loss,Kim Minseo,1,1,1
@@ -2012,6 +2013,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 2228,Jeong Yujin,Cheong Yujin,1,2024-06-19,White,Loss,Cho Hyeyeon,1,1,1
 2228,Jeong Yujin,Cheong Yujin,1,2024-07-21,White,Loss,Park Soyul,1,1,1
 2228,Jeong Yujin,Cheong Yujin,1,2024-07-27,Black,Loss,Cho Seungah,1,1,1
+2228,Jeong Yujin,Cheong Yujin,1,2024-08-15,Black,Win,Ko Miso,1,1,1
 2228,Jeong Yujin,Cheong Yujin,1,2024-08-22,White,Win,Cho Hyeyeon,1,1,1
 2228,Jeong Yujin,Cheong Yujin,1,2024-09-07,Black,Win,Lee Cheongeun,1,1,1
 2228,Jeong Yujin,Cheong Yujin,1,2024-09-27,White,Win,Oh Jeonga,1,1,1
@@ -2442,6 +2444,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 358,Kim Soojin,Kim Sujin,1,2023-09-18,Black,Win,Kim Minseo,1,1,1
 358,Kim Soojin,Kim Sujin,1,2023-10-06,Black,Loss,Lee Nakyeong,1,1,1
 358,Kim Soojin,Kim Sujin,1,2023-10-31,Black,Loss,Cho Hyeyeon,1,1,1
+358,Kim Soojin,Kim Sujin,1,2024-07-13,Black,Loss,Ko Miso,1,1,1
 358,Kim Soojin,Kim Sujin,1,2024-07-20,Black,Loss,Lee Seuljoo,1,1,1
 358,Kim Soojin,Kim Sujin,1,2024-07-26,Black,Win,Kim Chaeyoung,1,1,1
 358,Kim Soojin,Kim Sujin,1,2024-08-04,Black,Loss,Cho Seungah,1,1,1
@@ -2456,6 +2459,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 358,Kim Soojin,Kim Sujin,1,2024-10-17,Black,Loss,Kim Kyeongeun,1,1,1
 358,Kim Soojin,Kim Sujin,1,2024-11-10,White,Loss,Kim Eunji,1,1,1
 358,Kim Soojin,Kim Sujin,1,2025-03-05,White,Loss,Oh Yujin,1,1,1
+358,Kim Soojin,Kim Sujin,1,2025-08-07,White,Loss,Ko Miso,1,1,1
 358,Kim Soojin,Kim Sujin,1,2025-08-08,White,Win,Lee Nahyeon,1,1,1
 358,Kim Soojin,Kim Sujin,1,2025-08-09,Black,Loss,Lee Minjin,1,1,1
 358,Kim Soojin,Kim Sujin,1,2025-09-03,Black,Loss,Nakamura Sumire,1,1,1
@@ -2547,7 +2551,9 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 2305,Lee Suljoo,Lee Seuljoo,1,2024-10-27,White,Loss,Cheong Yujin,1,1,1
 2305,Lee Suljoo,Lee Seuljoo,1,2024-10-30,White,Win,Heo Seohyun,1,1,1
 2305,Lee Suljoo,Lee Seuljoo,1,2024-10-31,Black,Loss,Li He,1,1,1
+2305,Lee Suljoo,Lee Seuljoo,1,2024-11-01,White,Loss,Ko Miso,1,1,1
 2305,Lee Suljoo,Lee Seuljoo,1,2024-11-02,Black,Win,Kim Jooah,1,1,1
+2305,Lee Suljoo,Lee Seuljoo,1,2024-11-03,Black,Win,Ko Miso,1,1,1
 2305,Lee Suljoo,Lee Seuljoo,1,2025-01-21,White,Loss,Won Jehun,1,1,1
 2305,Lee Suljoo,Lee Seuljoo,1,2025-02-23,White,Loss,Kwon Hyojin  (f),1,1,1
 2305,Lee Suljoo,Lee Seuljoo,1,2025-07-01,Black,Win,Kim Eunseon,1,1,1
