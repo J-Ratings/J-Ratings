@@ -1585,7 +1585,7 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2493,Pan American Open - Group P,2025-09-03,2025-09-07,"",2025,other,Other,16,Aryan Snooker Club,Sacramento,USA,snooker,2286,Both,"",0,0,0,0,6,2025
 2494,Middle East Q Tour 1,2025-09-21,2025-09-24,"",2025,q,Ranking,0,Cue Sports Academy,Dubai,UAE,snooker,2494,Both,O,0,60,0,0,59,2025
 2495,Middle East Q Tour 2,2025-09-25,2025-09-28,"",2025,q,Ranking,0,Cue Sports Academy,Dubai,UAE,snooker,2495,Both,O,0,59,0,0,58,2025
-2496,Women's Snooker Open,2026-10-24,2026-10-27,Niche Cues,2026,women,Ranking,0,Niche Premium Snooker,Kuala Lumpur,"",snooker,2496,Women,O,0,35,0,0,15,2026
+2496,Women's Snooker Open,2025-10-27,2025-10-30,Niche Cues,2025,women,Ranking,0,Niche Premium Snooker,Kuala Lumpur,"",snooker,2496,Women,O,0,35,0,0,15,2025
 2497,British Women's Open,2026-03-27,2026-03-29,"",2025,women,Ranking,0,Landywood Snooker Club,Walsall,England,snooker,2497,Women,O,0,30,0,0,15,2025
 2498,Asian Open,1989-08-17,1989-08-27,555,1989,main,Ranking,0,Channel 12 Studios,Bangkok,Thailand,snooker,2498,Both,O,,,,,,1989
 2499,Asian Open,1990-10-29,1990-11-03,555,1990,main,Ranking,0,GDTV Studios,Guangzhou,China,snooker,2499,Both,O,,,,,,1990
@@ -1638,7 +1638,7 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2541,Australian Women's Open - Group C,2025-10-04,2025-10-07,"",2025,women,Ranking,3,Mounties,Sydney,Australia,snooker,2203,Women,O,0,0,0,0,15,2025
 2544,Snooker Championship,2025-11-19,2025-11-21,Riyadh Season,2025,main,Invitational,0,Global Theater,Riyadh,Saudi Arabia,snooker,2544,Both,O,0,12,0,0,11,2025
 2545,Americas Q Tour 2 - Group A,2025-10-30,2025-11-02,"",2025,q,Ranking,1,H Niteroi Hotel,Rio de Janeiro,Brazil,snooker,2459,Both,O,0,0,0,0,10,2025
-2546,English Open,2026-09-07,2026-09-13,BetVictor,2026,main,Ranking,0,Brentwood Leisure Centre,Brentwood,England,snooker,2546,Both,O,0,128,31,0,32,2026
+2546,English Open,2026-09-07,2026-09-13,BetVictor,2026,main,Ranking,0,Brentwood Leisure Centre,Brentwood,England,snooker,2546,Both,O,0,128,0,0,63,2026
 2547,British Open,2026-08-31,2026-09-06,Unibet,2026,main,Ranking,0,The Centaur,Cheltenham,England,snooker,2547,Both,O,0,128,0,0,63,2026
 2548,Northern Ireland Open,2026-10-18,2026-10-25,BetVictor,2026,main,Ranking,0,Waterfront Hall,Belfast,Northern Ireland,snooker,2548,Both,O,0,128,33,0,0,2026
 2549,WSF Championship,2026-01-24,2026-02-01,"",2025,wsf,Amateur,0,Marinela,Sofia,Bulgaria,snooker,2549,Both,O,0,192,0,0,77,2025
@@ -1864,7 +1864,7 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2752,Q School 1,2026-05-20,2026-05-25,"",2025,main,Qualifying School,0,Mattioli Arena,Leicester,England,snooker,2752,Both,O,0,156,0,0,152,2025
 2753,Q School 2,2026-05-26,2026-05-31,"",2025,main,Qualifying School,2,Mattioli Arena,Leicester,England,snooker,2753,Both,O,0,156,0,0,152,2025
 2755,China Open,2026-08-08,2026-08-16,SATUO Window Cleaning Robot,2026,main,Ranking,0,Sports Centre,Taiyuan,China,snooker,2755,Both,O,0,146,0,0,33,2026
-2756,Scottish Open,2026-12-14,2026-12-20,BetVictor,2026,main,Ranking,0,Meadowbank Sports Centre,Edinburgh,Scotland,snooker,2756,Both,O,0,0,0,0,0,2026
+2756,Scottish Open,2026-12-14,2026-12-20,BetVictor,2026,main,Ranking,0,Meadowbank Sports Centre,Edinburgh,Scotland,snooker,2756,Both,O,0,96,0,0,0,2026
 2757,Wuhan Open,2026-08-23,2026-08-29,Optics Valley of China,2026,main,Ranking,0,Optics Valley Gymnasium of HUST,Wuhan,China,snooker,2757,Both,O,0,130,0,0,31,2026
 2758,Wuhan Open Qualifiers,2026-06-15,2026-06-18,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2757,Both,O,0,0,0,0,98,2026
 2759,China Open Qualifiers,2026-06-10,2026-06-14,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2755,Both,O,0,0,0,0,112,2026
@@ -1880,9 +1880,9 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2768,Shenzhen Open Qualifiers,2026-07-19,2026-07-22,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2761,Both,O,0,0,20,0,78,2026
 2769,English Open Qualifiers,2026-07-25,2026-07-26,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2546,Both,O,0,0,0,0,64,2026
 277,Asian Tour Event Three,2013-10-20,2013-10-24,"",2013,main,Players Tour Championship,3,Guanhua Grand Hotel,Zhengzhou,China,snooker,277,Both,O,,,,,,2013
-2770,Northern Ireland Open Qualifiers,2026-09-13,2026-09-16,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2548,Both,O,0,0,64,0,0,2026
+2770,Northern Ireland Open Qualifiers,2026-09-13,2026-09-16,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2548,Both,O,0,0,16,0,48,2026
 2771,International Championship Qualifiers,2026-09-17,2026-09-19,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2762,Both,O,0,0,57,0,0,2026
-2772,Scottish Open Qualifiers,2026-09-20,2026-09-23,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2756,Both,O,0,0,0,0,0,2026
+2772,Scottish Open Qualifiers,2026-09-20,2026-09-23,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2756,Both,O,0,0,64,0,0,2026
 2773,German Masters Qualifiers,2026-11-16,2026-11-19,"",2026,main,Qualifying,0,Robin Park,Wigan,England,snooker,2763,Both,O,0,0,0,0,0,2026
 2774,UK Championship Qualifiers,2026-11-21,2026-11-26,"",2026,main,Qualifying,0,Mattioli Arena,Leicester,England,snooker,2561,Both,O,0,0,0,0,0,2026
 2775,Welsh Open Qualifiers,2027-02-02,2027-02-03,"",2026,main,Qualifying,0,Ponds Forge International Sports Centre,Sheffield,England,snooker,2650,Both,O,0,0,0,0,0,2026
@@ -1994,6 +1994,7 @@ ID,Name,StartDate,EndDate,Sponsor,Season,Tour,Type,Num,Venue,City,Country,Discip
 2870,UK Women's Championship Group G,2026-09-04,2026-09-05,"",2026,women,Ranking,7,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,6,2026
 2871,UK Women's Championship Group H,2026-09-04,2026-09-05,"",2026,women,Ranking,8,Northern Snooker Centre,Leeds,England,snooker,2862,Women,O,0,0,0,0,6,2026
 2872,Irish Women's Open,2026-11-27,2026-11-29,"",2026,women,Ranking,0,Snooker & Billiards Ireland HQ,Carlow,Ireland,snooker,2872,Women,O,0,0,0,0,0,2026
+2873,Women's Snooker Open,2026-10-24,2026-10-27,Niche Cues,2026,women,Ranking,0,Niche Premium Snooker,Kuala Lumpur,"",snooker,2873,Women,O,0,0,0,0,0,2026
 288,Championship League - Group 1,2014-01-06,2014-01-07,"",2013,main,Invitational,1,Crondon Park Golf Club,Stock,England,snooker,289,Both,O,,,,,,2013
 289,Championship League - Winners' Group,2014-03-05,2014-03-06,"",2013,main,Invitational,8,Crondon Park Golf Club,Stock,England,snooker,289,Both,O,,,,,,2013
 29,Masters,2011-01-09,2011-01-16,Ladbrokes Mobile,2010,main,Invitational,0,Wembley Arena,London,England,snooker,29,Both,O,,,,,,2010

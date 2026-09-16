@@ -14794,7 +14794,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 1407,Xu Si,Si,"",Xu,China,1998-01-24,"",M,1,2017,0,2026,p
 1417,Fan Zhengyi,Zhengyi,"",Fan,China,2001-01-27,"",M,1,2018,0,2026,p
 1465,Antoni Kowalski,Antoni,"",Kowalski,Poland,2004-02-09,"",M,1,2024,0,2026,p
-1485,Ng On Yee,On Yee,"",Ng,Hong Kong,1990-11-17,"",F,1,2021,0,2026,p
+1485,Ng Onyee,Onyee,"",Ng,Hong Kong,1990-11-17,"",F,1,2021,0,2026,p
 1835,Florian Nüßle,Florian,"",Nüßle,Austria,2001-12-18,"",M,1,2025,0,2026,p
 1889,Iulian Boiko,Iulian,"",Boiko,Ukraine,2005-09-22,"",M,1,2020,0,2026,p
 1893,Cheung Ka Wai,Ka Wai,"",Cheung,Hong Kong,1999-02-17,"",M,1,2024,0,2026,p
@@ -14896,7 +14896,6 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 1705,Wu Shengguang,Shengguang,"",Wu,China,1998-12-25,"",M,1,0,0,2026,a
 1799,Anna Prisjaznuka,Anna,"",Prisjaznuka,Latvia,"","",F,1,0,0,2026,a
 1812,Patrick Whelan,Patrick,"",Whelan,England,1998-01-12,"",M,1,0,0,2026,a
-1828,Baipat Siripaporn,Baipat,"",Siripaporn,Thailand,1999-05-24,"",F,1,2023,2024,2026,a
 1829,Mink Nutcharut,Mink,"",Nutcharut,Thailand,1999-11-07,"",F,1,2022,2025,2026,a
 1848,Niel Vincent,Niel,"",Vincent,France,2000-07-04,"",M,1,0,0,2026,a
 1859,Amir Nardeia,Amir,"",Nardeia,Israel,"","",M,1,0,0,2026,a
@@ -14921,7 +14920,6 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2146,Elizabeth Black,Elizabeth,"",Black,England,"","",F,1,0,0,2026,a
 2156,Sean McAllister,Sean,"",McAllister,England,2000-06-21,"",M,1,0,0,2026,a
 2157,Ian Martin,Ian,"",Martin,England,1982-04-14,"",M,1,0,0,2026,a
-2171,Ho Yee Ki,Yee Ki,"",Ho,Hong Kong,"","",F,1,0,0,2026,a
 2243,Daniel Williams,Daniel,"",Williams,Wales,1999-09-06,"",M,1,0,0,2026,a
 2249,Umut Dikme,Umut,"",Dikme,Germany,2000-02-03,"",M,1,0,0,2026,a
 2254,Louis Wakelin,Louis,"",Wakelin,England,1992-10-23,"",M,1,0,0,2026,a
@@ -14929,7 +14927,6 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2275,Halim Hussain,Halim,"",Hussain,England,2002-03-23,"",M,1,0,0,2026,a
 2277,Curtis Daher,Curtis,"",Daher,England,1995-06-09,"",M,1,0,0,2026,a
 2286,WILDCARD,WILDCARD,"", ,"","","","",1,0,0,2026,a
-2293,Fong Mei Mei,Mei Mei,"",Fong,Hong Kong,1992-01-28,"",F,1,0,0,2026,a
 2325,Connie Stephens,Connie,"",Stephens,England,"","",F,1,0,0,2026,a
 2340,Sean Maddocks,Sean,"",Maddocks,England,2002-04-10,"",M,1,2020,2021,2026,a
 2345,Alex Millington,Alex,"",Millington,England,1995-05-25,"",M,1,0,0,2026,a
@@ -14938,7 +14935,6 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 2378,Ryan Davies,Ryan,"",Davies,England,2002-04-29,"",M,1,0,0,2026,a
 2387,David Elahi,David,"",Elahi,Germany,"","",M,1,0,0,2026,a
 2392,Callum Beresford,Callum,"",Beresford,England,2001-01-01,"",M,1,0,0,2026,a
-2411,Ploychompoo Laokiatphong,Ploychompoo,"",Laokiatphong,Thailand,2002-05-23,"",F,1,0,0,2026,a
 2437,Zoe Killington,Zoe,"",Killington,England,"","",F,1,0,0,2026,a
 2480,Elliott Weston,Elliott,"",Weston,England,2000-03-09,"",M,1,0,0,2026,a
 2483,Kayden Brierley,Kayden,"",Brierley,England,2002-04-24,"",M,1,0,0,2026,a
@@ -14996,7 +14992,6 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 3062,Riley Powell,Riley,"",Powell,Wales,2008-08-27,"",M,1,0,0,2026,a
 3063,Oliver Briffett-Payne,Oliver,"",Briffett-Payne,Wales,2005-07-26,"",M,1,0,0,2026,a
 3085,Anupama Ramachandran,Anupama,"",Ramachandran,India,2002-05-19,"",F,1,0,0,2026,a
-3088,Narantuya Bayarsaikhan,Narantuya,"",Bayarsaikhan,Mongolia,1994-08-14,"",F,1,0,0,2026,a
 3110,Daniel Webb,Daniel,"",Webb,England,1992-01-29,"",M,1,0,0,2026,a
 3112,Thomas Peasland,Thomas,"",Peasland,England,1991-07-06,"",M,1,0,0,2026,a
 3181,Brandon Nguyen,Brandon,"",Nguyen,England,2005-06-27,"",M,1,0,0,2026,a
@@ -15132,8 +15127,6 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 4711,Yao Dongcheng,Dongcheng,"",Yao,China,"","",M,1,0,0,2026,a
 4715,Xu Jiarui,Jiarui,"",Xu,China,"","",M,1,0,0,2026,a
 4718,Chen Qi'en,Qi'en,"",Chen,China,"","",M,1,0,0,2026,a
-4745,Phakwalan Kongkaew,Phakwalan,"",Kongkaew,Thailand,"","",F,1,0,0,2026,a
-4751,Natcharin Sornprasert,Natcharin,"",Sornprasert,Thailand,"","",F,1,0,0,2026,a
 4776,Mohammad Sorush,Mohammad,"",Sorush,Australia,"","",M,1,0,0,2026,a
 4778,Jamyang Tshering,Jamyang,"",Tshering,Australia,"","",M,1,0,0,2026,a
 4779,Paddy Choo,Paddy,"",Choo,Australia,"","",M,1,0,0,2026,a
@@ -15304,7 +15297,7 @@ ID,Name,FirstName,MiddleName,LastName,Nationality,Born,Died,Sex,Type,FirstSeason
 1407,Xu Si,Si,"",Xu,China,1998-01-24,"",M,1,2017,0,2025,p
 1417,Fan Zhengyi,Zhengyi,"",Fan,China,2001-01-27,"",M,1,2018,0,2025,p
 1465,Antoni Kowalski,Antoni,"",Kowalski,Poland,2004-02-09,"",M,1,2024,0,2025,p
-1485,Ng On Yee,On Yee,"",Ng,Hong Kong,1990-11-17,"",F,1,2021,0,2025,p
+1485,Ng Onyee,Onyee,"",Ng,Hong Kong,1990-11-17,"",F,1,2021,0,2025,p
 1763,Sunny Akani,Sunny,"",Akani,Thailand,1995-09-10,"",M,1,2015,2025,2025,p
 1764,Hatem Yassen,Hatem,"",Yassen,Egypt,1986-08-21,"",M,1,2015,2025,2025,p
 1829,Mink Nutcharut,Mink,"",Nutcharut,Thailand,1999-11-07,"",F,1,2022,2025,2025,p
