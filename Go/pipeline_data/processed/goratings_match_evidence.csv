@@ -663,6 +663,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 98,Cho Chi Hun,Cho Chikun,1,2018-07-12,White,Win,Mimura Tomoyasu,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2018-07-17,White,Win,Seo Nungwuk,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2018-07-26,White,Win,Ko Iso,1,1,1
+98,Cho Chi Hun,Cho Chikun,1,2018-07-30,Black,Win,Park Seungmun,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2018-08-02,White,Loss,Kanazawa Hideo,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2018-08-23,Black,Win,Kobayashi Satoru,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2018-09-06,White,Loss,Murakawa Daisuke,1,1,1
@@ -694,6 +695,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 98,Cho Chi Hun,Cho Chikun,1,2019-10-10,White,Win,Mitsunaga Junzo,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2019-11-08,White,Win,Seo Bongsoo,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2019-11-21,White,Loss,Han Zenki,1,1,1
+98,Cho Chi Hun,Cho Chikun,1,2019-11-26,Black,Win,Park Seungmun,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2019-12-26,Black,Win,Seo Bongsoo,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2020-02-13,Black,Loss,Nakano Yasuhiro,1,1,1
 98,Cho Chi Hun,Cho Chikun,1,2020-02-22,Black,Loss,Oh Yujin,1,1,1
@@ -2052,6 +2054,25 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 2228,Jeong Yujin,Cheong Yujin,1,2025-11-05,Black,Win,Kim Minseo,1,1,1
 2228,Jeong Yujin,Cheong Yujin,1,2025-11-06,White,Loss,Nakamura Sumire,1,1,1
 2228,Jeong Yujin,Cheong Yujin,1,2025-12-12,Black,Loss,Oh Yujin,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2022-09-30,Black,Loss,Kwon Hyojin  (f),1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2022-10-03,Black,Loss,Lee Sanghoon  Sr.,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2024-10-01,Black,Loss,Choi Myeonghun,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2024-10-03,Black,Loss,Park Seungmun,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2024-10-07,Black,Win,Kim Chanwu,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2024-10-11,White,Loss,Seo Nungwuk,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2024-10-28,White,Loss,Kwon Hyojin  (f),1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2024-11-07,White,Loss,Cho Hyeyeon,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2025-09-17,White,Loss,Kim Yeongsam,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2025-09-22,Black,Loss,Park Seungmun,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2025-09-26,Black,Win,Seo Bongsoo,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2025-09-29,Black,Win,Kim Jongsoo,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2025-10-03,Black,Loss,Nakane Naoyuki,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2025-10-10,White,Win,Seo Nungwuk,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2025-10-14,Black,Loss,Yang Keon,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2025-10-17,Black,Win,Kim Yeongsam,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2025-10-30,Black,Loss,Kim Younghwan,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2025-11-04,Black,Win,Seo Nungwuk,1,1,1
+203,Kang Hun,Kang Hun (Sr.),1,2025-11-30,White,Loss,Kim Suchang,1,1,1
 2491,Kang Jaewoo,Kang Jaeu,1,2024-04-06,Black,Win,Lee Minseok,1,1,1
 2491,Kang Jaewoo,Kang Jaeu,1,2024-04-06,White,Win,Lee Minseok,1,1,1
 2491,Kang Jaewoo,Kang Jaeu,1,2024-04-07,Black,Loss,Kim Seungjin,1,1,1
@@ -2090,6 +2111,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 914,Kim Byungmin,Kimu Pyonmin,1,2025-05-28,Black,Win,Shintani Yosuke,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2016-06-29,White,Win,An Kwanwuk,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2017-07-01,Black,Loss,Komatsu Hideki,1,1,1
+350,Kim Chongsu,Kim Jongsoo,1,2017-07-24,Black,Win,Park Seungmun,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2017-09-05,Black,Loss,Kim Suchang,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2017-09-18,Black,Win,Seo Nungwuk,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2017-09-26,White,Loss,Seo Bongsoo,1,1,1
@@ -2102,6 +2124,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 350,Kim Chongsu,Kim Jongsoo,1,2020-09-07,Black,Loss,Kim Mili,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2021-12-21,White,Loss,Yoda Norimoto,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2022-03-04,White,Loss,Cho Hyeyeon,1,1,1
+350,Kim Chongsu,Kim Jongsoo,1,2022-08-16,Black,Win,Park Seungmun,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2022-09-07,Black,Win,Seo Nungwuk,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2022-09-23,White,Loss,Kim Chanwu,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2022-09-26,White,Win,Kim Ilhwan,1,1,1
@@ -2121,6 +2144,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 350,Kim Chongsu,Kim Jongsoo,1,2023-09-12,White,Loss,Choi Kyubyeong,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2023-10-23,White,Win,Kim Ilhwan,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2023-11-01,White,Loss,Seo Nungwuk,1,1,1
+350,Kim Chongsu,Kim Jongsoo,1,2023-11-09,White,Win,Park Seungmun,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2024-05-21,Black,Win,Kim Yeongsam,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2024-09-05,White,Win,Oh Meien,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2024-09-06,Black,Loss,Rui Naiwei,1,1,1
@@ -2129,15 +2153,20 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 350,Kim Chongsu,Kim Jongsoo,1,2024-10-01,Black,Loss,Choi Kyubyeong,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2024-10-03,Black,Loss,Seo Bongsoo,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2024-10-08,White,Loss,Choi Myeonghun,1,1,1
+350,Kim Chongsu,Kim Jongsoo,1,2024-10-17,Black,Loss,Lee Sanghoon  Sr.,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2024-10-18,Black,Loss,Ryu Shikun,1,1,1
+350,Kim Chongsu,Kim Jongsoo,1,2024-10-22,White,Loss,Park Seungmun,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2024-10-25,Black,Loss,Kim Ilhwan,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2024-11-01,Black,Win,Kim Suchang,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2024-11-04,White,Win,Lee Tahye,1,1,1
+350,Kim Chongsu,Kim Jongsoo,1,2024-11-07,Black,Win,Lee Sanghoon  Sr.,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2025-04-05,Black,Loss,Han Chongjin,1,1,1
+350,Kim Chongsu,Kim Jongsoo,1,2025-07-18,White,Win,Park Seungmun,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2025-09-06,White,Loss,Rui Naiwei,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2025-09-16,White,Win,Yoo Changhyuk,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2025-09-23,White,Loss,Kim Chanwu,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2025-09-26,White,Loss,An Kwanwuk,1,1,1
+350,Kim Chongsu,Kim Jongsoo,1,2025-09-29,White,Loss,Kang Hun (Sr.),1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2025-10-03,Black,Loss,Lee Minjin,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2025-10-10,White,Win,Kim Suchang,1,1,1
 350,Kim Chongsu,Kim Jongsoo,1,2025-10-16,White,Win,Kim Ilhwan,1,1,1
@@ -2450,14 +2479,17 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 195,Kim Soojang,Kim Suchang,1,2017-07-25,White,Loss,An Kwanwuk,1,1,1
 195,Kim Soojang,Kim Suchang,1,2017-09-05,White,Win,Kim Jongsoo,1,1,1
 195,Kim Soojang,Kim Suchang,1,2017-09-12,Black,Win,An Kwanwuk,1,1,1
+195,Kim Soojang,Kim Suchang,1,2017-09-19,White,Win,Park Seungmun,1,1,1
 195,Kim Soojang,Kim Suchang,1,2017-09-28,White,Win,Seo Bongsoo,1,1,1
 195,Kim Soojang,Kim Suchang,1,2018-01-02,Black,Loss,Hong Seongji,1,1,1
+195,Kim Soojang,Kim Suchang,1,2018-06-25,White,Win,Park Seungmun,1,1,1
 195,Kim Soojang,Kim Suchang,1,2018-08-01,White,Loss,Kim Jongsoo,1,1,1
 195,Kim Soojang,Kim Suchang,1,2018-08-13,White,Loss,Seo Nungwuk,1,1,1
 195,Kim Soojang,Kim Suchang,1,2018-09-10,Black,Win,Seo Bongsoo,1,1,1
 195,Kim Soojang,Kim Suchang,1,2020-02-07,Black,Loss,Park Chieun,1,1,1
 195,Kim Soojang,Kim Suchang,1,2020-08-04,Black,Win,Kim Sujin,1,1,1
 195,Kim Soojang,Kim Suchang,1,2021-02-25,Black,Loss,Kim Younghwan,1,1,1
+195,Kim Soojang,Kim Suchang,1,2022-08-16,Black,Loss,Lee Sanghoon  Sr.,1,1,1
 195,Kim Soojang,Kim Suchang,1,2022-08-30,White,Win,An Kwanwuk,1,1,1
 195,Kim Soojang,Kim Suchang,1,2022-09-05,Black,Loss,Choi Kyubyeong,1,1,1
 195,Kim Soojang,Kim Suchang,1,2022-09-13,Black,Loss,Kim Seungjun,1,1,1
@@ -2483,11 +2515,13 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 195,Kim Soojang,Kim Suchang,1,2024-10-08,White,Loss,Yoo Changhyuk,1,1,1
 195,Kim Soojang,Kim Suchang,1,2024-10-11,Black,Loss,Kim Ilhwan,1,1,1
 195,Kim Soojang,Kim Suchang,1,2024-10-14,White,Loss,Lee Changho,1,1,1
+195,Kim Soojang,Kim Suchang,1,2024-10-18,Black,Loss,Lee Sanghoon  Sr.,1,1,1
 195,Kim Soojang,Kim Suchang,1,2024-10-21,White,Win,Seo Nungwuk,1,1,1
 195,Kim Soojang,Kim Suchang,1,2024-10-25,White,Loss,Kim Yeongsam,1,1,1
 195,Kim Soojang,Kim Suchang,1,2024-10-29,Black,Loss,Cho Hyeyeon,1,1,1
 195,Kim Soojang,Kim Suchang,1,2024-11-01,White,Loss,Kim Jongsoo,1,1,1
 195,Kim Soojang,Kim Suchang,1,2024-11-04,White,Loss,Kim Chanwu,1,1,1
+195,Kim Soojang,Kim Suchang,1,2024-11-07,White,Loss,Park Seungmun,1,1,1
 195,Kim Soojang,Kim Suchang,1,2025-09-17,Black,Loss,Lee Changho,1,1,1
 195,Kim Soojang,Kim Suchang,1,2025-09-26,Black,Loss,Lee Minjin,1,1,1
 195,Kim Soojang,Kim Suchang,1,2025-09-29,Black,Win,Kim Younghwan,1,1,1
@@ -2496,6 +2530,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 195,Kim Soojang,Kim Suchang,1,2025-10-17,Black,Loss,Lee Changho,1,1,1
 195,Kim Soojang,Kim Suchang,1,2025-10-24,White,Loss,Lee Minjin,1,1,1
 195,Kim Soojang,Kim Suchang,1,2025-10-29,Black,Win,Yun Hyunseok,1,1,1
+195,Kim Soojang,Kim Suchang,1,2025-11-30,Black,Win,Kang Hun (Sr.),1,1,1
 195,Kim Soojang,Kim Suchang,1,2025-12-01,White,Loss,Lee Changho,1,1,1
 358,Kim Soojin,Kim Sujin,1,2016-08-22,Black,Loss,Choi Jeong,1,1,1
 358,Kim Soojin,Kim Sujin,1,2018-03-20,White,Loss,Lee Youngjoo,1,1,1
@@ -2558,6 +2593,7 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 197,Kim Yeonghwan,Kim Younghwan,1,2025-10-21,White,Win,Kim Jongsoo,1,1,1
 197,Kim Yeonghwan,Kim Younghwan,1,2025-10-24,White,Loss,Yoo Changhyuk,1,1,1
 197,Kim Yeonghwan,Kim Younghwan,1,2025-10-29,Black,Win,Choi Kyubyeong,1,1,1
+197,Kim Yeonghwan,Kim Younghwan,1,2025-10-30,White,Win,Kang Hun (Sr.),1,1,1
 197,Kim Yeonghwan,Kim Younghwan,1,2025-11-04,White,Win,Yang Keon,1,1,1
 197,Kim Yeonghwan,Kim Younghwan,1,2025-11-06,White,Loss,Lee Minjin,1,1,1
 176,Ko Keuntae,Ko Geuntae,1,2015-03-20,White,Loss,Lee Jihyun  (m),1,1,1
@@ -2609,6 +2645,39 @@ goratings_id,goratings_name,historical_name,match_iteration,date,color,result,hi
 2516,Lee Jeongeun,Lee Cheongeun,1,2025-09-15,White,Win,Choi Minseo  (f),1,1,1
 2516,Lee Jeongeun,Lee Cheongeun,1,2025-09-27,White,Loss,Kim Sinyeong,1,1,1
 2516,Lee Jeongeun,Lee Cheongeun,1,2025-10-20,Black,Loss,Kim Eunji,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2022-08-16,White,Win,Kim Suchang,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2022-09-01,Black,Loss,Choi Kyubyeong,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2022-09-14,Black,Win,Kwon Hyojin  (f),1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2022-09-20,White,Loss,Yoo Changhyuk,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2022-09-23,Black,Loss,Kim Seungjun,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2022-09-26,Black,Loss,Seo Bongsoo,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2022-10-03,White,Win,Kang Hun (Sr.),1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2022-10-27,White,Loss,Kim Chanwu,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2022-11-13,White,Loss,Seo Bongsoo,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2023-04-14,Black,Loss,Lee Minjin,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2023-05-15,White,Loss,Choi Kyubyeong,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2023-08-23,Black,Loss,Choi Myeonghun,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2023-09-04,White,Win,Seo Nungwuk,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2023-09-11,White,Loss,Kim Chanwu,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2023-09-22,White,Win,Kim Yeongsam,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2023-10-05,White,Loss,Seo Bongsoo,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2023-11-02,Black,Win,Kim Chanwu,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2023-11-13,Black,Loss,Kim Yeongsam,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-04-12,White,Loss,Kim Eunseon,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-05-08,Black,Loss,Yoo Changhyuk,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-09-27,White,Loss,Kim Yeongsam,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-10-01,Black,Win,Seo Nungwuk,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-10-03,White,Win,Choi Kyubyeong,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-10-11,Black,Win,Lee Changho,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-10-17,White,Win,Kim Jongsoo,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-10-18,White,Win,Kim Suchang,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-10-23,White,Loss,Kim Yeongsam,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-10-30,White,Loss,Nakane Naoyuki,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-11-01,White,Win,Cho Hyeyeon,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-11-04,White,Loss,Kwon Hyojin  (f),1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-11-07,White,Loss,Kim Jongsoo,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2024-11-23,Black,Loss,Lee Changho,1,1,1
+8,Lee Sanghun (b),Lee Sanghoon  Sr.,1,2025-09-16,White,Loss,Kim Hyemin,1,1,1
 2305,Lee Suljoo,Lee Seuljoo,1,2021-08-09,White,Loss,Choi Jeong,1,1,1
 2305,Lee Suljoo,Lee Seuljoo,1,2022-05-23,White,Loss,Wu Yiming,1,1,1
 2305,Lee Suljoo,Lee Seuljoo,1,2022-06-14,Black,Loss,Park Pyeongkyu,1,1,1
