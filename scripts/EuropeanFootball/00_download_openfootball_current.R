@@ -535,6 +535,11 @@ dfb_pokal_jobs <- make_repo_league_jobs(
   "cup-dfb-pokal.txt"
 )
 
+denmark_jobs <- make_flat_europe_league_jobs(
+  unique(c("2023-24", "2024-25", season_folder)),
+  "denmark", "dk1", "1-danish-superliga.txt"
+)
+
 download_jobs <- rbind(
   england_jobs,
   spain_jobs,
@@ -552,7 +557,8 @@ download_jobs <- rbind(
   greece_jobs,
   czechia_jobs,
   ukraine_jobs,
-  dfb_pokal_jobs
+  dfb_pokal_jobs,
+  denmark_jobs
 )
 
 # -----------------------------

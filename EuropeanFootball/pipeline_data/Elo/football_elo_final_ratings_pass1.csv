@@ -1,7 +1,7 @@
 TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRating,IsSeed,Pass,EntryMode,BaseK,SameConfedK,InterconfedK,NewK,NewGames,SeedModel,RetroGamesN
 "GermanyBayern Munich",Bayern Munich,Germany,2868,2395,Bundesliga,1,1965-08-14,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainBarcelona",Barcelona,Spain,2850,3180,La Liga,1,1929-02-12,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"EnglandManchester City",Manchester City,England,2798,4207,First Division,1,1899-09-02,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"EnglandManchester City",Manchester City,England,2799,4207,First Division,1,1899-09-02,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandArsenal",Arsenal,England,2776,4565,First Division,1,1904-09-03,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainReal Madrid",Real Madrid,Spain,2772,3530,La Liga,1,1929-02-10,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandAston Villa",Aston Villa,England,2747,4666,First Division,1,1888-09-08,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -16,22 +16,23 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "PortugalSporting Lisbon",Sporting Lisbon,Portugal,2662,2715,Primeira Liga,1,1935-01-20,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandBrighton & Hove Albion",Brighton & Hove Albion,England,2649,1210,First Division,1,1979-08-18,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyJuventus",Juventus,Italy,2648,3143,Serie A,1,1929-10-06,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"ItalyNapoli",Napoli,Italy,2645,2839,Serie A,1,1929-10-06,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"ItalyAC Milan",AC Milan,Italy,2641,3296,Serie A,1,1929-10-06,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"ItalyNapoli",Napoli,Italy,2646,2839,Serie A,1,1929-10-06,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandNewcastle United",Newcastle United,England,2641,4018,First Division,1,1898-09-03,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"ItalyAC Milan",AC Milan,Italy,2641,3296,Serie A,1,1929-10-06,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandManchester United",Manchester United,England,2640,4212,First Division,1,1892-09-03,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"PortugalPorto",Porto,Portugal,2637,2868,Primeira Liga,1,1935-01-20,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"PortugalPorto",Porto,Portugal,2638,2868,Primeira Liga,1,1935-01-20,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalBenfica",Benfica,Portugal,2637,2583,Primeira Liga,1,1935-01-20,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandChelsea",Chelsea,England,2635,3864,First Division,1,1907-09-07,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayBodø/Glimt",Bodø/Glimt,Norway,2633,531,Eliteserien,1,2000-04-09,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceLyon",Lyon,France,2632,2228,Division 1,1,1964-08-29,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilFlamengo",Flamengo,Brazil,2631,607,Campeonato Brasileiro Série A,1,2010-05-09,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"EnglandNottingham Forest",Nottingham Forest,England,2628,3298,First Division,1,1892-09-03,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"EnglandNottingham Forest",Nottingham Forest,England,2631,3298,First Division,1,1892-09-03,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandBournemouth",Bournemouth,England,2627,1022,League One,3,2004-08-07,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyComo",Como,Italy,2620,634,Serie A,1,1949-09-11,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainReal Betis",Real Betis,Spain,2620,2240,La Liga,1,1932-11-27,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandBrentford",Brentford,England,2619,1267,First Division,1,1935-08-31,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumUnion Saint-Gilloise",Union Saint-Gilloise,Belgium,2617,1096,Belgian Pro League,1,1904-10-02,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkMidtjylland",Midtjylland,Denmark,2616,975,Danish Superliga,1,2000-07-23,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandCrystal Palace",Crystal Palace,England,2616,1524,First Division,1,1969-08-09,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceMonaco",Monaco,France,2614,2155,Division 1,1,1953-08-23,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyRB Leipzig",RB Leipzig,Germany,2608,517,2. Bundesliga,2,2014-08-02,2191,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -46,27 +47,26 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "ItalyAtalanta",Atalanta,Italy,2585,2354,Serie A,1,1937-09-12,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainCelta Vigo",Celta Vigo,Spain,2583,620,La Liga,1,2012-08-18,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilPalmeiras",Palmeiras,Brazil,2579,600,Campeonato Brasileiro Série A,1,2010-05-08,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"SpainVillarreal",Villarreal,Spain,2578,1208,La Liga,1,1998-08-31,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceLens",Lens,France,2578,1923,Division 1,1,1947-08-24,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"SpainVillarreal",Villarreal,Spain,2577,1208,La Liga,1,1998-08-31,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilBotafogo",Botafogo,Brazil,2577,524,Campeonato Brasileiro Série A,1,2010-05-08,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SerbiaRed Star Belgrade",Red Star Belgrade,Serbia,2574,726,Serbian SuperLiga,1,2006-08-05,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilFluminense",Fluminense,Brazil,2573,603,Campeonato Brasileiro Série A,1,2010-05-09,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaKrasnodar",Krasnodar,Russia,2572,552,Russian Premier League,1,2011-07-24,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"EnglandTottenham Hotspur",Tottenham Hotspur,England,2571,4045,First Division,1,1909-09-01,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"EnglandTottenham Hotspur",Tottenham Hotspur,England,2572,4045,First Division,1,1909-09-01,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyVfB Stuttgart",VfB Stuttgart,Germany,2571,2194,Bundesliga,1,1963-08-24,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceLille",Lille,France,2566,2117,Division 1,1,1947-08-24,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainAthletic Club",Athletic Club,Spain,2564,3183,La Liga,1,1929-02-10,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilInternacional",Internacional,Brazil,2560,532,Campeonato Brasileiro Série A,1,2010-05-09,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainReal Sociedad",Real Sociedad,Spain,2560,2700,La Liga,1,1929-02-10,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkMidtjylland",Midtjylland,Denmark,2559,1005,Danish Superliga,1,2000-07-23,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalBraga",Braga,Portugal,2558,2350,Primeira Liga,1,1947-11-16,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainRayo Vallecano",Rayo Vallecano,Spain,2558,1027,La Liga,1,1977-09-04,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandFulham",Fulham,England,2557,1650,First Division,1,1949-08-20,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyBologna",Bologna,Italy,2557,2733,Serie A,1,1929-10-06,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceRennes",Rennes,France,2553,1895,Division 1,1,1947-08-24,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyFenerbahçe",Fenerbahçe,Turkey,2547,2525,SÃ¼per Lig,1,1959-02-21,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"SpainValencia",Valencia,Spain,2541,3064,La Liga,1,1931-11-22,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainAlavés",Alavés,Spain,2541,770,La Liga,1,1930-12-07,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"SpainValencia",Valencia,Spain,2541,3064,La Liga,1,1931-11-22,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilCorinthians",Corinthians,Brazil,2540,594,Campeonato Brasileiro Série A,1,2010-05-09,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyHoffenheim",Hoffenheim,Germany,2536,628,Bundesliga,1,2008-08-16,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilCruzeiro",Cruzeiro,Brazil,2535,497,Campeonato Brasileiro Série A,1,2010-05-09,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -76,7 +76,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "ArgentinaBoca Juniors",Boca Juniors,Argentina,2529,573,Argentine Primera Division,1,1913-04-13,2419,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandSunderland",Sunderland,England,2527,3933,First Division,1,1890-09-13,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyFiorentina",Fiorentina,Italy,2527,3181,Serie A,1,1931-09-20,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"BelgiumGenk",Genk,Belgium,2523,1699,Belgian Pro League,1,1913-09-07,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"BelgiumGenk",Genk,Belgium,2524,1699,Belgian Pro League,1,1913-09-07,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainGetafe",Getafe,Spain,2520,860,La Liga,1,2004-08-29,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryFerencváros",Ferencváros,Hungary,2518,726,Nemzeti Bajnoksag I,1,2001-07-14,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyGalatasaray",Galatasaray,Turkey,2518,2475,SÃ¼per Lig,1,1959-02-21,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -84,21 +84,22 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "ArgentinaRacing",Racing,Argentina,2517,572,Argentine Primera Division,1,1913-04-13,2419,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaCA Estudiantes",CA Estudiantes,Argentina,2517,18,Argentine Primera Division,1,1913-05-01,2419,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceParis FC",Paris FC,France,2515,492,Division 1,1,1972-08-09,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"FranceStrasbourg",Strasbourg,France,2514,1642,Division 1,1,1947-08-24,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"FranceStrasbourg",Strasbourg,France,2513,1642,Division 1,1,1947-08-24,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainOsasuna",Osasuna,Spain,2513,1677,La Liga,1,1935-11-10,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceMarseille",Marseille,France,2512,2135,Division 1,1,1947-08-24,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CzechiaSlavia Prague",Slavia Prague,Czechia,2511,1260,Czech First League,1,1993-08-14,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaRosario Central",Rosario Central,Argentina,2509,458,Argentina Top Flight,1,2009-08-22,2419,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyAugsburg",Augsburg,Germany,2508,527,Bundesliga,1,2011-08-06,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilAtlético/PR",Atlético/PR,Brazil,2508,228,Campeonato Brasileiro Série A,1,2013-05-26,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkCopenhagen",Copenhagen,Denmark,2508,1341,Danish Superliga,1,1992-08-12,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainMallorca",Mallorca,Spain,2507,1344,La Liga,1,1960-09-11,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainGirona",Girona,Spain,2504,380,La Liga,1,2017-08-19,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GreeceAEK Athens",AEK Athens,Greece,2502,1353,Super League Greece,1,1987-09-06,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaCA San Isidro",CA San Isidro,Argentina,2502,17,Argentine Primera Division,1,1913-04-13,2419,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyEintracht Frankfurt",Eintracht Frankfurt,Germany,2502,2126,Bundesliga,1,1963-08-24,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyCagliari",Cagliari,Italy,2501,1611,Serie A,1,1964-09-13,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"CroatiaDinamo Zagreb",Dinamo Zagreb,Croatia,2501,800,Croatian Football League,1,2002-05-04,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaCA Argentino de Quilmes",CA Argentino de Quilmes,Argentina,2500,17,Argentine Primera Division,1,1913-05-01,2419,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"CroatiaDinamo Zagreb",Dinamo Zagreb,Croatia,2499,800,Croatian Football League,1,2002-05-04,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CyprusOmonia Nicosia",Omonia Nicosia,Cyprus,2499,746,Cypriot First Division,1,1999-05-01,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalySassuolo",Sassuolo,Italy,2498,537,Serie A,1,2013-08-25,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyUdinese",Udinese,Italy,2498,1963,Serie A,1,1950-09-10,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -161,7 +162,6 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RussiaSp-Alania",Sp-Alania,Russia,2445,30,Russian Premier League,1,1995-04-01,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaTalleres",Talleres,Argentina,2445,314,Argentine Primera Division,1,2016-08-27,2419,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaVélez Sarsfield",Vélez Sarsfield,Argentina,2445,574,Argentine Primera Division,1,1919-10-12,2419,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkAarhus GF",Aarhus GF,Denmark,2444,1052,Danish Superliga,1,1991-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineShakhtar Donetsk",Shakhtar Donetsk,Ukraine,2444,1263,Ukrainian Premier League,1,1992-03-07,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceAuxerre",Auxerre,France,2444,1603,Division 1,1,1980-07-24,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UruguayNacional",Nacional,Uruguay,2443,469,Uruguayan Primera División,1,2010-08-25,2198,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -186,7 +186,6 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "EnglandIpswich Town",Ipswich Town,England,2433,2191,First Division,1,1961-08-19,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainBurgos",Burgos,Spain,2433,534,La Liga,1,1971-09-05,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaKimberley AC",Kimberley AC,Argentina,2433,16,Argentine Primera Division,1,1913-05-01,2419,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkCopenhagen",Copenhagen,Denmark,2433,1372,Danish Superliga,1,1992-08-12,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaClub Atlético Rosario Central (Presidente Perón)",Club Atlético Rosario Central (Presidente Perón),Argentina,2431,1,Argentine Primera Division,1,2015-02-13,2419,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaClub Atlético Independiente (Marcelo A. Bielsa)",Club Atlético Independiente (Marcelo A. Bielsa),Argentina,2430,1,Argentine Primera Division,1,2015-02-14,2419,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyKöln",Köln,Germany,2430,1989,Bundesliga,1,1963-08-24,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -267,7 +266,6 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "CroatiaRijeka",Rijeka,Croatia,2404,980,Croatian Football League,1,1998-08-09,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaRubin Kazan",Rubin Kazan,Russia,2404,630,Russian Premier League,1,2003-03-16,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainReal Jaén",Real Jaén,Spain,2404,95,La Liga,1,1953-09-13,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkNordsjælland",Nordsjælland,Denmark,2404,829,Danish Superliga,1,2002-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainAlcoyano",Alcoyano,Spain,2403,117,La Liga,1,1945-09-23,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilGoiás",Goiás,Brazil,2403,304,Campeonato Brasileiro Série A,1,2010-05-09,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceLe Havre",Le Havre,France,2402,963,Division 1,1,1953-08-23,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -290,6 +288,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "BelgiumGent",Gent,Belgium,2394,2496,Belgian Pro League,1,1908-10-04,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilFigueirense",Figueirense,Brazil,2393,189,Campeonato Brasileiro Série A,1,2011-05-22,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaAtlanta AC",Atlanta AC,Argentina,2392,19,Argentine Primera Division,1,1913-05-01,2419,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkBrøndby",Brøndby,Denmark,2392,1248,Danish Superliga,1,1991-03-16,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkNordsjælland",Nordsjælland,Denmark,2390,798,Danish Superliga,1,2002-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaClub de Estudiantes",Club de Estudiantes,Argentina,2390,13,Argentine Primera Division,1,1913-04-13,2419,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyHannover 96",Hannover 96,Germany,2390,1339,Bundesliga,1,1964-08-22,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilPonte Preta",Ponte Preta,Brazil,2390,189,Campeonato Brasileiro Série A,1,2012-05-20,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -312,8 +312,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "PolandLegia Warsaw",Legia Warsaw,Poland,2382,1329,Ekstraklasa,1,1962-03-18,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilCuiabá",Cuiabá,Brazil,2382,152,Campeonato Brasileiro Série A,1,2021-05-29,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceNantes",Nantes,France,2382,1961,Division 1,1,1964-08-29,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"ColombiaMedellín",Medellín,Colombia,2381,588,Categoría Primera A,1,2010-01-30,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyHellas Verona",Hellas Verona,Italy,2381,1207,Serie A,1,1957-09-08,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"ColombiaMedellín",Medellín,Colombia,2381,588,Categoría Primera A,1,2010-01-30,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaSan Isidro",San Isidro,Argentina,2381,19,Argentine Primera Division,1,1919-03-16,2419,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaBanfield",Banfield,Argentina,2380,479,Argentine Primera Division,1,1913-04-13,2419,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandJagiellonia Białystok",Jagiellonia Białystok,Poland,2380,670,Ekstraklasa,1,1987-08-22,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -329,9 +329,9 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "NetherlandsNEC",NEC,Netherlands,2374,1417,Eredivisie,1,1967-08-13,2275,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanySg Wattenscheid 09",Sg Wattenscheid 09,Germany,2374,140,Bundesliga,1,1990-08-11,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandHull City",Hull City,England,2374,1054,League One,3,2004-08-07,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"AzerbaijanQarabağ",Qarabağ,Azerbaijan,2374,808,Azerbaijan Premier League,1,2001-09-22,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilJoinville",Joinville,Brazil,2373,38,Campeonato Brasileiro Série A,1,2015-05-09,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandMiddlesbrough",Middlesbrough,England,2373,3301,First Division,1,1902-09-01,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"AzerbaijanQarabağ",Qarabağ,Azerbaijan,2373,808,Azerbaijan Premier League,1,2001-09-22,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceRouen",Rouen,France,2373,267,Division 1,1,1964-08-30,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceGueugnon",Gueugnon,France,2373,40,Division 1,1,1995-07-19,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandMillwall",Millwall,England,2372,1183,First Division,1,1988-08-27,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -362,11 +362,10 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "UkraineDnipro Dnipropetrovsk",Dnipro Dnipropetrovsk,Ukraine,2365,863,Ukrainian Premier League,1,1992-03-07,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandBradford Park Avenue",Bradford Park Avenue,England,2365,123,First Division,1,1914-09-05,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilCSA",CSA,Brazil,2365,38,Campeonato Brasileiro Série A,1,2019-04-28,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"ScotlandHearts",Hearts,Scotland,2364,4017,Scottish Premiership,1,1890-08-16,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"ScotlandHearts",Hearts,Scotland,2365,4017,Scottish Premiership,1,1890-08-16,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaBaltika",Baltika,Russia,2364,158,Russian Premier League,1,1996-03-02,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilGuarani",Guarani,Brazil,2364,38,Campeonato Brasileiro Série A,1,2010-05-09,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceCS Sedan",CS Sedan,France,2364,364,Division 1,1,1966-08-20,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkBrøndby",Brøndby,Denmark,2363,1261,Danish Superliga,1,1991-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilAmérica/MG",América/MG,Brazil,2363,189,Campeonato Brasileiro Série A,1,2016-05-15,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceRoubaix",Roubaix,France,2363,102,Division 1,1,1947-08-24,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EcuadorBarcelona",Barcelona,Ecuador,2362,520,Ecuadorian Serie A,1,2010-02-07,2205,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -392,8 +391,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RussiaRostov",Rostov,Russia,2357,597,Russian Premier League,1,2003-03-15,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandSwansea City",Swansea City,England,2357,1144,First Division,1,1981-08-29,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainLleida",Lleida,Spain,2357,30,La Liga,1,1950-09-10,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"ArgentinaAll Boys",All Boys,Argentina,2356,118,Argentine Primera Division,1,2010-08-07,2419,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SlovakiaSlovan Bratislava",Slovan Bratislava,Slovakia,2356,839,Slovak First Football League,1,1997-05-28,2140,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"ArgentinaAll Boys",All Boys,Argentina,2356,118,Argentine Primera Division,1,2010-08-07,2419,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NetherlandsHeerenveen",Heerenveen,Netherlands,2356,1209,Eredivisie,1,1990-08-25,2275,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilCoritiba",Coritiba,Brazil,2355,379,Campeonato Brasileiro Série A,1,2011-05-22,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandDyskobolia",Dyskobolia,Poland,2355,86,Ekstraklasa,1,2004-08-07,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -413,15 +412,16 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "NetherlandsUtrecht",Utrecht,Netherlands,2350,1851,Eredivisie,1,1970-08-19,2275,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyAlemannia Aachen",Alemannia Aachen,Germany,2350,145,Bundesliga,1,1967-08-19,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaAmkar Perm",Amkar Perm,Russia,2349,315,Russian Premier League,1,2004-03-13,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"IcelandVíkingur Reykjavík",Víkingur Reykjavík,Iceland,2348,607,Besta deild karla,1,1955-06-13,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryVidi",Vidi,Hungary,2348,47,Nemzeti Bajnoksag I,1,2018-07-21,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CyprusApollon Limassol",Apollon Limassol,Cyprus,2348,831,Cypriot First Division,1,1999-05-01,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryGyőr",Győr,Hungary,2348,423,Nemzeti Bajnoksag I,1,1997-01-01,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaAldosivi",Aldosivi,Argentina,2348,245,Argentine Primera Division,1,2015-02-22,2419,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainSalamanca",Salamanca,Spain,2348,425,La Liga,1,1974-09-08,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"IcelandVíkingur Reykjavík",Víkingur Reykjavík,Iceland,2348,607,Besta deild karla,1,1955-06-13,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilPrudente",Prudente,Brazil,2348,38,Campeonato Brasileiro Série A,1,2010-05-09,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryPuskás Akadémia",Puskás Akadémia,Hungary,2348,377,Nemzeti Bajnoksag I,1,2013-07-26,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalArouca",Arouca,Portugal,2347,313,Primeira Liga,1,2013-08-18,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"NorwayBrann",Brann,Norway,2347,689,Eliteserien,1,1999-04-11,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalSanta Clara",Santa Clara,Portugal,2346,357,Primeira Liga,1,1999-08-21,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaSCT Olimpija",SCT Olimpija,Slovenia,2346,93,Slovenian PrvaLiga,1,1992-08-16,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ColombiaJunior",Junior,Colombia,2346,621,Categoría Primera A,1,2010-01-31,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -429,7 +429,6 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "GermanyHertha Berlin",Hertha Berlin,Germany,2346,1516,Bundesliga,1,1963-08-24,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ColombiaTolima",Tolima,Colombia,2346,625,Categoría Primera A,1,2010-01-31,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandWrexham",Wrexham,England,2346,714,League One,3,2004-08-07,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"NorwayBrann",Brann,Norway,2346,689,Eliteserien,1,1999-04-11,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaAkhmat Grozny",Akhmat Grozny,Russia,2345,211,Russian Premier League,1,2017-07-16,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusDynama Minsk",Dynama Minsk,Belarus,2345,426,Belarusian Premier League,1,2002-07-28,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyNovara",Novara,Italy,2345,452,Serie A,1,1936-09-13,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -444,9 +443,10 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "ArgentinaQuilmes",Quilmes,Argentina,2341,219,Argentine Primera Division,1,1913-04-13,2419,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaCA Riachuelo",CA Riachuelo,Argentina,2341,14,Argentine Primera Division,1,1913-04-13,2419,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaRapid Vienna",Rapid Vienna,Austria,2341,612,Austrian Bundesliga,1,2010-08-01,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkRanders",Randers,Denmark,2341,669,Danish Superliga,1,2004-08-01,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainAndorra",Andorra,Spain,2341,129,Segunda División,2,2022-08-15,2252,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"ItalyCatanzaro",Catanzaro,Italy,2341,342,Serie A,1,1971-10-03,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyKFC Uerdingen 05",KFC Uerdingen 05,Germany,2341,477,Bundesliga,1,1975-08-09,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"ItalyCatanzaro",Catanzaro,Italy,2341,342,Serie A,1,1971-10-03,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IsraelMaccabi Tel Aviv",Maccabi Tel Aviv,Israel,2340,863,Israeli Premier League,1,2005-08-28,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CyprusAris Limassol",Aris Limassol,Cyprus,2340,489,Cypriot First Division,1,1999-05-01,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryFTC",FTC,Hungary,2340,105,Nemzeti Bajnoksag I,1,1997-01-01,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -461,7 +461,6 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "SpainLeganés",Leganés,Spain,2338,420,La Liga,1,2016-08-22,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Saudi ArabiaIttihad",Ittihad,Saudi Arabia,2338,376,Saudi Pro League,1,2012-08-02,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Saudi ArabiaNasr",Nasr,Saudi Arabia,2338,373,Saudi Pro League,1,2012-08-02,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkViborg FF",Viborg FF,Denmark,2337,672,Danish Superliga,1,1993-08-01,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyAc Liguria",Ac Liguria,Italy,2336,150,Serie A,1,1937-09-12,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyUnione Triestina",Unione Triestina,Italy,2336,840,Serie A,1,1929-10-06,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandDarwen",Darwen,England,2336,56,First Division,1,1891-09-05,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -528,7 +527,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "PortugalVitória Guimarães",Vitória Guimarães,Portugal,2319,2421,Primeira Liga,1,1942-01-18,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaAustria Salzburg",Austria Salzburg,Austria,2319,310,Austrian Bundesliga,1,1953-08-23,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaNizhny Novgorod",Nizhny Novgorod,Russia,2319,30,Russian Premier League,1,2021-07-26,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"CroatiaVaraždin",Varaždin,Croatia,2318,268,Croatian Football League,1,2010-07-24,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"CroatiaVaraždin",Varaždin,Croatia,2319,268,Croatian Football League,1,2010-07-24,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumOH Leuven",OH Leuven,Belgium,2318,348,Belgian Pro League,1,2011-07-29,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "United StatesOrlando City SC",Orlando City SC,United States,2318,347,Major League Soccer,1,2015-03-08,2268,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MoroccoRS Berkane",RS Berkane,Morocco,2318,356,Botola Pro,1,2012-09-16,2125,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -538,8 +537,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "SerbiaVojvodina",Vojvodina,Serbia,2317,600,Serbian SuperLiga,1,2006-08-05,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyRot-Weiß Oberhausen",Rot-Weiß Oberhausen,Germany,2317,137,Bundesliga,1,1969-08-16,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceAvignon Foot 84",Avignon Foot 84,France,2317,38,Division 1,1,1975-08-08,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"MoroccoFAR Rabat",FAR Rabat,Morocco,2316,403,Botola Pro,1,2012-09-19,2125,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CroatiaIstra 1961",Istra 1961,Croatia,2316,604,Croatian Football League,1,1999-09-10,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"MoroccoFAR Rabat",FAR Rabat,Morocco,2316,403,Botola Pro,1,2012-09-19,2125,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AzerbaijanSabah",Sabah,Azerbaijan,2316,239,Azerbaijan Premier League,1,2018-08-12,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyKarlsruher SC",Karlsruher SC,Germany,2316,1195,Bundesliga,1,1963-08-24,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArgentinaSociedad Sportiva Argentina",Sociedad Sportiva Argentina,Argentina,2316,17,Argentine Primera Division,1,1913-05-01,2419,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -552,6 +551,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "CyprusAPOEL",APOEL,Cyprus,2313,925,Cypriot First Division,1,1999-05-01,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MoldovaSheriff",Sheriff,Moldova,2313,700,Moldovan Super Liga,1,1998-07-25,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ColombiaAmérica",América,Colombia,2313,425,Categoría Primera A,1,2010-01-30,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkViborg FF",Viborg FF,Denmark,2313,642,Danish Superliga,1,1993-08-01,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ChileColo-Colo",Colo-Colo,Chile,2312,480,Chilean Primera División,1,2010-01-23,2156,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "United StatesLos Angeles Galaxy",Los Angeles Galaxy,United States,2312,437,Major League Soccer,1,2011-10-30,2268,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaTorpedo-Luzhniki",Torpedo-Luzhniki,Russia,2312,1,Russian Premier League,1,1999-08-28,2300,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -570,6 +570,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RussiaSaturn Ramenskoye",Saturn Ramenskoye,Russia,2309,209,Russian Premier League,1,1999-04-03,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaCSKA 1948",CSKA 1948,Bulgaria,2309,211,Bulgarian First League,1,2020-08-07,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyFoggia",Foggia,Italy,2308,368,Serie A,1,1964-09-13,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkAarhus GF",Aarhus GF,Denmark,2308,1043,Danish Superliga,1,1991-03-16,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CzechiaSigma Olomouc",Sigma Olomouc,Czechia,2307,1002,Czech First League,1,1993-08-15,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaKamAZ",KamAZ,Russia,2307,64,Russian Premier League,1,1993-03-13,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyArminia Bielefeld",Arminia Bielefeld,Germany,2307,931,Bundesliga,1,1970-08-15,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -580,10 +581,9 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "HungaryZTE",ZTE,Hungary,2305,136,Nemzeti Bajnoksag I,1,1998-07-25,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaHartberg",Hartberg,Austria,2305,270,Austrian Bundesliga,1,2018-08-05,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandWest Bromwich Albion",West Bromwich Albion,England,2305,3698,First Division,1,1888-09-08,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkSønderjyskE",SønderjyskE,Denmark,2304,601,Danish Superliga,1,2000-07-23,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"KazakhstanKairat",Kairat,Kazakhstan,2305,616,Kazakhstan Premier League,1,2001-05-10,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyLegnano",Legnano,Italy,2304,106,Serie A,1,1930-09-28,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainNumancia",Numancia,Spain,2304,250,La Liga,1,1999-08-22,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"KazakhstanKairat",Kairat,Kazakhstan,2303,616,Kazakhstan Premier League,1,2001-05-10,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaLitex (Lovetch)",Litex (Lovetch),Bulgaria,2303,35,Bulgarian First League,1,2001-08-12,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyJuve Stabia",Juve Stabia,Italy,2303,121,Serie B,2,2019-08-25,2179,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaRapid București",Rapid București,Romania,2302,1189,SuperLiga,1,1959-08-06,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -605,6 +605,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "FranceBordeaux",Bordeaux,France,2297,2158,Division 1,1,1953-08-23,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandBristol City",Bristol City,England,2297,1458,First Division,1,1906-09-01,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainArenas Getxo",Arenas Getxo,Spain,2297,131,La Liga,1,1929-02-10,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkSilkeborg",Silkeborg,Denmark,2297,928,Danish Superliga,1,1991-03-17,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainReal Valladolid",Real Valladolid,Spain,2296,1785,La Liga,1,1948-09-12,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyMagdeburg",Magdeburg,Germany,2295,180,2. Bundesliga,2,2018-08-05,2191,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "United StatesSan Diego FC",San Diego FC,United States,2295,4,Major League Soccer,1,2025-10-26,2268,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -639,9 +640,9 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RussiaOrenburg",Orenburg,Russia,2290,210,Russian Premier League,1,2016-07-30,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumLommel United",Lommel United,Belgium,2290,102,Belgian Pro League,1,1992-08-07,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenIFK Göteborg",IFK Göteborg,Sweden,2290,755,Allsvenskan,1,1998-04-13,2165,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"CroatiaLokomotiva",Lokomotiva,Croatia,2290,586,Croatian Football League,1,2009-07-26,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainLogroñés",Logroñés,Spain,2290,402,La Liga,1,1987-08-29,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaLuch",Luch,Russia,2290,39,Russian Premier League,1,1993-03-08,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"CroatiaLokomotiva",Lokomotiva,Croatia,2290,586,Croatian Football League,1,2009-07-26,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaRodina (Moskva)",Rodina (Moskva),Russia,2290,1,Russian Premier League,1,2023-06-07,2300,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaYenisey (Krasnoyarsk)",Yenisey (Krasnoyarsk),Russia,2290,1,Russian Premier League,1,2023-06-07,2300,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BrazilChapecoense",Chapecoense,Brazil,2290,267,Campeonato Brasileiro Série A,1,2014-04-19,2443,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -669,6 +670,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "Faroe IslandsKÍ",KÍ,Faroe Islands,2285,1055,Faroe Islands Premier League,1,1947-06-22,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TunisiaES Tunis",ES Tunis,Tunisia,2285,126,Tunisian Ligue Professionnelle 1,1,2010-07-03,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "KazakhstanAstana",Astana,Kazakhstan,2284,558,Kazakhstan Premier League,1,2006-04-22,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkB 1903 København",B 1903 København,Denmark,2284,50,Danish Superliga,1,1991-03-17,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaVse St Poelten",Vse St Poelten,Austria,2284,166,Austrian Bundesliga,1,1988-07-22,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaKrylya S",Krylya S,Russia,2284,59,Russian Premier League,1,2005-03-12,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainCádiz",Cádiz,Spain,2283,791,La Liga,1,1977-09-04,2437,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -676,14 +678,12 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "SloveniaKoper",Koper,Slovenia,2283,929,Slovenian PrvaLiga,1,1991-08-18,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaCherno More",Cherno More,Bulgaria,2282,662,Bulgarian First League,1,2000-08-05,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EcuadorOrense",Orense,Ecuador,2282,173,Ecuadorian Serie A,1,2020-02-15,2205,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkB 1903 København",B 1903 København,Denmark,2281,32,Danish Superliga,1,1991-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandQueens Park Rangers",Queens Park Rangers,England,2281,1881,First Division,1,1968-08-10,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceGrenoble",Grenoble,France,2281,375,Ligue 1,1,2008-08-09,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceAixoise",Aixoise,France,2280,39,Division 1,1,1967-08-18,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IranPerspolis",Perspolis,Iran,2280,400,Persian Gulf Pro League,1,2012-07-19,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryGyőri ETO",Győri ETO,Hungary,2280,46,Nemzeti Bajnoksag I,1,2009-07-26,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceSochaux",Sochaux,France,2280,1898,Division 1,1,1947-08-24,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkSilkeborg",Silkeborg,Denmark,2279,941,Danish Superliga,1,1991-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaArda",Arda,Bulgaria,2279,246,Bulgarian First League,1,2019-07-14,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaVaslui",Vaslui,Romania,2279,238,SuperLiga,1,2006-07-29,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EcuadorIndep. José Terán",Indep. José Terán,Ecuador,2278,114,Ecuadorian Serie A,1,2010-02-06,2205,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -701,15 +701,15 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "ItalySampdoria",Sampdoria,Italy,2276,2401,Serie A,1,1946-09-22,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SlovakiaSpartak Trnava",Spartak Trnava,Slovakia,2276,811,Slovak First Football League,1,1997-03-22,2140,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Bosnia and HerzegovinaSarajevo",Sarajevo,Bosnia and Herzegovina,2276,778,Premier League of Bosnia and Herzegovina,1,1999-08-14,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"NorwayFredrikstad",Fredrikstad,Norway,2276,202,Eliteserien,1,2005-04-10,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayMolde",Molde,Norway,2276,807,Eliteserien,1,1999-04-10,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"NorwayFredrikstad",Fredrikstad,Norway,2275,202,Eliteserien,1,2005-04-10,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MexicoPachuca AC",Pachuca AC,Mexico,2275,6,Liga MX,1,1919-11-16,2258,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "JapanKashima Antlers",Kashima Antlers,Japan,2275,580,J1 100 Year Vision League,1,2010-03-06,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BoliviaBolívar",Bolívar,Bolivia,2275,677,Bolivian Primera División,1,2010-03-06,1955,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyDynamo Dresden",Dynamo Dresden,Germany,2275,420,Bundesliga,1,1991-08-03,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyBorussia Neunkirchen",Borussia Neunkirchen,Germany,2275,98,Bundesliga,1,1964-08-22,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"BulgariaLovech",Lovech,Bulgaria,2275,27,Bulgarian First League,1,2000-03-04,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ScotlandHibernian",Hibernian,Scotland,2275,3851,Scottish Premiership,1,1895-08-17,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"BulgariaLovech",Lovech,Bulgaria,2275,27,Bulgarian First League,1,2000-03-04,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UruguayBoston River",Boston River,Uruguay,2275,333,Uruguayan Primera División,1,2016-08-31,2198,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceDunkerque",Dunkerque,France,2275,189,Ligue 2,2,2020-08-22,2195,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandStoke City",Stoke City,England,2274,3044,First Division,1,1888-09-08,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -717,7 +717,6 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RussiaTorpedo-Metallurg",Torpedo-Metallurg,Russia,2274,30,Russian Premier League,1,2003-03-15,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalAd Fafe",Ad Fafe,Portugal,2274,38,Primeira Liga,1,1988-09-11,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandDerby County",Derby County,England,2274,3533,First Division,1,1888-09-08,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkRanders",Randers,Denmark,2274,701,Danish Superliga,1,2004-08-01,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyAlanyaspor",Alanyaspor,Turkey,2273,357,SÃ¼per Lig,1,2016-08-20,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalEstoril",Estoril,Portugal,2273,947,Primeira Liga,1,1944-11-26,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AzerbaijanZira",Zira,Azerbaijan,2273,339,Azerbaijan Premier League,1,2015-08-09,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -743,18 +742,18 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "HungaryZalaegerszegi TE",Zalaegerszegi TE,Hungary,2270,29,Nemzeti Bajnoksag I,1,2009-07-25,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EcuadorAucas",Aucas,Ecuador,2270,343,Ecuadorian Serie A,1,2015-01-31,2205,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyKasımpaşa",Kasımpaşa,Turkey,2269,785,SÃ¼per Lig,1,1959-08-30,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"FranceLaval",Laval,France,2269,267,Ligue 2,2,2014-08-01,2195,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FinlandKuPS",KuPS,Finland,2269,531,Veikkausliiga,1,2005-04-28,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"FranceLaval",Laval,France,2269,267,Ligue 2,2,2014-08-01,2195,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CroatiaOsijek",Osijek,Croatia,2269,924,Croatian Football League,1,1998-08-06,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyGreuther Fürth",Greuther Fürth,Germany,2268,483,Bundesliga,1,2012-08-25,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MexicoEspaña Veracruz",España Veracruz,Mexico,2268,1,Liga MX,1,1919-10-26,2258,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ScotlandMotherwell",Motherwell,Scotland,2268,3816,Scottish Premiership,1,1903-08-15,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"PolandRuch Chorzów",Ruch Chorzów,Poland,2268,63,Ekstraklasa,1,1955-08-17,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandMotor Lublin",Motor Lublin,Poland,2267,183,Ekstraklasa,1,1980-08-27,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FinlandIlves",Ilves,Finland,2267,310,Veikkausliiga,1,2015-04-19,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceRed Star Olympique Audonien",Red Star Olympique Audonien,France,2267,34,Division 1,1,1947-08-24,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryFC Fehérvár",FC Fehérvár,Hungary,2267,29,Nemzeti Bajnoksag I,1,2007-07-23,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "KazakhstanIrtysh",Irtysh,Kazakhstan,2267,127,Kazakhstan Premier League,1,2001-06-03,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"PolandRuch Chorzów",Ruch Chorzów,Poland,2267,63,Ekstraklasa,1,1955-08-17,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaRheindorf Altach",Rheindorf Altach,Austria,2267,116,Austrian Bundesliga,1,2006-07-19,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaTorpedo-ZIL",Torpedo-ZIL,Russia,2267,60,Russian Premier League,1,2001-03-10,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ParaguayLibertad",Libertad,Paraguay,2267,685,Paraguayan Primera División,1,2010-01-30,2164,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -765,12 +764,11 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "ItalyCesena",Cesena,Italy,2266,521,Serie A,1,1973-10-07,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MexicoGermania FV",Germania FV,Mexico,2266,6,Liga MX,1,1919-11-09,2258,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyCarpi",Carpi,Italy,2266,84,Serie A,1,2015-08-23,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkOdense",Odense,Denmark,2266,1119,Danish Superliga,1,1991-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"AustriaSK Admira Vienna",SK Admira Vienna,Austria,2266,394,Austrian Bundesliga,1,1952-08-24,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaWolfsberger",Wolfsberger,Austria,2266,496,Austrian Bundesliga,1,2012-08-04,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"AustriaSK Admira Vienna",SK Admira Vienna,Austria,2266,394,Austrian Bundesliga,1,1952-08-24,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalySüdtirol",Südtirol,Italy,2265,159,Serie B,2,2022-08-14,2179,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"ColombiaItagüí",Itagüí,Colombia,2265,70,Categoría Primera A,1,2011-12-04,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaHermannstadt",Hermannstadt,Romania,2265,236,SuperLiga,1,2018-07-21,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"ColombiaItagüí",Itagüí,Colombia,2265,70,Categoría Primera A,1,2011-12-04,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaYenisey",Yenisey,Russia,2265,30,Russian Premier League,1,2018-07-29,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineKolos Kovalivka",Kolos Kovalivka,Ukraine,2265,201,Ukrainian Premier League,1,2019-07-30,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NetherlandsPEC Zwolle",PEC Zwolle,Netherlands,2265,785,Eredivisie,1,1978-08-27,2275,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -865,15 +863,15 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "UruguayCerro Largo",Cerro Largo,Uruguay,2251,308,Uruguayan Primera División,1,2011-08-14,2198,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwitzerlandEtoile La Chaux-de-Fonds",Etoile La Chaux-de-Fonds,Switzerland,2251,71,Swiss Super League,1,1924-09-30,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UruguayRacing",Racing,Uruguay,2251,376,Uruguayan Primera División,1,2010-08-22,2198,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"PolandZagłębie Lubin",Zagłębie Lubin,Poland,2250,715,Ekstraklasa,1,1999-07-17,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"PolandZagłębie Lubin",Zagłębie Lubin,Poland,2251,715,Ekstraklasa,1,1999-07-17,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IranTeraktor-Sazi",Teraktor-Sazi,Iran,2250,400,Persian Gulf Pro League,1,2012-07-20,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryMTK",MTK,Hungary,2250,623,Nemzeti Bajnoksag I,1,1997-01-01,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalMontijo",Montijo,Portugal,2250,90,Primeira Liga,1,1972-09-10,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalFC Tirsense",FC Tirsense,Portugal,2250,256,Primeira Liga,1,1967-09-10,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyCarrarese",Carrarese,Italy,2250,78,Serie B,2,2024-08-18,2179,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalCampomaiorense",Campomaiorense,Portugal,2250,170,Primeira Liga,1,1995-08-20,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"ColombiaPereira",Pereira,Colombia,2249,269,Categoría Primera A,1,2010-01-31,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumZulte Waregem",Zulte Waregem,Belgium,2249,704,Belgian Pro League,1,2005-08-06,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"ColombiaPereira",Pereira,Colombia,2249,269,Categoría Primera A,1,2010-01-31,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaWSG Wattens",WSG Wattens,Austria,2249,30,Austrian Bundesliga,1,1970-08-15,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyEyüpspor",Eyüpspor,Turkey,2249,70,Süper Lig,1,2024-08-11,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandRadomiak Radom",Radomiak Radom,Poland,2249,178,Ekstraklasa,1,1984-09-01,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -929,8 +927,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "SloveniaBravo",Bravo,Slovenia,2241,218,Slovenian PrvaLiga,1,2019-07-14,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumMouscron",Mouscron,Belgium,2241,233,Belgian Pro League,1,2014-07-27,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandSt.Wola",St.Wola,Poland,2241,51,Ekstraklasa,1,1987-08-09,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"SerbiaIMT",IMT,Serbia,2241,74,Serbian SuperLiga,1,2023-07-29,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MoroccoFUS Rabat",FUS Rabat,Morocco,2241,407,Botola Pro,1,2012-09-16,2125,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"SerbiaIMT",IMT,Serbia,2241,74,Serbian SuperLiga,1,2023-07-29,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MexicoAtlas",Atlas,Mexico,2240,532,Liga MX,1,2010-07-25,2258,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaWSV Donawitz",WSV Donawitz,Austria,2240,58,Austrian Bundesliga,1,1959-08-30,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Republic of IrelandDerry City",Derry City,Republic of Ireland,2240,809,League of Ireland Premier Division,1,1997-08-31,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -939,20 +937,19 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "SloveniaAjdovscina",Ajdovscina,Slovenia,2239,140,Slovenian PrvaLiga,1,1999-08-01,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineKarpaty Lviv",Karpaty Lviv,Ukraine,2239,864,Ukrainian Premier League,1,1992-03-06,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalPaços de Ferreira",Paços de Ferreira,Portugal,2239,786,Primeira Liga,1,1991-08-18,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkFC Fredericia",FC Fredericia,Denmark,2239,32,Danish Superliga,1,2025-07-20,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaSC Eisenstadt",SC Eisenstadt,Austria,2239,264,Austrian Bundesliga,1,1967-08-19,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ChinaShanghai Port",Shanghai Port,China,2239,113,Chinese Super League,1,2022-06-04,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusŠachcior",Šachcior,Belarus,2239,177,Belarusian Premier League,1,2018-03-31,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyCittadella",Cittadella,Italy,2239,288,Serie B,2,2018-08-26,2179,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceBastia",Bastia,France,2239,1319,Division 1,1,1968-09-03,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"GeorgiaDila Gori",Dila Gori,Georgia,2238,658,Erovnuli Liga,1,1995-08-02,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IcelandBreiðablik",Breiðablik,Iceland,2238,501,Besta deild karla,1,1995-05-23,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"GeorgiaDila Gori",Dila Gori,Georgia,2238,658,Erovnuli Liga,1,1995-08-02,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalNaval 1 De Maio",Naval 1 De Maio,Portugal,2238,184,Primeira Liga,1,2005-08-21,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaOțelul Galați",Oțelul Galați,Romania,2238,671,SuperLiga,1,1987-01-01,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"MexicoLeón",León,Mexico,2238,538,Liga MX,1,2012-07-21,2258,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyKayserispor",Kayserispor,Turkey,2238,962,SÃ¼per Lig,1,1973-09-09,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"SerbiaŽelezničar",Železničar,Serbia,2238,75,Serbian SuperLiga,1,2023-07-30,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"MexicoLeón",León,Mexico,2238,538,Liga MX,1,2012-07-21,2258,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NetherlandsWvv Wageningen",Wvv Wageningen,Netherlands,2238,34,Eredivisie,1,1974-09-01,2275,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"SerbiaŽelezničar",Železničar,Serbia,2238,75,Serbian SuperLiga,1,2023-07-30,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaLokomotiv Plovdiv",Lokomotiv Plovdiv,Bulgaria,2238,665,Bulgarian First League,1,1997-04-19,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceQuevilly-Rouen",Quevilly-Rouen,France,2238,158,Ligue 2,2,2017-07-29,2195,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryDebrecen",Debrecen,Hungary,2238,673,Nemzeti Bajnoksag I,1,1997-01-01,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -973,6 +970,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "AzerbaijanXazar",Xazar,Azerbaijan,2235,31,Azerbaijan Premier League,1,2004-08-07,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryZalaegerszeg",Zalaegerszeg,Hungary,2235,398,Nemzeti Bajnoksag I,1,1997-01-01,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SlovakiaŽilina",Žilina,Slovakia,2235,813,Slovak First Football League,1,1997-09-03,2140,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkOdense",Odense,Denmark,2235,1105,Danish Superliga,1,1991-03-17,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Saudi ArabiaAhly",Ahly,Saudi Arabia,2235,345,Saudi Pro League,1,2012-08-02,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "United StatesMinnesota United FC",Minnesota United FC,United States,2234,275,Major League Soccer,1,2017-03-03,2268,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaWSG Tirol",WSG Tirol,Austria,2234,234,Austrian Bundesliga,1,2019-08-03,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -987,8 +985,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "AzerbaijanShamkir",Shamkir,Azerbaijan,2233,36,Azerbaijan Premier League,1,1996-12-07,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaPoli Tim.",Poli Tim.,Romania,2233,17,SuperLiga,1,1989-09-06,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ChinaShanghai Shenhua",Shanghai Shenhua,China,2233,415,Chinese Super League,1,2010-03-27,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"BulgariaChernomorets BB",Chernomorets BB,Bulgaria,2233,29,Bulgarian First League,1,2009-08-09,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandWidzew Łódź",Widzew Łódź,Poland,2233,670,Ekstraklasa,1,1975-08-20,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"BulgariaChernomorets BB",Chernomorets BB,Bulgaria,2233,29,Bulgarian First League,1,2009-08-09,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UruguayTorque",Torque,Uruguay,2233,210,Uruguayan Primera División,1,2018-02-03,2198,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "KazakhstanQayrat QTJ",Qayrat QTJ,Kazakhstan,2233,31,Kazakhstan Premier League,1,2004-04-03,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaSibir",Sibir,Russia,2233,30,Russian Premier League,1,2010-03-14,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1021,8 +1019,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "TurkeyFatih Karagümrük",Fatih Karagümrük,Turkey,2230,366,SÃ¼per Lig,1,1959-02-25,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SpainRacing Ferrol",Racing Ferrol,Spain,2229,88,Segunda División,2,2023-08-12,2252,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PeruAlianza Lima",Alianza Lima,Peru,2229,600,Peruvian Primera División,1,2010-02-14,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"NetherlandsGvav Rapiditas",Gvav Rapiditas,Netherlands,2229,166,Eredivisie,1,1965-08-22,2275,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyMSV Duisburg",MSV Duisburg,Germany,2229,1095,Bundesliga,1,1963-08-24,2385,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"NetherlandsGvav Rapiditas",Gvav Rapiditas,Netherlands,2229,166,Eredivisie,1,1965-08-22,2275,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwitzerlandFC Bulle",FC Bulle,Switzerland,2229,110,Swiss Super League,1,1981-08-15,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalTondela",Tondela,Portugal,2229,272,Primeira Liga,1,2015-08-14,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SerbiaOFK Beograd",OFK Beograd,Serbia,2229,278,Serbian SuperLiga,1,2006-08-04,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1035,16 +1033,17 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "PortugalVizela",Vizela,Portugal,2228,132,Primeira Liga,1,1984-08-26,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GreeceHalkidona FC",Halkidona FC,Greece,2228,60,Super League Greece,1,2003-08-24,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "United Arab EmiratesWasl",Wasl,United Arab Emirates,2228,326,UAE Pro League,1,2012-09-23,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkSønderjyskE",SønderjyskE,Denmark,2228,569,Danish Superliga,1,2000-07-23,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyOsmanlispor FK",Osmanlispor FK,Turkey,2228,306,SÃ¼per Lig,1,2004-08-08,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalFC Felgueiras",FC Felgueiras,Portugal,2228,34,Primeira Liga,1,1995-08-20,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MoroccoWAC Casablanca",WAC Casablanca,Morocco,2227,456,Botola Pro,1,2012-09-19,2125,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkFC Vestsjælland",FC Vestsjælland,Denmark,2227,66,Danish Superliga,1,2013-07-21,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaWiener Sportklub",Wiener Sportklub,Austria,2227,476,Austrian Bundesliga,1,1977-08-10,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaUTA Arad",UTA Arad,Romania,2227,781,SuperLiga,1,1959-07-03,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"NetherlandsBlauw Wit",Blauw Wit,Netherlands,2227,196,Eredivisie,1,1957-08-25,2275,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandLechia Gdańsk",Lechia Gdańsk,Poland,2227,618,Ekstraklasa,1,1949-05-15,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"NetherlandsBlauw Wit",Blauw Wit,Netherlands,2227,196,Eredivisie,1,1957-08-25,2275,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandBełchatów",Bełchatów,Poland,2227,180,Ekstraklasa,1,1998-07-25,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SlovakiaSpartak Myjava",Spartak Myjava,Slovakia,2227,132,Slovak First Football League,1,2012-07-13,2140,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkSlagelse B&I",Slagelse B&I,Denmark,2227,66,Danish Superliga,1,2013-07-21,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaSpartak Nalchik",Spartak Nalchik,Russia,2227,74,Russian Premier League,1,2010-03-13,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalFabril Do Barreiro",Fabril Do Barreiro,Portugal,2227,584,Primeira Liga,1,1943-01-10,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaOkean",Okean,Russia,2227,69,Russian Premier League,1,1992-04-03,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1148,12 +1147,12 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RussiaAsmaral",Asmaral,Russia,2217,60,Russian Premier League,1,1992-04-01,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EcuadorMacará",Macará,Ecuador,2217,353,Ecuadorian Serie A,1,2010-02-07,2205,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CroatiaOrijent 1919 Rijeka",Orijent 1919 Rijeka,Croatia,2216,2,Croatian Football League,1,2020-08-02,2220,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkAB Gladsaxe",AB Gladsaxe,Denmark,2216,262,Danish Superliga,1,1996-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyBakirkoeyspor",Bakirkoeyspor,Turkey,2216,90,SÃ¼per Lig,1,1990-08-26,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalSC Espinho",SC Espinho,Portugal,2216,354,Primeira Liga,1,1974-09-08,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalAgueda Rd",Agueda Rd,Portugal,2216,30,Primeira Liga,1,1983-08-28,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaGrödig",Grödig,Austria,2216,110,Austrian Bundesliga,1,2013-08-03,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"BulgariaBotev Plovdiv",Botev Plovdiv,Bulgaria,2216,563,Bulgarian First League,1,1997-04-19,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkVejle BK",Vejle BK,Denmark,2216,460,Danish Superliga,1,1991-03-17,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"BulgariaBotev Plovdiv",Botev Plovdiv,Bulgaria,2215,563,Bulgarian First League,1,1997-04-19,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumKSK Tongeren",KSK Tongeren,Belgium,2215,68,Belgian Pro League,1,1981-08-18,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalAcademica De Coimbra",Academica De Coimbra,Portugal,2215,1660,Primeira Liga,1,1935-01-20,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Central African RepublicEspérance",Espérance,Central African Republic,2215,72,Central African Republic League,1,2012-07-22,1780,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1206,6 +1205,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "Hungary1996.08.17 FTC",1996.08.17 FTC,Hungary,2211,1,Nemzeti Bajnoksag I,1,1997-01-03,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaFirst Vienna FC",First Vienna FC,Austria,2211,829,Austrian Bundesliga,1,1952-08-23,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Hungary1996.11.16 FTC",1996.11.16 FTC,Hungary,2211,1,Nemzeti Bajnoksag I,1,1997-01-02,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkAB Gladsaxe",AB Gladsaxe,Denmark,2210,264,Danish Superliga,1,1996-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CroatiaNovalja",Novalja,Croatia,2210,2,Croatian Football League,1,2005-06-01,2220,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Hungary1997.08.16 Videoton",1997.08.16 Videoton,Hungary,2210,1,Nemzeti Bajnoksag I,1,1998-02-02,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryBekescsábá",Bekescsábá,Hungary,2210,1,Nemzeti Bajnoksag I,1,2004-11-20,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1235,8 +1235,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "EcuadorTécnico Universitario",Técnico Universitario,Ecuador,2209,249,Ecuadorian Serie A,1,2017-12-13,2205,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CroatiaHrvatksi dragovoljac",Hrvatksi dragovoljac,Croatia,2209,1,Croatian Football League,1,2002-03-30,2220,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaAdmira Wacker",Admira Wacker,Austria,2209,1484,Austrian Bundesliga,1,1973-08-18,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"Hungary1997.11.19 UTE",1997.11.19 UTE,Hungary,2209,1,Nemzeti Bajnoksag I,1,1998-01-02,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandWarta Poznań",Warta Poznań,Poland,2209,151,Ekstraklasa,1,1949-03-20,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"Hungary1997.11.19 UTE",1997.11.19 UTE,Hungary,2209,1,Nemzeti Bajnoksag I,1,1998-01-02,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "United StatesSaint Louis City",Saint Louis City,United States,2209,70,Major League Soccer,1,2023-02-25,2268,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwitzerlandUS Bienne-Boujean",US Bienne-Boujean,Switzerland,2209,2,Swiss Super League,1,1933-01-08,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalCaldas SC",Caldas SC,Portugal,2209,78,Primeira Liga,1,1955-09-18,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1310,8 +1310,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "TurkeyYozgatspor",Yozgatspor,Turkey,2201,68,SÃ¼per Lig,1,2000-08-12,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "JapanGamba Osaka",Gamba Osaka,Japan,2201,531,J1 100 Year Vision League,1,2010-03-06,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalUniao de Lisboa",Uniao de Lisboa,Portugal,2201,14,Primeira Liga,1,1935-01-20,2250,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"PolandMielec",Mielec,Poland,2201,42,Ekstraklasa,1,1970-08-19,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyErzurumspor",Erzurumspor,Turkey,2201,176,SÃ¼per Lig,1,1998-08-09,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"PolandMielec",Mielec,Poland,2201,42,Ekstraklasa,1,1970-08-19,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyFSV Frankfurt",FSV Frankfurt,Germany,2201,136,2. Bundesliga,2,2012-08-05,2191,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalUniao Coimbra",Uniao Coimbra,Portugal,2201,30,Primeira Liga,1,1972-09-10,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ChinaJiangsu Suning",Jiangsu Suning,China,2201,148,Chinese Super League,1,2016-03-05,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1320,8 +1320,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "ScotlandAyr United",Ayr United,Scotland,2201,1098,Scottish Premiership,1,1913-08-16,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaPirin BB",Pirin BB,Bulgaria,2201,29,Bulgarian First League,1,2009-08-08,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "JapanKawasaki Frontale",Kawasaki Frontale,Japan,2201,560,J1 100 Year Vision League,1,2010-03-06,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"AzerbaijanSimurq",Simurq,Azerbaijan,2201,209,Azerbaijan Premier League,1,2006-08-05,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "DenmarkVendsyssel FF",Vendsyssel FF,Denmark,2201,32,Danish Superliga,1,2018-07-15,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"AzerbaijanSimurq",Simurq,Azerbaijan,2201,209,Azerbaijan Premier League,1,2006-08-05,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaWiener AC",Wiener AC,Austria,2201,234,Austrian Bundesliga,1,1953-08-22,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Hungary1997.08.02 Stadler",1997.08.02 Stadler,Hungary,2201,1,Nemzeti Bajnoksag I,1,1998-02-02,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandSokół",Sokół,Poland,2201,18,Ekstraklasa,1,1993-07-28,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1346,16 +1346,16 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RomaniaBistrita",Bistrita,Romania,2199,135,SuperLiga,1,1990-08-12,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArmeniaPyunik",Pyunik,Armenia,2199,752,Armenian Premier League,1,2001-06-11,2010,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryStadler",Stadler,Hungary,2199,4,Nemzeti Bajnoksag I,1,1997-01-01,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"WalesThe New Saints",The New Saints,Wales,2199,907,Cymru Premier,1,1998-08-22,1970,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ScotlandDundee",Dundee,Scotland,2199,3245,Scottish Premiership,1,1893-08-12,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"WalesThe New Saints",The New Saints,Wales,2199,907,Cymru Premier,1,1998-08-22,1970,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CyprusAEL Limassol",AEL Limassol,Cyprus,2199,767,Cypriot First Division,1,1999-05-01,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryBalatón",Balatón,Hungary,2199,1,Nemzeti Bajnoksag I,1,2004-03-06,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyKocaelispor",Kocaelispor,Turkey,2199,710,SÃ¼per Lig,1,1980-08-24,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandJagiellonia (Grębocki 51)",Jagiellonia (Grębocki 51),Poland,2199,1,Ekstraklasa,1,1988-10-09,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkLyngby BK",Lyngby BK,Denmark,2198,706,Danish Superliga,1,1991-03-17,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumRaec Mons",Raec Mons,Belgium,2198,309,Belgian Pro League,1,2002-08-10,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "South AfricaOrlando Pirates",Orlando Pirates,South Africa,2198,478,South African Premiership,1,2010-08-27,2025,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandOdra Wodzisław Śląski",Odra Wodzisław Śląski,Poland,2198,29,Ekstraklasa,1,2005-07-26,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkLyngby BK",Lyngby BK,Denmark,2198,688,Danish Superliga,1,1991-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandLech (R.Chojnacki 47)",Lech (R.Chojnacki 47),Poland,2198,1,Ekstraklasa,1,1979-08-11,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UruguayAtenas w/o El Tanque [awarded",Atenas w/o El Tanque [awarded,Uruguay,2198,2,Uruguayan Primera División,1,2018-03-11,2198,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UruguayBoston River w/o El Tanque [awarded",Boston River w/o El Tanque [awarded,Uruguay,2198,1,Uruguayan Primera División,1,2018-08-12,2198,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1447,7 +1447,6 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "PolandPolonia (Jóźwiak 5)",Polonia (Jóźwiak 5),Poland,2195,1,Ekstraklasa,1,1964-09-02,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandOgniwo Bytom",Ogniwo Bytom,Poland,2195,6,Ekstraklasa,1,1951-10-14,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyAkhisarspor",Akhisarspor,Turkey,2195,246,SÃ¼per Lig,1,2012-08-17,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkVejle BK",Vejle BK,Denmark,2195,474,Danish Superliga,1,1991-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandSosnowiec (Mazur 62)",Sosnowiec (Mazur 62),Poland,2195,1,Ekstraklasa,1,1976-08-25,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyBalikesirspor",Balikesirspor,Turkey,2195,64,SÃ¼per Lig,1,1975-09-07,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandLegia (Dąbrowski 21)",Legia (Dąbrowski 21),Poland,2195,1,Ekstraklasa,1,1973-09-11,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1471,8 +1470,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "ItalyFeralpisalò",Feralpisalò,Italy,2194,38,Serie B,2,2023-08-20,2179,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandCWKS Warszawa",CWKS Warszawa,Poland,2194,10,Ekstraklasa,1,1951-07-01,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandStal (Kruk 72)",Stal (Kruk 72),Poland,2194,1,Ekstraklasa,1,1963-08-25,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"CroatiaHrv. dragovoljac",Hrv. dragovoljac,Croatia,2194,36,Croatian Football League,1,1998-08-07,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandGornik",Gornik,Poland,2194,28,Ekstraklasa,1,2000-07-22,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"CroatiaHrv. dragovoljac",Hrv. dragovoljac,Croatia,2194,36,Croatian Football League,1,1998-08-07,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaAustria Lustenau",Austria Lustenau,Austria,2194,182,Austrian Bundesliga,1,1997-07-09,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandBudowlani Opole",Budowlani Opole,Poland,2193,8,Ekstraklasa,1,1953-08-15,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "LithuaniaTrakai",Trakai,Lithuania,2193,182,A Lyga,1,2014-03-10,1910,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1513,10 +1512,10 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "FranceValenciennes",Valenciennes,France,2190,1175,Division 1,1,1964-08-30,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "QatarLekhwiya",Lekhwiya,Qatar,2190,140,Qatar Stars League,1,2012-09-16,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryKaposvári Rákóczi Rákóczi",Kaposvári Rákóczi Rákóczi,Hungary,2190,1,Nemzeti Bajnoksag I,1,2009-09-12,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"AzerbaijanTuran Tovuz",Turan Tovuz,Azerbaijan,2190,363,Azerbaijan Premier League,1,1996-12-07,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MexicoDorados",Dorados,Mexico,2190,34,Liga MX,1,2015-07-25,2258,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Hungary1996.08.10 Siófok",1996.08.10 Siófok,Hungary,2190,1,Nemzeti Bajnoksag I,1,1997-01-01,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Hungary1996.09.15 Debrecen",1996.09.15 Debrecen,Hungary,2190,1,Nemzeti Bajnoksag I,1,1997-01-01,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"AzerbaijanTuran Tovuz",Turan Tovuz,Azerbaijan,2190,363,Azerbaijan Premier League,1,1996-12-07,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Hungary1997.07.22 Stadler",1997.07.22 Stadler,Hungary,2190,1,Nemzeti Bajnoksag I,1,1998-01-01,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SerbiaKolubara",Kolubara,Serbia,2190,74,Serbian SuperLiga,1,2021-07-19,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SerbiaNapredak Kruševac",Napredak Kruševac,Serbia,2190,472,Serbian SuperLiga,1,2007-06-23,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1548,8 +1547,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "NetherlandsDe Graafschap",De Graafschap,Netherlands,2187,646,Eredivisie,1,1973-08-12,2275,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandSzombierki",Szombierki,Poland,2187,170,Ekstraklasa,1,1963-09-08,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryMTK Budapest",MTK Budapest,Hungary,2187,72,Nemzeti Bajnoksag I,1,2003-07-25,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"CzechiaFK Mlada Boleslav",FK Mlada Boleslav,Czechia,2186,8,Czech First League,1,2026-07-27,2130,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ScotlandKilmarnock",Kilmarnock,Scotland,2186,3241,Scottish Premiership,1,1899-08-19,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"CzechiaFK Mlada Boleslav",FK Mlada Boleslav,Czechia,2186,8,Czech First League,1,2026-07-27,2130,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusShakhtyor Soligorsk",Shakhtyor Soligorsk,Belarus,2186,268,Belarusian Premier League,1,2000-04-15,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumKV Turnhout",KV Turnhout,Belgium,2186,58,Belgian Pro League,1,1931-09-06,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CyprusAPOP",APOP,Cyprus,2186,31,Cypriot First Division,1,2008-09-13,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1573,7 +1572,6 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "SloveniaKorotan Suvel",Korotan Suvel,Slovenia,2185,29,Slovenian PrvaLiga,1,1994-08-14,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CroatiaKarlovac",Karlovac,Croatia,2185,88,Croatian Football League,1,2009-07-25,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandZaglebie",Zaglebie,Poland,2185,1,Ekstraklasa,1,2001-11-03,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"SerbiaVoždovac",Voždovac,Serbia,2185,418,Serbian SuperLiga,1,2006-08-05,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayBærum",Bærum,Norway,2185,1,Eliteserien,1,2014-11-09,2175,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandBudowlani Gdańsk",Budowlani Gdańsk,Poland,2185,2,Ekstraklasa,1,1953-03-15,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandGwardia-Wisła Kraków",Gwardia-Wisła Kraków,Poland,2185,2,Ekstraklasa,1,1949-09-15,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1583,6 +1581,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "PolandZwiązkowiec Kraków",Związkowiec Kraków,Poland,2185,1,Ekstraklasa,1,1950-05-18,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandZwiązkowiec Poznań",Związkowiec Poznań,Poland,2185,1,Ekstraklasa,1,1950-08-06,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandOgniwo Kraków",Ogniwo Kraków,Poland,2185,10,Ekstraklasa,1,1950-08-06,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"SerbiaVoždovac",Voždovac,Serbia,2185,418,Serbian SuperLiga,1,2006-08-05,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandUnia-Ruch Chorzów",Unia-Ruch Chorzów,Poland,2185,4,Ekstraklasa,1,1950-08-27,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandŁKS-Ptak",ŁKS-Ptak,Poland,2185,28,Ekstraklasa,1,1998-07-25,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ScotlandInverness Caledonian Thistle FC",Inverness Caledonian Thistle FC,Scotland,2185,456,Scottish Premiership,1,2004-08-07,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1596,20 +1595,20 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "PolandGarbarnia Szczakowianka",Garbarnia Szczakowianka,Poland,2184,2,Ekstraklasa,1,2002-05-08,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ItalyLecco",Lecco,Italy,2184,140,Serie A,1,1960-09-25,2375,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaSibiu",Sibiu,Romania,2184,191,SuperLiga,1,1988-08-21,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkAarhus Fremad",Aarhus Fremad,Denmark,2184,66,Danish Superliga,1,1997-07-27,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandStal Sosnowiec",Stal Sosnowiec,Poland,2184,11,Ekstraklasa,1,1955-03-27,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineFC Lviv",FC Lviv,Ukraine,2184,138,Ukrainian Premier League,1,2008-07-20,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwitzerlandWinterthur",Winterthur,Switzerland,2184,549,Swiss Super League,1,1924-09-14,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwitzerlandBlue Stars Zürich",Blue Stars Zürich,Switzerland,2184,60,Swiss Super League,1,1924-08-10,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AlgeriaJS Saoura",JS Saoura,Algeria,2184,428,Algerian Ligue Professionnelle 1,1,2012-09-15,2025,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaCeahlaul",Ceahlaul,Romania,2184,193,SuperLiga,1,1993-08-15,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkAarhus Fremad",Aarhus Fremad,Denmark,2184,66,Danish Superliga,1,1997-07-27,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandBałtyk",Bałtyk,Poland,2183,88,Ekstraklasa,1,1980-08-16,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EcuadorMushuc Runa",Mushuc Runa,Ecuador,2183,336,Ecuadorian Serie A,1,2014-01-26,2205,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenOster",Oster,Sweden,2183,4,Allsvenskan,1,1998-04-13,2165,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AlgeriaJS Kabylie",JS Kabylie,Algeria,2183,501,Algerian Ligue Professionnelle 1,1,2010-07-01,2025,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IcelandIBV",IBV,Iceland,2183,119,Besta deild karla,1,1982-05-15,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"EnglandReading",Reading,England,2183,1069,Championship,2,2004-08-07,2228,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenIFK Norrköping",IFK Norrköping,Sweden,2183,547,Allsvenskan,1,1994-10-28,2165,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"EnglandReading",Reading,England,2183,1069,Championship,2,2004-08-07,2228,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandOLIMPIA",OLIMPIA,Poland,2183,1,Ekstraklasa,1,1986-07-01,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SerbiaBSK Borča",BSK Borča,Serbia,2183,58,Serbian SuperLiga,1,2009-08-15,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaVictoria",Victoria,Romania,2183,76,SuperLiga,1,1985-08-04,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1623,9 +1622,9 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "HungaryHaladás",Haladás,Hungary,2182,332,Nemzeti Bajnoksag I,1,1997-01-01,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkrainePFC Sevastopol",PFC Sevastopol,Ukraine,2182,58,Ukrainian Premier League,1,2010-07-09,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyBucaspor",Bucaspor,Turkey,2182,34,SÃ¼per Lig,1,2010-08-14,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"PolandArka Gdynia",Arka Gdynia,Poland,2182,395,Ekstraklasa,1,1974-08-17,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FinlandHonka",Honka,Finland,2182,360,Veikkausliiga,1,2006-04-19,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CzechiaKarviná",Karviná,Czechia,2182,358,Czech First League,1,1996-08-11,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"PolandArka Gdynia",Arka Gdynia,Poland,2182,395,Ekstraklasa,1,1974-08-17,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaVictoria Bucuresti",Victoria Bucuresti,Romania,2182,12,SuperLiga,1,1987-01-01,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandGwardia",Gwardia,Poland,2182,151,Ekstraklasa,1,1962-04-29,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaStudio D",Studio D,Slovenia,2182,34,Slovenian PrvaLiga,1,1992-08-16,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1642,8 +1641,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "IsraelIroni Tiberias",Ironi Tiberias,Israel,2181,57,Israeli Premier League,1,2024-08-24,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TunisiaES Sahel",ES Sahel,Tunisia,2181,206,Tunisian Ligue Professionnelle 1,1,2010-07-03,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaVoluntari",Voluntari,Romania,2181,362,SuperLiga,1,2015-07-10,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"SwitzerlandSC Zug",SC Zug,Switzerland,2181,14,Swiss Super League,1,1952-06-15,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusTorpedo-BelAZ Zhodino",Torpedo-BelAZ Zhodino,Belarus,2181,156,Belarusian Premier League,1,2019-03-31,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"SwitzerlandSC Zug",SC Zug,Switzerland,2181,14,Swiss Super League,1,1952-06-15,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "DR CongoAS Maniema Union",AS Maniema Union,DR Congo,2181,178,Linafoot,1,2017-07-01,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaSchwarz Weiss Bregenz",Schwarz Weiss Bregenz,Austria,2181,324,Austrian Bundesliga,1,1954-08-29,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaPitesti",Pitesti,Romania,2181,26,SuperLiga,1,1965-07-10,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1656,8 +1655,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "United StatesNew England Revolution",New England Revolution,United States,2180,413,Major League Soccer,1,2013-03-09,2268,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusNeman",Neman,Belarus,2180,356,Belarusian Premier League,1,1998-07-25,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NetherlandsHeracles",Heracles,Netherlands,2180,836,Eredivisie,1,1962-08-27,2275,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"PolandWalbrzych",Walbrzych,Poland,2180,1,Ekstraklasa,1,1973-09-15,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ScotlandSt. Mirren",St. Mirren,Scotland,2180,3297,Scottish Premiership,1,1890-08-30,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"PolandWalbrzych",Walbrzych,Poland,2180,1,Ekstraklasa,1,1973-09-15,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaPoli Timişoara",Poli Timişoara,Romania,2180,68,SuperLiga,1,2006-07-29,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumEupen",Eupen,Belgium,2179,297,Belgian Pro League,1,2010-07-31,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ChileHuachipato",Huachipato,Chile,2179,461,Chilean Primera División,1,2010-01-24,2156,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1682,8 +1681,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "FranceCaen",Caen,France,2178,874,Division 1,1,1989-07-22,2389,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "United Arab EmiratesSharjah",Sharjah,United Arab Emirates,2178,308,UAE Pro League,1,2011-09-04,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandOdra (Wilczek 83)",Odra (Wilczek 83),Poland,2178,1,Ekstraklasa,1,1963-08-11,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkHobro IK",Hobro IK,Denmark,2178,165,Danish Superliga,1,2014-07-20,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaZavrč",Zavrč,Slovenia,2178,110,Slovenian PrvaLiga,1,2013-07-12,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkHobro IK",Hobro IK,Denmark,2178,166,Danish Superliga,1,2014-07-20,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandJagiellonia (Cygan ?)",Jagiellonia (Cygan ?),Poland,2178,1,Ekstraklasa,1,1988-04-09,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IsraelIroni Kiryat Shmona",Ironi Kiryat Shmona,Israel,2178,516,Israeli Premier League,1,2007-08-18,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EcuadorLDU de Portoviejo",LDU de Portoviejo,Ecuador,2177,30,Ecuadorian Serie A,1,2020-02-16,2205,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1767,9 +1766,9 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RomaniaȘtiința Cluj",Știința Cluj,Romania,2175,22,SuperLiga,1,1959-08-06,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaKompas Holidays",Kompas Holidays,Slovenia,2175,34,Slovenian PrvaLiga,1,1992-08-16,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandJagiellonia (Borówko 25 p)",Jagiellonia (Borówko 25 p),Poland,2175,1,Ekstraklasa,1,1988-04-17,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"SlovakiaRužomberok",Ružomberok,Slovakia,2175,780,Slovak First Football League,1,1997-09-03,2140,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandGwardia (Bochnia 22)",Gwardia (Bochnia 22),Poland,2175,1,Ekstraklasa,1,1974-08-21,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandOWKS Kraków",OWKS Kraków,Poland,2175,4,Ekstraklasa,1,1953-05-31,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"SlovakiaRužomberok",Ružomberok,Slovakia,2175,780,Slovak First Football League,1,1997-09-03,2140,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandTychy (Woronko 53)",Tychy (Woronko 53),Poland,2175,1,Ekstraklasa,1,1974-09-11,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandJagiellonia (Sobczyk 46)",Jagiellonia (Sobczyk 46),Poland,2175,1,Ekstraklasa,1,1988-05-28,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandWidzew (Nowicki 85)",Widzew (Nowicki 85),Poland,2175,1,Ekstraklasa,1,1980-08-17,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1787,6 +1786,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "PolandOdra (Wieczorkowski 47)",Odra (Wieczorkowski 47),Poland,2174,1,Ekstraklasa,1,1962-08-15,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandGórnik (Sarnat 90)",Górnik (Sarnat 90),Poland,2174,1,Ekstraklasa,1,1972-08-06,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IcelandValur",Valur,Iceland,2174,1002,Besta deild karla,1,1955-06-12,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkBK Frem København",BK Frem København,Denmark,2174,101,Danish Superliga,1,1991-03-17,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenBrommapojk.",Brommapojk.,Sweden,2174,1,Allsvenskan,1,2006-11-09,2165,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandŚlask (Pękała 82)",Ślask (Pękała 82),Poland,2174,1,Ekstraklasa,1,1987-05-02,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenKalmar trouble; result stood]",Kalmar trouble; result stood],Sweden,2174,1,Allsvenskan,1,2014-03-30,2165,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1818,24 +1818,23 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "SerbiaMladost NS",Mladost NS,Serbia,2173,38,Serbian SuperLiga,1,2022-07-10,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AzerbaijanGarabag",Garabag,Azerbaijan,2172,12,Azerbaijan Premier League,1,1996-12-11,2110,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaCrișana Oradea",Crișana Oradea,Romania,2172,59,SuperLiga,1,1932-05-27,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkBK Frem København",BK Frem København,Denmark,2172,83,Danish Superliga,1,1991-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaSlavia Sofia",Slavia Sofia,Bulgaria,2172,742,Bulgarian First League,1,1997-04-19,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenIF Brommapojkarna",IF Brommapojkarna,Sweden,2172,278,Allsvenskan,1,2006-11-12,2165,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaPiteşti",Piteşti,Romania,2172,34,SuperLiga,1,2008-07-26,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CroatiaZadarkomerc",Zadarkomerc,Croatia,2172,31,Croatian Football League,1,1998-08-06,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandCracovia Kraków",Cracovia Kraków,Poland,2172,30,Ekstraklasa,1,2005-07-26,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaSteagul Roșu Or.Stalin",Steagul Roșu Or.Stalin,Romania,2172,22,SuperLiga,1,1959-08-06,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkEsbjerg",Esbjerg,Denmark,2171,625,Danish Superliga,1,1999-07-26,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ColombiaBoyacá Chicó",Boyacá Chicó,Colombia,2171,350,Categoría Primera A,1,2011-12-03,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CyprusOmonia Aradippou",Omonia Aradippou,Cyprus,2171,60,Cypriot First Division,1,2024-08-23,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ColombiaPatriotas",Patriotas,Colombia,2171,414,Categoría Primera A,1,2011-12-11,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkEsbjerg",Esbjerg,Denmark,2171,623,Danish Superliga,1,1999-07-26,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceAmiens",Amiens,France,2171,374,Ligue 2,2,2016-08-01,2195,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TunisiaUS Monastir",US Monastir,Tunisia,2171,187,Tunisian Ligue Professionnelle 1,1,2011-08-26,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaZivila Naklo",Zivila Naklo,Slovenia,2171,40,Slovenian PrvaLiga,1,1991-08-18,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandGórnik",Górnik,Poland,2171,457,Ekstraklasa,1,1962-01-13,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaBelvedur Izola",Belvedur Izola,Slovenia,2171,74,Slovenian PrvaLiga,1,1991-08-18,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"BulgariaBelasitsa",Belasitsa,Bulgaria,2171,146,Bulgarian First League,1,1999-08-07,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaWiener Neustadt",Wiener Neustadt,Austria,2171,398,Austrian Bundesliga,1,1959-08-29,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"BulgariaBelasitsa",Belasitsa,Bulgaria,2171,146,Bulgarian First League,1,1999-08-07,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwitzerlandLausanne-Ouchy",Lausanne-Ouchy,Switzerland,2171,38,Swiss Super League,1,2023-08-05,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaCrisul",Crisul,Romania,2171,24,SuperLiga,1,1963-07-05,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaSăgeata",Săgeata,Romania,2171,34,SuperLiga,1,2013-07-20,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1866,8 +1865,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "CzechiaZbrojovka Brno",Zbrojovka Brno,Czechia,2169,798,Czech First League,1,1993-08-14,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Saudi ArabiaIttifaq",Ittifaq,Saudi Arabia,2169,322,Saudi Pro League,1,2012-08-02,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusNeman Grodno",Neman Grodno,Belarus,2169,166,Belarusian Premier League,1,2006-04-18,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"EstoniaFCI Levadia",FCI Levadia,Estonia,2169,429,Meistriliiga,1,2013-03-02,1900,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandPuszcza",Puszcza,Poland,2169,68,Ekstraklasa,1,2023-07-23,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"EstoniaFCI Levadia",FCI Levadia,Estonia,2169,429,Meistriliiga,1,2013-03-02,1900,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaDob",Dob,Slovenia,2169,2,Slovenian PrvaLiga,1,2012-06-02,2150,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Costa RicaSaprissa",Saprissa,Costa Rica,2169,673,Liga FPD,1,2011-04-10,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaPirin 1922 (Blagoevgrad)",Pirin 1922 (Blagoevgrad),Bulgaria,2169,2,Bulgarian First League,1,2005-11-06,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1883,15 +1882,15 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "ColombiaQuindío",Quindío,Colombia,2168,100,Categoría Primera A,1,2010-01-31,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustraliaBrisbane",Brisbane,Australia,2168,30,A-League Men,1,2010-08-07,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ChinaChengdu Rongcheng",Chengdu Rongcheng,China,2168,114,Chinese Super League,1,2022-06-04,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkFC Helsingør",FC Helsingør,Denmark,2168,32,Danish Superliga,1,2017-07-16,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaIasi",Iasi,Romania,2168,26,SuperLiga,1,1965-07-10,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ColombiaMagdalena",Magdalena,Colombia,2168,158,Categoría Primera A,1,2019-01-26,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaChernomorets 919 (Burgas)",Chernomorets 919 (Burgas),Bulgaria,2168,2,Bulgarian First League,1,2005-11-02,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkFC Helsingør",FC Helsingør,Denmark,2168,32,Danish Superliga,1,2017-07-16,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaChernomorets Burgas",Chernomorets Burgas,Bulgaria,2168,107,Bulgarian First League,1,2001-08-04,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaSteagul Rosu",Steagul Rosu,Romania,2168,73,SuperLiga,1,1961-07-01,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryLombard-Pápa",Lombard-Pápa,Hungary,2168,29,Nemzeti Bajnoksag I,1,2009-07-25,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"Saudi ArabiaTaawun",Taawun,Saudi Arabia,2167,374,Saudi Pro League,1,2012-08-03,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ColombiaJaguares",Jaguares,Colombia,2167,378,Categoría Primera A,1,2015-02-01,2244,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"Saudi ArabiaTaawun",Taawun,Saudi Arabia,2167,374,Saudi Pro League,1,2012-08-03,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UruguayTacuarembó",Tacuarembó,Uruguay,2167,51,Uruguayan Primera División,1,2010-08-21,2198,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaDinamo Bacau",Dinamo Bacau,Romania,2167,50,SuperLiga,1,1961-07-01,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryGyirmót",Gyirmót,Hungary,2167,66,Nemzeti Bajnoksag I,1,2016-07-16,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1907,9 +1906,10 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "AzerbaijanXäzär",Xäzär,Azerbaijan,2166,21,Azerbaijan Premier League,1,2005-08-12,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaMetaloglobus București",Metaloglobus București,Romania,2166,2,SuperLiga,1,2025-05-25,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineVeres Rivne",Veres Rivne,Ukraine,2166,268,Ukrainian Premier League,1,1992-08-16,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkHerfølge BK",Herfølge BK,Denmark,2166,263,Danish Superliga,1,1995-08-02,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkHerfølge BK",Herfølge BK,Denmark,2166,264,Danish Superliga,1,1995-08-02,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayLøv-Ham",Løv-Ham,Norway,2166,1,Eliteserien,1,2010-11-12,2175,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaPrevalje",Prevalje,Slovenia,2166,141,Slovenian PrvaLiga,1,1997-03-02,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkAC Horsens",AC Horsens,Denmark,2166,429,Danish Superliga,1,2005-07-20,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IsraelIroni Nir Ramat HaSharon",Ironi Nir Ramat HaSharon,Israel,2166,69,Israeli Premier League,1,2012-08-25,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandGórnik W",Górnik W,Poland,2166,73,Ekstraklasa,1,1983-08-17,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaKoneliano (German)",Koneliano (German),Bulgaria,2166,2,Bulgarian First League,1,2005-10-26,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1918,27 +1918,26 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RomaniaCCA Bucureti",CCA Bucureti,Romania,2165,1,SuperLiga,1,1960-09-11,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyPofisi",Pofisi,Turkey,2165,34,SÃ¼per Lig,1,1994-08-14,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaSteagul Rosu Brasov",Steagul Rosu Brasov,Romania,2165,1,SuperLiga,1,1962-03-18,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkAC Horsens",AC Horsens,Denmark,2165,429,Danish Superliga,1,2005-07-20,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenV Frölunda",V Frölunda,Sweden,2165,1,Allsvenskan,1,2002-11-06,2165,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayHødd",Hødd,Norway,2165,1,Eliteserien,1,2013-11-06,2175,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayKjelsas",Kjelsas,Norway,2165,2,Eliteserien,1,1998-10-28,2175,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayRaufoss",Raufoss,Norway,2165,1,Eliteserien,1,2020-12-16,2175,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaColțea București",Colțea București,Romania,2165,1,SuperLiga,1,1923-06-24,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CzechiaSlovácko",Slovácko,Czechia,2165,648,Czech First League,1,2004-08-07,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkKøge BK",Køge BK,Denmark,2165,33,Danish Superliga,1,2002-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IsraelHapoel Nazareth Illit",Hapoel Nazareth Illit,Israel,2165,33,Israeli Premier League,1,2005-08-29,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenV Frolunda",V Frolunda,Sweden,2165,4,Allsvenskan,1,1998-04-13,2165,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "United StatesChivas USA",Chivas USA,United States,2165,68,Major League Soccer,1,2013-03-02,2268,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyBeyogluspor",Beyogluspor,Turkey,2165,54,SÃ¼per Lig,1,1962-09-15,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryPMFC",PMFC,Hungary,2165,28,Nemzeti Bajnoksag I,1,2000-02-26,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"SerbiaJavor Ivanjica",Javor Ivanjica,Serbia,2165,375,Serbian SuperLiga,1,2008-08-17,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandGarbarnia",Garbarnia,Poland,2165,31,Ekstraklasa,1,2002-08-04,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"SerbiaJavor Ivanjica",Javor Ivanjica,Serbia,2165,375,Serbian SuperLiga,1,2008-08-17,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaMura Murska Sob.",Mura Murska Sob.,Slovenia,2165,40,Slovenian PrvaLiga,1,1991-08-18,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaPolitehnica Timisoara",Politehnica Timisoara,Romania,2165,2,SuperLiga,1,1988-01-01,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ChileUniv. de Concepción",Univ. de Concepción,Chile,2164,289,Chilean Primera División,1,2010-01-24,2156,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "JapanFC Tokyo",FC Tokyo,Japan,2164,492,J1 100 Year Vision League,1,2010-03-06,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwitzerlandFC Solothurn",FC Solothurn,Switzerland,2164,28,Swiss Super League,1,1930-09-01,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CroatiaCakovec",Cakovec,Croatia,2164,47,Croatian Football League,1,2000-08-05,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkKøge BK",Køge BK,Denmark,2164,33,Danish Superliga,1,2002-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaNeftochimik",Neftochimik,Bulgaria,2164,1,Bulgarian First League,1,2000-04-22,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenEnköpings",Enköpings,Sweden,2164,1,Allsvenskan,1,2003-04-15,2165,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayBodo",Bodo,Norway,2164,26,Eliteserien,1,1999-04-10,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1969,6 +1968,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "TurkeyMke Kirikkalespor",Mke Kirikkalespor,Turkey,2163,30,SÃ¼per Lig,1,1978-08-27,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumKSV Waregem",KSV Waregem,Belgium,2163,832,Belgian Pro League,1,1968-09-08,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GreeceAo Aigaleo",Ao Aigaleo,Greece,2162,176,Super League Greece,1,2001-09-23,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkAalborg BK",Aalborg BK,Denmark,2162,1109,Danish Superliga,1,1991-03-17,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaDinamo Buc.",Dinamo Buc.,Romania,2162,3,SuperLiga,1,1962-07-07,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NetherlandsDe Volewijckers",De Volewijckers,Netherlands,2162,64,Eredivisie,1,1961-08-20,2275,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumKoninklijke Lyra TSV",Koninklijke Lyra TSV,Belgium,2162,136,Belgian Pro League,1,1932-09-18,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -1976,7 +1976,6 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "SwitzerlandSr Delemont",Sr Delemont,Switzerland,2162,98,Swiss Super League,1,1993-02-28,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UruguayFénix",Fénix,Uruguay,2162,446,Uruguayan Primera División,1,2010-08-21,2198,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaGloria C.F.R. Arad",Gloria C.F.R. Arad,Romania,2162,59,SuperLiga,1,1932-06-05,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkAalborg BK",Aalborg BK,Denmark,2162,1088,Danish Superliga,1,1991-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyMersin Idmanyurdu",Mersin Idmanyurdu,Turkey,2162,472,SÃ¼per Lig,1,1967-09-10,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "North MacedoniaSileks",Sileks,North Macedonia,2162,827,Macedonian First Football League,1,1997-08-03,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaBacau",Bacau,Romania,2162,756,SuperLiga,1,1967-08-20,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2010,13 +2009,13 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RomaniaFC Olt Scornicesti",FC Olt Scornicesti,Romania,2160,8,SuperLiga,1,1987-01-01,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IsraelHapoel Hadera",Hapoel Hadera,Israel,2160,234,Israeli Premier League,1,2018-08-25,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandPegrotour",Pegrotour,Poland,2160,8,Ekstraklasa,1,1991-10-19,2185,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"BulgariaVidima-Rakovski (Sevlievo)",Vidima-Rakovski (Sevlievo),Bulgaria,2160,3,Bulgarian First League,1,2005-10-26,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GermanyWürzburger Kickers",Würzburger Kickers,Germany,2160,70,2. Bundesliga,2,2016-08-07,2191,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"BulgariaVidima-Rakovski (Sevlievo)",Vidima-Rakovski (Sevlievo),Bulgaria,2160,3,Bulgarian First League,1,2005-10-26,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaMinyor (Bobov dol)",Minyor (Bobov dol),Bulgaria,2160,2,Bulgarian First League,1,2005-10-25,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaRakovski (Ruse)",Rakovski (Ruse),Bulgaria,2160,2,Bulgarian First League,1,1995-02-02,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaSliven 2000 (2)",Sliven 2000 (2),Bulgaria,2160,3,Bulgarian First League,1,2006-10-04,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"GreeceErgotelis",Ergotelis,Greece,2160,278,Super League Greece,1,2004-09-18,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusSlavia Mozyr",Slavia Mozyr,Belarus,2160,207,Belarusian Premier League,1,2019-03-31,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"GreeceErgotelis",Ergotelis,Greece,2160,278,Super League Greece,1,2004-09-18,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyHacettepe",Hacettepe,Turkey,2159,68,SÃ¼per Lig,1,2007-08-12,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryPaksi FC",Paksi FC,Hungary,2159,58,Nemzeti Bajnoksag I,1,2007-07-20,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaVihren (Sandanski)",Vihren (Sandanski),Bulgaria,2159,3,Bulgarian First League,1,2005-12-14,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2025,27 +2024,27 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "Northern IrelandLinfield",Linfield,Northern Ireland,2159,1025,NIFL Premiership,1,1997-02-01,1990,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenFrölunda",Frölunda,Sweden,2159,26,Allsvenskan,1,1999-04-12,2165,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaMinyor (Pernik)",Minyor (Pernik),Bulgaria,2159,2,Bulgarian First League,1,2005-10-26,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"NorwayBodø",Bodø,Norway,2159,90,Eliteserien,1,2014-03-30,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PortugalFC Penafiel",FC Penafiel,Portugal,2159,434,Primeira Liga,1,1980-08-24,2250,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"NorwayBodø",Bodø,Norway,2159,90,Eliteserien,1,2014-03-30,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaASA Tirgu Mures",ASA Tirgu Mures,Romania,2159,9,SuperLiga,1,1988-01-01,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineMynai",Mynai,Ukraine,2159,104,Ukrainian Premier League,1,2020-09-13,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenOrebro SK FK",Orebro SK FK,Sweden,2159,25,Allsvenskan,1,2000-04-09,2165,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryVasas",Vasas,Hungary,2159,403,Nemzeti Bajnoksag I,1,1997-01-01,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GreeceLarissa",Larissa,Greece,2159,466,Super League Greece,1,1987-09-06,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"IcelandKA",KA,Iceland,2159,456,Besta deild karla,1,1978-05-13,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UruguayLa Luz",La Luz,Uruguay,2159,37,Uruguayan Primera División,1,2023-02-05,2198,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FranceChâteauroux",Châteauroux,France,2159,187,Ligue 2,2,2014-08-01,2195,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaSpartak-S 94 (Plovdiv)",Spartak-S 94 (Plovdiv),Bulgaria,2159,2,Bulgarian First League,1,2005-10-26,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandRadomsko",Radomsko,Poland,2159,28,Ekstraklasa,1,2001-07-21,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SlovakiaTrenčín",Trenčín,Slovakia,2159,712,Slovak First Football League,1,1997-09-03,2140,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaLada",Lada,Russia,2159,69,Russian Premier League,1,1993-11-20,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"IcelandKA",KA,Iceland,2159,456,Besta deild karla,1,1978-05-13,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CyprusDigenis Morphou",Digenis Morphou,Cyprus,2159,130,Cypriot First Division,1,2000-09-16,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaNesebar (Nesebar)",Nesebar (Nesebar),Bulgaria,2158,2,Bulgarian First League,1,2005-10-25,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaUnirea Tricolor București",Unirea Tricolor București,Romania,2158,58,SuperLiga,1,1933-09-03,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AzerbaijanAraz Naxçıvan",Araz Naxçıvan,Azerbaijan,2158,93,Azerbaijan Premier League,1,1997-09-14,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Bosnia and HerzegovinaŠiroki Brijeg",Široki Brijeg,Bosnia and Herzegovina,2158,740,Premier League of Bosnia and Herzegovina,1,2000-05-24,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"KazakhstanJenis",Jenis,Kazakhstan,2158,130,Kazakhstan Premier League,1,2003-04-12,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumBeerschot AC",Beerschot AC,Belgium,2158,1290,Belgian Pro League,1,1960-09-04,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"KazakhstanJenis",Jenis,Kazakhstan,2158,130,Kazakhstan Premier League,1,2003-04-12,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenOrebro SK",Orebro SK,Sweden,2158,1,Allsvenskan,1,2000-09-10,2165,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Northern IrelandGlentoran",Glentoran,Northern Ireland,2158,987,NIFL Premiership,1,1997-02-01,1990,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineObolon Kyiv",Obolon Kyiv,Ukraine,2158,270,Ukrainian Premier League,1,2002-07-07,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2065,12 +2064,12 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "SerbiaDonji Srem",Donji Srem,Serbia,2157,90,Serbian SuperLiga,1,2012-08-11,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaBrașov",Brașov,Romania,2156,34,SuperLiga,1,2014-07-27,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineZirka Kirovograd",Zirka Kirovograd,Ukraine,2156,248,Ukrainian Premier League,1,1995-07-25,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkFC Amager",FC Amager,Denmark,2156,18,Danish Superliga,1,1994-08-07,2235,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CyprusDigenis Morfou",Digenis Morfou,Cyprus,2156,26,Cypriot First Division,1,2002-08-24,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IsraelHapoel Nof HaGalil",Hapoel Nof HaGalil,Israel,2156,33,Israeli Premier League,1,2021-08-30,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EcuadorEspoli",Espoli,Ecuador,2156,44,Ecuadorian Serie A,1,2010-02-06,2205,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenÖsters",Östers,Sweden,2156,1,Allsvenskan,1,2006-05-02,2165,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ChileDep. Melipilla",Dep. Melipilla,Chile,2156,32,Chilean Primera División,1,2021-03-27,2156,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkFremad Amager",Fremad Amager,Denmark,2156,18,Danish Superliga,1,1994-08-07,2235,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenJönköpings Södra",Jönköpings Södra,Sweden,2156,64,Allsvenskan,1,2016-04-02,2165,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TunisiaClub Africain",Club Africain,Tunisia,2156,408,Tunisian Ligue Professionnelle 1,1,2010-07-03,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelgiumRacing White Brussels",Racing White Brussels,Belgium,2155,136,Belgian Pro League,1,2004-08-07,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2092,8 +2091,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "HungaryCsepel",Csepel,Hungary,2155,9,Nemzeti Bajnoksag I,1,1997-01-01,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaDinamo-Gaz",Dinamo-Gaz,Russia,2155,95,Russian Premier League,1,1992-03-29,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaGrazer SC Straßenbahn",Grazer SC Straßenbahn,Austria,2155,25,Austrian Bundesliga,1,1952-08-24,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"KazakhstanOrdabasy",Ordabasy,Kazakhstan,2155,598,Kazakhstan Premier League,1,2003-04-12,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EcuadorDep. Quevedo",Dep. Quevedo,Ecuador,2155,44,Ecuadorian Serie A,1,2013-01-26,2205,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"KazakhstanOrdabasy",Ordabasy,Kazakhstan,2155,598,Kazakhstan Premier League,1,2003-04-12,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaRogaška",Rogaška,Slovenia,2155,35,Slovenian PrvaLiga,1,2023-07-22,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaSliven 2000",Sliven 2000,Bulgaria,2155,28,Bulgarian First League,1,2009-08-08,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GreeceKifisia",Kifisia,Greece,2154,64,Super League Greece,1,2023-08-20,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2127,8 +2126,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "HungaryNyíregyháza Spartacus",Nyíregyháza Spartacus,Hungary,2153,29,Nemzeti Bajnoksag I,1,2009-07-24,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UzbekistanNasaf",Nasaf,Uzbekistan,2153,386,Uzbekistan Super League,1,2010-03-13,1980,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaInternaţional",Internaţional,Romania,2153,34,SuperLiga,1,2009-07-31,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"NorwayStabæk",Stabæk,Norway,2153,534,Eliteserien,1,2000-04-08,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ScotlandPartick Thistle",Partick Thistle,Scotland,2153,2721,Scottish Premiership,1,1897-09-04,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"NorwayStabæk",Stabæk,Norway,2153,534,Eliteserien,1,2000-04-08,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CanadaSerbian White Eagles",Serbian White Eagles,Canada,2153,31,Canadian Premier League,1,2010-05-28,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaChinezul Timișoara",Chinezul Timișoara,Romania,2153,58,SuperLiga,1,1933-10-01,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandZawisza Bydgoszcz",Zawisza Bydgoszcz,Poland,2153,230,Ekstraklasa,1,1961-07-01,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2203,8 +2202,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RomaniaVictoria Cluj",Victoria Cluj,Romania,2149,22,SuperLiga,1,1935-07-05,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaProgresul",Progresul,Romania,2149,245,SuperLiga,1,1962-06-24,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaDravinja",Dravinja,Slovenia,2149,2,Slovenian PrvaLiga,1,2006-06-07,2150,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"KazakhstanShakhter Karagandy",Shakhter Karagandy,Kazakhstan,2149,567,Kazakhstan Premier League,1,2001-04-28,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungarySiófok",Siófok,Hungary,2149,98,Nemzeti Bajnoksag I,1,1997-01-01,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"KazakhstanShakhter Karagandy",Shakhter Karagandy,Kazakhstan,2149,567,Kazakhstan Premier League,1,2001-04-28,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaRodopa (Smolyan)",Rodopa (Smolyan),Bulgaria,2149,1,Bulgarian First League,1,2005-12-10,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EcuadorImbabura",Imbabura,Ecuador,2149,30,Ecuadorian Serie A,1,2024-03-03,2205,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaPirin 22",Pirin 22,Bulgaria,2149,1,Bulgarian First League,1,2025-05-29,2160,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2232,7 +2231,6 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RomaniaGloria Bistrita",Gloria Bistrita,Romania,2147,1,SuperLiga,1,2004-08-11,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaFC U Craiova 1948",FC U Craiova 1948,Romania,2147,117,SuperLiga,1,2021-07-16,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FinlandFC Honka",FC Honka,Finland,2147,25,Veikkausliiga,1,2008-04-27,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkIkast FS",Ikast FS,Denmark,2147,116,Danish Superliga,1,1993-08-01,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaBuzau",Buzau,Romania,2147,102,SuperLiga,1,1978-08-24,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyAdanaspor",Adanaspor,Turkey,2147,706,SÃ¼per Lig,1,1971-08-22,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IsraelHapoel Ramat Gan",Hapoel Ramat Gan,Israel,2147,71,Israeli Premier League,1,2009-08-22,2220,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2254,12 +2252,12 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "AustriaKapfenberg",Kapfenberg,Austria,2145,377,Austrian Bundesliga,1,1954-08-29,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "KuwaitKuwait SC",Kuwait SC,Kuwait,2145,310,Kuwait Premier League,1,2012-09-14,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaFCM Brasov",FCM Brasov,Romania,2145,11,SuperLiga,1,1987-01-01,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"BelarusGomel",Gomel,Belarus,2145,228,Belarusian Premier League,1,1998-07-25,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaDacia Vasile Alecsandri Galați",Dacia Vasile Alecsandri Galați,Romania,2145,1,SuperLiga,1,1932-05-07,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaJiul Lupeni",Jiul Lupeni,Romania,2145,1,SuperLiga,1,1932-06-05,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaOlimpia Satu Mare",Olimpia Satu Mare,Romania,2145,1,SuperLiga,1,1932-05-27,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaOlympia București",Olympia București,Romania,2145,1,SuperLiga,1,1923-06-24,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaTricolor București",Tricolor București,Romania,2145,1,SuperLiga,1,1922-07-08,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"BelarusGomel",Gomel,Belarus,2145,228,Belarusian Premier League,1,1998-07-25,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineFK Illichivets",FK Illichivets,Ukraine,2145,635,Ukrainian Premier League,1,1997-07-09,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ScotlandSaint Johnstone FC",Saint Johnstone FC,Scotland,2145,7,Scottish Premiership,1,2026-08-02,2130,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaTsarsko Selo",Tsarsko Selo,Bulgaria,2145,96,Bulgarian First League,1,2019-07-09,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2272,6 +2270,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "ChinaShandong Luneng",Shandong Luneng,China,2144,309,Chinese Super League,1,2010-03-27,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaFC Arge[ Pitesti",FC Arge[ Pitesti,Romania,2144,1,SuperLiga,1,1988-01-01,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UruguayVilla Teresa",Villa Teresa,Uruguay,2144,30,Uruguayan Primera División,1,2015-08-15,2198,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkIkast FS",Ikast FS,Denmark,2144,134,Danish Superliga,1,1991-03-17,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GreeceAo Kerkyra",Ao Kerkyra,Greece,2144,243,Super League Greece,1,2004-09-19,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusBATE",BATE,Belarus,2144,391,Belarusian Premier League,1,1998-07-25,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Czechia1 FK Drnovice",1 FK Drnovice,Czechia,2144,300,Czech First League,1,1993-08-15,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2292,8 +2291,9 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "BelgiumFC Seraing",FC Seraing,Belgium,2142,68,Belgian Pro League,1,2021-07-24,2215,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GeorgiaDinamo Tbilisi",Dinamo Tbilisi,Georgia,2142,761,Erovnuli Liga,1,1997-03-23,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PolandSandecja Nowy Sącz",Sandecja Nowy Sącz,Poland,2142,37,Ekstraklasa,1,2017-07-16,2185,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkHvidovre IF",Hvidovre IF,Denmark,2142,65,Danish Superliga,1,1996-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkB 1909 Odense",B 1909 Odense,Denmark,2142,18,Danish Superliga,1,1992-08-12,2235,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "JapanYokohama F. Marinos 0",Yokohama F. Marinos 0,Japan,2142,1,J1 100 Year Vision League,1,2021-05-01,2130,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkHvidovre IF",Hvidovre IF,Denmark,2142,65,Danish Superliga,1,1996-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "JapanKawasaki Frontale 0",Kawasaki Frontale 0,Japan,2142,1,J1 100 Year Vision League,1,2021-05-08,2130,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RussiaTyumen",Tyumen,Russia,2142,64,Russian Premier League,1,1997-03-17,2300,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusTarpeda-SKA",Tarpeda-SKA,Belarus,2142,60,Belarusian Premier League,1,2003-04-18,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2340,7 +2340,6 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "EnglandSheffield Wednesday",Sheffield Wednesday,England,2139,3700,First Division,1,1892-09-03,2450,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryBFC Siófok",BFC Siófok,Hungary,2139,29,Nemzeti Bajnoksag I,1,2007-07-21,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyKahramanmarasspor",Kahramanmarasspor,Turkey,2139,36,SÃ¼per Lig,1,1988-08-21,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkB 1909 Odense",B 1909 Odense,Denmark,2139,18,Danish Superliga,1,1992-08-12,2235,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayRanheim",Ranheim,Norway,2139,70,Eliteserien,1,2013-11-06,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TurkeyVefa Istanbul",Vefa Istanbul,Turkey,2139,422,SÃ¼per Lig,1,1959-02-25,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IranFoolad",Foolad,Iran,2139,407,Persian Gulf Pro League,1,2012-07-20,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2457,11 +2456,11 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "SloveniaElektroel. Zagorje",Elektroel. Zagorje,Slovenia,2130,39,Slovenian PrvaLiga,1,1991-08-18,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ParaguaySportivo San Lorenzo",Sportivo San Lorenzo,Paraguay,2130,120,Paraguayan Primera División,1,2015-02-01,2164,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaBaia Mare",Baia Mare,Romania,2130,136,SuperLiga,1,1978-08-24,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkNæstved BK",Næstved BK,Denmark,2129,147,Danish Superliga,1,1991-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineLivyi Bereh",Livyi Bereh,Ukraine,2129,30,Ukrainian Premier League,1,2024-08-04,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayHønefoss",Hønefoss,Norway,2129,62,Eliteserien,1,2010-03-14,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AzerbaijanKhazar",Khazar,Azerbaijan,2129,4,Azerbaijan Premier League,1,1996-12-07,2110,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArmeniaArarat-Arm",Ararat-Arm,Armenia,2129,36,Armenian Premier League,1,2022-07-31,2010,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkNæstved BK",Næstved BK,Denmark,2129,147,Danish Superliga,1,1991-07-28,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaLokomotiv Gorna Oryahovitsa",Lokomotiv Gorna Oryahovitsa,Bulgaria,2129,36,Bulgarian First League,1,2016-07-29,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwitzerlandFC Monthey",FC Monthey,Switzerland,2129,10,Swiss Super League,1,1931-01-11,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ChileU. San Felipe",U. San Felipe,Chile,2129,55,Chilean Primera División,1,2010-01-23,2156,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2557,8 +2556,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RomaniaU Cluj",U Cluj,Romania,2121,9,SuperLiga,1,1989-09-10,2155,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayValerenga",Valerenga,Norway,2121,54,Eliteserien,1,1999-04-10,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EnglandPort Vale",Port Vale,England,2121,1063,League One,3,2004-08-07,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"KazakhstanIrtysh Pavlodar",Irtysh Pavlodar,Kazakhstan,2120,351,Kazakhstan Premier League,1,2006-04-22,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusNyoman Hrodna",Nyoman Hrodna,Belarus,2120,150,Belarusian Premier League,1,2013-03-31,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"KazakhstanIrtysh Pavlodar",Irtysh Pavlodar,Kazakhstan,2120,351,Kazakhstan Premier League,1,2006-04-22,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaVidima-Rakovski",Vidima-Rakovski,Bulgaria,2120,60,Bulgarian First League,1,2003-08-09,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GreeceEthnikos Asteras",Ethnikos Asteras,Greece,2120,124,Super League Greece,1,1998-08-23,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ParaguayTembetary",Tembetary,Paraguay,2120,44,Paraguayan Primera División,1,2025-01-24,2164,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2603,10 +2602,10 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "Bosnia and HerzegovinaModrica",Modrica,Bosnia and Herzegovina,2117,3,Premier League of Bosnia and Herzegovina,1,2004-05-12,2100,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineFK Kremin",FK Kremin,Ukraine,2117,180,Ukrainian Premier League,1,1992-03-07,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ScotlandClyde FC",Clyde FC,Scotland,2117,1912,Scottish Premiership,1,1892-08-20,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkHB Køge",HB Køge,Denmark,2117,66,Danish Superliga,1,2009-07-19,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwitzerlandFC Fribourg",FC Fribourg,Switzerland,2117,170,Swiss Super League,1,1924-09-30,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "United StatesSan Jose Earthquakes",San Jose Earthquakes,United States,2117,408,Major League Soccer,1,2012-11-04,2268,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "HungaryBVSC",BVSC,Hungary,2117,39,Nemzeti Bajnoksag I,1,1997-01-01,2200,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkHB Køge",HB Køge,Denmark,2117,66,Danish Superliga,1,2009-07-19,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CambodiaPreah Khan Reach Svay Rieng",Preah Khan Reach Svay Rieng,Cambodia,2117,194,Cambodian Premier League,1,2016-02-21,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GeorgiaZestafoni",Zestafoni,Georgia,2117,269,Erovnuli Liga,1,2004-08-02,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusLyakamatyu V",Lyakamatyu V,Belarus,2116,26,Belarusian Premier League,1,2006-04-18,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2623,7 +2622,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "AzerbaijanPambygchi B",Pambygchi B,Azerbaijan,2116,12,Azerbaijan Premier League,1,1996-12-07,2110,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayStart",Start,Norway,2116,382,Eliteserien,1,1999-10-27,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaBrasov",Brasov,Romania,2116,647,SuperLiga,1,1965-07-10,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"ScotlandSt. Johnstone",St. Johnstone,Scotland,2115,1917,Scottish Premiership,1,1925-08-15,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"ScotlandSt. Johnstone",St. Johnstone,Scotland,2116,1917,Scottish Premiership,1,1925-08-15,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaPirin Blagoevgrad",Pirin Blagoevgrad,Bulgaria,2115,283,Bulgarian First League,1,1998-08-08,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusDnepr-TransMash",Dnepr-TransMash,Belarus,2115,111,Belarusian Premier League,1,2002-04-21,2080,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "South KoreaBucheon",Bucheon,South Korea,2115,2,K League 1,1,2025-12-05,2100,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2647,8 +2646,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "SlovakiaR. Sobota",R. Sobota,Slovakia,2113,14,Slovak First Football League,1,2007-03-03,2140,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwitzerlandChur 97",Chur 97,Switzerland,2113,14,Swiss Super League,1,1992-03-01,2200,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CzechiaChmel Blsany",Chmel Blsany,Czechia,2113,240,Czech First League,1,1998-08-02,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"GreecePAS Giannina",PAS Giannina,Greece,2113,514,Super League Greece,1,1990-09-16,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Sloveniaivila Naklo",ivila Naklo,Slovenia,2113,93,Slovenian PrvaLiga,1,1992-08-16,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"GreecePAS Giannina",PAS Giannina,Greece,2113,514,Super League Greece,1,1990-09-16,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "KazakhstanMegaSport",MegaSport,Kazakhstan,2112,29,Kazakhstan Premier League,1,2008-03-08,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineTemp Shepetivka",Temp Shepetivka,Ukraine,2112,86,Ukrainian Premier League,1,1992-03-06,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaOptimizem Svoboda",Optimizem Svoboda,Slovenia,2112,30,Slovenian PrvaLiga,1,1993-08-22,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2722,8 +2721,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "RomaniaPoli Iași",Poli Iași,Romania,2108,194,SuperLiga,1,2016-07-29,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ChileDep. La Serena",Dep. La Serena,Chile,2108,149,Chilean Primera División,1,2010-01-24,2156,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UkraineStal Alchevsk",Stal Alchevsk,Ukraine,2108,86,Ukrainian Premier League,1,2000-07-12,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"SerbiaBorac Čačak",Borac Čačak,Serbia,2108,204,Serbian SuperLiga,1,2007-06-23,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ScotlandHamilton Academical",Hamilton Academical,Scotland,2108,1586,Scottish Premiership,1,1906-08-15,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"SerbiaBorac Čačak",Borac Čačak,Serbia,2108,204,Serbian SuperLiga,1,2007-06-23,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CanadaBrantford Galaxy",Brantford Galaxy,Canada,2108,27,Canadian Premier League,1,2010-05-16,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PeruUniv. César Vallejo",Univ. César Vallejo,Peru,2107,296,Peruvian Primera División,1,2010-02-13,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IranZob Ahan",Zob Ahan,Iran,2107,413,Persian Gulf Pro League,1,2012-07-19,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2757,8 +2756,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "ParaguaySportivo Carapeguá",Sportivo Carapeguá,Paraguay,2105,88,Paraguayan Primera División,1,2012-02-03,2164,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Saudi ArabiaFaiha'a",Faiha'a,Saudi Arabia,2105,214,Saudi Pro League,1,2017-08-10,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SlovakiaLoko Kosice",Loko Kosice,Slovakia,2104,9,Slovak First Football League,1,1997-09-03,2140,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"MaldivesMaziya",Maziya,Maldives,2104,212,Dhivehi Premier League,1,2010-05-15,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ScotlandGretna FC",Gretna FC,Scotland,2104,38,Scottish Premiership,1,2007-08-04,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"MaldivesMaziya",Maziya,Maldives,2104,212,Dhivehi Premier League,1,2010-05-15,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "NorwayHaugesund",Haugesund,Norway,2104,456,Eliteserien,1,2000-04-09,2175,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AlbaniaElbasani",Elbasani,Albania,2104,438,Kategoria Superiore,1,1997-09-27,1990,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaDunav Ruse",Dunav Ruse,Bulgaria,2104,143,Bulgarian First League,1,2005-10-26,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2797,11 +2796,11 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "MoroccoRapide Oued Zem",Rapide Oued Zem,Morocco,2101,150,Botola Pro,1,2017-09-08,2125,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AzerbaijanShamakhi",Shamakhi,Azerbaijan,2101,106,Azerbaijan Premier League,1,2022-04-09,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AlbaniaTirana",Tirana,Albania,2101,895,Kategoria Superiore,1,1997-09-27,1990,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"DenmarkB.93 København",B.93 København,Denmark,2101,33,Danish Superliga,1,1998-07-26,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EstoniaTVMK Tallinn",TVMK Tallinn,Estonia,2101,164,Meistriliiga,1,1999-04-04,1900,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MoldovaMilsami",Milsami,Moldova,2101,382,Moldovan Super Liga,1,2011-07-23,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustraliaCentral Coast",Central Coast,Australia,2101,36,A-League Men,1,2010-08-05,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Bosnia and HerzegovinaMetalleghe-BSI",Metalleghe-BSI,Bosnia and Herzegovina,2101,32,Premier League of Bosnia and Herzegovina,1,2016-07-23,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"DenmarkB.93 København",B.93 København,Denmark,2101,33,Danish Superliga,1,1998-07-26,2235,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ChileCopiapó",Copiapó,Chile,2101,60,Chilean Primera División,1,2023-01-22,2156,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusLok-96",Lok-96,Belarus,2101,7,Belarusian Premier League,1,1998-07-25,2080,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AzerbaijanDalgich",Dalgich,Azerbaijan,2100,1,Azerbaijan Premier League,1,1998-08-15,2110,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2916,8 +2915,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "VenezuelaCaracas",Caracas,Venezuela,2091,498,Venezuelan Primera División,1,2010-08-08,2005,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "South KoreaDaegu",Daegu,South Korea,2091,361,K League 1,1,2010-02-27,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "KazakhstanKyran",Kyran,Kazakhstan,2091,2,Kazakhstan Premier League,1,2018-11-16,2110,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"BulgariaMarek Dupnitsa",Marek Dupnitsa,Bulgaria,2091,192,Bulgarian First League,1,2001-08-04,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TunisiaES Zarzis",ES Zarzis,Tunisia,2091,172,Tunisian Ligue Professionnelle 1,1,2010-07-03,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"BulgariaMarek Dupnitsa",Marek Dupnitsa,Bulgaria,2091,192,Bulgarian First League,1,2001-08-04,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Republic of IrelandWaterford U",Waterford U,Republic of Ireland,2091,25,League of Ireland Premier Division,1,1998-10-23,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenAFC Eskilstuna",AFC Eskilstuna,Sweden,2091,62,Allsvenskan,1,2017-04-02,2165,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaArgeş",Argeş,Romania,2091,43,SuperLiga,1,1989-09-10,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -2939,9 +2938,9 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "Bosnia and HerzegovinaTuzla (Tuzla)",Tuzla (Tuzla),Bosnia and Herzegovina,2090,1,Premier League of Bosnia and Herzegovina,1,2005-09-21,2100,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Bosnia and HerzegovinaVitez FIS (Vitez)",Vitez FIS (Vitez),Bosnia and Herzegovina,2090,1,Premier League of Bosnia and Herzegovina,1,2004-09-22,2100,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "RomaniaConcordia Chiajna",Concordia Chiajna,Romania,2090,261,SuperLiga,1,2012-07-23,2155,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"SwedenHelsingborgs IF",Helsingborgs IF,Sweden,2090,587,Allsvenskan,1,1994-10-27,2165,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SerbiaRadnik Surdulica",Radnik Surdulica,Serbia,2090,327,Serbian SuperLiga,1,2015-07-18,2225,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "KazakhstanOkzhetpes",Okzhetpes,Kazakhstan,2090,368,Kazakhstan Premier League,1,2004-04-03,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"SwedenHelsingborgs IF",Helsingborgs IF,Sweden,2090,587,Allsvenskan,1,1994-10-27,2165,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Bosnia and HerzegovinaBosna (Kalesija)",Bosna (Kalesija),Bosnia and Herzegovina,2090,1,Premier League of Bosnia and Herzegovina,1,2005-09-21,2100,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Bosnia and HerzegovinaVogosca (Vogosca)",Vogosca (Vogosca),Bosnia and Herzegovina,2090,1,Premier League of Bosnia and Herzegovina,1,2005-09-21,2100,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "South KoreaAnyang",Anyang,South Korea,2090,2,K League 1,1,2022-10-26,2100,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -3023,8 +3022,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "AzerbaijanMuğan",Muğan,Azerbaijan,2081,50,Azerbaijan Premier League,1,2008-11-09,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BelarusBelshyna",Belshyna,Belarus,2081,8,Belarusian Premier League,1,2000-08-27,2080,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CanadaMississauga Eagles",Mississauga Eagles,Canada,2081,2,Canadian Premier League,1,2011-10-07,2100,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"KazakhstanAtyrau",Atyrau,Kazakhstan,2081,594,Kazakhstan Premier League,1,2001-07-28,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MaltaMarsaxlokk",Marsaxlokk,Malta,2081,298,Maltese Premier League,1,2002-08-25,1870,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"KazakhstanAtyrau",Atyrau,Kazakhstan,2081,594,Kazakhstan Premier League,1,2001-07-28,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaBeltinci",Beltinci,Slovenia,2080,132,Slovenian PrvaLiga,1,1994-08-14,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AzerbaijanKarat",Karat,Azerbaijan,2080,32,Azerbaijan Premier League,1,2004-08-07,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EgyptIttihad",Ittihad,Egypt,2080,404,Egyptian Premier League,1,2013-02-02,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -3103,10 +3102,10 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "Bosnia and HerzegovinaSlavija",Slavija,Bosnia and Herzegovina,2075,342,Premier League of Bosnia and Herzegovina,1,2004-08-07,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AzerbaijanGäncä",Gäncä,Azerbaijan,2075,21,Azerbaijan Premier League,1,2005-08-12,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "FinlandFF Jaro",FF Jaro,Finland,2075,294,Veikkausliiga,1,2004-05-07,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"KazakhstanSpartak",Spartak,Kazakhstan,2075,33,Kazakhstan Premier League,1,2013-11-06,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GreeceAthinaikos",Athinaikos,Greece,2075,268,Super League Greece,1,1990-09-16,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaLivar",Livar,Slovenia,2075,26,Slovenian PrvaLiga,1,2007-07-22,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PeruUniv.San Martin de P.",Univ.San Martin de P.,Peru,2075,30,Peruvian Primera División,1,2011-02-12,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"KazakhstanSpartak",Spartak,Kazakhstan,2075,33,Kazakhstan Premier League,1,2013-11-06,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GeorgiaDinamo B",Dinamo B,Georgia,2075,8,Erovnuli Liga,1,1999-03-01,2030,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "JapanShonan Bellmare",Shonan Bellmare,Japan,2075,405,J1 100 Year Vision League,1,2010-03-06,2130,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaGaj Kocevje",Gaj Kocevje,Slovenia,2075,29,Slovenian PrvaLiga,1,1994-08-14,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -3128,7 +3127,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "GreeceThrasyvoulos Fylis",Thrasyvoulos Fylis,Greece,2074,30,Super League Greece,1,2008-08-31,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BulgariaNeftokhimik",Neftokhimik,Bulgaria,2074,38,Bulgarian First League,1,2013-07-21,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "UruguayVilla Española",Villa Española,Uruguay,2074,45,Uruguayan Primera División,1,2016-08-28,2198,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"SlovakiaPúchov",Púchov,Slovakia,2074,180,Slovak First Football League,1,2001-07-14,2140,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"SlovakiaPúchov",Púchov,Slovakia,2073,180,Slovak First Football League,1,2001-07-14,2140,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SloveniaSteklar",Steklar,Slovenia,2073,34,Slovenian PrvaLiga,1,1992-08-16,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IcelandKR U-23",KR U-23,Iceland,2073,2,Besta deild karla,1,1998-06-18,2070,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AustriaVorwaerts Steyr",Vorwaerts Steyr,Austria,2073,296,Austrian Bundesliga,1,1988-07-23,2210,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -3218,8 +3217,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "MoroccoMC Oujda",MC Oujda,Morocco,2065,206,Botola Pro,1,2015-09-06,2125,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ScotlandCowlairs FC",Cowlairs FC,Scotland,2065,18,Scottish Premiership,1,1890-08-16,2130,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AlgeriaNC Magra",NC Magra,Algeria,2065,184,Algerian Ligue Professionnelle 1,1,2019-08-15,2025,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"GeorgiaD Batumi",D Batumi,Georgia,2065,22,Erovnuli Liga,1,1995-08-02,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SwedenGIF Sundsvall",GIF Sundsvall,Sweden,2065,370,Allsvenskan,1,2000-04-10,2165,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"GeorgiaD Batumi",D Batumi,Georgia,2065,22,Erovnuli Liga,1,1995-08-02,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IranMalavan",Malavan,Iran,2064,226,Persian Gulf Pro League,1,2012-07-19,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "VenezuelaMonagas",Monagas,Venezuela,2064,377,Venezuelan Primera División,1,2010-08-08,2005,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "OmanSeeb",Seeb,Oman,2064,213,Oman Professional League,1,2012-05-25,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -3356,8 +3355,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "BelarusVedrych",Vedrych,Belarus,2052,7,Belarusian Premier League,1,2001-04-11,2080,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SlovakiaNitra",Nitra,Slovakia,2052,374,Slovak First Football League,1,1999-03-10,2140,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Bosnia and HerzegovinaTravnik",Travnik,Bosnia and Herzegovina,2051,341,Premier League of Bosnia and Herzegovina,1,2003-08-02,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"KazakhstanQaysar",Qaysar,Kazakhstan,2051,348,Kazakhstan Premier League,1,2003-04-15,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IcelandIBK",IBK,Iceland,2051,138,Besta deild karla,1,1982-05-15,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"KazakhstanQaysar",Qaysar,Kazakhstan,2051,348,Kazakhstan Premier League,1,2003-04-15,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GibraltarSt Joseph's",St Joseph's,Gibraltar,2051,491,Gibraltar Football League,1,2000-10-14,1650,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SlovakiaPohronie",Pohronie,Slovakia,2051,91,Slovak First Football League,1,2019-07-20,2140,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "QatarArabi",Arabi,Qatar,2051,303,Qatar Stars League,1,2012-09-15,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -3376,8 +3375,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "AzerbaijanGabala",Gabala,Azerbaijan,2050,525,Azerbaijan Premier League,1,2007-08-11,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Republic of IrelandCobh R",Cobh R,Republic of Ireland,2050,2,League of Ireland Premier Division,1,1999-05-05,2070,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "SlovakiaPrešov",Prešov,Slovakia,2050,163,Slovak First Football League,1,2008-07-19,2140,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"PeruUniv.San Martín de P.",Univ.San Martín de P.,Peru,2050,30,Peruvian Primera División,1,2012-04-04,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IcelandAfturelding",Afturelding,Iceland,2050,28,Besta deild karla,1,1998-06-18,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"PeruUniv.San Martín de P.",Univ.San Martín de P.,Peru,2050,30,Peruvian Primera División,1,2012-04-04,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "LuxembourgUS Hollerich",US Hollerich,Luxembourg,2049,23,Luxembourg National Division,1,1909-12-12,1940,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Saudi ArabiaAdala",Adala,Saudi Arabia,2049,60,Saudi Pro League,1,2019-08-22,2100,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "EcuadorOlmedo",Olmedo,Ecuador,2049,176,Ecuadorian Serie A,1,2010-02-06,2205,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -3478,8 +3477,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "North MacedoniaAP Brera",AP Brera,North Macedonia,2038,88,Macedonian First Football League,1,2023-08-06,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ChinaHenan",Henan,China,2038,86,Chinese Super League,1,2023-04-16,2000,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "PeruEMD Binacional Jul.",EMD Binacional Jul.,Peru,2038,3,Peruvian Primera División,1,2019-08-10,2030,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"BulgariaHebar Pazardzhik",Hebar Pazardzhik,Bulgaria,2038,130,Bulgarian First League,1,2000-08-05,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Northern IrelandCliftonville",Cliftonville,Northern Ireland,2038,1001,NIFL Premiership,1,1997-02-01,1990,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"BulgariaHebar Pazardzhik",Hebar Pazardzhik,Bulgaria,2038,130,Bulgarian First League,1,2000-08-05,2160,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IcelandÍBA",ÍBA,Iceland,2038,159,Besta deild karla,1,1956-06-10,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GabonMangasport",Mangasport,Gabon,2037,189,Gabon National Foot 1,1,2012-10-20,1780,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "LithuaniaPanevėžys",Panevėžys,Lithuania,2037,228,A Lyga,1,2019-03-02,1910,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -3898,7 +3897,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "ArmeniaLernayin Artsakh Yerevan",Lernayin Artsakh Yerevan,Armenia,1996,11,Armenian Premier League,1,2005-04-12,2010,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IranShahin",Shahin,Iran,1996,30,Persian Gulf Pro League,1,2019-08-24,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GreeceAgs Kastoria",Ags Kastoria,Greece,1996,34,Super League Greece,1,1996-09-06,2150,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"KazakhstanTuran",Turan,Kazakhstan,1996,102,Kazakhstan Premier League,1,2021-03-13,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"KazakhstanTuran",Turan,Kazakhstan,1995,102,Kazakhstan Premier League,1,2021-03-13,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "South AfricaMaritzburg United",Maritzburg United,South Africa,1995,393,South African Premiership,1,2010-08-29,2025,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "GeorgiaMtskheta",Mtskheta,Georgia,1995,19,Erovnuli Liga,1,2003-07-27,2030,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "AzerbaijanKarvan",Karvan,Azerbaijan,1995,190,Azerbaijan Premier League,1,2004-08-07,2110,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -3978,8 +3977,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "GhanaAsante Kotoko",Asante Kotoko,Ghana,1990,368,Ghana Premier League,1,2012-10-07,1925,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BangladeshDhaka Mohammedan",Dhaka Mohammedan,Bangladesh,1990,250,Bangladesh Football League,1,2010-12-28,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TaiwanTatung",Tatung,Taiwan,1989,183,Taiwan Football Premier League,1,2010-04-10,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"North MacedoniaMetalurg",Metalurg,North Macedonia,1989,247,Macedonian First Football League,1,2008-08-06,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "KosovoSuhareka",Suhareka,Kosovo,1989,35,Football Superleague of Kosovo,1,2024-08-11,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"North MacedoniaMetalurg",Metalurg,North Macedonia,1989,247,Macedonian First Football League,1,2008-08-06,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "North MacedoniaMilano",Milano,North Macedonia,1989,90,Macedonian First Football League,1,2007-08-05,2030,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "WalesFlint Town United",Flint Town United,Wales,1989,128,Cymru Premier,1,2020-09-12,1970,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Ivory CoastASEC",ASEC,Ivory Coast,1989,26,Ligue 1,1,2010-01-17,1930,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -4524,8 +4523,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "DR CongoOC Renaissance",OC Renaissance,DR Congo,1933,40,Linafoot,1,2023-09-13,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "TunisiaUS Tataouine",US Tataouine,Tunisia,1933,204,Tunisian Ligue Professionnelle 1,1,2016-09-18,2050,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MauritiusPamplemousses SC",Pamplemousses SC,Mauritius,1933,208,Mauritian Premier League,1,2010-03-21,1780,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"BahrainRiffa",Riffa,Bahrain,1933,254,Bahraini Premier League,1,2012-09-21,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "WalesNewtown FC",Newtown FC,Wales,1933,17,Cymru Premier,1,2011-08-13,1970,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"BahrainRiffa",Riffa,Bahrain,1933,254,Bahraini Premier League,1,2012-09-21,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "CongoAC Léopards de Dolisie",AC Léopards de Dolisie,Congo,1933,329,Congo Ligue 1,1,2011-09-07,1780,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BoliviaABB",ABB,Bolivia,1933,32,Bolivian Primera División,1,2025-03-29,1955,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "LithuaniaSpyris",Spyris,Lithuania,1932,35,A Lyga,1,2015-03-01,1910,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -4948,12 +4947,12 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "HondurasNecaxa",Necaxa,Honduras,1890,2,Liga Nacional,1,2011-11-23,1900,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "LesothoLifofane",Lifofane,Lesotho,1890,111,Lesotho Premier League,1,2019-09-15,1780,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MalaysiaPerak",Perak,Malaysia,1890,190,Malaysia Super League,1,2010-01-09,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"AndorraSant Julià",Sant Julià,Andorra,1890,130,Primera Divisio,1,2001-03-18,1700,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "DR CongoDC Virunga",DC Virunga,DR Congo,1890,39,Linafoot,1,2012-02-14,1950,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "LatviaPFK/Daugava",PFK/Daugava,Latvia,1890,29,Latvian Higher League,1,2001-09-08,1920,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "IndonesiaBali United",Bali United,Indonesia,1890,315,Super League,1,2016-05-01,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Ivory CoastSabé",Sabé,Ivory Coast,1890,26,Ligue 1,1,2010-01-17,1930,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "BotswanaTAFIC",TAFIC,Botswana,1890,159,Botswana Premier League,1,2012-09-22,1780,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"AndorraSant Julià",Sant Julià,Andorra,1890,130,Primera Divisio,1,2001-03-18,1700,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MozambiqueFerroviário Beira",Ferroviário Beira,Mozambique,1890,201,Moçambola,1,2013-03-31,1780,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "MalaysiaTerengganu",Terengganu,Malaysia,1890,263,Malaysia Super League,1,2010-01-09,1800,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "LithuaniaDFK Dainava",DFK Dainava,Lithuania,1889,2,A Lyga,1,2018-10-28,1910,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -4973,7 +4972,7 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "BahamasWestern Warriors",Western Warriors,Bahamas,1888,39,BFA Senior League,1,2014-10-29,1680,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "LatviaZibens/Z",Zibens/Z,Latvia,1888,4,Latvian Higher League,1,2001-09-08,1920,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ThailandAir Force United",Air Force United,Thailand,1888,4,Thai League 1,1,2010-11-27,1920,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"Republic of IrelandUCD",UCD,Republic of Ireland,1887,504,League of Ireland Premier Division,1,1997-08-31,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"Republic of IrelandUCD",UCD,Republic of Ireland,1888,504,League of Ireland Premier Division,1,1997-08-31,2070,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ThailandNavy",Navy,Thailand,1887,68,Thai League 1,1,2017-02-12,1920,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "LatviaFK Valmiera",FK Valmiera,Latvia,1887,28,Latvian Higher League,1,1998-04-18,1920,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "New ZealandAuckland FC",Auckland FC,New Zealand,1887,10,New Zealand National League,1,2025-09-27,1850,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
@@ -8802,8 +8801,8 @@ TeamKey,Team,Country,Rating,Games,FirstLeague,FirstTier,FirstMatchDate,EntryRati
 "Papua New GuineaLae",Lae,Papua New Guinea,1576,11,Papua New Guinea National Soccer League,1,2014-02-08,1550,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Papua New GuineaUnited Highlands",United Highlands,Papua New Guinea,1576,46,Papua New Guinea National Soccer League,1,2023-07-01,1550,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Trinidad and TobagoMoruga FC",Moruga FC,Trinidad and Tobago,1576,18,TT Premier Football League,1,2022-03-26,1680,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
-"AndorraFC Casa Benfica",FC Casa Benfica,Andorra,1575,25,Primera Divisio,1,2006-01-22,1700,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "VanuatuM3 United",M3 United,Vanuatu,1575,5,Vanuatu National League,1,2025-06-12,1550,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
+"AndorraFC Casa Benfica",FC Casa Benfica,Andorra,1575,25,Primera Divisio,1,2006-01-22,1700,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "ArubaBrazil Juniors",Brazil Juniors,Aruba,1575,57,Aruban Division di Honor,1,2014-10-14,1680,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Trinidad and TobagoT&TEC",T&TEC,Trinidad and Tobago,1575,21,TT Premier Football League,1,2012-09-15,1680,TRUE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50
 "Papua New GuineaKuri",Kuri,Papua New Guinea,1574,9,Papua New Guinea National Soccer League,1,2022-10-15,1550,FALSE,Pass1_SeedTier,SeedByFirstTier,20,40,60,20,100,CountrySpecific_Tier1AndTier2,50

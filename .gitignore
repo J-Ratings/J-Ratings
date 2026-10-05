@@ -68,3 +68,7 @@ EuropeanFootball/pipeline_data/Elo/canonical_duplicate_fixtures.csv
 EuropeanFootball/pipeline_data/Elo/future_dated_completed_matches.csv
 EuropeanFootball/pipeline_data/Matches_Clean_Combined/european_football_master_v2.csv
 EuropeanFootball/pipeline_data/Matches_Clean_Combined/quote_repair_*.csv
+
+# Local source-repair backups, staging files, and isolated test workspaces
+EuropeanFootball/pipeline_data/Audit/denmark_russia_source_repair/
+EuropeanFootball/pipeline_data/Audit/denmark_source_rebuild/

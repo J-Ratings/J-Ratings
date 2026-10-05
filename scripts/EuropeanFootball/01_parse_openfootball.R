@@ -2402,6 +2402,11 @@ if (file.exists(out_file)) {
 # -----------------------------
 # Duplicate protection / reconciliation
 # -----------------------------
+if (file.exists(file.path(repo_dir, "EuropeanFootball/pipeline_data/Reference/denmark_source_policy.txt"))) {
+  source(file.path(repo_dir, "scripts/EuropeanFootball/denmark_source_rebuild.R"))
+  all_df <- replace_denmark_sources(all_df, build_denmark_sources(repo_dir))
+  all_df <- all_df[, required_cols]
+}
 # Some OpenFootball files occasionally repeat an identical fixture line.
 # Exact/reconcilable repeats are harmless and should not block the pipeline.
 # However, genuinely conflicting duplicates (same fixture key but different

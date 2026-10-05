@@ -41,7 +41,8 @@ OUT_DIR <- file.path(
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
 CHECKPOINT_DATE <- as.Date("2024-12-31")
 CHECKPOINT_FILE <- file.path(OUT_DIR, "checkpoint_2024_12_31.rds")
-elo_checkpoint <- if (file.exists(CHECKPOINT_FILE)) readRDS(CHECKPOINT_FILE) else NULL
+REBUILD_MARKER <- file.path(OUT_DIR, "rebuild_required.txt")
+elo_checkpoint <- if (file.exists(CHECKPOINT_FILE) && !file.exists(REBUILD_MARKER)) readRDS(CHECKPOINT_FILE) else NULL
 if (!is.null(elo_checkpoint) && !identical(elo_checkpoint$version, 1L)) stop("Unsupported Elo checkpoint version.")
 
 OUTPUT_GAME_HISTORY_CSV_PASS1  <- file.path(OUT_DIR, "football_elo_game_history_pass1.csv")
@@ -1168,7 +1169,9 @@ if (is.null(elo_checkpoint)) {
     frozen_retro_map=retro_start_map[names(pass2$boundary_state$ratings)])
   checkpoint_tmp <- paste0(CHECKPOINT_FILE, ".tmp")
   saveRDS(checkpoint, checkpoint_tmp, compress=FALSE)
-  if (!file.rename(checkpoint_tmp, CHECKPOINT_FILE)) stop("Could not save checkpoint.")
+  if (!file.copy(checkpoint_tmp, CHECKPOINT_FILE, overwrite=TRUE)) stop("Could not save checkpoint.")
+  file.remove(checkpoint_tmp)
+  if (file.exists(REBUILD_MARKER) && !file.remove(REBUILD_MARKER)) stop("Could not clear rebuild marker.")
   cat("Created permanent end-of-2024 checkpoint:", CHECKPOINT_FILE, "\n")
 }
 
