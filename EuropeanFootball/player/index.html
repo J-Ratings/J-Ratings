@@ -589,8 +589,8 @@ body,
             <label for="agg">View:</label>
             <select id="agg">
               <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
-              <option value="monthly" selected>Monthly</option>
+              <option value="weekly" selected>Weekly</option>
+              <option value="monthly">Monthly</option>
               <option value="yearly">Yearly</option>
               <option value="decade">Decade</option>
             </select>
@@ -670,7 +670,7 @@ body,
   let RAW = [];
   let CURRENT_TEAM = null;
   let SINCE_YEAR = 2010;
-  let AGG_MODE = 'monthly';
+  let AGG_MODE = 'weekly';
   let teamChart = null;
 
   
@@ -710,9 +710,16 @@ function normalise(series, dedupeByDay = false) {
 
     for (const p of series) {
       const d = new Date(p.x);
-      const key = mode === 'monthly'
-        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
-        : `${d.getFullYear()}`;
+      if (Number.isNaN(d.getTime())) continue;
+      let key;
+      if (mode === 'weekly') {
+        const daysSinceMonday = (d.getUTCDay() + 6) % 7;
+        key = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - daysSinceMonday)).toISOString().slice(0, 10);
+      } else if (mode === 'monthly') {
+        key = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`;
+      } else {
+        key = `${d.getUTCFullYear()}`;
+      }
 
       (buckets[key] ||= []).push(p);
     }
@@ -721,7 +728,7 @@ function normalise(series, dedupeByDay = false) {
       const pts = buckets[k].filter(p => Number.isFinite(p.y));
       const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
       const lastTier = pts.length ? (pts[pts.length - 1].tier ?? null) : null;
-      const x = k.length === 7 ? `${k}-01` : `${k}-01-01`;
+      const x = k.length === 10 ? k : k.length === 7 ? `${k}-01` : `${k}-01-01`;
 
       return { x, y: avg, tier: lastTier };
     });
@@ -1608,7 +1615,7 @@ CURRENT_TEAM = me;
             true
           );
 
-          const initialMode = 'monthly';
+          const initialMode = 'weekly';
           AGG_MODE = initialMode;
           document.getElementById('agg').value = initialMode;
 

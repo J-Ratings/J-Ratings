@@ -298,7 +298,8 @@ body,
         <label for="agg">View:</label>
         <select id="agg">
               <option value="daily">Daily</option>
-              <option value="monthly" selected>Monthly</option>
+              <option value="weekly" selected>Weekly</option>
+              <option value="monthly">Monthly</option>
               <option value="yearly">Yearly</option>
             </select>
         <div class="range-buttons">
@@ -330,7 +331,7 @@ body,
 
   let TEAM_COLOURS = {};
   let SINCE_YEAR = null;
-  let AGG_MODE = 'monthly';
+  let AGG_MODE = 'weekly';
   let chartVisibleSeries = [];
 
   function normalise(series, dedupeByDay = false) {
@@ -368,9 +369,16 @@ body,
 
     for (const p of series) {
       const d = new Date(p.x);
-      const key = (mode === 'monthly')
-        ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
-        : `${d.getFullYear()}`;
+      if (Number.isNaN(d.getTime())) continue;
+      let key;
+      if (mode === 'weekly') {
+        const daysSinceMonday = (d.getUTCDay() + 6) % 7;
+        key = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - daysSinceMonday)).toISOString().slice(0, 10);
+      } else if (mode === 'monthly') {
+        key = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`;
+      } else {
+        key = `${d.getUTCFullYear()}`;
+      }
 
       (buckets[key] ||= []).push(p);
     }
@@ -379,7 +387,7 @@ body,
       const pts = buckets[k].filter(p => Number.isFinite(p.y));
       const avg = pts.reduce((a, b) => a + b.y, 0) / pts.length;
       const lastTier = pts.length ? (pts[pts.length - 1].tier ?? null) : null;
-      const x = (k.length === 7) ? `${k}-01` : `${k}-01-01`;
+      const x = k.length === 10 ? k : k.length === 7 ? `${k}-01` : `${k}-01-01`;
 
       return { x, y: avg, tier: lastTier };
     });
@@ -725,7 +733,7 @@ body,
     document.getElementById('chart').textContent = 'Cleared.';
 
     SINCE_YEAR = null;
-    AGG_MODE = 'monthly';
+    AGG_MODE = 'weekly';
 
     const agg = document.getElementById('agg');
     if (agg) agg.value = AGG_MODE;
