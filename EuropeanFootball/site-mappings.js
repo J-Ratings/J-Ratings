@@ -51,3 +51,42 @@ window.JR_applyBadgeStyle = function(el, country, competition) {
   el.style.background = style.background; el.style.color = style.color;
 };
 
+
+// Remove the country repeated within a league name while keeping raw data intact.
+window.JR_shortLeagueName = function(country, league) {
+  const key = String(country || '').trim().toLowerCase();
+  let name = String(league || '').trim();
+  const special = {
+    'campeonato brasileiro série a': 'Série A',
+    'campeonato brasileiro serie a': 'Serie A',
+    'campeonato nacional de fútbol de cuba': 'Campeonato Nacional de Fútbol',
+    'liga dominicana de fútbol': 'Liga de Fútbol',
+    'liga panameña de fútbol': 'Liga de Fútbol',
+    'liga puerto rico': 'Liga',
+    'ligue haïtienne': 'Ligue',
+    'guinée championnat national': 'Championnat National'
+  };
+  if (special[name.toLowerCase()]) return special[name.toLowerCase()];
+  const adjectives = {
+    argentina: 'Argentine', algeria: 'Algerian', aruba: 'Aruban',
+    bahrain: 'Bahraini', bermuda: 'Bermudian', bolivia: 'Bolivian',
+    'burkina faso': 'Burkinabé', cambodia: 'Cambodian', 'cape verde': 'Cape Verdean',
+    chile: 'Chilean', china: 'Chinese', denmark: 'Danish', ecuador: 'Ecuadorian',
+    egypt: 'Egyptian', eritrea: 'Eritrean', ethiopia: 'Ethiopian', india: 'Indian',
+    jordan: 'Jordanian', kenya: 'Kenyan', kyrgyzstan: 'Kyrgyz', laos: 'Lao',
+    lebanon: 'Lebanese', libya: 'Libyan', mali: 'Malian', mongolia: 'Mongolian',
+    paraguay: 'Paraguayan', peru: 'Peruvian', 'saudi arabia': 'Saudi',
+    somalia: 'Somali', 'south africa': 'South African', syria: 'Syrian',
+    tanzania: 'Tanzanian', thailand: 'Thai', tunisia: 'Tunisian',
+    uruguay: 'Uruguayan', venezuela: 'Venezuelan', 'united arab emirates': 'UAE'
+  };
+  for (const prefix of [key, adjectives[key]].filter(Boolean)) {
+    if (name.toLowerCase().startsWith(prefix.toLowerCase() + ' ')) {
+      name = name.slice(prefix.length).trim();
+      break;
+    }
+  }
+  const suffix = ' of ' + key;
+  if (key && name.toLowerCase().endsWith(suffix)) name = name.slice(0, -suffix.length).trim();
+  return name;
+};

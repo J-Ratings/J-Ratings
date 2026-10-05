@@ -642,7 +642,7 @@ body,
   </section>
 </main>
 
-<script src="../site-mappings.js"></script>
+<script src="../site-mappings.js?v=20261005"></script>
 <script>
   const PAGE_SIZE = 100;
   let pastGamesVisible = PAGE_SIZE;
@@ -1185,7 +1185,7 @@ if (total === 99) {
       'nemzeti bajnoksag i': 'Nemzeti Bajnoksag',
       'cymru premier': 'Premier'
     };
-    const displayName = compact[league.toLowerCase()] || league;
+    const displayName = window.JR_shortLeagueName(countryKey, compact[league.toLowerCase()] || league);
     const displayLeague = country && displayName ? `${country} - ${displayName}` : displayName;
     if (displayLeague && season) return `${displayLeague} ${season}`;
     return displayLeague || season || '';

@@ -976,7 +976,7 @@ body,
   </footer>
 </main>
 
-<script src="../site-mappings.js"></script>
+<script src="../site-mappings.js?v=20261005"></script>
 <script>
   const DATA_URL = '../data/teams.json';
   const SEASON_STARTS_URL = '../data/season_starts.json';
@@ -1099,8 +1099,8 @@ body,
       , 'Nemzeti Bajnokság I': 'Nemzeti Bajnoksag'
       , 'Cymru Premier': 'Premier'
     };
-    const displayBase = compact[base] || base;
     const country = countryForTeam(row);
+    const displayBase = window.JR_shortLeagueName(country, compact[base] || base);
     const shortCountryLabels = {
       bosnia: 'Bos & Herz',
       'northern ireland': 'N. Ireland',
@@ -2167,7 +2167,7 @@ applyFilter();
 
     const groups = new Map();
 
-    for (const row of state.rows || []) {
+    for (const row of state.filtered || []) {
       const league = tierLabel(row);
       const rating = Number(row.rating);
 
@@ -2191,6 +2191,7 @@ applyFilter();
       .sort((a, b) => b.average - a.average || a.league.localeCompare(b.league));
 
     list.innerHTML = '';
+    if (!averages.length) list.textContent = 'No leagues match the current filters.';
 
     averages.forEach((item, index) => {
       const row = document.createElement('div');
