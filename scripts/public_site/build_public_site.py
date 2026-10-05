@@ -6,7 +6,7 @@ import shutil
 import sys
 from pathlib import Path
 
-PUBLIC_START_YEAR = 2020
+PUBLIC_START_YEAR = 2023
 PUBLIC_START = f"{PUBLIC_START_YEAR}-01-01"
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -77,6 +77,7 @@ EUROPEAN_FOOTBALL_PRIVATE_PATHS = [
     Path("EuropeanFootball/data/playback"),
     Path("EuropeanFootball/data/simulations"),
 Path("EuropeanFootball/data/top_teams.json"),
+Path("EuropeanFootball/data/top_teams"),
 Path("EuropeanFootball/Planned Competition.xlsx"),
 Path("EuropeanFootball/premier_league_simulator_prototype.html"),
 ]
@@ -109,6 +110,8 @@ PUBLIC_PRIVATE_DIRECTORIES = [
 
 # International Football tournament/simulation work is also private for now.
 PUBLIC_PRIVATE_DIRECTORIES += [
+    Path("sports/WorldRugby"),
+    Path("Go/data/players_missing_flags_peak_3200_plus.csv"),
     Path("InternationalFootball/tournaments"),
     Path("InternationalFootball/data/tournaments"),
     Path("InternationalFootball/data/tournament-structure"),
@@ -132,6 +135,8 @@ def copy_tree_filtered(src: Path, dst: Path) -> None:
         if item.is_dir():
             target.mkdir(parents=True, exist_ok=True)
         elif item.is_file():
+            if item.suffix.lower() in {".csv", ".parquet", ".rds"}:
+                continue
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(item, target)
 
@@ -141,7 +146,7 @@ def remove_private_paths() -> None:
         target = OUT_DIR / rel
 
         if target.is_dir():
-            shutil.rmtree(target)
+            _remove_tree(target)
             print(f"Removed private directory: {rel.as_posix()}")
         elif target.is_file():
             target.unlink()
@@ -152,7 +157,7 @@ def remove_private_paths() -> None:
         target = OUT_DIR / rel
 
         if target.is_dir():
-            shutil.rmtree(target)
+            _remove_tree(target)
             print(f"Removed private directory: {rel.as_posix()}")
         elif target.is_file():
             target.unlink()
@@ -629,18 +634,27 @@ def make_history_range_teasers(s: str) -> str:
 
         return opening + match.group("inner") + "</button>"
 
+    def add_start_button(match):
+        block = match.group(0)
+        attr = "data-range" if "data-range=" in block else "data-since"
+        if not re.search(rf'data-(?:range|since)=["\']{PUBLIC_START_YEAR}["\']', block):
+            button = f'<button type="button" class="range-btn" {attr}="{PUBLIC_START_YEAR}">Since {PUBLIC_START_YEAR}</button>'
+            block = re.sub(r"</div>\s*$", button + "</div>", block)
+        return block
+
+    s = re.sub(r'<div\b[^>]*class=["\'][^"\']*range-buttons[^"\']*["\'][^>]*>[\s\S]*?</div>', add_start_button, s)
     s = button_re.sub(repl, s)
 
     # Any chart which previously defaulted to a private pre-public-start preset must
     # start on the first public year instead.
     s = re.sub(
-        r'defaultRange:\s*(["\'])2000\1',
+        r'defaultRange:\s*(["\'])(?:19\d\d|200\d|201\d|202[0-2])\1',
         f"defaultRange: '{PUBLIC_START_YEAR}'",
         s,
         flags=re.I,
     )
     s = re.sub(
-        r'\b(SINCE_YEAR|COMPARE_SINCE_YEAR)\s*=\s*(["\']?)2000\2\s*;',
+        r'\b(SINCE_YEAR|COMPARE_SINCE_YEAR)\s*=\s*(["\']?)(?:19\d\d|200\d|201\d|202[0-2])\2\s*;',
         lambda m: f"{m.group(1)} = {m.group(2)}{PUBLIC_START_YEAR}{m.group(2)};",
         s,
         flags=re.I,
@@ -959,7 +973,7 @@ def clean_generic_public_ui(sports: list[str] | None = None) -> None:
             if "jr-public-disabled" in s:
                 s = ensure_public_teaser_styles(s)
 
-            html.write_text(s, encoding="utf-8", newline="\n")
+            html.write_text(s.rstrip() + "\n", encoding="utf-8", newline="\n")
 
         # All five player profiles advertise the same future Statistics feature
         # and the same locked full-history ranges, even where the private sport
@@ -1066,6 +1080,9 @@ def assert_generic_public_ui_clean(sports: list[str] | None = None) -> None:
 
 
 def _remove_tree(path: Path) -> None:
+    resolved = path.resolve()
+    if resolved == REPO_DIR.resolve() or REPO_DIR.resolve() not in resolved.parents:
+        raise RuntimeError(f"Refusing to remove directory outside build workspace: {resolved}")
     if path.exists():
         shutil.rmtree(path)
 
@@ -1220,6 +1237,32 @@ def _copy_one_sport_source(sport: str) -> None:
     copy_tree_filtered(src, dst)
 
 
+def filter_public_tournaments(sports: list[str], validate_only: bool = False) -> None:
+    """Apply the same public season boundary to tournament editions/catalogues."""
+    for sport in sports:
+        folder = OUT_DIR / sport / "data/tournaments"
+        if not folder.exists():
+            continue
+        for path in folder.rglob("*.json"):
+            year = season_start_year(path.stem)
+            if year is not None and year < PUBLIC_START_YEAR:
+                if validate_only:
+                    raise RuntimeError(f"Pre-{PUBLIC_START_YEAR} tournament file: {path}")
+                path.unlink()
+                continue
+            if path.name != "editions.json":
+                continue
+            data = load_json(path)
+            if not isinstance(data, list):
+                raise RuntimeError(f"Expected tournament edition list: {path}")
+            filtered = [row for row in data if
+                        (season_start_year(row.get("id", "")) or PUBLIC_START_YEAR) >= PUBLIC_START_YEAR]
+            if validate_only and len(filtered) != len(data):
+                raise RuntimeError(f"Pre-{PUBLIC_START_YEAR} tournament catalogue entry: {path}")
+            if not validate_only:
+                save_json(path, filtered)
+
+
 def _clean_and_check_selected_sports(sports: list[str]) -> None:
     remove_private_paths()
     assert_public_private_paths_absent()
@@ -1228,16 +1271,22 @@ def _clean_and_check_selected_sports(sports: list[str]) -> None:
         assert_european_football_private_paths_absent()
         clean_european_football_public_ui()
 
-    clean_generic_public_ui(sports)
+    clean_generic_public_ui(sports + ["site"])
 
     if "EuropeanFootball" in sports:
         assert_european_football_public_ui_clean()
 
-    assert_generic_public_ui_clean(sports)
+    assert_generic_public_ui_clean(sports + ["site"])
 
     for sport in sports:
         config = SPORT_PUBLIC_FILTERS[sport]
         filter_sport_public_data(sport, config)
+
+    filter_public_tournaments(sports)
+    filter_public_tournaments(sports, validate_only=True)
+    legacy_config = {"dated_dirs": ["data/history", "data/games"], "season_files": []}
+    filter_sport_public_data("sports/PremierLeague", legacy_config)
+    assert_no_pre_public_start_sport_data("sports/PremierLeague", legacy_config)
 
     if "Snooker" in sports:
         filter_snooker_snapshots()
@@ -1317,9 +1366,9 @@ def build_public_ui_only() -> None:
     assert_public_private_paths_absent()
     assert_european_football_private_paths_absent()
     clean_european_football_public_ui()
-    clean_generic_public_ui()
+    clean_generic_public_ui(PUBLIC_SPORTS + ["site"])
     assert_european_football_public_ui_clean()
-    assert_generic_public_ui_clean()
+    assert_generic_public_ui_clean(PUBLIC_SPORTS + ["site"])
 
     # Data is inherited from the existing verified public site. Re-check it
     # without rewriting/re-filtering all historical JSON.
@@ -1327,6 +1376,8 @@ def build_public_ui_only() -> None:
         assert_no_pre_public_start_sport_data(sport, config)
 
     assert_no_pre_public_start_snooker_snapshots()
+    filter_public_tournaments(list(SPORT_PUBLIC_FILTERS), validate_only=True)
+    assert_no_pre_public_start_sport_data("sports/PremierLeague", {"dated_dirs": ["data/history", "data/games"], "season_files": []})
 
     print()
     print(f"Verified temporary UI-only public build created at: {TEMP_OUT_DIR}")

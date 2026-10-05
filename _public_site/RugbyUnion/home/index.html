@@ -599,8 +599,8 @@ body,
           <label for="compare-agg">View:</label>
           <select id="compare-agg">
             <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="monthly" selected>Monthly</option>
+            <option value="weekly" selected>Weekly</option>
+            <option value="monthly">Monthly</option>
             <option value="quarterly">Quarterly</option>
             <option value="yearly">Yearly</option>
           </select>
@@ -609,10 +609,10 @@ body,
         <div class="range-buttons">
           <button type="button" class="seg jr-public-disabled jr-public-history-teaser"  aria-pressed="true" data-public-range="ALL" disabled aria-disabled="true" title="Full history coming soon">ALL</button>
           <button type="button" class="seg jr-public-disabled jr-public-history-teaser"  data-public-range="2000" disabled aria-disabled="true" title="Full history coming soon">2000–Present</button>
-          <button type="button" class="seg" data-range="2020" aria-pressed="false">2020–Present</button>
+          <button type="button" class="seg jr-public-disabled jr-public-history-teaser"  aria-pressed="false" data-public-range="2020" disabled aria-disabled="true" title="Full history coming soon">2020–Present</button>
           <button type="button" class="seg" data-range="LY">Last Year</button>
           <button type="button" class="seg" data-range="YTD">YTD</button>
-        </div>
+        <button type="button" class="range-btn" data-range="2023">Since 2023</button></div>
       </div>
 
       <div id="compare-chart" class="jr-chart">Loading…</div>
@@ -747,7 +747,7 @@ const state = {
 const histCache = new Map();
 let compareChart = null;
   let lastCompared = [];
-let COMPARE_SINCE_YEAR = '2020';
+let COMPARE_SINCE_YEAR = '2023';
 
 function updateHeaders() {
   document.getElementById('rating-col-head').textContent =
@@ -1156,7 +1156,7 @@ function setupCompareButton() {
     closeModal();
 
     const compareAgg = document.getElementById('compare-agg');
-    if (compareAgg) compareAgg.value = 'monthly';
+    if (compareAgg) compareAgg.value = 'weekly';
 
     document.querySelectorAll('#compare-wrap .seg[data-range]').forEach(btn => btn.classList.remove('active'));
     const since2020Btn = document.querySelector('#compare-wrap .seg[data-range="2020"]');

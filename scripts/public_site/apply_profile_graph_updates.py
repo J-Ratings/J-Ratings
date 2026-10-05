@@ -22,9 +22,9 @@ DEFAULT_RANGE = {
 }
 
 DEFAULT_AGG = {
-    "EuropeanFootball": "monthly",
-    "InternationalFootball": "monthly",
-    "RugbyUnion": "monthly",
+    "EuropeanFootball": "weekly",
+    "InternationalFootball": "weekly",
+    "RugbyUnion": "weekly",
     "Go": "weekly",
     "Snooker": "weekly",
 }

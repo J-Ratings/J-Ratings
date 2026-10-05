@@ -396,7 +396,8 @@ body,
             <label for="compare-agg">View:</label>
             <select id="compare-agg">
               <option value="daily">Daily</option>
-              <option value="monthly" selected>Monthly</option>
+              <option value="weekly" selected>Weekly</option>
+              <option value="monthly">Monthly</option>
               <option value="yearly">Yearly</option>
             </select>
           </div>
@@ -404,8 +405,8 @@ body,
           <div class="range-buttons" role="group" aria-label="Time range">
             <button type="button" class="range-btn jr-public-disabled jr-public-history-teaser"  data-public-range="ALL" disabled aria-disabled="true" title="Full history coming soon">All</button>
             <button type="button" class="range-btn jr-public-disabled jr-public-history-teaser"  data-public-range="2000" disabled aria-disabled="true" title="Full history coming soon">Since 2000</button>
-            <button type="button" class="range-btn" data-since="2020">Since 2020</button>
-          </div>
+            <button type="button" class="range-btn jr-public-disabled jr-public-history-teaser"  data-public-range="2020" disabled aria-disabled="true" title="Full history coming soon">Since 2020</button>
+          <button type="button" class="range-btn" data-since="2023">Since 2023</button></div>
         </div>
       </div>
 
@@ -455,7 +456,7 @@ body,
 
   let TEAM_COLOURS = {};
   let lastCompared = [];
-  let COMPARE_SINCE_YEAR = 2020;
+  let COMPARE_SINCE_YEAR = 2023;
 
   const LEGEND_FONT_SIZE = 16;
   const LEGEND_ITEM_GAP = 20;
@@ -587,6 +588,20 @@ body,
   }
 
   function aggregate(series, mode) {
+    if (mode === 'weekly') {
+      const weeks = Object.create(null);
+      for (const p of series) {
+        const d = new Date(p.x);
+        if (Number.isNaN(d.getTime())) continue;
+        const monday = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - (d.getUTCDay() + 6) % 7)).toISOString().slice(0, 10);
+        (weeks[monday] ||= []).push(p);
+      }
+      return normalise(Object.keys(weeks).sort().map(x => {
+        const pts = weeks[x].filter(p => Number.isFinite(p.y));
+        return { x, y: pts.reduce((sum, p) => sum + p.y, 0) / pts.length, tier: pts.length ? (pts[pts.length - 1].tier ?? null) : null };
+      }), false);
+    }
+
     if (mode === 'daily') return normalise(series, true);
 
     const buckets = Object.create(null);
@@ -698,7 +713,7 @@ body,
     wrap.style.display = 'block';
     chart.innerHTML = 'Loading…';
 
-    const mode = document.getElementById('compare-agg')?.value || 'monthly';
+    const mode = document.getElementById('compare-agg')?.value || 'weekly';
 
     const traces = [];
     let ymin = Infinity;
@@ -827,12 +842,12 @@ body,
       closeModal();
 
       const compareAgg = document.getElementById('compare-agg');
-      if (compareAgg) compareAgg.value = 'monthly';
+      if (compareAgg) compareAgg.value = 'weekly';
 
       document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('is-active'));
       const defaultBtn = document.querySelector('.range-btn[data-since="2000"]');
       if (defaultBtn) defaultBtn.classList.add('is-active');
-      COMPARE_SINCE_YEAR = 2020;
+      COMPARE_SINCE_YEAR = 2023;
 
       const chosen = state.filtered.filter(t => ids.includes(String(t.id)));
       buildComparison(chosen);

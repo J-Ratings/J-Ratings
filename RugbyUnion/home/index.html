@@ -575,8 +575,8 @@ body,
           <label for="compare-agg">View:</label>
           <select id="compare-agg">
             <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="monthly" selected>Monthly</option>
+            <option value="weekly" selected>Weekly</option>
+            <option value="monthly">Monthly</option>
             <option value="quarterly">Quarterly</option>
             <option value="yearly">Yearly</option>
           </select>
@@ -1132,7 +1132,7 @@ function setupCompareButton() {
     closeModal();
 
     const compareAgg = document.getElementById('compare-agg');
-    if (compareAgg) compareAgg.value = 'monthly';
+    if (compareAgg) compareAgg.value = 'weekly';
 
     document.querySelectorAll('#compare-wrap .seg[data-range]').forEach(btn => btn.classList.remove('active'));
     const since2020Btn = document.querySelector('#compare-wrap .seg[data-range="2020"]');

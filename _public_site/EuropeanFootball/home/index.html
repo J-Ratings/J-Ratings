@@ -11,7 +11,7 @@
   </script>
 
   <meta charset="utf-8">
-  <title>J-Ratings: European Football</title>
+  <title>J-Ratings: Club Football</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="../style.css">
@@ -121,10 +121,10 @@
     /* Tier badges */
     .tier-badge {
       display: inline-block;
-      padding: 6px 12px;
+      padding: 5px 10px;
       border-radius: 9999px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       line-height: 1;
       white-space: nowrap;
       box-shadow: 0 0 0 2px rgba(0,0,0,0.35);
@@ -132,10 +132,16 @@
       text-align: center;
     }
 
+    .show-more-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 16px 0 4px;
+    }
+
     @media (min-width: 521px) {
   .tier-badge {
-    padding: 8px 15px;
-    font-size: 1.1rem;
+    padding: 7px 13px;
+    font-size: 1rem;
     min-width: 44px;
   }
 }
@@ -260,6 +266,46 @@
       background: #FFD700;
       color: #000000;
     }
+
+    .tier-russian-premier-league { background: #1746A2; color: #ffffff; }
+    .tier-premier-league-bosnia { background: #1D8A4A; color: #ffffff; }
+    .tier-bulgarian-first-league { background: #00966E; color: #ffffff; }
+    .tier-nemzeti-bajnoksag { background: #CE2939; color: #ffffff; }
+    .tier-besta-deild { background: #02529C; color: #ffffff; }
+    .tier-israeli-premier-league { background: #0038B8; color: #ffffff; }
+    .tier-luxembourg-national-division { background: #00A1DE; color: #ffffff; }
+    .tier-maltese-premier-league { background: #CF142B; color: #ffffff; }
+    .tier-campionato-sammarinese { background: #5B2C83; color: #ffffff; }
+    .tier-serbian-superliga { background: #C6363C; color: #ffffff; }
+    .tier-danish-superliga { background: #C8102E; color: #ffffff; }
+    .tier-ekstraklasa { background: #D4213D; color: #ffffff; }
+    .tier-eliteserien { background: #00205B; color: #ffffff; }
+    .tier-allsvenskan { background: #005293; color: #ffffff; }
+    .tier-romanian-superliga { background: #FCD116; color: #111111; }
+    .tier-kategoria-superiore { background: #E41E20; color: #ffffff; }
+    .tier-primera-divisio { background: #D52B1E; color: #ffffff; }
+    .tier-armenian-premier-league { background: #F2A800; color: #111111; }
+    .tier-azerbaijan-premier-league { background: #00A3E0; color: #ffffff; }
+    .tier-belarusian-premier-league { background: #C8313E; color: #ffffff; }
+    .tier-croatian-football-league { background: #E31B23; color: #ffffff; }
+    .tier-cypriot-first-division { background: #D57800; color: #ffffff; }
+    .tier-meistriliiga { background: #1676BD; color: #ffffff; }
+    .tier-faroe-premier-league { background: #0065BD; color: #ffffff; }
+    .tier-veikkausliiga { background: #005BAC; color: #ffffff; }
+    .tier-erovnuli-liga { background: #A71930; color: #ffffff; }
+    .tier-gibraltar-football-league { background: #D71920; color: #ffffff; }
+    .tier-kazakhstan-premier-league { background: #00A3DD; color: #ffffff; }
+    .tier-kosovo-superleague { background: #244AA5; color: #ffffff; }
+    .tier-latvian-higher-league { background: #9E1B32; color: #ffffff; }
+    .tier-a-lyga { background: #FDB913; color: #111111; }
+    .tier-moldovan-super-liga { background: #0046AE; color: #ffffff; }
+    .tier-montenegrin-first-league { background: #C4032B; color: #ffffff; }
+    .tier-macedonian-first-league { background: #D82126; color: #ffffff; }
+    .tier-nifl-premiership { background: #1261A0; color: #ffffff; }
+    .tier-league-of-ireland { background: #169B62; color: #ffffff; }
+    .tier-slovak-first-league { background: #0B4EA2; color: #ffffff; }
+    .tier-slovenian-prvaliga { background: #005DAA; color: #ffffff; }
+    .tier-cymru-premier { background: #168B48; color: #ffffff; }
 
     @media (max-width: 600px) {
       #compare-chart { height: 420px; }
@@ -812,7 +858,7 @@ body,
   <div class="wrap">
     <h1 class="site-title">
       <a id="home-link" href="./" class="brand-with-logo">
-        <span>J-Ratings <span class="title-football">European Football</span></span>
+        <span>J-Ratings <span class="title-football">Club Football</span></span>
       </a>
     </h1>
 
@@ -837,25 +883,11 @@ body,
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by team…">
 
-      <label for="country" style="margin-left:auto">Country:</label>
-      <select id="country">
-        <option value="all" selected>All</option>
-        <option value="england">England</option>
-        <option value="spain">Spain</option>
-        <option value="italy">Italy</option>
-        <option value="germany">Germany</option>
-        <option value="france">France</option>
-        <option value="portugal">Portugal</option>
-        <option value="netherlands">Netherlands</option>
-        <option value="belgium">Belgium</option>
-        <option value="austria">Austria</option>
-        <option value="turkey">Turkey</option>
-        <option value="scotland">Scotland</option>
-        <option value="switzerland">Switzerland</option>
-        <option value="greece">Greece</option>
-        <option value="czechia">Czechia</option>
-        <option value="ukraine">Ukraine</option>
-      </select>
+      <label for="confederation" style="margin-left:auto">Confederation:</label>
+      <select id="confederation"><option value="all" selected>All</option></select>
+
+      <label for="country">Country:</label>
+      <select id="country"><option value="all" selected>All</option></select>
 
       <label for="league">League:</label>
       <select id="league">
@@ -887,6 +919,9 @@ body,
         <tbody><!-- filled by JS --></tbody>
       </table>
     </div>
+    <div class="show-more-wrap">
+      <button id="show-more-teams" class="club-btn" type="button" hidden>Show more</button>
+    </div>
   </section>
 
 
@@ -907,23 +942,29 @@ body,
     <div>Contact: <a href="mailto:jratingscontact@gmail.com">jratingscontact@gmail.com</a></div>
 
     <div>
-      Primary Data Source:
-      <a href="https://github.com/openfootball/england/tree/master">
-        openfootball/england (GitHub)
-      </a>
-      ~ CC0 1.0 (Public Domain)
+      Main Data Sources:
+      <a href="https://www.rsssf.com/">RSSSF</a>,
+      <a href="https://github.com/schochastics/football-data">David Schoch’s football-data</a>,
+      <a href="https://github.com/openfootball">OpenFootball</a>, and
+      <a href="https://en.wikipedia.org/">Wikipedia</a>.
     </div>
 
     <div>
-      Secondary Data Source:
-      <a href="https://www.football-data.co.uk/englandm.php">
-        Football-Data.co.uk
-      </a>
-      ~ used only to fill National League / Conference gaps before 2015.
+      Supplementary Sources:
+      <a href="https://www.transfermarkt.com/">Transfermarkt</a>,
+      <a href="https://www.football-data.co.uk/">Football-Data.co.uk</a>,
+      and official league and federation websites.
+    </div>
+
+    <div>
+      OpenFootball: CC0 1.0 (Public Domain).
+      David Schoch’s football-data: Open Data Commons Attribution License.
+      Results are combined and checked by J-Ratings; Elo ratings are calculated by J-Ratings.
     </div>
   </footer>
 </main>
 
+<script src="../site-mappings.js?v=20261005"></script>
 <script>
   const DATA_URL = '../data/teams.json';
   const SEASON_STARTS_URL = '../data/season_starts.json';
@@ -939,7 +980,8 @@ body,
     liveRows: [],
     seasonStarts: [],
     rows: [],
-    filtered: []
+    filtered: [],
+    visibleCount: 100
   };
 
   const histCache = new Map();
@@ -947,8 +989,8 @@ body,
   let compareChart = null;
   let lastCompared = [];
   let TEAM_COLOURS = {};
-  let COMPARE_SINCE_YEAR = '2020';
-  let COMPARE_AGG_MODE = 'monthly';
+  let COMPARE_SINCE_YEAR = '2023';
+  let COMPARE_AGG_MODE = 'weekly';
 
   let compareVisibleSeries = [];
 
@@ -1008,11 +1050,85 @@ body,
       'Ukrainian Premier League': 'Ukrainian Premier League'
     };
 
-    return labels[div] || div || '';
+    const base = labels[div] || div || '';
+    const compact = {
+      'Russian Premier League': 'Premier League',
+      'Premier League of Bosnia and Herzegovina': 'Premier League',
+      'Belgian Pro League': 'Pro League',
+      'Austrian Bundesliga': 'Bundesliga',
+      'Bulgarian First League': 'First League',
+      'Israeli Premier League': 'Premier League',
+      'Maltese Premier League': 'Premier League',
+      'Serbian SuperLiga': 'SuperLiga',
+      'Scottish Premiership': 'Premiership',
+      'Swiss Super League': 'Super League',
+      'Super League Greece': 'Super League',
+      'Czech First League': 'First League',
+      'Ukrainian Premier League': 'Premier League',
+      'Campionato Sammarinese': 'Championship',
+      'Luxembourg National Division': 'National Division'
+      , 'Armenian Premier League': 'Premier League'
+      , 'Azerbaijan Premier League': 'Premier League'
+      , 'Belarusian Premier League': 'Premier League'
+      , 'Croatian Football League': 'Football League'
+      , 'Cypriot First Division': 'First Division'
+      , 'Faroe Islands Premier League': 'Premier League'
+      , 'Gibraltar Football League': 'Football League'
+      , 'Kazakhstan Premier League': 'Premier League'
+      , 'Football Superleague of Kosovo': 'Superleague'
+      , 'Latvian Higher League': 'Higher League'
+      , 'Moldovan Super Liga': 'Super Liga'
+      , 'Montenegrin First League': 'First League'
+      , 'Macedonian First Football League': 'First League'
+      , 'League of Ireland Premier Division': 'Premier Division'
+      , 'Slovak First Football League': 'First League'
+      , 'Slovenian PrvaLiga': 'PrvaLiga'
+      , 'Nemzeti Bajnoksag I': 'Nemzeti Bajnoksag'
+      , 'Nemzeti Bajnokság I': 'Nemzeti Bajnoksag'
+      , 'Cymru Premier': 'Premier'
+    };
+    const country = countryForTeam(row);
+    const displayBase = window.JR_shortLeagueName(country, compact[base] || base);
+    const shortCountryLabels = {
+      bosnia: 'Bos & Herz',
+      'northern ireland': 'N. Ireland',
+      'republic of ireland': 'Ireland'
+    };
+    const countryLabel = shortCountryLabels[country] || COUNTRY_LABELS[country] || String(row.country || '').trim();
+    return countryLabel ? `${countryLabel} - ${displayBase}` : displayBase;
   }
 
   function tierClass(label) {
-    const s = String(label || '').trim().toLowerCase();
+    const raw = String(label || '').trim().toLowerCase();
+    const countryClasses = {
+      'albania': 'tier-kategoria-superiore',
+      'andorra': 'tier-primera-divisio',
+      'armenia': 'tier-armenian-premier-league',
+      'azerbaijan': 'tier-azerbaijan-premier-league',
+      'belarus': 'tier-belarusian-premier-league',
+      'croatia': 'tier-croatian-football-league',
+      'cyprus': 'tier-cypriot-first-division',
+      'estonia': 'tier-meistriliiga',
+      'faroe islands': 'tier-faroe-premier-league',
+      'finland': 'tier-veikkausliiga',
+      'georgia': 'tier-erovnuli-liga',
+      'gibraltar': 'tier-gibraltar-football-league',
+      'kazakhstan': 'tier-kazakhstan-premier-league',
+      'kosovo': 'tier-kosovo-superleague',
+      'latvia': 'tier-latvian-higher-league',
+      'lithuania': 'tier-a-lyga',
+      'moldova': 'tier-moldovan-super-liga',
+      'montenegro': 'tier-montenegrin-first-league',
+      'north macedonia': 'tier-macedonian-first-league',
+      'northern ireland': 'tier-nifl-premiership',
+      'republic of ireland': 'tier-league-of-ireland',
+      'slovakia': 'tier-slovak-first-league',
+      'slovenia': 'tier-slovenian-prvaliga',
+      'wales': 'tier-cymru-premier'
+    };
+    const countryPrefix = raw.includes(' - ') ? raw.split(' - ')[0].trim() : '';
+    if (countryClasses[countryPrefix]) return countryClasses[countryPrefix];
+    const s = raw.includes(' - ') ? raw.split(' - ').pop().trim() : raw;
 
     if (s === 'premier league') return 'tier-premier-league';
     if (s === 'championship') return 'tier-championship';
@@ -1042,12 +1158,51 @@ body,
     if (s === 'super league greece') return 'tier-super-league-greece';
     if (s === 'czech first league') return 'tier-czech-first-league';
     if (s === 'ukrainian premier league') return 'tier-ukrainian-premier-league';
+    if (s === 'russian premier league') return 'tier-russian-premier-league';
+    if (s === 'premier league of bosnia and herzegovina') return 'tier-premier-league-bosnia';
+    if (s === 'bulgarian first league') return 'tier-bulgarian-first-league';
+    if (s === 'nemzeti bajnoksag i' || s === 'nemzeti bajnokság i') return 'tier-nemzeti-bajnoksag';
+    if (s === 'besta deild karla') return 'tier-besta-deild';
+    if (s === 'israeli premier league') return 'tier-israeli-premier-league';
+    if (s === 'luxembourg national division') return 'tier-luxembourg-national-division';
+    if (s === 'maltese premier league') return 'tier-maltese-premier-league';
+    if (s === 'campionato sammarinese') return 'tier-campionato-sammarinese';
+    if (s === 'serbian superliga') return 'tier-serbian-superliga';
+    if (s === 'danish superliga') return 'tier-danish-superliga';
+    if (s === 'ekstraklasa') return 'tier-ekstraklasa';
+    if (s === 'eliteserien') return 'tier-eliteserien';
+    if (s === 'allsvenskan') return 'tier-allsvenskan';
+    if (s === 'superliga') return 'tier-romanian-superliga';
+    if (s === 'kategoria superiore') return 'tier-kategoria-superiore';
+    if (s === 'primera divisio' || s === 'primera divisió') return 'tier-primera-divisio';
+    if (s === 'armenian premier league') return 'tier-armenian-premier-league';
+    if (s === 'azerbaijan premier league') return 'tier-azerbaijan-premier-league';
+    if (s === 'belarusian premier league') return 'tier-belarusian-premier-league';
+    if (s === 'croatian football league') return 'tier-croatian-football-league';
+    if (s === 'cypriot first division') return 'tier-cypriot-first-division';
+    if (s === 'meistriliiga') return 'tier-meistriliiga';
+    if (s === 'faroe islands premier league') return 'tier-faroe-premier-league';
+    if (s === 'veikkausliiga') return 'tier-veikkausliiga';
+    if (s === 'erovnuli liga') return 'tier-erovnuli-liga';
+    if (s === 'gibraltar football league') return 'tier-gibraltar-football-league';
+    if (s === 'kazakhstan premier league') return 'tier-kazakhstan-premier-league';
+    if (s === 'football superleague of kosovo') return 'tier-kosovo-superleague';
+    if (s === 'latvian higher league') return 'tier-latvian-higher-league';
+    if (s === 'a lyga') return 'tier-a-lyga';
+    if (s === 'moldovan super liga') return 'tier-moldovan-super-liga';
+    if (s === 'montenegrin first league') return 'tier-montenegrin-first-league';
+    if (s === 'macedonian first football league') return 'tier-macedonian-first-league';
+    if (s === 'nifl premiership') return 'tier-nifl-premiership';
+    if (s === 'league of ireland premier division') return 'tier-league-of-ireland';
+    if (s === 'slovak first football league') return 'tier-slovak-first-league';
+    if (s === 'slovenian prvaliga') return 'tier-slovenian-prvaliga';
+    if (s === 'cymru premier') return 'tier-cymru-premier';
 
     return '';
   }
 
 
-  const COUNTRY_FLAG_CODES = {
+  const COUNTRY_FLAG_CODES = Object.assign({
     england: 'gb-eng',
     spain: 'es',
     italy: 'it',
@@ -1062,10 +1217,22 @@ body,
     switzerland: 'ch',
     greece: 'gr',
     czechia: 'cz',
-    ukraine: 'ua'
-  };
+    ukraine: 'ua',
+    poland: 'pl',
+    norway: 'no',
+    sweden: 'se',
+    romania: 'ro'
+    , russia: 'ru', bosnia: 'ba', bulgaria: 'bg', hungary: 'hu',
+    iceland: 'is', israel: 'il', luxembourg: 'lu', malta: 'mt',
+    'san marino': 'sm', serbia: 'rs', albania: 'al', andorra: 'ad', armenia: 'am',
+    azerbaijan: 'az', belarus: 'by', croatia: 'hr', cyprus: 'cy', estonia: 'ee',
+    'faroe islands': 'fo', finland: 'fi', georgia: 'ge', gibraltar: 'gi',
+    kazakhstan: 'kz', kosovo: 'xk', latvia: 'lv', lithuania: 'lt', moldova: 'md',
+    montenegro: 'me', 'north macedonia': 'mk', 'northern ireland': 'gb-nir',
+    'republic of ireland': 'ie', slovakia: 'sk', slovenia: 'si', wales: 'gb-wls'
+  }, window.JR_COUNTRY_FLAG_CODES || {});
 
-  const COUNTRY_LABELS = {
+  const COUNTRY_LABELS = Object.assign({
     england: 'England',
     spain: 'Spain',
     italy: 'Italy',
@@ -1080,8 +1247,22 @@ body,
     switzerland: 'Switzerland',
     greece: 'Greece',
     czechia: 'Czechia',
-    ukraine: 'Ukraine'
-  };
+    ukraine: 'Ukraine',
+    poland: 'Poland',
+    norway: 'Norway',
+    sweden: 'Sweden',
+    romania: 'Romania'
+    , russia: 'Russia', bosnia: 'Bosnia and Herzegovina', bulgaria: 'Bulgaria',
+    hungary: 'Hungary', iceland: 'Iceland', israel: 'Israel', luxembourg: 'Luxembourg',
+    malta: 'Malta', 'san marino': 'San Marino', serbia: 'Serbia', albania: 'Albania',
+    andorra: 'Andorra', armenia: 'Armenia', azerbaijan: 'Azerbaijan', belarus: 'Belarus',
+    croatia: 'Croatia', cyprus: 'Cyprus', estonia: 'Estonia', 'faroe islands': 'Faroe Islands',
+    finland: 'Finland', georgia: 'Georgia', gibraltar: 'Gibraltar', kazakhstan: 'Kazakhstan',
+    kosovo: 'Kosovo', latvia: 'Latvia', lithuania: 'Lithuania', moldova: 'Moldova',
+    montenegro: 'Montenegro', 'north macedonia': 'North Macedonia',
+    'northern ireland': 'Northern Ireland', 'republic of ireland': 'Republic of Ireland',
+    slovakia: 'Slovakia', slovenia: 'Slovenia', wales: 'Wales'
+  }, window.JR_COUNTRY_LABELS || {});
 
   function flagImgHtmlForTeam(row) {
     const country = countryForTeam(row);
@@ -1103,11 +1284,12 @@ body,
     tbody.innerHTML = '';
 
     const q = document.getElementById('q').value.trim();
+    const confederation = document.getElementById('confederation').value;
     const country = document.getElementById('country').value;
     const league = document.getElementById('league').value;
-    const hasActiveFilter = q !== '' || country !== 'all' || league !== 'all';
+    const hasActiveFilter = q !== '' || confederation !== 'all' || country !== 'all' || league !== 'all';
 
-    state.filtered.forEach((r, i) => {
+    state.filtered.slice(0, state.visibleCount).forEach((r, i) => {
       const tr = document.createElement('tr');
 
       const tdRank = document.createElement('td');
@@ -1138,8 +1320,11 @@ body,
 
       if (label) {
         const span = document.createElement('span');
-        span.className = `tier-badge ${tierClass(label)}`.trim();
+        span.className = `tier-badge ${tierClass(r.division || label)}`.trim();
         span.textContent = label;
+        if ((window.JR_COUNTRY_CONFEDERATIONS || {})[String(r.country || '').toLowerCase()] && window.JR_applyBadgeStyle) {
+          window.JR_applyBadgeStyle(span, r.country, r.competition || r.division);
+        }
         tdTier.appendChild(span);
       } else {
         tdTier.textContent = '';
@@ -1149,6 +1334,9 @@ body,
 
       tbody.appendChild(tr);
     });
+
+    const showMore = document.getElementById('show-more-teams');
+    if (showMore) showMore.hidden = state.visibleCount >= state.filtered.length;
   }
 
   function hideCompare() {
@@ -1161,6 +1349,9 @@ body,
   }
 
   function countryForTeam(row) {
+    const suppliedCountry = String(row.country || '').trim().toLowerCase();
+    if (suppliedCountry) return suppliedCountry;
+
     const div = String(row.division || '').trim().toLowerCase();
 
     if ([
@@ -1214,14 +1405,88 @@ body,
     if (div === 'super league greece') return 'greece';
     if (div === 'czech first league') return 'czechia';
     if (div === 'ukrainian premier league') return 'ukraine';
+    if (div === 'russian premier league') return 'russia';
+    if (div === 'ekstraklasa') return 'poland';
+    if (div === 'eliteserien') return 'norway';
+    if (div === 'allsvenskan') return 'sweden';
+    if (div === 'superliga') return 'romania';
+    if (div === 'premier league of bosnia and herzegovina') return 'bosnia';
+    if (div === 'bulgarian first league') return 'bulgaria';
+    if (div === 'nemzeti bajnoksag i' || div === 'nemzeti bajnokság i') return 'hungary';
+    if (div === 'besta deild karla') return 'iceland';
+    if (div === 'israeli premier league') return 'israel';
+    if (div === 'luxembourg national division') return 'luxembourg';
+    if (div === 'maltese premier league') return 'malta';
+    if (div === 'campionato sammarinese') return 'san marino';
+    if (div === 'serbian superliga') return 'serbia';
 
     return '';
   }
 
+  function confederationForTeam(row) {
+    return (window.JR_COUNTRY_CONFEDERATIONS || {})[countryForTeam(row)] || '';
+  }
+
+  function populateConfederationFilter() {
+    const select = document.getElementById('confederation');
+    const current = select.value;
+    const confederations = [...new Set(state.rows.map(confederationForTeam).filter(Boolean))]
+      .sort((a, b) => a.localeCompare(b));
+    select.innerHTML = '<option value="all">All</option>';
+    for (const confederation of confederations) {
+      const option = document.createElement('option');
+      option.value = confederation;
+      option.textContent = confederation;
+      select.appendChild(option);
+    }
+    select.value = confederations.includes(current) ? current : 'all';
+  }
+
+  function populateCountryFilter() {
+    const select = document.getElementById('country');
+    const current = select.value;
+    const confederation = document.getElementById('confederation').value;
+    const countryNames = new Map();
+    state.rows
+      .filter(row => confederation === 'all' || confederationForTeam(row) === confederation)
+      .forEach(row => {
+        const key = countryForTeam(row);
+        if (key) countryNames.set(key, COUNTRY_LABELS[key] || String(row.country || '').trim() || key);
+      });
+    const countries = [...countryNames.keys()]
+      .sort((a, b) => countryNames.get(a).localeCompare(countryNames.get(b)));
+    select.innerHTML = '<option value="all">All</option>';
+    for (const country of countries) {
+      const option = document.createElement('option');
+      option.value = country;
+      option.textContent = countryNames.get(country);
+      select.appendChild(option);
+    }
+    select.value = countries.includes(current) ? current : 'all';
+  }
+
   function populateLeagueFilter() {
+    const confederation = document.getElementById('confederation').value;
     const country = document.getElementById('country').value;
     const leagueSelect = document.getElementById('league');
     const currentValue = leagueSelect.value;
+
+    const leagues = Array.from(new Map(state.rows
+      .filter(row => confederation === 'all' || confederationForTeam(row) === confederation)
+      .filter(row => country === 'all' || countryForTeam(row) === country)
+      .map(row => [String(row.division || '').trim(), tierLabel(row)])
+      .filter(([division]) => division)).entries())
+      .sort(([, labelA], [, labelB]) => labelA.localeCompare(labelB));
+
+    leagueSelect.innerHTML = '<option value="all">All</option>';
+    for (const [division, label] of leagues) {
+      const option = document.createElement('option');
+      option.value = division;
+      option.textContent = label;
+      leagueSelect.appendChild(option);
+    }
+    leagueSelect.value = leagues.some(([division]) => division === currentValue) ? currentValue : 'all';
+    return;
 
 const leagueOrder = [
   'Premier League',
@@ -1251,10 +1516,128 @@ const leagueOrder = [
   'Swiss Super League',
   'Super League Greece',
   'Czech First League',
-  'Ukrainian Premier League'
+  'Ukrainian Premier League',
+  'Ekstraklasa',
+  'Eliteserien',
+  'Allsvenskan',
+  'SuperLiga',
+  'Russian Premier League',
+  'Premier League of Bosnia and Herzegovina',
+  'Bulgarian First League', 'Nemzeti Bajnoksag I', 'Besta deild karla',
+  'Israeli Premier League', 'Luxembourg National Division',
+  'Maltese Premier League', 'Campionato Sammarinese', 'Serbian SuperLiga',
+  'Kategoria Superiore', 'Primera Divisio', 'Armenian Premier League',
+  'Azerbaijan Premier League', 'Belarusian Premier League', 'Croatian Football League',
+  'Cypriot First Division', 'Meistriliiga', 'Faroe Islands Premier League',
+  'Veikkausliiga', 'Erovnuli Liga', 'Gibraltar Football League',
+  'Kazakhstan Premier League', 'Football Superleague of Kosovo', 'Latvian Higher League',
+  'A Lyga', 'Moldovan Super Liga', 'Montenegrin First League',
+  'Macedonian First Football League', 'NIFL Premiership',
+  'League of Ireland Premier Division', 'Slovak First Football League',
+  'Slovenian PrvaLiga', 'Cymru Premier'
 ];
 
-const leagues = Array.from(
+const leagueCountries = {
+  'Premier League': 'England',
+  'Championship': 'England',
+  'League 1': 'England',
+  'League One': 'England',
+  'League 2': 'England',
+  'League Two': 'England',
+  'National League': 'England',
+  'Ligue 1': 'France',
+  'Ligue 2': 'France',
+  'Bundesliga': 'Germany',
+  '2. Bundesliga': 'Germany',
+  'Serie A': 'Italy',
+  'Serie B': 'Italy',
+  'La Liga': 'Spain',
+  'Segunda División': 'Spain',
+  'Segunda Division': 'Spain',
+  'Primeira Liga': 'Portugal',
+  'Eredivisie': 'Netherlands',
+  'Belgian Pro League': 'Belgium',
+  'Austrian Bundesliga': 'Austria',
+  'Süper Lig': 'Turkey',
+  'Super Lig': 'Turkey',
+  'Scottish Premiership': 'Scotland',
+  'Swiss Super League': 'Switzerland',
+  'Super League Greece': 'Greece',
+  'Czech First League': 'Czechia',
+  'Ukrainian Premier League': 'Ukraine',
+  'Ekstraklasa': 'Poland',
+  'Eliteserien': 'Norway',
+  'Allsvenskan': 'Sweden',
+  'SuperLiga': 'Romania',
+  'Russian Premier League': 'Russia',
+  'Premier League of Bosnia and Herzegovina': 'Bosnia and Herzegovina',
+  'Bulgarian First League': 'Bulgaria',
+  'Nemzeti Bajnoksag I': 'Hungary',
+  'Besta deild karla': 'Iceland',
+  'Israeli Premier League': 'Israel',
+  'Luxembourg National Division': 'Luxembourg',
+  'Maltese Premier League': 'Malta',
+  'Campionato Sammarinese': 'San Marino',
+  'Serbian SuperLiga': 'Serbia',
+  'Kategoria Superiore': 'Albania', 'Primera Divisio': 'Andorra',
+  'Armenian Premier League': 'Armenia', 'Azerbaijan Premier League': 'Azerbaijan',
+  'Belarusian Premier League': 'Belarus', 'Croatian Football League': 'Croatia',
+  'Cypriot First Division': 'Cyprus', 'Meistriliiga': 'Estonia',
+  'Faroe Islands Premier League': 'Faroe Islands', 'Veikkausliiga': 'Finland',
+  'Erovnuli Liga': 'Georgia', 'Gibraltar Football League': 'Gibraltar',
+  'Kazakhstan Premier League': 'Kazakhstan', 'Football Superleague of Kosovo': 'Kosovo',
+  'Latvian Higher League': 'Latvia', 'A Lyga': 'Lithuania',
+  'Moldovan Super Liga': 'Moldova', 'Montenegrin First League': 'Montenegro',
+  'Macedonian First Football League': 'North Macedonia', 'NIFL Premiership': 'Northern Ireland',
+  'League of Ireland Premier Division': 'Republic of Ireland',
+  'Slovak First Football League': 'Slovakia', 'Slovenian PrvaLiga': 'Slovenia',
+  'Cymru Premier': 'Wales'
+};
+
+const leagueDisplayLabels = {
+  'Premier League of Bosnia and Herzegovina': 'Bos & Herz - Premier League',
+  'Belgian Pro League': 'Belgium - Pro League',
+  'Austrian Bundesliga': 'Austria - Bundesliga',
+  'Russian Premier League': 'Russia - Premier League',
+  'Bulgarian First League': 'Bulgaria - First League',
+  'Israeli Premier League': 'Israel - Premier League',
+  'Maltese Premier League': 'Malta - Premier League',
+  'Serbian SuperLiga': 'Serbia - SuperLiga',
+  'Scottish Premiership': 'Scotland - Premiership',
+  'Swiss Super League': 'Switzerland - Super League',
+  'Super League Greece': 'Greece - Super League',
+  'Czech First League': 'Czechia - First League',
+  'Ukrainian Premier League': 'Ukraine - Premier League',
+  'Luxembourg National Division': 'Luxembourg - National Division',
+  'Campionato Sammarinese': 'San Marino - Championship',
+  'Kategoria Superiore': 'Albania - Kategoria Superiore',
+  'Primera Divisio': 'Andorra - Primera Divisio',
+  'Armenian Premier League': 'Armenia - Premier League',
+  'Azerbaijan Premier League': 'Azerbaijan - Premier League',
+  'Belarusian Premier League': 'Belarus - Premier League',
+  'Croatian Football League': 'Croatia - Football League',
+  'Cypriot First Division': 'Cyprus - First Division',
+  'Meistriliiga': 'Estonia - Meistriliiga',
+  'Faroe Islands Premier League': 'Faroe Islands - Premier League',
+  'Veikkausliiga': 'Finland - Veikkausliiga',
+  'Erovnuli Liga': 'Georgia - Erovnuli Liga',
+  'Gibraltar Football League': 'Gibraltar - Football League',
+  'Kazakhstan Premier League': 'Kazakhstan - Premier League',
+  'Football Superleague of Kosovo': 'Kosovo - Superleague',
+  'Latvian Higher League': 'Latvia - Higher League',
+  'A Lyga': 'Lithuania - A Lyga',
+  'Moldovan Super Liga': 'Moldova - Super Liga',
+  'Montenegrin First League': 'Montenegro - First League',
+  'Macedonian First Football League': 'North Macedonia - First League',
+  'NIFL Premiership': 'N. Ireland - Premiership',
+  'League of Ireland Premier Division': 'Ireland - Premier Division',
+  'Slovak First Football League': 'Slovakia - First League',
+  'Slovenian PrvaLiga': 'Slovenia - PrvaLiga',
+  'Cymru Premier': 'Wales - Premier',
+  'Nemzeti Bajnoksag I': 'Hungary - Nemzeti Bajnoksag'
+};
+
+const legacyLeagues = Array.from(
   new Set(
     state.rows
       .filter(r => country === 'all' || countryForTeam(r) === country)
@@ -1274,20 +1657,23 @@ const leagues = Array.from(
 
     leagueSelect.innerHTML = '<option value="all">All</option>';
 
-    for (const league of leagues) {
+    for (const league of legacyLeagues) {
       const opt = document.createElement('option');
       opt.value = league;
-      opt.textContent = league;
+      opt.textContent = leagueDisplayLabels[league] || (leagueCountries[league]
+        ? `${leagueCountries[league]} - ${league}`
+        : league);
       leagueSelect.appendChild(opt);
     }
 
-    leagueSelect.value = leagues.includes(currentValue)
+    leagueSelect.value = legacyLeagues.includes(currentValue)
       ? currentValue
       : 'all';
   }
 
   function applyFilter() {
     const q = document.getElementById('q').value.trim().toLowerCase();
+    const confederation = document.getElementById('confederation').value;
     const country = document.getElementById('country').value;
     const league = document.getElementById('league').value;
 
@@ -1298,11 +1684,16 @@ const leagues = Array.from(
       const matchesCountry =
         country === 'all' || countryForTeam(r) === country;
 
+      const matchesConfederation =
+        confederation === 'all' || confederationForTeam(r) === confederation;
+
       const matchesLeague =
         league === 'all' || String(r.division || '').trim() === league;
 
-      return matchesTeam && matchesCountry && matchesLeague;
+      return matchesTeam && matchesConfederation && matchesCountry && matchesLeague;
     });
+
+    state.visibleCount = 100;
 
     updateRatingHeader();
     render();
@@ -1324,6 +1715,8 @@ const leagues = Array.from(
           id: d.id,
           name: d.name,
           rating: +d.elo,
+          country: d.country || '',
+          competition: d.competition || '',
           tier: Number.isFinite(+d.tier) ? +d.tier : null,
           division: d.division || ''
         }))
@@ -1336,6 +1729,8 @@ state.rows = state.rows.map((r, i) => ({
 }));
 
 setAsOfText();
+populateConfederationFilter();
+populateCountryFilter();
 populateLeagueFilter();
 applyFilter();
   }
@@ -1762,23 +2157,31 @@ applyFilter();
 
     const groups = new Map();
 
-    for (const row of state.rows || []) {
+    for (const row of state.filtered || []) {
       const league = tierLabel(row);
       const rating = Number(row.rating);
 
       if (!league || !Number.isFinite(rating)) continue;
 
-      if (!groups.has(league)) groups.set(league, []);
-      groups.get(league).push(rating);
+      if (!groups.has(league)) {
+        groups.set(league, {
+          ratings: [], division: String(row.division || '').trim(),
+          country: String(row.country || '').trim()
+        });
+      }
+      groups.get(league).ratings.push(rating);
     }
 
-    const averages = Array.from(groups, ([league, ratings]) => ({
+    const averages = Array.from(groups, ([league, group]) => ({
       league,
-      average: ratings.reduce((sum, value) => sum + value, 0) / ratings.length
+      division: group.division,
+      country: group.country,
+      average: group.ratings.reduce((sum, value) => sum + value, 0) / group.ratings.length
     }))
       .sort((a, b) => b.average - a.average || a.league.localeCompare(b.league));
 
     list.innerHTML = '';
+    if (!averages.length) list.textContent = 'No leagues match the current filters.';
 
     averages.forEach((item, index) => {
       const row = document.createElement('div');
@@ -1792,8 +2195,11 @@ applyFilter();
       name.className = 'av-league-name';
 
       const badge = document.createElement('span');
-      badge.className = `tier-badge ${tierClass(item.league)}`.trim();
+      badge.className = `tier-badge ${tierClass(item.division)}`.trim();
       badge.textContent = item.league;
+      if ((window.JR_COUNTRY_CONFEDERATIONS || {})[String(item.country || '').toLowerCase()] && window.JR_applyBadgeStyle) {
+        window.JR_applyBadgeStyle(badge, item.country, item.division);
+      }
       name.appendChild(badge);
 
       const rating = document.createElement('div');
@@ -1861,6 +2267,8 @@ applyFilter();
           id: d.id,
           name: d.name,
           rating: +d.rating,
+          country: d.country || '',
+          competition: d.competition || '',
           tier: Number.isFinite(+d.tier) ? +d.tier : null,
           division: d.division || ''
         }))
@@ -1885,6 +2293,12 @@ applyFilter();
   }
 document.getElementById('season').addEventListener('change', rebuildRowsFromMode);
 
+  document.getElementById('confederation').addEventListener('change', () => {
+    populateCountryFilter();
+    populateLeagueFilter();
+    applyFilter();
+  });
+
   document.getElementById('country').addEventListener('change', () => {
     populateLeagueFilter();
     applyFilter();
@@ -1892,6 +2306,10 @@ document.getElementById('season').addEventListener('change', rebuildRowsFromMode
 
   document.getElementById('league').addEventListener('change', applyFilter);
   document.getElementById('q').addEventListener('input', applyFilter);
+  document.getElementById('show-more-teams').addEventListener('click', () => {
+    state.visibleCount += 100;
+    render();
+  });
 
   setupAverageLeaguePopup();
 loadColours()

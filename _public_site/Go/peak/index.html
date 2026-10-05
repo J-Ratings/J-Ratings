@@ -424,10 +424,10 @@ body,
         <div class="range-buttons">
           <button type="button" class="seg jr-public-disabled jr-public-history-teaser"  data-public-range="ALL" disabled aria-disabled="true" title="Full history coming soon">ALL</button>
           <button type="button" class="seg jr-public-disabled jr-public-history-teaser"  data-public-range="2000" disabled aria-disabled="true" title="Full history coming soon">2000–Present</button>
-          <button type="button" class="seg" data-range="2020">2020–Present</button>
+          <button type="button" class="seg jr-public-disabled jr-public-history-teaser"  data-public-range="2020" disabled aria-disabled="true" title="Full history coming soon">2020–Present</button>
           <button type="button" class="seg" data-range="LY">Last Year</button>
           <button type="button" class="seg" data-range="YTD">YTD</button>
-        </div>
+        <button type="button" class="range-btn" data-range="2023">Since 2023</button></div>
       </div>
 
       <div id="compare-chart" class="jr-chart">Loading…</div>
@@ -834,7 +834,7 @@ window.addEventListener('DOMContentLoaded', () => {
     chartId: 'compare-chart',
     aggId: 'compare-agg',
     controlsEl: document.getElementById('compare-wrap'),
-    defaultRange: '2020',
+    defaultRange: '2023',
     getItems: () => lastCompared
   });
 

@@ -102,7 +102,8 @@ body,
       <label for="agg" style="margin-left:auto">View:</label>
       <select id="agg">
         <option value="daily">Daily</option>
-        <option value="monthly" selected>Monthly</option>
+        <option value="weekly" selected>Weekly</option>
+              <option value="monthly">Monthly</option>
         <option value="yearly">Yearly</option>
       </select>
 
@@ -225,6 +226,20 @@ body,
   }
 
   function aggregate(series, mode){
+    if (mode === 'weekly') {
+      const weeks = Object.create(null);
+      for (const p of series) {
+        const d = new Date(p.x);
+        if (Number.isNaN(d.getTime())) continue;
+        const monday = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - (d.getUTCDay() + 6) % 7)).toISOString().slice(0, 10);
+        (weeks[monday] ||= []).push(p);
+      }
+      return normalise(Object.keys(weeks).sort().map(x => {
+        const pts = weeks[x].filter(p => Number.isFinite(p.y));
+        return { x, y: pts.reduce((sum, p) => sum + p.y, 0) / pts.length, tier: pts.length ? (pts[pts.length - 1].tier ?? null) : null };
+      }), false);
+    }
+
     if (mode === 'daily') return normalise(series, true);
 
     const buckets = Object.create(null);

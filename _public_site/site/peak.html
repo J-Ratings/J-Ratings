@@ -78,6 +78,30 @@ body,
 }
 /* J-Ratings dark scrollbars: end */
 </style>
+
+  <style id="jr-public-teaser-styles">
+    .jr-public-disabled {
+      opacity: 0.42 !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+      user-select: none !important;
+      filter: saturate(0.55);
+    }
+
+    .jr-public-disabled[disabled] {
+      opacity: 0.42 !important;
+    }
+
+    .topnav .jr-public-nav-teaser {
+      white-space: nowrap;
+    }
+
+    .jr-public-stats-teaser .stat-value {
+      font-size: 0.78rem !important;
+      line-height: 1.15 !important;
+    }
+  </style>
+
 </head>
 <body>
 <header>
@@ -103,11 +127,12 @@ body,
       <label for="agg" style="margin-left:auto">View:</label>
       <select id="agg">
         <option value="daily">Daily</option>
-        <option value="monthly" selected>Monthly</option>
+        <option value="weekly" selected>Weekly</option>
+              <option value="monthly">Monthly</option>
         <option value="yearly">Yearly</option>
       </select>
 
-      <button id="compare-btn" class="club-btn" type="button">Compare</button>
+      <button class="club-btn jr-public-disabled jr-public-compare-teaser" type="button" disabled aria-disabled="true" title="Coming soon">Compare</button>
     </div>
 
     <div id="compare-wrap" style="display:none; padding:16px">
@@ -230,6 +255,20 @@ body,
   }
 
   function aggregate(series, mode){
+    if (mode === 'weekly') {
+      const weeks = Object.create(null);
+      for (const p of series) {
+        const d = new Date(p.x);
+        if (Number.isNaN(d.getTime())) continue;
+        const monday = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - (d.getUTCDay() + 6) % 7)).toISOString().slice(0, 10);
+        (weeks[monday] ||= []).push(p);
+      }
+      return normalise(Object.keys(weeks).sort().map(x => {
+        const pts = weeks[x].filter(p => Number.isFinite(p.y));
+        return { x, y: pts.reduce((sum, p) => sum + p.y, 0) / pts.length, tier: pts.length ? (pts[pts.length - 1].tier ?? null) : null };
+      }), false);
+    }
+
     if (mode === 'daily') return normalise(series, true);
 
     const buckets = Object.create(null);
@@ -400,8 +439,7 @@ body,
   });
 
   document.getElementById('q').addEventListener('input', applyFilter);
-  setupCompareButton();
-  load();
+load();
 </script>
 </body>
 </html>
