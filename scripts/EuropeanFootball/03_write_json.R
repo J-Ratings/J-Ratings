@@ -1,3 +1,4 @@
+stage03_started <- proc.time()[["elapsed"]]
 # scripts/EuropeanFootball/03_write_json.R
 
 library(dplyr)
@@ -33,6 +34,7 @@ src_dir <- file.path(
 )
 
 base_data_dir <- file.path(repo_dir, "EuropeanFootball", "data")
+source(file.path(repo_dir,"scripts/EuropeanFootball/club_identity_resolution.R"))
 history_out   <- file.path(base_data_dir, "history")
 games_out     <- file.path(base_data_dir, "games")
 
@@ -43,6 +45,35 @@ dir.create(games_out,     recursive = TRUE, showWarnings = FALSE)
 # -----------------------------
 # Helpers
 # -----------------------------
+
+# Windows can briefly lock an existing JSON file while the local site,
+# antivirus, indexing, or sync software reads it. Retrying prevents one
+# transient lock from aborting a run containing thousands of output files.
+write_json_retry <- function(x, path, ..., attempts = 10L) {
+  last_error <- NULL
+
+  for (attempt in seq_len(attempts)) {
+    last_error <- tryCatch(
+      {
+        jsonlite::write_json(x, path, ...)
+        NULL
+      },
+      error = function(e) e
+    )
+
+    if (is.null(last_error)) return(invisible(path))
+
+    if (attempt < attempts) {
+      Sys.sleep(min(0.25 * attempt, 2))
+    }
+  }
+
+  stop(
+    "Could not write JSON after ", attempts, " attempts: ", path,
+    "\nLast error: ", conditionMessage(last_error),
+    call. = FALSE
+  )
+}
 
 slug <- function(x) {
   x <- stringi::stri_trans_general(x, "Latin-ASCII")
@@ -136,12 +167,12 @@ fixtures <- read_csv(fixtures_csv, show_col_types = FALSE)
 # Validate columns
 # -----------------------------
 
-required_final <- c("Team", "Rating", "Games")
+required_final <- c("Team", "TeamKey", "Rating", "Games")
 
 required_hist <- c(
   "Country", "Competition", "CompetitionType", "League", "Tier", "Date", "Home", "Away", "Result", "Score",
   "HomeRating_Before", "AwayRating_Before",
-  "HomeRating_After", "AwayRating_After"
+  "HomeRating_After", "AwayRating_After", "HomeKey", "AwayKey"
 )
 
 miss_final <- setdiff(required_final, names(final))
@@ -174,6 +205,26 @@ ghist <- ghist %>%
   ) %>%
   filter(!is.na(Date), Home != "", Away != "")
 
+final <- final %>%
+  mutate(
+    TeamKey = trimws(as.character(TeamKey)),
+    Team = trimws(as.character(Team))
+  )
+
+# Domestic fixtures identify teams through Country + name. Continental fixture
+# rows use a confederation label (for example Europe), so resolve those names to
+# their unique Elo identity instead. Ambiguous names remain unresolved rather
+# than being attached to the wrong club.
+unique_fixture_keys <- final %>%
+  filter(Team != "", TeamKey != "") %>%
+  group_by(Team) %>%
+  filter(n_distinct(TeamKey) == 1L) %>%
+  slice_head(n = 1L) %>%
+  ungroup() %>%
+  select(Team, TeamKey)
+fixture_key_lookup <- setNames(unique_fixture_keys$TeamKey, unique_fixture_keys$Team)
+valid_team_keys <- unique(final$TeamKey)
+
 fixtures <- fixtures %>%
   mutate(
     Date   = as.Date(Date),
@@ -184,10 +235,38 @@ fixtures <- fixtures %>%
     CompetitionType = trimws(as.character(CompetitionType)),
     League          = trimws(as.character(League)),
     Source          = if ("Source" %in% names(fixtures)) trimws(as.character(Source)) else NA_character_,
-    Tier            = as.integer(Tier)
+    Tier            = as.integer(Tier),
+    # Upcoming fixtures do not pass through the completed-match Elo loop, so
+    # 02 has no reason to write its internal identity keys to their CSV.
+    DomesticHomeKey = paste(club_association(Country,Home), Home, sep = "\r"),
+    DomesticAwayKey = paste(club_association(Country,Away), Away, sep = "\r"),
+    HomeKey = if_else(
+      DomesticHomeKey %in% valid_team_keys,
+      DomesticHomeKey,
+      unname(fixture_key_lookup[Home])
+    ),
+    AwayKey = if_else(
+      DomesticAwayKey %in% valid_team_keys,
+      DomesticAwayKey,
+      unname(fixture_key_lookup[Away])
+    )
   ) %>%
   filter(!is.na(Date), Home != "", Away != "")
 
+unresolved_fixture_teams <- fixtures %>%
+  filter(is.na(HomeKey) | HomeKey == "" | is.na(AwayKey) | AwayKey == "")
+if (nrow(unresolved_fixture_teams) > 0L) {
+  stop(
+    "Could not resolve Elo identity for ", nrow(unresolved_fixture_teams),
+    " upcoming fixture rows. First example: ",
+    unresolved_fixture_teams$Home[[1L]], " v ", unresolved_fixture_teams$Away[[1L]],
+    " (", unresolved_fixture_teams$Country[[1L]], ")."
+  )
+}
+
+ghist <- ghist %>% mutate(HomeKey = trimws(as.character(HomeKey)), AwayKey = trimws(as.character(AwayKey)))
+
+if (any(ghist$Date > Sys.Date(), na.rm=TRUE)) stop("Elo history contains future-dated completed games. Rerun corrected 01 and 02 before exporting.")
 asof_date <- max(ghist$Date, na.rm = TRUE)
 
 # -----------------------------
@@ -199,7 +278,7 @@ meta <- list(
   games = nrow(ghist)
 )
 
-write_json(
+write_json_retry(
   meta,
   file.path(base_data_dir, "meta.json"),
   auto_unbox = TRUE,
@@ -223,13 +302,13 @@ cat("Wrote meta.json (asof =", meta$asof, ")\n")
 
 completed_league_appearances <- bind_rows(
   ghist %>% transmute(
-    team = Home,
+    team = HomeKey,
     status_date = Date,
     Country, Competition, CompetitionType, Tier, League,
     membership_source = "completed"
   ),
   ghist %>% transmute(
-    team = Away,
+    team = AwayKey,
     status_date = Date,
     Country, Competition, CompetitionType, Tier, League,
     membership_source = "completed"
@@ -253,13 +332,13 @@ current_league_fixtures <- fixtures %>%
 
 fixture_league_appearances <- bind_rows(
   current_league_fixtures %>% transmute(
-    team = Home,
+    team = paste(club_association(Country,Home), Home, sep = "\r"),
     status_date = Date,
     Country, Competition, CompetitionType, Tier, League,
     membership_source = "fixture"
   ),
   current_league_fixtures %>% transmute(
-    team = Away,
+    team = paste(club_association(Country,Away), Away, sep = "\r"),
     status_date = Date,
     Country, Competition, CompetitionType, Tier, League,
     membership_source = "fixture"
@@ -284,7 +363,7 @@ team_membership <- bind_rows(
   ungroup() %>%
   transmute(
     name = team,
-    country = as.character(Country),
+    country = sub("\r.*$", "", team),
     competition = as.character(Competition),
     tier = as.integer(Tier),
     division = as.character(League),
@@ -313,19 +392,20 @@ fixture_members <- fixture_league_appearances %>%
 
 teams_all <- final %>%
   transmute(
+    key = TeamKey,
     name = trimws(as.character(Team)),
     rating = as.integer(round(Rating)),
     games = as.integer(Games)
   ) %>%
-  left_join(team_membership, by = "name") %>%
-  left_join(team_last_played, by = "name") %>%
-  left_join(fixture_members, by = "name") %>%
+  left_join(team_membership, by = c("key" = "name")) %>%
+  left_join(team_last_played, by = c("key" = "name")) %>%
+  left_join(fixture_members, by = c("key" = "name")) %>%
   mutate(
     has_current_fixture = coalesce(has_current_fixture, FALSE),
-    id = slug(name)
+    id = slug(paste(country, name, sep = "-"))
   ) %>%
   select(
-    id, name, rating, games, last_played,
+    key, id, name, rating, games, last_played,
     country, competition, tier, division,
     membership_source, has_current_fixture
   ) %>%
@@ -342,7 +422,7 @@ if (anyDuplicated(teams_all$id)) {
     select(-n)
 }
 
-cutoff_date <- as.Date(asof_date) - 365L
+cutoff_date <- as.Date(asof_date) - 730L
 
 # A club is active if either:
 #   1) it appears in a current/future covered league fixture, OR
@@ -366,16 +446,17 @@ teams_tbl <- teams_all %>%
 
 fixture_expected <- fixture_league_appearances %>%
   distinct(
-    name = team,
+    key = team,
     country = Country,
     competition = Competition,
     tier = Tier,
     division = League
-  )
+  ) %>%
+  mutate(name = sub("^.*\\r", "", key))
 
 missing_fixture_teams <- setdiff(
-  fixture_expected$name,
-  teams_tbl$name
+  fixture_expected$key,
+  teams_all$key
 )
 
 if (length(missing_fixture_teams) > 0L) {
@@ -385,7 +466,7 @@ if (length(missing_fixture_teams) > 0L) {
   )
 }
 
-write_json(
+write_json_retry(
   teams_tbl,
   file.path(base_data_dir, "teams.json"),
   auto_unbox = TRUE,
@@ -490,11 +571,30 @@ if (length(missing_fixture_teams) == 0L) {
   cat("Current-membership QA: PASS\n")
 }
 
-name_to_id <- setNames(teams_all$id, teams_all$name)
+name_to_id <- setNames(teams_all$id, teams_all$key)
+EXPORT_CUTOFF <- as.Date("2024-12-31")
+EXPORT_CHECKPOINT_FILE <- file.path(src_dir, "json_export_checkpoint_2024_12_31.rds")
+elo_checkpoint_file <- file.path(src_dir, "checkpoint_2024_12_31.rds")
+elo_checkpoint_hash <- if (file.exists(elo_checkpoint_file)) unname(tools::md5sum(elo_checkpoint_file)) else ""
+export_checkpoint <- if (file.exists(EXPORT_CHECKPOINT_FILE)) readRDS(EXPORT_CHECKPOINT_FILE) else NULL
+export_name_ids <- name_to_id
+if (!is.null(export_checkpoint) &&
+    (!identical(export_checkpoint$version, 1L) || !nzchar(elo_checkpoint_hash) ||
+     !identical(export_checkpoint$elo_hash, elo_checkpoint_hash) ||
+     !identical(unname(name_to_id[names(export_checkpoint$name_ids)]), unname(export_checkpoint$name_ids)))) {
+  message("Export checkpoint no longer matches Elo checkpoint or club IDs; doing a full export.")
+  export_checkpoint <- NULL
+}
+active_export_keys <- unique(c(
+  ghist$HomeKey[ghist$Date > EXPORT_CUTOFF], ghist$AwayKey[ghist$Date > EXPORT_CUTOFF],
+  fixtures$HomeKey[fixtures$Date > EXPORT_CUTOFF], fixtures$AwayKey[fixtures$Date > EXPORT_CUTOFF]))
+current_active_export_keys <- active_export_keys
+if (!is.null(export_checkpoint)) active_export_keys <- unique(c(active_export_keys, export_checkpoint$active_keys))
+if (!is.null(export_checkpoint)) message("Reusing frozen export history through 2024-12-31.")
 
 rating_lookup <- setNames(
   as.numeric(final$Rating),
-  trimws(as.character(final$Team))
+  trimws(as.character(final$TeamKey))
 )
 
 # -----------------------------
@@ -507,11 +607,11 @@ rating_lookup <- setNames(
 hist_long <- bind_rows(
   ghist %>%
     transmute(
-      team = Home,
+      team = HomeKey,
       date = Date,
       season = season_label(Date),
       rating = HomeRating_After,
-      country = as.character(Country),
+      country = sub("\r.*$", "", HomeKey),
       competition = as.character(Competition),
       competition_type = as.character(CompetitionType),
       tier = as.integer(Tier),
@@ -519,11 +619,11 @@ hist_long <- bind_rows(
     ),
   ghist %>%
     transmute(
-      team = Away,
+      team = AwayKey,
       date = Date,
       season = season_label(Date),
       rating = AwayRating_After,
-      country = as.character(Country),
+      country = sub("\r.*$", "", AwayKey),
       competition = as.character(Competition),
       competition_type = as.character(CompetitionType),
       tier = as.integer(Tier),
@@ -543,7 +643,7 @@ hist_long <- bind_rows(
 season_starts_long <- bind_rows(
   ghist %>%
     transmute(
-      team = Home,
+      team = HomeKey,
       date = Date,
       season = season_label(Date),
       elo = HomeRating_Before,
@@ -555,7 +655,7 @@ season_starts_long <- bind_rows(
     ),
   ghist %>%
     transmute(
-      team = Away,
+      team = AwayKey,
       date = Date,
       season = season_label(Date),
       elo = AwayRating_Before,
@@ -579,7 +679,7 @@ season_starts_long <- bind_rows(
   transmute(
     season = as.character(season),
     id = as.character(id),
-    name = as.character(team),
+    name = sub("^.*\\r", "", as.character(team)),
     elo = as.integer(elo),
     country = as.character(country),
     competition = as.character(competition),
@@ -589,7 +689,7 @@ season_starts_long <- bind_rows(
   ) %>%
   arrange(desc(season), desc(elo), name)
 
-write_json(
+write_json_retry(
   season_starts_long,
   file.path(base_data_dir, "season_starts.json"),
   auto_unbox = TRUE,
@@ -602,13 +702,22 @@ cat("Wrote season_starts.json (rows =", nrow(season_starts_long), ")\n")
 # Per-team rating history JSON
 # -----------------------------
 
+# Build row indexes once; avoid scanning every historical row for each club.
+history_rows_by_team <- split(seq_len(nrow(hist_long)), hist_long$team)
+match_rows_by_team <- split(
+  rep(seq_len(nrow(ghist)), 2L), c(ghist$HomeKey, ghist$AwayKey))
+fixture_rows_by_team <- split(
+  rep(seq_len(nrow(fixtures)), 2L), c(fixtures$HomeKey, fixtures$AwayKey))
+cat("Built club indexes; elapsed:", round(proc.time()[["elapsed"]] - stage03_started, 1), "seconds\n")
+
 n_hist_written <- 0L
 
 for (tm in names(name_to_id)) {
   id <- name_to_id[[tm]]
+  if (!is.null(export_checkpoint) && !tm %in% active_export_keys &&
+      file.exists(file.path(history_out, paste0(id, ".json")))) next
   
-  df <- hist_long %>%
-    filter(team == tm) %>%
+  df <- hist_long[history_rows_by_team[[tm]], , drop = FALSE] %>%
     arrange(date) %>%
     transmute(
       date = format(date, "%Y-%m-%d"),
@@ -622,7 +731,7 @@ for (tm in names(name_to_id)) {
     )
   
   if (nrow(df) > 0) {
-    write_json(
+    write_json_retry(
       df,
       file.path(history_out, paste0(id, ".json")),
       auto_unbox = TRUE,
@@ -714,6 +823,25 @@ ranking_events_live <- ranking_events %>%
 ranking_snapshots <- list()
 snapshot_i <- 0L
 last_signature <- new.env(parent = emptyenv())
+ranking_boundary <- NULL
+if (!is.null(export_checkpoint)) {
+  old_countries <- export_checkpoint$ranking$country_lookup
+  if (!identical(unname(country_lookup[names(old_countries)]), unname(old_countries))) {
+    message("Country assignments changed; rebuilding country rankings.")
+  } else {
+    ranking_boundary <- export_checkpoint$ranking
+    rating_state <- ranking_boundary$ratings
+    last_seen_state <- ranking_boundary$last_seen
+    list2env(ranking_boundary$signatures, envir=last_signature)
+    ranking_snapshots <- list(ranking_boundary$snapshots)
+    snapshot_i <- 1L
+    ranking_events_live <- ranking_events_live %>% filter(date > EXPORT_CUTOFF)
+  }
+}
+capture_ranking_boundary <- function() list(
+  ratings=rating_state, last_seen=last_seen_state,
+  signatures=as.list(last_signature, all.names=TRUE),
+  snapshots=bind_rows(ranking_snapshots), country_lookup=country_lookup)
 
 append_country_snapshot <- function(snapshot_date, country) {
   country_teams <- names(country_lookup)[country_lookup == country]
@@ -774,8 +902,10 @@ append_country_snapshot <- function(snapshot_date, country) {
 }
 
 # Baseline snapshot at 2000-01-01 for every country with an active rated club.
-for (country in sort(unique(unname(country_lookup)))) {
-  append_country_snapshot(TOP_TEAMS_START, country)
+if (is.null(ranking_boundary)) {
+  for (country in sort(unique(unname(country_lookup)))) {
+    append_country_snapshot(TOP_TEAMS_START, country)
+  }
 }
 
 if (nrow(ranking_events_live) > 0L) {
@@ -786,6 +916,8 @@ if (nrow(ranking_events_live) > 0L) {
   
   for (date_key in names(events_by_date)) {
     snapshot_date <- as.Date(date_key)
+    if (is.null(ranking_boundary) && snapshot_date > EXPORT_CUTOFF)
+      ranking_boundary <- capture_ranking_boundary()
     day_rows <- events_by_date[[date_key]]
     
     for (j in seq_len(nrow(day_rows))) {
@@ -804,6 +936,7 @@ if (nrow(ranking_events_live) > 0L) {
     }
   }
 }
+if (is.null(ranking_boundary)) ranking_boundary <- capture_ranking_boundary()
 
 top_teams_tbl <- bind_rows(ranking_snapshots) %>%
   arrange(date, country, rank)
@@ -812,12 +945,17 @@ if (nrow(top_teams_tbl) == 0L) {
   stop("No historical Top 5 ranking snapshots were generated.")
 }
 
-write_json(
-  top_teams_tbl,
-  file.path(base_data_dir, "top_teams.json"),
-  auto_unbox = TRUE,
-  pretty = FALSE
-)
+# Small static JSON parts keep the published data below GitHub's file limit.
+top_parts_dir <- file.path(base_data_dir, "top_teams")
+dir.create(top_parts_dir, recursive=TRUE, showWarnings=FALSE)
+top_part_files <- character()
+for (first_row in seq.int(1L, nrow(top_teams_tbl), by=25000L)) {
+  part_name <- sprintf("part-%04d.json", length(top_part_files) + 1L)
+  last_row <- min(first_row + 24999L, nrow(top_teams_tbl))
+  write_json_retry(top_teams_tbl[first_row:last_row, ], file.path(top_parts_dir, part_name), auto_unbox=TRUE, pretty=FALSE)
+  top_part_files <- c(top_part_files, part_name)
+}
+write_json_retry(list(version=1L, files=as.list(top_part_files)), file.path(top_parts_dir,"manifest.json"), auto_unbox=TRUE, pretty=FALSE)
 
 cat(
   "Wrote top_teams.json (rows =",
@@ -835,14 +973,16 @@ n_games_written <- 0L
 
 for (tm in names(name_to_id)) {
   id <- name_to_id[[tm]]
+  if (!is.null(export_checkpoint) && !tm %in% active_export_keys &&
+      file.exists(file.path(games_out, paste0(id, ".json")))) next
   
   # -----------------------------
   # Next five fixtures
   # -----------------------------
   
-  future_df <- fixtures %>%
+  future_df <- fixtures[unique(fixture_rows_by_team[[tm]]), , drop = FALSE] %>%
     filter(
-      Home == tm | Away == tm,
+      HomeKey == tm | AwayKey == tm,
       Date > asof_date
     ) %>%
     arrange(Date) %>%
@@ -851,8 +991,8 @@ for (tm in names(name_to_id)) {
       season = season_label(Date),
       division = if_else(CompetitionType == "league", as.character(League), NA_character_),
       
-      home_elo = unname(rating_lookup[Home]),
-      away_elo = unname(rating_lookup[Away]),
+      home_elo = unname(rating_lookup[HomeKey]),
+      away_elo = unname(rating_lookup[AwayKey]),
       
       home_expected = elo_expected(home_elo, away_elo),
       away_expected = 1 - home_expected,
@@ -906,15 +1046,14 @@ for (tm in names(name_to_id)) {
   # Completed matches
   # -----------------------------
   
-  past_df <- ghist %>%
-    filter(Home == tm | Away == tm) %>%
+  past_df <- ghist[unique(match_rows_by_team[[tm]]), , drop = FALSE] %>%
     arrange(desc(Date)) %>%
     mutate(
       season = season_label(Date),
       
       delta_num = case_when(
-        Home == tm ~ HomeRating_After - HomeRating_Before,
-        Away == tm ~ AwayRating_After - AwayRating_Before,
+        HomeKey == tm ~ HomeRating_After - HomeRating_Before,
+        AwayKey == tm ~ AwayRating_After - AwayRating_Before,
         TRUE ~ NA_real_
       ),
       
@@ -988,7 +1127,7 @@ for (tm in names(name_to_id)) {
   )
   
   if (nrow(df) > 0) {
-    write_json(
+    write_json_retry(
       df,
       file.path(games_out, paste0(id, ".json")),
       auto_unbox = TRUE,
@@ -1315,7 +1454,7 @@ for (season_id in pl_seasons) {
   )
 
   # Proper tournament data.
-  write_json(
+  write_json_retry(
     tournament,
     file.path(
       tournament_root,
@@ -1330,7 +1469,7 @@ for (season_id in pl_seasons) {
   )
 
   # Keep the existing simulation input path working.
-  write_json(
+  write_json_retry(
     tournament,
     file.path(
       simulation_root,
@@ -1376,7 +1515,7 @@ for (season_id in pl_seasons) {
   )
 }
 
-write_json(
+write_json_retry(
   season_manifest,
   file.path(
     tournament_root,
@@ -1387,7 +1526,7 @@ write_json(
   na = "null"
 )
 
-write_json(
+write_json_retry(
   season_manifest,
   file.path(
     simulation_root,
@@ -1406,6 +1545,21 @@ cat(
 
 cat("Wrote games files:", n_games_written, "\n")
 cat("Done.\n")
+if (nzchar(elo_checkpoint_hash)) {
+  export_state <- list(version=1L, cutoff=EXPORT_CUTOFF, elo_hash=elo_checkpoint_hash,
+    name_ids=export_name_ids, ranking=ranking_boundary, active_keys=current_active_export_keys)
+  export_tmp <- paste0(EXPORT_CHECKPOINT_FILE, ".tmp")
+  saveRDS(export_state, export_tmp, compress=FALSE)
+  if (file.exists(EXPORT_CHECKPOINT_FILE)) {
+    if (!file.copy(export_tmp, EXPORT_CHECKPOINT_FILE, overwrite=TRUE)) stop("Cannot update export checkpoint.")
+    unlink(export_tmp)
+  } else if (!file.rename(export_tmp, EXPORT_CHECKPOINT_FILE)) stop("Cannot save export checkpoint.")
+  cat("Saved end-of-2024 export checkpoint.\n")
+}
 
+stage03_seconds <- proc.time()[["elapsed"]] - stage03_started
+cat("03 total elapsed:", round(stage03_seconds, 1), "seconds\n")
+writeLines(paste(format(Sys.time()), "elapsed_seconds", stage03_seconds), file.path(src_dir, "stage_03_latest_timing.txt"))
 # Local completion sound.
 if (interactive()) beep()
+

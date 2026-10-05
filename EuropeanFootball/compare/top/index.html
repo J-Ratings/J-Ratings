@@ -11,7 +11,7 @@
   </script>
 
   <meta charset="utf-8">
-  <title>J-Ratings: European Football Top Teams</title>
+  <title>J-Ratings: Club Football Top Teams</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="../../style.css">
@@ -214,7 +214,7 @@ body,
   <div class="wrap">
     <h1 class="site-title">
       <a href="../../home/" class="brand-with-logo">
-        <span>J-Ratings <span class="title-football">European Football</span></span>
+        <span>J-Ratings <span class="title-football">Club Football</span></span>
       </a>
     </h1>
     <nav class="topnav" aria-label="Main">
@@ -284,7 +284,7 @@ body,
 </main>
 
 <script>
-  const TOP_URL = '../../data/top_teams.json';
+  const TOP_URL = '../../data/top_teams/manifest.json';
   const HIST_URL = id => `../../data/history/${encodeURIComponent(id)}.json`;
   const COLOURS_URL = '../../team-colours.json';
 
@@ -426,7 +426,17 @@ body,
     ]);
 
     if (!topRes.ok) throw new Error('top_teams.json not found. Run the updated 03_write_json.R first.');
-    TOP_ROWS = await topRes.json();
+    const manifest = await topRes.json();
+    if (manifest.version !== 1 || !Array.isArray(manifest.files)) throw new Error('Invalid Top Teams manifest');
+    TOP_ROWS = [];
+    for (let i = 0; i < manifest.files.length; i += 4) {
+      const batches = await Promise.all(manifest.files.slice(i, i + 4).map(async name => {
+        const res = await fetch('../../data/top_teams/' + name, {cache:'no-cache'});
+        if (!res.ok) throw new Error('Missing Top Teams part: ' + name);
+        return res.json();
+      }));
+      for (const rows of batches) TOP_ROWS = TOP_ROWS.concat(rows);
+    }
     if (!Array.isArray(TOP_ROWS) || !TOP_ROWS.length) throw new Error('top_teams.json is empty.');
 
     if (coloursRes && coloursRes.ok) {

@@ -11,7 +11,7 @@
   </script>
 
   <meta charset="utf-8">
-  <title>J-Ratings: European Football</title>
+  <title>J-Ratings: Club Football</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="../style.css">
@@ -21,6 +21,21 @@
     #compare-chart { height: 520px; }
 
     .toolbar { margin-bottom: 10px; }
+
+    .flag-cell { text-align:center; vertical-align:middle; }
+    .flag-icon {
+      width:40px;
+      height:30px;
+      display:block;
+      margin:0 auto;
+      object-fit:contain;
+    }
+
+    .show-more-wrap {
+      display:flex;
+      justify-content:center;
+      padding:16px 0 4px;
+    }
 
     .compare-chart-toolbar {
       display: flex;
@@ -119,20 +134,25 @@
 
   #teams th:nth-child(2),
   #teams td:nth-child(2) {
-    width: auto;
+    width: 52px;
   }
 
   #teams th:nth-child(3),
   #teams td:nth-child(3) {
-    width: 66px;
+    width: auto;
   }
 
   #teams th:nth-child(4),
   #teams td:nth-child(4) {
+    width: 66px;
+  }
+
+  #teams th:nth-child(5),
+  #teams td:nth-child(5) {
     width: 112px;
   }
 
-  #teams td:nth-child(2) a {
+  #teams td:nth-child(3) a {
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -265,10 +285,11 @@
     }
 
     @media (min-width:521px){
-      #teams th:nth-child(1), #teams td:nth-child(1){ width:10%; }
-      #teams th:nth-child(2), #teams td:nth-child(2){ width:50%; }
-      #teams th:nth-child(3), #teams td:nth-child(3){ width:16%; }
-      #teams th:nth-child(4), #teams td:nth-child(4){ width:24%; }
+      #teams th:nth-child(1), #teams td:nth-child(1){ width:9%; }
+      #teams th:nth-child(2), #teams td:nth-child(2){ width:10%; }
+      #teams th:nth-child(3), #teams td:nth-child(3){ width:41%; }
+      #teams th:nth-child(4), #teams td:nth-child(4){ width:16%; }
+      #teams th:nth-child(5), #teams td:nth-child(5){ width:24%; }
     }
 
   
@@ -326,7 +347,7 @@ body,
   <div class="wrap">
     <h1 class="site-title">
       <a id="home-link" href="../home/" class="brand-with-logo">
-        <span>J-Ratings <span class="title-football">European Football</span></span>
+        <span>J-Ratings <span class="title-football">Club Football</span></span>
       </a>
     </h1>
 
@@ -344,6 +365,15 @@ body,
     <div class="toolbar">
       <input id="q" type="search" placeholder="Filter by team…">
       <span id="count" class="muted"></span>
+
+      <label for="confederation">Confederation:</label>
+      <select id="confederation"><option value="all">All</option></select>
+
+      <label for="country">Country:</label>
+      <select id="country"><option value="all">All</option></select>
+
+      <label for="league">League:</label>
+      <select id="league"><option value="all">All</option></select>
 
       <button id="compare-btn" class="club-btn" type="button" style="margin-left:auto">Compare</button>
     </div>
@@ -376,6 +406,7 @@ body,
         <thead>
           <tr>
             <th style="min-width:60px">Rank</th>
+            <th style="min-width:56px">Country</th>
             <th style="min-width:240px">Team</th>
             <th class="right" style="min-width:120px">Peak</th>
             <th style="min-width:140px">Peak Date</th>
@@ -383,6 +414,9 @@ body,
         </thead>
         <tbody></tbody>
       </table>
+    </div>
+    <div class="show-more-wrap">
+      <button id="show-more-teams" class="club-btn" type="button" hidden>Show more</button>
     </div>
   </section>
 </main>
@@ -405,12 +439,14 @@ body,
 </div>
 </div>
 
+<script src="../site-mappings.js"></script>
 <script>
   const DATA_URL = '../data/teams.json';
   const COLOURS_URL = '../team-colours.json';
+  const FLAGS_BASE = '../../flags';
   const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches;
 
-  const state = { rows: [], filtered: [] };
+  const state = { rows: [], filtered: [], visibleCount: 100 };
   const histCache = new Map();
 
   let lastCompared = [];
@@ -419,16 +455,42 @@ body,
   let COMPARE_AGG_MODE = 'monthly';
   let compareVisibleSeries = [];
 
+  const COUNTRY_FLAG_CODES = Object.assign({
+    england:'gb-eng',spain:'es',italy:'it',germany:'de',france:'fr',portugal:'pt',
+    netherlands:'nl',belgium:'be',austria:'at',turkey:'tr',scotland:'gb-sct',
+    switzerland:'ch',greece:'gr',czechia:'cz',ukraine:'ua',poland:'pl',norway:'no',
+    sweden:'se',romania:'ro',russia:'ru','bosnia and herzegovina':'ba',bulgaria:'bg',
+    hungary:'hu',iceland:'is',israel:'il',luxembourg:'lu',malta:'mt','san marino':'sm',
+    serbia:'rs',albania:'al',andorra:'ad',armenia:'am',azerbaijan:'az',belarus:'by',
+    croatia:'hr',cyprus:'cy',estonia:'ee','faroe islands':'fo',finland:'fi',georgia:'ge',
+    gibraltar:'gi',kazakhstan:'kz',kosovo:'xk',latvia:'lv',lithuania:'lt',moldova:'md',
+    montenegro:'me','north macedonia':'mk','northern ireland':'gb-nir',
+    'republic of ireland':'ie',slovakia:'sk',slovenia:'si',wales:'gb-wls'
+  }, window.JR_COUNTRY_FLAG_CODES || {});
+
+  function flagHtml(row) {
+    const country = String(row.country || '').trim();
+    const code = COUNTRY_FLAG_CODES[country.toLowerCase()];
+    return code
+      ? `<img src="${FLAGS_BASE}/${code}.svg" alt="${country}" title="${country}" class="flag-icon" loading="lazy">`
+      : '';
+  }
+
   function render() {
     const tbody = document.querySelector('#teams tbody');
     tbody.innerHTML = '';
 
-    state.filtered.forEach((r, i) => {
+    state.filtered.slice(0, state.visibleCount).forEach((r, i) => {
       const tr = document.createElement('tr');
 
       const tdRank = document.createElement('td');
       tdRank.textContent = i + 1;
       tr.appendChild(tdRank);
+
+      const tdFlag = document.createElement('td');
+      tdFlag.className = 'flag-cell';
+      tdFlag.innerHTML = flagHtml(r);
+      tr.appendChild(tdFlag);
 
       const tdName = document.createElement('td');
       const a = document.createElement('a');
@@ -451,6 +513,8 @@ body,
 
     const countEl = document.getElementById('count');
     if (countEl) countEl.textContent = state.filtered.length ? `(${state.filtered.length})` : '';
+    const showMore = document.getElementById('show-more-teams');
+    if (showMore) showMore.hidden = state.visibleCount >= state.filtered.length;
   }
 
   function hideCompare() {
@@ -462,13 +526,76 @@ body,
 
   function applyFilter() {
     const q = document.getElementById('q').value.trim().toLowerCase();
+    const confederation = document.getElementById('confederation').value;
+    const country = document.getElementById('country').value;
+    const league = document.getElementById('league').value;
 
-    state.filtered = q
-      ? state.rows.filter(r => r.name.toLowerCase().includes(q))
-      : state.rows.slice();
+    state.filtered = state.rows.filter(r =>
+      (!q || r.name.toLowerCase().includes(q)) &&
+      (confederation === 'all' || (window.JR_COUNTRY_CONFEDERATIONS || {})[String(r.country || '').trim().toLowerCase()] === confederation) &&
+      (country === 'all' || r.country === country) &&
+      (league === 'all' || r.division === league)
+    );
+
+    state.visibleCount = 100;
 
     render();
     hideCompare();
+  }
+
+  function populateCountryFilter() {
+    const select = document.getElementById('country');
+    const current = select.value;
+    const confederation = document.getElementById('confederation').value;
+    const countries = [...new Set(state.rows
+      .filter(r => confederation === 'all' || (window.JR_COUNTRY_CONFEDERATIONS || {})[String(r.country || '').trim().toLowerCase()] === confederation)
+      .map(r => r.country).filter(Boolean))]
+      .sort((a, b) => a.localeCompare(b));
+    select.innerHTML = '<option value="all">All</option>';
+    for (const country of countries) {
+      const option = document.createElement('option');
+      option.value = country;
+      option.textContent = country;
+      select.appendChild(option);
+    }
+    select.value = countries.includes(current) ? current : 'all';
+  }
+
+  function populateConfederationFilter() {
+    const select = document.getElementById('confederation');
+    const current = select.value;
+    const confederations = [...new Set(state.rows
+      .map(r => (window.JR_COUNTRY_CONFEDERATIONS || {})[String(r.country || '').trim().toLowerCase()])
+      .filter(Boolean))]
+      .sort((a, b) => a.localeCompare(b));
+    select.innerHTML = '<option value="all">All</option>';
+    for (const confederation of confederations) {
+      const option = document.createElement('option');
+      option.value = confederation;
+      option.textContent = confederation;
+      select.appendChild(option);
+    }
+    select.value = confederations.includes(current) ? current : 'all';
+  }
+
+  function populateLeagueFilter() {
+    const confederation = document.getElementById('confederation').value;
+    const country = document.getElementById('country').value;
+    const select = document.getElementById('league');
+    const current = select.value;
+    const leagues = [...new Set(state.rows
+      .filter(r => confederation === 'all' || (window.JR_COUNTRY_CONFEDERATIONS || {})[String(r.country || '').trim().toLowerCase()] === confederation)
+      .filter(r => country === 'all' || r.country === country)
+      .map(r => r.division)
+      .filter(Boolean))].sort((a, b) => a.localeCompare(b));
+    select.innerHTML = '<option value="all">All</option>';
+    for (const league of leagues) {
+      const option = document.createElement('option');
+      option.value = league;
+      option.textContent = league;
+      select.appendChild(option);
+    }
+    select.value = leagues.includes(current) ? current : 'all';
   }
 
   async function fetchHistoryFor(id) {
@@ -959,7 +1086,12 @@ body,
 
       const baseRows = teams
         .filter(d => d && d.id && d.name)
-        .map(d => ({ id: d.id, name: d.name }));
+        .map(d => ({
+          id: d.id,
+          name: d.name,
+          country: d.country || '',
+          division: d.division || ''
+        }));
 
       const withPeaks = await Promise.all(baseRows.map(async (t) => {
         const hist = await fetchHistoryFor(t.id);
@@ -983,6 +1115,8 @@ body,
         return {
           id: t.id,
           name: t.name,
+          country: t.country,
+          division: t.division,
           peak: Math.round(peak),
           peak_date: peakDate
         };
@@ -993,14 +1127,31 @@ body,
         .sort((a, b) => b.peak - a.peak || a.name.localeCompare(b.name));
 
       state.filtered = state.rows.slice();
+      populateConfederationFilter();
+      populateCountryFilter();
+      populateLeagueFilter();
       render();
     } catch (err) {
       document.querySelector('#teams tbody').innerHTML =
-        `<tr><td colspan="4">Error loading data: ${err.message}</td></tr>`;
+        `<tr><td colspan="5">Error loading data: ${err.message}</td></tr>`;
     }
   }
 
   document.getElementById('q').addEventListener('input', applyFilter);
+  document.getElementById('confederation').addEventListener('change', () => {
+    populateCountryFilter();
+    populateLeagueFilter();
+    applyFilter();
+  });
+  document.getElementById('country').addEventListener('change', () => {
+    populateLeagueFilter();
+    applyFilter();
+  });
+  document.getElementById('league').addEventListener('change', applyFilter);
+  document.getElementById('show-more-teams').addEventListener('click', () => {
+    state.visibleCount += 100;
+    render();
+  });
 
   setupCompareButton();
   setupCompareChartControls();

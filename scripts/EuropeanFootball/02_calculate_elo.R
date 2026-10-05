@@ -1,3 +1,4 @@
+stage02_started <- proc.time()[["elapsed"]]
 
 library(data.table)
 
@@ -38,6 +39,10 @@ OUT_DIR <- file.path(
 )
 
 dir.create(OUT_DIR, recursive = TRUE, showWarnings = FALSE)
+CHECKPOINT_DATE <- as.Date("2024-12-31")
+CHECKPOINT_FILE <- file.path(OUT_DIR, "checkpoint_2024_12_31.rds")
+elo_checkpoint <- if (file.exists(CHECKPOINT_FILE)) readRDS(CHECKPOINT_FILE) else NULL
+if (!is.null(elo_checkpoint) && !identical(elo_checkpoint$version, 1L)) stop("Unsupported Elo checkpoint version.")
 
 OUTPUT_GAME_HISTORY_CSV_PASS1  <- file.path(OUT_DIR, "football_elo_game_history_pass1.csv")
 OUTPUT_FINAL_RATINGS_CSV_PASS1 <- file.path(OUT_DIR, "football_elo_final_ratings_pass1.csv")
@@ -50,98 +55,60 @@ OUTPUT_UPCOMING_FIXTURES_CSV <- file.path(OUT_DIR, "football_upcoming_fixtures.c
 # Elo settings
 # -----------------------------
 K_NORMAL <- 20
-K_CONTINENTAL <- 30
+K_SAME_CONFED <- 40
+K_INTERCONFED <- 60
 K_NEW <- 20
 K_NEW_GAMES <- 100L
 
-# Country-specific starting seeds.
-#
-# Tier 1 values come from the UEFA top-club calibration adjusted for each
-# country's observed top-6-to-full-league depth.
-#
-# Tier 2 values use each country's historical median Tier 1 -> Tier 2 gap:
-#   England 222
-#   Spain   185
-#   France  194
-#   Germany 194
-#   Italy   196
-#
-# England Tiers 3-5 remain at their existing absolute seeds.
-# Smaller European leagues are currently Tier 1 only and use provisional seeds
-# that can be recalibrated later from the expanded UEFA network.
-
-COUNTRY_TIER_SEEDS <- data.table(
-  Country = c(
-    "England", "England", "England", "England", "England",
-    "Spain",   "Spain",
-    "France",  "France",
-    "Germany", "Germany",
-    "Italy",   "Italy",
-    "Portugal",
-    "Netherlands",
-    "Belgium",
-    "Austria",
-    "Turkey",
-    "Scotland",
-    "Switzerland",
-    "Greece",
-    "Czechia",
-    "Ukraine",
-    "Denmark",
-    "Russia",
-    "Poland",
-    "Norway",
-    "Sweden",
-    "Romania"
-  ),
-  Tier = c(
-    1L, 2L, 3L, 4L, 5L,
-    1L, 2L,
-    1L, 2L,
-    1L, 2L,
-    1L, 2L,
-    1L,
-    1L,
-    1L,
-    1L,
-    1L,
-    1L,
-    1L,
-    1L,
-    1L,
-    1L,
-    1L,
-    1L,
-    1L,
-    1L,
-    1L,
-    1L
-  ),
-  SeedRating = c(
-    2550, 2328, 2150, 1975, 1800,
-    2537, 2352,
-    2489, 2295,
-    2485, 2291,
-    2475, 2279,
-    2350,  # Portugal
-    2375,  # Netherlands
-    2315,  # Belgium
-    2310,  # Austria
-    2310,  # Turkey
-    2230,  # Scotland
-    2300,  # Switzerland
-    2250,  # Greece
-    2230,  # Czechia
-    2275,  # Ukraine
-    2335,  # Denmark
-    2400,  # Russia
-    2285,  # Poland
-    2275,  # Norway
-    2265,  # Sweden
-    2255   # Romania
-  )
+# Country/tier starting seeds and confederations are maintained together in one
+# reference table. Ratings here are the actual entry ratings: no global offset
+# is applied in this script.
+COUNTRY_SEEDS_CSV <- file.path(
+  repo_dir, "EuropeanFootball", "pipeline_data", "Reference",
+  "non_uefa_country_seeds.csv"
 )
+if (!file.exists(COUNTRY_SEEDS_CSV)) {
+  stop("Missing starting-seed file: ", COUNTRY_SEEDS_CSV)
+}
 
+COUNTRY_TIER_SEEDS <- fread(COUNTRY_SEEDS_CSV, encoding = "UTF-8")
+required_seed_columns <- c("Country", "Tier", "SeedRating", "Confederation")
+if (!all(required_seed_columns %in% names(COUNTRY_TIER_SEEDS))) {
+  stop(
+    "The starting-seed file must contain: ",
+    paste(required_seed_columns, collapse = ", "), "."
+  )
+}
+
+COUNTRY_TIER_SEEDS <- COUNTRY_TIER_SEEDS[, .(
+  Country = trimws(as.character(Country)),
+  Tier = as.integer(Tier),
+  SeedRating = as.numeric(SeedRating),
+  Confederation = toupper(trimws(as.character(Confederation)))
+)]
+if (COUNTRY_TIER_SEEDS[, anyNA(Country) || anyNA(Tier) || anyNA(SeedRating) ||
+  anyNA(Confederation) || any(!nzchar(Confederation))]) {
+  stop("Starting-seed file has missing country, tier, rating, or confederation values.")
+}
+if (COUNTRY_TIER_SEEDS[, anyDuplicated(paste(Country, Tier, sep = "\r"))]) {
+  stop("Duplicate Country/Tier starting seeds found.")
+}
+
+COUNTRY_CONFEDERATIONS <- unique(COUNTRY_TIER_SEEDS[, .(Country, Confederation)])
+confed_conflicts <- COUNTRY_CONFEDERATIONS[
+  , .(N = uniqueN(Confederation)),
+  by = Country
+][N > 1L]
+if (nrow(confed_conflicts) > 0L) {
+  stop(
+    "A country has conflicting confederations in the starting-seed file: ",
+    paste(confed_conflicts$Country, collapse = ", ")
+  )
+}
+COUNTRY_CONFED_MAP <- setNames(
+  COUNTRY_CONFEDERATIONS$Confederation,
+  COUNTRY_CONFEDERATIONS$Country
+)
 COUNTRY_TIER_SEED_KEY <- paste(
   COUNTRY_TIER_SEEDS$Country,
   COUNTRY_TIER_SEEDS$Tier,
@@ -312,6 +279,8 @@ is_clearly_bad_team_name <- function(x) {
   bad
 }
 
+source(file.path(dirname(dirname(TEAM_ALIASES_CSV)), "../../scripts/EuropeanFootball/club_identity_resolution.R"))
+
 normalise_team_name <- function(x, country) {
   x0 <- trimws(as.character(x))
   country0 <- trimws(as.character(country))
@@ -327,14 +296,17 @@ normalise_team_name <- function(x, country) {
   out <- x0
   out[matched] <- unname(team_alias_map[key[matched]])
   
-  # For continental rows, use a source-name alias only when it resolves to
-  # exactly one canonical club across the domestic alias registry.
-  is_continental_country <- country0 == "Europe"
+  # Confederation files use a regional Country value, so use a source-name
+  # alias only when it resolves to one canonical club across all countries.
+  is_continental_country <- country0 %in% c(
+    "Europe", "Asia", "Africa", "North America", "South America", "Oceania"
+  )
   continental_matched <- is_continental_country & x0 %in% names(continental_alias_map)
   out[continental_matched] <- unname(
     continental_alias_map[x0[continental_matched]]
   )
   
+  out <- resolve_alias_chain(x0, country0, team_alias_map, continental_alias_map)
   out[is_clearly_bad_team_name(out)] <- NA_character_
   out
 }
@@ -342,7 +314,13 @@ normalise_team_name <- function(x, country) {
 # -----------------------------
 # Load and prepare data
 # -----------------------------
-dt <- fread(INPUT_CSV)
+input_names <- names(fread(INPUT_CSV,nrows=0L))
+elo_input_columns <- intersect(input_names,c("Season","Country","Competition","CompetitionType","Tier","League",
+  "Date","Home","Away","Result","Score","Source","HomeAssociation","AwayAssociation"))
+dt <- fread(INPUT_CSV,select=elo_input_columns,encoding="UTF-8")
+if (any(nchar(dt$Home)>200L | nchar(dt$Away)>200L, na.rm=TRUE)) {
+  stop("Oversized team names in the master. Run repair_master_quote_expansion.R before calculating Elo.")
+}
 
 required_cols <- c("Country", "Competition", "CompetitionType", "Tier", "League", "Date", "Home", "Away", "Result")
 missing_cols <- setdiff(required_cols, names(dt))
@@ -357,9 +335,23 @@ dt[, Tier := as.integer(Tier)]
 dt[, League  := trimws(as.character(League))]
 dt[, Source := if ("Source" %in% names(dt)) trimws(as.character(Source)) else NA_character_]
 dt[, DateRaw := trimws(as.character(Date))]
+# Repair the known older OpenFootball parser's July rollover on load. These
+# two regular-stage schedules end before July; July headers belong to the
+# opening year, not the ending year. Stage 01 is also corrected at source.
+july_year_start <- suppressWarnings(as.integer(substr(as.character(dt$Season),1L,4L)))
+july_date_year <- suppressWarnings(as.integer(substr(dt$DateRaw,1L,4L)))
+july_repair <- which(dt$Competition %in% c("swiss_super_league","czech_first_league") &
+  grepl("openfootball",dt$Source,ignore.case=TRUE) & july_year_start >= 2025L &
+  substr(dt$DateRaw,6L,7L)=="07" & july_date_year==july_year_start+1L)
+if (length(july_repair)) {
+  dt[july_repair,DateRaw:=paste0(july_year_start[july_repair],substr(DateRaw,5L,10L))]
+  cat("Corrected OpenFootball July rollover dates on load:",length(july_repair),"\n")
+}
 dt[, HomeRaw := trimws(as.character(Home))]
 dt[, AwayRaw := trimws(as.character(Away))]
 dt[, Score   := if ("Score" %in% names(dt)) trimws(as.character(Score)) else NA_character_]
+dt[, HomeAssociation := if ("HomeAssociation" %in% names(dt)) trimws(as.character(HomeAssociation)) else NA_character_]
+dt[, AwayAssociation := if ("AwayAssociation" %in% names(dt)) trimws(as.character(AwayAssociation)) else NA_character_]
 
 dt[, Home := normalise_team_name(HomeRaw, Country)]
 dt[, Away := normalise_team_name(AwayRaw, Country)]
@@ -372,7 +364,10 @@ bad_name_rows <- dt[
 
 if (nrow(bad_name_rows) > 0) {
   cat("\nDropping rows with bad parsed team names:\n")
-  print(bad_name_rows[, .(Country, Competition, League, DateRaw, HomeRaw, AwayRaw, Result, Score)])
+  fwrite(bad_name_rows[, .(Country, Competition, League, DateRaw, HomeRaw, AwayRaw, Result, Score)],
+    file.path(OUT_DIR, "bad_team_name_rows.csv"))
+  cat("  Rows: ", nrow(bad_name_rows), "; full report: bad_team_name_rows.csv\n", sep = "")
+  print(head(bad_name_rows[, .(Country, Competition, League, DateRaw, HomeRaw, AwayRaw, Result, Score)], 10L))
 }
 
 dt <- dt[
@@ -386,17 +381,28 @@ dt <- dt[
 # This prevents unseeded lower/non-covered cup clubs from entering Elo.
 
 cup_domestic_appearances <- rbindlist(list(
-  dt[CompetitionType == "league", .(Country, Team = Home, DateRaw)],
-  dt[CompetitionType == "league", .(Country, Team = Away, DateRaw)]
+  dt[CompetitionType == "league", .(Country=club_association(Country,Home), Team = Home, DateRaw)],
+  dt[CompetitionType == "league", .(Country=club_association(Country,Away), Team = Away, DateRaw)]
 ), use.names = TRUE)
 
 cup_domestic_appearances[, Date := as.Date(DateRaw, format = "%Y-%m-%d")]
 
-cup_first_domestic <- cup_domestic_appearances[
-  !is.na(Date),
-  .(FirstDomesticDate = min(Date)),
-  by = .(Country, Team)
-]
+# The installed data.table DLL overflows its native stack grouping this expanded
+# set of normalised names. Use base-R integer groups for the same minimum dates.
+first_domestic_dates <- function(appearances) {
+  valid <- which(!is.na(appearances$Date))
+  keys <- paste(appearances$Country[valid], appearances$Team[valid], sep = "\r")
+  unique_keys <- unique(keys)
+  if (!length(unique_keys)) return(data.table(Country=character(), Team=character(),
+    FirstDomesticDate=as.Date(character())))
+  groups <- match(keys, unique_keys)
+  minima <- tapply(as.integer(appearances$Date[valid]), groups, min)
+  first_rows <- valid[match(unique_keys, keys)]
+  data.table(Country=appearances$Country[first_rows], Team=appearances$Team[first_rows],
+    FirstDomesticDate=as.Date(as.numeric(minima[as.character(seq_along(unique_keys))]), origin="1970-01-01"))
+}
+cat("Computing first domestic dates for cup eligibility...\n")
+cup_first_domestic <- first_domestic_dates(cup_domestic_appearances)
 
 domestic_cup_rows <- dt[CompetitionType == "domestic_cup"]
 
@@ -458,29 +464,41 @@ if (nrow(domestic_cup_rows) > 0) {
 # CSV, so older games can become eligible later if more domestic history or
 # leagues are added.
 domestic_appearances <- rbindlist(list(
-  dt[CompetitionType == "league", .(Team = Home, DateRaw)],
-  dt[CompetitionType == "league", .(Team = Away, DateRaw)]
+  dt[CompetitionType == "league", .(Country=club_association(Country,Home), Team = Home, DateRaw)],
+  dt[CompetitionType == "league", .(Country=club_association(Country,Away), Team = Away, DateRaw)]
 ), use.names = TRUE)
 
 domestic_appearances[, Date := as.Date(DateRaw, format = "%Y-%m-%d")]
 
-first_domestic_date <- domestic_appearances[
-  !is.na(Team) & Team != "" & !is.na(Date),
-  .(FirstDomesticDate = min(Date)),
-  by = Team
-]
+cat("Computing first domestic dates for continental eligibility...\n")
+first_domestic_date <- first_domestic_dates(domestic_appearances[!is.na(Team) & Team != ""])
 
-first_domestic_map <- setNames(
-  first_domestic_date$FirstDomesticDate,
-  first_domestic_date$Team
-)
+first_domestic_key <- paste(first_domestic_date$Country, first_domestic_date$Team, sep = "\r")
+first_domestic_map <- setNames(first_domestic_date$FirstDomesticDate, first_domestic_key)
+# A continental club name is usable only when it maps to one domestic country.
+# This deliberately excludes ambiguous labels (e.g. a club named Inter in
+# multiple countries) instead of allowing them to share a rating.
+club_country_candidates <- unique(first_domestic_date[, .(Country, Team)])[, .(Countries = uniqueN(Country), ClubCountry = Country[1L]), by = Team]
+club_country_map <- setNames(club_country_candidates[Countries == 1L]$ClubCountry, club_country_candidates[Countries == 1L]$Team)
 
 continental_rows <- dt[CompetitionType == "continental"]
 
 if (nrow(continental_rows) > 0) {
   continental_rows[, MatchDate := as.Date(DateRaw, format = "%Y-%m-%d")]
-  continental_rows[, HomeFirstDomestic := as.Date(first_domestic_map[Home], origin = "1970-01-01")]
-  continental_rows[, AwayFirstDomestic := as.Date(first_domestic_map[Away], origin = "1970-01-01")]
+  # Cross-confederation fixtures can include names shared by clubs in several
+  # countries (River Plate is one example). The audited source supplies the
+  # participant's association explicitly, which takes precedence over the
+  # otherwise conservative unique-name inference.
+  continental_rows[, `:=`(
+    HomeClubCountry = fifelse(!is.na(HomeAssociation) & nzchar(HomeAssociation),
+                              HomeAssociation, unname(club_country_map[Home])),
+    AwayClubCountry = fifelse(!is.na(AwayAssociation) & nzchar(AwayAssociation),
+                              AwayAssociation, unname(club_country_map[Away]))
+  )]
+  continental_rows[, `:=`(HomeClubCountry=club_association(HomeClubCountry,Home),
+                          AwayClubCountry=club_association(AwayClubCountry,Away))]
+  continental_rows[, HomeFirstDomestic := as.Date(first_domestic_map[paste(HomeClubCountry, Home, sep = "\r")], origin = "1970-01-01")]
+  continental_rows[, AwayFirstDomestic := as.Date(first_domestic_map[paste(AwayClubCountry, Away, sep = "\r")], origin = "1970-01-01")]
   
   continental_keep <- continental_rows[
     !is.na(HomeFirstDomestic) &
@@ -521,7 +539,61 @@ if (nrow(continental_rows) > 0) {
   )
 }
 
+# Country-qualified keys are the Elo identity. Names remain separate display
+# labels, so Everton (England) and Everton (Chile) can never be merged.
+dt[CompetitionType != "continental", `:=`(
+  HomeClubCountry = club_association(Country,Home),
+  AwayClubCountry = club_association(Country,Away))]
+
+# Resolve the confederation of each club from its domestic association.
+# This lets K depend on the information bridge made by the fixture:
+#   same country                         -> K_NORMAL (20)
+#   different countries, same confed    -> K_SAME_CONFED (40)
+#   different confederations            -> K_INTERCONFED (60)
+dt[, `:=`(
+  HomeConfederation = unname(COUNTRY_CONFED_MAP[HomeClubCountry]),
+  AwayConfederation = unname(COUNTRY_CONFED_MAP[AwayClubCountry])
+)]
+
+missing_confed_rows <- dt[
+  is.na(HomeConfederation) | HomeConfederation == "" |
+    is.na(AwayConfederation) | AwayConfederation == ""
+]
+if (nrow(missing_confed_rows) > 0L) {
+  stop(
+    "Missing confederation mapping for one or more club associations.\n",
+    paste(
+      unique(c(
+        missing_confed_rows[is.na(HomeConfederation) | HomeConfederation == "", HomeClubCountry],
+        missing_confed_rows[is.na(AwayConfederation) | AwayConfederation == "", AwayClubCountry]
+      )),
+      collapse = ", "
+    )
+  )
+}
+
+dt[, KClass := fifelse(
+  CompetitionType == "league" | HomeClubCountry == AwayClubCountry,
+  "same_country",
+  fifelse(
+    HomeConfederation == AwayConfederation,
+    "same_confederation",
+    "inter_confederation"
+  )
+)]
+
+dt[, `:=`(HomeKey = paste(HomeClubCountry, Home, sep = "\r"), AwayKey = paste(AwayClubCountry, Away, sep = "\r"))]
+
 dt[, Date := as.Date(DateRaw, format = "%Y-%m-%d")]
+identity_fixture_cols <- c("Country","Competition","CompetitionType","Date",
+                          "HomeKey","AwayKey","Score","Result")
+identity_duplicates <- duplicated(dt,by=identity_fixture_cols)
+if(any(identity_duplicates)) {
+  fwrite(dt[identity_duplicates],file.path(OUT_DIR,"canonical_duplicate_fixtures.csv"))
+  cat("Repeated identical fixtures after identity resolution:",sum(identity_duplicates),
+      "; counted once; report: canonical_duplicate_fixtures.csv\n")
+  dt <- dt[!identity_duplicates]
+}
 dt[, SeedRatingForTier := seed_from_country_tier(Country, Tier)]
 
 bad_tier_rows <- dt[
@@ -566,6 +638,11 @@ upcoming_fixtures <- upcoming_fixtures[, .(
   Country,
   Competition,
   CompetitionType,
+  KClass,
+  HomeClubCountry,
+  AwayClubCountry,
+  HomeConfederation,
+  AwayConfederation,
   League,
   Tier,
   Source,
@@ -633,6 +710,16 @@ cat(
   "\n"
 )
 setorder(dt, Date, Country, Tier, Competition, League, Home, Away, Result)
+future_completed <- dt[Date > Sys.Date()]
+if (nrow(future_completed)) {
+  fwrite(future_completed, file.path(OUT_DIR,"future_dated_completed_matches.csv"))
+  cat("Excluded future-dated completed results:",nrow(future_completed),"; see future_dated_completed_matches.csv\n")
+  dt <- dt[Date <= Sys.Date()]
+}
+early_cwc_count <- nrow(dt[Competition == "fifa_club_world_cup" &
+  Date >= as.Date("2025-01-01") & Date < as.Date("2026-01-01")])
+if (early_cwc_count != 63L) stop("Preflight failed: 2025 Club World Cup has ",
+  early_cwc_count, " / 63 eligible games. No Elo passes were run. Check participant associations and domestic identity coverage.")
 
 # -----------------------------
 # Generic Elo runner
@@ -640,7 +727,9 @@ setorder(dt, Date, Country, Tier, Competition, League, Home, Away, Result)
 run_elo <- function(dt_input,
                     entry_mode = c("seed", "retro"),
                     retro_start_map = NULL,
-                    pass_label = "pass") {
+                    pass_label = "pass",
+                    initial_state = NULL,
+                    frozen_history = NULL) {
   
   entry_mode <- match.arg(entry_mode)
   
@@ -657,9 +746,16 @@ run_elo <- function(dt_input,
   first_tier_env   <- new.env(hash = TRUE, parent = emptyenv())
   first_date_env   <- new.env(hash = TRUE, parent = emptyenv())
   entry_rating_env <- new.env(hash = TRUE, parent = emptyenv())
+  state_envs <- list(ratings=ratings_env, games=games_env, first_league=first_league_env,
+                    first_tier=first_tier_env, first_date=first_date_env, entry_rating=entry_rating_env)
+  if (!is.null(initial_state)) {
+    for (nm in names(state_envs)) list2env(initial_state[[nm]], envir=state_envs[[nm]])
+  }
+  snapshot_state <- function() lapply(state_envs, as.list, all.names=TRUE)
+  boundary_state <- initial_state
   
-  HomeVec <- dt_input$Home
-  AwayVec <- dt_input$Away
+  HomeVec <- dt_input$HomeKey
+  AwayVec <- dt_input$AwayKey
   LeagueVec <- dt_input$League
   TierVec <- dt_input$Tier
   SeedVec <- dt_input$SeedRatingForTier
@@ -688,6 +784,7 @@ run_elo <- function(dt_input,
   AwayGamesAfter <- integer(n)
   
   for (i in seq_len(n)) {
+    if (is.null(boundary_state) && dt_input$Date[i] > CHECKPOINT_DATE) boundary_state <- snapshot_state()
     home <- HomeVec[i]
     away <- AwayVec[i]
     league_i <- LeagueVec[i]
@@ -747,14 +844,22 @@ run_elo <- function(dt_input,
     home_entry_assigned <- get(home, envir = entry_rating_env, inherits = FALSE)
     away_entry_assigned <- get(away, envir = entry_rating_env, inherits = FALSE)
     
-    base_k <- if (dt_input$CompetitionType[i] == "continental") {
-      K_CONTINENTAL
-    } else {
-      K_NORMAL
-    }
+    # K-factor reflects how much new cross-ecosystem information the match
+    # provides, not merely the competition label. Domestic/same-country ties
+    # use normal K, cross-country ties within one confederation use double K,
+    # and inter-confederation ties use triple K.
+    k_class_i <- dt_input$KClass[i]
     
-    Kh <- if (Gh < K_NEW_GAMES) K_NEW else base_k
-    Ka <- if (Ga < K_NEW_GAMES) K_NEW else base_k
+    if (k_class_i == "inter_confederation") {
+      Kh <- K_INTERCONFED
+      Ka <- K_INTERCONFED
+    } else if (k_class_i == "same_confederation") {
+      Kh <- K_SAME_CONFED
+      Ka <- K_SAME_CONFED
+    } else {
+      Kh <- if (Gh < K_NEW_GAMES) K_NEW else K_NORMAL
+      Ka <- if (Ga < K_NEW_GAMES) K_NEW else K_NORMAL
+    }
     
     Eh <- expected_score(Rh, Ra)
     Ea <- 1 - Eh
@@ -820,9 +925,12 @@ run_elo <- function(dt_input,
   )]
   
   teams <- ls(ratings_env, all.names = TRUE)
+  if (is.null(boundary_state)) boundary_state <- snapshot_state()
   
   final_ratings <- data.table(
-    Team = teams,
+    TeamKey = teams,
+    Team = sub("^.*\\r", "", teams),
+    Country = sub("\\r.*$", "", teams),
     Rating = as.numeric(mget(teams, envir = ratings_env)),
     Games = as.integer(unlist(mget(teams, envir = games_env))),
     FirstLeague = as.character(unlist(mget(teams, envir = first_league_env))),
@@ -831,34 +939,38 @@ run_elo <- function(dt_input,
     EntryRating = as.numeric(unlist(mget(teams, envir = entry_rating_env)))
   )
   
-  setorder(final_ratings, -Rating, Team)
+  setorder(final_ratings, -Rating, Country, Team)
   final_ratings[, Rating := round(Rating, 0)]
   final_ratings[, EntryRating := round(EntryRating, 1)]
   final_ratings[, FirstMatchDate := format(FirstMatchDate, "%Y-%m-%d")]
   final_ratings[, IsSeed := Games >= 20]
   
   list(
-    dt = dt_out,
-    final = final_ratings
+    dt = if (is.null(frozen_history)) dt_out else rbindlist(list(frozen_history, dt_out), use.names=TRUE, fill=TRUE),
+    final = final_ratings,
+    boundary_state = boundary_state
   )
 }
 
-build_retro_start_map <- function(pass1_dt, n_games = 100L) {
+build_retro_start_map <- function(pass1_dt, n_games = 100L, frozen_teams = character()) {
+  if (length(frozen_teams)) pass1_dt <- pass1_dt[!HomeKey %chin% frozen_teams | !AwayKey %chin% frozen_teams]
   team_games <- rbindlist(list(
     pass1_dt[, .(
-      Team = Home,
+      Team = HomeKey,
       GamesAfter = HomeGamesAfter,
       RatingAfter = HomeRating_After,
       Date = Date
     )],
     pass1_dt[, .(
-      Team = Away,
+      Team = AwayKey,
       GamesAfter = AwayGamesAfter,
       RatingAfter = AwayRating_After,
       Date = Date
     )]
   ), use.names = TRUE)
   
+  if (length(frozen_teams)) team_games <- team_games[!Team %chin% frozen_teams]
+  if (!nrow(team_games)) return(list())
   setorder(team_games, Team, GamesAfter, Date)
   team_games <- team_games[, .SD[.N], by = .(Team, GamesAfter)]
   
@@ -895,23 +1007,40 @@ cat(
 )
 
 
+if (!is.null(elo_checkpoint)) {
+  cat("\nUsing frozen checkpoint through 2024-12-31. Only later games are recalculated.\n")
+  historical_input <- dt[Date <= CHECKPOINT_DATE]
+  if (!is.null(elo_checkpoint$historical_input) && !identical(historical_input, elo_checkpoint$historical_input)) {
+    warning("Pre-2025 input differs from the frozen checkpoint; historical changes are ignored. Restore the archived 02 script for a deliberate full rebuild.")
+  }
+  dt <- dt[Date > CHECKPOINT_DATE]
+}
 pass1 <- run_elo(
   dt_input = dt,
   entry_mode = "seed",
   retro_start_map = NULL,
-  pass_label = "Pass 1 (seed by first tier)"
+  pass_label = "Pass 1 (seed by first tier)",
+  initial_state = if (!is.null(elo_checkpoint)) elo_checkpoint$pass1_state else NULL,
+  frozen_history = if (!is.null(elo_checkpoint)) elo_checkpoint$pass1_history else NULL
 )
 
 game_history_out_pass1 <- pass1$dt[, .(
   Country,
   Competition,
   CompetitionType,
+  KClass,
+  HomeClubCountry,
+  AwayClubCountry,
+  HomeConfederation,
+  AwayConfederation,
   League,
   Tier,
   Source,
   Date = format(Date, "%Y-%m-%d"),
   Home,
   Away,
+  HomeKey,
+  AwayKey,
   Result,
   Score,
   HomeScore,
@@ -940,6 +1069,8 @@ final_pass1[, `:=`(
   Pass = "Pass1_SeedTier",
   EntryMode = "SeedByFirstTier",
   BaseK = K_NORMAL,
+  SameConfedK = K_SAME_CONFED,
+  InterconfedK = K_INTERCONFED,
   NewK = K_NEW,
   NewGames = K_NEW_GAMES,
   SeedModel = "CountrySpecific_Tier1AndTier2",
@@ -947,7 +1078,9 @@ final_pass1[, `:=`(
 )]
 fwrite(final_pass1, OUTPUT_FINAL_RATINGS_CSV_PASS1)
 
-retro_start_map <- build_retro_start_map(pass1$dt, n_games = RETRO_GAMES_N)
+retro_start_map <- build_retro_start_map(pass1$dt, n_games = RETRO_GAMES_N,
+  frozen_teams = if (!is.null(elo_checkpoint)) names(elo_checkpoint$frozen_retro_map) else character())
+if (!is.null(elo_checkpoint)) retro_start_map[names(elo_checkpoint$frozen_retro_map)] <- elo_checkpoint$frozen_retro_map
 
 cat("\nBuilt retro start ratings from Pass 1 using first", RETRO_GAMES_N, "games.\n")
 cat("Teams in retro map:", length(retro_start_map), "\n")
@@ -959,19 +1092,28 @@ pass2 <- run_elo(
   dt_input = dt,
   entry_mode = "retro",
   retro_start_map = retro_start_map,
-  pass_label = "Pass 2 (retro starts from Pass 1)"
+  pass_label = "Pass 2 (retro starts from Pass 1)",
+  initial_state = if (!is.null(elo_checkpoint)) elo_checkpoint$pass2_state else NULL,
+  frozen_history = if (!is.null(elo_checkpoint)) elo_checkpoint$pass2_history else NULL
 )
 
 game_history_out <- pass2$dt[, .(
   Country,
   Competition,
   CompetitionType,
+  KClass,
+  HomeClubCountry,
+  AwayClubCountry,
+  HomeConfederation,
+  AwayConfederation,
   League,
   Tier,
   Source,
   Date = format(Date, "%Y-%m-%d"),
   Home,
   Away,
+  HomeKey,
+  AwayKey,
   Result,
   Score,
   HomeScore,
@@ -1000,6 +1142,8 @@ final_ratings[, `:=`(
   Pass = "Pass2_RetroStart",
   EntryMode = "RetroFromPass1FirstN",
   BaseK = K_NORMAL,
+  SameConfedK = K_SAME_CONFED,
+  InterconfedK = K_INTERCONFED,
   NewK = K_NEW,
   NewGames = K_NEW_GAMES,
   SeedModel = "CountrySpecific_Tier1AndTier2",
@@ -1007,10 +1151,44 @@ final_ratings[, `:=`(
 )]
 fwrite(final_ratings, OUTPUT_FINAL_RATINGS_CSV)
 
+# Catch missing intercontinental links before the much slower JSON export.
+cwc_2025 <- game_history_out[
+  Competition == "fifa_club_world_cup" & Date >= "2025-01-01" & Date < "2026-01-01"
+]
+cat("\n2025 FIFA Club World Cup games included in Elo:", nrow(cwc_2025), "/ 63\n")
+if (nrow(cwc_2025) != 63L) {
+  stop("Club World Cup coverage failed: expected all 63 games from 2025. Do not run 03_write_json.R yet.")
+}
+if (is.null(elo_checkpoint)) {
+  checkpoint <- list(version=1L, cutoff=CHECKPOINT_DATE, created=Sys.time(),
+    historical_input=dt[Date <= CHECKPOINT_DATE],
+    pass1_state=pass1$boundary_state, pass2_state=pass2$boundary_state,
+    pass1_history=pass1$dt[Date <= CHECKPOINT_DATE],
+    pass2_history=pass2$dt[Date <= CHECKPOINT_DATE],
+    frozen_retro_map=retro_start_map[names(pass2$boundary_state$ratings)])
+  checkpoint_tmp <- paste0(CHECKPOINT_FILE, ".tmp")
+  saveRDS(checkpoint, checkpoint_tmp, compress=FALSE)
+  if (!file.rename(checkpoint_tmp, CHECKPOINT_FILE)) stop("Could not save checkpoint.")
+  cat("Created permanent end-of-2024 checkpoint:", CHECKPOINT_FILE, "\n")
+}
+
+club_rankings <- copy(final_ratings)[order(-Rating)]
+club_rankings[, Rank := .I]
+for (nation in c("Brazil", "Argentina")) {
+  top_club <- club_rankings[Country == nation][1L]
+  if (nrow(top_club) == 0L) stop("No rated clubs found for ", nation)
+  cat(nation, "top club:", top_club$Team, "rating", round(top_club$Rating),
+      "rank", top_club$Rank, "\n")
+}
+
 cat("\nDone.\n")
 cat("Pass 1 game history:", OUTPUT_GAME_HISTORY_CSV_PASS1, "\n")
 cat("Pass 1 final ratings:", OUTPUT_FINAL_RATINGS_CSV_PASS1, "\n")
 cat("Pass 2 game history (final):", OUTPUT_GAME_HISTORY_CSV, "\n")
 cat("Pass 2 final ratings (final):", OUTPUT_FINAL_RATINGS_CSV, "\n")
 
-beep()
+if (interactive()) beep()
+
+stage02_seconds <- proc.time()[["elapsed"]] - stage02_started
+cat("02 total elapsed:", round(stage02_seconds, 1), "seconds\n")
+writeLines(paste(format(Sys.time()), "elapsed_seconds", stage02_seconds), file.path(OUT_DIR, "stage_02_latest_timing.txt"))

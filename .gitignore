@@ -38,3 +38,33 @@ EuropeanFootball/pipeline_data/Elo/football_elo_game_history_pass1.csv
 EuropeanFootball/pipeline_data/Matches_Clean_Combined/backups/
 
 _public_site/
+.rsssf_test_site/
+
+# Club Football local recovery backups and diagnostics
+EuropeanFootball/pipeline_data/**/*before_*
+EuropeanFootball/pipeline_data/**/*.backup*
+EuropeanFootball/pipeline_data/**/*.replacement_original
+EuropeanFootball/pipeline_data/**/*.tmp
+EuropeanFootball/pipeline_data/Elo/run_logs/
+EuropeanFootball/pipeline_data/Elo/*latest_timing.txt
+**/__pycache__/
+# Large intermediate RSSSF audit extracts; production uses the combined master
+EuropeanFootball/pipeline_data/Manual_Sources/**/all_rsssf_games.csv
+EuropeanFootball/pipeline_data/Manual_Sources/**/all_dated_rsssf_games.csv
+# Large originals restored from compressed versioned inputs in CI
+EuropeanFootball/pipeline_data/Matches_Clean_Combined/european_football_all_matches.csv
+EuropeanFootball/pipeline_data/Elo/checkpoint_2024_12_31.rds
+# Published Top Teams uses small JSON parts
+EuropeanFootball/data/top_teams.json
+
+# Local historical source cache and recovery/audit working files.
+# Weekly production reads the combined master from versioned_inputs instead.
+# Monthly RSSSF review downloads its own pages and uploads reports as artifacts.
+EuropeanFootball/pipeline_data/Source/rsssf/
+EuropeanFootball/pipeline_data/Manual_Sources/
+# Local diagnostics and alternate master experiments
+EuropeanFootball/pipeline_data/Elo/bad_team_name_rows.csv
+EuropeanFootball/pipeline_data/Elo/canonical_duplicate_fixtures.csv
+EuropeanFootball/pipeline_data/Elo/future_dated_completed_matches.csv
+EuropeanFootball/pipeline_data/Matches_Clean_Combined/european_football_master_v2.csv
+EuropeanFootball/pipeline_data/Matches_Clean_Combined/quote_repair_*.csv

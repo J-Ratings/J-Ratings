@@ -323,7 +323,7 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
       yy <- suppressWarnings(as.integer(yy_txt))
       
       if (is.na(yy)) {
-        yy <- if (!is.na(mm) && mm >= 8) yrs$start_year else yrs$end_year
+        yy <- if (!is.na(mm) && mm >= 7) yrs$start_year else yrs$end_year
       }
       
       current_date <- as.Date(sprintf("%04d-%02d-%02d", yy, mm, dd))
@@ -338,7 +338,7 @@ parse_comp_file <- function(txt_path, country, competition_id, competition_type,
       yy <- suppressWarnings(as.integer(yy_txt))
       
       if (is.na(yy)) {
-        yy <- if (!is.na(mm) && mm >= 8) yrs$start_year else yrs$end_year
+        yy <- if (!is.na(mm) && mm >= 7) yrs$start_year else yrs$end_year
       }
       
       current_date <- as.Date(sprintf("%04d-%02d-%02d", yy, mm, dd))
@@ -586,6 +586,9 @@ normalise_wikipedia_club_key <- function(x) {
   x[is.na(x)] <- ""
   x <- tolower(x)
   x <- gsub("&", " and ", x, fixed = TRUE)
+  # Remove club abbreviations before punctuation is split into separate tokens:
+  # Wikipedia's F.C./A.F.C. must match OpenFootball's FC/AFC.
+  x <- gsub("\\b(?:a\\s*\\.?\\s*f\\s*\\.?\\s*c|f\\s*\\.?\\s*c)\\b\\.?", " ", x, perl = TRUE)
   x <- gsub("[^a-z0-9]+", " ", x)
   x <- gsub("\\b(a\\.?f\\.?c\\.?|f\\.?c\\.?)\\b", " ", x, perl = TRUE)
   x <- gsub("\\bfootball club\\b", " ", x, perl = TRUE)
@@ -2370,7 +2373,12 @@ if (file.exists(out_file)) {
     )
   }
   
+  # Retain imported provenance and participant associations. Dropping these
+  # columns makes ambiguous continental club names ineligible in stage 02.
+  required_cols <- unique(c(required_cols, names(old_df)))
+  for (col in setdiff(required_cols, names(parsed_df))) parsed_df[[col]] <- NA
   old_df <- old_df[, required_cols]
+  parsed_df <- parsed_df[, required_cols]
   old_df$Date <- as.character(old_df$Date)
   
   old_keys <- make_key(
@@ -2613,6 +2621,16 @@ cat("Major top-flight continuity QA: PASS\n")
 # -----------------------------
 
 all_df <- all_df[, required_cols]
+
+# Remove corrupted quote decorations before serialising them again.
+for (column in names(all_df)) {
+  if (!is.character(all_df[[column]])) next
+  affected <- which(grepl('"{16,}', all_df[[column]], perl = TRUE))
+  if (length(affected)) {
+    all_df[[column]][affected] <- gsub('"{16,}', '', all_df[[column]][affected], perl = TRUE)
+    cat('Removed expanded quote decorations:', column, length(affected), 'fields\n')
+  }
+}
 
 all_df <- all_df[
   order(

@@ -1,0 +1,32 @@
+name: Review recent club RSSSF pages
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "35 3 1 * *"
+permissions:
+  contents: read
+concurrency:
+  group: club-rsssf-review
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      J_RATINGS_REPO: ${{ github.workspace }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore pipeline inputs
+        run: python3 scripts/EuropeanFootball/sync_large_pipeline_files.py restore
+      - uses: r-lib/actions/setup-r@v2
+      - name: Install parser dependencies
+        run: Rscript -e 'install.packages(c("data.table","xml2","rvest","stringi","stringr","jsonlite","tictoc","beepr"))'
+      - name: Refresh and audit recent pages
+        run: Rscript scripts/EuropeanFootball/refresh_recent_rsssf_pages.R
+      - name: Save review reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: club-rsssf-monthly-review
+          path: EuropeanFootball/pipeline_data/Manual_Sources/RSSSF_Monthly_Refresh/
+          retention-days: 90
