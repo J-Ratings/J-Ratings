@@ -76,6 +76,7 @@ iteration,goratings_id,goratings_name,historical_name,matching_games,candidate_r
 1,2372,Hsiao Yu-Yang,Sho Gyokuyo,20,1,1,1,19,TRUE,NA
 1,2372,Hsiao Yu-Yang,Takaji Yuki,1,2,1,1,0,FALSE,Not top candidate
 1,2378,Im Sanggyu,Im Sangkyu,12,1,1,0,12,TRUE,NA
+1,2389,Go Yoonseo,Ko Yunseo,2,1,1,0,2,FALSE,Below minimum matching games
 1,2414,Kim Seunggu,Kim Seongku,20,1,1,0,20,TRUE,NA
 1,2424,Zhang Qin,Zhang Xin,2,1,1,0,2,FALSE,Below minimum matching games
 1,2429,Asahiyujun,Asahi Yujun,4,1,1,0,4,TRUE,NA
@@ -142,6 +143,7 @@ iteration,goratings_id,goratings_name,historical_name,matching_games,candidate_r
 2,1300,Kang Byeongkwon,Kang Pyeonggwon,1,1,1,0,1,FALSE,Below minimum matching games
 2,1665,Utani Syunta,Utani Shunta,2,1,1,0,2,FALSE,Below minimum matching games
 2,1796,Cho Sang Yeun,Cho Sangyeon  (2),4,1,1,0,4,FALSE,Historical player claimed by multiple GoRatings IDs
+2,2389,Go Yoonseo,Ko Yunseo,3,1,1,0,3,TRUE,NA
 2,2424,Zhang Qin,Zhang Xin,2,1,1,0,2,FALSE,Below minimum matching games
 2,2434,Yu Jiabu,Yoo Jiabu,2,1,1,0,2,FALSE,Below minimum matching games
 2,2439,Ikawa Ryougo,Ikawa Ryogo,1,1,1,0,1,FALSE,Below minimum matching games

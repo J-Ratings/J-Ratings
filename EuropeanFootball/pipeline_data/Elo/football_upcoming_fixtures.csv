@@ -1,6 +1,24 @@
 Country,Competition,CompetitionType,KClass,HomeClubCountry,AwayClubCountry,HomeConfederation,AwayConfederation,League,Tier,Source,Date,Home,Away
 Europe,europa_league,continental,same_confederation,Germany,Russia,UEFA,UEFA,Europa League,,wikipedia,2022-03-10,RB Leipzig,Spartak Moscow
 Europe,europa_league,continental,same_confederation,Russia,Germany,UEFA,UEFA,Europa League,,wikipedia,2022-03-17,Spartak Moscow,RB Leipzig
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-11,Beşiktaş,Erzurumspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-12,Aytemiz Alanyaspor,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-12,Eyüpspor,Rizespor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-12,Konyaspor,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-12,Samsunspor,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-13,Amed,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-13,Galatasaray,Kocaelispor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-13,Gençlerbirligi,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-14,Gaziantep,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-18,Kasimpasa,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-19,Istanbul Başakşehir,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-19,Kocaelispor,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-19,Trabzonspor,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-19,Çorum,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-20,Amed,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-20,Erzurumspor,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-20,Fenerbahçe,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-09-20,Göztepe,Rizespor
 Czechia,czech_first_league,league,same_country,Czechia,Czechia,UEFA,UEFA,Czech First League,1,openfootball,2026-10-09,Zlín,Slavia Prague
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2026-10-09,West Ham United,Queens Park Rangers
 France,ligue_1,league,same_country,France,France,UEFA,UEFA,Ligue 1,1,openfootball,2026-10-09,Lens,Lyon
@@ -106,6 +124,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-10-11,FC Sankt Gallen,Lausanne-Sport
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-10-11,Grasshoppers,Young Boys
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-10-11,Vaduz,Basel
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-11,Aytemiz Alanyaspor,Erzurumspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-11,Beşiktaş,Kocaelispor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-11,Eyüpspor,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-11,Galatasaray,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-11,Gaziantep,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-11,Gençlerbirligi,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-11,Konyaspor,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-11,Rizespor,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-11,Samsunspor,Trabzonspor
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2026-10-12,Coventry City,Newcastle United
 Greece,super_league_greece,league,same_country,Greece,Greece,UEFA,UEFA,Super League Greece,1,openfootball,2026-10-12,PAOK,Kalamata
 Italy,serie_a,league,same_country,Italy,Italy,UEFA,UEFA,Serie A,1,openfootball,2026-10-12,Atalanta,Venezia
@@ -244,6 +271,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2026-10-18,Málaga,Real Sociedad
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2026-10-18,Osasuna,Racing Santander
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2026-10-18,Real Madrid,Sevilla
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-18,Amed,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-18,Erzurumspor,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-18,Fenerbahçe,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-18,Gençlerbirligi,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-18,Istanbul Başakşehir,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-18,Kasimpasa,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-18,Kocaelispor,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-18,Trabzonspor,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-18,Çorum,Rizespor
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2026-10-19,Tottenham Hotspur,Coventry City
 Italy,serie_a,league,same_country,Italy,Italy,UEFA,UEFA,Serie A,1,openfootball,2026-10-19,Monza,Cagliari
 Italy,serie_a,league,same_country,Italy,Italy,UEFA,UEFA,Serie A,1,openfootball,2026-10-19,Parma,Torino
@@ -387,6 +423,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-10-25,Basel,Grasshoppers
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-10-25,Sion,Lausanne-Sport
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-10-25,Thun,Lugano
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-25,Aytemiz Alanyaspor,Kocaelispor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-25,Beşiktaş,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-25,Eyüpspor,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-25,Galatasaray,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-25,Gaziantep,Erzurumspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-25,Göztepe,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-25,Konyaspor,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-25,Rizespor,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-10-25,Samsunspor,Amed
 Portugal,primeira_liga,league,same_country,Portugal,Portugal,UEFA,UEFA,Primeira Liga,1,openfootball,2026-10-26,Santa Clara,Benfica
 Italy,serie_a,league,same_country,Italy,Italy,UEFA,UEFA,Serie A,1,openfootball,2026-10-27,Roma,Cagliari
 Italy,serie_a,league,same_country,Italy,Italy,UEFA,UEFA,Serie A,1,openfootball,2026-10-27,Sassuolo,Lazio
@@ -506,6 +551,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-11-01,Lausanne-Sport,Thun
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-11-01,Lugano,Basel
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-11-01,Young Boys,Zurich
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-01,Amed,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-01,Erzurumspor,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-01,Fenerbahçe,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-01,Gençlerbirligi,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-01,Istanbul Başakşehir,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-01,Kasimpasa,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-01,Kocaelispor,Rizespor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-01,Konyaspor,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-01,Trabzonspor,Gaziantep
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2026-11-02,Newcastle United,Everton
 Greece,super_league_greece,league,same_country,Greece,Greece,UEFA,UEFA,Super League Greece,1,openfootball,2026-11-02,Atromitos,Volos
 Greece,super_league_greece,league,same_country,Greece,Greece,UEFA,UEFA,Super League Greece,1,openfootball,2026-11-02,Kalamata,Iraklis 1908
@@ -663,6 +717,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-11-08,FC Sankt Gallen,Lugano
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-11-08,Servette,Zurich
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-11-08,Thun,Basel
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-08,Aytemiz Alanyaspor,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-08,Beşiktaş,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-08,Eyüpspor,Kocaelispor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-08,Galatasaray,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-08,Gaziantep,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-08,Göztepe,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-08,Rizespor,Erzurumspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-08,Samsunspor,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-08,Çorum,Fenerbahçe
 France,ligue_1,league,same_country,France,France,UEFA,UEFA,Ligue 1,1,openfootball,2026-11-20,Troyes,Le Havre
 Germany,bundesliga,league,same_country,Germany,Germany,UEFA,UEFA,Bundesliga,1,openfootball,2026-11-20,Bayern Munich,Köln
 Austria,austrian_bundesliga,league,same_country,Austria,Austria,UEFA,UEFA,Austrian Bundesliga,1,openfootball,2026-11-21,Grazer AK,Rapid Vienna
@@ -762,6 +825,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-11-22,Basel,Luzern
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-11-22,Lausanne-Sport,Vaduz
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-11-22,Zurich,FC Sankt Gallen
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-22,Amed,Rizespor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-22,Erzurumspor,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-22,Galatasaray,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-22,Gençlerbirligi,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-22,Istanbul Başakşehir,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-22,Kasimpasa,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-22,Kocaelispor,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-22,Konyaspor,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-22,Trabzonspor,Eyüpspor
 Greece,super_league_greece,league,same_country,Greece,Greece,UEFA,UEFA,Super League Greece,1,openfootball,2026-11-23,Asteras Tripolis,Aris Thessaloniki
 Italy,serie_a,league,same_country,Italy,Italy,UEFA,UEFA,Serie A,1,openfootball,2026-11-23,Juventus,Venezia
 Italy,serie_a,league,same_country,Italy,Italy,UEFA,UEFA,Serie A,1,openfootball,2026-11-23,Monza,Fiorentina
@@ -916,6 +988,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-11-29,Luzern,Lugano
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-11-29,Sion,Young Boys
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-11-29,Thun,FC Sankt Gallen
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-29,Aytemiz Alanyaspor,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-29,Beşiktaş,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-29,Eyüpspor,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-29,Fenerbahçe,Erzurumspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-29,Gaziantep,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-29,Göztepe,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-29,Rizespor,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-29,Samsunspor,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-11-29,Çorum,Kocaelispor
 Portugal,primeira_liga,league,same_country,Portugal,Portugal,UEFA,UEFA,Primeira Liga,1,openfootball,2026-11-30,Benfica,Famalicão
 Portugal,primeira_liga,league,same_country,Portugal,Portugal,UEFA,UEFA,Primeira Liga,1,openfootball,2026-11-30,Casa Pia,Braga
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2026-12-02,Aston Villa,Everton
@@ -1044,6 +1125,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-12-06,Basel,Servette
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-12-06,FC Sankt Gallen,Grasshoppers
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-12-06,Lausanne-Sport,Sion
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-06,Amed,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-06,Beşiktaş,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-06,Erzurumspor,Kocaelispor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-06,Galatasaray,Rizespor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-06,Gençlerbirligi,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-06,Istanbul Başakşehir,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-06,Kasimpasa,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-06,Konyaspor,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-06,Trabzonspor,Çorum
 Greece,super_league_greece,league,same_country,Greece,Greece,UEFA,UEFA,Super League Greece,1,openfootball,2026-12-07,Panetolikos,Atromitos
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2026-12-08,Birmingham City,Watford
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2026-12-08,Blackburn Rovers,Norwich City
@@ -1192,6 +1282,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-12-13,Lugano,Thun
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-12-13,Luzern,Servette
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-12-13,Sion,Basel
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-13,Aytemiz Alanyaspor,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-13,Erzurumspor,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-13,Eyüpspor,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-13,Fenerbahçe,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-13,Gaziantep,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-13,Göztepe,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-13,Kocaelispor,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-13,Rizespor,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-13,Çorum,Amed
 Czechia,czech_first_league,league,same_country,Czechia,Czechia,UEFA,UEFA,Czech First League,1,openfootball,2026-12-14,Teplice,AC Sparta Praha
 Czechia,czech_first_league,league,same_country,Czechia,Czechia,UEFA,UEFA,Czech First League,1,openfootball,2026-12-14,Zlín,Viktoria Plzeň
 Greece,super_league_greece,league,same_country,Greece,Greece,UEFA,UEFA,Super League Greece,1,openfootball,2026-12-14,Kifisia,OFI
@@ -1299,6 +1398,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-12-20,Servette,Young Boys
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-12-20,Thun,Sion
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2026-12-20,Vaduz,Lugano
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-20,Amed,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-20,Beşiktaş,Rizespor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-20,Galatasaray,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-20,Gençlerbirligi,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-20,Istanbul Başakşehir,Erzurumspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-20,Kasimpasa,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-20,Konyaspor,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-20,Samsunspor,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2026-12-20,Trabzonspor,Kocaelispor
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2026-12-26,Aston Villa,Leeds United
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2026-12-26,Everton,Sunderland
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2026-12-26,Fulham,Brighton & Hove Albion
@@ -1601,6 +1709,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2027-01-17,Luzern,FC Sankt Gallen
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2027-01-17,Sion,Grasshoppers
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2027-01-17,Zurich,Lausanne-Sport
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-17,Aytemiz Alanyaspor,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-17,Erzurumspor,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-17,Eyüpspor,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-17,Fenerbahçe,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-17,Gaziantep,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-17,Göztepe,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-17,Kocaelispor,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-17,Rizespor,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-17,Çorum,Konyaspor
 Europe,europa_league,continental,same_confederation,Netherlands,Croatia,UEFA,UEFA,Europa League,,wikipedia,2027-01-21,AZ,Dinamo Zagreb
 Europe,europa_league,continental,same_confederation,Belgium,England,UEFA,UEFA,Europa League,,wikipedia,2027-01-21,Anderlecht,Sunderland
 Europe,europa_league,continental,same_confederation,Armenia,Slovenia,UEFA,UEFA,Europa League,,wikipedia,2027-01-21,Ararat-Armenia,Celje
@@ -1715,6 +1832,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2027-01-24,FC Sankt Gallen,Young Boys
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2027-01-24,Lausanne-Sport,Basel
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2027-01-24,Lugano,Sion
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-24,Aytemiz Alanyaspor,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-24,Erzurumspor,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-24,Eyüpspor,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-24,Fenerbahçe,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-24,Göztepe,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-24,Kocaelispor,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-24,Rizespor,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-24,Trabzonspor,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-24,Çorum,Galatasaray
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-01-26,Bolton Wanderers,Charlton Athletic
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-01-26,Burnley,Queens Park Rangers
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-01-26,Lincoln City,Watford
@@ -1849,6 +1975,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2027-01-31,Luzern,Zurich
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2027-01-31,Sion,FC Sankt Gallen
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2027-01-31,Vaduz,Servette
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-31,Amed,Kocaelispor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-31,Beşiktaş,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-31,Galatasaray,Erzurumspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-31,Gaziantep,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-31,Gençlerbirligi,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-31,Istanbul Başakşehir,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-31,Kasimpasa,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-31,Konyaspor,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-01-31,Samsunspor,Rizespor
 Scotland,scottish_premiership,league,same_country,Scotland,Scotland,UEFA,UEFA,Scottish Premiership,1,openfootball,2027-02-03,Aberdeen,Falkirk
 Scotland,scottish_premiership,league,same_country,Scotland,Scotland,UEFA,UEFA,Scottish Premiership,1,openfootball,2027-02-03,Dundee United,Hibernian
 Scotland,scottish_premiership,league,same_country,Scotland,Scotland,UEFA,UEFA,Scottish Premiership,1,openfootball,2027-02-03,Hearts,Dundee
@@ -1952,6 +2087,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2027-02-07,Servette,Lugano
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2027-02-07,Young Boys,Grasshoppers
 Switzerland,swiss_super_league,league,same_country,Switzerland,Switzerland,UEFA,UEFA,Swiss Super League,1,openfootball,2027-02-07,Zurich,Sion
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-07,Aytemiz Alanyaspor,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-07,Erzurumspor,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-07,Fenerbahçe,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-07,Göztepe,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-07,Kasimpasa,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-07,Kocaelispor,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-07,Rizespor,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-07,Trabzonspor,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-07,Çorum,Beşiktaş
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2027-02-10,Aston Villa,Bournemouth
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2027-02-10,Coventry City,Liverpool
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2027-02-10,Crystal Palace,Brentford
@@ -2057,6 +2201,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-02-14,Sevilla,Espanyol
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-02-14,Valencia,Alavés
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-02-14,Villarreal,Barcelona
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-14,Amed,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-14,Aytemiz Alanyaspor,Rizespor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-14,Beşiktaş,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-14,Eyüpspor,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-14,Galatasaray,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-14,Gaziantep,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-14,Gençlerbirligi,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-14,Konyaspor,Erzurumspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-14,Samsunspor,Kocaelispor
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-02-16,Blackburn Rovers,Bristol City
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-02-16,Charlton Athletic,Burnley
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-02-16,Derby County,Queens Park Rangers
@@ -2174,6 +2327,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-02-21,Rayo Vallecano,Getafe
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-02-21,Sevilla,Real Madrid
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-02-21,Villarreal,Valencia
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-21,Erzurumspor,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-21,Fenerbahçe,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-21,Göztepe,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-21,Istanbul Başakşehir,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-21,Kasimpasa,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-21,Kocaelispor,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-21,Rizespor,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-21,Trabzonspor,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-21,Çorum,Samsunspor
 Austria,austrian_bundesliga,league,same_country,Austria,Austria,UEFA,UEFA,Austrian Bundesliga,1,openfootball,2027-02-27,Altach,Rapid Vienna
 Austria,austrian_bundesliga,league,same_country,Austria,Austria,UEFA,UEFA,Austrian Bundesliga,1,openfootball,2027-02-27,Austria Vienna,Ried
 Austria,austrian_bundesliga,league,same_country,Austria,Austria,UEFA,UEFA,Austrian Bundesliga,1,openfootball,2027-02-27,LASK,Austria Lustenau
@@ -2279,6 +2441,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-02-28,Real Betis,Villarreal
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-02-28,Real Madrid,Valencia
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-02-28,Real Sociedad,Elche
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-28,Aytemiz Alanyaspor,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-28,Beşiktaş,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-28,Eyüpspor,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-28,Galatasaray,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-28,Gaziantep,Kocaelispor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-28,Gençlerbirligi,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-28,Konyaspor,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-28,Rizespor,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-02-28,Samsunspor,Erzurumspor
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-03-02,Bolton Wanderers,Queens Park Rangers
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-03-02,Bristol City,Birmingham City
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-03-02,Burnley,West Bromwich Albion
@@ -2393,6 +2564,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-03-07,Sevilla,Real Sociedad
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-03-07,Valencia,Levante
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-03-07,Villarreal,Real Madrid
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-07,Amed,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-07,Erzurumspor,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-07,Fenerbahçe,Rizespor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-07,Göztepe,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-07,Istanbul Başakşehir,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-07,Kasimpasa,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-07,Kocaelispor,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-07,Trabzonspor,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-07,Çorum,Gaziantep
 Czechia,czech_first_league,league,same_country,Czechia,Czechia,UEFA,UEFA,Czech First League,1,openfootball,2027-03-13,AC Sparta Praha,Baník Ostrava
 Czechia,czech_first_league,league,same_country,Czechia,Czechia,UEFA,UEFA,Czech First League,1,openfootball,2027-03-13,Bohemians 1905,Artis Brno
 Czechia,czech_first_league,league,same_country,Czechia,Czechia,UEFA,UEFA,Czech First League,1,openfootball,2027-03-13,Hradec Kralove,Slavia Prague
@@ -2492,6 +2672,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-03-14,Racing Santander,Atlético Madrid
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-03-14,Real Betis,Levante
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-03-14,Real Madrid,Espanyol
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-14,Aytemiz Alanyaspor,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-14,Beşiktaş,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-14,Eyüpspor,Erzurumspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-14,Galatasaray,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-14,Gaziantep,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-14,Göztepe,Kocaelispor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-14,Konyaspor,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-14,Rizespor,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-14,Samsunspor,Kasimpasa
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-03-16,Derby County,Middlesbrough
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-03-16,Lincoln City,Cardiff City
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-03-16,Preston North End,Burnley
@@ -2603,6 +2792,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-03-21,Sevilla,Elche
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-03-21,Valencia,Deportivo La Coruña
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-03-21,Villarreal,Málaga
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-21,Amed,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-21,Erzurumspor,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-21,Fenerbahçe,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-21,Gençlerbirligi,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-21,Istanbul Başakşehir,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-21,Kasimpasa,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-21,Kocaelispor,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-21,Trabzonspor,Rizespor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-03-21,Çorum,Göztepe
 Czechia,czech_first_league,league,same_country,Czechia,Czechia,UEFA,UEFA,Czech First League,1,openfootball,2027-04-03,AC Sparta Praha,Bohemians 1905
 Czechia,czech_first_league,league,same_country,Czechia,Czechia,UEFA,UEFA,Czech First League,1,openfootball,2027-04-03,Hradec Kralove,FK Mlada Boleslav
 Czechia,czech_first_league,league,same_country,Czechia,Czechia,UEFA,UEFA,Czech First League,1,openfootball,2027-04-03,Slavia Prague,Jablonec
@@ -2685,6 +2883,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-04-04,Real Betis,Celta Vigo
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-04-04,Real Madrid,Atlético Madrid
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-04-04,Real Sociedad,Valencia
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-04,Aytemiz Alanyaspor,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-04,Beşiktaş,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-04,Eyüpspor,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-04,Galatasaray,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-04,Gaziantep,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-04,Göztepe,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-04,Rizespor,Kocaelispor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-04,Samsunspor,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-04,Çorum,Erzurumspor
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-04-06,Burnley,Wrexham
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-04-06,Lincoln City,Bristol City
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-04-06,Millwall,Middlesbrough
@@ -2789,6 +2996,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-04-11,Sevilla,Deportivo La Coruña
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-04-11,Valencia,Getafe
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-04-11,Villarreal,Athletic Club
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-11,Amed,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-11,Erzurumspor,Rizespor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-11,Fenerbahçe,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-11,Gençlerbirligi,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-11,Istanbul Başakşehir,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-11,Kasimpasa,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-11,Kocaelispor,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-11,Konyaspor,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-11,Trabzonspor,Aytemiz Alanyaspor
 Czechia,czech_first_league,league,same_country,Czechia,Czechia,UEFA,UEFA,Czech First League,1,openfootball,2027-04-17,Hradec Kralove,1.FC Slovácko
 Czechia,czech_first_league,league,same_country,Czechia,Czechia,UEFA,UEFA,Czech First League,1,openfootball,2027-04-17,Jablonec,Artis Brno
 Czechia,czech_first_league,league,same_country,Czechia,Czechia,UEFA,UEFA,Czech First League,1,openfootball,2027-04-17,Slavia Prague,Sigma Olomouc
@@ -2866,6 +3082,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-04-18,Málaga,Valencia
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-04-18,Real Betis,Athletic Club
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-04-18,Real Sociedad,Racing Santander
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-18,Aytemiz Alanyaspor,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-18,Beşiktaş,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-18,Eyüpspor,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-18,Fenerbahçe,Kocaelispor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-18,Gaziantep,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-18,Göztepe,Erzurumspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-18,Rizespor,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-18,Samsunspor,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-18,Çorum,Istanbul Başakşehir
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-04-20,Bolton Wanderers,Sheffield United
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-04-20,Charlton Athletic,West Bromwich Albion
 England,championship,league,same_country,England,England,UEFA,UEFA,Championship,2,openfootball,2027-04-20,Derby County,Portsmouth
@@ -2964,6 +3189,15 @@ Portugal,primeira_liga,league,same_country,Portugal,Portugal,UEFA,UEFA,Primeira 
 Portugal,primeira_liga,league,same_country,Portugal,Portugal,UEFA,UEFA,Primeira Liga,1,openfootball,2027-04-25,Rio Ave,Marítimo
 Portugal,primeira_liga,league,same_country,Portugal,Portugal,UEFA,UEFA,Primeira Liga,1,openfootball,2027-04-25,Santa Clara,Estoril
 Portugal,primeira_liga,league,same_country,Portugal,Portugal,UEFA,UEFA,Primeira Liga,1,openfootball,2027-04-25,Sporting Lisbon,Gil Vicente
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-25,Amed,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-25,Erzurumspor,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-25,Galatasaray,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-25,Gençlerbirligi,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-25,Istanbul Başakşehir,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-25,Kasimpasa,Rizespor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-25,Kocaelispor,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-25,Konyaspor,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-04-25,Trabzonspor,Göztepe
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2027-05-01,Arsenal,Tottenham Hotspur
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2027-05-01,Brighton & Hove Albion,Nottingham Forest
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2027-05-01,Coventry City,Manchester United
@@ -3033,6 +3267,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-05-02,Rayo Vallecano,Villarreal
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-05-02,Real Betis,Valencia
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-05-02,Real Sociedad,Athletic Club
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-02,Aytemiz Alanyaspor,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-02,Eyüpspor,Gençlerbirligi
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-02,Fenerbahçe,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-02,Gaziantep,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-02,Göztepe,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-02,Kocaelispor,Erzurumspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-02,Rizespor,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-02,Samsunspor,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-02,Çorum,Trabzonspor
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2027-05-08,Bournemouth,Manchester United
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2027-05-08,Brentford,Aston Villa
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2027-05-08,Brighton & Hove Albion,Sunderland
@@ -3099,6 +3342,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-05-09,Real Madrid,Barcelona
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-05-09,Valencia,Atlético Madrid
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-05-09,Villarreal,Celta Vigo
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-09,Amed,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-09,Beşiktaş,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-09,Galatasaray,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-09,Gençlerbirligi,Kocaelispor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-09,Istanbul Başakşehir,Rizespor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-09,Kasimpasa,Erzurumspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-09,Konyaspor,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-09,Samsunspor,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-09,Trabzonspor,Fenerbahçe
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2027-05-15,Arsenal,Nottingham Forest
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2027-05-15,Aston Villa,Newcastle United
 England,premier_league,league,same_country,England,England,UEFA,UEFA,Premier League,1,openfootball,2027-05-15,Chelsea,Everton
@@ -3165,6 +3417,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-05-16,Real Madrid,Racing Santander
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-05-16,Real Sociedad,Barcelona
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-05-16,Sevilla,Villarreal
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-16,Aytemiz Alanyaspor,Galatasaray
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-16,Erzurumspor,Istanbul Başakşehir
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-16,Eyüpspor,Konyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-16,Fenerbahçe,Kasimpasa
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-16,Gaziantep,Samsunspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-16,Göztepe,Amed
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-16,Kocaelispor,Trabzonspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-16,Rizespor,Beşiktaş
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-16,Çorum,Gençlerbirligi
 France,ligue_1,league,same_country,France,France,UEFA,UEFA,Ligue 1,1,openfootball,2027-05-22,Angers,Brest
 France,ligue_1,league,same_country,France,France,UEFA,UEFA,Ligue 1,1,openfootball,2027-05-22,Le Havre,Lille
 France,ligue_1,league,same_country,France,France,UEFA,UEFA,Ligue 1,1,openfootball,2027-05-22,Le Mans,Strasbourg
@@ -3222,6 +3483,15 @@ Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-05-23,Sevilla,Getafe
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-05-23,Valencia,Elche
 Spain,la_liga,league,same_country,Spain,Spain,UEFA,UEFA,La Liga,1,openfootball,2027-05-23,Villarreal,Osasuna
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-23,Amed,Fenerbahçe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-23,Beşiktaş,Göztepe
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-23,Galatasaray,Gaziantep
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-23,Gençlerbirligi,Rizespor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-23,Istanbul Başakşehir,Aytemiz Alanyaspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-23,Kasimpasa,Kocaelispor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-23,Konyaspor,Çorum
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-23,Samsunspor,Eyüpspor
+Turkey,super_lig,league,same_country,Turkey,Turkey,UEFA,UEFA,SÃ¼per Lig,1,openfootball,2027-05-23,Trabzonspor,Erzurumspor
 France,ligue_1,league,same_country,France,France,UEFA,UEFA,Ligue 1,1,openfootball,2027-05-29,Auxerre,Le Havre
 France,ligue_1,league,same_country,France,France,UEFA,UEFA,Ligue 1,1,openfootball,2027-05-29,Brest,Lens
 France,ligue_1,league,same_country,France,France,UEFA,UEFA,Ligue 1,1,openfootball,2027-05-29,Lille,Le Mans
