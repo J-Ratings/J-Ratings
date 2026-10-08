@@ -1193,7 +1193,7 @@ if (total === 99) {
       'cymru premier': 'Premier'
     };
     const displayName = window.JR_shortLeagueName(countryKey, compact[league.toLowerCase()] || league);
-    const displayLeague = country && displayName ? `${country} - ${displayName}` : displayName;
+    const displayLeague = displayName;
     if (displayLeague && season) return `${displayLeague} ${season}`;
     return displayLeague || season || '';
   }
