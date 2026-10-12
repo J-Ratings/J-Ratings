@@ -1,6 +1,9 @@
 name: Deploy filtered public site
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
