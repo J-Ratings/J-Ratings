@@ -20,13 +20,13 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 774,Aoki Shinichi,Aoki Shinichi,774,1,Aoki Shinichi,exact_name_match,0,NA,NA,2993.356474213285,77,2025-11-02,3
 2430,Arai Kanta,Arai Kanta,2430,1,Arai Kanta,exact_name_match,0,NA,NA,3092.9194161649148,8,2025-10-06,11
 793,Araki Issei,Araki Issei,793,1,Araki Issei,exact_name_match,0,NA,NA,3037.050907689443,13,2022-09-05,2
-704,Araki Masako,Araki Masako,704,1,Araki Masako,exact_name_match,0,NA,NA,3038.14179885978,19,2016-03-31,7
+704,Araki Masako,Araki Masako,704,1,Araki Masako,exact_name_match,0,NA,NA,3038.14179885978,19,2016-03-31,8
 820,Arimura Hiroshi,Arimura Hiroshi,820,1,Arimura Hiroshi,exact_name_match,0,NA,NA,3035.0247366856433,71,2024-04-04,1
 1024,Asano Yasuko,Asano Yasuko,1024,1,Asano Yasuko,exact_name_match,0,NA,NA,3003.748672587274,30,2015-12-24,1
 243,Awaji Shuzo,Awaji Shuzo,243,1,Awaji Shuzo,exact_name_match,0,NA,NA,3190.657312163848,473,2025-05-08,4
 1401,Baek Chanhee,Baek Chanhee,1401,1,Baek Chanhee,exact_name_match,0,NA,NA,3181.872858125913,21,2025-06-23,1
 1448,Bian Wenkai,Bian Wenkai,1448,1,Bian Wenkai,exact_name_match,0,NA,NA,2993.6807166672884,17,2025-12-08,4
-1290,Byun Sangil,Byun Sangil,1290,1,Byun Sangil,exact_name_match,0,NA,NA,3538.784729433869,708,2025-12-24,40
+1290,Byun Sangil,Byun Sangil,1290,1,Byun Sangil,exact_name_match,0,NA,NA,3538.784729433869,708,2025-12-24,42
 1047,Cai Bihan,Cai Bihan,1047,1,Cai Bihan,exact_name_match,0,NA,NA,3038.9963532344304,99,2025-06-27,1
 150,Cao Dayuan,Cao Dayuan,150,1,Cao Dayuan,exact_name_match,0,NA,NA,3154.7001099168906,584,2025-09-10,2
 1072,Cao Youyin,Cao Youyin,1072,1,Cao Youyin,exact_name_match,0,NA,NA,3046.034440561021,220,2025-11-26,1
@@ -35,38 +35,38 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1705,Chen Haoxin,Chen Haoxin,1705,1,Chen Haoxin,exact_name_match,0,NA,NA,3310.4286438835934,106,2025-12-09,16
 2295,Chen Jiarui,Chen Jiarui,2295,1,Chen Jiarui,exact_name_match,0,NA,NA,3144.3708842005567,19,2025-09-17,11
 2161,Chen Manqi,Chen Manqi,2161,1,Chen Manqi,exact_name_match,0,NA,NA,3001.5431182168168,32,2025-12-12,13
-1534,Chen Qirui,Chen Qirui,1534,1,Chen Qirui,exact_name_match,0,NA,NA,3301.9080258828476,431,2025-12-30,5
+1534,Chen Qirui,Chen Qirui,1534,1,Chen Qirui,exact_name_match,0,NA,NA,3301.9080258828476,431,2025-12-30,6
 241,Chen Shiyuan,Chen Shiyuan,241,1,Chen Shiyuan,exact_name_match,0,NA,NA,3229.5059020764184,525,2025-12-10,1
 1292,Chen Xian,Chen Xian,1292,1,Chen Xian,exact_name_match,0,NA,NA,3400.6077074852046,267,2025-12-09,25
 2444,Chen Xinyang,Chen Xinyang,2444,1,Chen Xinyang,exact_name_match,0,NA,NA,2971.6293883895346,28,2025-12-11,1
 297,Chen Yaoye,Chen Yaoye,297,1,Chen Yaoye,exact_name_match,0,NA,NA,3430.1177724207473,905,2025-10-19,8
 1180,Chen Yiming,Chen Yiming,1180,1,Chen Yiming,exact_name_match,0,NA,NA,3137.2262300386465,229,2025-10-30,11
-1488,Chen Yunong,Chen Yunong,1488,1,Chen Yunong,exact_name_match,0,NA,NA,3458.112003918637,109,2025-12-16,23
+1488,Chen Yunong,Chen Yunong,1488,1,Chen Yunong,exact_name_match,0,NA,NA,3458.112003918637,109,2025-12-16,24
 1426,Chen Zhengxun,Chen Zhengxun,1426,1,Chen Zhengxun,exact_name_match,0,NA,NA,3279.231531673967,158,2025-11-29,20
 1504,Chen Zijian,Chen Zijian,1504,1,Chen Zijian,exact_name_match,0,NA,NA,3498.040385453894,239,2025-12-09,19
 1866,Cheng Jiaye,Cheng Jiaye,1866,1,Cheng Jiaye,exact_name_match,0,NA,NA,3148.1592364595417,23,2025-08-01,4
 99,Cho Hanseung,Cho Hanseung,99,1,Cho Hanseung,exact_name_match,0,NA,NA,3373.4056480858917,830,2025-10-23,2
 149,Cho Hunhyun,Cho Hunhyun,149,1,Cho Hunhyun,exact_name_match,0,NA,NA,3213.7129197864065,1945,2025-11-17,3
-100,Cho Hyeyeon,Cho Hyeyeon,100,1,Cho Hyeyeon,exact_name_match,0,NA,NA,3178.5667590253315,395,2025-10-21,18
+100,Cho Hyeyeon,Cho Hyeyeon,100,1,Cho Hyeyeon,exact_name_match,0,NA,NA,3178.5667590253315,395,2025-10-21,20
 2364,Cho Koharu,Cho Koharu,2364,1,Cho Koharu,exact_name_match,0,NA,NA,3088.921160828645,14,2025-08-13,10
 2250,Cho Kosumi,Cho Kosumi,2250,1,Cho Kosumi,exact_name_match,0,NA,NA,2993.6027300248543,23,2025-08-07,2
 1812,Cho Seungah,Cho Seungah,1812,1,Cho Seungah,exact_name_match,0,NA,NA,3137.8477214204004,210,2025-12-12,24
 161,Choi Cheolhan,Choi Cheolhan,161,1,Choi Cheolhan,exact_name_match,0,NA,NA,3309.2254012151298,1098,2024-11-25,4
 1627,Choi Jaeyoung,Choi Jaeyoung,1627,1,Choi Jaeyoung,exact_name_match,0,NA,NA,3351.401235503703,146,2025-12-19,15
-1223,Choi Jeong,Choi Jeong,1223,1,Choi Jeong,exact_name_match,0,NA,NA,3397.923092738029,714,2025-12-18,46
-162,Choi Kyubyeong,Choi Kyubyeong,162,1,Choi Kyubyeong,exact_name_match,0,NA,NA,3147.9726562946207,371,2025-11-30,5
+1223,Choi Jeong,Choi Jeong,1223,1,Choi Jeong,exact_name_match,0,NA,NA,3397.923092738029,714,2025-12-18,47
+162,Choi Kyubyeong,Choi Kyubyeong,162,1,Choi Kyubyeong,exact_name_match,0,NA,NA,3147.9726562946207,371,2025-11-30,6
 2256,Choi Minseo,Choi Minseo,2256,1,Choi Minseo,exact_name_match,0,NA,NA,3095.7974097229635,1,2021-03-15,6
 2569,Choi Minseo (f),Choi Minseo (f),2569,1,Choi Minseo  (f),exact_name_match,0,NA,NA,3024.0156082428666,14,2025-10-16,13
-159,Choi Myeonghun,Choi Myeonghun,159,1,Choi Myeonghun,exact_name_match,0,NA,NA,3316.439273353857,470,2025-11-06,12
+159,Choi Myeonghun,Choi Myeonghun,159,1,Choi Myeonghun,exact_name_match,0,NA,NA,3316.439273353857,470,2025-11-06,13
 2415,Choi Seungcheol,Choi Seungcheol,2415,1,Choi Seungcheol,exact_name_match,0,NA,NA,3126.3015519815467,20,2025-05-09,16
 2026,Chu Keer,Chu Keer,2026,1,Chu Keer,exact_name_match,0,NA,NA,2960.2383903693085,40,2025-12-29,10
 1422,Chujo Chihiro,Chujo Chihiro,1422,1,Chujo Chihiro,exact_name_match,0,NA,NA,3018.62166772405,4,2025-10-20,8
 383,Cui Can,Cui Can,383,1,Cui Can,exact_name_match,0,NA,NA,3155.666095966724,49,2020-03-03,1
 2315,Dai Qigao,Dai Qigao,2315,1,Dai Qigao,exact_name_match,0,NA,NA,3078.4685493971388,36,2025-12-27,9
-1135,Dang Yifei,Dang Yifei,1135,1,Dang Yifei,exact_name_match,0,NA,NA,3633.4832665280414,615,2025-12-29,56
+1135,Dang Yifei,Dang Yifei,1135,1,Dang Yifei,exact_name_match,0,NA,NA,3633.4832665280414,615,2025-12-29,58
 1332,Deguchi Mariko,Deguchi Mariko,1332,1,Deguchi Mariko,exact_name_match,0,NA,NA,2953.6043685211,20,2025-08-07,15
 2468,Deng Youjia,Deng Youjia,2468,1,Deng Youjia,exact_name_match,0,NA,NA,3071.8845526538635,6,2025-09-02,1
-1511,Ding Hao,Ding Hao,1511,1,Ding Hao,exact_name_match,0,NA,NA,3733.3544706900375,436,2025-12-26,50
+1511,Ding Hao,Ding Hao,1511,1,Ding Hao,exact_name_match,0,NA,NA,3733.3544706900375,436,2025-12-26,51
 2285,Ding Kewen,Ding Kewen,2285,1,Ding Kewen,exact_name_match,0,NA,NA,3158.1005010921012,61,2025-12-31,18
 2030,Ding Mingjun,Ding Mingjun,2030,1,Ding Mingjun,exact_name_match,0,NA,NA,2947.792682171976,27,2025-09-17,15
 2543,Du Tianrui,Du Tianrui,2543,1,Du Tianrui,exact_name_match,0,NA,NA,3094.5512434499847,5,2025-12-14,1
@@ -82,12 +82,12 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 2316,Feng Yunjia,Feng Yunjia,2316,1,Feng Yunjia,exact_name_match,0,NA,NA,3032.24245712672,55,2025-12-12,16
 2337,Fengsheng Jingyue,Fengsheng Jingyue,2337,1,Fengsheng Jingyue,exact_name_match,0,NA,NA,3069.7481852150377,3,2024-05-31,1
 2205,Fu Jianheng,Fu Jianheng,2205,1,Fu Jianheng,exact_name_match,0,NA,NA,3339.9563403161687,72,2025-11-27,27
-2203,Fujii Koki,Fujii Koki,2203,1,Fujii Koki,exact_name_match,0,NA,NA,3037.89869640128,22,2025-10-02,17
+2203,Fujii Koki,Fujii Koki,2203,1,Fujii Koki,exact_name_match,0,NA,NA,3037.89869640128,22,2025-10-02,18
 360,Fujii Shuya,Fujii Shuya,360,1,Fujii Shuya,exact_name_match,0,NA,NA,3143.5560282731813,119,2025-12-24,17
 1449,Fujimura Yosuke,Fujimura Yosuke,1449,1,Fujimura Yosuke,exact_name_match,0,NA,NA,3159.762032510689,48,2023-06-29,1
 800,Fujisawa Kazunari,Fujisawa Kazunari,800,1,Fujisawa Kazunari,exact_name_match,0,NA,NA,3047.166566387635,35,2025-09-15,3
-1224,Fujisawa Rina,Fujisawa Rina,1224,1,Fujisawa Rina,exact_name_match,0,NA,NA,3281.6029985843943,634,2025-12-25,51
-1071,Fujita Akihiko,Fujita Akihiko,1071,1,Fujita Akihiko,exact_name_match,0,NA,NA,3313.8534191168296,241,2025-12-18,13
+1224,Fujisawa Rina,Fujisawa Rina,1224,1,Fujisawa Rina,exact_name_match,0,NA,NA,3281.6029985843943,634,2025-12-25,52
+1071,Fujita Akihiko,Fujita Akihiko,1071,1,Fujita Akihiko,exact_name_match,0,NA,NA,3313.8534191168296,241,2025-12-18,14
 2360,Fujita Reo,Fujita Reo,2360,1,Fujita Reo,exact_name_match,0,NA,NA,2937.562190980497,52,2025-11-26,15
 1588,Fujiwara Katsuya,Fujiwara Katsuya,1588,1,Fujiwara Katsuya,exact_name_match,0,NA,NA,3092.609748332618,8,2025-07-16,8
 2204,Fukuoka Kotaro,Fukuoka Kotaro,2204,1,Fukuoka Kotaro,exact_name_match,0,NA,NA,3422.8975392615935,184,2025-12-24,53
@@ -103,7 +103,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1253,Gu Zihao,Gu Zihao,1253,1,Gu Zihao,exact_name_match,0,NA,NA,3514.5834739704137,525,2025-12-17,41
 2398,Gui Shiyun,Gui Shiyun,2398,1,Gui Shiyun,exact_name_match,0,NA,NA,3029.4741064753534,12,2025-12-12,4
 2458,Hamakado Hibiki,Hamakado Hibiki,2458,1,Hamakado Hibiki,exact_name_match,0,NA,NA,3077.141605475487,2,2025-12-21,8
-186,Han Chongjin,Han Chongjin,186,1,Han Chongjin,exact_name_match,0,NA,NA,3315.735880348711,109,2025-09-14,15
+186,Han Chongjin,Han Chongjin,186,1,Han Chongjin,exact_name_match,0,NA,NA,3315.735880348711,109,2025-09-14,16
 2503,Han Jooyoung,Han Jooyoung,2503,1,Han Jooyoung,exact_name_match,0,NA,NA,3131.9075007566935,15,2025-07-27,21
 2391,Han Moyang,Han Moyang,2391,1,Han Moyang,exact_name_match,0,NA,NA,3159.645911409699,25,2025-11-24,22
 1403,Han Seungjoo,Han Seungjoo,1403,1,Han Seungjoo,exact_name_match,0,NA,NA,3389.4439155992213,230,2025-12-27,9
@@ -123,7 +123,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 2324,He Tianyu,He Tianyu,2324,1,He Tianyu,exact_name_match,0,NA,NA,3126.2096367844047,3,2023-11-11,1
 1844,He Yang,He Yang,1844,1,He Yang,exact_name_match,0,NA,NA,3269.480756311646,41,2025-07-22,1
 1435,He Yuhan,He Yuhan,1435,1,He Yuhan,exact_name_match,0,NA,NA,3317.077038842246,131,2025-12-09,14
-1969,Heo Seohyun,Heo Seohyun,1969,1,Heo Seohyun,exact_name_match,0,NA,NA,3113.0523815401607,174,2025-12-12,29
+1969,Heo Seohyun,Heo Seohyun,1969,1,Heo Seohyun,exact_name_match,0,NA,NA,3113.0523815401607,174,2025-12-12,30
 2308,Heo Youngrak,Heo Youngrak,2308,1,Heo Youngrak,exact_name_match,0,NA,NA,3296.9762742360385,50,2025-12-24,17
 88,Hikosaka Naoto,Hikosaka Naoto,88,1,Hikosaka Naoto,exact_name_match,0,NA,NA,3184.7716686450863,585,2025-08-02,13
 2367,Hino Shota,Hino Shota,2367,1,Hino Shota,exact_name_match,0,NA,NA,3044.557126764862,15,2025-10-06,3
@@ -154,16 +154,16 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1232,Huang Yunsong,Huang Yunsong,1232,1,Huang Yunsong,exact_name_match,0,NA,NA,3475.454277926267,431,2025-12-09,38
 1760,Huang Ziping,Huang Ziping,1760,1,Huang Ziping,exact_name_match,0,NA,NA,3022.9010238904775,62,2025-12-13,1
 1261,Hwang Jaeyeon,Hwang Jaeyeon,1261,1,Hwang Jaeyeon,exact_name_match,0,NA,NA,3154.8756798074037,80,2025-07-26,2
-1231,Ichiriki Ryo,Ichiriki Ryo,1231,1,Ichiriki Ryo,exact_name_match,0,NA,NA,3618.1080960448858,795,2025-12-28,37
+1231,Ichiriki Ryo,Ichiriki Ryo,1231,1,Ichiriki Ryo,exact_name_match,0,NA,NA,3618.1080960448858,795,2025-12-28,38
 1188,Ida Atsushi,Ida Atsushi,1188,1,Ida Atsushi,exact_name_match,0,NA,NA,3348.690741492074,443,2025-12-11,23
 355,Iguchi Toyohide,Iguchi Toyohide,355,1,Iguchi Toyohide,exact_name_match,0,NA,NA,3099.137487430889,35,2025-05-08,5
 2198,Ikemoto Ryota,Ikemoto Ryota,2198,1,Ikemoto Ryota,exact_name_match,0,NA,NA,3060.1205551926546,14,2025-11-29,12
-2020,Imabun Taro,Imabun Taro,2020,1,Imabun Taro,exact_name_match,0,NA,NA,3106.4252577685425,65,2025-12-17,23
+2020,Imabun Taro,Imabun Taro,2020,1,Imabun Taro,exact_name_match,0,NA,NA,3106.4252577685425,65,2025-12-17,24
 881,Imai Kazuhiro,Imai Kazuhiro,881,1,Imai Kazuhiro,exact_name_match,0,NA,NA,3062.9123512600636,25,2025-04-09,7
 202,Imamura Toshiya,Imamura Toshiya,202,1,Imamura Toshiya,exact_name_match,0,NA,NA,3117.097880661204,564,2025-09-29,15
 277,Imamura Yoshiaki,Imamura Yoshiaki,277,1,Imamura Yoshiaki,exact_name_match,0,NA,NA,3152.59564034724,169,2025-09-15,3
 1189,Inaba Takahiro,Inaba Takahiro,1189,1,Inaba Takahiro,exact_name_match,0,NA,NA,3086.313092537961,23,2024-08-08,6
-1204,Inoue Naoki,Inoue Naoki,1204,1,Inoue Naoki,exact_name_match,0,NA,NA,2999.55083462168,19,2025-10-02,15
+1204,Inoue Naoki,Inoue Naoki,1204,1,Inoue Naoki,exact_name_match,0,NA,NA,2999.55083462168,19,2025-10-02,16
 273,Ishida Atsushi,Ishida Atsushi,273,1,Ishida Atsushi,exact_name_match,0,NA,NA,3035.10925881722,107,2022-08-25,4
 923,Ishigure Ikuro,Ishigure Ikuro,923,1,Ishigure Ikuro,exact_name_match,0,NA,NA,3146.190093164029,88,2025-04-07,1
 62,Ishii Kunio,Ishii Kunio,62,1,Ishii Kunio,exact_name_match,0,NA,NA,3106.6803757073976,231,2023-01-19,1
@@ -174,16 +174,16 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1147,Ito Masashi,Ito Masashi,1147,1,Ito Masashi,exact_name_match,0,NA,NA,3020.8272470985135,34,2024-11-18,8
 769,Iwamaru Taira,Iwamaru Taira,769,1,Iwamaru Taira,exact_name_match,0,NA,NA,3081.4551330954378,35,2022-09-26,7
 1973,Iwata Saeka,Iwata Saeka,1973,1,Iwata Saeka,exact_name_match,0,NA,NA,3103.6040083160997,31,2025-12-01,28
-601,Iyama Yuta,Iyama Yuta,601,1,Iyama Yuta,exact_name_match,0,NA,NA,3515.945739688106,1220,2025-12-24,38
+601,Iyama Yuta,Iyama Yuta,601,1,Iyama Yuta,exact_name_match,0,NA,NA,3515.945739688106,1220,2025-12-24,39
 698,Izawa Akino,Izawa Akino,698,1,Izawa Akino,exact_name_match,0,NA,NA,2940.1910898654896,105,2025-11-20,8
 341,Izumitani Hideo,Izumitani Hideo,341,1,Izumitani Hideo,exact_name_match,0,NA,NA,3031.636070714602,43,2025-04-03,3
 1810,Izumo Tetsuya,Izumo Tetsuya,1810,1,Izumo Tetsuya,exact_name_match,0,NA,NA,3079.6945005290895,9,2024-07-31,6
 2488,Jan Simara,Jan Simara,2488,1,Jan Simara,exact_name_match,0,NA,NA,3060.6628292277987,7,2024-03-19,10
 2446,Jeong Junwoo,Jeong Junwoo,2446,1,Jeong Junwoo,exact_name_match,0,NA,NA,3174.048697588999,16,2025-10-22,18
 1436,Jiang Qirun,Jiang Qirun,1436,1,Jiang Qirun,exact_name_match,0,NA,NA,3389.2292867748342,197,2025-12-15,19
-964,Jiang Weijie,Jiang Weijie,964,1,Jiang Weijie,exact_name_match,0,NA,NA,3459.9296444313018,665,2025-12-09,35
+964,Jiang Weijie,Jiang Weijie,964,1,Jiang Weijie,exact_name_match,0,NA,NA,3459.9296444313018,665,2025-12-09,36
 205,Jiang Zhujiu,Jiang Zhujiu,205,1,Jiang Zhujiu,exact_name_match,0,NA,NA,3122.277936785287,262,2025-09-09,5
-2032,Jin Yucheng,Jin Yucheng,2032,1,Jin Yucheng,exact_name_match,0,NA,NA,3543.42483423088,138,2025-12-19,38
+2032,Jin Yucheng,Jin Yucheng,2032,1,Jin Yucheng,exact_name_match,0,NA,NA,3543.42483423088,138,2025-12-19,40
 2303,Jo Bunen,Jo Bunen,2303,1,Jo Bunen,exact_name_match,0,NA,NA,2922.690688908173,39,2025-10-25,27
 1556,Kageyama Toshiyuki,Kageyama Toshiyuki,1556,1,Kageyama Toshiyuki,exact_name_match,0,NA,NA,3087.9582326987197,4,2024-02-21,8
 1076,Kamiji Hiroki,Kamiji Hiroki,1076,1,Kamiji Hiroki,exact_name_match,0,NA,NA,3077.9989859597126,7,2009-02-16,1
@@ -197,7 +197,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1213,Kanno Masashi,Kanno Masashi,1213,1,Kanno Masashi,exact_name_match,0,NA,NA,3044.697078735794,7,2023-02-16,3
 235,Kataoka Satoshi,Kataoka Satoshi,235,1,Kataoka Satoshi,exact_name_match,0,NA,NA,3185.653564077786,725,2025-12-08,6
 287,Kato Atsushi,Kato Atsushi,287,1,Kato Atsushi,exact_name_match,0,NA,NA,3144.142924913786,225,2025-08-25,7
-1966,Kato Chie,Kato Chie,1966,1,Kato Chie,exact_name_match,0,NA,NA,3056.324325631599,78,2025-12-25,35
+1966,Kato Chie,Kato Chie,1966,1,Kato Chie,exact_name_match,0,NA,NA,3056.324325631599,78,2025-12-25,36
 890,Kato Keiko,Kato Keiko,890,1,Kato Keiko,exact_name_match,0,NA,NA,2994.299893023556,184,2025-12-25,5
 308,Kato Tomoko,Kato Tomoko,308,1,Kato Tomoko,exact_name_match,0,NA,NA,3030.748890358162,190,2025-12-11,4
 2440,Kato Yuki (f),Kato Yuki (f),2440,1,Kato Yuki  (f),exact_name_match,0,NA,NA,2953.8485919267537,9,2025-01-10,1
@@ -211,19 +211,19 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1195,Ke Jie,Ke Jie,1195,1,Ke Jie,exact_name_match,0,NA,NA,3554.0060455038783,836,2025-12-09,5
 767,Kenmochi Jo,Kenmochi Jo,767,1,Kenmochi Jo,exact_name_match,0,NA,NA,3014.2664139750336,45,2022-08-22,1
 2476,Ki Minchan,Ki Minchan,2476,1,Ki Minchan,exact_name_match,0,NA,NA,3084.704767290449,7,2025-10-24,20
-1322,Kibe Natsuki,Kibe Natsuki,1322,1,Kibe Natsuki,exact_name_match,0,NA,NA,2964.8649335780906,40,2025-12-08,9
+1322,Kibe Natsuki,Kibe Natsuki,1322,1,Kibe Natsuki,exact_name_match,0,NA,NA,2964.8649335780906,40,2025-12-08,10
 1325,Kikkawa Hajime,Kikkawa Hajime,1325,1,Kikkawa Hajime,exact_name_match,0,NA,NA,3020.2297070841573,19,2023-10-28,3
 1324,Kikuchi Masatoshi,Kikuchi Masatoshi,1324,1,Kikuchi Masatoshi,exact_name_match,0,NA,NA,3075.5612059887817,4,2015-05-18,1
 2599,Kikuchi Yoshio,Kikuchi Yoshio,2599,1,Kikuchi Yoshio,exact_name_match,0,NA,NA,3098.61453450118,1,2007-02-19,1
 1255,Kim Chaeyoung,Kim Chaeyoung,1255,1,Kim Chaeyoung,exact_name_match,0,NA,NA,3290.7553535150596,404,2025-12-12,39
-599,Kim Chanwu,Kim Chanwu,599,1,Kim Chanwu,exact_name_match,0,NA,NA,3102.596153434503,83,2025-11-06,4
+599,Kim Chanwu,Kim Chanwu,599,1,Kim Chanwu,exact_name_match,0,NA,NA,3102.596153434503,83,2025-11-06,5
 1712,Kim Dayoung,Kim Dayoung,1712,1,Kim Dayoung,exact_name_match,0,NA,NA,3103.9472434985446,150,2025-10-27,21
-1926,Kim Eunji,Kim Eunji,1926,1,Kim Eunji,exact_name_match,0,NA,NA,3502.0354571657867,364,2025-12-20,83
+1926,Kim Eunji,Kim Eunji,1926,1,Kim Eunji,exact_name_match,0,NA,NA,3502.0354571657867,364,2025-12-20,86
 345,Kim Eunseon,Kim Eunseon,345,1,Kim Eunseon,exact_name_match,0,NA,NA,3036.7012238223097,146,2025-11-07,18
-676,Kim Hyemin,Kim Hyemin,676,1,Kim Hyemin,exact_name_match,0,NA,NA,3146.7054705153814,326,2025-11-12,26
+676,Kim Hyemin,Kim Hyemin,676,1,Kim Hyemin,exact_name_match,0,NA,NA,3146.7054705153814,326,2025-11-12,28
 1291,Kim Hyenchan,Kim Hyenchan,1291,1,Kim Hyenchan,exact_name_match,0,NA,NA,3263.1206594446244,91,2023-08-12,1
 1039,Kim Hyeongwoo,Kim Hyeongwoo,1039,1,Kim Hyeongwoo,exact_name_match,0,NA,NA,3250.843823952848,168,2025-12-13,9
-196,Kim Ilhwan,Kim Ilhwan,196,1,Kim Ilhwan,exact_name_match,0,NA,NA,3120.0458595288296,247,2025-10-30,5
+196,Kim Ilhwan,Kim Ilhwan,196,1,Kim Ilhwan,exact_name_match,0,NA,NA,3120.0458595288296,247,2025-10-30,6
 1235,Kim Jinhwi,Kim Jinhwi,1235,1,Kim Jinhwi,exact_name_match,0,NA,NA,3378.946260275013,140,2025-06-17,3
 862,Kim Jiseok,Kim Jiseok,862,1,Kim Jiseok,exact_name_match,0,NA,NA,3480.666254053048,887,2025-12-24,5
 2413,Kim Jooah,Kim Jooah,2413,1,Kim Jooah,exact_name_match,0,NA,NA,3118.078652787855,82,2025-12-12,22
@@ -231,12 +231,12 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1896,Kim Kyeongeun,Kim Kyeongeun,1896,1,Kim Kyeongeun,exact_name_match,0,NA,NA,3195.998769166571,119,2025-12-13,24
 2304,Kim Minseo,Kim Minseo,2304,1,Kim Minseo,exact_name_match,0,NA,NA,3113.503464788932,98,2025-12-12,23
 2016,Kim Minseok,Kim Minseok,2016,1,Kim Minseok,exact_name_match,0,NA,NA,3123.710100126292,18,2025-05-09,4
-1364,Kim Myounghoon,Kim Myounghoon,1364,1,Kim Myounghoon,exact_name_match,0,NA,NA,3486.395422213237,413,2025-12-28,26
+1364,Kim Myounghoon,Kim Myounghoon,1364,1,Kim Myounghoon,exact_name_match,0,NA,NA,3486.395422213237,413,2025-12-28,27
 2139,Kim Sangin,Kim Sangin,2139,1,Kim Sangin,exact_name_match,0,NA,NA,2817.92221682422,49,2025-10-16,3
 10001341,Kim Sangyeong,Kim Sangyeong,10001341,1,Kim Sangyeong,exact_name_match,0,NA,NA,3113.8320437299226,5,2025-07-27,9
 2383,Kim Seungjin,Kim Seungjin,2383,1,Kim Seungjin,exact_name_match,0,NA,NA,3392.966440345335,82,2025-12-22,20
-201,Kim Seungjun,Kim Seungjun,201,1,Kim Seungjun,exact_name_match,0,NA,NA,3238.5651452716675,326,2025-04-05,5
-261,Kim Yeongsam,Kim Yeongsam,261,1,Kim Yeongsam,exact_name_match,0,NA,NA,3134.847209368092,141,2025-12-01,14
+201,Kim Seungjun,Kim Seungjun,201,1,Kim Seungjun,exact_name_match,0,NA,NA,3238.5651452716675,326,2025-04-05,6
+261,Kim Yeongsam,Kim Yeongsam,261,1,Kim Yeongsam,exact_name_match,0,NA,NA,3134.847209368092,141,2025-12-01,15
 1907,Kimoto Yuka,Kimoto Yuka,1907,1,Kimoto Yuka,exact_name_match,0,NA,NA,3013.917882547211,6,2025-08-27,11
 1008,Kin En,Kin En,1008,1,Kin En,exact_name_match,0,NA,NA,2866.604201582868,38,2024-12-16,3
 783,Kitano Ryo,Kitano Ryo,783,1,Kitano Ryo,exact_name_match,0,NA,NA,3078.133628049823,41,2022-10-03,2
@@ -269,9 +269,9 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 244,Kudo Norio,Kudo Norio,244,1,Kudo Norio,exact_name_match,0,NA,NA,3026.347819053013,459,2023-01-16,4
 2373,Kumaki Teruya,Kumaki Teruya,2373,1,Kumaki Teruya,exact_name_match,0,NA,NA,2974.859823827914,38,2025-11-20,18
 1144,Kumamoto Shusei,Kumamoto Shusei,1144,1,Kumamoto Shusei,exact_name_match,0,NA,NA,3045.5394440202303,22,2025-04-17,1
-000546,Kunimatsu So,Kunimatsu So,000546,1,Kunimatsu So,exact_name_match,0,NA,NA,3094.7440524593094,6,2024-04-03,18
+000546,Kunimatsu So,Kunimatsu So,000546,1,Kunimatsu So,exact_name_match,0,NA,NA,3094.7440524593094,6,2024-04-03,19
 1317,Kunisawa Hiroto,Kunisawa Hiroto,1317,1,Kunisawa Hiroto,exact_name_match,0,NA,NA,3082.6687100247273,47,2025-12-24,17
-314,Kurahashi Masayuki,Kurahashi Masayuki,314,1,Kurahashi Masayuki,exact_name_match,0,NA,NA,3171.270324056126,221,2025-11-26,20
+314,Kurahashi Masayuki,Kurahashi Masayuki,314,1,Kurahashi Masayuki,exact_name_match,0,NA,NA,3171.270324056126,221,2025-11-26,21
 1377,Kurahashi Shozo,Kurahashi Shozo,1377,1,Kurahashi Shozo,exact_name_match,0,NA,NA,3072.131121795798,13,1992-11-26,6
 1064,Kurotaki Masaki,Kurotaki Masaki,1064,1,Kurotaki Masaki,exact_name_match,0,NA,NA,3039.279200306032,22,2025-10-02,2
 957,Kurotaki Masanori,Kurotaki Masanori,957,1,Kurotaki Masanori,exact_name_match,0,NA,NA,3072.208987531308,40,2022-09-19,2
@@ -279,19 +279,19 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1089,Kuwabara Yoko,Kuwabara Yoko,1089,1,Kuwabara Yoko,exact_name_match,0,NA,NA,3061.879748978949,64,2025-11-24,4
 884,Kuwamoto Shinpei,Kuwamoto Shinpei,884,1,Kuwamoto Shinpei,exact_name_match,0,NA,NA,3051.8964975812205,26,2019-08-29,2
 2225,Kwak Wonkeun,Kwak Wonkeun,2225,1,Kwak Wonkeun,exact_name_match,0,NA,NA,3140.8153065900265,4,2025-04-26,1
-58,Kwon Hyojin (f),Kwon Hyojin (f),58,1,Kwon Hyojin  (f),exact_name_match,0,NA,NA,3044.071967482096,154,2025-12-01,6
+58,Kwon Hyojin (f),Kwon Hyojin (f),58,1,Kwon Hyojin  (f),exact_name_match,0,NA,NA,3044.071967482096,154,2025-12-01,7
 1940,Kwon Hyojin (m),Kwon Hyojin (m),1940,1,Kwon Hyojin  (m),exact_name_match,0,NA,NA,3101.63746380205,85,2025-12-21,9
-1706,Lai Junfu,Lai Junfu,1706,1,Lai Junfu,exact_name_match,0,NA,NA,3457.8374426040377,408,2025-12-27,7
-18,Lee Changho,Lee Changho,18,1,Lee Changho,exact_name_match,0,NA,NA,3377.875987593987,2090,2025-12-01,27
+1706,Lai Junfu,Lai Junfu,1706,1,Lai Junfu,exact_name_match,0,NA,NA,3457.8374426040377,408,2025-12-27,8
+18,Lee Changho,Lee Changho,18,1,Lee Changho,exact_name_match,0,NA,NA,3377.875987593987,2090,2025-12-01,28
 1405,Lee Changseok,Lee Changseok,1405,1,Lee Changseok,exact_name_match,0,NA,NA,3396.3859963586715,296,2025-12-24,7
 1875,Lee Jaesung,Lee Jaesung,1875,1,Lee Jaesung,exact_name_match,0,NA,NA,3253.463777497363,25,2025-12-19,8
-1166,Lee Jihyun (m),Lee Jihyun (m),1166,1,Lee Jihyun  (m),exact_name_match,0,NA,NA,3497.191045176942,380,2025-12-25,33
+1166,Lee Jihyun (m),Lee Jihyun (m),1166,1,Lee Jihyun  (m),exact_name_match,0,NA,NA,3497.191045176942,380,2025-12-25,35
 536,Lee Jungwoo,Lee Jungwoo,536,1,Lee Jungwoo,exact_name_match,0,NA,NA,3251.5633824721003,136,2025-08-11,5
-666,Lee Minjin,Lee Minjin,666,1,Lee Minjin,exact_name_match,0,NA,NA,3150.2867235393364,164,2025-11-06,14
+666,Lee Minjin,Lee Minjin,666,1,Lee Minjin,exact_name_match,0,NA,NA,3150.2867235393364,164,2025-11-06,15
 2493,Lee Minseok,Lee Minseok,2493,1,Lee Minseok,exact_name_match,0,NA,NA,3175.6985070342457,13,2025-08-16,11
 2517,Lee Nahyeon,Lee Nahyeon,2517,1,Lee Nahyeon,exact_name_match,0,NA,NA,2985.435527726056,40,2025-11-20,14
 2393,Lee Nakyeong,Lee Nakyeong,2393,1,Lee Nakyeong,exact_name_match,0,NA,NA,2941.172715604427,29,2025-09-29,12
-6,Lee Seongjae,Lee Seongjae,6,1,Lee Seongjae,exact_name_match,0,NA,NA,3162.8119433049565,160,2025-04-25,6
+6,Lee Seongjae,Lee Seongjae,6,1,Lee Seongjae,exact_name_match,0,NA,NA,3162.8119433049565,160,2025-04-25,7
 2515,Lee Seungmin,Lee Seungmin,2515,1,Lee Seungmin,exact_name_match,0,NA,NA,3070.5617011441987,5,2024-05-26,24
 2560,Lee Seungseok,Lee Seungseok,2560,1,Lee Seungseok,exact_name_match,0,NA,NA,3048.953744330263,5,2025-07-26,10
 302,Lee Tahye,Lee Tahye,302,1,Lee Tahye,exact_name_match,0,NA,NA,2901.836550108045,52,2025-11-06,2
@@ -303,7 +303,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1586,Lee Yujin,Lee Yujin,1586,1,Lee Yujin,exact_name_match,0,NA,NA,3098.573717529277,29,2024-05-29,1
 1598,Li Chengsen,Li Chengsen,1598,1,Li Chengsen,exact_name_match,0,NA,NA,3394.770708160793,39,2025-02-24,14
 2038,Li Haotong,Li Haotong,2038,1,Li Haotong,exact_name_match,0,NA,NA,3252.06957417538,75,2025-11-29,20
-981,Li He,Li He,981,1,Li He,exact_name_match,0,NA,NA,3215.697364596058,455,2025-12-12,29
+981,Li He,Li He,981,1,Li He,exact_name_match,0,NA,NA,3215.697364596058,455,2025-12-12,30
 20,Li Huasong,Li Huasong,20,1,Li Huasong,exact_name_match,0,NA,NA,3093.427904817844,36,2018-09-15,1
 2307,Li Jiaxin,Li Jiaxin,2307,1,Li Jiaxin,exact_name_match,0,NA,NA,2914.277733949337,108,2025-12-08,1
 1282,Li Qincheng,Li Qincheng,1282,1,Li Qincheng,exact_name_match,0,NA,NA,3610.528198183984,523,2025-12-25,37
@@ -316,7 +316,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1882,Li Zerui,Li Zerui,1882,1,Li Zerui,exact_name_match,0,NA,NA,3282.618773346907,62,2025-12-09,28
 1082,Lian Xiao,Lian Xiao,1082,1,Lian Xiao,exact_name_match,0,NA,NA,3478.9082273884032,645,2025-12-09,29
 1045,Liao Xingwen,Liao Xingwen,1045,1,Liao Xingwen,exact_name_match,0,NA,NA,3271.134253865398,310,2024-09-12,2
-1427,Liao Yuanhe,Liao Yuanhe,1427,1,Liao Yuanhe,exact_name_match,0,NA,NA,3564.201564119104,384,2025-12-16,40
+1427,Liao Yuanhe,Liao Yuanhe,1427,1,Liao Yuanhe,exact_name_match,0,NA,NA,3564.201564119104,384,2025-12-16,42
 2283,Lin Jiaxuan,Lin Jiaxuan,2283,1,Lin Jiaxuan,exact_name_match,0,NA,NA,3047.767851380695,9,2025-02-24,3
 1327,Lin Junyan,Lin Junyan,1327,1,Lin Junyan,exact_name_match,0,NA,NA,3365.0596367142048,462,2025-10-27,2
 2269,Lin Zijie,Lin Zijie,2269,1,Lin Zijie,exact_name_match,0,NA,NA,3092.755097984565,18,2025-12-09,17
@@ -355,7 +355,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1159,Mine Yasuhiro,Mine Yasuhiro,1159,1,Mine Yasuhiro,exact_name_match,0,NA,NA,2973.4868962797573,28,2025-12-24,15
 2296,Mishima Hibiki,Mishima Hibiki,2296,1,Mishima Hibiki,exact_name_match,0,NA,NA,2929.705691430848,29,2025-12-03,17
 792,Mitani Tetsuya,Mitani Tetsuya,792,1,Mitani Tetsuya,exact_name_match,0,NA,NA,3191.423744126891,148,2025-06-08,8
-2302,Mito Shuhei,Mito Shuhei,2302,1,Mito Shuhei,exact_name_match,0,NA,NA,3124.7378676117296,37,2025-09-08,19
+2302,Mito Shuhei,Mito Shuhei,2302,1,Mito Shuhei,exact_name_match,0,NA,NA,3124.7378676117296,37,2025-09-08,20
 697,Mito Yukari,Mito Yukari,697,1,Mito Yukari,exact_name_match,0,NA,NA,2896.54671498228,71,2022-05-23,2
 1017,Mitsunaga Junzo,Mitsunaga Junzo,1017,1,Mitsunaga Junzo,exact_name_match,0,NA,NA,3102.345134480917,31,2023-12-18,3
 2219,Miura Taro,Miura Taro,2219,1,Miura Taro,exact_name_match,0,NA,NA,3362.518576742173,83,2025-12-08,23
@@ -370,13 +370,13 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 2197,Mori Chisaki,Mori Chisaki,2197,1,Mori Chisaki,exact_name_match,0,NA,NA,3002.651697452584,18,2025-10-06,10
 917,Morino Setsuo,Morino Setsuo,917,1,Morino Setsuo,exact_name_match,0,NA,NA,3066.6329911216244,14,2021-04-28,8
 61,Morita Michihiro,Morita Michihiro,61,1,Morita Michihiro,exact_name_match,0,NA,NA,3134.9178707537517,182,2024-09-26,5
-1827,Moro Arisa,Moro Arisa,1827,1,Moro Arisa,exact_name_match,0,NA,NA,3034.2005806451853,40,2025-12-22,22
-1269,Motoki Katsuya,Motoki Katsuya,1269,1,Motoki Katsuya,exact_name_match,0,NA,NA,3407.571539822238,350,2025-12-21,23
+1827,Moro Arisa,Moro Arisa,1827,1,Moro Arisa,exact_name_match,0,NA,NA,3034.2005806451853,40,2025-12-22,23
+1269,Motoki Katsuya,Motoki Katsuya,1269,1,Motoki Katsuya,exact_name_match,0,NA,NA,3407.571539822238,350,2025-12-21,24
 994,Mukai Chiaki,Mukai Chiaki,994,1,Mukai Chiaki,exact_name_match,0,NA,NA,3120.104445214042,312,2025-07-17,26
 913,Murakawa Daisuke,Murakawa Daisuke,913,1,Murakawa Daisuke,exact_name_match,0,NA,NA,3332.898377217567,634,2025-12-25,31
 1186,Muramatsu Hiroki,Muramatsu Hiroki,1186,1,Muramatsu Hiroki,exact_name_match,0,NA,NA,3242.962546537039,77,2025-08-25,10
 1974,Muramoto Wataru,Muramoto Wataru,1974,1,Muramoto Wataru,exact_name_match,0,NA,NA,3090.8908208873245,42,2025-09-29,17
-1476,Muraoka Mika,Muraoka Mika,1476,1,Muraoka Mika,exact_name_match,0,NA,NA,3085.3107158932103,2,2017-11-30,9
+1476,Muraoka Mika,Muraoka Mika,1476,1,Muraoka Mika,exact_name_match,0,NA,NA,3085.3107158932103,2,2017-11-30,10
 1822,Muraoka Shigeyuki,Muraoka Shigeyuki,1822,1,Muraoka Shigeyuki,exact_name_match,0,NA,NA,3075.886344714848,7,2024-10-09,6
 1529,Mutsuura Yuta,Mutsuura Yuta,1529,1,Mutsuura Yuta,exact_name_match,0,NA,NA,3290.0654206725258,217,2025-12-01,14
 1197,Na Hyun,Na Hyun,1197,1,Na Hyun,exact_name_match,0,NA,NA,3373.3600864673504,404,2025-12-21,10
@@ -386,7 +386,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 553,Nakajima Mieko,Nakajima Mieko,553,1,Nakajima Mieko,exact_name_match,0,NA,NA,2982.131016496451,29,2022-11-17,2
 804,Nakamura Hidehito,Nakamura Hidehito,804,1,Nakamura Hidehito,exact_name_match,0,NA,NA,3063.74503268463,93,2024-03-28,1
 779,Nakamura Shinya,Nakamura Shinya,779,1,Nakamura Shinya,exact_name_match,0,NA,NA,3123.033707895309,158,2024-04-01,6
-2137,Nakamura Sumire,Nakamura Sumire,2137,1,Nakamura Sumire,exact_name_match,0,NA,NA,3234.0003977061597,540,2025-12-27,45
+2137,Nakamura Sumire,Nakamura Sumire,2137,1,Nakamura Sumire,exact_name_match,0,NA,NA,3234.0003977061597,540,2025-12-27,46
 2522,Nakane Daiki,Nakane Daiki,2522,1,Nakane Daiki,exact_name_match,0,NA,NA,3064.6357637058327,6,2025-08-13,9
 772,Nakane Naoyuki,Nakane Naoyuki,772,1,Nakane Naoyuki,exact_name_match,0,NA,NA,3199.240912548969,95,2025-11-06,1
 129,Nakano Hironari,Nakano Hironari,129,1,Nakano Hironari,exact_name_match,0,NA,NA,3193.8884925914026,312,2025-09-05,7
@@ -395,15 +395,15 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 770,Nakao Jungo,Nakao Jungo,770,1,Nakao Jungo,exact_name_match,0,NA,NA,3040.0553761724677,28,2020-08-10,2
 236,Nakaonoda Tomomi,Nakaonoda Tomomi,236,1,Nakaonoda Tomomi,exact_name_match,0,NA,NA,3196.945593429459,170,2024-06-20,4
 366,Nakazawa Ayako,Nakazawa Ayako,366,1,Nakazawa Ayako,exact_name_match,0,NA,NA,3075.33972386906,141,2025-02-13,1
-1584,Nishi Takenobu,Nishi Takenobu,1584,1,Nishi Takenobu,exact_name_match,0,NA,NA,3189.08332272529,164,2025-11-26,23
+1584,Nishi Takenobu,Nishi Takenobu,1584,1,Nishi Takenobu,exact_name_match,0,NA,NA,3189.08332272529,164,2025-11-26,24
 2343,Nishimura Jin,Nishimura Jin,2343,1,Nishimura Jin,exact_name_match,0,NA,NA,3070.0782049160853,31,2025-10-22,15
 951,Nishimura Keiji,Nishimura Keiji,951,1,Nishimura Keiji,exact_name_match,0,NA,NA,3147.675448983755,36,2023-06-15,3
 1826,Nishioka Masao,Nishioka Masao,1826,1,Nishioka Masao,exact_name_match,0,NA,NA,3058.567124717663,17,2024-09-05,9
 1555,Nishiyama Shizuka,Nishiyama Shizuka,1555,1,Nishiyama Shizuka,exact_name_match,0,NA,NA,2964.6866374524197,36,2025-01-22,11
 1913,Niu Shite,Niu Shite,1913,1,Niu Shite,exact_name_match,0,NA,NA,3148.874901635264,163,2025-12-08,1
-1227,Numadate Sakiya,Numadate Sakiya,1227,1,Numadate Sakiya,exact_name_match,0,NA,NA,3068.44298685795,88,2025-11-02,4
+1227,Numadate Sakiya,Numadate Sakiya,1227,1,Numadate Sakiya,exact_name_match,0,NA,NA,3068.44298685795,88,2025-11-02,5
 1667,Nyu Eiko,Nyu Eiko,1667,1,Nyu Eiko,exact_name_match,0,NA,NA,3068.7907435330503,246,2025-12-11,21
-603,Oba Junya,Oba Junya,603,1,Oba Junya,exact_name_match,0,NA,NA,3200.9909716591847,91,2025-06-09,5
+603,Oba Junya,Oba Junya,603,1,Oba Junya,exact_name_match,0,NA,NA,3200.9909716591847,91,2025-06-09,6
 2561,Obata Minori,Obata Minori,2561,1,Obata Minori,exact_name_match,0,NA,NA,3105.767236654264,1,2025-08-13,11
 1157,Obuchi Kotaro,Obuchi Kotaro,1157,1,Obuchi Kotaro,exact_name_match,0,NA,NA,3076.8267628097747,65,2025-07-14,6
 535,Obuchi Morito,Obuchi Morito,535,1,Obuchi Morito,exact_name_match,0,NA,NA,2930.0195548506667,49,2013-12-05,1
@@ -411,7 +411,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 539,Ogaki Yusaku,Ogaki Yusaku,539,1,Ogaki Yusaku,exact_name_match,0,NA,NA,3184.3859640453547,142,2025-11-02,8
 335,Ogata Masaki,Ogata Masaki,335,1,Ogata Masaki,exact_name_match,0,NA,NA,3138.5890863990044,295,2025-06-16,5
 1254,Oh Jeonga,Oh Jeonga,1254,1,Oh Jeonga,exact_name_match,0,NA,NA,3140.444595758849,202,2025-11-25,6
-1315,Oh Yujin,Oh Yujin,1315,1,Oh Yujin,exact_name_match,0,NA,NA,3318.667325324104,488,2025-12-14,36
+1315,Oh Yujin,Oh Yujin,1315,1,Oh Yujin,exact_name_match,0,NA,NA,3318.667325324104,488,2025-12-14,38
 782,Ohashi Hirofumi,Ohashi Hirofumi,782,1,Ohashi Hirofumi,exact_name_match,0,NA,NA,3212.181445791287,132,2025-11-02,5
 999,Ohashi Naruya,Ohashi Naruya,999,1,Ohashi Naruya,exact_name_match,0,NA,NA,3088.609290047991,78,2025-05-12,6
 773,Okada Shinichiro,Okada Shinichiro,773,1,Okada Shinichiro,exact_name_match,0,NA,NA,3007.3845461486276,41,2022-09-26,6
@@ -423,10 +423,10 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 943,Okumura Hideo,Okumura Hideo,943,1,Okumura Hideo,exact_name_match,0,NA,NA,3065.183698787202,17,2007-02-19,1
 2138,Omori Ran,Omori Ran,2138,1,Omori Ran,exact_name_match,0,NA,NA,2961.5440434238294,25,2025-12-23,7
 363,Omori Yasushi,Omori Yasushi,363,1,Omori Yasushi,exact_name_match,0,NA,NA,2956.1386450813966,41,2022-10-03,1
-2299,Omote Yuto,Omote Yuto,2299,1,Omote Yuto,exact_name_match,0,NA,NA,3267.2238293208266,80,2025-12-23,33
+2299,Omote Yuto,Omote Yuto,2299,1,Omote Yuto,exact_name_match,0,NA,NA,3267.2238293208266,80,2025-12-23,34
 879,Onda Yasuhiko,Onda Yasuhiko,879,1,Onda Yasuhiko,exact_name_match,0,NA,NA,2970.8502418284384,37,2018-01-15,2
 1345,Onishi Kenya,Onishi Kenya,1345,1,Onishi Kenya,exact_name_match,0,NA,NA,3185.996072490531,71,2024-11-18,11
-1609,Onishi Ryuhei,Onishi Ryuhei,1609,1,Onishi Ryuhei,exact_name_match,0,NA,NA,3334.804897011439,232,2025-12-24,24
+1609,Onishi Ryuhei,Onishi Ryuhei,1609,1,Onishi Ryuhei,exact_name_match,0,NA,NA,3334.804897011439,232,2025-12-24,25
 1774,Ono Ayako,Ono Ayako,1774,1,Ono Ayako,exact_name_match,0,NA,NA,2990.0609719371805,17,2025-10-15,12
 1777,Oomote Takuto,Oomote Takuto,1777,1,Oomote Takuto,exact_name_match,0,NA,NA,3064.573161253799,52,2025-06-30,7
 1123,Osawa Kenro,Osawa Kenro,1123,1,Osawa Kenro,exact_name_match,0,NA,NA,2994.381329064319,28,2025-09-29,3
@@ -441,13 +441,13 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1735,Park Hyunsoo,Park Hyunsoo,1735,1,Park Hyunsoo,exact_name_match,0,NA,NA,3153.988856213653,86,2025-09-30,15
 2257,Park Jihyun,Park Jihyun,2257,1,Park Jihyun,exact_name_match,0,NA,NA,3304.726693440337,65,2025-12-18,5
 299,Park Jinsol,Park Jinsol,299,1,Park Jinsol,exact_name_match,0,NA,NA,3384.6623085183505,253,2025-12-27,8
-1090,Park Junghwan,Park Junghwan,1090,1,Park Junghwan,exact_name_match,0,NA,NA,3618.4216617416946,1264,2025-12-29,47
+1090,Park Junghwan,Park Junghwan,1090,1,Park Junghwan,exact_name_match,0,NA,NA,3618.4216617416946,1264,2025-12-29,49
 1298,Park Minkyu,Park Minkyu,1298,1,Park Minkyu,exact_name_match,0,NA,NA,3492.6536329538767,227,2025-12-26,19
 1765,Park Sangjin,Park Sangjin,1765,1,Park Sangjin,exact_name_match,0,NA,NA,3391.0723262286633,173,2025-12-21,10
 298,Park Seungmun,Park Seungmun,298,1,Park Seungmun,exact_name_match,0,NA,NA,2984.936638637469,101,2025-10-29,4
 2230,Park Soyul,Park Soyul,2230,1,Park Soyul,exact_name_match,0,NA,NA,3120.90890676105,71,2025-11-04,25
 1450,Park Taehee,Park Taehee,1450,1,Park Taehee,exact_name_match,0,NA,NA,3086.167845267772,112,2025-11-09,14
-125,Park Yeonghun,Park Yeonghun,125,1,Park Yeonghun,exact_name_match,0,NA,NA,3314.5421406914043,1001,2025-10-25,5
+125,Park Yeonghun,Park Yeonghun,125,1,Park Yeonghun,exact_name_match,0,NA,NA,3314.5421406914043,1001,2025-10-25,6
 993,Peng Liyao,Peng Liyao,993,1,Peng Liyao,exact_name_match,0,NA,NA,3425.8599892268553,590,2025-12-09,19
 1331,Qiao Zhijian,Qiao Zhijian,1331,1,Qiao Zhijian,exact_name_match,0,NA,NA,3239.9280481405967,43,2025-11-21,1
 2325,Qiu Yuran,Qiu Yuran,2325,1,Qiu Yuran,exact_name_match,0,NA,NA,3348.152557638713,44,2025-12-09,33
@@ -459,8 +459,8 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 2148,Sakai Kentaro,Sakai Kentaro,2148,1,Sakai Kentaro,exact_name_match,0,NA,NA,3025.1515073817195,26,2025-12-17,22
 797,Sakai Maki,Sakai Maki,797,1,Sakai Maki,exact_name_match,0,NA,NA,2914.991498633912,57,2025-06-05,1
 1824,Sakai Takashi,Sakai Takashi,1824,1,Sakai Takashi,exact_name_match,0,NA,NA,3023.1938704255517,19,2024-04-11,3
-1945,Sakai Yuki,Sakai Yuki,1945,1,Sakai Yuki,exact_name_match,0,NA,NA,3370.9441312118433,148,2025-12-22,28
-699,Sakakibara Fumiko,Sakakibara Fumiko,699,1,Sakakibara Fumiko,exact_name_match,0,NA,NA,2878.351442696566,115,2025-01-22,8
+1945,Sakai Yuki,Sakai Yuki,1945,1,Sakai Yuki,exact_name_match,0,NA,NA,3370.9441312118433,148,2025-12-22,29
+699,Sakakibara Fumiko,Sakakibara Fumiko,699,1,Sakakibara Fumiko,exact_name_match,0,NA,NA,2878.351442696566,115,2025-01-22,10
 1395,Sakakibara Masateru,Sakakibara Masateru,1395,1,Sakakibara Masateru,exact_name_match,0,NA,NA,3038.9353383676853,19,2025-02-19,7
 1119,Sakamoto Yasuo,Sakamoto Yasuo,1119,1,Sakamoto Yasuo,exact_name_match,0,NA,NA,3020.8018789261296,19,2016-08-25,1
 2376,Sakuramoto Ayako,Sakuramoto Ayako,2376,1,Sakuramoto Ayako,exact_name_match,0,NA,NA,3068.896707914341,3,2025-06-16,3
@@ -473,7 +473,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 000531,Seki Ryosuke,Seki Ryosuke,000531,1,Seki Ryosuke,exact_name_match,0,NA,NA,3094.6724836188578,13,2025-08-13,2
 2562,Sekiyama Honoka,Sekiyama Honoka,2562,1,Sekiyama Honoka,exact_name_match,0,NA,NA,3081.905329975649,3,2025-08-12,8
 339,Sekiyama Toshimichi,Sekiyama Toshimichi,339,1,Sekiyama Toshimichi,exact_name_match,0,NA,NA,3024.576591457103,53,2025-09-11,10
-49,Seo Bongsoo,Seo Bongsoo,49,1,Seo Bongsoo,exact_name_match,0,NA,NA,3179.402484516626,1438,2025-11-06,10
+49,Seo Bongsoo,Seo Bongsoo,49,1,Seo Bongsoo,exact_name_match,0,NA,NA,3179.402484516626,1438,2025-11-06,11
 48,Seo Nungwuk,Seo Nungwuk,48,1,Seo Nungwuk,exact_name_match,0,NA,NA,3094.409861233937,536,2025-11-26,2
 128,Seto Taiki,Seto Taiki,128,1,Seto Taiki,exact_name_match,0,NA,NA,3318.177679121304,457,2025-12-03,23
 1596,Shen Peiran,Shen Peiran,1596,1,Shen Peiran,exact_name_match,0,NA,NA,3332.3798699720132,142,2025-12-09,18
@@ -482,14 +482,14 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 421,Shi Zhou,Shi Zhou,421,1,Shi Zhou,exact_name_match,0,NA,NA,3023.593774241956,10,2015-05-25,1
 1825,Shibano Ryunosuke,Shibano Ryunosuke,1825,1,Shibano Ryunosuke,exact_name_match,0,NA,NA,3088.4868663042334,23,2023-03-16,1
 1540,Shibano Toramaru,Shibano Toramaru,1540,1,Shibano Toramaru,exact_name_match,0,NA,NA,3563.0352406343545,645,2025-12-29,38
-1069,Shida Tatsuya,Shida Tatsuya,1069,1,Shida Tatsuya,exact_name_match,0,NA,NA,3279.270408084402,356,2025-12-04,16
+1069,Shida Tatsuya,Shida Tatsuya,1069,1,Shida Tatsuya,exact_name_match,0,NA,NA,3279.270408084402,356,2025-12-04,17
 2425,Shiga Tsukasa,Shiga Tsukasa,2425,1,Shiga Tsukasa,exact_name_match,0,NA,NA,3112.6115985775396,12,2025-08-13,9
 2362,Shigekawa Akashi,Shigekawa Akashi,2362,1,Shigekawa Akashi,exact_name_match,0,NA,NA,3128.9233299427083,24,2025-08-13,7
 1091,Shigeno Yuki,Shigeno Yuki,1091,1,Shigeno Yuki,exact_name_match,0,NA,NA,2966.129393461454,26,2022-09-05,1
 839,Shimojima Yohei,Shimojima Yohei,839,1,Shimojima Yohei,exact_name_match,0,NA,NA,3055.57649863287,59,2023-10-19,6
 1191,Shimosaka Miori,Shimosaka Miori,1191,1,Shimosaka Miori,exact_name_match,0,NA,NA,2876.108950517122,51,2025-02-03,2
-1313,Shin Jinseo,Shin Jinseo,1313,1,Shin Jinseo,exact_name_match,0,NA,NA,3816.0009981094945,888,2025-12-28,33
-1314,Shin Minjun,Shin Minjun,1314,1,Shin Minjun,exact_name_match,0,NA,NA,3494.6174303892776,691,2025-12-28,43
+1313,Shin Jinseo,Shin Jinseo,1313,1,Shin Jinseo,exact_name_match,0,NA,NA,3816.0009981094945,888,2025-12-28,35
+1314,Shin Minjun,Shin Minjun,1314,1,Shin Minjun,exact_name_match,0,NA,NA,3494.6174303892776,691,2025-12-28,45
 2361,Shinoda Yuya,Shinoda Yuya,2361,1,Shinoda Yuya,exact_name_match,0,NA,NA,3079.676976718209,6,2024-04-02,14
 1065,Shiraishi Yuichi,Shiraishi Yuichi,1065,1,Shiraishi Yuichi,exact_name_match,0,NA,NA,3080.289084676728,53,2025-05-22,2
 1007,Shuto Shun,Shuto Shun,1007,1,Shuto Shun,exact_name_match,0,NA,NA,3249.646910086261,138,2025-11-01,13
@@ -507,7 +507,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 2506,Sun Yige,Sun Yige,2506,1,Sun Yige,exact_name_match,0,NA,NA,3076.4698668576784,6,2025-12-13,2
 384,Sun Yuan,Sun Yuan,384,1,Sun Yuan,exact_name_match,0,NA,NA,3072.1104260145967,9,2025-04-02,2
 2301,Suzukawa Natsumi,Suzukawa Natsumi,2301,1,Suzukawa Natsumi,exact_name_match,0,NA,NA,3075.343467692295,7,2025-02-03,6
-367,Suzuki Ayumi,Suzuki Ayumi,367,1,Suzuki Ayumi,exact_name_match,0,NA,NA,3117.6286893791557,348,2025-11-20,24
+367,Suzuki Ayumi,Suzuki Ayumi,367,1,Suzuki Ayumi,exact_name_match,0,NA,NA,3117.6286893791557,348,2025-11-20,25
 1577,Suzuki Keiji,Suzuki Keiji,1577,1,Suzuki Keiji,exact_name_match,0,NA,NA,3064.788873540751,13,2024-02-29,8
 1142,Suzuki Shinji,Suzuki Shinji,1142,1,Suzuki Shinji,exact_name_match,0,NA,NA,3294.665048722444,200,2025-12-28,16
 765,Suzuki Yoshimichi,Suzuki Yoshimichi,765,1,Suzuki Yoshimichi,exact_name_match,0,NA,NA,3026.77739968491,60,2025-11-01,3
@@ -534,7 +534,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1096,Takemiya Yoko,Takemiya Yoko,1096,1,Takemiya Yoko,exact_name_match,0,NA,NA,2990.225676895652,21,2022-09-05,1
 2487,Takeshita Nana,Takeshita Nana,2487,1,Takeshita Nana,exact_name_match,0,NA,NA,2935.438627856658,11,2025-07-22,9
 2297,Takeshita Ryoya,Takeshita Ryoya,2297,1,Takeshita Ryoya,exact_name_match,0,NA,NA,3103.215059286881,36,2024-10-28,9
-991,Tamura Chiaki,Tamura Chiaki,991,1,Tamura Chiaki,exact_name_match,0,NA,NA,2938.9567821538053,44,2025-02-13,11
+991,Tamura Chiaki,Tamura Chiaki,991,1,Tamura Chiaki,exact_name_match,0,NA,NA,2938.9567821538053,44,2025-02-13,12
 995,Tan Xiao,Tan Xiao,995,1,Tan Xiao,exact_name_match,0,NA,NA,3507.2630940370427,743,2025-12-24,29
 694,Tanaka Chieko,Tanaka Chieko,694,1,Tanaka Chieko,exact_name_match,0,NA,NA,2931.853095939874,43,2019-07-08,1
 2557,Tanaka Kentaro,Tanaka Kentaro,2557,1,Tanaka Kentaro,exact_name_match,0,NA,NA,3085.291921803694,10,2025-12-21,31
@@ -544,11 +544,11 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 701,Tanemura Sayuri,Tanemura Sayuri,701,1,Tanemura Sayuri,exact_name_match,0,NA,NA,2932.867192537138,52,2023-03-09,2
 1864,Tang Jiawen,Tang Jiawen,1864,1,Tang Jiawen,exact_name_match,0,NA,NA,3334.15294796182,195,2025-12-31,40
 897,Tang Weixing,Tang Weixing,897,1,Tang Weixing,exact_name_match,0,NA,NA,3370.4600827175523,663,2025-12-09,18
-1264,Taniguchi Toru,Taniguchi Toru,1264,1,Taniguchi Toru,exact_name_match,0,NA,NA,3185.445227386261,103,2025-12-17,29
+1264,Taniguchi Toru,Taniguchi Toru,1264,1,Taniguchi Toru,exact_name_match,0,NA,NA,3185.445227386261,103,2025-12-17,30
 1101,Tao Xinran,Tao Xinran,1101,1,Tao Xinran,exact_name_match,0,NA,NA,3436.899356964031,432,2025-12-09,25
-2207,Tatsumi Akane,Tatsumi Akane,2207,1,Tatsumi Akane,exact_name_match,0,NA,NA,2995.7151522648633,17,2025-11-10,20
+2207,Tatsumi Akane,Tatsumi Akane,2207,1,Tatsumi Akane,exact_name_match,0,NA,NA,2995.7151522648633,17,2025-11-10,21
 2141,Terada Shuta,Terada Shuta,2141,1,Terada Shuta,exact_name_match,0,NA,NA,3038.2753396862017,15,2024-04-04,1
-1122,Terayama Rei,Terayama Rei,1122,1,Terayama Rei,exact_name_match,0,NA,NA,3164.6683494369186,123,2025-12-08,14
+1122,Terayama Rei,Terayama Rei,1122,1,Terayama Rei,exact_name_match,0,NA,NA,3164.6683494369186,123,2025-12-08,15
 1711,Thomas Debarre,Thomas Debarre,1711,1,Thomas Debarre,exact_name_match,0,NA,NA,3078.1308142490466,14,2022-12-03,6
 2395,Tian Mumu,Tian Mumu,2395,1,Tian Mumu,exact_name_match,0,NA,NA,3063.1386136079323,23,2025-12-11,20
 1250,Tong Mengcheng,Tong Mengcheng,1250,1,Tong Mengcheng,exact_name_match,0,NA,NA,3424.4590442924377,462,2025-12-09,18
@@ -559,14 +559,14 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 705,Tsukuda Akiko,Tsukuda Akiko,705,1,Tsukuda Akiko,exact_name_match,0,NA,NA,2914.9736142813017,102,2025-12-04,4
 1286,Tsuneishi Takashi,Tsuneishi Takashi,1286,1,Tsuneishi Takashi,exact_name_match,0,NA,NA,3113.867533430756,60,2025-10-02,6
 778,Tsurumaru Keiichi,Tsurumaru Keiichi,778,1,Tsurumaru Keiichi,exact_name_match,0,NA,NA,2985.291756638631,12,2022-10-03,2
-1230,Tsuruta Kazushi,Tsuruta Kazushi,1230,1,Tsuruta Kazushi,exact_name_match,0,NA,NA,3184.484357695512,120,2025-04-28,13
+1230,Tsuruta Kazushi,Tsuruta Kazushi,1230,1,Tsuruta Kazushi,exact_name_match,0,NA,NA,3184.484357695512,120,2025-04-28,14
 349,Tsuruyama Atsushi,Tsuruyama Atsushi,349,1,Tsuruyama Atsushi,exact_name_match,0,NA,NA,3260.0677760896115,222,2025-11-23,9
 2422,Tu Jikang,Tu Jikang,2422,1,Tu Jikang,exact_name_match,0,NA,NA,3231.459134807729,24,2025-12-27,8
 1779,Tu Xiaoyu,Tu Xiaoyu,1779,1,Tu Xiaoyu,exact_name_match,0,NA,NA,3560.708297565279,266,2025-12-09,40
 433,Tuo Jiaxi,Tuo Jiaxi,433,1,Tuo Jiaxi,exact_name_match,0,NA,NA,3477.778997557379,791,2025-12-15,30
 992,Uchida Shuhei,Uchida Shuhei,992,1,Uchida Shuhei,exact_name_match,0,NA,NA,3094.4520116049102,133,2025-11-01,10
 1754,Ueno Asami,Ueno Asami,1754,1,Ueno Asami,exact_name_match,0,NA,NA,3306.508223892916,432,2025-12-25,43
-2146,Ueno Risa,Ueno Risa,2146,1,Ueno Risa,exact_name_match,0,NA,NA,3208.8923088394013,209,2025-12-22,35
+2146,Ueno Risa,Ueno Risa,2146,1,Ueno Risa,exact_name_match,0,NA,NA,3208.8923088394013,209,2025-12-22,36
 1080,Ushikubo Yoshitaka,Ushikubo Yoshitaka,1080,1,Ushikubo Yoshitaka,exact_name_match,0,NA,NA,3112.623950446192,33,2023-01-31,12
 875,Ushinohama Satsuo,Ushinohama Satsuo,875,1,Ushinohama Satsuo,exact_name_match,0,NA,NA,3192.516903188349,116,2024-05-22,10
 1583,Utsumi Koki,Utsumi Koki,1583,1,Utsumi Koki,exact_name_match,0,NA,NA,3019.705257263637,40,2025-06-11,13
@@ -587,12 +587,12 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 1351,Wang Xiru,Wang Xiru,1351,1,Wang Xiru,exact_name_match,0,NA,NA,3160.5559619680844,14,2025-10-17,2
 78,Wang Yao,Wang Yao,78,1,Wang Yao,exact_name_match,0,NA,NA,3245.479838014171,342,2025-03-31,2
 2442,Wang Yiru,Wang Yiru,2442,1,Wang Yiru,exact_name_match,0,NA,NA,3069.9244841179984,2,2023-10-11,2
-1304,Wang Yuanjun,Wang Yuanjun,1304,1,Wang Yuanjun,exact_name_match,0,NA,NA,3368.749528596541,625,2025-12-12,3
+1304,Wang Yuanjun,Wang Yuanjun,1304,1,Wang Yuanjun,exact_name_match,0,NA,NA,3368.749528596541,625,2025-12-12,4
 1383,Wang Yubo,Wang Yubo,1383,1,Wang Yubo,exact_name_match,0,NA,NA,3149.580008111373,160,2025-12-11,15
 1107,Wang Yuzi,Wang Yuzi,1107,1,Wang Yuzi,exact_name_match,0,NA,NA,3092.684761748918,2,2010-07-28,1
 1391,Wang Zejin,Wang Zejin,1391,1,Wang Zejin,exact_name_match,0,NA,NA,3344.756256704514,197,2025-12-09,14
 1947,Wang Zeyu,Wang Zeyu,1947,1,Wang Zeyu,exact_name_match,0,NA,NA,3071.643642698517,12,2023-09-18,1
-2108,Watanabe Kandai,Watanabe Kandai,2108,1,Watanabe Kandai,exact_name_match,0,NA,NA,3141.313927790254,72,2025-12-04,23
+2108,Watanabe Kandai,Watanabe Kandai,2108,1,Watanabe Kandai,exact_name_match,0,NA,NA,3141.313927790254,72,2025-12-04,24
 2593,Wen Yue,Wen Yue,2593,1,Wen Yue,exact_name_match,0,NA,NA,3102.2051733992416,1,2025-11-08,1
 114,Weon Seongjin,Weon Seongjin,114,1,Weon Seongjin,exact_name_match,0,NA,NA,3383.174481160165,816,2025-12-21,20
 2377,Won Jehun,Won Jehun,2377,1,Won Jehun,exact_name_match,0,NA,NA,3133.569904461102,40,2025-12-22,9
@@ -638,8 +638,8 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 2421,Yang Haozhe,Yang Haozhe,2421,1,Yang Haozhe,exact_name_match,0,NA,NA,3096.832249908193,1,2023-03-23,1
 2490,Yang Jongchan,Yang Jongchan,2490,1,Yang Jongchan,exact_name_match,0,NA,NA,3068.943475343808,7,2025-03-05,9
 2597,Yang Junchong,Yang Junchong,2597,1,Yang Junchong,exact_name_match,0,NA,NA,3147.504316448405,4,2025-07-08,2
-1283,Yang Kaiwen,Yang Kaiwen,1283,1,Yang Kaiwen,exact_name_match,0,NA,NA,3504.295702474955,295,2025-12-26,44
-40,Yang Keon,Yang Keon,40,1,Yang Keon,exact_name_match,0,NA,NA,3101.931180309691,123,2025-11-06,5
+1283,Yang Kaiwen,Yang Kaiwen,1283,1,Yang Kaiwen,exact_name_match,0,NA,NA,3504.295702474955,295,2025-12-26,45
+40,Yang Keon,Yang Keon,40,1,Yang Keon,exact_name_match,0,NA,NA,3101.931180309691,123,2025-11-06,6
 86,Yang Shihai,Yang Shihai,86,1,Yang Shihai,exact_name_match,0,NA,NA,3197.134822198404,188,2025-10-18,2
 1768,Yang Zixuan,Yang Zixuan,1768,1,Yang Zixuan,exact_name_match,0,NA,NA,3073.205943450176,210,2025-12-15,16
 351,Yashiro Kumiko,Yashiro Kumiko,351,1,Yashiro Kumiko,exact_name_match,0,NA,NA,3015.5879057191128,187,2025-05-26,10
@@ -664,7 +664,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 275,Yukawa Mitsuhisa,Yukawa Mitsuhisa,275,1,Yukawa Mitsuhisa,exact_name_match,0,NA,NA,3098.371596991527,201,2025-08-28,19
 251,Yuki Satoshi,Yuki Satoshi,251,1,Yuki Satoshi,exact_name_match,0,NA,NA,3229.7685528728944,1105,2025-12-10,26
 102,Yun Hyunseok,Yun Hyunseok,102,1,Yun Hyunseok,exact_name_match,0,NA,NA,3063.8261759404827,172,2025-10-30,8
-267,Yun Junsang,Yun Junsang,267,1,Yun Junsang,exact_name_match,0,NA,NA,3322.5384197161147,466,2025-12-26,26
+267,Yun Junsang,Yun Junsang,267,1,Yun Junsang,exact_name_match,0,NA,NA,3322.5384197161147,466,2025-12-26,27
 672,Yun Youngmin,Yun Youngmin,672,1,Yun Youngmin,exact_name_match,0,NA,NA,3026.3503426653983,9,2021-07-01,1
 2320,Zeng Chudian,Zeng Chudian,2320,1,Zeng Chudian,exact_name_match,0,NA,NA,2952.9801880614723,39,2025-11-26,14
 1832,Zeng Yuanhai,Zeng Yuanhai,1832,1,Zeng Yuanhai,exact_name_match,0,NA,NA,3136.0246231920373,17,2025-10-13,12
@@ -790,7 +790,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 2510,Chen Bo-Shao,Chen Bo-Shao,2510,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,11
 2166,Chen Tuli,Chen Tuli,2166,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,2
 1796,Cho Sang Yeun,Cho Sang Yeun,1796,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,2
-2492,Cho Sangyeon (s),Cho Sangyeon (s),2492,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,26
+2492,Cho Sangyeon (s),Cho Sangyeon (s),2492,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,27
 2448,Choi Hwanyoung,Choi Hwanyoung,2448,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,18
 2456,Eom Donggun,Eom Donggun,2456,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,4
 1475,Hamanaka Takamitsu,Hamanaka Takamitsu,1475,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,1
@@ -805,7 +805,7 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 17937964,Kim Dohyup,Kim Dohyup,17937964,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,9
 2602,Kim Juhyeong,Kim Juhyeong,2602,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,10
 2455,Kim Junghyun (s),Kim Junghyun (s),2455,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,29
-2454,Kim Kieon,Kim Kieon,2454,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,12
+2454,Kim Kieon,Kim Kieon,2454,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,13
 2588,Kim Sawoo,Kim Sawoo,2588,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,9
 2607,Kim Wondae,Kim Wondae,2607,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,13
 2396,Kim Yuntae (s),Kim Yuntae (s),2396,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,1
@@ -853,8 +853,9 @@ goratings_id,goratings_name,source_goratings_name,canonical_goratings_id,alias_c
 001373,韩金石,韩金石,001373,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,1
 10001352,김단유,김단유,10001352,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,1
 10001353,김동욱,김동욱,10001353,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,3
-10001340,김동한,김동한,10001340,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,1
+10001340,김동한,김동한,10001340,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,2
 10001259,노우진,노우진,10001259,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,12
+10001013,도은교,도은교,10001013,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,1
 10001339,박종욱,박종욱,10001339,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,3
 10001330,박태준,박태준,10001330,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,1
 10001375,심효준,심효준,10001375,1,NA,unmatched_or_new,NA,NA,NA,NA,NA,NA,2
