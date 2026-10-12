@@ -497,7 +497,6 @@ base_key,occurrence,issue_type,date,player_id,player_name,opponent_id,opponent_n
 2026-06-23|2492|2503|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-23|2509|2193|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-23|2513|18|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-06-23|2560|10001367|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-23|2592|121|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-23|2607|2515|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-23|2608|2476|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
@@ -516,13 +515,11 @@ base_key,occurrence,issue_type,date,player_id,player_name,opponent_id,opponent_n
 2026-06-28|1940|1945|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-28|1940|2414|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-29|10001259|267|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-06-29|10001367|10001341|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-29|121|2560|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-29|1638|2592|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-29|1812|2513|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-29|2608|1162|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-30|186|2513|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-06-30|2415|10001367|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-30|2454|1631|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-30|2515|10001281|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-06-30|2592|2609|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
@@ -585,9 +582,7 @@ base_key,occurrence,issue_type,date,player_id,player_name,opponent_id,opponent_n
 2026-07-17|2493|2137|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-07-18|1132|1627|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-07-20|10001281|2414|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-07-20|10001367|267|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-07-20|1162|2308|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-07-20|2414|10001367|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-07-20|2439|1826|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-07-20|2448|2492|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-07-20|2454|2608|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
@@ -625,7 +620,6 @@ base_key,occurrence,issue_type,date,player_id,player_name,opponent_id,opponent_n
 2026-07-27|2609|2560|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-07-27|267|2592|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-07-28|10001185|10001259|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-07-28|10001367|10001341|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-07-28|1631|2509|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-07-28|2455|2448|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-07-28|2492|2592|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
@@ -684,21 +678,8 @@ base_key,occurrence,issue_type,date,player_id,player_name,opponent_id,opponent_n
 2026-08-11|2493|121|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-08-11|267|2308|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-08-12|1235|1622|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-08-12|1896|10001367|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-08-12|299|1166|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-08-12|299|1926|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-09-07|10001367|2139|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-09-09|10001372|10001367|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-09-16|10001340|2518|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-09-24|2315|001373|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-09-28|2492|10001353|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-09-29|001375|2027|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-09-29|2454|10001353|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-09-29|2490|10001371|W,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-10-02|2146|10001367|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-10-05|2492|10001339|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-10-07|1223|10001340|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
-2026-10-07|261|10001013|B,1,conflicting reciprocal observations,NA,NA,NA,NA,NA,NA,NA,NA
 2026-01-06|1090|2581|B,1,only one player profile observed,NA,NA,NA,NA,NA,NA,NA,NA
 2026-02-21|10001232|18|W,1,only one player profile observed,NA,NA,NA,NA,NA,NA,NA,NA
 2026-03-06|2137|10001330|B,1,only one player profile observed,NA,NA,NA,NA,NA,NA,NA,NA
