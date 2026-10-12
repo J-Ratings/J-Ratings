@@ -2,8 +2,6 @@ name: Update Rugby Union ratings
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "5 4 * * 3"
 
 permissions:
   contents: write

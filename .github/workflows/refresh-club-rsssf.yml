@@ -1,8 +1,6 @@
 name: Review recent club RSSSF pages
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "35 3 1 * *"
 permissions:
   contents: read
 concurrency:
