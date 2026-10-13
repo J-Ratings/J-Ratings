@@ -1,0 +1,90 @@
+name: Update Go tournament information
+
+on:
+  schedule:
+    - cron: '30 4 * * *' # Daily 04:30 UTC; the R selection window uses London dates.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: jratings-data-update-main
+  cancel-in-progress: false
+
+jobs:
+  permission-check:
+    runs-on: ubuntu-latest
+    outputs:
+      allowed: ${{ steps.check.outputs.allowed }}
+    steps:
+      - name: Check explicit source-owner permission gate
+        id: check
+        env:
+          ALLOWED: ${{ vars.GO_K2SS_PERMISSION_GRANTED }}
+        run: |
+          if [ "$ALLOWED" = "true" ]; then
+            echo 'allowed=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'allowed=false' >> "$GITHUB_OUTPUT"
+            echo 'K2SS permission pending. No source requests or publication.'
+          fi
+
+  update:
+    needs: permission-check
+    if: needs.permission-check.outputs.allowed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::data.table
+            any::jsonlite
+            any::xml2
+      - name: Restore source cache and ongoing-edition state
+        uses: actions/cache@v4
+        with:
+          path: |
+            Go/pipeline_data/tournament_format_audit/cache
+            Go/pipeline_data/tournament_format_audit/calendar_events.csv
+            Go/pipeline_data/tournament_updates
+          key: go-tournament-cache-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: go-tournament-cache-v1-
+      - name: Update supplementary tournament pages
+        env:
+          GO_K2SS_PERMISSION_GRANTED: ${{ vars.GO_K2SS_PERMISSION_GRANTED }}
+          GO_TOURNAMENT_MAX_PAGES: '20'
+        run: Rscript scripts/go/update_tournaments.R
+      - name: Retain review report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: go-tournament-review-${{ github.run_id }}
+          path: Go/pipeline_data/tournament_updates/latest-report.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Commit supplementary data only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Go/data/tournaments
+          if git diff --cached --quiet; then
+            echo 'No tournament data changes.'
+            exit 0
+          fi
+          git commit -m 'Update Go tournament information'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done
+          exit 1

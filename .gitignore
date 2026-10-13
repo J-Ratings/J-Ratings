@@ -72,3 +72,8 @@ EuropeanFootball/pipeline_data/Matches_Clean_Combined/quote_repair_*.csv
 # Local source-repair backups, staging files, and isolated test workspaces
 EuropeanFootball/pipeline_data/Audit/denmark_russia_source_repair/
 EuropeanFootball/pipeline_data/Audit/denmark_source_rebuild/
+
+# Local Go tournament research downloads and coverage diagnostics
+Go/pipeline_data/tournament_format_audit/cache/
+Go/pipeline_data/tournament_result_coverage/
+Go/pipeline_data/tournament_updates/

@@ -1,6 +1,9 @@
 name: Update Go ratings
 
 on:
+  schedule:
+    # Sunday 03:00 UTC. First Sunday of each month retains the full-profile run.
+    - cron: '0 3 * * 0'
   workflow_dispatch:
     inputs:
       full_profile_scrape:
@@ -139,6 +142,12 @@ jobs:
       - name: Write website JSON
         run: |
           Rscript scripts/go/02_write_json.R
+
+      - name: Refresh tournament links against weekly histories
+        run: |
+          if [ -f Go/data/tournaments/catalogue/index.json ]; then
+            Rscript scripts/go/build_tournament_links.R
+          fi
 
       - name: Show generated changes
         run: |
