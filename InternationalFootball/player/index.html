@@ -1133,6 +1133,7 @@ function refreshView() {
       );
 CURRENT_TEAM = me;
       document.getElementById('pname').textContent = me.name;
+      document.title = `${me.name} — International Football Rating History & Results | J-Ratings`;
 
       const histJson = await histRes.json();
       RAW = normalise(

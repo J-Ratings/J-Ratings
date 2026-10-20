@@ -821,8 +821,9 @@ async function load() {
       ALL_TIME_PEAK = Number(
         me.peak_rating ?? me.all_time_peak_rating
       );
-document.getElementById('pname').textContent =
-      me.display_name || me.name || me.id;
+    const profileName = me.display_name || me.name || me.id;
+    document.getElementById('pname').textContent = profileName;
+    document.title = `${profileName} — Go Rating History & Results | J-Ratings`;
 
     const histJson = await histRes.json();
 

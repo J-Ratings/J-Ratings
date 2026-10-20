@@ -1600,6 +1600,7 @@ function refreshView() {
       );
 CURRENT_TEAM = me;
       document.getElementById('pname').textContent = me.name;
+      document.title = `${me.name} — Club Football Rating History & Results | J-Ratings`;
 
       // Colours are optional and must never hold up the page.
       await loadColours();
