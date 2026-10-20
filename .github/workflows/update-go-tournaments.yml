@@ -1,8 +1,6 @@
 name: Update Go tournament information
 
 on:
-  schedule:
-    - cron: '30 4 * * *' # Daily 04:30 UTC; the R selection window uses London dates.
   workflow_dispatch:
 
 permissions:
@@ -14,6 +12,8 @@ concurrency:
 
 jobs:
   permission-check:
+    # Paused at the user's request, including manual runs.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     outputs:
       allowed: ${{ steps.check.outputs.allowed }}
@@ -32,7 +32,7 @@ jobs:
 
   update:
     needs: permission-check
-    if: needs.permission-check.outputs.allowed == 'true'
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:

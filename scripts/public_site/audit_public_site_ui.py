@@ -7,6 +7,11 @@ ROOT = Path("_public_site").resolve()
 if not ROOT.exists():
     raise SystemExit("ERROR: _public_site does not exist. Run the public-site build first.")
 
+for sport in ("EuropeanFootball", "Go", "InternationalFootball", "RugbyUnion", "Snooker"):
+    for private in ("tournaments", "data/tournaments", "data/tournament-structure", "data/tournament-overrides"):
+        if (ROOT / sport / private).exists():
+            raise SystemExit(f"ERROR: private tournament content in public build: {sport}/{private}")
+
 HTML_FILES = sorted(ROOT.rglob("*.html"))
 
 broken_links = []

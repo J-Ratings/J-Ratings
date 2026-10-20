@@ -1,0 +1,762 @@
+Family,Link,Title,Stage,Format,Headers,Rows,TableClass,HasSeriesCells
+/news/cn/agon/,/news/cn/agon/26/,Agon Cup,Tournament table,KNOCKOUT,Players | 1st round06-04 | 2nd round06-05 | Semifinals06-06 | Final09-17,17,tournament-medium,FALSE
+/news/cn/agon/,/news/cn/agon/26/,Agon Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/agon/,/news/cn/agon/26/,Agon Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/agon/,/news/cn/agon/26/,Agon Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/agon/,/news/cn/agon/26/,Agon Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/agon/,/news/cn/agon/26/,Agon Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/agon/,/news/cn/agon/26/,Agon Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/agon/,/news/cn/agon/26/,Agon Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/agon/,/news/cn/agon/26/,Agon Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/al/,/news/cn/al/26/,Chinese A League,Winning team decision tournament,TEAM_KNOCKOUT,"Players | 1st round2024-11-25,27 | 2nd round2024-12-21,23 | Semifinals2024-12-28,30 | Final2025-01-11,13",9,tournament-wider,FALSE
+/news/cn/al/,/news/cn/al/26/,Chinese A League,Relegation team decision tournament,TEAM_KNOCKOUT,"Final (loser)2024-12-28,30 | Semifinals (loser)2024-12-21,23 | 1st round (loser)2024-11-25,27 | Players",9,tournament-wide,FALSE
+/news/cn/al/,/news/cn/al/26/,Chinese A League,League,TEAM_ROUND_ROBIN,Team | S.L | L.H | S.H | S.N | Z.Z | J.S | L.S | Q.L | S.J | C.F | C.Y | G.R | S.Y | M.B | K.Y | S.H | Point | Wins | Win-loss | Rank,17,league-wider,FALSE
+/news/cn/cc/,/news/cn/cc/20/,Changqi Cup,Tournament table,KNOCKOUT,Players | 1st round04-19 | 2nd round04-20 | 3rd round04-21 | Semifinals07-08~11 | Final,31,tournament-wide,TRUE
+/news/cn/cc/,/news/cn/cc/20/,Changqi Cup,The last preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round03-06 | 2nd round03-14 | Final03-15,9,inner-table,FALSE
+/news/cn/cctv/,/news/cn/cctv/9/,CCTV Cup,Tournament table,KNOCKOUT,Players | 1st round08-07 | 2nd round08-07 | 3rd round08-08 | Semifinals08-08 | Final08-09,33,tournament-wide,FALSE
+/news/cn/fguoshou/,/news/cn/fguoshou/5/,Female Guoshou,Tournament table,KNOCKOUT,Players | 1st round08-05 | 2nd round08-06 | Semifinals08-07 | Final08-08,17,tournament-medium,FALSE
+/news/cn/fmingren/,/news/cn/fmingren/5/,Female Mingren,Title match,TITLE_SERIES,Players | 1st round2025-12-18 | 2nd round2025-12-19 | 3rd round2025-12-20,3,title-narrow,FALSE
+/news/cn/fmingren/,/news/cn/fmingren/5/,Female Mingren,Tournament table,KNOCKOUT,Players | 1st round12-11 | 2nd round12-12 | 3rd round12-13 | Semifinals12-15 | Challengerdecisionmatch,33,tournament-wide,FALSE
+/news/cn/gba/,/news/cn/gba/5/,GBA Cup Chinese Weiqi Master Championship,Tournament table,KNOCKOUT,Players | 1st round09-19 | 2nd round09-21 | 3rd round09-22 | Semifinals09-23 | Final09-24,30,tournament-wide,FALSE
+/news/cn/guoshou/,/news/cn/guoshou/3/,Guoshou,Title match,TITLE_SERIES,Players | 1st round2026-03-17 | 2nd round2026-03-19 | 3rd round2026-03-20,3,title-narrow,FALSE
+/news/cn/guoshou/,/news/cn/guoshou/3/,Guoshou,Tournament table,KNOCKOUT,Players | 1st round12-02 | 2nd round12-03 | 3rd round12-04 | Semifinals12-06 | Challengerdecisionmatch,33,tournament-wide,FALSE
+/news/cn/jc/,/news/cn/jc/19/,Jianqiao Cup,Tournament table,KNOCKOUT,Players | 1st round07-15 | 2nd round07-17 | 3rd round07-18 | Semifinals11-06 | Final,33,tournament-wide,TRUE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Champion decision tournament,KNOCKOUT,Players | Semifinals07-23 | Final,5,tournament-narrow,TRUE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Knockout competition tournament,SURVIVAL_LADDER,Block-A | Players | Result | Players | Date,12,table table-box,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Knockout competition tournament,SURVIVAL_LADDER,Block-B | Players | Result | Players | Date,12,table table-box,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/lx/,/news/cn/lx/13/,Longxing,Preliminary tournament,SINGLE_MATCH,Players | Results02-25,3,inner-table,FALSE
+/news/cn/mr/,/news/cn/mr/34/,Mingren,Title match,TITLE_SERIES,Players | 1st round2025-01-07 | 2nd round2025-01-08 | 3rd round2025-01-09,3,title-narrow,FALSE
+/news/cn/mr/,/news/cn/mr/34/,Mingren,Tournament table,KNOCKOUT,Players | 1st round2024-11-08 | 2nd round2024-11-09 | 3rd round2025-01-03 | Semifinals2025-01-04 | Challengerdecisionmatch,33,tournament-wide,FALSE
+/news/cn/qc/,/news/cn/qc/11/,Quzhou-Lanke Cup,Tournament table,KNOCKOUT,Players | 1st round05-17 | 2nd round05-18 | 3rd round09-05 | Semifinals09-06 | Final09-07,33,tournament-wide,FALSE
+/news/cn/qc/,/news/cn/qc/9/,Quzhou-Lanke Cup,Tournament table,KNOCKOUT,Players | 1st round04-23 | 2nd round04-24 | 3rd round04-26 | Semifinals04-27 | Final04-29,33,tournament-wide,FALSE
+/news/cn/qs/,/news/cn/qs/6/,Qisheng,Title match,TITLE_SERIES,Players | 1st round2025-09-26 | 2nd round2025-09-27 | 3rd round2025-09-28,3,title-narrow,FALSE
+/news/cn/qs/,/news/cn/qs/6/,Qisheng,Tournament table,KNOCKOUT,Players | 1st round07-23 | 2nd round07-24 | 3rd round07-25 | Semifinals08-13 | Challengerdecisionmatch,33,tournament-wide,FALSE
+/news/cn/qw/,/news/cn/qw/19/,Qiwang,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round03-25 | Semifinals03-26 | Final03-27,33,tournament-wide,FALSE
+/news/cn/sichuan-energy/,/news/cn/sichuan-energy/1/,Sichuan Energy Cup,Tournament table,KNOCKOUT,Players | 1st round03-30 | Semifinals03-30 | Final03-31,9,tournament-narrow,FALSE
+/news/cn/sw/,/news/cn/sw/25/,South-West Qiwang,Tournament table,KNOCKOUT,Players | 1st round03-14 | 2nd round03-14 | Semifinals03-15 | Final03-15,17,tournament-medium,FALSE
+/news/cn/sw/,/news/cn/sw/21/,South-West Qiwang,Tournament table,KNOCKOUT,Players | 1st round06-18 | 2nd round06-18 | Semifinals06-19 | Final06-19,17,tournament-medium,FALSE
+/news/cn/tn/,/news/cn/tn/40/,Tianyuan,Title match,TITLE_SERIES,Players | 1st round2026-04-24 | 2nd round2026-04-26 | 3rd round2026-04-27,3,title-narrow,FALSE
+/news/cn/tn/,/news/cn/tn/40/,Tianyuan,Tournament table,KNOCKOUT,Players | 1st round01-14 | 2nd round01-15 | 3rd round01-17 | Semifinals01-19 | Challengerdecisionmatch,33,tournament-wide,FALSE
+/news/cn/wzw/,/news/cn/wzw/6/,Wangzhongwang,Tournament table,DOUBLE_ELIMINATION,Winner's tournament | Final07-30,20,tournament-medium,FALSE
+/news/cn/wzw/,/news/cn/wzw/3/,Wangzhongwang,Tournament table,KNOCKOUT,Players | 1st round05-25 | Semifinals05-26 | Final05-27,9,tournament-narrow,FALSE
+/news/cn/wzw/,/news/cn/wzw/3/,Wangzhongwang,3rd place decision match,SINGLE_MATCH,Players | Result05-27,3,table_decision,FALSE
+/news/cn/xinxiu/,/news/cn/xinxiu/8/,Xinxiu,League,ROUND_ROBIN,Rank | Players | W.R | D.B | D.Q | J.K | L.S | Y.C | X.Y | M.Q | Result,9,league-medium,FALSE
+/news/cn/xinxiu/,/news/cn/xinxiu/8/,Xinxiu,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/xinxiu/,/news/cn/xinxiu/8/,Xinxiu,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/xinxiu/,/news/cn/xinxiu/8/,Xinxiu,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/xinxiu/,/news/cn/xinxiu/8/,Xinxiu,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/xinxiu/,/news/cn/xinxiu/8/,Xinxiu,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/xinxiu/,/news/cn/xinxiu/8/,Xinxiu,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/xinxiu/,/news/cn/xinxiu/8/,Xinxiu,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/xinxiu/,/news/cn/xinxiu/8/,Xinxiu,Preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/cn/xr/,/news/cn/xr/30/,Xinren Wang,Tournament table,KNOCKOUT,Players | 1st round02-04 | 2nd round02-05 | 3rd round02-06 | Semifinals02-07 | Final,33,tournament-wide,TRUE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Final,17,tournament-medium,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/agon/,/news/jp/agon/32/,Agon Cup,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/brains-match/,/news/jp/brains-match/1/,Female Brains Batch,Tournament table,KNOCKOUT,Players | 1st round04-29 | 2nd round04-29 | Semifinals06-13 | Final06-13,17,tournament-medium,FALSE
+/news/jp/fhoninbo/,/news/jp/fhoninbo/45/,Female Honinbo,Title match,TITLE_SERIES,Players | 1st round2026-10-08HanamakiIwate | 2nd round2026-10-25NoshiroAkita | 3rd round2026-11-11ChiyodaTokyo | 4th round2026-11-17ChiyodaTokyo | 5th round2026-11-25ChiyodaTokyo,3,title-medium,FALSE
+/news/jp/fhoninbo/,/news/jp/fhoninbo/45/,Female Honinbo,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinals | Challengerdecisionmatch,26,tournament-wide,FALSE
+/news/jp/fkisei/,/news/jp/fkisei/29/,Female Kisei,Title match,TITLE_SERIES,Players | 1st round2026-01-15HiratsukaKanagawa | 2nd round2026-01-22ChiyodaTokyo | 3rd round2026-02-02ChiyodaTokyo,3,title-narrow,FALSE
+/news/jp/fkisei/,/news/jp/fkisei/29/,Female Kisei,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Challengerdecisionmatch,17,tournament-medium,FALSE
+/news/jp/fleague/,/news/jp/fleague/1/,Japan Female League,Final rank,NON_FIXTURE_TABLE,Rank | Players | Win | Loss | Point,6,spacer,FALSE
+/news/jp/fleague/,/news/jp/fleague/1/,Japan Female League,2nd stage league,TEAM_ROUND_ROBIN,Team | S.G | I.C | N.G | W.K | F.K | Win-loss | Rank,6,league-narrow,FALSE
+/news/jp/fleague/,/news/jp/fleague/1/,Japan Female League,1st stage league,TEAM_ROUND_ROBIN,Team | S.G | I.C | N.G | W.K | F.K | Win-loss | Rank,6,league-narrow,FALSE
+/news/jp/fmeijin/,/news/jp/fmeijin/37/,Female Meijin,Title match,TITLE_SERIES,Players | 1st round2026-04-14ChiyodaTokyo | 2nd round2026-04-15ChiyodaTokyo | 3rd round2026-04-21ChiyodaTokyo,3,title-narrow,FALSE
+/news/jp/fmeijin/,/news/jp/fmeijin/37/,Female Meijin,League,ROUND_ROBIN,Rank | Players | F.R | K.C | X.Y | U.R | K.N | I.S | Y.S | Result,8,league-medium,FALSE
+/news/jp/fmeijin/,/news/jp/fmeijin/33/,Female Meijin,Title match,TITLE_SERIES,Players | 1st round04-14ChiyodaTokyo | 2nd round04-16ChiyodaTokyo | 3rd round04-20ChiyodaTokyo,3,title-narrow,FALSE
+/news/jp/fmeijin/,/news/jp/fmeijin/33/,Female Meijin,League,ROUND_ROBIN,Rank | Players | U.A | S.A | X.Y | N.E | M.C | N.S | O.R | Result,8,league-medium,FALSE
+/news/jp/fsaikyo/,/news/jp/fsaikyo/11/,Female Saikyo,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals07-24 | Final07-26,17,tournament-medium,FALSE
+/news/jp/fsaikyo/,/news/jp/fsaikyo/7/,Female Saikyo,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals07-15 | Final07-17,17,tournament-medium,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Title match,TITLE_SERIES,Players | 1st round2026-06-23OsakaOsaka | 2nd round2026-07-10OsakaOsaka | 3rd round2026-07-21ChiyodaTokyo | 4th round2026-08-10OsakaOsaka | 5th round2026-08-21OsakaOsaka,3,title-medium,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinals | Challengerdesicionmatch,29,tournament-wide,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,6,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,6,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/51/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Title match,TITLE_SERIES,Players | 1st round06-24OsakaOsaka | 2nd round07-16KanazawaIshikawa | 3rd round07-27HatsukaichiHiroshima | 4th round08-09ChiyodaTokyo | 5th round08-19OsakaOsaka,3,title-medium,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinals | Challengerdesicionmatch,30,tournament-wide,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,6,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/gosei/,/news/jp/gosei/47/,Gosei,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/ha/,/news/jp/ha/20/,Hiroshima-Aluminum Cup,Tournament table,KNOCKOUT,Players | 1st round11-29 | 2nd round11-29 | Semifinals11-30 | Final11-30,17,tournament-medium,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Title match,TITLE_SERIES,Players | 1st round2026-05-13HigashiOmiShiga | 2nd round2026-05-20MoriguchiOsaka | 3rd round2026-06-03GamagoriAichi | 4th round2026-06-19HakoneKanagawa | 5th round2026-07-01KofuYamanashi,3,title-medium,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Challengerdecisionmatch,17,tournament-medium,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/81/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Title match,TITLE_SERIES,"Players | 1st round2022-05-10,11KanazawaIshikawa | 2nd round2022-05-24,25KumagayaSaitama | 3rd round2022-06-01,02TakayamaNagano | 4th round2022-06-11,12DazaifuFukuoka | 5th round2022-06-28,29KawazuShizuoka | 6th round2022-07-05,06KofuYamanashi | 7th round2022-07-12,13TobaMie",3,title-wide,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Challenger decision match,SINGLE_MATCH,Players | Result04-04,3,tournament-decision,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,League,ROUND_ROBIN,Rank | Players | S.T | K.K | I.R | H.N | T.A | Y.Z | M.K | S.A | Result,9,league-medium,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,League scene,ROUND_ROBIN," | Player1(upper);winner
+            Player2(lower);loser
+            B|W+x.x|R     ;result
+            xx-xx         ;date | 1S.T | 2K.K | 3I.R | 4H.N | 5T.A | 5Y.Z | 5M.K | 5S.A",14,league-medium,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,The last preliminary tournament,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/honinbo/,/news/jp/honinbo/77/,Honinbo,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Title match,TITLE_SERIES,Players | 1st round2026-03-03ChiyodaTokyo | 2nd round2026-03-16WakayamaWakayama | 3rd round2026-04-02OmachiNagano | 4th round2026-04-22ChiyodaTokyo | 5th round2026-04-28ChiyodaTokyo,3,title-medium,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Quarterfinals | Semifinals | Challengerdecisionmatch,21,tournament-wide,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,6,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,6,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/64/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Title match,TITLE_SERIES,Players | 1st round2022-03-01HigashiosakaOsaka | 2nd round2022-03-23NagahamaShiga | 3rd round2022-04-07OmachiNagano | 4th round2022-04-18ChiyodaTokyo | 5th round2022-04-26ChuoOsaka,3,title-medium,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinals | Challengerdecisionmatch,21,tournament-wide,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/judan/,/news/jp/judan/60/,Judan,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/kansai/,/news/jp/kansai/69/,Kansai-Kiin 1st Place,Title match,TITLE_SERIES,Players | 1st round2025-10-13ChuoOsaka | 2nd round2025-11-10ChuoOsaka | 3rd round,3,title-narrow,FALSE
+/news/jp/kansai/,/news/jp/kansai/69/,Kansai-Kiin 1st Place,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinals | Challengerdecisionmatch,33,tournament-wide,FALSE
+/news/jp/kisei/,/news/jp/kisei/50/,Kisei,Title match,TITLE_SERIES,"Players | 1st round2026-01-22~23HawaiiAmerica | 2nd round2026-01-30,31OnomichiHiroshima | 3rd round2026-02-14,15DazaifuFukuoka | 4th round2026-02-26,27NikkoTochigi | 5th round2026-03-11,12SendaiMiyagi | 6th round2026-03-19,20KatsuuraChiba | 7th round2026-03-25,26HakoneKanagawa",3,title-wide,FALSE
+/news/jp/kisei/,/news/jp/kisei/50/,Kisei,Challenger decision tournament,KNOCKOUT,Players | 1st round | 2nd round | Semifinal | Final,6,tournament-wide,TRUE
+/news/jp/kisei/,/news/jp/kisei/50/,Kisei,League S,ROUND_ROBIN,Rank | Players | I.Y | S.T | K.K | Y.Z | Y.K | K.R | Result,7,league-narrow,FALSE
+/news/jp/kisei/,/news/jp/kisei/50/,Kisei,League A,ROUND_ROBIN,Rank | Players | S.M | T.S | I.A | H.Y | M.D | H.A | M.K | K.K | Result,9,league-medium,FALSE
+/news/jp/kisei/,/news/jp/kisei/50/,Kisei,League B 1st place decision match,SINGLE_MATCH,Players | Result,3,tournament-decision,FALSE
+/news/jp/kisei/,/news/jp/kisei/50/,Kisei,League B-1,ROUND_ROBIN,Rank | Players | R.K | W.B | C.U | H.T | R.S | S.Y | K.I | N.T | Result,9,league-medium,FALSE
+/news/jp/kisei/,/news/jp/kisei/50/,Kisei,League B-2,ROUND_ROBIN,Rank | Players | F.A | A.T | S.T | O.Y | S.A | K.Y | Y.L | S.T | Result,9,league-medium,FALSE
+/news/jp/kisei/,/news/jp/kisei/50/,Kisei,League C,ROUND_ROBIN,No. | Players | 1st | 2nd | 3rd | 4th | 5th | Result,33,league-wide,FALSE
+/news/jp/kisei/,/news/jp/kisei/46/,Kisei,Title match,TITLE_SERIES,"Players | 1st round2022-01-13,14BunkyoTokyo | 2nd round2022-01-21,22KatsuuraChiba | 3rd round2022-02-04,05SaikaiNagasaki | 4th round2022-02-18,19KofuYamanashi | 5th round2022-03-03,04HakoneKanagawa | 6th round2022-03-10,11HakoneKanagawa | 7th round2022-03-17,18KyotoKyoto",3,title-wide,FALSE
+/news/jp/kisei/,/news/jp/kisei/46/,Kisei,Challenger decision tournament,KNOCKOUT,Players | 1st round | 2nd round | Semifinal | Final,6,tournament-wide,TRUE
+/news/jp/kisei/,/news/jp/kisei/46/,Kisei,League S,ROUND_ROBIN,Rank | Players | K.R | T.S | M.D | I.R | Y.K | Y.Z | Result,7,league-narrow,FALSE
+/news/jp/kisei/,/news/jp/kisei/46/,Kisei,League A,ROUND_ROBIN,Rank | Players | K.K | C.U | O.R | Y.N | S.T | M.Y | H.N | S.S | Result,9,league-medium,FALSE
+/news/jp/kisei/,/news/jp/kisei/46/,Kisei,League B 1st place decision match,SINGLE_MATCH,Players | Result,3,tournament-decision,FALSE
+/news/jp/kisei/,/news/jp/kisei/46/,Kisei,League B-1,ROUND_ROBIN,Rank | Players | M.K | S.T | R.K | F.A | K.Y | H.A | M.T | W.B | Result,9,league-medium,FALSE
+/news/jp/kisei/,/news/jp/kisei/46/,Kisei,League B-2,ROUND_ROBIN,Rank | Players | A.T | S.Y | H.Y | A.J | T.A | S.T | S.M | U.S | Result,9,league-medium,FALSE
+/news/jp/kisei/,/news/jp/kisei/46/,Kisei,League C,ROUND_ROBIN,No. | Players | 1st | 2nd | 3rd | 4th | 5th | Result,33,league-wider,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Title match,TITLE_SERIES,"Players | 1st round2026-08-26,27KofuYamanashi | 2nd round2026-09-02,03IzuShizuoka | 3rd round2026-09-08,09GamagoriAichi | 4th round2026-09-16,17IzuShizuoka | 5th round2026-09-30,10-01TobaMie | 6th round2026-10-14,15KisarazuChiba | 7th round2026-10-28,29IzuShizuoka",3,title-wide,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,League,ROUND_ROBIN,Rank | Players | S.T | I.Y | K.K | F.K | Y.Z | M.D | I.A | M.K | K.I | Result,10,league-medium,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,League scene,ROUND_ROBIN," | Player1(upper);winner
+            Player2(lower);loser
+            B|W+x.x|R     ;result
+            xx-xx         ;date | 1S.T | 2I.Y | 3K.K | 4F.K | 5Y.Z | 6M.D | 6I.A | 6M.K | 6K.I",13,league-medium,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,6,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,6,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/51/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Title match,TITLE_SERIES,"Players | 1st round2022-08-24,25BunkyoTokyo | 2nd round2022-09-05,06TobaMie | 3rd round2022-09-15,16MoriguchiOsaka | 4th round2022-10-06,07TakarazukaHyogo | 5th round2022-10-12,13KawazuShizuoka | 6th round2022-10-24,25AtamiShizuoka | 7th round2022-11-02,03KofuYamanashi",3,title-wide,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,League,ROUND_ROBIN,Rank | Players | I.R | K.K | H.N | Y.K | M.K | S.R | I.A | S.T | Y.Z | Result,10,league-medium,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,League scene,ROUND_ROBIN," | Player1(upper);winner
+            Player2(lower);loser
+            B|W+x.x|R ;result
+            xx-xx ;date | 1I.R | 2K.K | 3H.N | 4Y.K | 5M.K | 6S.R | 7I.A | 7S.T | 7Y.Z",16,league-medium,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,The last preliminary tournament,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,The last preliminary tournament,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,The last preliminary tournament,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,6,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,6,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,7,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/meijin/,/news/jp/meijin/47/,Meijin,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/nhk/,/news/jp/nhk/69/,NHK Cup,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Quarterfinals | Semifinals | Final,51,tournament-wide,FALSE
+/news/jp/okan/,/news/jp/okan/66/,Okan,Title match,TITLE_SERIES,Players | 1st round2025-12-04TakayamaGifu,3,title-decision,FALSE
+/news/jp/okan/,/news/jp/okan/66/,Okan,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Challengerdecisionmatch,13,tournament-medium,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Title match,TITLE_SERIES,Players | 1st round2026-10-23MinatoTokyo | 2nd round2026-11-04HadanoKanagawa | 3rd round2026-11-06HadanoKanagawa | 4th round2026-12-04KobeHyogo | 5th round2026-12-11KofuYamanashi,3,title-medium,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Challengerdecisionmatch,17,tournament-medium,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,The last preliminary tournament,KNOCKOUT,Players | Final,3,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,4,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/oza/,/news/jp/oza/74/,Oza,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/ryusei/,/news/jp/ryusei/31/,Ryusei,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Final,17,tournament-medium,FALSE
+/news/jp/ryusei/,/news/jp/ryusei/31/,Ryusei,Knockout competition tournament,SURVIVAL_LADDER,Block-A | Players | Result | Players | Date,13,table table-box,FALSE
+/news/jp/ryusei/,/news/jp/ryusei/31/,Ryusei,Knockout competition tournament,SURVIVAL_LADDER,Block-B | Players | Result | Players | Date,13,table table-box,FALSE
+/news/jp/ryusei/,/news/jp/ryusei/31/,Ryusei,Knockout competition tournament,SURVIVAL_LADDER,Block-C | Players | Result | Players | Date,13,table table-box,FALSE
+/news/jp/ryusei/,/news/jp/ryusei/31/,Ryusei,Knockout competition tournament,SURVIVAL_LADDER,Block-D | Players | Result | Players | Date,13,table table-box,FALSE
+/news/jp/ryusei/,/news/jp/ryusei/31/,Ryusei,Knockout competition tournament,SURVIVAL_LADDER,Block-E | Players | Result | Players | Date,13,table table-box,FALSE
+/news/jp/ryusei/,/news/jp/ryusei/31/,Ryusei,Knockout competition tournament,SURVIVAL_LADDER,Block-F | Players | Result | Players | Date,13,table table-box,FALSE
+/news/jp/ryusei/,/news/jp/ryusei/31/,Ryusei,Knockout competition tournament,SURVIVAL_LADDER,Block-G | Players | Result | Players | Date,13,table table-box,FALSE
+/news/jp/ryusei/,/news/jp/ryusei/31/,Ryusei,Knockout competition tournament,SURVIVAL_LADDER,Block-H | Players | Result | Players | Date,13,table table-box,FALSE
+/news/jp/sgw/,/news/jp/sgw/8/,SGW Cup,League,SWISS_STYLE,No | Players | Round 111-01 | Round 211-01 | Round 311-02 | Round 411-02 | Win-Loss | SOS | SOSOS | Rank,17,league-wide,FALSE
+/news/jp/shinjino/,/news/jp/shinjino/52/,"",SOURCE_UNAVAILABLE_404,REVIEW,"",0,"",
+/news/jp/tachiaoi/,/news/jp/tachiaoi/12/,Tachiaoi Cup,Title match,TITLE_SERIES,Players | 1st round2025-06-21AizuwakamatsuFukushima | 2nd round2025-06-22AizuwakamatsuFukushima | 3rd round2025-06-23AizuwakamatsuFukushima,3,title-medium,FALSE
+/news/jp/tachiaoi/,/news/jp/tachiaoi/12/,Tachiaoi Cup,Tournament table,KNOCKOUT,Players | 1st round | Semifinals05-17 | Challengerdecisionmatch,9,table_eight,FALSE
+/news/jp/tachiaoi/,/news/jp/tachiaoi/9/,Tachiaoi Cup,Title match,TITLE_SERIES,Players | 1st round06-18AizuwakamatsuFukushima | 2nd round06-20AizuwakamatsuFukushima | 3rd round06-24ChiyodaTokyo,3,title-medium,FALSE
+/news/jp/tachiaoi/,/news/jp/tachiaoi/9/,Tachiaoi Cup,Tournament table,KNOCKOUT,Players | 1st round04-28 | Semifinals05-21 | Challengerdecisionmatch,9,table_eight,FALSE
+/news/jp/teikei-f/,/news/jp/teikei-f/5/,Teikei Cup (Female Legend),Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Final,17,tournament-medium,FALSE
+/news/jp/teikei-l/,/news/jp/teikei-l/5/,Teikei Cup (Legend),Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Quarterfinals | Semifinals | Final,19,tournament-wide,FALSE
+/news/jp/teikei-l/,/news/jp/teikei-l/1/,Teikei Cup (Legend),Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Final,18,tournament-wide,FALSE
+/news/jp/teikei-s/,/news/jp/teikei-s/5/,Teikei Cup (Shunei),Final round,TITLE_SERIES,Players | 1st round2026-03-21 | 2nd round2026-04-04 | 3rd round2026-04-18,3,title-narrow,FALSE
+/news/jp/teikei-s/,/news/jp/teikei-s/5/,Teikei Cup (Shunei),League A,ROUND_ROBIN,Rank | Players | O.Y | T.S | T.Y | X.Y | H.H | T.T | Result,7,league-narrow,FALSE
+/news/jp/teikei-s/,/news/jp/teikei-s/5/,Teikei Cup (Shunei),League B 1st place decision tournament,LADDER_PLAYOFF,Players | 1st round | 2nd round | Final,6,tournament-decision,FALSE
+/news/jp/teikei-s/,/news/jp/teikei-s/5/,Teikei Cup (Shunei),League B,ROUND_ROBIN,Rank | Players | O.H | H.Y | F.K | Y.L | O.Y | O.A | Result,7,league-narrow,FALSE
+/news/jp/teikei-s/,/news/jp/teikei-s/1/,Teikei Cup (Shunei),Final round,TITLE_SERIES,Players | 1st round03-04 | 2nd round04-02 | 3rd round04-23,3,title-narrow,FALSE
+/news/jp/teikei-s/,/news/jp/teikei-s/1/,Teikei Cup (Shunei),League A,ROUND_ROBIN,Rank | Players | S.T | I.R | K.K | U.A | A.Y | I.T | Result,7,league-narrow,FALSE
+/news/jp/teikei-s/,/news/jp/teikei-s/1/,Teikei Cup (Shunei),League B,ROUND_ROBIN,Rank | Players | K.K | S.A | T.K | H.Y | O.Y | O.K | Result,7,league-narrow,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Title match,TITLE_SERIES,Players | 1st round2026-10-07NagoyaAichi | 2nd round2026-10-20SapporoHokkaido | 3rd round2026-11-22PusanKorea | 4th round2026-12-08SumotoHyogo | 5th round2026-12-15TokushimaTokushima,3,title-medium,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinals | Challengerdecisionmatch,34,tournament-wide,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,6,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Final,6,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/jp/tengen/,/news/jp/tengen/52/,Tengen,Preliminary tournament A,KNOCKOUT,Players | 1st round | Semifinals | Final,9,inner-table,FALSE
+/news/kr/crown/,/news/kr/crown/7/,Crown Haitai Cup,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinals | Final,33,tournament-wide,TRUE
+/news/kr/dj/,/news/kr/dj/13/,Daejoo Cup,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals04-24 | Final05-01,17,tournament-medium,FALSE
+/news/kr/dj/,/news/kr/dj/9/,Daejoo Cup,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Final,17,tournament-medium,FALSE
+/news/kr/fk/,/news/kr/fk/30/,Female Kuksu,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Final,17,tournament-medium,TRUE
+/news/kr/fks/,/news/kr/fks/9/,Female Kisung,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinals | Final,25,tournament-wide,TRUE
+/news/kr/fks/,/news/kr/fks/9/,Female Kisung,3rd place decision match,SINGLE_MATCH,Players | Result11-19,3,tournament-decision,FALSE
+/news/kr/ga/,/news/kr/ga/18/,GGAuction Cup,Knockout competition tournament,TEAM_RELAY,Players | Result | Players | Date,24,table table-box,FALSE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Tournament table,DOUBLE_ELIMINATION,Winner's tournament | Final,36,tournament-wide,TRUE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round01-08 | Final01-09,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round01-08 | Final01-09,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final01-17,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round01-08 | Final01-09,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round01-08 | Final01-09,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final01-14,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round01-08 | Final01-09,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round01-08 | Final01-09,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round01-08 | Final01-09,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round01-08 | Final01-09,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round01-08 | Final01-09,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/31/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round01-08 | Final01-09,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinals | Final,25,tournament-wide,TRUE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final12-16,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final12-14,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final12-15,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final12-21,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round12-09 | Final12-10,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final12-17,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round12-14 | Final12-15,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round12-09 | Final12-10,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final12-15,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round12-09 | Final12-10,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round12-14 | Final12-21,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round12-09 | Final12-10,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round12-09 | Final12-10,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final12-28,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final12-15,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round12-09 | Final12-10,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round | Final12-23,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round12-09 | Final12-10,5,inner-table,FALSE
+/news/kr/gs/,/news/kr/gs/27/,GS Caltex Cup,Preliminary tournament,KNOCKOUT,Players | 1st round12-09 | Final12-10,5,inner-table,FALSE
+/news/kr/hyorim/,/news/kr/hyorim/4/,Hyorim Cup,Tournament table,KNOCKOUT,Players | 1st round11-03 | 2nd round11-04 | 3rd round11-04 | semifinals11-05 | Final11-06,19,tournament-wide,FALSE
+/news/kr/ibk/,/news/kr/ibk/5/,IBK Cup Women's Baduk Masters,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Final,17,tournament-medium,TRUE
+/news/kr/ibk/,/news/kr/ibk/2/,IBK Cup Women's Baduk Masters,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Final,17,tournament-medium,TRUE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,1st place decision match,TITLE_SERIES,Players | 1st round2024-02-13 | 2nd round2024-02-16 | 3rd round2024-02-18 | 3rd round2024-02-26 | 3rd round2024-03-06,3,title-medium,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,4th tournament,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 1,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 2,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 1,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 2,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 3,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 4,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 1,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 2,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 3,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 4,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 5,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 6,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 7,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/2/,Korea Baduk Association Championship,Block 8,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,1st place decision match,TITLE_SERIES,Players | 1st round2022-02-20 | 2nd round2022-03-07 | 3rd round2022-03-08 | 4th round2022-03-09 | 5th round2022-03-10,3,title-medium,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,3rd place decision match,TITLE_SERIES,Players | Result2022-02-13,3,title-decision,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,5th place decision match,TITLE_SERIES,Players | Result2022-02-12,3,title-decision,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,7th place decision match,TITLE_SERIES,Players | Result2022-02-19,3,title-decision,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,9th place decision match,TITLE_SERIES,Players | Result2022-02-06,3,title-decision,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,11th place decision match,TITLE_SERIES,Players | Result2022-02-05,3,title-decision,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,League A,ROUND_ROBIN,Rank | Players | S.J | S.M | L.D | K.D | K.S | H.S | Result,7,league-narrow,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,League B,ROUND_ROBIN,Rank | Players | P.J | B.S | K.J | W.S | C.J | L.C | Result,7,league-narrow,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,Block 1,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,Block 2,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,Block 3,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,Block 4,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbac/,/news/kr/kbac/1/,Korea Baduk Association Championship,Block 5,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/kbs/,/news/kr/kbs/41/,KBS Cup,Tournament table,KNOCKOUT,Players | 1st round | Semifinals02-03 | Final02-26,9,tournament-narrow,FALSE
+/news/kr/kl/,/news/kr/kl/23/,Korea Baduk League,Post season,TEAM_KNOCKOUT,Players | 1st round | Semifinal | Final,5,tournament-wide,TRUE
+/news/kr/kl/,/news/kr/kl/23/,Korea Baduk League,Final rank,NON_FIXTURE_TABLE,Rank | Players | Win | Loss | Point,9,spacer,FALSE
+/news/kr/kl/,/news/kr/kl/23/,Korea Baduk League,2nd stage league,TEAM_ROUND_ROBIN,Team | J.J | G.C | J.H | W.I | K.Z | Y.M | Y.S | B.H | Win-loss | Rank,9,league-medium,FALSE
+/news/kr/kl/,/news/kr/kl/23/,Korea Baduk League,1st stage league,TEAM_ROUND_ROBIN,Team | J.J | G.C | J.H | W.I | K.Z | Y.M | Y.S | B.H | Win-loss | Rank,9,league-medium,FALSE
+/news/kr/kl/,/news/kr/kl/19/,Korea Baduk League,Post season,TEAM_KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinal | Final,7,tournament-wider,TRUE
+/news/kr/kl/,/news/kr/kl/19/,Korea Baduk League,Final rank,NON_FIXTURE_TABLE,Rank | Players | Win | Loss | Point,10,spacer,FALSE
+/news/kr/kl/,/news/kr/kl/19/,Korea Baduk League,2nd stage league,TEAM_ROUND_ROBIN,Team | J.C | B.H | C.T | B.U | K.P | Y.H | C.T | K.X | P.C | Win-loss | Rank,10,league-medium,FALSE
+/news/kr/kl/,/news/kr/kl/19/,Korea Baduk League,1st stage league,TEAM_ROUND_ROBIN,Team | J.C | B.H | C.T | B.U | K.P | Y.H | C.T | K.X | P.C | Win-loss | Rank,10,league-medium,FALSE
+/news/kr/kuksu/,/news/kr/kuksu/14/,Kuksu Cup,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Final,17,tournament-medium,TRUE
+/news/kr/kuksu/,/news/kr/kuksu/10/,Kuksu Cup,Tournament table,KNOCKOUT,Players | 1st round05-16 | 2nd round | 3rd round | Semifinals | Final,33,tournament-wide,TRUE
+/news/kr/leebong/,/news/kr/leebong/23/,"",SOURCE_UNAVAILABLE_404,REVIEW,"",0,"",
+/news/kr/mc/,/news/kr/mc/27/,Maxim Cup,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinals | Final,33,tournament-wide,TRUE
+/news/kr/mc/,/news/kr/mc/23/,Maxim Cup,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinals | Final,33,tournament-wide,TRUE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Tournament table,DOUBLE_ELIMINATION,Winner's tournament | Final,36,tournament-wide,TRUE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Preliminary tournament,KNOCKOUT,Players | 1st round06-19 | 2nd round06-20 | Final06-23,9,inner-table,FALSE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Preliminary tournament,KNOCKOUT,Players | 1st round06-19 | 2nd round06-20 | Final06-23,9,inner-table,FALSE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Preliminary tournament,KNOCKOUT,Players | 1st round06-19 | 2nd round06-20 | Final06-23,9,inner-table,FALSE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Preliminary tournament,KNOCKOUT,Players | 1st round | 2nd round | Final07-07,9,inner-table,FALSE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Preliminary tournament,KNOCKOUT,Players | 1st round | 2nd round | Final07-04,9,inner-table,FALSE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Preliminary tournament,KNOCKOUT,Players | 1st round | 2nd round | Final07-04,9,inner-table,FALSE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Preliminary tournament,KNOCKOUT,Players | 1st round06-19 | 2nd round06-20 | Final06-23,9,inner-table,FALSE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Preliminary tournament,KNOCKOUT,Players | 1st round | 2nd round | Final07-06,9,inner-table,FALSE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Preliminary tournament,KNOCKOUT,Players | 1st round | 2nd round | Final07-06,9,inner-table,FALSE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Preliminary tournament,KNOCKOUT,Players | 1st round06-19 | 2nd round06-20 | Final06-23,9,inner-table,FALSE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Preliminary tournament,KNOCKOUT,Players | 1st round06-19 | 2nd round06-20 | Final06-23,9,inner-table,FALSE
+/news/kr/mi/,/news/kr/mi/48/,Myeongin,Preliminary tournament,KNOCKOUT,Players | 1st round06-19 | 2nd round06-20 | Final06-23,9,inner-table,FALSE
+/news/kr/millennium-chunwon/,/news/kr/millennium-chunwon/4/,Millennium Chunwon,Tournament table,KNOCKOUT,Players | 1st round03-06 | 2nd round03-07 | Semifinals03-07 | Final03-08,17,tournament-medium,FALSE
+/news/kr/presidents/,/news/kr/presidents/7/,President's Cup,Tournament table,KNOCKOUT,Players | 1st round08-16 | 2nd round08-16 | 2nd round08-17 | Semifinals08-17 | Final08-18,33,tournament-wide,FALSE
+/news/kr/presidents/,/news/kr/presidents/4/,President's Cup,Tournament table,KNOCKOUT,Players | 1st round07-30 | 2nd round07-30 | Semifinals07-31 | Final07-31,17,tournament-medium,FALSE
+/news/kr/rs/,/news/kr/rs/6/,Ryongsang,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | Semifinals | Final,17,tournament-medium,TRUE
+/news/kr/rs/,/news/kr/rs/5/,Ryongsang,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Semifinals | Final,33,tournament-wide,TRUE
+/news/kr/sp/,/news/kr/sp/6/,Supreme Player,Title match,TITLE_SERIES,Players | 1st round2026-06-22 | 2nd round2026-06-23 | 3rd round2026-06-25 | 4th round2026-06-29 | 5th round2026-06-30,3,title-medium,FALSE
+/news/kr/sp/,/news/kr/sp/6/,Supreme Player,Tournament table,KNOCKOUT,Players | 1st round | Semifinals | Challengerdecisionmatch,9,tournament-narrow,TRUE
+/news/kr/sp/,/news/kr/sp/6/,Supreme Player,Block A,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/sp/,/news/kr/sp/6/,Supreme Player,Block B,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/sp/,/news/kr/sp/6/,Supreme Player,Block C,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/sp/,/news/kr/sp/6/,Supreme Player,Block D,KNOCKOUT,Players | 1st round |  | Players | 2nd round |  | Players | 3rd round,5,tournament-wide,FALSE
+/news/kr/sp/,/news/kr/sp/3/,Supreme Player,Title match,TITLE_SERIES,Players | 1st round06-02 | 2nd round06-03 | 3rd round06-06 | 4th round06-07 | 5th round06-09,3,title-medium,FALSE
+/news/kr/sp/,/news/kr/sp/3/,Supreme Player,Demotion player decision match,SINGLE_MATCH,Players | Result,5,tournament-narrow,FALSE
+/news/kr/sp/,/news/kr/sp/3/,Supreme Player,League,ROUND_ROBIN,Rank | Players | P.J | B.S | S.M | L.C | K.D | H.M | Y.C | C.H | H.Y | Result,10,league-medium,FALSE
+/news/kr/spf/,/news/kr/spf/5/,Supreme player of Female,Tournament table,DOUBLE_ELIMINATION,Winner's tournament | Final,20,tournament-medium,TRUE
+/news/kr/sy/,/news/kr/sy/7/,Shinye Strongest,Tournament table,KNOCKOUT,Players | 1st round2022-03-07 | 2nd round2022-03-08 | 3rd round2022-03-10 | Quarterfinals2022-03-11 | Semifinals2022-03-25 | Final2022-03-26,36,tournament-wide,FALSE
+/news/kr/yk/,/news/kr/yk/2/,YK Gyeonggi Cup,Final round,TITLE_SERIES,Players | 1st round07-03 | 2nd round07-04 | 3rd round07-05 | 4th round07-10 | 5th round07-11,3,title-medium,FALSE
+/news/kr/yk/,/news/kr/yk/2/,YK Gyeonggi Cup,League,ROUND_ROBIN,Rank | Players | P.J | B.S | K.D | L.C | S.J | S.M | K.S | W.S | Result,9,league-medium,FALSE
+/news/kr/yk/,/news/kr/yk/1/,YK Gyeonggi Cup,Final round,TITLE_SERIES,Players | 1st round07-18 | 2nd round07-19 | 3rd round07-20,3,title-narrow,FALSE
+/news/kr/yk/,/news/kr/yk/1/,YK Gyeonggi Cup,League,ROUND_ROBIN,Rank | Players | K.S | W.S | K.E | K.M | K.D | H.W | L.J | S.J | P.J | R.M | Result,11,league-wide,FALSE
+/news/tw/fmingren/,/news/tw/fmingren/8/,Female Mingren,Tournament table,DOUBLE_ELIMINATION,Winner's tournament | Final,20,tournament-medium,TRUE
+/news/tw/fz/,/news/tw/fz/12/,Female Zuiqiang,Tournament table,DOUBLE_ELIMINATION,Winner's tournament | Final08-11,36,tournament-wide,FALSE
+/news/tw/fz/,/news/tw/fz/8/,Female Zuiqiang,Tournament table,DOUBLE_ELIMINATION,Winner's tournament | Final09-08,20,tournament-medium,FALSE
+/news/tw/go/,/news/tw/go/22/,Guoshou,Tournament table,KNOCKOUT,Players | 1st round09-07 | 2nd round | 3rd round09-21 | 4th round10-05 | Quarterfinals11-02 | Semifinals11-09 | Challengerdecisionmatch,71,tournament-wide,FALSE
+/news/tw/hc/,/news/tw/hc/18/,Haifong Cup,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Quarterfinals02-02 | Semifinals02-23 | Final,65,tournament-wider,TRUE
+/news/tw/kuaiqi/,/news/tw/kuaiqi/7/,Kuaiqi (HayaGo) tournament,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round | Quarterfinals | Semifinals06-03 | Final,49,tournament-wide,TRUE
+/news/tw/longxing/,/news/tw/longxing/1/,Longxing,Tournament table,KNOCKOUT,Players | 1st round12-08 | 2nd round12-08 | 3rd round12-15 | Semifinals12-15 | Final12-29,33,tournament-wide,TRUE
+/news/tw/mingren/,/news/tw/mingren/7/,Mingren,Tournament table,KNOCKOUT,Players | 1st round | 2nd round03-05 | 3rd round03-19 | Semifinals | Final,33,tournament-wide,TRUE
+/news/tw/mingren/,/news/tw/mingren/3/,Mingren,Tournament table,KNOCKOUT,Players | 1st round2022-02-21 | 2nd round2022-02-24 | 3rd round2022-03-07 | Semifinals | Final,33,tournament-wide,TRUE
+/news/tw/qw/,/news/tw/qw/19/,Qiwang,League,ROUND_ROBIN,Rank | Players | W.Y | X.Z | L.Y | C.Q | L.F | Y.B | C.S | J.J | Result,9,league-medium,FALSE
+/news/tw/qw/,/news/tw/qw/19/,Qiwang,The last preliminary tournament,KNOCKOUT,Players | 1st round | 2nd round09H> | Semifinals11-18 | Final11-25,65,tournament-wide,FALSE
+/news/tw/sd/,/news/tw/sd/15/,Shiduan,Title match,TITLE_SERIES,Players | 1st round2025-09-17 | 2nd round2025-09-24 | 3rd round2025-10-08 | 4th round2025-10-15 | 5th round2025-10-22,3,title-medium,FALSE
+/news/tw/sd/,/news/tw/sd/15/,Shiduan,Tournament table,KNOCKOUT,Players | 1st round05-05 | 2nd round05-12 | Semifinals05-19 | Challengerdecisionmatch,17,tournament-medium,FALSE
+/news/tw/sd/,/news/tw/sd/12/,Shiduan,Title match,TITLE_SERIES,Players | 1st round05-12 | 2nd round05-19 | 3rd round05-26 | 4th round06-02 | 5th round06-09,3,title-medium,FALSE
+/news/tw/sd/,/news/tw/sd/12/,Shiduan,Tournament table,KNOCKOUT,Players | 1st round04-11 | 2nd round04-18 | Semifinals04-25 | Challengerdecisionmatch,17,tournament-medium,FALSE
+/news/tw/tn/,/news/tw/tn/25/,Tianyuan,Title match,TITLE_SERIES,Players | 1st round2026-03-03 | 2nd round2026-03-10 | 3rd round2026-03-17 | 4th round2026-03-24 | 5th round2026-03-31,3,title-medium,FALSE
+/news/tw/tn/,/news/tw/tn/25/,Tianyuan,Challenger decision match,KNOCKOUT,Players | 1st round02-03 | 2nd round02-04,4,tournament-narrow,FALSE
+/news/tw/tn/,/news/tw/tn/25/,Tianyuan,League,ROUND_ROBIN,Rank | Players | X.Q | L.F | L.Y | L.W | L.X | W.Y | C.S | C.Q | Result,9,league-medium,FALSE
+/news/tw/tn/,/news/tw/tn/25/,Tianyuan,The last preliminary tournament,KNOCKOUT,Players | 1st round | 2nd round | Final,33,tournament-medium,FALSE
+/news/tw/tn/,/news/tw/tn/21/,Tianyuan,Title match,TITLE_SERIES,Players | 1st round05-03 | 2nd round05-10 | 3rd round05-17 | 4th round05-24 | 5th round06-07 | 6th round06-14 | 7th round06-21,3,title-wide,FALSE
+/news/tw/tn/,/news/tw/tn/21/,Tianyuan,Challenger decision match,SINGLE_MATCH,Players | Result04-01,3,tournament-decision,FALSE
+/news/tw/tn/,/news/tw/tn/21/,Tianyuan,League,ROUND_ROBIN,Rank | Players | J.J | C.Q | L.J | L.J | C.S | X.H | X.Z | L.S | Result,9,league-medium,FALSE
+/news/tw/tn/,/news/tw/tn/21/,Tianyuan,The last preliminary tournament,KNOCKOUT,Players | 1st round01-18 | 2nd round01-21 | Final01-25,33,tournament-medium,FALSE
+/news/tw/umc/,/news/tw/umc/4/,UMC Cup,Title match,TITLE_SERIES,Players | 1st round2023-09-05 | 2nd round2023-09-08 | 3rd round2023-09-12 | 4th round2023-09-15 | 5th round2023-09-19 | 6th round2023-10-06 | 7th round2023-10-13,3,title-wide,FALSE
+/news/tw/umc/,/news/tw/umc/4/,UMC Cup,League,ROUND_ROBIN,Rank | Players | W.Y | L.F | L.Y | X.Q | L.L | C.Q | J.J | C.W | Result,9,league-medium,FALSE
+/news/tw/umc/,/news/tw/umc/4/,UMC Cup,The last preliminary tournament,KNOCKOUT,Players | 1st round | 2nd round | Final06-06,33,tournament-medium,FALSE
+/news/tw/xc/,/news/tw/xc/1/,Xuanyue Cup,Tournament table,KNOCKOUT,Players | 1st round | 2nd round09-17 | 3rd round | Quarterfinals | Semifinals10-15 | Final,49,tournament-wide,TRUE
+/news/tw/xr/,/news/tw/xr/11/,Xinren Wang,Tournament table,KNOCKOUT,Players | 1st round05-15 | 2nd round | Semifinals05-22 | Final,17,tournament-medium,TRUE
+/news/tw/xr/,/news/tw/xr/7/,Xinren Wang,Tournament table,KNOCKOUT,Players | 1st round06-20 | 2nd round06-27 | Semifinals07-04 | Final,17,tournament-medium,TRUE
+/news/tw/zq/,/news/tw/zq/14/,Zhonghuan Qisheng,Tournament table,KNOCKOUT,Players | 1st round | 2nd round | 3rd round09-18 | 4th round10-16 | Quarterfinals10-23 | Semifinals10-30 | Final,70,tournament-wide,TRUE
+/news/wr/ag/,/news/wr/ag/26/,Agon Cup (Japan-China),26th Agon Cup (Japan-China),SINGLE_MATCH,Players | Result,3,tournament-decision,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Tournament table,KNOCKOUT,Players | 1st round2025-04-10BeihaiChina | 2nd round2025-04-11BeihaiChina | 3rd round2025-04-12BeihaiChina | Quarterfinals2025-04-14BeihaiChina | Semifinals2025-04-15BeihaiChina | Final2025-04-17~19BeihaiChina,65,tournament-wider,TRUE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Taiwan,SINGLE_MATCH,Players | Result2025-01-14,3,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Taiwan,SINGLE_MATCH,Players | Result2025-01-17,3,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Taiwan,SINGLE_MATCH,Players | Result2025-01-17,3,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Taiwan,SINGLE_MATCH,Players | Result2025-01-21,3,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Taiwan,SINGLE_MATCH,Players | Result2025-01-21,3,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Taiwan,SINGLE_MATCH,Players | Result2025-01-21,3,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Taiwan,SINGLE_MATCH,Players | Result2025-01-14,3,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2024-09-26 | Final2024-09-27,5,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2024-09-26 | Final2024-09-27,5,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round | Final2024-09-28,5,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2024-09-26 | Final2024-09-27,5,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2024-09-26 | Final2024-09-27,5,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2024-09-26 | Final2024-09-27,5,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2024-09-26 | Final2024-09-27,5,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2024-09-26 | Final2024-09-27,5,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2024-09-26 | Final2024-09-27,5,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2024-09-26 | Final2024-09-27,5,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round | 2nd round | Final2024-10-08,9,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round2024-09-27 | Final2024-10-11,5,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round2024-09-27 | Final2024-10-11,5,inner-table,FALSE
+/news/wr/beihai/,/news/wr/beihai/1/,Beihai Xinyi Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | Final2024-10-18,3,inner-table,FALSE
+/news/wr/cl/,/news/wr/cl/16/,Chunlan Cup,Tournament table,KNOCKOUT,Players | 1st round2026-05-23XianKorea | 2nd round2026-05-25XianKorea | 3rd round |  | Semifinals | Final,25,tournament-wide,TRUE
+/news/wr/cl/,/news/wr/cl/16/,Chunlan Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-03-30 | Semifinals2026-03-31 | Final2026-04-03,7,inner-table,FALSE
+/news/wr/cl/,/news/wr/cl/16/,Chunlan Cup,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result2026-03-27,3,inner-table,FALSE
+/news/wr/cl/,/news/wr/cl/16/,Chunlan Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round2026-03-20 | Semifinals2026-03-23 | Final2026-03-25,9,inner-table,FALSE
+/news/wr/cl/,/news/wr/cl/14/,Chunlan Cup,Tournament table,KNOCKOUT,Players | 1st round2022-03-22Internet | 2nd round2022-03-24Internet | 3rd round2022-12-19Internet | Semifinals2022-12-21Internet | Final2023-07-17~20Chongqing,25,tournament-wide,TRUE
+/news/wr/cl/,/news/wr/cl/14/,Chunlan Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round02-25 | Semifinals02-27 | Final03-01,9,inner-table,FALSE
+/news/wr/cl/,/news/wr/cl/14/,Chunlan Cup,Preliminary tournament of China,KNOCKOUT,Players | 1st round02-21 | Final02-23,17,inner-table,FALSE
+/news/wr/cl/,/news/wr/cl/14/,Chunlan Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round02-21 | Semifinals02-22 | Final02-23,7,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/11/,GLOBIS Cup,Tournament table,KNOCKOUT,Players | 1st round2026-06-27 | Semifinals2026-06-28 | Final2026-06-28,9,tournament-narrow,FALSE
+/news/wr/gc/,/news/wr/gc/11/,GLOBIS Cup,3rd place decision match,SINGLE_MATCH,Players | Result2026-06-28,3,tournament-decision,FALSE
+/news/wr/gc/,/news/wr/gc/11/,GLOBIS Cup,1st tournament(Block tournament),DOUBLE_ELIMINATION_GROUPS,Block-A,11,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/11/,GLOBIS Cup,1st tournament(Block tournament),DOUBLE_ELIMINATION_GROUPS,Block-B,11,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/11/,GLOBIS Cup,1st tournament(Block tournament),DOUBLE_ELIMINATION_GROUPS,Block-C,11,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/11/,GLOBIS Cup,1st tournament(Block tournament),DOUBLE_ELIMINATION_GROUPS,Block-D,11,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/11/,GLOBIS Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round2026-03-29 | Final2026-03-29,5,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,Tournament table,KNOCKOUT,Players | 1st round | Semifinals | Final,9,tournament-medium,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,3rd place decision match,SINGLE_MATCH,Players | Result,3,tournament-decision,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,1st tournament(Block tournament),DOUBLE_ELIMINATION_GROUPS,Block-A,11,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,1st tournament(Block tournament),DOUBLE_ELIMINATION_GROUPS,Block-B,11,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,1st tournament(Block tournament),DOUBLE_ELIMINATION_GROUPS,Block-C,11,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,1st tournament(Block tournament),DOUBLE_ELIMINATION_GROUPS,Block-D,11,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round05-02 | Semifinals05-03 | Final05-04,7,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round04-29 | Semifinals04-29 | Final05-04,9,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,Preliminary tournament of Japan,KNOCKOUT,Players | 1st round04-25 | Semifinals04-25 | Final04-25,6,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,Preliminary tournament of Japan,KNOCKOUT,Players | 1st round04-25 | Semifinals04-25 | Final04-25,6,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,Preliminary tournament of Japan,KNOCKOUT,Players | 1st round04-18 | Semifinals04-18 | Final04-18,6,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,Preliminary tournament of Japan,KNOCKOUT,Players | 1st round04-11 | Semifinals04-11 | Final04-11,7,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,Preliminary tournament of Japan,KNOCKOUT,Players | 1st round04-11 | Semifinals04-11 | Final04-11,7,inner-table,FALSE
+/news/wr/gc/,/news/wr/gc/9/,GLOBIS Cup,Preliminary tournament of Japan,KNOCKOUT,Players | 1st round04-18 | Semifinals04-18 | Final04-18,7,inner-table,FALSE
+/news/wr/hls/,/news/wr/hls/10/,Huanglongshi Cup,League,ROUND_ROBIN,Rank | Players | L.M | L.X | H.S | L.H | Z.H | C.J | U.A | F.R | Result,9,league-medium,FALSE
+/news/wr/hls/,/news/wr/hls/10/,Huanglongshi Cup,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result,3,inner-table,FALSE
+/news/wr/hls/,/news/wr/hls/10/,Huanglongshi Cup,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result,3,inner-table,FALSE
+/news/wr/hoban/,/news/wr/hoban/1/,Hoban Cup,Knockout competition tournament,TEAM_RELAY,Players | Result | Players | Date,15,table table-box,FALSE
+/news/wr/ibk/,/news/wr/ibk/1/,IBK Cup Women's Baduk World Masters,Tournament table,KNOCKOUT,"Players | 1st round2026-10-01,02SeoulKorea | 2nd round2026-10-03,04SeoulKorea | 3rd round2026-10-05SeoulKorea | Semifinals2027-01-05 | Final2027-01-06~08",33,tournament-wide,TRUE
+/news/wr/ibk/,/news/wr/ibk/1/,IBK Cup Women's Baduk World Masters,Preliminary tournament of Taiwan,KNOCKOUT,Players | Final2026-08-21,3,inner-table,FALSE
+/news/wr/ibk/,/news/wr/ibk/1/,IBK Cup Women's Baduk World Masters,Preliminary tournament of Taiwan,KNOCKOUT,Players | Final2026-08-21,3,inner-table,FALSE
+/news/wr/ibk/,/news/wr/ibk/1/,IBK Cup Women's Baduk World Masters,Preliminary tournament of Taiwan,KNOCKOUT,Players | Final2026-08-28,3,inner-table,FALSE
+/news/wr/ibk/,/news/wr/ibk/1/,IBK Cup Women's Baduk World Masters,Preliminary tournament of Taiwan,KNOCKOUT,Players | Final2026-08-14,3,inner-table,FALSE
+/news/wr/ibk/,/news/wr/ibk/1/,IBK Cup Women's Baduk World Masters,Preliminary tournament of Taiwan,KNOCKOUT,Players | Final2026-08-14,3,inner-table,FALSE
+/news/wr/ig/,/news/wr/ig/10/,Ing Cup,Tournament table,KNOCKOUT,Players | 1st round2024-07-03ShanghaiChina | 2nd round2024-07-04ShanghaiChina | Semifinals2024-07-06~09NingboChina | Final,17,tournament-medium,TRUE
+/news/wr/ig/,/news/wr/ig/10/,Ing Cup,Preliminary tournament,KNOCKOUT,Players | 1st round2024-04-20Internet | Final2024-04-21Internet,57,tournament-narrow,FALSE
+/news/wr/ig/,/news/wr/ig/10/,Ing Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round04-01 | Semifinals04-02 | Final04-03,7,inner-table,FALSE
+/news/wr/ig/,/news/wr/ig/10/,Ing Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round04-01 | Semifinals04-02 | Final04-03,7,inner-table,FALSE
+/news/wr/ig/,/news/wr/ig/10/,Ing Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round04-01 | Semifinals04-02 | Final04-03,7,inner-table,FALSE
+/news/wr/ig/,/news/wr/ig/10/,Ing Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round04-01 | Semifinals04-02 | Final04-03,7,inner-table,FALSE
+/news/wr/ig/,/news/wr/ig/10/,Ing Cup,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result,3,inner-table,FALSE
+/news/wr/ig/,/news/wr/ig/10/,Ing Cup,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result,3,inner-table,FALSE
+/news/wr/ig/,/news/wr/ig/10/,Ing Cup,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result,3,inner-table,FALSE
+/news/wr/ig/,/news/wr/ig/10/,Ing Cup,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result,3,inner-table,FALSE
+/news/wr/ig/,/news/wr/ig/10/,Ing Cup,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result,3,inner-table,FALSE
+/news/wr/ig/,/news/wr/ig/10/,Ing Cup,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result,3,inner-table,FALSE
+/news/wr/kuksu-mountains/,/news/wr/kuksu-mountains/11/,Kuksu Mountains International Baduk Championship,Tournament table,KNOCKOUT,Players | 1st round2025-09-30JeongnamKorea | 2nd round2025-09-30JeongnamKorea | Semifinals2025-10-01JeongnamKorea | Final2025-10-02JeongnamKorea,17,tournament-medium,FALSE
+/news/wr/kuksu-mountains/,/news/wr/kuksu-mountains/11/,Kuksu Mountains International Baduk Championship,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round2025-08-15 | Semifinals2025-08-15 | Final2025-09-01,9,inner-table,FALSE
+/news/wr/kuksu-mountains/,/news/wr/kuksu-mountains/11/,Kuksu Mountains International Baduk Championship,Preliminary tournament of China,KNOCKOUT,Players | 1st round2025-08-09 | Final2025-08-11,5,inner-table,FALSE
+/news/wr/kuksu-mountains/,/news/wr/kuksu-mountains/11/,Kuksu Mountains International Baduk Championship,Preliminary tournament of China,KNOCKOUT,Players | 1st round2025-08-07 | Final2025-08-07,5,inner-table,FALSE
+/news/wr/kuksu-mountains/,/news/wr/kuksu-mountains/11/,Kuksu Mountains International Baduk Championship,Preliminary tournament of China,KNOCKOUT,Players | 1st round2025-08-07 | Final2025-08-09,5,inner-table,FALSE
+/news/wr/kuksu-mountains/,/news/wr/kuksu-mountains/11/,Kuksu Mountains International Baduk Championship,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round | Final2025-07-29,5,inner-table,FALSE
+/news/wr/kuksu-mountains/,/news/wr/kuksu-mountains/11/,Kuksu Mountains International Baduk Championship,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2025-07-28 | Final2025-07-29,5,inner-table,FALSE
+/news/wr/kuksu-mountains/,/news/wr/kuksu-mountains/11/,Kuksu Mountains International Baduk Championship,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2025-07-28 | Final2025-07-29,5,inner-table,FALSE
+/news/wr/kuksu-mountains/,/news/wr/kuksu-mountains/11/,Kuksu Mountains International Baduk Championship,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2025-07-28 | Final2025-07-29,5,inner-table,FALSE
+/news/wr/kuksu-mountains/,/news/wr/kuksu-mountains/8/,Kuksu Mountains International Baduk Championship,Tournament table,KNOCKOUT,Players | 1st round08-13Internet | 2nd round08-13Internet | Semifinals08-14Internet | Final08-15Internet,17,tournament-medium,FALSE
+/news/wr/kuksu-mountains/,/news/wr/kuksu-mountains/8/,Kuksu Mountains International Baduk Championship,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round | Final06-29,5,inner-table,FALSE
+/news/wr/kuksu-mountains/,/news/wr/kuksu-mountains/8/,Kuksu Mountains International Baduk Championship,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round06-22 | Final06-29,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Tournament table,KNOCKOUT,Players | 1st round2026-06-09JeonjuKorea | 2nd round2026-06-10JeonjuKorea | 3rd round2026-06-11JeonjuKorea | Semifinals2026-06-12JeonjuKorea | Final2026-06-14~16JeonjuKorea,25,tournament-wide,TRUE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-04-29 | Final2026-04-30,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-04-30 | Final2026-05-01,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-04-29 | Final2026-04-30,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-04-29 | Final2026-04-30,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round | Final2026-05-06,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-04-29 | Final2026-04-30,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round | Final2026-05-01,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-04-22 | Final2026-04-24,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-04-22 | Final2026-04-24,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-04-22 | Final2026-04-30,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-04-22 | Final2026-04-24,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round2026-04-24 | Semifinals2026-04-27 | Final2026-04-28,9,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/31/,LG Cup,Preliminary tournament of Japan,KNOCKOUT,Players | 1st round | Final2026-04-24,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/27/,LG Cup,Tournament table,KNOCKOUT,Players | 1st roundInternet | 2nd roundInternet | 3rd roundInternet | SemifinalsInternet | FinalBeijingChina,25,tournament-wide,TRUE
+/news/wr/lg/,/news/wr/lg/27/,LG Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2022-04-25 | Final2022-04-26,29,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/27/,LG Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round2022-04-19 | Semifinals2022-04-20 | Final2022-04-22,9,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/27/,LG Cup,2nd stage,KNOCKOUT,Players | 1st round2022-04-23 | Final2022-04-23,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/27/,LG Cup,1st stage,KNOCKOUT,Players | 1st round2022-04-12 | Final2022-04-12,5,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/27/,LG Cup,2nd stage,KNOCKOUT,Players | 1st round2022-04-02 | Final2022-04-06,17,inner-table,FALSE
+/news/wr/lg/,/news/wr/lg/27/,LG Cup,1st stage,KNOCKOUT,Players | 1st round2022-03-31 | Final2022-04-01,17,inner-table,FALSE
+/news/wr/ml/,/news/wr/ml/6/,MLILY Cup,Tournament table,KNOCKOUT,Players | 1st round2026-08-15BeijingChina | 2nd round2026-08-16BeijingChina | 3rd round2026-08-18BeijingChina | Quarterfinals |  | Semifinals | Final,65,tournament-wider,TRUE
+/news/wr/ml/,/news/wr/ml/6/,MLILY Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round2026-03-30 | 2nd round2026-04-01 | Final2026-04-02,9,inner-table,FALSE
+/news/wr/nanyang/,/news/wr/nanyang/1/,Nanyang Cup,Tournament table,KNOCKOUT,Players | 1st round2024-11-02ChengduChina | 2nd round2024-11-03ChengduChina | 3rd round2024-11-05ChengduChina | Semifinals2024-11-06ChengduChina | Final2025-02-26~03-01Singapore,33,tournament-wide,TRUE
+/news/wr/nanyang/,/news/wr/nanyang/1/,Nanyang Cup,3rd place decision match,SINGLE_MATCH,Players | Result2025-02-27Singapore,3,tournament-decision,FALSE
+/news/wr/nanyang/,/news/wr/nanyang/1/,Nanyang Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2024-10-04 | 2nd round2024-10-07 | Final2024-10-12,7,inner-table,FALSE
+/news/wr/nanyang/,/news/wr/nanyang/1/,Nanyang Cup,Preliminary tournament of Taiwan,SINGLE_MATCH,Players | Result2024-10-04,3,inner-table,FALSE
+/news/wr/nanyang/,/news/wr/nanyang/1/,Nanyang Cup,Preliminary tournament of Taiwan,SINGLE_MATCH,Players | Result2024-10-04,3,inner-table,FALSE
+/news/wr/nanyang/,/news/wr/nanyang/1/,Nanyang Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round2024-10-04 | 2nd round2024-10-08 | Final2024-10-09,9,inner-table,FALSE
+/news/wr/nc/,/news/wr/nc/28/,Nongshim Cup,Knockout competition tournament,TEAM_RELAY,Players | Result | Players | Date,15,table table-box,FALSE
+/news/wr/nc/,/news/wr/nc/28/,Nongshim Cup,Preliminary tournament of China,KNOCKOUT,Players | 1st round2026-07-18 | 2nd round2026-07-19 | Final2026-07-20,7,inner-table,FALSE
+/news/wr/nc/,/news/wr/nc/28/,Nongshim Cup,Preliminary tournament of China,KNOCKOUT,Players | 1st round | 2nd round | Final2026-07-23,7,inner-table,FALSE
+/news/wr/nc/,/news/wr/nc/28/,Nongshim Cup,Preliminary tournament of Japan,KNOCKOUT,Players | 1st round | Final,5,inner-table,FALSE
+/news/wr/nc/,/news/wr/nc/28/,Nongshim Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-07-11 | Final2026-07-12,5,inner-table,FALSE
+/news/wr/nc/,/news/wr/nc/28/,Nongshim Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-07-11 | Final2026-07-13,5,inner-table,FALSE
+/news/wr/nc/,/news/wr/nc/28/,Nongshim Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2026-07-11 | Final2026-07-13,5,inner-table,FALSE
+/news/wr/ncbss/,/news/wr/ncbss/4/,Nongshim Baeksansoo Cup,Knockout competition tournament,TEAM_RELAY,Players | Result | Players | Date,12,table table-box,FALSE
+/news/wr/quzhou-lanke/,/news/wr/quzhou-lanke/4/,Quzhou-Lanke Cup,Tournament table,KNOCKOUT,Players | 1st round2026-04-14 | 2nd round2026-04-15 | 3rd round2026-10-09 | Quarterfinals2026-10-10 | Semifinals2026-10-12 | Final,49,tournament-wide,TRUE
+/news/wr/quzhou-lanke/,/news/wr/quzhou-lanke/4/,Quzhou-Lanke Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round | 2nd round2026-03-12 | Final2026-03-13,9,inner-table,FALSE
+/news/wr/sc/,/news/wr/sc/30/,Samsung Cup,Tournament table,KNOCKOUT,Players | 1st round2025-11-09KyeonggiKorea | 2nd round2025-11-10~11KyeonggiKorea | 3rd round2025-11-12~13KyeonggiKorea | Semifinals2025-11-14~15KyeonggiKorea | Final2025-11-16~18KyeonggiKorea,33,tournament-wide,TRUE
+/news/wr/senko/,/news/wr/senko/8/,SENKO Cup,Tournament table,KNOCKOUT,Players | 1st round2026-03-13 | Semifinals2026-03-14 | Final2026-03-15,9,table_sixteen,FALSE
+/news/wr/senko/,/news/wr/senko/8/,SENKO Cup,3rd place decision match,SINGLE_MATCH,Players | Result2026-03-15,3,table_decision,FALSE
+/news/wr/senko/,/news/wr/senko/4/,SENKO Cup,Tournament table,KNOCKOUT,Players | 1st round2022-04-08 | Semifinals2022-04-09 | Final2022-04-10,9,table_sixteen,FALSE
+/news/wr/senko/,/news/wr/senko/4/,SENKO Cup,3rd place decision match,SINGLE_MATCH,Players | Result2022-04-10,3,table_decision,FALSE
+/news/wr/shinan-senior/,/news/wr/shinan-senior/6/,Shinan International Senior Baduk Cup,Tournament table,KNOCKOUT,Players | 1st round2025-06-06ShinanKorea | 2nd round2025-06-06ShinanKorea | Semifinals2025-06-07ShinanKorea | Final2025-06-07ShinanKorea,17,tournament-medium,FALSE
+/news/wr/shinan-senior/,/news/wr/shinan-senior/6/,Shinan International Senior Baduk Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2025-04-05 | Final2025-04-06,5,inner-table,FALSE
+/news/wr/shinan-senior/,/news/wr/shinan-senior/6/,Shinan International Senior Baduk Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2025-04-05 | Final2025-04-06,5,inner-table,FALSE
+/news/wr/supreme-player/,/news/wr/supreme-player/1/,Supreme Player,Final round,TITLE_SERIES,Players | 1st round2025-09-09 | 2nd round2025-09-11 | 3rd round2025-09-12,3,title-narrow,FALSE
+/news/wr/supreme-player/,/news/wr/supreme-player/1/,Supreme Player,League,ROUND_ROBIN,Players | P.J | K.D | S.M | S.J | D.Y | X.J | T.X | F.K | X.H | Result,10,league-medium,FALSE
+/news/wr/supreme-player/,/news/wr/supreme-player/1/,Supreme Player,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2024-12-06 | Final2025-01-02,5,inner-table,FALSE
+/news/wr/supreme-player/,/news/wr/supreme-player/1/,Supreme Player,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round | Final2024-12-20,5,inner-table,FALSE
+/news/wr/supreme-player/,/news/wr/supreme-player/1/,Supreme Player,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2024-12-06 | Final2024-12-18,5,inner-table,FALSE
+/news/wr/supreme-player/,/news/wr/supreme-player/1/,Supreme Player,Preliminary tournament of China,KNOCKOUT,Players | 1st round | 2nd round2024-12-13 | Final2024-12-14,9,inner-table,FALSE
+/news/wr/supreme-player/,/news/wr/supreme-player/1/,Supreme Player,Preliminary tournament of China,KNOCKOUT,Players | 1st round2024-12-11 | 2nd round | Final2024-12-18,9,inner-table,FALSE
+/news/wr/tc/,/news/wr/tc/9/,Tiantaishan Cup,Knockout competition tournament,TEAM_RELAY,Players | Result | Players | Date,12,table table-box,FALSE
+/news/wr/wc/,/news/wr/wc/8/,Wu Qingyuan Cup,Tournament table,KNOCKOUT,Players | 1st round2025-12-02FujianChina | 2nd round2025-12-03FujianChina | 3rd round2025-12-04FujianChina | Semifinals2025-12-05FujianChina | Final2025-12-07~09FujianChina,25,tournament-wide,TRUE
+/news/wr/wc/,/news/wr/wc/8/,Wu Qingyuan Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round2025-08-04 | Final2025-08-05,5,inner-table,FALSE
+/news/wr/wc/,/news/wr/wc/5/,Wu Qingyuan Cup,Tournament table,KNOCKOUT,Players | 1st round07-30Internet | 2nd round07-31Internet | 3rd round08-01Internet | Semifinals09-25Internet | Final09-27~29Internet,25,tournament-wide,TRUE
+/news/wr/wc/,/news/wr/wc/5/,Wu Qingyuan Cup,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round04-07 | 2nd round04-11 | Final04-12,7,inner-table,FALSE
+/news/wr/wc/,/news/wr/wc/5/,Wu Qingyuan Cup,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round04-06 | Final04-13,5,inner-table,FALSE
+/news/wr/wc/,/news/wr/wc/5/,Wu Qingyuan Cup,Preliminary league of China,ROUND_ROBIN,No. | Players | 1st2022-03-21 | 2nd2022-03-22 | 3rd2022-03-24 | 4th2022-03-25 | 5th2022-03-28 | 6th2022-03-29 | Result,14,league-wide,FALSE
+/news/wr/wc/,/news/wr/wc/5/,Wu Qingyuan Cup,7th place decision match,SINGLE_MATCH,Players | Result03-30,3,tournament-decision,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Tournament table,KNOCKOUT,"Players | 1st round2025-12-24,25SeoulKorea | 2nd round2025-12-26,27SeoulKorea | 3rd round2025-12-28SeoulKorea | Semifinals2025-12-29SeoulKorea | Final2026-02-25~27SeoulKorea",33,tournament-wide,TRUE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round | Final2025-11-04,5,inner-table,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2025-10-27 | Final2025-10-28,5,inner-table,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round | Final2025-11-04,5,inner-table,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2025-10-27 | Final2025-10-28,5,inner-table,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2025-10-27 | Final2025-10-28,5,inner-table,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2025-10-27 | Final2025-10-28,5,inner-table,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round2025-10-27 | Final2025-10-28,5,inner-table,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Korea,KNOCKOUT,Players | 1st round | Final2025-11-02,5,inner-table,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result2025-10-24,3,inner-table,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result2025-10-28,3,inner-table,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result2025-10-31,3,inner-table,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Japan,SINGLE_MATCH,Players | Result2025-10-31,3,inner-table,FALSE
+/news/wr/world-go-immortal/,/news/wr/world-go-immortal/1/,World Go Immortal Championship,Preliminary tournament of Taiwan,KNOCKOUT,Players | 1st round2025-10-22 | 2nd round2025-10-22 | Final2025-10-28,9,inner-table,FALSE
+/news/wr/yangming/,/news/wr/yangming/1/,Yangming Cup,Tournament table,KNOCKOUT,Players | 1st round2025-10-31GuiyangChina | 2nd round2025-11-01GuiyangChina | Semifinals2025-11-02GuiyangChina | Final2025-11-03GuiyangChina,17,tournament-medium,FALSE

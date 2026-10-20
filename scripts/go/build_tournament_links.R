@@ -1,11 +1,14 @@
 # Small link index from already-built pages; no downloads or ratings changes.
 local({
   library(jsonlite)
+  source("scripts/go/tournament_last_played.R")
   base <- Sys.getenv("GO_TOURNAMENT_LINK_OUTPUT","Go/data/tournaments/catalogue")
   catalogue <- fromJSON(file.path(base,"index.json"),simplifyVector=FALSE)
   links <- list()
-  for(page in catalogue) {
+  for(i in seq_along(catalogue)) {
+    page <- catalogue[[i]]
     data <- fromJSON(file.path(base,page$file),simplifyVector=FALSE)
+    catalogue[[i]]$lastPlayed <- go_tournament_last_played(data)
     for(game in data$games) {
       date <- if(!is.null(game$historyDate) && nzchar(game$historyDate)) game$historyDate else game$date
       if(!nzchar(date)||length(game$players)!=2L) next
@@ -19,5 +22,6 @@ local({
   links <- lapply(links,function(files) if(length(files)==1L) files else NULL)
   links <- links[!vapply(links,is.null,logical(1))]
   write_json(links,file.path(base,"game-links.json"),auto_unbox=TRUE)
+  write_json(catalogue,file.path(base,"index.json"),auto_unbox=TRUE,null="null")
   cat("Built",length(links),"unambiguous game-to-tournament links.\n")
 })

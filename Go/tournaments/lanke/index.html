@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>J-Ratings: Lanke Cup 2026</title>
+<link rel="stylesheet" href="../../style.css">
+<style>
+body{margin:0;background:#10151d;color:#dce2eb;font-family:Arial,sans-serif}main{max-width:none;margin:auto;padding:28px}a{color:#68a9ff}h1{margin:18px 0 8px}.intro{color:#aeb8c7;max-width:850px;line-height:1.6}.pill{display:inline-block;border:1px solid #394252;border-radius:20px;padding:6px 12px;margin:6px 8px 14px 0}.scroll{overflow-x:auto;border:1px solid #303947;border-radius:12px;padding:20px;background:#151b25}.canvas{position:relative;min-width:2050px}.bracket-nav{position:sticky;top:0;z-index:10;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:10px 0;background:#10151d}.bracket-nav button{background:#1b2330;color:#dce2eb;border:1px solid #536174;border-radius:6px;padding:8px 14px;cursor:pointer}.bracket-nav button:hover{background:#293c56}svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.connector{fill:none;stroke:#536174;stroke-width:1.5}.round{position:absolute;top:0;width:310px}.round h2{height:42px;font-size:16px;text-align:center;margin:0}.match{position:absolute;left:0;width:310px;transform:translateY(-50%);border:1px solid #394252;border-radius:8px;background:#1b2330;overflow:hidden;box-sizing:border-box}.player{display:flex;align-items:center;justify-content:space-between;padding:9px 10px;font-size:16px;gap:8px;min-height:16px}.player+.player{border-top:1px solid #303947}.player a{color:inherit;text-decoration:none}.player a:hover{text-decoration:underline}.player-flag{width:20px;height:14px;object-fit:contain;flex:0 0 20px}.stone{display:inline-block;flex:0 0 13px;width:13px;height:13px;border-radius:50%;box-sizing:border-box}.stone.black{background:#080a0d;border:1px solid #8491a3}.stone.white{background:#f4f5f7;border:1px solid #b8c0ca}.player-name{flex:1;min-width:0}.score{font-weight:800;font-size:15px;margin-left:5px}.score.win{color:#32d583}.score.loss{color:#ff6464}.player.path-highlight,.series-player.path-highlight{background:#293c56;box-shadow:inset 3px 0 #83b9ff}.connector.path-highlight{stroke:#83b9ff;stroke-width:3}.rating{font-size:17px;font-weight:600;flex:0 0 44px;text-align:left;font-variant-numeric:tabular-nums}.chance{font-size:14px;color:#b7d7ff;flex:0 0 40px;text-align:left;font-variant-numeric:tabular-nums}.match-note{font-size:13px;color:#b0bdce;padding:5px 9px;border-top:1px solid #303947}.series-player{display:flex;align-items:center;gap:6px;padding:6px 9px;font-size:13px}.series-game{border-top:1px solid #394252}.final{border-color:#6685b0}.snapshot{font-size:12px;color:#9aa9bc;margin-top:16px}.error{color:#ffb0aa}@media(max-width:650px){main{padding:16px}h1{font-size:24px}}
+.topnav{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 20px}.topnav a{padding:14px 18px;border:1px solid #394252;border-radius:10px;background:#0f1623;color:#dce2eb;font-size:1.05rem;font-weight:600;text-decoration:none}.topnav a:hover{border-color:#83b9ff}.topnav .active-tab{background:rgba(255,255,255,.1);border-color:#83b9ff}main>#title,main>#format,main>.tournament-format{text-align:center}main>.final-positions-button{margin:10px auto}</style>
+<link rel="stylesheet" href="../site.css?v=3"></head>
+<body><header><div class="wrap"><h1 class="site-title"><a href="../../home/" class="brand-with-logo"><span>J-Ratings <span class="title-go">Go</span></span></a></h1><nav class="topnav" aria-label="Main"><a href="../../../index.html">Sports</a><a href="../../home/">Home</a><a class="active-tab" href="../../tournaments/">Tournaments</a><a href="../../compare/">Compare</a><a href="../../peak/">Peak</a></nav></div></header><main class="wrap">
+
+<h1 id="title">Lanke Cup 2026</h1>
+<p aria-label="Lanke Cup editions" style="display:flex;justify-content:center;flex-wrap:wrap;gap:16px"><a href="../event/?file=wr-quzhou-lanke-1-.json">2023</a><a href="../event/?file=wr-quzhou-lanke-2-.json">2024</a><a href="?year=2025">2025</a><a href="?year=2026">2026</a></p>
+
+<div class="tournament-format"><span class="pill">Knockout</span><span class="pill">48 entrants · 16 first-round byes</span><span class="pill">Best-of-three final</span></div>
+<p id="status" class="intro">Loading bracket…</p>
+<nav class="bracket-nav" aria-label="Bracket rounds" id="round-nav"></nav>
+<div class="scroll"><div id="bracket" class="canvas"></div></div>
+<p class="snapshot" id="snapshot"></p>
+<p><a href="https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/" target="_blank" rel="noopener">Tournament source: Go to Everyone!</a></p>
+</main>
+<script src="../player-history.js?v=14"></script><script>
+(async()=>{
+const year=new URLSearchParams(location.search).get('year')==='2025'?'2025':'2026';
+const response=await fetch('../../data/tournaments/lanke-'+year+'.json');
+if(!response.ok)throw new Error('Tournament data could not be loaded');
+const data=await response.json(); document.getElementById('title').textContent=data.name+' · '+data.season;
+document.title='J-Ratings: Lanke Cup '+data.season;
+document.querySelector('a[href*="gotoeveryone.k2ss.info/news/"]').href=data.source;
+document.getElementById('status').textContent='';
+document.getElementById('snapshot').textContent='Saved page: '+data.snapshot;
+const canvas=document.getElementById('bracket'),unit=76,top=70,width=348;
+const scroll=canvas.parentElement;
+data.rounds.forEach((label,index)=>{
+const button=document.createElement('button');button.type='button';button.textContent=label;
+button.addEventListener('click',()=>scroll.scrollTo({left:index*width,behavior:'smooth'}));
+document.getElementById('round-nav').appendChild(button);
+});
+canvas.style.height=(data.slots*unit+top)+'px';
+const roundColours=['#171e29','#202735'];
+data.rounds.forEach((_,index)=>{
+const band=document.createElement('div');band.className='round-background';
+Object.assign(band.style,{position:'absolute',top:'0',bottom:'0',left:(index*width-12)+'px',width:width+'px',background:roundColours[index%2],borderRadius:'8px'});
+canvas.appendChild(band);
+});
+const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');canvas.appendChild(svg);
+const positions=new Map();
+const playerRows=[];
+function appendFlag(row,player){
+if(!player.flag)return;
+const flag=document.createElement('img');flag.className='player-flag';flag.src='../../../flags/'+encodeURIComponent(player.flag)+'.svg';flag.alt=player.flag.toUpperCase();flag.title=player.flag.toUpperCase();row.appendChild(flag);
+}
+function highlightPath(player,round){
+const activeMatches=new Set();
+playerRows.forEach(item=>{const active=Boolean(player)&&item.key===player;item.row.classList.toggle('path-highlight',active);if(active)activeMatches.add(item.match)});
+svg.querySelectorAll('.connector').forEach(path=>path.classList.toggle('path-highlight',activeMatches.has(path.dataset.from)&&activeMatches.has(path.dataset.to)));
+}
+data.rounds.forEach((label,index)=>{const column=document.createElement('section');column.className='round';column.style.left=(index*width)+'px';const h=document.createElement('h2');h.textContent=label;column.appendChild(h);canvas.appendChild(column);
+data.matches.filter(m=>m.round===index+1).forEach(m=>{
+const y=top+(m.row+m.span/2)*unit,card=document.createElement('div');card.className='match'+(m.round===6?' final':'');card.style.top=y+'px';positions.set(m.id,{x:index*width,y});
+const people=Array.isArray(m.players)?m.players:[m.players];people.forEach((p,playerIndex)=>{
+const row=document.createElement('div');row.className='player';
+if(p.colour==='B'||p.colour==='W'){
+const stone=document.createElement('span');stone.className='stone '+(p.colour==='B'?'black':'white');
+stone.setAttribute('role','img');stone.setAttribute('aria-label',p.colour==='B'?'Black stones':'White stones');
+stone.title=p.colour==='B'?'Black':'White';row.appendChild(stone);
+}
+appendFlag(row,p);
+const name=document.createElement(p.id?'a':'span');name.className='player-name';name.textContent=p.name;
+if(p.id)name.href='../../player/?id='+encodeURIComponent(p.id);row.appendChild(name);
+if(p.rating!=null){const rating=document.createElement('span');rating.className='rating';rating.textContent=p.rating;row.appendChild(rating)}
+if(p.winPct!=null){const chance=document.createElement('span');chance.className='chance';chance.textContent=p.winPct+'%';chance.title='Win probability · '+m.ratingBasis+' Elo';row.appendChild(chance)}
+if(m.result&&m.winner&&people.length===2){const won=p.name===m.winner,score=document.createElement('span');score.className='score '+(won?'win':'loss');score.textContent=won?'1':'0';score.setAttribute('aria-label',won?'Winner':'Loser');row.appendChild(score)}
+if(m.round===6 && m.seriesScores && m.series.some(g=>g.result)){
+const score=document.createElement('span');score.className='score'+(m.winner?(p.name===m.winner?' win':' loss'):'');score.textContent=m.seriesScores[playerIndex];score.title='Series wins';row.appendChild(score);
+}
+if(!p.name.startsWith('Winner of ')){
+const key=p.id||p.name;playerRows.push({row,key,round:m.round,match:m.id});
+row.addEventListener('mouseenter',()=>highlightPath(key,m.round));row.addEventListener('mouseleave',()=>highlightPath(null,0));
+row.addEventListener('focusin',()=>highlightPath(key,m.round));row.addEventListener('focusout',()=>highlightPath(null,0));
+}card.appendChild(row)});
+const note=document.createElement('div');note.className='match-note';note.textContent=m.round===6?'Best of three': [m.date,m.result].filter(Boolean).join(' · ');card.appendChild(note);
+if(m.round===6 && m.series){m.series.forEach((game,i)=>{
+const detail=document.createElement('div');detail.className='series-game';
+const heading=document.createElement('div');heading.className='match-note';heading.textContent='Game '+(i+1)+' · '+game.date+(game.result?' · '+game.result:i===2?' · If needed':'');detail.appendChild(heading);
+if(game.result)game.players.forEach(p=>{
+const line=document.createElement('div');line.className='series-player';
+const stone=document.createElement('span');stone.className='stone '+(p.colour==='B'?'black':'white');stone.title=p.colour==='B'?'Black':'White';line.appendChild(stone);
+appendFlag(line,p);
+const label=document.createElement('span');label.className='player-name';label.textContent=p.name;label.style.flex='1';line.appendChild(label);
+if(p.rating!=null){const rating=document.createElement('span');rating.className='rating';rating.textContent=p.rating;line.appendChild(rating)}
+if(p.winPct!=null){const chance=document.createElement('span');chance.className='chance';chance.textContent=p.winPct+'%';line.appendChild(chance)}
+const score=document.createElement('span');score.className='score '+(p.name===game.winner?'win':'loss');score.textContent=p.name===game.winner?'1':'0';line.appendChild(score);const key=p.id||p.name;playerRows.push({row:line,key,round:m.round,match:m.id});line.addEventListener('mouseenter',()=>highlightPath(key,m.round));line.addEventListener('mouseleave',()=>highlightPath(null,0));detail.appendChild(line);
+});card.appendChild(detail);
+});}column.appendChild(card);
+});});
+data.matches.forEach(m=>{const to=positions.get(m.id);(Array.isArray(m.feedsFrom)?m.feedsFrom:[m.feedsFrom]).forEach(id=>{const from=positions.get(id);if(!from||!to)return;const path=document.createElementNS(ns,'path'),x=from.x+310,mid=x+(to.x-x)/2;path.setAttribute('class','connector');path.dataset.from=id;path.dataset.to=m.id;path.setAttribute('d',`M ${x} ${from.y} H ${mid} V ${to.y} H ${to.x}`);svg.appendChild(path)});});
+setupTournamentPlayerHistory(data);
+})().catch(e=>{const status=document.getElementById('status');status.classList.add('error');status.textContent=e.message});
+</script></body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

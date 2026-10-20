@@ -6,7 +6,8 @@ go_tournament_brackets <- function(url, family, rows, games, person, profiles,ca
   path <- file.path("Go/pipeline_data/tournament_format_audit/cache",
                     paste0(gsub("[^a-zA-Z0-9]+", "_", link), ".html"))
   if (!file.exists(path)) return(list(brackets=list(), consumed=integer(), review="Saved source unavailable"))
-  doc <- read_html(path)
+  source("scripts/go/tournament_source_document.R")
+  doc <- go_tournament_document(path)
   calendar_path <- "Go/pipeline_data/tournament_format_audit/calendar_events.csv"
   calendar <- if(file.exists(calendar_path)) fread(calendar_path) else data.table(Link=character(),Date=character())
   if(!is.null(calendar_override))calendar <- calendar_override

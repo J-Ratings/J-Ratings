@@ -1,0 +1,59 @@
+@import url("../style.css");
+
+/* Use the same page shell as Home, Compare, Peak and player profiles. */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+main.wrap {
+  max-width: var(--maxw);
+  margin: auto;
+  padding: 22px;
+}
+.topnav {
+  margin: 14px 0 0;
+}
+.topnav a {
+  color: var(--text);
+  border-color: var(--border);
+}
+.topnav a.active-tab {
+  border-color: var(--accent);
+}
+.tournament > summary {
+  font-size: 1rem;
+}
+.edition-count {
+  font-size: .85rem;
+}
+input, select, button {
+  font-family: inherit;
+}
+@media (max-width:600px) {
+  main.wrap { padding: 16px; }
+}
+
+/* Keep dedicated Lanke and catalogue tournament headers consistent. */
+main.wrap > #title { text-align: center; }
+main.wrap > #format,
+main.wrap > .tournament-format,
+main.wrap > [aria-label="Lanke Cup editions"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  text-align: center;
+}
+main.wrap > #format .pill,
+main.wrap > .tournament-format .pill { margin: 6px 0 14px; }
+main.wrap .final-positions-button { display: block; width: fit-content; margin: 14px auto; }
+main.wrap .bracket-nav { justify-content: center; }
+
+/* Larger knockout participants; score and rating columns remain aligned. */
+.bracket-card .player,.match .player { font-size:18px; }
+.bracket-card .flag,.match .player-flag { width:26px;height:18px;flex:0 0 26px; }
+.bracket-card .score,.match .score { font-size:18px; }
+.bracket-card .name,.match .player-name { min-width:0;overflow-wrap:anywhere; }
+.match .series-player { font-size:16px; }

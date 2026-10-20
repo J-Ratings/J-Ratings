@@ -1,0 +1,902 @@
+{
+  "entrants": [
+    {
+      "source_name": "Shin Jinseo"
+    },
+    {
+      "source_name": "Xu Jiayang"
+    },
+    {
+      "source_name": "Huang Jingyuan"
+    },
+    {
+      "source_name": "Chen Zhaonian"
+    },
+    {
+      "source_name": "Zhou Ruiyang"
+    },
+    {
+      "source_name": "Otake Yu"
+    },
+    {
+      "source_name": "Shi Yue"
+    },
+    {
+      "source_name": "Chen Qirui"
+    },
+    {
+      "source_name": "Sakai Yuki"
+    },
+    {
+      "source_name": "Cai Jing"
+    },
+    {
+      "source_name": "Park Yeonghun"
+    },
+    {
+      "source_name": "Tan Xiao"
+    },
+    {
+      "source_name": "Iyama Yuta"
+    },
+    {
+      "source_name": "Zhou Zhenyu"
+    },
+    {
+      "source_name": "Li Xuanhao"
+    },
+    {
+      "source_name": "An Sungjoon"
+    },
+    {
+      "source_name": "Kim Jiseok"
+    },
+    {
+      "source_name": "Jiang Weijie"
+    },
+    {
+      "source_name": "Tu Xiaoyu"
+    },
+    {
+      "source_name": "Stanislaw Frejlak"
+    },
+    {
+      "source_name": "Li Qincheng"
+    },
+    {
+      "source_name": "Na Hyun"
+    },
+    {
+      "source_name": "Zhang Qiang"
+    },
+    {
+      "source_name": "Ida Atsushi"
+    },
+    {
+      "source_name": "Yang Dingxin"
+    },
+    {
+      "source_name": "Shibano Toramaru"
+    },
+    {
+      "source_name": "Dang Yifei"
+    },
+    {
+      "source_name": "Ueno Risa"
+    },
+    {
+      "source_name": "O Yujin"
+    },
+    {
+      "source_name": "Chen Xian"
+    },
+    {
+      "source_name": "Moon Minjong"
+    },
+    {
+      "source_name": "Wu Yiming"
+    },
+    {
+      "source_name": "Ding Hao"
+    },
+    {
+      "source_name": "Chang Fukang"
+    },
+    {
+      "source_name": "Park Mingyu"
+    },
+    {
+      "source_name": "Li Haotong"
+    },
+    {
+      "source_name": "Kim Sehyun"
+    },
+    {
+      "source_name": "Liu Yuhang"
+    },
+    {
+      "source_name": "Kyo Kagen"
+    },
+    {
+      "source_name": "Tanguy Lecalve"
+    },
+    {
+      "source_name": "Byun Sangil"
+    },
+    {
+      "source_name": "Lu Minquan"
+    },
+    {
+      "source_name": "Zhao Chenyu"
+    },
+    {
+      "source_name": "Alexander Qi"
+    },
+    {
+      "source_name": "Wang Xinghao"
+    },
+    {
+      "source_name": "Sul Hyunjun"
+    },
+    {
+      "source_name": "Wang Yuanjun"
+    },
+    {
+      "source_name": "Wang Zejin"
+    },
+    {
+      "source_name": "Ichiriki Ryo"
+    },
+    {
+      "source_name": "Lian Xiao"
+    },
+    {
+      "source_name": "Xie Erhao"
+    },
+    {
+      "source_name": "Lai Junfu"
+    },
+    {
+      "source_name": "Mi Yuting"
+    },
+    {
+      "source_name": "Seki Kotaro"
+    },
+    {
+      "source_name": "Zheng Daixiang"
+    },
+    {
+      "source_name": "Hirose Yuichi"
+    },
+    {
+      "source_name": "Gu Zihao"
+    },
+    {
+      "source_name": "Xu Haohong"
+    },
+    {
+      "source_name": "Park Junghwan"
+    },
+    {
+      "source_name": "Xie Ke"
+    },
+    {
+      "source_name": "Shin Minjun"
+    },
+    {
+      "source_name": "Sun Tenyu"
+    },
+    {
+      "source_name": "Li Weiqing"
+    },
+    {
+      "source_name": "Geum Jiwoo"
+    }
+  ],
+  "fixtures": [
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Shin Jinseo",
+        "Xu Jiayang"
+      ],
+      "winner": "Shin Jinseo",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Shin Jinseo",
+        "Huang Jingyuan"
+      ],
+      "winner": "Shin Jinseo",
+      "result": "B+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-12",
+      "players": [
+        "Shin Jinseo",
+        "Zhou Ruiyang"
+      ],
+      "winner": "Shin Jinseo",
+      "result": "B+R",
+      "round": "3rd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-14",
+      "players": [
+        "Shin Jinseo",
+        "Tan Xiao"
+      ],
+      "winner": "Tan Xiao",
+      "result": "W+R",
+      "round": "Quarterfinals",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-15",
+      "players": [
+        "Tan Xiao",
+        "Li Qincheng"
+      ],
+      "winner": "Li Qincheng",
+      "result": "B+R",
+      "round": "Semifinals",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-17",
+      "players": [
+        "Li Qincheng",
+        "Wang Xinghao"
+      ],
+      "winner": "Wang Xinghao",
+      "result": "B+R",
+      "round": "Final",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-18",
+      "players": [
+        "Li Qincheng",
+        "Wang Xinghao"
+      ],
+      "winner": "Wang Xinghao",
+      "result": "W+R",
+      "round": "Final",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Huang Jingyuan",
+        "Chen Zhaonian"
+      ],
+      "winner": "Huang Jingyuan",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Zhou Ruiyang",
+        "Otake Yu"
+      ],
+      "winner": "Zhou Ruiyang",
+      "result": "B+1.5",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Zhou Ruiyang",
+        "Shi Yue"
+      ],
+      "winner": "Zhou Ruiyang",
+      "result": "B+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Shi Yue",
+        "Chen Qirui"
+      ],
+      "winner": "Shi Yue",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Sakai Yuki",
+        "Cai Jing"
+      ],
+      "winner": "Cai Jing",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Cai Jing",
+        "Tan Xiao"
+      ],
+      "winner": "Tan Xiao",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-12",
+      "players": [
+        "Tan Xiao",
+        "An Sungjoon"
+      ],
+      "winner": "Tan Xiao",
+      "result": "B+R",
+      "round": "3rd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Park Yeonghun",
+        "Tan Xiao"
+      ],
+      "winner": "Tan Xiao",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Iyama Yuta",
+        "Zhou Zhenyu"
+      ],
+      "winner": "Zhou Zhenyu",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Zhou Zhenyu",
+        "An Sungjoon"
+      ],
+      "winner": "An Sungjoon",
+      "result": "W+0.5",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Li Xuanhao",
+        "An Sungjoon"
+      ],
+      "winner": "An Sungjoon",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Kim Jiseok",
+        "Jiang Weijie"
+      ],
+      "winner": "Kim Jiseok",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Kim Jiseok",
+        "Tu Xiaoyu"
+      ],
+      "winner": "Kim Jiseok",
+      "result": "B+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-12",
+      "players": [
+        "Kim Jiseok",
+        "Li Qincheng"
+      ],
+      "winner": "Li Qincheng",
+      "result": "B+R",
+      "round": "3rd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-14",
+      "players": [
+        "Li Qincheng",
+        "Yang Dingxin"
+      ],
+      "winner": "Li Qincheng",
+      "result": "W+R",
+      "round": "Quarterfinals",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Tu Xiaoyu",
+        "Stanislaw Frejlak"
+      ],
+      "winner": "Tu Xiaoyu",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Li Qincheng",
+        "Na Hyun"
+      ],
+      "winner": "Li Qincheng",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Li Qincheng",
+        "Ida Atsushi"
+      ],
+      "winner": "Li Qincheng",
+      "result": "B+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Zhang Qiang",
+        "Ida Atsushi"
+      ],
+      "winner": "Ida Atsushi",
+      "result": "W+0.5",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Yang Dingxin",
+        "Shibano Toramaru"
+      ],
+      "winner": "Yang Dingxin",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Yang Dingxin",
+        "Dang Yifei"
+      ],
+      "winner": "Yang Dingxin",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-12",
+      "players": [
+        "Yang Dingxin",
+        "Chen Xian"
+      ],
+      "winner": "Yang Dingxin",
+      "result": "W+R",
+      "round": "3rd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Dang Yifei",
+        "Ueno Risa"
+      ],
+      "winner": "Dang Yifei",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "O Yujin",
+        "Chen Xian"
+      ],
+      "winner": "Chen Xian",
+      "result": "B+1.5",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Chen Xian",
+        "Wu Yiming"
+      ],
+      "winner": "Chen Xian",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Moon Minjong",
+        "Wu Yiming"
+      ],
+      "winner": "Wu Yiming",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Ding Hao",
+        "Chang Fukang"
+      ],
+      "winner": "Ding Hao",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Ding Hao",
+        "Park Mingyu"
+      ],
+      "winner": "Ding Hao",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-12",
+      "players": [
+        "Ding Hao",
+        "Kyo Kagen"
+      ],
+      "winner": "Kyo Kagen",
+      "result": "B+R",
+      "round": "3rd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-14",
+      "players": [
+        "Kyo Kagen",
+        "Wang Xinghao"
+      ],
+      "winner": "Wang Xinghao",
+      "result": "B+R",
+      "round": "Quarterfinals",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-15",
+      "players": [
+        "Wang Xinghao",
+        "Li Weiqing"
+      ],
+      "winner": "Wang Xinghao",
+      "result": "W+0.5",
+      "round": "Semifinals",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Park Mingyu",
+        "Li Haotong"
+      ],
+      "winner": "Park Mingyu",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Kim Sehyun",
+        "Liu Yuhang"
+      ],
+      "winner": "Liu Yuhang",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Liu Yuhang",
+        "Kyo Kagen"
+      ],
+      "winner": "Kyo Kagen",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Kyo Kagen",
+        "Tanguy Lecalve"
+      ],
+      "winner": "Kyo Kagen",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Byun Sangil",
+        "Lu Minquan"
+      ],
+      "winner": "Byun Sangil",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Byun Sangil",
+        "Zhao Chenyu"
+      ],
+      "winner": "Zhao Chenyu",
+      "result": "W+0.5",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-12",
+      "players": [
+        "Zhao Chenyu",
+        "Wang Xinghao"
+      ],
+      "winner": "Wang Xinghao",
+      "result": "W+R",
+      "round": "3rd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Zhao Chenyu",
+        "Alexander Qi"
+      ],
+      "winner": "Zhao Chenyu",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Wang Xinghao",
+        "Sul Hyunjun"
+      ],
+      "winner": "Wang Xinghao",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Wang Xinghao",
+        "Wang Zejin"
+      ],
+      "winner": "Wang Xinghao",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Wang Yuanjun",
+        "Wang Zejin"
+      ],
+      "winner": "Wang Zejin",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Ichiriki Ryo",
+        "Lian Xiao"
+      ],
+      "winner": "Ichiriki Ryo",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Ichiriki Ryo",
+        "Xie Erhao"
+      ],
+      "winner": "Ichiriki Ryo",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-12",
+      "players": [
+        "Ichiriki Ryo",
+        "Mi Yuting"
+      ],
+      "winner": "Ichiriki Ryo",
+      "result": "W+R",
+      "round": "3rd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-14",
+      "players": [
+        "Ichiriki Ryo",
+        "Li Weiqing"
+      ],
+      "winner": "Li Weiqing",
+      "result": "W+R",
+      "round": "Quarterfinals",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Xie Erhao",
+        "Lai Junfu"
+      ],
+      "winner": "Xie Erhao",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Mi Yuting",
+        "Seki Kotaro"
+      ],
+      "winner": "Mi Yuting",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Mi Yuting",
+        "Hirose Yuichi"
+      ],
+      "winner": "Mi Yuting",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Zheng Daixiang",
+        "Hirose Yuichi"
+      ],
+      "winner": "Hirose Yuichi",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Gu Zihao",
+        "Xu Haohong"
+      ],
+      "winner": "Gu Zihao",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Gu Zihao",
+        "Park Junghwan"
+      ],
+      "winner": "Park Junghwan",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-12",
+      "players": [
+        "Park Junghwan",
+        "Li Weiqing"
+      ],
+      "winner": "Li Weiqing",
+      "result": "B+R",
+      "round": "3rd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Park Junghwan",
+        "Xie Ke"
+      ],
+      "winner": "Park Junghwan",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Shin Minjun",
+        "Sun Tenyu"
+      ],
+      "winner": "Shin Minjun",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-11",
+      "players": [
+        "Shin Minjun",
+        "Li Weiqing"
+      ],
+      "winner": "Li Weiqing",
+      "result": "B+R",
+      "round": "2nd round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    },
+    {
+      "date": "2025-04-10",
+      "players": [
+        "Li Weiqing",
+        "Geum Jiwoo"
+      ],
+      "winner": "Li Weiqing",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "1st Beihai Xinyi Cup"
+    }
+  ]
+}

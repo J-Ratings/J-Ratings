@@ -474,6 +474,15 @@ def apply_override(structure, override):
             raise RuntimeError(f"Override refers to unknown round {round_id!r}")
         round_map[round_id]["matches"].append(item["match"])
 
+    match_map = {m['id']: m for r in structure.get('knockoutRounds', []) for m in r.get('matches', [])}
+    for match_id, decision in override.get('matchDecisions', {}).items():
+        if match_id not in match_map:
+            raise RuntimeError(f"Decision refers to unknown match {match_id!r}")
+        match = match_map[match_id]
+        if decision.get('winner') not in match.get('teams', []):
+            raise RuntimeError(f"Decision winner is not a participant in {match_id!r}")
+        match.update({key: decision[key] for key in ('winner', 'homePenalties', 'awayPenalties', 'decision', 'decisionSource') if key in decision})
+
     stage_map = {
         s["id"]: s
         for s in structure.get("groupStages", [])

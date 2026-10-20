@@ -11,5 +11,14 @@
       "G": "brazil",
       "H": "portugal"
     }
+  },
+  "matchDecisions": {
+    "final-1": {
+      "winner": "argentina",
+      "homePenalties": 4,
+      "awayPenalties": 2,
+      "decision": "penalties",
+      "decisionSource": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/argentina-france-2022-final-greatest-games"
+    }
   }
 }

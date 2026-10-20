@@ -170,3 +170,16 @@ if (file.exists(countries_names_file)) {
 }
 
 cat("Done.\n")
+# Small supplementary file: explicit shootout winners only; never match scores.
+shootouts_file <- file.path(source_dir, "shootouts.csv")
+shootouts_tmp <- paste0(shootouts_file, ".download")
+Sys.sleep(3)
+tryCatch({
+  download.file("https://raw.githubusercontent.com/martj42/international_results/master/shootouts.csv",
+                shootouts_tmp, mode="wb", quiet=TRUE)
+  check <- readr::read_csv(shootouts_tmp, col_types=readr::cols(.default="c"), show_col_types=FALSE)
+  if (!all(c("date","home_team","away_team","winner") %in% names(check))) stop("Invalid shootout schema")
+  if (!file.copy(shootouts_tmp, shootouts_file, overwrite=TRUE)) stop("Cannot save shootouts")
+  unlink(shootouts_tmp)
+  cat("Supplementary shootout decisions:", nrow(check), "\n")
+}, error=function(e) warning("Shootout refresh failed; retaining cached decisions: ", conditionMessage(e)))

@@ -229,6 +229,11 @@ dt[, HomeScore := fcase(
 )]
 
 dt[, AwayScore := 1 - HomeScore]
+source(file.path(repo_dir,"scripts/football/elo_decisions.R"))
+shootouts <- football_elo_decisions(repo_dir,"InternationalFootball",dt$Date,dt$home_team,dt$away_team,dt$score,dt$HomeScore,dt$AwayScore)
+dt[, `:=`(HomeScore=shootouts$home,AwayScore=shootouts$away)]
+dt[shootouts$decided, `:=`(result=shootouts$winner[shootouts$decided],ResultType=ifelse(HomeScore==1,"H","A"))]
+
 
 setorder(dt, Date, tournament, home_team, away_team, result)
 

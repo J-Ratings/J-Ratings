@@ -1,24 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>J-Ratings: International Football Tournaments</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../style.css">
-  <style>
-    .router-panel{
-      max-width:720px;
-      margin:40px auto;
-      text-align:center;
-    }
-    .router-status{
-      margin-top:14px;
-      opacity:.78;
-    }
-  </style>
-</head>
-<body>
-<header>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>J-Ratings: International Football tournaments</title><link rel="stylesheet" href="/InternationalFootball/style.css"><style>body{background:#10151d;color:#dce2eb;font:16px Arial;margin:0}main{max-width:1100px;margin:auto;padding:28px}a{color:#83b9ff}input{background:#202735;color:white;padding:12px;border:1px solid #536174;border-radius:6px;width:min(90%,500px)}.event{display:flex;justify-content:space-between;gap:20px;padding:16px;border-bottom:1px solid #394252}.event small{color:#aeb8c7}.topnav{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 20px}.topnav a{padding:14px 18px;border:1px solid #394252;border-radius:10px;background:#0f1623;color:#dce2eb;font-size:1.05rem;font-weight:600;text-decoration:none}.topnav a:hover{border-color:#83b9ff}.topnav .active-tab{background:rgba(255,255,255,.1);border-color:#83b9ff}.tournament{border-bottom:1px solid #394252}.tournament>summary{cursor:pointer;padding:18px 16px;font-size:18px}.edition-count{float:right;color:#aeb8c7;font-size:14px}.tournament .event{margin-left:24px;border-bottom:0}.tournament>summary:focus-visible{outline:2px solid #83b9ff}.tournament-controls{display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:12px}.sort-control{display:flex;align-items:center;gap:8px;white-space:nowrap}.sort-control select{background:#202735;color:#dce2eb;border:1px solid #536174;border-radius:6px;padding:12px;font:inherit}.list-columns,.tournament>summary,.tournament .event{display:grid;grid-template-columns:minmax(0,1fr) 9rem 8rem;align-items:center;gap:16px}.list-columns{padding:14px 16px;color:#aeb8c7;font-weight:600;border-bottom:1px solid #394252}.tournament>summary{list-style:none}.tournament>summary::-webkit-details-marker{display:none}.tournament-name::before{content:'▸';display:inline-block;width:1.2em}.tournament[open]>summary .tournament-name::before{content:'▾'}.edition-count{float:none;font-size:inherit;text-align:right}.last-played{white-space:nowrap;font-variant-numeric:tabular-nums;color:#aeb8c7}.event small{text-align:right}@media(max-width:600px){.list-columns,.tournament>summary,.tournament .event{grid-template-columns:minmax(0,1fr) 7rem;gap:10px}.list-columns .details-column,.edition-count,.event small{display:none}.last-played{font-size:.9em}.tournament .event{margin-left:12px}}</style><link rel="stylesheet" href="site.css?v=1"></head><body><header>
   <div class="wrap">
     <h1 class="site-title">
       <a href="../home/" class="brand-with-logo">
@@ -27,21 +7,43 @@
     </h1>
     <nav class="topnav" aria-label="Main">
       <a href="/index.html">Sports</a>
-      <a href="../home/">Home</a>
+      <a href="../home/">Home</a><a class="active-tab" href="./">Tournaments</a>
       <a href="../compare/">Compare</a>
       <a href="../peak/">Peak</a>
     </nav>
   </div>
-</header>
+</header><main class="wrap"><h1>International Football tournaments</h1><div id="directory"><div class="tournament-controls"><input id="search" placeholder="Search tournaments" aria-label="Search tournaments"><label class="sort-control" for="sort">Sort by <select id="sort"><option value="latest">Latest game</option><option value="az">A–Z</option><option value="za">Z–A</option></select></label></div><div class="list-columns"><span>Tournament</span><span>Last played</span><span class="details-column" style="text-align:right">Details</span></div><div id="events" role="status">Loading…</div></div><div id="status"></div></main><script>
+async function loadDirectory(){
+ const root=document.getElementById('events'),search=document.getElementById('search'),sort=document.getElementById('sort');
+ const read=async url=>{const r=await fetch(url,{cache:'no-cache'});if(!r.ok)throw Error('Tournament directory unavailable.');return r.json();};
+ const families=await read('../data/tournaments/index.json');
+ const groups=await Promise.all(families.map(async family=>{
+  const editions=await read(`../data/tournaments/${encodeURIComponent(family.id)}/editions.json`);
+  return {...family,editions,lastPlayed:editions.reduce((last,e)=>e.playedMatches>0&&e.lastDate>last?e.lastDate:last,'')};
+ }));
+ const normalise=text=>String(text||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ const dateCell=date=>{const cell=document.createElement(date?'time':'span');cell.className='last-played';if(date){cell.dateTime=date;cell.textContent=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(date+'T00:00:00Z'));}else cell.textContent='—';return cell;};
+ function render(){
+  const open=new Set([...root.querySelectorAll('details[open]')].map(e=>e.dataset.family));
+  root.replaceChildren();const query=normalise(search.value);
+  groups.filter(g=>normalise(g.name).includes(query)||g.editions.some(e=>normalise(e.label).includes(query))).sort((a,b)=>sort.value==='az'?a.name.localeCompare(b.name):sort.value==='za'?b.name.localeCompare(a.name):b.lastPlayed.localeCompare(a.lastPlayed)||a.name.localeCompare(b.name)).forEach(g=>{
+   const details=document.createElement('details');details.className='tournament';details.dataset.family=g.id;details.open=open.has(g.id)||Boolean(query&&!normalise(g.name).includes(query));
+   const summary=document.createElement('summary'),name=document.createElement('span');name.className='tournament-name';name.textContent=g.name;
+   const count=document.createElement('span');count.className='edition-count';count.textContent=g.editions.length+' edition'+(g.editions.length===1?'':'s');summary.append(name,dateCell(g.lastPlayed),count);details.append(summary);
+   [...g.editions].sort((a,b)=>String(b.lastDate||'').localeCompare(a.lastDate||'')).forEach(e=>{
+    if(query&&!normalise(g.name).includes(query)&&!normalise(e.label).includes(query))return;
+    const row=document.createElement('div');row.className='event';const link=document.createElement('a');link.textContent=e.label;link.href=`group_knockout/?tournament=${encodeURIComponent(g.id)}&edition=${encodeURIComponent(e.id)}&view=go-bracket-20261016s`;
+    const info=document.createElement('small');info.textContent=e.matches+' matches';row.append(link,dateCell(e.playedMatches>0?e.lastDate:null),info);details.append(row);
+   });root.append(details);
+  });
+  if(!root.children.length)root.textContent='No matching tournaments.';
+ }
+ search.addEventListener('input',render);sort.addEventListener('change',render);render();
+}
 
-<main class="wrap">
-  <section class="panel router-panel">
-    <h2>Tournament</h2>
-    <div id="status" class="router-status">Loading tournament…</div>
-  </section>
-</main>
+if(new URLSearchParams(location.search).has('tournament')||new URLSearchParams(location.search).has('edition')){
+ document.getElementById('directory').hidden=true;
 
-<script>
   const params = new URLSearchParams(location.search);
 
   const INDEX_URL = '../data/tournaments/index.json';
@@ -146,6 +148,7 @@
       const next = new URL(`./${renderer}/`, location.href);
       next.searchParams.set('tournament', tournamentId);
       next.searchParams.set('edition', editionId);
+      next.searchParams.set('view', 'go-bracket-20261016s');
 
       statusEl.textContent = 'Opening tournament…';
       location.replace(next.href);
@@ -157,6 +160,6 @@
   }
 
   init();
-</script>
-</body>
-</html>
+
+}else{loadDirectory().catch(error=>document.getElementById('events').textContent=error.message);}
+</script></body></html>

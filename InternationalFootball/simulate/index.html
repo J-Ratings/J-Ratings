@@ -559,6 +559,23 @@
       flex:0 0 auto;
     }
 
+    .sample-bracket-nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:10px 18px}
+    .sample-bracket-nav button{background:#1b2330;color:#dce2eb;border:1px solid #536174;border-radius:6px;padding:8px 14px;font:inherit;cursor:pointer}
+    .sample-bracket-nav button:hover{background:#293c56}
+    .sample-bracket-scroll{padding:0;margin:0 18px 20px;border:1px solid #303947;border-radius:10px;overflow:auto}
+    .sample-bracket-grid{column-gap:0}
+    .sample-round{height:100%;background:#171e29;border-radius:8px}
+    .sample-round:nth-child(even){background:#202735}
+    .sample-round h4{top:14px;color:#dce2eb}
+    .sample-match{left:14px;right:36px;height:auto;min-height:94px;background:#1b2330;border:1px solid #394252;border-radius:8px}
+    .sample-team{height:auto;min-height:46px;padding:10px;gap:7px;font-size:18px}
+    .sample-team>span:first-child{flex:1;min-width:0;overflow-wrap:anywhere;line-height:1.25}
+    .sample-team+.sample-team{border-color:#303947}
+    .sample-team.winner{font-weight:400}
+    .sample-result{font-variant-numeric:tabular-nums;color:#ff6464}
+    .sample-team.winner .sample-result{color:#32d583}
+    .sample-bracket-connector{stroke:#56657a;stroke-width:2}
+    .sample-bracket-svg{z-index:2}
     .sample-bracket-grid.journey-active .sample-team{
       opacity:.28;
     }
@@ -941,6 +958,7 @@ body,
       <nav class="topnav" aria-label="Main">
         <a href="/index.html">Sports</a>
         <a href="../home/">Home</a>
+      <a href="/InternationalFootball/tournaments/">Tournaments</a>
         <a href="../compare/">Compare</a>
         <a href="../peak/">Peak</a>
       </nav>
@@ -1145,6 +1163,7 @@ body,
         <div id="sample-groups" class="sample-groups"></div>
 
         <h3 class="sample-knockout-title">Knockout stage</h3>
+        <nav id="sample-bracket-nav" class="sample-bracket-nav" aria-label="Simulated knockout rounds"></nav>
         <div class="sample-bracket-scroll">
           <div id="sample-bracket-canvas" class="sample-bracket-canvas">
             <svg id="sample-bracket-svg" class="sample-bracket-svg" aria-hidden="true"></svg>
@@ -1847,6 +1866,17 @@ body,
     sampleBracketEl.querySelectorAll(`[data-team-index="${teamIndex}"]`).forEach(el=>el.classList.add('journey-highlight'));
   }
 
+  // Order branches backwards from the final, preserving source order within
+  // each pairing. Dates remain on the cards but do not determine tree order.
+  function orderBracketBranches(rounds){
+    const ordered=rounds.map(round=>({...round,matches:[...(round.matches||[])]}));
+    for(let i=ordered.length-2;i>=0;i--){
+      const targets=new Map(ordered[i+1].matches.map((match,index)=>[match.id,index]));
+      ordered[i].matches.sort((a,b)=>(targets.get(a.feedsInto)??Number.MAX_SAFE_INTEGER)-(targets.get(b.feedsInto)??Number.MAX_SAFE_INTEGER));
+    }
+    return ordered;
+  }
+
   function positionSampleBracket(sample){
     const rounds=sample.rounds||[];
     const centres=new Map();
@@ -1856,32 +1886,30 @@ body,
       for(const m of round.matches||[]) matchById.set(m.id,m);
     }
 
-    const first=rounds[0]?.matches||[];
-    const topPad=82,bottomPad=42,canvasHeight=900,usable=canvasHeight-topPad-bottomPad;
-
-    first.forEach((m,i)=>{
-      centres.set(m.id,topPad+usable*((i+.5)/first.length));
+    let maxBottom=0;
+    rounds.forEach(round=>{
+      let bottom=60;
+      (round.matches||[]).forEach((m,i)=>{
+        const el=sampleBracketEl.querySelector(`[data-match-id="${CSS.escape(m.id)}"]`);
+        if(!el)return;
+        const height=el.offsetHeight;
+        const feeders=[...matchById.values()].filter(source=>source.feedsInto===m.id&&centres.has(source.id));
+        const desired=feeders.length?feeders.reduce((sum,source)=>sum+centres.get(source.id),0)/feeders.length:60+(i+.5)*125;
+        const centre=Math.max(bottom+height/2,desired);
+        centres.set(m.id,centre);el.style.top=`${centre}px`;
+        bottom=centre+height/2+18;maxBottom=Math.max(maxBottom,bottom);
+      });
     });
-
-    for(let r=1;r<rounds.length;r++){
-      for(const target of rounds[r].matches||[]){
-        const feederYs=[];
-        for(const source of matchById.values()){
-          if(source.feedsInto===target.id && centres.has(source.id)) feederYs.push(centres.get(source.id));
-        }
-        if(feederYs.length) centres.set(target.id,feederYs.reduce((a,b)=>a+b,0)/feederYs.length);
-      }
-    }
-
-    for(const [id,y] of centres){
-      const el=sampleBracketEl.querySelector(`[data-match-id="${CSS.escape(id)}"]`);
-      if(el) el.style.top=`${y}px`;
-    }
+    const height=maxBottom+20;
+    sampleBracketCanvasEl.style.width=`${Math.max(1,rounds.length)*300}px`;
+    sampleBracketCanvasEl.style.minWidth=`${Math.max(1,rounds.length)*300}px`;
+    sampleBracketEl.style.gridTemplateColumns=`repeat(${Math.max(1,rounds.length)},300px)`;
+    for(const el of [sampleBracketCanvasEl,sampleBracketEl]){el.style.height=`${height}px`;el.style.minHeight=`${height}px`;}
   }
 
   function drawSampleConnectors(sample){
     sampleBracketSvgEl.innerHTML='';
-    sampleBracketSvgEl.setAttribute('viewBox',`0 0 ${sampleBracketCanvasEl.clientWidth} 900`);
+    sampleBracketSvgEl.setAttribute('viewBox',`0 0 ${sampleBracketCanvasEl.clientWidth} ${sampleBracketCanvasEl.clientHeight}`);
     sampleBracketSvgEl.setAttribute('preserveAspectRatio','none');
 
     const canvasRect=sampleBracketCanvasEl.getBoundingClientRect();
@@ -1914,10 +1942,13 @@ body,
       return;
     }
 
+    sample={...sample,rounds:orderBracketBranches(sample.rounds||[])};
     sampleTournamentEl.classList.add('is-visible');
     sampleGroupsEl.innerHTML='';
     sampleBracketEl.innerHTML='';
     sampleBracketSvgEl.innerHTML='';
+    const roundNav=document.getElementById('sample-bracket-nav');
+    roundNav.replaceChildren();
 
     for(const [group,rows] of Object.entries(sample.groups||{})){
       const card=document.createElement('div');
@@ -1987,13 +2018,16 @@ body,
         col.appendChild(box);
       }
 
+      const button=document.createElement('button');button.type='button';button.textContent=round.label;
+      button.addEventListener('click',()=>sampleBracketCanvasEl.parentElement.scrollTo({left:col.offsetLeft,behavior:'smooth'}));
+      roundNav.append(button);
       sampleBracketEl.appendChild(col);
     }
 
     sampleChampionEl.textContent=`Champion: ${sample.championName}`;
 
     positionSampleBracket(sample);
-    requestAnimationFrame(()=>drawSampleConnectors(sample));
+    requestAnimationFrame(()=>{positionSampleBracket(sample);drawSampleConnectors(sample);});
     setTimeout(()=>drawSampleConnectors(sample),50);
   }
 

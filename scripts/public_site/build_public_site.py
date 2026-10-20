@@ -88,6 +88,10 @@ Path("EuropeanFootball/premier_league_simulator_prototype.html"),
 # yet exist. That way adding a new simulator/playback/stats page later cannot
 # accidentally make it public.
 COMMON_PRIVATE_SPORT_PATHS = [
+    "tournaments",
+    "data/tournaments",
+    "data/tournament-structure",
+    "data/tournament-overrides",
     "compare",
     "simulate",
     "playback",
@@ -142,6 +146,31 @@ def copy_tree_filtered(src: Path, dst: Path) -> None:
 
 
 def remove_private_paths() -> None:
+    # Preserve identified event names on Go profiles before discarding the
+    # catalogue. No draw, standings or tournament routes are needed publicly.
+    catalogue_dir = OUT_DIR / 'Go/data/tournaments/catalogue'
+    if (catalogue_dir / 'index.json').exists() and (catalogue_dir / 'game-links.json').exists():
+        names = {e['file']: e['name'] for e in load_json(catalogue_dir / 'index.json')}
+        links = load_json(catalogue_dir / 'game-links.json')
+        for path in (OUT_DIR / 'Go/data/games').glob('*.json'):
+            games = load_json(path)
+            if not isinstance(games, list):
+                continue
+            changed = False
+            for game in games:
+                if game.get('event') and game['event'] != 'GoRatings':
+                    continue
+                winner = game.get('black') if game.get('result') == '1-0' else game.get('white') if game.get('result') == '0-1' else None
+                if not winner:
+                    continue
+                pair = sorted([str(game.get('black', '')), str(game.get('white', ''))])
+                key = '|'.join([str(game.get('date', '')), *pair, str(winner)])
+                name = names.get(links.get(key))
+                if name:
+                    game['event'] = name
+                    changed = True
+            if changed:
+                save_json(path, games)
     for rel in EUROPEAN_FOOTBALL_PRIVATE_PATHS:
         target = OUT_DIR / rel
 
@@ -939,6 +968,38 @@ PUBLIC_SPORTS = [
 ]
 
 
+def hide_public_tournaments(s: str) -> str:
+    """Keep event labels, but remove tournament navigation in public copies only."""
+    s = re.sub(
+        r'<a\b[^>]*href=["\'][^"\']*tournaments(?:/|[?"\'])[^>]*>([\s\S]*?)</a>',
+        lambda m: '' if re.sub(r'<[^>]+>', '', m.group(1)).strip() == 'Tournaments'
+        else '<span>' + m.group(1) + '</span>', s, flags=re.I,
+    )
+    # Go can display the event already stored on each game without fetching the
+    # now-private tournament catalogue.
+    s = re.sub(r"      try \{\s*const response = await fetch\('../data/tournaments/catalogue/index.json'[\s\S]*?catch \(_\) \{ /\* Keep profiles usable if tournament data is unavailable\. \*/ \}", '', s)
+    if 'jr-public-no-tournaments' not in s:
+        script = r'''<script id="jr-public-no-tournaments">
+(() => {
+  const isTournament = a => /\/tournaments(?:\/|[?#]|$)/i.test(a.pathname);
+  const strip = () => document.querySelectorAll('a[href]').forEach(a => {
+    if (!isTournament(a)) return;
+    const span = document.createElement('span');
+    span.className = a.className;
+    span.title = a.title;
+    span.append(...a.childNodes);
+    a.replaceWith(span);
+  });
+  new MutationObserver(strip).observe(document.documentElement,
+    {childList: true, subtree: true, attributes: true, attributeFilter: ['href']});
+  strip();
+})();
+</script>
+'''
+        s = s.replace('</body>', script + '</body>')
+    return s
+
+
 def clean_generic_public_ui(sports: list[str] | None = None) -> None:
     sports = PUBLIC_SPORTS if sports is None else sports
     for sport in sports:
@@ -948,6 +1009,7 @@ def clean_generic_public_ui(sports: list[str] | None = None) -> None:
 
         for html in sport_dir.rglob("*.html"):
             s = html.read_text(encoding="utf-8")
+            s = hide_public_tournaments(s)
 
             # Public pages advertise the private feature set without linking to
             # it. The actual compare directories were already removed earlier.
@@ -1012,6 +1074,11 @@ def assert_generic_public_ui_clean(sports: list[str] | None = None) -> None:
 
             if re.search(r'href=["\'][^"\']*(?:player/)?stats/', s, flags=re.I):
                 failures.append(f"{rel}: functional link to private statistics section")
+
+            if re.search(r'<a\b[^>]*href=["\'][^"\']*tournaments/', s, flags=re.I):
+                failures.append(f"{rel}: functional link to private tournament section")
+            if 'jr-public-no-tournaments' not in s:
+                failures.append(f"{rel}: dynamic tournament links are not disabled")
 
             if re.search(r'id=["\']compare-btn["\']', s, flags=re.I):
                 failures.append(f"{rel}: functional Compare launch id remains")

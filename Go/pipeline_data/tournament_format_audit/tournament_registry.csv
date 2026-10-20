@@ -1,0 +1,105 @@
+Family,Title,Editions,Formats,StageNames,NeedsReview,CalendarEditions,SourceURL,ParserValidated,Classification
+/news/cn/agon/,Agon Cup,1,KNOCKOUT,Tournament table; Preliminary tournament,FALSE,4,https://gotoeveryone.k2ss.info/news/cn/agon/26/,FALSE,Knockout (with optional placement matches)
+/news/cn/al/,Chinese A League,1,TEAM_KNOCKOUT; TEAM_ROUND_ROBIN,Winning team decision tournament; Relegation team decision tournament; League,FALSE,2,https://gotoeveryone.k2ss.info/news/cn/al/26/,FALSE,Team / mixed team formats
+/news/cn/cc/,Changqi Cup,1,KNOCKOUT,Tournament table; The last preliminary tournament of Taiwan,FALSE,3,https://gotoeveryone.k2ss.info/news/cn/cc/20/,FALSE,Knockout (with optional placement matches)
+/news/cn/cctv/,CCTV Cup,1,KNOCKOUT,Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/cn/cctv/9/,FALSE,Knockout (with optional placement matches)
+/news/cn/fguoshou/,Female Guoshou,1,KNOCKOUT,Tournament table,FALSE,2,https://gotoeveryone.k2ss.info/news/cn/fguoshou/5/,FALSE,Knockout (with optional placement matches)
+/news/cn/fmingren/,Female Mingren,1,KNOCKOUT; TITLE_SERIES,Title match; Tournament table,FALSE,3,https://gotoeveryone.k2ss.info/news/cn/fmingren/5/,FALSE,Mixed stages
+/news/cn/gba/,GBA Cup Chinese Weiqi Master Championship,1,KNOCKOUT,Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/cn/gba/5/,FALSE,Knockout (with optional placement matches)
+/news/cn/guoshou/,Guoshou,1,KNOCKOUT; TITLE_SERIES,Title match; Tournament table,FALSE,2,https://gotoeveryone.k2ss.info/news/cn/guoshou/3/,FALSE,Mixed stages
+/news/cn/jc/,Jianqiao Cup,1,KNOCKOUT,Tournament table,FALSE,1,https://gotoeveryone.k2ss.info/news/cn/jc/19/,FALSE,Knockout (with optional placement matches)
+/news/cn/lx/,Longxing,1,KNOCKOUT; SINGLE_MATCH; SURVIVAL_LADDER,Champion decision tournament; Knockout competition tournament; Preliminary tournament,FALSE,1,https://gotoeveryone.k2ss.info/news/cn/lx/13/,FALSE,Mixed stages
+/news/cn/mr/,Mingren,1,KNOCKOUT; TITLE_SERIES,Title match; Tournament table,FALSE,2,https://gotoeveryone.k2ss.info/news/cn/mr/34/,FALSE,Mixed stages
+/news/cn/qc/,Quzhou-Lanke Cup,2,KNOCKOUT,Tournament table,FALSE,3,https://gotoeveryone.k2ss.info/news/cn/qc/11/,FALSE,Knockout (with optional placement matches)
+/news/cn/qs/,Qisheng,1,KNOCKOUT; TITLE_SERIES,Title match; Tournament table,FALSE,1,https://gotoeveryone.k2ss.info/news/cn/qs/6/,FALSE,Mixed stages
+/news/cn/qw/,Qiwang,1,KNOCKOUT,Tournament table,FALSE,3,https://gotoeveryone.k2ss.info/news/cn/qw/19/,FALSE,Knockout (with optional placement matches)
+/news/cn/sichuan-energy/,Sichuan Energy Cup,1,KNOCKOUT,Tournament table,FALSE,1,https://gotoeveryone.k2ss.info/news/cn/sichuan-energy/1/,FALSE,Knockout (with optional placement matches)
+/news/cn/sw/,South-West Qiwang,2,KNOCKOUT,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/cn/sw/25/,FALSE,Knockout (with optional placement matches)
+/news/cn/tn/,Tianyuan,1,KNOCKOUT; TITLE_SERIES,Title match; Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/cn/tn/40/,FALSE,Mixed stages
+/news/cn/wzw/,Wangzhongwang,2,DOUBLE_ELIMINATION; KNOCKOUT; SINGLE_MATCH,Tournament table; 3rd place decision match,FALSE,3,https://gotoeveryone.k2ss.info/news/cn/wzw/6/,FALSE,Mixed stages
+/news/cn/xinxiu/,Xinxiu,1,KNOCKOUT; ROUND_ROBIN,League; Preliminary tournament,FALSE,3,https://gotoeveryone.k2ss.info/news/cn/xinxiu/8/,FALSE,Mixed stages
+/news/cn/xr/,Xinren Wang,1,KNOCKOUT,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/cn/xr/30/,FALSE,Knockout (with optional placement matches)
+/news/jp/agon/,Agon Cup,1,KNOCKOUT,Tournament table; The last preliminary tournament,FALSE,4,https://gotoeveryone.k2ss.info/news/jp/agon/32/,FALSE,Knockout (with optional placement matches)
+/news/jp/brains-match/,Female Brains Batch,1,KNOCKOUT,Tournament table,FALSE,1,https://gotoeveryone.k2ss.info/news/jp/brains-match/1/,FALSE,Knockout (with optional placement matches)
+/news/jp/fhoninbo/,Female Honinbo,1,KNOCKOUT; TITLE_SERIES,Title match; Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/jp/fhoninbo/45/,FALSE,Mixed stages
+/news/jp/fkisei/,Female Kisei,1,KNOCKOUT; TITLE_SERIES,Title match; Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/jp/fkisei/29/,FALSE,Mixed stages
+/news/jp/fleague/,Japan Female League,1,NON_FIXTURE_TABLE; TEAM_ROUND_ROBIN,Final rank; 2nd stage league; 1st stage league,FALSE,1,https://gotoeveryone.k2ss.info/news/jp/fleague/1/,FALSE,Team / mixed team formats
+/news/jp/fmeijin/,Female Meijin,2,ROUND_ROBIN; TITLE_SERIES,Title match; League,FALSE,5,https://gotoeveryone.k2ss.info/news/jp/fmeijin/37/,FALSE,Mixed stages
+/news/jp/fsaikyo/,Female Saikyo,2,KNOCKOUT,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/jp/fsaikyo/11/,FALSE,Knockout (with optional placement matches)
+/news/jp/gosei/,Gosei,2,KNOCKOUT; TITLE_SERIES,Title match; Tournament table; Preliminary tournament A,FALSE,5,https://gotoeveryone.k2ss.info/news/jp/gosei/51/,FALSE,Mixed stages
+/news/jp/ha/,Hiroshima-Aluminum Cup,1,KNOCKOUT,Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/jp/ha/20/,FALSE,Knockout (with optional placement matches)
+/news/jp/honinbo/,Honinbo,2,KNOCKOUT; ROUND_ROBIN; SINGLE_MATCH; TITLE_SERIES,Title match; Tournament table; The last preliminary tournament; Preliminary tournament A; Challenger decision match; League; League scene,FALSE,5,https://gotoeveryone.k2ss.info/news/jp/honinbo/81/,FALSE,Mixed stages
+/news/jp/judan/,Judan,2,KNOCKOUT; TITLE_SERIES,Title match; Tournament table; Preliminary tournament A; The last preliminary tournament,FALSE,5,https://gotoeveryone.k2ss.info/news/jp/judan/64/,FALSE,Mixed stages
+/news/jp/kansai/,Kansai-Kiin 1st Place,1,KNOCKOUT; TITLE_SERIES,Title match; Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/jp/kansai/69/,FALSE,Mixed stages
+/news/jp/kisei/,Kisei,2,KNOCKOUT; ROUND_ROBIN; SINGLE_MATCH; TITLE_SERIES,Title match; Challenger decision tournament; League S; League A; League B 1st place decision match; League B-1; League B-2; League C,FALSE,5,https://gotoeveryone.k2ss.info/news/jp/kisei/50/,FALSE,Mixed stages
+/news/jp/meijin/,Meijin,2,KNOCKOUT; ROUND_ROBIN; TITLE_SERIES,Title match; League; League scene; The last preliminary tournament; Preliminary tournament A,FALSE,5,https://gotoeveryone.k2ss.info/news/jp/meijin/51/,FALSE,Mixed stages
+/news/jp/nhk/,NHK Cup,1,KNOCKOUT,Tournament table,FALSE,1,https://gotoeveryone.k2ss.info/news/jp/nhk/69/,FALSE,Knockout (with optional placement matches)
+/news/jp/okan/,Okan,1,KNOCKOUT; TITLE_SERIES,Title match; Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/jp/okan/66/,FALSE,Mixed stages
+/news/jp/oza/,Oza,1,KNOCKOUT; TITLE_SERIES,Title match; Tournament table; The last preliminary tournament; Preliminary tournament A,FALSE,5,https://gotoeveryone.k2ss.info/news/jp/oza/74/,FALSE,Mixed stages
+/news/jp/ryusei/,Ryusei,1,KNOCKOUT; SURVIVAL_LADDER,Tournament table; Knockout competition tournament,FALSE,1,https://gotoeveryone.k2ss.info/news/jp/ryusei/31/,FALSE,Mixed stages
+/news/jp/sgw/,SGW Cup,1,SWISS_STYLE,League,FALSE,4,https://gotoeveryone.k2ss.info/news/jp/sgw/8/,FALSE,Swiss style
+/news/jp/shinjino/,"",1,REVIEW,SOURCE_UNAVAILABLE_404,TRUE,5,https://gotoeveryone.k2ss.info/news/jp/shinjino/52/,FALSE,Unresolved / source unavailable
+/news/jp/tachiaoi/,Tachiaoi Cup,2,KNOCKOUT; TITLE_SERIES,Title match; Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/jp/tachiaoi/12/,FALSE,Mixed stages
+/news/jp/teikei-f/,Teikei Cup (Female Legend),1,KNOCKOUT,Tournament table,FALSE,3,https://gotoeveryone.k2ss.info/news/jp/teikei-f/5/,FALSE,Knockout (with optional placement matches)
+/news/jp/teikei-l/,Teikei Cup (Legend),2,KNOCKOUT,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/jp/teikei-l/5/,FALSE,Knockout (with optional placement matches)
+/news/jp/teikei-s/,Teikei Cup (Shunei),2,LADDER_PLAYOFF; ROUND_ROBIN; TITLE_SERIES,Final round; League A; League B 1st place decision tournament; League B,FALSE,5,https://gotoeveryone.k2ss.info/news/jp/teikei-s/5/,FALSE,Mixed stages
+/news/jp/tengen/,Tengen,1,KNOCKOUT; TITLE_SERIES,Title match; Tournament table; Preliminary tournament A,FALSE,5,https://gotoeveryone.k2ss.info/news/jp/tengen/52/,FALSE,Mixed stages
+/news/kr/crown/,Crown Haitai Cup,1,KNOCKOUT,Tournament table,FALSE,2,https://gotoeveryone.k2ss.info/news/kr/crown/7/,FALSE,Knockout (with optional placement matches)
+/news/kr/dj/,Daejoo Cup,2,KNOCKOUT,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/kr/dj/13/,FALSE,Knockout (with optional placement matches)
+/news/kr/fk/,Female Kuksu,1,KNOCKOUT,Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/kr/fk/30/,FALSE,Knockout (with optional placement matches)
+/news/kr/fks/,Female Kisung,1,KNOCKOUT; SINGLE_MATCH,Tournament table; 3rd place decision match,FALSE,4,https://gotoeveryone.k2ss.info/news/kr/fks/9/,FALSE,Knockout (with optional placement matches)
+/news/kr/ga/,GGAuction Cup,1,TEAM_RELAY,Knockout competition tournament,FALSE,1,https://gotoeveryone.k2ss.info/news/kr/ga/18/,FALSE,Team / mixed team formats
+/news/kr/gs/,GS Caltex Cup,2,DOUBLE_ELIMINATION; KNOCKOUT,Tournament table; Preliminary tournament,FALSE,5,https://gotoeveryone.k2ss.info/news/kr/gs/31/,FALSE,Mixed stages
+/news/kr/hyorim/,Hyorim Cup,1,KNOCKOUT,Tournament table,FALSE,3,https://gotoeveryone.k2ss.info/news/kr/hyorim/4/,FALSE,Knockout (with optional placement matches)
+/news/kr/ibk/,IBK Cup Women's Baduk Masters,2,KNOCKOUT,Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/kr/ibk/5/,FALSE,Knockout (with optional placement matches)
+/news/kr/kbac/,Korea Baduk Association Championship,2,KNOCKOUT; ROUND_ROBIN; TITLE_SERIES,1st place decision match; 4th tournament; Block 1; Block 2; Block 3; Block 4; Block 5; Block 6; Block 7; Block 8; 3rd place decision match; 5th place decision match; 7th place decision match; 9th place decision match; 11th place decision match; League A; League B,FALSE,2,https://gotoeveryone.k2ss.info/news/kr/kbac/2/,FALSE,Mixed stages
+/news/kr/kbs/,KBS Cup,1,KNOCKOUT,Tournament table,FALSE,1,https://gotoeveryone.k2ss.info/news/kr/kbs/41/,FALSE,Knockout (with optional placement matches)
+/news/kr/kl/,Korea Baduk League,2,NON_FIXTURE_TABLE; TEAM_KNOCKOUT; TEAM_ROUND_ROBIN,Post season; Final rank; 2nd stage league; 1st stage league,FALSE,5,https://gotoeveryone.k2ss.info/news/kr/kl/23/,FALSE,Team / mixed team formats
+/news/kr/kuksu/,Kuksu Cup,2,KNOCKOUT,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/kr/kuksu/14/,FALSE,Knockout (with optional placement matches)
+/news/kr/leebong/,"",1,REVIEW,SOURCE_UNAVAILABLE_404,TRUE,5,https://gotoeveryone.k2ss.info/news/kr/leebong/23/,FALSE,Unresolved / source unavailable
+/news/kr/mc/,Maxim Cup,2,KNOCKOUT,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/kr/mc/27/,FALSE,Knockout (with optional placement matches)
+/news/kr/mi/,Myeongin,1,DOUBLE_ELIMINATION; KNOCKOUT,Tournament table; Preliminary tournament,FALSE,4,https://gotoeveryone.k2ss.info/news/kr/mi/48/,FALSE,Mixed stages
+/news/kr/millennium-chunwon/,Millennium Chunwon,1,KNOCKOUT,Tournament table,FALSE,3,https://gotoeveryone.k2ss.info/news/kr/millennium-chunwon/4/,FALSE,Knockout (with optional placement matches)
+/news/kr/presidents/,President's Cup,2,KNOCKOUT,Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/kr/presidents/7/,FALSE,Knockout (with optional placement matches)
+/news/kr/rs/,Ryongsang,2,KNOCKOUT,Tournament table,FALSE,2,https://gotoeveryone.k2ss.info/news/kr/rs/6/,FALSE,Knockout (with optional placement matches)
+/news/kr/sp/,Supreme Player,2,KNOCKOUT; ROUND_ROBIN; SINGLE_MATCH; TITLE_SERIES,Title match; Tournament table; Block A; Block B; Block C; Block D; Demotion player decision match; League,FALSE,4,https://gotoeveryone.k2ss.info/news/kr/sp/6/,FALSE,Mixed stages
+/news/kr/spf/,Supreme player of Female,1,DOUBLE_ELIMINATION,Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/kr/spf/5/,FALSE,Double elimination
+/news/kr/sy/,Shinye Strongest,1,KNOCKOUT,Tournament table,FALSE,1,https://gotoeveryone.k2ss.info/news/kr/sy/7/,FALSE,Knockout (with optional placement matches)
+/news/kr/yk/,YK Gyeonggi Cup,2,ROUND_ROBIN; TITLE_SERIES,Final round; League,FALSE,2,https://gotoeveryone.k2ss.info/news/kr/yk/2/,FALSE,Mixed stages
+/news/tw/fmingren/,Female Mingren,1,DOUBLE_ELIMINATION,Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/tw/fmingren/8/,FALSE,Double elimination
+/news/tw/fz/,Female Zuiqiang,2,DOUBLE_ELIMINATION,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/tw/fz/12/,FALSE,Double elimination
+/news/tw/go/,Guoshou,1,KNOCKOUT,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/tw/go/22/,FALSE,Knockout (with optional placement matches)
+/news/tw/hc/,Haifong Cup,1,KNOCKOUT,Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/tw/hc/18/,FALSE,Knockout (with optional placement matches)
+/news/tw/kuaiqi/,Kuaiqi (HayaGo) tournament,1,KNOCKOUT,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/tw/kuaiqi/7/,FALSE,Knockout (with optional placement matches)
+/news/tw/longxing/,Longxing,1,KNOCKOUT,Tournament table,FALSE,1,https://gotoeveryone.k2ss.info/news/tw/longxing/1/,FALSE,Knockout (with optional placement matches)
+/news/tw/mingren/,Mingren,2,KNOCKOUT,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/tw/mingren/7/,FALSE,Knockout (with optional placement matches)
+/news/tw/qw/,Qiwang,1,KNOCKOUT; ROUND_ROBIN,League; The last preliminary tournament,FALSE,5,https://gotoeveryone.k2ss.info/news/tw/qw/19/,FALSE,Mixed stages
+/news/tw/sd/,Shiduan,2,KNOCKOUT; TITLE_SERIES,Title match; Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/tw/sd/15/,FALSE,Mixed stages
+/news/tw/tn/,Tianyuan,2,KNOCKOUT; ROUND_ROBIN; SINGLE_MATCH; TITLE_SERIES,Title match; Challenger decision match; League; The last preliminary tournament,FALSE,5,https://gotoeveryone.k2ss.info/news/tw/tn/25/,FALSE,Mixed stages
+/news/tw/umc/,UMC Cup,1,KNOCKOUT; ROUND_ROBIN; TITLE_SERIES,Title match; League; The last preliminary tournament,FALSE,2,https://gotoeveryone.k2ss.info/news/tw/umc/4/,FALSE,Mixed stages
+/news/tw/xc/,Xuanyue Cup,1,KNOCKOUT,Tournament table,FALSE,1,https://gotoeveryone.k2ss.info/news/tw/xc/1/,FALSE,Knockout (with optional placement matches)
+/news/tw/xr/,Xinren Wang,2,KNOCKOUT,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/tw/xr/11/,FALSE,Knockout (with optional placement matches)
+/news/tw/zq/,Zhonghuan Qisheng,1,KNOCKOUT,Tournament table,FALSE,5,https://gotoeveryone.k2ss.info/news/tw/zq/14/,FALSE,Knockout (with optional placement matches)
+/news/wr/ag/,Agon Cup (Japan-China),1,SINGLE_MATCH,26th Agon Cup (Japan-China),FALSE,4,https://gotoeveryone.k2ss.info/news/wr/ag/26/,FALSE,Single match
+/news/wr/beihai/,Beihai Xinyi Cup,1,KNOCKOUT; SINGLE_MATCH,Tournament table; Preliminary tournament of Taiwan; Preliminary tournament of Korea,FALSE,1,https://gotoeveryone.k2ss.info/news/wr/beihai/1/,FALSE,Knockout (with optional placement matches)
+/news/wr/cl/,Chunlan Cup,2,KNOCKOUT; SINGLE_MATCH,Tournament table; Preliminary tournament of Korea; Preliminary tournament of Japan; Preliminary tournament of Taiwan; Preliminary tournament of China,FALSE,3,https://gotoeveryone.k2ss.info/news/wr/cl/16/,FALSE,Knockout (with optional placement matches)
+/news/wr/gc/,GLOBIS Cup,2,DOUBLE_ELIMINATION_GROUPS; KNOCKOUT; SINGLE_MATCH,Tournament table; 3rd place decision match; 1st tournament(Block tournament); Preliminary tournament of Taiwan; Preliminary tournament of Korea; Preliminary tournament of Japan,FALSE,3,https://gotoeveryone.k2ss.info/news/wr/gc/11/,FALSE,Mixed stages
+/news/wr/hls/,Huanglongshi Cup,1,ROUND_ROBIN; SINGLE_MATCH,League; Preliminary tournament of Japan,FALSE,1,https://gotoeveryone.k2ss.info/news/wr/hls/10/,FALSE,Round robin (with optional playoff)
+/news/wr/hoban/,Hoban Cup,1,TEAM_RELAY,Knockout competition tournament,FALSE,1,https://gotoeveryone.k2ss.info/news/wr/hoban/1/,FALSE,Team / mixed team formats
+/news/wr/ibk/,IBK Cup Women's Baduk World Masters,1,KNOCKOUT,Tournament table; Preliminary tournament of Taiwan,FALSE,1,https://gotoeveryone.k2ss.info/news/wr/ibk/1/,FALSE,Knockout (with optional placement matches)
+/news/wr/ig/,Ing Cup,1,KNOCKOUT; SINGLE_MATCH,Tournament table; Preliminary tournament; Preliminary tournament of Korea; Preliminary tournament of Japan,FALSE,2,https://gotoeveryone.k2ss.info/news/wr/ig/10/,FALSE,Knockout (with optional placement matches)
+/news/wr/kuksu-mountains/,Kuksu Mountains International Baduk Championship,2,KNOCKOUT,Tournament table; Preliminary tournament of Taiwan; Preliminary tournament of China; Preliminary tournament of Korea,FALSE,4,https://gotoeveryone.k2ss.info/news/wr/kuksu-mountains/11/,FALSE,Knockout (with optional placement matches)
+/news/wr/lg/,LG Cup,2,KNOCKOUT,Tournament table; Preliminary tournament of Korea; Preliminary tournament of Taiwan; Preliminary tournament of Japan; 2nd stage; 1st stage,FALSE,5,https://gotoeveryone.k2ss.info/news/wr/lg/31/,FALSE,Knockout (with optional placement matches)
+/news/wr/ml/,MLILY Cup,1,KNOCKOUT,Tournament table; Preliminary tournament of Taiwan,FALSE,2,https://gotoeveryone.k2ss.info/news/wr/ml/6/,FALSE,Knockout (with optional placement matches)
+/news/wr/nanyang/,Nanyang Cup,1,KNOCKOUT; SINGLE_MATCH,Tournament table; 3rd place decision match; Preliminary tournament of Korea; Preliminary tournament of Taiwan,FALSE,1,https://gotoeveryone.k2ss.info/news/wr/nanyang/1/,FALSE,Knockout (with optional placement matches)
+/news/wr/nc/,Nongshim Cup,1,KNOCKOUT; TEAM_RELAY,Knockout competition tournament; Preliminary tournament of China; Preliminary tournament of Japan; Preliminary tournament of Korea,FALSE,5,https://gotoeveryone.k2ss.info/news/wr/nc/28/,FALSE,Team / mixed team formats
+/news/wr/ncbss/,Nongshim Baeksansoo Cup,1,TEAM_RELAY,Knockout competition tournament,FALSE,4,https://gotoeveryone.k2ss.info/news/wr/ncbss/4/,FALSE,Team / mixed team formats
+/news/wr/quzhou-lanke/,Quzhou-Lanke Cup,1,KNOCKOUT,Tournament table; Preliminary tournament of Taiwan,FALSE,4,https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/,FALSE,Knockout (with optional placement matches)
+/news/wr/sc/,Samsung Cup,1,KNOCKOUT,Tournament table,FALSE,4,https://gotoeveryone.k2ss.info/news/wr/sc/30/,FALSE,Knockout (with optional placement matches)
+/news/wr/senko/,SENKO Cup,2,KNOCKOUT; SINGLE_MATCH,Tournament table; 3rd place decision match,FALSE,5,https://gotoeveryone.k2ss.info/news/wr/senko/8/,FALSE,Knockout (with optional placement matches)
+/news/wr/shinan-senior/,Shinan International Senior Baduk Cup,1,KNOCKOUT,Tournament table; Preliminary tournament of Korea,FALSE,3,https://gotoeveryone.k2ss.info/news/wr/shinan-senior/6/,FALSE,Knockout (with optional placement matches)
+/news/wr/supreme-player/,Supreme Player,1,KNOCKOUT; ROUND_ROBIN; TITLE_SERIES,Final round; League; Preliminary tournament of Korea; Preliminary tournament of China,FALSE,1,https://gotoeveryone.k2ss.info/news/wr/supreme-player/1/,FALSE,Mixed stages
+/news/wr/tc/,Tiantaishan Cup,1,TEAM_RELAY,Knockout competition tournament,FALSE,1,https://gotoeveryone.k2ss.info/news/wr/tc/9/,FALSE,Team / mixed team formats
+/news/wr/wc/,Wu Qingyuan Cup,2,KNOCKOUT; ROUND_ROBIN; SINGLE_MATCH,Tournament table; Preliminary tournament of Taiwan; Preliminary tournament of Korea; Preliminary league of China; 7th place decision match,FALSE,4,https://gotoeveryone.k2ss.info/news/wr/wc/8/,FALSE,Mixed stages
+/news/wr/world-go-immortal/,World Go Immortal Championship,1,KNOCKOUT; SINGLE_MATCH,Tournament table; Preliminary tournament of Korea; Preliminary tournament of Japan; Preliminary tournament of Taiwan,FALSE,1,https://gotoeveryone.k2ss.info/news/wr/world-go-immortal/1/,FALSE,Knockout (with optional placement matches)
+/news/wr/yangming/,Yangming Cup,1,KNOCKOUT,Tournament table,FALSE,1,https://gotoeveryone.k2ss.info/news/wr/yangming/1/,FALSE,Knockout (with optional placement matches)

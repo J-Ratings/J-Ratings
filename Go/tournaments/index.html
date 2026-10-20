@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>J-Ratings: Go tournaments</title>
+<style>body{background:#10151d;color:#dce2eb;font:16px Arial;margin:0}main{max-width:1100px;margin:auto;padding:28px}a{color:#83b9ff}input{background:#202735;color:white;padding:12px;border:1px solid #536174;border-radius:6px;width:min(90%,500px)}.event{display:flex;justify-content:space-between;gap:20px;padding:16px;border-bottom:1px solid #394252}.event small{color:#aeb8c7}.topnav{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 20px}.topnav a{padding:14px 18px;border:1px solid #394252;border-radius:10px;background:#0f1623;color:#dce2eb;font-size:1.05rem;font-weight:600;text-decoration:none}.topnav a:hover{border-color:#83b9ff}.topnav .active-tab{background:rgba(255,255,255,.1);border-color:#83b9ff}.tournament{border-bottom:1px solid #394252}.tournament>summary{cursor:pointer;padding:18px 16px;font-size:18px}.edition-count{float:right;color:#aeb8c7;font-size:14px}.tournament .event{margin-left:24px;border-bottom:0}.tournament>summary:focus-visible{outline:2px solid #83b9ff}.tournament-controls{display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:12px}.sort-control{display:flex;align-items:center;gap:8px;white-space:nowrap}.sort-control select{background:#202735;color:#dce2eb;border:1px solid #536174;border-radius:6px;padding:12px;font:inherit}.list-columns,.tournament>summary,.tournament .event{display:grid;grid-template-columns:minmax(0,1fr) 9rem 8rem;align-items:center;gap:16px}.list-columns{padding:14px 16px;color:#aeb8c7;font-weight:600;border-bottom:1px solid #394252}.tournament>summary{list-style:none}.tournament>summary::-webkit-details-marker{display:none}.tournament-name::before{content:'▸';display:inline-block;width:1.2em}.tournament[open]>summary .tournament-name::before{content:'▾'}.edition-count{float:none;font-size:inherit;text-align:right}.last-played{white-space:nowrap;font-variant-numeric:tabular-nums;color:#aeb8c7}.event small{text-align:right}@media(max-width:600px){.list-columns,.tournament>summary,.tournament .event{grid-template-columns:minmax(0,1fr) 7rem;gap:10px}.list-columns .details-column,.edition-count,.event small{display:none}.last-played{font-size:.9em}.tournament .event{margin-left:12px}}</style><link rel="stylesheet" href="site.css?v=1"></head>
+<body><header><div class="wrap"><h1 class="site-title"><a href="../home/" class="brand-with-logo"><span>J-Ratings <span class="title-go">Go</span></span></a></h1><nav class="topnav" aria-label="Main"><a href="../../index.html">Sports</a><a href="../home/">Home</a><a class="active-tab" href="../tournaments/">Tournaments</a><a href="../compare/">Compare</a><a href="../peak/">Peak</a></nav></div></header><main class="wrap"><h1>Go tournaments</h1><div class="tournament-controls"><input id="search" placeholder="Search tournaments" aria-label="Search tournaments"><label class="sort-control" for="sort">Sort by <select id="sort"><option value="latest">Latest game</option><option value="az">A–Z</option><option value="za">Z–A</option></select></label></div><div class="list-columns"><span>Tournament</span><span>Last played</span><span class="details-column" style="text-align:right">Details</span></div><div id="events">Loading…</div></main>
+<script>
+(async()=>{
+  const response=await fetch('../data/tournaments/catalogue/index.json', {cache:'no-cache'});
+  if(!response.ok)throw Error('Tournament catalogue unavailable.');
+  const events=await response.json();
+  const search=document.getElementById('search');
+  const sort=document.getElementById('sort');
+  search.value=new URLSearchParams(location.search).get('search')||'';
+  const normalise=s=>s.toLowerCase().replace(/\bkorean\b/g,'korea').replace(/[^a-z0-9]+/g,' ').trim();
+  const baseName=s=>s.replace(/^\d+(?:st|nd|rd|th)\s+/i,'').replace(/^\d{4}(?:[-–]\d{4})?\s+/,'').trim();
+  const families=new Map();
+  events.forEach(e=>{const key=e.family||baseName(e.name);if(!families.has(key))families.set(key,[]);families.get(key).push(e)});
+  const groups=[...families].map(([family,editions])=>{
+    editions.sort((a,b)=>(parseInt(b.name)||0)-(parseInt(a.name)||0)||b.name.localeCompare(a.name,undefined,{numeric:true}));
+    return {family,editions,name:baseName(editions[0].name),lastPlayed:editions.reduce((last,e)=>e.lastPlayed>last?e.lastPlayed:last,'')};
+  });
+  groups.forEach(g=>{if(groups.some(other=>other!==g&&normalise(other.name)===normalise(g.name))){
+    const region=g.family.split('/')[2];const suffix={cn:'China',wr:'International',jp:'Japan',kr:'Korea',tw:'Taiwan'}[region];
+    g.displayName=g.name+(suffix?' ('+suffix+')':'');
+  }else g.displayName=g.name});
+  const lastPlayedCell=date=>{
+    const cell=document.createElement(date?'time':'span');cell.className='last-played';
+    if(date){cell.dateTime=date;cell.textContent=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(date+'T00:00:00Z'))}
+    else{cell.textContent='—';cell.title='No completed game with a known date'}
+    return cell;
+  };
+  function render(){
+    const root=document.getElementById('events');root.replaceChildren();const query=normalise(search.value);
+    groups.filter(g=>normalise(g.displayName).includes(query)||g.editions.some(e=>normalise(e.name).includes(query)))
+      .sort((a,b)=>sort.value==='za'?b.displayName.localeCompare(a.displayName):sort.value==='az'?a.displayName.localeCompare(b.displayName):b.lastPlayed.localeCompare(a.lastPlayed)||a.displayName.localeCompare(b.displayName)).forEach(g=>{
+        const section=document.createElement('details');section.className='tournament';
+        const heading=document.createElement('summary');const name=document.createElement('span');name.className='tournament-name';name.textContent=g.displayName;heading.append(name,lastPlayedCell(g.lastPlayed));
+        const count=document.createElement('span');count.className='edition-count';count.textContent=g.editions.length+' edition'+(g.editions.length===1?'':'s');heading.append(count);section.append(heading);
+        [...g.editions].sort((a,b)=>(b.lastPlayed||'').localeCompare(a.lastPlayed||'')||(parseInt(b.name)||0)-(parseInt(a.name)||0)).forEach(e=>{
+          const row=document.createElement('div');row.className='event';const link=document.createElement('a');
+          const lankeYear={'wr-quzhou-lanke-3-.json':2025,'wr-quzhou-lanke-4-.json':2026}[e.file];
+          link.href=lankeYear?'lanke/?year='+lankeYear:'event/?file='+encodeURIComponent(e.file);
+          link.textContent=e.name;row.append(link,lastPlayedCell(e.lastPlayed));const info=document.createElement('small');info.textContent=e.games+' games';row.append(info);section.append(row);
+        });root.append(section);
+      });
+    if(!root.children.length)root.textContent='No matching tournament.';
+  }
+  search.addEventListener('input',render);sort.addEventListener('change',render);render();
+})().catch(e=>document.getElementById('events').textContent=e.message);
+</script></body></html>
+
+
+
+
+

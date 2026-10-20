@@ -1,0 +1,1783 @@
+{
+  "name": "3rd Quzhou-Lanke Cup",
+  "season": 2025,
+  "format": "knockout",
+  "snapshot": "2026-10-12 19:47:04.752962",
+  "source": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/3/",
+  "slots": 48,
+  "rounds": [
+    "First round",
+    "Round of 32",
+    "Round of 16",
+    "Quarterfinals",
+    "Semifinals",
+    "Final"
+  ],
+  "matches": [
+    {
+      "id": "r1-9",
+      "round": 1,
+      "row": 0,
+      "span": 2,
+      "players": [
+        {
+          "name": "Zhang Wei",
+          "id": "zhang-wei",
+          "flag": "cn",
+          "rating": 3225,
+          "colour": "W",
+          "winPct": 35
+        },
+        {
+          "name": "Chen Hao (1)",
+          "id": "chen-hao-1",
+          "flag": "cn",
+          "rating": 3335,
+          "colour": "B",
+          "winPct": 65
+        }
+      ],
+      "winner": "Chen Hao (1)",
+      "result": "B+5.5",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-8",
+        "r0-15"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r2-10",
+      "round": 2,
+      "row": 0,
+      "span": 3,
+      "players": [
+        {
+          "name": "Chen Hao (1)",
+          "id": "chen-hao-1",
+          "flag": "cn",
+          "rating": 3349,
+          "colour": "W",
+          "winPct": 7
+        },
+        {
+          "name": "Shin Jinseo",
+          "id": "shin-jinseo",
+          "flag": "kr",
+          "rating": 3801,
+          "colour": "B",
+          "winPct": 93
+        }
+      ],
+      "winner": "Shin Jinseo",
+      "result": "B+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-9",
+        "r1-16"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r3-11",
+      "round": 3,
+      "row": 0,
+      "span": 7,
+      "players": [
+        {
+          "name": "Shin Jinseo",
+          "id": "shin-jinseo",
+          "flag": "kr",
+          "rating": 3830,
+          "colour": "W",
+          "winPct": 85
+        },
+        {
+          "name": "Liao Yuanhe",
+          "id": "liao-yuanhe",
+          "flag": "cn",
+          "rating": 3531,
+          "colour": "B",
+          "winPct": 15
+        }
+      ],
+      "winner": "Shin Jinseo",
+      "result": "W+R",
+      "date": "2025-10-08",
+      "bye": false,
+      "feedsFrom": [
+        "r2-10",
+        "r2-19"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-08"
+    },
+    {
+      "id": "r4-12",
+      "round": 4,
+      "row": 0,
+      "span": 13,
+      "players": [
+        {
+          "name": "Shin Jinseo",
+          "id": "shin-jinseo",
+          "flag": "kr",
+          "rating": 3833,
+          "colour": "B",
+          "winPct": 87
+        },
+        {
+          "name": "Tuo Jiaxi",
+          "id": "tuo-jiaxi",
+          "flag": "cn",
+          "rating": 3496,
+          "colour": "W",
+          "winPct": 13
+        }
+      ],
+      "winner": "Shin Jinseo",
+      "result": "B+1.5",
+      "date": "2025-10-09",
+      "bye": false,
+      "feedsFrom": [
+        "r3-11",
+        "r3-27"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-09"
+    },
+    {
+      "id": "r5-13",
+      "round": 5,
+      "row": 0,
+      "span": 27,
+      "players": [
+        {
+          "name": "Shin Jinseo",
+          "id": "shin-jinseo",
+          "flag": "kr",
+          "rating": 3835,
+          "colour": "W",
+          "winPct": 88
+        },
+        {
+          "name": "Fan Yin",
+          "id": "fan-yin",
+          "flag": "cn",
+          "rating": 3486,
+          "colour": "B",
+          "winPct": 12
+        }
+      ],
+      "winner": "Shin Jinseo",
+      "result": "W+R",
+      "date": "2025-10-11",
+      "bye": false,
+      "feedsFrom": [
+        "r4-12",
+        "r4-38"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-11"
+    },
+    {
+      "id": "r6-14",
+      "round": 6,
+      "row": 0,
+      "span": 48,
+      "players": [
+        {
+          "name": "Shin Jinseo",
+          "id": "shin-jinseo",
+          "flag": "kr"
+        },
+        {
+          "name": "Dang Yifei",
+          "id": "dang-yifei",
+          "flag": "cn"
+        }
+      ],
+      "winner": "Dang Yifei",
+      "result": "",
+      "date": "2025-10-12",
+      "bye": false,
+      "feedsFrom": [
+        "r5-13",
+        "r5-66"
+      ],
+      "ratingBasis": "current",
+      "identityConflict": false,
+      "series": [
+        {
+          "round": 7,
+          "players": [
+            {
+              "name": "Shin Jinseo",
+              "id": "shin-jinseo",
+              "flag": "kr",
+              "rating": 3838,
+              "colour": "W",
+              "winPct": 79
+            },
+            {
+              "name": "Dang Yifei",
+              "id": "dang-yifei",
+              "flag": "cn",
+              "rating": 3610,
+              "colour": "B",
+              "winPct": 21
+            }
+          ],
+          "date": "2025-10-12",
+          "result": "B+R",
+          "winner": "Dang Yifei",
+          "ratingBasis": "pre-game",
+          "identityConflict": false,
+          "historyMatch": "exact-date",
+          "historyDate": "2025-10-12"
+        },
+        {
+          "round": 7,
+          "players": [
+            {
+              "name": "Shin Jinseo",
+              "id": "shin-jinseo",
+              "flag": "kr",
+              "rating": 3822,
+              "colour": "B",
+              "winPct": 76
+            },
+            {
+              "name": "Dang Yifei",
+              "id": "dang-yifei",
+              "flag": "cn",
+              "rating": 3626,
+              "colour": "W",
+              "winPct": 24
+            }
+          ],
+          "date": "2025-10-14",
+          "result": "B+3.5",
+          "winner": "Shin Jinseo",
+          "ratingBasis": "pre-game",
+          "identityConflict": false,
+          "historyMatch": "exact-date",
+          "historyDate": "2025-10-14"
+        },
+        {
+          "round": 7,
+          "players": [
+            {
+              "name": "Shin Jinseo",
+              "id": "shin-jinseo",
+              "flag": "kr",
+              "rating": 3827,
+              "colour": "W",
+              "winPct": 77
+            },
+            {
+              "name": "Dang Yifei",
+              "id": "dang-yifei",
+              "flag": "cn",
+              "rating": 3621,
+              "colour": "B",
+              "winPct": 23
+            }
+          ],
+          "date": "2025-10-15",
+          "result": "B+R",
+          "winner": "Dang Yifei",
+          "ratingBasis": "pre-game",
+          "identityConflict": false,
+          "historyMatch": "exact-date",
+          "historyDate": "2025-10-15"
+        }
+      ],
+      "seriesScores": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "r1-18",
+      "round": 1,
+      "row": 3,
+      "span": 2,
+      "players": [
+        {
+          "name": "Liao Yuanhe",
+          "id": "liao-yuanhe",
+          "flag": "cn",
+          "colour": "B"
+        },
+        {
+          "name": "Zhu Yankui",
+          "id": "",
+          "flag": "",
+          "colour": "W"
+        }
+      ],
+      "winner": "Liao Yuanhe",
+      "result": "B+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-17",
+        "r0-20"
+      ],
+      "ratingBasis": "unavailable",
+      "identityConflict": false,
+      "historyMatch": "unique-nearby-date"
+    },
+    {
+      "id": "r2-19",
+      "round": 2,
+      "row": 3,
+      "span": 4,
+      "players": [
+        {
+          "name": "Liao Yuanhe",
+          "id": "liao-yuanhe",
+          "flag": "cn",
+          "rating": 3552,
+          "colour": "B",
+          "winPct": 92
+        },
+        {
+          "name": "Tian Mumu",
+          "id": "tian-mumu",
+          "flag": "cn",
+          "rating": 3126,
+          "colour": "W",
+          "winPct": 8
+        }
+      ],
+      "winner": "Liao Yuanhe",
+      "result": "B+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-18",
+        "r1-22"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r1-22",
+      "round": 1,
+      "row": 5,
+      "span": 2,
+      "players": [
+        {
+          "name": "So Yokoku",
+          "id": "so-yokoku",
+          "flag": "jp",
+          "rating": 3230,
+          "colour": "B",
+          "winPct": 68
+        },
+        {
+          "name": "Tian Mumu",
+          "id": "tian-mumu",
+          "flag": "cn",
+          "rating": 3099,
+          "colour": "W",
+          "winPct": 32
+        }
+      ],
+      "winner": "Tian Mumu",
+      "result": "W+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-21",
+        "r0-23"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r1-25",
+      "round": 1,
+      "row": 7,
+      "span": 2,
+      "players": [
+        {
+          "name": "Tuo Jiaxi",
+          "id": "tuo-jiaxi",
+          "flag": "cn",
+          "rating": 3417,
+          "colour": "B",
+          "winPct": 56
+        },
+        {
+          "name": "Park Sangjin",
+          "id": "park-sangjin",
+          "flag": "kr",
+          "rating": 3376,
+          "colour": "W",
+          "winPct": 44
+        }
+      ],
+      "winner": "Tuo Jiaxi",
+      "result": "B+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-24",
+        "r0-28"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r2-26",
+      "round": 2,
+      "row": 7,
+      "span": 3,
+      "players": [
+        {
+          "name": "Tuo Jiaxi",
+          "id": "tuo-jiaxi",
+          "flag": "cn",
+          "rating": 3426,
+          "colour": "W",
+          "winPct": 22
+        },
+        {
+          "name": "Yang Dingxin",
+          "id": "yang-dingxin",
+          "flag": "cn",
+          "rating": 3643,
+          "colour": "B",
+          "winPct": 78
+        }
+      ],
+      "winner": "Tuo Jiaxi",
+      "result": "W+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-25",
+        "r1-29"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r3-27",
+      "round": 3,
+      "row": 7,
+      "span": 6,
+      "players": [
+        {
+          "name": "Tuo Jiaxi",
+          "id": "tuo-jiaxi",
+          "flag": "cn",
+          "rating": 3489,
+          "colour": "B",
+          "winPct": 64
+        },
+        {
+          "name": "Chen Xian",
+          "id": "chen-xian",
+          "flag": "cn",
+          "rating": 3388,
+          "colour": "W",
+          "winPct": 36
+        }
+      ],
+      "winner": "Tuo Jiaxi",
+      "result": "B+R",
+      "date": "2025-10-08",
+      "bye": false,
+      "feedsFrom": [
+        "r2-26",
+        "r2-32"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-08"
+    },
+    {
+      "id": "r1-31",
+      "round": 1,
+      "row": 10,
+      "span": 2,
+      "players": [
+        {
+          "name": "Chen Xian",
+          "id": "chen-xian",
+          "flag": "cn",
+          "rating": 3413,
+          "colour": "W",
+          "winPct": 90
+        },
+        {
+          "name": "Chang Fukang",
+          "id": "chang-fukang",
+          "flag": "jp",
+          "rating": 3027,
+          "colour": "B",
+          "winPct": 10
+        }
+      ],
+      "winner": "Chen Xian",
+      "result": "W+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-30",
+        "r0-33"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r2-32",
+      "round": 2,
+      "row": 10,
+      "span": 3,
+      "players": [
+        {
+          "name": "Chen Xian",
+          "id": "chen-xian",
+          "flag": "cn",
+          "rating": 3414,
+          "colour": "B",
+          "winPct": 15
+        },
+        {
+          "name": "Wang Xinghao",
+          "id": "wang-xinghao",
+          "flag": "cn",
+          "rating": 3719,
+          "colour": "W",
+          "winPct": 85
+        }
+      ],
+      "winner": "Chen Xian",
+      "result": "B+1.5",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-31",
+        "r1-34"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r2-36",
+      "round": 2,
+      "row": 13,
+      "span": 2,
+      "players": [
+        {
+          "name": "Gu Zihao",
+          "id": "gu-zihao",
+          "flag": "cn",
+          "rating": 3532,
+          "colour": "W",
+          "winPct": 55
+        },
+        {
+          "name": "Byun Sangil",
+          "id": "byun-sangil",
+          "flag": "kr",
+          "rating": 3496,
+          "colour": "B",
+          "winPct": 45
+        }
+      ],
+      "winner": "Gu Zihao",
+      "result": "W+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-35",
+        "r1-39"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r3-37",
+      "round": 3,
+      "row": 13,
+      "span": 6,
+      "players": [
+        {
+          "name": "Gu Zihao",
+          "id": "gu-zihao",
+          "flag": "cn",
+          "rating": 3525,
+          "colour": "W",
+          "winPct": 57
+        },
+        {
+          "name": "Fan Yin",
+          "id": "fan-yin",
+          "flag": "cn",
+          "rating": 3474,
+          "colour": "B",
+          "winPct": 43
+        }
+      ],
+      "winner": "Fan Yin",
+      "result": "B+R",
+      "date": "2025-10-08",
+      "bye": false,
+      "feedsFrom": [
+        "r2-36",
+        "r2-42"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-08"
+    },
+    {
+      "id": "r4-38",
+      "round": 4,
+      "row": 13,
+      "span": 14,
+      "players": [
+        {
+          "name": "Fan Yin",
+          "id": "fan-yin",
+          "flag": "cn",
+          "colour": "B"
+        },
+        {
+          "name": "Wang Shiyi",
+          "id": "wang-shiyi",
+          "flag": "cn",
+          "colour": "W"
+        }
+      ],
+      "winner": "Fan Yin",
+      "result": "B+R",
+      "date": "2025-10-09",
+      "bye": false,
+      "feedsFrom": [
+        "r3-37",
+        "r3-50"
+      ],
+      "ratingBasis": "unavailable",
+      "identityConflict": false,
+      "historyMatch": "unique-nearby-date"
+    },
+    {
+      "id": "r1-41",
+      "round": 1,
+      "row": 15,
+      "span": 2,
+      "players": [
+        {
+          "name": "Fan Yin",
+          "id": "fan-yin",
+          "flag": "cn",
+          "rating": 3470,
+          "colour": "B",
+          "winPct": 91
+        },
+        {
+          "name": "Andrii Kravets",
+          "id": "andrii-kravets",
+          "flag": "ua",
+          "rating": 3064,
+          "colour": "W",
+          "winPct": 9
+        }
+      ],
+      "winner": "Fan Yin",
+      "result": "B+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-40",
+        "r0-43"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r2-42",
+      "round": 2,
+      "row": 15,
+      "span": 4,
+      "players": [
+        {
+          "name": "Fan Yin",
+          "id": "fan-yin",
+          "flag": "cn",
+          "colour": "W"
+        },
+        {
+          "name": "Xie Erhao",
+          "id": "xie-erhao",
+          "flag": "cn",
+          "colour": "B"
+        }
+      ],
+      "winner": "Fan Yin",
+      "result": "W+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-41",
+        "r1-45"
+      ],
+      "ratingBasis": "unavailable",
+      "identityConflict": false,
+      "historyMatch": "unique-nearby-date"
+    },
+    {
+      "id": "r1-45",
+      "round": 1,
+      "row": 17,
+      "span": 2,
+      "players": [
+        {
+          "name": "Xie Erhao",
+          "id": "xie-erhao",
+          "flag": "cn",
+          "rating": 3467,
+          "colour": "B",
+          "winPct": 70
+        },
+        {
+          "name": "Wu Yiming",
+          "id": "wu-yiming",
+          "flag": "cn",
+          "rating": 3318,
+          "colour": "W",
+          "winPct": 30
+        }
+      ],
+      "winner": "Xie Erhao",
+      "result": "B+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-44",
+        "r0-46"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r1-48",
+      "round": 1,
+      "row": 19,
+      "span": 2,
+      "players": [
+        {
+          "name": "Weon Seongjin",
+          "id": "weon-seongjin",
+          "flag": "kr",
+          "rating": 3445,
+          "colour": "W",
+          "winPct": 84
+        },
+        {
+          "name": "Han Moyang",
+          "id": "han-moyang",
+          "flag": "cn",
+          "rating": 3154,
+          "colour": "B",
+          "winPct": 16
+        }
+      ],
+      "winner": "Weon Seongjin",
+      "result": "W+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-47",
+        "r0-51"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r2-49",
+      "round": 2,
+      "row": 19,
+      "span": 4,
+      "players": [
+        {
+          "name": "Weon Seongjin",
+          "id": "weon-seongjin",
+          "flag": "kr",
+          "rating": 3446,
+          "colour": "B",
+          "winPct": 38
+        },
+        {
+          "name": "Tu Xiaoyu",
+          "id": "tu-xiaoyu",
+          "flag": "cn",
+          "rating": 3531,
+          "colour": "W",
+          "winPct": 62
+        }
+      ],
+      "winner": "Weon Seongjin",
+      "result": "B+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-48",
+        "r1-53"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r3-50",
+      "round": 3,
+      "row": 19,
+      "span": 8,
+      "players": [
+        {
+          "name": "Weon Seongjin",
+          "id": "weon-seongjin",
+          "flag": "kr",
+          "rating": 3424,
+          "colour": "W",
+          "winPct": 59
+        },
+        {
+          "name": "Wang Shiyi",
+          "id": "wang-shiyi",
+          "flag": "cn",
+          "rating": 3358,
+          "colour": "B",
+          "winPct": 41
+        }
+      ],
+      "winner": "Wang Shiyi",
+      "result": "B+1.5",
+      "date": "2025-10-08",
+      "bye": false,
+      "feedsFrom": [
+        "r2-49",
+        "r2-57"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-08"
+    },
+    {
+      "id": "r1-53",
+      "round": 1,
+      "row": 21,
+      "span": 2,
+      "players": [
+        {
+          "name": "Tu Xiaoyu",
+          "id": "tu-xiaoyu",
+          "flag": "cn",
+          "rating": 3530,
+          "colour": "W",
+          "winPct": 95
+        },
+        {
+          "name": "Jiang Mingjiu",
+          "id": "jiang-mingjiu",
+          "flag": "us",
+          "rating": 3007,
+          "colour": "B",
+          "winPct": 5
+        }
+      ],
+      "winner": "Tu Xiaoyu",
+      "result": "W+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-52",
+        "r0-54"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r1-56",
+      "round": 1,
+      "row": 23,
+      "span": 2,
+      "players": [
+        {
+          "name": "Zhao Chenyu",
+          "id": "zhao-chenyu",
+          "flag": "cn",
+          "rating": 3518,
+          "colour": "B",
+          "winPct": 65
+        },
+        {
+          "name": "Song Jihoon",
+          "id": "song-jihoon",
+          "flag": "kr",
+          "rating": 3410,
+          "colour": "W",
+          "winPct": 35
+        }
+      ],
+      "winner": "Song Jihoon",
+      "result": "W+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-55",
+        "r0-58"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r2-57",
+      "round": 2,
+      "row": 23,
+      "span": 4,
+      "players": [
+        {
+          "name": "Song Jihoon",
+          "id": "song-jihoon",
+          "flag": "kr",
+          "rating": 3423,
+          "colour": "W",
+          "winPct": 59
+        },
+        {
+          "name": "Wang Shiyi",
+          "id": "wang-shiyi",
+          "flag": "cn",
+          "rating": 3361,
+          "colour": "B",
+          "winPct": 41
+        }
+      ],
+      "winner": "Wang Shiyi",
+      "result": "B+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-56",
+        "r1-60"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r1-60",
+      "round": 1,
+      "row": 25,
+      "span": 2,
+      "players": [
+        {
+          "name": "Wang Shiyi",
+          "id": "wang-shiyi",
+          "flag": "cn",
+          "rating": 3357,
+          "colour": "B",
+          "winPct": 77
+        },
+        {
+          "name": "Gao Xing",
+          "id": "gao-xing",
+          "flag": "cn",
+          "rating": 3149,
+          "colour": "W",
+          "winPct": 23
+        }
+      ],
+      "winner": "Wang Shiyi",
+      "result": "B+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-59",
+        "r0-61"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r2-63",
+      "round": 2,
+      "row": 27,
+      "span": 2,
+      "players": [
+        {
+          "name": "Li Qincheng",
+          "id": "li-qincheng",
+          "flag": "cn",
+          "rating": 3604,
+          "colour": "B",
+          "winPct": 67
+        },
+        {
+          "name": "Yu Zhengqi",
+          "id": "yu-zhengqi",
+          "flag": "jp",
+          "rating": 3482,
+          "colour": "W",
+          "winPct": 33
+        }
+      ],
+      "winner": "Li Qincheng",
+      "result": "B+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-62",
+        "r1-67"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r3-64",
+      "round": 3,
+      "row": 27,
+      "span": 5,
+      "players": [
+        {
+          "name": "Li Qincheng",
+          "id": "li-qincheng",
+          "flag": "cn",
+          "rating": 3587,
+          "colour": "B",
+          "winPct": 81
+        },
+        {
+          "name": "Tang Jiawen",
+          "id": "tang-jiawen",
+          "flag": "cn",
+          "rating": 3336,
+          "colour": "W",
+          "winPct": 19
+        }
+      ],
+      "winner": "Li Qincheng",
+      "result": "B+R",
+      "date": "2025-10-08",
+      "bye": false,
+      "feedsFrom": [
+        "r2-63",
+        "r2-70"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-08"
+    },
+    {
+      "id": "r4-65",
+      "round": 4,
+      "row": 27,
+      "span": 10,
+      "players": [
+        {
+          "name": "Li Qincheng",
+          "id": "li-qincheng",
+          "flag": "cn",
+          "rating": 3591,
+          "colour": "W",
+          "winPct": 43
+        },
+        {
+          "name": "Ding Hao",
+          "id": "ding-hao",
+          "flag": "cn",
+          "rating": 3641,
+          "colour": "B",
+          "winPct": 57
+        }
+      ],
+      "winner": "Li Qincheng",
+      "result": "W+R",
+      "date": "2025-10-09",
+      "bye": false,
+      "feedsFrom": [
+        "r3-64",
+        "r3-75"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-09"
+    },
+    {
+      "id": "r5-66",
+      "round": 5,
+      "row": 27,
+      "span": 21,
+      "players": [
+        {
+          "name": "Li Qincheng",
+          "id": "li-qincheng",
+          "flag": "cn",
+          "rating": 3602,
+          "colour": "B",
+          "winPct": 50
+        },
+        {
+          "name": "Dang Yifei",
+          "id": "dang-yifei",
+          "flag": "cn",
+          "rating": 3600,
+          "colour": "W",
+          "winPct": 50
+        }
+      ],
+      "winner": "Dang Yifei",
+      "result": "W+0.5",
+      "date": "2025-10-11",
+      "bye": false,
+      "feedsFrom": [
+        "r4-65",
+        "r4-85"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-11"
+    },
+    {
+      "id": "r1-69",
+      "round": 1,
+      "row": 29,
+      "span": 2,
+      "players": [
+        {
+          "name": "Shen Peiran",
+          "id": "shen-peiran",
+          "flag": "cn",
+          "rating": 3305,
+          "colour": "B",
+          "winPct": 45
+        },
+        {
+          "name": "Tang Jiawen",
+          "id": "tang-jiawen",
+          "flag": "cn",
+          "rating": 3341,
+          "colour": "W",
+          "winPct": 55
+        }
+      ],
+      "winner": "Tang Jiawen",
+      "result": "W+0.5",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-68",
+        "r0-71"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r2-70",
+      "round": 2,
+      "row": 29,
+      "span": 3,
+      "players": [
+        {
+          "name": "Tang Jiawen",
+          "id": "tang-jiawen",
+          "flag": "cn",
+          "rating": 3350,
+          "colour": "B",
+          "winPct": 57
+        },
+        {
+          "name": "Otake Yu",
+          "id": "otake-yu",
+          "flag": "jp",
+          "rating": 3299,
+          "colour": "W",
+          "winPct": 43
+        }
+      ],
+      "winner": "Tang Jiawen",
+      "result": "B+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-69",
+        "r1-72"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r2-74",
+      "round": 2,
+      "row": 32,
+      "span": 2,
+      "players": [
+        {
+          "name": "Ding Hao",
+          "id": "ding-hao",
+          "flag": "cn",
+          "rating": 3647,
+          "colour": "B",
+          "winPct": 67
+        },
+        {
+          "name": "Kang Dongyun",
+          "id": "kang-dongyun",
+          "flag": "kr",
+          "rating": 3527,
+          "colour": "W",
+          "winPct": 33
+        }
+      ],
+      "winner": "Ding Hao",
+      "result": "B+1.5",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-73",
+        "r1-76"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r3-75",
+      "round": 3,
+      "row": 32,
+      "span": 5,
+      "players": [
+        {
+          "name": "Ding Hao",
+          "id": "ding-hao",
+          "flag": "cn",
+          "rating": 3631,
+          "colour": "B",
+          "winPct": 49
+        },
+        {
+          "name": "Li Weiqing",
+          "id": "li-weiqing",
+          "flag": "cn",
+          "rating": 3641,
+          "colour": "W",
+          "winPct": 51
+        }
+      ],
+      "winner": "Ding Hao",
+      "result": "B+R",
+      "date": "2025-10-08",
+      "bye": false,
+      "feedsFrom": [
+        "r2-74",
+        "r2-79"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-08"
+    },
+    {
+      "id": "r1-78",
+      "round": 1,
+      "row": 34,
+      "span": 2,
+      "players": [
+        {
+          "name": "Li Haotong",
+          "id": "li-haotong",
+          "flag": "cn",
+          "rating": 3299,
+          "colour": "W",
+          "winPct": 49
+        },
+        {
+          "name": "Li Zhe",
+          "id": "li-zhe",
+          "flag": "cn",
+          "rating": 3305,
+          "colour": "B",
+          "winPct": 51
+        }
+      ],
+      "winner": "Li Haotong",
+      "result": "W+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-77",
+        "r0-80"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r2-79",
+      "round": 2,
+      "row": 34,
+      "span": 3,
+      "players": [
+        {
+          "name": "Li Haotong",
+          "id": "li-haotong",
+          "flag": "cn",
+          "rating": 3320,
+          "colour": "B",
+          "winPct": 14
+        },
+        {
+          "name": "Li Weiqing",
+          "id": "li-weiqing",
+          "flag": "cn",
+          "rating": 3631,
+          "colour": "W",
+          "winPct": 86
+        }
+      ],
+      "winner": "Li Weiqing",
+      "result": "W+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-78",
+        "r1-81"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r2-83",
+      "round": 2,
+      "row": 37,
+      "span": 2,
+      "players": [
+        {
+          "name": "Li Xuanhao",
+          "id": "li-xuanhao",
+          "flag": "cn",
+          "rating": 3616,
+          "colour": "B",
+          "winPct": 76
+        },
+        {
+          "name": "Xu Jingen",
+          "id": "xu-jingen",
+          "flag": "tw",
+          "rating": 3415,
+          "colour": "W",
+          "winPct": 24
+        }
+      ],
+      "winner": "Li Xuanhao",
+      "result": "B+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-82",
+        "r1-86"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r3-84",
+      "round": 3,
+      "row": 37,
+      "span": 4,
+      "players": [
+        {
+          "name": "Li Xuanhao",
+          "id": "li-xuanhao",
+          "flag": "cn",
+          "rating": 3592,
+          "colour": "W",
+          "winPct": 52
+        },
+        {
+          "name": "Dang Yifei",
+          "id": "dang-yifei",
+          "flag": "cn",
+          "rating": 3578,
+          "colour": "B",
+          "winPct": 48
+        }
+      ],
+      "winner": "Dang Yifei",
+      "result": "B+R",
+      "date": "2025-10-08",
+      "bye": false,
+      "feedsFrom": [
+        "r2-83",
+        "r2-88"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-08"
+    },
+    {
+      "id": "r4-85",
+      "round": 4,
+      "row": 37,
+      "span": 11,
+      "players": [
+        {
+          "name": "Dang Yifei",
+          "id": "dang-yifei",
+          "flag": "cn",
+          "rating": 3589,
+          "colour": "B",
+          "winPct": 45
+        },
+        {
+          "name": "Xu Jiayang",
+          "id": "xu-jiayang",
+          "flag": "cn",
+          "rating": 3627,
+          "colour": "W",
+          "winPct": 55
+        }
+      ],
+      "winner": "Dang Yifei",
+      "result": "B+R",
+      "date": "2025-10-09",
+      "bye": false,
+      "feedsFrom": [
+        "r3-84",
+        "r3-93"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-09"
+    },
+    {
+      "id": "r2-88",
+      "round": 2,
+      "row": 39,
+      "span": 2,
+      "players": [
+        {
+          "name": "Shin Minjun",
+          "id": "shin-minjun",
+          "flag": "kr",
+          "rating": 3479,
+          "colour": "B",
+          "winPct": 30
+        },
+        {
+          "name": "Dang Yifei",
+          "id": "dang-yifei",
+          "flag": "cn",
+          "rating": 3623,
+          "colour": "W",
+          "winPct": 70
+        }
+      ],
+      "winner": "Dang Yifei",
+      "result": "W+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-87",
+        "r1-89"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r1-91",
+      "round": 1,
+      "row": 41,
+      "span": 2,
+      "players": [
+        {
+          "name": "Yoo Changhyuk",
+          "id": "yoo-changhyuk",
+          "flag": "kr",
+          "rating": 3366,
+          "colour": "W",
+          "winPct": 24
+        },
+        {
+          "name": "Mi Yuting",
+          "id": "mi-yuting",
+          "flag": "cn",
+          "rating": 3567,
+          "colour": "B",
+          "winPct": 76
+        }
+      ],
+      "winner": "Mi Yuting",
+      "result": "B+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-90",
+        "r0-94"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r2-92",
+      "round": 2,
+      "row": 41,
+      "span": 3,
+      "players": [
+        {
+          "name": "Mi Yuting",
+          "id": "mi-yuting",
+          "flag": "cn",
+          "rating": 3572,
+          "colour": "W",
+          "winPct": 63
+        },
+        {
+          "name": "An Sungjoon",
+          "id": "an-sungjoon",
+          "flag": "kr",
+          "rating": 3482,
+          "colour": "B",
+          "winPct": 37
+        }
+      ],
+      "winner": "Mi Yuting",
+      "result": "W+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-91",
+        "r1-95"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r3-93",
+      "round": 3,
+      "row": 41,
+      "span": 7,
+      "players": [
+        {
+          "name": "Mi Yuting",
+          "id": "mi-yuting",
+          "flag": "cn",
+          "rating": 3630,
+          "colour": "B",
+          "winPct": 52
+        },
+        {
+          "name": "Xu Jiayang",
+          "id": "xu-jiayang",
+          "flag": "cn",
+          "rating": 3617,
+          "colour": "W",
+          "winPct": 48
+        }
+      ],
+      "winner": "Xu Jiayang",
+      "result": "W+R",
+      "date": "2025-10-08",
+      "bye": false,
+      "feedsFrom": [
+        "r2-92",
+        "r2-98"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-10-08"
+    },
+    {
+      "id": "r1-97",
+      "round": 1,
+      "row": 44,
+      "span": 2,
+      "players": [
+        {
+          "name": "Hu Yaoyu",
+          "id": "hu-yaoyu",
+          "flag": "cn",
+          "rating": 3407,
+          "colour": "W",
+          "winPct": 60
+        },
+        {
+          "name": "Gu Lingyi",
+          "id": "gu-lingyi",
+          "flag": "cn",
+          "rating": 3339,
+          "colour": "B",
+          "winPct": 40
+        }
+      ],
+      "winner": "Hu Yaoyu",
+      "result": "W+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-96",
+        "r0-99"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    },
+    {
+      "id": "r2-98",
+      "round": 2,
+      "row": 44,
+      "span": 4,
+      "players": [
+        {
+          "name": "Hu Yaoyu",
+          "id": "hu-yaoyu",
+          "flag": "cn",
+          "rating": 3415,
+          "colour": "W",
+          "winPct": 28
+        },
+        {
+          "name": "Xu Jiayang",
+          "id": "xu-jiayang",
+          "flag": "cn",
+          "rating": 3576,
+          "colour": "B",
+          "winPct": 72
+        }
+      ],
+      "winner": "Xu Jiayang",
+      "result": "B+R",
+      "date": "2025-07-02",
+      "bye": false,
+      "feedsFrom": [
+        "r1-97",
+        "r1-101"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-02"
+    },
+    {
+      "id": "r1-101",
+      "round": 1,
+      "row": 46,
+      "span": 2,
+      "players": [
+        {
+          "name": "Na Hyun",
+          "id": "na-hyun",
+          "flag": "kr",
+          "rating": 3351,
+          "colour": "B",
+          "winPct": 22
+        },
+        {
+          "name": "Xu Jiayang",
+          "id": "xu-jiayang",
+          "flag": "cn",
+          "rating": 3571,
+          "colour": "W",
+          "winPct": 78
+        }
+      ],
+      "winner": "Xu Jiayang",
+      "result": "W+R",
+      "date": "2025-07-01",
+      "bye": false,
+      "feedsFrom": [
+        "r0-100",
+        "r0-102"
+      ],
+      "ratingBasis": "pre-game",
+      "identityConflict": false,
+      "historyMatch": "exact-date",
+      "historyDate": "2025-07-01"
+    }
+  ],
+  "finalDates": [
+    "2025-10-12",
+    "2025-10-14",
+    "2025-10-15"
+  ],
+  "note": "Saved-source preview. Final is best of three; game three is conditional."
+}

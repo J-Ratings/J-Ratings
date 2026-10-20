@@ -1,0 +1,46 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>J-Ratings: Go tournament</title>
+<style>body{background:#10151d;color:#dce2eb;font:16px Arial;margin:0}main{padding:28px}a{color:#83b9ff}.stage{margin:18px 0}.stage>summary{cursor:pointer;font-size:24px;font-weight:bold;padding:12px 0}.stage>summary:focus-visible{outline:2px solid #83b9ff;outline-offset:3px}.rounds{display:flex;overflow-x:auto;gap:14px;align-items:flex-start}.round{flex:0 0 350px;background:#171e29;padding:12px;border-radius:10px}.round:nth-child(even){background:#202735}h3{font-size:17px}.game{background:#1b2330;border:1px solid #394252;border-radius:8px;margin:12px 0;overflow:hidden}.player{display:flex;align-items:center;gap:7px;padding:10px}.player+.player{border-top:1px solid #303947}.name{flex:1;color:inherit;text-decoration:none}.name:hover{text-decoration:underline}.rating{font-size:17px;font-weight:600;flex:0 0 44px;text-align:left;font-variant-numeric:tabular-nums}.chance{font-size:14px;color:#b7d7ff;flex:0 0 40px;text-align:left;font-variant-numeric:tabular-nums}.score{font-weight:800}.win{color:#32d583}.loss{color:#ff6464}.stone{width:13px;height:13px;border-radius:50%;border:1px solid #8491a3;flex:0 0 13px}.black{background:#080a0d}.white{background:#f4f5f7}.flag{width:20px;height:14px;object-fit:contain}.note{font-size:13px;color:#b0bdce;padding:6px 10px}.highlight{background:#293c56;box-shadow:inset 3px 0 #83b9ff}.pill{display:inline-block;border:1px solid #394252;border-radius:20px;padding:6px 12px;margin:6px 8px 14px 0}.bracket-nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:10px 0;background:#10151d}.bracket-nav button{background:#1b2330;color:#dce2eb;border:1px solid #536174;border-radius:6px;padding:8px 14px;cursor:pointer;font:inherit}.bracket-nav button:hover{background:#293c56}.topnav{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 20px}.topnav a{padding:14px 18px;border:1px solid #394252;border-radius:10px;background:#0f1623;color:#dce2eb;font-size:1.05rem;font-weight:600;text-decoration:none}.topnav a:hover{border-color:#83b9ff}.topnav .active-tab{background:rgba(255,255,255,.1);border-color:#83b9ff}main>#title,main>#format,main>.tournament-format{text-align:center}main>.final-positions-button{margin:10px auto}</style><link rel="stylesheet" href="../site.css?v=3"></head>
+<body><header><div class="wrap"><h1 class="site-title"><a href="../../home/" class="brand-with-logo"><span>J-Ratings <span class="title-go">Go</span></span></a></h1><nav class="topnav" aria-label="Main"><a href="../../../index.html">Sports</a><a href="../../home/">Home</a><a class="active-tab" href="../../tournaments/">Tournaments</a><a href="../../compare/">Compare</a><a href="../../peak/">Peak</a></nav></div></header><main class="wrap"><h1 id="title">Tournament</h1><p id="format"></p><div id="stages">Loading…</div><p><a id="source" target="_blank" rel="noopener">Tournament source: Go to Everyone!</a></p></main>
+<script src="league.js?v=2"></script><script src="../player-history.js?v=14"></script><script src="bracket.js?v=4"></script><script>(async()=>{
+const file=new URLSearchParams(location.search).get('file');if(!file||!/^[a-z0-9-]+\.json$/.test(file))throw Error('Choose a tournament from the catalogue.');
+const response=await fetch('../../data/tournaments/catalogue/'+file,{cache:'no-store'});if(!response.ok)throw Error('Tournament data unavailable');const data=await response.json();
+document.getElementById('title').textContent=data.name;document.title='J-Ratings: '+data.name;const format=document.getElementById('format');
+const names=(data.brackets||[]).map(b=>b.name).join(' ');
+const labels=[/winner/i.test(names)&&/loser/i.test(names)?'Winners’ and losers’ brackets':data.brackets?.length===1?'Knockout':data.format];
+const series=(data.brackets||[]).flatMap(b=>b.matches).filter(m=>m.series?.length>1 && /^final$/i.test(m.round));
+if(series.some(m=>m.series.length===3))labels.push('Best-of-three final'); if(series.some(m=>m.series.length===5))labels.push('Best-of-five final');
+labels.forEach(text=>{const pill=document.createElement('span');pill.className='pill';pill.textContent=text;format.append(pill)});document.getElementById('source').href=data.source;
+const root=document.getElementById('stages');root.replaceChildren();const appearances=[];
+function highlight(key){appearances.forEach(x=>x.row.classList.toggle('highlight',Boolean(key)&&x.key===key))}
+
+const consumed=new Set(data.bracketGameIndices||[]);
+const stages=new Map();data.games.forEach((g,i)=>{if(consumed.has(i))return;const stage=g.stage||'Games';if(!stages.has(stage))stages.set(stage,new Map());const rounds=stages.get(stage),round=g.round||'Results';if(!rounds.has(round))rounds.set(round,[]);rounds.get(round).push(g)});
+renderLeagueStandings(root,data.leagueTables||[]);
+const openByDefault=(data.brackets?.length||0)+stages.size===1;
+if(data.brackets?.length) renderTournamentBrackets(root,data.brackets,appearances,highlight,openByDefault);
+stages.forEach((rounds,label)=>{const section=createTournamentSection(root,label,openByDefault);const columns=document.createElement('div');columns.className='rounds';section.appendChild(columns);root.appendChild(section);
+rounds.forEach((games,label)=>{const column=document.createElement('div');column.className='round';const h=document.createElement('h3');h.textContent=label;column.appendChild(h);columns.appendChild(column);
+games.sort((a,b)=>a.date.localeCompare(b.date)).forEach(g=>{const card=document.createElement('div');card.className='game';card.fixture=g.fixture;g.players.forEach(p=>{const row=document.createElement('div');row.className='player';const stone=document.createElement('span');stone.className='stone '+(p.colour==='B'?'black':'white');stone.title=p.colour==='B'?'Black':'White';row.appendChild(stone);if(p.flag){const flag=document.createElement('img');flag.className='flag';flag.src='../../../flags/'+encodeURIComponent(p.flag)+'.svg';flag.alt=p.flag.toUpperCase();row.appendChild(flag)}const name=document.createElement(p.id?'a':'span');name.className='name';name.textContent=p.name;if(p.id)name.href='../../player/?id='+encodeURIComponent(p.id);row.appendChild(name);if(p.rating!=null){const rating=document.createElement('span');rating.className='rating';rating.textContent=p.rating;row.appendChild(rating)}if(p.winPct!=null){const chance=document.createElement('span');chance.className='chance';chance.textContent=p.winPct+'%';row.appendChild(chance)}const score=document.createElement('span');score.className='score '+(p.name===g.winner?'win':'loss');score.textContent=p.name===g.winner?'1':'0';row.appendChild(score);const key=p.id||p.name;appearances.push({row,key});row.addEventListener('mouseenter',()=>highlight(key));row.addEventListener('mouseleave',()=>highlight(null));row.addEventListener('focusin',()=>highlight(key));row.addEventListener('focusout',()=>highlight(null));card.appendChild(row)});const note=document.createElement('div');note.className='note';note.textContent=[g.date,g.result].filter(Boolean).join(' · ');card.appendChild(note);column.appendChild(card)});
+});if(/league/i.test(label))simplifyLeagueGames(section,columns);});setupTournamentPlayerHistory(data);if(!data.games.length)root.textContent='No supported games were extracted for this edition.';
+})().catch(e=>document.getElementById('stages').textContent=e.message);</script></body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

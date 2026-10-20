@@ -9,6 +9,10 @@
 #
 # Full mode:
 #   - checks every player listed on the GoRatings homepage
+# Daily mode:
+#   - uses cached homepage IDs; no homepage request
+#   - checks only players selected from recent saved tournament schedules/draws
+#   - waits three seconds after each profile and checkpoints each response
 #
 # GitHub Actions sets:
 #   GORATINGS_SCRAPE_MODE=weekly
@@ -65,7 +69,7 @@ SCRAPE_MODE <- tolower(
   )
 )
 
-if (!SCRAPE_MODE %in% c("weekly", "full")) {
+if (!SCRAPE_MODE %in% c("weekly", "full", "daily")) {
   warning(
     "Unknown GORATINGS_SCRAPE_MODE='",
     SCRAPE_MODE,
@@ -600,6 +604,13 @@ cat(
 # -----------------------------
 # Read GoRatings homepage
 # -----------------------------
+if (SCRAPE_MODE == "daily") {
+  if (!file.exists(homepage_players_file)) stop("Daily mode requires cached weekly homepage metadata.")
+  homepage_players <- read_csv(homepage_players_file, col_types=cols(.default=col_guess(),player_id=col_character()), show_col_types=FALSE)
+  REQUEST_DELAY_MIN <- 3
+  REQUEST_DELAY_MAX <- 3
+  SAVE_EVERY <- 1L
+} else {
 homepage <- read_html(
   GORATINGS_BASE_URL
 )
@@ -807,6 +818,9 @@ cat(
   "\n"
 )
 
+
+}
+
 # -----------------------------
 # Decide which profiles to check
 # -----------------------------
@@ -862,6 +876,14 @@ profiles_to_scrape <- profile_selection %>%
     player_name
   )
 
+if (SCRAPE_MODE == "daily") {
+  source("scripts/go/daily_tournament_targets.R")
+  target_date <- Sys.getenv("GO_DAILY_DATE",format(Sys.time(),tz="Europe/London",format="%Y-%m-%d"))
+  target <- go_daily_targets(today=as.Date(target_date),max_profiles=as.integer(Sys.getenv("GO_DAILY_MAX_PROFILES","80")))
+  profiles_to_scrape <- as_tibble(target$profiles)
+  if(length(target$deferred))warning(length(target$deferred)," daily profiles deferred by cap; see daily preview.")
+}
+
 cat(
   "Profiles selected:",
   nrow(profiles_to_scrape),
@@ -882,10 +904,13 @@ print(
 
 # Write homepage only after comparing it with
 # the previous saved version.
+if (SCRAPE_MODE != "daily") {
 write_csv(
   homepage_players,
   homepage_players_file
 )
+
+}
 
 cat(
   "\nHomepage metadata written:",
@@ -1160,15 +1185,20 @@ if (nrow(profiles_to_scrape) > 0L) {
     )
     
     scraped_results[[i]] <- tryCatch(
-      parse_player_profile(
+      {
+      parsed_profile <- parse_player_profile(
         player_url =
           player_row$profile_url,
         expected_player_id =
           player_row$player_id,
         expected_player_name =
           player_row$player_name
-      ),
+      )
+      if (SCRAPE_MODE == "daily" && !nrow(parsed_profile)) stop("No live games parsed from a daily target; retaining existing observations for review.")
+      parsed_profile
+      },
       error = function(e) {
+        if (SCRAPE_MODE == "daily") stop("Daily profile request failed; stopping without retries. Earlier observations were checkpointed. ",conditionMessage(e))
         error_message <-
           conditionMessage(e)
         

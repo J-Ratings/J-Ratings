@@ -179,7 +179,7 @@ go_update_tournaments <- function() {
   }
   write_atomic(catalogue,index_path);write_atomic(state,state_path)
   report$requests <- requests;write_atomic(report,file.path(state_dir,"latest-report.json"))
-  if(length(report$updated)) {
+  if(length(report$updated) && !identical(Sys.getenv("GO_TOURNAMENT_SKIP_LINK_BUILD"),"true")) {
     old_output <- Sys.getenv("GO_TOURNAMENT_LINK_OUTPUT",unset=NA_character_)
     Sys.setenv(GO_TOURNAMENT_LINK_OUTPUT=out)
     on.exit(if(is.na(old_output))Sys.unsetenv("GO_TOURNAMENT_LINK_OUTPUT") else Sys.setenv(GO_TOURNAMENT_LINK_OUTPUT=old_output),add=TRUE)

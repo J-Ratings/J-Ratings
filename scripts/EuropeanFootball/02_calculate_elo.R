@@ -43,6 +43,10 @@ CHECKPOINT_DATE <- as.Date("2024-12-31")
 CHECKPOINT_FILE <- file.path(OUT_DIR, "checkpoint_2024_12_31.rds")
 REBUILD_MARKER <- file.path(OUT_DIR, "rebuild_required.txt")
 elo_checkpoint <- if (file.exists(CHECKPOINT_FILE) && !file.exists(REBUILD_MARKER)) readRDS(CHECKPOINT_FILE) else NULL
+if (!is.null(elo_checkpoint) && !identical(elo_checkpoint$result_policy, "shootout-wins-v1")) {
+  message("Old draw-based checkpoint cannot be used: rebuilding full football history for shootout wins.")
+  elo_checkpoint <- NULL
+}
 if (!is.null(elo_checkpoint) && !identical(elo_checkpoint$version, 1L)) stop("Unsupported Elo checkpoint version.")
 
 OUTPUT_GAME_HISTORY_CSV_PASS1  <- file.path(OUT_DIR, "football_elo_game_history_pass1.csv")
@@ -687,6 +691,11 @@ scores <- t(vapply(dt$EloResult, result_to_scores, numeric(2)))
 
 dt[, HomeScore := scores[, 1]]
 dt[, AwayScore := scores[, 2]]
+source(file.path(repo_dir,"scripts/football/elo_decisions.R"))
+shootouts <- football_elo_decisions(repo_dir,"EuropeanFootball",dt$Date,dt$Home,dt$Away,dt$Score,dt$HomeScore,dt$AwayScore)
+dt[, `:=`(HomeScore=shootouts$home,AwayScore=shootouts$away)]
+dt[shootouts$decided, Result := ifelse(HomeScore==1,"1-0","0-1")]
+
 
 bad_result_rows <- dt[
   is.na(HomeScore) | is.na(AwayScore)
@@ -1161,7 +1170,7 @@ if (nrow(cwc_2025) != 63L) {
   stop("Club World Cup coverage failed: expected all 63 games from 2025. Do not run 03_write_json.R yet.")
 }
 if (is.null(elo_checkpoint)) {
-  checkpoint <- list(version=1L, cutoff=CHECKPOINT_DATE, created=Sys.time(),
+  checkpoint <- list(version=1L, result_policy="shootout-wins-v1", cutoff=CHECKPOINT_DATE, created=Sys.time(),
     historical_input=dt[Date <= CHECKPOINT_DATE],
     pass1_state=pass1$boundary_state, pass2_state=pass2$boundary_state,
     pass1_history=pass1$dt[Date <= CHECKPOINT_DATE],

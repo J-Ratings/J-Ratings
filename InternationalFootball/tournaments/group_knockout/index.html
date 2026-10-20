@@ -4,12 +4,19 @@
   <meta charset="utf-8">
   <title>J-Ratings: International Football Group + Knockout Tournaments</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/InternationalFootball/style.css">
   <style>
+    .edition-links{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 16px;margin:20px 0 24px;font-size:1.1rem}
+    .edition-links a{color:#83b9ff;text-decoration:none}.edition-links a:hover{text-decoration:underline}.edition-links a[aria-current="page"]{font-weight:700;text-decoration:underline}
+    .tournament-head .selectors[hidden]{display:none}
+    .tournament-head #title{font-size:clamp(2rem,3.5vw,3rem)}
+    .format-pill{display:inline-block;border:1px solid #394252;border-radius:22px;padding:8px 14px;color:#dce2eb}
     .tournament-head{
+      justify-content:center;
+      text-align:center;
       display:flex;
       align-items:flex-end;
-      justify-content:space-between;
+      justify-content:center;
       gap:16px;
       flex-wrap:wrap;
       margin-bottom:16px;
@@ -32,6 +39,7 @@
       border-radius:8px;
     }
     .meta{
+      justify-content:center;
       display:flex;
       gap:12px;
       flex-wrap:wrap;
@@ -99,7 +107,7 @@
 
     .structure-section{margin-top:24px}
     .structure-title{margin:0 0 12px;font-size:1.35rem}
-    .group-stages{display:block}.group-stage-block{margin-bottom:28px}.group-stage-label{margin:0 0 12px;font-size:1.05rem}.groups-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .group-stages{display:block}.group-stage-block{margin-bottom:28px}.group-stage-label{margin:0 0 12px;font-size:1.05rem}.groups-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:12px}
     .group-card{border:1px solid #2b2f36;border-radius:10px;overflow:hidden;background:rgba(255,255,255,.025)}
     .group-card > h4{margin:0;padding:9px 11px;border-bottom:1px solid #2b2f36;font-size:1rem}
     .group-table{width:100%;border-collapse:collapse;font-size:.92rem}
@@ -107,6 +115,10 @@
     .group-table th:first-child,.group-table td:first-child{text-align:left}
     .group-table tr:last-child td{border-bottom:0}
     .group-table .qualifier td{font-weight:800}
+    .group-team a,.group-result-home a,.group-result-away a{display:inline-flex;align-items:center;gap:7px}
+    .group-team a,.group-result-home a,.group-result-away a{font-size:1.08rem;gap:9px}
+    .group-team .bracket-flag,.group-result-home .bracket-flag,.group-result-away .bracket-flag{width:28px;height:20px}
+    .group-table td{padding-top:10px;padding-bottom:10px}
     .group-team a,.bracket-team a{color:inherit;text-decoration:none}
     .group-team a:hover,.bracket-team a:hover{text-decoration:underline}
 
@@ -365,6 +377,48 @@
       border-color:rgba(210,210,210,.65);
       box-shadow:0 0 0 1px rgba(210,210,210,.08);
     }
+    .final-standings-button{display:block;margin:18px auto 12px;background:#332a18;color:#edcd83;border:1px solid #80662c;border-radius:7px;padding:10px 16px;font:inherit;font-weight:700;cursor:pointer}
+    .final-standings-button:hover{background:#49391c;border-color:#b89443}
+    #finalStandings th,#finalStandings td{font-size:22px}
+    .standings-position{font-weight:800}
+    .standings-medal{display:inline-block;background:linear-gradient(160deg,var(--metal-dark) 0%,var(--metal-mid) 32%,var(--metal-light) 46%,var(--metal-mid) 57%,var(--metal-dark) 100%);background-clip:text;-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 1px 1px rgba(0,0,0,.55))}
+    .standings-gold{--metal-dark:#aa7413;--metal-mid:#e2ac32;--metal-light:#fff0b0}
+    .standings-silver{--metal-dark:#7d8c9f;--metal-mid:#b7c4d4;--metal-light:#f8fcff}
+    .standings-bronze{--metal-dark:#9a4e23;--metal-mid:#cf8445;--metal-light:#ffcf99}
+    .team-history-dialog{width:min(1100px,92vw);max-height:85vh;box-sizing:border-box;background:#171e29;color:#dce2eb;border:1px solid #536174;border-radius:12px;padding:24px;text-align:center;font-size:18px}
+    .team-history-dialog::backdrop{background:rgba(0,0,0,.7)}
+    .team-history-dialog table{width:100%;border-collapse:collapse;margin:24px 0}
+    .team-history-dialog th,.team-history-dialog td{text-align:center;padding:13px;border-bottom:1px solid #394252;font-size:18px}
+    .team-history-dialog .history-result{font-weight:800}
+    .team-history-dialog .history-win{color:#32d583}.team-history-dialog .history-loss{color:#ff6464}
+    .team-history-dialog a{color:#83b9ff}
+    .team-history-dialog button{position:absolute;right:20px;top:20px;background:#1b2330;color:inherit;border:1px solid #536174;border-radius:6px;padding:8px 14px;font:inherit;cursor:pointer}
+    .team-history-dialog h2{font-size:1.8rem;margin:12px 90px 24px;text-align:center}
+    .team-history-dialog>p{font-size:1.1em}
+    .team-history-table{overflow-x:auto;clear:both}
+    /* Match the Go bracket's round bands, cards and navigation. */
+    .bracket-nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:10px 0}
+    .bracket-nav button{background:#1b2330;color:#dce2eb;border:1px solid #536174;border-radius:6px;padding:8px 14px;font:inherit;cursor:pointer}
+    .bracket-nav button:hover{background:#293c56}
+    .bracket-nav button:focus-visible{outline:2px solid #83b9ff;outline-offset:2px}
+    .bracket-scroll{border:1px solid #303947;border-radius:10px;padding:0;overflow:auto}
+    .bracket-grid{column-gap:0 !important}
+    .bracket-round{background:#171e29;border-radius:8px}
+    .bracket-round:nth-child(even){background:#202735}
+    .bracket-round h4{top:14px;color:#dce2eb}
+    .bracket-match{left:14px;right:36px;height:auto;min-height:0;border-color:#394252;border-radius:8px;background:#1b2330}
+    .bracket-team{height:46px;min-height:46px;padding:10px;gap:7px}
+    .bracket-team+.bracket-team{border-color:#303947}
+    .bracket-team.winner{font-weight:400}
+    .bracket-team a{flex:1;min-width:0;white-space:normal;overflow-wrap:anywhere;line-height:1.25}
+    .bracket-team{height:auto;min-height:46px}
+    .bracket-score{font-variant-numeric:tabular-nums}
+    .bracket-team.winner .bracket-score{color:#32d583}
+    .bracket-team.loser .bracket-score{color:#ff6464}
+    .bracket-flag{width:20px;height:14px;object-fit:contain;flex:none}
+    .bracket-note{font-size:13px;color:#b0bdce;padding:6px 10px;min-height:18px}
+    .bracket-connector{stroke:#56657a;stroke-width:2}
+    .bracket-svg{z-index:2}
     .third-place{
       margin-top:18px;
       max-width:300px;
@@ -417,6 +471,23 @@ body,
   scrollbar-gutter: stable;
 }
 /* J-Ratings dark scrollbars: end */
+
+/* Match the Go tournament shell and header measurements. */
+.site-title .title-football{color:var(--wood)}
+.tournament-page{background:transparent;border:0;border-radius:0;margin:0;padding:0}
+.tournament-head{display:block;margin:18px 0 8px;text-align:center}
+.tournament-head #title{font-size:38px;font-weight:700;line-height:1.5;margin:0;padding:0;border:0}
+.edition-links{font-size:19px;gap:10px 16px;margin:1em 0;line-height:1.5}
+.edition-links a{color:var(--accent)}
+.meta{gap:10px;margin:1em 0;align-items:center}
+.format-pill{padding:6px 12px;margin:6px 0 14px;border-radius:20px;color:var(--text)}
+.final-standings-button{background:#30291c;color:#ead39a;border-color:#8e7541;border-radius:6px;padding:10px 16px;margin:14px auto;font-weight:600}
+.final-standings-button:hover{background:#403521}
+.bracket-nav{background:#10151d;padding:10px 0}
+
+.bracket-team{font-size:18px}
+.bracket-team .bracket-flag{width:26px;height:18px}
+.bracket-score{font-size:18px}
 </style>
 </head>
 <body>
@@ -430,6 +501,7 @@ body,
     <nav class="topnav" aria-label="Main">
       <a href="/index.html">Sports</a>
       <a href="/InternationalFootball/home/">Home</a>
+      <a class="active-tab" href="/InternationalFootball/tournaments/">Tournaments</a>
       <a href="/InternationalFootball/compare/">Compare</a>
       <a href="/InternationalFootball/peak/">Peak</a>
     </nav>
@@ -437,10 +509,10 @@ body,
 </header>
 
 <main class="wrap">
-  <section class="panel">
+  <section class="tournament-page">
     <div class="tournament-head">
       <h2 id="title">Tournament</h2>
-      <div class="selectors">
+      <div class="selectors" hidden>
         <label for="familySelect">Tournament</label>
         <select id="familySelect"></select>
         <label for="editionSelect">Edition</label>
@@ -448,14 +520,17 @@ body,
       </div>
     </div>
 
+    <nav id="editionLinks" class="edition-links" aria-label="Tournament editions"></nav>
     <div id="meta" class="meta"></div>
 
 
     <div id="structure" class="structure-section" hidden>
+      <button id="finalStandingsButton" class="final-standings-button" type="button">Final standings</button>
       <h3 id="groupsTitle" class="structure-title">Groups</h3>
       <div id="groups" class="group-stages"></div>
 
       <h3 id="knockoutTitle" class="structure-title">Knockout stage</h3>
+      <nav id="bracketNav" class="bracket-nav" aria-label="Knockout rounds"></nav>
       <div class="bracket-scroll">
         <div id="bracketCanvas" class="bracket-canvas">
           <svg id="bracketSvg" class="bracket-svg" aria-hidden="true"></svg>
@@ -486,7 +561,99 @@ body,
   </section>
 </div>
 
+<dialog id="finalStandings" class="team-history-dialog" aria-labelledby="finalStandingsTitle">
+ <button id="finalStandingsClose" type="button" aria-label="Close final standings">Close</button>
+ <h2 id="finalStandingsTitle">Final standings</h2><p id="finalStandingsEvent"></p>
+ <div class="team-history-table"><table><thead><tr><th>Position</th><th>Team</th><th>Status</th><th>Wins</th><th>Draws</th><th>Losses</th></tr></thead><tbody id="finalStandingsRows"></tbody></table></div>
+</dialog>
+<dialog id="teamHistory" class="team-history-dialog" aria-labelledby="teamHistoryTitle">
+  <button id="teamHistoryClose" type="button" aria-label="Close team history">Close</button>
+  <h2 id="teamHistoryTitle"></h2>
+  <p id="teamHistoryEvent"></p>
+  <div class="team-history-table"><table><thead><tr><th>Date</th><th>Stage / round</th><th>Opponent</th><th>Opponent Elo</th><th>Result</th></tr></thead><tbody id="teamHistoryRows"></tbody></table></div>
+  <a id="teamHistoryProfile">Full team profile</a>
+</dialog>
+<script src="/core/football-decisions.js?v=2"></script>
 <script>
+  let currentTournamentData=null,currentTournamentStructure=null;
+  const historyDialog=document.getElementById('teamHistory');
+  document.getElementById('teamHistoryClose').addEventListener('click',()=>historyDialog.close());
+  historyDialog.addEventListener('click',event=>{if(event.target===historyDialog){const r=historyDialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)historyDialog.close();}});
+  function openTeamHistory(teamId){
+    const data=currentTournamentData;if(!data)return;
+    const names=teamNameMap(data),structure=currentTournamentStructure;
+    document.getElementById('teamHistoryTitle').textContent=names.get(teamId)||teamId;
+    document.getElementById('teamHistoryEvent').textContent=data.event||data.name||'';
+    document.getElementById('teamHistoryProfile').href=`/InternationalFootball/player/?id=${encodeURIComponent(teamId)}`;
+    const body=document.getElementById('teamHistoryRows');body.replaceChildren();
+    const roundByMatch=new Map(),winners=new Map();
+    const rounds=structure?.knockoutRounds||[];
+    rounds.forEach((round,index)=>{
+      const nextIds=new Set((rounds[index+1]?.matches||[]).flatMap(m=>m.teams||[]));
+      (round.matches||[]).forEach(sm=>{const m=findStructuredMatch(data,sm);if(m){roundByMatch.set(m,round.label||round.id);winners.set(m,inferredWinner(m,nextIds));}});
+    });
+    const games=(data.matches||[]).filter(m=>m.home===teamId||m.away===teamId).slice().sort((a,b)=>String(a.date||'9999').localeCompare(String(b.date||'9999')));
+    games.forEach(m=>{
+      const home=m.home===teamId,opponent=home?m.away:m.home;
+      const elo=home?m.awayElo:m.homeElo;
+      const own=home?m.homeScore:m.awayScore,other=home?m.awayScore:m.homeScore;
+      const winner=winners.get(m);
+      const outcome=!m.played?'Pending':winner?(winner===teamId?'Win':'Loss'):own>other?'Win':own<other?'Loss':'Draw';
+      const row=document.createElement('tr');
+      const values=[m.date||'—',roundByMatch.get(m)||m.round||m.stage||'Group stage',names.get(opponent)||opponent||'TBD',elo!=null&&Number.isFinite(Number(elo))?Math.round(Number(elo)):'—',outcome+(m.decision==='penalties'?' (pens)':'')+(m.played?` · ${own}–${other}`:'')];
+      values.forEach((value,i)=>{const td=document.createElement('td');td.textContent=value;if(i===4)td.className='history-result '+(outcome==='Win'?'history-win':outcome==='Loss'?'history-loss':'');row.append(td);});body.append(row);
+    });
+    if(!games.length){const row=body.insertRow();const cell=row.insertCell();cell.colSpan=5;cell.textContent='No matches recorded for this team.';}
+    if(!historyDialog.open)historyDialog.showModal();
+  }
+  document.addEventListener('click',event=>{
+    const link=event.target.closest('a[href*="/InternationalFootball/player/?id="]');
+    if(!link||link.id==='teamHistoryProfile'||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
+    const id=new URL(link.href,location.href).searchParams.get('id');
+    if(!id||!currentTournamentData)return;
+    event.preventDefault();openTeamHistory(id);
+  });
+  const standingsDialog=document.getElementById('finalStandings');
+  document.getElementById('finalStandingsClose').addEventListener('click',()=>standingsDialog.close());
+  standingsDialog.addEventListener('click',event=>{if(event.target===standingsDialog){const r=standingsDialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)standingsDialog.close();}});
+  document.getElementById('finalStandingsButton').addEventListener('click',()=>{
+    const data=currentTournamentData;if(!data)return;
+    document.getElementById('finalStandingsEvent').textContent=data.event||data.name||'';
+    const rows=new Map((data.teams||[]).map(t=>[t.id,{...t,rank:null,status:data.status==='complete'?'Group stage':'Pending',wins:0,draws:0,losses:0,pending:data.status!=='complete'}]));
+    for(const m of data.matches||[]){
+      if(!m.played)continue;
+      const h=rows.get(m.home),a=rows.get(m.away);if(!h||!a)continue;
+      const winner=JRFootballDecisions.winner(m);
+      if(winner===m.home){h.wins++;a.losses++;}else if(winner===m.away){a.wins++;h.losses++;}else{h.draws++;a.draws++;}
+    }
+    const rounds=currentTournamentStructure?.knockoutRounds||[];
+    for(const round of rounds){
+      const main=rounds.filter(r=>r.id!=='third-place'),index=main.indexOf(round);
+      const nextIds=new Set((main[index+1]?.matches||[]).flatMap(m=>m.teams||[]));
+      for(const sm of round.matches||[]){
+        const m=findStructuredMatch(data,sm),winner=inferredWinner(m,nextIds);
+        const ids=m?[m.home,m.away]:(sm.teams||[]);
+        ids.forEach(id=>{const row=rows.get(id);if(!row)return;
+          if(!m?.played||!winner){row.rank=null;row.pending=true;row.status='Pending · '+(round.label||round.id);return;}
+          row.pending=false;
+          if(round.id==='third-place'){row.rank=id===winner?3:4;row.status=id===winner?'Third place':'Fourth place';}
+          else if(round.id==='final'){row.rank=id===winner?1:2;row.status=id===winner?'Champion':'Runner-up';}
+          else if(id!==winner){row.rank=(round.matches||[]).length+1;row.status='Eliminated in '+(round.label||round.id);}
+          else{row.rank=null;row.pending=true;row.status='Advanced · '+(round.label||round.id);}
+        });
+      }
+    }
+    const body=document.getElementById('finalStandingsRows');body.replaceChildren();
+    const ordinal=n=>n+(['th','st','nd','rd'][(n%100>=11&&n%100<=13)?0:Math.min(n%10,4)]||'th');
+    [...rows.values()].sort((a,b)=>Number(b.pending)-Number(a.pending)||(a.rank??Infinity)-(b.rank??Infinity)||a.name.localeCompare(b.name)).forEach(team=>{
+      const row=document.createElement('tr');
+      const pos=document.createElement('td');pos.className='standings-position';const rank=document.createElement('span');rank.textContent=team.rank?ordinal(team.rank):'—';const medal={1:'standings-gold',2:'standings-silver',3:'standings-bronze'}[team.rank];if(medal)rank.className='standings-medal '+medal;pos.append(rank);row.append(pos);
+      const name=document.createElement('td');if(team.flag){const flag=document.createElement('img');flag.src=`/flags/${encodeURIComponent(team.flag)}.svg`;flag.alt='';flag.className='bracket-flag';flag.style.marginRight='7px';name.append(flag);}
+      const link=document.createElement('a');link.href=`/InternationalFootball/player/?id=${encodeURIComponent(team.id)}`;link.textContent=team.name;name.append(link);row.append(name);
+      [team.status,team.wins,team.draws,team.losses].forEach(value=>{const cell=document.createElement('td');cell.textContent=value;row.append(cell);});body.append(row);
+    });
+    standingsDialog.showModal();
+  });
   const params = new URLSearchParams(location.search);
 
   const INDEX_URL = '/InternationalFootball/data/tournaments/index.json';
@@ -520,10 +687,19 @@ body,
   let activeGroupTrigger = null;
 
   function setQuery(tournamentId, editionId){
-    const next = new URL('/InternationalFootball/tournaments/', location.origin);
+    const next = new URL('/InternationalFootball/tournaments/group_knockout/', location.origin);
     next.searchParams.set('tournament', tournamentId);
     next.searchParams.set('edition', editionId);
+    next.searchParams.set('view', 'go-bracket-20261016s');
     history.replaceState(null, '', next);
+  }
+
+  function addTeamFlag(link, data, teamId){
+    const flag=(data.teams||[]).find(team=>team.id===teamId)?.flag;
+    if(!flag)return;
+    const image=document.createElement('img');image.className='bracket-flag';
+    image.src=`/flags/${encodeURIComponent(flag)}.svg`;image.alt='';
+    link.prepend(image);
   }
 
   function teamNameMap(data){
@@ -696,6 +872,7 @@ body,
       a.href = `/InternationalFootball/player/?id=${encodeURIComponent(r.id)}`;
       a.textContent = names.get(r.id) || r.id;
 
+      addTeamFlag(a,data,r.id);
       tdTeam.appendChild(a);
       tr.appendChild(tdTeam);
 
@@ -764,17 +941,20 @@ body,
       const homeLink = document.createElement('a');
       homeLink.href = `/InternationalFootball/player/?id=${encodeURIComponent(m.home || '')}`;
       homeLink.textContent = names.get(m.home) || m.home || '';
+      addTeamFlag(homeLink,data,m.home);
       home.appendChild(homeLink);
 
       const score = document.createElement('div');
       score.className = 'group-result-score';
       score.textContent = m.played ? `${m.homeScore}–${m.awayScore}` : '—';
+      if(m.played)JRFootballDecisions.renderScore(score,m);
 
       const away = document.createElement('div');
       away.className = 'group-result-away';
       const awayLink = document.createElement('a');
       awayLink.href = `/InternationalFootball/player/?id=${encodeURIComponent(m.away || '')}`;
       awayLink.textContent = names.get(m.away) || m.away || '';
+      addTeamFlag(awayLink,data,m.away);
       away.appendChild(awayLink);
 
       row.appendChild(date);
@@ -882,16 +1062,8 @@ body,
     return candidates[0] || null;
   }
 
-  function inferredWinner(m, nextRoundTeamIds){
-    if (!m) return null;
-
-    if (Number(m.homeScore) > Number(m.awayScore)) return m.home;
-    if (Number(m.awayScore) > Number(m.homeScore)) return m.away;
-
-    if (nextRoundTeamIds?.has(m.home) && !nextRoundTeamIds?.has(m.away)) return m.home;
-    if (nextRoundTeamIds?.has(m.away) && !nextRoundTeamIds?.has(m.home)) return m.away;
-
-    return null;
+  function inferredWinner(m){
+    return JRFootballDecisions.winner(m);
   }
 
   function clearJourney(){
@@ -927,7 +1099,7 @@ body,
 
       (structMatch.teams || [null,null]).forEach((teamId, idx) => {
         const row = document.createElement('div');
-        row.className = 'bracket-team' + (fallbackWinner === teamId ? ' winner' : '');
+        row.className = 'bracket-team' + (fallbackWinner === teamId ? ' winner' : fallbackWinner ? ' loser' : '');
         if (teamId) row.dataset.teamId = teamId;
 
         const a = document.createElement('a');
@@ -952,13 +1124,17 @@ body,
 
         box.appendChild(row);
       });
+      const note = document.createElement('div');
+      note.className = 'bracket-note';
+      note.textContent = structMatch.date || (fallbackPlayed ? '' : 'Pending');
+      box.append(note);
       return box;
     }
 
     for (const side of ['home','away']){
       const teamId = m[side];
       const row = document.createElement('div');
-      row.className = 'bracket-team' + (winnerId === teamId ? ' winner' : '');
+      row.className = 'bracket-team' + (winnerId === teamId ? ' winner' : winnerId ? ' loser' : '');
       row.dataset.teamId = teamId;
 
       const a = document.createElement('a');
@@ -978,11 +1154,26 @@ body,
       box.appendChild(row);
     }
 
+    const note = document.createElement('div');
+    note.className = 'bracket-note';
+    note.textContent = [m.date || (m.played ? '' : 'Pending'),m.decision==='penalties'&&m.homePenalties!=null?`Penalties ${m.homePenalties}–${m.awayPenalties}`:''].filter(Boolean).join(' · ');
+    box.append(note);
     return box;
   }
 
+  // Order branches backwards from the final, preserving source order within
+  // each pairing. Dates remain on the cards but do not determine tree order.
+  function orderBracketBranches(rounds){
+    const ordered=rounds.map(round=>({...round,matches:[...(round.matches||[])]}));
+    for(let i=ordered.length-2;i>=0;i--){
+      const targets=new Map(ordered[i+1].matches.map((match,index)=>[match.id,index]));
+      ordered[i].matches.sort((a,b)=>(targets.get(a.feedsInto)??Number.MAX_SAFE_INTEGER)-(targets.get(b.feedsInto)??Number.MAX_SAFE_INTEGER));
+    }
+    return ordered;
+  }
+
   function mainKnockoutRounds(structure){
-    return (structure.knockoutRounds || []).filter(r => r.id !== 'third-place');
+    return orderBracketBranches((structure.knockoutRounds || []).filter(r => r.id !== 'third-place'));
   }
 
   function bracketHeightFor(structure){
@@ -993,15 +1184,16 @@ body,
   function configureBracketCanvas(structure){
     const rounds = mainKnockoutRounds(structure);
     const height = bracketHeightFor(structure);
-    const minWidth = Math.max(760, rounds.length * 250 + Math.max(0, rounds.length - 1) * 70);
+    const minWidth = Math.max(1, rounds.length) * 300;
 
     bracketCanvasEl.style.height = `${height}px`;
     bracketCanvasEl.style.minHeight = `${height}px`;
     bracketCanvasEl.style.minWidth = `${minWidth}px`;
+    bracketCanvasEl.style.width = `${minWidth}px`;
 
     bracketEl.style.height = `${height}px`;
     bracketEl.style.minHeight = `${height}px`;
-    bracketEl.style.gridTemplateColumns = `repeat(${Math.max(1, rounds.length)}, minmax(220px,1fr))`;
+    bracketEl.style.gridTemplateColumns = `repeat(${Math.max(1, rounds.length)}, 300px)`;
   }
 
   function positionBracketMatches(structure){
@@ -1012,66 +1204,37 @@ body,
       for (const m of (round.matches || [])) matchById.set(m.id, m);
     }
 
-    const canvasHeight = bracketHeightFor(structure);
-    const topPad = 82;
-    const bottomPad = 42;
-
-    const firstMatches = rounds[0]?.matches || [];
     const centres = new Map();
-
-    if (firstMatches.length){
-      const usable = canvasHeight - topPad - bottomPad;
-      firstMatches.forEach((m, i) => {
-        const y = topPad + usable * ((i + 0.5) / firstMatches.length);
-        centres.set(m.id, y);
+    let maxBottom = 0;
+    // Lay out each round using measured card heights; feeder averages can
+    // coincide, so enforce a clear gap before laying out the following round.
+    rounds.forEach((round, roundIndex) => {
+      let bottom = 60;
+      (round.matches || []).forEach((match, index) => {
+        const el = [...bracketEl.querySelectorAll('.bracket-match')].find(node => node.dataset.matchId === match.id);
+        if (!el) return;
+        const height = el.offsetHeight;
+        const feeders = [...matchById.values()].filter(source => source.feedsInto === match.id && centres.has(source.id));
+        const desired = feeders.length
+          ? feeders.reduce((sum, source) => sum + centres.get(source.id), 0) / feeders.length
+          : 60 + (index + .5) * 150;
+        const centre = Math.max(bottom + height / 2, desired);
+        centres.set(match.id, centre);
+        el.style.top = `${centre}px`;
+        bottom = centre + height / 2 + 18;
+        maxBottom = Math.max(maxBottom, bottom);
       });
-    }
-
-    // Later matches inherit their position from feeder matches. This means the
-    // renderer works for R32, R16, quarter-final starts, byes and other bracket
-    // sizes without hardcoding particular round names.
-    for (let r = 1; r < rounds.length; r++){
-      for (const target of (rounds[r].matches || [])){
-        const feeders = [];
-
-        for (const source of matchById.values()){
-          if (source.feedsInto === target.id && centres.has(source.id)){
-            feeders.push(centres.get(source.id));
-          }
-        }
-
-        if (feeders.length){
-          centres.set(
-            target.id,
-            feeders.reduce((a,b) => a + b, 0) / feeders.length
-          );
-        }
-      }
-    }
-
-    // If an edition omits feeder metadata, give any unpositioned match a
-    // sensible evenly-spaced fallback within its own round.
-    for (const round of rounds){
-      const missing = (round.matches || []).filter(m => !centres.has(m.id));
-      if (!missing.length) continue;
-
-      const usable = canvasHeight - topPad - bottomPad;
-      missing.forEach((m, i) => {
-        centres.set(m.id, topPad + usable * ((i + 0.5) / missing.length));
-      });
-    }
-
-    for (const [matchId, y] of centres){
-      const el = bracketEl.querySelector(
-        `.bracket-match[data-match-id="${CSS.escape(matchId)}"]`
-      );
-      if (el) el.style.top = `${y}px`;
+    });
+    const height = maxBottom + 20;
+    for (const el of [bracketCanvasEl, bracketEl]) {
+      el.style.height = `${height}px`;
+      el.style.minHeight = `${height}px`;
     }
   }
 
   function drawBracketConnectors(structure){
     bracketSvgEl.innerHTML = '';
-    bracketSvgEl.setAttribute('viewBox', `0 0 ${bracketCanvasEl.clientWidth} ${bracketHeightFor(structure)}`);
+    bracketSvgEl.setAttribute('viewBox', `0 0 ${bracketCanvasEl.clientWidth} ${bracketCanvasEl.clientHeight}`);
     bracketSvgEl.setAttribute('preserveAspectRatio', 'none');
 
     const svgRect = bracketCanvasEl.getBoundingClientRect();
@@ -1115,6 +1278,9 @@ body,
 
     configureBracketCanvas(structure);
 
+    const nav = document.getElementById('bracketNav');
+    nav.replaceChildren();
+    const teams = new Map((data.teams || []).map(team => [team.id, team]));
     mainRounds.forEach((round, roundIndex) => {
       const col = document.createElement('div');
       col.className = 'bracket-round';
@@ -1135,11 +1301,26 @@ body,
         col.appendChild(renderBracketMatch(m, names, winnerId, structMatch));
       }
 
+      col.querySelectorAll('.bracket-team').forEach(row => {
+        const flag = teams.get(row.dataset.teamId)?.flag;
+        if (flag) {
+          const image = document.createElement('img');
+          image.className = 'bracket-flag';
+          image.src = `/flags/${encodeURIComponent(flag)}.svg`;
+          image.alt = '';
+          row.prepend(image);
+        }
+      });
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = h.textContent;
+      button.addEventListener('click', () => bracketCanvasEl.parentElement.scrollTo({left:col.offsetLeft, behavior:'smooth'}));
+      nav.append(button);
       bracketEl.appendChild(col);
     });
 
     positionBracketMatches(structure);
-    requestAnimationFrame(() => drawBracketConnectors(structure));
+    requestAnimationFrame(() => { positionBracketMatches(structure); drawBracketConnectors(structure); });
 
     const third = rounds.find(r => r.id === 'third-place');
     if (third?.matches?.length){
@@ -1158,7 +1339,7 @@ body,
       thirdPlaceEl.appendChild(box);
     }
 
-    window.setTimeout(() => drawBracketConnectors(structure), 50);
+    window.setTimeout(() => { positionBracketMatches(structure); drawBracketConnectors(structure); }, 50);
   }
 
   async function renderStructure(data){
@@ -1172,6 +1353,12 @@ body,
       const res = await fetch(STRUCTURE_URL(data.tournamentId, data.editionId), {cache:'no-cache'});
       if (!res.ok) return;
       const structure = await res.json();
+      currentTournamentStructure=structure;
+      // Competition decisions are separate from match scores and Elo outcomes.
+      for(const round of structure.knockoutRounds||[])for(const sm of round.matches||[]){
+        const match=findStructuredMatch(data,sm);
+        if(match)for(const key of ['winner','homePenalties','awayPenalties','decision','decisionSource'])if(sm[key]!=null)match[key]=sm[key];
+      }
       const hasGroups = renderGroups(data, structure);
       const hasKnockout = (structure.knockoutRounds || []).some(r => (r.matches || []).length);
 
@@ -1190,32 +1377,14 @@ body,
 
 
   function renderMeta(data){
-    const s = data.summary || {};
-    const items = [
-      ['Status', data.status || ''],
-      ['Teams', s.teams ?? (data.teams || []).length],
-      ['Matches', s.matches ?? (data.matches || []).length],
-      ['First match', s.firstDate || ''],
-      ['Last match', s.lastDate || '']
-    ];
-
-    metaEl.innerHTML = '';
-    for (const [label, value] of items){
-      const box = document.createElement('div');
-      box.className = 'stat';
-
-      const l = document.createElement('div');
-      l.className = 'label';
-      l.textContent = label;
-
-      const v = document.createElement('div');
-      v.className = 'value';
-      v.textContent = String(value ?? '');
-
-      box.appendChild(l);
-      box.appendChild(v);
-      metaEl.appendChild(box);
-    }
+    const structure=currentTournamentStructure;
+    const hasGroups=structure&&normaliseGroupStages(structure).length>0;
+    const hasKnockout=Boolean(structure?.knockoutRounds?.length);
+    const labels=[hasGroups&&hasKnockout?'Group stage + knockout':hasKnockout?'Knockout':hasGroups?'Group stage':null,`${(data.teams||[]).length} teams`];
+    if(data.status)labels.push(data.status==='complete'?'Completed':data.status==='ongoing'?'In progress':data.status);
+    metaEl.replaceChildren();
+    labels.filter(Boolean).forEach(label=>{const pill=document.createElement('span');pill.className='format-pill';pill.textContent=label;metaEl.append(pill);});
+    document.querySelectorAll('#editionLinks a').forEach(link=>{if(link.dataset.edition===String(data.editionId))link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});
   }
 
   function renderMatches(data){
@@ -1272,7 +1441,7 @@ body,
       const tdScore = document.createElement('td');
       tdScore.className = 'score';
       if (m.played){
-        tdScore.textContent = `${m.homeScore}-${m.awayScore}`;
+        JRFootballDecisions.renderScore(tdScore,m);
       } else {
         tdScore.textContent = '—';
       }
@@ -1301,9 +1470,14 @@ body,
     if (!res.ok) throw new Error('Tournament edition not found');
 
     const data = await res.json();
-    titleEl.textContent = data.event || `${data.name || tournamentId} ${editionId}`;
-    renderMeta(data);
+    currentTournamentData=data;currentTournamentStructure=null;
+    const eventTitle=data.event || `${data.name || tournamentId} ${editionId}`;
+    const editionSuffix=String(editionId);
+    titleEl.textContent=eventTitle.endsWith(' '+editionSuffix)
+      ? eventTitle.slice(0,-editionSuffix.length).trimEnd()+' · '+editionSuffix
+      : eventTitle;
     await renderStructure(data);
+    renderMeta(data);
     renderMatches(data);
     setQuery(tournamentId, editionId);
   }
@@ -1314,6 +1488,12 @@ body,
 
     const editions = await res.json();
     editionSelect.innerHTML = '';
+    const editionLinks=document.getElementById('editionLinks');editionLinks.replaceChildren();
+    for(const edition of [...editions].sort((a,b)=>String(a.id).localeCompare(String(b.id),undefined,{numeric:true}))){
+      const link=document.createElement('a');link.dataset.edition=String(edition.id);link.textContent=String(edition.id);
+      link.href=`?tournament=${encodeURIComponent(tournamentId)}&edition=${encodeURIComponent(edition.id)}&view=go-bracket-20261016s`;
+      link.addEventListener('click',async event=>{if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();editionSelect.value=edition.id;await loadEdition(tournamentId,edition.id);});editionLinks.append(link);
+    }
 
     for (const e of editions){
       const opt = document.createElement('option');

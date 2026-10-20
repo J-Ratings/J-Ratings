@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="../style.css">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
   <script src="../../jratings-graph.js"></script>
+  <script src="tournament-links.js?v=1"></script>
 
   <style>
     :root{
@@ -134,11 +135,17 @@
     }
 
     table.games{
+      min-width:1180px;
       width:100%;
       border-collapse:separate;
       border-spacing:0;
       font-size:1rem;
       table-layout:fixed;
+    }
+    table.games .event-cell, table.games th:nth-child(2){
+      width:220px;
+      white-space:normal;
+      overflow-wrap:anywhere;
     }
 
     table.games th,
@@ -168,32 +175,32 @@
       width:120px;
     }
 
-table.games th:nth-child(2),
-table.games td:nth-child(2),
-table.games th:nth-child(4),
-table.games td:nth-child(4){
-  width:190px;
-}
-
 table.games th:nth-child(3),
 table.games td:nth-child(3),
 table.games th:nth-child(5),
 table.games td:nth-child(5){
-  width:72px;
+  width:190px;
 }
 
+table.games th:nth-child(4),
+table.games td:nth-child(4),
 table.games th:nth-child(6),
 table.games td:nth-child(6){
-  width:180px;
+  width:72px;
 }
 
 table.games th:nth-child(7),
 table.games td:nth-child(7){
-  width:90px;
+  width:140px;
 }
 
 table.games th:nth-child(8),
 table.games td:nth-child(8){
+  width:90px;
+}
+
+table.games th:nth-child(9),
+table.games td:nth-child(9){
   width:80px;
 }
 
@@ -230,12 +237,12 @@ table.games td:nth-child(8){
     .delta.zero{ color:#e8a81f; }
 
     .wl-cell{
-      min-width:150px;
+      min-width:120px;
     }
 
     .wl-bar{
       display:flex;
-      width:142px;
+      width:110px;
       height:26px;
       border-radius:7px;
       overflow:hidden;
@@ -295,41 +302,41 @@ table.games td:nth-child(8){
         width:110px;
       }
 
-table.games th:nth-child(2),
-table.games td:nth-child(2),
-table.games th:nth-child(4),
-table.games td:nth-child(4){
-  width:145px;
-}
-
 table.games th:nth-child(3),
 table.games td:nth-child(3),
 table.games th:nth-child(5),
 table.games td:nth-child(5){
-  width:68px;
+  width:145px;
 }
 
+table.games th:nth-child(4),
+table.games td:nth-child(4),
 table.games th:nth-child(6),
 table.games td:nth-child(6){
-  width:150px;
+  width:68px;
 }
 
 table.games th:nth-child(7),
 table.games td:nth-child(7){
-  width:85px;
+  width:120px;
 }
 
 table.games th:nth-child(8),
 table.games td:nth-child(8){
+  width:85px;
+}
+
+table.games th:nth-child(9),
+table.games td:nth-child(9){
   width:75px;
 }
 
       .wl-cell{
-        min-width:132px;
+        min-width:110px;
       }
 
       .wl-bar{
-        width:124px;
+        width:100px;
         height:24px;
       }
 
@@ -438,6 +445,7 @@ body,
     <nav class="topnav" aria-label="Main">
       <a href="../../index.html">Sports</a>
       <a id="nav-home" href="../home/">Home</a>
+      <a href="../tournaments/">Tournaments</a>
       <a id="nav-compare" href="../compare/">Compare</a>
       <a id="nav-peak" href="../peak/">Peak</a>
     </nav>
@@ -647,7 +655,7 @@ function renderGamesTable(me, players, games) {
   const thead = document.createElement('thead');
   const hr = document.createElement('tr');
 
-for (const h of ['Date', 'Black', 'Elo', 'White', 'Elo', 'Expected W/L', 'Result', 'Δ']) {
+for (const h of ['Date', 'Event', 'Black', 'Elo', 'White', 'Elo', 'Expected W/L', 'Result', 'Δ']) {
       const th = document.createElement('th');
     th.textContent = h;
     hr.appendChild(th);
@@ -725,6 +733,17 @@ for (const h of ['Date', 'Black', 'Elo', 'White', 'Elo', 'Expected W/L', 'Result
     tr.appendChild(tdWl);
     tr.appendChild(tdResult);
     tr.appendChild(tdDelta);
+    const tdEvent = document.createElement('td');
+    tdEvent.className = 'event-cell';
+    const event = g.event || g.tournament || '';
+    if (g.eventUrl) {
+      const link = document.createElement('a');
+      link.href = g.eventUrl;
+      link.textContent = event;
+      tdEvent.appendChild(link);
+    } else tdEvent.textContent = event && event !== 'GoRatings' ? event : '—';
+    tdEvent.title = event === 'GoRatings' ? 'Tournament not identified in the original feed' : event;
+    tr.insertBefore(tdEvent, tdBlack);
 
     tbody.appendChild(tr);
     added++;
@@ -780,7 +799,7 @@ async function load() {
   try {
     document.getElementById('chart').textContent = 'Loading…';
     document.getElementById('games').innerHTML =
-      '<tbody><tr><td colspan="8">Loading…</td></tr></tbody>';
+      '<tbody><tr><td colspan="9">Loading…</td></tr></tbody>';
 
     const [playersRes, histRes, gamesRes] = await Promise.all([
       fetch(PLAYERS_URL, { cache: 'no-cache' }),
@@ -836,13 +855,22 @@ document.getElementById('pname').textContent =
 
     if (gamesRes.ok) {
       const games = await gamesRes.json();
+      try {
+        const response = await fetch('../data/tournaments/catalogue/index.json', {cache: 'no-cache'});
+        if (response.ok && Array.isArray(games)) {
+          const catalogue = await response.json();
+          const linksResponse = await fetch('../data/tournaments/catalogue/game-links.json', {cache: 'no-cache'});
+          const gameLinks = linksResponse.ok ? await linksResponse.json() : {};
+          JRTournamentLinks.enrich(games, catalogue, gameLinks);
+        }
+      } catch (_) { /* Keep profiles usable if tournament data is unavailable. */ }
 
       if (token !== LOAD_TOKEN) return;
 
       renderGamesTable(me, players, Array.isArray(games) ? games : []);
     } else {
       document.getElementById('games').innerHTML =
-        '<tbody><tr><td colspan="8">No games</td></tr></tbody>';
+        '<tbody><tr><td colspan="9">No games</td></tr></tbody>';
     }
   } catch (e) {
     if (token !== LOAD_TOKEN) return;
@@ -851,7 +879,7 @@ document.getElementById('pname').textContent =
 
     document.getElementById('chart').textContent = 'Error: ' + e.message;
     document.getElementById('games').innerHTML =
-      '<tbody><tr><td colspan="8">Error loading games</td></tr></tbody>';
+      '<tbody><tr><td colspan="9">Error loading games</td></tr></tbody>';
 
     renderPlayerStats([]);
   }
@@ -861,3 +889,6 @@ load();
 </script>
 </body>
 </html>
+
+
+

@@ -1220,3 +1220,7 @@ if (length(missing_outputs) > 0) {
 cat("Done.\n")
 cat("JSON output directory:", base_data_dir, "\n")
 
+
+# Preserve explicit shootout decisions, including frozen historical exports.
+source(file.path(repo_dir, "scripts/football/export_decisions.R"))
+enrich_football_export_decisions(repo_dir, "InternationalFootball")

@@ -2,7 +2,8 @@
 # Unknown pairings/dates are retained as review items, never guessed/imported.
 go_source_results <- function(path, url, family, calendar, person) {
   library(xml2); library(data.table)
-  doc <- read_html(path)
+  source("scripts/go/tournament_source_document.R")
+  doc <- go_tournament_document(path)
   text <- function(n) trimws(gsub("[[:space:]]+"," ",xml_text(n)))
   items <- function(n) trimws(xml_text(xml_find_all(n,".//span[contains(@class,'tournament-result-item')]")))
   clean <- function(s) trimws(sub("\\([^)]*\\)\\s*$","",sub("^\\([a-z]+\\)","",s)))
@@ -57,7 +58,7 @@ go_source_results <- function(path, url, family, calendar, person) {
     if(!valid){review[[length(review)+1L]] <- list(reason="Invalid table spans");next}
     stage <- text(xml_find_first(table,"preceding::*[self::h3][1]"))
     class <- xml_attr(table,"class");if(is.na(class))class <- ""
-    row_person <- function(r) {
+      row_person <- function(r) {
       ids <- unique(na.omit(grid[r,1:2]))
       for(id in ids){c <- cells[[id]];if(!c$header&&!length(c$items)&&nzchar(c$text)&&!grepl("^[0-9-]+$",c$text))return(list(name=clean(c$text),col=c$col))}
       list(name="",col=0L)

@@ -1,0 +1,1293 @@
+{
+  "tournament": "4th Quzhou-Lanke Cup",
+  "fixtures": [
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Dang Yifei",
+        "Jiang Weijie"
+      ],
+      "profile_ids": [
+        "dang-yifei",
+        "jiang-weijie"
+      ],
+      "winner": "Dang Yifei",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Dang Yifei",
+        "Jiang Weijie"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "3rd round",
+      "date": "2026-10-09",
+      "players": [
+        "Dang Yifei",
+        "Lai Junfu"
+      ],
+      "profile_ids": [
+        "dang-yifei",
+        "lai-junfu"
+      ],
+      "winner": "Dang Yifei",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Dang Yifei",
+        "Lai Junfu"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "Quarterfinals",
+      "date": "2026-10-10",
+      "players": [
+        "Dang Yifei",
+        "Shin Minjun"
+      ],
+      "profile_ids": [
+        "dang-yifei",
+        "shin-minjun"
+      ],
+      "winner": "Shin Minjun",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Dang Yifei",
+        "Shin Minjun"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "Semifinals",
+      "date": "2026-10-12",
+      "players": [
+        "Shin Minjun",
+        "Byun Sangil"
+      ],
+      "profile_ids": [
+        "shin-minjun",
+        "byun-sangil"
+      ],
+      "winner": "",
+      "result": "",
+      "status": "SCHEDULED_DATE_ONLY",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Shin Minjun",
+        "Byun Sangil"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Lai Junfu",
+        "Chen Xian"
+      ],
+      "profile_ids": [
+        "lai-junfu",
+        "chen-xian"
+      ],
+      "winner": "Lai Junfu",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Lai Junfu",
+        "Chen Xian"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Lai Junfu",
+        "Qiu Yuran"
+      ],
+      "profile_ids": [
+        "lai-junfu",
+        "qiu-yuran"
+      ],
+      "winner": "Lai Junfu",
+      "result": "W+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Lai Junfu",
+        "Qiu Yuran"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Miura Taro",
+        "Qiu Yuran"
+      ],
+      "profile_ids": [
+        "miura-taro",
+        "qiu-yuran"
+      ],
+      "winner": "Qiu Yuran",
+      "result": "B+3.5",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Miura Taro",
+        "Qiu Yuran"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Lian Xiao",
+        "Chen Yunong"
+      ],
+      "profile_ids": [
+        "lian-xiao",
+        "chen-yunong"
+      ],
+      "winner": "Chen Yunong",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Lian Xiao",
+        "Chen Yunong"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "3rd round",
+      "date": "2026-10-09",
+      "players": [
+        "Chen Yunong",
+        "Shin Minjun"
+      ],
+      "profile_ids": [
+        "chen-yunong",
+        "shin-minjun"
+      ],
+      "winner": "Shin Minjun",
+      "result": "B+3.5",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Chen Yunong",
+        "Shin Minjun"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Chen Yunong",
+        "Han Jongjin"
+      ],
+      "profile_ids": [
+        "chen-yunong",
+        "han-chongjin"
+      ],
+      "winner": "Chen Yunong",
+      "result": "W+R",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Chen Yunong",
+        "Han Chongjin"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Shin Minjun",
+        "Xia Chenkun"
+      ],
+      "profile_ids": [
+        "shin-minjun",
+        "xia-chenkun"
+      ],
+      "winner": "Shin Minjun",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Shin Minjun",
+        "Xia Chenkun"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Xia Chenkun",
+        "Li He"
+      ],
+      "profile_ids": [
+        "xia-chenkun",
+        "li-he"
+      ],
+      "winner": "Xia Chenkun",
+      "result": "W+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Xia Chenkun",
+        "Li He"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Ding Hao",
+        "Li Weiqing"
+      ],
+      "profile_ids": [
+        "ding-hao",
+        "li-weiqing"
+      ],
+      "winner": "Ding Hao",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Ding Hao",
+        "Li Weiqing"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "3rd round",
+      "date": "2026-10-09",
+      "players": [
+        "Ding Hao",
+        "Byun Sangil"
+      ],
+      "profile_ids": [
+        "ding-hao",
+        "byun-sangil"
+      ],
+      "winner": "Byun Sangil",
+      "result": "W+0.5",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Ding Hao",
+        "Byun Sangil"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "Quarterfinals",
+      "date": "2026-10-10",
+      "players": [
+        "Byun Sangil",
+        "Liao Yuanhe"
+      ],
+      "profile_ids": [
+        "byun-sangil",
+        "liao-yuanhe"
+      ],
+      "winner": "Byun Sangil",
+      "result": "W+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Byun Sangil",
+        "Liao Yuanhe"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Byun Sangil",
+        "Wang Shiyi"
+      ],
+      "profile_ids": [
+        "byun-sangil",
+        "wang-shiyi"
+      ],
+      "winner": "Byun Sangil",
+      "result": "W+2.5",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Byun Sangil",
+        "Wang Shiyi"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Byun Sangil",
+        "Xu Jiayang"
+      ],
+      "profile_ids": [
+        "byun-sangil",
+        "xu-jiayang"
+      ],
+      "winner": "Byun Sangil",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Byun Sangil",
+        "Xu Jiayang"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Wang Xinghao",
+        "Liao Yuanhe"
+      ],
+      "profile_ids": [
+        "wang-xinghao",
+        "liao-yuanhe"
+      ],
+      "winner": "Liao Yuanhe",
+      "result": "W+0.5",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Wang Xinghao",
+        "Liao Yuanhe"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "3rd round",
+      "date": "2026-10-09",
+      "players": [
+        "Liao Yuanhe",
+        "Kim Myeonghoon"
+      ],
+      "profile_ids": [
+        "liao-yuanhe",
+        "kim-myounghoon"
+      ],
+      "winner": "Liao Yuanhe",
+      "result": "B+R",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Liao Yuanhe",
+        "Kim Myounghoon"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Kim Myeonghoon",
+        "Li Chongde"
+      ],
+      "profile_ids": [
+        "kim-myounghoon",
+        ""
+      ],
+      "winner": "Kim Myeonghoon",
+      "result": "W+R",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Kim Myounghoon",
+        ""
+      ],
+      "eligible_existing_profiles": false
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Kim Myeonghoon",
+        "Zhang Xinyu"
+      ],
+      "profile_ids": [
+        "kim-myounghoon",
+        "zhang-xinyu"
+      ],
+      "winner": "Kim Myeonghoon",
+      "result": "W+R",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Kim Myounghoon",
+        "Zhang Xinyu"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Zhang Xinyu",
+        "Stanislaw Frejlak"
+      ],
+      "profile_ids": [
+        "zhang-xinyu",
+        ""
+      ],
+      "winner": "Zhang Xinyu",
+      "result": "W+2.5",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Zhang Xinyu",
+        ""
+      ],
+      "eligible_existing_profiles": false
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Shin Jinseo",
+        "Ma Jingyuan"
+      ],
+      "profile_ids": [
+        "shin-jinseo",
+        "ma-jingyuan"
+      ],
+      "winner": "Shin Jinseo",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Shin Jinseo",
+        "Ma Jingyuan"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Shin Jinseo",
+        "Xie Ke"
+      ],
+      "profile_ids": [
+        "shin-jinseo",
+        "xie-ke"
+      ],
+      "winner": "Shin Jinseo",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Shin Jinseo",
+        "Xie Ke"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "3rd round",
+      "date": "2026-10-09",
+      "players": [
+        "Shin Jinseo",
+        "Yang Kaiwen"
+      ],
+      "profile_ids": [
+        "shin-jinseo",
+        "yang-kaiwen"
+      ],
+      "winner": "Shin Jinseo",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Shin Jinseo",
+        "Yang Kaiwen"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "Quarterfinals",
+      "date": "2026-10-10",
+      "players": [
+        "Shin Jinseo",
+        "Jin Yucheng"
+      ],
+      "profile_ids": [
+        "shin-jinseo",
+        "jin-yucheng"
+      ],
+      "winner": "Shin Jinseo",
+      "result": "W+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Shin Jinseo",
+        "Jin Yucheng"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "Semifinals",
+      "date": "2026-10-12",
+      "players": [
+        "Shin Jinseo",
+        "Lee Jihyun"
+      ],
+      "profile_ids": [
+        "shin-jinseo",
+        "lee-jihyun-m"
+      ],
+      "winner": "",
+      "result": "",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Shin Jinseo",
+        "Lee Jihyun (m)"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Yang Kaiwen",
+        "Yang Dingxin"
+      ],
+      "profile_ids": [
+        "yang-kaiwen",
+        "yang-dingxin"
+      ],
+      "winner": "Yang Kaiwen",
+      "result": "W+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Yang Kaiwen",
+        "Yang Dingxin"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Wang Yuanjun",
+        "Li Haotong"
+      ],
+      "profile_ids": [
+        "wang-yuanjun",
+        "li-haotong"
+      ],
+      "winner": "Wang Yuanjun",
+      "result": "W+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Wang Yuanjun",
+        "Li Haotong"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Wang Yuanjun",
+        "Rong Yi"
+      ],
+      "profile_ids": [
+        "wang-yuanjun",
+        "rong-yi"
+      ],
+      "winner": "Wang Yuanjun",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Wang Yuanjun",
+        "Rong Yi"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "3rd round",
+      "date": "2026-10-09",
+      "players": [
+        "Wang Yuanjun",
+        "Jin Yucheng"
+      ],
+      "profile_ids": [
+        "wang-yuanjun",
+        "jin-yucheng"
+      ],
+      "winner": "Jin Yucheng",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Wang Yuanjun",
+        "Jin Yucheng"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Rong Yi",
+        "Lin Tianyu"
+      ],
+      "profile_ids": [
+        "rong-yi",
+        ""
+      ],
+      "winner": "Rong Yi",
+      "result": "W+R",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Rong Yi",
+        ""
+      ],
+      "eligible_existing_profiles": false
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Lin Xinchen",
+        "Sim Jaeik"
+      ],
+      "profile_ids": [
+        "li-xinchen",
+        "sim-jaeik"
+      ],
+      "winner": "Sim Jaeik",
+      "result": "W+R",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Li Xinchen",
+        "Sim Jaeik"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Sim Jaeik",
+        "Jin Yucheng"
+      ],
+      "profile_ids": [
+        "sim-jaeik",
+        "jin-yucheng"
+      ],
+      "winner": "Jin Yucheng",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Sim Jaeik",
+        "Jin Yucheng"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Park Junghwan",
+        "Tao Xinran"
+      ],
+      "profile_ids": [
+        "park-junghwan",
+        "tao-xinran"
+      ],
+      "winner": "Park Junghwan",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Park Junghwan",
+        "Tao Xinran"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "3rd round",
+      "date": "2026-10-09",
+      "players": [
+        "Park Junghwan",
+        "Chen Qirui"
+      ],
+      "profile_ids": [
+        "park-junghwan",
+        "chen-qirui"
+      ],
+      "winner": "Park Junghwan",
+      "result": "W+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Park Junghwan",
+        "Chen Qirui"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "Quarterfinals",
+      "date": "2026-10-10",
+      "players": [
+        "Park Junghwan",
+        "Lee Jihyun"
+      ],
+      "profile_ids": [
+        "park-junghwan",
+        "lee-jihyun-m"
+      ],
+      "winner": "Lee Jihyun",
+      "result": "B+R",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Park Junghwan",
+        "Lee Jihyun (m)"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Tao Xinran",
+        "Xu Xiaofan"
+      ],
+      "profile_ids": [
+        "tao-xinran",
+        ""
+      ],
+      "winner": "Tao Xinran",
+      "result": "W+R",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Tao Xinran",
+        ""
+      ],
+      "eligible_existing_profiles": false
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Chen Qirui",
+        "Zhao Yifei"
+      ],
+      "profile_ids": [
+        "chen-qirui",
+        "zhao-yifei"
+      ],
+      "winner": "Chen Qirui",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Chen Qirui",
+        "Zhao Yifei"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Chen Qirui",
+        "Xie Erhao"
+      ],
+      "profile_ids": [
+        "chen-qirui",
+        "xie-erhao"
+      ],
+      "winner": "Chen Qirui",
+      "result": "W+0.5",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Chen Qirui",
+        "Xie Erhao"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Fan Yin",
+        "Lee Jihyun"
+      ],
+      "profile_ids": [
+        "fan-yin",
+        "lee-jihyun-m"
+      ],
+      "winner": "Lee Jihyun",
+      "result": "W+R",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Fan Yin",
+        "Lee Jihyun (m)"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "3rd round",
+      "date": "2026-10-09",
+      "players": [
+        "Lee Jihyun",
+        "Jiang Weijie"
+      ],
+      "profile_ids": [
+        "lee-jihyun-m",
+        "jiang-weijie"
+      ],
+      "winner": "Lee Jihyun",
+      "result": "B+R",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Lee Jihyun (m)",
+        "Jiang Weijie"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Lee Jihyun",
+        "Tang Jiawen"
+      ],
+      "profile_ids": [
+        "lee-jihyun-m",
+        "tang-jiawen"
+      ],
+      "winner": "Lee Jihyun",
+      "result": "W+R",
+      "status": "HELD_REVIEW",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Lee Jihyun (m)",
+        "Tang Jiawen"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Lee Wonyoung",
+        "Duan Boyao"
+      ],
+      "profile_ids": [
+        "lee-wonyoung",
+        "duan-boyao"
+      ],
+      "winner": "Lee Wonyoung",
+      "result": "B+3.5",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Lee Wonyoung",
+        "Duan Boyao"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "2nd round",
+      "date": "2026-04-15",
+      "players": [
+        "Lee Wonyoung",
+        "Jiang Weijie"
+      ],
+      "profile_ids": [
+        "lee-wonyoung",
+        "jiang-weijie"
+      ],
+      "winner": "Jiang Weijie",
+      "result": "W+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Lee Wonyoung",
+        "Jiang Weijie"
+      ],
+      "eligible_existing_profiles": true
+    },
+    {
+      "tournament_id": "quzhou-lanke",
+      "edition": 4,
+      "season": 2026,
+      "tournament_name": "4th Quzhou-Lanke Cup",
+      "format": "knockout",
+      "round": "1st round",
+      "date": "2026-04-14",
+      "players": [
+        "Jiang Weijie",
+        "Sakai Yuki"
+      ],
+      "profile_ids": [
+        "jiang-weijie",
+        "sakai-yuki"
+      ],
+      "winner": "Jiang Weijie",
+      "result": "B+R",
+      "status": "COMPLETED",
+      "pairing_evidence": "bracket_progression",
+      "source_url": "https://gotoeveryone.k2ss.info/news/wr/quzhou-lanke/4/",
+      "public_prediction_ready": false,
+      "profile_names": [
+        "Jiang Weijie",
+        "Sakai Yuki"
+      ],
+      "eligible_existing_profiles": true
+    }
+  ]
+}

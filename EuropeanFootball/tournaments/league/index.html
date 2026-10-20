@@ -71,6 +71,7 @@
     *::-webkit-scrollbar-track{background:#151b26}
     *::-webkit-scrollbar-thumb{background:#596273;border:2px solid #151b26;border-radius:8px}
   </style>
+<script src="/core/football-decisions.js?v=2"></script>
 </head>
 <body>
 <header>
@@ -295,6 +296,7 @@
       const score = document.createElement('td');
       score.className = 'score';
       score.textContent = played ? `${m.homeScore}–${m.awayScore}` : 'Upcoming';
+      if(played)JRFootballDecisions.renderScore(score,m);
 
       const away = document.createElement('td');
       away.className = 'team';

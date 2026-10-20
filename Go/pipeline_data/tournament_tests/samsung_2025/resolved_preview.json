@@ -1,0 +1,677 @@
+{
+  "tournament": "30th Samsung Cup",
+  "fixtures": [
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Ding Hao",
+        "Yang Kaiwen"
+      ],
+      "winner": "Ding Hao",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "ding-hao",
+        "yang-kaiwen"
+      ],
+      "profile_names": [
+        "Ding Hao",
+        "Yang Kaiwen"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-11",
+      "players": [
+        "Ding Hao",
+        "Lee Jihyun"
+      ],
+      "winner": "Ding Hao",
+      "result": "B+R",
+      "round": "2nd round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "ding-hao",
+        "lee-jihyun-m"
+      ],
+      "profile_names": [
+        "Ding Hao",
+        "Lee Jihyun (m)"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-12",
+      "players": [
+        "Ding Hao",
+        "Tan Xiao"
+      ],
+      "winner": "Ding Hao",
+      "result": "W+0.5",
+      "round": "3rd round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "ding-hao",
+        "tan-xiao"
+      ],
+      "profile_names": [
+        "Ding Hao",
+        "Tan Xiao"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-15",
+      "players": [
+        "Ding Hao",
+        "Kim Jiseok"
+      ],
+      "winner": "Ding Hao",
+      "result": "B+R",
+      "round": "Semifinals",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "ding-hao",
+        "kim-jiseok"
+      ],
+      "profile_names": [
+        "Ding Hao",
+        "Kim Jiseok"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-16",
+      "players": [
+        "Ding Hao",
+        "Liao Yuanhe"
+      ],
+      "winner": "Liao Yuanhe",
+      "result": "B+R",
+      "round": "Final",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "ding-hao",
+        "liao-yuanhe"
+      ],
+      "profile_names": [
+        "Ding Hao",
+        "Liao Yuanhe"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-17",
+      "players": [
+        "Ding Hao",
+        "Liao Yuanhe"
+      ],
+      "winner": "Liao Yuanhe",
+      "result": "W+R",
+      "round": "Final",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "ding-hao",
+        "liao-yuanhe"
+      ],
+      "profile_names": [
+        "Ding Hao",
+        "Liao Yuanhe"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "An Sungjoon",
+        "Lee Jihyun"
+      ],
+      "winner": "Lee Jihyun",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "an-sungjoon",
+        "lee-jihyun-m"
+      ],
+      "profile_names": [
+        "An Sungjoon",
+        "Lee Jihyun (m)"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Byun Sangil",
+        "Huang Mingyu"
+      ],
+      "winner": "Huang Mingyu",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "byun-sangil",
+        "huang-mingyu"
+      ],
+      "profile_names": [
+        "Byun Sangil",
+        "Huang Mingyu"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-11",
+      "players": [
+        "Huang Mingyu",
+        "Tan Xiao"
+      ],
+      "winner": "Tan Xiao",
+      "result": "B+R",
+      "round": "2nd round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "huang-mingyu",
+        "tan-xiao"
+      ],
+      "profile_names": [
+        "Huang Mingyu",
+        "Tan Xiao"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Xu Haohong",
+        "Tan Xiao"
+      ],
+      "winner": "Tan Xiao",
+      "result": "W+T",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "xu-haohong",
+        "tan-xiao"
+      ],
+      "profile_names": [
+        "Xu Haohong",
+        "Tan Xiao"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Lian Xiao",
+        "Ye Changxin"
+      ],
+      "winner": "Lian Xiao",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "lian-xiao",
+        "ye-changxin"
+      ],
+      "profile_names": [
+        "Lian Xiao",
+        "Ye Changxin"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-10",
+      "players": [
+        "Lian Xiao",
+        "Kim Jiseok"
+      ],
+      "winner": "Kim Jiseok",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "lian-xiao",
+        "kim-jiseok"
+      ],
+      "profile_names": [
+        "Lian Xiao",
+        "Kim Jiseok"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-13",
+      "players": [
+        "Kim Jiseok",
+        "Kang Dongyun"
+      ],
+      "winner": "Kim Jiseok",
+      "result": "B+R",
+      "round": "3rd round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "kim-jiseok",
+        "kang-dongyun"
+      ],
+      "profile_names": [
+        "Kim Jiseok",
+        "Kang Dongyun"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Kim Jiseok",
+        "Wang Xinghao"
+      ],
+      "winner": "Kim Jiseok",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "kim-jiseok",
+        "wang-xinghao"
+      ],
+      "profile_names": [
+        "Kim Jiseok",
+        "Wang Xinghao"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Kang Dongyun",
+        "Quynh Anh Ha"
+      ],
+      "winner": "Kang Dongyun",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "kang-dongyun",
+        ""
+      ],
+      "profile_names": [
+        "Kang Dongyun",
+        ""
+      ],
+      "eligible_existing_profiles": false,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-10",
+      "players": [
+        "Kang Dongyun",
+        "Park Sangjin"
+      ],
+      "winner": "Kang Dongyun",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "kang-dongyun",
+        "park-sangjin"
+      ],
+      "profile_names": [
+        "Kang Dongyun",
+        "Park Sangjin"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Xie Ke",
+        "Park Sangjin"
+      ],
+      "winner": "Park Sangjin",
+      "result": "B+0.5",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "xie-ke",
+        "park-sangjin"
+      ],
+      "profile_names": [
+        "Xie Ke",
+        "Park Sangjin"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Dang Yifei",
+        "Shin Minjun"
+      ],
+      "winner": "Dang Yifei",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "dang-yifei",
+        "shin-minjun"
+      ],
+      "profile_names": [
+        "Dang Yifei",
+        "Shin Minjun"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-10",
+      "players": [
+        "Dang Yifei",
+        "Yang Dingxin"
+      ],
+      "winner": "Yang Dingxin",
+      "result": "B+T",
+      "round": "2nd round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "dang-yifei",
+        "yang-dingxin"
+      ],
+      "profile_names": [
+        "Dang Yifei",
+        "Yang Dingxin"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-13",
+      "players": [
+        "Yang Dingxin",
+        "Park Junghwan"
+      ],
+      "winner": "Park Junghwan",
+      "result": "B+R",
+      "round": "3rd round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "yang-dingxin",
+        "park-junghwan"
+      ],
+      "profile_names": [
+        "Yang Dingxin",
+        "Park Junghwan"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-14",
+      "players": [
+        "Park Junghwan",
+        "Liao Yuanhe"
+      ],
+      "winner": "Liao Yuanhe",
+      "result": "W+R",
+      "round": "Semifinals",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "park-junghwan",
+        "liao-yuanhe"
+      ],
+      "profile_names": [
+        "Park Junghwan",
+        "Liao Yuanhe"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Yang Dingxin",
+        "Kyo Kagen"
+      ],
+      "winner": "Yang Dingxin",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "yang-dingxin",
+        "kyo-kagen"
+      ],
+      "profile_names": [
+        "Yang Dingxin",
+        "Kyo Kagen"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Park Junghwan",
+        "Shi Yue"
+      ],
+      "winner": "Park Junghwan",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "park-junghwan",
+        "shi-yue"
+      ],
+      "profile_names": [
+        "Park Junghwan",
+        "Shi Yue"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-10",
+      "players": [
+        "Park Junghwan",
+        "Shibano Toramaru"
+      ],
+      "winner": "Park Junghwan",
+      "result": "B+R",
+      "round": "2nd round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "park-junghwan",
+        "shibano-toramaru"
+      ],
+      "profile_names": [
+        "Park Junghwan",
+        "Shibano Toramaru"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Shibano Toramaru",
+        "Liu Yuhang"
+      ],
+      "winner": "Shibano Toramaru",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "shibano-toramaru",
+        "liu-yuhang"
+      ],
+      "profile_names": [
+        "Shibano Toramaru",
+        "Liu Yuhang"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Jin Yucheng",
+        "Fu Jianheng"
+      ],
+      "winner": "Fu Jianheng",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "jin-yucheng",
+        "fu-jianheng"
+      ],
+      "profile_names": [
+        "Jin Yucheng",
+        "Fu Jianheng"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-11",
+      "players": [
+        "Fu Jianheng",
+        "Mok Jinseok"
+      ],
+      "winner": "Fu Jianheng",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "fu-jianheng",
+        "mok-jinseok"
+      ],
+      "profile_names": [
+        "Fu Jianheng",
+        "Mok Jinseok"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-12",
+      "players": [
+        "Fu Jianheng",
+        "Liao Yuanhe"
+      ],
+      "winner": "Liao Yuanhe",
+      "result": "W+R",
+      "round": "3rd round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "fu-jianheng",
+        "liao-yuanhe"
+      ],
+      "profile_names": [
+        "Fu Jianheng",
+        "Liao Yuanhe"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Peng Liyao",
+        "Mok Jinseok"
+      ],
+      "winner": "Mok Jinseok",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "peng-liyao",
+        "mok-jinseok"
+      ],
+      "profile_names": [
+        "Peng Liyao",
+        "Mok Jinseok"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Shin Jinseo",
+        "Li Qincheng"
+      ],
+      "winner": "Shin Jinseo",
+      "result": "B+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "shin-jinseo",
+        "li-qincheng"
+      ],
+      "profile_names": [
+        "Shin Jinseo",
+        "Li Qincheng"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-11",
+      "players": [
+        "Shin Jinseo",
+        "Liao Yuanhe"
+      ],
+      "winner": "Liao Yuanhe",
+      "result": "W+R",
+      "round": "2nd round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "shin-jinseo",
+        "liao-yuanhe"
+      ],
+      "profile_names": [
+        "Shin Jinseo",
+        "Liao Yuanhe"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    },
+    {
+      "date": "2025-11-09",
+      "players": [
+        "Liao Yuanhe",
+        "Tang Jiawen"
+      ],
+      "winner": "Liao Yuanhe",
+      "result": "W+R",
+      "round": "1st round",
+      "tournament_name": "30th Samsung Cup",
+      "profile_ids": [
+        "liao-yuanhe",
+        "tang-jiawen"
+      ],
+      "profile_names": [
+        "Liao Yuanhe",
+        "Tang Jiawen"
+      ],
+      "eligible_existing_profiles": true,
+      "public_prediction_ready": false
+    }
+  ]
+}

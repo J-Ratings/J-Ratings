@@ -1563,3 +1563,7 @@ writeLines(paste(format(Sys.time()), "elapsed_seconds", stage03_seconds), file.p
 # Local completion sound.
 if (interactive()) beep()
 
+
+# Preserve explicit shootout decisions, including frozen historical exports.
+source(file.path(repo_dir, "scripts/football/export_decisions.R"))
+enrich_football_export_decisions(repo_dir, "EuropeanFootball")
