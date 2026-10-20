@@ -687,7 +687,10 @@ dt[, EloResult := fifelse(
   trimws(Result)
 )]
 
-scores <- t(vapply(dt$EloResult, result_to_scores, numeric(2)))
+cat('Parsing match scores (one calculation per distinct score)...\n')
+unique_results <- unique(dt$EloResult)
+unique_scores <- t(vapply(unique_results, result_to_scores, numeric(2)))
+scores <- unique_scores[match(dt$EloResult, unique_results), , drop=FALSE]
 
 dt[, HomeScore := scores[, 1]]
 dt[, AwayScore := scores[, 2]]

@@ -41,6 +41,7 @@ _public_site/
 _public_site_build/
 _public_site_previous*/
 public-build-check.log
+bat/logs/
 .rsssf_test_site/
 
 # Club Football local recovery backups and diagnostics

@@ -2,16 +2,29 @@
 # Scores remain the actual match score; unresolved draws remain 0.5/0.5.
 football_elo_decisions <- function(repo_dir, sport, dates, home, away, score,
                                    home_points, away_points) {
+  started <- proc.time()[['elapsed']]
+  drawn_rows <- which(!is.na(home_points) & !is.na(away_points) & home_points == .5 & away_points == .5)
+  decided <- rep(FALSE, length(home_points))
+  winner <- rep('', length(home_points))
+  cat(sport, ': checking shootouts for', length(drawn_rows), 'draws out of', length(home_points), 'matches.\n')
+  if (!length(drawn_rows)) return(list(home=home_points, away=away_points, decided=decided, winner=winner))
   key_name <- function(x) gsub("[^a-z0-9]", "", tolower(stringi::stri_trans_general(as.character(x), "Latin-ASCII")))
   teams <- jsonlite::fromJSON(file.path(repo_dir, sport, "data/teams.json"))
   aliases <- c(setNames(key_name(teams$id), key_name(teams$name)),
                setNames(key_name(teams$id), key_name(teams$id)))
   canonical <- function(x) {
-    raw <- key_name(x); mapped <- unname(aliases[raw]); mapped[is.na(mapped)] <- raw[is.na(mapped)]; mapped
+    # Club names repeat across thousands of fixtures. Normalise each distinct
+    # name once and expand with a vectorised match, rather than transliterating
+    # and looking up every appearance separately.
+    unique_names <- unique(as.character(x))
+    raw <- key_name(unique_names)
+    mapped <- unname(aliases[match(raw, names(aliases))])
+    mapped[is.na(mapped)] <- raw[is.na(mapped)]
+    mapped[match(as.character(x), unique_names)]
   }
   match_key <- function(d,h,a) paste(as.character(d), pmin(h,a), pmax(h,a), sep="|")
-  h <- canonical(home); a <- canonical(away)
-  keys <- match_key(dates,h,a)
+  h <- canonical(home[drawn_rows]); a <- canonical(away[drawn_rows])
+  keys <- match_key(dates[drawn_rows],h,a)
   evidence <- list()
   index_path <- file.path(repo_dir, sport, "data/shootout-decisions.json")
   if (file.exists(index_path)) {
@@ -29,20 +42,26 @@ football_elo_decisions <- function(repo_dir, sport, dates, home, away, score,
       evidence[[key]] <- sw
     }
   }
-  winners <- unname(vapply(keys, function(key) if(is.null(evidence[[key]])) "" else evidence[[key]], character(1)))
+  # One vectorised lookup replaces an R callback for every historical match.
+  evidence_values <- unlist(evidence, use.names=FALSE)
+  winners <- evidence_values[match(keys, names(evidence))]
+  if (!length(evidence)) winners <- rep('', length(keys))
+  winners[is.na(winners)] <- ''
   # A retained explicit score suffix is also direct evidence, independent of IDs.
-  penalties <- stringr::str_match(as.character(score), "(?i)\\(\\s*(?:p|pens?\\.?|penalties)\\s+(\\d+)\\s*[-–]\\s*(\\d+)\\s*\\)")
+  penalties <- stringr::str_match(as.character(score[drawn_rows]), "(?i)\\(\\s*(?:p|pens?\\.?|penalties)\\s+(\\d+)\\s*[-–]\\s*(\\d+)\\s*\\)")
   ph <- suppressWarnings(as.integer(penalties[,2])); pa <- suppressWarnings(as.integer(penalties[,3]))
   explicit <- !is.na(ph) & !is.na(pa) & ph != pa
   suffix_winners <- ifelse(ph > pa,h,a)
   conflict <- explicit & winners != "" & winners != suffix_winners
   if (any(conflict,na.rm=TRUE)) stop("Conflicting retained and supplementary shootout results.")
   winners[explicit] <- suffix_winners[explicit]
-  drawn <- !is.na(home_points) & !is.na(away_points) & home_points == .5 & away_points == .5
-  decided <- drawn & winners != "" & (winners == h | winners == a)
-  home_points[decided] <- as.numeric(winners[decided] == h[decided])
-  away_points[decided] <- 1-home_points[decided]
-  cat(sport, ": explicit shootout wins/losses applied to", sum(decided), "matches (",sum(decided & as.character(dates)<"2025-01-01"),"before 2025).\n")
+  resolved <- winners != '' & (winners == h | winners == a)
+  rows <- drawn_rows[resolved]
+  decided[rows] <- TRUE
+  home_points[rows] <- as.numeric(winners[resolved] == h[resolved])
+  away_points[rows] <- 1-home_points[rows]
+  winner[rows] <- ifelse(home_points[rows] == 1, as.character(home[rows]), as.character(away[rows]))
+  cat(sport, ": explicit shootout wins/losses applied to", sum(decided), "matches (",sum(decided & as.character(dates)<"2025-01-01"),"before 2025). Took", round(proc.time()[['elapsed']] - started, 2), "seconds.\n")
   list(home=home_points, away=away_points, decided=decided,
-       winner=ifelse(winners==h,as.character(home),as.character(away)))
+       winner=winner)
 }
