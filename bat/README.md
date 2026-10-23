@@ -1,5 +1,16 @@
 # Local update launchers
 
+## Git lock recovery
+
+If GitHub Desktop reports an existing lock, fully close Codex first, then run
+`Repair_Git_Lock.bat`. It does not invoke Git. It refuses recovery while any
+Git process is running, while the lock is recent, or when exclusive access fails.
+It preserves a stale lock as `.git/index.lock.stale-TIMESTAMP`, rather than
+deleting its contents. Retry the commit in GitHub Desktop afterward. This is a
+recovery tool, not a fix for the application leaving the lock behind.
+
+## Data updates
+
 Double-click a `.bat` file. The launcher finds the repository automatically,
 finds Rscript, runs stages in order and keeps the window open afterward.
 Logs go in `bat/logs/`. A failed stage stops that run; do not assume its exports
