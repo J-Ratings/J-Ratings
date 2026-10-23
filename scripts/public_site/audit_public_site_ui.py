@@ -1,6 +1,7 @@
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
 import re
+from build_public_site import PUBLIC_FULL_HISTORY
 
 ROOT = Path("_public_site").resolve()
 
@@ -115,7 +116,7 @@ for html in HTML_FILES:
             or (value.isdigit() and int(value) < 2010)
         )
 
-        if private:
+        if private and not PUBLIC_FULL_HISTORY:
             line_no = text.count("\n", 0, match.start()) + 1
             active_private_controls.append(
                 (rel, line_no, kind, value or "ALL")
@@ -154,10 +155,10 @@ for sport in PUBLIC_SPORTS:
         if "jr-public-stats-teaser" not in text:
             missing_teasers.append(f"{rel}: Statistics teaser missing")
 
-        if not re.search(r'data-public-range=["\']ALL["\']', text, re.I):
+        if not PUBLIC_FULL_HISTORY and not re.search(r'data-public-range=["\']ALL["\']', text, re.I):
             missing_teasers.append(f"{rel}: All-history teaser missing")
 
-        if not re.search(r'data-public-range=["\']2000["\']', text, re.I):
+        if not PUBLIC_FULL_HISTORY and not re.search(r'data-public-range=["\']2000["\']', text, re.I):
             missing_teasers.append(f"{rel}: Since-2000 teaser missing")
 
 

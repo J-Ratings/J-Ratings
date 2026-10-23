@@ -1,12 +1,32 @@
 # Preview by default. GO_DAILY_APPLY=true explicitly enables requests and writes.
-# Does not fetch K2SS, commit, push, or change workflow configuration.
+# Applied runs refresh K2SS first, then target tournament participants on GoRatings.
+# Never commits, pushes, or changes workflow configuration.
 go_run_daily_results <- function() {
   source("scripts/go/daily_tournament_targets.R")
   date <- as.Date(Sys.getenv("GO_DAILY_DATE",format(Sys.time(),tz="Europe/London",format="%Y-%m-%d")))
+  apply <- identical(tolower(Sys.getenv("GO_DAILY_APPLY","false")),"true")
+  if (apply) {
+    if (!identical(tolower(Sys.getenv('GO_K2SS_PERMISSION_GRANTED','false')),'true'))
+      stop('Quick update requires the tournament-source refresh first. GO_K2SS_PERMISSION_GRANTED is not true; no requests made. Only set it after permission has been granted.')
+    cat('Step 1: refresh tournament timetable and active tournament pages.\n')
+    refresh_vars <- c('GO_TOURNAMENT_FUNCTIONS_ONLY','GO_TOURNAMENT_DATE','GO_TOURNAMENT_LINKS',
+      'GO_TOURNAMENT_OUTPUT','GO_TOURNAMENT_OFFLINE')
+    saved <- Sys.getenv(refresh_vars,unset=NA_character_)
+    refresh <- function() {
+      on.exit(for(v in refresh_vars)if(is.na(saved[[v]]))Sys.unsetenv(v) else do.call(Sys.setenv,setNames(list(saved[[v]]),v)))
+      Sys.setenv(GO_TOURNAMENT_FUNCTIONS_ONLY='true',GO_TOURNAMENT_DATE=as.character(date),
+        GO_TOURNAMENT_LINKS=Sys.getenv('GO_DAILY_TOURNAMENT_LINKS',''),
+        GO_TOURNAMENT_OUTPUT='Go/data/tournaments/catalogue',GO_TOURNAMENT_OFFLINE='false')
+      source('scripts/go/update_tournaments.R',local=TRUE)
+      go_update_tournaments()
+    }
+    refresh()
+    cat('Step 2: select recent tournament players for GoRatings.\n')
+  } else cat('Preview uses saved tournaments only; an applied run refreshes them first.\n')
   target <- go_daily_targets(today=date,max_profiles=as.integer(Sys.getenv("GO_DAILY_MAX_PROFILES","80")))
   print(target$profiles[,intersect(c("player_name","player_id","scrape_reason"),names(target$profiles)),drop=FALSE])
   cat("Daily targets:",nrow(target$profiles),"profiles;",length(target$deferred),"deferred;",length(target$unknown),"unmapped names.\n")
-  if(!identical(tolower(Sys.getenv("GO_DAILY_APPLY","false")),"true")) {
+  if(!apply) {
     cat("Preview only: no requests, pipeline writes, or rating changes.\n")
     return(invisible(target))
   }

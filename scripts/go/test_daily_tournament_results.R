@@ -23,7 +23,7 @@ local({
     brackets=list(list(name="Main draw",matches=matches)),bracketGameIndices=list())
   write_json(payload,file.path(tmp,"catalogue/test.json"),auto_unbox=TRUE)
   other <- payload;other$source <- "https://gotoeveryone.k2ss.info/news/test/other/2/"
-  other$games <- list(list(players=list(p("Unrelated"),a),date="2026-10-13",winner="Alpha"))
+  other$games <- list(list(players=list(p("Unrelated"),a),date="2020-10-13",winner="Alpha"))
   undated <- sf1;undated$date <- "";undated$players <- list(p("Unrelated"),a)
   other$brackets[[1L]]$matches <- list(undated)
   write_json(other,file.path(tmp,"catalogue/other.json"),auto_unbox=TRUE)
@@ -39,6 +39,15 @@ local({
   scoped <- go_daily_targets(today=as.Date("2026-10-14"),catalogue_dir=file.path(tmp,"catalogue"),calendar_file=file.path(tmp,"calendar.csv"),
     homepage_file=file.path(tmp,"home.csv"),map_file=file.path(tmp,"missing.csv"),tournament_links="/news/test/other/2/")
   stopifnot(nrow(scoped$profiles)==0L)
+  # A freshly refreshed source can already have results. Those participants
+  # still need checking on GoRatings, including pages without bracket adapters.
+  completed_only <- other
+  completed_only$brackets <- list()
+  completed_only$games <- list(list(players=list(p('Unrelated'),a),date='2026-10-13',winner='Alpha'))
+  write_json(completed_only,file.path(tmp,'catalogue/other.json'),auto_unbox=TRUE)
+  completed_targets <- select()
+  stopifnot('Unrelated' %in% completed_targets$profiles$player_name)
+  write_json(other,file.path(tmp,'catalogue/other.json'),auto_unbox=TRUE)
   game <- function(date,black,white,result)list(date=date,black=black,white=white,result=result,
     blackElo=3500,whiteElo=3400,blackWinPct=64,whiteWinPct=36)
   h1 <- game("2026-10-12","Alpha","Beta","1-0")

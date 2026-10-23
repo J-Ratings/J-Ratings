@@ -84,19 +84,24 @@ Sys.unsetenv("GO_DAILY_APPLY")
 ```
 
 Allow several minutes for a busy day and the downstream Elo/export stages. The
-runner does not fetch K2SS, enable Actions, commit or push. Run the separate
-permission-gated structure updater when new source structure is available.
+runner refreshes the current timetable and active tournament pages before selecting
+GoRatings profiles. It requires GO_K2SS_PERMISSION_GRANTED=true; do not set that
+flag while permission is pending. It never enables Actions, commits or pushes.
+The tournament refresh retains its three-second request spacing and page cap.
 
 Daily selection uses cached weekly homepage IDs and local identity aliases. It
-checks only unresolved explicitly dated games within the preceding seven days.
+checks participants in explicitly dated games within the preceding seven days,
+including games already completed on the tournament source. Both parsed results
+and pending bracket slots are considered.
 It never expands a calendar entry to the entire entrant field or treats an undated
 slot as a game played today. Undated tournaments are reported for structure review.
 Future dates outside that window and unrelated recently active players do not
 trigger requests. Each player is selected at most once per run. The default cap
 is 80 profiles (`GO_DAILY_MAX_PROFILES`); deferred IDs and unmapped names are
 reported, not silently treated as checked. `GO_DAILY_DATE=YYYY-MM-DD` supports
-offline selection checks for another date. No selection can find a tournament
-absent from our saved dated draw; the weekly sweep catches that.
+offline selection checks for another date. The source refresh runs first so newly scheduled tournaments can be discovered.
+Missing source coverage, unsupported layouts and unknown player identities can
+still leave gaps; the weekly/full GoRatings sweep provides broader coverage.
 
 To check only a particular edition, set `GO_DAILY_TOURNAMENT_LINKS` to its source
 path, for example `/news/wr/quzhou-lanke/4/`. Comma-separated paths are supported.

@@ -22,7 +22,7 @@ The launchers prevent simultaneous runs of other launchers in this folder.
 
 | Launcher | Purpose |
 | --- | --- |
-| Go_Quick_Update.bat | Daily targeted GoRatings checks for recent dated pending matches in saved tournament draws; updates Elo, JSON and reconciles known draws. Can miss new tournaments absent from the saved draw. |
+| Go_Quick_Update.bat | Refresh timetable and active tournament pages first, then check GoRatings players in recent dated tournament games (completed or pending). Updates Elo, JSON and event links. Requires tournament-source permission. |
 | Go_Weekly_Update.bat | Normal broader GoRatings update: new and recently active profiles, followed by ratings and JSON. |
 | Go_Full_Update.bat | Deep refresh of every selected/listed GoRatings profile; requires typing FULL. Much slower; not a full GoGoD historical rebuild. |
 | Club_Football_Update.bat | Refresh configured OpenFootball sources, parse, calculate ratings and export. Historical source caches/checkpoints are reused when valid. Does not import RSSSF review candidates. |

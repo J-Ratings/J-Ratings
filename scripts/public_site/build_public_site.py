@@ -6,7 +6,8 @@ import shutil
 import sys
 from pathlib import Path
 
-PUBLIC_START_YEAR = 2023
+PUBLIC_FULL_HISTORY = True  # Publish all available rating/profile history.
+PUBLIC_START_YEAR = 2023  # Used only if full-history publication is disabled.
 PUBLIC_START = f"{PUBLIC_START_YEAR}-01-01"
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -220,6 +221,8 @@ def save_json(path: Path, data) -> None:
 
 
 def filter_rows_by_date(path: Path) -> int:
+    if PUBLIC_FULL_HISTORY:
+        return 0
     data = load_json(path)
 
     if not isinstance(data, list):
@@ -250,6 +253,8 @@ def season_start_year(value: str) -> int | None:
 
 
 def filter_season_starts(path: Path) -> int:
+    if PUBLIC_FULL_HISTORY:
+        return 0
     data = load_json(path)
 
     if not isinstance(data, list):
@@ -296,6 +301,8 @@ SPORT_PUBLIC_FILTERS = {
 
 
 def filter_sport_public_data(sport: str, config: dict) -> None:
+    if PUBLIC_FULL_HISTORY:
+        return None
     sport_dir = OUT_DIR / sport
 
     removed_dated = 0
@@ -320,6 +327,8 @@ def filter_sport_public_data(sport: str, config: dict) -> None:
 
 
 def filter_snooker_snapshots() -> int:
+    if PUBLIC_FULL_HISTORY:
+        return 0
     snapshots_dir = OUT_DIR / "Snooker" / "data" / "snapshots"
 
     if not snapshots_dir.exists():
@@ -368,6 +377,8 @@ def filter_snooker_snapshots() -> int:
 
 
 def assert_no_pre_public_start_sport_data(sport: str, config: dict) -> None:
+    if PUBLIC_FULL_HISTORY:
+        return None
     sport_dir = OUT_DIR / sport
 
     for rel_dir in config.get("dated_dirs", []):
@@ -418,6 +429,8 @@ def assert_no_pre_public_start_sport_data(sport: str, config: dict) -> None:
 
 
 def assert_no_pre_public_start_snooker_snapshots() -> None:
+    if PUBLIC_FULL_HISTORY:
+        return None
     snapshots_dir = OUT_DIR / "Snooker" / "data" / "snapshots"
 
     if not snapshots_dir.exists():
@@ -596,6 +609,8 @@ def make_compare_teasers(s: str) -> str:
 
 
 def make_history_range_teasers(s: str) -> str:
+    if PUBLIC_FULL_HISTORY:
+        return s
     # Historical controls may remain visible as previews, but they must not
     # carry live data-range/data-since attributes that the JavaScript can use.
     button_re = re.compile(
@@ -693,6 +708,8 @@ def make_history_range_teasers(s: str) -> str:
 
 
 def ensure_profile_history_teasers(s: str) -> str:
+    if PUBLIC_FULL_HISTORY:
+        return s
     # Convert any private/source controls first.
     s = make_history_range_teasers(s)
 
@@ -1100,7 +1117,7 @@ def assert_generic_public_ui_clean(sports: list[str] | None = None) -> None:
                     or (kind == "since" and value == "")
                     or (value.isdigit() and int(value) < PUBLIC_START_YEAR)
                 )
-                if private:
+                if private and not PUBLIC_FULL_HISTORY:
                     failures.append(
                         f"{rel}: active private historical control remains ({kind}={value or 'ALL'})"
                     )
@@ -1113,14 +1130,14 @@ def assert_generic_public_ui_clean(sports: list[str] | None = None) -> None:
             if "jr-public-stats-teaser" not in s:
                 failures.append(f"{rel}: Statistics coming-soon teaser missing")
 
-            if not re.search(
+            if not PUBLIC_FULL_HISTORY and not re.search(
                 r'data-public-range=["\']ALL["\']',
                 s,
                 flags=re.I,
             ):
                 failures.append(f"{rel}: All-history teaser missing")
 
-            if not re.search(
+            if not PUBLIC_FULL_HISTORY and not re.search(
                 r'data-public-range=["\']2000["\']',
                 s,
                 flags=re.I,
@@ -1305,6 +1322,8 @@ def _copy_one_sport_source(sport: str) -> None:
 
 
 def filter_public_tournaments(sports: list[str], validate_only: bool = False) -> None:
+    if PUBLIC_FULL_HISTORY:
+        return None
     """Apply the same public season boundary to tournament editions/catalogues."""
     for sport in sports:
         folder = OUT_DIR / sport / "data/tournaments"
@@ -1471,10 +1490,10 @@ def build_public_site(selected_sport: str | None = None) -> None:
     print()
     if selected_sport is None:
         print(f"Verified temporary public build created at: {TEMP_OUT_DIR}")
-        print(f"All configured sports have had detailed historical data filtered to {PUBLIC_START_YEAR}+.")
+        print("All available historical ratings and profile data included." if PUBLIC_FULL_HISTORY else f"Historical data filtered to {PUBLIC_START_YEAR}+.")
     else:
         print(f"Verified temporary {selected_sport} build created at: {TEMP_OUT_DIR / selected_sport}")
-        print(f"{selected_sport} detailed historical data has been filtered to {PUBLIC_START_YEAR}+.")
+        print(f"{selected_sport}: all available historical ratings and profile data included." if PUBLIC_FULL_HISTORY else f"Historical data filtered to {PUBLIC_START_YEAR}+.")
 
     print("Public data and UI safety checks: PASS")
 

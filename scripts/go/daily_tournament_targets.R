@@ -33,9 +33,8 @@ go_daily_targets <- function(today=as.Date(format(Sys.time(),tz="Europe/London",
     if(length(scope) && !link %in% scope)next
     scheduled <- calendar[Link==link & Date>=as.character(today-7) & Date<=as.character(today),Date]
     found <- FALSE
-    matches <- unlist(lapply(d$brackets,function(b)b$matches),recursive=FALSE)
+    matches <- c(unlist(lapply(d$brackets,function(b)b$matches),recursive=FALSE), d$games)
     for(m in matches)for(g in if(length(m$series))m$series else list(m)) {
-      if(!is.null(g$winner)&&nzchar(g$winner))next
       date <- if(is.null(g$date))"" else g$date
       due <- grepl("^[0-9]{4}-[0-9]{2}-[0-9]{2}$",date) && date>=as.character(today-7) && date<=as.character(today)
       if(!due) {
@@ -43,7 +42,8 @@ go_daily_targets <- function(today=as.Date(format(Sys.time(),tz="Europe/London",
         next
       }
       before <- length(candidates)
-      for(p in g$players)add(p,entry$file,date,"unresolved scheduled match")
+      reason <- if(!is.null(g$winner)&&nzchar(g$winner))'recent completed tournament game' else 'unresolved scheduled match'
+      for(p in g$players)add(p,entry$file,date,reason)
       found <- found || length(candidates)>before
     }
     # Never turn a calendar entry into a request for the entire entrant field.
@@ -51,7 +51,7 @@ go_daily_targets <- function(today=as.Date(format(Sys.time(),tz="Europe/London",
     if(found)active <- unique(c(active,link))
   }
   detail <- if(length(candidates))unique(rbindlist(candidates)) else data.table(player_id=character(),file=character(),date=character(),reason=character())
-  detail[,priority:=match(reason,c("unresolved scheduled match","undated match in scheduled tournament","recent tournament schedule"))]
+  detail[,priority:=match(reason,c("unresolved scheduled match","recent completed tournament game"))]
   priority <- if(nrow(detail))detail[,.(priority=min(priority),last_scheduled=max(date)),by=player_id][order(priority,-xtfrm(last_scheduled),player_id)] else
     data.table(player_id=character(),priority=integer(),last_scheduled=character())
   if(is.na(max_profiles)||max_profiles<1L)stop("max_profiles must be positive")
