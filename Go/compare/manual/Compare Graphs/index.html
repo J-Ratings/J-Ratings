@@ -287,7 +287,7 @@ body,
       <div id="rows"></div>
 
       <div class="compare-actions">
-        <button id="add" class="btn" type="button">Add team</button>
+        <button id="add" class="btn" type="button">Add player</button>
         <button id="clear" class="btn" type="button">Clear</button>
       </div>
 
@@ -312,7 +312,7 @@ body,
     </div>
 
     <div style="padding:24px 16px 28px">
-      <div id="chart">Select teams, then Create.</div>
+      <div id="chart">Select players, then Create.</div>
     </div>
   </section>
 </main>
@@ -320,7 +320,8 @@ body,
 <script>
   const TEAMS_URL = '../../../data/players.json';
   const HIST_URL  = id => `../../../data/history/${encodeURIComponent(id)}.json`;
-  const COLOURS_URL = '../../../team-colours.json';
+  // Match the standard Home/Peak comparison palette.
+  const SERIES_COLOURS = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'];
   const MAX_TEAMS = 15;
   const IS_TOUCH  = window.matchMedia('(pointer: coarse)').matches;
 
@@ -330,7 +331,6 @@ body,
     loaded: []
   };
 
-  let TEAM_COLOURS = {};
   let SINCE_YEAR = null;
   let AGG_MODE = 'weekly';
   let chartVisibleSeries = [];
@@ -504,76 +504,6 @@ body,
     }).then(() => {
       setChartTickLabelsEvery(y0, y1, step);
     });
-  }
-
-  async function loadColours() {
-    try {
-      const res = await fetch(COLOURS_URL, { cache: 'no-cache' });
-      if (!res.ok) {
-        TEAM_COLOURS = {};
-        return;
-      }
-
-      TEAM_COLOURS = await res.json();
-    } catch {
-      TEAM_COLOURS = {};
-    }
-  }
-
-  function hexToRgb(hex) {
-    const clean = String(hex || '').trim();
-    const match = clean.match(/^#([0-9a-f]{6})$/i);
-    if (!match) return null;
-
-    const value = match[1];
-
-    return {
-      r: parseInt(value.slice(0, 2), 16),
-      g: parseInt(value.slice(2, 4), 16),
-      b: parseInt(value.slice(4, 6), 16)
-    };
-  }
-
-  function rgbToHex(r, g, b) {
-    return '#' + [r, g, b]
-      .map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0'))
-      .join('');
-  }
-
-  function relativeLuminance({ r, g, b }) {
-    const toLinear = c => {
-      const s = c / 255;
-      return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
-    };
-
-    const R = toLinear(r);
-    const G = toLinear(g);
-    const B = toLinear(b);
-
-    return 0.2126 * R + 0.7152 * G + 0.0722 * B;
-  }
-
-  function mixWithWhite(rgb, amount) {
-    return {
-      r: rgb.r + (255 - rgb.r) * amount,
-      g: rgb.g + (255 - rgb.g) * amount,
-      b: rgb.b + (255 - rgb.b) * amount
-    };
-  }
-
-  function getDisplayColour(teamName) {
-    const fallback = '#2F80ED';
-    const raw = TEAM_COLOURS[teamName] || fallback;
-    const rgb = hexToRgb(raw);
-
-    if (!rgb) return fallback;
-
-    const lum = relativeLuminance(rgb);
-
-    if (lum >= 0.05) return raw;
-
-    const lifted = mixWithWhite(rgb, 0.45);
-    return rgbToHex(lifted.r, lifted.g, lifted.b);
   }
 
   function attachAutocomplete(input) {
@@ -762,7 +692,7 @@ body,
     el.innerHTML = '';
 
     if (!state.loaded.length) {
-      el.textContent = 'No teams selected.';
+      el.textContent = 'No players selected.';
       return;
     }
 
@@ -817,9 +747,9 @@ body,
           line: {
             width: 4,
             shape: 'linear',
-            color: getDisplayColour(s.name)
+            color: SERIES_COLOURS[traceItems.length % SERIES_COLOURS.length]
           },
-          hovertemplate: '%{x}<br>%{y:.0f} Elo<br>Tier %{customdata}<extra>' + s.name + '</extra>',
+          hovertemplate: '%{x}<br>%{y:.0f} Elo<extra>' + s.name + '</extra>',
           connectgaps: true
         }
       });
@@ -832,7 +762,10 @@ body,
 
     traceItems.sort((a, b) => b.finalRating - a.finalRating);
 
-    const traces = traceItems.map(item => item.trace);
+    const traces = traceItems.map((item, index) => ({
+      ...item.trace,
+      line: { ...item.trace.line, color: SERIES_COLOURS[index % SERIES_COLOURS.length] }
+    }));
 
     const pad = (ymax - ymin) * 0.12 || 10;
     const y0 = ymin - pad;
@@ -842,7 +775,7 @@ body,
     const cs = getComputedStyle(document.body);
 
     const layout = {
-      margin: { l: 60, r: 20, t: 55, b: 45 },
+      margin: { l: 50, r: 28, t: 10, b: 85 },
 
       xaxis: {
         type: 'date',
@@ -850,7 +783,7 @@ body,
       },
 
       yaxis: {
-        title: 'Rating',
+        title: '',
         showgrid: false,
         zeroline: false,
         ticks: 'outside',
@@ -863,9 +796,11 @@ body,
       legend: {
         orientation: 'h',
         x: 0,
-        y: 1.12,
+        y: -0.14,
+        yanchor: 'top',
+        xanchor: 'left',
         font: {
-          size: 18,
+          size: 16,
           color: cs.color
         },
         traceorder: 'normal'
@@ -908,7 +843,7 @@ body,
     const uniq = [...new Set(names)];
 
     if (!uniq.length) {
-      alert('Please add at least one team');
+      alert('Please add at least one player');
       return;
     }
 
@@ -919,7 +854,7 @@ body,
     }).filter(Boolean);
 
     if (!lookups.length) {
-      document.getElementById('chart').textContent = 'No valid teams.';
+      document.getElementById('chart').textContent = 'No valid players.';
       return;
     }
 
@@ -977,19 +912,18 @@ body,
     setupRangeButtons();
 
     Promise.all([
-      loadTeams(),
-      loadColours()
+      loadTeams()
     ])
       .then(() => {
         makeRow();
-        document.getElementById('chart').textContent = 'Select teams, then Create.';
+        document.getElementById('chart').textContent = 'Select players, then Create.';
       })
       .catch(e => {
         console.error(e);
 
         const note = document.querySelector('.muted-note');
         if (note) {
-          note.textContent = 'Could not load team list. Check data path or run via a local server.';
+          note.textContent = 'Could not load player list. Check data path or run via a local server.';
         }
 
         makeRow();
