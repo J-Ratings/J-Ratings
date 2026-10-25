@@ -6,6 +6,7 @@ import shutil
 import sys
 from pathlib import Path
 
+PUBLIC_COMPARE = True  # Basic graph comparisons are public.
 PUBLIC_FULL_HISTORY = True  # Publish all available rating/profile history.
 PUBLIC_START_YEAR = 2023  # Used only if full-history publication is disabled.
 PUBLIC_START = f"{PUBLIC_START_YEAR}-01-01"
@@ -71,7 +72,8 @@ GENERIC_PRIVATE_DIR_NAMES = {
 
 # European Football advanced/private areas.
 EUROPEAN_FOOTBALL_PRIVATE_PATHS = [
-    Path("EuropeanFootball/compare"),
+    Path("EuropeanFootball/compare/manual"),
+    Path("EuropeanFootball/compare/top"),
     Path("EuropeanFootball/playback"),
     Path("EuropeanFootball/simulate"),
     Path("EuropeanFootball/player/stats"),
@@ -93,7 +95,8 @@ COMMON_PRIVATE_SPORT_PATHS = [
     "data/tournaments",
     "data/tournament-structure",
     "data/tournament-overrides",
-    "compare",
+    "compare/manual",
+    "compare/top",
     "simulate",
     "playback",
     "player/stats",
@@ -192,6 +195,22 @@ def remove_private_paths() -> None:
         elif target.is_file():
             target.unlink()
             print(f"Removed private file: {rel.as_posix()}")
+
+
+def prepare_public_compare_pages() -> None:
+    if not PUBLIC_COMPARE:
+        return
+    for sport in PUBLIC_SPORTS:
+        target = OUT_DIR / sport / 'compare/index.html'
+        if not (OUT_DIR / sport).exists():
+            continue
+        source = REPO_DIR / sport / 'compare/manual/Compare Graphs/index.html'
+        if not source.exists():
+            raise RuntimeError(f'Missing basic comparison page: {source}')
+        page = source.read_text(encoding='utf-8').replace('../../../', '../')
+        page = re.sub(r'(<a\b[^>]*href=["\'])\.\./\.\./(["\'][^>]*>\s*Compare\s*</a>)', r'\1./\2', page)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(page, encoding='utf-8', newline='\n')
 
 
 def assert_public_private_paths_absent() -> None:
@@ -556,6 +575,8 @@ def ensure_public_teaser_styles(s: str) -> str:
 
 
 def make_compare_teasers(s: str) -> str:
+    if PUBLIC_COMPARE:
+        return s
     # Keep the Compare tab visible, but remove its destination completely.
     def nav_repl(match: re.Match) -> str:
         return (
@@ -804,6 +825,8 @@ def ensure_profile_stats_teaser(s: str) -> str:
 
 
 def clean_european_football_public_ui() -> None:
+    if PUBLIC_COMPARE:
+        return
     ef_dir = OUT_DIR / "EuropeanFootball"
 
     # European Football already has working private comparison/statistics
@@ -943,6 +966,8 @@ def clean_european_football_public_ui() -> None:
 
 
 def assert_european_football_public_ui_clean() -> None:
+    if PUBLIC_COMPARE:
+        return  # Generic checks still enforce private statistics and tournaments.
     # Private implementation paths must remain absent even though preview
     # controls are now intentionally visible.
     checks = [
@@ -1036,18 +1061,19 @@ def clean_generic_public_ui(sports: list[str] | None = None) -> None:
             # than deleting them from the page.
             s = make_history_range_teasers(s)
 
-            # Prevent any existing private Compare launch code from attaching
-            # to the disabled preview button.
-            s = re.sub(
-                r'\n\s*setupCompareButton\(\);\s*',
-                '\n',
-                s,
-            )
-            s = re.sub(
-                r'\n\s*setupCompareChartControls\(\);\s*',
-                '\n',
-                s,
-            )
+            if not PUBLIC_COMPARE:
+                # Prevent any existing private Compare launch code from attaching
+                # to the disabled preview button.
+                s = re.sub(
+                    r'\n\s*setupCompareButton\(\);\s*',
+                    '\n',
+                    s,
+                )
+                s = re.sub(
+                    r'\n\s*setupCompareChartControls\(\);\s*',
+                    '\n',
+                    s,
+                )
 
             if "jr-public-disabled" in s:
                 s = ensure_public_teaser_styles(s)
@@ -1077,7 +1103,7 @@ def assert_generic_public_ui_clean(sports: list[str] | None = None) -> None:
         if not sport_dir.exists():
             continue
 
-        if (sport_dir / "compare").exists():
+        if not PUBLIC_COMPARE and (sport_dir / "compare").exists():
             failures.append(f"{sport}: private compare directory still exists")
 
         for html in sport_dir.rglob("*.html"):
@@ -1086,7 +1112,7 @@ def assert_generic_public_ui_clean(sports: list[str] | None = None) -> None:
 
             # Teaser controls may say Compare / Since 2000 / All, but there
             # must be no functional route or live pre-public-start control behind them.
-            if re.search(r'href=["\'][^"\']*compare/', s, flags=re.I):
+            if not PUBLIC_COMPARE and re.search(r'href=["\'][^"\']*compare/', s, flags=re.I):
                 failures.append(f"{rel}: functional link to private compare section")
 
             if re.search(r'href=["\'][^"\']*(?:player/)?stats/', s, flags=re.I):
@@ -1097,10 +1123,10 @@ def assert_generic_public_ui_clean(sports: list[str] | None = None) -> None:
             if 'jr-public-no-tournaments' not in s:
                 failures.append(f"{rel}: dynamic tournament links are not disabled")
 
-            if re.search(r'id=["\']compare-btn["\']', s, flags=re.I):
+            if not PUBLIC_COMPARE and re.search(r'id=["\']compare-btn["\']', s, flags=re.I):
                 failures.append(f"{rel}: functional Compare launch id remains")
 
-            if re.search(r'\bsetupCompareButton\(\);', s):
+            if not PUBLIC_COMPARE and re.search(r'\bsetupCompareButton\(\);', s):
                 failures.append(f"{rel}: Compare-button initialiser remains")
 
             # Any pre-public-start value still carried by the live attributes would be
@@ -1150,7 +1176,7 @@ def assert_generic_public_ui_clean(sports: list[str] | None = None) -> None:
             if not page.exists():
                 continue
             s = page.read_text(encoding="utf-8")
-            if "jr-public-nav-teaser" not in s:
+            if not PUBLIC_COMPARE and "jr-public-nav-teaser" not in s:
                 failures.append(
                     f"{page.relative_to(OUT_DIR).as_posix()}: disabled Compare tab missing"
                 )
@@ -1351,6 +1377,7 @@ def filter_public_tournaments(sports: list[str], validate_only: bool = False) ->
 
 def _clean_and_check_selected_sports(sports: list[str]) -> None:
     remove_private_paths()
+    prepare_public_compare_pages()
     assert_public_private_paths_absent()
 
     if "EuropeanFootball" in sports:
@@ -1449,6 +1476,7 @@ def build_public_ui_only() -> None:
     print(f"Public HTML files refreshed from source: {updated}")
 
     remove_private_paths()
+    prepare_public_compare_pages()
     assert_public_private_paths_absent()
     assert_european_football_private_paths_absent()
     clean_european_football_public_ui()

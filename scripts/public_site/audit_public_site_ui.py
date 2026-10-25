@@ -1,7 +1,7 @@
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
 import re
-from build_public_site import PUBLIC_FULL_HISTORY
+from build_public_site import PUBLIC_FULL_HISTORY, PUBLIC_COMPARE
 
 ROOT = Path("_public_site").resolve()
 
@@ -9,9 +9,9 @@ if not ROOT.exists():
     raise SystemExit("ERROR: _public_site does not exist. Run the public-site build first.")
 
 for sport in ("EuropeanFootball", "Go", "InternationalFootball", "RugbyUnion", "Snooker"):
-    for private in ("tournaments", "data/tournaments", "data/tournament-structure", "data/tournament-overrides"):
+    for private in ("tournaments", "data/tournaments", "data/tournament-structure", "data/tournament-overrides", "compare/manual", "compare/top"):
         if (ROOT / sport / private).exists():
-            raise SystemExit(f"ERROR: private tournament content in public build: {sport}/{private}")
+            raise SystemExit(f"ERROR: private content in public build: {sport}/{private}")
 
 HTML_FILES = sorted(ROOT.rglob("*.html"))
 
@@ -90,7 +90,7 @@ range_button_re = re.compile(
 )
 
 private_href_re = re.compile(
-    r'href\s*=\s*["\']([^"\']*(?:compare/|player/stats/|/stats/)[^"\']*)["\']',
+    r'href\s*=\s*["\']([^"\']*(?:player/stats/|/stats/)[^"\']*)["\']',
     re.I,
 )
 
@@ -142,7 +142,7 @@ for sport in PUBLIC_SPORTS:
             continue
 
         text = page.read_text(encoding="utf-8", errors="replace")
-        if "jr-public-nav-teaser" not in text:
+        if not PUBLIC_COMPARE and "jr-public-nav-teaser" not in text:
             missing_teasers.append(
                 f"{page.relative_to(ROOT).as_posix()}: disabled Compare tab missing"
             )
