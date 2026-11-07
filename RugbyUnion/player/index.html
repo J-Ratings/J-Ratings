@@ -482,10 +482,9 @@ body,
     <h3 class="section-title">Games</h3>
     <div class="game-probability-controls">
       <label>
-        <input type="checkbox" id="games-home-advantage" aria-describedby="games-home-advantage-help">
-        Include home advantage
+        <input type="checkbox" id="games-home-advantage">
+        Consider home advantage
       </label>
-      <small id="games-home-advantage-help">+100 Elo for the listed home team. World Cup finals matches use base Elo.</small>
     </div>
     <div id="gamesWrap">
       <table id="games" class="games"></table>
@@ -1014,7 +1013,7 @@ const shapes = makeYGridShapes(y0, y1, step);
       return g;
     }
 
-    const gap = homeElo + 100 - awayElo;
+    const gap = homeElo + 96 - awayElo;
     const expected = 1 / (1 + 10 ** (-gap / 400));
     // Match the rugby draw curve used by the JSON export.
     const draw = 0.04 * Math.exp(-Math.log(20) * Math.abs(gap) / 600);
