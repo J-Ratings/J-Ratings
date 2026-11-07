@@ -128,6 +128,14 @@
       margin-bottom: 10px;
     }
 
+    .game-probability-controls{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      gap: 4px 12px;
+    }
+
     #gamesWrap{
       max-height: 520px;
       overflow: auto;
@@ -472,6 +480,13 @@ body,
     <div id="chart">Loading…</div>
 
     <h3 class="section-title">Games</h3>
+    <div class="game-probability-controls">
+      <label>
+        <input type="checkbox" id="games-home-advantage" aria-describedby="games-home-advantage-help">
+        Include home advantage
+      </label>
+      <small id="games-home-advantage-help">+100 Elo for the listed home team. World Cup finals matches use base Elo.</small>
+    </div>
     <div id="gamesWrap">
       <table id="games" class="games"></table>
     </div>
@@ -920,6 +935,11 @@ const shapes = makeYGridShapes(y0, y1, step);
   }
 
 
+  function isWorldCupFinals(label, year) {
+    // Some qualifying fixtures are also exported with the "Rugby World Cup" label.
+    return label === 'Rugby World Cup' && year >= 1987 && (year - 1987) % 4 === 0;
+  }
+
   function renderTournamentCell(g) {
     const label = String(g.tournament || g.competition || '').trim();
     const span = document.createElement('span');
@@ -935,13 +955,7 @@ const shapes = makeYGridShapes(y0, y1, step);
 
     let tournamentId = null;
 
-    if (label === 'Rugby World Cup') {
-      const rwcFinalYears = new Set([
-        1987,1991,1995,1999,2003,
-        2007,2011,2015,2019,2023
-      ]);
-      if (rwcFinalYears.has(year)) tournamentId = 'rugby-world-cup';
-    }
+    if (isWorldCupFinals(label, year)) tournamentId = 'rugby-world-cup';
 
     if ([
       'Home Nations Championship',
@@ -986,7 +1000,31 @@ const shapes = makeYGridShapes(y0, y1, step);
     return span;
   }
 
-  function renderWdlBar(g, myName) {
+  function homeAdjustedWdl(g) {
+    const label = String(g.tournament || g.competition || '').trim();
+    const year = Number(String(g.date || '').slice(0, 4));
+    const homeElo = Number(g.homeElo);
+    const awayElo = Number(g.awayElo);
+
+    if (
+      isWorldCupFinals(label, year) ||
+      g.homeElo == null || g.awayElo == null ||
+      !Number.isFinite(homeElo) || !Number.isFinite(awayElo)
+    ) {
+      return g;
+    }
+
+    const gap = homeElo + 100 - awayElo;
+    const expected = 1 / (1 + 10 ** (-gap / 400));
+    // Match the rugby draw curve used by the JSON export.
+    const draw = 0.04 * Math.exp(-Math.log(20) * Math.abs(gap) / 600);
+    const homeWin = Math.max(0, Math.min(1 - draw, expected - draw / 2));
+    const drawPct = Math.round(100 * draw);
+    const homeWinPct = Math.min(100 - drawPct, Math.round(100 * homeWin));
+    return { homeWinPct, drawPct, awayWinPct: 100 - homeWinPct - drawPct };
+  }
+
+  function renderWdlBar(g, myName, includeHomeAdvantage) {
     const isHome = g.home === myName;
     const isAway = g.away === myName;
 
@@ -994,9 +1032,10 @@ const shapes = makeYGridShapes(y0, y1, step);
       return document.createTextNode('');
     }
 
-    const homeWin = Number(g.homeWinPct);
-    const draw = Number(g.drawPct);
-    const awayWin = Number(g.awayWinPct);
+    const probabilities = includeHomeAdvantage ? homeAdjustedWdl(g) : g;
+    const homeWin = Number(probabilities.homeWinPct);
+    const draw = Number(probabilities.drawPct);
+    const awayWin = Number(probabilities.awayWinPct);
 
     if (
       !Number.isFinite(homeWin) ||
@@ -1051,6 +1090,8 @@ if (total === 99) {
 
   function renderGamesTable(me, teams, games) {
     const tbl = document.getElementById('games');
+    const homeAdvantage = document.getElementById('games-home-advantage');
+    const wdlCells = [];
     tbl.innerHTML = '';
 
     const thead = document.createElement('thead');
@@ -1108,7 +1149,8 @@ if (total === 99) {
 
       const tdWdl = document.createElement('td');
       tdWdl.className = 'wdl-cell';
-      tdWdl.appendChild(renderWdlBar(g, myName));
+      tdWdl.appendChild(renderWdlBar(g, myName, homeAdvantage.checked));
+      wdlCells.push({ cell: tdWdl, game: g });
 
       const tdScore = document.createElement('td');
       tdScore.className = 'score';
@@ -1163,6 +1205,12 @@ if (total === 99) {
     }
 
     tbl.appendChild(tbody);
+
+    homeAdvantage.onchange = () => {
+      for (const { cell, game } of wdlCells) {
+        cell.replaceChildren(renderWdlBar(game, myName, homeAdvantage.checked));
+      }
+    };
   }
 
   function renderTeamStats(series) {

@@ -4,8 +4,7 @@
 # Weekly mode:
 #   - refreshes homepage metadata
 #   - checks newly listed players
-#   - checks players whose homepage Elo changed
-#   - checks players with a known game in the last 120 days
+#   - checks players with a known game in the last 60 days
 #
 # Full mode:
 #   - checks every player listed on the GoRatings homepage
@@ -55,7 +54,7 @@ ACTIVE_WINDOW_DAYS <- 60L
 REQUEST_DELAY_MIN <- 1
 REQUEST_DELAY_MAX <- 1.3
 
-SAVE_EVERY <- 25L
+SAVE_EVERY <- 25L  # Progress display interval; successful full profiles are checkpointed individually
 
 BATCH_SIZE <- 50L
 BATCH_PAUSE_SECONDS <- 10
@@ -1144,180 +1143,152 @@ parse_player_profile <- function(
 # -----------------------------
 # Scrape selected profiles
 # -----------------------------
+# Full mode: one small RDS checkpoint per successful profile. Re-running on
+# the same date with the same homepage list resumes without re-downloading
+# successful profiles. Failed profiles are retried. Checkpoints are removed
+# only after the final observations CSV has been successfully written.
+# Weekly mode: no automatic resume; each invocation is a fresh update.
+# Daily mode: retain the original safety behaviour (save each successful
+# profile to observations CSV; abort immediately on a request/parse error).
+
 failed_profiles <- tibble(
-  player_id = character(),
-  player_name = character(),
-  profile_url = character(),
-  error = character(),
-  failed_at = character()
+  player_id = character(), player_name = character(),
+  profile_url = character(), error = character(), failed_at = character()
 )
 
-scraped_results <- vector(
-  mode = "list",
-  length = nrow(profiles_to_scrape)
-)
+n_profiles <- nrow(profiles_to_scrape)
+scraped_results <- vector("list", n_profiles)
+checkpoint_dir <- file.path(goratings_dir, ".goratings_full_checkpoint")
+checkpoint_enabled <- identical(SCRAPE_MODE, "full")
+completed <- rep(FALSE, n_profiles)
 
-if (nrow(profiles_to_scrape) > 0L) {
-  for (
-    i in seq_len(
-      nrow(profiles_to_scrape)
-    )
-  ) {
-    player_row <- profiles_to_scrape[
-      i,
-      ,
-      drop = FALSE
-    ]
-    
-    cat(
-      "\nScraping profile",
-      i,
-      "of",
-      nrow(profiles_to_scrape),
-      "-",
-      player_row$player_name,
-      "(",
-      player_row$player_id,
-      ")",
-      "-",
-      player_row$scrape_reason,
-      "\n"
-    )
-    
-    scraped_results[[i]] <- tryCatch(
-      {
-      parsed_profile <- parse_player_profile(
-        player_url =
-          player_row$profile_url,
-        expected_player_id =
-          player_row$player_id,
-        expected_player_name =
-          player_row$player_name
-      )
-      if (SCRAPE_MODE == "daily" && !nrow(parsed_profile)) stop("No live games parsed from a daily target; retaining existing observations for review.")
-      parsed_profile
-      },
-      error = function(e) {
-        if (SCRAPE_MODE == "daily") stop("Daily profile request failed; stopping without retries. Earlier observations were checkpointed. ",conditionMessage(e))
-        error_message <-
-          conditionMessage(e)
-        
-        warning(
-          "Failed profile ",
-          player_row$profile_url,
-          ": ",
-          error_message
-        )
-        
-        failed_profiles <<- bind_rows(
-          failed_profiles,
-          tibble(
-            player_id =
-              player_row$player_id,
-            player_name =
-              player_row$player_name,
-            profile_url =
-              player_row$profile_url,
-            error =
-              error_message,
-            failed_at = format(
-              Sys.time(),
-              "%Y-%m-%dT%H:%M:%SZ",
-              tz = "UTC"
-            )
-          )
-        )
-        
-        empty_observations()
-      }
-    )
-    
-    if (
-      i %% SAVE_EVERY == 0L ||
-      i ==
-      nrow(profiles_to_scrape)
-    ) {
-      progress_new <- bind_rows(
-        scraped_results[
-          seq_len(i)
-        ]
-      )
-      
-      progress_all <- bind_rows(
-        existing_observations,
-        progress_new
-      ) %>%
-        deduplicate_observations()
-      
-      write_csv(
-        progress_all,
-        observations_file
-      )
-      
-      write_csv(
-        failed_profiles,
-        failed_file
-      )
-      
-      cat(
-        "Saved progress:",
-        i,
-        "profiles;",
-        nrow(progress_all),
-        "persistent observations\n"
-      )
+if (checkpoint_enabled) {
+  dir.create(checkpoint_dir, recursive = TRUE, showWarnings = FALSE)
+  manifest_path <- file.path(checkpoint_dir, "manifest.rds")
+  # The date and exact ordered ID/URL list protect against resuming an
+  # unrelated full run after the rankings or target selection has changed.
+  manifest <- list(
+    date = as.character(Sys.Date()),
+    ids = as.character(profiles_to_scrape$player_id),
+    urls = as.character(profiles_to_scrape$profile_url)
+  )
+  previous_manifest <- if (file.exists(manifest_path))
+    tryCatch(readRDS(manifest_path), error = function(e) NULL) else NULL
+  if (!identical(previous_manifest, manifest)) {
+    old_files <- list.files(checkpoint_dir, full.names = TRUE)
+    if (length(old_files)) unlink(old_files, recursive = TRUE)
+    saveRDS(manifest, manifest_path)
+  }
+
+  for (i in seq_len(n_profiles)) {
+    path <- file.path(checkpoint_dir, paste0(i, ".rds"))
+    if (!file.exists(path)) next
+    entry <- tryCatch(readRDS(path), error = function(e) NULL)
+    if (is.list(entry) && identical(entry$id, as.character(profiles_to_scrape$player_id[[i]])) &&
+        is.data.frame(entry$observations)) {
+      scraped_results[[i]] <- entry$observations
+      completed[[i]] <- TRUE
     }
-    
-    if (
-      i < nrow(profiles_to_scrape)
-    ) {
-      Sys.sleep(
-        runif(
-          1,
-          min = REQUEST_DELAY_MIN,
-          max = REQUEST_DELAY_MAX
-        )
-      )
+  }
+  cat("Resuming full refresh:", sum(completed), "profiles already saved;",
+      sum(!completed), "remaining\n")
+}
+
+# The cached daily data frame is updated only after a successful request.
+# In other modes, combining/deduplicating the entire historical CSV happens
+# once, not repeatedly after every 25 profiles.
+daily_observations <- existing_observations
+last_request_time <- NULL
+
+for (i in seq_len(n_profiles)) {
+  if (completed[[i]]) next
+  player_row <- profiles_to_scrape[i, , drop = FALSE]
+
+  # Maintain a request gap even when resuming past completed entries.
+  if (!is.null(last_request_time)) {
+    elapsed <- as.numeric(difftime(Sys.time(), last_request_time, units = "secs"))
+    delay <- runif(1, REQUEST_DELAY_MIN, REQUEST_DELAY_MAX)
+    if (elapsed < delay) Sys.sleep(delay - elapsed)
+  }
+
+  cat("\nScraping profile", i, "of", n_profiles, "-",
+      player_row$player_name, "(", player_row$player_id, ") -",
+      player_row$scrape_reason, "\n")
+  started <- proc.time()[["elapsed"]]
+  failure <- NULL
+  parsed <- tryCatch(
+    parse_player_profile(
+      player_url = player_row$profile_url,
+      expected_player_id = player_row$player_id,
+      expected_player_name = player_row$player_name
+    ),
+    error = function(e) { failure <<- conditionMessage(e); NULL }
+  )
+  last_request_time <- Sys.time()
+  duration <- proc.time()[["elapsed"]] - started
+  cat(sprintf("Profile request + parsing: %.2f seconds\n", duration))
+
+  if (is.null(failure) && SCRAPE_MODE == "daily" && nrow(parsed) == 0L)
+    failure <- "No live games parsed from a daily target; retaining existing observations for review."
+
+  if (!is.null(failure)) {
+    if (SCRAPE_MODE == "daily")
+      stop("Daily profile request failed; stopping without retries. Earlier observations were checkpointed. ",
+           failure)
+    warning("Failed profile ", player_row$profile_url, ": ", failure)
+    failed_profiles <- bind_rows(failed_profiles, tibble(
+      player_id = as.character(player_row$player_id),
+      player_name = as.character(player_row$player_name),
+      profile_url = as.character(player_row$profile_url),
+      error = failure,
+      failed_at = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")
+    ))
+    scraped_results[[i]] <- empty_observations()
+  } else {
+    scraped_results[[i]] <- parsed
+    if (checkpoint_enabled) {
+      # Atomic replacement avoids treating a half-written checkpoint as valid.
+      path <- file.path(checkpoint_dir, paste0(i, ".rds"))
+      tmp <- paste0(path, ".tmp")
+      saveRDS(list(id = as.character(player_row$player_id), observations = parsed), tmp,
+              compress = FALSE)
+      if (file.exists(path)) unlink(path)
+      if (!file.rename(tmp, path)) stop("Could not save checkpoint: ", path)
     }
-    
-    if (
-      i %% BATCH_SIZE == 0L &&
-      i < nrow(profiles_to_scrape)
-    ) {
-      cat(
-        "Pausing for",
-        BATCH_PAUSE_SECONDS,
-        "seconds after",
-        i,
-        "profiles\n"
-      )
-      
-      Sys.sleep(
-        BATCH_PAUSE_SECONDS
-      )
-    }
+  }
+
+  if (SCRAPE_MODE == "daily") {
+    daily_observations <- bind_rows(daily_observations, scraped_results[[i]]) %>%
+      deduplicate_observations()
+    write_csv(daily_observations, observations_file)
+    write_csv(failed_profiles, failed_file)
+    cat("Saved daily profile", i, ";", nrow(daily_observations),
+        "persistent observations\n")
+  } else if (i %% SAVE_EVERY == 0L || i == n_profiles) {
+    cat("Progress:", i, "of", n_profiles, "profiles;",
+        sum(!vapply(scraped_results, is.null, logical(1))), "processed or resumed\n")
+  }
+
+  # Preserve the original batch pause schedule between successive profile
+  # positions, rather than adding pauses after the final profile.
+  if (i %% BATCH_SIZE == 0L && i < n_profiles) {
+    cat("Pausing for", BATCH_PAUSE_SECONDS, "seconds after", i, "profiles\n")
+    Sys.sleep(BATCH_PAUSE_SECONDS)
   }
 }
 
-new_observations <- bind_rows(
-  scraped_results
-)
-
-all_observations <- bind_rows(
-  existing_observations,
-  new_observations
-) %>%
+new_observations <- bind_rows(scraped_results)
+all_observations <- bind_rows(existing_observations, new_observations) %>%
   deduplicate_observations()
 
-write_csv(
-  all_observations,
-  observations_file
-)
+# Only publish the merged observation file after the whole pass has finished.
+# If stopped, existing observations are left intact and full checkpoints remain.
+write_csv(all_observations, observations_file)
+write_csv(failed_profiles, failed_file)
 
-write_csv(
-  failed_profiles,
-  failed_file
-)
+if (checkpoint_enabled) {
+  unlink(checkpoint_dir, recursive = TRUE)
+}
 
 # -----------------------------
 # Scrape log
