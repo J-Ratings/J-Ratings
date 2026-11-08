@@ -1,6 +1,9 @@
 name: Update Go ratings
 
 on:
+  schedule:
+    - cron: '17 6 * * 1'
+      timezone: Europe/London
   workflow_dispatch:
     inputs:
       full_profile_scrape:
@@ -20,7 +23,7 @@ concurrency:
 
 jobs:
   update-go:
-    # Paused at the user's request, including manual runs.
+    # Temporarily paused after the local full refresh.
     if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 180
@@ -53,17 +56,18 @@ jobs:
             any::rvest
             any::xml2
 
+      # First Monday of Jan/Mar/May/Jul/Sep/Nov: full instead of weekly.
       - name: Decide scrape mode
         id: scrape_mode
         shell: bash
         run: |
-          DAY_OF_MONTH="$(date +%-d)"
+          read -r DAY_OF_MONTH MONTH_NUMBER <<< "$(TZ=Europe/London date '+%-d %-m')"
 
           if [[ "${{ github.event_name }}" == "workflow_dispatch" && \
                 "${{ inputs.full_profile_scrape }}" == "true" ]]; then
             MODE="full"
           elif [[ "${{ github.event_name }}" == "schedule" && \
-                  "$DAY_OF_MONTH" -le 7 ]]; then
+                  "$DAY_OF_MONTH" -le 7 ]] && (( MONTH_NUMBER % 2 == 1 )); then
             MODE="full"
           else
             MODE="weekly"

@@ -29,6 +29,8 @@
 # Only games dated 2026-01-01 onwards are retained.
 # ============================================================
 
+source("scripts/go/goratings_scrape_lock.R", local = TRUE)
+go_with_goratings_lock({
 library(rvest)
 library(dplyr)
 library(readr)
@@ -923,9 +925,12 @@ cat(
 parse_player_profile <- function(
     player_url,
     expected_player_id = NA_character_,
-    expected_player_name = NA_character_
+    expected_player_name = NA_character_,
+    read_profile = read_html,
+    measure = function(stage, expr) force(expr),
+    date_first = TRUE
 ) {
-  profile <- read_html(
+  profile <- read_profile(
     player_url
   )
   
@@ -941,8 +946,8 @@ parse_player_profile <- function(
     player_id <- expected_player_id
   }
   
-  player_name_node <- profile %>%
-    html_element("h1")
+  player_name_node <- measure("heading_lookup", profile %>%
+    html_element("h1"))
   
   player_name <- if (
     length(player_name_node) > 0L
@@ -956,8 +961,8 @@ parse_player_profile <- function(
     )
   }
   
-  tables <- profile %>%
-    html_elements("table")
+  tables <- measure("table_lookup", profile %>%
+    html_elements("table"))
   
   if (length(tables) < 2L) {
     warning(
@@ -970,10 +975,24 @@ parse_player_profile <- function(
     )
   }
   
-  game_rows <- tables[[2]] %>%
-    html_elements("tr")
+  if (date_first && !length(html_elements(tables[[2]], "table"))) {
+    # Find complete rows and their date cells in a single native XPath query.
+    # Avoid a separate R-level cell lookup for every historical game.
+    game_rows <- measure("date_first_selection", {
+      first_cells <- xml2::xml_find_all(tables[[2]], ".//tr[td[9]]/td[1]")
+      date_text <- clean_text(html_text2(first_cells))
+      dates <- as.Date(date_text, format = "%Y-%m-%d")
+      # Keep the legacy date parser for nonstandard strings.
+      other <- which(!is.na(date_text) &
+                       (!grepl("^\\d{4}-\\d{2}-\\d{2}$", date_text) | is.na(dates)))
+      for (i in other) dates[i] <- suppressWarnings(as.Date(date_text[i]))
+      xml2::xml_parent(first_cells[which(dates >= LIVE_START_DATE)])
+    })
+  } else {
+  game_rows <- measure("row_lookup", tables[[2]] %>%
+    html_elements("tr"))
   
-  game_rows <- game_rows[
+  game_rows <- measure("row_structure_check", game_rows[
     vapply(
       game_rows,
       function(row) {
@@ -984,7 +1003,8 @@ parse_player_profile <- function(
       },
       logical(1)
     )
-  ]
+  ])
+  }
   
   if (length(game_rows) == 0L) {
     return(
@@ -998,7 +1018,7 @@ parse_player_profile <- function(
     tz = "UTC"
   )
   
-  games <- map_dfr(
+  games <- measure("row_decode_and_bind", map_dfr(
     game_rows,
     function(row) {
       cells <- row %>%
@@ -1118,7 +1138,7 @@ parse_player_profile <- function(
           scraped_at
       )
     }
-  )
+  ))
   
   if (
     nrow(games) == 0L ||
@@ -1131,13 +1151,13 @@ parse_player_profile <- function(
     )
   }
   
-  games %>%
+  measure("final_profile_filter", games %>%
     filter(
       !is.na(player_id),
       !is.na(opponent_id),
       !is.na(date),
       date >= LIVE_START_DATE
-    )
+    ))
 }
 
 # -----------------------------
@@ -1421,3 +1441,4 @@ if (
 ) {
   beepr::beep()
 }
+})

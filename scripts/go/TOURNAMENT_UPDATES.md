@@ -64,7 +64,7 @@ processed editions after parser changes, remove only the `built` vector from
 The broad GoRatings pipeline imports results and calculates Elo weekly. The K2SS
 structure updater only updates tournament displays and links; it never calculates
 Elo. A separate targeted daily GoRatings runner below imports confirmed results
-through the existing canonical game merge and Elo stages. Workflows remain paused.
+through the existing canonical game merge and Elo stages. The K2SS workflow remains paused.
 
 ## Targeted daily GoRatings results
 
@@ -88,6 +88,14 @@ runner refreshes the current timetable and active tournament pages before select
 GoRatings profiles. It requires GO_K2SS_PERMISSION_GRANTED=true; do not set that
 flag while permission is pending. It never enables Actions, commits or pushes.
 The tournament refresh retains its three-second request spacing and page cap.
+
+Daily, weekly and full GoRatings scrapes share a lock in the same checkout.
+If another scrape holds it, stage 04 stops before requesting GoRatings.
+This does not coordinate across machines or separate checkouts. A scheduled
+full refresh takes the place of that week's weekly refresh on the first Monday
+of January, March, May, July, September and November. The Go ratings schedule
+is Mondays at 06:17 UK time, but the job is temporarily paused. The separate
+K2SS workflow remains paused.
 
 Daily selection uses cached weekly homepage IDs and local identity aliases. It
 checks participants in explicitly dated games within the preceding seven days,
