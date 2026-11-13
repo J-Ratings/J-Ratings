@@ -244,7 +244,7 @@ live_output <- live_history %>%
     ResultCode,
     Event,
     GameKey,
-    Source = "GoRatings",
+    Source = if_else(startsWith(GameKey, "K2SS|sc31|"), "K2SS", "GoRatings"),
     BlackFirstAppearance,
     WhiteFirstAppearance,
     BlackStartRating,
@@ -325,7 +325,7 @@ if (
   any(
     combined_history$Date >=
     LIVE_START_DATE &
-    combined_history$Source != "GoRatings"
+    !combined_history$Source %in% c("GoRatings", "K2SS")
   )
 ) {
   stop(

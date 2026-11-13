@@ -505,6 +505,9 @@ games <- games %>%
 # -----------------------------
 # Basic validation report
 # -----------------------------
+source(file.path(repo_dir, "scripts/go/add_samsung_profile_results.R"), local=TRUE)
+games <- merge_samsung_live_games(games, canonical_name_map, repo_dir)
+
 cat(
   "Checkpoint players:",
   nrow(checkpoint),
