@@ -473,8 +473,8 @@ body,
               <label for="compare-agg">View:</label>
               <select id="compare-agg">
                 <option value="daily">Daily</option>
-                <option value="weekly" selected>Weekly</option>
-              <option value="monthly">Monthly</option>
+                <option value="weekly">Weekly</option>
+              <option value="monthly" selected>Monthly</option>
                 <option value="yearly">Yearly</option>
               </select>
             </div>
@@ -963,7 +963,7 @@ function setupCompareButton() {
     closeModal();
 
     const compareAgg = document.getElementById('compare-agg');
-    if (compareAgg) compareAgg.value = 'weekly';
+    if (compareAgg) compareAgg.value = 'monthly';
 
     document.querySelectorAll('.range-btn').forEach(btn => btn.classList.remove('is-active'));
     const since2000Btn = document.querySelector('.range-btn[data-since="2000"]');

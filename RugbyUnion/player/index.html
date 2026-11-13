@@ -444,8 +444,8 @@ body,
             <label for="agg">View:</label>
             <select id="agg">
               <option value="daily">Daily</option>
-              <option value="weekly" selected>Weekly</option>
-              <option value="monthly">Monthly</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly" selected>Monthly</option>
               <option value="yearly">Yearly</option>
               <option value="decade">Decade</option>
             </select>
@@ -576,7 +576,7 @@ if (!idRaw) {
   let teamChart = null;
   
   let ALL_TIME_PEAK = null;
-let AGG_MODE = 'weekly';
+let AGG_MODE = 'monthly';
 
   function normalise(series, dedupeByDay = false) {
     const s = series
@@ -1329,7 +1329,7 @@ CURRENT_TEAM = me;
         document.getElementById('chart').textContent = 'No games';
         renderTeamStats([]);
       } else {
-        const initialMode = 'weekly';
+        const initialMode = 'monthly';
         AGG_MODE = initialMode;
         document.getElementById('agg').value = initialMode;
 

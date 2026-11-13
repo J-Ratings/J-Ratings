@@ -260,8 +260,8 @@ body,
           <label for="agg">View:</label>
           <select id="agg">
             <option value="daily">Daily</option>
-            <option value="weekly" selected>Weekly</option>
-            <option value="monthly">Monthly</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly" selected>Monthly</option>
             <option value="quarterly">Quarterly</option>
             <option value="yearly">Yearly</option>
           </select>
@@ -452,7 +452,7 @@ body,
       getItems:() => comparedItems
     });
 
-    document.getElementById('agg').value = 'weekly';
+    document.getElementById('agg').value = 'monthly';
     document.getElementById('show').addEventListener('click', drawSnapshot);
     document.getElementById('country').addEventListener('change', drawSnapshot);
     document.getElementById('asof').addEventListener('change', drawSnapshot);
