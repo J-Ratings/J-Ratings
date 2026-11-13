@@ -744,7 +744,7 @@ cat("Wrote rating history files: ", n_hist_written, "\n", sep = "")
 # Future fixtures
 #
 # Optional. If RugbyUnion/pipeline_data/source/results.csv exists and has
-# blank scores after latest_game_date, they are added as scheduled games.
+# blank scores dated today or later, they are added as scheduled games.
 # -----------------------------
 
 future_fixtures <- tibble(
@@ -801,7 +801,7 @@ if (file.exists(source_results_csv)) {
       ) %>%
       filter(
         !is.na(date),
-        date > latest_game_date,
+        date >= Sys.Date(),
         home_team != "",
         away_team != "",
         is.na(home_score),

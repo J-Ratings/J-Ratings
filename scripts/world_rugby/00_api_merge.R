@@ -17,8 +17,9 @@ options(stringsAsFactors = FALSE)
 # Purpose:
 #   - Run entirely inside the J-Ratings Git repo
 #   - Read existing Rugby Union master match CSV
-#   - Fetch recent/current API seasons from TheSportsDB
+#   - Discover international rugby competitions and fetch their schedules
 #   - Merge completed API matches into the master file
+#   - Export upcoming fixtures to RugbyUnion/pipeline_data/source/results.csv
 #   - Prefer scored API rows over older score-less rows
 #
 # Main output:
@@ -82,6 +83,9 @@ out_file <- file.path(
   "rugby_union_results_master.csv"
 )
 
+fixtures_file <- file.path(repo_dir, "RugbyUnion", "pipeline_data", "source", "results.csv")
+aliases_file <- file.path(repo_dir, "RugbyUnion", "config", "international_teams.tsv")
+
 cat("Repo dir: ", repo_dir, "\n", sep = "")
 cat("Match data dir: ", match_dir, "\n", sep = "")
 cat("Master output: ", out_file, "\n", sep = "")
@@ -101,7 +105,7 @@ if (!nzchar(api_key)) {
 
 base_url <- paste0("https://www.thesportsdb.com/api/v1/json/", api_key)
 
-# Competitions
+# Keep known competition names stable across updates.
 leagues <- tribble(
   ~idLeague, ~competition,
   4714, "Six Nations Championship",
@@ -110,24 +114,27 @@ leagues <- tribble(
   4574, "Rugby World Cup",
   4983, "Rugby Europe Championship",
   5479, "Rugby Union International Friendlies",
-  5512, "British and Irish Lions Tours"
+  5512, "British and Irish Lions Tours",
+  5852, "Nations Championship",
+  5933, "World Rugby Nations Cup"
 )
 
 today <- Sys.Date()
 current_year <- year(today)
+lookback_date <- today %m-% months(6)
 
-# Start year can be overridden in GitHub Actions/local testing:
-#   Sys.setenv(RUGBY_API_START_YEAR = "2025")
+# Override the season bounds for a backfill or to check farther ahead.
+start_override <- Sys.getenv("RUGBY_API_START_YEAR")
 start_year <- suppressWarnings(
-  as.integer(Sys.getenv("RUGBY_API_START_YEAR", unset = "2025"))
+  as.integer(Sys.getenv("RUGBY_API_START_YEAR", unset = as.character(year(lookback_date))))
 )
-
 if (is.na(start_year)) {
   stop("RUGBY_API_START_YEAR must be an integer year if supplied.")
 }
+if (nzchar(start_override)) lookback_date <- as.Date(sprintf("%04d-01-01", start_year))
 
 end_year <- suppressWarnings(
-  as.integer(Sys.getenv("RUGBY_API_END_YEAR", unset = as.character(current_year)))
+  as.integer(Sys.getenv("RUGBY_API_END_YEAR", unset = as.character(current_year + 1L)))
 )
 
 if (is.na(end_year)) {
@@ -208,48 +215,41 @@ read_results_file <- function(path) {
     filter(!is.na(date), home_team != "", away_team != "", competition != "")
 }
 
-fetch_season <- function(id_league, season_label, competition_name) {
-  url <- paste0(base_url, "/eventsseason.php?id=", id_league, "&s=", season_label)
-  
-  resp <- tryCatch(
-    {
-      request(url) |>
-        req_retry(max_tries = 5) |>
-        req_timeout(seconds = 60) |>
-        req_perform()
-    },
-    error = function(e) {
-      warning(
-        "API request failed for league ", id_league,
-        ", season ", season_label,
-        ": ", conditionMessage(e)
-      )
-      return(NULL)
-    }
-  )
-  
-  if (is.null(resp)) {
-    return(tibble())
-  }
-  
-  txt <- resp_body_string(resp)
-  
-  dat <- tryCatch(
-    fromJSON(txt, flatten = TRUE),
-    error = function(e) {
-      warning(
-        "Failed to parse JSON for league ", id_league,
-        ", season ", season_label,
-        ": ", conditionMessage(e)
-      )
-      return(NULL)
-    }
-  )
-  
-  # Be polite to the API
+fetch_api <- function(endpoint) {
+  dat <- tryCatch({
+    resp <- request(paste0(base_url, "/", endpoint)) |>
+      req_retry(max_tries = 5) |>
+      req_timeout(seconds = 60) |>
+      req_perform()
+    fromJSON(resp_body_string(resp), flatten = TRUE)
+  }, error = function(e) {
+    stop("TheSportsDB request failed for ", endpoint, ". Existing data was kept.", call. = FALSE)
+  })
   Sys.sleep(2.5 + runif(1, min = -0.5, max = 0.5))
-  
-  if (is.null(dat) || is.null(dat$events)) {
+  dat
+}
+
+discover_leagues <- function() {
+  dat <- fetch_api("all_leagues.php")
+  required <- c("idLeague", "strLeague", "strSport")
+  if (!all(required %in% names(dat$leagues))) {
+    stop("TheSportsDB returned an invalid league catalogue.")
+  }
+  as_tibble(dat$leagues) %>%
+    filter(strSport == "Rugby") %>%
+    transmute(idLeague = safe_int(idLeague), competition = str_squish(strLeague)) %>%
+    filter(!is.na(idLeague), !is.na(competition), competition != "")
+}
+
+aliases <- read_tsv(aliases_file, col_types = cols(.default = col_character()))
+team_key <- function(x) str_to_lower(clean_team_name(x))
+team_names <- setNames(aliases$canonical, team_key(aliases$alias))
+
+fetch_season <- function(id_league, season_label, competition_name) {
+  endpoint <- paste0("eventsseason.php?id=", id_league, "&s=", season_label)
+  dat <- fetch_api(endpoint)
+  if (!"events" %in% names(dat)) stop("Invalid TheSportsDB response for ", endpoint)
+  if (length(dat$events) == 0L) {
     return(tibble())
   }
   
@@ -263,33 +263,36 @@ fetch_season <- function(id_league, season_label, competition_name) {
   missing_api_cols <- setdiff(required_api_cols, names(events))
   
   if (length(missing_api_cols) > 0) {
-    warning(
+    stop(
       "API result missing expected columns for league ", id_league,
       ", season ", season_label,
       ": ", paste(missing_api_cols, collapse = ", ")
     )
-    return(tibble())
   }
-  
+
+  if (!"strStatus" %in% names(events)) events$strStatus <- NA_character_
+
   events %>%
     transmute(
       date        = normalise_date_text(dateEvent),
-      home_team   = clean_team_name(coalesce(strHomeTeam, "")),
-      away_team   = clean_team_name(coalesce(strAwayTeam, "")),
+      home_team   = unname(team_names[team_key(strHomeTeam)]),
+      away_team   = unname(team_names[team_key(strAwayTeam)]),
       home_score  = safe_int(intHomeScore),
       away_score  = safe_int(intAwayScore),
+      status      = str_to_lower(str_squish(coalesce(strStatus, ""))),
       competition = competition_name
     ) %>%
-    filter(!is.na(date), home_team != "", away_team != "") %>%
+    filter(!is.na(date), !is.na(home_team), !is.na(away_team), home_team != away_team) %>%
     mutate(
       result = case_when(
-        is.na(home_score) | is.na(away_score) ~ NA_character_,
+        as.Date(date) > today | is.na(home_score) | is.na(away_score) ~ NA_character_,
+        !status %in% c("ft", "aet", "finished", "match finished", "after extra time") ~ NA_character_,
         home_score > away_score ~ home_team,
         away_score > home_score ~ away_team,
         home_score == away_score ~ "Draw"
       )
     ) %>%
-    select(date, home_team, away_team, home_score, away_score, result, competition)
+    select(date, home_team, away_team, home_score, away_score, result, competition, status)
 }
 
 # -----------------------------
@@ -326,13 +329,17 @@ cat("Existing rows: ", nrow(historical), "\n", sep = "")
 # -----------------------------
 # Download API results
 # -----------------------------
+# The catalogue includes club competitions. The existing international-team
+# allow-list in fetch_season keeps club fixtures out of the Elo pipeline.
+leagues <- bind_rows(leagues, discover_leagues()) %>%
+  distinct(idLeague, .keep_all = TRUE)
 api_grid <- expand.grid(
   idLeague = leagues$idLeague,
   season   = seasons,
   stringsAsFactors = FALSE
 )
 
-api_results <- pmap_dfr(
+api_events <- pmap_dfr(
   api_grid,
   function(idLeague, season) {
     comp_name <- leagues$competition[match(idLeague, leagues$idLeague)]
@@ -347,22 +354,50 @@ api_results <- pmap_dfr(
   }
 )
 
-# -----------------------------
-# Keep completed API games only
-# -----------------------------
+if (!nrow(api_events)) stop("TheSportsDB returned no international fixtures. Existing data was kept.")
 
-api_results <- api_results %>%
-  filter(!is.na(result)) %>%
+historical_keys_by_team <- historical %>%
   mutate(
-    date        = normalise_date_text(date),
-    home_team   = clean_team_name(home_team),
-    away_team   = clean_team_name(away_team),
-    home_score  = safe_int(home_score),
-    away_score  = safe_int(away_score),
-    result      = str_squish(as.character(result)),
-    competition = str_squish(as.character(competition))
+    home_key = unname(team_names[team_key(home_team)]),
+    away_key = unname(team_names[team_key(away_team)])
   ) %>%
-  filter(!is.na(date), home_team != "", away_team != "", competition != "")
+  distinct(date, home_key, away_key, .keep_all = TRUE) %>%
+  select(date, home_key, away_key, home_team, away_team, competition)
+
+api_results <- api_events %>%
+  filter(as.Date(date) >= lookback_date, !is.na(result)) %>%
+  select(-status) %>%
+  # Preserve the existing competition label if the feed uses a different
+  # competition for this fixture. Prefer a tournament over a generic friendly.
+  left_join(
+    historical_keys_by_team,
+    by = c("date", "home_team" = "home_key", "away_team" = "away_key"),
+    suffix = c("", "_existing")
+  ) %>%
+  arrange(competition == "Rugby Union International Friendlies") %>%
+  mutate(
+    result = case_when(
+      result == home_team ~ coalesce(home_team_existing, home_team),
+      result == away_team ~ coalesce(away_team_existing, away_team),
+      TRUE ~ result
+    ),
+    home_team = coalesce(home_team_existing, home_team),
+    away_team = coalesce(away_team_existing, away_team),
+    competition = coalesce(competition_existing, competition)
+  ) %>%
+  select(-ends_with("_existing")) %>%
+  distinct(date, home_team, away_team, .keep_all = TRUE)
+
+fixtures <- api_events %>%
+  filter(
+    as.Date(date) >= today,
+    status %in% c("", "ns", "not started", "scheduled", "tbd"),
+    is.na(home_score), is.na(away_score)
+  ) %>%
+  select(-status) %>%
+  anti_join(bind_rows(historical, api_results), by = c("date", "home_team", "away_team")) %>%
+  distinct(date, home_team, away_team, .keep_all = TRUE) %>%
+  arrange(date, competition, home_team, away_team)
 
 cat("Completed API rows fetched: ", nrow(api_results), "\n", sep = "")
 
@@ -403,6 +438,9 @@ master <- bind_rows(
 # Save updated dataset
 # -----------------------------
 write_csv(master, out_file, na = "")
+dir.create(dirname(fixtures_file), recursive = TRUE, showWarnings = FALSE)
+write_csv(fixtures, fixtures_file, na = "")
+cat("Upcoming fixtures saved: ", nrow(fixtures), "\n", sep = "")
 
 # -----------------------------
 # Summary
