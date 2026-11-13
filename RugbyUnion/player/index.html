@@ -186,7 +186,10 @@
     }
 
 
-    .tournament-cell{
+    table.games td.tournament-cell{
+      max-width: 18ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
       text-align: left;
     }
 
@@ -1149,6 +1152,7 @@ if (total === 99) {
       tdTournament.className = 'tournament-cell';
       tdTournament.appendChild(renderTournamentCell(g));
       const tournament = String(g.tournament || g.competition || '').trim();
+      tdTournament.title = tournament;
       if (isWorldCupFinals(tournament, Number(String(g.date || '').slice(0, 4)))) {
         const venueNote = document.createElement('small');
         venueNote.style.display = 'block';
