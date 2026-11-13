@@ -1899,4 +1899,7 @@ cat(
   "\n"
 )
 
+source(file.path(repo_dir, "scripts/go/add_samsung_profile_results.R"), local=TRUE)
+add_samsung_profile_results(repo_dir)
+
 cat("Done.\n")
