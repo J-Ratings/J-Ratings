@@ -122,7 +122,7 @@ leagues <- tribble(
 today <- Sys.Date()
 current_year <- year(today)
 lookback_date <- today %m-% months(6)
-fixtures_until <- today %m+% months(3)
+fixtures_until <- today + 45L
 
 # Override the season bounds for a backfill or to check farther ahead.
 start_override <- Sys.getenv("RUGBY_API_START_YEAR")
@@ -259,6 +259,22 @@ fetch_season <- function(id_league, season_label, competition_name) {
       extra <- fetch_api(paste0(route, "?id=", id_league))
       if (!"events" %in% names(extra)) stop("Invalid TheSportsDB response for ", route)
       if (NROW(extra$events)) dat$events <- bind_rows(extra$events, dat$events)
+    }
+    if (id_league %in% c(5852L, 5933L)) {
+      # Query each competition separately so other rugby games do not use
+      # its daily allowance. Use only dates in this season's fixture window.
+      scan_until <- min(fixtures_until, as.Date(paste0(season_label, "-12-31")))
+      dates <- format(seq(today, scan_until, by = "day"), "%Y-%m-%d")
+      cat("Checking ", length(dates), " fixture dates for ", competition_name, "\n", sep = "")
+      daily_events <- map_dfr(dates, function(day) {
+        daily <- fetch_api(paste0("eventsday.php?d=", day, "&l=", id_league))
+        if (!"events" %in% names(daily)) stop("Invalid TheSportsDB day response for ", day)
+        if (NROW(daily$events) == 3L) {
+          warning(competition_name, " on ", day, " reached the documented free daily limit. More fixtures may exist.")
+        }
+        as_tibble(daily$events)
+      })
+      dat$events <- bind_rows(daily_events, dat$events)
     }
     if ("idEvent" %in% names(dat$events)) {
       dat$events <- as_tibble(dat$events) %>% distinct(idEvent, .keep_all = TRUE)
