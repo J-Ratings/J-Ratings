@@ -482,9 +482,10 @@ body,
     <h3 class="section-title">Games</h3>
     <div class="game-probability-controls">
       <label>
-        <input type="checkbox" id="games-home-advantage">
+        <input type="checkbox" id="games-home-advantage" aria-describedby="games-home-advantage-note">
         Consider home advantage
       </label>
+      <small id="games-home-advantage-note">World Cup finals use base Elo.</small>
     </div>
     <div id="gamesWrap">
       <table id="games" class="games"></table>
@@ -1096,7 +1097,7 @@ if (total === 99) {
     const thead = document.createElement('thead');
     const hr = document.createElement('tr');
 
-    for (const h of ['Date', 'Tournament', 'Home', 'Elo', 'Away', 'Elo', 'Expected W/D/L', 'Score', 'Result', 'Δ']) {
+    for (const h of ['Date', 'Tournament', 'Home / Team 1', 'Elo', 'Away / Team 2', 'Elo', 'Expected W/D/L', 'Score', 'Result', 'Δ']) {
       const th = document.createElement('th');
       th.textContent = h;
       hr.appendChild(th);
@@ -1110,7 +1111,12 @@ if (total === 99) {
 
     const tbody = document.createElement('tbody');
     const rows = Array.isArray(games) ? [...games] : [];
-    rows.sort((a, b) => new Date(b.date) - new Date(a.date));
+    rows.sort((a, b) => {
+      const aScheduled = a.status === 'scheduled';
+      const bScheduled = b.status === 'scheduled';
+      if (aScheduled !== bScheduled) return aScheduled ? -1 : 1;
+      return aScheduled ? new Date(a.date) - new Date(b.date) : new Date(b.date) - new Date(a.date);
+    });
 
     const myName = me.name;
 
@@ -1131,6 +1137,13 @@ if (total === 99) {
       const tdTournament = document.createElement('td');
       tdTournament.className = 'tournament-cell';
       tdTournament.appendChild(renderTournamentCell(g));
+      const tournament = String(g.tournament || g.competition || '').trim();
+      if (isWorldCupFinals(tournament, Number(String(g.date || '').slice(0, 4)))) {
+        const venueNote = document.createElement('small');
+        venueNote.style.display = 'block';
+        venueNote.textContent = 'Base Elo';
+        tdTournament.appendChild(venueNote);
+      }
 
       const tdHome = document.createElement('td');
       tdHome.className = 'team-cell';

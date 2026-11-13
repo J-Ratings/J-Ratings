@@ -122,6 +122,7 @@ leagues <- tribble(
 today <- Sys.Date()
 current_year <- year(today)
 lookback_date <- today %m-% months(6)
+fixtures_until <- today %m+% months(3)
 
 # Override the season bounds for a backfill or to check farther ahead.
 start_override <- Sys.getenv("RUGBY_API_START_YEAR")
@@ -134,7 +135,7 @@ if (is.na(start_year)) {
 if (nzchar(start_override)) lookback_date <- as.Date(sprintf("%04d-01-01", start_year))
 
 end_year <- suppressWarnings(
-  as.integer(Sys.getenv("RUGBY_API_END_YEAR", unset = as.character(current_year + 1L)))
+  as.integer(Sys.getenv("RUGBY_API_END_YEAR", unset = as.character(year(fixtures_until))))
 )
 
 if (is.na(end_year)) {
@@ -249,6 +250,20 @@ fetch_season <- function(id_league, season_label, competition_name) {
   endpoint <- paste0("eventsseason.php?id=", id_league, "&s=", season_label)
   dat <- fetch_api(endpoint)
   if (!"events" %in% names(dat)) stop("Invalid TheSportsDB response for ", endpoint)
+  if (season_label == as.character(current_year) && NROW(dat$events) == 15L) {
+    warning(
+      competition_name, " returned 15 season events, the documented free-tier limit. ",
+      "Checking the separate recent and upcoming endpoints; coverage may still be incomplete."
+    )
+    for (route in c("eventspastleague.php", "eventsnextleague.php")) {
+      extra <- fetch_api(paste0(route, "?id=", id_league))
+      if (!"events" %in% names(extra)) stop("Invalid TheSportsDB response for ", route)
+      if (NROW(extra$events)) dat$events <- bind_rows(extra$events, dat$events)
+    }
+    if ("idEvent" %in% names(dat$events)) {
+      dat$events <- as_tibble(dat$events) %>% distinct(idEvent, .keep_all = TRUE)
+    }
+  }
   if (length(dat$events) == 0L) {
     return(tibble())
   }
@@ -391,6 +406,7 @@ api_results <- api_events %>%
 fixtures <- api_events %>%
   filter(
     as.Date(date) >= today,
+    as.Date(date) <= fixtures_until,
     status %in% c("", "ns", "not started", "scheduled", "tbd"),
     is.na(home_score), is.na(away_score)
   ) %>%
