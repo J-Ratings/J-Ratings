@@ -111,6 +111,7 @@ month_num <- function(mon) {
 infer_year_from_season <- function(season_str) {
   parts <- strsplit(season_str, "/")[[1]]
   start_year <- as.integer(parts[1])
+  if (length(parts) == 1L) return(list(start_year = start_year, end_year = start_year))
   end_part <- parts[2]
   
   if (nchar(end_part) == 2) {
@@ -171,17 +172,19 @@ normalise_openfootball_season_label <- function(season_folder) {
 # Parser
 # -----------------------------
 
-parse_comp_file <- function(txt_path, country, competition_id, competition_type, league_label, tier, source = "openfootball") {
+parse_comp_file <- function(txt_path, country, competition_id, competition_type, league_label, tier, source = "openfootball", season_str = NULL) {
   lines <- readLines(txt_path, warn = FALSE, encoding = "UTF-8")
   
   hdr_idx <- grep("^\\s*=\\s*.*\\b\\d{4}/\\d{2,4}\\b\\s*$", lines)
   
-  if (length(hdr_idx) == 0) {
+  if (is.null(season_str) && length(hdr_idx) == 0) {
     stop("Could not find season header in: ", txt_path)
   }
   
-  season_line <- lines[hdr_idx[1]]
-  season_str <- sub(".*\\b(\\d{4}/\\d{2,4})\\b.*", "\\1", season_line)
+  if (is.null(season_str)) {
+    season_line <- lines[hdr_idx[1]]
+    season_str <- sub(".*\\b(\\d{4}/\\d{2,4})\\b.*", "\\1", season_line)
+  }
   yrs <- infer_year_from_season(season_str)
   
   current_date <- as.Date(NA)
@@ -2387,17 +2390,22 @@ if (file.exists(out_file)) {
     old_df$Competition
   )
   
-  rows_replaced <- sum(old_keys %in% parsed_keys)
-  
   cat("Existing combined CSV:", out_file, "\n")
-  cat("Existing rows replaced by freshly parsed competition-seasons:", rows_replaced, "\n")
   
-  old_keep <- old_df[!(old_keys %in% parsed_keys), ]
+  refreshed <- old_keys %in% parsed_keys
+  unplayed <- is.na(old_df$Score) | !nzchar(trimws(old_df$Score))
+  refresh_fixture <- refreshed & unplayed & old_df$Source %in% c("openfootball", "wikipedia")
+  cat("Existing unplayed fixtures refreshed:", sum(refresh_fixture), "\n")
+  old_keep <- old_df[!refresh_fixture, ]
   all_df <- rbind(old_keep, parsed_df)
 } else {
   cat("No existing combined CSV found. Creating a new one.\n")
   all_df <- parsed_df
 }
+
+source(file.path(repo_dir, "scripts/EuropeanFootball/merge_regional_sources.R"))
+all_df <- merge_regional_sources(all_df, source_root_dir, repo_dir)
+required_cols <- names(all_df)
 
 # -----------------------------
 # Duplicate protection / reconciliation
@@ -2427,20 +2435,23 @@ make_match_key <- function(df) {
 match_key <- make_match_key(all_df)
 
 if (anyDuplicated(match_key)) {
-  dup_keys <- unique(match_key[duplicated(match_key)])
+  duplicate_rows <- which(duplicated(match_key) | duplicated(match_key, fromLast = TRUE))
+  duplicate_groups <- split(duplicate_rows, match_key[duplicate_rows])
   
   conflict_messages <- character()
   
-  for (k in dup_keys) {
-    z <- all_df[match_key == k, , drop = FALSE]
+  for (k in names(duplicate_groups)) {
+    z <- all_df[duplicate_groups[[k]], , drop = FALSE]
     
     result_vals <- unique(trimws(as.character(z$Result)))
     result_vals <- result_vals[!is.na(result_vals) & result_vals != ""]
     
-    if (length(result_vals) > 1L) {
+    score_vals <- sub("^\\s*(\\d+\\s*-\\s*\\d+).*$", "\\1", trimws(as.character(z$Score)))
+    score_vals <- unique(gsub("\\s+", "", score_vals[!is.na(score_vals) & nzchar(score_vals)]))
+    if (length(result_vals) > 1L || length(score_vals) > 1L) {
       conflict_messages <- c(
         conflict_messages,
-        paste0(k, " | conflicting Result values: ", paste(result_vals, collapse = ", "))
+        paste0(k, " | conflicting results or scores: ", paste(score_vals, collapse = ", "))
       )
       next
     }
@@ -2483,7 +2494,7 @@ if (anyDuplicated(match_key)) {
     "\nReconciled harmless duplicate fixture rows:",
     n_removed,
     "across",
-    length(dup_keys),
+    length(duplicate_groups),
     "fixture keys.\n"
   )
   

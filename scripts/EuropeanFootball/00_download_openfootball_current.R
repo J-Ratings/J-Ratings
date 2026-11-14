@@ -647,6 +647,35 @@ cat("Current season:", season_folder, "\n")
 cat("Files:\n")
 print(download_results)
 
+# Discover additional match files from the two regional OpenFootball feeds.
+# Keep each upstream path so season names and competition codes survive intact.
+for (repo in c("south-america", "world")) {
+  tree_file <- tempfile(fileext = ".json")
+  download_one_file(
+    paste0("https://api.github.com/repos/openfootball/", repo, "/git/trees/master?recursive=1"),
+    tree_file
+  )
+  Sys.sleep(1)
+  listing <- jsonlite::fromJSON(tree_file)
+  unlink(tree_file)
+  if (isTRUE(listing$truncated) || !is.data.frame(listing$tree) ||
+      !all(c("type", "path") %in% names(listing$tree))) {
+    stop("Incomplete OpenFootball file listing for ", repo)
+  }
+  paths <- listing$tree$path[listing$tree$type == "blob"]
+  paths <- paths[grepl("^(19|20)[0-9]{2}(-[0-9]{2})?_[a-z0-9]+[.]txt$", basename(paths))]
+  for (path in paths) {
+    dest <- file.path(source_root_dir, "regional", repo, path)
+    # Refresh the latest available season per competition, even if upstream
+    # is behind. Older seasons are reconstructed from the local cache.
+    sibling <- paths[dirname(paths) == dirname(path) &
+      sub("^[^_]+_", "", basename(paths)) == sub("^[^_]+_", "", basename(path))]
+    if (file.exists(dest) && path != tail(sort(sibling), 1L)) next
+    download_one_file(paste0("https://raw.githubusercontent.com/openfootball/", repo, "/master/", path), dest)
+    Sys.sleep(1)
+  }
+}
+
 # -----------------------------
 # Wikipedia UEFA competitions
 # -----------------------------

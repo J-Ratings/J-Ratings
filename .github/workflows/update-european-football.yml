@@ -2,6 +2,11 @@ name: Update European Football data
 
 on:
   workflow_dispatch:
+    inputs:
+      refresh_rsssf:
+        description: "Refresh and merge dated RSSSF results"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -49,8 +54,15 @@ jobs:
           needs: check
 
       - name: Run European Football pipeline
+        env:
+          REFRESH_RSSSF: ${{ inputs.refresh_rsssf }}
         run: |
           Rscript -e 'source("scripts/EuropeanFootball/00_download_openfootball_current.R")'
+          if [ "$REFRESH_RSSSF" = "true" ]; then
+            Rscript scripts/EuropeanFootball/refresh_recent_rsssf_pages.R
+            candidates="EuropeanFootball/pipeline_data/Manual_Sources/RSSSF_Monthly_Refresh/post_checkpoint_review_matches.csv"
+            if [ -s "$candidates" ]; then export CLUB_RSSSF_MERGE_FILE="$candidates"; fi
+          fi
           Rscript -e 'source("scripts/EuropeanFootball/01_parse_openfootball.R")'
           Rscript -e 'source("scripts/EuropeanFootball/02_calculate_elo.R")'
           Rscript -e 'source("scripts/EuropeanFootball/03_write_json.R")'

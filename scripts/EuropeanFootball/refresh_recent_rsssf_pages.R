@@ -6,10 +6,9 @@ local({
   out <- file.path(base,'Manual_Sources/RSSSF_Monthly_Refresh')
   dir.create(out,recursive=TRUE,showWarnings=FALSE)
   if (interactive()) on.exit(try(beepr::beep(),silent=TRUE),add=TRUE)
-  # These top flights already have functioning current OpenFootball files.
-  # Override this comma-separated list when an alternative stops working.
+  # Optional comma-separated exclusions for a smaller review run.
   excluded <- strsplit(Sys.getenv('RSSSF_REFRESH_EXCLUDE_COUNTRIES',
-    'England,Spain,Italy,Germany,France,Portugal,Netherlands,Austria,Switzerland,Scotland,Greece,Czechia'),',',fixed=TRUE)[[1]]
+    ''),',',fixed=TRUE)[[1]]
   seeds <- unique(fread(file.path(base,'Reference/non_uefa_country_seeds.csv'))[Tier==1,.(Country,Confederation)])
   today <- Sys.Date(); year <- as.integer(format(today,'%Y'))
   start_year <- max(2025L,year-2L)
@@ -70,6 +69,13 @@ local({
   source(file.path(root,'scripts/EuropeanFootball/rsssf_ofc_audit.R'),local=TRUE)
   result <- run_rsssf_ofc_audit(config_override=rbindlist(configs),audit_name='monthly RSSSF refresh',
     output_folder='RSSSF_Monthly_Refresh/parser',env_prefix='MONTHLY_RSSSF',completion_beep=FALSE)
-  if(nrow(result$games)) fwrite(result$games[!is.na(Date) & Date>cutoff],file.path(out,'post_checkpoint_review_matches.csv'))
+  candidates <- result$games
+  if (nrow(candidates)) {
+    approved_pages <- result$audit[QualityStatus == 'at_least_95_dated', SourceFile]
+    candidates <- candidates[SourceFile %chin% approved_pages & !is.na(Date) &
+                               Date > cutoff & !is.na(Annotated) & !Annotated]
+  }
+  candidate_file <- file.path(out,'post_checkpoint_review_matches.csv')
+  if (nrow(candidates)) fwrite(candidates,candidate_file) else unlink(candidate_file)
   message('Finished. Master and checkpoint unchanged. Review new/changed pages and candidate matches in ',out)
 })
