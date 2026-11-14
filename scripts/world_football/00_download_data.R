@@ -21,26 +21,18 @@ source_dir <- file.path(
 dir.create(source_dir, recursive = TRUE, showWarnings = FALSE)
 
 # -----------------------------
-# Kaggle token
-# -----------------------------
-token <- Sys.getenv("KAGGLE_API_TOKEN")
-
-if (token == "") {
-  stop(
-    "KAGGLE_API_TOKEN is not set. ",
-    "Set it as a GitHub Actions secret, or set it locally before running this script."
-  )
-}
-
-# The Kaggle CLI reads KAGGLE_API_TOKEN when authenticating.
-
-# -----------------------------
 # Download dataset using Kaggle CLI
 # -----------------------------
+# Let Kaggle resolve credentials from its saved login or KAGGLE_API_TOKEN.
+kaggle_cli <- Sys.which("kaggle")
+if (!nzchar(kaggle_cli)) {
+  stop("Kaggle CLI is not on PATH.", call. = FALSE)
+}
+
 dataset_slug <- "patateriedata/all-international-football-results"
 
-cmd <- paste(
-  "kaggle datasets download",
+args <- c(
+  "datasets", "download",
   "-d", shQuote(dataset_slug),
   "-p", shQuote(source_dir),
   "--unzip",
@@ -51,7 +43,7 @@ cat("Downloading Kaggle dataset:\n")
 cat(dataset_slug, "\n")
 cat("Destination:", source_dir, "\n")
 
-status <- system(cmd)
+status <- system2(kaggle_cli, args)
 
 if (!identical(status, 0L)) {
   stop("Kaggle download failed with exit status: ", status)
