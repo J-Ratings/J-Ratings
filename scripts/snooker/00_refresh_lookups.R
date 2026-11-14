@@ -19,13 +19,6 @@ toc <- function() {
   invisible(elapsed)
 }
 
-beep <- function() {
-  if (requireNamespace("beepr", quietly = TRUE) && interactive()) {
-    try(beepr::beep(), silent = TRUE)
-  }
-  invisible(NULL)
-}
-
 tic("Snooker pipeline")
 
 # ============================================================
@@ -454,5 +447,4 @@ if (nrow(players_new) > 0L) {
 
 cat("\nDone.\n")
 toc()
-beep()
-
+utils::alarm()

@@ -991,3 +991,4 @@ if (length(missing_outputs) > 0) {
 
 cat("Done.\n")
 cat("JSON output directory: ", base_data_dir, "\n", sep = "")
+utils::alarm()

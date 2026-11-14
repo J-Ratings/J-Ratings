@@ -722,3 +722,4 @@ write_final_outputs(
 cat("\nDone.\n")
 cat("Final game history: ", OUTPUT_GAME_HISTORY_CSV, "\n", sep = "")
 cat("Final ratings: ", OUTPUT_FINAL_RATINGS_CSV, "\n", sep = "")
+utils::alarm()

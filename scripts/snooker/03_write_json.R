@@ -896,3 +896,4 @@ for (pid in all_ids) {
 
 cat("Wrote games files:", n_games_written, "\n")
 cat("Done.\n")
+utils::alarm()

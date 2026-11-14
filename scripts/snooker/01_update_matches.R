@@ -19,13 +19,6 @@ toc <- function() {
   invisible(elapsed)
 }
 
-beep <- function() {
-  if (requireNamespace("beepr", quietly = TRUE) && interactive()) {
-    try(beepr::beep(), silent = TRUE)
-  }
-  invisible(NULL)
-}
-
 tic("Snooker pipeline")
 
 # ============================================================
@@ -481,8 +474,7 @@ if (nrow(events_to_refresh) > 0L) {
 
 if (nrow(events_to_refresh) == 0L) {
   cat("No events matched the refresh window. Done.\n")
-  quit(save = "no")
-}
+} else {
 
 # ============================================================
 # 3) Pull match data for selected events
@@ -599,8 +591,8 @@ for (season_name in names(refresh_by_season)) {
   cat("Final combined rows:", nrow(combined), "\n")
   cat("Wrote:", combined_file, "\n")
 }
+}
 
 cat("\nDone.\n")
 toc()
-beep()
-
+utils::alarm()
