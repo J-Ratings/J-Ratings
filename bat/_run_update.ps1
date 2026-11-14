@@ -28,6 +28,7 @@ $plans = @{
     'rugby' = @('scripts/world_rugby/00_api_merge.R','scripts/world_rugby/01_calculation.R','scripts/world_rugby/02_write_json.R')
     'rugby-recalculate' = @('scripts/world_rugby/01_calculation.R','scripts/world_rugby/02_write_json.R')
 }
+$plans['go-top'] = $plans['go-weekly']
 $exitCode = 1
 $mutex = New-Object System.Threading.Mutex($false, 'Local\JRatingsLocalDataUpdate')
 $ownsMutex = $false
@@ -62,6 +63,15 @@ try {
         if ($Mode -eq 'go-quick') { $env:GO_DAILY_APPLY = 'true' }
         if ($Mode -eq 'go-weekly') { $env:GORATINGS_SCRAPE_MODE = 'weekly' }
         if ($Mode -eq 'go-full') { $env:GORATINGS_SCRAPE_MODE = 'full' }
+        if ($Mode -eq 'go-top') {
+            $topCount = 0
+            $answer = Read-Host 'How many top GoRatings profiles should we check?'
+            if (-not [int]::TryParse($answer, [ref]$topCount) -or $topCount -lt 1) {
+                throw 'Enter a positive whole number.'
+            }
+            $env:GORATINGS_SCRAPE_MODE = 'top'
+            $env:GORATINGS_TOP_N = "$topCount"
+        }
     }
     if ($Mode -eq 'go-full') {
         Write-Host 'Full GoRatings refresh: checks every listed profile and can take a long time.'

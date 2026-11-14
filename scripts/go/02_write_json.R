@@ -1194,18 +1194,23 @@ rank_rows <- vector(
   length(rank_dates)
 )
 
+# Keep the latest rating row for each player as we advance through the dates.
+# Rows on a date are unique per player after the hist_long deduplication above.
+player_index <- match(rank_dt$name, unique(rank_dt$name))
+latest_rows <- rep(NA_integer_, length(unique(rank_dt$name)))
+rows_by_date <- split(seq_len(nrow(rank_dt)), match(rank_dt$date, rank_dates))
+rank_row_dates <- rank_dt$date
+
 for (i in seq_along(rank_dates)) {
   d <- rank_dates[[i]]
   
   cutoff <- d -
     inactive_days_int
   
-  current_ratings <- rank_dt[
-    date <= d &
-      date >= cutoff,
-    .SD[.N],
-    by = name
-  ]
+  updated_rows <- rows_by_date[[i]]
+  latest_rows[player_index[updated_rows]] <- updated_rows
+  active_rows <- latest_rows[which(rank_row_dates[latest_rows] >= cutoff)]
+  current_ratings <- rank_dt[active_rows]
   
   if (nrow(current_ratings) > 0) {
     setorder(

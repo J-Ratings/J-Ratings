@@ -70,7 +70,7 @@ SCRAPE_MODE <- tolower(
   )
 )
 
-if (!SCRAPE_MODE %in% c("weekly", "full", "daily")) {
+if (!SCRAPE_MODE %in% c("weekly", "full", "daily", "top")) {
   warning(
     "Unknown GORATINGS_SCRAPE_MODE='",
     SCRAPE_MODE,
@@ -869,13 +869,21 @@ profile_selection <- homepage_players %>%
   )
 
 profiles_to_scrape <- profile_selection %>%
-  filter(
-    should_scrape
-  ) %>%
-  arrange(
-    homepage_rank,
-    player_name
-  )
+  arrange(homepage_rank, player_name)
+
+if (SCRAPE_MODE == "top") {
+  top_input <- Sys.getenv("GORATINGS_TOP_N")
+  top_n <- suppressWarnings(as.integer(top_input))
+  if (!grepl("^[0-9]+$", top_input) || is.na(top_n) || top_n < 1L) {
+    stop("GORATINGS_TOP_N must be a positive whole number.")
+  }
+  profiles_to_scrape <- profiles_to_scrape %>%
+    filter(!is.na(homepage_rank)) %>%
+    slice_head(n = top_n) %>%
+    mutate(scrape_reason = "top homepage rank")
+} else {
+  profiles_to_scrape <- profiles_to_scrape %>% filter(should_scrape)
+}
 
 if (SCRAPE_MODE == "daily") {
   source("scripts/go/daily_tournament_targets.R")
